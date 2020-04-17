@@ -56,8 +56,6 @@ executors:
     docker:
       - image: alpine:latest
     working_directory: /
-    environment:
-      <<: *common_environment
 
 jobs:
   docs_build:
