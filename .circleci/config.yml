@@ -37,7 +37,6 @@ references:
         - "0e:8e:90:bf:3d:a9:04:d9:04:b4:62:38:a5:3b:90:7d"
 
 commands:
-  <<: *common_commands
   install_doc_dependencies:
     description: "Install documentation dependencies"
     steps:
