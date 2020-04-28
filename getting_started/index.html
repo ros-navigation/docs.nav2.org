@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -44,6 +35,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Build and Install" href="../build_instructions/index.html" />
@@ -381,28 +373,27 @@
 <p>This document will take you through the process of installing the Navigation 2 binaries
 and navigating a simulated Turtlebot 3 in the Gazebo simulator.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">See the <a class="reference internal" href="../build_instructions/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a> for other situations such as building from source or
+<p class="admonition-title">Note</p>
+<p>See the <a class="reference internal" href="../build_instructions/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a> for other situations such as building from source or
 working with other types of robots.</p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This is a simplified version of the Turtlebot 3 instructions. We highly
+<p class="admonition-title">Warning</p>
+<p>This is a simplified version of the Turtlebot 3 instructions. We highly
 recommend you follow the <a class="reference external" href="http://emanual.robotis.com/docs/en/platform/turtlebot3/ros2/#ros2">official Turtlebot 3 manual</a> if you intend to
 continue working with this robot beyond the minimal example provided here.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Install the <a class="reference external" href="https://index.ros.org/doc/ros2/Installation/">ROS 2 binary packages</a> as described in the official docs</p>
-</li>
-<li><p class="first">Install the Navigation 2 packages using your operating system’s package manager:</p>
+<li><p>Install the <a class="reference external" href="https://index.ros.org/doc/ros2/Installation/">ROS 2 binary packages</a> as described in the official docs</p></li>
+<li><p>Install the Navigation 2 packages using your operating system’s package manager:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-&lt;ros2-distro&gt;-navigation2
 sudo apt install ros-&lt;ros2-distro&gt;-nav2-bringup
 </pre></div>
 </div>
 </li>
-<li><p class="first">Install the Turtlebot 3 packages:</p>
+<li><p>Install the Turtlebot 3 packages:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-&lt;ros2-distro&gt;-turtlebot3*
 </pre></div>
 </div>
@@ -412,16 +403,15 @@ sudo apt install ros-&lt;ros2-distro&gt;-nav2-bringup
 <div class="section" id="running-the-example">
 <h2>Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Start a terminal in your GUI</p>
-</li>
-<li><p class="first">Set key environment variables:</p>
+<li><p>Start a terminal in your GUI</p></li>
+<li><p>Set key environment variables:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /opt/ros/&lt;ros2-distro&gt;/setup.bash
 <span class="nb">export</span> <span class="nv">TURTLEBOT3_MODEL</span><span class="o">=</span>waffle
 <span class="nb">export</span> <span class="nv">GAZEBO_MODEL_PATH</span><span class="o">=</span><span class="nv">$GAZEBO_MODEL_PATH</span>:/opt/ros/&lt;ros2-distro&gt;/share/turtlebot3_gazebo/models
 </pre></div>
 </div>
 </li>
-<li><p class="first">In the same terminal, run</p>
+<li><p>In the same terminal, run</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py
 </pre></div>
 </div>
@@ -434,7 +424,7 @@ this:</p>
 <a class="reference internal image-reference" href="../_images/rviz-not-started.png"><img alt="../_images/rviz-not-started.png" src="../_images/rviz-not-started.png" style="width: 45%;" /></a>
 <a class="reference internal image-reference" href="../_images/gazebo_turtlebot1.png"><img alt="../_images/gazebo_turtlebot1.png" src="../_images/gazebo_turtlebot1.png" style="width: 46%;" /></a>
 </li>
-<li><p class="first">Click the “Startup” button in the bottom left corner of RViz. This will
+<li><p>Click the “Startup” button in the bottom left corner of RViz. This will
 cause Navigation 2 to change to the Active state. It should
 change appearance to show the map.</p>
 <a class="reference internal image-reference" href="../_images/rviz_initial.png"><img alt="Initial appearance of RViz transitioning to the Active state" class="align-center" src="../_images/rviz_initial.png" style="width: 700px;" /></a>

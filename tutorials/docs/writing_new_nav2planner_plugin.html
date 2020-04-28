@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -44,6 +35,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Configuration Guidelines" href="../../configuration/index.html" />
@@ -381,9 +373,9 @@
   <div class="section" id="writing-a-new-planner-plugin">
 <span id="writing-new-nav2planner-plugin"></span><h1>Writing a New Planner Plugin<a class="headerlink" href="#writing-a-new-planner-plugin" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#requirements">Requirements</a></li>
-<li><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/nav2_straightline_gif.gif"><img alt="Animated gif with gradient demo" class="align-center" src="../../_images/nav2_straightline_gif.gif" style="width: 700px;" /></a>
 <div class="section" id="overview">
@@ -393,10 +385,10 @@
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>ROS2 (binary or build-from-source)</li>
-<li>Navigation2 (Including dependencies)</li>
-<li>Gazebo</li>
-<li>Turtlebot3</li>
+<li><p>ROS2 (binary or build-from-source)</p></li>
+<li><p>Navigation2 (Including dependencies)</p></li>
+<li><p>Gazebo</p></li>
+<li><p>Turtlebot3</p></li>
 </ul>
 </div>
 <div class="section" id="tutorial-steps">
@@ -408,47 +400,47 @@ The annotated code in this tutorial can be found in <a class="reference external
 This package can be a considered as a reference for writing planner plugin.</p>
 <p>Our example plugin inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_core::GlobalPlanner</span></code>. The base class provides 5 pure virtual methods to implement a planner plugin. The plugin will be used by the planner server to compute trajectories.
 Lets learn more about the methods needed to write a planner plugin.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="18%" />
-<col width="62%" />
-<col width="20%" />
+<col style="width: 18%" />
+<col style="width: 62%" />
+<col style="width: 20%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Virtual method</strong></td>
-<td><strong>Method description</strong></td>
-<td><strong>Requires override?</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Virtual method</strong></p></td>
+<td><p><strong>Method description</strong></p></td>
+<td><p><strong>Requires override?</strong></p></td>
 </tr>
-<tr class="row-even"><td>configure()</td>
-<td>Method is called at when planner server enters on_configure state. Ideally
+<tr class="row-even"><td><p>configure()</p></td>
+<td><p>Method is called at when planner server enters on_configure state. Ideally
 this methods should perform declarations of ROS parameters and
 initialization of planner’s member variables. This method takes 4 input
 params: shared pointer to parent node, planner name, tf buffer pointer and
-shared pointer to costmap.</td>
-<td>Yes</td>
+shared pointer to costmap.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td>activate()</td>
-<td>Method is called when planner server enters on_activate state. Ideally this
+<tr class="row-odd"><td><p>activate()</p></td>
+<td><p>Method is called when planner server enters on_activate state. Ideally this
 method should implement operations which are neccessary before planner goes
-to an active state.</td>
-<td>Yes</td>
+to an active state.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td>deactivate()</td>
-<td>Method is called when planner server enters on_deactivate state. Ideally
+<tr class="row-even"><td><p>deactivate()</p></td>
+<td><p>Method is called when planner server enters on_deactivate state. Ideally
 this method should implement operations which are neccessary before planner
-goes to an inactive state.</td>
-<td>Yes</td>
+goes to an inactive state.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td>cleanup()</td>
-<td>Method is called when planner server goes to on_cleanup state. Ideally this
-method should clean up resoures which are created for the planner.</td>
-<td>Yes</td>
+<tr class="row-odd"><td><p>cleanup()</p></td>
+<td><p>Method is called when planner server goes to on_cleanup state. Ideally this
+method should clean up resoures which are created for the planner.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td>createPlan()</td>
-<td>Method is called when planner server demands a global plan for specified
+<tr class="row-even"><td><p>createPlan()</p></td>
+<td><p>Method is called when planner server demands a global plan for specified
 start and goal pose. This method returns <cite>nav_msgs::msg::Path</cite> carrying
-global plan. This method takes 2 input parmas: start pose and goal pose.</td>
-<td>Yes</td>
+global plan. This method takes 2 input parmas: start pose and goal pose.</p></td>
+<td><p>Yes</p></td>
 </tr>
 </tbody>
 </table>
@@ -521,7 +513,7 @@ global plan. This method takes 2 input parmas: start pose and goal pose.</td>
 <p>Now that we have created our custom planner, we need to export our planner plugin so that it would be visible to the planner server. Plugins are loaded at runtime and if they are not visible, then our planner server won’t be able to load it. In ROS2, exporting and loading plugins is handled by <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
 <p>Coming to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_straightline_planner::StraightLine</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::GlobalPlanner</span></code> which is our base class.</p>
 <ol class="arabic simple">
-<li>To export the planner, we need to provide two lines</li>
+<li><p>To export the planner, we need to provide two lines</p></li>
 </ol>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;pluginlib/class_list_macros.hpp&quot;</span><span class="cp"></span>
 <span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_straightline_planner</span><span class="o">::</span><span class="n">StraightLine</span><span class="p">,</span> <span class="n">nav2_core</span><span class="o">::</span><span class="n">GlobalPlanner</span><span class="p">)</span>
@@ -530,15 +522,15 @@ global plan. This method takes 2 input parmas: start pose and goal pose.</td>
 <p>Note that it requires pluginlib to export out plugin’s class. Pluginlib would provide as macro <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code> which does all the work of exporting.</p>
 <p>It is good practice to place these lines at the end of the file but technically, you can also write at the top.</p>
 <ol class="arabic simple" start="2">
-<li>Next step would be to create plugin’s description file in the root directory of the package. For example, <code class="docutils literal notranslate"><span class="pre">global_planner_plugin.xml</span></code> file in our tutorial package. This file contains following information</li>
+<li><p>Next step would be to create plugin’s description file in the root directory of the package. For example, <code class="docutils literal notranslate"><span class="pre">global_planner_plugin.xml</span></code> file in our tutorial package. This file contains following information</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">library</span> <span class="pre">path</span></code>: Plugin’s library name and it’s location.</li>
-<li><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">name</span></code>: Name of the class.</li>
-<li><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">type</span></code>: Type of class.</li>
-<li><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">class</span></code>: Name of the base class.</li>
-<li><code class="docutils literal notranslate"><span class="pre">description</span></code>: Description of the plugin.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">library</span> <span class="pre">path</span></code>: Plugin’s library name and it’s location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">name</span></code>: Name of the class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">type</span></code>: Type of class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">class</span></code>: Name of the base class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Description of the plugin.</p></li>
 </ul>
 </div></blockquote>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span> <span class="na">path=</span><span class="s">&quot;nav2_straightline_planner_plugin&quot;</span><span class="nt">&gt;</span>
@@ -549,13 +541,13 @@ global plan. This method takes 2 input parmas: start pose and goal pose.</td>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Next step would be to export plugin using <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> by using cmake function <code class="docutils literal notranslate"><span class="pre">pluginlib_export_plugin_description_file()</span></code>. This function installs plugin description file to <code class="docutils literal notranslate"><span class="pre">share</span></code> directory and sets ament indexes to make it discoverable.</li>
+<li><p>Next step would be to export plugin using <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> by using cmake function <code class="docutils literal notranslate"><span class="pre">pluginlib_export_plugin_description_file()</span></code>. This function installs plugin description file to <code class="docutils literal notranslate"><span class="pre">share</span></code> directory and sets ament indexes to make it discoverable.</p></li>
 </ol>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pluginlib_export_plugin_description_file(nav2_core global_planner_plugin.xml)
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Plugin description file should also be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code></li>
+<li><p>Plugin description file should also be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code></p></li>
 </ol>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;export&gt;</span>
   <span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
@@ -564,7 +556,7 @@ global plan. This method takes 2 input parmas: start pose and goal pose.</td>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Compile and it should be registered. Next, we’ll use this plugin.</li>
+<li><p>Compile and it should be registered. Next, we’ll use this plugin.</p></li>
 </ol>
 </div>
 <div class="section" id="pass-the-plugin-name-through-params-file">

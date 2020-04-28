@@ -22,20 +22,11 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -44,6 +35,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Getting Started" href="getting_started/index.html" />
@@ -405,16 +397,16 @@ non-holonomic robot to follow. We currently support holonomic and differential-d
 but plan to support Ackermann (car-like) robots as well in the near future.</p>
 <p>It has tools to:</p>
 <ul class="simple">
-<li>load, serve, and store maps (Map Server)</li>
-<li>localize the robot on the map (AMCL)</li>
-<li>plan a path from A to B around obstacles (Nav2 Planner)</li>
-<li>control the robot as it follows the path (Nav2 Controller)</li>
-<li>convert sensor data into a costmap representation of the world (Nav2 Costmap 2D)</li>
-<li>build complicated robot behaviors using behavior trees (Nav2 Behavior Trees and BT Navigator)</li>
-<li>Compute recovery behaviors in case of failure (Nav2 Recoveries)</li>
-<li>Follow sequential waypoints (Nav2 Waypoint Follower)</li>
-<li>Manage the lifecycle of the servers (Nav2 Lifecycle Manager)</li>
-<li>Plugins to enable your own custom algorithms and behaviors (Nav2 Core)</li>
+<li><p>load, serve, and store maps (Map Server)</p></li>
+<li><p>localize the robot on the map (AMCL)</p></li>
+<li><p>plan a path from A to B around obstacles (Nav2 Planner)</p></li>
+<li><p>control the robot as it follows the path (Nav2 Controller)</p></li>
+<li><p>convert sensor data into a costmap representation of the world (Nav2 Costmap 2D)</p></li>
+<li><p>build complicated robot behaviors using behavior trees (Nav2 Behavior Trees and BT Navigator)</p></li>
+<li><p>Compute recovery behaviors in case of failure (Nav2 Recoveries)</p></li>
+<li><p>Follow sequential waypoints (Nav2 Waypoint Follower)</p></li>
+<li><p>Manage the lifecycle of the servers (Nav2 Lifecycle Manager)</p></li>
+<li><p>Plugins to enable your own custom algorithms and behaviors (Nav2 Core)</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/architectural_diagram.png"><img alt="Navigation2 Block Diagram" class="align-center" src="_images/architectural_diagram.png" style="width: 700px;" /></a>
 <p>We also provide a set of starting plugins to get you going. NavFn computes the shortest path

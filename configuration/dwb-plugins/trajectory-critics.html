@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -44,6 +35,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Goal Checkers" href="goal-checkers.html" />
@@ -383,91 +375,61 @@
   <div class="section" id="trajectory-critics">
 <span id="dwb-trajectory-critics"></span><h1>Trajectory Critics<a class="headerlink" href="#trajectory-critics" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The parameters below are not properly scoped. The exact parameter names are
+<p class="admonition-title">Warning</p>
+<p>The parameters below are not properly scoped. The exact parameter names are
 likely to change in the near future</p>
 </div>
 <div class="section" id="base-obstacle">
 <h2>Base Obstacle<a class="headerlink" href="#base-obstacle" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">BaseObstacle.class:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">BaseObstacle.scale:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">BaseObstacle.sum_scores:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">BaseObstacle.class</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">BaseObstacle.scale</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">BaseObstacle.sum_scores</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 </div>
 <div class="section" id="goal-align">
 <h2>Goal Align<a class="headerlink" href="#goal-align" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">GoalAlign.aggregation_type:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">GoalAlign.class:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">GoalAlign.forward_point_distance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">GoalAlign.scale:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">GoalAlign.aggregation_type</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">GoalAlign.class</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">GoalAlign.forward_point_distance</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">GoalAlign.scale</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
 </div>
 <div class="section" id="goal-distance">
 <h2>Goal Distance<a class="headerlink" href="#goal-distance" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">GoalDist.aggregation_type:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name">GoalDist.class:</th><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name">GoalDist.scale:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">GoalDist.aggregation_type</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">GoalDist.class</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">GoalDist.scale</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 </div>
 <div class="section" id="oscillation">
 <h2>Oscillation<a class="headerlink" href="#oscillation" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Oscillation.class:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Oscillation.oscillation_reset_angle:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Oscillation.oscillation_reset_dist:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Oscillation.oscillation_reset_time:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Oscillation.scale:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Oscillation.x_only_threshold:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Oscillation.class</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Oscillation.oscillation_reset_angle</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">Oscillation.oscillation_reset_dist</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Oscillation.oscillation_reset_time</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">Oscillation.scale</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Oscillation.x_only_threshold</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
 </div>
 <div class="section" id="obstacle-footprint">
 <h2>Obstacle Footprint<a class="headerlink" href="#obstacle-footprint" title="Permalink to this headline">¶</a></h2>
@@ -476,61 +438,40 @@ likely to change in the near future</p>
 <h2>Path Align<a class="headerlink" href="#path-align" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">PathAlign.forward_point_distance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">PathAlign.scale:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">PathAlign.forward_point_distance</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">PathAlign.scale</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
 </div>
 <div class="content-collapse section" id="additional-parameters">
 <h3>Additional Parameters<a class="headerlink" href="#additional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">PathAlign.aggregation_type:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">PathAlign.class:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">PathAlign.aggregation_type</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">PathAlign.class</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
 </div>
 </div>
 <div class="section" id="path-distance">
 <h2>Path Distance<a class="headerlink" href="#path-distance" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
 <h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">PathDist.scale:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">PathDist.scale</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 </div>
 <div class="content-collapse section" id="id2">
 <h3>Additional Parameters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">PathDist.aggregation_type:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name">PathDist.class:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">PathDist.aggregation_type</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">PathDist.class</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
 </div>
 </div>
 <div class="section" id="prefer-forward">
@@ -540,42 +481,27 @@ likely to change in the near future</p>
 <h2>Rotate To Goal<a class="headerlink" href="#rotate-to-goal" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
 <h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">RotateToGoal.scale:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">RotateToGoal.xy_goal_tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">RotateToGoal.stateful:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">RotateToGoal.trans_stopped_velocity:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">RotateToGoal.slowing_factor:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">RotateToGoal.lookahead_time:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">RotateToGoal.scale</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">RotateToGoal.xy_goal_tolerance</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">RotateToGoal.stateful</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">RotateToGoal.trans_stopped_velocity</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">RotateToGoal.slowing_factor</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">RotateToGoal.lookahead_time</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
 </div>
 <div class="content-collapse section" id="id4">
 <h3>Additional Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">RotateToGoal.class:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">RotateToGoal.class</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 </div>
 </div>
 <div class="section" id="twirling">
