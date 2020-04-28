@@ -52,6 +52,7 @@ publish:
 	rm -fr $(PUBLISHDIR)/*
 	cp -r $(BUILDDIR)/html/* $(PUBLISHDIR)
 	cp scripts/.nojekyll $(PUBLISHDIR)/.nojekyll
+	cp scripts/CNAME $(PUBLISHDIR)/CNAME
 	cd $(PUBLISHDIR) && \
 	git add -A && \
 	git diff-index --quiet HEAD || \
