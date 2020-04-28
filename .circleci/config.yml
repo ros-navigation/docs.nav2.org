@@ -20,16 +20,16 @@ references:
   make_docs: &make_docs
     run:
       command: |
-        cd nav2_docs/sphinx_doc
+        cd nav2_docs
         make html
   store_docs: &store_docs
     store_artifacts:
-        path: nav2_docs/sphinx_doc/_build/html
+        path: nav2_docs/_build/html
         destination: html
   publish_docs: &publish_docs
     run:
       command: |
-        cd nav2_docs/sphinx_doc
+        cd nav2_docs
         make publish
   install_deployment_key: &install_deployment_key
     add_ssh_keys:
@@ -67,7 +67,7 @@ jobs:
       - persist_to_workspace:
           root: nav2_docs
           paths:
-            - sphinx_doc
+            - _build 
   docs_publish:
     executor: docs_exec
     steps:
