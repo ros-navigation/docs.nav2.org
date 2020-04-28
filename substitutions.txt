@@ -21,7 +21,7 @@
 
 .. _`ROS 2 binary packages`: https://index.ros.org/doc/ros2/Installation/
 
-.. _`official Turtlebot 3 manual`: http://emanual.robotis.com/docs/en/platform/turtlebot3/ros2/#ros2
+.. _`official Turtlebot 3 manual`: http://emanual.robotis.com/docs/en/platform/turtlebot3/ros2_setup/
 
 .. These are replacement strings for non-ASCII characters used within the project
    using the same name as the html entity names (e.g., &copy;) for that character
