@@ -71,3 +71,7 @@ We intentionally make our emails easy to find.
 If your inquiry relates to bugs or open-source feature requests, consider posting a ticket on our GitHub project.
 If your inquiry relates to configuration support or private feature development, reach out and we may be able to connect you with
 independent consultants or contractors that know this project well.
+
+Check out the Navigation 2 Slack_ community.
+
+.. _Slack: https://join.slack.com/t/navigation2/shared_invite/zt-dwkv5cqb-P0IuNKfNflUo6zfx97M5hQ
