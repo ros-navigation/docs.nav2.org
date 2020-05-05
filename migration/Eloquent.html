@@ -296,6 +296,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#server-updates">Server Updates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#map-server-re-work">Map Server Re-Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-particle-filter-messages">New Particle Filter Messages</a></li>
 </ul>
 </li>
 </ul>
@@ -424,6 +425,14 @@ Server is a new part. It spins in the background and can be used to save map con
 <p>Map Server now has new <code class="docutils literal notranslate"><span class="pre">map_io</span></code> dynamic library. All functions saving/loading <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> messages were moved from <code class="docutils literal notranslate"><span class="pre">map_server</span></code> and <code class="docutils literal notranslate"><span class="pre">map_saver</span></code> here. These functions could be easily called from any part of external ROS2 code even if Map Server node was not started.</p>
 <p><code class="docutils literal notranslate"><span class="pre">map_loader</span></code> was completely removed from <code class="docutils literal notranslate"><span class="pre">nav2_util</span></code>. All its functionality already present in <code class="docutils literal notranslate"><span class="pre">map_io</span></code>. Please use it in your code instead.</p>
 <p>Please refer to the <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1010">original GitHub ticket</a> and <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/master/nav2_map_server/README.md">Map Server README</a> for more information.</p>
+</div>
+<div class="section" id="new-particle-filter-messages">
+<h2>New Particle Filter Messages<a class="headerlink" href="#new-particle-filter-messages" title="Permalink to this headline">¶</a></h2>
+<p>New particle filter messages for particle clouds were added to include the particle weights along with their poses.
+<code class="docutils literal notranslate"><span class="pre">nav2_msgs/Particle</span></code> defines a single particle with a pose and a weight in a particle cloud.
+<code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> defines a set of particles, each with a pose and a weight.</p>
+<p><code class="docutils literal notranslate"><span class="pre">AMCL</span></code> now publishes the its particle cloud as a <code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseArray</span></code>.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1677">See here for more information.</a></p>
 </div>
 </div>
 
