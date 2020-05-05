@@ -58,3 +58,15 @@ Map Server now has new ``map_io`` dynamic library. All functions saving/loading 
 ``map_loader`` was completely removed from ``nav2_util``. All its functionality already present in ``map_io``. Please use it in your code instead.
 
 Please refer to the `original GitHub ticket <https://github.com/ros-planning/navigation2/issues/1010>`_ and `Map Server README <https://github.com/ros-planning/navigation2/blob/master/nav2_map_server/README.md>`_ for more information.
+
+
+New Particle Filter Messages
+****************************
+
+New particle filter messages for particle clouds were added to include the particle weights along with their poses.
+``nav2_msgs/Particle`` defines a single particle with a pose and a weight in a particle cloud.
+``nav2_msgs/ParticleCloud`` defines a set of particles, each with a pose and a weight.
+
+``AMCL`` now publishes the its particle cloud as a ``nav2_msgs/ParticleCloud`` instead of a ``geometry_msgs/PoseArray``.
+
+`See here for more information. <https://github.com/ros-planning/navigation2/pull/1677>`_
