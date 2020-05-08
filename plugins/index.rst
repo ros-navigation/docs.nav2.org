@@ -165,7 +165,7 @@ Behavior Tree Nodes
 |                                    |                    | transformation is      |
 |                                    |                    | available. When        |
 |                                    |                    | succeeds returns       |
-|                                    |                    | sucess for subsequent  |
+|                                    |                    | success for subsequent |
 |                                    |                    | calls.                 |
 +------------------------------------+--------------------+------------------------+
 
@@ -174,14 +174,18 @@ Behavior Tree Nodes
 .. _Is Stuck Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
 .. _Transform Available Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
 
-+-----------------------+-------------------+----------------------------------+
-| Decorator Plugin Name |    Creator        |       Description                |
-+=======================+===================+==================================+
-| `Rate Controller`_    | Michael Jeronimo  | Throttles child node to a given  |
-|                       |                   | rate                             |
-+-----------------------+-------------------+----------------------------------+
++--------------------------+-------------------+----------------------------------+
+| Decorator Plugin Name    |    Creator        |       Description                |
++==========================+===================+==================================+
+| `Rate Controller`_       | Michael Jeronimo  | Throttles child node to a given  |
+|                          |                   | rate                             |
++--------------------------+-------------------+----------------------------------+
+| `Distance Controller`_   | Sarthak Mittal    | Ticks child node based on the    |
+|                          |                   | distance traveled by the robot   |
++--------------------------+-------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
+.. _Distance Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
