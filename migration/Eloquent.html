@@ -414,7 +414,11 @@ All plugins will be expected to look up parameters in the namespace of its given
 <p>Many new behavior tree nodes were added.
 These behavior tree nodes are now BT plugins and dynamically loadable at run-time using behavior tree cpp v3.
 See <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> for a full listing, or <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for the current list of behavior tree plugins and their descriptions.
-These plugins are set as default in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> but may be overrided by the <code class="docutils literal notranslate"><span class="pre">bt_plugins</span></code> parameter to include your specific plugins.</p>
+These plugins are set as default in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> but may be overridden by the <code class="docutils literal notranslate"><span class="pre">bt_plugins</span></code> parameter to include your specific plugins.</p>
+<p>Original GitHub tickets:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1699">DistanceController</a></li>
+</ul>
 </div>
 <div class="section" id="map-server-re-work">
 <h2>Map Server Re-Work<a class="headerlink" href="#map-server-re-work" title="Permalink to this headline">¶</a></h2>
@@ -431,7 +435,7 @@ Server is a new part. It spins in the background and can be used to save map con
 <p>New particle filter messages for particle clouds were added to include the particle weights along with their poses.
 <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Particle</span></code> defines a single particle with a pose and a weight in a particle cloud.
 <code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> defines a set of particles, each with a pose and a weight.</p>
-<p><code class="docutils literal notranslate"><span class="pre">AMCL</span></code> now publishes the its particle cloud as a <code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseArray</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">AMCL</span></code> now publishes its particle cloud as a <code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseArray</span></code>.</p>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1677">See here for more information.</a></p>
 </div>
 </div>
