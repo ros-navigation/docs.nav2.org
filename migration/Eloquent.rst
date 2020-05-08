@@ -43,6 +43,9 @@ These behavior tree nodes are now BT plugins and dynamically loadable at run-tim
 See ``nav2_behavior_tree`` for a full listing, or :ref:`plugins` for the current list of behavior tree plugins and their descriptions. 
 These plugins are set as default in the ``nav2_bt_navigator`` but may be overridden by the ``bt_plugins`` parameter to include your specific plugins.
 
+Original GitHub tickets:
+
+- `DistanceController <https://github.com/ros-planning/navigation2/pull/1699>`_
 
 Map Server Re-Work
 ******************
