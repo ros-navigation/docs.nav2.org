@@ -41,7 +41,7 @@ New Plugins
 Many new behavior tree nodes were added.
 These behavior tree nodes are now BT plugins and dynamically loadable at run-time using behavior tree cpp v3.
 See ``nav2_behavior_tree`` for a full listing, or :ref:`plugins` for the current list of behavior tree plugins and their descriptions. 
-These plugins are set as default in the ``nav2_bt_navigator`` but may be overrided by the ``bt_plugins`` parameter to include your specific plugins.
+These plugins are set as default in the ``nav2_bt_navigator`` but may be overridden by the ``bt_plugins`` parameter to include your specific plugins.
 
 
 Map Server Re-Work
@@ -67,6 +67,6 @@ New particle filter messages for particle clouds were added to include the parti
 ``nav2_msgs/Particle`` defines a single particle with a pose and a weight in a particle cloud.
 ``nav2_msgs/ParticleCloud`` defines a set of particles, each with a pose and a weight.
 
-``AMCL`` now publishes the its particle cloud as a ``nav2_msgs/ParticleCloud`` instead of a ``geometry_msgs/PoseArray``.
+``AMCL`` now publishes its particle cloud as a ``nav2_msgs/ParticleCloud`` instead of a ``geometry_msgs/PoseArray``.
 
 `See here for more information. <https://github.com/ros-planning/navigation2/pull/1677>`_
