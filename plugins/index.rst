@@ -42,10 +42,10 @@ Costmap Layers
 |                                |                        | sets of measurements             |
 +--------------------------------+------------------------+----------------------------------+
 
-.. _Voxel Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins
-.. _Static Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins
-.. _Inflation Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins
-.. _Obstacle Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins
+.. _Voxel Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/voxel_layer.cpp
+.. _Static Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/static_layer.cpp
+.. _Inflation Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/inflation_layer.cpp
+.. _Obstacle Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/obstacle_layer.cpp
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer
 
@@ -107,7 +107,6 @@ Recoveries
 |                      |                        | or getting more sensor data      |
 +----------------------+------------------------+----------------------------------+
 
-.. _Rotate: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
 .. _Back Up: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
 .. _Spin: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
 .. _Wait: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
@@ -138,14 +137,14 @@ Behavior Tree Nodes
 | `Wait Action`_                             | Steve Macenski      | Calls wait recovery action       |
 +--------------------------------------------+---------------------+----------------------------------+
 
-.. _Back Up Action: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Clear Costmap Service: https://github.com/ros-planning/navigation2/blob/master/nav2_costmap_2d/src/clear_costmap_service.cpp
-.. _Compute Path to Pose Action: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Follow Path Action: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Navigate to Pose Action: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Reinitalize Global Localization Service: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Spin Action: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Wait Action: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
+.. _Back Up Action: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/back_up_action.cpp
+.. _Clear Costmap Service: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Compute Path to Pose Action: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp
+.. _Follow Path Action: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/follow_path_action.cpp
+.. _Navigate to Pose Action: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp
+.. _Reinitalize Global Localization Service: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp
+.. _Spin Action: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/spin_action.cpp
+.. _Wait Action: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/wait_action.cpp
 
 
 +------------------------------------+--------------------+------------------------+
@@ -153,6 +152,9 @@ Behavior Tree Nodes
 +====================================+====================+========================+
 | `Goal Reached Condition`_          | Carl Delsey        | Checks if goal is      |
 |                                    |                    | reached within tol.    |
++------------------------------------+--------------------+------------------------+
+| `Goal Updated Condition`_          |Aitor Miguel Blanco | Checks if goal is      |
+|                                    |                    | preempted.             |
 +------------------------------------+--------------------+------------------------+
 | `Initial Pose received Condition`_ | Carl Delsey        | Checks if initial pose |
 |                                    |                    | has been set           |
@@ -169,10 +171,11 @@ Behavior Tree Nodes
 |                                    |                    | calls.                 |
 +------------------------------------+--------------------+------------------------+
 
-.. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Initial Pose received Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Is Stuck Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Transform Available Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
+.. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
+.. _Goal Updated Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
+.. _Initial Pose received Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
+.. _Is Stuck Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
+.. _Transform Available Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
 
 +--------------------------+-------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator        |       Description                |
@@ -184,8 +187,8 @@ Behavior Tree Nodes
 |                          |                   | distance traveled by the robot   |
 +--------------------------+-------------------+----------------------------------+
 
-.. _Rate Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Distance Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
+.. _Rate Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
+.. _Distance Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
@@ -205,6 +208,6 @@ Behavior Tree Nodes
 |                       |                        | a result and move on to ``i+1``  |
 +-----------------------+------------------------+----------------------------------+
 
-.. _Pipeline Sequence: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Recovery: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
-.. _Round Robin: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins
+.. _Pipeline Sequence: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
+.. _Recovery: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/control/recovery_node.cpp
+.. _Round Robin: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/control/round_robin_node.cpp

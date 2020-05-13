@@ -73,10 +73,10 @@ Additionally, modeling choices like to shoot at the goal from the left, right, o
 With a BT, basic primitives like "kick" "walk" "go to ball" can be created and reused for many behaviors.
 More information can be found `in this book <https://arxiv.org/abs/1709.00084>`_.
 I **strongly** recommend reading chapters 1-3 to get a good understanding of the nomenclature and workflow.
-It should only take about 30 minutes. 
+It should only take about 30 minutes.
 
 For this project, we use `BehaviorTree CPP V3 <https://www.behaviortree.dev/>`_ as the behavior tree library.
-We create node plugins which can be constructed into a tree, inside the ``BT Navigato``.
+We create node plugins which can be constructed into a tree, inside the ``BT Navigator``.
 The node plugins are loaded into the BT and when the XML file of the tree is parsed, the registered names are associated.
 At this point, we can march through the behavior tree to navigate.
 
@@ -109,7 +109,7 @@ When the behavior tree ticks the corresponding BT node, it will call the action 
 The action server callback inside the server will call the chosen algorithm by its name (e.g. ``FollowPath``) that maps to a specific algorithm.
 This allows a user to abstract the algorithm used in the behavior tree to classes of algorithms.
 For instance, you can have ``N`` plugin controllers to follow paths, dock with charger, avoid dynamic obstacles, or interface with a tool.
-Having all of these plugins in the same server allows the user to make use of a single environmental representation object, which is costly to duplicate. 
+Having all of these plugins in the same server allows the user to make use of a single environmental representation object, which is costly to duplicate.
 
 For the recovery server, each of the recoveries also contains their own name, however, each plugin will also expose its own special action server.
 This is done because of the wide variety of recovery actions that may be created cannot have a single simple interface to share.
@@ -130,7 +130,7 @@ Planners
 The task of a planner is to compute a path to complete some objective function.
 The path can also be known as a route, depending on the nomenclature and algorithm selected.
 Two canonical examples are computing a plan to a goal (e.g. from current position to a goal) or complete coverage (e.g. plan to cover all free space).
-The planner will have access to a global environmental representation and sensor data buffered into it. 
+The planner will have access to a global environmental representation and sensor data buffered into it.
 Planners can be written to:
 
 - Compute shortest path
@@ -145,7 +145,7 @@ Controllers
 
 Controllers, also known as local planners in ROS1, are the way we follow the globally computed path or complete a local task.
 The controller will have access to a local environment representation to attempt to compute feasible control efforts for the base to follow.
-Many controller will project the robot forward in space and compute a locally feasible path at each update iteration. 
+Many controller will project the robot forward in space and compute a locally feasible path at each update iteration.
 Controllers can be written to:
 
 - Follow a path
@@ -169,7 +169,7 @@ Another example would be if the robot was stuck due to dynamic obstacles or poor
 Backing up or spinning in place, if permissible, allow the robot to move from a poor location into free space it may navigate successfully.
 
 Finally, in the case of a total failure, a recovery may be implemented to call an operators attention for help.
-This can be done with email, SMS, Slack, Matrix, etc. 
+This can be done with email, SMS, Slack, Matrix, etc.
 
 
 State Estimation
@@ -212,7 +212,7 @@ Odometry
 ========
 
 It is the role of the odometry system to provide the ``odom`` -> ``base_link`` transformation.
-Odometry can come from many sources including LIDAR, RADAR, wheel encoders, VIO, and IMUs. 
+Odometry can come from many sources including LIDAR, RADAR, wheel encoders, VIO, and IMUs.
 The goal of the odometry is to provide a smooth and continuous local frame based on robot motion.
 The global positioning system will update the transformation relative to the global frame to account for the odometric drift.
 
