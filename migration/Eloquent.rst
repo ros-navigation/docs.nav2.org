@@ -33,19 +33,21 @@ DWB Contains new parameters as an update relative to the ROS1 updates, `see here
 Additionally, the controller and planner interfaces were updated to include a ``std::string name`` parameter on initialization.
 This was added to the interfaces to allow the plugins to know the namespace it should load its parameters in.
 E.g. for a controller to find the parameter ``FollowPath.max_vel_x``, it must be given its name, ``FollowPath`` to get this parameter.
-All plugins will be expected to look up parameters in the namespace of its given name. 
+All plugins will be expected to look up parameters in the namespace of its given name.
 
 New Plugins
 ***********
 
 Many new behavior tree nodes were added.
 These behavior tree nodes are now BT plugins and dynamically loadable at run-time using behavior tree cpp v3.
-See ``nav2_behavior_tree`` for a full listing, or :ref:`plugins` for the current list of behavior tree plugins and their descriptions. 
+The default behavior trees have been upgraded to stop the recovery behaviours and trigger a replanning when the navigation goal is preempted.
+See ``nav2_behavior_tree`` for a full listing, or :ref:`plugins` for the current list of behavior tree plugins and their descriptions.
 These plugins are set as default in the ``nav2_bt_navigator`` but may be overridden by the ``bt_plugins`` parameter to include your specific plugins.
 
 Original GitHub tickets:
 
 - `DistanceController <https://github.com/ros-planning/navigation2/pull/1699>`_
+- `GoalUpdatedCondition <https://github.com/ros-planning/navigation2/pull/1712>`_
 
 Map Server Re-Work
 ******************
