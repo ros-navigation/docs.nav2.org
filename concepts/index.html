@@ -438,7 +438,7 @@ More information can be found <a class="reference external" href="https://arxiv.
 I <strong>strongly</strong> recommend reading chapters 1-3 to get a good understanding of the nomenclature and workflow.
 It should only take about 30 minutes.</p>
 <p>For this project, we use <a class="reference external" href="https://www.behaviortree.dev/">BehaviorTree CPP V3</a> as the behavior tree library.
-We create node plugins which can be constructed into a tree, inside the <code class="docutils literal notranslate"><span class="pre">BT</span> <span class="pre">Navigato</span></code>.
+We create node plugins which can be constructed into a tree, inside the <code class="docutils literal notranslate"><span class="pre">BT</span> <span class="pre">Navigator</span></code>.
 The node plugins are loaded into the BT and when the XML file of the tree is parsed, the registered names are associated.
 At this point, we can march through the behavior tree to navigate.</p>
 <p>One reason this library is used is its ability to load subtrees. This means that the Navigation2 behavior tree can be loaded into another higher-level BT to use this project as node plugin.

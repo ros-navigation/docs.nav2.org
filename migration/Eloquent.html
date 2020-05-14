@@ -413,11 +413,13 @@ All plugins will be expected to look up parameters in the namespace of its given
 <h2>New Plugins<a class="headerlink" href="#new-plugins" title="Permalink to this headline">¶</a></h2>
 <p>Many new behavior tree nodes were added.
 These behavior tree nodes are now BT plugins and dynamically loadable at run-time using behavior tree cpp v3.
+The default behavior trees have been upgraded to stop the recovery behaviours and trigger a replanning when the navigation goal is preempted.
 See <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> for a full listing, or <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for the current list of behavior tree plugins and their descriptions.
 These plugins are set as default in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> but may be overridden by the <code class="docutils literal notranslate"><span class="pre">bt_plugins</span></code> parameter to include your specific plugins.</p>
 <p>Original GitHub tickets:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1699">DistanceController</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1712">GoalUpdatedCondition</a></li>
 </ul>
 </div>
 <div class="section" id="map-server-re-work">
