@@ -6,9 +6,19 @@
 
 {% endblock %}
 
+{% block content %}
+
+<span style="float: right;" >
+    <a class="github-button" href="https://github.com/ros-planning/navigation.ros.org" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Edit ros-planning/navigation.ros.org on GitHub" ">Edit</a>
+</span>
+
+{{ super() }}
+
+{% endblock %}
 
 {% block footer %}
 
 <script type="text/javascript" src="{{ pathto('_static/tcs_theme.js', 1) }}"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 
 {% endblock %}
