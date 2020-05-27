@@ -170,12 +170,22 @@ Behavior Tree Nodes
 |                                    |                    | success for subsequent |
 |                                    |                    | calls.                 |
 +------------------------------------+--------------------+------------------------+
+| `Distance Traveled Condition`_     |  Sarthak Mittal    | Checks is robot has    |
+|                                    |                    | traveled a given       |
+|                                    |                    | distance.              |
++------------------------------------+--------------------+------------------------+
+| `Time Expired Condition`_          |  Sarthak Mittal    | Checks if a given      |
+|                                    |                    | time period has        |
+|                                    |                    | passed.                |
++------------------------------------+--------------------+------------------------+
 
 .. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
 .. _Initial Pose received Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
 .. _Is Stuck Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
 .. _Transform Available Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
+.. _Distance Traveled Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
+.. _Time Expired Condition: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
 
 +--------------------------+-------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator        |       Description                |
