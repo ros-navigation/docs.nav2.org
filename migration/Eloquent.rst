@@ -48,6 +48,8 @@ Original GitHub tickets:
 
 - `DistanceController <https://github.com/ros-planning/navigation2/pull/1699>`_
 - `GoalUpdatedCondition <https://github.com/ros-planning/navigation2/pull/1712>`_
+- `DistanceTraveledCondition <https://github.com/ros-planning/navigation2/pull/1705>`_
+- `TimeExpiredCondition <https://github.com/ros-planning/navigation2/pull/1705>`_
 
 Map Server Re-Work
 ******************
