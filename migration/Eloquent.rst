@@ -47,6 +47,7 @@ These plugins are set as default in the ``nav2_bt_navigator`` but may be overrid
 Original GitHub tickets:
 
 - `DistanceController <https://github.com/ros-planning/navigation2/pull/1699>`_
+- `SpeedController <https://github.com/ros-planning/navigation2/pull/1744>`_
 - `GoalUpdatedCondition <https://github.com/ros-planning/navigation2/pull/1712>`_
 
 Map Server Re-Work

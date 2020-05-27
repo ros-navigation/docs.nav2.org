@@ -186,9 +186,13 @@ Behavior Tree Nodes
 | `Distance Controller`_   | Sarthak Mittal    | Ticks child node based on the    |
 |                          |                   | distance traveled by the robot   |
 +--------------------------+-------------------+----------------------------------+
+| `Speed Controller`_      | Sarthak Mittal    | Throttles child node to a rate   |
+|                          |                   | based on current robot speed.    |
++--------------------------+-------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
-.. _Distance Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/
+.. _Distance Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
+.. _Speed Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
