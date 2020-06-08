@@ -9,5 +9,6 @@ the best navigation performance.
 .. toctree::
    :maxdepth: 1
 
+   configuring-the-bt.rst
    configuring-the-controller.rst
    params/tunable-params.rst
