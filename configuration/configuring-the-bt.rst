@@ -1,6 +1,6 @@
 .. _configuring_the_bt:
 
-Behavior-Tree-based Navigator
+Behavior-Tree Navigator
 #############################
 
 Source code on Github_.
