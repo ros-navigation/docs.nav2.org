@@ -7,7 +7,7 @@ Source code on Github_.
 
 .. _Github: https://github.com/ros-planning/navigation2/tree/master/nav2_navfn_planner
 
-The Navfn Planner plugin implements a wavefront Dij. or A* expanded planner.
+The Navfn Planner plugin implements a wavefront Dijkstra or A* expanded planner.
 
 ``<name>`` is the corresponding planner plugin ID selected for this type.
 
