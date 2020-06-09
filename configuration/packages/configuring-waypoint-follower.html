@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Goal Checkers &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Waypoint Follower &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Tunable Parameters" href="../params/tunable-params.html" />
-    <link rel="prev" title="Trajectory Critics" href="trajectory-critics.html" />
+    <link rel="next" title="Behavior-Tree Navigator" href="configuring-the-bt.html" />
+    <link rel="prev" title="Configuration Guide" href="../index.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -239,34 +239,46 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration Guidelines</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../configuring-the-bt.html">Behavior-Tree Navigator</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-the-bt.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-the-bt.html#example">Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-the-bt.html#bt-plugins">BT Plugins</a><ul class="simple">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Waypoint Follower</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-the-bt.html">Behavior-Tree Navigator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-the-bt.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-the-bt.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-the-controller.html">Configuring The Controller</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../configuring-the-controller.html#controller-server">Controller Server</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-the-controller.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-lifecycle.html">Lifecycle Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-lifecycle.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-lifecycle.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-the-controller.html#progress-checker">Progress Checker</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-the-controller.html#id2">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-controller-server.html">Controller Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-the-controller.html#dwb-controller">DWB Controller</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-the-controller.html#id3">Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-the-controller.html#additional-parameters">Additional Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-dwb.html">Configuring The Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#controller-server">Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuring-dwb.html#parameters">Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-the-controller.html#debug-parameters">Debug Parameters</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-the-controller.html#dwb-plugins">DWB Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="trajectory-generators.html">Trajectory Generators</a></li>
-<li class="toctree-l4"><a class="reference internal" href="trajectory-critics.html">Trajectory Critics</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Goal Checkers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#progress-checker">Progress Checker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuring-dwb.html#id2">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#dwb-controller">DWB Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuring-dwb.html#id3">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuring-dwb.html#additional-parameters">Additional Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#debug-parameters">Debug Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#dwb-plugins">DWB Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dwb-plugins/trajectory-generators.html">Trajectory Generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dwb-plugins/trajectory-critics.html">Trajectory Critics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dwb-plugins/goal-checkers.html">Goal Checkers</a></li>
 </ul>
 </li>
 </ul>
@@ -387,11 +399,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../index.html">Configuration Guidelines</a> &raquo;</li>
+          <li><a href="../index.html">Configuration Guide</a> &raquo;</li>
         
-          <li><a href="../configuring-the-controller.html">Configuring The Controller</a> &raquo;</li>
-        
-      <li>Goal Checkers</li>
+      <li>Waypoint Follower</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -408,33 +418,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="goal-checkers">
-<span id="dwb-goal-checkers"></span><h1>Goal Checkers<a class="headerlink" href="#goal-checkers" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The parameters below are not properly scoped. The exact parameter names are
-likely to change in the near future</p>
-</div>
-<div class="section" id="common-parameters">
-<h2>Common Parameters<a class="headerlink" href="#common-parameters" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="waypoint-follower">
+<span id="configuring-waypoint-follower"></span><h1>Waypoint Follower<a class="headerlink" href="#waypoint-follower" title="Permalink to this headline">¶</a></h1>
+<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_waypoint_follower">Github</a>.</p>
+<p>The Waypoint Follower module implements a way of doing waypoint following using the NavigateToPose action server.
+It will take in a set of ordered waypoints to follow and then try to navigate to them in order.
+If a waypoint is not achievable, the <code class="docutils literal notranslate"><span class="pre">stop_on_failure</span></code> parameter will determine whether to continue to the next point or stop.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">xy_goal_tolerance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name" colspan="2">stop_on_failure:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">yaw_goal_tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether to fail action task if a single waypoint fails. If false, will continue to next waypoint.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">loop_rate:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Rate to check for results from current navigation task.</p>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="simple-goal-checker">
-<h2>Simple Goal Checker<a class="headerlink" href="#simple-goal-checker" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">waypoint_follower</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">loop_rate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+    <span class="nt">stop_on_failure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
 </div>
-<div class="section" id="stopped-goal-checker">
-<h2>Stopped Goal Checker<a class="headerlink" href="#stopped-goal-checker" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
