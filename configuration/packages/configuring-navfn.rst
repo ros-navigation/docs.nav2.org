@@ -34,7 +34,7 @@ Parameters
   ==== =======
 
   Description
-    Whether to use A*, if false, uses Dijstra's expansion
+    Whether to use A*. If false, uses Dijkstra's expansion.
 
 :``<name>``.allow_unknown:
 
