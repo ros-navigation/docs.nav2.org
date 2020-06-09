@@ -33,7 +33,7 @@ Map Saver Parameters
   ============== ==============
 
   Description
-    Free space maximum threshold for occupancy grid.
+    Free space maximum probability threshold value for occupancy grid.
 
 :occupied_thresh_default:
 
