@@ -1,7 +1,7 @@
 .. _configuring_the_bt:
 
 Behavior-Tree Navigator
-#############################
+#######################
 
 Source code on Github_.
 
@@ -125,9 +125,3 @@ Example
         - nav2_pipeline_sequence_bt_node
         - nav2_round_robin_node_bt_node
         - nav2_transform_available_condition_bt_node
-
-BT Plugins
-**********
-
-.. toctree::
-   :maxdepth: 1
