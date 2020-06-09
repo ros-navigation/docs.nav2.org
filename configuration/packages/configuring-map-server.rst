@@ -22,7 +22,7 @@ Map Saver Parameters
   ============== =======
 
   Description
-    FTimeout to attempt to save map with (ms).
+    Timeout to attempt saving the map (ms).
 
 :free_thresh_default:
 
