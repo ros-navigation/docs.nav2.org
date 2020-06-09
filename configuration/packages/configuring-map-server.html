@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. Create a Configuration Assistant (Analog to MoveIt) &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Map Server / Saver &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. Create New Planner and Controller Plugins" href="create_plugins.html" />
-    <link rel="prev" title="Projects for 2020 Summer Student Program" href="../Summer_2020_Student_Program.html" />
+    <link rel="next" title="Tunable Parameters" href="../params/tunable-params.html" />
+    <link rel="prev" title="Goal Checkers" href="dwb-plugins/goal-checkers.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -239,76 +239,76 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html">Waypoint Follower</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#example">Example</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="configuring-waypoint-follower.html">Waypoint Follower</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-waypoint-follower.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-waypoint-follower.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-the-bt.html">Behavior-Tree Navigator</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-the-bt.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-the-bt.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-the-bt.html">Behavior-Tree Navigator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-the-bt.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-the-bt.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-lifecycle.html">Lifecycle Manager</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-lifecycle.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-lifecycle.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-lifecycle.html">Lifecycle Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-lifecycle.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-lifecycle.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html">Planner Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-planner-server.html">Planner Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-navfn.html">NavFn Planner</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-navfn.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-navfn.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-navfn.html">NavFn Planner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-navfn.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-navfn.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html">Controller Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-controller-server.html">Controller Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html">Configuring The Controller</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html#controller-server">Controller Server</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-dwb.html">Configuring The Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#controller-server">Controller Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuring-dwb.html#parameters">Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html#progress-checker">Progress Checker</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html#id2">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#progress-checker">Progress Checker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuring-dwb.html#id2">Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html#dwb-controller">DWB Controller</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html#id3">Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html#additional-parameters">Additional Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#dwb-controller">DWB Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuring-dwb.html#id3">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuring-dwb.html#additional-parameters">Additional Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html#debug-parameters">Debug Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb.html#dwb-plugins">DWB Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-plugins/trajectory-generators.html">Trajectory Generators</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-plugins/trajectory-critics.html">Trajectory Critics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-plugins/goal-checkers.html">Goal Checkers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#debug-parameters">Debug Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb.html#dwb-plugins">DWB Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dwb-plugins/trajectory-generators.html">Trajectory Generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dwb-plugins/trajectory-critics.html">Trajectory Critics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dwb-plugins/goal-checkers.html">Goal Checkers</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html">Map Server / Saver</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#map-saver-parameters">Map Saver Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#map-server-parameters">Map Server Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#example">Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Map Server / Saver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#map-saver-parameters">Map Saver Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map-server-parameters">Map Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/params/tunable-params.html">Tunable Parameters</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/params/tunable-params.html#amcl">AMCL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/params/tunable-params.html#controller-server">Controller Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/params/tunable-params.html#local-costmap">Local Costmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/params/tunable-params.html#planner-server">Planner Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/params/tunable-params.html#global-costmap">Global Costmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/params/tunable-params.html#map-server">Map Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/params/tunable-params.html#recovery-server">Recovery Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuration/params/tunable-params.html#bt-navigator">BT Navigator</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/params/tunable-params.html#behavior-tree-based-navigator">Behavior-Tree-based Navigator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../params/tunable-params.html">Tunable Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../params/tunable-params.html#amcl">AMCL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../params/tunable-params.html#controller-server">Controller Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../params/tunable-params.html#local-costmap">Local Costmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../params/tunable-params.html#planner-server">Planner Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../params/tunable-params.html#global-costmap">Global Costmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../params/tunable-params.html#map-server">Map Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../params/tunable-params.html#recovery-server">Recovery Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../params/tunable-params.html#bt-navigator">BT Navigator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../params/tunable-params.html#behavior-tree-based-navigator">Behavior-Tree-based Navigator</a></li>
 </ul>
 </li>
 </ul>
@@ -354,14 +354,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../../about/index.html#contact">Contact</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grid_maps.html">3. Port Grid Maps to ROS2 and Environmental Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html">4. Advanced Navigation Testing Framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="navigation_rebranding.html">5. Navigation Branding and Website</a></li>
-<li class="toctree-l2"><a class="reference internal" href="localization.html">6. 2D/3D Localization Improvements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dynamic.html">7. Navigation Dynamic Obstacle Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_configuration_assistant.html">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS2 and Environmental Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/testing.html">4. Advanced Navigation Testing Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/navigation_rebranding.html">5. Navigation Branding and Website</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/localization.html">6. 2D/3D Localization Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/dynamic.html">7. Navigation Dynamic Obstacle Integration</a></li>
 </ul>
 </li>
 </ul>
@@ -415,9 +415,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a> &raquo;</li>
+          <li><a href="../index.html">Configuration Guide</a> &raquo;</li>
         
-      <li>1. Create a Configuration Assistant (Analog to MoveIt)</li>
+      <li>Map Server / Saver</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -434,48 +434,174 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="create-a-configuration-assistant-analog-to-moveit">
-<span id="create-moveit-analog"></span><h1>1. Create a Configuration Assistant (Analog to MoveIt)<a class="headerlink" href="#create-a-configuration-assistant-analog-to-moveit" title="Permalink to this headline">¶</a></h1>
-<p><strong>Task description</strong></p>
-<p><a class="reference external" href="https://moveit.ros.org/">Moveit</a> has long has a QT <a class="reference external" href="http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html">configuration assistant</a>. This setup assistent helps the user configure their UDRF and needs to setup MoveIt configuration files.</p>
-<p>A configuration assistant could be extremely beneficial to Navigation2 users as a way to minimize friction. We should provide a gui tool to cover the following configurations:</p>
-<ul class="simple">
-<li>the broad strokes with the costmap, with a visualizer to show the user what it will look like</li>
-<li>Select configurable costmap layers</li>
-<li>Select recovery behavior parameters</li>
-<li>URDF, footprint, and frame selection to make sure the options comply with standards, planner, and controller</li>
-<li>Set minimum and maximum speed and other kinematic parameters</li>
-<li>Select from a dropdown of possible planners and controllers</li>
-<li>Helpful notes throughout the prompts to aid in selecting appropriate parameters</li>
-<li>Selecting at behavior tree</li>
-<li>&#64;steve please add more specific options</li>
-</ul>
-<p>After the items are configured, there should be a preview to see how the parameters effect the robot.</p>
-<p><strong>Project difficulty: High</strong></p>
-<p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
-<p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
-<p><strong>Contact information for the cooperating mentor (optional):  juzhenatpku&#64;gmail.com</strong></p>
-<p><strong>Project output requirements</strong></p>
-<ul class="simple">
-<li>A QT based GUI configuration assistant that support the parameters listed above</li>
-<li>A preview panel to display the parameters’ effection on the robot</li>
-</ul>
-<p><strong>Skills required</strong></p>
-<ul class="simple">
-<li>C++, Python3, QT framework</li>
-<li>JSON/XML parsing</li>
-<li>3D programming (maybe needed in the preview)</li>
-<li>Recommended: Gazebo simulation, ROS, and Navigation experience</li>
-</ul>
-<p><strong>List of relevant open source software repositories and refs</strong></p>
-<ul class="simple">
-<li><a class="reference external" href="https://www.qt.io/">QT</a></li>
-<li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1721">Original github issue page</a></li>
-</ul>
-<p><strong>Licensing</strong>
-- All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.</p>
+  <div class="section" id="map-server-saver">
+<span id="configuring-map-server"></span><h1>Map Server / Saver<a class="headerlink" href="#map-server-saver" title="Permalink to this headline">¶</a></h1>
+<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_map_server">Github</a>.</p>
+<p>The Map Server implements the server for handling the map load requests for the stack and host a map topic.
+It also implements a map saver server which will run in the background and save maps based on service requests. There exists a map saver CLI similar to ROS1 as well for a single map save.</p>
+<div class="section" id="map-saver-parameters">
+<h2>Map Saver Parameters<a class="headerlink" href="#map-saver-parameters" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">save_map_timeout:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>2000</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Timeout to attempt saving the map (ms).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">free_thresh_default:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.25</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Free space maximum probability threshold value for occupancy grid.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">occupied_thresh_default:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.65</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Occupied space minimum threshhold for occupancy grid.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="map-server-parameters">
+<h2>Map Server Parameters<a class="headerlink" href="#map-server-parameters" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">yaml_filename:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Path to map yaml file.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">topic_name:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>“map”</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Topic to publish loaded map to.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">frame_id:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>“map”</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Frame to publish loaded map in.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">map_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">yaml_filename</span><span class="p">:</span> <span class="s">&quot;turtlebot3_world.yaml&quot;</span>
+    <span class="nt">topic_name</span><span class="p">:</span> <span class="s">&quot;map&quot;</span>
+    <span class="nt">frame_id</span><span class="p">:</span> <span class="s">&quot;map&quot;</span>
+
+<span class="nt">map_saver</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">save_map_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
+    <span class="nt">free_thresh_default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+    <span class="nt">occupied_thresh_default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.65</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
