@@ -9,6 +9,8 @@ the best navigation performance.
 .. toctree::
    :maxdepth: 1
 
-   configuring-the-bt.rst
-   configuring-the-controller.rst
+   packages/configuring-waypoint-follower.rst
+   packages/configuring-the-bt.rst
+   packages/configuring-lifecycle.rst
+   packages/configuring-dwb.rst
    params/tunable-params.rst
