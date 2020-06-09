@@ -22,7 +22,7 @@ Parameters
   ============== =======
 
   Description
-    Frequency to run controller.
+    Frequency to run controller (Hz).
 
 :controller_plugin_ids:
 
