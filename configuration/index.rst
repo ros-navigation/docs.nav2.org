@@ -12,5 +12,6 @@ the best navigation performance.
    packages/configuring-waypoint-follower.rst
    packages/configuring-the-bt.rst
    packages/configuring-lifecycle.rst
+   packages/configuring-controller-server.rst
    packages/configuring-dwb.rst
    params/tunable-params.rst
