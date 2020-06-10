@@ -336,6 +336,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#map-server-re-work">Map Server Re-Work</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-particle-filter-messages">New Particle Filter Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
 </ul>
 </li>
 </ul>
@@ -497,6 +498,11 @@ Server is a new part. It spins in the background and can be used to save map con
 <code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> defines a set of particles, each with a pose and a weight.</p>
 <p><code class="docutils literal notranslate"><span class="pre">AMCL</span></code> now publishes its particle cloud as a <code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseArray</span></code>.</p>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1677">See here for more information.</a></p>
+</div>
+<div class="section" id="selection-of-behavior-tree-in-each-navigation-action">
+<h2>Selection of Behavior Tree in each navigation action<a class="headerlink" href="#selection-of-behavior-tree-in-each-navigation-action" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action allows now to select in the action request the behavior tree to be used by <code class="docutils literal notranslate"><span class="pre">bt_navigator</span></code> for carrying out the navigation action through the <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">behavior_tree</span></code> field. This field indicates the absolute path of the xml file that will be used to use to carry out the action. If no file is specified, leaving this field empty, the default behavior tree specified in the <code class="docutils literal notranslate"><span class="pre">default_bt_xml_filename</span> <span class="pre">parameter</span></code> will be used.</p>
+<p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1780">this ticket</a>, and carried out in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1780">this pull request</a></p>
 </div>
 </div>
 
