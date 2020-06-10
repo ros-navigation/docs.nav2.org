@@ -15,7 +15,7 @@ Input Ports
   ====== =======
 
   Description
-    	Server name.
+    	Service name.
 
 
 :server_timeout:
@@ -34,4 +34,4 @@ Example
 
 .. code-block:: xml
 
-  <ReinitializeGlobalLocalization service_name="local_costmap/clear_entirely_local_costmap"/>
+  <ReinitializeGlobalLocalization service_name="???"/>

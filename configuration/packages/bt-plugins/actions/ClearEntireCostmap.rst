@@ -4,10 +4,12 @@
 ClearEntireCostmap
 ==================
 
+Action to call a costmap clearing server.
+
 Input Ports
 -----------
 
-:server_name:
+:service_name:
 
   ============== =======
   Type           Default
@@ -16,8 +18,7 @@ Input Ports
   ============== =======
 
   Description
-    	Action server name.
-
+    	costmap service name responsible for clearing the costmap.
 
 :server_timeout:
 

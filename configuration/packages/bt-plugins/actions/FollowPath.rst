@@ -59,4 +59,4 @@ Example
 
 .. code-block:: xml
 
-    <FollowPath path="{path}" controller_id="FollowPath"/>
+    <FollowPath path="{path}" controller_id="FollowPath" server_name="FollowPath_server" server_timeout="10"/>

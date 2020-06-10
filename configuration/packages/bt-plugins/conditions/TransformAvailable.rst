@@ -35,3 +35,4 @@ Example
 
 .. code-block:: xml
 
+  <TransformAvailable parent="odom" child="base_link"/>
