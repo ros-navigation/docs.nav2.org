@@ -11,6 +11,7 @@ the best navigation performance.
 
    packages/configuring-waypoint-follower.rst
    packages/configuring-the-bt.rst
+   packages/configuring-costmaps.rst
    packages/configuring-lifecycle.rst
    packages/configuring-planner-server.rst
    packages/configuring-navfn.rst
