@@ -1,4 +1,4 @@
-.. _configuring_the_bt:
+.. _configuring_bt_navigator:
 
 Behavior-Tree Navigator
 #######################
@@ -23,7 +23,7 @@ Parameters
   ====== =======
 
   Description
-    Path to behavior tree XML description.
+    Path to behavior tree XML description, see :ref:`configuring_behavior_tree_xml` for details on this file.
 
 :plugin_lib_names:
 

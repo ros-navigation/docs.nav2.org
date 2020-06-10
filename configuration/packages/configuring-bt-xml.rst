@@ -1,4 +1,4 @@
-.. _configuring_behavior_tree:
+.. _configuring_behavior_tree_xml:
 
 Configuring the behavior tree XML
 #################################
