@@ -6,27 +6,27 @@ ComputePathToPose
 Input Ports
 -----------
 
-:backup_dist:
+:goal:
 
   ============== =======
   Type           Default
   -------------- -------
-  double         -0.15  
+  string         N/A  
   ============== =======
 
   Description
-    	Total distance to backup (m).
+    	Goal pose.
 
-:backup_speed:
+:planner_id:
 
   ============== =======
   Type           Default
   -------------- -------
-  double         0.025 
+  string         N/A  
   ============== =======
 
   Description
-    	Backup speed (m/s).
+    	Mapped name to the planner plugin type to use, e.g. GridBased.
 
 :server_name:
 
@@ -50,11 +50,23 @@ Input Ports
 
   Description
     	Action server timeout (ms).
+  
+Output Ports
+------------
 
-Example
--------
+:path:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A  
+  ============== =======
+
+  Description
+    	Path created by action server.
+
 Example
 *******
-.. code-block:: xml
 
-    
+.. codeblock:: xml
+    <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>

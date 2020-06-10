@@ -1,4 +1,0 @@
-.. bt_conditions:
-
-Conditions
-##########

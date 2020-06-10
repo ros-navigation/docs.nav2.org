@@ -1,10 +1,10 @@
 .. bt_actions:
 
 BackUp
-#######
+######
 
 Input Ports
-**********
+***********
 
 :backup_dist:
 

@@ -6,35 +6,35 @@ NavigateToPose
 Input Ports
 -----------
 
-:backup_dist:
+:position:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         -0.15  
-  ============== =======
-
-  Description
-    	Total distance to backup (m).
-
-:backup_speed:
-
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         0.025 
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
 
   Description
-    	Backup speed (m/s).
+    	Position.
+
+:orientation:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
+
+  Description
+    	Orientation.
 
 :server_name:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A  
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
 
   Description
     	Action server name.
@@ -42,19 +42,17 @@ Input Ports
 
 :server_timeout:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         10  
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  double 10  
+  ====== =======
 
   Description
     	Action server timeout (ms).
 
 Example
--------
-Example
 *******
-.. code-block:: xml
 
-    
+.. code-block:: xml
+   <NavigateToPose />

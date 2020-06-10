@@ -6,35 +6,35 @@ FollowPath
 Input Ports
 -----------
 
-:backup_dist:
+:path:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         -0.15  
-  ============== =======
-
-  Description
-    	Total distance to backup (m).
-
-:backup_speed:
-
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         0.025 
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
 
   Description
-    	Backup speed (m/s).
+    	Path to follow.
+
+:controller_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
+
+  Description
+    	Mapped name of the controller plugin type to use, e.g. FollowPath.
 
 :server_name:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A  
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
 
   Description
     	Action server name.
@@ -52,9 +52,7 @@ Input Ports
     	Action server timeout (ms).
 
 Example
--------
-Example
 *******
-.. code-block:: xml
 
-    
+.. code-block:: xml
+    <FollowPath path="{path}" controller_id="FollowPath"/>

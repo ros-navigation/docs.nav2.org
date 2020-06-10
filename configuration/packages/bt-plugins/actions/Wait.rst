@@ -6,47 +6,35 @@ Wait
 Input Ports
 -----------
 
-:backup_dist:
+:wait_duration:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         -0.15  
-  ============== =======
-
-  Description
-    	Total distance to backup (m).
-
-:backup_speed:
-
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         0.025 
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  double 1.0
+  ====== =======
 
   Description
-    	Backup speed (m/s).
+    	Wait time (s).
 
 :server_name:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A  
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
 
   Description
     	Action server name.
 
-
 :server_timeout:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         10  
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  double 10  
+  ====== =======
 
   Description
     	Action server timeout (ms).
@@ -56,6 +44,4 @@ Example
 
 .. code-block:: xml
 
-  <Wait backup_dist="-0.2" backup_speed="0.05" service_name="backup_server" server_timeout="10"/>
-
-    
+  <Wait wait_duration="1.0" server_name="wait_server" server_timeout="10"/>

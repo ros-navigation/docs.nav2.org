@@ -6,55 +6,31 @@ ReinitializeGlobalLocalization
 Input Ports
 -----------
 
-:backup_dist:
+:service_name:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         -0.15  
-  ============== =======
-
-  Description
-    	Total distance to backup (m).
-
-:backup_speed:
-
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         0.025 
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
 
   Description
-    	Backup speed (m/s).
-
-:server_name:
-
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A  
-  ============== =======
-
-  Description
-    	Action server name.
+    	Server name.
 
 
 :server_timeout:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         10  
-  ============== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  double 10  
+  ====== =======
 
   Description
-    	Action server timeout (ms).
+    	Server timeout (ms).
 
-Example
--------
 Example
 *******
-.. code-block:: xml
 
-    
+.. code-block:: xml
+   <ReinitializeGlobalLocalization service_name="local_costmap/clear_entirely_local_costmap"/>

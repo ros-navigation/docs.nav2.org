@@ -6,28 +6,6 @@ ClearEntireCostmap
 Input Ports
 -----------
 
-:backup_dist:
-
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         -0.15  
-  ============== =======
-
-  Description
-    	Total distance to backup (m).
-
-:backup_speed:
-
-  ============== =======
-  Type           Default
-  -------------- -------
-  double         0.025 
-  ============== =======
-
-  Description
-    	Backup speed (m/s).
-
 :server_name:
 
   ============== =======
@@ -52,9 +30,7 @@ Input Ports
     	Action server timeout (ms).
 
 Example
--------
-Example
 *******
-.. code-block:: xml
 
-    
+.. code-block:: xml
+   <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
