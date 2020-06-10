@@ -1,7 +1,7 @@
 .. bt_decorators:
 
 RateController
-##############
+==============
 
 Input Ports
 -----------
@@ -18,7 +18,7 @@ Input Ports
         Rate to throttle an action or a group of actions.
 
 Example
-*******
+-------
 
 .. code-block:: xml
     <RateController hz="1.0">

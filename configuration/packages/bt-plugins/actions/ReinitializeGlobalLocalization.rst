@@ -1,7 +1,7 @@
 .. bt_actions:
 
 ReinitializeGlobalLocalization
-##############################
+==============================
 
 Input Ports
 -----------
@@ -30,7 +30,8 @@ Input Ports
     	Server timeout (ms).
 
 Example
-*******
+-------
 
 .. code-block:: xml
-   <ReinitializeGlobalLocalization service_name="local_costmap/clear_entirely_local_costmap"/>
+
+  <ReinitializeGlobalLocalization service_name="local_costmap/clear_entirely_local_costmap"/>

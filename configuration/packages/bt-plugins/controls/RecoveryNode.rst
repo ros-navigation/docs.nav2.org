@@ -1,7 +1,7 @@
 .. bt_controls:
 
 RecoveryNode
-############
+============
 
 Input Ports
 -----------
@@ -18,7 +18,7 @@ Input Ports
     	Number of retries.
 
 Example
-*******
+-------
 
 .. code-block:: xml
     <RecoveryNode number_of_retries="1" name="FollowPath">

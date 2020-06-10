@@ -1,7 +1,7 @@
 .. bt_actions:
 
 FollowPath
-##########
+==========
 
 Input Ports
 -----------
@@ -52,7 +52,7 @@ Input Ports
     	Action server timeout (ms).
 
 Example
-*******
+-------
 
 .. code-block:: xml
     <FollowPath path="{path}" controller_id="FollowPath"/>

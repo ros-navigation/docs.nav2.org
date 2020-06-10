@@ -1,7 +1,7 @@
 .. bt_actions:
 
 Wait
-####
+====
 
 Input Ports
 -----------
@@ -40,7 +40,7 @@ Input Ports
     	Action server timeout (ms).
 
 Example
-*******
+-------
 
 .. code-block:: xml
 

@@ -1,7 +1,7 @@
 .. bt_decorators:
 
 DistanceController
-##################
+==================
 
 Input Ports
 -----------
@@ -40,6 +40,6 @@ Input Ports
     	Robot base frame.
 
 Example
-*******
+-------
 
 .. code-block:: xml

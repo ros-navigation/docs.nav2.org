@@ -1,7 +1,7 @@
 .. bt_conditions:
 
 TransformAvailable
-##################
+==================
 
 Input Ports
 -----------
@@ -29,7 +29,7 @@ Input Ports
     	Parent frame for transform.
 
 Example
-*******
+-------
 
 .. code-block:: xml
 

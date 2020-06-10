@@ -7,50 +7,47 @@ Source code on Github_.
 
 .. _Github: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree
 
-Behavior Tree Plugins
-*********************
 
-Actions
-=======
+Action Plugins
+**************
 
-  .. toctree::
-    :maxdepth: 1
+.. toctree::
+  :maxdepth: 1
 
-    bt-plugins/actions/Wait.rst
-    bt-plugins/actions/Spin.rst
-    bt-plugins/actions/BackUp.rst
-    bt-plugins/actions/ComputePathToPose.rst
-    bt-plugins/actions/FollowPath.rst
-    bt-plugins/actions/NavigateToPose.rst
-    bt-plugins/actions/ClearEntireCostmap.rst
-    bt-plugins/actions/ReinitializeGlobalLocalization.rst
+  bt-plugins/actions/Wait.rst
+  bt-plugins/actions/Spin.rst
+  bt-plugins/actions/BackUp.rst
+  bt-plugins/actions/ComputePathToPose.rst
+  bt-plugins/actions/FollowPath.rst
+  bt-plugins/actions/NavigateToPose.rst
+  bt-plugins/actions/ClearEntireCostmap.rst
+  bt-plugins/actions/ReinitializeGlobalLocalization.rst
 
+Condition Plugins
+*****************
 
-Conditions
-==========
+.. toctree::
+  :maxdepth: 1
 
-  .. toctree::
-    :maxdepth: 1
+  bt-plugins/conditions/GoalReached.rst
+  bt-plugins/conditions/TransformAvailable.rst
 
-    bt-plugins/conditions/GoalReached.rst
-    bt-plugins/conditions/TransformAvailable.rst
+Control Plugins
+***************
 
-Controls
-========
+.. toctree::
+  :maxdepth: 1
 
-  .. toctree::
-    :maxdepth: 1
+  bt-plugins/controls/RecoveryNode.rst
 
-    bt-plugins/controls/RecoveryNode.rst
+Decorator Plugins
+*****************
 
-Decorators
-============
+.. toctree::
+  :maxdepth: 1
 
-  .. toctree::
-    :maxdepth: 1
-
-    bt-plugins/decorators/RateController.rst
-    bt-plugins/decorators/DistanceController.rst
+  bt-plugins/decorators/RateController.rst
+  bt-plugins/decorators/DistanceController.rst
 
 Example
 *******

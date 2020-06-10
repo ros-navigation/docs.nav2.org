@@ -1,7 +1,7 @@
 .. bt_conditions:
 
 GoalReached
-###########
+===========
 
 Input Ports
 -----------
@@ -40,7 +40,7 @@ Input Ports
     	Robot base frame.
 
 Example
-*******
+-------
 
 .. code-block:: xml
 

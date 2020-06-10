@@ -1,7 +1,7 @@
 .. bt_actions:
 
 Spin
-####
+====
 
 Input Ports
 -----------
@@ -40,8 +40,9 @@ Input Ports
     	Action server timeout (ms).
 
 Example
-*******
+-------
 
 .. code-block:: xml
+
   <Spin spin_dist="1.57"/>
     

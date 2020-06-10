@@ -1,7 +1,7 @@
 .. bt_actions:
 
 NavigateToPose
-##############
+==============
 
 Input Ports
 -----------
@@ -52,7 +52,8 @@ Input Ports
     	Action server timeout (ms).
 
 Example
-*******
+-------
 
 .. code-block:: xml
-   <NavigateToPose />
+
+  <NavigateToPose />

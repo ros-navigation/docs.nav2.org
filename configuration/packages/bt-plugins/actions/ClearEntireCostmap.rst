@@ -1,7 +1,7 @@
 .. bt_actions:
 
 ClearEntireCostmap
-##################
+==================
 
 Input Ports
 -----------
@@ -30,7 +30,8 @@ Input Ports
     	Action server timeout (ms).
 
 Example
-*******
+-------
 
 .. code-block:: xml
-   <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+
+  <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>

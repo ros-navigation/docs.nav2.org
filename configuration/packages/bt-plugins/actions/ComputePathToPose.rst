@@ -1,7 +1,7 @@
 .. bt_actions:
 
 ComputePathToPose
-#################
+=================
 
 Input Ports
 -----------
@@ -66,7 +66,8 @@ Output Ports
     	Path created by action server.
 
 Example
-*******
+-------
 
-.. codeblock:: xml
-    <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+.. code-block:: xml
+
+  <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>

@@ -1,7 +1,7 @@
 .. bt_actions:
 
 BackUp
-######
+======
 
 Input Ports
 ***********
@@ -51,7 +51,7 @@ Input Ports
     	Action server timeout (ms).
 
 Example
-*******
+-------
 
 .. code-block:: xml
 
