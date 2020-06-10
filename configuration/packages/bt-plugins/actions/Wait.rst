@@ -3,6 +3,10 @@
 Wait
 ====
 
+Invokes the Wait ROS2 action server, which is implemented by the nav2_recoveries module. 
+This action is used in nav2 Behavior Trees as a recovery behavior.
+
+
 Input Ports
 -----------
 

@@ -7,6 +7,9 @@ The nav2_behavior_tree_ package provides several navigation-specific nodes that 
 
 .. _nav2_behavior_tree: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree
 
+Check this introduction_ to learn how behavior trees work and the difference between actions, conditions, controls and decorators.
+
+.. _introduction: https://www.behaviortree.dev/bt_basics/
 
 Action Plugins
 **************

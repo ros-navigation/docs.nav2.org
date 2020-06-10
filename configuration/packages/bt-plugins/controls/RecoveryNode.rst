@@ -28,6 +28,7 @@ Example
 -------
 
 .. code-block:: xml
+
     <RecoveryNode number_of_retries="1" name="FollowPath">
-        <!-- --->
+        <!--Add tree components here--->
     </RecoveryNode>

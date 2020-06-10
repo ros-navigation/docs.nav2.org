@@ -29,9 +29,6 @@ Example
 .. code-block:: xml
 
     <RateController hz="1.0">
-        <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-            <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
-            <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
-        </RecoveryNode>
+        <!--Add tree components here--->
     </RateController>
     

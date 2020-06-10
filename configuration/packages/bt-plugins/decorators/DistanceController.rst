@@ -48,3 +48,7 @@ Example
 -------
 
 .. code-block:: xml
+
+  <DistanceController distance="0.5" global_frame="map" robot_base_frame="base_link">
+    <!--Add tree components here--->
+  </DistanceController>
