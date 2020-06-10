@@ -34,4 +34,4 @@ Example
 
 .. code-block:: xml
 
-  <ReinitializeGlobalLocalization service_name="???"/>
+  <ReinitializeGlobalLocalization service_name="reinitialize_global_localization"/>

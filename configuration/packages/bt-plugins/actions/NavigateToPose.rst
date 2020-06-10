@@ -59,4 +59,4 @@ Example
 
 .. code-block:: xml
 
-  <NavigateToPose position="???" orientation="???" server_name="NavigateToPose_server" server_timeout="10"/>
+  <NavigateToPose position="???" orientation="???" server_name="NavigateToPose" server_timeout="10"/>
