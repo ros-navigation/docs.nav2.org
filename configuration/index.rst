@@ -10,8 +10,8 @@ the best navigation performance.
    :maxdepth: 1
 
    packages/configuring-waypoint-follower.rst
-   packages/configuring-the-bt.rst
-   packages/configuring-behavior-tree.rst
+   packages/configuring-bt-navigator.rst
+   packages/configuring-bt-xml.rst
    packages/configuring-lifecycle.rst
    packages/configuring-controller-server.rst
    packages/configuring-dwb.rst
