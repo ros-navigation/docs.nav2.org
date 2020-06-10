@@ -46,4 +46,4 @@ Example
 
 .. code-block:: xml
 
-  <GoalReached goal="???{goal}" global_frame="map" robot_base_frame="base_link"/>
+  <GoalReached goal="{goal}" global_frame="map" robot_base_frame="base_link"/>
