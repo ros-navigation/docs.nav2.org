@@ -50,5 +50,5 @@ Example
 
 .. code-block:: xml
 
-  <Spin spin_dist="1.57" server_name="spin_server" server_timeout="10"/>
+  <Spin spin_dist="1.57" server_name="spin" server_timeout="10"/>
     
