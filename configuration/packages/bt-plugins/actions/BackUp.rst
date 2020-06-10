@@ -3,6 +3,8 @@
 BackUp
 ======
 
+Invokes the BackUp ROS2 action server, which causes the robot to back up to a specific pose. This is used in nav2 Behavior Trees as a recovery behavior. The nav2_recoveries module implements the BackUp action server.
+
 Input Ports
 ***********
 

@@ -3,6 +3,9 @@
 ComputePathToPose
 =================
 
+Invokes the ComputePathToPose ROS2 action server, which is implemented by the nav2_planner module. 
+The server address can be remapped using the ``server_name`` input port.
+
 Input Ports
 -----------
 

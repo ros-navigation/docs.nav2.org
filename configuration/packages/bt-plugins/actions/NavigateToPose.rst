@@ -3,6 +3,8 @@
 NavigateToPose
 ==============
 
+Invokes the NavigateToPose ROS2 action server, which is implemented by the bt_navigator module.
+
 Input Ports
 -----------
 

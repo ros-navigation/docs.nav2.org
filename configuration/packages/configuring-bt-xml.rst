@@ -3,9 +3,9 @@
 Configuring the behavior tree XML
 #################################
 
-Source code on Github_.
+The nav2_behavior_tree_ package provides several navigation-specific nodes that are pre-registered and can be included in Behavior Trees.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree
+.. _nav2_behavior_tree: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree
 
 
 Action Plugins

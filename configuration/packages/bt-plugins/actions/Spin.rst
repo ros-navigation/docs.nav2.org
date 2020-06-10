@@ -3,6 +3,8 @@
 Spin
 ====
 
+Invokes the Spin ROS2 action server, which is implemented by the nav2_recoveries module. This action is using in nav2 Behavior Trees as a recovery behavior.
+
 Input Ports
 -----------
 
