@@ -14,7 +14,7 @@ in the navigation task and provide a way to easily specify complex robot behavio
 Parameters
 **********
 
-:bt_xml_filename:
+:default_bt_xml_filename:
 
   ====== =======
   Type   Default
@@ -23,7 +23,7 @@ Parameters
   ====== =======
 
   Description
-    Path to behavior tree XML description.
+    Path to the default behavior tree XML description.
 
 :plugin_lib_names:
 
