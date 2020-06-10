@@ -1,6 +1,6 @@
 .. _configuring_behavior_tree_xml:
 
-Configuring the behavior tree XML
+Behavior Tree XML Nodes
 #################################
 
 The nav2_behavior_tree_ package provides several navigation-specific nodes that are pre-registered and can be included in Behavior Trees.
