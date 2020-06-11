@@ -12,10 +12,8 @@ Overview
 
 This tutorial shows how to create you own controller `plugin <https://index.ros.org/p/pluginlib/>`_.
 
-In this tutorial we will be implementing the pure pursuit path tracking algorithm. It is recommended you go over the `paper <https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf>`_ descirbing this algorithm which desribes the basic mathematics and intuition behind the algorithm.
-
-Also recommended you read about `managed nodes <https://design.ros2.org/articles/node_lifecycle.html>`_ to get a better idea about the various states of a node
-and its transitions.
+In this tutorial we will be implementing the pure pursuit path tracking algorithm, based on the `paper <https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf>`_. 
+It is recommended you go through it.
 
 Requirements
 ============
@@ -72,7 +70,7 @@ In this tutorial, we will have used the following methods:
 
 1. ``PurePursuitController::configure()`` 
 
-    In controllers, this method is used to set member variables, declare ROS parameters with default parameters and read their values.
+In controllers, this method is used to set member variables, declare ROS parameters with default parameters and read their values.
 
 .. code-block:: c++
 
@@ -169,7 +167,7 @@ This method is used to check whether the robot has reached the goal pose or not 
   return hypot(
     pose.pose.position.x - goal_pose_.pose.position.x,
     pose.pose.position.y - goal_pose_.pose.position.y) <= goal_tolerance_;
-    
+
 Here, we check whether the current robot pose, is within a certain distance (i.e. goal tolerance) from from the goal pose. If it is then we return true
 indicating that the robot has reached the goal, else we return false.
 
