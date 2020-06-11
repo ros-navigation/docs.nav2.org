@@ -36,42 +36,36 @@ This package can be a considered as a reference for writing controller plugin.
 
 Our plugin class ``nav2_pure_pursuit_controller::PurePursuitController`` inherits from the base class ``nav2_core::Controller``. The base class provides a
 set of virtual methods to implement a controller plugin. These methods are called at runtime by the controller server to compute velocity commands.
-The list of methods, their description and necessity to have these methods in plugin’s code is presented in the table below:
+The list of methods and their descriptions and necessity are presented in the table below:
 
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | **Virtual method**        | **Method description**                                                                | **Requires override?** |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| configure()               | Method is called at when controller server enters Configuring state.                  | Yes                    |
-|                           | Ideally this methods should perform declarations of ROS parameters and                |                        |
+| configure()               | This methods should perform declarations of ROS parameters and                        | Yes                    |
 |                           | initialization of controller's member variables i.e. tasks that need to be            |                        |
 |                           | performed once in the lifetime of the controller. This method passes 4                |                        |
 |                           | parameters: shared pointer to parent node, controller name, tf buffer pointer         |                        |
 |                           | and shared pointer to costmap.                                                        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| activate()                | Method is called when controller server enters Activating state. Ideally              | Yes                    |
-|                           | this method should implement operations which are neccessary before the               |                        |
-|                           | controller goes to an Active state.                                                   |                        |
+| activate()                | This method should implement operations which are neccessary before the               | Yes                    |
+|                           | controller goes to an active state.                                                   |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| deactivate()              | Method is called when controller server enters Deactivating state. Ideally            | Yes                    |
-|                           | this method should implement operations which are neccessary before the               |                        |
-|                           | controller goes to the Inactive state.                                                |                        |
+| deactivate()              | This method should implement operations which are neccessary before the               | Yes                    |
+|                           | controller goes to the inactive state.                                                |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| cleanup()                 | Method is called when controller server goes to CleaningUp state. Ideally             | Yes                    |
-|                           | this method should clean up resoures which are created for the controller.            |                        |
+| cleanup()                 | This method should clean up resoures which are created for the controller.            | Yes                    |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| setPlan()                 | Method is called when the global plan is updated. It is used to update the            | Yes                    |
-|                           | global plan which is internally whih the controller uses to as a reference            |                        |
-|                           | to follow. This method passes 1 parameter: a reference to the global plan.            |                        |
+| setPlan()                 | This method is called when the global plan is updated. This method passes 1           | Yes                    |
+|                           | parameter: a reference to the global plan.                                            |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| computeVelocityCommands() | Method is called each time when a new velocity command is required in-order           | Yes                    |
-|                           | for the robot to follow the global path. This method returns a                        |                        |
-|                           | `geometry_msgs::msg::TwistStamped` which represents the best velocity command         |                        |
-|                           | for the robot to drive. This method passes 2 parameters: reference to the             |                        |
-|                           | current robot pose and its current velocity.                                          |                        |
+| computeVelocityCommands() | This method is called when a new velocity command is required by the robot to follow  | Yes                    |
+|                           | to follow the global path. This method returns a `geometry_msgs::msg::TwistStamped`   |                        |
+|                           | which represents the velocity command for the robot to drive.  This method passes     |                        |
+|                           | 2 parameters: reference to the current robot pose and its current velocity.           |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| isGoalReached()           | Method is called after the latest velocity command is published and is used to        | Yes                    |
-|                           | check whether the robot has reached its goal. This method returns a bool. It          |                        |
-|                           | takes in 2 parameters: reference to the current robot pose and its current velocity.. |                        |
+| isGoalReached()           | This method is called to check whether the robot has reached the goal or not.         | Yes                    |
+|                           | takes in 2 parameters: reference to the current robot pose and its current velocity,  |                        |
+|                           | and returns a boolean                                                                 |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 
 In this tutorial, we will have used the following methods:
@@ -88,14 +82,14 @@ In this tutorial, we will have used the following methods:
   costmap_ = costmap_ros->getCostmap();
   global_frame_ = costmap_ros->getGlobalFrameID();
 
-The passed in arguments are stores in member variables so that hey can be used at a later stage if needed.
+The passed in arguments are stored in member variables so that hey can be used at a later stage if needed.
 
 .. code-block:: c++
 
   nav2_util::declare_parameter_if_not_declared(node_, plugin_name_ + ".desired_linear_vel",rclcpp::ParameterValue(0.2));
 
 ``declare_parameter_if_not_declared`` is used to declare a ROS parameters for that node (if it hasn't been declared previously) using the specified name and sets the default value.
-Here, we prepend the mapped plugin name to the parameter like this ``plugin_name_ + ".desired_linear_vel"``. This is done as Navigation2 allows ,loading multiple 
+Here, we prepend the mapped plugin name to the parameter like this ``plugin_name_ + ".desired_linear_vel"``. This is done as Navigation2 allows loading multiple 
 controllers, so to prevent parameter name collisions across different controllers we refer to our parameters in the following format ``<mapped_name_of_plugin>.<name_of_parameter>``.
 
 .. code-block:: c++
@@ -109,7 +103,7 @@ acts as a namespace for our plugin specific parameters.
 
 2. ``PurePursuitController::setPlan()`` 
 
-This method is used to store the global plan and the goal pose (i.e. last pose of the global plan). Additionaly it used to transform the global plan into 
+This method is used to store the global plan and the goal pose (i.e. last pose of the global plan). Additionaly it is used to transform the global plan into 
 the required frame.
 
 .. code-block:: c++
@@ -123,7 +117,7 @@ work with for 2D planning.
 
   global_plan_ = transformGlobalPlan(path2d); 
 
-The global path needs to be transformed into the appropriate frame before using it. This is generally same as costmap frame for man controllers.
+The global path needs to be transformed into the appropriate frame before using it. This is generally same as costmap frame.
 In our case, this frame is the robot's own frame. So, we transform the global path into the robot's frame.
 
 .. code-block:: c++
@@ -163,7 +157,7 @@ Using the closest point on the path, computed earlier, the curvature of the path
 
   return cmd_vel;
 
-A new TwistStamped message is created to store the computed velocitu and then this message is returned.
+A new TwistStamped message is created to store the computed velocity and then this message is returned.
 
 
 4. ``PurePursuitController::isGoalReached()`` 
@@ -172,8 +166,10 @@ This method is used to check whether the robot has reached the goal pose or not 
 
 .. code-block:: c++
 
-  return hypot(pose.pose.position.x - goal_pose_.pose.position.x, pose.pose.position.y - goal_pose_.pose.position.y) <= goal_tolerance_;
-
+  return hypot(
+    pose.pose.position.x - goal_pose_.pose.position.x,
+    pose.pose.position.y - goal_pose_.pose.position.y) <= goal_tolerance_;
+    
 Here, we check whether the current robot pose, is within a certain distance (i.e. goal tolerance) from from the goal pose. If it is then we return true
 indicating that the robot has reached the goal, else we return false.
 
