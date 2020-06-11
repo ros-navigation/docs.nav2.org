@@ -15,6 +15,6 @@ the best navigation performance.
    packages/configuring-planner-server.rst
    packages/configuring-navfn.rst
    packages/configuring-controller-server.rst
-   packages/configuring-dwb.rst
+   packages/configuring-dwb-controller.rst
    packages/configuring-map-server.rst
    params/tunable-params.rst
