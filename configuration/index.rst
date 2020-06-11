@@ -18,4 +18,5 @@ the best navigation performance.
    packages/configuring-dwb.rst
    packages/configuring-map-server.rst
    packages/configuring-amcl.rst
+   packages/configuring-recovery-server.rst
    params/tunable-params.rst

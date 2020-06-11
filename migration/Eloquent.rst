@@ -78,3 +78,11 @@ New particle filter messages for particle clouds were added to include the parti
 ``AMCL`` now publishes its particle cloud as a ``nav2_msgs/ParticleCloud`` instead of a ``geometry_msgs/PoseArray``.
 
 `See here for more information. <https://github.com/ros-planning/navigation2/pull/1677>`_
+
+
+Selection of Behavior Tree in each navigation action
+****************************************************
+
+The ``NavigateToPose`` action allows now to select in the action request the behavior tree to be used by ``bt_navigator`` for carrying out the navigation action through the ``string behavior_tree`` field. This field indicates the absolute path of the xml file that will be used to use to carry out the action. If no file is specified, leaving this field empty, the default behavior tree specified in the ``default_bt_xml_filename parameter`` will be used.
+
+This functionality has been discussed in `this ticket <https://github.com/ros-planning/navigation2/issues/1780>`_, and carried out in `this pull request <https://github.com/ros-planning/navigation2/issues/1780>`_
