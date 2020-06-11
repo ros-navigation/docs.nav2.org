@@ -18,7 +18,7 @@ Input Ports
   ====== =======
 
   Description
-    	Path to follow.
+    	Takes in a blackboard variable containing the path to follow, eg. "{path}".
 
 :controller_id:
 

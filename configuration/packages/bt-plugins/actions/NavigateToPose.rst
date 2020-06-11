@@ -19,7 +19,7 @@ Input Ports
   ====== =======
 
   Description
-    	Position.
+    	Takes in a blackboard variable containing the position, eg. "{position}".
 
 :orientation:
 
@@ -30,7 +30,7 @@ Input Ports
   ====== =======
 
   Description
-    	Orientation.
+    	Takes in a blackboard variable containing the orientation, eg. "{orientation}".
 
 :server_name:
 
@@ -59,4 +59,4 @@ Example
 
 .. code-block:: xml
 
-  <NavigateToPose position="???" orientation="???" server_name="NavigateToPose" server_timeout="10"/>
+  <NavigateToPose position="{position}" orientation="{orientation}" server_name="NavigateToPose" server_timeout="10"/>

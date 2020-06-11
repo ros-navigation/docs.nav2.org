@@ -20,7 +20,7 @@ Input Ports
   ============== =======
 
   Description
-    	Goal pose.
+    	Goal pose. Takes in a blackboard variable, e.g. "{goal}".
 
 :planner_id:
 
@@ -68,7 +68,7 @@ Output Ports
   ============== =======
 
   Description
-    	Path created by action server.
+    	Path created by action server. Takes in a blackboard variable, e.g. "{path}".
 
 Example
 -------

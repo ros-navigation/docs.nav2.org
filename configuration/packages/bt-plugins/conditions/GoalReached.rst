@@ -17,7 +17,7 @@ Input Ports
   ====== =======
 
   Description
-    	Destination to check.
+    	Destination to check. Takes in a blackboard variable, e.g. "{goal}".
 
 :global_frame:
 
