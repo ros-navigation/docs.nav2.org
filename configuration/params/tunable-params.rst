@@ -441,6 +441,7 @@ Behavior-Tree-based Navigator
                  "nav2_reinitialize_global_localization_service_bt_node",
                  "nav2_rate_controller_bt_node",
                  "nav2_distance_controller_bt_node",
+                 "nav2_speed_controller_bt_node",
                  "nav2_recovery_node_bt_node",
                  "nav2_pipeline_sequence_bt_node",
                  "nav2_round_robin_node_bt_node",
@@ -483,6 +484,17 @@ Behavior-Tree-based Navigator
   Description
     Path to behavior tree XML description.
 
+:odom_topic:
+
+  ====== =========
+  Type   Default
+  ------ ---------
+  string odom
+  ====== =========
+
+  Description
+    Topic on which odometry is published
+
 :use_sim_time:
 
   ==== =======
@@ -503,6 +515,7 @@ Example
         use_sim_time: true
         global_frame: map
         robot_base_frame: base_link
+        odom_topic: odom
         transform_tolerance: 0.1
         bt_xml_filename: replace/with/path/to/bt.xml
         plugin_lib_names:
@@ -519,6 +532,7 @@ Example
         - nav2_reinitialize_global_localization_service_bt_node
         - nav2_rate_controller_bt_node
         - nav2_distance_controller_bt_node
+        - nav2_speed_controller_bt_node
         - nav2_recovery_node_bt_node
         - nav2_pipeline_sequence_bt_node
         - nav2_round_robin_node_bt_node

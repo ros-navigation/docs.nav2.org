@@ -1,4 +1,4 @@
-.. _configuring_the_bt:
+.. _configuring_bt_navigator:
 
 Behavior-Tree Navigator
 #######################
@@ -23,7 +23,7 @@ Parameters
   ====== =======
 
   Description
-    Path to the default behavior tree XML description.
+    Path to the default behavior tree XML description, see :ref:`configuring_behavior_tree_xml` for details on this file.
 
 :plugin_lib_names:
 
@@ -43,6 +43,7 @@ Parameters
                  "nav2_reinitialize_global_localization_service_bt_node",
                  "nav2_rate_controller_bt_node",
                  "nav2_distance_controller_bt_node",
+                 "nav2_speed_controller_bt_node",
                  "nav2_recovery_node_bt_node",
                  "nav2_pipeline_sequence_bt_node",
                  "nav2_round_robin_node_bt_node",
@@ -85,6 +86,17 @@ Parameters
   Description
     Path to behavior tree XML description.
 
+:odom_topic:
+
+  ====== =========
+  Type   Default
+  ------ ---------
+  string odom
+  ====== =========
+
+  Description
+    Topic on which odometry is published
+
 :use_sim_time:
 
   ==== =======
@@ -121,6 +133,7 @@ Example
         - nav2_reinitialize_global_localization_service_bt_node
         - nav2_rate_controller_bt_node
         - nav2_distance_controller_bt_node
+        - nav2_speed_controller_bt_node
         - nav2_recovery_node_bt_node
         - nav2_pipeline_sequence_bt_node
         - nav2_round_robin_node_bt_node
