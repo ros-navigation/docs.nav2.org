@@ -1,7 +1,7 @@
-.. _dwb_vis:
+.. _dwb_publisher:
 
-Visualization
-=============
+Publisher
+=========
 
 Parameters
 ----------

@@ -1,7 +1,7 @@
-.. _dwb_kinematic_params:
+.. _dwb_kinematic_parameters:
 
-Kinematics
-==========
+Kinematic Parameters
+====================
 
 Parameters
 ----------

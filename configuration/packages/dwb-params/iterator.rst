@@ -1,7 +1,7 @@
-.. _dwb_iterator:
+.. _dwb_xytheta_iterator:
 
-Iterator
-========
+ XYTheta Iterator
+=================
 
 Parameters
 ----------
