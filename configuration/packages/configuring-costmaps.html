@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Behavior-Tree Navigator &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Costmap 2D &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Behavior Tree XML Nodes" href="configuring-bt-xml.html" />
-    <link rel="prev" title="Waypoint Follower" href="configuring-waypoint-follower.html" />
+    <link rel="next" title="Static Layer Parameters" href="costmap-plugins/static.html" />
+    <link rel="prev" title="SpeedController" href="bt-plugins/decorators/SpeedController.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -245,9 +245,9 @@
 <li class="toctree-l3"><a class="reference internal" href="configuring-waypoint-follower.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Behavior-Tree Navigator</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-bt-navigator.html">Behavior-Tree Navigator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-bt-navigator.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-bt-navigator.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul>
@@ -287,16 +287,16 @@
 <li class="toctree-l3"><a class="reference internal" href="configuring-bt-xml.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuring-costmaps.html">Costmap 2D</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Costmap 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plugin-parameters">Plugin Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/static.html">Static Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-lifecycle.html">Lifecycle Manager</a><ul>
@@ -479,7 +479,7 @@
         
           <li><a href="../index.html">Configuration Guide</a> &raquo;</li>
         
-      <li>Behavior-Tree Navigator</li>
+      <li>Costmap 2D</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -496,115 +496,93 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="behavior-tree-navigator">
-<span id="configuring-bt-navigator"></span><h1>Behavior-Tree Navigator<a class="headerlink" href="#behavior-tree-navigator" title="Permalink to this headline">¶</a></h1>
-<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_bt_navigator">Github</a>.</p>
-<p>The BT Navigator (Behavior Tree Navigator) module implements the NavigateToPose task interface.
-It is a Behavior Tree-based implementation of navigation that is intended to allow for flexibility
-in the navigation task and provide a way to easily specify complex robot behaviors, including recovery.</p>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="costmap-2d">
+<span id="configuring-cosmaps"></span><h1>Costmap 2D<a class="headerlink" href="#costmap-2d" title="Permalink to this headline">¶</a></h1>
+<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d">Github</a>.</p>
+<p>The Costmap 2D package implements a 2D grid-based costmap for environmental representations and a number of sensor processing plugins.
+It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around.</p>
+<div class="section" id="costmap2d-ros-parameters">
+<h2>Costmap2D ROS Parameters<a class="headerlink" href="#costmap2d-ros-parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">default_bt_xml_filename:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">always_send_full_costmap:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col width="67%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>N/A</td>
+<tr class="row-even"><td>bool</td>
+<td>False</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Path to the default behavior tree XML description, see <a class="reference internal" href="configuring-bt-xml.html#configuring-behavior-tree-xml"><span class="std std-ref">Behavior Tree XML Nodes</span></a> for details on this file.</p>
+<dd><p class="first last">Whether to send full costmap every update, rather than updates.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">plugin_lib_names:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2">footprint_padding:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="19%" />
-<col width="81%" />
+<col width="67%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>vector&lt;string&gt;</td>
-<td>[“nav2_compute_path_to_pose_action_bt_node”,
-“nav2_follow_path_action_bt_node”,
-“nav2_back_up_action_bt_node”,
-“nav2_spin_action_bt_node”,
-“nav2_wait_action_bt_node”,
-“nav2_clear_costmap_service_bt_node”,
-“nav2_is_stuck_condition_bt_node”,
-“nav2_goal_reached_condition_bt_node”,
-“nav2_initial_pose_received_condition_bt_node”,
-“nav2_goal_updated_condition_bt_node”,
-“nav2_reinitialize_global_localization_service_bt_node”,
-“nav2_rate_controller_bt_node”,
-“nav2_distance_controller_bt_node”,
-“nav2_speed_controller_bt_node”,
-“nav2_recovery_node_bt_node”,
-“nav2_pipeline_sequence_bt_node”,
-“nav2_round_robin_node_bt_node”,
-“nav2_transform_available_condition_bt_node”]</td>
+<tr class="row-even"><td>double</td>
+<td>0.01</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">List of behavior tree node shared libraries.</p>
+<dd><p class="first last">Amount to pad footprint (m).</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">footprint:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="30%" />
-<col width="35%" />
-<col width="35%" />
+<col width="67%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
-<td>Unit</td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.1</td>
-<td>seconds</td>
+<tr class="row-even"><td>vector&lt;double&gt;</td>
+<td>{}</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">TF transform tolerance.</p>
+<dd><p class="first last">Ordered set of footprint points, must be closed set.</p>
 </dd>
 </dl>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">global_frame:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="43%" />
-<col width="57%" />
+<col width="67%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>string</td>
-<td>map</td>
+<td>“map”</td>
 </tr>
 </tbody>
 </table>
@@ -615,66 +593,453 @@ in the navigation task and provide a way to easily specify complex robot behavio
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">robot_base_frame:</th></tr>
+<tr class="field-odd field"><th class="field-name">height:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Height of costmap (m).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">width:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Width of costmap (m).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">lethal_cost_threshold:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="40%" />
-<col width="60%" />
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Minimum cost of an occupancy grid map to be considered a lethal obstacle.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">map_topic:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>string</td>
-<td>base_link</td>
+<td>“map”</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Path to behavior tree XML description.</p>
+<dd><p class="first last">Topic of map from map_server or SLAM.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">odom_topic:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2">observation_sources:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="40%" />
-<col width="60%" />
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>vector&lt;string&gt;</td>
+<td>{“”}</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">List of sources of sensors, to be used if not specified in plugin specific configurations.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">origin_x:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">X origin of the costmap relative to width (m).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">origin_y:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Y origin of the costmap relative to height (m).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">plugin_names:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>vector&lt;string&gt;</td>
+<td>{“static_layer”, “obstacle_layer”, “inflation_layer”}</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">List of mapped plugin names for parameter namespaces and names.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">plugin_types:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>vector&lt;string&gt;</td>
+<td>{“nav2_costmap_2d::StaticLayer”, “nav2_costmap_2d::ObstacleLayer”, “nav2_costmap_2d::InflationLayer”}</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">List of registered plugins to map to names and load.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">publish_frequency:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Frequency to publish costmap to topic.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">resolution:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Resolution of 1 pixel of the costmap, in meters.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">robot_base_frame:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>string</td>
-<td>odom</td>
+<td>“base_link”</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Topic on which odometry is published</p>
+<dd><p class="first last">Robot base frame.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">use_sim_time:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">robot_radius:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Robot radius to use, if footprint coordinates not provided.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">rolling_window:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>bool</td>
-<td>false</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether costmap should roll with robot base frame.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">track_unknown_space:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">If false, treats unknown space as free space, else as unknown space.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.3</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">TF transform tolerance.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">trinary_costmap:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">If occupancy grid map should be interpreted as only 3 values (free, occupied, unknown) or with its stored values.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">unknown_cost_value:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>255</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Cost of unknown space if tracking it.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">update_frequency:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>5.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Costmap update frequency.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">use_maximum:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">whether when combining costmaps to use the maximum cost or override.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">clearable_layers:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>vector&lt;string&gt;</td>
+<td>{“obstacle_layer”}</td>
 </tr>
 </tbody>
 </table>
 <dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">Use time provided by simulation.</p>
+<dd><p class="first last">Layers that may be cleared using the clearing service.</p>
 </dd>
 </dl>
 </td>
@@ -682,34 +1047,96 @@ in the navigation task and provide a way to easily specify complex robot behavio
 </tbody>
 </table>
 </div>
+<div class="section" id="plugin-parameters">
+<h2>Plugin Parameters<a class="headerlink" href="#plugin-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="costmap-plugins/static.html">Static Layer Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
+</ul>
+</div>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">bt_navigator</span><span class="p">:</span>
-  <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
-    <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
-    <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-    <span class="nt">bt_xml_filename</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span>
-    <span class="nt">plugin_lib_names</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_compute_path_to_pose_action_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_follow_path_action_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_back_up_action_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_spin_action_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_wait_action_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_clear_costmap_service_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_is_stuck_condition_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_goal_reached_condition_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_initial_pose_received_condition_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_goal_updated_condition_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_reinitialize_global_localization_service_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_rate_controller_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_distance_controller_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_speed_controller_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_recovery_node_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_pipeline_sequence_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_round_robin_node_bt_node</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_transform_available_condition_bt_node</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
+  <span class="nt">global_costmap</span><span class="p">:</span>
+    <span class="nt">ros__parameters</span><span class="p">:</span>
+      <span class="nt">footprint_padding</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.03</span>
+      <span class="nt">update_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">publish_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+      <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
+      <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">plugin_names</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
+      <span class="nt">plugin_types</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;nav2_costmap_2d::ObstacleLayer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;nav2_costmap_2d::VoxelLayer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span><span class="p p-Indicator">]</span>
+      <span class="nt">robot_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.22</span> <span class="c1"># radius set and used, so no footprint points</span>
+      <span class="nt">resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+      <span class="nt">obstacle_layer</span><span class="p">:</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">observation_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scan</span>
+        <span class="nt">footprint_clearing_enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+        <span class="nt">combination_method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+        <span class="nt">scan</span><span class="p">:</span>
+          <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/scan</span>
+          <span class="nt">obstacle_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
+          <span class="nt">raytrace_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+          <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+          <span class="nt">min_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+          <span class="nt">clearing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+          <span class="nt">marking</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+          <span class="nt">data_type</span><span class="p">:</span> <span class="s">&quot;LaserScan&quot;</span>
+          <span class="nt">inf_is_valid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">voxel_layer</span><span class="p">:</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">footprint_clearing_enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+        <span class="nt">publish_voxel_map</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">origin_z</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+        <span class="nt">z_resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+        <span class="nt">z_voxels</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">16</span>
+        <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+        <span class="nt">unknown_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">15</span>
+        <span class="nt">mark_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+        <span class="nt">observation_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pointcloud</span>
+        <span class="nt">combination_method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+        <span class="nt">pointcloud</span><span class="p">:</span>  <span class="c1"># no frame set, uses frame from message</span>
+          <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/intel_realsense_r200_depth/points</span>
+          <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+          <span class="nt">min_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+          <span class="nt">obstacle_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
+          <span class="nt">raytrace_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+          <span class="nt">clearing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+          <span class="nt">marking</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+          <span class="nt">data_type</span><span class="p">:</span> <span class="s">&quot;PointCloud2&quot;</span>
+      <span class="nt">static_layer</span><span class="p">:</span>
+        <span class="nt">map_subscribe_transient_local</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">subscribe_to_updates</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+      <span class="nt">inflation_layer</span><span class="p">:</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">inflation_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.55</span>
+        <span class="nt">cost_scaling_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+        <span class="nt">inflate_unknown</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+        <span class="nt">inflate_around_unknown</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">always_send_full_costmap</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
+
+<span class="nt">local_costmap</span><span class="p">:</span>
+  <span class="nt">local_costmap</span><span class="p">:</span>
+    <span class="nt">ros__parameters</span><span class="p">:</span>
+      <span class="nt">update_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+      <span class="nt">publish_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+      <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">odom</span>
+      <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
+      <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">rolling_window</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">width</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+      <span class="nt">height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+      <span class="nt">resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
 </pre></div>
 </div>
 </div>
