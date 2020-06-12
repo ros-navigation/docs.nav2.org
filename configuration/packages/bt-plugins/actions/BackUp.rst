@@ -1,4 +1,4 @@
-.. bt_actions:
+.. _bt_backup_action:
 
 BackUp
 ======

@@ -1,4 +1,4 @@
-.. bt_actions:
+.. _bt_spin_action:
 
 Spin
 ====

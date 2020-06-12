@@ -1,4 +1,4 @@
-.. bt_pipe_line_sequence_action:
+.. _bt_pipe_line_sequence_control:
 
 PipelineSequence
 ================

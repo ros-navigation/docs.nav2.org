@@ -1,4 +1,4 @@
-.. bt_actions:
+.. _bt_reinitialize_global_localization_action:
 
 ReinitializeGlobalLocalization
 ==============================

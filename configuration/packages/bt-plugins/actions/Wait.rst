@@ -1,4 +1,4 @@
-.. bt_actions:
+.. _bt_wait_action:
 
 Wait
 ====

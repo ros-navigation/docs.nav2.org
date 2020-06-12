@@ -1,4 +1,4 @@
-.. bt_conditions:
+.. _bt_transform_available_condition:
 
 TransformAvailable
 ==================

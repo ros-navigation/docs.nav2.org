@@ -1,4 +1,4 @@
-.. bt_actions:
+.. _bt_follow_path_action:
 
 FollowPath
 ==========

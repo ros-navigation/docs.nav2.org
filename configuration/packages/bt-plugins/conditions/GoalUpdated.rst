@@ -1,4 +1,4 @@
-.. goal_updated_condition:
+.. _goal_updated_condition:
 
 GoalUpdated
 ===========

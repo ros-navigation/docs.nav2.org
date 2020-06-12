@@ -1,4 +1,4 @@
-.. bt_actions:
+.. _bt_clear_entire_costmap_action:
 
 
 ClearEntireCostmap

@@ -1,4 +1,4 @@
-.. bt_controls:
+.. _bt_recovery_node_control:
 
 RecoveryNode
 ============

@@ -1,4 +1,4 @@
-.. bt_actions:
+.. _bt_compute_path_to_pose_action:
 
 ComputePathToPose
 =================

@@ -1,4 +1,4 @@
-.. _bt_decorators:
+.. _bt_speed_controller:
 
 SpeedController
 ==================

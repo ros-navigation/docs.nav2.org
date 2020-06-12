@@ -1,4 +1,4 @@
-.. bt_conditions:
+.. _bt_goal_reached_condition:
 
 GoalReached
 ===========

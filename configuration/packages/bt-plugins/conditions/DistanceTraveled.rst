@@ -1,4 +1,4 @@
-.. bt_distance_traveled_condition:
+.. _bt_distance_traveled_condition:
 
 DistanceTraveled
 ================

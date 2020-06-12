@@ -1,4 +1,4 @@
-.. bt_actions:
+.. _bt_navigate_to_pose_action:
 
 NavigateToPose
 ==============

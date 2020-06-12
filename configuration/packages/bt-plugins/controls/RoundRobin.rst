@@ -1,4 +1,4 @@
-.. bt_round_robin_action:
+.. _bt_round_robin_control:
 
 
 RoundRobin
