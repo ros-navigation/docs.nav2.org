@@ -3,6 +3,8 @@
 ReinitializeGlobalLocalization
 ==============================
 
+Used to trigger global relocalization using AMCL in case of severe delocalization or kidnapped robot problem.
+
 Input Ports
 -----------
 

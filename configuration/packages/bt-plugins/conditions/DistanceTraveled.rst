@@ -3,6 +3,8 @@
 DistanceTraveled
 ================
 
+Node that returns success when a configurable distance has been traveled.
+
 Parameters
 -----------
 
@@ -31,6 +33,7 @@ Input Ports
   ====== =======
 
   Description
+    The distance that must travel before returning success (m).
 
 :global_frame:
 
@@ -41,7 +44,7 @@ Input Ports
   ====== =======
 
   Description
-    	Reference frame.
+    Reference frame.
 
 :robot_base_frame:
 
@@ -52,7 +55,7 @@ Input Ports
   ====== ===========
 
   Description
-    	Robot base frame.
+  	Robot base frame.
 
 Example
 -------

@@ -3,6 +3,8 @@
 TimeExpired
 ===========
 
+Node that returns success when a time duration has passed
+
 :seconds:
 
   ====== ===========
@@ -12,7 +14,7 @@ TimeExpired
   ====== ===========
 
   Description
-    	
+    The time passed to return success (s).
 
 Example
 -------
