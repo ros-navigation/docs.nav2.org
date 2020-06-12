@@ -86,6 +86,17 @@ Parameters
   Description
     Path to behavior tree XML description.
 
+:odom_topic:
+
+  ====== =========
+  Type   Default
+  ------ ---------
+  string odom
+  ====== =========
+
+  Description
+    Topic on which odometry is published
+
 :use_sim_time:
 
   ==== =======

@@ -484,6 +484,17 @@ Behavior-Tree-based Navigator
   Description
     Path to behavior tree XML description.
 
+:odom_topic:
+
+  ====== =========
+  Type   Default
+  ------ ---------
+  string odom
+  ====== =========
+
+  Description
+    Topic on which odometry is published
+
 :use_sim_time:
 
   ==== =======
@@ -504,6 +515,7 @@ Example
         use_sim_time: true
         global_frame: map
         robot_base_frame: base_link
+        odom_topic: odom
         transform_tolerance: 0.1
         bt_xml_filename: replace/with/path/to/bt.xml
         plugin_lib_names:
