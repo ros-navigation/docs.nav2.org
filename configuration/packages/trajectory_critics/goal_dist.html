@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Trajectory Critics &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>GoalDistCritic &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Goal Checkers" href="goal-checkers.html" />
-    <link rel="prev" title="Trajectory Generators" href="trajectory-generators.html" />
+    <link rel="next" title="ObstacleFootprintCritic" href="obstacle_footprint.html" />
+    <link rel="prev" title="GoalAlignCritic" href="goal_align.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -319,27 +319,35 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-dwb.html">Configuring The Controller</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb.html#controller-server">Controller Server</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-dwb.html#parameters">Parameters</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#controller">Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-params/controller.html">DWB Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-params/iterator.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-params/kinematic.html">Kinematic Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-params/visualization.html">Publisher</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb.html#progress-checker">Progress Checker</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-dwb.html#id2">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#plugins">Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb.html#dwb-controller">DWB Controller</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-dwb.html#id3">Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuring-dwb.html#additional-parameters">Additional Parameters</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="base_obstacle.html">BaseObstacleCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="goal_align.html">GoalAlignCritic</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">GoalDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="obstacle_footprint.html">ObstacleFootprintCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="oscillation.html">OscillationCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="path_align.html">PathAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="path_dist.html">PathDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="prefer_forward.html">PreferForwardCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rotate_to_goal.html">RotateToGoalCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="twirling.html">TwirlingCritic</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb.html#debug-parameters">Debug Parameters</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-dwb.html#dwb-plugins">DWB Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="trajectory-generators.html">Trajectory Generators</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Trajectory Critics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="goal-checkers.html">Goal Checkers</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuring-map-server.html">Map Server / Saver</a><ul>
@@ -358,20 +366,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-recovery-server.html#spin-recovery-parameters">Spin Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-recovery-server.html#backup-recovery-parameters">BackUp Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-recovery-server.html#example">Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../params/tunable-params.html">Tunable Parameters</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../params/tunable-params.html#amcl">AMCL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../params/tunable-params.html#controller-server">Controller Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../params/tunable-params.html#local-costmap">Local Costmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../params/tunable-params.html#planner-server">Planner Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../params/tunable-params.html#global-costmap">Global Costmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../params/tunable-params.html#map-server">Map Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../params/tunable-params.html#recovery-server">Recovery Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../params/tunable-params.html#bt-navigator">BT Navigator</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../params/tunable-params.html#behavior-tree-based-navigator">Behavior-Tree-based Navigator</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -479,9 +473,9 @@
         
           <li><a href="../../index.html">Configuration Guide</a> &raquo;</li>
         
-          <li><a href="../configuring-dwb.html">Configuring The Controller</a> &raquo;</li>
+          <li><a href="../configuring-dwb-controller.html">DWB Controller</a> &raquo;</li>
         
-      <li>Trajectory Critics</li>
+      <li>GoalDistCritic</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -498,206 +492,67 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="trajectory-critics">
-<span id="dwb-trajectory-critics"></span><h1>Trajectory Critics<a class="headerlink" href="#trajectory-critics" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The parameters below are not properly scoped. The exact parameter names are
-likely to change in the near future</p>
-</div>
-<div class="section" id="base-obstacle">
-<h2>Base Obstacle<a class="headerlink" href="#base-obstacle" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">BaseObstacle.class:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">BaseObstacle.scale:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">BaseObstacle.sum_scores:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="goal-align">
-<h2>Goal Align<a class="headerlink" href="#goal-align" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">GoalAlign.aggregation_type:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">GoalAlign.class:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">GoalAlign.forward_point_distance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">GoalAlign.scale:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="goal-distance">
-<h2>Goal Distance<a class="headerlink" href="#goal-distance" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">GoalDist.aggregation_type:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name">GoalDist.class:</th><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name">GoalDist.scale:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="oscillation">
-<h2>Oscillation<a class="headerlink" href="#oscillation" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Oscillation.class:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Oscillation.oscillation_reset_angle:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Oscillation.oscillation_reset_dist:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Oscillation.oscillation_reset_time:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Oscillation.scale:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Oscillation.x_only_threshold:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="obstacle-footprint">
-<h2>Obstacle Footprint<a class="headerlink" href="#obstacle-footprint" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="path-align">
-<h2>Path Align<a class="headerlink" href="#path-align" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="goaldistcritic">
+<span id="configuring-dwb-goal-dist"></span><h1>GoalDistCritic<a class="headerlink" href="#goaldistcritic" title="Permalink to this headline">¶</a></h1>
+<p>Scores a trajectory based on how close the trajectory gets the robot to the goal pose.</p>
 <div class="section" id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>: GoalDistCritic critic name defined in the <strong>&lt;dwb plugin&gt;.critics</strong> parameter defined in <a class="reference internal" href="../dwb-params/controller.html#dwb-controller"><span class="std std-ref">DWB Controller</span></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">PathAlign.forward_point_distance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">PathAlign.scale:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="content-collapse section" id="additional-parameters">
-<h3>Additional Parameters<a class="headerlink" href="#additional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.aggregation_type:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">PathAlign.aggregation_type:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">PathAlign.class:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
+<tr class="row-even"><td>string</td>
+<td>“last”</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="path-distance">
-<h2>Path Distance<a class="headerlink" href="#path-distance" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+<blockquote>
+<div><dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">last, sum, or product combination methods.</p>
+</dd>
+</dl>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.scale:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">PathDist.scale:</th><td class="field-body"></td>
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>1.0</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="content-collapse section" id="id2">
-<h3>Additional Parameters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">PathDist.aggregation_type:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name">PathDist.class:</th><td class="field-body"></td>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Weighed scale for critic.</p>
+</dd>
+</dl>
+</div></blockquote>
+</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="prefer-forward">
-<h2>Prefer Forward<a class="headerlink" href="#prefer-forward" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="rotate-to-goal">
-<h2>Rotate To Goal<a class="headerlink" href="#rotate-to-goal" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id3">
-<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">RotateToGoal.scale:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">RotateToGoal.xy_goal_tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">RotateToGoal.stateful:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">RotateToGoal.trans_stopped_velocity:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">RotateToGoal.slowing_factor:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">RotateToGoal.lookahead_time:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="content-collapse section" id="id4">
-<h3>Additional Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">RotateToGoal.class:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="twirling">
-<h2>Twirling<a class="headerlink" href="#twirling" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

@@ -318,27 +318,35 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/packages/configuring-dwb.html">Configuring The Controller</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-dwb.html#controller-server">Controller Server</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="configuration/packages/configuring-dwb.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/packages/configuring-dwb-controller.html">DWB Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-dwb-controller.html#controller">Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-params/controller.html">DWB Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-params/iterator.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-params/kinematic.html">Kinematic Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-params/visualization.html">Publisher</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-dwb.html#progress-checker">Progress Checker</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="configuration/packages/configuring-dwb.html#id2">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-dwb-controller.html#plugins">Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-dwb.html#dwb-controller">DWB Controller</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="configuration/packages/configuring-dwb.html#id3">Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuration/packages/configuring-dwb.html#additional-parameters">Additional Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/obstacle_footprint.html">ObstacleFootprintCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/oscillation.html">OscillationCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/path_align.html">PathAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/path_dist.html">PathDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/prefer_forward.html">PreferForwardCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/rotate_to_goal.html">RotateToGoalCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/trajectory_critics/twirling.html">TwirlingCritic</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-dwb.html#debug-parameters">Debug Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-dwb.html#dwb-plugins">DWB Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-plugins/trajectory-generators.html">Trajectory Generators</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-plugins/trajectory-critics.html">Trajectory Critics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuration/packages/dwb-plugins/goal-checkers.html">Goal Checkers</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-dwb-controller.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuration/packages/configuring-map-server.html">Map Server / Saver</a><ul>
@@ -357,20 +365,6 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-recovery-server.html#spin-recovery-parameters">Spin Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-recovery-server.html#backup-recovery-parameters">BackUp Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-recovery-server.html#example">Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/params/tunable-params.html">Tunable Parameters</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuration/params/tunable-params.html#amcl">AMCL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/params/tunable-params.html#controller-server">Controller Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/params/tunable-params.html#local-costmap">Local Costmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/params/tunable-params.html#planner-server">Planner Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/params/tunable-params.html#global-costmap">Global Costmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/params/tunable-params.html#map-server">Map Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/params/tunable-params.html#recovery-server">Recovery Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration/params/tunable-params.html#bt-navigator">BT Navigator</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="configuration/params/tunable-params.html#behavior-tree-based-navigator">Behavior-Tree-based Navigator</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
