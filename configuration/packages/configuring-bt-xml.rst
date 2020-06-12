@@ -58,6 +58,7 @@ Decorator Plugins
 
   bt-plugins/decorators/RateController.rst
   bt-plugins/decorators/DistanceController.rst
+  bt-plugins/decorators/SpeedController.rst
 
 Example
 *******
