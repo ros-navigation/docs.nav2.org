@@ -1,6 +1,6 @@
 .. _configuring_dwb_controller:
 
-Configuring DWB Controller
+DWB Controller
 ##########################
 
 Source code on Github_.
