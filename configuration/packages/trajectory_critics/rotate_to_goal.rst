@@ -5,8 +5,6 @@ RotateToGoalCritic
 
 Only allows the robot to rotate to the goal orientation when it is sufficiently close to the goal location.
 
-**CONFIRM CONTAINS <name>**
-
 Parameters
 **********
 
@@ -15,7 +13,7 @@ Parameters
 ``<name>``: RotateToGoalCritic critic name defined in the **<dwb plugin>.critics** parameter defined in :ref:`dwb_controller`.
 
 
-:``<dwb plugin>``.\ ``<name>``.xy_goal_tolerance:
+:``<dwb plugin>``.xy_goal_tolerance:
 
   ====== =======
   Type   Default
@@ -26,7 +24,7 @@ Parameters
     Description
         Tolerance to meet goal completion criteria (m).
 
-:``<dwb plugin>``.\ ``<name>``.trans_stopped_velocity:
+:``<dwb plugin>``.trans_stopped_velocity:
 
   ====== =======
   Type   Default
