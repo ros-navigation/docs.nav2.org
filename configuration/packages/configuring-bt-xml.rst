@@ -34,6 +34,11 @@ Condition Plugins
 
   bt-plugins/conditions/GoalReached.rst
   bt-plugins/conditions/TransformAvailable.rst
+  bt-plugins/conditions/DistanceTraveled.rst
+  bt-plugins/conditions/GoalUpdated.rst
+  bt-plugins/conditions/InitialPoseReceived.rst
+  bt-plugins/conditions/IsStuck.rst
+  bt-plugins/conditions/TimeExpired.rst
 
 Control Plugins
 ***************
@@ -41,6 +46,8 @@ Control Plugins
 .. toctree::
   :maxdepth: 1
 
+  bt-plugins/controls/PipelineSequence.rst
+  bt-plugins/controls/RoundRobin.rst
   bt-plugins/controls/RecoveryNode.rst
 
 Decorator Plugins
