@@ -6,7 +6,7 @@ twirling
 Parameters
 **********
 
-:``<dwb plugin>``.``<name>``.scale:
+:``<dwb plugin>``.\ ``<name>``.scale:
 
   ====== =======
   Type   Default

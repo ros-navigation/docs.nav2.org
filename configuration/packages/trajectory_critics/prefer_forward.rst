@@ -5,7 +5,7 @@ prefer_forward
 
 Parameters
 **********
-:``<dwb plugin>``.``<name>``.penalty:
+:``<dwb plugin>``.\ ``<name>``.penalty:
 
   ====== =======
   Type   Default
@@ -16,7 +16,7 @@ Parameters
     Description
         Penalty to apply to backward motion.
 
-:``<dwb plugin>``.``<name>``.strafe_x:
+:``<dwb plugin>``.\ ``<name>``.strafe_x:
 
   ====== =======
   Type   Default
@@ -27,7 +27,7 @@ Parameters
     Description
         	Minimum X velocity before penalty.
 
-:``<dwb plugin>``.``<name>``.strafe_theta:
+:``<dwb plugin>``.\ ``<name>``.strafe_theta:
 
   ====== =======
   Type   Default
@@ -38,7 +38,7 @@ Parameters
     Description
         Minimum angular velocity before applying penalty.
 
-:``<dwb plugin>``.``<name>``.theta_scale:
+:``<dwb plugin>``.\ ``<name>``.theta_scale:
 
   ====== =======
   Type   Default
@@ -49,7 +49,7 @@ Parameters
     Description
         Weight for angular velocity component.
 
-:``<dwb plugin>``.``<name>``.scale:
+:``<dwb plugin>``.\ ``<name>``.scale:
 
   ====== =======
   Type   Default
@@ -60,7 +60,7 @@ Parameters
     Description
         Weighed scale for critic.
 
-:``<dwb plugin>``.``<name>``.scale:
+:``<dwb plugin>``.\ ``<name>``.scale:
 
   ====== =======
   Type   Default

@@ -6,7 +6,7 @@ oscillation
 Parameters
 **********
 
-:``<dwb plugin>``.``<name>``.oscillation_reset_dist:
+:``<dwb plugin>``.\ ``<name>``.oscillation_reset_dist:
 
   ====== =======
   Type   Default
@@ -17,7 +17,7 @@ Parameters
     Description
         Minimum distance to move to reset oscillation watchdog (m).
 
-:``<dwb plugin>``.``<name>``.oscillation_reset_angle:
+:``<dwb plugin>``.\ ``<name>``.oscillation_reset_angle:
 
   ====== =======
   Type   Default
@@ -28,7 +28,7 @@ Parameters
     Description
         Minimum angular distance to move to reset watchdog (rad).
 
-:``<dwb plugin>``.``<name>``.oscillation_reset_time:
+:``<dwb plugin>``.\ ``<name>``.oscillation_reset_time:
 
   ====== =======
   Type   Default
@@ -40,7 +40,7 @@ Parameters
         Duration when a reset may be called. If -1, cannot be reset..
 
 
-:``<dwb plugin>``.``<name>``.x_only_threshold:
+:``<dwb plugin>``.\ ``<name>``.x_only_threshold:
 
   ====== =======
   Type   Default
@@ -51,7 +51,7 @@ Parameters
     Description
         Threshold to check in the X velocity direction.
 
-:``<dwb plugin>``.``<name>``.scale:
+:``<dwb plugin>``.\ ``<name>``.scale:
 
   ====== =======
   Type   Default

@@ -6,7 +6,7 @@ obstacle_footprint
 Parameters
 **********
 
-:``<dwb plugin>``.``<name>``.sum_scores:
+:``<dwb plugin>``.\ ``<name>``.sum_scores:
 
   ==== =======
   Type Default
@@ -17,7 +17,7 @@ Parameters
     Description
         Whether to allow for scores to be summed up.
 
-:``<dwb plugin>``.``<name>``.scale:
+:``<dwb plugin>``.\ ``<name>``.scale:
 
   ====== =======
   Type   Default

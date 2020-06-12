@@ -1,6 +1,6 @@
-.. _configuring_dwb_prefer_forward:
+.. _configuring_dwb_rotate_to_goal:
 
-prefer_forward
+rotate_to_goal
 ==============
 
 **CONFIRM CONTAINS <name>**
@@ -8,7 +8,7 @@ prefer_forward
 Parameters
 **********
 
-:``<dwb plugin>``.``<name>``.xy_goal_tolerance:
+:``<dwb plugin>``.\ ``<name>``.xy_goal_tolerance:
 
   ====== =======
   Type   Default
@@ -19,7 +19,7 @@ Parameters
     Description
         Tolerance to meet goal completion criteria (m).
 
-:``<dwb plugin>``.``<name>``.trans_stopped_velocity:
+:``<dwb plugin>``.\ ``<name>``.trans_stopped_velocity:
 
   ====== =======
   Type   Default
@@ -30,7 +30,7 @@ Parameters
     Description
         Velocity below is considered to be stopped at tolerance met (rad/s).
 
-:``<dwb plugin>``.``<name>``.slowing_factor:
+:``<dwb plugin>``.\ ``<name>``.slowing_factor:
 
   ====== =======
   Type   Default
@@ -41,7 +41,7 @@ Parameters
     Description
        	Factor to slow robot motion by while rotating to goal.
 
-:``<dwb plugin>``.``<name>``.lookahead_time:
+:``<dwb plugin>``.\ ``<name>``.lookahead_time:
 
   ====== =======
   Type   Default
@@ -52,7 +52,7 @@ Parameters
     Description
         If > 0, amount of time to look forward for a collision for..
 
-:``<dwb plugin>``.``<name>``.scale:
+:``<dwb plugin>``.\ ``<name>``.scale:
 
   ====== =======
   Type   Default

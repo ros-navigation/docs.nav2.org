@@ -6,7 +6,7 @@ goal_dist
 Parameters
 **********
 
-:``<dwb plugin>``.``<name>``.aggregation_type:
+:``<dwb plugin>``.\ ``<name>``.aggregation_type:
 
   ====== =======
   Type   Default
@@ -17,7 +17,7 @@ Parameters
     Description
         last, sum, or product combination methods.
 
-:``<dwb plugin>``.``<name>``.scale:
+:``<dwb plugin>``.\ ``<name>``.scale:
 
   ====== =======
   Type   Default
