@@ -17,4 +17,3 @@ the best navigation performance.
    packages/configuring-controller-server.rst
    packages/configuring-dwb-controller.rst
    packages/configuring-map-server.rst
-   params/tunable-params.rst
