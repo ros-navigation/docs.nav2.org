@@ -11,8 +11,8 @@ The DWB controller is the default controller. It is a fork of `David Lu's
 controller <https://github.com/locusrobotics/robot_navigation/tree/master/dwb_local_planner>`_
 modified for ROS 2.
 
-DWB parameters
-**************
+Controller
+**********
 .. toctree::
   :maxdepth: 1
 
@@ -22,7 +22,9 @@ DWB parameters
   dwb-params/visualization.rst
 
 Plugins
-***********
+*******
+
+The plugins listed below are inside the ``dwb_plugins`` namespace.
 
 .. toctree::
   :maxdepth: 1
@@ -36,13 +38,14 @@ Plugins
 Trajectory Critics
 ******************
 
+The trajectory critics listed below are inside the ``dwb_critics`` namespace.
+
 .. toctree::
   :maxdepth: 1
 
   trajectory_critics/base_obstacle.rst
   trajectory_critics/goal_align.rst
   trajectory_critics/goal_dist.rst
-  trajectory_critics/map_grid.rst
   trajectory_critics/obstacle_footprint.rst
   trajectory_critics/oscillation.rst
   trajectory_critics/path_align.rst

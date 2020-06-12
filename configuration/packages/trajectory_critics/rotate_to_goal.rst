@@ -1,12 +1,19 @@
 .. _configuring_dwb_rotate_to_goal:
 
-rotate_to_goal
-==============
+RotateToGoalCritic
+==================
+
+Only allows the robot to rotate to the goal orientation when it is sufficiently close to the goal location.
 
 **CONFIRM CONTAINS <name>**
 
 Parameters
 **********
+
+``<dwb plugin>``: DWB plugin name defined in the **controller_plugin_ids** parameter in :ref:`configuring_controller_server`.
+
+``<name>``: RotateToGoalCritic critic name defined in the **<dwb plugin>.critics** parameter defined in :ref:`dwb_controller`.
+
 
 :``<dwb plugin>``.\ ``<name>``.xy_goal_tolerance:
 
@@ -62,8 +69,3 @@ Parameters
     
     Description
         Weighed scale for critic.
-
-Example
-*******
-
-.. code-block:: yaml

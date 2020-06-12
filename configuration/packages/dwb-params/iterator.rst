@@ -1,10 +1,12 @@
-.. dwb_iterator:
+.. _dwb_iterator:
 
 Iterator
 ========
 
 Parameters
 ----------
+
+``<dwb plugin>``: DWB plugin name defined in the **controller_plugin_ids** parameter in :ref:`configuring_controller_server`.
 
 :``<dwb plugin>``.vx_samples:
 

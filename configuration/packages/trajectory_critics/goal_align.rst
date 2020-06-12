@@ -1,10 +1,16 @@
 .. _configuring_dwb_goal_align:
 
-goal_align
-==========
+GoalAlignCritic
+===============
+
+Scores a trajectory based on how well aligned the trajectory is with the goal pose.
 
 Parameters
 **********
+
+``<dwb plugin>``: DWB plugin name defined in the **controller_plugin_ids** parameter in :ref:`configuring_controller_server`.
+
+``<name>``: GoalAlignCritic critic name defined in the **<dwb plugin>.critics** parameter defined in :ref:`dwb_controller`.
 
 :``<dwb plugin>``.\ ``<name>``.forward_point_distance:
 
@@ -38,8 +44,3 @@ Parameters
     
     Description
         Weighed scale for critic.
-
-Example
-*******
-
-.. code-block:: yaml

@@ -1,10 +1,14 @@
 .. _configuring_dwb_simple_goal_checker_plugin:
 
-simple_goal_checker
-===================
+SimpleGoalChecker
+=================
+
+Checks whether the robot has reached the goal pose.
 
 Parameters
 **********
+
+``<dwb plugin>``: DWB plugin name defined in the **controller_plugin_ids** parameter in :ref:`configuring_controller_server`.
 
 :``<dwb plugin>``.xy_goal_tolerance:
 
@@ -38,8 +42,3 @@ Parameters
     
     Description
         Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.
-
-Example
-*******
-
-.. code-block:: yaml

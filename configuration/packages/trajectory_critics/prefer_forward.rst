@@ -1,10 +1,18 @@
 .. _configuring_dwb_prefer_forward:
 
-prefer_forward
-==============
+PreferForwardCritic
+===================
+
+Scores trajectories that move the robot forwards more highly.
 
 Parameters
 **********
+
+``<dwb plugin>``: DWB plugin name defined in the **controller_plugin_ids** parameter in :ref:`configuring_controller_server`.
+
+``<name>``: PreferForwardCritic critic name defined in the **<dwb plugin>.critics** parameter defined in :ref:`dwb_controller`.
+
+
 :``<dwb plugin>``.\ ``<name>``.penalty:
 
   ====== =======
@@ -70,8 +78,3 @@ Parameters
     
     Description
         Weighed scale for critic.
-
-Example
-*******
-
-.. code-block:: yaml

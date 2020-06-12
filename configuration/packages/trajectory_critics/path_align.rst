@@ -1,10 +1,15 @@
 .. _configuring_dwb_path_align:
 
-path_align
-==========
+PathAlignCritic
+===============
+
+Scores a trajectory based on how well it is aligned to the path provided by the global planner.
 
 Parameters
 **********
+
+``<name>``: PathAlignCritic critic name defined in the **<dwb plugin>.critics** parameter defined in :ref:`dwb_controller`.
+
 
 :``<dwb plugin>``.\ ``<name>``.forward_point_distance:
 
@@ -38,8 +43,3 @@ Parameters
     
     Description
         Weighed scale for critic.
-
-Example
-*******
-
-.. code-block:: yaml

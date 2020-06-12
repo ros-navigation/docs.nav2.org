@@ -1,10 +1,12 @@
 .. _configuring_dwb_stand_traj_gen_plugin:
 
-standard_traj_generator
-=======================
+StandardTrajectoryGenerator
+===========================
 
 Parameters
 **********
+
+``<dwb plugin>``: DWB plugin name defined in the **controller_plugin_ids** parameter in :ref:`configuring_controller_server`.
 
 :``<dwb plugin>``.sim_time:
 
@@ -71,8 +73,3 @@ Parameters
     
     Description
         Whether to include the last pose in the trajectory.
-
-Example
-*******
-
-.. code-block:: yaml
