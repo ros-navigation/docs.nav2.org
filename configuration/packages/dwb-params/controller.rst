@@ -1,6 +1,6 @@
 .. _dwb_controller:
 
-Controller
+DWB Controller
 ==========
 
 Parameters
