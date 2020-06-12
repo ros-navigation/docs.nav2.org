@@ -1,7 +1,7 @@
 .. _dwb_controller:
 
 DWB Controller
-==========
+==============
 
 Parameters
 ----------
