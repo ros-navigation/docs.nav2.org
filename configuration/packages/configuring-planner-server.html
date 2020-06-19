@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,10 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
     <link rel="shortcut icon" href="../../_static/favicon-48x48.png"/>
   
@@ -19,7 +22,9 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -40,10 +45,6 @@
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="NavFn Planner" href="configuring-navfn.html" />
@@ -65,7 +66,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> Navigation 2
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Navigation 2
           
 
           
@@ -95,6 +96,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -425,6 +427,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -469,7 +472,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Configuration Guide</a> &raquo;</li>
         
@@ -538,9 +541,31 @@ It will take in a goal and a planner plugin name to use and call the appropriate
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">List of registered pluginlib planner types to load.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">expected_planner_frequency:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="64%" />
+<col width="36%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>[20.0]</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.</p>
 </dd>
 </dl>
 </td>
@@ -554,6 +579,7 @@ It will take in a goal and a planner plugin name to use and call the appropriate
   <span class="nt">ros__parameters</span><span class="p">:</span>
     <span class="nt">planner_plugin_ids</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;GridBased&#39;</span><span class="p p-Indicator">]</span>
     <span class="nt">planner_plugin_types</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;nav2_navfn_planner/NavfnPlanner&#39;</span><span class="p p-Indicator">]</span>
+    <span class="nt">expected_planner_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20.0</span>
 </pre></div>
 </div>
 </div>
@@ -570,6 +596,7 @@ It will take in a goal and a planner plugin name to use and call the appropriate
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020
 
     </p>
@@ -586,7 +613,6 @@ It will take in a goal and a planner plugin name to use and call the appropriate
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

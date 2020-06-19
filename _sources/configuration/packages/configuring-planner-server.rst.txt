@@ -35,6 +35,17 @@ Parameters
   Description
     List of registered pluginlib planner types to load.
 
+:expected_planner_frequency:
+
+  ============== ========
+  Type           Default
+  -------------- --------
+  double         [20.0]
+  ============== ========
+
+  Description
+    Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.
+
 Example
 *******
 .. code-block:: yaml
@@ -43,3 +54,4 @@ Example
       ros__parameters:
         planner_plugin_ids: ['GridBased']
         planner_plugin_types: ['nav2_navfn_planner/NavfnPlanner']
+        expected_planner_frequency: 20.0
