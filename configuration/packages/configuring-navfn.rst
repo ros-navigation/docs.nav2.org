@@ -53,8 +53,9 @@ Example
 
     planner_server:
       ros__parameters:
-        planner_plugin_ids: ['GridBased']
-        planner_plugin_types: ['nav2_navfn_planner/NavfnPlanner']
-        GridBased.use_astar: True
-        GridBased.allow_unknown: True
-        GridBased.tolerance: 1.0
+        planner_plugins: ['GridBased']
+        GridBased:
+          plugin: 'nav2_navfn_planner/NavfnPlanner'
+          use_astar: True
+          allow_unknown: True
+          tolerance: 1.0
