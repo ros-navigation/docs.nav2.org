@@ -173,7 +173,7 @@ We allow for you to pull the latest docker image from the master branch at any t
 
 .. code:: bash
 
-  sudo docker pull rosplanning/navigation2:latest
+  sudo docker pull rosplanning/navigation2:master.release
 
 !!!!
 
