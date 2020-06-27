@@ -24,17 +24,6 @@ Parameters
   Description
     List of Mapped plugin names for parameters and processing requests.
 
-:GridBased.plugin:
-
-  ============== =================================
-  Type           Default
-  -------------- ---------------------------------
-  string         "nav2_navfn_planner/NavfnPlanner"
-  ============== =================================
-
-  Description
-    Default planner plugin.
-
 :expected_planner_frequency:
 
   ============== ========
@@ -45,6 +34,17 @@ Parameters
 
   Description
     Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.
+
+Default Plugins
+***************
+
+When the :code:`planner_plugins` parameter is not overridden, the following default plugins are loaded:
+
+  ================= =====================================================
+  Namespace         Plugin
+  ----------------- -----------------------------------------------------
+  "GridBased"       "nav2_navfn_planner/NavfnPlanner"
+  ================= =====================================================
 
 Example
 *******

@@ -35,17 +35,6 @@ Parameters
   Description
     List of mapped names for controller plugins for processing requests and parameters.
 
-:FollowPath.plugin:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "dwb_core::DWBLocalPlanner"
-  ============== =============================
-
-  Description
-    Default controller plugin.
-
 :min_x_velocity_threshold:
 
   ============== =============================
@@ -101,6 +90,16 @@ Parameters
   Description
     Maximum amount of time a robot has to move the minimum radius (s).
 
+Default Plugins
+***************
+
+When the :code:`controller_plugins` parameter is not overridden, the following default plugins are loaded:
+
+  ================= =====================================================
+  Namespace         Plugin
+  ----------------- -----------------------------------------------------
+  "FollowPath"      "dwb_core::DWBLocalPlanner"
+  ================= =====================================================
 
 Example
 *******

@@ -134,50 +134,6 @@ Costmap2D ROS Parameters
   Description
     Y origin of the costmap relative to height (m).
 
-:plugins:
-
-  ============== =====================================================
-  Type           Default                                              
-  -------------- -----------------------------------------------------
-  vector<string> {"static_layer", "obstacle_layer", "inflation_layer"}   
-  ============== =====================================================
-
-  Description
-    List of mapped plugin names for parameter namespaces and names.
-
-:static_layer.plugin:
-
-  ============== =====================================================
-  Type           Default
-  -------------- -----------------------------------------------------
-  string         "nav2_costmap_2d::StaticLayer"
-  ============== =====================================================
-
-  Description
-    Default static layer plugin.
-
-:obstacle_layer.plugin:
-
-  ============== =====================================================
-  Type           Default
-  -------------- -----------------------------------------------------
-  string         "nav2_costmap_2d::ObstacleLayer"
-  ============== =====================================================
-
-  Description
-    Default obstacle layer plugin.
-
-:inflation_layer.plugin:
-
-  ============== =====================================================
-  Type           Default
-  -------------- -----------------------------------------------------
-  string         "nav2_costmap_2d::InflationLayer"
-  ============== =====================================================
-
-  Description
-    Default inflation layer plugin.
-
 :publish_frequency:
 
   ============== =======
@@ -310,6 +266,31 @@ Costmap2D ROS Parameters
   Description
     Layers that may be cleared using the clearing service.
 
+:plugins:
+
+  ============== =====================================================
+  Type           Default
+  -------------- -----------------------------------------------------
+  vector<string> {"static_layer", "obstacle_layer", "inflation_layer"}
+  ============== =====================================================
+
+  Description
+    List of mapped plugin names for parameter namespaces and names.
+
+Default Plugins
+***************
+
+When the :code:`plugins` parameter is not overridden, the following default plugins are loaded:
+
+  ================= =====================================================
+  Namespace         Plugin
+  ----------------- -----------------------------------------------------
+  "static_layer"    "nav2_costmap_2d::StaticLayer"
+  ----------------- -----------------------------------------------------
+  "obstacle_layer"  "nav2_costmap_2d::ObstacleLayer"
+  ----------------- -----------------------------------------------------
+  "inflation_layer" "nav2_costmap_2d::InflationLayer"
+  ================= =====================================================
 
 Plugin Parameters
 *****************

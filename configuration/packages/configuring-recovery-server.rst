@@ -92,38 +92,20 @@ Recovery Server Parameters
   Description
     List of plugin names to use, also matches action server names.
 
-:spin.plugin:
+Default Plugins
+***************
 
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "nav2_recoveries/Spin"
-  ============== =============================
+When the :code:`recovery_plugins` parameter is not overridden, the following default plugins are loaded:
 
-  Description
-    Default spin recovery plugin.
-
-:backup.plugin:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "nav2_recoveries/BackUp"
-  ============== =============================
-
-  Description
-    Default backup recovery plugin.
-
-:wait.plugin:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "nav2_recoveries/Wait"
-  ============== =============================
-
-  Description
-    Default wait recovery plugin.
+  ================= =====================================================
+  Namespace         Plugin
+  ----------------- -----------------------------------------------------
+  "spin"            "nav2_recoveries/Spin"
+  ----------------- -----------------------------------------------------
+  "backup"          "nav2_recoveries/BackUp"
+  ----------------- -----------------------------------------------------
+  "wait"            "nav2_recoveries/Wait"
+  ================= =====================================================
 
 Spin Recovery Parameters
 ************************
