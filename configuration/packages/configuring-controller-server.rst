@@ -24,7 +24,7 @@ Parameters
   Description
     Frequency to run controller (Hz).
 
-:controller_plugin_ids:
+:controller_plugins:
 
   ============== ==============
   Type           Default                                               
@@ -34,17 +34,6 @@ Parameters
 
   Description
     List of mapped names for controller plugins for processing requests and parameters.
-
-:controller_plugin_types:
-
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  vector<string> ['dwb_core::DWBLocalPlanner']            
-  ============== =============================
-
-  Description
-    List of registered plugins to load.
 
 :min_x_velocity_threshold:
 
@@ -101,6 +90,16 @@ Parameters
   Description
     Maximum amount of time a robot has to move the minimum radius (s).
 
+Default Plugins
+***************
+
+When the :code:`controller_plugins` parameter is not overridden, the following default plugins are loaded:
+
+  ================= =====================================================
+  Namespace         Plugin
+  ----------------- -----------------------------------------------------
+  "FollowPath"      "dwb_core::DWBLocalPlanner"
+  ================= =====================================================
 
 Example
 *******
@@ -109,10 +108,11 @@ Example
     controller_server:
       ros__parameters:
         controller_frequency: 20.0
-        controller_plugin_ids: ['FollowPath']
-        controller_plugin_types: ['dwb_core::DWBLocalPlanner']
         min_x_velocity_threshold: 0.01
         min_y_velocity_threshold: 0.0
         min_theta_velocity_threshold: 0.1
         required_movement_radius: 0.5
         movement_time_allowance: 5.0
+        controller_plugins: ['FollowPath']
+        FollowPath:
+          plugin: "dwb_core::DWBLocalPlanner"

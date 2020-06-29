@@ -1,6 +1,6 @@
 .. _dwb_xytheta_iterator:
 
- XYTheta Iterator
+XYTheta Iterator
 =================
 
 Parameters
