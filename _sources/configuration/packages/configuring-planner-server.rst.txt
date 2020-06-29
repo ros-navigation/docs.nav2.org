@@ -13,7 +13,7 @@ It will take in a goal and a planner plugin name to use and call the appropriate
 Parameters
 **********
 
-:planner_plugin_ids:
+:planner_plugins:
 
   ============== ==============
   Type           Default                                               
@@ -23,17 +23,6 @@ Parameters
 
   Description
     List of Mapped plugin names for parameters and processing requests.
-
-:planner_plugin_types:
-
-  ============== ===================================
-  Type           Default                                               
-  -------------- -----------------------------------
-  vector<string> ['nav2_navfn_planner/NavfnPlanner']            
-  ============== ===================================
-
-  Description
-    List of registered pluginlib planner types to load.
 
 :expected_planner_frequency:
 
@@ -46,12 +35,24 @@ Parameters
   Description
     Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.
 
+Default Plugins
+***************
+
+When the :code:`planner_plugins` parameter is not overridden, the following default plugins are loaded:
+
+  ================= =====================================================
+  Namespace         Plugin
+  ----------------- -----------------------------------------------------
+  "GridBased"       "nav2_navfn_planner/NavfnPlanner"
+  ================= =====================================================
+
 Example
 *******
 .. code-block:: yaml
 
     planner_server:
       ros__parameters:
-        planner_plugin_ids: ['GridBased']
-        planner_plugin_types: ['nav2_navfn_planner/NavfnPlanner']
         expected_planner_frequency: 20.0
+        planner_plugins: ['GridBased']
+        GridBased:
+          plugin: 'nav2_navfn_planner/NavfnPlanner'

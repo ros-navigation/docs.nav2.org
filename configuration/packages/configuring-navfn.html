@@ -291,6 +291,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-costmaps.html">Costmap 2D</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/static.html">Static Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
@@ -308,6 +309,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-planner-server.html">Planner Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#example">Example</a></li>
 </ul>
 </li>
@@ -318,13 +320,14 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-controller-server.html">Controller Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-dwb-controller.html">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/controller.html">DWB Controller</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dwb-params/iterator.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dwb-params/iterator.html">XYTheta Iterator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/kinematic.html">Kinematic Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/visualization.html">Publisher</a></li>
 </ul>
@@ -365,6 +368,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-recovery-server.html">Recovery Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#recovery-server-parameters">Recovery Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#spin-recovery-parameters">Spin Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#backup-recovery-parameters">BackUp Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#example">Example</a></li>
@@ -577,11 +581,12 @@
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span>
   <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="nt">planner_plugin_ids</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;GridBased&#39;</span><span class="p p-Indicator">]</span>
-    <span class="nt">planner_plugin_types</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;nav2_navfn_planner/NavfnPlanner&#39;</span><span class="p p-Indicator">]</span>
-    <span class="nt">GridBased.use_astar</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="nt">GridBased.allow_unknown</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="nt">GridBased.tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+    <span class="nt">planner_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;GridBased&#39;</span><span class="p p-Indicator">]</span>
+    <span class="nt">GridBased</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&#39;nav2_navfn_planner/NavfnPlanner&#39;</span>
+      <span class="nt">use_astar</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">allow_unknown</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
 </pre></div>
 </div>
 </div>

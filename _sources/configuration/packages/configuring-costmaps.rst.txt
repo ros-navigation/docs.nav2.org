@@ -134,28 +134,6 @@ Costmap2D ROS Parameters
   Description
     Y origin of the costmap relative to height (m).
 
-:plugin_names:
-
-  ============== =====================================================
-  Type           Default                                              
-  -------------- -----------------------------------------------------
-  vector<string> {"static_layer", "obstacle_layer", "inflation_layer"}   
-  ============== =====================================================
-
-  Description
-    List of mapped plugin names for parameter namespaces and names.
-
-:plugin_types:
-
-  ============== =====================================================================================================
-  Type           Default                                                                                              
-  -------------- -----------------------------------------------------------------------------------------------------
-  vector<string> {"nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::InflationLayer"}   
-  ============== =====================================================================================================
-
-  Description
-    List of registered plugins to map to names and load.
-
 :publish_frequency:
 
   ============== =======
@@ -288,6 +266,31 @@ Costmap2D ROS Parameters
   Description
     Layers that may be cleared using the clearing service.
 
+:plugins:
+
+  ============== =====================================================
+  Type           Default
+  -------------- -----------------------------------------------------
+  vector<string> {"static_layer", "obstacle_layer", "inflation_layer"}
+  ============== =====================================================
+
+  Description
+    List of mapped plugin names for parameter namespaces and names.
+
+Default Plugins
+***************
+
+When the :code:`plugins` parameter is not overridden, the following default plugins are loaded:
+
+  ================= =====================================================
+  Namespace         Plugin
+  ----------------- -----------------------------------------------------
+  "static_layer"    "nav2_costmap_2d::StaticLayer"
+  ----------------- -----------------------------------------------------
+  "obstacle_layer"  "nav2_costmap_2d::ObstacleLayer"
+  ----------------- -----------------------------------------------------
+  "inflation_layer" "nav2_costmap_2d::InflationLayer"
+  ================= =====================================================
 
 Plugin Parameters
 *****************
@@ -313,11 +316,11 @@ Example
           global_frame: map
           robot_base_frame: base_link
           use_sim_time: True
-          plugin_names: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"]
-          plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_costmap_2d::InflationLayer"]
           robot_radius: 0.22 # radius set and used, so no footprint points
           resolution: 0.05
+          plugins: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"]
           obstacle_layer:
+            plugin: "nav2_costmap_2d::ObstacleLayer"
             enabled: True
             observation_sources: scan
             footprint_clearing_enabled: true
@@ -334,6 +337,7 @@ Example
               data_type: "LaserScan"
               inf_is_valid: false
           voxel_layer:
+            plugin: "nav2_costmap_2d::VoxelLayer"
             enabled: True
             footprint_clearing_enabled: true
             max_obstacle_height: 2.0
@@ -356,11 +360,13 @@ Example
               marking: True
               data_type: "PointCloud2"
           static_layer:
+            plugin: "nav2_costmap_2d::StaticLayer"
             map_subscribe_transient_local: True
             enabled: true
             subscribe_to_updates: true
             transform_tolerance: 0.1
           inflation_layer:
+            plugin: "nav2_costmap_2d::InflationLayer"
             enabled: true
             inflation_radius: 0.55
             cost_scaling_factor: 1.0

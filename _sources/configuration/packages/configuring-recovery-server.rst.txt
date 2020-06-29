@@ -81,7 +81,7 @@ Recovery Server Parameters
   Description
     Robot base frame.
 
-:plugin_names:
+:recovery_plugins:
 
   ============== =============================
   Type           Default                                               
@@ -92,17 +92,20 @@ Recovery Server Parameters
   Description
     List of plugin names to use, also matches action server names.
 
-:plugin_types:
+Default Plugins
+***************
 
-  ============== ==========================================================================
-  Type           Default                                                                   
-  -------------- --------------------------------------------------------------------------
-  vector<string> {"nav2_recoveries/Spin", "nav2_recoveries/BackUp", "nav2_recoveries/Wait"}
-  ============== ==========================================================================
+When the :code:`recovery_plugins` parameter is not overridden, the following default plugins are loaded:
 
-  Description
-    List of registered plugin to map to names.
-
+  ================= =====================================================
+  Namespace         Plugin
+  ----------------- -----------------------------------------------------
+  "spin"            "nav2_recoveries/Spin"
+  ----------------- -----------------------------------------------------
+  "backup"          "nav2_recoveries/BackUp"
+  ----------------- -----------------------------------------------------
+  "wait"            "nav2_recoveries/Wait"
+  ================= =====================================================
 
 Spin Recovery Parameters
 ************************
@@ -178,8 +181,13 @@ Example
         costmap_topic: local_costmap/costmap_raw
         footprint_topic: local_costmap/published_footprint
         cycle_frequency: 10.0
-        plugin_names: ["spin", "backup", "wait"]
-        plugin_types: ["nav2_recoveries/Spin", "nav2_recoveries/BackUp", "nav2_recoveries/Wait"]
+        recovery_plugins: ["spin", "backup", "wait"]
+        spin:
+          plugin: "nav2_recoveries/Spin"
+        backup:
+          plugin: "nav2_recoveries/BackUp"
+        wait:
+          plugin: "nav2_recoveries/Wait"
         global_frame: odom
         robot_base_frame: base_link
         transform_timeout: 0.1

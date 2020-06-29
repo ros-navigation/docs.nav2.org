@@ -291,6 +291,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html">Costmap 2D</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/static.html">Static Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
@@ -308,6 +309,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html">Planner Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#example">Example</a></li>
 </ul>
 </li>
@@ -318,13 +320,14 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html">Controller Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-dwb-controller.html">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/dwb-params/controller.html">DWB Controller</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/dwb-params/iterator.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/dwb-params/iterator.html">XYTheta Iterator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/dwb-params/kinematic.html">Kinematic Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/dwb-params/visualization.html">Publisher</a></li>
 </ul>
@@ -365,6 +368,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-recovery-server.html">Recovery Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-recovery-server.html#recovery-server-parameters">Recovery Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-recovery-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-recovery-server.html#spin-recovery-parameters">Spin Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-recovery-server.html#backup-recovery-parameters">BackUp Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-recovery-server.html#example">Example</a></li>
@@ -514,7 +518,47 @@ Proposals to reduce this latency will be considered before the next release.</p>
 <h2>Server Updates<a class="headerlink" href="#server-updates" title="Permalink to this headline">¶</a></h2>
 <p>All plugin servers (controller, planner, recovery) now supports the use of multiple plugins.
 This can be done by loading a map of plugins, mapping the name of the plugin to its intended use-case.
-An example: <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> controller of type <code class="docutils literal notranslate"><span class="pre">dwb_local_planner/DWBLocalPlanner</span></code> and a <code class="docutils literal notranslate"><span class="pre">DynamicFollowPath</span></code> of type <code class="docutils literal notranslate"><span class="pre">teb_local_planner/TEBLocalPlanner</span></code>.
+Each server defines a parameter where the list of names for the plugins to be loaded can be defined.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Server Name</th>
+<th class="head">Plugin Parameter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Controller Server</td>
+<td>controller_plugins</td>
+</tr>
+<tr class="row-odd"><td>Planner Server</td>
+<td>planner_plugins</td>
+</tr>
+<tr class="row-even"><td>Recovery Server</td>
+<td>recovery_plugins</td>
+</tr>
+<tr class="row-odd"><td>Costmap Node</td>
+<td>plugins</td>
+</tr>
+</tbody>
+</table>
+<p>The type of plugin to be mapped to a particular name has to be defined using the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter in the plugin namespace for each name defined in the server plugin list.
+Each name in the plugin parameter list is expected to have the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter defined.</p>
+<p>An example: <code class="docutils literal notranslate"><span class="pre">controller_server</span></code> defines the parameter <code class="docutils literal notranslate"><span class="pre">controller_plugins</span></code> where a list of plugin names can be defined:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;DynamicFollowPath&quot;</span><span class="p p-Indicator">]</span>
+    <span class="nt">FollowPath</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;dwb_core/DWBLocalPlanner&quot;</span>
+      <span class="nt">max_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
+    <span class="nt">DynamicFollowPath</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;teb_local_planner/TEBLocalPlanner&quot;</span>
+      <span class="nt">max_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> controller is of type <code class="docutils literal notranslate"><span class="pre">dwb_local_planner/DWBLocalPlanner</span></code> and <code class="docutils literal notranslate"><span class="pre">DynamicFollowPath</span></code> of type <code class="docutils literal notranslate"><span class="pre">teb_local_planner/TEBLocalPlanner</span></code>.
 Each plugin will load the parameters in their namespace, e.g. <code class="docutils literal notranslate"><span class="pre">FollowPath.max_vel_x</span></code>, rather than globally in the server namespace.
 This will allow multiple plugins of the same type with different parameters and reduce conflicting parameter names.</p>
 <p>DWB Contains new parameters as an update relative to the ROS1 updates, <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1501">see here for more information</a>.

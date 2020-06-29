@@ -25,7 +25,39 @@ Server Updates
 **************
 All plugin servers (controller, planner, recovery) now supports the use of multiple plugins.
 This can be done by loading a map of plugins, mapping the name of the plugin to its intended use-case.
-An example: ``FollowPath`` controller of type ``dwb_local_planner/DWBLocalPlanner`` and a ``DynamicFollowPath`` of type ``teb_local_planner/TEBLocalPlanner``.
+Each server defines a parameter where the list of names for the plugins to be loaded can be defined.
+
++-----------------------+------------------------+
+|      Server Name      |    Plugin Parameter    |
++=======================+========================+
+| Controller Server     | controller_plugins     |
++-----------------------+------------------------+
+| Planner Server        | planner_plugins        |
++-----------------------+------------------------+
+| Recovery Server       | recovery_plugins       |
++-----------------------+------------------------+
+| Costmap Node          | plugins                |
++-----------------------+------------------------+
+
+The type of plugin to be mapped to a particular name has to be defined using the ``plugin`` parameter in the plugin namespace for each name defined in the server plugin list.
+Each name in the plugin parameter list is expected to have the ``plugin`` parameter defined.
+
+An example: ``controller_server`` defines the parameter ``controller_plugins`` where a list of plugin names can be defined:
+
+.. code-block:: yaml
+
+    controller_server:
+      ros__parameters:
+        controller_plugins: ["FollowPath", "DynamicFollowPath"]
+        FollowPath:
+          plugin: "dwb_core/DWBLocalPlanner"
+          max_vel_x: 0.26
+        DynamicFollowPath:
+          plugin: "teb_local_planner/TEBLocalPlanner"
+          max_vel_x: 0.5
+
+
+``FollowPath`` controller is of type ``dwb_local_planner/DWBLocalPlanner`` and ``DynamicFollowPath`` of type ``teb_local_planner/TEBLocalPlanner``.
 Each plugin will load the parameters in their namespace, e.g. ``FollowPath.max_vel_x``, rather than globally in the server namespace.
 This will allow multiple plugins of the same type with different parameters and reduce conflicting parameter names.
 

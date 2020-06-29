@@ -291,6 +291,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-costmaps.html">Costmap 2D</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/static.html">Static Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
@@ -308,6 +309,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-planner-server.html">Planner Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#example">Example</a></li>
 </ul>
 </li>
@@ -318,13 +320,14 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-controller-server.html">Controller Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/controller.html">DWB Controller</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dwb-params/iterator.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dwb-params/iterator.html">XYTheta Iterator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/kinematic.html">Kinematic Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/visualization.html">Publisher</a></li>
 </ul>
@@ -365,6 +368,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-recovery-server.html">Recovery Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#recovery-server-parameters">Recovery Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#spin-recovery-parameters">Spin Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#backup-recovery-parameters">BackUp Recovery Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#example">Example</a></li>
@@ -504,7 +508,7 @@ modified for ROS 2.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dwb-params/controller.html">DWB Controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dwb-params/iterator.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dwb-params/iterator.html">XYTheta Iterator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dwb-params/kinematic.html">Kinematic Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dwb-params/visualization.html">Publisher</a></li>
 </ul>
@@ -547,50 +551,51 @@ modified for ROS 2.</p>
     <span class="c1"># controller server parameters (see Controller Server for more info)</span>
     <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
     <span class="nt">controller_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20.0</span>
-    <span class="nt">controller_plugin_types</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span><span class="p p-Indicator">]</span>
-    <span class="nt">controller_plugin_ids</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
     <span class="nt">min_x_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
     <span class="nt">min_y_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
     <span class="nt">min_theta_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
+    <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
 
     <span class="c1"># DWB controller parameters</span>
-    <span class="nt">FollowPath.debug_trajectory_details</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="nt">FollowPath.min_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">FollowPath.min_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">FollowPath.max_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
-    <span class="nt">FollowPath.max_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">FollowPath.max_vel_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
-    <span class="nt">FollowPath.min_speed_xy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">FollowPath.max_speed_xy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
-    <span class="nt">FollowPath.min_speed_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">FollowPath.acc_lim_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
-    <span class="nt">FollowPath.acc_lim_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">FollowPath.acc_lim_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
-    <span class="nt">FollowPath.decel_lim_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-2.5</span>
-    <span class="nt">FollowPath.decel_lim_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">FollowPath.decel_lim_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-3.2</span>
-    <span class="nt">FollowPath.vx_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
-    <span class="nt">FollowPath.vy_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-    <span class="nt">FollowPath.vtheta_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
-    <span class="nt">FollowPath.sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.7</span>
-    <span class="nt">FollowPath.linear_granularity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
-    <span class="nt">FollowPath.angular_granularity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.025</span>
-    <span class="nt">FollowPath.transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
-    <span class="nt">FollowPath.xy_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
-    <span class="nt">FollowPath.trans_stopped_velocity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
-    <span class="nt">FollowPath.short_circuit_trajectory_evaluation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="nt">FollowPath.stateful</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="nt">FollowPath.critics</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;RotateToGoal&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;Oscillation&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;BaseObstacle&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;GoalAlign&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PathAlign&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PathDist&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;GoalDist&quot;</span><span class="p p-Indicator">]</span>
-    <span class="nt">FollowPath.BaseObstacle.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.02</span>
-    <span class="nt">FollowPath.PathAlign.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
-    <span class="nt">FollowPath.GoalAlign.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24.0</span>
-    <span class="nt">FollowPath.PathAlign.forward_point_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-    <span class="nt">FollowPath.GoalAlign.forward_point_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-    <span class="nt">FollowPath.PathDist.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
-    <span class="nt">FollowPath.GoalDist.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24.0</span>
-    <span class="nt">FollowPath.RotateToGoal.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
-    <span class="nt">FollowPath.RotateToGoal.slowing_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
-    <span class="nt">FollowPath.RotateToGoal.lookahead_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+    <span class="nt">FollowPath</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span>
+      <span class="nt">debug_trajectory_details</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">min_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+      <span class="nt">min_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+      <span class="nt">max_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
+      <span class="nt">max_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+      <span class="nt">max_vel_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">min_speed_xy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+      <span class="nt">max_speed_xy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
+      <span class="nt">min_speed_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+      <span class="nt">acc_lim_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
+      <span class="nt">acc_lim_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+      <span class="nt">acc_lim_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
+      <span class="nt">decel_lim_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-2.5</span>
+      <span class="nt">decel_lim_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+      <span class="nt">decel_lim_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-3.2</span>
+      <span class="nt">vx_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+      <span class="nt">vy_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+      <span class="nt">vtheta_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+      <span class="nt">sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.7</span>
+      <span class="nt">linear_granularity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+      <span class="nt">angular_granularity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.025</span>
+      <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
+      <span class="nt">xy_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+      <span class="nt">trans_stopped_velocity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+      <span class="nt">short_circuit_trajectory_evaluation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">stateful</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">critics</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;RotateToGoal&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;Oscillation&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;BaseObstacle&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;GoalAlign&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PathAlign&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PathDist&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;GoalDist&quot;</span><span class="p p-Indicator">]</span>
+      <span class="nt">BaseObstacle.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.02</span>
+      <span class="nt">PathAlign.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
+      <span class="nt">GoalAlign.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24.0</span>
+      <span class="nt">PathAlign.forward_point_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+      <span class="nt">GoalAlign.forward_point_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+      <span class="nt">PathDist.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
+      <span class="nt">GoalDist.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24.0</span>
+      <span class="nt">RotateToGoal.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
+      <span class="nt">RotateToGoal.slowing_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+      <span class="nt">RotateToGoal.lookahead_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1.0</span>
 </pre></div>
 </div>
 </div>
