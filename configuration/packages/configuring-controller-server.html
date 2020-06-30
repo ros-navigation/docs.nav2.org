@@ -549,6 +549,17 @@ It will take in a path and a controller plugin name to use and call the appropri
 <dt>Description</dt>
 <dd><p class="first last">List of mapped names for controller plugins for processing requests and parameters.</p>
 </dd>
+<dt>Note</dt>
+<dd><p class="first">Each plugin namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<p>Example:</p>
+<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
+    <span class="nt">FollowPath</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span>
+</pre></div>
+</div>
+</dd>
 </dl>
 </td>
 </tr>

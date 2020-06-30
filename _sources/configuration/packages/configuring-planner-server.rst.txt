@@ -24,6 +24,20 @@ Parameters
   Description
     List of Mapped plugin names for parameters and processing requests.
 
+  Note
+    Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
+
+    Example:
+
+    .. code-block:: yaml
+
+        planner_server:
+          ros__parameters:
+            planner_plugins: ["GridBased"]
+            GridBased:
+              plugin: "nav2_navfn_planner/NavfnPlanner"
+    ..
+
 :expected_planner_frequency:
 
   ============== ========
