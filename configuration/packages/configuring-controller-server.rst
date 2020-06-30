@@ -35,6 +35,20 @@ Parameters
   Description
     List of mapped names for controller plugins for processing requests and parameters.
 
+  Note
+    Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
+
+    Example:
+
+    .. code-block:: yaml
+
+        controller_server:
+          ros__parameters:
+            controller_plugins: ["FollowPath"]
+            FollowPath:
+              plugin: "dwb_core::DWBLocalPlanner"
+    ..
+
 :min_x_velocity_threshold:
 
   ============== =============================

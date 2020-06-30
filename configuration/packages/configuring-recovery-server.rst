@@ -92,6 +92,24 @@ Recovery Server Parameters
   Description
     List of plugin names to use, also matches action server names.
 
+  Note
+    Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
+
+    Example:
+
+    .. code-block:: yaml
+
+        recoveries_server:
+          ros__parameters:
+            recovery_plugins: ["spin", "backup", "wait"]
+            spin:
+              plugin: "nav2_recoveries/Spin"
+            backup:
+              plugin: "nav2_recoveries/BackUp"
+            wait:
+              plugin: "nav2_recoveries/Wait"
+    ..
+
 Default Plugins
 ***************
 

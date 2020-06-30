@@ -277,6 +277,24 @@ Costmap2D ROS Parameters
   Description
     List of mapped plugin names for parameter namespaces and names.
 
+  Note
+    Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
+
+    Example:
+
+    .. code-block:: yaml
+
+        local_costmap:
+          ros__parameters:
+            plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"]
+            obstacle_layer:
+              plugin: "nav2_costmap_2d::ObstacleLayer"
+            voxel_layer:
+              plugin: "nav2_costmap_2d::VoxelLayer"
+            inflation_layer:
+              plugin: "nav2_costmap_2d::InflationLayer"
+    ..
+
 Default Plugins
 ***************
 
