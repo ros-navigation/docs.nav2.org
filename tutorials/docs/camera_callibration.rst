@@ -166,7 +166,7 @@ Running the Camera Calibration
 
 9-Press the save button to see the result. Data is saved to  "/tmp/calibrationdata.tar.gz"
 
-10- To use the the calibration file unzip the calibration.tar,gz
+10-To use the the calibration file unzip the calibration.tar,gz
        ``tar -xvf calibration.tar.gz``
 
 11-In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.
