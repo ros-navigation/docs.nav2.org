@@ -46,7 +46,7 @@ Running the Camera Calibration
 
        ``ros2 topic list``
 
-4- This will show you all the topics published make sure that there is an image_raw topic /camera/image_raw.To confirm that its a real topic and actually publishing check topic hz:
+4- This will show you all the topics published make sure that there is an image_raw topic /camera/image_raw. To confirm that its a real topic and actually publishing check topic hz:
 
  ``ros2 topic hz /camera/image_raw``
 
