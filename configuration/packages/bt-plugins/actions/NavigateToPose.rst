@@ -3,7 +3,7 @@
 NavigateToPose
 ==============
 
-Invokes the NavigateToPose ROS2 action server, which is implemented by the bt_navigator_ module.
+Invokes the NavigateToPose ROS 2 action server, which is implemented by the bt_navigator_ module.
 
 .. _bt_navigator: https://github.com/ros-planning/navigation2/tree/master/nav2_bt_navigator
 

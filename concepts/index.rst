@@ -5,18 +5,18 @@ Navigation Concepts
 
 This page is to help familiarize new robotists to the concepts of mobile robot navigation, in particular, with the concepts required to appreciating and working with this project.
 
-ROS2
-****
+ROS 2
+*****
 
-ROS2 is the core middleware used for Navigation2. If you are unfamilar with this, please visit `the ROS2 documentation <https://index.ros.org/doc/ros2/>`_ before continuing.
+ROS 2 is the core middleware used for Navigation2. If you are unfamilar with this, please visit `the ROS 2 documentation <https://index.ros.org/doc/ros2/>`_ before continuing.
 
 Action Server
 =============
 
 Just as in ROS, action servers are a common way to control long running tasks like navigation.
 This stack makes more extensive use of actions, and in some cases, without an easy topic interface.
-It is more important to understand action servers as a developer in ROS2.
-Some simple CLI examples can be found in the `ROS2 documementation <https://index.ros.org/doc/ros2/Tutorials/Understanding-ROS2-Actions/>`_.
+It is more important to understand action servers as a developer in ROS 2.
+Some simple CLI examples can be found in the `ROS 2 documementation <https://index.ros.org/doc/ros2/Tutorials/Understanding-ROS2-Actions/>`_.
 
 Action servers are similar to a canonical service server.
 A client will request some task to be completed, except, this task may take a long time.
@@ -40,9 +40,9 @@ Each will have their own unique ``.action`` type in ``nav2_msgs`` for interactin
 Lifecycle Nodes
 ===============
 
-Lifecycle (or Managed, more correctly) nodes are unique to ROS2.
+Lifecycle (or Managed, more correctly) nodes are unique to ROS 2.
 More information can be `found here <https://design.ros2.org/articles/node_lifecycle.html>`_.
-They are nodes that contain state machine transitions for bringup and teardown of ROS2 servers.
+They are nodes that contain state machine transitions for bringup and teardown of ROS 2 servers.
 This helps in determinstic behavior of ROS systems in startup and shutdown.
 It also helps users structure their programs in reasonable ways for commercial uses and debugging.
 
@@ -143,7 +143,7 @@ However, many classes of plans and routes exist which are supported.
 Controllers
 ===========
 
-Controllers, also known as local planners in ROS1, are the way we follow the globally computed path or complete a local task.
+Controllers, also known as local planners in ROS 1, are the way we follow the globally computed path or complete a local task.
 The controller will have access to a local environment representation to attempt to compute feasible control efforts for the base to follow.
 Many controller will project the robot forward in space and compute a locally feasible path at each update iteration.
 Controllers can be written to:
@@ -192,7 +192,7 @@ Standards
 These conventions should be followed at all times to make use of the rich positioning, odometry, and slam projects available in the community.
 
 In a nutshell, REP-105 says that you must, at minimum, build a TF tree that contains a full ``map`` -> ``odom`` -> ``base_link`` -> ``[sensor frames]`` for your robot.
-TF2 are the time-variant transformation library in ROS2 we use to represent and obtain time synchronized transformations.
+TF2 are the time-variant transformation library in ROS 2 we use to represent and obtain time synchronized transformations.
 It is the job of the global positioning system (GPS, SLAM, Motion Capture) to, at minimum, provide the ``map`` -> ``odom`` transformation.
 It is then the role of the odometry system to provide the ``odom`` -> ``base_link`` transformation.
 The remainder of the transformations relative to ``base_link`` should be static and defined in your `URDF <http://wiki.ros.org/urdf>`_.

@@ -22,7 +22,7 @@ Before starting the tutorial, please check this `video <https://vimeo.com/106994
 Requirements
 ============
 
-It is assumed that ROS2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in :ref:`build-instructions`.
+It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in :ref:`build-instructions`.
 
 Tutorial Steps
 ==============
@@ -31,7 +31,7 @@ Tutorial Steps
 -------------------------------
 
 For a demonstration, this example will creates a costmap plugin that puts repeating costs gradients in the costmap.
-The annotated code for this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as the ``nav2_gradient_costmap_plugin`` ROS2-package.
+The annotated code for this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as the ``nav2_gradient_costmap_plugin`` ROS 2-package.
 Please refer to it when making your own layer plugin for Costmap2D.
 
 The plugin class ``nav2_gradient_costmap_plugin::GradientLayer`` is inherited from basic class ``nav2_costmap_2d::Layer``:
@@ -172,7 +172,7 @@ Plugin description file is also should be added to ``package.xml``. ``costmap_2d
     ...
   </export>
 
-After everything is done put the plugin package into ``src`` directory of a certain ROS2-workspace, build the plugin package (``colcon build --packages-select nav2_gradient_costmap_plugin --symlink-install``) and source ``setup.bash`` file when it necessary.
+After everything is done put the plugin package into ``src`` directory of a certain ROS 2-workspace, build the plugin package (``colcon build --packages-select nav2_gradient_costmap_plugin --symlink-install``) and source ``setup.bash`` file when it necessary.
 
 Now the plugin is ready to use.
 
