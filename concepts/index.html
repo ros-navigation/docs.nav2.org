@@ -149,7 +149,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Navigation Concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ros2">ROS2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ros-2">ROS 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#action-server">Action Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lifecycle-nodes">Lifecycle Nodes</a></li>
 </ul>
@@ -411,7 +411,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../about/index.html">About and Contact</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../about/robots.html">Robots Using</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/ros1_comparison.html">ROS to ROS2 Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/ros1_comparison.html">ROS to ROS 2 Navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../about/index.html#id1">About</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../about/index.html#contact">Contact</a></li>
 </ul>
@@ -419,7 +419,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/create_configuration_assistant.html">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS2 and Environmental Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS 2 and Environmental Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/testing.html">4. Advanced Navigation Testing Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/navigation_rebranding.html">5. Navigation Branding and Website</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/localization.html">6. 2D/3D Localization Improvements</a></li>
@@ -498,15 +498,15 @@
   <div class="section" id="navigation-concepts">
 <span id="concepts"></span><h1>Navigation Concepts<a class="headerlink" href="#navigation-concepts" title="Permalink to this headline">¶</a></h1>
 <p>This page is to help familiarize new robotists to the concepts of mobile robot navigation, in particular, with the concepts required to appreciating and working with this project.</p>
-<div class="section" id="ros2">
-<h2>ROS2<a class="headerlink" href="#ros2" title="Permalink to this headline">¶</a></h2>
-<p>ROS2 is the core middleware used for Navigation2. If you are unfamilar with this, please visit <a class="reference external" href="https://index.ros.org/doc/ros2/">the ROS2 documentation</a> before continuing.</p>
+<div class="section" id="ros-2">
+<h2>ROS 2<a class="headerlink" href="#ros-2" title="Permalink to this headline">¶</a></h2>
+<p>ROS 2 is the core middleware used for Navigation2. If you are unfamilar with this, please visit <a class="reference external" href="https://index.ros.org/doc/ros2/">the ROS 2 documentation</a> before continuing.</p>
 <div class="section" id="action-server">
 <h3>Action Server<a class="headerlink" href="#action-server" title="Permalink to this headline">¶</a></h3>
 <p>Just as in ROS, action servers are a common way to control long running tasks like navigation.
 This stack makes more extensive use of actions, and in some cases, without an easy topic interface.
-It is more important to understand action servers as a developer in ROS2.
-Some simple CLI examples can be found in the <a class="reference external" href="https://index.ros.org/doc/ros2/Tutorials/Understanding-ROS2-Actions/">ROS2 documementation</a>.</p>
+It is more important to understand action servers as a developer in ROS 2.
+Some simple CLI examples can be found in the <a class="reference external" href="https://index.ros.org/doc/ros2/Tutorials/Understanding-ROS2-Actions/">ROS 2 documementation</a>.</p>
 <p>Action servers are similar to a canonical service server.
 A client will request some task to be completed, except, this task may take a long time.
 An example would be moving the shovel up from a bulldozer or ask a robot to travel 10 meters to the right.</p>
@@ -525,9 +525,9 @@ Each will have their own unique <code class="docutils literal notranslate"><span
 </div>
 <div class="section" id="lifecycle-nodes">
 <h3>Lifecycle Nodes<a class="headerlink" href="#lifecycle-nodes" title="Permalink to this headline">¶</a></h3>
-<p>Lifecycle (or Managed, more correctly) nodes are unique to ROS2.
+<p>Lifecycle (or Managed, more correctly) nodes are unique to ROS 2.
 More information can be <a class="reference external" href="https://design.ros2.org/articles/node_lifecycle.html">found here</a>.
-They are nodes that contain state machine transitions for bringup and teardown of ROS2 servers.
+They are nodes that contain state machine transitions for bringup and teardown of ROS 2 servers.
 This helps in determinstic behavior of ROS systems in startup and shutdown.
 It also helps users structure their programs in reasonable ways for commercial uses and debugging.</p>
 <p>When a node is started, it is in the unconfigured state, only processing the node’s constructor which should <strong>not</strong> contain any ROS networking setup or parameter reading.
@@ -611,7 +611,7 @@ However, many classes of plans and routes exist which are supported.</p>
 </div>
 <div class="section" id="controllers">
 <h3>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">¶</a></h3>
-<p>Controllers, also known as local planners in ROS1, are the way we follow the globally computed path or complete a local task.
+<p>Controllers, also known as local planners in ROS 1, are the way we follow the globally computed path or complete a local task.
 The controller will have access to a local environment representation to attempt to compute feasible control efforts for the base to follow.
 Many controller will project the robot forward in space and compute a locally feasible path at each update iteration.
 Controllers can be written to:</p>
@@ -653,7 +653,7 @@ The only requirement is that you follow the standards below with your choice of 
 <p><a class="reference external" href="https://www.ros.org/reps/rep-0105.html">REP 105</a> defines the frames and conventions required for navigation and the larger ROS ecosystem.
 These conventions should be followed at all times to make use of the rich positioning, odometry, and slam projects available in the community.</p>
 <p>In a nutshell, REP-105 says that you must, at minimum, build a TF tree that contains a full <code class="docutils literal notranslate"><span class="pre">map</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">[sensor</span> <span class="pre">frames]</span></code> for your robot.
-TF2 are the time-variant transformation library in ROS2 we use to represent and obtain time synchronized transformations.
+TF2 are the time-variant transformation library in ROS 2 we use to represent and obtain time synchronized transformations.
 It is the job of the global positioning system (GPS, SLAM, Motion Capture) to, at minimum, provide the <code class="docutils literal notranslate"><span class="pre">map</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code> transformation.
 It is then the role of the odometry system to provide the <code class="docutils literal notranslate"><span class="pre">odom</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transformation.
 The remainder of the transformations relative to <code class="docutils literal notranslate"><span class="pre">base_link</span></code> should be static and defined in your <a class="reference external" href="http://wiki.ros.org/urdf">URDF</a>.</p>

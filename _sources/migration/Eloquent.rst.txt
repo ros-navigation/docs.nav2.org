@@ -3,7 +3,7 @@
 Eloquent to Foxy
 ################
 
-Moving from ROS2 Eloquent to Foxy, a number of stability improvements were added that we will not specifically address here.
+Moving from ROS 2 Eloquent to Foxy, a number of stability improvements were added that we will not specifically address here.
 We will specifically mention, however, the reduction in terminal noise.
 TF2 transformation timeout errors and warnings on startup have been largely removed or throttled to be more tractable.
 Additionally, message filters filling up resulting in messages being dropped were resolved in costmap 2d.
@@ -61,7 +61,7 @@ An example: ``controller_server`` defines the parameter ``controller_plugins`` w
 Each plugin will load the parameters in their namespace, e.g. ``FollowPath.max_vel_x``, rather than globally in the server namespace.
 This will allow multiple plugins of the same type with different parameters and reduce conflicting parameter names.
 
-DWB Contains new parameters as an update relative to the ROS1 updates, `see here for more information <https://github.com/ros-planning/navigation2/pull/1501>`_.
+DWB Contains new parameters as an update relative to the ROS 1 updates, `see here for more information <https://github.com/ros-planning/navigation2/pull/1501>`_.
 Additionally, the controller and planner interfaces were updated to include a ``std::string name`` parameter on initialization.
 This was added to the interfaces to allow the plugins to know the namespace it should load its parameters in.
 E.g. for a controller to find the parameter ``FollowPath.max_vel_x``, it must be given its name, ``FollowPath`` to get this parameter.
@@ -93,7 +93,7 @@ Server is a new part. It spins in the background and can be used to save map con
 
 ``map_server`` was dramatically simplified and cleaned-up. ``OccGridLoader`` was merged with ``MapServer`` class as it is intended to work only with one ``OccupancyGrid`` type of messages in foreseeable future.
 
-Map Server now has new ``map_io`` dynamic library. All functions saving/loading ``OccupancyGrid`` messages were moved from ``map_server`` and ``map_saver`` here. These functions could be easily called from any part of external ROS2 code even if Map Server node was not started.
+Map Server now has new ``map_io`` dynamic library. All functions saving/loading ``OccupancyGrid`` messages were moved from ``map_server`` and ``map_saver`` here. These functions could be easily called from any part of external ROS 2 code even if Map Server node was not started.
 
 ``map_loader`` was completely removed from ``nav2_util``. All its functionality already present in ``map_io``. Please use it in your code instead.
 

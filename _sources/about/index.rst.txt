@@ -14,12 +14,12 @@ About
 
 Navigation is a community effort to lower the barrier of entry of mobile robotics technology for all.
 This project is one of the flagship projects along with MoveIt that acts as an applications entry point and frameworks for ROS.
-Navigation in ROS2 builds on the wild success of the original Navigation Stack (Nav Stack) in ROS (1).
+Navigation in ROS 2 builds on the wild success of the original Navigation Stack (Nav Stack) in ROS (1).
 This project has been used by researchers, educators, and industry for over 10 years.
 There are very few projects that have lasted as long or were as successful as ROS (1) Navigation.
 We would like to thank David Lu!! and Mike Ferguson for their tireless over the span of a decade to keep the Nav Stack alive and well.
 Without their hard work, this project would not have been able to happen.
-If you're interested in a comparison between ROS1 Navigation and ROS2 Navigation, see :ref:`ros1_comparison`.
+If you're interested in a comparison between ROS 1 Navigation and ROS 2 Navigation, see :ref:`ros1_comparison`.
 For a list of robots using Navigation2, see :ref:`robots`.
 
 Aslas, as time moves on, so must we.
@@ -66,7 +66,7 @@ Our former leadership team includes:
 Contact
 *******
 
-If you are interested in contacting someone about Navigation, ROS2, or related projects, please email the project leader.
+If you are interested in contacting someone about Navigation, ROS 2, or related projects, please email the project leader.
 We intentionally make our emails easy to find.
 If your inquiry relates to bugs or open-source feature requests, consider posting a ticket on our GitHub project.
 If your inquiry relates to configuration support or private feature development, reach out and we may be able to connect you with

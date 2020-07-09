@@ -149,7 +149,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">Navigation Concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#ros2">ROS2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#ros-2">ROS 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#action-server">Action Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#lifecycle-nodes">Lifecycle Nodes</a></li>
 </ul>
@@ -411,7 +411,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../about/index.html">About and Contact</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../about/robots.html">Robots Using</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/ros1_comparison.html">ROS to ROS2 Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../about/ros1_comparison.html">ROS to ROS 2 Navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../about/index.html#id1">About</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../about/index.html#contact">Contact</a></li>
 </ul>
@@ -419,7 +419,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/create_configuration_assistant.html">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS2 and Environmental Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS 2 and Environmental Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/testing.html">4. Advanced Navigation Testing Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/navigation_rebranding.html">5. Navigation Branding and Website</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/localization.html">6. 2D/3D Localization Improvements</a></li>
@@ -512,7 +512,7 @@ Building for a specific released distribution (e.g. <code class="docutils litera
 <h3>Build Navigation2 For Released Distribution<a class="headerlink" href="#build-navigation2-for-released-distribution" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="install-ros">
 <h4>Install ROS<a class="headerlink" href="#install-ros" title="Permalink to this headline">¶</a></h4>
-<p>Please install ROS2 via the usual <a class="reference external" href="https://index.ros.org/doc/ros2/Installation">build instructions</a> for your desired distribution.</p>
+<p>Please install ROS 2 via the usual <a class="reference external" href="https://index.ros.org/doc/ros2/Installation">build instructions</a> for your desired distribution.</p>
 </div>
 <div class="section" id="build-navigation2">
 <h4>Build Navigation2<a class="headerlink" href="#build-navigation2" title="Permalink to this headline">¶</a></h4>
@@ -533,7 +533,7 @@ Building for a specific released distribution (e.g. <code class="docutils litera
 <h3>Quickstart Build Master<a class="headerlink" href="#quickstart-build-master" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="steps">
 <h4>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h4>
-<p>Install all ROS 2 dependencies from the <a class="reference external" href="https://index.ros.org/doc/ros2/Installation/">ROS2 Installation page</a>.
+<p>Install all ROS 2 dependencies from the <a class="reference external" href="https://index.ros.org/doc/ros2/Installation/">ROS 2 Installation page</a>.
 Ensure there are no ROS environment variables set in your terminal or <cite>.bashrc</cite> file before taking the steps below.*</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">&lt;</span><span class="n">directory_for_workspaces</span><span class="o">&gt;</span>
 <span class="n">cd</span> <span class="o">&lt;</span><span class="n">directory_for_workspaces</span><span class="o">&gt;</span>
@@ -568,7 +568,7 @@ Ensure there are no ROS environment variables set in your terminal or <cite>.bas
 <p class="first admonition-title">Warning</p>
 <p class="last">When building ROS 2 from source, make sure that the <cite>ros2.repos</cite> file is from the <cite>master</cite> branch.</p>
 </div>
-<p>Build ROS2 master using the <a class="reference external" href="https://index.ros.org/doc/ros2/Installation">build instructions</a> provided in the ROS2 documentation.</p>
+<p>Build ROS 2 master using the <a class="reference external" href="https://index.ros.org/doc/ros2/Installation">build instructions</a> provided in the ROS 2 documentation.</p>
 </div>
 <div class="section" id="build-navigation2-dependencies">
 <h4>Build Navigation2 Dependencies<a class="headerlink" href="#build-navigation2-dependencies" title="Permalink to this headline">¶</a></h4>
@@ -589,8 +589,8 @@ Then, use <code class="docutils literal notranslate"><span class="pre">vcs</span
 </div>
 <div class="section" id="build-navigation2-master">
 <h4>Build Navigation2 Master<a class="headerlink" href="#build-navigation2-master" title="Permalink to this headline">¶</a></h4>
-<p>Finally, now that we have ROS2 master and the necessary dependencies, we can now build Navigation2 master itself.
-We’ll source the <code class="docutils literal notranslate"><span class="pre">nav2_depend_ws</span></code>, which will also source the ROS2 master build workspace packages, to build with dependencies.
+<p>Finally, now that we have ROS 2 master and the necessary dependencies, we can now build Navigation2 master itself.
+We’ll source the <code class="docutils literal notranslate"><span class="pre">nav2_depend_ws</span></code>, which will also source the ROS 2 master build workspace packages, to build with dependencies.
 The rest of this should look familiar.</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/</span><span class="n">nav2_depend_ws</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
 <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">navigation2_ws</span><span class="o">/</span><span class="n">src</span>

@@ -149,7 +149,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../concepts/index.html">Navigation Concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#ros2">ROS2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#ros-2">ROS 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#action-server">Action Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#lifecycle-nodes">Lifecycle Nodes</a></li>
 </ul>
@@ -411,7 +411,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About and Contact</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../about/ros1_comparison.html">ROS to ROS2 Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/ros1_comparison.html">ROS to ROS 2 Navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../about/index.html#id1">About</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../about/index.html#contact">Contact</a></li>
 </ul>
@@ -419,7 +419,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_configuration_assistant.html">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS2 and Environmental Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS 2 and Environmental Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/testing.html">4. Advanced Navigation Testing Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/navigation_rebranding.html">5. Navigation Branding and Website</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/localization.html">6. 2D/3D Localization Improvements</a></li>
@@ -512,14 +512,14 @@
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>It is assumed that ROS2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in <a class="reference internal" href="../../build_instructions/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
+<p>It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in <a class="reference internal" href="../../build_instructions/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="write-a-new-costmap2d-plugin">
 <h3>1- Write a new Costmap2D plugin<a class="headerlink" href="#write-a-new-costmap2d-plugin" title="Permalink to this headline">¶</a></h3>
 <p>For a demonstration, this example will creates a costmap plugin that puts repeating costs gradients in the costmap.
-The annotated code for this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials">navigation2_tutorials</a> repository as the <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin</span></code> ROS2-package.
+The annotated code for this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials">navigation2_tutorials</a> repository as the <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin</span></code> ROS 2-package.
 Please refer to it when making your own layer plugin for Costmap2D.</p>
 <p>The plugin class <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin::GradientLayer</span></code> is inherited from basic class <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::Layer</span></code>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">namespace</span> <span class="n">nav2_gradient_costmap_plugin</span>
@@ -666,7 +666,7 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 &lt;/export&gt;
 </pre></div>
 </div>
-<p>After everything is done put the plugin package into <code class="docutils literal notranslate"><span class="pre">src</span></code> directory of a certain ROS2-workspace, build the plugin package (<code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--packages-select</span> <span class="pre">nav2_gradient_costmap_plugin</span> <span class="pre">--symlink-install</span></code>) and source <code class="docutils literal notranslate"><span class="pre">setup.bash</span></code> file when it necessary.</p>
+<p>After everything is done put the plugin package into <code class="docutils literal notranslate"><span class="pre">src</span></code> directory of a certain ROS 2-workspace, build the plugin package (<code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--packages-select</span> <span class="pre">nav2_gradient_costmap_plugin</span> <span class="pre">--symlink-install</span></code>) and source <code class="docutils literal notranslate"><span class="pre">setup.bash</span></code> file when it necessary.</p>
 <p>Now the plugin is ready to use.</p>
 </div>
 <div class="section" id="enable-the-plugin-in-costmap2d">

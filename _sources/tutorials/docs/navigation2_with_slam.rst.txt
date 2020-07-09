@@ -75,7 +75,7 @@ For this tutorial, we will use `SLAM Toolbox <https://github.com/SteveMacenski/s
 3- Working with SLAM
 --------------------
 
-Move your robot by requesting a goal through RViz or the ROS2 CLI, ie:
+Move your robot by requesting a goal through RViz or the ROS 2 CLI, ie:
 
 .. code-block:: bash
 

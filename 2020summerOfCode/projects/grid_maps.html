@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. Port Grid Maps to ROS2 and Environmental Model &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>3. Port Grid Maps to ROS 2 and Environmental Model &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -149,7 +149,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../concepts/index.html">Navigation Concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#ros2">ROS2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#ros-2">ROS 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#action-server">Action Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#lifecycle-nodes">Lifecycle Nodes</a></li>
 </ul>
@@ -411,7 +411,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About and Contact</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../about/ros1_comparison.html">ROS to ROS2 Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/ros1_comparison.html">ROS to ROS 2 Navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../about/index.html#id1">About</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../about/index.html#contact">Contact</a></li>
 </ul>
@@ -419,7 +419,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="create_configuration_assistant.html">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Port Grid Maps to ROS2 and Environmental Model</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Port Grid Maps to ROS 2 and Environmental Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">4. Advanced Navigation Testing Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="navigation_rebranding.html">5. Navigation Branding and Website</a></li>
 <li class="toctree-l2"><a class="reference internal" href="localization.html">6. 2D/3D Localization Improvements</a></li>
@@ -480,7 +480,7 @@
         
           <li><a href="../Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a> &raquo;</li>
         
-      <li>3. Port Grid Maps to ROS2 and Environmental Model</li>
+      <li>3. Port Grid Maps to ROS 2 and Environmental Model</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -497,17 +497,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="port-grid-maps-to-ros2-and-environmental-model">
-<span id="grid-maps"></span><h1>3. Port Grid Maps to ROS2 and Environmental Model<a class="headerlink" href="#port-grid-maps-to-ros2-and-environmental-model" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="port-grid-maps-to-ros-2-and-environmental-model">
+<span id="grid-maps"></span><h1>3. Port Grid Maps to ROS 2 and Environmental Model<a class="headerlink" href="#port-grid-maps-to-ros-2-and-environmental-model" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong>
-Grid Maps was created by ETH Zurich and later transferred to ANYbotics. It is a universal grid map library for mobile robotic mapping that can be used as the basis of environmental models and various forms of grid maps available in ROS1. This library is one of the top downloaded ROS packages. Your task will be to work with the community and the mentor to port grid_maps metapackage from ROS1 to ROS2 and help develop the next generation environment model in ROS2 to replace costmap_2d.</p>
-<p>This will involve porting code from ROS1 to ROS2, analyzing uses of the environmental model to define an abstract interface to allow replacement of costmap_2d with grid_map, and building up the basic grid-operations for costmaps. It is not expected to complete the full new model with sensor processing over the course of the summer. If completed early, you may be able to help design a gradient model to complement your implemented costmap model using grid_maps. This will allow robots to select a gradient or a costmap model on startup.</p>
+Grid Maps was created by ETH Zurich and later transferred to ANYbotics. It is a universal grid map library for mobile robotic mapping that can be used as the basis of environmental models and various forms of grid maps available in ROS 1. This library is one of the top downloaded ROS packages. Your task will be to work with the community and the mentor to port grid_maps metapackage from ROS 1 to ROS 2 and help develop the next generation environment model in ROS 2 to replace costmap_2d.</p>
+<p>This will involve porting code from ROS 1 to ROS 2, analyzing uses of the environmental model to define an abstract interface to allow replacement of costmap_2d with grid_map, and building up the basic grid-operations for costmaps. It is not expected to complete the full new model with sensor processing over the course of the summer. If completed early, you may be able to help design a gradient model to complement your implemented costmap model using grid_maps. This will allow robots to select a gradient or a costmap model on startup.</p>
 <p><strong>Project difficulty: High</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
 <p><strong>Project output requirements</strong></p>
 <ul class="simple">
-<li>Grid Maps ported to ROS2 and merged into the master ROS2 branch</li>
+<li>Grid Maps ported to ROS 2 and merged into the master ROS 2 branch</li>
 <li>Defined plugin interfaces to replace costmap 2D with grid maps</li>
 <li>Implementing low-level operations on top of grid_maps to replace the base costmap_2d object.</li>
 <li>You will not be expected to reimplement the full sensor processing mechanics of costmap_2d.</li>
@@ -515,7 +515,7 @@ Grid Maps was created by ETH Zurich and later transferred to ANYbotics. It is a 
 <p><strong>Skills required</strong></p>
 <ul class="simple">
 <li>C++ and Git</li>
-<li>ROS recommended ROS2, but you can pick it up before starting</li>
+<li>ROS recommended ROS 2, but you can pick it up before starting</li>
 <li>Coordinate transformations and basic geometry</li>
 <li>Recommended: Gazebo simulation and Navigation experience</li>
 </ul>

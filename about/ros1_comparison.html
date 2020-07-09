@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ROS to ROS2 Navigation &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>ROS to ROS 2 Navigation &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -149,7 +149,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">Navigation Concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#ros2">ROS2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#ros-2">ROS 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#action-server">Action Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#lifecycle-nodes">Lifecycle Nodes</a></li>
 </ul>
@@ -411,7 +411,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">About and Contact</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="robots.html">Robots Using</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">ROS to ROS2 Navigation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ROS to ROS 2 Navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#id1">About</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#contact">Contact</a></li>
 </ul>
@@ -419,7 +419,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/create_configuration_assistant.html">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS2 and Environmental Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS 2 and Environmental Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/testing.html">4. Advanced Navigation Testing Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/navigation_rebranding.html">5. Navigation Branding and Website</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2020summerOfCode/projects/localization.html">6. 2D/3D Localization Improvements</a></li>
@@ -480,7 +480,7 @@
         
           <li><a href="index.html">About and Contact</a> &raquo;</li>
         
-      <li>ROS to ROS2 Navigation</li>
+      <li>ROS to ROS 2 Navigation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -497,10 +497,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ros-to-ros2-navigation">
-<span id="ros1-comparison"></span><h1>ROS to ROS2 Navigation<a class="headerlink" href="#ros-to-ros2-navigation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="ros-to-ros-2-navigation">
+<span id="ros1-comparison"></span><h1>ROS to ROS 2 Navigation<a class="headerlink" href="#ros-to-ros-2-navigation" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">move_base</span></code> has been split into multiple components.
-Rather than a single monolithic state machine, navigation 2 makes use of action servers and ROS2’s
+Rather than a single monolithic state machine, navigation 2 makes use of action servers and ROS 2’s
 low-latency, reliable communication to separate ideas. A behavior tree is used to orchestrate these tasks.
 This allows Navigation2 to have highly configurable navigation behavior without programming by rearranging tasks
 in a behavior tree xml file.</p>
@@ -509,7 +509,7 @@ It uses <em>Behavior Trees</em> to make it possible to have more complex state m
 These behavior trees are configurable XMLs and we provide several starting examples.</p>
 <p>The planning, recovery, and controller servers are also action servers that the BT navigator can call to compute.
 All 3 servers can host many plugins of many algorithms each and individually called from the navigation behavior tree for specific behaviors.
-The default plugins provided are ported from ROS1, namely: DWB, NavFn, and similar recoveries such as spinning and clearing costmaps.
+The default plugins provided are ported from ROS 1, namely: DWB, NavFn, and similar recoveries such as spinning and clearing costmaps.
 A new recovery for waiting a fixed duration was also added.
 These servers are called from the BT navigator through their action servers to compute a result or complete a task.
 The state is maintained by the BT navigator behavior tree.</p>
@@ -526,7 +526,7 @@ See each package README.md for more details.</p>
 <li>nav2_planner: Replaces global_planner, hosts <code class="docutils literal notranslate"><span class="pre">N</span></code> planner plugins</li>
 <li>nav2_controller: Replaces local_planner, hosts <code class="docutils literal notranslate"><span class="pre">N</span></code> controller plugins</li>
 <li>Navfn: Ported to nav2_navfn_planner</li>
-<li>DWB: Replaces DWA and ported to ROS2 under nav2_dwb_controller metapackage</li>
+<li>DWB: Replaces DWA and ported to ROS 2 under nav2_dwb_controller metapackage</li>
 <li>nav_core: Ported as nav2_core with updates to interfaces</li>
 <li>costmap_2d: Ported as nav2_costmap_2d</li>
 </ul>

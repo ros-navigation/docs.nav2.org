@@ -3,7 +3,7 @@
 FollowPath
 ==========
 
-Invokes the FollowPath ROS2 action server, which is implemented by the controller plugin modules loaded. 
+Invokes the FollowPath ROS 2 action server, which is implemented by the controller plugin modules loaded. 
 The server address can be remapped using the ``server_name`` input port.
 
 Input Ports

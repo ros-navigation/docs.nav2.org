@@ -5,7 +5,7 @@ Navigation Plugins
 
 There are a number of plugin interfaces for users to create their own custom applications or algorithms with.
 Namely, the costmap layer, planner, controller, behavior tree, and recovery plugins.
-A list of all known plugins are listed here below for ROS2 Navigation.
+A list of all known plugins are listed here below for ROS 2 Navigation.
 If you know of a plugin, or you have created a new plugin, please consider submitting a pull request with that information.
 
 This file can be found and editted under ``sphinx_docs/plugins/index.rst``.
