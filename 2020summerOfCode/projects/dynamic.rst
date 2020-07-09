@@ -22,7 +22,7 @@ If time permits, you may also work to also integrate this dynamic information in
 **Mentor contact details: [See link above, link in GitHub profile description]**
 
 **Project output requirements**
-- Integrations of 2-5 methods of dynamic obstacle detection in ROS2
+- Integrations of 2-5 methods of dynamic obstacle detection in ROS 2
 - Creation of a costmap_2d layer to use this information to mark future trajectories into a costmap
 - Test these capabilities on real data or a live robot to demonstrate functionality
 - 65% test coverage or higher

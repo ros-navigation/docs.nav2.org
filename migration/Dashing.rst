@@ -3,7 +3,7 @@
 Dashing to Eloquent
 ###################
 
-Moving from ROS2 Dashing to Eloquent, a number of stability improvements were added that we will not specifically address here.
+Moving from ROS 2 Dashing to Eloquent, a number of stability improvements were added that we will not specifically address here.
 
 New Packages
 ************
@@ -18,7 +18,7 @@ The waypoint follower is also a reference application for how to use the Navigat
 Navigation2 now supports new algorithms for control and SLAM.
 The Timed-Elastic Band (TEB) controller was implemented `and can be found here <https://github.com/rst-tu-dortmund/teb_local_planner>`_.
 It is its own controller plugin that can be used instead of the DWB controller.
-Nav2 also supports SLAM Toolbox as the default SLAM implementation for ROS2.
+Nav2 also supports SLAM Toolbox as the default SLAM implementation for ROS 2.
 This replaces the use of Cartographer.
 
 New Plugins
@@ -52,7 +52,7 @@ Prior, some elements of the navigation stack only updated its pose from the ``/a
 This is obviously low-accuracy and high-latency.
 All positioning is now based on the TF tree from the global frame to the robot frame.
 
-Prior to Eloquent, there were no ROS2 action servers and clients available.
+Prior to Eloquent, there were no ROS 2 action servers and clients available.
 Navigation2, rather, used an interface we called Tasks.
 Eloquent now contains actions and a simple action server interface was created and is used now throughout the stack.
 Tasks were removed.

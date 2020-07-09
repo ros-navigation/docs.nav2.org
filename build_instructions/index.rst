@@ -25,7 +25,7 @@ Build Navigation2 For Released Distribution
 Install ROS
 -----------
 
-Please install ROS2 via the usual `build instructions <https://index.ros.org/doc/ros2/Installation>`_ for your desired distribution.
+Please install ROS 2 via the usual `build instructions <https://index.ros.org/doc/ros2/Installation>`_ for your desired distribution.
 
 Build Navigation2
 -----------------
@@ -54,7 +54,7 @@ Quickstart Build Master
 Steps
 -----
 
-Install all ROS 2 dependencies from the `ROS2 Installation page <https://index.ros.org/doc/ros2/Installation/>`_.
+Install all ROS 2 dependencies from the `ROS 2 Installation page <https://index.ros.org/doc/ros2/Installation/>`_.
 Ensure there are no ROS environment variables set in your terminal or `.bashrc` file before taking the steps below.*
 
 
@@ -98,7 +98,7 @@ Build ROS 2 Master
 
    When building ROS 2 from source, make sure that the `ros2.repos` file is from the `master` branch.
 
-Build ROS2 master using the `build instructions <https://index.ros.org/doc/ros2/Installation>`_ provided in the ROS2 documentation.
+Build ROS 2 master using the `build instructions <https://index.ros.org/doc/ros2/Installation>`_ provided in the ROS 2 documentation.
 
 
 Build Navigation2 Dependencies
@@ -124,8 +124,8 @@ Then, use ``vcs`` to clone the repos and versions in it into a workspace.
 Build Navigation2 Master
 ------------------------
 
-Finally, now that we have ROS2 master and the necessary dependencies, we can now build Navigation2 master itself.
-We'll source the ``nav2_depend_ws``, which will also source the ROS2 master build workspace packages, to build with dependencies.
+Finally, now that we have ROS 2 master and the necessary dependencies, we can now build Navigation2 master itself.
+We'll source the ``nav2_depend_ws``, which will also source the ROS 2 master build workspace packages, to build with dependencies.
 The rest of this should look familiar.
 
 .. code:: bash

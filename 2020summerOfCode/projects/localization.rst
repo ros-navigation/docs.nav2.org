@@ -13,7 +13,7 @@ Your target involves designing and creating a new localization engine for the na
 - Support 3D laser scanners, where 2D case could potentially be a simplified case
 - Accurately track the localization of a robot in a given occupancy grid
 
-The reason that specific method is left open-ended is to allow for creativity, novelty, or reimplementation of a what you feel is best. We have, however, analyzed other MCL variants as being good options. This may include reimplementing an A-MCL that is designed to be modified with modular components and support sampling from a 3D lidar. Another option is a NDT-MCL using NDT 2D/3D scan matching. Other options may be proposed and discussed with mentors during the application phase. The task involves 3D as well since there is no standard 3D localizer in ROS2 yet and more and more robust 3D SLAM libraries have emerged over the last 2 years. 
+The reason that specific method is left open-ended is to allow for creativity, novelty, or reimplementation of a what you feel is best. We have, however, analyzed other MCL variants as being good options. This may include reimplementing an A-MCL that is designed to be modified with modular components and support sampling from a 3D lidar. Another option is a NDT-MCL using NDT 2D/3D scan matching. Other options may be proposed and discussed with mentors during the application phase. The task involves 3D as well since there is no standard 3D localizer in ROS 2 yet and more and more robust 3D SLAM libraries have emerged over the last 2 years. 
 
 An optional but recommended feature of this work would be to also accept the inputs from multiple laser scanners. However it is not strictly required.
 
