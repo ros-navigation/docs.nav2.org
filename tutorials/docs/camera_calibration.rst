@@ -78,7 +78,7 @@ Running the Camera Calibration
     You must specify one or more chessboards as pairs of --size and--square options.
 
       -p PATTERN, --pattern=PATTERN
-                        calibration pattern to detect - 'chessboard','circles', 'acircles'
+                        calibration pattern to detect - 'chessboard','circles', 'acircles','charuco'
       -s SIZE, --size=SIZE
                         chessboard size as NxM, counting interior corners (e.g. a standard chessboard is 7x7)
       -q SQUARE, --square=SQUARE
@@ -172,7 +172,7 @@ Running the Camera Calibration
 
 9-Press the save button to see the result. Data is saved to  "/tmp/calibrationdata.tar.gz"
 
-10-To use the the calibration file unzip the calibration.tar,gz
+10-To use the the calibration file unzip the calibration.tar.gz
        ``tar -xvf calibration.tar.gz``
 
 11-In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.
