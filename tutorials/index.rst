@@ -8,6 +8,7 @@ Navigation2 Tutorials
 .. toctree::
    :maxdepth: 1
 
+   docs/camera_calibration.rst
    docs/navigation2_on_real_turtlebot3.rst
    docs/navigation2_with_slam.rst
    docs/navigation2_with_stvl.rst
