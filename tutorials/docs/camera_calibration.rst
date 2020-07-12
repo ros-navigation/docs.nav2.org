@@ -4,9 +4,8 @@ Camera Calibration
 *******************
 
 - `Overview`_
-- `Installation`_
 - `Requirements`_
-- `Running the Camera Calibration`_
+- `Tutorial Steps`_
 
 
 Overview
@@ -14,7 +13,7 @@ Overview
 
 This tutorial shows how to obtain calibration parameters for monocular camera.
 
-Installation
+Requirements
 ============
 
 1- Install Camera Calibration Parser, Camera Info Manager and Launch Testing Ament Cmake using operating system’s package manager:
@@ -30,10 +29,8 @@ Installation
 
         ``git clone – b <ros2-distro> git@github.com:ros-perception/image_pipeline.git``
 
-Requirements
-============
 
-**Make sure you have the following:**
+** Also, ,make sure you have the following:**
 
  • A large checkerboard with known dimensions. This tutorial uses a 7x9 checkerboard with 200mm squares. **Calibration uses the interior vertex points of the checkerboard, so an "8x10" board uses the interior vertex parameter "7x9" as in the example below.** The checkerboard with set dimensions can be downloaded from `here <https://calib.io/pages/camera-calibration-pattern-generator>`_.
  • A well lit 5m x 5m area clear of obstructions and check board patterns
@@ -41,8 +38,8 @@ Requirements
  • A monocular camera publishing images over ROS
 
 
-Running the Camera Calibration
-==============================
+Tutorial Steps
+==============
 
 1- Start a terminal in your GUI
 
