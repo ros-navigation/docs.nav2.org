@@ -76,6 +76,7 @@ If you use the navigation framework, an algorithm from this repository, or ideas
 please cite this work in your papers!
 
 .. code-block:: bash
+
    @InProceedings{macenski2020marathon2,
    author = {Macenski, Steven and Martin, Francisco and White, Ruffin and Ginés Clavero, Jonatan},
    title = {The Marathon 2: A Navigation System},
