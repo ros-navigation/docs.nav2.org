@@ -8,7 +8,7 @@ Source code on Github_.
 .. _Github: https://github.com/ros-planning/navigation2/tree/master/nav2_controller
 
 The Controller Server implements the server for handling the controller requests for the stack and host a map of plugin implementations.
-It will take in a path and a controller plugin name to use and call the appropriate plugin.
+It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.
 
 Parameters
 **********
@@ -49,6 +49,55 @@ Parameters
               plugin: "dwb_core::DWBLocalPlanner"
     ..
 
+:progress_checker_plugin:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         'progress_checker'
+  ============== ==============
+
+  Description
+    Mapped name for progress checker plugin for checking progress made by robot.
+
+  Note
+    The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
+
+    Example:
+
+    .. code-block:: yaml
+
+        controller_server:
+          ros__parameters:
+            progress_checker_plugin: "progress_checker"
+            progress_checker:
+              plugin: "nav2_controller::SimpleProgressChecker"
+    ..
+
+:goal_checker_plugin:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         'goal_checker'
+  ============== ==============
+
+  Description
+    Mapped name for goal checker plugin for checking goal is reached.
+
+  Note
+    The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
+
+    Example:
+
+    .. code-block:: yaml
+
+        controller_server:
+          ros__parameters:
+            goal_checker_plugin: "goal_checker"
+            goal_checker:
+              plugin: "nav2_controller::SimpleGoalChecker"
+
 :min_x_velocity_threshold:
 
   ============== =============================
@@ -82,38 +131,31 @@ Parameters
   Description
     Minimum angular velocity to use (rad/s).
 
-:required_movement_radius:
+Plugins
+*******
+ The plugins listed below are inside the ``nav2_controller`` namespace.
 
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  double         0.5            
-  ============== =============================
+.. toctree::
+  :maxdepth: 1
 
-  Description
-    Minimum amount a robot must move to be progressing to goal (m).
-
-:movement_time_allowance:
-
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  double         10.0         
-  ============== =============================
-
-  Description
-    Maximum amount of time a robot has to move the minimum radius (s).
+  nav2_controller-plugins/simple_progress_checker.rst
+  nav2_controller-plugins/simple_goal_checker.rst
+  nav2_controller-plugins/stopped_goal_checker.rst
 
 Default Plugins
 ***************
 
-When the :code:`controller_plugins` parameter is not overridden, the following default plugins are loaded:
+When the :code:`progress_checker_plugin`, :code:`goal_checker_plugin` or :code:`controller_plugins` parameters are not overridden, the following default plugins are loaded:
 
-  ================= =====================================================
-  Namespace         Plugin
-  ----------------- -----------------------------------------------------
-  "FollowPath"      "dwb_core::DWBLocalPlanner"
-  ================= =====================================================
+  ================== =====================================================
+  Namespace          Plugin
+  ------------------ -----------------------------------------------------
+  "progress_checker" "nav2_controller::SimpleProgressChecker"
+  ------------------ -----------------------------------------------------
+  "goal_checker"     "nav2_controller::SimpleGoalChecker"
+  ------------------ -----------------------------------------------------
+  "FollowPath"       "dwb_core::DWBLocalPlanner"
+  ================== =====================================================
 
 Example
 *******
@@ -121,12 +163,22 @@ Example
 
     controller_server:
       ros__parameters:
+        use_sim_time: True
         controller_frequency: 20.0
-        min_x_velocity_threshold: 0.01
-        min_y_velocity_threshold: 0.0
-        min_theta_velocity_threshold: 0.1
-        required_movement_radius: 0.5
-        movement_time_allowance: 5.0
-        controller_plugins: ['FollowPath']
+        min_x_velocity_threshold: 0.001
+        min_y_velocity_threshold: 0.5
+        min_theta_velocity_threshold: 0.001
+        progress_checker_plugin: "progress_checker"
+        goal_checker_plugin: "goal_checker"
+        controller_plugins: ["FollowPath"]
+        progress_checker:
+          plugin: "nav2_controller::SimpleProgressChecker"
+          required_movement_radius: 0.5
+          movement_time_allowance: 10.0
+        goal_checker:
+          plugin: "nav2_controller::SimpleGoalChecker"
+          xy_goal_tolerance: 0.25
+          yaw_goal_tolerance: 0.25
+          stateful: True
         FollowPath:
           plugin: "dwb_core::DWBLocalPlanner"
