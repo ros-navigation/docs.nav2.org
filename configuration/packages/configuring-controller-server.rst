@@ -131,8 +131,8 @@ Parameters
   Description
     Minimum angular velocity to use (rad/s).
 
-Plugins
-*******
+Provided Plugins
+****************
  The plugins listed below are inside the ``nav2_controller`` namespace.
 
 .. toctree::
