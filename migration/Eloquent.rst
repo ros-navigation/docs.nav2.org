@@ -30,6 +30,10 @@ Each server defines a parameter where the list of names for the plugins to be lo
 +-----------------------+------------------------+
 |      Server Name      |    Plugin Parameter    |
 +=======================+========================+
+| Controller Server     | progress_checker_plugin|
++-----------------------+------------------------+
+| Controller Server     | goal_checker_plugin    |
++-----------------------+------------------------+
 | Controller Server     | controller_plugins     |
 +-----------------------+------------------------+
 | Planner Server        | planner_plugins        |
@@ -83,6 +87,8 @@ Original GitHub tickets:
 - `GoalUpdatedCondition <https://github.com/ros-planning/navigation2/pull/1712>`_
 - `DistanceTraveledCondition <https://github.com/ros-planning/navigation2/pull/1705>`_
 - `TimeExpiredCondition <https://github.com/ros-planning/navigation2/pull/1705>`_
+- `ProgressChecker <https://github.com/ros-planning/navigation2/pull/1857>`_
+- `GoalChecker <https://github.com/ros-planning/navigation2/pull/1857>`_
 
 Map Server Re-Work
 ******************

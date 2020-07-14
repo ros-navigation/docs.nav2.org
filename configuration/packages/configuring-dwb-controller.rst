@@ -30,9 +30,7 @@ The plugins listed below are inside the ``dwb_plugins`` namespace.
   :maxdepth: 1
 
   dwb-plugins/limited_accel_generator.rst
-  dwb-plugins/simple_goal_checker.rst
   dwb-plugins/standard_traj_generator.rst
-  dwb-plugins/stopped_goal_checker.rst
 
 
 Trajectory Critics

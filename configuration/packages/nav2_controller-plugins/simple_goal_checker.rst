@@ -1,4 +1,4 @@
-.. _configuring_dwb_simple_goal_checker_plugin:
+.. _configuring_nav2_controller_simple_goal_checker_plugin:
 
 SimpleGoalChecker
 =================
@@ -8,9 +8,9 @@ Checks whether the robot has reached the goal pose.
 Parameters
 **********
 
-``<dwb plugin>``: DWB plugin name defined in the **controller_plugin_ids** parameter in :ref:`configuring_controller_server`.
+``<nav2_controller plugin>``: nav2_controller plugin name defined in the **goal_checker_plugin_id** parameter in :ref:`configuring_controller_server`.
 
-:``<dwb plugin>``.xy_goal_tolerance:
+:``<nav2_controller plugin>``.xy_goal_tolerance:
 
   ====== =======
   Type   Default
@@ -21,7 +21,7 @@ Parameters
     Description
         Tolerance to meet goal completion criteria (m).
 
-:``<dwb plugin>``.yaw_goal_tolerance:
+:``<nav2_controller plugin>``.yaw_goal_tolerance:
 
   ====== =======
   Type   Default
@@ -32,7 +32,7 @@ Parameters
     Description
         Tolerance to meet goal completion criteria (rad).
 
-:``<dwb plugin>``.stateful:
+:``<nav2_controller plugin>``.stateful:
 
   ==== =======
   Type Default
