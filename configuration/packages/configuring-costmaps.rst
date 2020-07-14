@@ -40,11 +40,11 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  vector<double> {}   
+  vector<double> "[]"   
   ============== =======
 
   Description
-    Ordered set of footprint points, must be closed set.
+    Ordered set of footprint points passed in as a string, must be closed set.
 
 :global_frame:
 
