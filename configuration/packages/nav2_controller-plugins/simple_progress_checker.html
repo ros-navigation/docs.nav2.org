@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>StoppedGoalChecker &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>SimpleProgressChecker &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="BaseObstacleCritic" href="../trajectory_critics/base_obstacle.html" />
-    <link rel="prev" title="StandardTrajectoryGenerator" href="standard_traj_generator.html" />
+    <link rel="next" title="SimpleGoalChecker" href="simple_goal_checker.html" />
+    <link rel="prev" title="Controller Server" href="../configuring-controller-server.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -318,13 +318,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-navfn.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../configuring-controller-server.html">Controller Server</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuring-controller-server.html">Controller Server</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-controller-server.html#provided-plugins">Provided Plugins</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">SimpleProgressChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simple_goal_checker.html">SimpleGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stopped_goal_checker.html">StoppedGoalChecker</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/controller.html">DWB Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/iterator.html">XYTheta Iterator</a></li>
@@ -332,11 +338,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/visualization.html">Publisher</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-dwb-controller.html#plugins">Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="limited_accel_generator.html">LimitedAccelGenerator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="simple_goal_checker.html">SimpleGoalChecker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">StoppedGoalChecker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#plugins">Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
@@ -480,9 +484,9 @@
         
           <li><a href="../../index.html">Configuration Guide</a> &raquo;</li>
         
-          <li><a href="../configuring-dwb-controller.html">DWB Controller</a> &raquo;</li>
+          <li><a href="../configuring-controller-server.html">Controller Server</a> &raquo;</li>
         
-      <li>StoppedGoalChecker</li>
+      <li>SimpleProgressChecker</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -499,62 +503,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="stoppedgoalchecker">
-<span id="configuring-dwb-stopped-goal-checker-plugin"></span><h1>StoppedGoalChecker<a class="headerlink" href="#stoppedgoalchecker" title="Permalink to this headline">¶</a></h1>
-<p>Checks whether the robot has reached the goal pose and come to a stop.</p>
+  <div class="section" id="simpleprogresschecker">
+<span id="configuring-nav2-controller-simple-progress-checker-plugin"></span><h1>SimpleProgressChecker<a class="headerlink" href="#simpleprogresschecker" title="Permalink to this headline">¶</a></h1>
+<p>Checks whether the robot has made progress.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>: nav2_controller plugin name defined in the <strong>progress_checker_plugin_id</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.trans_stopped_velocity:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.required_movement_radius:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col width="33%" />
+<col width="67%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>double</td>
-<td>0.25</td>
+<td>0.5</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><dl class="docutils">
+<dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Velocity below is considered to be stopped at tolerance met (m/s).</p>
+<dd><p class="first last">Minimum amount a robot must move to be progressing to goal (m).</p>
 </dd>
 </dl>
-</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.rot_stopped_velocity:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.movement_time_allowance:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col width="33%" />
+<col width="67%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>double</td>
-<td>0.25</td>
+<td>10.0</td>
 </tr>
 </tbody>
 </table>
-<blockquote class="last">
-<div><dl class="docutils">
+<dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">Velocity below is considered to be stopped at tolerance met (rad/s).</p>
+<dd><p class="first last">Maximum amount of time a robot has to move the minimum radius (s).</p>
 </dd>
 </dl>
-</div></blockquote>
 </td>
 </tr>
 </tbody>

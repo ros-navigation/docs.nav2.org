@@ -320,6 +320,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html">Controller Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_controller-plugins/simple_progress_checker.html">SimpleProgressChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_controller-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_controller-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#example">Example</a></li>
 </ul>
@@ -334,9 +340,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-dwb-controller.html#plugins">Plugins</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/dwb-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/dwb-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
@@ -531,6 +535,12 @@ Each server defines a parameter where the list of names for the plugins to be lo
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Controller Server</td>
+<td>progress_checker_plugin</td>
+</tr>
+<tr class="row-odd"><td>Controller Server</td>
+<td>goal_checker_plugin</td>
+</tr>
+<tr class="row-even"><td>Controller Server</td>
 <td>controller_plugins</td>
 </tr>
 <tr class="row-odd"><td>Planner Server</td>
@@ -581,6 +591,8 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1712">GoalUpdatedCondition</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">DistanceTraveledCondition</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">TimeExpiredCondition</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">ProgressChecker</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">GoalChecker</a></li>
 </ul>
 </div>
 <div class="section" id="map-server-re-work">

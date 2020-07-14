@@ -47,7 +47,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DWB Controller" href="configuring-dwb-controller.html" />
+    <link rel="next" title="SimpleProgressChecker" href="nav2_controller-plugins/simple_progress_checker.html" />
     <link rel="prev" title="NavFn Planner" href="configuring-navfn.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
@@ -320,6 +320,12 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Controller Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="nav2_controller-plugins/simple_progress_checker.html">SimpleProgressChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nav2_controller-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nav2_controller-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
@@ -334,9 +340,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#plugins">Plugins</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dwb-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dwb-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
@@ -501,7 +505,7 @@
 <span id="configuring-controller-server"></span><h1>Controller Server<a class="headerlink" href="#controller-server" title="Permalink to this headline">¶</a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_controller">Github</a>.</p>
 <p>The Controller Server implements the server for handling the controller requests for the stack and host a map of plugin implementations.
-It will take in a path and a controller plugin name to use and call the appropriate plugin.</p>
+It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
@@ -557,6 +561,72 @@ It will take in a path and a controller plugin name to use and call the appropri
     <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
     <span class="nt">FollowPath</span><span class="p">:</span>
       <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">progress_checker_plugin:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>‘progress_checker’</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Mapped name for progress checker plugin for checking progress made by robot.</p>
+</dd>
+<dt>Note</dt>
+<dd><p class="first">The plugin namespace defined needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<p>Example:</p>
+<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">progress_checker_plugin</span><span class="p">:</span> <span class="s">&quot;progress_checker&quot;</span>
+    <span class="nt">progress_checker</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">goal_checker_plugin:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>‘goal_checker’</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Mapped name for goal checker plugin for checking goal is reached.</p>
+</dd>
+<dt>Note</dt>
+<dd><p class="first">The plugin namespace defined needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<p>Example:</p>
+<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">goal_checker_plugin</span><span class="p">:</span> <span class="s">&quot;goal_checker&quot;</span>
+    <span class="nt">goal_checker</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_controller::SimpleGoalChecker&quot;</span>
 </pre></div>
 </div>
 </dd>
@@ -622,53 +692,9 @@ It will take in a path and a controller plugin name to use and call the appropri
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Minimum angular velocity to use (rad/s).</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">required_movement_radius:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="33%" />
-<col width="67%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>double</td>
-<td>0.5</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Minimum amount a robot must move to be progressing to goal (m).</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">movement_time_allowance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="33%" />
-<col width="67%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>double</td>
-<td>10.0</td>
-</tr>
-</tbody>
-</table>
 <dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">Maximum amount of time a robot has to move the minimum radius (s).</p>
+<dd><p class="first last">Minimum angular velocity to use (rad/s).</p>
 </dd>
 </dl>
 </td>
@@ -676,18 +702,36 @@ It will take in a path and a controller plugin name to use and call the appropri
 </tbody>
 </table>
 </div>
+<div class="section" id="provided-plugins">
+<h2>Provided Plugins<a class="headerlink" href="#provided-plugins" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The plugins listed below are inside the <code class="docutils literal notranslate"><span class="pre">nav2_controller</span></code> namespace.</div></blockquote>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nav2_controller-plugins/simple_progress_checker.html">SimpleProgressChecker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nav2_controller-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nav2_controller-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
+</ul>
+</div>
+</div>
 <div class="section" id="default-plugins">
 <h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
-<p>When the <code class="code docutils literal notranslate"><span class="pre">controller_plugins</span></code> parameter is not overridden, the following default plugins are loaded:</p>
+<p>When the <code class="code docutils literal notranslate"><span class="pre">progress_checker_plugin</span></code>, <code class="code docutils literal notranslate"><span class="pre">goal_checker_plugin</span></code> or <code class="code docutils literal notranslate"><span class="pre">controller_plugins</span></code> parameters are not overridden, the following default plugins are loaded:</p>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col width="25%" />
+<col width="75%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Namespace</td>
 <td>Plugin</td>
+</tr>
+<tr class="row-even"><td>“progress_checker”</td>
+<td>“nav2_controller::SimpleProgressChecker”</td>
+</tr>
+<tr class="row-odd"><td>“goal_checker”</td>
+<td>“nav2_controller::SimpleGoalChecker”</td>
 </tr>
 <tr class="row-even"><td>“FollowPath”</td>
 <td>“dwb_core::DWBLocalPlanner”</td>
@@ -700,13 +744,23 @@ It will take in a path and a controller plugin name to use and call the appropri
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
   <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
     <span class="nt">controller_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20.0</span>
-    <span class="nt">min_x_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
-    <span class="nt">min_y_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">min_theta_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-    <span class="nt">required_movement_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
-    <span class="nt">movement_time_allowance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
-    <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;FollowPath&#39;</span><span class="p p-Indicator">]</span>
+    <span class="nt">min_x_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
+    <span class="nt">min_y_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+    <span class="nt">min_theta_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
+    <span class="nt">progress_checker_plugin</span><span class="p">:</span> <span class="s">&quot;progress_checker&quot;</span>
+    <span class="nt">goal_checker_plugin</span><span class="p">:</span> <span class="s">&quot;goal_checker&quot;</span>
+    <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
+    <span class="nt">progress_checker</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span>
+      <span class="nt">required_movement_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+      <span class="nt">movement_time_allowance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
+    <span class="nt">goal_checker</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_controller::SimpleGoalChecker&quot;</span>
+      <span class="nt">xy_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+      <span class="nt">yaw_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+      <span class="nt">stateful</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
     <span class="nt">FollowPath</span><span class="p">:</span>
       <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span>
 </pre></div>

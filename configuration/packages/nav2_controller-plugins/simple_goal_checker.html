@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="StandardTrajectoryGenerator" href="standard_traj_generator.html" />
-    <link rel="prev" title="LimitedAccelGenerator" href="limited_accel_generator.html" />
+    <link rel="next" title="StoppedGoalChecker" href="stopped_goal_checker.html" />
+    <link rel="prev" title="SimpleProgressChecker" href="simple_progress_checker.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -318,13 +318,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-navfn.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../configuring-controller-server.html">Controller Server</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuring-controller-server.html">Controller Server</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-controller-server.html#provided-plugins">Provided Plugins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="simple_progress_checker.html">SimpleProgressChecker</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">SimpleGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stopped_goal_checker.html">StoppedGoalChecker</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/controller.html">DWB Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/iterator.html">XYTheta Iterator</a></li>
@@ -332,11 +338,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/visualization.html">Publisher</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-dwb-controller.html#plugins">Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="limited_accel_generator.html">LimitedAccelGenerator</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">SimpleGoalChecker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stopped_goal_checker.html">StoppedGoalChecker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#plugins">Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
@@ -480,7 +484,7 @@
         
           <li><a href="../../index.html">Configuration Guide</a> &raquo;</li>
         
-          <li><a href="../configuring-dwb-controller.html">DWB Controller</a> &raquo;</li>
+          <li><a href="../configuring-controller-server.html">Controller Server</a> &raquo;</li>
         
       <li>SimpleGoalChecker</li>
     
@@ -500,16 +504,16 @@
            <div itemprop="articleBody">
             
   <div class="section" id="simplegoalchecker">
-<span id="configuring-dwb-simple-goal-checker-plugin"></span><h1>SimpleGoalChecker<a class="headerlink" href="#simplegoalchecker" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-nav2-controller-simple-goal-checker-plugin"></span><h1>SimpleGoalChecker<a class="headerlink" href="#simplegoalchecker" title="Permalink to this headline">¶</a></h1>
 <p>Checks whether the robot has reached the goal pose.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>: nav2_controller plugin name defined in the <strong>goal_checker_plugin_id</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.xy_goal_tolerance:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.xy_goal_tolerance:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
@@ -533,7 +537,7 @@
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.yaw_goal_tolerance:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.yaw_goal_tolerance:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
@@ -557,7 +561,7 @@
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.stateful:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.stateful:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="36%" />
