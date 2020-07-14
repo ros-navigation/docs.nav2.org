@@ -75,6 +75,12 @@ Citations
 If you use the navigation framework, an algorithm from this repository, or ideas from it
 please cite this work in your papers!
 
+
+S. Macenski, F. Martín, R. White, J. Clavero.
+The Marathon 2: A Navigation System.
+IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020.
+
+
 .. code-block:: bash
 
    @InProceedings{macenski2020marathon2,
