@@ -77,7 +77,7 @@ please cite this work in your papers!
 
 
 S. Macenski, F. Martín, R. White, J. Clavero.
-The Marathon 2: A Navigation System.
+`The Marathon 2: A Navigation System <https://arxiv.org/abs/2003.00368/>`_.
 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020.
 
 
