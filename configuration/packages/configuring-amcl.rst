@@ -442,7 +442,7 @@ Parameters
   Description
     Requires that AMCL is provided an initial pose either via topic or initial_pose* parameter (with parameter set_initial_pose: true) when reset. Otherwise, by default AMCL will use the last known pose to initialize.
     
-:topic:
+:scan_topic:
 
   ============== =============================
   Type           Default                                               
