@@ -67,8 +67,33 @@ lifecycle. A list of all user-reported plugins can be found on :ref:`plugins`.
 
 Here is the documentation on how to install and use |PN| with an example robot, Turtlebot
 3 (TB3), as well as how to customize it for other robots, tune the behavior for better
-performance, as well as customize the internals for advanced results. Below is an example
-of the TB3 navigating in a small lounge.
+performance, as well as customize the internals for advanced results. 
+
+Citations
+#########
+
+If you use the navigation framework, an algorithm from this repository, or ideas from it
+please cite this work in your papers!
+
+
+S. Macenski, F. Martín, R. White, J. Clavero.
+`The Marathon 2: A Navigation System <https://arxiv.org/abs/2003.00368/>`_.
+IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020.
+
+
+.. code-block:: bash
+
+   @InProceedings{macenski2020marathon2,
+   author = {Macenski, Steven and Martin, Francisco and White, Ruffin and Ginés Clavero, Jonatan},
+   title = {The Marathon 2: A Navigation System},
+   booktitle = {2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+   year = {2020}
+   }
+    
+Example
+#######
+
+Below is an example of the TB3 navigating in a small lounge.
 
 .. raw:: html
 
