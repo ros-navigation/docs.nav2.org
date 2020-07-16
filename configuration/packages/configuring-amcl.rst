@@ -497,4 +497,4 @@ Example
         z_rand: 0.5
         z_short: 0.05
         always_reset_initial_pose: false
-        topic: scan
+        scan_topic: scan
