@@ -40,11 +40,11 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  vector<double> {}   
+  vector<double> "[]"   
   ============== =======
 
   Description
-    Ordered set of footprint points, must be closed set.
+    Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters `footprint: "[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]"`.
 
 :global_frame:
 

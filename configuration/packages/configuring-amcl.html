@@ -1337,9 +1337,30 @@
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Requires that AMCL is provided an initial pose either via topic or initial_pose* parameter (with parameter set_initial_pose: true) when reset. Otherwise, by default AMCL will use the last known pose to initialize.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">scan_topic:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>scan</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Laser scan topic to subscribe to.</p>
 </dd>
 </dl>
 </td>
@@ -1389,6 +1410,7 @@
     <span class="nt">z_rand</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
     <span class="nt">z_short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
     <span class="nt">always_reset_initial_pose</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">scan_topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scan</span>
 </pre></div>
 </div>
 </div>

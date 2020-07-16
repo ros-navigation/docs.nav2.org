@@ -566,13 +566,13 @@ It is used in the planner and controller servers for creating the space to check
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>vector&lt;double&gt;</td>
-<td>{}</td>
+<td>“[]”</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Ordered set of footprint points, must be closed set.</p>
+<dd><p class="first last">Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters <cite>footprint: “[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]”</cite>.</p>
 </dd>
 </dl>
 </td>
