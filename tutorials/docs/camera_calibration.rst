@@ -70,6 +70,12 @@ Tutorial Steps
 
 ::
 
+    Camera Name:
+
+    -c, --camera_name
+            name of the camera to appear in the calibration file
+
+
     Chessboard Options:
 
     You must specify one or more chessboards as pairs of --size and--square options.
@@ -85,18 +91,23 @@ Tutorial Steps
 
      --approximate=APPROXIMATE
                         allow specified slop (in seconds) when pairing images from unsynchronized stereo cameras
-     --no-service-check  disable check for set_camera_info services at startup
+     --no-service-check
+                        disable check for set_camera_info services at startup
 
     Calibration Optimizer Options:
-      --fix-principal-point
+
+     --fix-principal-point
                         fix the principal point at the image center
-    --fix-aspect-ratio  enforce focal lengths (fx, fy) are equal
-    --zero-tangent-dist
+     --fix-aspect-ratio
+                        enforce focal lengths (fx, fy) are equal
+     --zero-tangent-dist
                         set tangential distortion coefficients (p1, p2) to
                         zero
-    -k NUM_COEFFS, --k-coefficients=NUM_COEFFS
+     -k NUM_COEFFS, --k-coefficients=NUM_COEFFS
                         number of radial distortion coefficients to use (up to
                         6, default 2)
+     --disable_calib_cb_fast_check
+                        uses the CALIB_CB_FAST_CHECK flag for findChessboardCorners
 
 	This will open a calibration window which highlight the checkerboard.
 
