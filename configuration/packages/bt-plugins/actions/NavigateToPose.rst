@@ -10,7 +10,7 @@ Invokes the NavigateToPose ROS 2 action server, which is implemented by the bt_n
 Input Ports
 -----------
 
-:position:
+:goal:
 
   ====== =======
   Type   Default
@@ -19,18 +19,7 @@ Input Ports
   ====== =======
 
   Description
-    	Takes in a blackboard variable containing the position, eg. "{position}".
-
-:orientation:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A  
-  ====== =======
-
-  Description
-    	Takes in a blackboard variable containing the orientation, eg. "{orientation}".
+    	Takes in a blackboard variable containing the goal, eg. "{goal}".
 
 :server_name:
 
@@ -59,4 +48,4 @@ Example
 
 .. code-block:: xml
 
-  <NavigateToPose position="{position}" orientation="{orientation}" server_name="NavigateToPose" server_timeout="10"/>
+  <NavigateToPose goal="{goal}" server_name="NavigateToPose" server_timeout="10"/>
