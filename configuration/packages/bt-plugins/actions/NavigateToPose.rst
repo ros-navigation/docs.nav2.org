@@ -12,11 +12,11 @@ Input Ports
 
 :goal:
 
-  ====== =======
-  Type   Default
-  ------ -------
-  string N/A  
-  ====== =======
+  =========== =======
+  Type        Default
+  ----------- -------
+  PoseStamped N/A  
+  =========== =======
 
   Description
     	Takes in a blackboard variable containing the goal, eg. "{goal}".
