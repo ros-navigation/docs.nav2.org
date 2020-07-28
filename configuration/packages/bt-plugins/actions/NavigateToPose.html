@@ -410,6 +410,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Eloquent.html#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../migration/Foxy.html">Foxy to Galactic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contribute/index.html">Getting Involved</a><ul>
@@ -518,49 +522,28 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">position:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">goal:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col width="61%" />
+<col width="39%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>string</td>
+<tr class="row-even"><td>PoseStamped</td>
 <td>N/A</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Takes in a blackboard variable containing the position, eg. “{position}”.</p>
+<dd><p class="first last">Takes in a blackboard variable containing the goal, eg. “{goal}”.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">orientation:</th><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="46%" />
-<col width="54%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>string</td>
-<td>N/A</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Takes in a blackboard variable containing the orientation, eg. “{orientation}”.</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -581,7 +564,7 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -607,7 +590,7 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NavigateToPose</span> <span class="na">position=</span><span class="s">&quot;{position}&quot;</span> <span class="na">orientation=</span><span class="s">&quot;{orientation}&quot;</span> <span class="na">server_name=</span><span class="s">&quot;NavigateToPose&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NavigateToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">server_name=</span><span class="s">&quot;NavigateToPose&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
