@@ -72,7 +72,8 @@ For example, the following will load the static and obstacle layer plugins into 
       global_costmap:
         ros__parameters:
           use_sim_time: True
-          plugin_names: ["static_layer", "obstacle_layer"]
+          plugin_names: ["static_layer", "obstacle_layer"] # For Foxy and earlier
+          plugins: ["static_layer", "obstacle_layer"] # For Galactic and later
           plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer"] # For Foxy and earlier
 
 .. note::
