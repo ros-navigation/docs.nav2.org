@@ -187,20 +187,24 @@ It is good practice to place these lines at the end of the file but technically,
 3- Pass the plugin name through params file
 -------------------------------------------
 
-To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
+To enable the plugin, we need to modify the ``nav2_params.yaml`` file as belowto replace following params
 
-replace following params
+.. note::
+
+  For Galactic or later, ``plugin_names`` and ``plugin_types`` have been replaced with a single ``plugins`` string vector for plugin names. The types are now defined in the ``plugin_name`` namespace in the ``plugin:`` field (e.g. ``plugin: MyPlugin::Plugin``). Inline comments in the code blocks will help guide you through this.
 
 .. code-block:: text
 
   planner_server:
   ros__parameters:
-    planner_plugin_types: ["nav2_navfn_planner/NavfnPlanner"]
-    planner_plugin_ids: ["GridBased"]
+    planner_plugin_types: ["nav2_navfn_planner/NavfnPlanner"] # For Foxy and earlier
+    planner_plugin_ids: ["GridBased"] # For Foxy and earlier
+    plugins: ["GridBased"] # For Galactic and later
     use_sim_time: True
-    GridBased.tolerance: 2.0
-    GridBased.use_astar: false
-    GridBased.allow_unknown: true
+    GridBased:
+      tolerance: 2.0
+      use_astar: false
+      allow_unknown: true
 
 with
 
@@ -208,10 +212,13 @@ with
 
   planner_server:
   ros__parameters:
-    planner_plugin_types: ["nav2_straightline_planner/StraightLine"]
-    planner_plugin_ids: ["GridBased"]
+    planner_plugin_types: ["nav2_straightline_planner/StraightLine"] # For Foxy and earlier
+    planner_plugin_ids: ["GridBased"] # For Foxy and earlier
+    plugins: ["GridBased"] # For Galactic and later
     use_sim_time: True
-    GridBased.interpolation_resolution: 0.1
+    GridBased:
+      plugin: nav2_straightline_planner/StraightLine # For Galactic and later
+      interpolation_resolution: 0.1
 
 In the above snippet, you can observe the mapping of our ``nav2_straightline_planner/StraightLine`` planner to its id ``GridBased``. To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
