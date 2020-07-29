@@ -73,7 +73,11 @@ For example, the following will load the static and obstacle layer plugins into 
         ros__parameters:
           use_sim_time: True
           plugin_names: ["static_layer", "obstacle_layer"]
-          plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer"]
+          plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer"] # For Foxy and earlier
+
+.. note::
+
+  For Galactic or later, ``plugin_names`` and ``plugin_types`` have been replaced with a single ``plugins`` string vector for plugin names. The types are now defined in the ``plugin_name`` namespace in the ``plugin:`` field (e.g. ``plugin: MyPlugin::Plugin``). Inline comments in the code blocks will help guide you through this.
 
 To load the STVL plugin, a new plugin name and type must be added.
 For example, if the application required an STVL layer and no obstacle layer, our file would be:
@@ -85,7 +89,7 @@ For example, if the application required an STVL layer and no obstacle layer, ou
         ros__parameters:
           use_sim_time: True
           plugin_names: ["static_layer", "stvl_layer"]
-          plugin_types: ["nav2_costmap_2d::StaticLayer", "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"]
+          plugin_types: ["nav2_costmap_2d::StaticLayer", "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"] # For Foxy and earlier
 
 Similar to the Voxel Layer, after registering the plugin, we can add the configuration of the STVL layer under the namespace ``stvl_layer``.
 An example fully-described parameterization of an STVL configuration is:
@@ -93,6 +97,7 @@ An example fully-described parameterization of an STVL configuration is:
 .. code-block:: yaml
 
     stvl_layer:
+      plugin: "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer" # For Galactic and later
       enabled: true
       voxel_decay: 15.
       decay_model: 0
