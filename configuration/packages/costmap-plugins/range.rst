@@ -94,3 +94,14 @@ Range Sensor Parameters
 
   Description
     Whether to clear the sensor readings on max range.
+
+:``<range layer>``.input_sensor_type:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  int    ALL
+  ====== =======
+
+  Description
+    Input sensor type is either ALL (automatic selection), VARIABLE (min range != max range), or FIXED (min range == max range).
