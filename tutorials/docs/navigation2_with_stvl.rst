@@ -88,7 +88,8 @@ For example, if the application required an STVL layer and no obstacle layer, ou
       global_costmap:
         ros__parameters:
           use_sim_time: True
-          plugin_names: ["static_layer", "stvl_layer"]
+          plugin_names: ["static_layer", "stvl_layer"] # For Foxy and earlier
+          plugins: ["static_layer", "stvl_layer"] # For Galactic and later
           plugin_types: ["nav2_costmap_2d::StaticLayer", "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"] # For Foxy and earlier
 
 Similar to the Voxel Layer, after registering the plugin, we can add the configuration of the STVL layer under the namespace ``stvl_layer``.
