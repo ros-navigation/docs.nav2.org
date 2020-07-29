@@ -202,6 +202,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as belowto
     plugins: ["GridBased"] # For Galactic and later
     use_sim_time: True
     GridBased:
+      plugin: nav2_navfn_planner/NavfnPlanner # For Galactic and later
       tolerance: 2.0
       use_astar: false
       allow_unknown: true

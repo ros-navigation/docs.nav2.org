@@ -224,8 +224,9 @@ NOTE: there could be many simultaneously loaded plugin objects of one type. For 
 
 .. code-block:: text
 
-  plugin_names: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"]
-  plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_gradient_costmap_plugin/GradientLayer", "nav2_gradient_costmap_plugin/GradientLayer"]
+  plugin_names: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"] # For Foxy and earlier
+  plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_gradient_costmap_plugin/GradientLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Foxy and earlier
+  plugins: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"] # For Galactic and later
 
 In this case each plugin object will be handled by its own parameters tree in a YAML-file, like:
 
