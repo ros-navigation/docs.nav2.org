@@ -25,6 +25,11 @@ STVL is a demonstrative pluginlib plugin and the same process can be followed fo
 Before completing this tutorial, please look at the previous two tutorials on navigation in simulation and physical hardware, if available.
 This tutorial assumes knowledge of navigation and basic understanding of costmaps.
 
+.. note::
+
+  For Ubuntu 20.04 users, there's a known issue with OpenVDB and its binaries as of July 2020 with ``libjmalloc``. If you see an error such as ``Could not load library LoadLibrary error: /usr/lib/x86_64-linux-gnu/libjemalloc.so.2: cannot allocate memory in static TLS block``, it can be resolved with ``export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2`` until new binaries are released of OpenVDB.
+
+
 Costmap2D and STVL
 ==================
 
