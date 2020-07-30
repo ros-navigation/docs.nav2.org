@@ -25,6 +25,11 @@ STVL is a demonstrative pluginlib plugin and the same process can be followed fo
 Before completing this tutorial, please look at the previous two tutorials on navigation in simulation and physical hardware, if available.
 This tutorial assumes knowledge of navigation and basic understanding of costmaps.
 
+.. note::
+
+  For Ubuntu 20.04 users, there's a known issue with OpenVDB and its binaries as of July 2020 with ``libjmalloc``. If you see an error such as ``Could not load library LoadLibrary error: /usr/lib/x86_64-linux-gnu/libjemalloc.so.2: cannot allocate memory in static TLS block``, it can be resolved with ``export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2`` until new binaries are released of OpenVDB.
+
+
 Costmap2D and STVL
 ==================
 
@@ -72,8 +77,13 @@ For example, the following will load the static and obstacle layer plugins into 
       global_costmap:
         ros__parameters:
           use_sim_time: True
-          plugin_names: ["static_layer", "obstacle_layer"]
-          plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer"]
+          plugin_names: ["static_layer", "obstacle_layer"] # For Foxy and earlier
+          plugins: ["static_layer", "obstacle_layer"] # For Galactic and later
+          plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer"] # For Foxy and earlier
+
+.. note::
+
+  For Galactic or later, ``plugin_names`` and ``plugin_types`` have been replaced with a single ``plugins`` string vector for plugin names. The types are now defined in the ``plugin_name`` namespace in the ``plugin:`` field (e.g. ``plugin: MyPlugin::Plugin``). Inline comments in the code blocks will help guide you through this.
 
 To load the STVL plugin, a new plugin name and type must be added.
 For example, if the application required an STVL layer and no obstacle layer, our file would be:
@@ -84,8 +94,9 @@ For example, if the application required an STVL layer and no obstacle layer, ou
       global_costmap:
         ros__parameters:
           use_sim_time: True
-          plugin_names: ["static_layer", "stvl_layer"]
-          plugin_types: ["nav2_costmap_2d::StaticLayer", "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"]
+          plugin_names: ["static_layer", "stvl_layer"] # For Foxy and earlier
+          plugins: ["static_layer", "stvl_layer"] # For Galactic and later
+          plugin_types: ["nav2_costmap_2d::StaticLayer", "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"] # For Foxy and earlier
 
 Similar to the Voxel Layer, after registering the plugin, we can add the configuration of the STVL layer under the namespace ``stvl_layer``.
 An example fully-described parameterization of an STVL configuration is:
@@ -93,6 +104,7 @@ An example fully-described parameterization of an STVL configuration is:
 .. code-block:: yaml
 
     stvl_layer:
+      plugin: "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer" # For Galactic and later
       enabled: true
       voxel_decay: 15.
       decay_model: 0
