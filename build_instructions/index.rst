@@ -122,8 +122,6 @@ Then, use ``vcs`` to clone the repos and versions in it into a workspace.
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
-Note: You need to change ``--rosdistro`` to the selected ROS 2 distribution name (e.g ``eloquent``, ``foxy``).
-
 Build Navigation2 Master
 ------------------------
 
@@ -140,8 +138,6 @@ The rest of this should look familiar.
   cd ~/navigation2_ws
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install
-
-Note: You need to change ``--rosdistro`` to the selected ROS 2 distribution name (e.g ``eloquent``, ``foxy``).
 
 Docker
 ******
