@@ -119,6 +119,7 @@ Then, use ``vcs`` to clone the repos and versions in it into a workspace.
   cd ~/nav2_depend_ws
   wget https://raw.githubusercontent.com/ros-planning/navigation2/master/tools/ros2_dependencies.repos
   vcs import src < ros2_dependencies.repos
+  rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 Build Navigation2 Master
@@ -135,6 +136,7 @@ The rest of this should look familiar.
   cd ~/navigation2_ws/src
   git clone https://github.com/ros-planning/navigation2.git --branch master
   cd ~/navigation2_ws
+  rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install
 
 Docker
