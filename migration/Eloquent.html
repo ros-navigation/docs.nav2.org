@@ -151,7 +151,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">Navigation Concepts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#ros-2">ROS 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#action-server">Action Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#lifecycle-nodes">Lifecycle Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#lifecycle-nodes-and-bond">Lifecycle Nodes and Bond</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#behavior-trees">Behavior Trees</a></li>
@@ -523,6 +523,9 @@ Additionally, message filters filling up resulting in messages being dropped wer
 They are the <code class="docutils literal notranslate"><span class="pre">navigation_lifecycle_manager</span></code> and <code class="docutils literal notranslate"><span class="pre">localization_lifecycle_manager</span></code>.
 This gives each process their own manager to allow users to switch between SLAM and localization without effecting Navigation.
 It also reduces the redundant code in <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>.</p>
+<p>The lifecycle manager also now contains <code class="docutils literal notranslate"><span class="pre">Bond</span></code> connections to each lifecycle server.
+This means that if a server crashes or exits, the lifecycle manager will be constantly checking and transition down its lifecycle nodes for safety.
+This acts as a watchdog during run-time to complement the lifecycle manager’s transitioning up and down from active states. See <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1894">this PR for details</a>.</p>
 <p>A fix to the BT navigator was added to remove a rare issue where it may crash due to asynchronous issues.
 As a result, a behavior tree is created for each navigation request rather than resetting an existing tree.
 The creation of this tree will add a small amount of latency.

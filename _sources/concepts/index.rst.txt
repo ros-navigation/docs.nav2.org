@@ -37,8 +37,8 @@ Action servers are used in this stack to communicate with the highest level BT n
 They are also used for the BT navigator to communicate with the subsequent smaller action servers to compute plans, control efforts, and recoveries.
 Each will have their own unique ``.action`` type in ``nav2_msgs`` for interacting with the servers.
 
-Lifecycle Nodes
-===============
+Lifecycle Nodes and Bond
+========================
 
 Lifecycle (or Managed, more correctly) nodes are unique to ROS 2.
 More information can be `found here <https://design.ros2.org/articles/node_lifecycle.html>`_.
@@ -59,6 +59,11 @@ The networking interfaces are deactivated and stop processing, deallocate memory
 
 The lifecycle node framework is used extensively through out this project and all servers utilize it.
 It is best convention for all ROS systems to use lifecycle nodes if it is possible.
+
+Within Navigation2, we use a wrapper of LifecycleNodes, ``nav2_util LifecycleNode``.
+This wrapper wraps much of the complexities of LifecycleNodes for typical applications.
+It also includes a ``bond`` connection for the lifecycle manager to ensure that after a server transitions up, it also remains active.
+If a server crashes, it lets the lifecycle manager know and transition down the system to prevent a critical failure. See :ref:`eloquent_migration` for details.
 
 Behavior Trees
 **************

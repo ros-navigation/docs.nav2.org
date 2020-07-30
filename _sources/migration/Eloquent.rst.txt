@@ -16,6 +16,10 @@ They are the ``navigation_lifecycle_manager`` and ``localization_lifecycle_manag
 This gives each process their own manager to allow users to switch between SLAM and localization without effecting Navigation.
 It also reduces the redundant code in ``nav2_bringup``.
 
+The lifecycle manager also now contains ``Bond`` connections to each lifecycle server.
+This means that if a server crashes or exits, the lifecycle manager will be constantly checking and transition down its lifecycle nodes for safety.
+This acts as a watchdog during run-time to complement the lifecycle manager's transitioning up and down from active states. See `this PR for details <https://github.com/ros-planning/navigation2/pull/1894>`_.
+
 A fix to the BT navigator was added to remove a rare issue where it may crash due to asynchronous issues.
 As a result, a behavior tree is created for each navigation request rather than resetting an existing tree.
 The creation of this tree will add a small amount of latency.

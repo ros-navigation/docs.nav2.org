@@ -151,7 +151,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../concepts/index.html">Navigation Concepts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#ros-2">ROS 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#action-server">Action Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#lifecycle-nodes">Lifecycle Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#lifecycle-nodes-and-bond">Lifecycle Nodes and Bond</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#behavior-trees">Behavior Trees</a></li>
@@ -516,7 +516,8 @@
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_lifecycle_manager">Github</a>.</p>
 <p>The Lifecycle Manager module implements the method for handling the lifecycle transition states for the stack in a deterministic way.
 It will take in a set of ordered nodes to transition one-by-one into the configurating and activate states to run the stack.
-It will then bring down the stack into the finalized state in the opposite order.</p>
+It will then bring down the stack into the finalized state in the opposite order.
+It will also create bond connections with the servrs to ensure they are still up and transition down all nodes if any are non-responsive or crashed.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
@@ -558,9 +559,31 @@ It will then bring down the stack into the finalized state in the opposite order
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Whether to transition nodes to active state on startup.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">bond_timeout_ms:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>4000</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in ms. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to deactivate. Recommended to be always larger than 300ms for all-local node discovery. Note: if a server cleanly exits the manager will immediately be notified.</p>
 </dd>
 </dl>
 </td>
@@ -574,6 +597,7 @@ It will then bring down the stack into the finalized state in the opposite order
   <span class="nt">ros__parameters</span><span class="p">:</span>
     <span class="nt">autostart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
     <span class="nt">node_names</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;controller_server&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;planner_server&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;recoveries_server&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;bt_navigator&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;waypoint_follower&#39;</span><span class="p p-Indicator">]</span>
+    <span class="nt">bond_timeout_ms</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4000</span>
 </pre></div>
 </div>
 </div>

@@ -151,7 +151,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Navigation Concepts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#ros-2">ROS 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#action-server">Action Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lifecycle-nodes">Lifecycle Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lifecycle-nodes-and-bond">Lifecycle Nodes and Bond</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#behavior-trees">Behavior Trees</a></li>
@@ -537,8 +537,8 @@ Both require spinning the client node to process callback groups.</p>
 They are also used for the BT navigator to communicate with the subsequent smaller action servers to compute plans, control efforts, and recoveries.
 Each will have their own unique <code class="docutils literal notranslate"><span class="pre">.action</span></code> type in <code class="docutils literal notranslate"><span class="pre">nav2_msgs</span></code> for interacting with the servers.</p>
 </div>
-<div class="section" id="lifecycle-nodes">
-<h3>Lifecycle Nodes<a class="headerlink" href="#lifecycle-nodes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="lifecycle-nodes-and-bond">
+<h3>Lifecycle Nodes and Bond<a class="headerlink" href="#lifecycle-nodes-and-bond" title="Permalink to this headline">¶</a></h3>
 <p>Lifecycle (or Managed, more correctly) nodes are unique to ROS 2.
 More information can be <a class="reference external" href="https://design.ros2.org/articles/node_lifecycle.html">found here</a>.
 They are nodes that contain state machine transitions for bringup and teardown of ROS 2 servers.
@@ -554,6 +554,10 @@ The activation stage, triggering the <code class="docutils literal notranslate">
 The networking interfaces are deactivated and stop processing, deallocate memory, exit cleanly, in those stages, respectively.</p>
 <p>The lifecycle node framework is used extensively through out this project and all servers utilize it.
 It is best convention for all ROS systems to use lifecycle nodes if it is possible.</p>
+<p>Within Navigation2, we use a wrapper of LifecycleNodes, <code class="docutils literal notranslate"><span class="pre">nav2_util</span> <span class="pre">LifecycleNode</span></code>.
+This wrapper wraps much of the complexities of LifecycleNodes for typical applications.
+It also includes a <code class="docutils literal notranslate"><span class="pre">bond</span></code> connection for the lifecycle manager to ensure that after a server transitions up, it also remains active.
+If a server crashes, it lets the lifecycle manager know and transition down the system to prevent a critical failure. See <a class="reference internal" href="../migration/Eloquent.html#eloquent-migration"><span class="std std-ref">Eloquent to Foxy</span></a> for details.</p>
 </div>
 </div>
 <div class="section" id="behavior-trees">
