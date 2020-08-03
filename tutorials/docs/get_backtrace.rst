@@ -81,11 +81,40 @@ This allows us to use the same ``ros2 run`` syntax you're used to without having
 
   ros2 run --prefix 'gdb -ex run --args' <pkg> <node> --all-other-launch arguments
 
-Just as before, this prefix will launch a GDB session and run the node you requested with all the additional commandline arguments. 
+Just as before, this prefix will launch a GDB session and run the node you requested with all the additional commandline arguments.
+You should now have your node running and should be chugging along with some debug printing.
 
-#TODO --> crash, get traceback, other info
+Once your server crashes, you'll see a prompt like below. At this point you can now get a backtrace.
 
-https://answers.ros.org/question/267261/how-can-i-run-ros2-nodes-in-a-debugger-eg-gdb/
+.. code-block:: bash
+
+  (gdb)
+
+In this session, type ``backtrace`` and it will provide you with a backtrace.
+Copy this for your needs.
+For example:
+
+.. code-block:: bash
+
+  (gdb) backtrace
+  #0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:50
+  #1  0x00007ffff79cc859 in __GI_abort () at abort.c:79
+  #2  0x00007ffff7c52951 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+  #3  0x00007ffff7c5e47c in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+  #4  0x00007ffff7c5e4e7 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+  #5  0x00007ffff7c5e799 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+  #6  0x00007ffff7c553eb in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+  #7  0x000055555555936c in std::vector<int, std::allocator<int> >::_M_range_check (
+      this=0x5555555cfdb0, __n=100) at /usr/include/c++/9/bits/stl_vector.h:1070
+  #8  0x0000555555558e1d in std::vector<int, std::allocator<int> >::at (this=0x5555555cfdb0, 
+      __n=100) at /usr/include/c++/9/bits/stl_vector.h:1091
+  #9  0x000055555555828b in GDBTester::VectorCrash (this=0x5555555cfb40)
+      at /home/steve/Documents/nav2_ws/src/gdb_test_pkg/src/gdb_test_node.cpp:44
+  #10 0x0000555555559cfc in main (argc=1, argv=0x7fffffffc108)
+      at /home/steve/Documents/nav2_ws/src/gdb_test_pkg/src/main.cpp:25
+
+When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
+It may ask you if you want to kill some threads at the end, say yes.
 
 From a Launch File
 ==================
@@ -109,7 +138,7 @@ See below for an example debugging SLAM Toolbox.
       package='slam_toolbox',
       executable='sync_slam_toolbox_node',
       name='slam_toolbox',
-      prefix=['gdb -ex run --args']
+      prefix=['gdb -ex run --args'],
       output='screen')
 
 Just as before, this prefix will launch a GDB session and run the launch file you requested with all the additional launch arguments defined. 
