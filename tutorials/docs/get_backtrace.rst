@@ -113,6 +113,13 @@ For example:
   #10 0x0000555555559cfc in main (argc=1, argv=0x7fffffffc108)
       at /home/steve/Documents/nav2_ws/src/gdb_test_pkg/src/main.cpp:25
 
+In this example you should read this in the following way, starting at the bottom:
+- In the main function, on line 25 we call a function VectorCrash.
+- In VectorCrash, on line 44, we crashed in the Vector's ``at()`` method with input ``100``.
+- It crashed in ``at()`` on STL vector line 1091 after throwing an exception from a range check failure.
+
+These traces take some time to get used to reading, but in general, start at the bottom and follow it up the stack until you see the line it crashed on.
+Then you can deduce why it crashed.
 When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
 It may ask you if you want to kill some threads at the end, say yes.
 
@@ -143,9 +150,20 @@ See below for an example debugging SLAM Toolbox.
 
 Just as before, this prefix will launch a GDB session and run the launch file you requested with all the additional launch arguments defined. 
 
-#TODO --> crash, get traceback, other info
+Once your server crashes, you'll see a prompt like below. At this point you can now get a backtrace.
 
-https://answers.ros.org/question/343326/ros2-prefix-in-launch-file/
+.. code-block:: bash
+
+  (gdb)
+
+In this session, type ``backtrace`` and it will provide you with a backtrace.
+Copy this for your needs.
+See the example trace in the section above for an example.
+
+These traces take some time to get used to reading, but in general, start at the bottom and follow it up the stack until you see the line it crashed on.
+Then you can deduce why it crashed.
+When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
+It may ask you if you want to kill some threads at the end, say yes.
 
 From Navigation2 Bringup
 ========================
