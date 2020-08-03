@@ -185,7 +185,7 @@ If your server of interest is being launched from a nested launch file (e.g. an 
 
 - Launch the parent launch file in a terminal
 
-- Launch the server's launch file in another terminal following the instructions in :ref:`From a Launch File`.
+- Launch the server's launch file in another terminal following the instructions in `From a Launch File`_.
 
 Alternatively, if you server of interest is being launched in these files directly (e.g. you see a ``Node``, ``LifecycleNode``, or inside a ``ComponentContainer``), you will need to seperate this from the others:
 
@@ -195,7 +195,7 @@ Alternatively, if you server of interest is being launched in these files direct
 
 - Launch the parent launch file in a terminal
 
-- Launch the server's node in another terminal following the instructions in :ref:`From a Node`.
+- Launch the server's node in another terminal following the instructions in `From a Node`_.
 
 .. note::
   Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using ``--ros-args`` you can give it the path to the new parameters file, remaps, or names. See `this ROS2 tutorial <https://index.ros.org/doc/ros2/Tutorials/Node-arguments/>`_ for the commandline arguments required.
