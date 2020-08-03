@@ -1,0 +1,133 @@
+.. _get_backtrace:
+
+Get Backtrace in ROS2 / Nav2
+****************************
+
+- `Overview`_
+- `Preliminaries`_
+- `From a Node`_
+- `From a Launch File`_
+- `From Navigation2 Bringup`_
+
+Overview
+========
+
+This document explains one set of methods for getting backtraces for ROS 2 and Navigation2.
+There are many ways to accomplish this, but this is a good starting point for new C++ developers without GDB experience.
+
+The following steps show ROS 2 users how to modify the navigation2 stack to get traces from specific servers when they encounter a problem.
+This tutorial applies to both simulated and physical robots.
+
+This will cover how to get a backtrace from a specific node using ``ros2 run``, from a launch file representing a single node using ``ros2 launch``, and from a more complex orchestration of nodes.
+By the end of this tutorial, you should be able to get a backtrace when you notice a server crashing in ROS2.
+
+http://wiki.ros.org/roslaunch/Tutorials/Roslaunch%20Nodes%20in%20Valgrind%20or%20GDB
+
+Preliminaries
+=============
+
+GDB is the most popular debugger for C++ on Unix systems.
+It can be used to determine the reason for a crash and track threads.
+It may also be used to add breakpoints in your code to check values in memory a particular points in your software.
+
+Using GDB is a critical skill for all software developers working on C/C++.
+Many IDEs will have some kind of debugger or profiler built in, but with ROS, there are few IDEs to choose.
+Therefore it's important to understand how to use these raw tools you have available rather than relying on an IDE to provide them.
+Further, understanding these tools is a fundamental skill of C/C++ development and leaving it up to your IDE can be problematic if you change roles and no longer have access to it or are doing development on the fly through an ssh session to a remote asset.
+
+Using GDB luckily is fairly simple after you have the basics under your belt.
+The first step is to add ``-g`` to your compiler flags for the ROS package you want to profile / debug.
+This flag builds debug symbols that GDB and valgrind can read to tell you specific lines of code in your project are failing and why.
+If you do not set this flag, you can still get backtraces but it will not provide line numbers for failures.
+Be sure to remove this flag after debugging, it will slow down performance at run-time.
+
+Adding the following line to your ``CMakeLists.txt`` for your project should do the trick.
+If your project already has a ``add_compile_options()``, you can simply add ``-g`` to it.
+Then simply rebuild your workspace with this package ``colcon build --packages-select <package-name>``.
+It may take a little longer than usual to compile.
+
+.. code-block:: cmake
+
+  add_compile_options(-g)
+
+Now you're ready to debug your code!
+If this was a non-ROS project, at this point you might do something like below.
+Here we're launching a GDB session and telling our program to immediately run.
+Once your program crashes, it will return a gdb session prompt denoted by ``(gdb)``.
+At this prompt you can access the information you're interested in.
+However, since this is a ROS project with lots of node configurations and other things going on, this isn't a great option for beginners or those that don't like tons of commandline work and understanding the filesystem.
+
+.. code-block:: bash
+
+  gdb ex run --args /path/to/exe/program
+
+Below are sections to describe the 3 major situations you could run into with ROS2-based systems.
+Read the section that best describes the problem you're attempting to solve.
+
+From a Node
+===========
+
+Just as in our non-ROS example, we need to setup a GDB session before launching our ROS2 node.
+While we could set this up through the commandline with some knowledge of the ROS 2 file system, we can instead use the launch ``--prefix`` option the kind folks at Open Robotics provided for us.
+
+``--prefix`` will execute some bits of code before our ``ros2`` command allowing us to insert some information.
+If you attempted to do ``gdb ex run --args ros2 run <pkg> <node>`` as analog to our example in the preliminaries, you'd find that it couldn't find the ``ros2`` command.
+If you're even more clever, you'd find that trying to source your workspace would also fail for similar reasons.
+
+Rather than having to revert to finding the install path of the executable and typing it all out, we can instead use ``--prefix``.
+This allows us to use the same ``ros2 run`` syntax you're used to without having to worry about some of the GDB details.
+
+.. code-block:: bash
+
+  ros2 run --prefix 'gdb -ex run --args' <pkg> <node> --all-other-launch arguments
+
+Just as before, this prefix will launch a GDB session and run the node you requested with all the additional commandline arguments. 
+
+#TODO --> crash, get traceback, other info
+
+https://answers.ros.org/question/267261/how-can-i-run-ros2-nodes-in-a-debugger-eg-gdb/
+
+From a Launch File
+==================
+
+Just as in our non-ROS example, we need to setup a GDB session before launching our ROS2 launch file.
+While we could set this up through the commandline, we can instead make use of the same mechanics that we did in the ``ros2 run`` node example, now using a launch file.
+
+In your launch file, find the node that you're interested in debugging.
+For this section, we assume that your launch file contains only a single node (and potentially other information as well).
+The ``Node`` function used in the ``launch_ros`` package will take in a field ``prefix`` taking a list of prefix arguments.
+We will insert the same GDB snippet here as used in our node example.
+See below for an example debugging SLAM Toolbox.
+
+.. code-block:: python
+
+  start_sync_slam_toolbox_node = Node(
+      parameters=[
+        get_package_share_directory("slam_toolbox") + '/config/mapper_params_online_sync.yaml',
+        {'use_sim_time': use_sim_time}
+      ],
+      package='slam_toolbox',
+      executable='sync_slam_toolbox_node',
+      name='slam_toolbox',
+      prefix=['gdb -ex run --args']
+      output='screen')
+
+Just as before, this prefix will launch a GDB session and run the launch file you requested with all the additional launch arguments defined. 
+
+#TODO --> crash, get traceback, other info
+
+https://answers.ros.org/question/343326/ros2-prefix-in-launch-file/
+
+From Navigation2 Bringup
+========================
+
+Working with launch files with multiple nodes is a little different so you can interact with your GDB session without being bogged down by other logging in the same terminal.
+For this reason, when working with larger launch files, its good to pull out the specific server you're interested in and launching it seperately.
+
+Option A: Comment out -> launch manually (then cli for all the args) HOW DO REMAPS AND OTHER CRAP?
+
+Option B: Comment out -> launch using tmp directories from last one HOW DO REMAPS AND OTHER CRAP?
+
+#TODO before this section, get a gdb session at all on launch/run to make sure not just me
+
+#TODO --> crash, get traceback, other info
