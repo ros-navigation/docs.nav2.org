@@ -51,6 +51,14 @@ Running the Example
    .. code-block:: bash
 
       ros2 launch nav2_bringup tb3_simulation_launch.py
+   
+   .. note::
+
+      For ``ROS 2 Dashing Diademata`` or earlier, use
+      ``nav2_simulation_launch.py``.
+      However, it is recommended to use the most recent `ROS 2 LTS distribution
+      <https://ros.org/reps/rep-2000.html>`_  for improved stablity and feature
+      completeness.
 
    This launch file will launch Navigation2 with the AMCL localizer in the
    ``turtlebot3_world`` world.

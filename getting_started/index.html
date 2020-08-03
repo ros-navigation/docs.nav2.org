@@ -558,6 +558,13 @@ sudo apt install ros-&lt;ros2-distro&gt;-nav2-bringup
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For <code class="docutils literal notranslate"><span class="pre">ROS</span> <span class="pre">2</span> <span class="pre">Dashing</span> <span class="pre">Diademata</span></code> or earlier, use
+<code class="docutils literal notranslate"><span class="pre">nav2_simulation_launch.py</span></code>.
+However, it is recommended to use the most recent <a class="reference external" href="https://ros.org/reps/rep-2000.html">ROS 2 LTS distribution</a>  for improved stablity and feature
+completeness.</p>
+</div>
 <p>This launch file will launch Navigation2 with the AMCL localizer in the
 <code class="docutils literal notranslate"><span class="pre">turtlebot3_world</span></code> world.
 It will also launch a the robot state publisher to provide transforms,
