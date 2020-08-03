@@ -114,8 +114,11 @@ For example:
       at /home/steve/Documents/nav2_ws/src/gdb_test_pkg/src/main.cpp:25
 
 In this example you should read this in the following way, starting at the bottom:
+
 - In the main function, on line 25 we call a function VectorCrash.
+
 - In VectorCrash, on line 44, we crashed in the Vector's ``at()`` method with input ``100``.
+
 - It crashed in ``at()`` on STL vector line 1091 after throwing an exception from a range check failure.
 
 These traces take some time to get used to reading, but in general, start at the bottom and follow it up the stack until you see the line it crashed on.
