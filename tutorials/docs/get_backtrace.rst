@@ -21,8 +21,6 @@ This tutorial applies to both simulated and physical robots.
 This will cover how to get a backtrace from a specific node using ``ros2 run``, from a launch file representing a single node using ``ros2 launch``, and from a more complex orchestration of nodes.
 By the end of this tutorial, you should be able to get a backtrace when you notice a server crashing in ROS2.
 
-http://wiki.ros.org/roslaunch/Tutorials/Roslaunch%20Nodes%20in%20Valgrind%20or%20GDB
-
 Preliminaries
 =============
 
@@ -151,7 +149,10 @@ See below for an example debugging SLAM Toolbox.
       prefix=['gdb -ex run --args'],
       output='screen')
 
-Just as before, this prefix will launch a GDB session and run the launch file you requested with all the additional launch arguments defined. 
+Just as before, this prefix will launch a GDB session and run the launch file you requested with all the additional launch arguments defined.
+
+.. note::
+  As of ROS2 Foxy, there may be an issue with ``prefix`` in launch files not returning ``gdb`` prompts after a crash. See `this ticket <https://github.com/ros2/launch_ros/issues/165>`_ for more information.
 
 Once your server crashes, you'll see a prompt like below. At this point you can now get a backtrace.
 
@@ -174,10 +175,44 @@ From Navigation2 Bringup
 Working with launch files with multiple nodes is a little different so you can interact with your GDB session without being bogged down by other logging in the same terminal.
 For this reason, when working with larger launch files, its good to pull out the specific server you're interested in and launching it seperately.
 
-Option A: Comment out -> launch manually (then cli for all the args) HOW DO REMAPS AND OTHER CRAP?
+As such, for this case, when you see a crash you'd like to investigate, its beneficial to separate this server from the others.
 
-Option B: Comment out -> launch using tmp directories from last one HOW DO REMAPS AND OTHER CRAP?
+If your server of interest is being launched from a nested launch file (e.g. an included launch file) you may want to do the following:
 
-#TODO before this section, get a gdb session at all on launch/run to make sure not just me
+- Comment out the launch file inclusion from the parent launch file
 
-#TODO --> crash, get traceback, other info
+- Recompile the package of interest with ``-g`` flag for debug symbols
+
+- Launch the parent launch file in a terminal
+
+- Launch the server's launch file in another terminal following the instructions in :ref:`From a Launch File`.
+
+Alternatively, if you server of interest is being launched in these files directly (e.g. you see a ``Node``, ``LifecycleNode``, or inside a ``ComponentContainer``), you will need to seperate this from the others:
+
+- Comment out the launch file inclusion from the parent launch file
+
+- Recompile the package of interest with ``-g`` flag for debug symbols
+
+- Launch the parent launch file in a terminal
+
+- Launch the server's node in another terminal following the instructions in :ref:`From a Node`.
+
+.. note::
+  Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using ``--ros-args`` you can give it the path to the new parameters file, remaps, or names. See `this ROS2 tutorial <https://index.ros.org/doc/ros2/Tutorials/Node-arguments/>`_ for the commandline arguments required.
+
+We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier.
+
+Once your server crashes, you'll see a prompt like below in the specific server's terminal. At this point you can now get a backtrace.
+
+.. code-block:: bash
+
+  (gdb)
+
+In this session, type ``backtrace`` and it will provide you with a backtrace.
+Copy this for your needs.
+See the example trace in the section above for an example.
+
+These traces take some time to get used to reading, but in general, start at the bottom and follow it up the stack until you see the line it crashed on.
+Then you can deduce why it crashed.
+When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
+It may ask you if you want to kill some threads at the end, say yes.
