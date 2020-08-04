@@ -115,7 +115,6 @@ An example fully-described parameterization of an STVL configuration is:
       mark_threshold: 0
       update_footprint_enabled: true
       combination_method: 1
-      obstacle_range: 3.0
       origin_z: 0.0
       publish_voxel_map: true
       transform_tolerance: 0.2
@@ -127,6 +126,7 @@ An example fully-described parameterization of an STVL configuration is:
         topic: /intel_realsense_r200_depth/points
         marking: true
         clearing: true
+        obstacle_range: 3.0
         min_obstacle_height: 0.0
         max_obstacle_height: 2.0
         expected_update_rate: 0.0
