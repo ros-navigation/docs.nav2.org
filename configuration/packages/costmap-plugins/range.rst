@@ -18,11 +18,11 @@ Range Sensor Parameters
 
 :``<range layer>``.topics:
 
-  ==== =======
+  ============== =======
   Type Default
-  ---- -------
-  bool [""]
-  ==== =======
+  -------------- -------
+  vector<string> [""]
+  ============== =======
 
   Description
     Range topics to subscribe to.
@@ -43,7 +43,7 @@ Range Sensor Parameters
   ====== =======
   Type   Default
   ------ -------
-  int    1.0
+  double    1.0
   ====== =======
 
   Description
@@ -78,7 +78,7 @@ Range Sensor Parameters
   ====== =======
   Type   Default
   ------ -------
-  int    0.8
+  double    0.8
   ====== =======
 
   Description
@@ -89,7 +89,7 @@ Range Sensor Parameters
   ====== =======
   Type   Default
   ------ -------
-  int    False
+  bool    False
   ====== =======
 
   Description
@@ -100,7 +100,7 @@ Range Sensor Parameters
   ====== =======
   Type   Default
   ------ -------
-  int    ALL
+  string    ALL
   ====== =======
 
   Description

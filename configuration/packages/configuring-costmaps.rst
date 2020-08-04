@@ -320,6 +320,7 @@ Plugin Parameters
   costmap-plugins/inflation.rst
   costmap-plugins/obstacle.rst
   costmap-plugins/voxel.rst
+  costmap-plugins/range.rst
 
 Example
 *******
