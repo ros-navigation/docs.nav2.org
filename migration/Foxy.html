@@ -412,6 +412,8 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Foxy to Galactic</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
 </ul>
 </li>
 </ul>
@@ -518,6 +520,16 @@
 <h2>NavigateToPose BT-node Interface Changes<a class="headerlink" href="#navigatetopose-bt-node-interface-changes" title="Permalink to this headline">¶</a></h2>
 <p>The NavigateToPose input port has been changed to PoseStamped instead of Point and Quaternion.</p>
 <p>See <a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateToPose.html#bt-navigate-to-pose-action"><span class="std std-ref">NavigateToPose</span></a> for more information.</p>
+</div>
+<div class="section" id="backup-bt-node-interface-changes">
+<h2>BackUp BT-node Interface Changes<a class="headerlink" href="#backup-bt-node-interface-changes" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">backup_dist</span></code> and <code class="docutils literal notranslate"><span class="pre">backup_speed</span></code> input ports should both be positive values indicating the distance to go backward respectively the speed with which the robot drives backward.</p>
+</div>
+<div class="section" id="backup-recovery-interface-changes">
+<h2>BackUp Recovery Interface Changes<a class="headerlink" href="#backup-recovery-interface-changes" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">speed</span></code> in a backup recovery goal should be positive indicating the speed with which to drive backward.
+<code class="docutils literal notranslate"><span class="pre">target.x</span></code> in a backup recovery goal should be positive indicating the distance to drive backward.
+In both cases negative values are silently inverted.</p>
 </div>
 </div>
 
