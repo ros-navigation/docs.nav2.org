@@ -451,7 +451,18 @@ Parameters
   ============== =============================
 
   Description
-    Laser scan topic to subscribe to. 
+    Laser scan topic to subscribe to.
+
+:map_topic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         map
+  ============== =============================
+
+  Description
+    Map topic to subscribe to.
 
 Example
 *******
@@ -498,3 +509,4 @@ Example
         z_short: 0.05
         always_reset_initial_pose: false
         scan_topic: scan
+        map_topic: map

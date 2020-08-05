@@ -48,3 +48,14 @@ Static Layer Parameters
 
   Description
     TF tolerance.
+
+:``<static layer>``.map_topic:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string ""
+  ====== =======
+
+  Description
+    Map topic to subscribe to. If left empty the map topic will default to the global `map_topic` parameter in `costmap_2d_ros`.
