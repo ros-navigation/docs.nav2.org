@@ -106,11 +106,11 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  vector<string> {""}   
+  string         ""   
   ============== =======
 
   Description
-    List of sources of sensors, to be used if not specified in plugin specific configurations.
+    List of sources of sensors as a string, to be used if not specified in plugin specific configurations. Ex. "static_layer stvl_layer"
 
 :origin_x:
 
