@@ -182,6 +182,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-navigation2-bringup">From Navigation2 Bringup</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
@@ -1370,9 +1378,30 @@
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Laser scan topic to subscribe to.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">map_topic:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>map</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Map topic to subscribe to.</p>
 </dd>
 </dl>
 </td>
@@ -1423,6 +1452,7 @@
     <span class="nt">z_short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
     <span class="nt">always_reset_initial_pose</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
     <span class="nt">scan_topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scan</span>
+    <span class="nt">map_topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
 </pre></div>
 </div>
 </div>
