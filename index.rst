@@ -20,7 +20,8 @@ Overview
 
 The Navigation 2 project is the spiritual successor of the ROS Navigation Stack.
 This project seeks to find a safe way to have a mobile robot move from point A to
-point B. This will complete dynamic path planning, compute velocities for motors,
+point B. It can also be applied in other applications that involve robot navigation, like following dynamic points. 
+This will complete dynamic path planning, compute velocities for motors,
 avoid obstacles, and structure recovery behaviors. To learn more about this project see :ref:`about`.
 
 Navigation 2 uses behavior trees to call modular servers to complete an action.

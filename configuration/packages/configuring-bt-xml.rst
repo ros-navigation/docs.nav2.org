@@ -49,6 +49,7 @@ Control Plugins
   bt-plugins/controls/PipelineSequence.rst
   bt-plugins/controls/RoundRobin.rst
   bt-plugins/controls/RecoveryNode.rst
+  bt-plugins/controls/TruncatePath.rst
 
 Decorator Plugins
 *****************
@@ -59,6 +60,8 @@ Decorator Plugins
   bt-plugins/decorators/RateController.rst
   bt-plugins/decorators/DistanceController.rst
   bt-plugins/decorators/SpeedController.rst
+  bt-plugins/decorators/GoalUpdater.rst
+
 
 Example
 *******

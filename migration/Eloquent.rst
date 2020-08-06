@@ -91,6 +91,8 @@ Original GitHub tickets:
 - `GoalUpdatedCondition <https://github.com/ros-planning/navigation2/pull/1712>`_
 - `DistanceTraveledCondition <https://github.com/ros-planning/navigation2/pull/1705>`_
 - `TimeExpiredCondition <https://github.com/ros-planning/navigation2/pull/1705>`_
+- `UpdateGoal <https://github.com/ros-planning/navigation2/pull/1859>`_
+- `TruncatePath <https://github.com/ros-planning/navigation2/pull/1859>`_
 - `ProgressChecker <https://github.com/ros-planning/navigation2/pull/1857>`_
 - `GoalChecker <https://github.com/ros-planning/navigation2/pull/1857>`_
 
@@ -127,4 +129,12 @@ Selection of Behavior Tree in each navigation action
 
 The ``NavigateToPose`` action allows now to select in the action request the behavior tree to be used by ``bt_navigator`` for carrying out the navigation action through the ``string behavior_tree`` field. This field indicates the absolute path of the xml file that will be used to use to carry out the action. If no file is specified, leaving this field empty, the default behavior tree specified in the ``default_bt_xml_filename parameter`` will be used.
 
-This functionality has been discussed in `this ticket <https://github.com/ros-planning/navigation2/issues/1780>`_, and carried out in `this pull request <https://github.com/ros-planning/navigation2/issues/1780>`_
+This functionality has been discussed in `this ticket <https://github.com/ros-planning/navigation2/issues/1780>`_, and carried out in `this pull request <https://github.com/ros-planning/navigation2/pull/1784>`_
+
+
+FollowPoint Capability
+**********************
+
+A new behavior tree ``followpoint.xml`` has added. This behavior tree makes a robot follow a dynamically generated point, keeping a certain distance from the target. This can be used for moving target following maneuvers.
+
+This functionality has been discussed in `this ticket <https://github.com/ros-planning/navigation2/issues/1660>`_, and carried out in `this pull request <https://github.com/ros-planning/navigation2/issues/1859>`_
