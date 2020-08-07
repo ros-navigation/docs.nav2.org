@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GoalDistCritic &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Range Sensor Parameters &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="ObstacleFootprintCritic" href="obstacle_footprint.html" />
-    <link rel="prev" title="GoalAlignCritic" href="goal_align.html" />
+    <link rel="next" title="Lifecycle Manager" href="../configuring-lifecycle.html" />
+    <link rel="prev" title="Voxel Layer Parameters" href="voxel.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -303,15 +303,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-bt-xml.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#default-plugins">Default Plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/static.html">Static Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/range.html">Range Sensor Parameters</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="static.html">Static Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="inflation.html">Inflation Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="obstacle.html">Obstacle Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxel.html">Voxel Layer Parameters</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Range Sensor Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#example">Example</a></li>
@@ -345,7 +345,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/controller.html">DWB Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/iterator.html">XYTheta Iterator</a></li>
@@ -358,17 +358,17 @@
 <li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="base_obstacle.html">BaseObstacleCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="goal_align.html">GoalAlignCritic</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">GoalDistCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="obstacle_footprint.html">ObstacleFootprintCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="oscillation.html">OscillationCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="path_align.html">PathAlignCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="path_dist.html">PathDistCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="prefer_forward.html">PreferForwardCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="rotate_to_goal.html">RotateToGoalCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="twirling.html">TwirlingCritic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/obstacle_footprint.html">ObstacleFootprintCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/oscillation.html">OscillationCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/path_align.html">PathAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/path_dist.html">PathDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/prefer_forward.html">PreferForwardCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/rotate_to_goal.html">RotateToGoalCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/twirling.html">TwirlingCritic</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#example">Example</a></li>
@@ -506,9 +506,9 @@
         
           <li><a href="../../index.html">Configuration Guide</a> &raquo;</li>
         
-          <li><a href="../configuring-dwb-controller.html">DWB Controller</a> &raquo;</li>
+          <li><a href="../configuring-costmaps.html">Costmap 2D</a> &raquo;</li>
         
-      <li>GoalDistCritic</li>
+      <li>Range Sensor Parameters</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -525,18 +525,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="goaldistcritic">
-<span id="configuring-dwb-goal-dist"></span><h1>GoalDistCritic<a class="headerlink" href="#goaldistcritic" title="Permalink to this headline">¶</a></h1>
-<p>Scores a trajectory based on how close the trajectory gets the robot to the goal pose.</p>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>: GoalDistCritic critic name defined in the <strong>&lt;dwb plugin&gt;.critics</strong> parameter defined in <a class="reference internal" href="../dwb-params/controller.html#dwb-controller"><span class="std std-ref">DWB Controller</span></a>.</p>
+  <div class="section" id="range-sensor-parameters">
+<h1>Range Sensor Parameters<a class="headerlink" href="#range-sensor-parameters" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code> is the corresponding plugin name selected for this type.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.aggregation_type:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.enabled:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether it is enabled.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.topics:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type Default</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>vector&lt;string&gt;</td>
+<td>[“”]</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Range topics to subscribe to.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.phi:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
@@ -546,21 +586,19 @@
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“last”</td>
+<tr class="row-even"><td>double</td>
+<td>1.2</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><dl class="docutils">
+<dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">last, sum, or product combination methods.</p>
+<dd><p class="first last">Phi value.</p>
 </dd>
 </dl>
-</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.scale:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.inflate_cone:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
@@ -575,18 +613,127 @@
 </tr>
 </tbody>
 </table>
-<blockquote class="last">
-<div><dl class="docutils">
+<dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Weighed scale for critic.</p>
+<dd><p class="first last">Inflate the triangular area covered by the sensor (percentage).</p>
 </dd>
 </dl>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.no_readings_timeout:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">If zero, this parameter has no effect. Otherwise if the layer does
+not receive sensor data for this amount of time,
+the layer will warn the user and the layer will be marked as not current.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.clear_threshold:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Probability below which cells are marked as free.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.mark_threshold:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.8</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Probability above which cells are marked as occupied.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.clear_on_max_reading:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether to clear the sensor readings on max range.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.input_sensor_type:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>ALL</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Input sensor type is either ALL (automatic selection), VARIABLE (min range != max range), or FIXED (min range == max range).</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 
 

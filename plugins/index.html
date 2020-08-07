@@ -311,6 +311,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/range.html">Range Sensor Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#example">Example</a></li>
@@ -416,6 +417,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#map-server-re-work">Map Server Re-Work</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#new-particle-filter-messages">New Particle Filter Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#new-costmap-layer">New Costmap Layer</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/Foxy.html">Foxy to Galactic</a><ul>
@@ -549,30 +551,36 @@ For tutorials on creating your own plugins, please see <a class="reference inter
 laser sensor readings and
 raycasting to clear free space</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/static_layer.cpp">Static Layer</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/range_sensor_layer.cpp">Range Layer</a></td>
+<td>David Lu</td>
+<td>Uses a probabalistic model to
+put data from sensors that
+publish range msgs on the costmap</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/static_layer.cpp">Static Layer</a></td>
 <td>Eitan Marder-Eppstein</td>
 <td>Gets static <code class="docutils literal notranslate"><span class="pre">map</span></code> and loads
 occupancy information into
 costmap</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/inflation_layer.cpp">Inflation Layer</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/inflation_layer.cpp">Inflation Layer</a></td>
 <td>Eitan Marder-Eppstein</td>
 <td>Inflates lethal obstacles in
 costmap with exponential decay</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/obstacle_layer.cpp">Obstacle Layer</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/obstacle_layer.cpp">Obstacle Layer</a></td>
 <td>Eitan Marder-Eppstein</td>
 <td>Maintains persistent 2D costmap
 from 2D laser scans with
 raycasting to clear free space</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/SteveMacenski/spatio_temporal_voxel_layer/">Spatio-Temporal Voxel Layer</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/SteveMacenski/spatio_temporal_voxel_layer/">Spatio-Temporal Voxel Layer</a></td>
 <td>Steve Macenski</td>
 <td>Maintains temporal 3D sparse
 volumetric voxel grid with decay
 through sensor models</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/SteveMacenski/nonpersistent_voxel_layer">Non-Persistent Voxel Layer</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/SteveMacenski/nonpersistent_voxel_layer">Non-Persistent Voxel Layer</a></td>
 <td>Steve Macenski</td>
 <td>Maintains 3D occupancy grid
 consisting only of the most
