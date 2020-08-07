@@ -128,3 +128,9 @@ Selection of Behavior Tree in each navigation action
 The ``NavigateToPose`` action allows now to select in the action request the behavior tree to be used by ``bt_navigator`` for carrying out the navigation action through the ``string behavior_tree`` field. This field indicates the absolute path of the xml file that will be used to use to carry out the action. If no file is specified, leaving this field empty, the default behavior tree specified in the ``default_bt_xml_filename parameter`` will be used.
 
 This functionality has been discussed in `this ticket <https://github.com/ros-planning/navigation2/issues/1780>`_, and carried out in `this pull request <https://github.com/ros-planning/navigation2/issues/1780>`_
+
+New Costmap Layer
+*****************
+The range sensor costmap has not been ported to navigation2 as ``nav2_costmap_2d::RangeSensorLayer"``. It uses the same
+probabilistic model as the `ROS1 <http://wiki.ros.org/range_sensor_layer>`_ layer as well as much of the
+same interface. Documentation on parameters has been added to docs/parameters and the navigation.ros.org under ``Configuration Guide``.
