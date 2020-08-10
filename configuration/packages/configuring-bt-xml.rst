@@ -25,6 +25,7 @@ Action Plugins
   bt-plugins/actions/NavigateToPose.rst
   bt-plugins/actions/ClearEntireCostmap.rst
   bt-plugins/actions/ReinitializeGlobalLocalization.rst
+  bt-plugins/actions/TruncatePath.rst
 
 Condition Plugins
 *****************
@@ -49,7 +50,6 @@ Control Plugins
   bt-plugins/controls/PipelineSequence.rst
   bt-plugins/controls/RoundRobin.rst
   bt-plugins/controls/RecoveryNode.rst
-  bt-plugins/controls/TruncatePath.rst
 
 Decorator Plugins
 *****************
