@@ -138,3 +138,9 @@ FollowPoint Capability
 A new behavior tree ``followpoint.xml`` has added. This behavior tree makes a robot follow a dynamically generated point, keeping a certain distance from the target. This can be used for moving target following maneuvers.
 
 This functionality has been discussed in `the ticket #1660 <https://github.com/ros-planning/navigation2/issues/1660>`_, and carried out in `the pull request #1859 <https://github.com/ros-planning/navigation2/issues/1859>`_.
+
+New Costmap Layer
+*****************
+The range sensor costmap has not been ported to navigation2 as ``nav2_costmap_2d::RangeSensorLayer"``. It uses the same
+probabilistic model as the `ROS1 <http://wiki.ros.org/range_sensor_layer>`_ layer as well as much of the
+same interface. Documentation on parameters has been added to docs/parameters and the navigation.ros.org under ``Configuration Guide``.

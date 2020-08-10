@@ -22,6 +22,10 @@ Costmap Layers
 |                                |                        | laser sensor readings and        |
 |                                |                        | raycasting to clear free space   |
 +--------------------------------+------------------------+----------------------------------+
+| `Range Layer`_                 | David Lu               | Uses a probabalistic model to    |
+|                                |                        | put data from sensors that       |
+|                                |                        | publish range msgs on the costmap|
++--------------------------------+------------------------+----------------------------------+
 | `Static Layer`_                | Eitan Marder-Eppstein  | Gets static ``map`` and loads    |
 |                                |                        | occupancy information into       |
 |                                |                        | costmap                          |
@@ -44,6 +48,7 @@ Costmap Layers
 
 .. _Voxel Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/voxel_layer.cpp
 .. _Static Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/static_layer.cpp
+.. _Range Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/range_sensor_layer.cpp
 .. _Inflation Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/inflation_layer.cpp
 .. _Obstacle Layer: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/obstacle_layer.cpp
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
