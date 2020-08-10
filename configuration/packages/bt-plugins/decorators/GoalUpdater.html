@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GoalUpdated &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>GoalUpdater &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="InitialPoseReceived" href="InitialPoseReceived.html" />
-    <link rel="prev" title="DistanceTraveled" href="DistanceTraveled.html" />
+    <link rel="next" title="Costmap 2D" href="../../configuring-costmaps.html" />
+    <link rel="prev" title="SpeedController" href="SpeedController.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -279,14 +279,14 @@
 <li class="toctree-l4"><a class="reference internal" href="../actions/TruncatePath.html">TruncatePath</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="GoalReached.html">GoalReached</a></li>
-<li class="toctree-l4"><a class="reference internal" href="TransformAvailable.html">TransformAvailable</a></li>
-<li class="toctree-l4"><a class="reference internal" href="DistanceTraveled.html">DistanceTraveled</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="InitialPoseReceived.html">InitialPoseReceived</a></li>
-<li class="toctree-l4"><a class="reference internal" href="IsStuck.html">IsStuck</a></li>
-<li class="toctree-l4"><a class="reference internal" href="TimeExpired.html">TimeExpired</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/GoalReached.html">GoalReached</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/TransformAvailable.html">TransformAvailable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/DistanceTraveled.html">DistanceTraveled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/GoalUpdated.html">GoalUpdated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/IsStuck.html">IsStuck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/TimeExpired.html">TimeExpired</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -295,11 +295,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../controls/RecoveryNode.html">RecoveryNode</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/RateController.html">RateController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/DistanceController.html">DistanceController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/SpeedController.html">SpeedController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/GoalUpdater.html">GoalUpdater</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="RateController.html">RateController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DistanceController.html">DistanceController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SpeedController.html">SpeedController</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">GoalUpdater</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#example">Example</a></li>
@@ -511,7 +511,7 @@
         
           <li><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a> &raquo;</li>
         
-      <li>GoalUpdated</li>
+      <li>GoalUpdater</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -528,13 +528,96 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="goalupdated">
-<span id="goal-updated-condition"></span><h1>GoalUpdated<a class="headerlink" href="#goalupdated" title="Permalink to this headline">¶</a></h1>
-<p>Checks if the global navigation goal has changed in the blackboard.
-Returns failure if the goal is the same, if it changes, it returns success.</p>
+  <div class="section" id="goalupdater">
+<span id="bt-goal-updater"></span><h1>GoalUpdater<a class="headerlink" href="#goalupdater" title="Permalink to this headline">¶</a></h1>
+<p>A custom control node, which updates the goal pose. It subscribes to a topic in which it can receive an updated goal pose to use instead of the one commanded in action. It is useful for dynamic object following tasks.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">change_goal_topic:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>“goal_update”</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">The topic to receive the updated goal pose</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="input-ports">
+<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">input_goal:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="78%" />
+<col width="22%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>geometry_msgs/PoseStamped</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The original goal pose</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">output_goal:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="78%" />
+<col width="22%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>geometry_msgs/PoseStamped</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">The resulting updated goal. If no goal received by subscription, it will be the input_goal</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalUpdated/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ChangeGoal</span> <span class="na">input_goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">output_goal=</span><span class="s">&quot;{updated_goal}&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!--Add tree components here---&gt;</span>
+<span class="nt">&lt;/ChangeGoal&gt;</span>
 </pre></div>
 </div>
 </div>

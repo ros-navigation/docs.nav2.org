@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GoalUpdated &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>TruncatePath &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="InitialPoseReceived" href="InitialPoseReceived.html" />
-    <link rel="prev" title="DistanceTraveled" href="DistanceTraveled.html" />
+    <link rel="next" title="GoalReached" href="../conditions/GoalReached.html" />
+    <link rel="prev" title="ReinitializeGlobalLocalization" href="ReinitializeGlobalLocalization.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -267,26 +267,26 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../actions/Wait.html">Wait</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/Spin.html">Spin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/BackUp.html">BackUp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ComputePathToPose.html">ComputePathToPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/FollowPath.html">FollowPath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/NavigateToPose.html">NavigateToPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/TruncatePath.html">TruncatePath</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Wait.html">Wait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Spin.html">Spin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="BackUp.html">BackUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ComputePathToPose.html">ComputePathToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FollowPath.html">FollowPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="NavigateToPose.html">NavigateToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ClearEntireCostmap.html">ClearEntireCostmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">TruncatePath</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="GoalReached.html">GoalReached</a></li>
-<li class="toctree-l4"><a class="reference internal" href="TransformAvailable.html">TransformAvailable</a></li>
-<li class="toctree-l4"><a class="reference internal" href="DistanceTraveled.html">DistanceTraveled</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="InitialPoseReceived.html">InitialPoseReceived</a></li>
-<li class="toctree-l4"><a class="reference internal" href="IsStuck.html">IsStuck</a></li>
-<li class="toctree-l4"><a class="reference internal" href="TimeExpired.html">TimeExpired</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/GoalReached.html">GoalReached</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/TransformAvailable.html">TransformAvailable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/DistanceTraveled.html">DistanceTraveled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/GoalUpdated.html">GoalUpdated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/IsStuck.html">IsStuck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/TimeExpired.html">TimeExpired</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -511,7 +511,7 @@
         
           <li><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a> &raquo;</li>
         
-      <li>GoalUpdated</li>
+      <li>TruncatePath</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -528,13 +528,84 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="goalupdated">
-<span id="goal-updated-condition"></span><h1>GoalUpdated<a class="headerlink" href="#goalupdated" title="Permalink to this headline">¶</a></h1>
-<p>Checks if the global navigation goal has changed in the blackboard.
-Returns failure if the goal is the same, if it changes, it returns success.</p>
+  <div class="section" id="truncatepath">
+<span id="bt-truncate-path"></span><h1>TruncatePath<a class="headerlink" href="#truncatepath" title="Permalink to this headline">¶</a></h1>
+<p>A custom control node, which modifies a path making it shorter. It removes parts of the path closer than a distance to the goal pose. The resulting last pose of the path orientates the robot to the original goal pose.</p>
+<div class="section" id="input-ports">
+<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">input_path:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="65%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>nav_msgs/Path</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The original path to be truncated.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">output_path:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="65%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>nav_msgs/Path</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The resulting truncated path.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">distance:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">The distance to the original goal for truncating the path.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalUpdated/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;TruncatePath</span> <span class="na">distance=</span><span class="s">&quot;1.0&quot;</span> <span class="na">input_path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">output_path=</span><span class="s">&quot;{truncated_path}&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

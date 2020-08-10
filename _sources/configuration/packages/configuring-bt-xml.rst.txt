@@ -25,6 +25,7 @@ Action Plugins
   bt-plugins/actions/NavigateToPose.rst
   bt-plugins/actions/ClearEntireCostmap.rst
   bt-plugins/actions/ReinitializeGlobalLocalization.rst
+  bt-plugins/actions/TruncatePath.rst
 
 Condition Plugins
 *****************
@@ -59,6 +60,8 @@ Decorator Plugins
   bt-plugins/decorators/RateController.rst
   bt-plugins/decorators/DistanceController.rst
   bt-plugins/decorators/SpeedController.rst
+  bt-plugins/decorators/GoalUpdater.rst
+
 
 Example
 *******

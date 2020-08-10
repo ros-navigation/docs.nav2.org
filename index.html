@@ -275,6 +275,7 @@
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/NavigateToPose.html">NavigateToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -297,6 +298,7 @@
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/decorators/RateController.html">RateController</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/decorators/DistanceController.html">DistanceController</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/decorators/SpeedController.html">SpeedController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-bt-xml.html#example">Example</a></li>
@@ -416,6 +418,7 @@
 <li class="toctree-l3"><a class="reference internal" href="migration/Eloquent.html#map-server-re-work">Map Server Re-Work</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Eloquent.html#new-particle-filter-messages">New Particle Filter Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Eloquent.html#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration/Eloquent.html#followpoint-capability">FollowPoint Capability</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Eloquent.html#new-costmap-layer">New Costmap Layer</a></li>
 </ul>
 </li>
@@ -533,7 +536,8 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The Navigation 2 project is the spiritual successor of the ROS Navigation Stack.
 This project seeks to find a safe way to have a mobile robot move from point A to
-point B. This will complete dynamic path planning, compute velocities for motors,
+point B. It can also be applied in other applications that involve robot navigation, like following dynamic points.
+This will complete dynamic path planning, compute velocities for motors,
 avoid obstacles, and structure recovery behaviors. To learn more about this project see <a class="reference internal" href="about/index.html#about"><span class="std std-ref">About and Contact</span></a>.</p>
 <p>Navigation 2 uses behavior trees to call modular servers to complete an action.
 An action can be to compute a path, control effort, recovery, or any other navigation

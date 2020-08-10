@@ -1,7 +1,7 @@
 .. range:
 
 Range Sensor Parameters
-======================
+=======================
 
 ``<range layer>`` is the corresponding plugin name selected for this type.
 

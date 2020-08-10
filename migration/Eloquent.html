@@ -276,6 +276,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateToPose.html">NavigateToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -298,6 +299,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/RateController.html">RateController</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/DistanceController.html">DistanceController</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/SpeedController.html">SpeedController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#example">Example</a></li>
@@ -417,6 +419,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#map-server-re-work">Map Server Re-Work</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-particle-filter-messages">New Particle Filter Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#followpoint-capability">FollowPoint Capability</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-costmap-layer">New Costmap Layer</a></li>
 </ul>
 </li>
@@ -616,6 +619,8 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1712">GoalUpdatedCondition</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">DistanceTraveledCondition</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">TimeExpiredCondition</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1859">UpdateGoal</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1859">TruncatePath</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">ProgressChecker</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">GoalChecker</a></li>
 </ul>
@@ -641,7 +646,12 @@ Server is a new part. It spins in the background and can be used to save map con
 <div class="section" id="selection-of-behavior-tree-in-each-navigation-action">
 <h2>Selection of Behavior Tree in each navigation action<a class="headerlink" href="#selection-of-behavior-tree-in-each-navigation-action" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action allows now to select in the action request the behavior tree to be used by <code class="docutils literal notranslate"><span class="pre">bt_navigator</span></code> for carrying out the navigation action through the <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">behavior_tree</span></code> field. This field indicates the absolute path of the xml file that will be used to use to carry out the action. If no file is specified, leaving this field empty, the default behavior tree specified in the <code class="docutils literal notranslate"><span class="pre">default_bt_xml_filename</span> <span class="pre">parameter</span></code> will be used.</p>
-<p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1780">this ticket</a>, and carried out in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1780">this pull request</a></p>
+<p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1780">the ticket #1780</a>, and carried out in <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1784">the pull request #1784</a>.</p>
+</div>
+<div class="section" id="followpoint-capability">
+<h2>FollowPoint Capability<a class="headerlink" href="#followpoint-capability" title="Permalink to this headline">¶</a></h2>
+<p>A new behavior tree <code class="docutils literal notranslate"><span class="pre">followpoint.xml</span></code> has added. This behavior tree makes a robot follow a dynamically generated point, keeping a certain distance from the target. This can be used for moving target following maneuvers.</p>
+<p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1660">the ticket #1660</a>, and carried out in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1859">the pull request #1859</a>.</p>
 </div>
 <div class="section" id="new-costmap-layer">
 <h2>New Costmap Layer<a class="headerlink" href="#new-costmap-layer" title="Permalink to this headline">¶</a></h2>
