@@ -19,13 +19,13 @@ Overview
 
 This tutorial shows how to use Navigation2 for a different task of going from point A to point B. In this case, we will use Navigation2 to follow a moving object at a distance indefinitely.
 
-This task is useful in cases such as following a person, as shown in this video of "Carry My Luggage" RoboCup@Home test, in which the `CATIE Robotics <https://robotics.catie.fr/>`_ team performs the test successfully:
+This task is useful in cases such as following a person, as shown in this video of "Follow me" RoboCup@Home test, in which the `CATIE Robotics <https://robotics.catie.fr/>`_ team performs the test successfully:
 
 .. raw:: html
 
     <h1 align="center">
       <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe width="700" height="450" src="https://www.youtube.com/embed/lTjKO4M7yZc?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="700" height="450" src="https://www.youtube.com/embed/sRodzrrJChA?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </h1>
 
