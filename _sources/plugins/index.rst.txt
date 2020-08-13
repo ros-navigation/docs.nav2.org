@@ -141,6 +141,8 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+----------------------------------+
 | `Wait Action`_                             | Steve Macenski      | Calls wait recovery action       |
 +--------------------------------------------+---------------------+----------------------------------+
+| `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter|
++--------------------------------------------+---------------------+----------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Clear Costmap Service: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
@@ -150,6 +152,7 @@ Behavior Tree Nodes
 .. _Reinitalize Global Localization Service: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp
 .. _Spin Action: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/spin_action.cpp
 .. _Wait Action: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/wait_action.cpp
+.. _Truncate Path: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/truncate_path_action.cpp
 
 
 +------------------------------------+--------------------+------------------------+
@@ -204,10 +207,14 @@ Behavior Tree Nodes
 | `Speed Controller`_      | Sarthak Mittal    | Throttles child node to a rate   |
 |                          |                   | based on current robot speed.    |
 +--------------------------+-------------------+----------------------------------+
+| `Goal Updater`_          | Francisco Martín  | Updates the goal received via    |
+|                          |                   | topic subscription.              |
++--------------------------+-------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
 .. _Distance Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
 .. _Speed Controller: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
+.. _Goal Updater: https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
