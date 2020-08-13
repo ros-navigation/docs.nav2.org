@@ -148,7 +148,7 @@ Select the above behavior tree as the default in the launcher ``tb3_simulation_l
 ---------------------------
 
 In this tutorial, we are going to use RViz instead of a full application. We will use the "clicked point" button on the toolbar to send goal updates to Navigation2. This button allows you to 
-publish coordinates in the topic clicked_point. This point needs to be sent to the behavior tree, using the program ``clicked_point_to_pose``, from `this repo <https://github.com/fmrico/nav2_test_utils>`_. Clone 
+publish coordinates in the topic ``/clicked_point``. This point needs to be sent to the behavior tree, using the program ``clicked_point_to_pose``, from `this repo <https://github.com/fmrico/nav2_test_utils>`_. Clone 
 this repo in your workspace, build, and type in a terminal.
 
 ``ros2 run nav2_test_utils clicked_point_to_pose``
