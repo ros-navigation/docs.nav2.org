@@ -30,6 +30,7 @@ This task is useful in cases such as following a person, as shown in this video 
     </h1>
 
 The requirements for this task are as follows:
+
 - The changes to achieve this functionality are limited to the behavior tree used to navigate. This behavior tree can be selected in the NavigateToPose action when this functionality is required, or it can be the default behavior tree.
 - The configuration of the planner and the controller will not be modified.
 - The action will indefinitely run until it is canceled by who initiated it.
