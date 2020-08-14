@@ -127,7 +127,7 @@ To stay at a certain distance from the target, we will use the action node ``Tru
     </BehaviorTree>
   </root>
 
-Let's save this behavior tree in ``nav2_bt_navigator/behavior_trees/follow_point.xml``
+Let's save this behavior tree and use it in our navigation task
 
 2- Modify launcher
 ------------------
