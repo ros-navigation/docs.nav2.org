@@ -35,7 +35,7 @@ The requirements for this task are as follows:
 - The configuration of the planner and the controller will not be modified.
 - The action will indefinitely run until it is canceled by who initiated it.
 
-The calculation of the dynamic pose to follow is outside the scope of this tutorial. As shown in the following diagram, the application using Navigation2 is supposed to calculate this position, 
+The detection of the dynamic object (person) pose to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest, 
 send it in the call to the NavigateToPose action, and update it during the execution of this task:
 
 
