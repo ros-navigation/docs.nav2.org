@@ -43,7 +43,7 @@ send the initial pose to the ``NavigateToPose`` action, and update it on a topic
     :width: 48%
 
 
-Before completing this tutorial, please look at the previous two tutorials on navigation in simulation and physical hardware, if available.
+Before completing this tutorial, please look at the previous two tutorials on navigation in simulation and physical hardware.
 This tutorial assumes knowledge of navigation and basic understanding of behavior trees.
 
 Tutorial Steps
