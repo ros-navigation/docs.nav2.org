@@ -39,15 +39,15 @@ The requirements for this task are as follows:
 - The configuration of the planner and the controller will not be modified.
 - The action will indefinitely run until it is canceled by who initiated it.
 
-The calculation of the dynamic pose to follow is outside the scope of this tutorial. As shown in the following diagram, the application using Navigation2 is supposed to calculate this position, 
-send it in the call to the NavigateToPose action, and update it during the execution of this task:
+The detection of the dynamic object (person) pose to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest, 
+send the initial pose to the ``NavigateToPose`` action, and update it on a topic for the duration of the task:
 
 
 .. image:: images/navigation2_dynamic_point_following/main_diagram.png
     :width: 48%
 
 
-Before completing this tutorial, please look at the previous two tutorials on navigation in simulation and physical hardware, if available.
+Before completing this tutorial, please look at the previous two tutorials on navigation in simulation and physical hardware.
 This tutorial assumes knowledge of navigation and basic understanding of behavior trees.
 
 Tutorial Steps
@@ -88,8 +88,7 @@ First of all, let's make that this behavior runs while there is not any failure.
     </BehaviorTree>
   </root>
 
-We will use the decorator GoalUpdater to use a dynamic point. This node takes as input the requested goal in the ``NavigateToPose`` action and subscribes to the topic ``/goal_update``. It set as output ``updated_goal``:
-
+We will use the decorator ``GoalUpdater`` to update the dynamic object pose to follow. This node takes as input the current goal and subscribes to the topic ``/goal_update``. It set the new goal as ``updated_goal``:
 - The original goal, if nothing received in ``/goal_update``.
 - Or, the pose received in ``/goal_update``.
 
@@ -110,7 +109,7 @@ We will use the decorator GoalUpdater to use a dynamic point. This node takes as
     </BehaviorTree>
   </root>
 
-To stay at a certain distance from the target, we will use the action node ``TruncatePath``. This node modifies a path making it shorter. We can set up the desired distance to the goal using the input port ``distance``.
+To stay at a certain distance from the target, we will use the action node ``TruncatePath``. This node modifies a path making it shorter so we don't try to navigate into the object of interest. We can set up the desired distance to the goal using the input port ``distance``.
 
 .. code-block:: xml
 
@@ -132,7 +131,7 @@ To stay at a certain distance from the target, we will use the action node ``Tru
     </BehaviorTree>
   </root>
 
-Let's save this behavior tree in ``nav2_bt_navigator/behavior_trees/follow_point.xml``
+Let's save this behavior tree and use it in our navigation task.
 
 3- Setup Rviz clicked point
 ---------------------------
