@@ -1,7 +1,7 @@
 .. _navigation2-dynamic-point-following:
 
-Dynamic point following to a certain distance
-*********************************************
+Dynamic point following
+***********************
 
 - `Overview`_
 - `Tutorial Steps`_
@@ -10,7 +10,7 @@ Dynamic point following to a certain distance
 
     <h1 align="center">
       <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe width="700" height="450" src="https://www.youtube.com/embed/rUCM71TWtGM?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="700" height="450" src="https://www.youtube.com/embed/sRodzrrJChA?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </h1>
 
@@ -19,13 +19,17 @@ Overview
 
 This tutorial shows how to use Navigation2 for a different task of going from point A to point B. In this case, we will use Navigation2 to follow a moving object at a distance indefinitely.
 
-This task is useful in cases such as following a person, as shown in this video of "Follow me" RoboCup@Home test, in which the `CATIE Robotics <https://robotics.catie.fr/>`_ team performs the test successfully:
+This task is useful in cases such as following a person, as shown in the next video of "Carry My Luggage" RoboCup @ Home test, in which the `CATIE Robotics <https://robotics.catie.fr/>`_ team performs the test successfully, or this other video 
+of a real (future) world application:
 
 .. raw:: html
 
     <h1 align="center">
-      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe width="700" height="450" src="https://www.youtube.com/embed/sRodzrrJChA?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div>
+        <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+          <iframe width="450" height="300" src="https://www.youtube.com/embed/lTjKO4M7yZc?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+          <iframe width="450" height="300" src="https://www.youtube.com/embed/KgRKyzsja9Q?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+        </div>
       </div>
     </h1>
 
@@ -52,7 +56,7 @@ Tutorial Steps
 0- Create the Behavior Tree
 ---------------------------
 
-Let's start from this simple behavior tree:
+Let's start from this simple behavior tree. This behavior tree with replan a new path every 1hz and pass that path to the controller to follow:
 
 .. code-block:: xml
 
@@ -85,6 +89,7 @@ First of all, let's make that this behavior runs while there is not any failure.
   </root>
 
 We will use the decorator GoalUpdater to use a dynamic point. This node takes as input the requested goal in the ``NavigateToPose`` action and subscribes to the topic ``/goal_update``. It set as output ``updated_goal``:
+
 - The original goal, if nothing received in ``/goal_update``.
 - Or, the pose received in ``/goal_update``.
 
@@ -129,21 +134,6 @@ To stay at a certain distance from the target, we will use the action node ``Tru
 
 Let's save this behavior tree in ``nav2_bt_navigator/behavior_trees/follow_point.xml``
 
-2- Modify launcher
-------------------
-
-Select the above behavior tree as the default in the launcher ``tb3_simulation_launch.py``:
-
-.. code-block:: python
-
-  declare_bt_xml_cmd = DeclareLaunchArgument(
-      'default_bt_xml_filename',
-      default_value=os.path.join(
-          get_package_share_directory('nav2_bt_navigator'),
-          'behavior_trees', 'follow_point.xml'),
-      description='Full path to the behavior tree xml file to use')
-
-
 3- Setup Rviz clicked point
 ---------------------------
 
@@ -158,7 +148,7 @@ this repo in your workspace, build, and type in a terminal.
 
 Start Navigation2 in one terminal:
 
-``ros2 launch nav2_bringup tb3_simulation_launch.py``
+``ros2 launch nav2_bringup tb3_simulation_launch.py default_bt_xml_filename:=/path/to/bt.xml``
 
 Open RViz and, after initialize the robot position, command the robot to navigate to any position. Use the button clicked point to change the goal, as shown in the video in the head of this tutorial.
 
