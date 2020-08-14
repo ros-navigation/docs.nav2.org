@@ -84,7 +84,7 @@ First of all, let's make that this behavior runs while there is not any failure.
     </BehaviorTree>
   </root>
 
-We will use the decorator GoalUpdater to use a dynamic point. This node takes as input the requested goal in the ``NavigateToPose`` action and subscribes to the topic ``/goal_update``. It set as output ``updated_goal``:
+We will use the decorator ``GoalUpdater`` to update the dynamic object pose to follow. This node takes as input the current goal and subscribes to the topic ``/goal_update``. It set the new goal as ``updated_goal``:
 - The original goal, if nothing received in ``/goal_update``.
 - Or, the pose received in ``/goal_update``.
 
