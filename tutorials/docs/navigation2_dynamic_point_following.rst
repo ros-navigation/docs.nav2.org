@@ -89,6 +89,7 @@ First of all, let's make that this behavior runs while there is not any failure.
   </root>
 
 We will use the decorator ``GoalUpdater`` to update the dynamic object pose to follow. This node takes as input the current goal and subscribes to the topic ``/goal_update``. It set the new goal as ``updated_goal``:
+
 - The original goal, if nothing received in ``/goal_update``.
 - Or, the pose received in ``/goal_update``.
 
@@ -133,7 +134,7 @@ To stay at a certain distance from the target, we will use the action node ``Tru
 
 Let's save this behavior tree and use it in our navigation task.
 
-3- Setup Rviz clicked point
+1- Setup Rviz clicked point
 ---------------------------
 
 In this tutorial, we are going to use RViz instead of a full application. We will use the "clicked point" button on the toolbar to send goal updates to Navigation2. This button allows you to 
@@ -142,7 +143,7 @@ this repo in your workspace, build, and type in a terminal.
 
 ``ros2 run nav2_test_utils clicked_point_to_pose``
 
-4- Run Navigation2
+2- Run Navigation2
 ------------------
 
 Start Navigation2 in one terminal:
