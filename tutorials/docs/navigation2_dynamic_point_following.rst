@@ -36,7 +36,7 @@ The requirements for this task are as follows:
 - The action will indefinitely run until it is canceled by who initiated it.
 
 The detection of the dynamic object (person) pose to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest, 
-send it in the call to the NavigateToPose action, and update it during the execution of this task:
+send the initial pose to the ``NavigateToPose`` action, and update it on a topic for the duration of the task:
 
 
 .. image:: images/navigation2_dynamic_point_following/main_diagram.png
