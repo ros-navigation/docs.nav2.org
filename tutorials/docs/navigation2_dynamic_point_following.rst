@@ -153,7 +153,7 @@ this repo in your workspace, build, and type in a terminal.
 
 ``ros2 run nav2_test_utils clicked_point_to_pose``
 
-4- Run Navigation2
+4- Run Dynamic Object Following in Navigation2 Simulation
 ------------------
 
 Start Navigation2 in one terminal:
