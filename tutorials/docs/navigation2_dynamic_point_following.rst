@@ -105,7 +105,7 @@ We will use the decorator ``GoalUpdater`` to update the dynamic object pose to f
     </BehaviorTree>
   </root>
 
-To stay at a certain distance from the target, we will use the action node ``TruncatePath``. This node modifies a path making it shorter. We can set up the desired distance to the goal using the input port ``distance``.
+To stay at a certain distance from the target, we will use the action node ``TruncatePath``. This node modifies a path making it shorter so we don't try to navigate into the object of interest. We can set up the desired distance to the goal using the input port ``distance``.
 
 .. code-block:: xml
 
