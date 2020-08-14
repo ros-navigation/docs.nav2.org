@@ -82,7 +82,7 @@ Options
 
 The `initial_ros_setup.sh` accepts the following options:
 
-- `--no-ros2` This skips downloading and building the ROS 2 release. Instead it uses the binary packages and ``setup.sh`` installed in ``/opt/ros/<ros2-distro>``
+- ``--no-ros2`` This skips downloading and building the ROS 2 release. Instead it uses the binary packages and ``setup.sh`` installed in ``/opt/ros/<ros2-distro>``
 - ``--download-only`` This skips the build steps
 
 
