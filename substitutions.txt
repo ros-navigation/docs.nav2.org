@@ -9,15 +9,15 @@
 
 .. _documentation repo: https://github.com/ros-planning/navigation.ros.org/doc
 
-.. _nav2_bringup pkg: https://github.com/ros-planning/navigation2/tree/master/nav2_bringup/bringup
+.. _nav2_bringup pkg: https://github.com/ros-planning/navigation2/tree/main/nav2_bringup/bringup
 
-.. _nav2_params file: https://github.com/ros-planning/navigation2/blob/master/nav2_bringup/bringup/params/nav2_params.yaml
+.. _nav2_params file: https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/params/nav2_params.yaml
 
 .. _documentation site: https://rosplanning.github.io/navigation.ros.org/
 
 .. _project website: https://rosplanning.github.io/navigation2/
 
-.. |PP| replace:: https://github.com/ros-planning/navigation2/blob/master
+.. |PP| replace:: https://github.com/ros-planning/navigation2/blob/main
 
 .. _`ROS 2 binary packages`: https://index.ros.org/doc/ros2/Installation/
 

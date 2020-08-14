@@ -15,7 +15,7 @@ Build
 *****
 
 There are 3 ways to build Navigation2.
-Building for a specific released distribution (e.g. ``eloquent``, ``foxy``), build Navigation2 on master branch using a quickstart setup script, or building master branch manually.
+Building for a specific released distribution (e.g. ``eloquent``, ``foxy``), build Navigation2 on main branch using a quickstart setup script, or building main branch manually.
 
 .. rst-class:: content-collapse
 
@@ -48,7 +48,7 @@ Note: You need to change ``--rosdistro`` to the selected ROS 2 distribution name
 
 .. rst-class:: content-collapse
 
-Quickstart Build Master
+Quickstart Build  Main
 =======================
 
 Steps
@@ -62,7 +62,7 @@ Ensure there are no ROS environment variables set in your terminal or `.bashrc` 
 
   mkdir <directory_for_workspaces>
   cd <directory_for_workspaces>
-  wget https://raw.githubusercontent.com/ros-planning/navigation2/master/tools/initial_ros_setup.sh
+  wget https://raw.githubusercontent.com/ros-planning/navigation2/main/tools/initial_ros_setup.sh
   chmod a+x initial_ros_setup.sh
   ./initial_ros_setup.sh
 
@@ -88,17 +88,17 @@ The `initial_ros_setup.sh` accepts the following options:
 
 .. rst-class:: content-collapse
 
-Manually Build Master
+Manually Build  Main
 =====================
 
-Build ROS 2 Master
+Build ROS 2  Main
 ------------------
 
 .. warning::
 
-   When building ROS 2 from source, make sure that the `ros2.repos` file is from the `master` branch.
+   When building ROS 2 from source, make sure that the `ros2.repos` file is from the `main` branch.
 
-Build ROS 2 master using the `build instructions <https://index.ros.org/doc/ros2/Installation>`_ provided in the ROS 2 documentation.
+Build ROS 2 main using the `build instructions <https://index.ros.org/doc/ros2/Installation>`_ provided in the ROS 2 documentation.
 
 
 Build Navigation2 Dependencies
@@ -117,16 +117,16 @@ Then, use ``vcs`` to clone the repos and versions in it into a workspace.
   source ros2_ws/install/setup.bash
   mkdir -p ~/nav2_depend_ws/src
   cd ~/nav2_depend_ws
-  wget https://raw.githubusercontent.com/ros-planning/navigation2/master/tools/ros2_dependencies.repos
+  wget https://raw.githubusercontent.com/ros-planning/navigation2/main/tools/ros2_dependencies.repos
   vcs import src < ros2_dependencies.repos
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
-Build Navigation2 Master
+Build Navigation2  Main
 ------------------------
 
-Finally, now that we have ROS 2 master and the necessary dependencies, we can now build Navigation2 master itself.
-We'll source the ``nav2_depend_ws``, which will also source the ROS 2 master build workspace packages, to build with dependencies.
+Finally, now that we have ROS 2 main and the necessary dependencies, we can now build Navigation2 main itself.
+We'll source the ``nav2_depend_ws``, which will also source the ROS 2 main build workspace packages, to build with dependencies.
 The rest of this should look familiar.
 
 .. code:: bash
@@ -134,7 +134,7 @@ The rest of this should look familiar.
   source ~/nav2_depend_ws/install/setup.bash
   mkdir -p ~/navigation2_ws/src
   cd ~/navigation2_ws/src
-  git clone https://github.com/ros-planning/navigation2.git --branch master
+  git clone https://github.com/ros-planning/navigation2.git --branch main
   cd ~/navigation2_ws
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install
@@ -171,11 +171,11 @@ Note: You may also need to configure your docker for DNS to work. See article he
 Using DockerHub Container
 =========================
 
-We allow for you to pull the latest docker image from the master branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
+We allow for you to pull the latest docker image from the main branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
 
 .. code:: bash
 
-  sudo docker pull rosplanning/navigation2:master.release
+  sudo docker pull rosplanning/navigation2:main.release
 
 !!!!
 
