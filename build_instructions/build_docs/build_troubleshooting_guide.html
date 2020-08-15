@@ -119,15 +119,15 @@
 <li class="toctree-l4"><a class="reference internal" href="../index.html#build-navigation2">Build Navigation2</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#quickstart-build-master">Quickstart Build Master</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#quickstart-build-main">Quickstart Build Main</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#steps">Steps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#options">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#manually-build-master">Manually Build Master</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../index.html#build-ros-2-master">Build ROS 2 Master</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#manually-build-main">Manually Build Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#build-ros-2-main">Build ROS 2 Main</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#build-navigation2-dependencies">Build Navigation2 Dependencies</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../index.html#build-navigation2-master">Build Navigation2 Master</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#build-navigation2-main">Build Navigation2 Main</a></li>
 </ul>
 </li>
 </ul>
@@ -534,7 +534,7 @@
 <li>Make sure that .bashrc file has no ROS environment variables in it. Open new terminals and try to build the packages again.</li>
 <li>Make sure to run rosdep for the correct ROS 2 distribution.
 <code class="docutils literal notranslate"><span class="pre">rosdep</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">-r</span> <span class="pre">-q</span> <span class="pre">--from-paths</span> <span class="pre">src</span> <span class="pre">--ignore-src</span> <span class="pre">--rosdistro</span> <span class="pre">&lt;ros2-distro&gt;</span></code></li>
-<li>Make sure that the <code class="docutils literal notranslate"><span class="pre">setup.bash</span></code> is sourced in the ROS 2 installation or ROS 2 master build workspace, if applicable. Check if you can run talker and listener nodes.</li>
+<li>Make sure that the <code class="docutils literal notranslate"><span class="pre">setup.bash</span></code> is sourced in the ROS 2 installation or ROS 2 main build workspace, if applicable. Check if you can run talker and listener nodes.</li>
 <li>Make sure that the <code class="docutils literal notranslate"><span class="pre">setup.bash</span></code> in <code class="docutils literal notranslate"><span class="pre">nav2_depend_ws/install</span></code> is sourced.</li>
 <li>Check if you have the correct ROS version and distribution. <code class="docutils literal notranslate"><span class="pre">printenv</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">ROS</span></code></li>
 <li>If you see a bunch of errors on startup about <code class="docutils literal notranslate"><span class="pre">map</span></code> or <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame not existing, remember to activate drivers (or gazebo for simulation) and set an initial pose in <code class="docutils literal notranslate"><span class="pre">map</span></code> frame. Costmap2D will block activation until a full TF tree is available.</li>

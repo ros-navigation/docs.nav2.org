@@ -32,7 +32,7 @@ The ROS 2 Navigation Stack has had a focus on testing and reliability as a chara
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
 - `Navigation2 <https://navigation.ros.org/>`_
-- `Navigation2 Repo System Tests <https://github.com/ros-planning/navigation2/tree/master/nav2_system_tests>`_
+- `Navigation2 Repo System Tests <https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests>`_
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.

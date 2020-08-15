@@ -119,15 +119,15 @@
 <li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-navigation2">Build Navigation2</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#quickstart-build-master">Quickstart Build Master</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#quickstart-build-main">Quickstart Build Main</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#steps">Steps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#options">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#manually-build-master">Manually Build Master</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-ros-2-master">Build ROS 2 Master</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#manually-build-main">Manually Build Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-ros-2-main">Build ROS 2 Main</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-navigation2-dependencies">Build Navigation2 Dependencies</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-navigation2-master">Build Navigation2 Master</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-navigation2-main">Build Navigation2 Main</a></li>
 </ul>
 </li>
 </ul>
@@ -633,7 +633,7 @@ Server is a new part. It spins in the background and can be used to save map con
 <p><code class="docutils literal notranslate"><span class="pre">map_server</span></code> was dramatically simplified and cleaned-up. <code class="docutils literal notranslate"><span class="pre">OccGridLoader</span></code> was merged with <code class="docutils literal notranslate"><span class="pre">MapServer</span></code> class as it is intended to work only with one <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> type of messages in foreseeable future.</p>
 <p>Map Server now has new <code class="docutils literal notranslate"><span class="pre">map_io</span></code> dynamic library. All functions saving/loading <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> messages were moved from <code class="docutils literal notranslate"><span class="pre">map_server</span></code> and <code class="docutils literal notranslate"><span class="pre">map_saver</span></code> here. These functions could be easily called from any part of external ROS 2 code even if Map Server node was not started.</p>
 <p><code class="docutils literal notranslate"><span class="pre">map_loader</span></code> was completely removed from <code class="docutils literal notranslate"><span class="pre">nav2_util</span></code>. All its functionality already present in <code class="docutils literal notranslate"><span class="pre">map_io</span></code>. Please use it in your code instead.</p>
-<p>Please refer to the <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1010">original GitHub ticket</a> and <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/master/nav2_map_server/README.md">Map Server README</a> for more information.</p>
+<p>Please refer to the <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1010">original GitHub ticket</a> and <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_map_server/README.md">Map Server README</a> for more information.</p>
 </div>
 <div class="section" id="new-particle-filter-messages">
 <h2>New Particle Filter Messages<a class="headerlink" href="#new-particle-filter-messages" title="Permalink to this headline">¶</a></h2>

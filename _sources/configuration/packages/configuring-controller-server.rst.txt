@@ -5,7 +5,7 @@ Controller Server
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/master/nav2_controller
+.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_controller
 
 The Controller Server implements the server for handling the controller requests for the stack and host a map of plugin implementations.
 It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.

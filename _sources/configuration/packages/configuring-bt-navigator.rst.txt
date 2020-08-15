@@ -5,7 +5,7 @@ Behavior-Tree Navigator
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/master/nav2_bt_navigator
+.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator
 
 The BT Navigator (Behavior Tree Navigator) module implements the NavigateToPose task interface. 
 It is a Behavior Tree-based implementation of navigation that is intended to allow for flexibility 

@@ -5,7 +5,7 @@ Costmap 2D
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d
+.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d
 
 The Costmap 2D package implements a 2D grid-based costmap for environmental representations and a number of sensor processing plugins.
 It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around. 

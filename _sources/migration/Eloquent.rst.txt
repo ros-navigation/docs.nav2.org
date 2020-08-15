@@ -109,7 +109,7 @@ Map Server now has new ``map_io`` dynamic library. All functions saving/loading 
 
 ``map_loader`` was completely removed from ``nav2_util``. All its functionality already present in ``map_io``. Please use it in your code instead.
 
-Please refer to the `original GitHub ticket <https://github.com/ros-planning/navigation2/issues/1010>`_ and `Map Server README <https://github.com/ros-planning/navigation2/blob/master/nav2_map_server/README.md>`_ for more information.
+Please refer to the `original GitHub ticket <https://github.com/ros-planning/navigation2/issues/1010>`_ and `Map Server README <https://github.com/ros-planning/navigation2/blob/main/nav2_map_server/README.md>`_ for more information.
 
 
 New Particle Filter Messages

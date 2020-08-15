@@ -5,7 +5,7 @@ Recovery Server
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries
+.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries
 
 The Recovery Server implements the server for handling recovery requests and hosting a vector of plugins implementing various C++ recoveries.
 It is also possible to implement independent recovery servers for each custom recovery, but this server will allow multiple recoveries to share resources such as costmaps and TF buffers to lower incremental costs for new behaviors.

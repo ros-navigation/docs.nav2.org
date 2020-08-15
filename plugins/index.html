@@ -119,15 +119,15 @@
 <li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-navigation2">Build Navigation2</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#quickstart-build-master">Quickstart Build Master</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#quickstart-build-main">Quickstart Build Main</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#steps">Steps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#options">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#manually-build-master">Manually Build Master</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-ros-2-master">Build ROS 2 Master</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#manually-build-main">Manually Build Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-ros-2-main">Build ROS 2 Main</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-navigation2-dependencies">Build Navigation2 Dependencies</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-navigation2-master">Build Navigation2 Master</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-navigation2-main">Build Navigation2 Main</a></li>
 </ul>
 </li>
 </ul>
@@ -547,31 +547,31 @@ For tutorials on creating your own plugins, please see <a class="reference inter
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/voxel_layer.cpp">Voxel Layer</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp">Voxel Layer</a></td>
 <td>Eitan Marder-Eppstein</td>
 <td>Maintains persistant
 3D voxel layer using depth and
 laser sensor readings and
 raycasting to clear free space</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/range_sensor_layer.cpp">Range Layer</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp">Range Layer</a></td>
 <td>David Lu</td>
 <td>Uses a probabalistic model to
 put data from sensors that
 publish range msgs on the costmap</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/static_layer.cpp">Static Layer</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp">Static Layer</a></td>
 <td>Eitan Marder-Eppstein</td>
 <td>Gets static <code class="docutils literal notranslate"><span class="pre">map</span></code> and loads
 occupancy information into
 costmap</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/inflation_layer.cpp">Inflation Layer</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp">Inflation Layer</a></td>
 <td>Eitan Marder-Eppstein</td>
 <td>Inflates lethal obstacles in
 costmap with exponential decay</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_costmap_2d/plugins/obstacle_layer.cpp">Obstacle Layer</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp">Obstacle Layer</a></td>
 <td>Eitan Marder-Eppstein</td>
 <td>Maintains persistent 2D costmap
 from 2D laser scans with
@@ -607,7 +607,7 @@ sets of measurements</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_dwb_controller">DWB Controller</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller">DWB Controller</a></td>
 <td>David Lu!!</td>
 <td>A highly configurable  DWA
 implementation with plugin
@@ -637,7 +637,7 @@ holonomic robots.</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_navfn_planner">NavFn Planner</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_navfn_planner">NavFn Planner</a></td>
 <td>Eitan Marder-Eppstein &amp; Kurt Konolige</td>
 <td>A navigation function
 using A* or Dijkstras
@@ -662,27 +662,27 @@ holonomic particle</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/blob/master/nav2_costmap_2d/src/clear_costmap_service.cpp">Clear Costmap</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_costmap_2d/src/clear_costmap_service.cpp">Clear Costmap</a></td>
 <td>Eitan Marder-Eppstein</td>
 <td>A service to clear the given
 costmap in case of incorrect
 perception or robot is stuck</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins">Spin</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins">Spin</a></td>
 <td>Steve Macenski</td>
 <td>Rotate recovery of configurable
 angles to clear out free space
 and nudge robot out of potential
 local failures</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins">Back Up</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins">Back Up</a></td>
 <td>Brian Wilcox</td>
 <td>Back up recovery of configurable
 distance to back out of a
 situation where the robot is
 stuck</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries/plugins">Wait</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins">Wait</a></td>
 <td>Steve Macenski</td>
 <td>Wait recovery with configurable
 time to wait in case of time
@@ -707,41 +707,41 @@ or getting more sensor data</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/back_up_action.cpp">Back Up Action</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp">Back Up Action</a></td>
 <td>Michael Jeronimo</td>
 <td>Calls backup recovery action</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp">Clear Costmap Service</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp">Clear Costmap Service</a></td>
 <td>Carl Delsey</td>
 <td>Calls clear costmap service</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp">Compute Path to Pose Action</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp">Compute Path to Pose Action</a></td>
 <td>Michael Jeronimo</td>
 <td>Calls Nav2 planner server</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/follow_path_action.cpp">Follow Path Action</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/follow_path_action.cpp">Follow Path Action</a></td>
 <td>Michael Jeronimo</td>
 <td>Calls Nav2 controller server</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp">Navigate to Pose Action</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp">Navigate to Pose Action</a></td>
 <td>Michael Jeronimo</td>
 <td>BT Node for other
 BehaviorTree.CPP BTs to call
 Navigation2 as a subtree action</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp">Reinitalize Global Localization Service</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp">Reinitalize Global Localization Service</a></td>
 <td>Carl Delsey</td>
 <td>Reinitialize AMCL to a new pose</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/spin_action.cpp">Spin Action</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_action.cpp">Spin Action</a></td>
 <td>Carl Delsey</td>
 <td>Calls spin recovery action</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/wait_action.cpp">Wait Action</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_action.cpp">Wait Action</a></td>
 <td>Steve Macenski</td>
 <td>Calls wait recovery action</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/action/truncate_path_action.cpp">Truncate Path</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_action.cpp">Truncate Path</a></td>
 <td>Francisco Martín</td>
 <td>Modifies a path making it shorter</td>
 </tr>
@@ -760,28 +760,28 @@ Navigation2 as a subtree action</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp">Goal Reached Condition</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp">Goal Reached Condition</a></td>
 <td>Carl Delsey</td>
 <td>Checks if goal is
 reached within tol.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp">Goal Updated Condition</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp">Goal Updated Condition</a></td>
 <td>Aitor Miguel Blanco</td>
 <td>Checks if goal is
 preempted.</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp">Initial Pose received Condition</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp">Initial Pose received Condition</a></td>
 <td>Carl Delsey</td>
 <td>Checks if initial pose
 has been set</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp">Is Stuck Condition</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp">Is Stuck Condition</a></td>
 <td>Michael Jeronimo</td>
 <td>Checks if robot is
 making progress or
 stuck</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp">Transform Available Condition</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp">Transform Available Condition</a></td>
 <td>Steve Macenski</td>
 <td>Checks if a TF
 transformation is
@@ -790,13 +790,13 @@ succeeds returns
 success for subsequent
 calls.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp">Distance Traveled Condition</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp">Distance Traveled Condition</a></td>
 <td>Sarthak Mittal</td>
 <td>Checks is robot has
 traveled a given
 distance.</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp">Time Expired Condition</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp">Time Expired Condition</a></td>
 <td>Sarthak Mittal</td>
 <td>Checks if a given
 time period has
@@ -817,22 +817,22 @@ passed.</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/rate_controller.cpp">Rate Controller</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp">Rate Controller</a></td>
 <td>Michael Jeronimo</td>
 <td>Throttles child node to a given
 rate</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/distance_controller.cpp">Distance Controller</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp">Distance Controller</a></td>
 <td>Sarthak Mittal</td>
 <td>Ticks child node based on the
 distance traveled by the robot</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/speed_controller.cpp">Speed Controller</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/speed_controller.cpp">Speed Controller</a></td>
 <td>Sarthak Mittal</td>
 <td>Throttles child node to a rate
 based on current robot speed.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp">Goal Updater</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp">Goal Updater</a></td>
 <td>Francisco Martín</td>
 <td>Updates the goal received via
 topic subscription.</td>
@@ -852,13 +852,13 @@ topic subscription.</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp">Pipeline Sequence</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp">Pipeline Sequence</a></td>
 <td>Carl Delsey</td>
 <td>A variant of a sequence node that
 will re-tick previous children
 even if another child is running</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/control/recovery_node.cpp">Recovery</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp">Recovery</a></td>
 <td>Carl Delsey</td>
 <td>Node must contain 2 children
 and returns success if first
@@ -867,7 +867,7 @@ second will be ticked. If
 successful, it will retry the
 first and then return its value</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree/plugins/control/round_robin_node.cpp">Round Robin</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp">Round Robin</a></td>
 <td>Mohammad Haghighipanah</td>
 <td>Will tick <code class="docutils literal notranslate"><span class="pre">i</span></code> th child until
 a result and move on to <code class="docutils literal notranslate"><span class="pre">i+1</span></code></td>
