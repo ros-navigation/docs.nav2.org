@@ -54,7 +54,7 @@ You will need to launch your robot's interface,
 You need to have a map of the environment where you want to Navigate Turtlebot 3, or create one live with SLAM.
 
 In case you are interested, there is a use case tutorial which shows how to use Navigation2 with SLAM.
-`Navigation2 with SLAM <https://github.com/ros-planning/navigation2/blob/master/doc/use_cases/navigation_with_slam.md>`_
+`Navigation2 with SLAM <https://github.com/ros-planning/navigation2/blob/main/doc/use_cases/navigation_with_slam.md>`_
 
 Required files:
 

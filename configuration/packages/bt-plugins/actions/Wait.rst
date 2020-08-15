@@ -6,7 +6,7 @@ Wait
 Invokes the Wait ROS 2 action server, which is implemented by the nav2_recoveries_ module. 
 This action is used in nav2 Behavior Trees as a recovery behavior.
 
-.. _nav2_recoveries: https://github.com/ros-planning/navigation2/tree/master/nav2_recoveries
+.. _nav2_recoveries: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries
 
 Input Ports
 -----------

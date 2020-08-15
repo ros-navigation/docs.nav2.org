@@ -19,7 +19,7 @@ This will involve porting code from ROS 1 to ROS 2, analyzing uses of the enviro
 
 **Project output requirements**
 
-- Grid Maps ported to ROS 2 and merged into the master ROS 2 branch
+- Grid Maps ported to ROS 2 and merged into the main ROS 2 branch
 - Defined plugin interfaces to replace costmap 2D with grid maps
 - Implementing low-level operations on top of grid_maps to replace the base costmap_2d object.
 - You will not be expected to reimplement the full sensor processing mechanics of costmap_2d.
