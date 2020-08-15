@@ -48,8 +48,8 @@ Note: You need to change ``--rosdistro`` to the selected ROS 2 distribution name
 
 .. rst-class:: content-collapse
 
-Quickstart Build  Main
-=======================
+Quickstart Build Main
+=====================
 
 Steps
 -----
@@ -88,11 +88,11 @@ The `initial_ros_setup.sh` accepts the following options:
 
 .. rst-class:: content-collapse
 
-Manually Build  Main
-=====================
+Manually Build Main
+===================
 
-Build ROS 2  Main
-------------------
+Build ROS 2 Main
+----------------
 
 .. warning::
 
@@ -122,8 +122,8 @@ Then, use ``vcs`` to clone the repos and versions in it into a workspace.
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
-Build Navigation2  Main
-------------------------
+Build Navigation2 Main
+----------------------
 
 Finally, now that we have ROS 2 main and the necessary dependencies, we can now build Navigation2 main itself.
 We'll source the ``nav2_depend_ws``, which will also source the ROS 2 main build workspace packages, to build with dependencies.
