@@ -71,7 +71,7 @@ Let's start from this simple behavior tree. This behavior tree with replan a new
     </BehaviorTree>
   </root>
 
-First of all, let's make that this behavior runs while there is not any failure. For this purpose, we will use the ``KeepRunningUntilFailure`` control node.
+First of all, let's make this behavior run until there's a failure. For this purpose, we will use the ``KeepRunningUntilFailure`` control node.
 
 .. code-block:: xml
 
