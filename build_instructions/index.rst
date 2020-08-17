@@ -109,7 +109,7 @@ First, source the setup.bash file in the ROS 2 build workspace.
 
     ``source ~/ros2_ws/install/setup.bash``
 
-Next, we're going to get the ``ros2_dependencies.repos`` file from Navigation2.
+Next, we're going to get the ``underlay.repos`` file from Navigation2.
 Then, use ``vcs`` to clone the repos and versions in it into a workspace.
 
 .. code:: bash
@@ -117,8 +117,8 @@ Then, use ``vcs`` to clone the repos and versions in it into a workspace.
   source ros2_ws/install/setup.bash
   mkdir -p ~/nav2_depend_ws/src
   cd ~/nav2_depend_ws
-  wget https://raw.githubusercontent.com/ros-planning/navigation2/main/tools/ros2_dependencies.repos
-  vcs import src < ros2_dependencies.repos
+  wget https://raw.githubusercontent.com/ros-planning/navigation2/main/tools/underlay.repos
+  vcs import src < underlay.repos
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
