@@ -17,7 +17,7 @@ Dynamic Object Following
 Overview
 ========
 
-This tutorial shows how to use Navigation2 for a different task of going from point A to point B. In this case, we will use Navigation2 to follow a moving object at a distance indefinitely.
+This tutorial shows how to use Navigation2 for a different task other than going from point A to point B. In this case, we will use Navigation2 to follow a moving object at a distance indefinitely.
 
 This task is useful in cases such as following a person, as shown in the next video of "Carry My Luggage" RoboCup @ Home test, in which the `CATIE Robotics <https://robotics.catie.fr/>`_ team performs the test successfully, or this other video 
 of a real (future) world application:
