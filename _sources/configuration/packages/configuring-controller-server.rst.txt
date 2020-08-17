@@ -107,7 +107,8 @@ Parameters
   ============== =============================
 
   Description
-    Minimum X velocity to use (m/s).
+    The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
+    Odometry values below this threshold (in m/s) will be set to 0.0.
 
 :min_y_velocity_threshold:
 
@@ -118,7 +119,8 @@ Parameters
   ============== =============================
 
   Description
-    Minimum Y velocity to use (m/s).
+    The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
+    Odometry values below this threshold (in m/s) will be set to 0.0. For non-holonomic robots
 
 :min_theta_velocity_threshold:
 
@@ -129,7 +131,8 @@ Parameters
   ============== =============================
 
   Description
-    Minimum angular velocity to use (rad/s).
+    The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
+    Odometry values below this threshold (in rad/s) will be set to 0.0.
 
 Provided Plugins
 ****************

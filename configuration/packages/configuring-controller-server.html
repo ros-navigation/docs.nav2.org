@@ -675,7 +675,8 @@ It will take in path and plugin names for controller, progress checker and goal 
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Minimum X velocity to use (m/s).</p>
+<dd><p class="first last">The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
+Odometry values below this threshold (in m/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </td>
@@ -697,7 +698,8 @@ It will take in path and plugin names for controller, progress checker and goal 
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Minimum Y velocity to use (m/s).</p>
+<dd><p class="first last">The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
+Odometry values below this threshold (in m/s) will be set to 0.0. For non-holonomic robots</p>
 </dd>
 </dl>
 </td>
@@ -719,7 +721,8 @@ It will take in path and plugin names for controller, progress checker and goal 
 </table>
 <dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">Minimum angular velocity to use (rad/s).</p>
+<dd><p class="first last">The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
+Odometry values below this threshold (in rad/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </td>
