@@ -549,8 +549,7 @@
 </h1><div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial shows how to use Navigation2 for a different task other than going from point A to point B. In this case, we will use Navigation2 to follow a moving object at a distance indefinitely.</p>
-<p>This task is useful in cases such as following a person, as shown in the next video of “Carry My Luggage” RoboCup &#64; Home test, in which the <a class="reference external" href="https://robotics.catie.fr/">CATIE Robotics</a> team performs the test successfully, or this other video
-of a real (future) world application:</p>
+<p>This task is useful in cases such as following a person or another robot. Below are some sample videos of applications that could be created using this capability. The “Carry My Luggage” RoboCup &#64; Home test, in which the <a class="reference external" href="https://robotics.catie.fr/">CATIE Robotics</a> team performs the test successfully and this real (future) world application:</p>
 <h1 align="center">
   <div>
     <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
@@ -560,21 +559,19 @@ of a real (future) world application:</p>
   </div>
 </h1><p>The requirements for this task are as follows:</p>
 <ul class="simple">
-<li>The changes are limited to the behavior tree used to navigate. This behavior tree can be selected in the <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action when required, or it can be the default behavior tree.</li>
+<li>Changes are limited to the behavior tree used to navigate. This behavior tree can be selected in the <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action when required, or it can be the default behavior tree. It is made up of run-time configurable plugins.</li>
 <li>The configuration of the planner and the controller will not be modified.</li>
 <li>The action will indefinitely run until it is canceled by who initiated it.</li>
 </ul>
-<p>The detection of the dynamic object (person) pose to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest,
-send the initial pose to the <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action, and update it on a topic for the duration of the task:</p>
+<p>The detection of the dynamic object (like a person) to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest,
+send the initial pose to the <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action, and update it on a topic for the duration of the task. Many different types of detectors exist that you can leverage for this application:</p>
 <a class="reference internal image-reference" href="../../_images/main_diagram.png"><img alt="../../_images/main_diagram.png" src="../../_images/main_diagram.png" style="width: 48%;" /></a>
-<p>Before completing this tutorial, please look at the previous two tutorials on navigation in simulation and physical hardware.
-This tutorial assumes knowledge of navigation and basic understanding of behavior trees.</p>
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="create-the-behavior-tree">
 <h3>0- Create the Behavior Tree<a class="headerlink" href="#create-the-behavior-tree" title="Permalink to this headline">¶</a></h3>
-<p>Let’s start from this simple behavior tree. This behavior tree with replan a new path every 1hz and pass that path to the controller to follow:</p>
+<p>Let’s start from this simple behavior tree. This behavior tree replans a new path at 1 hz and passes that path to the controller to follow:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
@@ -587,7 +584,7 @@ This tutorial assumes knowledge of navigation and basic understanding of behavio
 <span class="nt">&lt;/root&gt;</span>
 </pre></div>
 </div>
-<p>First of all, let’s make this behavior run until there’s a failure. For this purpose, we will use the <code class="docutils literal notranslate"><span class="pre">KeepRunningUntilFailure</span></code> control node.</p>
+<p>First, let’s make this behavior run until there’s a failure. For this purpose, we will use the <code class="docutils literal notranslate"><span class="pre">KeepRunningUntilFailure</span></code> control node.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
@@ -602,11 +599,7 @@ This tutorial assumes knowledge of navigation and basic understanding of behavio
 <span class="nt">&lt;/root&gt;</span>
 </pre></div>
 </div>
-<p>We will use the decorator <code class="docutils literal notranslate"><span class="pre">GoalUpdater</span></code> to update the dynamic object pose to follow. This node takes as input the current goal and subscribes to the topic <code class="docutils literal notranslate"><span class="pre">/goal_update</span></code>. It set the new goal as <code class="docutils literal notranslate"><span class="pre">updated_goal</span></code>:</p>
-<ul class="simple">
-<li>The original goal, if nothing received in <code class="docutils literal notranslate"><span class="pre">/goal_update</span></code>.</li>
-<li>Or, the pose received in <code class="docutils literal notranslate"><span class="pre">/goal_update</span></code>.</li>
-</ul>
+<p>We will then use the decorator <code class="docutils literal notranslate"><span class="pre">GoalUpdater</span></code> to accept updates of the dynamic object pose we’re trying to follow. This node takes as input the current goal and subscribes to the topic <code class="docutils literal notranslate"><span class="pre">/goal_update</span></code>. It set the new goal as <code class="docutils literal notranslate"><span class="pre">updated_goal</span></code> if a new goal on that topic is received.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
@@ -643,20 +636,22 @@ This tutorial assumes knowledge of navigation and basic understanding of behavio
 <span class="nt">&lt;/root&gt;</span>
 </pre></div>
 </div>
-<p>Let’s save this behavior tree and use it in our navigation task.</p>
+<p>Now, let’s save this behavior tree and use it in our navigation task.</p>
 </div>
 <div class="section" id="setup-rviz-clicked-point">
 <h3>1- Setup Rviz clicked point<a class="headerlink" href="#setup-rviz-clicked-point" title="Permalink to this headline">¶</a></h3>
-<p>In this tutorial, we are going to use RViz instead of a full application. We will use the “clicked point” button on the toolbar to substitute object detections to provide goal updates to Navigation2. This button allows you to
+<p>We are going to use RViz instead of a full application so you can test at home without finding a detector to get started. We will use the “clicked point” button on the toolbar to substitute object detections to provide goal updates to Navigation2. This button allows you to
 publish coordinates in the topic <code class="docutils literal notranslate"><span class="pre">/clicked_point</span></code>. This point needs to be sent to the behavior tree, using the program <code class="docutils literal notranslate"><span class="pre">clicked_point_to_pose</span></code>, from <a class="reference external" href="https://github.com/fmrico/nav2_test_utils">this repo</a>. Clone
 this repo in your workspace, build, and type in a terminal.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">nav2_test_utils</span> <span class="pre">clicked_point_to_pose</span></code></p>
+<p>Optionally, you can remap this topic in your rviz configuration file to <code class="docutils literal notranslate"><span class="pre">goal_updates</span></code>.</p>
 </div>
 <div class="section" id="run-dynamic-object-following-in-navigation2-simulation">
 <h3>2- Run Dynamic Object Following in Navigation2 Simulation<a class="headerlink" href="#run-dynamic-object-following-in-navigation2-simulation" title="Permalink to this headline">¶</a></h3>
 <p>Start Navigation2 in one terminal:</p>
 <p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">nav2_bringup</span> <span class="pre">tb3_simulation_launch.py</span> <span class="pre">default_bt_xml_filename:=/path/to/bt.xml</span></code></p>
 <p>Open RViz and, after initialize the robot position, command the robot to navigate to any position. Use the button clicked point to simulate a new detection of the object of interest, as shown in the video in the head of this tutorial.</p>
+<p>When you have a detector detecting your obstacle at a higher rate (1 hz, 10 hz, 100 hz) you will see a far more reactive robot following your detected object of interest!</p>
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
     <iframe width="700" height="450" src="https://www.youtube.com/embed/r4fIkcktZUM?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
