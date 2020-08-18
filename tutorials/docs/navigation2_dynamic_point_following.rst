@@ -1,7 +1,7 @@
 .. _navigation2-dynamic-point-following:
 
 Dynamic Object Following
-***********************
+************************
 
 - `Overview`_
 - `Tutorial Steps`_
