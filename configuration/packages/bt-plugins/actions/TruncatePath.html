@@ -253,6 +253,16 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/docs/navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/navigation2_dynamic_point_following.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-navigation2-simulation">2- Run Dynamic Object Following in Navigation2 Simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Configuration Guide</a><ul class="current">
@@ -558,28 +568,7 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">output_path:</th><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="65%" />
-<col width="35%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>nav_msgs/Path</td>
-<td>N/A</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The resulting truncated path.</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">distance:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name">distance:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="35%" />
 <col width="65%" />
@@ -596,6 +585,36 @@
 <dl class="last docutils">
 <dt>Description</dt>
 <dd><p class="first last">The distance to the original goal for truncating the path.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ouput-ports">
+<h2>Ouput Ports<a class="headerlink" href="#ouput-ports" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">output_path:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="65%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>nav_msgs/Path</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">The resulting truncated path.</p>
 </dd>
 </dl>
 </td>

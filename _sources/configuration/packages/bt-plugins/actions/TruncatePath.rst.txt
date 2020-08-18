@@ -19,17 +19,6 @@ Input Ports
   Description
       The original path to be truncated.
 
-:output_path:
-
-  ============= =======
-  Type          Default
-  ------------- -------
-  nav_msgs/Path N/A
-  ============= =======
-
-  Description
-    	The resulting truncated path.
-
 :distance:
 
   ====== ===========
@@ -40,6 +29,20 @@ Input Ports
 
   Description
     	The distance to the original goal for truncating the path.
+
+Ouput Ports
+-----------
+
+:output_path:
+
+  ============= =======
+  Type          Default
+  ------------- -------
+  nav_msgs/Path N/A
+  ============= =======
+
+  Description
+    	The resulting truncated path.
 
 Example
 -------
