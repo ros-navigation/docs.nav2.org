@@ -124,7 +124,9 @@ To stay at a certain distance from the target, we will use the action node ``Tru
     </BehaviorTree>
   </root>
 
-Now, let's save this behavior tree and use it in our navigation task.
+Now, you may save this behavior tree and use it in our navigation task.
+
+For reference, this exact behavior tree is `made available <https://github.com/ros-planning/navigation2/blob/main/nav2_bt_navigator/behavior_trees/follow_point.xml>`_ to you batteries included in the ``nav2_bt_navigator`` package.
 
 1- Setup Rviz clicked point
 ---------------------------
