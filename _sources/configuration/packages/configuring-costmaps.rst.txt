@@ -260,7 +260,7 @@ Costmap2D ROS Parameters
   ============== =====================================================
   Type           Default                                              
   -------------- -----------------------------------------------------
-  vector<string> {"obstacle_layer"}   
+  vector<string> {"obstacle_layer", "voxel_layer", "range_layer"}
   ============== =====================================================
 
   Description
