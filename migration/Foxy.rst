@@ -23,3 +23,8 @@ BackUp Recovery Interface Changes
 ``speed`` in a backup recovery goal should be positive indicating the speed with which to drive backward.
 ``target.x`` in a backup recovery goal should be positive indicating the distance to drive backward.
 In both cases negative values are silently inverted.
+
+AMCL Interface Changes
+*********************************
+
+The parameters name for ``base_frame_id``, ``global_frame_id``, and ``odom_frame_id`` are now ``base_frame``, ``global_frame``, and ``odom_frame`` so it would be consistent with other packages.
