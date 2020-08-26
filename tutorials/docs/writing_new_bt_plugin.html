@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Dynamic Object Following &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Writing a New Behavior Tree Plugin &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Configuration Guide" href="../../configuration/index.html" />
-    <link rel="prev" title="Writing a New Behavior Tree Plugin" href="writing_new_bt_plugin.html" />
+    <link rel="next" title="Dynamic Object Following" href="navigation2_dynamic_point_following.html" />
+    <link rel="prev" title="Writing a New Planner Plugin" href="writing_new_nav2planner_plugin.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -253,23 +253,23 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="writing_new_bt_plugin.html">Writing a New Behavior Tree Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="writing_new_bt_plugin.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="writing_new_bt_plugin.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="writing_new_bt_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#creating-a-new-bt-plugin">1- Creating a new BT Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Dynamic Object Following</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing a New Behavior Tree Plugin</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#run-dynamic-object-following-in-navigation2-simulation">2- Run Dynamic Object Following in Navigation2 Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-bt-plugin">1- Creating a new BT Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_dynamic_point_following.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#run-dynamic-object-following-in-navigation2-simulation">2- Run Dynamic Object Following in Navigation2 Simulation</a></li>
 </ul>
 </li>
 </ul>
@@ -530,7 +530,7 @@
         
           <li><a href="../index.html">Tutorials</a> &raquo;</li>
         
-      <li>Dynamic Object Following</li>
+      <li>Writing a New Behavior Tree Plugin</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -547,128 +547,220 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="dynamic-object-following">
-<span id="navigation2-dynamic-point-following"></span><h1>Dynamic Object Following<a class="headerlink" href="#dynamic-object-following" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="writing-a-new-behavior-tree-plugin">
+<span id="writing-new-nbt-plugin"></span><h1>Writing a New Behavior Tree Plugin<a class="headerlink" href="#writing-a-new-behavior-tree-plugin" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></li>
 </ul>
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="700" height="450" src="https://www.youtube.com/embed/sRodzrrJChA?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</h1><div class="section" id="overview">
+<div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial shows how to use Navigation2 for a different task other than going from point A to point B. In this case, we will use Navigation2 to follow a moving object at a distance indefinitely.</p>
-<p>This task is useful in cases such as following a person or another robot. Below are some sample videos of applications that could be created using this capability. The “Carry My Luggage” RoboCup &#64; Home test, in which the <a class="reference external" href="https://robotics.catie.fr/">CATIE Robotics</a> team performs the test successfully and this real (future) world application:</p>
-<h1 align="center">
-  <div>
-    <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="450" height="300" src="https://www.youtube.com/embed/lTjKO4M7yZc?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-      <iframe width="450" height="300" src="https://www.youtube.com/embed/KgRKyzsja9Q?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-    </div>
-  </div>
-</h1><p>The requirements for this task are as follows:</p>
+<p>This tutorial shows how to create you own behavior tree (BT) plugin.
+The BT plugins are used as nodes in the behavior tree XML processed by the BT Navigator for navigation logic.</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Changes are limited to the behavior tree used to navigate. This behavior tree can be selected in the <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action when required, or it can be the default behavior tree. It is made up of run-time configurable plugins.</li>
-<li>The configuration of the planner and the controller will not be modified.</li>
-<li>The action will indefinitely run until it is canceled by who initiated it.</li>
+<li>ROS 2 (binary or build-from-source)</li>
+<li>Navigation2 (Including dependencies)</li>
+<li>Gazebo</li>
+<li>Turtlebot3</li>
 </ul>
-<p>The detection of the dynamic object (like a person) to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest,
-send the initial pose to the <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action, and update it on a topic for the duration of the task. Many different types of detectors exist that you can leverage for this application:</p>
-<a class="reference internal image-reference" href="../../_images/main_diagram.png"><img alt="../../_images/main_diagram.png" src="../../_images/main_diagram.png" style="width: 48%;" /></a>
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="create-the-behavior-tree">
-<h3>0- Create the Behavior Tree<a class="headerlink" href="#create-the-behavior-tree" title="Permalink to this headline">¶</a></h3>
-<p>Let’s start from this simple behavior tree. This behavior tree replans a new path at 1 hz and passes that path to the controller to follow:</p>
+<div class="section" id="creating-a-new-bt-plugin">
+<h3>1- Creating a new BT Plugin<a class="headerlink" href="#creating-a-new-bt-plugin" title="Permalink to this headline">¶</a></h3>
+<p>We will create a simple BT plugin node to perform an action in another server.
+For this example, we’re going to analyze the simpliest behavior tree action node in the <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> package, the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node.
+Beyond this example of an action BT node, you can also create custom decorator, condition, and control nodes.
+Each node type has as unique role in the behavior tree to perform actions like planning, control the flow of the BT, check the status of a condition, or modify the output of other BT nodes.</p>
+<p>The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree">nav2_behavior_tree</a> package as the <code class="docutils literal notranslate"><span class="pre">wait_action</span></code> node.
+This action node can be a considered as a reference for writing other action node plugins.</p>
+<p>Our example plugin inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree::BtActionNode</span></code>.
+The base class is a wrapper on the BehaviorTree.CPP <code class="docutils literal notranslate"><span class="pre">BT::ActionNodeBase</span></code> that simplifies BT action nodes that utilize ROS 2 action clients.
+An <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> is both a BT action and uses ROS 2 action network interfaces for calling a remote server to do some work.</p>
+<p>When working with other types of BT nodes (e.g. decorator, control, condition) use the corresponding BT node, <code class="docutils literal notranslate"><span class="pre">BT::DecoratorNode</span></code>, <code class="docutils literal notranslate"><span class="pre">BT::ControlNode</span></code>, or <code class="docutils literal notranslate"><span class="pre">BT::ConditionNode</span></code>.
+For BT action nodes that do <em>not</em> utilize ROS 2 action interfaces, use the <code class="docutils literal notranslate"><span class="pre">BT::ActionNodeBase</span></code> base class itself.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> class provides 5 virtual methods to use, in addition to the information provided in the constructor.
+Lets learn more about the methods needed to write a BT action plugin.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="62%" />
+<col width="20%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>method</strong></td>
+<td><strong>Method description</strong></td>
+<td><strong>Required?</strong></td>
+</tr>
+<tr class="row-even"><td>Constructor</td>
+<td>Constructor to indicate the corresponding XML tag name to that matches
+the plugin, the name of the action server to call using the plugin,
+and any BehaviorTree.CPP special configurations required.</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>providedPorts()</td>
+<td>A function to define the input and output ports a BT node may have.
+These are analogous to parameters that are defined in the BT XML
+by hardcoded values or by the value of other output ports of other nodes.</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>on_tick()</td>
+<td>Method is called when this BT node is ticked by the behavior tree while
+executing. This should be used to get dynamic updates like new blackboard
+values, input ports, or parameters. May also reset state for the action.</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>on_wait_for_result()</td>
+<td>Method is called when the behavior tree node is waiting for a result from
+the ROS 2 action server it called. This could be used to check for updates
+to preempt the current task, check for a timeout, or anything to compute
+while waiting for the action to complete.</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>on_success()</td>
+<td>Method is called when the ROS 2 action server returns a successful result.
+Returns the value the BT node will report back to the tree.</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>on_aborted()</td>
+<td>Method is called when the ROS 2 action server returns an aborted result.
+Returns the value the BT node will report back to the tree.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>on_cancelled()</td>
+<td>MMethod is called when the ROS 2 action server returns a cancelled result.
+Returns the value the BT node will report back to the tree.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>For this tutorial, we will only be using the <code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> method.</p>
+<p>In the constructor, we need to get any non-variable parameters that apply to the behavior tree node.
+In this example, we need to get the value of the duration to sleep from the input port of the behavior tree XML.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">WaitAction</span><span class="o">::</span><span class="n">WaitAction</span><span class="p">(</span>
+  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">xml_tag_name</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">action_name</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span> <span class="o">&amp;</span> <span class="n">conf</span><span class="p">)</span>
+<span class="o">:</span> <span class="n">BtActionNode</span><span class="o">&lt;</span><span class="n">nav2_msgs</span><span class="o">::</span><span class="n">action</span><span class="o">::</span><span class="n">Wait</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xml_tag_name</span><span class="p">,</span> <span class="n">action_name</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">duration</span><span class="p">;</span>
+  <span class="n">getInput</span><span class="p">(</span><span class="s">&quot;wait_duration&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">duration</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">RCLCPP_WARN</span><span class="p">(</span>
+      <span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span> <span class="s">&quot;Wait duration is negative or zero &quot;</span>
+      <span class="s">&quot;(%i). Setting to positive.&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
+    <span class="n">duration</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">goal_</span><span class="p">.</span><span class="n">time</span><span class="p">.</span><span class="n">sec</span> <span class="o">=</span> <span class="n">duration</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here, we give the input of the <code class="docutils literal notranslate"><span class="pre">xml_tag_name</span></code> which tells the BT node plugin the string in the XML that corresponds to this node.
+This will be seen later when we register this BT node as a plugin.
+It also takes in the string name of the action server that it will call to execute some behavior.
+Finally, a set of configurations that we can safely ignore for the purposes of most node plugins.</p>
+<p>We then call the <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> constructor. As can be seen, its templated by the ROS 2 action type, so we give it the <code class="docutils literal notranslate"><span class="pre">nav2_msgs::action::Wait</span></code> action message type and forward our other inputs.
+The <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> as the <code class="docutils literal notranslate"><span class="pre">tick()</span></code> method which is called directly by the behavior tree when this node is called from the tree.
+<code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> is then called along with the action client goal.</p>
+<p>In the body of the constructor, we get the input port <code class="docutils literal notranslate"><span class="pre">getInput</span></code> of the parameter <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> which can be configured independently for every instance of the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node in the tree.
+It is set in the <code class="docutils literal notranslate"><span class="pre">duration</span></code> parameter and inserted into the <code class="docutils literal notranslate"><span class="pre">goal_</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">goal_</span></code> class variable is the goal that the ROS 2 action client will send to the action server.
+So in this example, we set the duration to the time we want to wait by so that the action server knows the specifics of our request.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">providedPorts()</span></code> method gives us the opportunity to define input or output ports.
+Ports can be thought of as parameters that the behavior tree node has access to from the behavior tree itself.
+For our example, there is only a single input port, the <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> which can be set in the BT XML for each instance of the <code class="docutils literal notranslate"><span class="pre">wait</span></code> recovery.
+We set the type, <code class="docutils literal notranslate"><span class="pre">int</span></code>, the default <code class="docutils literal notranslate"><span class="pre">1</span></code>, the name <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code>, and a description of the port <code class="docutils literal notranslate"><span class="pre">Wait</span> <span class="pre">time</span></code>.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span> <span class="n">providedPorts</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">providedBasicPorts</span><span class="p">(</span>
+    <span class="p">{</span>
+      <span class="n">BT</span><span class="o">::</span><span class="n">InputPort</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;wait_duration&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Wait time&quot;</span><span class="p">)</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> method is called when the behavior tree ticks a specific node.
+For the wait BT node, we simply want to notify a counter on the blackboard that an action plugin that corresponds to a recovery was ticked.
+This is useful to keep metrics about the number of recoveries executed during a specific navigation run.
+You could also log or update the <code class="docutils literal notranslate"><span class="pre">goal_</span></code> waiting duration if that is a variable input.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">WaitAction</span><span class="o">::</span><span class="n">on_tick</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">increment_recovery_count</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The remaining methods are not used and not mandatory to override them.
+Only some BT node plugins will require overriding <code class="docutils literal notranslate"><span class="pre">on_wait_for_result()</span></code> to check for preemption or check a timeout.
+The success, aborted, and cancelled methods will default to <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>, <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> respectively if not overrided.</p>
+</div>
+<div class="section" id="exporting-the-planner-plugin">
+<h3>2- Exporting the planner plugin<a class="headerlink" href="#exporting-the-planner-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have created our custom BT node, we need to export our plugin so that it would be visible to the behavior tree when it loads a custom BT XML.
+Plugins are loaded at runtime and if they are not visible, then our BT Navigator server won’t be able to load it or use it.
+In BehaviorTree.CPP, exporting and loading plugins is handled by the <code class="docutils literal notranslate"><span class="pre">BT_REGISTER_NODES</span></code> macro.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">BT_REGISTER_NODES</span><span class="p">(</span><span class="n">factory</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">BT</span><span class="o">::</span><span class="n">NodeBuilder</span> <span class="n">builder</span> <span class="o">=</span>
+    <span class="p">[](</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span> <span class="o">&amp;</span> <span class="n">config</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">nav2_behavior_tree</span><span class="o">::</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;wait&quot;</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+    <span class="p">};</span>
+
+  <span class="n">factory</span><span class="p">.</span><span class="n">registerBuilder</span><span class="o">&lt;</span><span class="n">nav2_behavior_tree</span><span class="o">::</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Wait&quot;</span><span class="p">,</span> <span class="n">builder</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this macro, we must create a <code class="docutils literal notranslate"><span class="pre">NodeBuilder</span></code> so that our custom action node can have a non-default constructor signature (for the action and xml names).
+This lambda will return a unique pointer to the behavior tree node we have created.
+Fill in the constructor with the relavent information, giving it the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">config</span></code> given in the function arguments.
+Then define the ROS 2 action server’s name that this BT node will call, in this case, its the <cite>wWait`</cite> action.</p>
+<p>We finally give the builder to a factory to register.
+<code class="docutils literal notranslate"><span class="pre">Wait</span></code> given to the factory is the name in the behavior tree XML file that corresponds to this BT node plugin.
+An example can be seen below, where the <code class="docutils literal notranslate"><span class="pre">Wait</span></code> BT XML node specifies a non-variable input port <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> of 5 seconds.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Wait</span> <span class="na">wait_duration=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-your-custom-plugin">
+<h3>4- Run Your Custom plugin<a class="headerlink" href="#run-your-custom-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Now you can use a behavior tree with your custom BT node.
+For example, the <code class="docutils literal notranslate"><span class="pre">navigate_w_replanning_and_recovery.xml</span></code> file is shown below.</p>
+<p>Select this BT XML file in your specific navigation request in <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> or as the default behavior tree in the BT Navigator’s configuration yaml file.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/RateController&gt;</span>
-      <span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/PipelineSequence&gt;</span>
+    <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;6&quot;</span> <span class="na">name=</span><span class="s">&quot;NavigateRecovery&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;ComputePathToPose&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/RecoveryNode&gt;</span>
+        <span class="nt">&lt;/RateController&gt;</span>
+        <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/RecoveryNode&gt;</span>
+      <span class="nt">&lt;/PipelineSequence&gt;</span>
+      <span class="nt">&lt;ReactiveFallback</span> <span class="na">name=</span><span class="s">&quot;RecoveryFallback&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;GoalUpdated/&gt;</span>
+        <span class="nt">&lt;SequenceStar</span> <span class="na">name=</span><span class="s">&quot;RecoveryActions&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;Spin</span> <span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;Wait</span> <span class="na">wait_duration=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/SequenceStar&gt;</span>
+      <span class="nt">&lt;/ReactiveFallback&gt;</span>
+    <span class="nt">&lt;/RecoveryNode&gt;</span>
   <span class="nt">&lt;/BehaviorTree&gt;</span>
 <span class="nt">&lt;/root&gt;</span>
 </pre></div>
 </div>
-<p>First, let’s make this behavior run until there’s a failure. For this purpose, we will use the <code class="docutils literal notranslate"><span class="pre">KeepRunningUntilFailure</span></code> control node.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/RateController&gt;</span>
-      <span class="nt">&lt;KeepRunningUntilFailure&gt;</span>
-        <span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/KeepRunningUntilFailure&gt;</span>
-    <span class="nt">&lt;/PipelineSequence&gt;</span>
-  <span class="nt">&lt;/BehaviorTree&gt;</span>
-<span class="nt">&lt;/root&gt;</span>
-</pre></div>
 </div>
-<p>We will then use the decorator <code class="docutils literal notranslate"><span class="pre">GoalUpdater</span></code> to accept updates of the dynamic object pose we’re trying to follow. This node takes as input the current goal and subscribes to the topic <code class="docutils literal notranslate"><span class="pre">/goal_update</span></code>. It set the new goal as <code class="docutils literal notranslate"><span class="pre">updated_goal</span></code> if a new goal on that topic is received.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;GoalUpdater</span> <span class="na">input_goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">output_goal=</span><span class="s">&quot;{updated_goal}&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{updated_goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/GoalUpdater&gt;</span>
-      <span class="nt">&lt;/RateController&gt;</span>
-      <span class="nt">&lt;KeepRunningUntilFailure&gt;</span>
-        <span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/KeepRunningUntilFailure&gt;</span>
-    <span class="nt">&lt;/PipelineSequence&gt;</span>
-  <span class="nt">&lt;/BehaviorTree&gt;</span>
-<span class="nt">&lt;/root&gt;</span>
-</pre></div>
-</div>
-<p>To stay at a certain distance from the target, we will use the action node <code class="docutils literal notranslate"><span class="pre">TruncatePath</span></code>. This node modifies a path making it shorter so we don’t try to navigate into the object of interest. We can set up the desired distance to the goal using the input port <code class="docutils literal notranslate"><span class="pre">distance</span></code>.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;Sequence&gt;</span>
-          <span class="nt">&lt;GoalUpdater</span> <span class="na">input_goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">output_goal=</span><span class="s">&quot;{updated_goal}&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{updated_goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;/GoalUpdater&gt;</span>
-         <span class="nt">&lt;TruncatePath</span> <span class="na">distance=</span><span class="s">&quot;1.0&quot;</span> <span class="na">input_path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">output_path=</span><span class="s">&quot;{truncated_path}&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/Sequence&gt;</span>
-      <span class="nt">&lt;/RateController&gt;</span>
-      <span class="nt">&lt;KeepRunningUntilFailure&gt;</span>
-        <span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{truncated_path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/KeepRunningUntilFailure&gt;</span>
-    <span class="nt">&lt;/PipelineSequence&gt;</span>
-  <span class="nt">&lt;/BehaviorTree&gt;</span>
-<span class="nt">&lt;/root&gt;</span>
-</pre></div>
-</div>
-<p>Now, you may save this behavior tree and use it in our navigation task.</p>
-<p>For reference, this exact behavior tree is <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bt_navigator/behavior_trees/follow_point.xml">made available</a> to you batteries included in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> package.</p>
-</div>
-<div class="section" id="setup-rviz-clicked-point">
-<h3>1- Setup Rviz clicked point<a class="headerlink" href="#setup-rviz-clicked-point" title="Permalink to this headline">¶</a></h3>
-<p>We are going to use RViz instead of a full application so you can test at home without finding a detector to get started. We will use the “clicked point” button on the toolbar to substitute object detections to provide goal updates to Navigation2. This button allows you to
-publish coordinates in the topic <code class="docutils literal notranslate"><span class="pre">/clicked_point</span></code>. This point needs to be sent to the behavior tree, using the program <code class="docutils literal notranslate"><span class="pre">clicked_point_to_pose</span></code>, from <a class="reference external" href="https://github.com/fmrico/nav2_test_utils">this repo</a>. Clone
-this repo in your workspace, build, and type in a terminal.</p>
-<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">nav2_test_utils</span> <span class="pre">clicked_point_to_pose</span></code></p>
-<p>Optionally, you can remap this topic in your rviz configuration file to <code class="docutils literal notranslate"><span class="pre">goal_updates</span></code>.</p>
-</div>
-<div class="section" id="run-dynamic-object-following-in-navigation2-simulation">
-<h3>2- Run Dynamic Object Following in Navigation2 Simulation<a class="headerlink" href="#run-dynamic-object-following-in-navigation2-simulation" title="Permalink to this headline">¶</a></h3>
-<p>Start Navigation2 in one terminal:</p>
-<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">nav2_bringup</span> <span class="pre">tb3_simulation_launch.py</span> <span class="pre">default_bt_xml_filename:=/path/to/bt.xml</span></code></p>
-<p>Open RViz and, after initialize the robot position, command the robot to navigate to any position. Use the button clicked point to simulate a new detection of the object of interest, as shown in the video in the head of this tutorial.</p>
-<p>When you have a detector detecting your obstacle at a higher rate (1 hz, 10 hz, 100 hz) you will see a far more reactive robot following your detected object of interest!</p>
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="700" height="450" src="https://www.youtube.com/embed/r4fIkcktZUM?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</h1></div>
 </div>
 </div>
 
