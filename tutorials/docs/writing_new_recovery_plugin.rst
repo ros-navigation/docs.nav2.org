@@ -265,4 +265,4 @@ In a new terminal run:
 
 .. code-block:: bash
 
-  $ ros2 action send_goal "call_for_help" nav2_sms_recovery/action/SmsRecovery "help! I have fallen and I cannot get up!"
+  $ ros2 action send_goal "call_for_help" nav2_sms_recovery/action/SmsRecovery "Help! Robot 42 is being mean :( Tell him to stop!"
