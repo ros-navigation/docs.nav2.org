@@ -16,4 +16,5 @@ Navigation2 Tutorials
    docs/writing_new_costmap2d_plugin.rst
    docs/writing_new_nav2planner_plugin.rst
    docs/writing_new_bt_plugin.rst
+   docs/writing_new_recovery_plugin.rst
    docs/navigation2_dynamic_point_following.rst
