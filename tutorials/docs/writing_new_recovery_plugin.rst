@@ -87,7 +87,8 @@ This tutorial uses this wrapper so these are the main elements we will address.
 |                      | this method should clean up resoures which are created for the recovery.   |                         |
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 
-For this tutorial, we will be using methods ``onRun()`` and ``onCycleUpdate()`` to create the SMS recovery.
+For this tutorial, we will be using methods ``onRun()``, ``onCycleUpdate()``, and ``onConfigure()`` to create the SMS recovery.
+``onConfigure()`` will be skipped for brevity, but only includes declaring of parameters.
 
 In recoveries, ``onRun()`` method must set any initial state and kick off the recovery behavior.
 For the case of our call for help recovery behavior, we can trivially compute all of our needs in this method.
@@ -120,7 +121,7 @@ This is the "call for help" message that we want to send via SMS to our brothers
 
 We use the service Twilio to complete this task.
 Please `create an account <https://www.twilio.com/>`_ and get all the relavent information needed for creating the service (e.g. ``account_sid``, ``auth_token``, and a phone number).
-You can set these values as parameters in your configuration files corresponding to the constructor's parameter declarations.
+You can set these values as parameters in your configuration files corresponding to the ``onConfigure()`` parameter declarations.
 
 We use the ``_twilio`` object to send our message with your account information from the configuration file.
 We send the message and log to screen whether or not the message was sent successfully or not.
