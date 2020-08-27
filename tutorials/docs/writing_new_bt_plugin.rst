@@ -68,7 +68,7 @@ Lets learn more about the methods needed to write a BT action plugin.
 | on_success()         | Method is called when the ROS 2 action server returns a successful result. | No                      |
 |                      | Returns the value the BT node will report back to the tree.                |                         |
 +----------------------+----------------------------------------------------------------------------+-------------------------+
-| on_aborted()         | Method is called when the ROS 2 action server returns an aborted result.   |                         |
+| on_aborted()         | Method is called when the ROS 2 action server returns an aborted result.   | No                      |
 |                      | Returns the value the BT node will report back to the tree.                |                         |
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 | on_cancelled()       | MMethod is called when the ROS 2 action server returns a cancelled result. | No                      |
