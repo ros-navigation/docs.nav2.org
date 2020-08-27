@@ -674,7 +674,8 @@ this method should clean up resoures which are created for the recovery.</td>
 </tr>
 </tbody>
 </table>
-<p>For this tutorial, we will be using methods <code class="docutils literal notranslate"><span class="pre">onRun()</span></code> and <code class="docutils literal notranslate"><span class="pre">onCycleUpdate()</span></code> to create the SMS recovery.</p>
+<p>For this tutorial, we will be using methods <code class="docutils literal notranslate"><span class="pre">onRun()</span></code>, <code class="docutils literal notranslate"><span class="pre">onCycleUpdate()</span></code>, and <code class="docutils literal notranslate"><span class="pre">onConfigure()</span></code> to create the SMS recovery.
+<code class="docutils literal notranslate"><span class="pre">onConfigure()</span></code> will be skipped for brevity, but only includes declaring of parameters.</p>
 <p>In recoveries, <code class="docutils literal notranslate"><span class="pre">onRun()</span></code> method must set any initial state and kick off the recovery behavior.
 For the case of our call for help recovery behavior, we can trivially compute all of our needs in this method.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span> <span class="n">SMSRecovery</span><span class="o">::</span><span class="n">onRun</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Action</span><span class="o">::</span><span class="n">Goal</span><span class="o">&gt;</span> <span class="n">command</span><span class="p">)</span>
@@ -703,7 +704,7 @@ For the case of our call for help recovery behavior, we can trivially compute al
 This is the “call for help” message that we want to send via SMS to our brothers in arms in the operations center.</p>
 <p>We use the service Twilio to complete this task.
 Please <a class="reference external" href="https://www.twilio.com/">create an account</a> and get all the relavent information needed for creating the service (e.g. <code class="docutils literal notranslate"><span class="pre">account_sid</span></code>, <code class="docutils literal notranslate"><span class="pre">auth_token</span></code>, and a phone number).
-You can set these values as parameters in your configuration files corresponding to the constructor’s parameter declarations.</p>
+You can set these values as parameters in your configuration files corresponding to the <code class="docutils literal notranslate"><span class="pre">onConfigure()</span></code> parameter declarations.</p>
 <p>We use the <code class="docutils literal notranslate"><span class="pre">_twilio</span></code> object to send our message with your account information from the configuration file.
 We send the message and log to screen whether or not the message was sent successfully or not.
 We return a <code class="docutils literal notranslate"><span class="pre">FAILED</span></code> or <code class="docutils literal notranslate"><span class="pre">SUCCEEDED</span></code> depending on this value to be returned to the action client.</p>
