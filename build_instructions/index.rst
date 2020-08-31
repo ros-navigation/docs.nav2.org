@@ -10,6 +10,10 @@ Navigation2 and its dependencies are released as binaries.
 You may install it via the following to get the latest stable released version:
 
   ``sudo apt install ros-<distro>-navigation2 ros-<distro>-nav2-bringup ros-<distro>-turtlebot3*``
+(For Ubuntu 20.04 use this command as the parsing of wildcards have been changed:
+
+  ``sudo apt install ros-<distro>-navigation2 ros-<distro>-nav2-bringup '~ros-<distro>-turtlebot3-.*'``
+ 
 
 Build
 *****
