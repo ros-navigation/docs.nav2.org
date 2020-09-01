@@ -52,7 +52,7 @@ Click on the images below for a link to the drivers or navigation configurations
     :alt: Tiago Robot
     :target: https://github.com/IntelligentRoboticsLabs/marathon_ros2
 
-.. |UBR-1| image:: images/ubr1.jpeg
+.. |ubr1| image:: images/ubr1.jpeg
     :align: middle
     :height: 350px
     :alt: UBR-1
