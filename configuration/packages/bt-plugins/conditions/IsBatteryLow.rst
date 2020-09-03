@@ -3,7 +3,7 @@
 IsBatteryLow
 ============
 
-Checks if battery is low by subscribing to a battery status topic and checking if battery percentage is below a specified minimum value.
+Checks if battery is low by subscribing to a ``sensor_msgs/BatteryState`` topic and checking if battery percentage is below a specified minimum value.
 Returns SUCCESS when battery percentage is lower than the specified value, FAILURE otherwise.
 
 Example
