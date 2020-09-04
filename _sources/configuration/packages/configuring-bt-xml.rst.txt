@@ -40,6 +40,7 @@ Condition Plugins
   bt-plugins/conditions/InitialPoseReceived.rst
   bt-plugins/conditions/IsStuck.rst
   bt-plugins/conditions/TimeExpired.rst
+  bt-plugins/conditions/IsBatteryLow.rst
 
 Control Plugins
 ***************

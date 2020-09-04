@@ -186,6 +186,10 @@ Behavior Tree Nodes
 |                                    |                    | time period has        |
 |                                    |                    | passed.                |
 +------------------------------------+--------------------+------------------------+
+| `Is Battery Low Condition`_        |  Sarthak Mittal    | Checks if battery      |
+|                                    |                    | percentage is below    |
+|                                    |                    | a specified value.     |
++------------------------------------+--------------------+------------------------+
 
 .. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
@@ -194,6 +198,7 @@ Behavior Tree Nodes
 .. _Transform Available Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
 .. _Distance Traveled Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
 .. _Time Expired Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
+.. _Is Battery Low Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
 
 +--------------------------+-------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator        |       Description                |

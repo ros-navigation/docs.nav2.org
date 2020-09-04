@@ -93,6 +93,7 @@ Original GitHub tickets:
 - `TimeExpiredCondition <https://github.com/ros-planning/navigation2/pull/1705>`_
 - `UpdateGoal <https://github.com/ros-planning/navigation2/pull/1859>`_
 - `TruncatePath <https://github.com/ros-planning/navigation2/pull/1859>`_
+- `IsBatteryLowCondition <https://github.com/ros-planning/navigation2/pull/1974>`_
 - `ProgressChecker <https://github.com/ros-planning/navigation2/pull/1857>`_
 - `GoalChecker <https://github.com/ros-planning/navigation2/pull/1857>`_
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GoalUpdated &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>IsBatteryLow &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="InitialPoseReceived" href="InitialPoseReceived.html" />
-    <link rel="prev" title="DistanceTraveled" href="DistanceTraveled.html" />
+    <link rel="next" title="PipelineSequence" href="../controls/PipelineSequence.html" />
+    <link rel="prev" title="TimeExpired" href="TimeExpired.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -316,11 +316,11 @@
 <li class="toctree-l4"><a class="reference internal" href="GoalReached.html">GoalReached</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DistanceTraveled.html">DistanceTraveled</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">GoalUpdated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="GoalUpdated.html">GoalUpdated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TimeExpired.html">TimeExpired</a></li>
-<li class="toctree-l4"><a class="reference internal" href="IsBatteryLow.html">IsBatteryLow</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">IsBatteryLow</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -545,7 +545,7 @@
         
           <li><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a> &raquo;</li>
         
-      <li>GoalUpdated</li>
+      <li>IsBatteryLow</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -562,13 +562,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="goalupdated">
-<span id="goal-updated-condition"></span><h1>GoalUpdated<a class="headerlink" href="#goalupdated" title="Permalink to this headline">¶</a></h1>
-<p>Checks if the global navigation goal has changed in the blackboard.
-Returns failure if the goal is the same, if it changes, it returns success.</p>
+  <div class="section" id="isbatterylow">
+<span id="bt-is-battery-low-condition"></span><h1>IsBatteryLow<a class="headerlink" href="#isbatterylow" title="Permalink to this headline">¶</a></h1>
+<p>Checks if battery is low by subscribing to a <code class="docutils literal notranslate"><span class="pre">sensor_msgs/BatteryState</span></code> topic and checking if battery percentage/voltage is below a specified minimum value.
+By default percentage (in range 0 to 1) is used to check for low battery. Set the <code class="docutils literal notranslate"><span class="pre">is_voltage</span></code> parameter to <cite>true</cite> to use voltage.
+Returns SUCCESS when battery percentage/voltage is lower than the specified value, FAILURE otherwise.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalUpdated/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsBatteryLow</span> <span class="na">min_battery=</span><span class="s">&quot;0.5&quot;</span> <span class="na">battery_topic=</span><span class="s">&quot;/battery_status&quot;</span> <span class="na">is_voltage=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
