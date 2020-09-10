@@ -251,6 +251,17 @@ Costmap layers can be created to detect and track obstacles in the scene for col
 Additionally, layers can be created to algorithmically change the underlying costmap based on some rule or heuristic.
 Finally, they may be used to buffer live data into the 2D or 3D world for binary obstacle marking.
 
+Costmap Filters
+===============
+
+Costmap filters - is a costmap layer-based instrument which provides an ability to apply on map spatial-dependent raster objects drawn on map-masks. These objects are used in filters algorithms when filling costmaps in order to allow robots to change their trajectory, behavior or speed when them (robots) enters/leaves an area on map corresponding to these objects. Costmap filters s well as costmap layers are implemented as plugins.
+
+The most common examples of using costmap filters include:
+
+- Keep-out/safety zones where robots will never enter.
+- Speed restriction areas. Maximum speed of robots going inside those areas will be limited.
+- Preferred lanes for robots moving in industries and warehouses.
+
 Other Forms
 ===========
 

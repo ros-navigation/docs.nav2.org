@@ -54,6 +54,18 @@ Costmap Layers
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer
 
+Costmap Filters
+===============
+
++--------------------+--------------------+-----------------------------------+
+|    Plugin Name     |      Creator       |       Description                 |
++====================+====================+===================================+
+| `Keepout Filter`_  | Alexey Merzlyakov  | Maintanins keep-out/safety zones  |
+|                    |                    | and preferred lanes in industries |
++--------------------+--------------------+-----------------------------------+
+
+.. _Keepout Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
+
 Controllers
 ===========
 

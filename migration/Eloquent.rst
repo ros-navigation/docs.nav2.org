@@ -145,3 +145,16 @@ New Costmap Layer
 The range sensor costmap has not been ported to navigation2 as ``nav2_costmap_2d::RangeSensorLayer"``. It uses the same
 probabilistic model as the `ROS1 <http://wiki.ros.org/range_sensor_layer>`_ layer as well as much of the
 same interface. Documentation on parameters has been added to docs/parameters and the navigation.ros.org under ``Configuration Guide``.
+
+Costmap Filters
+***************
+
+A new concept interacting with spatial-dependent objects called "Costmap Filters" appeared in Foxy (more information about this concept could be found at :ref:`concepts` page). Costmap filters consists from ``CostmapFilter`` class which is a basic class incorporating much common of its inherited filter plugins:
+
+- ``KeepoutFilter``: keep-out/safety zones filter plugin.
+- ``SpeedFilter``: slow/speed-restricted areas filter.
+- Preferred lanes in industries. This plugin is covered by ``KeepoutFilter`` (see discussion in `corresponding PR <https://github.com/ros-planning/navigation2/issues/1522>`_ for more details).
+
+Each costmap filter subscribes to filter info topic (currently publishing by `dummy info publisher <https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/test/costmap_filter_info>`_) having all necessary information for loaded costmap filter and map mask topic.
+
+High-level design of this concept could be found :download:`here <../design/CostmapFilters_design_1.0.pdf>`. The functionality of costmap filters is being disscussed in `the ticket #1263 <https://github.com/ros-planning/navigation2/issues/1263>`_ and carried out by `PR #1882 <https://github.com/ros-planning/navigation2/pull/1882>`_. The following tutorial: :ref:`navigation2_with_keepout_filter` will help to easily get involved with ``KeepoutFilter`` functionality.

@@ -322,6 +322,14 @@ Plugin Parameters
   costmap-plugins/voxel.rst
   costmap-plugins/range.rst
 
+Costmap Filters Parameters
+**************************
+
+.. toctree::
+  :maxdepth: 1
+
+  costmap-plugins/costmap_filters.rst
+
 Example
 *******
 .. code-block:: yaml
