@@ -34,7 +34,7 @@ as the ``nav2_pure_pursuit_controller``. This package can be considered as a ref
 
 Our example plugin class ``nav2_pure_pursuit_controller::PurePursuitController`` inherits from the base class ``nav2_core::Controller``. The base class provides a
 set of virtual methods to implement a controller plugin. These methods are called at runtime by the controller server to compute velocity commands.
-The list of methods and their descriptions and necessity are presented in the table below:
+The list of methods, and their descriptions, and necessity are presented in the table below:
 
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | **Virtual method**        | **Method description**                                                                | **Requires override?** |
@@ -71,45 +71,50 @@ In controllers, ``configure()`` method must set member variables from ROS parame
 
 .. code-block:: c++
 
-  node_ = parent;
-  auto node = node_.lock();
+  void PurePursuitController::configure(
+    const rclcpp_lifecycle::LifecycleNode::WeakPtr & parent,
+    std::string name, const std::shared_ptr<tf2_ros::Buffer> & tf,
+    const std::shared_ptr<nav2_costmap_2d::Costmap2DROS> & costmap_ros)
+  {
+    node_ = parent;
+    auto node = node_.lock();
 
-  costmap_ros_ = costmap_ros;
-  tf_ = tf;
-  plugin_name_ = name;
-  logger_ = node->get_logger();
-  clock_ = node->get_clock();
+    costmap_ros_ = costmap_ros;
+    tf_ = tf;
+    plugin_name_ = name;
+    logger_ = node->get_logger();
+    clock_ = node->get_clock();
 
-  declare_parameter_if_not_declared(
-  node, plugin_name_ + ".desired_linear_vel", rclcpp::ParameterValue(
-  0.2));
-  declare_parameter_if_not_declared(
-  node, plugin_name_ + ".lookahead_dist",
-  rclcpp::ParameterValue(0.4));
-  declare_parameter_if_not_declared(
-  node, plugin_name_ + ".max_angular_vel", rclcpp::ParameterValue(
-  1.0));
-  declare_parameter_if_not_declared(
-  node, plugin_name_ + ".robot_frame",
-  rclcpp::ParameterValue("base_link"));
-  declare_parameter_if_not_declared(
-  node, plugin_name_ + ".transform_tolerance", rclcpp::ParameterValue(
-  0.1));
+    declare_parameter_if_not_declared(
+      node, plugin_name_ + ".desired_linear_vel", rclcpp::ParameterValue(
+        0.2));
+    declare_parameter_if_not_declared(
+      node, plugin_name_ + ".lookahead_dist",
+      rclcpp::ParameterValue(0.4));
+    declare_parameter_if_not_declared(
+      node, plugin_name_ + ".max_angular_vel", rclcpp::ParameterValue(
+        1.0));
+    declare_parameter_if_not_declared(
+      node, plugin_name_ + ".robot_frame",
+      rclcpp::ParameterValue("base_link"));
+    declare_parameter_if_not_declared(
+      node, plugin_name_ + ".transform_tolerance", rclcpp::ParameterValue(
+        0.1));
 
-  node->get_parameter(plugin_name_ + ".desired_linear_vel", desired_linear_vel_);
-  node->get_parameter(plugin_name_ + ".lookahead_dist", lookahead_dist_);
-  node->get_parameter(plugin_name_ + ".max_angular_vel", max_angular_vel_);
-  node->get_parameter(plugin_name_ + ".robot_frame", robot_frame_);
-  double transform_tolerance;
-  node->get_parameter(plugin_name_ + ".transform_tolerance", transform_tolerance);
-  transform_tolerance_ = rclcpp::Duration::from_seconds(transform_tolerance);
+    node->get_parameter(plugin_name_ + ".desired_linear_vel", desired_linear_vel_);
+    node->get_parameter(plugin_name_ + ".lookahead_dist", lookahead_dist_);
+    node->get_parameter(plugin_name_ + ".max_angular_vel", max_angular_vel_);
+    node->get_parameter(plugin_name_ + ".robot_frame", robot_frame_);
+    double transform_tolerance;
+    node->get_parameter(plugin_name_ + ".transform_tolerance", transform_tolerance);
+    transform_tolerance_ = rclcpp::Duration::from_seconds(transform_tolerance);
+  }
 
-
-Here, ``plugin_name_ + ".desired_linear_vel"`` is fetching the ROS parameters desired_linear_vel which is specific to our controller. 
+Here, ``plugin_name_ + ".desired_linear_vel"`` is fetching the ROS parameters ``desired_linear_vel`` which is specific to our controller. 
 Navigation2 allows loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name.
-Now, if we want to retrieve the parameters for that specific plugin, we use <mapped_name_of_plugin>.<name_of_parameter> as done in the above snippet. 
-For example, our example controller is mapped to the name FollowPath and to retrieve the desired_linear_vel parameter, which is specific to "FollowPath”, 
-we used FollowPath.desired_linear_vel. In other words, FollowPath is used as a namespace for plugin-specific parameters. 
+Now, if we want to retrieve the parameters for that specific plugin, we use ``<mapped_name_of_plugin>.<name_of_parameter>`` as done in the above snippet. 
+For example, our example controller is mapped to the name ``FollowPath`` and to retrieve the ``desired_linear_vel parameter``, which is specific to "FollowPath”, 
+we used ``FollowPath.desired_linear_vel``. In other words, ``FollowPath`` is used as a namespace for plugin-specific parameters. 
 We will see more on this when we discuss the parameters file (or params file).
 
 The passed in arguments are stored in member variables so that they can be used at a later stage if needed.
@@ -119,7 +124,11 @@ the frame of the robot and then store this transformed global path for later use
 
 .. code-block:: c++
 
-  global_plan_ = transformGlobalPlan(path);
+  void PurePursuitController::setPlan(const nav_msgs::msg::Path & path)
+  {
+    // Transform global path into the robot's frame
+    global_plan_ = transformGlobalPlan(path);
+  }
 
 The computation for the desired velocity happens in the ``computeVelocityCommands()`` method. It is used to calculate the desired velocity command given the
 current velocity and pose. In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible. 
@@ -127,41 +136,46 @@ This algorithm assumes a constant linear velocity and computes the angular veloc
 
 .. code-block:: c++
 
-  // Find the first pose which is at a distance greater than the specified lookahed distance
-  auto goal_pose = std::find_if(
-  global_plan_.poses.begin(), global_plan_.poses.end(),
-  [&](const auto & global_plan_pose) {
-  return hypot(
-  global_plan_pose.pose.position.x,
-  global_plan_pose.pose.position.y) >= lookahead_dist_;
-  })->pose;
+  geometry_msgs::msg::TwistStamped PurePursuitController::computeVelocityCommands(
+    const geometry_msgs::msg::PoseStamped & pose,
+    const geometry_msgs::msg::Twist & velocity)
+  {
+    // Find the first pose which is at a distance greater than the specified lookahed distance
+    auto goal_pose = std::find_if(
+      global_plan_.poses.begin(), global_plan_.poses.end(),
+      [&](const auto & global_plan_pose) {
+        return hypot(
+          global_plan_pose.pose.position.x,
+          global_plan_pose.pose.position.y) >= lookahead_dist_;
+      })->pose;
 
-  double linear_vel, angular_vel;
+    double linear_vel, angular_vel;
 
-  // If the goal pose is in front of the robot, then compute the velocity using the pure pursuit algorithm
-  // else rotate with the max angular velocity until the goal pose is in front of the robot
-  if (goal_pose.position.x > 0) {
+    // If the goal pose is in front of the robot then compute the velocity using the pure pursuit algorithm
+    // else rotate with the max angular velocity until the goal pose is in front of the robot
+    if (goal_pose.position.x > 0) {
 
-  auto curvature = 2.0 * goal_pose.position.y /
-  (goal_pose.position.x * goal_pose.position.x + goal_pose.position.y * goal_pose.position.y);
-  linear_vel = desired_linear_vel_;
-  angular_vel = desired_linear_vel_ * curvature;
-  } else {
-  linear_vel = 0.0;
-  angular_vel = max_angular_vel_;
+      auto curvature = 2.0 * goal_pose.position.y /
+        (goal_pose.position.x * goal_pose.position.x + goal_pose.position.y * goal_pose.position.y);
+      linear_vel = desired_linear_vel_;
+      angular_vel = desired_linear_vel_ * curvature;
+    } else {
+      linear_vel = 0.0;
+      angular_vel = max_angular_vel_;
+    }
+
+    // Create and publish a TwistStamped message with the desired velocity
+    geometry_msgs::msg::TwistStamped cmd_vel;
+    cmd_vel.header.frame_id = pose.header.frame_id;
+    cmd_vel.header.stamp = clock_->now();
+    cmd_vel.twist.linear.x = linear_vel;
+    cmd_vel.twist.angular.z = max(
+      -1.0 * abs(max_angular_vel_), min(
+        angular_vel, abs(
+          max_angular_vel_)));
+
+    return cmd_vel;
   }
-
-  // Create and publish a TwistStamped message with the desired velocity
-  geometry_msgs::msg::TwistStamped cmd_vel;
-  cmd_vel.header.frame_id = pose.header.frame_id;
-  cmd_vel.header.stamp = clock_->now();
-  cmd_vel.twist.linear.x = linear_vel;
-  cmd_vel.twist.angular.z = max(
-  -1.0 * abs(max_angular_vel_), min(
-  angular_vel, abs(
-  max_angular_vel_)));
-
-  return cmd_vel;
 
 The remaining methods are not used, but it's mandatory to override them. As per the rules, we did override all but left them empty.
 
@@ -221,7 +235,7 @@ It is good practice to place these lines at the end of the file, but technically
 5. Compile, and it should be registered. Next, we'll use this plugin.
 
 3- Pass the plugin name through the params file
--------------------------------------------
+-------------------------------------
 
 To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
 
