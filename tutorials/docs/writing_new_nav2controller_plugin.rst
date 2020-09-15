@@ -239,23 +239,20 @@ It is good practice to place these lines at the end of the file, but technically
 
 To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
 
-replace following params
-
 .. code-block:: text
 
   controller_server:
-  ros__parameters:
-  controller_plugin_types: ["dwb_core::DWBLocalPlanner"]
-  controller_plugin_ids: ["FollowPath"]
+    ros__parameters:
+      controller_plugins: ["FollowPath"]
 
-with
-
-.. code-block:: text
-
-  controller_server:
-  ros__parameters:
-  controller_plugin_types: ["nav2_pure_pursuit_controller/PurePursuitController"]
-  controller_plugin_ids: ["FollowPath"]
+      FollowPath:
+        plugin: "pure_pursuit_controller::PurePursuitController"
+        debug_trajectory_details: True
+        desired_linear_vel: 0.2
+        lookahead_dist: 0.4
+        max_angular_vel: 1.0
+        robot_frame: "base_link"
+        transform_tolerance: 1.0
 
 In the above snippet, you can observe the mapping of our ``nav2_pure_pursuit_controller/PurePursuitController`` controller to its id ``FollowPath``. 
 To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
