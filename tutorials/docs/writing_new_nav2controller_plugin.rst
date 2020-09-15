@@ -47,7 +47,7 @@ The list of methods, and their descriptions, and necessity are presented in the 
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | configure()               | Method is called when controller server enters on_configure state. Ideally this       | Yes                    |
 |                           | method should perform declarations of ROS parameters and initialization of            |                        |
-|                           | controller's member variables. This method takes 4 input params: shared pointer to    |                        |
+|                           | controller's member variables. This method takes 4 input params: weak pointer to      |                        |
 |                           | parent node, controller name, tf buffer pointer and shared pointer to costmap.        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | activate()                | Method is called when controller server enters on_activate state. Ideally this method | Yes                    |
@@ -58,10 +58,11 @@ The list of methods, and their descriptions, and necessity are presented in the 
 |                           | method should implement operations which are neccessary before controller goes to an  |                        |
 |                           | inactive state.                                                                       |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| cleanup()                 | This method should clean up resoures which are created for the controller.            | Yes                    |
+| cleanup()                 | Method is called when controller server goes to on_cleanup state. Ideally this method | Yes                    |
+|                           | should clean up resources which are created for the controller.                       |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
-| setPlan()                 | Method is called when controller server goes to on_cleanup state. Ideally this method | Yes                    |
-|                           | should clean up resoures which are created for the controller.                        |                        |
+| setPlan()                 | Method is called when the global plan is updated. Ideally this method should perform  | Yes                    |
+|                           | operations that transform the global plan and stores it.                              |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | computeVelocityCommands() | Method is called when a new velocity command is demanded by the controller server     | Yes                    |
 |                           | in-order for the robot to follow the global path. This method returns a               |                        |
@@ -101,16 +102,12 @@ In controllers, ``configure()`` method must set member variables from ROS parame
       node, plugin_name_ + ".max_angular_vel", rclcpp::ParameterValue(
         1.0));
     declare_parameter_if_not_declared(
-      node, plugin_name_ + ".robot_frame",
-      rclcpp::ParameterValue("base_link"));
-    declare_parameter_if_not_declared(
       node, plugin_name_ + ".transform_tolerance", rclcpp::ParameterValue(
         0.1));
 
     node->get_parameter(plugin_name_ + ".desired_linear_vel", desired_linear_vel_);
     node->get_parameter(plugin_name_ + ".lookahead_dist", lookahead_dist_);
     node->get_parameter(plugin_name_ + ".max_angular_vel", max_angular_vel_);
-    node->get_parameter(plugin_name_ + ".robot_frame", robot_frame_);
     double transform_tolerance;
     node->get_parameter(plugin_name_ + ".transform_tolerance", transform_tolerance);
     transform_tolerance_ = rclcpp::Duration::from_seconds(transform_tolerance);
@@ -257,7 +254,6 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
         desired_linear_vel: 0.2
         lookahead_dist: 0.4
         max_angular_vel: 1.0
-        robot_frame: "base_link"
         transform_tolerance: 1.0
 
 In the above snippet, you can observe the mapping of our ``nav2_pure_pursuit_controller/PurePursuitController`` controller to its id ``FollowPath``. 
