@@ -22,7 +22,7 @@ Before starting the tutorial, please check this `video <https://vimeo.com/106994
 Requirements
 ============
 
-It is assumed that ROS2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in :ref:`build-instructions`.
+It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in :ref:`build-instructions`.
 
 Tutorial Steps
 ==============
@@ -31,7 +31,7 @@ Tutorial Steps
 -------------------------------
 
 For a demonstration, this example will creates a costmap plugin that puts repeating costs gradients in the costmap.
-The annotated code for this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as the ``nav2_gradient_costmap_plugin`` ROS2-package.
+The annotated code for this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as the ``nav2_gradient_costmap_plugin`` ROS 2-package.
 Please refer to it when making your own layer plugin for Costmap2D.
 
 The plugin class ``nav2_gradient_costmap_plugin::GradientLayer`` is inherited from basic class ``nav2_costmap_2d::Layer``:
@@ -172,7 +172,7 @@ Plugin description file is also should be added to ``package.xml``. ``costmap_2d
     ...
   </export>
 
-After everything is done put the plugin package into ``src`` directory of a certain ROS2-workspace, build the plugin package (``colcon build --packages-select nav2_gradient_costmap_plugin --symlink-install``) and source ``setup.bash`` file when it necessary.
+After everything is done put the plugin package into ``src`` directory of a certain ROS 2-workspace, build the plugin package (``colcon build --packages-select nav2_gradient_costmap_plugin --symlink-install``) and source ``setup.bash`` file when it necessary.
 
 Now the plugin is ready to use.
 
@@ -180,6 +180,10 @@ Now the plugin is ready to use.
 ---------------------------------
 
 At the next step it is required to tell Costmap2D about new plugin. For that the plugin should be added to ``plugin_names`` and ``plugin_types`` lists in ``nav2_params.yaml`` optionally for ``local_costmap``/``global_costmap`` in order to be enabled in run-time for Controller/Planner Server. ``plugin_names`` list contains the names of plugin objects. These names could be anything you want. ``plugin_types`` contains types of listed in ``plugin_names`` objects. These types should correspond to ``name`` field of plugin class specified in plugin description XML-file.
+
+.. note::
+
+  For Galactic or later, ``plugin_names`` and ``plugin_types`` have been replaced with a single ``plugins`` string vector for plugin names. The types are now defined in the ``plugin_name`` namespace in the ``plugin:`` field (e.g. ``plugin: MyPlugin::Plugin``). Inline comments in the code blocks will help guide you through this.
 
 For example:
 
@@ -191,10 +195,12 @@ For example:
          width: 3
          height: 3
          resolution: 0.05
-  -      plugin_names: ["obstacle_layer", "voxel_layer", "inflation_layer"]
-  -      plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_costmap_2d::InflationLayer"]
-  +      plugin_names: ["obstacle_layer", "voxel_layer", "gradient_layer"]
-  +      plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_gradient_costmap_plugin/GradientLayer"]
+  -      plugin_names: ["obstacle_layer", "voxel_layer", "inflation_layer"] # For Foxy and earlier
+  -      plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_costmap_2d::InflationLayer"] # For Foxy and earlier
+  +      plugin_names: ["obstacle_layer", "voxel_layer", "gradient_layer"] # For Foxy and earlier
+  +      plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Foxy and earlier
+  -      plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"] # For Galactic and later
+  +      plugins: ["obstacle_layer", "voxel_layer", "gradient_layer"] # For Galactic and later
          robot_radius: 0.22
          inflation_layer:
            cost_scaling_factor: 3.0
@@ -202,10 +208,12 @@ For example:
          robot_base_frame: base_link
          global_frame: map
          use_sim_time: True
-  -      plugin_names: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"]
-  -      plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_costmap_2d::InflationLayer"]
-  +      plugin_names: ["static_layer", "obstacle_layer", "voxel_layer", "gradient_layer"]
-  +      plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_gradient_costmap_plugin/GradientLayer"]
+  -      plugin_names: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"] # For Foxy and earlier
+  -      plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_costmap_2d::InflationLayer"] # For Foxy and earlier
+  +      plugin_names: ["static_layer", "obstacle_layer", "voxel_layer", "gradient_layer"] # For Foxy and earlier
+  +      plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Foxy and earlier
+  -      plugins: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"] # For Galactic and later
+  +      plugins: ["static_layer", "obstacle_layer", "voxel_layer", "gradient_layer"] # For Galactic and later
          robot_radius: 0.22
          resolution: 0.05
          obstacle_layer:
@@ -216,17 +224,20 @@ NOTE: there could be many simultaneously loaded plugin objects of one type. For 
 
 .. code-block:: text
 
-  plugin_names: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"]
-  plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_gradient_costmap_plugin/GradientLayer", "nav2_gradient_costmap_plugin/GradientLayer"]
+  plugin_names: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"] # For Foxy and earlier
+  plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_gradient_costmap_plugin/GradientLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Foxy and earlier
+  plugins: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"] # For Galactic and later
 
 In this case each plugin object will be handled by its own parameters tree in a YAML-file, like:
 
 .. code-block:: text
 
   gradient_layer_1:
+    plugin: nav2_gradient_costmap_plugin/GradientLayer # For Galactic and later
     enabled: True
     ...
   gradient_layer_2:
+    plugin: nav2_gradient_costmap_plugin/GradientLayer # For Galactic and later
     enabled: False
     ...
 

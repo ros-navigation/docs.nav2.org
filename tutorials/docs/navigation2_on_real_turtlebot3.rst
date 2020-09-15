@@ -18,7 +18,7 @@ Navigating with a Physical Turtlebot 3
 Overview
 ========
 
-This tutorial shows how to control and navigate Turtlebot 3 using the ROS2 Navigation2 on a physical Turtlebot 3 robot.
+This tutorial shows how to control and navigate Turtlebot 3 using the ROS 2 Navigation2 on a physical Turtlebot 3 robot.
 Before completing this tutorials, completing :ref:`getting_started` is highly recommended especially if you are new to ROS and Navigation2.
 
 This tutorial may take about 1 hour to complete. 
@@ -54,7 +54,7 @@ You will need to launch your robot's interface,
 You need to have a map of the environment where you want to Navigate Turtlebot 3, or create one live with SLAM.
 
 In case you are interested, there is a use case tutorial which shows how to use Navigation2 with SLAM.
-`Navigation2 with SLAM <https://github.com/ros-planning/navigation2/blob/master/doc/use_cases/navigation_with_slam.md>`_
+`Navigation2 with SLAM <https://github.com/ros-planning/navigation2/blob/main/doc/use_cases/navigation_with_slam.md>`_
 
 Required files:
 
@@ -112,7 +112,7 @@ A small error in the estimated location is tolerable.
 Pick a target location for Turtlebot on the map. 
 You can send Turtlebot 3 a goal position and a goal orientation by using the **Navigation2 Goal** or the **GoalTool** buttons.
 
-Note: Navigation2 Goal button uses a ROS2 Action to send the goal and the GoalTool publishes the goal to a topic.
+Note: Navigation2 Goal button uses a ROS 2 Action to send the goal and the GoalTool publishes the goal to a topic.
 
 .. image:: images/Navigation2_on_real_Turtlebot3/rviz_send_goal.png
     :width: 700px

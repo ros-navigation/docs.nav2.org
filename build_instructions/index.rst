@@ -10,12 +10,16 @@ Navigation2 and its dependencies are released as binaries.
 You may install it via the following to get the latest stable released version:
 
   ``sudo apt install ros-<distro>-navigation2 ros-<distro>-nav2-bringup ros-<distro>-turtlebot3*``
+(For Ubuntu 20.04 use this command as the parsing of wildcards have been changed:
+
+  ``sudo apt install ros-<distro>-navigation2 ros-<distro>-nav2-bringup '~ros-<distro>-turtlebot3-.*'``
+ 
 
 Build
 *****
 
 There are 3 ways to build Navigation2.
-Building for a specific released distribution (e.g. ``eloquent``, ``foxy``), build Navigation2 on master branch using a quickstart setup script, or building master branch manually.
+Building for a specific released distribution (e.g. ``eloquent``, ``foxy``), build Navigation2 on main branch using a quickstart setup script, or building main branch manually.
 
 .. rst-class:: content-collapse
 
@@ -25,7 +29,7 @@ Build Navigation2 For Released Distribution
 Install ROS
 -----------
 
-Please install ROS2 via the usual `build instructions <https://index.ros.org/doc/ros2/Installation>`_ for your desired distribution.
+Please install ROS 2 via the usual `build instructions <https://index.ros.org/doc/ros2/Installation>`_ for your desired distribution.
 
 Build Navigation2
 -----------------
@@ -48,13 +52,13 @@ Note: You need to change ``--rosdistro`` to the selected ROS 2 distribution name
 
 .. rst-class:: content-collapse
 
-Quickstart Build Master
-=======================
+Quickstart Build Main
+=====================
 
 Steps
 -----
 
-Install all ROS 2 dependencies from the `ROS2 Installation page <https://index.ros.org/doc/ros2/Installation/>`_.
+Install all ROS 2 dependencies from the `ROS 2 Installation page <https://index.ros.org/doc/ros2/Installation/>`_.
 Ensure there are no ROS environment variables set in your terminal or `.bashrc` file before taking the steps below.*
 
 
@@ -62,7 +66,7 @@ Ensure there are no ROS environment variables set in your terminal or `.bashrc` 
 
   mkdir <directory_for_workspaces>
   cd <directory_for_workspaces>
-  wget https://raw.githubusercontent.com/ros-planning/navigation2/master/tools/initial_ros_setup.sh
+  wget https://raw.githubusercontent.com/ros-planning/navigation2/main/tools/initial_ros_setup.sh
   chmod a+x initial_ros_setup.sh
   ./initial_ros_setup.sh
 
@@ -82,23 +86,23 @@ Options
 
 The `initial_ros_setup.sh` accepts the following options:
 
-- `--no-ros2` This skips downloading and building the ROS 2 release. Instead it uses the binary packages and ``setup.sh`` installed in ``/opt/ros/<ros2-distro>``
+- ``--no-ros2`` This skips downloading and building the ROS 2 release. Instead it uses the binary packages and ``setup.sh`` installed in ``/opt/ros/<ros2-distro>``
 - ``--download-only`` This skips the build steps
 
 
 .. rst-class:: content-collapse
 
-Manually Build Master
-=====================
+Manually Build Main
+===================
 
-Build ROS 2 Master
-------------------
+Build ROS 2 Main
+----------------
 
 .. warning::
 
-   When building ROS 2 from source, make sure that the `ros2.repos` file is from the `master` branch.
+   When building ROS 2 from source, make sure that the `ros2.repos` file is from the `main` branch.
 
-Build ROS2 master using the `build instructions <https://index.ros.org/doc/ros2/Installation>`_ provided in the ROS2 documentation.
+Build ROS 2 main using the `build instructions <https://index.ros.org/doc/ros2/Installation>`_ provided in the ROS 2 documentation.
 
 
 Build Navigation2 Dependencies
@@ -109,7 +113,7 @@ First, source the setup.bash file in the ROS 2 build workspace.
 
     ``source ~/ros2_ws/install/setup.bash``
 
-Next, we're going to get the ``ros2_dependencies.repos`` file from Navigation2.
+Next, we're going to get the ``underlay.repos`` file from Navigation2.
 Then, use ``vcs`` to clone the repos and versions in it into a workspace.
 
 .. code:: bash
@@ -117,15 +121,16 @@ Then, use ``vcs`` to clone the repos and versions in it into a workspace.
   source ros2_ws/install/setup.bash
   mkdir -p ~/nav2_depend_ws/src
   cd ~/nav2_depend_ws
-  wget https://raw.githubusercontent.com/ros-planning/navigation2/master/tools/ros2_dependencies.repos
-  vcs import src < ros2_dependencies.repos
+  wget https://raw.githubusercontent.com/ros-planning/navigation2/main/tools/underlay.repos
+  vcs import src < underlay.repos
+  rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
-Build Navigation2 Master
-------------------------
+Build Navigation2 Main
+----------------------
 
-Finally, now that we have ROS2 master and the necessary dependencies, we can now build Navigation2 master itself.
-We'll source the ``nav2_depend_ws``, which will also source the ROS2 master build workspace packages, to build with dependencies.
+Finally, now that we have ROS 2 main and the necessary dependencies, we can now build Navigation2 main itself.
+We'll source the ``nav2_depend_ws``, which will also source the ROS 2 main build workspace packages, to build with dependencies.
 The rest of this should look familiar.
 
 .. code:: bash
@@ -133,8 +138,9 @@ The rest of this should look familiar.
   source ~/nav2_depend_ws/install/setup.bash
   mkdir -p ~/navigation2_ws/src
   cd ~/navigation2_ws/src
-  git clone https://github.com/ros-planning/navigation2.git --branch master
+  git clone https://github.com/ros-planning/navigation2.git --branch main
   cd ~/navigation2_ws
+  rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install
 
 Docker
@@ -169,11 +175,11 @@ Note: You may also need to configure your docker for DNS to work. See article he
 Using DockerHub Container
 =========================
 
-We allow for you to pull the latest docker image from the master branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
+We allow for you to pull the latest docker image from the main branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
 
 .. code:: bash
 
-  sudo docker pull rosplanning/navigation2:latest
+  sudo docker pull rosplanning/navigation2:main.release
 
 !!!!
 

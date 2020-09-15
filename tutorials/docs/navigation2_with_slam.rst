@@ -75,7 +75,7 @@ For this tutorial, we will use `SLAM Toolbox <https://github.com/SteveMacenski/s
 3- Working with SLAM
 --------------------
 
-Move your robot by requesting a goal through RViz or the ROS2 CLI, ie:
+Move your robot by requesting a goal through RViz or the ROS 2 CLI, ie:
 
 .. code-block:: bash
 
@@ -83,7 +83,7 @@ Move your robot by requesting a goal through RViz or the ROS2 CLI, ie:
 
 You should see the map update live! To save this map to file:
 
-  ``ros2 run nav2_map_server map_saver -f ~/map``
+  ``ros2 run nav2_map_server map_saver_cli -f ~/map``
 
 .. image:: images/Navigation2_with_SLAM/navigation2_with_slam.gif
     :width: 700px

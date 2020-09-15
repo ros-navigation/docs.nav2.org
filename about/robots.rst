@@ -13,7 +13,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |           |yunji|      +         |RB1|          +        |Tiago|         |
 +------------------------+------------------------+------------------------+
-|         |soon|         +         |soon|         +         |soon|         |
+|         |ubr1|         +         |soon|         +         |soon|         |
 +------------------------+------------------------+------------------------+
 
 .. |tb2| image:: images/tb2.png
@@ -52,6 +52,11 @@ Click on the images below for a link to the drivers or navigation configurations
     :alt: Tiago Robot
     :target: https://github.com/IntelligentRoboticsLabs/marathon_ros2
 
+.. |ubr1| image:: images/ubr1.jpeg
+    :align: middle
+    :height: 350px
+    :alt: UBR-1
+    :target: https://www.robotandchisel.com/2020/09/01/navigation2
 
 .. |soon| image:: images/coming_soon.jpeg
     :width: 100%

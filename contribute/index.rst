@@ -19,7 +19,7 @@ If you're interested in getting involved in Navigation 2, first of all, welcome!
 We encourage everyone to get involved from students, to junior developers, to senior developers, and executives.
 There's something to do for everyone from bug fixes, to feature development, new algorithms, and refactoring.
 
-All ROS2 TSC Working Groups have their meetings on the `working group calendar <https://calendar.google.com/calendar/embed?src=agf3kajirket8khktupm9go748%40group.calendar.google.com>`_.
+All ROS 2 TSC Working Groups have their meetings on the `working group calendar <https://calendar.google.com/calendar/embed?src=agf3kajirket8khktupm9go748%40group.calendar.google.com>`_.
 Here, you can find the date and time of the Navigation2 working group meeting. Make sure you're checking in your local timezone.
 From this calendar, you can add yourself to the event so it will appear on your google calendar and get the event link to the call through Google Hangouts.
 We encourage everyone interested to come to the meeting to introduce yourself, your project, and see what everyone is working on.
@@ -49,7 +49,7 @@ The process is simple and is as follow:
 3. Once you've completed the task you set out to complete, submit a PR! Please fill out the PR template in complete to ensure that we have a full understanding of your work. At that point, 1-2 reviewers will take a look at your work and give it some feedback to be merged into the codebase. For trivial changes, a single maintainer may merge it after review if they're happy with it, up to their discretion. Any substantial changes should be approved by at least 1 maintainer and 1 other community member.
 
 Note: We take code quality seriously and strive for high-quality and consistent code.
-We make use of the linting and static analysis tools provided in ROS2 (``ament_cpplint``, ``ament_uncrustify``, ``ament_cppcheck``, etc).
+We make use of the linting and static analysis tools provided in ROS 2 (``ament_cpplint``, ``ament_uncrustify``, ``ament_cppcheck``, etc).
 All PRs are built in CI with the appropriate ROS distributions and run through a set of unit and system level tests including static analysis.
 You can see the results of these tests in the pull request.
 It is expected for feature development for tests to cover this work to be added.
