@@ -64,7 +64,7 @@ The list of methods, and their descriptions, and necessity are presented in the 
 |                           | should clean up resoures which are created for the controller.                        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | computeVelocityCommands() | Method is called when a new velocity command is demanded by the controller server     | Yes                    |
-|                           | in-order for the robot to follow the global path. This method returns a                |                        |
+|                           | in-order for the robot to follow the global path. This method returns a                |                       |
 |                           | `geometry_msgs::msg::TwistStamped` which represents the velocity command for the      |                        |
 |                           | robot to drive.  This method passes 2 parameters: reference to the current robot      |                        |
 |                           | pose and its current velocity.                                                        |                        |
