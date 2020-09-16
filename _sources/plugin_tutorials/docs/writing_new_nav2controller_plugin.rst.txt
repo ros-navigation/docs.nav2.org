@@ -238,7 +238,7 @@ It is good practice to place these lines at the end of the file, but technically
 5. Compile, and it should be registered. Next, we'll use this plugin.
 
 3- Pass the plugin name through the params file
--------------------------------------
+-----------------------------------------------
 
 To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
 
