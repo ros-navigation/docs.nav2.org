@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Writing a New Behavior Tree Plugin &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Writing a New Controller Plugin &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Writing a New Recovery Plugin" href="writing_new_recovery_plugin.html" />
-    <link rel="prev" title="Writing a New Controller Plugin" href="writing_new_nav2controller_plugin.html" />
+    <link rel="next" title="Writing a New Behavior Tree Plugin" href="writing_new_bt_plugin.html" />
+    <link rel="prev" title="Writing a New Planner Plugin" href="writing_new_nav2planner_plugin.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -253,25 +253,25 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="writing_new_nav2controller_plugin.html">Writing a New Controller Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="writing_new_nav2controller_plugin.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="writing_new_nav2controller_plugin.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="writing_new_nav2controller_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2controller_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2controller_plugin.html#exporting-the-controller-plugin">2- Exporting the controller plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2controller_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2controller_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing a New Behavior Tree Plugin</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing a New Controller Plugin</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-bt-plugin">1- Creating a new BT Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-the-controller-plugin">2- Exporting the controller plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="writing_new_bt_plugin.html">Writing a New Behavior Tree Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_bt_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_bt_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_bt_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#creating-a-new-bt-plugin">1- Creating a new BT Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
 </ul>
 </li>
 </ul>
@@ -555,7 +555,7 @@
         
           <li><a href="../index.html">Tutorials</a> &raquo;</li>
         
-      <li>Writing a New Behavior Tree Plugin</li>
+      <li>Writing a New Controller Plugin</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -572,22 +572,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="writing-a-new-behavior-tree-plugin">
-<span id="writing-new-nbt-plugin"></span><h1>Writing a New Behavior Tree Plugin<a class="headerlink" href="#writing-a-new-behavior-tree-plugin" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="writing-a-new-controller-plugin">
+<span id="writing-new-nav2controller-plugin"></span><h1>Writing a New Controller Plugin<a class="headerlink" href="#writing-a-new-controller-plugin" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></li>
 </ul>
+<a class="reference internal image-reference" href="../../_images/nav2_pure_pursuit_gif.gif"><img alt="Animated gif of pure pursuit controller demo" class="align-center" src="../../_images/nav2_pure_pursuit_gif.gif" style="width: 640px;" /></a>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial shows how to create you own behavior tree (BT) plugin.
-The BT plugins are used as nodes in the behavior tree XML processed by the BT Navigator for navigation logic.</p>
+<p>This tutorial shows how to create your own controller <a class="reference external" href="https://index.ros.org/p/pluginlib/">plugin</a>.</p>
+<p>In this tutorial, we will be implementing the pure pursuit path tracking algorithm based on this <a class="reference external" href="https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf">paper</a>.
+It is recommended you go through it.</p>
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>ROS 2 (binary or build-from-source)</li>
+<li>ROS2 (binary or build-from-source)</li>
 <li>Navigation2 (Including dependencies)</li>
 <li>Gazebo</li>
 <li>Turtlebot3</li>
@@ -595,196 +597,246 @@ The BT plugins are used as nodes in the behavior tree XML processed by the BT Na
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="creating-a-new-bt-plugin">
-<h3>1- Creating a new BT Plugin<a class="headerlink" href="#creating-a-new-bt-plugin" title="Permalink to this headline">¶</a></h3>
-<p>We will create a simple BT plugin node to perform an action in another server.
-For this example, we’re going to analyze the simpliest behavior tree action node in the <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> package, the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node.
-Beyond this example of an action BT node, you can also create custom decorator, condition, and control nodes.
-Each node type has as unique role in the behavior tree to perform actions like planning, control the flow of the BT, check the status of a condition, or modify the output of other BT nodes.</p>
-<p>The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree">nav2_behavior_tree</a> package as the <code class="docutils literal notranslate"><span class="pre">wait_action</span></code> node.
-This action node can be a considered as a reference for writing other action node plugins.</p>
-<p>Our example plugin inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree::BtActionNode</span></code>.
-The base class is a wrapper on the BehaviorTree.CPP <code class="docutils literal notranslate"><span class="pre">BT::ActionNodeBase</span></code> that simplifies BT action nodes that utilize ROS 2 action clients.
-An <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> is both a BT action and uses ROS 2 action network interfaces for calling a remote server to do some work.</p>
-<p>When working with other types of BT nodes (e.g. decorator, control, condition) use the corresponding BT node, <code class="docutils literal notranslate"><span class="pre">BT::DecoratorNode</span></code>, <code class="docutils literal notranslate"><span class="pre">BT::ControlNode</span></code>, or <code class="docutils literal notranslate"><span class="pre">BT::ConditionNode</span></code>.
-For BT action nodes that do <em>not</em> utilize ROS 2 action interfaces, use the <code class="docutils literal notranslate"><span class="pre">BT::ActionNodeBase</span></code> base class itself.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> class provides 5 virtual methods to use, in addition to the information provided in the constructor.
-Lets learn more about the methods needed to write a BT action plugin.</p>
+<div class="section" id="create-a-new-controller-plugin">
+<h3>1- Create a new Controller Plugin<a class="headerlink" href="#create-a-new-controller-plugin" title="Permalink to this headline">¶</a></h3>
+<p>We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials">navigation_tutorials</a> repository
+as the <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller</span></code>. This package can be considered as a reference for writing your own controller plugin.</p>
+<p>Our example plugin class <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller::PurePursuitController</span></code> inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_core::Controller</span></code>. The base class provides a
+set of virtual methods to implement a controller plugin. These methods are called at runtime by the controller server to compute velocity commands.
+The list of methods, and their descriptions, and necessity are presented in the table below:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="18%" />
-<col width="62%" />
 <col width="20%" />
+<col width="63%" />
+<col width="17%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>method</strong></td>
+<tr class="row-odd"><td><strong>Virtual method</strong></td>
 <td><strong>Method description</strong></td>
-<td><strong>Required?</strong></td>
+<td><strong>Requires override?</strong></td>
 </tr>
-<tr class="row-even"><td>Constructor</td>
-<td>Constructor to indicate the corresponding XML tag name to that matches
-the plugin, the name of the action server to call using the plugin,
-and any BehaviorTree.CPP special configurations required.</td>
+<tr class="row-even"><td>configure()</td>
+<td>Method is called when controller server enters on_configure state. Ideally this
+method should perform declarations of ROS parameters and initialization of
+controller’s member variables. This method takes 4 input params: weak pointer to
+parent node, controller name, tf buffer pointer and shared pointer to costmap.</td>
 <td>Yes</td>
 </tr>
-<tr class="row-odd"><td>providedPorts()</td>
-<td>A function to define the input and output ports a BT node may have.
-These are analogous to parameters that are defined in the BT XML
-by hardcoded values or by the value of other output ports of other nodes.</td>
+<tr class="row-odd"><td>activate()</td>
+<td>Method is called when controller server enters on_activate state. Ideally this method
+should implement operations which are neccessary before controller goes to an active
+state.</td>
 <td>Yes</td>
 </tr>
-<tr class="row-even"><td>on_tick()</td>
-<td>Method is called when this BT node is ticked by the behavior tree while
-executing. This should be used to get dynamic updates like new blackboard
-values, input ports, or parameters. May also reset state for the action.</td>
-<td>No</td>
+<tr class="row-even"><td>deactivate()</td>
+<td>Method is called when controller server enters on_deactivate state. Ideally this
+method should implement operations which are neccessary before controller goes to an
+inactive state.</td>
+<td>Yes</td>
 </tr>
-<tr class="row-odd"><td>on_wait_for_result()</td>
-<td>Method is called when the behavior tree node is waiting for a result from
-the ROS 2 action server it called. This could be used to check for updates
-to preempt the current task, check for a timeout, or anything to compute
-while waiting for the action to complete.</td>
-<td>No</td>
+<tr class="row-odd"><td>cleanup()</td>
+<td>Method is called when controller server goes to on_cleanup state. Ideally this method
+should clean up resources which are created for the controller.</td>
+<td>Yes</td>
 </tr>
-<tr class="row-even"><td>on_success()</td>
-<td>Method is called when the ROS 2 action server returns a successful result.
-Returns the value the BT node will report back to the tree.</td>
-<td>No</td>
+<tr class="row-even"><td>setPlan()</td>
+<td>Method is called when the global plan is updated. Ideally this method should perform
+operations that transform the global plan and stores it.</td>
+<td>Yes</td>
 </tr>
-<tr class="row-odd"><td>on_aborted()</td>
-<td>Method is called when the ROS 2 action server returns an aborted result.
-Returns the value the BT node will report back to the tree.</td>
-<td>No</td>
-</tr>
-<tr class="row-even"><td>on_cancelled()</td>
-<td>MMethod is called when the ROS 2 action server returns a cancelled result.
-Returns the value the BT node will report back to the tree.</td>
-<td>No</td>
+<tr class="row-odd"><td>computeVelocityCommands()</td>
+<td>Method is called when a new velocity command is demanded by the controller server
+in-order for the robot to follow the global path. This method returns a
+<cite>geometry_msgs::msg::TwistStamped</cite> which represents the velocity command for the
+robot to drive.  This method passes 2 parameters: reference to the current robot
+pose and its current velocity.</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p>For this tutorial, we will only be using the <code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> method.</p>
-<p>In the constructor, we need to get any non-variable parameters that apply to the behavior tree node.
-In this example, we need to get the value of the duration to sleep from the input port of the behavior tree XML.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">WaitAction</span><span class="o">::</span><span class="n">WaitAction</span><span class="p">(</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">xml_tag_name</span><span class="p">,</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">action_name</span><span class="p">,</span>
-  <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span> <span class="o">&amp;</span> <span class="n">conf</span><span class="p">)</span>
-<span class="o">:</span> <span class="n">BtActionNode</span><span class="o">&lt;</span><span class="n">nav2_msgs</span><span class="o">::</span><span class="n">action</span><span class="o">::</span><span class="n">Wait</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xml_tag_name</span><span class="p">,</span> <span class="n">action_name</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+<p>In this tutorial, we will have used the methods <code class="docutils literal notranslate"><span class="pre">PurePursuitController::configure</span></code>, <code class="docutils literal notranslate"><span class="pre">PurePursuitController::setPlan</span></code> and
+<code class="docutils literal notranslate"><span class="pre">PurePursuitController::computeVelocityCommands</span></code>.</p>
+<p>In controllers, <code class="docutils literal notranslate"><span class="pre">configure()</span></code> method must set member variables from ROS parameters and perform any initialization required,</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">PurePursuitController</span><span class="o">::</span><span class="n">configure</span><span class="p">(</span>
+  <span class="k">const</span> <span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="o">::</span><span class="n">WeakPtr</span> <span class="o">&amp;</span> <span class="n">parent</span><span class="p">,</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">tf</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">nav2_costmap_2d</span><span class="o">::</span><span class="n">Costmap2DROS</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">costmap_ros</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="kt">int</span> <span class="n">duration</span><span class="p">;</span>
-  <span class="n">getInput</span><span class="p">(</span><span class="s">&quot;wait_duration&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">duration</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">RCLCPP_WARN</span><span class="p">(</span>
-      <span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span> <span class="s">&quot;Wait duration is negative or zero &quot;</span>
-      <span class="s">&quot;(%i). Setting to positive.&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
-    <span class="n">duration</span> <span class="o">*=</span> <span class="mi">-1</span><span class="p">;</span>
+  <span class="n">node_</span> <span class="o">=</span> <span class="n">parent</span><span class="p">;</span>
+  <span class="k">auto</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node_</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span>
+
+  <span class="n">costmap_ros_</span> <span class="o">=</span> <span class="n">costmap_ros</span><span class="p">;</span>
+  <span class="n">tf_</span> <span class="o">=</span> <span class="n">tf</span><span class="p">;</span>
+  <span class="n">plugin_name_</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+  <span class="n">logger_</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">();</span>
+  <span class="n">clock_</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">();</span>
+
+  <span class="n">declare_parameter_if_not_declared</span><span class="p">(</span>
+    <span class="n">node</span><span class="p">,</span> <span class="n">plugin_name_</span> <span class="o">+</span> <span class="s">&quot;.desired_linear_vel&quot;</span><span class="p">,</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span>
+      <span class="mf">0.2</span><span class="p">));</span>
+  <span class="n">declare_parameter_if_not_declared</span><span class="p">(</span>
+    <span class="n">node</span><span class="p">,</span> <span class="n">plugin_name_</span> <span class="o">+</span> <span class="s">&quot;.lookahead_dist&quot;</span><span class="p">,</span>
+    <span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="mf">0.4</span><span class="p">));</span>
+  <span class="n">declare_parameter_if_not_declared</span><span class="p">(</span>
+    <span class="n">node</span><span class="p">,</span> <span class="n">plugin_name_</span> <span class="o">+</span> <span class="s">&quot;.max_angular_vel&quot;</span><span class="p">,</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span>
+      <span class="mf">1.0</span><span class="p">));</span>
+  <span class="n">declare_parameter_if_not_declared</span><span class="p">(</span>
+    <span class="n">node</span><span class="p">,</span> <span class="n">plugin_name_</span> <span class="o">+</span> <span class="s">&quot;.transform_tolerance&quot;</span><span class="p">,</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span>
+      <span class="mf">0.1</span><span class="p">));</span>
+
+  <span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span> <span class="o">+</span> <span class="s">&quot;.desired_linear_vel&quot;</span><span class="p">,</span> <span class="n">desired_linear_vel_</span><span class="p">);</span>
+  <span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span> <span class="o">+</span> <span class="s">&quot;.lookahead_dist&quot;</span><span class="p">,</span> <span class="n">lookahead_dist_</span><span class="p">);</span>
+  <span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span> <span class="o">+</span> <span class="s">&quot;.max_angular_vel&quot;</span><span class="p">,</span> <span class="n">max_angular_vel_</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="n">transform_tolerance</span><span class="p">;</span>
+  <span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span> <span class="o">+</span> <span class="s">&quot;.transform_tolerance&quot;</span><span class="p">,</span> <span class="n">transform_tolerance</span><span class="p">);</span>
+  <span class="n">transform_tolerance_</span> <span class="o">=</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Duration</span><span class="o">::</span><span class="n">from_seconds</span><span class="p">(</span><span class="n">transform_tolerance</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">plugin_name_</span> <span class="pre">+</span> <span class="pre">&quot;.desired_linear_vel&quot;</span></code> is fetching the ROS parameters <code class="docutils literal notranslate"><span class="pre">desired_linear_vel</span></code> which is specific to our controller.
+Navigation2 allows loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name.
+Now, if we want to retrieve the parameters for that specific plugin, we use <code class="docutils literal notranslate"><span class="pre">&lt;mapped_name_of_plugin&gt;.&lt;name_of_parameter&gt;</span></code> as done in the above snippet.
+For example, our example controller is mapped to the name <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> and to retrieve the <code class="docutils literal notranslate"><span class="pre">desired_linear_vel</span> <span class="pre">parameter</span></code>, which is specific to “FollowPath”,
+we used <code class="docutils literal notranslate"><span class="pre">FollowPath.desired_linear_vel</span></code>. In other words, <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> is used as a namespace for plugin-specific parameters.
+We will see more on this when we discuss the parameters file (or params file).</p>
+<p>The passed in arguments are stored in member variables so that they can be used at a later stage if needed.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">setPlan()</span></code> method, we receive the updated global path for the robot to follow. In our example, we transform the received global path into
+the frame of the robot and then store this transformed global path for later use.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">PurePursuitController</span><span class="o">::</span><span class="n">setPlan</span><span class="p">(</span><span class="k">const</span> <span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span> <span class="o">&amp;</span> <span class="n">path</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Transform global path into the robot&#39;s frame</span>
+  <span class="n">global_plan_</span> <span class="o">=</span> <span class="n">transformGlobalPlan</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The computation for the desired velocity happens in the <code class="docutils literal notranslate"><span class="pre">computeVelocityCommands()</span></code> method. It is used to calculate the desired velocity command given the
+current velocity and pose. In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
+This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span> <span class="n">PurePursuitController</span><span class="o">::</span><span class="n">computeVelocityCommands</span><span class="p">(</span>
+  <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span> <span class="o">&amp;</span> <span class="n">pose</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span> <span class="o">&amp;</span> <span class="n">velocity</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Find the first pose which is at a distance greater than the specified lookahed distance</span>
+  <span class="k">auto</span> <span class="n">goal_pose</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span>
+    <span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
+    <span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="n">global_plan_pose</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nf">hypot</span><span class="p">(</span>
+        <span class="n">global_plan_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+        <span class="n">global_plan_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">lookahead_dist_</span><span class="p">;</span>
+    <span class="p">})</span><span class="o">-&gt;</span><span class="n">pose</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="n">linear_vel</span><span class="p">,</span> <span class="n">angular_vel</span><span class="p">;</span>
+
+  <span class="c1">// If the goal pose is in front of the robot then compute the velocity using the pure pursuit algorithm</span>
+  <span class="c1">// else rotate with the max angular velocity until the goal pose is in front of the robot</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">auto</span> <span class="n">curvature</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span> <span class="o">/</span>
+      <span class="p">(</span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+    <span class="n">linear_vel</span> <span class="o">=</span> <span class="n">desired_linear_vel_</span><span class="p">;</span>
+    <span class="n">angular_vel</span> <span class="o">=</span> <span class="n">desired_linear_vel_</span> <span class="o">*</span> <span class="n">curvature</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">linear_vel</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+    <span class="n">angular_vel</span> <span class="o">=</span> <span class="n">max_angular_vel_</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="n">goal_</span><span class="p">.</span><span class="n">time</span><span class="p">.</span><span class="n">sec</span> <span class="o">=</span> <span class="n">duration</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Here, we give the input of the <code class="docutils literal notranslate"><span class="pre">xml_tag_name</span></code> which tells the BT node plugin the string in the XML that corresponds to this node.
-This will be seen later when we register this BT node as a plugin.
-It also takes in the string name of the action server that it will call to execute some behavior.
-Finally, a set of configurations that we can safely ignore for the purposes of most node plugins.</p>
-<p>We then call the <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> constructor. As can be seen, its templated by the ROS 2 action type, so we give it the <code class="docutils literal notranslate"><span class="pre">nav2_msgs::action::Wait</span></code> action message type and forward our other inputs.
-The <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> as the <code class="docutils literal notranslate"><span class="pre">tick()</span></code> method which is called directly by the behavior tree when this node is called from the tree.
-<code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> is then called along with the action client goal.</p>
-<p>In the body of the constructor, we get the input port <code class="docutils literal notranslate"><span class="pre">getInput</span></code> of the parameter <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> which can be configured independently for every instance of the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node in the tree.
-It is set in the <code class="docutils literal notranslate"><span class="pre">duration</span></code> parameter and inserted into the <code class="docutils literal notranslate"><span class="pre">goal_</span></code>.
-The <code class="docutils literal notranslate"><span class="pre">goal_</span></code> class variable is the goal that the ROS 2 action client will send to the action server.
-So in this example, we set the duration to the time we want to wait by so that the action server knows the specifics of our request.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">providedPorts()</span></code> method gives us the opportunity to define input or output ports.
-Ports can be thought of as parameters that the behavior tree node has access to from the behavior tree itself.
-For our example, there is only a single input port, the <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> which can be set in the BT XML for each instance of the <code class="docutils literal notranslate"><span class="pre">wait</span></code> recovery.
-We set the type, <code class="docutils literal notranslate"><span class="pre">int</span></code>, the default <code class="docutils literal notranslate"><span class="pre">1</span></code>, the name <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code>, and a description of the port <code class="docutils literal notranslate"><span class="pre">Wait</span> <span class="pre">time</span></code>.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span> <span class="n">providedPorts</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="nf">providedBasicPorts</span><span class="p">(</span>
-    <span class="p">{</span>
-      <span class="n">BT</span><span class="o">::</span><span class="n">InputPort</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;wait_duration&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Wait time&quot;</span><span class="p">)</span>
-    <span class="p">});</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> method is called when the behavior tree ticks a specific node.
-For the wait BT node, we simply want to notify a counter on the blackboard that an action plugin that corresponds to a recovery was ticked.
-This is useful to keep metrics about the number of recoveries executed during a specific navigation run.
-You could also log or update the <code class="docutils literal notranslate"><span class="pre">goal_</span></code> waiting duration if that is a variable input.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">WaitAction</span><span class="o">::</span><span class="n">on_tick</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">increment_recovery_count</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>The remaining methods are not used and not mandatory to override them.
-Only some BT node plugins will require overriding <code class="docutils literal notranslate"><span class="pre">on_wait_for_result()</span></code> to check for preemption or check a timeout.
-The success, aborted, and cancelled methods will default to <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>, <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> respectively if not overrided.</p>
-</div>
-<div class="section" id="exporting-the-planner-plugin">
-<h3>2- Exporting the planner plugin<a class="headerlink" href="#exporting-the-planner-plugin" title="Permalink to this headline">¶</a></h3>
-<p>Now that we have created our custom BT node, we need to export our plugin so that it would be visible to the behavior tree when it loads a custom BT XML.
-Plugins are loaded at runtime and if they are not visible, then our BT Navigator server won’t be able to load it or use it.
-In BehaviorTree.CPP, exporting and loading plugins is handled by the <code class="docutils literal notranslate"><span class="pre">BT_REGISTER_NODES</span></code> macro.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">BT_REGISTER_NODES</span><span class="p">(</span><span class="n">factory</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">BT</span><span class="o">::</span><span class="n">NodeBuilder</span> <span class="n">builder</span> <span class="o">=</span>
-    <span class="p">[](</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span> <span class="o">&amp;</span> <span class="n">config</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">nav2_behavior_tree</span><span class="o">::</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;wait&quot;</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
-    <span class="p">};</span>
+  <span class="c1">// Create and publish a TwistStamped message with the desired velocity</span>
+  <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span> <span class="n">cmd_vel</span><span class="p">;</span>
+  <span class="n">cmd_vel</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="n">pose</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="p">;</span>
+  <span class="n">cmd_vel</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">clock_</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span>
+  <span class="n">cmd_vel</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">linear_vel</span><span class="p">;</span>
+  <span class="n">cmd_vel</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span>
+    <span class="mf">-1.0</span> <span class="o">*</span> <span class="n">abs</span><span class="p">(</span><span class="n">max_angular_vel_</span><span class="p">),</span> <span class="n">min</span><span class="p">(</span>
+      <span class="n">angular_vel</span><span class="p">,</span> <span class="n">abs</span><span class="p">(</span>
+        <span class="n">max_angular_vel_</span><span class="p">)));</span>
 
-  <span class="n">factory</span><span class="p">.</span><span class="n">registerBuilder</span><span class="o">&lt;</span><span class="n">nav2_behavior_tree</span><span class="o">::</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Wait&quot;</span><span class="p">,</span> <span class="n">builder</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">cmd_vel</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In this macro, we must create a <code class="docutils literal notranslate"><span class="pre">NodeBuilder</span></code> so that our custom action node can have a non-default constructor signature (for the action and xml names).
-This lambda will return a unique pointer to the behavior tree node we have created.
-Fill in the constructor with the relavent information, giving it the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">config</span></code> given in the function arguments.
-Then define the ROS 2 action server’s name that this BT node will call, in this case, its the <cite>wWait`</cite> action.</p>
-<p>We finally give the builder to a factory to register.
-<code class="docutils literal notranslate"><span class="pre">Wait</span></code> given to the factory is the name in the behavior tree XML file that corresponds to this BT node plugin.
-An example can be seen below, where the <code class="docutils literal notranslate"><span class="pre">Wait</span></code> BT XML node specifies a non-variable input port <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> of 5 seconds.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Wait</span> <span class="na">wait_duration=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+<p>The remaining methods are not used, but it’s mandatory to override them. As per the rules, we did override all but left them empty.</p>
+</div>
+<div class="section" id="exporting-the-controller-plugin">
+<h3>2- Exporting the controller plugin<a class="headerlink" href="#exporting-the-controller-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have created our custom controller, we need to export our controller plugin so that it would be visible to the controller server.
+Plugins are loaded at runtime, and if they are not visible, then our controller server won’t be able to load it. In ROS2, exporting and loading
+plugins is handled by <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
+<p>Coming to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller::PurePursuitController</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::Controller</span></code> which is our base class.</p>
+<ol class="arabic simple">
+<li>To export the controller, we need to provide two lines</li>
+</ol>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;pluginlib/class_list_macros.hpp&quot;</span><span class="cp"></span>
+<span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_pure_pursuit_controller</span><span class="o">::</span><span class="n">PurePursuitController</span><span class="p">,</span> <span class="n">nav2_core</span><span class="o">::</span><span class="n">Controller</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="run-your-custom-plugin">
-<h3>4- Run Your Custom plugin<a class="headerlink" href="#run-your-custom-plugin" title="Permalink to this headline">¶</a></h3>
-<p>Now you can use a behavior tree with your custom BT node.
-For example, the <code class="docutils literal notranslate"><span class="pre">navigate_w_replanning_and_recovery.xml</span></code> file is shown below.</p>
-<p>Select this BT XML file in your specific navigation request in <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> or as the default behavior tree in the BT Navigator’s configuration yaml file.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;6&quot;</span> <span class="na">name=</span><span class="s">&quot;NavigateRecovery&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;ComputePathToPose&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;/RecoveryNode&gt;</span>
-        <span class="nt">&lt;/RateController&gt;</span>
-        <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/RecoveryNode&gt;</span>
-      <span class="nt">&lt;/PipelineSequence&gt;</span>
-      <span class="nt">&lt;ReactiveFallback</span> <span class="na">name=</span><span class="s">&quot;RecoveryFallback&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;GoalUpdated/&gt;</span>
-        <span class="nt">&lt;SequenceStar</span> <span class="na">name=</span><span class="s">&quot;RecoveryActions&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;Spin</span> <span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;Wait</span> <span class="na">wait_duration=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/SequenceStar&gt;</span>
-      <span class="nt">&lt;/ReactiveFallback&gt;</span>
-    <span class="nt">&lt;/RecoveryNode&gt;</span>
-  <span class="nt">&lt;/BehaviorTree&gt;</span>
-<span class="nt">&lt;/root&gt;</span>
+<p>Note that it requires pluginlib to export out the plugin’s class. Pluginlib would provide as macro <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code>, which does all the work of exporting.</p>
+<p>It is good practice to place these lines at the end of the file, but technically, you can also write at the top.</p>
+<ol class="arabic simple" start="2">
+<li>The next step would be to create the plugin’s description file in the root directory of the package. For example, <code class="docutils literal notranslate"><span class="pre">pure_pursuit_controller_plugin.xml</span></code> file in our tutorial package. This file contains the following information</li>
+</ol>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">library</span> <span class="pre">path</span></code>: Plugin’s library name and it’s location.</li>
+<li><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">name</span></code>: Name of the class.</li>
+<li><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">type</span></code>: Type of class.</li>
+<li><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">class</span></code>: Name of the base class.</li>
+<li><code class="docutils literal notranslate"><span class="pre">description</span></code>: Description of the plugin.</li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span> <span class="na">path=</span><span class="s">&quot;nav2_pure_pursuit_controller&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;class</span> <span class="na">type=</span><span class="s">&quot;nav2_pure_pursuit_controller::PurePursuitController&quot;</span> <span class="na">base_class_type=</span><span class="s">&quot;nav2_core::Controller&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;description&gt;</span>
+      This is pure pursuit controller
+    <span class="nt">&lt;/description&gt;</span>
+  <span class="nt">&lt;/class&gt;</span>
+<span class="nt">&lt;/library&gt;</span>
 </pre></div>
 </div>
+<ol class="arabic simple" start="3">
+<li>Next step would be to export plugin using <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> by using CMake function <code class="docutils literal notranslate"><span class="pre">pluginlib_export_plugin_description_file()</span></code>. This function installs the plugin description file to <code class="docutils literal notranslate"><span class="pre">share</span></code> directory and sets ament indexes to make it discoverable.</li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pluginlib_export_plugin_description_file(nav2_core pure_pursuit_controller_plugin.xml)
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>The plugin description file should also be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code></li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;export&gt;</span>
+  <span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
+  <span class="nt">&lt;nav2_core</span> <span class="na">plugin=</span><span class="s">&quot;${prefix}/pure_pursuit_controller_plugin.xml&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/export&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Compile, and it should be registered. Next, we’ll use this plugin.</li>
+</ol>
+</div>
+<div class="section" id="pass-the-plugin-name-through-the-params-file">
+<h3>3- Pass the plugin name through the params file<a class="headerlink" href="#pass-the-plugin-name-through-the-params-file" title="Permalink to this headline">¶</a></h3>
+<p>To enable the plugin, we need to modify the <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> file as below</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>controller_server:
+  ros__parameters:
+    controller_plugins: [&quot;FollowPath&quot;]
+
+    FollowPath:
+      plugin: &quot;pure_pursuit_controller::PurePursuitController&quot;
+      debug_trajectory_details: True
+      desired_linear_vel: 0.2
+      lookahead_dist: 0.4
+      max_angular_vel: 1.0
+      transform_tolerance: 1.0
+</pre></div>
+</div>
+<p>In the above snippet, you can observe the mapping of our <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller/PurePursuitController</span></code> controller to its id <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>.
+To pass plugin-specific parameters we have used <code class="docutils literal notranslate"><span class="pre">&lt;plugin_id&gt;.&lt;plugin_specific_parameter&gt;</span></code>.</p>
+</div>
+<div class="section" id="run-pure-pursuit-controller-plugin">
+<h3>4- Run Pure Pursuit Controller plugin<a class="headerlink" href="#run-pure-pursuit-controller-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Run Turtlebot3 simulation with enabled navigation2. Detailed instructions on how to make it run are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is a shortcut command for that:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:<span class="o">=</span>/path/to/your_params_file.yaml
+</pre></div>
+</div>
+<p>Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on the map as it was described in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.
+The robot will localize on the map and then click on the “Navigation2 goal” and click on the pose where you want your robot to navigate to.
+After that controller will make the robot follow the global path.</p>
 </div>
 </div>
 </div>
