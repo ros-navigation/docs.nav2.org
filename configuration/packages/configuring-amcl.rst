@@ -67,7 +67,7 @@ Parameters
   Description
     For Omni models only: translation noise.
 
-:base_frame_id:
+:base_frame:
 
   ============== =============================
   Type           Default                                               
@@ -122,7 +122,7 @@ Parameters
   Description
     Whether to do beam skipping in Likelihood field model.
 
-:global_frame_id:
+:global_frame:
 
   ============== =============================
   Type           Default                                               
@@ -243,7 +243,7 @@ Parameters
   Description
     Minimum allowed number of particles.
 
-:odom_frame_id:
+:odom_frame:
 
   ============== =============================
   Type           Default                                               
@@ -475,12 +475,12 @@ Example
         alpha3: 0.2
         alpha4: 0.2
         alpha5: 0.2
-        base_frame_id: "base_footprint"
+        base_frame: base_footprint
         beam_skip_distance: 0.5
         beam_skip_error_threshold: 0.9
         beam_skip_threshold: 0.3
         do_beamskip: false
-        global_frame_id: "map"
+        global_frame: "map"
         lambda_short: 0.1
         set_initial_pose: false
         laser_likelihood_max_dist: 2.0
@@ -490,7 +490,7 @@ Example
         max_beams: 60
         max_particles: 2000
         min_particles: 500
-        odom_frame_id: "odom"
+        odom_frame: odom
         pf_err: 0.05
         pf_z: 0.99
         recovery_alpha_fast: 0.0
