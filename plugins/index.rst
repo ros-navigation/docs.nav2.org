@@ -60,8 +60,8 @@ Costmap Filters
 +--------------------+--------------------+-----------------------------------+
 |    Plugin Name     |      Creator       |       Description                 |
 +====================+====================+===================================+
-| `Keepout Filter`_  | Alexey Merzlyakov  | Maintanins keep-out/safety zones  |
-|                    |                    | and preferred lanes in industries |
+| `Keepout Filter`_  | Alexey Merzlyakov  | Maintains keep-out/safety zones   |
+|                    |                    | and preferred lanes for moving    |
 +--------------------+--------------------+-----------------------------------+
 
 .. _Keepout Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp

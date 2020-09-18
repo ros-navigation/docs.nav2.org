@@ -328,7 +328,7 @@ Costmap Filters Parameters
 .. toctree::
   :maxdepth: 1
 
-  costmap-plugins/costmap_filters.rst
+  costmap-plugins/keepout_filter.rst
 
 Example
 *******

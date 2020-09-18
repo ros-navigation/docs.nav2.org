@@ -1,11 +1,9 @@
 .. costmap_filters:
 
-Costmap Filters Parameters
-==========================
+Keepout Filter Parameters
+=========================
 
 `<filter name>`: is the corresponding plugin name selected for this type.
-
-There are following parameters common for all costmap filters plugins:
 
 :``<filter name>``.enabled:
 

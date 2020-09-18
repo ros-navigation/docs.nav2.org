@@ -82,6 +82,68 @@ Map Server Parameters
   Description
     Frame to publish loaded map in.
 
+Costmap Filter Info Server Parameters
+*************************************
+
+:type:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  int            0
+  ============== =============================
+
+  Description
+    Type of costmap filter used:
+
+    - 0: keepout zones / preferred lanes filter
+    - 1: speed filter, speed limit is specified in m/s
+    - 2: speed filter, speed limit is specified in % of maximum speed
+
+:filter_info_topic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         costmap_filter_info
+  ============== =============================
+
+  Description
+    Topic to publish costmap filter information to.
+
+:mask_topic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         map_mask
+  ============== =============================
+
+  Description
+    Topic to publish map mask to.
+
+:base:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.0
+  ============== =============================
+
+  Description
+    Base of ``OccupancyGrid`` -> filter space values linear conversion.
+
+:multiplier:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         1.0
+  ============== =============================
+
+  Description
+    Multiplier of ``OccupancyGrid`` -> filter space values linear conversion.
+
 Example
 *******
 .. code-block:: yaml
@@ -97,3 +159,11 @@ Example
         save_map_timeout: 5000
         free_thresh_default: 0.25
         occupied_thresh_default: 0.65
+
+    costmap_filter_info_server:
+      ros__parameters:
+        type: 1
+        filter_info_topic: "costmap_filter_info"
+        mask_topic: "map_mask"
+        base: 0.0
+        multiplier: 0.25
