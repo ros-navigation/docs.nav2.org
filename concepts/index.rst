@@ -258,7 +258,7 @@ Imagine, you're annotating a map file (or any image file) in order to have a spe
 
 Costmap filters - is costmap layer based approach of applying spatial-dependent behavioral changes annotated in map masks, into Navigation2 stack. Costmap filters are implemented as costmap plugins. These plugins are called "filters" as they are filtering a costmap with the data from spatial annotations marked on map masks. Having this data along with a map/costmap, any sensors data and current robot coordinates filters can update underlying costmap and change behavior of the robot depending on where it is. For example, the following functionality could be made by using of costmap filters:
 
-- Keep-out/safety zones free of robots. In these areas robots will never enter.
+- Keep-out/safety zones where robots will never enter.
 - Speed restriction areas. Maximum speed of robots going inside those areas will be limited.
 - Preferred lanes for robots moving in industries and warehouses.
 
