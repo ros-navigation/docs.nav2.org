@@ -6,7 +6,7 @@ CI Testing in Nav2
 
 - `Benefits of Automated Testing`_
 - `Hands on Testing`_
-- `Rewriting Parameter Values from YAML Files in Launch scripts`_
+- `Tips & Tricks for Writing Tests`_
 
 Benefits of Automated Testing
 =============================
@@ -15,13 +15,27 @@ Benefits of Automated Testing
     :align: center
 
 Whenever a feature gets added or altered, it is best practice to confirm the intended outcome with automated test scripts.
-This document features an easy step by step guide how CI should be integrated alongside new PRs.
+This document features an easy step by step guide how tests should be integrated alongside new PRs.
+Adding tests to your new code does not only help you to make sure that corner cases can be reliable tested over and over, but also to make sure that your code continues to work, when there are new changes made elsewhere.
 
-Also, not only new code should have CI testing. To find nasty bugs and corner cases, it is Nav2's ultimate goal to have a test coverage of nearly 100% !
+Tests can help in two scenarios. First, during programming they can be conducted manually, while they are still being tweaked to work in the intended way.
+In order to test them manually and include them into your workflow, a few steps are necessary that are all explained in the next chapter.
+Second, the tests added during the active programming phase of this new code can also be integrated into automated testing performed by the CI system setup with the nav2 github repository.
+This helps others later in the continuous development process of this open source project.
+
+Also, not only new code should have automated testing through CI. To find nasty bugs and corner cases, it is Nav2's ultimate goal to have a test coverage of nearly 90% !
 This will lead to a more improved, stable, and industry-grade code basis, as new PRs will see if they break things in other sub-systems, that they normally would not think of impacting.
+It would be great if you can always check into the automated tests results of CI during your PR.
 
-The current code-coverage can be tracked on `codecov.io/gh/ros-planning/navigation2 <https://codecov.io/gh/ros-planning/navigation2>`_ .
+The current code-coverage of the whole nav2 project can be tracked on `codecov.io/gh/ros-planning/navigation2 <https://codecov.io/gh/ros-planning/navigation2>`_ . 
+The improvement over time can be seen in the leading image. There is already a lot, but we welcome everybody to join!
 
+During your PR process, CI will publish automated testing results directly into your PR as a comment as soon as you mark your PR as ready for review and/or new commits are added.
+These results also give you great insights about what code coverage areas you added or even lost! 
+It is a great visualization to help you understand what code is currently being used and what might be just dead code, as it is not tested and therefore cannot really be told if it works or not.
+
+So, if you already work inside or with one of our components, please have a look what kind of tests are already there and where is room for you to improve our testing!
+Let's start now with working with existing tests and also writing your own ones. 
 
 Hands on Testing
 ================
@@ -30,28 +44,28 @@ Hands on Testing
 Before you can test anything, make sure you have the basic examples of the :ref:`getting_started` guides up and running.
 
 For integrating and running your own tests, you have to build nav2 from source. Using nav2 main with ros2 installed as binaries technically works, 
-but automated CI testing happening on github when you merge you create a PR for the nav2 stack also uses ros2 rolling (= latest/main).
-Therefor, it is recommend to test your new code with the nav2 stack based on the main branch and also let the script install ros2 from source.
+but the automated CI testing, happening on github when you merge, also uses ros2 rolling (= latest/main).
+Therefor, it is recommend to test your new code with the nav2 stack based on the main branch and also let the script (getting started guide) install ros2 from source.
 
 1. Run Existing Tests
 ---------------------
 Nav2 specific tests can be found in each individual component under a dedicated test folder. 
-One additional package, ``nav2_system_tests``, `exists <https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests>`_ for testing components, sub-systems and full system tests.
+One additional package, ``nav2_system_tests``, `exists <https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests>`_ for testing components, sub-systems and full system tests, in addition to unit and integration tests in individual packages..
 This package also comes with a ``README.md`` pointing out, that unit tests for sub-functions of components should be provided within each individual component.
 
 To run existing tests of components or the whole system from within the ``nav2_system_tests`` package, you can use this procedure:
 
-  - build nav2 with ``$ colcon build --symlink-install``
-  - navigate to the component you would like to test ``$ cd build/<package_name>``
-  - run all the tests of this package ``$ ctest -V``
+.. code-block:: bash
+
+  $ cd <your_nav2_workspace>
+  $ colcon build --symlink-install # build nav2 workspace including the components that you are interested in
+  $ colcon test --event-handlers console_direct+ --packages-select <pkg-name> # run all the tests of this package with output
 
 To run all tests of all nav2 components, you can also use ``colcon`` for convenience: 
 
 .. code-block:: bash
 
   $ colcon test
-
-Refering to the *chapter 4.7* of the `colcon documentation <https://buildmedia.readthedocs.org/media/pdf/colcon/latest/colcon.pdf>`_, one can also run individual tests through ``colcon``, as it uses ``ctest`` and ``pytest`` under the hood. 
   
 Now you should see a couple of tests run in your command line. After they have finished ``ctest`` gives an report about the tests.
 This looks something like this:
@@ -78,13 +92,16 @@ This looks something like this:
 -----------------------
 Tests are declared in individual ``CMakeList.txt`` files in the test sub-folders of components or in ``nav2_system_tests``.
 While developing individual tests, it might make sense to only run one out of multiple tests.
-This can be done with either:
+Referring to the *chapter 4.7* of the `colcon documentation <https://buildmedia.readthedocs.org/media/pdf/colcon/latest/colcon.pdf>`_, one can also run individual tests through ``colcon``, as it uses ``ctest`` and ``pytest`` under the hood. 
+This can be done with:
 
-- ``$ ctest -V -R <regex>`` in the respective folder **or**
-- ``$ colcon test --packages-select <name-of-pkg> --ctest-args -V -R <regex>``
+.. code-block:: bash
+
+ $ colcon test --event-handlers console_direct+ --packages-select <pkg-name> --ctest-args -R <regex>
 
 Where ``regex`` represents the name or search-expression for the test(s) you want to run manually. 
-You can also find the name of a certain test by running all tests of the desired package. 
+For example with the ``nav2_system_tests`` package, the value for a valid regex could be ``bt`` for all behavior tree related tests or ``planner`` or a full name of the specific test you want to run. 
+You can also find the name of a certain test by running all tests of the desired package with the option ``$ colcon test --event-handlers console_direct+ <...>`` or look the name up in the corresponding ``CMakeList.txt``. 
 
 .. note::
   When testing with ``pytest`` - typically for ros2 launch files -  and building your package with ``$ colcon build --symlink-install``, you can even change your test scripts without rebuilding the whole package! 
@@ -109,14 +126,14 @@ You can also find the name of a certain test by running all tests of the desired
 - look and learn from existing code in the nav2 stack, we have plenty of tests!
 - play with different launch parameters: Have a look at overwriting them in the next section
 
-4. Register Your Own Test
--------------------------
+4. Add Your Own Test
+--------------------
 
 Make sure to include your new Tests in the specific ``CMakeList.txt`` file and recompile your working-space with ``colcon build --symlink-install``.
-Depending on writing tests in C++ or python there are different ways to register tests.
+Depending on writing tests in C++ or python there are different ways to add tests.
 
 This first example is for registering tests surrounding behavior tree actions.
-`Source c++ test <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/test/plugins/action/CMakeLists.txt>`_ 
+`Source for the c++ test with ``gtest`` <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/test/plugins/action/CMakeLists.txt>`_ 
 
 .. code-block:: text
 
@@ -131,7 +148,7 @@ This first example is for registering tests surrounding behavior tree actions.
 
 Here is an example for testing with python and pytest, especially useful for testing launch sequences.
 Interesting to note are the free set-able environment variables that can later be used to rewrite parameter values for launch scripts.
-`Source python test <https://github.com/ros-planning/navigation2/blob/main/nav2_system_tests/src/system/CMakeLists.txt>`_
+`Source for the launch-based test <https://github.com/ros-planning/navigation2/blob/main/nav2_system_tests/src/system/CMakeLists.txt>`_
 
 .. code-block:: text
 
@@ -164,8 +181,16 @@ Think about adding tests that exceed your own focus and help improve nav2/ros2 r
 The report above is an automated post by codecov.io-bot on github that posts results of CI automatically for every new PR.
 Please consider helping increase the code coverage and use the opportunity to learn more about the internals of the navigation2 stack! 
 
-Rewriting Parameter Values from YAML Files in Launch scripts
-============================================================
+Tips & Tricks for Writing Tests
+===============================
+This section shall provide best practices and things not very obvious to a new test programmer.
+Also, consider checking out the tutorial about unit tests and integration tests with colcon provided by the autoware foundation, 
+`here for unit tests <https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/how-to-write-tests-and-measure-coverage.html>`_ and `here for integration tests <https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/integration-testing.html>`_.
+
+
+1. Rewriting Parameter Values from YAML Files in Launch scripts
+---------------------------------------------------------------
+
 In most occasions some small new features are added and made available through a few new parameters. As the standard nav2 user should not be overloaded with features it makes sense to disable most of the additional or drop-in features in the default ``params.yaml`` file.
 But tests should still be comparable and only alter the test-scope specific parameters. 
 Therefor, it makes no sense to copy most of the ``params.yaml`` file into multiple test.yaml files that would be prone to fail future changes.
