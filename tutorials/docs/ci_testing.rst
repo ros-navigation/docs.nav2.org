@@ -1,22 +1,25 @@
 .. _ci_testing:
 
-CI Testing in Nav2
-******************
+Introduction to Testing
+***********************
 **Overview:**
 
-- `Benefits of Automated Testing`_
+- `Benefits of Testing`_
 - `Hands on Testing`_
+- `How to Write Your First Test`_
 - `Tips & Tricks for Writing Tests`_
 
-Benefits of Automated Testing
-=============================
+Benefits of Testing
+===================
 
-.. image:: images/CI_Testing/code_coverage_bump_40_80.png
-    :align: center
+ .. image:: images/CI_Testing/codecov.io_show_covered_code.png
+  :width: 80%
 
-Whenever a feature gets added or altered, it is best practice to confirm the intended outcome with automated test scripts.
+Whenever a feature gets added or altered, it is best practice to confirm the intended outcome with tests.
 This document features an easy step by step guide how tests should be integrated alongside new PRs.
-Adding tests to your new code does not only help you to make sure that corner cases can be reliable tested over and over, but also to make sure that your code continues to work, when there are new changes made elsewhere.
+Adding tests to your new code does not only help you to make sure that corner cases can be reliable tested 
+over and over, but also to make sure that your code continues to work, when there are new changes made elsewhere, 
+like the ROS2 infrastructure or other dependencies.
 
 Tests can help in two scenarios. First, during programming they can be conducted manually, while they are still being tweaked to work in the intended way.
 In order to test them manually and include them into your workflow, a few steps are necessary that are all explained in the next chapter.
@@ -27,15 +30,16 @@ Also, not only new code should have automated testing through CI. To find nasty 
 This will lead to a more improved, stable, and industry-grade code basis, as new PRs will see if they break things in other sub-systems, that they normally would not think of impacting.
 It would be great if you can always check into the automated tests results of CI during your PR.
 
-The current code-coverage of the whole nav2 project can be tracked on `codecov.io/gh/ros-planning/navigation2 <https://codecov.io/gh/ros-planning/navigation2>`_ . 
-The improvement over time can be seen in the leading image. There is already a lot, but we welcome everybody to join!
+The current code-coverage of the whole nav2 project can be tracked on 
+`codecov.io/gh/ros-planning/navigation2 <https://codecov.io/gh/ros-planning/navigation2>`_ . 
 
 During your PR process, CI will publish automated testing results directly into your PR as a comment as soon as you mark your PR as ready for review and/or new commits are added.
 These results also give you great insights about what code coverage areas you added or even lost! 
 It is a great visualization to help you understand what code is currently being used and what might be just dead code, as it is not tested and therefore cannot really be told if it works or not.
 
 So, if you already work inside or with one of our components, please have a look what kind of tests are already there and where is room for you to improve our testing!
-Let's start now with working with existing tests and also writing your own ones. 
+For example, the conditions in the code above did pass the test, but if there might be a more complex mechanism in the red part (the part that is not covered by automated testing) it can come to an unpredictive outcome.
+Before heading into writing new tests that could easily test those corner cases, let's start with working with existing tests. 
 
 Hands on Testing
 ================
@@ -50,24 +54,26 @@ Therefor, it is recommend to test your new code with the nav2 stack based on the
 1. Run Existing Tests
 ---------------------
 Nav2 specific tests can be found in each individual component under a dedicated test folder. 
-One additional package, ``nav2_system_tests``, `exists <https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests>`_ for testing components, sub-systems and full system tests, in addition to unit and integration tests in individual packages..
+One additional package, ``nav2_system_tests``, `exists <https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests>`_ for testing components, 
+sub-systems and full system tests, in addition to unit and integration tests in individual packages.
 This package also comes with a ``README.md`` pointing out, that unit tests for sub-functions of components should be provided within each individual component.
 
-To run existing tests of components or the whole system from within the ``nav2_system_tests`` package, you can use this procedure:
+To run existing tests from a certain package like ``nav2_system_tests``, you can use this procedure:
 
 .. code-block:: bash
 
   $ cd <your_nav2_workspace>
   $ colcon build --symlink-install # build nav2 workspace including the components that you are interested in
-  $ colcon test --event-handlers console_direct+ --packages-select <pkg-name> # run all the tests of this package with output
+  $ colcon test [--event-handlers console_direct+] --packages-select <pkg-name> # run all the tests of <package name> [with output]
 
-To run all tests of all nav2 components, you can also use ``colcon`` for convenience: 
+To run all tests of the complete nav2 stack, you can also use ``colcon`` for convenience: 
 
 .. code-block:: bash
 
   $ colcon test
   
-Now you should see a couple of tests run in your command line. After they have finished ``ctest`` gives an report about the tests.
+Now you should see a couple of tests run in your command line. After they have finished, 
+``colcon``outputs with the optional flag ``--event-handlers console_direct+`` an report about the tests.
 This looks something like this:
 
 .. code-block:: bash
@@ -151,18 +157,25 @@ This can be done with:
  $ colcon test --event-handlers console_direct+ --packages-select <pkg-name> --ctest-args -R <regex>
 
 Where ``regex`` represents the name or search-expression for the test(s) you want to run manually. 
-For example with the ``nav2_system_tests`` package, the value for a valid regex could be ``bt`` for all behavior tree related tests or ``planner`` or a full name of the specific test you want to run. 
-You can also find the name of a certain test by running all tests of the desired package with the option ``$ colcon test --event-handlers console_direct+ <...>`` or look the name up in the corresponding ``CMakeList.txt``. 
+For example with the ``nav2_system_tests`` package, the value for a valid regex could be ``bt``.
+This would include all tests for behavior tree related tests. Also, respectively the keyword ``planner`` 
+or another full name keyword would run the specific test you want to run. 
+You can find the name of a certain test by running all tests of the desired package with the option 
+``$ colcon test --event-handlers console_direct+ <...>`` or look the name up in the corresponding ``CMakeList.txt`` 
+of the test sub-directory of the package you are currently working with. 
 
-.. note::
-  When testing with ``pytest`` - typically for ros2 launch files -  and building your package with ``$ colcon build --symlink-install``, you can even change your test scripts without rebuilding the whole package! 
+How to Write Your First Test
+============================
+After dealing with working and understanding the existing tests on a higher level, it is time to focus on add and writing your own tests.
+There are multiple packages your test might fit in. So it is important to plan your next steps.
+After you chose the direction you want to head into, you have to decide between an unit-test or a launch-based test.
 
-3. Writing Your Own Test
+1. Plan Your Own Test
 ------------------------
 **Before writing a new test**, you have to think about what you want to test:
 
-- Is my feature relevant in combination with other (sub-)components of the nav2 stack? --> Integrate it into ``nav2_system_tests``
-- Is my feature only component specific? --> Write dedicated unit tests inside of the component
+- Is my feature relevant in combination with other (sub-)components of the nav2 stack? --> Integrate it into launch based ``nav2_system_tests``
+- Is my feature only component specific? --> Write dedicated unit tests or launch based test inside of the individual component
 
 **What makes a good test?**
 
@@ -177,31 +190,45 @@ You can also find the name of a certain test by running all tests of the desired
 - look and learn from existing code in the nav2 stack, we have plenty of tests!
 - play with different launch parameters: Have a look at overwriting them in the next section
 
-4. Add Your Own Test
---------------------
+2. Write Your First Test
+------------------------
 
-Make sure to include your new Tests in the specific ``CMakeList.txt`` file and recompile your working-space with ``colcon build --symlink-install``.
-Depending on writing tests in C++ or python there are different ways to add tests.
+Tests are declared in individual ``CMakeList.txt`` files in the test sub-folders of components or in ``nav2_system_tests``.
+To add a new test besides the linters mentioned in the chapter before, we have to add them in the ``BUILD_TESTING`` condition.
 
-This first example is for registering tests surrounding behavior tree actions.
-`Source for the c++ test with ``gtest`` <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/test/plugins/action/CMakeLists.txt>`_ 
+This can be achieved by two methods to include multiple sub-folders with ``CMakeList.txt`` inside:
 
-.. code-block:: text
+.. code:: cmake
 
-  ament_add_gtest(test_action_spin_action test_spin_action.cpp)
-  target_link_libraries(test_action_spin_action nav2_spin_action_bt_node)
-  ament_target_dependencies(test_action_spin_action ${dependencies})
+    # this must happen before the invocation of ament_package()
+    if(BUILD_TESTING)
+      find_package(ament_lint_auto REQUIRED)
+      ament_lint_auto_find_test_dependencies()
+      # add gtest and pytest 
+      find_package(ament_cmake_gtest REQUIRED)
+      find_package(ament_cmake_pytest REQUIRED)
 
-  ament_add_gtest(test_action_back_up_action test_back_up_action.cpp)
-  target_link_libraries(test_action_back_up_action nav2_back_up_action_bt_node)
-  ament_target_dependencies(test_action_back_up_action ${dependencies})
+      # add your subdirectories directly with dedicated CMakeList.txt with pytests or gtests inside 
+      add_subdirectory(src/planning)
+      add_subdirectory(src/localization)
+      add_subdirectory(src/system)
+      add_subdirectory(src/system_failure)
+      # ...
+
+      # or 
+      add_subdirectory(folder)
+      # this one CMakeList.txt inside of this folder will then include the rest of the folders with CMakeList.txt
+
+    endif()
 
 
+a) Launch-file based Test - pytest
+""""""""""""""""""""""""""""""""""
 Here is an example for testing with python and pytest, especially useful for testing launch sequences.
 Interesting to note are the free set-able environment variables that can later be used to rewrite parameter values for launch scripts.
 `Source for the launch-based test <https://github.com/ros-planning/navigation2/blob/main/nav2_system_tests/src/system/CMakeLists.txt>`_
 
-.. code-block:: text
+.. code-block:: cmake
 
   ament_add_test(test_bt_navigator_with_groot_monitoring
     GENERATE_RESULT_FOR_RETURN_CODE_ZERO
@@ -299,6 +326,12 @@ Think about adding tests that exceed your own focus and help improve nav2/ros2 r
 The report above is an automated post by codecov.io-bot on github that posts results of CI automatically for every new PR.
 Please consider helping increase the code coverage and use the opportunity to learn more about the internals of the navigation2 stack! 
 
+.. 
+.. 
+.. 
+.. 
+.. 
+
 Tips & Tricks for Writing Tests
 ===============================
 This section shall provide best practices and things not very obvious to a new test programmer.
@@ -318,8 +351,11 @@ Luckily, nav2 already includes a nice helper function for replacing values in YA
 Here is an example showing a small feature set of the capability of the launch system:
 
 .. code-block:: python
-
-  #Replace the default parameter values for testing special features without having multiple params_files inside the nav2 stack
+  
+  # ...
+  import yaml 
+  # ...
+  # Replace the default parameter values for testing special features without having multiple params_files inside the nav2 stack
   context = LaunchContext()
   param_substitutions = {}
 
@@ -332,36 +368,34 @@ Here is an example showing a small feature set of the capability of the launch s
       print ("GROOT_MONITORING set True")
 
   # Fails -> multi dimensional keys ['planner_server']['ros__parameters']['GridBased']['use_astar'] cannot be combined in such manner
-  #param_substitutions = {'planner_server.ros__parameters.GridBased.use_astar': "True"}
+  # param_substitutions = {'planner_server.ros__parameters.GridBased.use_astar': "True"}
 
   # Fails -> value for 'bt_navigator' gets overwritten with 'ros__parameters' as value and not as next stage dict
-  #param_substitutions = {'bt_navigator':{'ros__parameters':{'enable_groot_monitoring' : 'True'}}} 
+  # param_substitutions = {'bt_navigator':{'ros__parameters':{'enable_groot_monitoring' : 'True'}}} 
 
   # Obviously not the needed behavior but shows that 'HELLOO...' only gets written when perform gets triggered
-  #param_substitutions = {'bt_navigator':'HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'} 
+  # param_substitutions = {'bt_navigator':'HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'} 
 
   # Finally works with LaunchContext and perform sub-function
-  #param_substitutions = {'enable_groot_monitoring' : 'True'} 
+  # param_substitutions = {'enable_groot_monitoring' : 'True'} 
 
   # This would also work, but then the whole params_file gets recursively searched and replaces "False" with "False" -> time wasted
-  #param_substitutions = { 
+  # param_substitutions = { 
   #    'use_astar': os.getenv('ASTAR', default = "False"),
   #    'enable_groot_monitoring': os.getenv('GROOT_MONITORING', default = "False")
   #    }
-
 
   configured_params = RewrittenYaml(
       source_file=params_file,
       root_key='',
       param_rewrites=param_substitutions,
       convert_types=True)
-
-    
+  
   new_yaml = configured_params.perform(context)
 
   # Check if value has the desired value now before loading the yaml as launch_argument
-  #data = yaml.safe_load(open(new_yaml, 'r'))
-  #print (data['planner_server']['ros__parameters']['GridBased']['use_astar'])
+  data = yaml.safe_load(open(new_yaml, 'r'))
+  # print (data['planner_server']['ros__parameters']['GridBased']['use_astar'])
 
 
 This can also be investigated in a real scenario in the nav2-CI test. Just have a look at the ``nav2_system_tests`` test for the whole system `here <https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests/src/system>`_.
