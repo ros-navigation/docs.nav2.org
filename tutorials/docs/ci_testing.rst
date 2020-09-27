@@ -88,10 +88,61 @@ This looks something like this:
   Total Test time (real) =  69.00 sec
 
 
-2. Run Individual Tests
+You can see that in this case 30 individual tests did run without any errors.
+Besides the 24 `gtest` tests that represent functional tests, there are also 6 tests of another kind.
+Those 6 other tests are `linters`.
+
+2. What are Linters?
+--------------------
+
+While code might be functional correct and a compiler generously compiles the desired functionality already, 
+`linters` ensure that the source code follows special coding, design and organizational guidelines.
+This not only helps to comply with legal regulations, but also to sustain a standard way of how code is represented.
+Especially while reading and understanding unfamiliar code, it helps that there are certain design guidelines enforced.
+
+But what do they actually do?
+Starting with `copyright`, a set of files with certain extensions for python, cpp, and others 
+in this open source project must be published under certain licenses and include copyright holders.
+But also code style guidelines are checked with `linters` like `cpplint` or `flake8` (python).
+Such checks might include tests like: strong checks against how comments have to look like, no tailing white-spaces,
+not too many following blank lines, not too many characters per line (99 chars), position of brackets, and so on.
+
+There exists a common stack of linters used by ROS2. This ros2 documentation `here <https://index.ros.org/doc/ros2/Tutorials/Ament-CMake-Documentation/#testing-and-linting>`_
+not only shows how linters are correctly integrated into your package but also points towards the ``ament_lint_common`` documentation.
+Here are all linters explained in there full extent and also listed which are added by default through the common package. 
+Also, it is possible to write and add your own linters for more consistency checks.
+
+In more complex code stacks like nav2, linters are included into the test process by ``CMakeList.txt`` 
+and ``package.xml``, like pointed out by the ros2 documentation above. 
+Therefore, **all** packages of nav2 have to include them by themselves.
+A minimal setup for linters looks like this (`source <https://github.com/ament/ament_lint/blob/master/ament_lint_auto/doc/index.rst>`_):
+
+``CMakeLists.txt``:
+
+.. code:: cmake
+
+    # this must happen before the invocation of ament_package()
+    if(BUILD_TESTING)
+      find_package(ament_lint_auto REQUIRED)
+      ament_lint_auto_find_test_dependencies()
+    endif()
+
+``package.xml``:
+
+.. code:: xml
+
+    <test_depend>ament_lint_auto</test_depend>
+
+    <!-- this recursively depends on a set of common linters -->
+    <test_depend>ament_lint_common</test_depend>
+
+To run some linter - ``ament_{cpplint, cppcheck, uncrustify, flake8, etc}`` you can us ``cpplint`` etc. as keyword for the regex in the next section.
+
+3. Run Individual Tests
 -----------------------
-Tests are declared in individual ``CMakeList.txt`` files in the test sub-folders of components or in ``nav2_system_tests``.
-While developing individual tests, it might make sense to only run one out of multiple tests.
+In the event that one specific test out of many tests might have failed, 
+it makes sense to work on getting this one test to succeed again.
+Also while developing individual tests, it might make sense to only run one out of multiple tests.
 Referring to the *chapter 4.7* of the `colcon documentation <https://buildmedia.readthedocs.org/media/pdf/colcon/latest/colcon.pdf>`_, one can also run individual tests through ``colcon``, as it uses ``ctest`` and ``pytest`` under the hood. 
 This can be done with:
 
