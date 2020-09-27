@@ -53,6 +53,7 @@ Parameters
   Description
     List of behavior tree node shared libraries.
 
+    Consider checking out the `Use BT Groot Monitoring<>`_ tutorial for using this feature. 
 :enable_groot_monitoring:
 
   ==== =======
@@ -89,6 +90,7 @@ Parameters
   Description
     ZMQ server port for the Groot monitor. Used to send the current bt factory + configuration as flatbuffer on an (empty) request by Groot.
 
+    **Attention:** Groot will only work after the behavior tree is running, which means that the nav2 stack has to receive a goal first.
 :transform_tolerance:
 
   ====== ======= ======= 
