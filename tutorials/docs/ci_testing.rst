@@ -218,6 +218,73 @@ Interesting to note are the free set-able environment variables that can later b
       GROOT_MONITORING=True
   )
 
+This `cmake` macro ``ament_add_test()`` can handle raw `pytests`. Arguments are line or white-space seperated.
+The first argument is the name of your new test, which can later than be used as a `regex` search keyword to only run your new test.
+The ``GENERATE_RESULT_FOR_RETURN_CODE_ZERO`` is a flag for `pytest` and necessary for this process.
+``COMMAND`` describes the `pytest` entry point for your test.
+``WORKING_DIRECTORY`` and ``TIMEOUT`` are self explanatory.
+Under the group ``ENV`` environment variables can be set. Those can then directly be used in your python script as input via ``os.getenv('KEYWORD')``.
+
+Depending on your test, it might not be necessity to declare all keywords in each test. 
+In combination of ``RewrittenYaml()`` from our ``nav2_common`` package, 
+we can use this to rewrite default parameters from the main ``params.yaml`` with a few easy steps.
+A small example for this can be seen in the last section ``Tips & Tricks for Writing Tests``. 
+
+Now, we added a few parameters and made sure that the parameters for launching our nodes are all setup correctly.
+The next step involves dealing with ``pytest`` and testers. This code is from the same file as the ``RewrittenYaml()`` refers to.
+
+.. code-block:: python
+
+    # configure all the parameters and nodes based on our input in the CMakeList.txt
+    ld = generate_launch_description()
+
+    # setup our tester with the `tester_node.py` and a few additional input parameters
+    # here multiple test can be created to test your tests in more versatile environments
+    # even start fuzzing the input values might add robustness to your code
+    test1_action = ExecuteProcess(
+        cmd=[os.path.join(os.getenv('TEST_DIR'), 'tester_node.py'),
+             '-r', '-2.0', '-0.5', '0.0', '2.0'],
+        name='tester_node',
+        output='screen')
+
+    lts = LaunchTestService()
+    lts.add_test_action(ld, test1_action)
+    ls = LaunchService(argv=argv)
+    ls.include_launch_description(ld)
+    return lts.run(ls)
+
+The next and final step would be to implement ``tester_node.py``. The node `here <https://github.com/ros-planning/navigation2/blob/main/nav2_system_tests/src/system/tester_node.py>`_ is quite a good example.
+It features argument groups to take various parameters as input that can be seen used in the code section above.
+To name its core features: the test engages with multiple `lifecycle_nodes`, waits for all `action_servers` to be available, sends a goal,
+tests if the goal is reached. This is a great example to use when one must implement a new pytest with ROS2 integration.
+
+.. note::
+  When testing with launch files and testers also written with ``pytest``, it is possible to rerun tests 
+  in between iterations of your test without rebuilding your work-space.
+  Although, this requires to build your package with ``$ colcon build --symlink-install``.
+  
+b) Unit Test - gtest
+""""""""""""""""""""
+This first example is for registering tests surrounding behavior tree actions.
+`Source for the c++ test with ``gtest`` <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/test/plugins/action/CMakeLists.txt>`_ 
+
+.. code-block:: cmake
+
+  ament_add_gtest(test_action_spin_action test_spin_action.cpp)
+  target_link_libraries(test_action_spin_action nav2_spin_action_bt_node)
+  ament_target_dependencies(test_action_spin_action ${dependencies})
+
+  ament_add_gtest(test_action_back_up_action test_back_up_action.cpp)
+  target_link_libraries(test_action_back_up_action nav2_back_up_action_bt_node)
+  ament_target_dependencies(test_action_back_up_action ${dependencies})
+
+
+
+3. Add Your Own Test
+--------------------
+
+
+
 
 
 5. Check Your Test with CI and Check Code Coverage
