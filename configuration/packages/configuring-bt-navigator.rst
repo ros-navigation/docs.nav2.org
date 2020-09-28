@@ -64,7 +64,7 @@ Parameters
   Description
     Enable live Groot monitoring of the current BT status.
     This is possible due to attaching a ZMQ server and publisher to the active behavior tree.
-    Consider checking out the `Use BT Groot Monitoring<>`_ tutorial for using this feature. 
+    Consider checking out the :ref:`groot_introduction` tutorial for using this feature. 
 
     **Attention:** Groot will only work after the behavior tree is running, which means that the nav2 stack has to receive a goal first.
 
