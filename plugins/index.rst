@@ -242,3 +242,14 @@ Behavior Tree Nodes
 .. _Pipeline Sequence: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
 .. _Recovery: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
 .. _Round Robin: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp
+
++---------------------------------+------------------------+----------------------------------+
+| Waypoint Follower Plugin Name   |         Creator        |       Description                |
++=================================+========================+==================================+
+| `Waypoint Task Executor`_       | Fetullah Atas          | A plugin interface to define     |
+|                                 |                        | specific tasks to be executed on |
+|                                 |                        | waypoint arrivals.               |
+|                                 |                        |                                  |            
++---------------------------------+----------------------------------+------------------------+
+
+.. _Pipeline Sequence: https://github.com/ros-planning/navigation2/blob/foxy-devel/nav2_core/include/nav2_core/waypoint_task_executor.hpp
