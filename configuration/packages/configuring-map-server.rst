@@ -94,7 +94,7 @@ Costmap Filter Info Server Parameters
   ============== =============================
 
   Description
-    Type of costmap filter used:
+    Type of costmap filter used. This is an enum for the type of filter this should be interpreted as. We provide the following pre-defined types:
 
     - 0: keepout zones / preferred lanes filter
     - 1: speed filter, speed limit is specified in m/s
