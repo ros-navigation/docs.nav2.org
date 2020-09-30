@@ -254,13 +254,13 @@ Finally, they may be used to buffer live data into the 2D or 3D world for binary
 Costmap Filters
 ===============
 
-Imagine, you're annotating a map file (or any image file) in order to have a specific action occur based on the location in the annotated map. Examples of marking/annotating might be keep out zones to avoid planning inside, or have pixels belong to maximum speeds in marked areas. This annotated map is called "map mask". Just like a mask overlaid on a surface, it can or cannot be same size, pose and scale as a main map. The main goal of map mask - is to provide an ability of marking areas on maps with some additional features or behavioral changes.
+Imagine, you're annotating a map file (or any image file) in order to have a specific action occur based on the location in the annotated map. Examples of marking/annotating might be keep out zones to avoid planning inside, or have pixels belong to maximum speeds in marked areas. This annotated map is called "filter mask". Just like a mask overlaid on a surface, it can or cannot be same size, pose and scale as a main map. The main goal of filter mask - is to provide an ability of marking areas on maps with some additional features or behavioral changes.
 
-Costmap filters - is costmap layer based approach of applying spatial-dependent behavioral changes annotated in map masks, into Navigation2 stack. Costmap filters are implemented as costmap plugins. These plugins are called "filters" as they are filtering a costmap with the data from spatial annotations marked on map masks. Having this data along with a map/costmap, any sensors data and current robot coordinates filters can update underlying costmap and change behavior of the robot depending on where it is. For example, the following functionality could be made by using of costmap filters:
+Costmap filters - is costmap layer based approach of applying spatial-dependent behavioral changes annotated in filter masks, into Navigation2 stack. Costmap filters are implemented as costmap plugins. These plugins are called "filters" as they are filtering a costmap by spatial annotations marked on filter masks. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. This data is being linearly transformed into feature map in a filter space. Having this transformed feature map along with a map/costmap, any sensors data and current robot coordinates filters can update underlying costmap and change behavior of the robot depending on where it is. For example, the following functionality could be made by using of costmap filters:
 
 - Keep-out/safety zones where robots will never enter.
 - Speed restriction areas. Maximum speed of robots going inside those areas will be limited.
-- Preferred lanes for robots moving in industries and warehouses.
+- Preferred lanes for robots moving in industrial environments and warehouses.
 
 Other Forms
 ===========

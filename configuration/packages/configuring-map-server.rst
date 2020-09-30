@@ -116,11 +116,11 @@ Costmap Filter Info Server Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  string         map_mask
+  string         filter_mask
   ============== =============================
 
   Description
-    Topic to publish map mask to.
+    Topic to publish filter mask to.
 
 :base:
 
@@ -131,7 +131,8 @@ Costmap Filter Info Server Parameters
   ============== =============================
 
   Description
-    Base of ``OccupancyGrid`` -> filter space values linear conversion.
+    Base of ``OccupancyGrid`` mask value -> filter space value linear conversion which is being proceeded as:
+    ``filter_space_value = base + multiplier * mask_value``
 
 :multiplier:
 
@@ -142,7 +143,8 @@ Costmap Filter Info Server Parameters
   ============== =============================
 
   Description
-    Multiplier of ``OccupancyGrid`` -> filter space values linear conversion.
+    Multiplier of ``OccupancyGrid`` mask value -> filter space value linear conversion which is being proceeded as:
+    ``filter_space_value = base + multiplier * mask_value``
 
 Example
 *******
@@ -164,6 +166,6 @@ Example
       ros__parameters:
         type: 1
         filter_info_topic: "costmap_filter_info"
-        mask_topic: "map_mask"
+        mask_topic: "filter_mask"
         base: 0.0
         multiplier: 0.25
