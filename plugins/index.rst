@@ -252,4 +252,4 @@ Behavior Tree Nodes
 |                                 |                        |                                  |            
 +---------------------------------+----------------------------------+------------------------+
 
-.. _Pipeline Sequence: https://github.com/ros-planning/navigation2/blob/foxy-devel/nav2_core/include/nav2_core/waypoint_task_executor.hpp
+.. _Waypoint Task Executor: https://github.com/ros-planning/navigation2/blob/foxy-devel/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp

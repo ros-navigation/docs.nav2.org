@@ -61,29 +61,6 @@ Parameters
               plugin: "nav2_waypoint_follower::WaitAtWaypoint"
     ..
 
-:enabled:
-
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  bool           true           
-  ============== =============================
-
-  Description
-    Whether waypoint_task_executor plugin is enabled.
-
-:waypoint_pause_duration:
-
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  int            0           
-  ============== =============================
-
-  Description
-    Amount of time in milliseconds, for robot to sleep/wait after each waypoint is reached. If zero, robot will directly continue to next waypoint.
-
-
 Provided Plugins
 ****************
  The plugins listed below are inside the ``nav2_waypoint_follower`` namespace.
