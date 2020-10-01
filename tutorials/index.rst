@@ -14,3 +14,4 @@ Navigation2 Tutorials
    docs/navigation2_with_slam.rst
    docs/navigation2_with_stvl.rst
    docs/navigation2_dynamic_point_following.rst
+   docs/navigation2_with_keepout_filter.rst
