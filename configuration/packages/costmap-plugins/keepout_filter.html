@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>LimitedAccelGenerator &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Keepout Filter Parameters &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="StandardTrajectoryGenerator" href="standard_traj_generator.html" />
-    <link rel="prev" title="Publisher" href="../dwb-params/visualization.html" />
+    <link rel="next" title="Lifecycle Manager" href="../configuring-lifecycle.html" />
+    <link rel="prev" title="Range Sensor Parameters" href="range.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -367,19 +367,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-bt-xml.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/static.html">Static Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/range.html">Range Sensor Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="static.html">Static Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="inflation.html">Inflation Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="obstacle.html">Obstacle Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxel.html">Voxel Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="range.html">Range Sensor Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Keepout Filter Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#example">Example</a></li>
@@ -413,7 +413,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/controller.html">DWB Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/iterator.html">XYTheta Iterator</a></li>
@@ -421,9 +421,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/visualization.html">Publisher</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-dwb-controller.html#plugins">Plugins</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">LimitedAccelGenerator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#plugins">Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
@@ -578,9 +578,9 @@
         
           <li><a href="../../index.html">Configuration Guide</a> &raquo;</li>
         
-          <li><a href="../configuring-dwb-controller.html">DWB Controller</a> &raquo;</li>
+          <li><a href="../configuring-costmaps.html">Costmap 2D</a> &raquo;</li>
         
-      <li>LimitedAccelGenerator</li>
+      <li>Keepout Filter Parameters</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -597,16 +597,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="limitedaccelgenerator">
-<span id="configuring-dwb-lim-acl-gen-plugin"></span><h1>LimitedAccelGenerator<a class="headerlink" href="#limitedaccelgenerator" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="keepout-filter-parameters">
+<h1>Keepout Filter Parameters<a class="headerlink" href="#keepout-filter-parameters" title="Permalink to this headline">¶</a></h1>
+<p><cite>&lt;filter name&gt;</cite>: is the corresponding plugin name selected for this type.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.sim_time:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.enabled:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
@@ -616,23 +614,42 @@
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.7</td>
+<tr class="row-even"><td>bool</td>
+<td>True</td>
 </tr>
 </tbody>
 </table>
-<blockquote class="last">
-<div><dl class="docutils">
+<dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Time to simulate ahead by (s).</p>
+<dd><p class="first last">Whether it is enabled.</p>
 </dd>
 </dl>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.filter_info_topic:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Name of the CostmapFilterInfo topic having filter-related information.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 
 

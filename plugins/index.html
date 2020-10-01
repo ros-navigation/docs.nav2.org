@@ -170,6 +170,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#environmental-representation">Environmental Representation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#costmaps-and-layers">Costmaps and Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#other-forms">Other Forms</a></li>
 </ul>
 </li>
@@ -235,6 +236,18 @@
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-navigation2-simulation">2- Run Dynamic Object Following in Navigation2 Simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#run-navigation2-stack">4. Run Navigation2 stack</a></li>
 </ul>
 </li>
 </ul>
@@ -365,6 +378,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/range.html">Range Sensor Parameters</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#example">Example</a></li>
 </ul>
 </li>
@@ -428,6 +445,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-map-server.html">Map Server / Saver</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-saver-parameters">Map Saver Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-server-parameters">Map Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#costmap-filter-info-server-parameters">Costmap Filter Info Server Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#example">Example</a></li>
 </ul>
 </li>
@@ -448,6 +466,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Navigation Plugins</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#costmap-layers">Costmap Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#controllers">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#planners">Planners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#recoveries">Recoveries</a></li>
@@ -476,6 +495,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
 </ul>
 </li>
 </ul>
@@ -637,6 +657,29 @@ through sensor models</td>
 <td>Maintains 3D occupancy grid
 consisting only of the most
 sets of measurements</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="costmap-filters">
+<h2>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="27%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Plugin Name</th>
+<th class="head">Creator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp">Keepout Filter</a></td>
+<td>Alexey Merzlyakov</td>
+<td>Maintains keep-out/safety zones
+and preferred lanes for moving</td>
 </tr>
 </tbody>
 </table>

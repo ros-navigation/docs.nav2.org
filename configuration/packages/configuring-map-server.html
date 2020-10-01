@@ -170,6 +170,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#environmental-representation">Environmental Representation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#costmaps-and-layers">Costmaps and Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#other-forms">Other Forms</a></li>
 </ul>
 </li>
@@ -235,6 +236,18 @@
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-navigation2-simulation">2- Run Dynamic Object Following in Navigation2 Simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#run-navigation2-stack">4. Run Navigation2 stack</a></li>
 </ul>
 </li>
 </ul>
@@ -365,6 +378,10 @@
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/range.html">Range Sensor Parameters</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#example">Example</a></li>
 </ul>
 </li>
@@ -428,6 +445,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Map Server / Saver</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#map-saver-parameters">Map Saver Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#map-server-parameters">Map Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#costmap-filter-info-server-parameters">Costmap Filter Info Server Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -448,6 +466,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#planners">Planners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#recoveries">Recoveries</a></li>
@@ -476,6 +495,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
 </ul>
 </li>
 </ul>
@@ -727,6 +747,128 @@ It also implements a map saver server which will run in the background and save 
 </tbody>
 </table>
 </div>
+<div class="section" id="costmap-filter-info-server-parameters">
+<h2>Costmap Filter Info Server Parameters<a class="headerlink" href="#costmap-filter-info-server-parameters" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">type:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first">Type of costmap filter used. This is an enum for the type of filter this should be interpreted as. We provide the following pre-defined types:</p>
+<ul class="last simple">
+<li>0: keepout zones / preferred lanes filter</li>
+<li>1: speed filter, speed limit is specified in m/s</li>
+<li>2: speed filter, speed limit is specified in % of maximum speed</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">filter_info_topic:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>costmap_filter_info</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Topic to publish costmap filter information to.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">mask_topic:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>filter_mask</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Topic to publish filter mask to.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">base:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Base of <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> mask value -&gt; filter space value linear conversion which is being proceeded as:
+<code class="docutils literal notranslate"><span class="pre">filter_space_value</span> <span class="pre">=</span> <span class="pre">base</span> <span class="pre">+</span> <span class="pre">multiplier</span> <span class="pre">*</span> <span class="pre">mask_value</span></code></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">multiplier:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Multiplier of <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> mask value -&gt; filter space value linear conversion which is being proceeded as:
+<code class="docutils literal notranslate"><span class="pre">filter_space_value</span> <span class="pre">=</span> <span class="pre">base</span> <span class="pre">+</span> <span class="pre">multiplier</span> <span class="pre">*</span> <span class="pre">mask_value</span></code></p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">map_server</span><span class="p">:</span>
@@ -740,6 +882,14 @@ It also implements a map saver server which will run in the background and save 
     <span class="nt">save_map_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
     <span class="nt">free_thresh_default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
     <span class="nt">occupied_thresh_default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.65</span>
+
+<span class="nt">costmap_filter_info_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">filter_info_topic</span><span class="p">:</span> <span class="s">&quot;costmap_filter_info&quot;</span>
+    <span class="nt">mask_topic</span><span class="p">:</span> <span class="s">&quot;filter_mask&quot;</span>
+    <span class="nt">base</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+    <span class="nt">multiplier</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
 </pre></div>
 </div>
 </div>

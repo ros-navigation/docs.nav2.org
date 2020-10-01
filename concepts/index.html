@@ -170,6 +170,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#environmental-representation">Environmental Representation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#costmaps-and-layers">Costmaps and Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#other-forms">Other Forms</a></li>
 </ul>
 </li>
@@ -235,6 +236,18 @@
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-navigation2-simulation">2- Run Dynamic Object Following in Navigation2 Simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#run-navigation2-stack">4. Run Navigation2 stack</a></li>
 </ul>
 </li>
 </ul>
@@ -365,6 +378,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/range.html">Range Sensor Parameters</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#example">Example</a></li>
 </ul>
 </li>
@@ -428,6 +445,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-map-server.html">Map Server / Saver</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-saver-parameters">Map Saver Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-server-parameters">Map Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#costmap-filter-info-server-parameters">Costmap Filter Info Server Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#example">Example</a></li>
 </ul>
 </li>
@@ -448,6 +466,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Navigation Plugins</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-layers">Costmap Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#controllers">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#planners">Planners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#recoveries">Recoveries</a></li>
@@ -476,6 +495,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
 </ul>
 </li>
 </ul>
@@ -776,6 +796,16 @@ It may be wise to process sensor data before inputting it into the costmap layer
 <p>Costmap layers can be created to detect and track obstacles in the scene for collision avoidance using camera or depth sensors.
 Additionally, layers can be created to algorithmically change the underlying costmap based on some rule or heuristic.
 Finally, they may be used to buffer live data into the 2D or 3D world for binary obstacle marking.</p>
+</div>
+<div class="section" id="costmap-filters">
+<h3>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this headline">¶</a></h3>
+<p>Imagine, you’re annotating a map file (or any image file) in order to have a specific action occur based on the location in the annotated map. Examples of marking/annotating might be keep out zones to avoid planning inside, or have pixels belong to maximum speeds in marked areas. This annotated map is called “filter mask”. Just like a mask overlaid on a surface, it can or cannot be same size, pose and scale as a main map. The main goal of filter mask - is to provide an ability of marking areas on maps with some additional features or behavioral changes.</p>
+<p>Costmap filters - is costmap layer based approach of applying spatial-dependent behavioral changes annotated in filter masks, into Navigation2 stack. Costmap filters are implemented as costmap plugins. These plugins are called “filters” as they are filtering a costmap by spatial annotations marked on filter masks. In order to make a filtered costmap and change robot’s behavior in annotated areas, filter plugin reads the data came from filter mask. This data is being linearly transformed into feature map in a filter space. Having this transformed feature map along with a map/costmap, any sensors data and current robot coordinates filters can update underlying costmap and change behavior of the robot depending on where it is. For example, the following functionality could be made by using of costmap filters:</p>
+<ul class="simple">
+<li>Keep-out/safety zones where robots will never enter.</li>
+<li>Speed restriction areas. Maximum speed of robots going inside those areas will be limited.</li>
+<li>Preferred lanes for robots moving in industrial environments and warehouses.</li>
+</ul>
 </div>
 <div class="section" id="other-forms">
 <h3>Other Forms<a class="headerlink" href="#other-forms" title="Permalink to this headline">¶</a></h3>

@@ -170,6 +170,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#environmental-representation">Environmental Representation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#costmaps-and-layers">Costmaps and Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#other-forms">Other Forms</a></li>
 </ul>
 </li>
@@ -235,6 +236,18 @@
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-navigation2-simulation">2- Run Dynamic Object Following in Navigation2 Simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#run-navigation2-stack">4. Run Navigation2 stack</a></li>
 </ul>
 </li>
 </ul>
@@ -365,6 +378,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/range.html">Range Sensor Parameters</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#example">Example</a></li>
 </ul>
 </li>
@@ -428,6 +445,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-map-server.html">Map Server / Saver</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-saver-parameters">Map Saver Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-server-parameters">Map Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#costmap-filter-info-server-parameters">Costmap Filter Info Server Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#example">Example</a></li>
 </ul>
 </li>
@@ -448,6 +466,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Navigation Plugins</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-layers">Costmap Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#controllers">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#planners">Planners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#recoveries">Recoveries</a></li>
@@ -476,6 +495,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
 </ul>
 </li>
 </ul>
@@ -592,6 +612,18 @@
 <p><code class="docutils literal notranslate"><span class="pre">speed</span></code> in a backup recovery goal should be positive indicating the speed with which to drive backward.
 <code class="docutils literal notranslate"><span class="pre">target.x</span></code> in a backup recovery goal should be positive indicating the distance to drive backward.
 In both cases negative values are silently inverted.</p>
+</div>
+<div class="section" id="costmap-filters">
+<h2>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this headline">¶</a></h2>
+<p>A new concept interacting with spatial-dependent objects called “Costmap Filters” appeared in Galactic (more information about this concept could be found at <a class="reference internal" href="../concepts/index.html#concepts"><span class="std std-ref">Navigation Concepts</span></a> page). Costmap filters are acting as a costmap plugins. In order to make a filtered costmap and change robot’s behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin’s algorithms to make required updates in the resulting costmap and robot’s behavor.</p>
+<p>Architecturally, costmap filters consists from <code class="docutils literal notranslate"><span class="pre">CostmapFilter</span></code> class which is a basic class incorporating much common of its inherited filter plugins:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code>: keep-out/safety zones filter plugin.</li>
+<li><code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code>: slow/speed-restricted areas filter.</li>
+<li>Preferred lanes in industries. This plugin is covered by <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> (see discussion in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1522">corresponding PR</a> for more details).</li>
+</ul>
+<p>Each costmap filter subscribes to filter info topic (publishing by <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>) having all necessary information for loaded costmap filter and filter mask topic.</p>
+<p>High-level design of this concept could be found <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf">here</a>. The functionality of costmap filters is being disscussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1263">the ticket #1263</a> and carried out by <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1882">PR #1882</a>. The following tutorial: <a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#navigation2-with-keepout-filter"><span class="std std-ref">Navigating with Keepout Zones</span></a> will help to easily get involved with <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> functionality.</p>
 </div>
 </div>
 
