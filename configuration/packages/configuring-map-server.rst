@@ -120,7 +120,7 @@ Costmap Filter Info Server Parameters
   ============== =============================
 
   Description
-    Topic to publish filter mask to.
+    Topic to publish filter mask to. The value of this parameter should be in accordance with ``topic_name`` parameter of Map Server tuned to filter mask publishing.
 
 :base:
 
