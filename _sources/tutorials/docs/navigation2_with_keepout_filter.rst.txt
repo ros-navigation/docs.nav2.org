@@ -11,7 +11,7 @@ Navigating with Keepout Zones
 
     <h1 align="center">
       <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe width="700" height="450" src="https://www.youtube.com/embed/jeMyOWH9HHA?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="600" height="480" src="https://www.youtube.com/embed/iVteYQR5IYQ?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </h1>
 
@@ -212,9 +212,9 @@ where the ``params_file`` variable should be set to a YAML-file having ROS param
 
 Note, that:
 
- - For Keepout Filter the ``type`` of costmap filter should be set to ``0``
- - Filter mask topic name should be the equal for ``mask_topic`` parameter of Costmap Filter Info Publisher Server and ``topic_name`` parameter of Map Server
- - For Keepout Filter ``base`` and ``multiplier`` parameters should be set to ``0.0`` and ``1.0`` accordingly
+ - For Keepout Filter the ``type`` of costmap filter should be set to ``0``.
+ - Filter mask topic name should be the equal for ``mask_topic`` parameter of Costmap Filter Info Publisher Server and ``topic_name`` parameter of Map Server.
+ - According to the Costmap Filters design, ``OccupancyGrid`` values are being linearly transformed into feature map in a filter space. For a Keepout Filter these values are directly passed as a filter space values without a linear conversion. Even though ``base`` and ``multiplier`` coefficients are not used in Keepout Filter, they should be set to ``0.0`` and ``1.0`` accordingly in order to explicitly show that we have one-to-one conversion from ``OccupancyGrid`` values -> to a filter value space.
 
 Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in a `nav2_keepout_filter_demo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_keepout_filter_demo>`_ directory of ``navigation2_tutorials`` repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at :ref:`getting_started`, build the demo and launch ``costmap_filter_info.launch.py`` as follows:
 
