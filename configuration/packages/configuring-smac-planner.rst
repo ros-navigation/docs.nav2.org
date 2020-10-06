@@ -372,11 +372,11 @@ Example
 
     planner_server:
       ros__parameters:
-        planner_plugin_types: ["smac_planner/SmacPlanner"]
-        planner_plugin_ids: ["GridBased"]
+        planner_plugins: ["GridBased"]
         use_sim_time: True
 
         GridBased:
+          plugin: "smac_planner/SmacPlanner"
           tolerance: 0.5                    # tolerance for planning if unable to reach exact pose, in meters, for 2D node
           downsample_costmap: false         # whether or not to downsample the map
           downsampling_factor: 1            # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
@@ -384,7 +384,7 @@ Example
           max_iterations: -1                # maximum total iterations to search for before failing
           max_on_approach_iterations: 1000  # maximum number of iterations to attempt to reach goal once in tolerance, 2D only
           max_planning_time_ms: 2000.0      # max time in ms for planner to plan, smooth, and upsample. Will scale maximum smoothing and upsampling times based on remaining time after planning.
-          smooth_path: true                 # Whether to smooth searched path
+          smooth_path: false                # Whether to smooth searched path
           motion_model_for_search: "DUBIN"  # 2D Moore, Von Neumann; SE2 Dubin, Redds-Shepp
           angle_quantization_bins: 72       # For SE2 node: Number of angle bins for search, must be 1 for 2D node (no angle search)
           minimum_turning_radius: 0.20      # For SE2 node & smoother: minimum turning radius in m of path / vehicle
