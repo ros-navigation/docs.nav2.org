@@ -91,6 +91,17 @@ Parameters
   Description
     Maximum planning time in ms.
 
+:``<name>``.analytic_expansion_ratio:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  double  2.0            
+  ====== =======
+
+  Description
+    SE2 node will attempt to complete an analytic expansions proportional to this value and the minimum heuristic.
+
 :``<name>``.smooth_path:
 
   ==== =======
