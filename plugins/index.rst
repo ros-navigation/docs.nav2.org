@@ -9,7 +9,7 @@ A list of all known plugins are listed here below for ROS 2 Navigation.
 If you know of a plugin, or you have created a new plugin, please consider submitting a pull request with that information.
 
 This file can be found and editted under ``sphinx_docs/plugins/index.rst``.
-For tutorials on creating your own plugins, please see :ref:`writing_new_costmap2d_plugin`.
+For tutorials on creating your own plugins, please see :ref:`writing_new_costmap2d_plugin`, :ref:`writing_new_nbt_plugin`, :ref:`writing_new_nav2controller_plugin`, :ref:`writing_new_nav2planner_plugin`, or :ref:`writing_new_recovery_plugin`.
 
 Costmap Layers
 ==============
@@ -69,17 +69,17 @@ Costmap Filters
 Controllers
 ===========
 
-+--------------------------+--------------------+----------------------------------+
-|      Plugin Name         |       Creator      |       Description                |
-+==========================+====================+==================================+
-|  `DWB Controller`_       | David Lu!!         | A highly configurable  DWA       |
-|                          |                    | implementation with plugin       |
-|                          |                    | interfaces                       |
-+--------------------------+--------------------+----------------------------------+
-|  `TEB Controller`_       | Christoph Rösmann  | A MPC-like controller suitable   |
-|                          |                    | for ackermann, differential, and |
-|                          |                    | holonomic robots.                |
-+--------------------------+--------------------+----------------------------------+
++--------------------------+--------------------+----------------------------------+-----------------------+
+|      Plugin Name         |       Creator      |       Description                | Drivetrain support    |
++==========================+====================+==================================+=======================+
+|  `DWB Controller`_       | David Lu!!         | A highly configurable  DWA       | Differential,         |
+|                          |                    | implementation with plugin       | Omnidirectional,      |
+|                          |                    | interfaces                       | Legged                |
++--------------------------+--------------------+----------------------------------+-----------------------+
+|  `TEB Controller`_       | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
+|                          |                    | for ackermann, differential, and | Omnidirectional,      |
+|                          |                    | holonomic robots.                | Legged,               |
++--------------------------+--------------------+----------------------------------+-----------------------+
 
 .. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
 .. _TEB Controller: https://github.com/rst-tu-dortmund/teb_local_planner
@@ -87,16 +87,32 @@ Controllers
 Planners
 ========
 
-+-------------------+---------------------------------------+------------------------------+
-| Plugin Name       |         Creator                       |       Description            |
-+===================+=======================================+==============================+
-|  `NavFn Planner`_ | Eitan Marder-Eppstein & Kurt Konolige | A navigation function        |
-|                   |                                       | using A* or Dijkstras        |
-|                   |                                       | expansion, assumes 2D        |
-|                   |                                       | holonomic particle           |
-+-------------------+---------------------------------------+------------------------------+
++-------------------+---------------------------------------+------------------------------+---------------------+
+| Plugin Name       |         Creator                       |       Description            | Drivetrain support  |
++===================+=======================================+==============================+=====================+
+|  `NavFn Planner`_ | Eitan Marder-Eppstein & Kurt Konolige | A navigation function        | Differential,       |
+|                   |                                       | using A* or Dijkstras        | Omnidirectional,    |
+|                   |                                       | expansion, assumes 2D        | Legged              |
+|                   |                                       | holonomic particle           |                     |
++-------------------+---------------------------------------+------------------------------+---------------------+
+|  `SmacPlanner`_   | Steve Macenski                        | A SE2 Hybrid-A*              | **Ackermann**,      |
+|                   |                                       | implementation using either  | Differential,       |
+|                   |                                       | Dubin or Reeds-shepp motion  | Omnidirectional,    |
+|                   |                                       | models with smoother and     | Legged              |
+|                   |                                       | multi-resolution query.      |                     |
+|                   |                                       | Cars, car-like, and          |                     |
+|                   |                                       | ackermann vehicles.          |                     |
++-------------------+---------------------------------------+------------------------------+---------------------+
+|  `SmacPlanner2D`_ | Steve Macenski                        | A 2D A* implementation       | Differential,       |
+|                   |                                       | Using either 4 or 8          | Omnidirectional,    |
+|                   |                                       | connected neighborhoods      | Legged              |
+|                   |                                       | with smoother and            |                     |
+|                   |                                       | multi-resolution query       |                     |
++-------------------+---------------------------------------+------------------------------+---------------------+
 
 .. _NavFn Planner: https://github.com/ros-planning/navigation2/tree/main/nav2_navfn_planner
+.. _SmacPlanner: https://github.com/ros-planning/navigation2/tree/main/smac_planner
+.. _SmacPlanner2D: https://github.com/ros-planning/navigation2/tree/main/smac_planner
 
 Recoveries
 ==========
