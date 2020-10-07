@@ -16,6 +16,7 @@ the best navigation performance.
    packages/configuring-lifecycle.rst
    packages/configuring-planner-server.rst
    packages/configuring-navfn.rst
+   packages/configuring-smac-planner.rst
    packages/configuring-controller-server.rst
    packages/configuring-dwb-controller.rst
    packages/configuring-map-server.rst

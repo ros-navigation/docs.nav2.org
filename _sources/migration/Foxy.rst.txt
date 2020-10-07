@@ -38,3 +38,12 @@ Architecturally, costmap filters consists from ``CostmapFilter`` class which is 
 Each costmap filter subscribes to filter info topic (publishing by `Costmap Filter Info Publisher Server <https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info>`_) having all necessary information for loaded costmap filter and filter mask topic.
 
 High-level design of this concept could be found `here <https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf>`_. The functionality of costmap filters is being disscussed in `the ticket #1263 <https://github.com/ros-planning/navigation2/issues/1263>`_ and carried out by `PR #1882 <https://github.com/ros-planning/navigation2/pull/1882>`_. The following tutorial: :ref:`navigation2_with_keepout_filter` will help to easily get involved with ``KeepoutFilter`` functionality.
+
+SmacPlanner
+***********
+
+A new package, ``SmacPlanner`` was added containing 4 or 8 connected 2D A*, and Dubin and Reed-shepp model hybrid-A* with smoothing, multi-resolution query, and more.
+
+The ``smac_planner`` package contains an optimized templated A* search algorithm used to create multiple A*-based planners for multiple types of robot platforms. We support differential-drive and omni-directional drive robots using the ``SmacPlanner2D`` planner which implements a cost-aware A* planner. We support cars, car-like, and ackermann vehicles using the ``SmacPlanner`` plugin which implements a Hybrid-A* planner. This plugin is also useful for curvature constrained planning, like when planning robot at high speeds to make sure they don't flip over or otherwise skid out of control.
+
+The `SmacPlanner` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.
