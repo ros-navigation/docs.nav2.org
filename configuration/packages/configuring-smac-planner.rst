@@ -173,7 +173,7 @@ Parameters
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 1.1         
+  double 1.05         
   ====== =======
 
   Description
@@ -390,7 +390,7 @@ Example
           minimum_turning_radius: 0.20      # For SE2 node & smoother: minimum turning radius in m of path / vehicle
           reverse_penalty: 2.1              # For Reeds-Shepp model: penalty to apply if motion is reversing, must be => 1
           change_penalty: 0.20              # For SE2 node: penalty to apply if motion is changing directions, must be >= 0
-          non_straight_penalty: 1.10        # For SE2 node: penalty to apply if motion is non-straight, must be => 1
+          non_straight_penalty: 1.05        # For SE2 node: penalty to apply if motion is non-straight, must be => 1
           cost_penalty: 1.3                 # For SE2 node: penalty to apply to higher cost zones
 
           smoother:
