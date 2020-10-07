@@ -8,7 +8,7 @@ Source code and README with design, explanations, and metrics can be found on Gi
 .. _Github: https://github.com/ros-planning/navigation2/tree/main/smac_planner
 
 The Smac Planner plugin implements a 2D A* and Hybrid-A* path planners.
-An example of the Hyrid-A* planner can be seen below, planning a 85 meter path in 73ms.
+An example of the Hyrid-A* planner can be seen below, planning a 85 meter path in 33ms.
 
 .. image:: smac/path.png
     :width: 640px
