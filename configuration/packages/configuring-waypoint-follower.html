@@ -47,7 +47,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Behavior-Tree Navigator" href="configuring-bt-navigator.html" />
+    <link rel="next" title="WaitAtWaypoint" href="nav2_waypoint_follower-plugins/wait_at_waypoint.html" />
     <link rel="prev" title="Configuration Guide" href="../index.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
@@ -319,6 +319,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration Guide</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Waypoint Follower</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -500,6 +505,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
 </ul>
@@ -649,9 +655,42 @@ If a waypoint is not achievable, the <code class="docutils literal notranslate">
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Rate to check for results from current navigation task.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">waypoint_task_executor_plugin:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>‘waypoint_task_executor’</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">A plugin to define tasks to be executed when robot arrives to a waypoint.</p>
+</dd>
+<dt>Note</dt>
+<dd><p class="first">The plugin namespace defined needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<p>Example:</p>
+<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">waypoint_follower</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span> <span class="s">&quot;waypoint_task_executor&quot;</span>
+    <span class="nt">waypoint_task_executor</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_waypoint_follower::WaitAtWaypoint&quot;</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </td>
@@ -659,12 +698,46 @@ If a waypoint is not achievable, the <code class="docutils literal notranslate">
 </tbody>
 </table>
 </div>
+<div class="section" id="provided-plugins">
+<h2>Provided Plugins<a class="headerlink" href="#provided-plugins" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The plugins listed below are inside the <code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> namespace.</div></blockquote>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="default-plugins">
+<h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Namespace</td>
+<td>Plugin</td>
+</tr>
+<tr class="row-even"><td>“waypoint_task_executor”</td>
+<td>“nav2_waypoint_follower::WaitAtWaypoint”</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">waypoint_follower</span><span class="p">:</span>
   <span class="nt">ros__parameters</span><span class="p">:</span>
     <span class="nt">loop_rate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
     <span class="nt">stop_on_failure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span> <span class="s">&quot;waypoint_task_executor&quot;</span>
+      <span class="nt">waypoint_task_executor</span><span class="p">:</span>
+        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_waypoint_follower::WaitAtWaypoint&quot;</span>
+          <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+          <span class="nt">waypoint_pause_duration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 </pre></div>
 </div>
 </div>

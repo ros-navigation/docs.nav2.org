@@ -319,6 +319,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html">Waypoint Follower</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#example">Example</a></li>
 </ul>
 </li>
@@ -500,6 +505,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner">SmacPlanner</a></li>
 </ul>
@@ -618,6 +624,34 @@
 <p><code class="docutils literal notranslate"><span class="pre">speed</span></code> in a backup recovery goal should be positive indicating the speed with which to drive backward.
 <code class="docutils literal notranslate"><span class="pre">target.x</span></code> in a backup recovery goal should be positive indicating the distance to drive backward.
 In both cases negative values are silently inverted.</p>
+</div>
+<div class="section" id="new-plugins">
+<h2>New Plugins<a class="headerlink" href="#new-plugins" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> has an action server that takes in a list of waypoints to follow and follow them in order. In some cases we might want robot to
+perform some tasks/behaviours at arrivals of these waypoints. In order to perform such tasks, a generic plugin interface <cite>WaypointTaskExecutor</cite> has been added to <code class="docutils literal notranslate"><span class="pre">nav2_core</span></code>.
+Users can inherit from this interface to implement their own plugin to perform more specific tasks at waypoint arrivals for their needs. An example implementation <cite>WaitAtWaypoint</cite>, is included in
+<code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> as a run-time loadable plugin. <cite>WaitAtWaypoint</cite> simply lets robot to pause for a specified amount of time in milliseconds, at waypoint arrivals. Loading a plugin of this type
+is done through <cite>nav2_bringup/params/nav2_param.yaml</cite>, by specifying plugin’s name, type and it’s used parameters.</p>
+<p>For instance;
+.. code-block:: yaml</p>
+<blockquote>
+<div><p>waypoint_follower:
+ros__parameters:</p>
+<blockquote>
+<div><p>loop_rate: 20
+stop_on_failure: false
+waypoint_task_executor_plugin: “waypoint_task_executor”
+waypoint_task_executor:</p>
+<blockquote>
+<div>plugin: “nav2_waypoint_follower::WaitAtWaypoint”
+enabled: True
+waypoint_pause_duration: 0</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Original GitHub tickets:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1993">WaypointTaskExecutor</a></li>
+</ul>
 </div>
 <div class="section" id="costmap-filters">
 <h2>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this headline">¶</a></h2>

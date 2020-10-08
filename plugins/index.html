@@ -319,6 +319,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html">Waypoint Follower</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#example">Example</a></li>
 </ul>
 </li>
@@ -500,6 +505,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
 </ul>
@@ -1013,6 +1019,34 @@ first and then return its value</td>
 <td>Mohammad Haghighipanah</td>
 <td>Will tick <code class="docutils literal notranslate"><span class="pre">i</span></code> th child until
 a result and move on to <code class="docutils literal notranslate"><span class="pre">i+1</span></code></td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="27%" />
+<col width="10%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Waypoint Follower Plugin Name</th>
+<th class="head">Creator</th>
+<th class="head" colspan="2">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp">Waypoint Task Executor</a></td>
+<td colspan="3"><dl class="first last docutils">
+<dt>Fetullah Atas          | A plugin interface to define</dt>
+<dd><div class="first last line-block">
+<div class="line">specific tasks to be executed on</div>
+<div class="line">waypoint arrivals.</div>
+<div class="line"><br /></div>
+</div>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
