@@ -219,7 +219,7 @@ When you are done with GDB, type ``quit`` and it will exit the session and kill 
 It may ask you if you want to kill some threads at the end, say yes.
 
 Automatic backtrace on crash
-===========
+============================
 
 The `backward-cpp <https://github.com/bombela/backward-cpp>`_ library provides beautiful stack traces, and the `backward_ros <https://github.com/pal-robotics/backward_ros/tree/foxy-devel>`_ wrapper simplifies its integration.
 
