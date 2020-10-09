@@ -145,6 +145,55 @@ Recoveries
 .. _Wait: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins
 .. _Clear Costmap: https://github.com/ros-planning/navigation2/blob/main/nav2_costmap_2d/src/clear_costmap_service.cpp
 
+Waypoint Task Executors
+=======================
+
++---------------------------------+------------------------+----------------------------------+
+|        Plugin Name              |         Creator        |       Description                |
++=================================+========================+==================================+
+| `WaitAtWaypoint`_               | Fetullah Atas          | A plugin interface to define     |
+|                                 |                        | specific tasks to be executed on |
+|                                 |                        | waypoint arrivals.               |
+|                                 |                        |                                  |
++---------------------------------+------------------------+----------------------------------+
+
+.. _WaitAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
+
+Goal Checkers
+=============
+
++---------------------------------+------------------------+----------------------------------+
+|     Plugin Name                 |         Creator        |       Description                |
++=================================+========================+==================================+
+| `SimpleGoalChecker`_            | David Lu!!             | A plugin check whether robot     |
+|                                 |                        | is within translational distance |
+|                                 |                        | and rotational distance of goal. |
+|                                 |                        |                                  |
++---------------------------------+------------------------+----------------------------------+
+| `StoppedGoalChecker`_           | David Lu!!             | A plugin check whether robot     |
+|                                 |                        | is within translational distance |
+|                                 |                        | , rotational distance of goal,   |
+|                                 |                        | and velocity threshold.          |
++---------------------------------+------------------------+----------------------------------+
+
+.. _SimpleGoalChecker: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
+.. _StoppedGoalChecker: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
+
+Progress Checkers
+=================
+
++---------------------------------+------------------------+----------------------------------+
+|         Plugin Name             |         Creator        |       Description                |
++=================================+========================+==================================+
+| `SimpleProgressChecker`_        | David Lu!!             | A plugin to check whether the    |
+|                                 |                        | robot was able to move a minimum |
+|                                 |                        | distance in a given time to      |
+|                                 |                        | make progress towards a goal     |
++---------------------------------+------------------------+----------------------------------+
+
+.. _SimpleProgressChecker: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/simple_progress_checker.cpp
+
+
 Behavior Tree Nodes
 ===================
 
@@ -270,14 +319,3 @@ Behavior Tree Nodes
 .. _Pipeline Sequence: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
 .. _Recovery: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
 .. _Round Robin: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp
-
-+---------------------------------+------------------------+----------------------------------+
-| Waypoint Follower Plugin Name   |         Creator        |       Description                |
-+=================================+========================+==================================+
-| `Waypoint Task Executor`_       | Fetullah Atas          | A plugin interface to define     |
-|                                 |                        | specific tasks to be executed on |
-|                                 |                        | waypoint arrivals.               |
-|                                 |                        |                                  |            
-+---------------------------------+------------------------+----------------------------------+
-
-.. _Waypoint Task Executor: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
