@@ -151,8 +151,8 @@ Waypoint Task Executors
 +---------------------------------+------------------------+----------------------------------+
 |        Plugin Name              |         Creator        |       Description                |
 +=================================+========================+==================================+
-| `WaitAtWaypoint`_               | Fetullah Atas          | A plugin interface to define     |
-|                                 |                        | specific tasks to be executed on |
+| `WaitAtWaypoint`_               | Fetullah Atas          | A plugin to execute a wait       |
+|                                 |                        | behavior  on                     |
 |                                 |                        | waypoint arrivals.               |
 |                                 |                        |                                  |
 +---------------------------------+------------------------+----------------------------------+
