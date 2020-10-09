@@ -481,6 +481,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#controllers">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#planners">Planners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#recoveries">Recoveries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#waypoint-task-executors">Waypoint Task Executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#goal-checkers">Goal Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#progress-checkers">Progress Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#behavior-tree-nodes">Behavior Tree Nodes</a></li>
 </ul>
 </li>
@@ -835,6 +838,86 @@ or getting more sensor data</td>
 </tbody>
 </table>
 </div>
+<div class="section" id="waypoint-task-executors">
+<h2>Waypoint Task Executors<a class="headerlink" href="#waypoint-task-executors" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="26%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Plugin Name</th>
+<th class="head">Creator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp">WaitAtWaypoint</a></td>
+<td>Fetullah Atas</td>
+<td>A plugin to execute a wait
+behavior  on
+waypoint arrivals.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="goal-checkers">
+<h2>Goal Checkers<a class="headerlink" href="#goal-checkers" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="26%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Plugin Name</th>
+<th class="head">Creator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp">SimpleGoalChecker</a></td>
+<td>David Lu!!</td>
+<td>A plugin check whether robot
+is within translational distance
+and rotational distance of goal.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp">StoppedGoalChecker</a></td>
+<td>David Lu!!</td>
+<td>A plugin check whether robot
+is within translational distance
+, rotational distance of goal,
+and velocity threshold.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="progress-checkers">
+<h2>Progress Checkers<a class="headerlink" href="#progress-checkers" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="26%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Plugin Name</th>
+<th class="head">Creator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/simple_progress_checker.cpp">SimpleProgressChecker</a></td>
+<td>David Lu!!</td>
+<td>A plugin to check whether the
+robot was able to move a minimum
+distance in a given time to
+make progress towards a goal</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="behavior-tree-nodes">
 <h2>Behavior Tree Nodes<a class="headerlink" href="#behavior-tree-nodes" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -1020,27 +1103,6 @@ first and then return its value</td>
 <td>Mohammad Haghighipanah</td>
 <td>Will tick <code class="docutils literal notranslate"><span class="pre">i</span></code> th child until
 a result and move on to <code class="docutils literal notranslate"><span class="pre">i+1</span></code></td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
-<colgroup>
-<col width="36%" />
-<col width="26%" />
-<col width="37%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Waypoint Follower Plugin Name</th>
-<th class="head">Creator</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp">Waypoint Task Executor</a></td>
-<td>Fetullah Atas</td>
-<td>A plugin interface to define
-specific tasks to be executed on
-waypoint arrivals.</td>
 </tr>
 </tbody>
 </table>

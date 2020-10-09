@@ -481,6 +481,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#controllers">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#planners">Planners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#recoveries">Recoveries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#goal-checkers">Goal Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#progress-checkers">Progress Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
 </ul>
 </li>
@@ -636,18 +639,22 @@ is done through <cite>nav2_bringup/params/nav2_param.yaml</cite>, by specifying 
 <p>For instance;
 .. code-block:: yaml</p>
 <blockquote>
-<div><p>waypoint_follower:
-ros__parameters:</p>
-<blockquote>
-<div><p>loop_rate: 20
+<div><dl class="docutils">
+<dt>waypoint_follower:</dt>
+<dd><dl class="first last docutils">
+<dt>ros__parameters:</dt>
+<dd><p class="first">loop_rate: 20
 stop_on_failure: false
 waypoint_task_executor_plugin: “waypoint_task_executor”
 waypoint_task_executor:</p>
-<blockquote>
+<blockquote class="last">
 <div>plugin: “nav2_waypoint_follower::WaitAtWaypoint”
 enabled: True
 waypoint_pause_duration: 0</div></blockquote>
-</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
 </div></blockquote>
 <p>Original GitHub tickets:</p>
 <ul class="simple">

@@ -37,14 +37,14 @@ For instance;
 .. code-block:: yaml
 
     waypoint_follower:
-    ros__parameters:
+      ros__parameters:
         loop_rate: 20
         stop_on_failure: false
-        waypoint_task_executor_plugin: "waypoint_task_executor"   
+        waypoint_task_executor_plugin: "waypoint_task_executor"
         waypoint_task_executor:
-            plugin: "nav2_waypoint_follower::WaitAtWaypoint"
-            enabled: True
-            waypoint_pause_duration: 0
+          plugin: "nav2_waypoint_follower::WaitAtWaypoint"
+          enabled: True
+          waypoint_pause_duration: 0
 
 Original GitHub tickets:
 
