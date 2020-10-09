@@ -189,6 +189,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#from-a-node">From a Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#from-a-launch-file">From a Launch File</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#from-navigation2-bringup">From Navigation2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
@@ -615,6 +616,7 @@
 <li><a class="reference internal" href="#from-a-node">From a Node</a></li>
 <li><a class="reference internal" href="#from-a-launch-file">From a Launch File</a></li>
 <li><a class="reference internal" href="#from-navigation2-bringup">From Navigation2 Bringup</a></li>
+<li><a class="reference internal" href="#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
@@ -781,6 +783,11 @@ See the example trace in the section above for an example.</p>
 Then you can deduce why it crashed.
 When you are done with GDB, type <code class="docutils literal notranslate"><span class="pre">quit</span></code> and it will exit the session and kill any processes still up.
 It may ask you if you want to kill some threads at the end, say yes.</p>
+</div>
+<div class="section" id="automatic-backtrace-on-crash">
+<h2>Automatic backtrace on crash<a class="headerlink" href="#automatic-backtrace-on-crash" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/bombela/backward-cpp">backward-cpp</a> library provides beautiful stack traces, and the <a class="reference external" href="https://github.com/pal-robotics/backward_ros/tree/foxy-devel">backward_ros</a> wrapper simplifies its integration.</p>
+<p>Just add it as a dependency and <cite>find_package</cite> it in your CMakeLists and the backward libraries will be injected in all your executables and libraries.</p>
 </div>
 </div>
 

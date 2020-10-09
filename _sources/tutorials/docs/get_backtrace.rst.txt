@@ -8,6 +8,7 @@ Get Backtrace in ROS2 / Nav2
 - `From a Node`_
 - `From a Launch File`_
 - `From Navigation2 Bringup`_
+- `Automatic backtrace on crash`_
 
 Overview
 ========
@@ -216,3 +217,10 @@ These traces take some time to get used to reading, but in general, start at the
 Then you can deduce why it crashed.
 When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
 It may ask you if you want to kill some threads at the end, say yes.
+
+Automatic backtrace on crash
+============================
+
+The `backward-cpp <https://github.com/bombela/backward-cpp>`_ library provides beautiful stack traces, and the `backward_ros <https://github.com/pal-robotics/backward_ros/tree/foxy-devel>`_ wrapper simplifies its integration.
+
+Just add it as a dependency and `find_package` it in your CMakeLists and the backward libraries will be injected in all your executables and libraries.
