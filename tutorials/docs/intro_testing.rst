@@ -326,8 +326,32 @@ Think about adding tests that exceed your own focus and help improve nav2/ros2 r
 The report above is an automated post by codecov.io-bot on github that posts results of CI automatically for every new PR.
 Please consider helping increase the code coverage and use the opportunity to learn more about the internals of the navigation2 stack! 
 
-.. 
-.. 
+Alternatively, if you want to track your code coverage before uploading your changes as a PR on the nav2 git, 
+you can manually check your code coverage report with these steps:
+
+.. code-block:: bash
+
+  1. Build with GCOV enabled - only package granular or complete workspace
+  $ cd ~/navigation2_ws/
+  $ colcon build --symlink-install [--packages-select nav2_map_server] --cmake-args -DCMAKE_CXX_FLAGS='--coverage' -DCMAKE_C_FLAGS='--coverage'
+
+  2. Run testcases manually - keep in mind that system wide tests can also improve your test-coverage!
+  $ colcon test [--packages-select <pkg-name>]
+
+  3. Run LCOV to get html-file
+  $ lcov --capture --directory build/[nav2_map_server/CMakeFiles/map_server_core.dir/src/costmap_filter_info] --output-file coverage.info
+  $ genhtml coverage.info --output-directory out
+  $ firefox out/index.html
+
+
+In order to get the specificy directory of a specific package for LCOV with the required ``*.gcda`` file:
+
+.. code-block:: bash
+
+  $ find "build/<pkg_name>" -name "*.gcda"
+
+Alternatively just use the full build folder when building the full code stack with the given ``cmake-args``.
+   
 .. 
 .. 
 .. 
@@ -398,4 +422,4 @@ Here is an example showing a small feature set of the capability of the launch s
   # print (data['planner_server']['ros__parameters']['GridBased']['use_astar'])
 
 
-This can also be investigated in a real scenario in the nav2-CI test. Just have a look at the ``nav2_system_tests`` test for the whole system `here <https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests/src/system>`_.
+This can also be investigated in a real scenario in the nav2-CI test. Just have a look at the ``nav2_system_tests`` `test for the whole system <https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests/src/system>`_.
