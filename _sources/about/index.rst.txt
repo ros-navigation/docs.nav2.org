@@ -7,6 +7,7 @@ About and Contact
    :hidden:
 
    robots.rst
+   related_projects.rst
    ros1_comparison.rst
 
 About
