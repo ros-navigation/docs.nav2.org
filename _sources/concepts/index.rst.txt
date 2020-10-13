@@ -176,6 +176,25 @@ Backing up or spinning in place, if permissible, allow the robot to move from a 
 Finally, in the case of a total failure, a recovery may be implemented to call an operators attention for help.
 This can be done with email, SMS, Slack, Matrix, etc.
 
+Waypoint Following
+==================
+
+Waypoint following is a basic feature of a navigation system. It tells our system how to use navigation to get to multiple destinations.
+
+The ``nav2_waypoint_follower`` contains a waypoint following program with a plugin interface for specific task executors.
+This is useful if you need to go to a given location and complete a specific task like take a picture, pick up a box, or wait for user input.
+It is a nice demo application for how to use navigation2 in a sample application.
+
+However, it could be used for more than just a sample application.
+There are 2 schools of thoughts for fleet managers / dispatchers.
+- Dumb robot; smart centralized dispatcher
+- Smart robot; dumb centralized dispatcher
+
+In the first, the ``nav2_waypoint_follower`` is fully sufficient to create a production-grade on-robot solution. Since the autonomy system / dispatcher is taking into account things like the robot's pose, battery level, current task, and more when assigning tasks, the application on the robot just needs to worry about the task at hand and not the other complexities of the system complete the requested task. In this situation, you should think of a request to the waypoint follower as 1 unit of work (e.g. 1 pick in a warehouse, 1 security patrole loop, 1 aisle, etc) to do a task and then return to the dispatcher for the next task or request to recharge. In this school of thought, the waypoint following application is just one step above navigation and below the system autonomy application.
+
+In the second, the ``nav2_waypoint_follower`` is a nice sample application / proof of concept, but you really need your waypoint following / autonomy system on the robot to carry more weight in making a robust solution. In this case, you should use the ``nav2_behavior_tree`` package to create a custom application-level behavior tree using navigation to complete the task. This can include subtrees like checking for the charge status mid-task for returning to dock or handling more than 1 unit of work in a more complex task. Soon, there will be a ``nav2_bt_waypoint_follower`` (name subject to adjustment) that will allow you to create this application more easily. In this school of thought, the waypoint following application is more closely tied to the system autonomy, or in many cases, is the system autonomy.
+
+Neither is better than the other, it highly depends on the tasks your robot(s) are completing, in what type of environment, and with what cloud resources available. Often this distinction is very clear for a given business case.
 
 State Estimation
 ****************

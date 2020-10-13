@@ -9,6 +9,7 @@ Source code on Github_.
 
 The Waypoint Follower module implements a way of doing waypoint following using the NavigateToPose action server.
 It will take in a set of ordered waypoints to follow and then try to navigate to them in order.
+It also hosts a waypoint task executor plugin which can be used to perform custom behavior at a waypoint like waiting for user instruction, taking a picture, or picking up a box.
 If a waypoint is not achievable, the ``stop_on_failure`` parameter will determine whether to continue to the next point or stop.
 
 Parameters

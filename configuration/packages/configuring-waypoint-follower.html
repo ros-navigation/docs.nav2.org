@@ -160,6 +160,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#planners">Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#controllers">Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#recoveries">Recoveries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#waypoint-following">Waypoint Following</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#state-estimation">State Estimation</a><ul>
@@ -617,6 +618,7 @@
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower">Github</a>.</p>
 <p>The Waypoint Follower module implements a way of doing waypoint following using the NavigateToPose action server.
 It will take in a set of ordered waypoints to follow and then try to navigate to them in order.
+It also hosts a waypoint task executor plugin which can be used to perform custom behavior at a waypoint like waiting for user instruction, taking a picture, or picking up a box.
 If a waypoint is not achievable, the <code class="docutils literal notranslate"><span class="pre">stop_on_failure</span></code> parameter will determine whether to continue to the next point or stop.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
