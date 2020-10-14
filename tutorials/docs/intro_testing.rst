@@ -73,7 +73,7 @@ To run all tests of the complete nav2 stack, you can also use ``colcon`` for con
   $ colcon test
   
 Now you should see a couple of tests run in your command line. After they have finished, 
-``colcon``outputs with the optional flag ``--event-handlers console_direct+`` an report about the tests.
+``colcon`` outputs with the optional flag ``--event-handlers console_direct+`` an report about the tests.
 This looks something like this:
 
 .. code-block:: bash
@@ -95,8 +95,8 @@ This looks something like this:
 
 
 You can see that in this case 30 individual tests did run without any errors.
-Besides the 24 `gtest` tests that represent functional tests, there are also 6 tests of another kind.
-Those 6 other tests are `linters`.
+Besides the 24 `gtest` tests that represent functional tests, there are also 12 tests of another kind.
+Those other tests are `linters`.
 
 2. What are Linters?
 --------------------
@@ -161,12 +161,13 @@ For example with the ``nav2_system_tests`` package, the value for a valid regex 
 This would include all tests for behavior tree related tests. Also, respectively the keyword ``planner`` 
 or another full name keyword would run the specific test you want to run. 
 You can find the name of a certain test by running all tests of the desired package with the option 
-``$ colcon test --event-handlers console_direct+ <...>`` or look the name up in the corresponding ``CMakeList.txt`` 
+``$ colcon test --event-handlers console_direct+ [<...>]`` or look the name up in the corresponding ``CMakeList.txt`` 
 of the test sub-directory of the package you are currently working with. 
 
 How to Write Your First Test
 ============================
-After dealing with working and understanding the existing tests on a higher level, it is time to focus on add and writing your own tests.
+After dealing with working and understanding the existing tests on a higher level, 
+it is time to focus on adding and writing your own tests.
 There are multiple packages your test might fit in. So it is important to plan your next steps.
 After you chose the direction you want to head into, you have to decide between an unit-test or a launch-based test.
 
@@ -179,22 +180,22 @@ After you chose the direction you want to head into, you have to decide between 
 
 **What makes a good test?**
 
-- Code Coverage: Are all my new code lines run at least once with my test? (check with codecov.io automated with each PR on github)
+- Code Coverage: Are all my new code lines run at least once with my test? (check manually or with codecov.io automated with each PR on github)
 - Corner Cases: Monkey proof input, test the limits (overflow etc)
 - Expect things to break: this is good! -> make sure to catch all errors and handle them accordingly
 - Combine your components with other test: If feasible create corner scenarios where your code really should improve things
-- Quantity over complexity: Better write multiple tests than make them to complicate so others cannot understand why it fails in the future
+- Quantity over complexity: Better write multiple small tests rather than making them to complicate, so others cannot understand why it fails in the future
 
 **What tools do I have?**
 
 - look and learn from existing code in the nav2 stack, we have plenty of tests!
-- play with different launch parameters: Have a look at overwriting them in the next section
+- play with different launch parameters: Have a look at overwriting them test-dependent in the last next section
 
 2. Write Your First Test
 ------------------------
 
-Tests are declared in individual ``CMakeList.txt`` files in the test sub-folders of components or in ``nav2_system_tests``.
-To add a new test besides the linters mentioned in the chapter before, we have to add them in the ``BUILD_TESTING`` condition.
+Tests need to be declared in individual ``CMakeList.txt`` files in the test sub-folders of components or in ``nav2_system_tests``.
+To add a new test additional to the linters mentioned in the chapter before, we have to add them in the ``BUILD_TESTING`` condition.
 
 This can be achieved by two methods to include multiple sub-folders with ``CMakeList.txt`` inside:
 
@@ -217,7 +218,7 @@ This can be achieved by two methods to include multiple sub-folders with ``CMake
 
       # or 
       add_subdirectory(folder)
-      # this one CMakeList.txt inside of this folder will then include the rest of the folders with CMakeList.txt
+      # this one CMakeList.txt inside of this folder will then include the rest of the folders with their respective CMakeList.txt files
 
     endif()
 
@@ -245,7 +246,7 @@ Interesting to note are the free set-able environment variables that can later b
       GROOT_MONITORING=True
   )
 
-This `cmake` macro ``ament_add_test()`` can handle raw `pytests`. Arguments are line or white-space seperated.
+This `cmake` macro ``ament_add_test()`` can handle raw `pytests`. Arguments are line or white-space separated.
 The first argument is the name of your new test, which can later than be used as a `regex` search keyword to only run your new test.
 The ``GENERATE_RESULT_FOR_RETURN_CODE_ZERO`` is a flag for `pytest` and necessary for this process.
 ``COMMAND`` describes the `pytest` entry point for your test.
@@ -257,7 +258,7 @@ In combination of ``RewrittenYaml()`` from our ``nav2_common`` package,
 we can use this to rewrite default parameters from the main ``params.yaml`` with a few easy steps.
 A small example for this can be seen in the last section ``Tips & Tricks for Writing Tests``. 
 
-Now, we added a few parameters and made sure that the parameters for launching our nodes are all setup correctly.
+Now, we add a few parameters and make sure that the parameters for launching our nodes are all setup correctly.
 The next step involves dealing with ``pytest`` and testers. This code is from the same file as the ``RewrittenYaml()`` refers to.
 
 .. code-block:: python
@@ -281,19 +282,21 @@ The next step involves dealing with ``pytest`` and testers. This code is from th
     return lts.run(ls)
 
 The next and final step would be to implement ``tester_node.py``. The node `here <https://github.com/ros-planning/navigation2/blob/main/nav2_system_tests/src/system/tester_node.py>`_ is quite a good example.
-It features argument groups to take various parameters as input that can be seen used in the code section above.
+It features argument groups to take various parameters as input that can be seen been used in the code section above.
 To name its core features: the test engages with multiple `lifecycle_nodes`, waits for all `action_servers` to be available, sends a goal,
-tests if the goal is reached. This is a great example to use when one must implement a new pytest with ROS2 integration.
+tests if the goal is reached. 
+
+This is a great example to use when one must implement a new pytest with ROS2 integration.
 
 .. note::
   When testing with launch files and testers also written with ``pytest``, it is possible to rerun tests 
   in between iterations of your test without rebuilding your work-space.
-  Although, this requires to build your package with ``$ colcon build --symlink-install``.
+  Although, this requires to build your package with ``$ colcon build --symlink-install [colcon build --packages-select <name-of-pkg>]`` .
   
 b) Unit Test - gtest
 """"""""""""""""""""
-This first example is for registering tests surrounding behavior tree actions.
-`Source for the c++ test with ``gtest`` <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/test/plugins/action/CMakeLists.txt>`_ 
+This ``CMakeList.txt`` example is for adding tests surrounding behavior tree actions.
+`Source for the c++ test with gtest <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/test/plugins/action/CMakeLists.txt>`_ 
 
 .. code-block:: cmake
 
@@ -305,17 +308,86 @@ This first example is for registering tests surrounding behavior tree actions.
   target_link_libraries(test_action_back_up_action nav2_back_up_action_bt_node)
   ament_target_dependencies(test_action_back_up_action ${dependencies})
 
+Starting with ``ament_add_gtest``, analog to the ``pytest`` `ament`-macro it is necessary to add your test. With ``ament_add_gtest`` 2 arguments are needed.
+The first is the name of the test also specified inside a cpp-file stating your test. 
+The second argument is the name of the cpp-file which includes the test with the given name.
+``target_link_libraries`` takes in the name of the new gtest (as target) and links libraries to it. 
+In the nav2 context this step is necessary if those tests run against plugins that where declared as libraries in a "parent" CMakeList.txt of the package.
+Also, libraries that are not already included into the ROS2 build system might be added this way (like map_io or other 3rd party libraries).
+Finally, with ``ament_target_dependencies`` the standard ROS dependencies are checked to be qualified before building the test.
 
+Another interesting example in combination with ``pytest`` would be the `map_server gtests <https://github.com/ros-planning/navigation2/blob/main/nav2_map_server/test/component/CMakeLists.txt>`_:
 
-3. Add Your Own Test
---------------------
+.. code-block:: cmake
 
+  ament_add_gtest_executable(test_map_saver_node
+    test_map_saver_node.cpp
+    ${PROJECT_SOURCE_DIR}/test/test_constants.cpp
+  )
 
+  ament_target_dependencies(test_map_saver_node rclcpp nav_msgs)
+  target_link_libraries(test_map_saver_node
+    ${library_name}
+    stdc++fs
+  )
 
+  # And now the interesting part
 
+  ament_add_test(test_map_saver_node
+    GENERATE_RESULT_FOR_RETURN_CODE_ZERO
+    COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/test_map_saver_launch.py"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
+    ENV
+      TEST_DIR=${TEST_DIR}
+      TEST_LAUNCH_DIR=${TEST_LAUNCH_DIR}
+      TEST_EXECUTABLE=$<TARGET_FILE:test_map_saver_node>
+  )
 
-5. Check Your Test with CI and Check Code Coverage
---------------------------------------------------
+This shows the usage of ``ament_add_gtest_executable`` in combination with a ``pytest``, which is quite interesting. 
+It always pays off to look into the existing ways of testing in nav2 before writing your own tests.
+
+Finally, now we have a look at the actual c++ code describing the test, `for example this gtest <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/test/plugins/condition/test_goal_reached.cpp>`_.
+Gtest is a really massive tool set, provided by Google. Explaining it from ground up would be overwhelming.
+While pointing towards the standard `Readme of googletest <https://github.com/google/googletest/blob/master/googletest/README.md>`_ and also a really simple `cpp based gtest <https://github.com/google/googletest/blob/master/googletest/samples/sample1_unittest.cc>`_, 
+in a nutshell using ``gtest`` depends multiple basic steps you must follow.
+In the behavior_tree example there are some setup and teardown routines included in the cpp. Those are relevant for the test setting itself but are not subject of any data-inputs that will be tested.
+There exists even ``SetUpTestCases`` routines to setup yet another more abstract layer for specific tests, `like in this bt test class <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/test/test_behavior_tree_fixture.hpp>`_.
+Generally, setup routines are not strictly needed by ``gtest``, but highly recommend in the context of complex architectures like ROS.
+
+`There exists some nuances in the TEST macros from gtest <https://stackoverflow.com/questions/58600728/what-is-the-difference-between-test-test-f-and-test-p>`_. 
+At the core functionality, the important part is always if certain conditions generate the expected behaviors. 
+This can be checked for example by the ``EXPECT_EQ()`` macro like so:
+
+.. code-block:: cpp
+
+  //...
+  TEST_F(GoalReachedConditionTestFixture, test_behavior)
+  {
+    EXPECT_EQ(tree_->tickRoot(), BT::NodeStatus::FAILURE);
+
+    geometry_msgs::msg::Pose pose;
+    pose.position.x = 0.0;
+    pose.position.y = 0.0;
+    transform_handler_->updateRobotPose(pose);
+    std::this_thread::sleep_for(500ms);
+    EXPECT_EQ(tree_->tickRoot(), BT::NodeStatus::FAILURE);
+
+    //...
+  }
+  //...
+
+To summarize some concrete implementation details. A unit test is declared in a dedicated cpp-file. 
+This file must be included in a CMakeList.txt file, as described above.
+One unit test mostly includes multiple checkpoints for multiple corner cases before ultimately failing or succeeding.
+Just one failed test is enough for the whole unit test to fail.
+Determining if a test passes a checkpoint is achieved by the ``EXPECT_EQ`` macro or similar ones.
+For this gtest-macro, the checkpoint only passes if both arguments contain the same value.
+
+This concludes the first jumping point inside the big field of unit tests in ROS2 with ``gtest`` and ``pytest``.
+For a deeper insight it is recommend to check the corresponding documentation of the given tools and learn from existing examples.
+
+3. Check Code Coverage locally or with CI
+-----------------------------------------
 
 .. image:: images/Testing/github_coverage_diff.png
     
@@ -344,21 +416,24 @@ you can manually check your code coverage report with these steps:
   $ firefox out/index.html
 
 
-In order to get the specificy directory of a specific package for LCOV with the required ``*.gcda`` file:
+In order to get the specific directory of a specific package for LCOV containing the required ``*.gcda`` file:
 
 .. code-block:: bash
 
   $ find "build/<pkg_name>" -name "*.gcda"
 
-Alternatively just use the full build folder when building the full code stack with the given ``cmake-args``.
-   
+Alternatively just use the full build folder when building the full code stack with the given ``cmake-args``. 
+(But this might as well include some non-nav2 specific tests)
+
+After checking the results of the different packages and exploring room for optimization, you might be interested into writing additional tests. 
+The section above might just help you with this!
 .. 
 .. 
 .. 
 
 Tips & Tricks for Writing Tests
 ===============================
-This section shall provide best practices and things not very obvious to a new test programmer.
+This informal section shall provide best practices and things not very obvious to a new test programmer.
 Also, consider checking out the tutorial about unit tests and integration tests with colcon provided by the autoware foundation, 
 `here for unit tests <https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/how-to-write-tests-and-measure-coverage.html>`_ and `here for integration tests <https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/integration-testing.html>`_.
 
