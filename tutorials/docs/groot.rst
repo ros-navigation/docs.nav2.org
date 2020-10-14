@@ -79,16 +79,10 @@ A step-by-step guide for simulation can look like this:
   6. press connect in the upper left corner (``Server IP``, ``Publisher Port``, and ``Server Port`` can all be left to the default for the simulation)
   7. the behavior tree should now be visible in Groot
   8. send a new goal to your robot (can also include a new behaviorTree.xml, which gets loaded automatically)
-  9. watch your robot drive in simulation and see how the behavior tree changes it nodes
+  9. watch your robot drive in simulation and see how Groot automatically watches the state of your behavior tree 
 
 Real world robots can easily be adapted to this. Just change the ``Server IP`` 
 and zmq network ports accordingly to your local environment.
 
 Reloading of the behavior tree in Groot is done on multiple occasions, 
-but only when a new behavior tree is loaded by nav2 or Groot is restarted.
-
-.. note::
-  Until the current PR gets accepted, for fixing additional corner cases where Groot must reload the behavior tree in order to match the the status information to the right behavior tree with the right ``uid``, 
-  it is necessary to use this `fork:branch <https://github.com/gramss/Groot/tree/fix-groot-reloading>`_ until the `respective PR <https://github.com/BehaviorTree/Groot/pull/96>`_ gets accepted.
-  
-
+but only when a new behavior tree is loaded by nav2 or Groot is restarted. More about `Groot reloading the BT <https://github.com/BehaviorTree/Groot/pull/96>`_ can be seen in the merged PR here.
