@@ -163,6 +163,8 @@ Waypoint Task Executors
 +---------------------------------+------------------------+----------------------------------+
 
 .. _WaitAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
+.. _PhotoAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/photo_at_waypoint.cpp
+
 
 Goal Checkers
 =============
