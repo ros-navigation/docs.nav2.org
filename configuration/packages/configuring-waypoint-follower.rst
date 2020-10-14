@@ -42,7 +42,7 @@ Parameters
   ============== ========================
   Type           Default
   -------------- ------------------------
-  string         'waypoint_task_executor'
+  string         'wait_at_waypoint'
   ============== ========================
 
   Description
@@ -57,9 +57,11 @@ Parameters
 
         waypoint_follower:
           ros__parameters:
-            waypoint_task_executor_plugin: "waypoint_task_executor"
-            waypoint_task_executor:
+            waypoint_task_executor_plugin: "wait_at_waypoint"
+            wait_at_waypoint:
               plugin: "nav2_waypoint_follower::WaitAtWaypoint"
+              enabled: True
+              waypoint_pause_duration: 0
     ..
 
 Provided Plugins
@@ -70,6 +72,7 @@ Provided Plugins
   :maxdepth: 1
 
   nav2_waypoint_follower-plugins/wait_at_waypoint.rst
+  nav2_waypoint_follower-plugins/photo_at_waypoint.rst
 
 
 Default Plugins
@@ -78,7 +81,9 @@ Default Plugins
   ========================== ===================================================
   Namespace                  Plugin
   -------------------------- ---------------------------------------------------
-  "waypoint_task_executor"   "nav2_waypoint_follower::WaitAtWaypoint"
+  "wait_at_waypoint"         "nav2_waypoint_follower::WaitAtWaypoint"
+    ------------------------ ---------------------------------------------------
+  "photo_at_waypoint"        "nav2_waypoint_follower::PhotoAtWaypoint"
   ========================== ===================================================
 
 Example
@@ -89,9 +94,14 @@ Example
       ros__parameters:
         loop_rate: 20
         stop_on_failure: false
-        waypoint_task_executor_plugin: "waypoint_task_executor"
-          waypoint_task_executor:
+        waypoint_task_executor_plugin: "wait_at_waypoint"
+          wait_at_waypoint:
             plugin: "nav2_waypoint_follower::WaitAtWaypoint"
-              enabled: True
-              waypoint_pause_duration: 0
-
+            enabled: True
+            waypoint_pause_duration: 0
+          photo_at_waypoint:
+            plugin: "nav2_waypoint_follower::PhotoAtWaypoint"
+            enabled: True
+            camera_image_topic_name: "/camera/color/image_raw"
+            save_images_dir: "/home/username/"
+            image_format: ".png"
