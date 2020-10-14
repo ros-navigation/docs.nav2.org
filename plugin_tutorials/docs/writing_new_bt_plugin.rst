@@ -169,7 +169,7 @@ In BehaviorTree.CPP, exporting and loading plugins is handled by the ``BT_REGIST
 In this macro, we must create a ``NodeBuilder`` so that our custom action node can have a non-default constructor signature (for the action and xml names).
 This lambda will return a unique pointer to the behavior tree node we have created.
 Fill in the constructor with the relavent information, giving it the ``name`` and ``config`` given in the function arguments.
-Then define the ROS 2 action server's name that this BT node will call, in this case, its the `wWait`` action.
+Then define the ROS 2 action server's name that this BT node will call, in this case, its the ``wait`` action.
 
 We finally give the builder to a factory to register.
 ``Wait`` given to the factory is the name in the behavior tree XML file that corresponds to this BT node plugin.
