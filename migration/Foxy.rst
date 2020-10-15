@@ -23,3 +23,11 @@ BackUp Recovery Interface Changes
 ``speed`` in a backup recovery goal should be positive indicating the speed with which to drive backward.
 ``target.x`` in a backup recovery goal should be positive indicating the distance to drive backward.
 In both cases negative values are silently inverted.
+
+Groot Support
+*************
+
+Live Monitoring and Editing of behavior trees with Groot is now possible.
+Switching bt-xmls on the fly through a new goal request is also included.
+Check out our Groot tutorial!
+This is all done without breaking any APIs. All options are off by default.
