@@ -32,6 +32,7 @@ Switching bt-xmls on the fly through a new goal request is also included.
 This is all done without breaking any APIs.
 Enabled by default.
 
+Check out our Groot tutorial!
 New Plugins
 ***********
 
