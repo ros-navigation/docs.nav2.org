@@ -31,11 +31,12 @@ New Plugins
 perform some tasks/behaviours at arrivals of these waypoints. In order to perform such tasks, a generic plugin interface `WaypointTaskExecutor` has been added to ``nav2_core``.
 Users can inherit from this interface to implement their own plugin to perform more specific tasks at waypoint arrivals for their needs. 
 
-Several example implementations are included in ``nav2_waypoint_follower``. `WaitAtWaypoint` and `PhotoAtWaypoint` plusings are included in 
-``nav2_waypoint_follower`` as run-time loadable plugins. `WaitAtWaypoint` simply lets robot to pause for a specified amount of time in milliseconds, at waypoint arrivals.
- While `PhotoAtWaypoint` takes photos at waypoint arrivals and saves the taken photos to specified directory.
+Several example implementations are included in ``nav2_waypoint_follower``. ``WaitAtWaypoint`` and ``PhotoAtWaypoint`` plusings are included in 
+``nav2_waypoint_follower`` as run-time loadable plugins. ``WaitAtWaypoint`` simply lets robot to pause for a specified amount of time in milliseconds, at waypoint arrivals.
+ While ``PhotoAtWaypoint`` takes photos at waypoint arrivals and saves the taken photos to specified directory, the format for taken photos also can be configured through parameters.
+ All major image formats such as ``.png``, ``.jpeg``, ``.jpg`` etc. are supported, the default format is ``.png``.
 
-Loading a plugin of this type is done through `nav2_bringup/params/nav2_param.yaml`, by specifying plugin's name, type and it's used parameters. 
+Loading a plugin of this type is done through ``nav2_bringup/params/nav2_param.yaml``, by specifying plugin's name, type and it's used parameters. 
 
 For instance; 
 .. code-block:: yaml
@@ -49,12 +50,6 @@ For instance;
             plugin: "nav2_waypoint_follower::WaitAtWaypoint"
             enabled: True
             waypoint_pause_duration: 0
-          photo_at_waypoint:
-            plugin: "nav2_waypoint_follower::PhotoAtWaypoint"
-            enabled: True
-            camera_image_topic_name: "/camera/color/image_raw"
-            save_images_dir: "/home/username/"
-            image_format: ".png"
 
 Original GitHub tickets:
 

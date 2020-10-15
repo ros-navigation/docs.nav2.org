@@ -75,15 +75,13 @@ Provided Plugins
   nav2_waypoint_follower-plugins/photo_at_waypoint.rst
 
 
-Default Plugins
+Default Plugin
 ***************
 
   ========================== ===================================================
   Namespace                  Plugin
   -------------------------- ---------------------------------------------------
   "wait_at_waypoint"         "nav2_waypoint_follower::WaitAtWaypoint"
-    ------------------------ ---------------------------------------------------
-  "photo_at_waypoint"        "nav2_waypoint_follower::PhotoAtWaypoint"
   ========================== ===================================================
 
 Example
@@ -99,9 +97,3 @@ Example
             plugin: "nav2_waypoint_follower::WaitAtWaypoint"
             enabled: True
             waypoint_pause_duration: 0
-          photo_at_waypoint:
-            plugin: "nav2_waypoint_follower::PhotoAtWaypoint"
-            enabled: True
-            camera_image_topic_name: "/camera/color/image_raw"
-            save_images_dir: "/home/username/"
-            image_format: ".png"

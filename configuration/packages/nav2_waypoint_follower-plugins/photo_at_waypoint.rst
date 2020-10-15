@@ -3,7 +3,9 @@
 PhotoAtWaypoint
 =================
 
-Run-time plugin that takes photos at waypoint arrivals when using waypoint follower node. Saves the taken photos to specified directory.
+Run-time plugin that takes photos at waypoint arrivals when using waypoint follower node. Saves the taken photos to specified directory. The name for taken photos are determined by 
+the waypoint index and timestamp(seconds). For instance ``/home/atas/0_1602582820.png`` is an sample taken image, where ``0_1602582820`` is the file name determined by waypoint 
+index and time stamp. The leading digit in file name implies the waypoint index and the rest of digits at righthand side imples the time stamp when the photo was taken.
 
 Parameters
 **********
