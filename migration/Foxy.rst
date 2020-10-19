@@ -34,7 +34,7 @@ Users can inherit from this interface to implement their own plugin to perform m
 Several example implementations are included in ``nav2_waypoint_follower``. ``WaitAtWaypoint`` and ``PhotoAtWaypoint`` plusings are included in 
 ``nav2_waypoint_follower`` as run-time loadable plugins. ``WaitAtWaypoint`` simply lets robot to pause for a specified amount of time in milliseconds, at waypoint arrivals.
  While ``PhotoAtWaypoint`` takes photos at waypoint arrivals and saves the taken photos to specified directory, the format for taken photos also can be configured through parameters.
- All major image formats such as ``.png``, ``.jpeg``, ``.jpg`` etc. are supported, the default format is ``.png``.
+ All major image formats such as ``png``, ``jpeg``, ``jpg`` etc. are supported, the default format is ``png``.
 
 Loading a plugin of this type is done through ``nav2_bringup/params/nav2_param.yaml``, by specifying plugin's name, type and it's used parameters. 
 
