@@ -40,7 +40,7 @@ Parameters
   ============== =============================
   Type           Default                                               
   -------------- -----------------------------
-  string         "/home/username/"          
+  string         "/tmp/waypoint_images"          
   ============== =============================
 
   Description
