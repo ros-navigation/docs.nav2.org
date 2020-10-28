@@ -70,6 +70,7 @@ Provided Plugins
   :maxdepth: 1
 
   nav2_waypoint_follower-plugins/wait_at_waypoint.rst
+  nav2_waypoint_follower-plugins/input_at_waypoint.rst
 
 
 Default Plugins

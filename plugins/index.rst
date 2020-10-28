@@ -156,8 +156,13 @@ Waypoint Task Executors
 |                                 |                        | waypoint arrivals.               |
 |                                 |                        |                                  |
 +---------------------------------+------------------------+----------------------------------+
+| `InputAtWaypoint`_              | Steve Macenski         | A plugin to wait for user input  |
+|                                 |                        | before moving onto the next      |
+|                                 |                        | waypoint.                        |
++---------------------------------+------------------------+----------------------------------+
 
 .. _WaitAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
+.. _InputAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/input_at_waypoint.cpp
 
 Goal Checkers
 =============
