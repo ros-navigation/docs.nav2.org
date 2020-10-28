@@ -49,6 +49,7 @@ For instance;
 Original GitHub tickets:
 
 - `WaypointTaskExecutor <https://github.com/ros-planning/navigation2/pull/1993>`_
+- `InputAtWaypoint <https://github.com/ros-planning/navigation2/pull/2049>`_
 
 Costmap Filters
 ***************
