@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GoalDistCritic &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>PhotoAtWaypoint &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="ObstacleFootprintCritic" href="obstacle_footprint.html" />
-    <link rel="prev" title="GoalAlignCritic" href="goal_align.html" />
+    <link rel="next" title="InputAtWaypoint" href="input_at_waypoint.html" />
+    <link rel="prev" title="WaitAtWaypoint" href="wait_at_waypoint.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -319,12 +319,12 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Configuration Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../configuring-waypoint-follower.html">Waypoint Follower</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuring-waypoint-follower.html">Waypoint Follower</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-waypoint-follower.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-waypoint-follower.html#provided-plugins">Provided Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../nav2_waypoint_follower-plugins/photo_at_waypoint.html">PhotoAtWaypoint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../nav2_waypoint_follower-plugins/input_at_waypoint.html">InputAtWaypoint</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-waypoint-follower.html#provided-plugins">Provided Plugins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="wait_at_waypoint.html">WaitAtWaypoint</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">PhotoAtWaypoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="input_at_waypoint.html">InputAtWaypoint</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-waypoint-follower.html#default-plugin">Default Plugin</a></li>
@@ -427,7 +427,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/controller.html">DWB Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/iterator.html">XYTheta Iterator</a></li>
@@ -440,17 +440,17 @@
 <li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="base_obstacle.html">BaseObstacleCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="goal_align.html">GoalAlignCritic</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">GoalDistCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="obstacle_footprint.html">ObstacleFootprintCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="oscillation.html">OscillationCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="path_align.html">PathAlignCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="path_dist.html">PathDistCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="prefer_forward.html">PreferForwardCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="rotate_to_goal.html">RotateToGoalCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="twirling.html">TwirlingCritic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/obstacle_footprint.html">ObstacleFootprintCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/oscillation.html">OscillationCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/path_align.html">PathAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/path_dist.html">PathDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/prefer_forward.html">PreferForwardCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/rotate_to_goal.html">RotateToGoalCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/twirling.html">TwirlingCritic</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#example">Example</a></li>
@@ -598,9 +598,9 @@
         
           <li><a href="../../index.html">Configuration Guide</a> &raquo;</li>
         
-          <li><a href="../configuring-dwb-controller.html">DWB Controller</a> &raquo;</li>
+          <li><a href="../configuring-waypoint-follower.html">Waypoint Follower</a> &raquo;</li>
         
-      <li>GoalDistCritic</li>
+      <li>PhotoAtWaypoint</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -617,63 +617,104 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="goaldistcritic">
-<span id="configuring-dwb-goal-dist"></span><h1>GoalDistCritic<a class="headerlink" href="#goaldistcritic" title="Permalink to this headline">¶</a></h1>
-<p>Scores a trajectory based on how close the trajectory gets the robot to the goal pose.</p>
+  <div class="section" id="photoatwaypoint">
+<span id="configuring-nav2-waypoint-follower-waypoint-task-execution-plugin"></span><h1>PhotoAtWaypoint<a class="headerlink" href="#photoatwaypoint" title="Permalink to this headline">¶</a></h1>
+<p>Run-time plugin that takes photos at waypoint arrivals when using waypoint follower node. Saves the taken photos to specified directory. The name for taken photos are determined by
+the waypoint index and timestamp(seconds). For instance <code class="docutils literal notranslate"><span class="pre">/home/atas/0_1602582820.png</span></code> is an sample taken image, where <code class="docutils literal notranslate"><span class="pre">0_1602582820</span></code> is the file name determined by waypoint
+index and time stamp. The leading digit in file name implies the waypoint index and the rest of digits at righthand side imples the time stamp when the photo was taken.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>: GoalDistCritic critic name defined in the <strong>&lt;dwb plugin&gt;.critics</strong> parameter defined in <a class="reference internal" href="../dwb-params/controller.html#dwb-controller"><span class="std std-ref">DWB Controller</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;nav2_waypoint_follower</span> <span class="pre">plugin&gt;</span></code>: nav2_waypoint_follower plugin name defined in the <strong>waypoint_task_executor_plugin_id</strong> parameter in <a class="reference internal" href="../configuring-waypoint-follower.html#configuring-waypoint-follower"><span class="std std-ref">Waypoint Follower</span></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.aggregation_type:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_waypoint_follower</span> <span class="pre">plugin&gt;</span></code>.enabled:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether waypoint_task_executor plugin is enabled.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_waypoint_follower</span> <span class="pre">plugin&gt;</span></code>.camera_image_topic_name:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>string</td>
-<td>“last”</td>
+<td>“/camera/color/image_raw”</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><dl class="docutils">
+<dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">last, sum, or product combination methods.</p>
+<dd><p class="first last">Camera image topic name to susbcribe</p>
 </dd>
 </dl>
-</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.scale:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_waypoint_follower</span> <span class="pre">plugin&gt;</span></code>.save_images_dir:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col width="33%" />
+<col width="67%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.0</td>
+<tr class="row-even"><td>string</td>
+<td>“/tmp/waypoint_images”</td>
 </tr>
 </tbody>
 </table>
-<blockquote class="last">
-<div><dl class="docutils">
+<dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Weighed scale for critic.</p>
+<dd><p class="first last">Path to directory to save taken photos at waypoint arrivals.</p>
 </dd>
 </dl>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_waypoint_follower</span> <span class="pre">plugin&gt;</span></code>.image_format:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>“png”</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Desired image format.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>

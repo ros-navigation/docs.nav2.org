@@ -323,10 +323,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#provided-plugins">Provided Plugins</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_waypoint_follower-plugins/photo_at_waypoint.html">PhotoAtWaypoint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_waypoint_follower-plugins/input_at_waypoint.html">InputAtWaypoint</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#default-plugin">Default Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#example">Example</a></li>
 </ul>
 </li>
@@ -862,7 +863,13 @@ or getting more sensor data</td>
 behavior  on
 waypoint arrivals.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/input_at_waypoint.cpp">InputAtWaypoint</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/photo_at_waypoint.cpp">PhotoAtWaypoint</a></td>
+<td>Fetullah Atas</td>
+<td>A plugin to take and save photos
+to specified directory on
+waypoint arrivals.</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/input_at_waypoint.cpp">InputAtWaypoint</a></td>
 <td>Steve Macenski</td>
 <td>A plugin to wait for user input
 before moving onto the next

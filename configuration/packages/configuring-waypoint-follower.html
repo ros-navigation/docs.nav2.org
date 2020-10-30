@@ -323,10 +323,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#provided-plugins">Provided Plugins</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nav2_waypoint_follower-plugins/photo_at_waypoint.html">PhotoAtWaypoint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="nav2_waypoint_follower-plugins/input_at_waypoint.html">InputAtWaypoint</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-plugin">Default Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -681,7 +682,7 @@ If a waypoint is not achievable, the <code class="docutils literal notranslate">
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>string</td>
-<td>‘waypoint_task_executor’</td>
+<td>‘wait_at_waypoint’</td>
 </tr>
 </tbody>
 </table>
@@ -694,9 +695,11 @@ If a waypoint is not achievable, the <code class="docutils literal notranslate">
 <p>Example:</p>
 <div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">waypoint_follower</span><span class="p">:</span>
   <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span> <span class="s">&quot;waypoint_task_executor&quot;</span>
-    <span class="nt">waypoint_task_executor</span><span class="p">:</span>
+    <span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span> <span class="s">&quot;wait_at_waypoint&quot;</span>
+    <span class="nt">wait_at_waypoint</span><span class="p">:</span>
       <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_waypoint_follower::WaitAtWaypoint&quot;</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">waypoint_pause_duration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 </pre></div>
 </div>
 </dd>
@@ -713,12 +716,13 @@ If a waypoint is not achievable, the <code class="docutils literal notranslate">
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nav2_waypoint_follower-plugins/photo_at_waypoint.html">PhotoAtWaypoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nav2_waypoint_follower-plugins/input_at_waypoint.html">InputAtWaypoint</a></li>
 </ul>
 </div>
 </div>
-<div class="section" id="default-plugins">
-<h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-plugin">
+<h2>Default Plugin<a class="headerlink" href="#default-plugin" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -729,7 +733,7 @@ If a waypoint is not achievable, the <code class="docutils literal notranslate">
 <tr class="row-odd"><td>Namespace</td>
 <td>Plugin</td>
 </tr>
-<tr class="row-even"><td>“waypoint_task_executor”</td>
+<tr class="row-even"><td>“wait_at_waypoint”</td>
 <td>“nav2_waypoint_follower::WaitAtWaypoint”</td>
 </tr>
 </tbody>
@@ -742,11 +746,11 @@ If a waypoint is not achievable, the <code class="docutils literal notranslate">
   <span class="nt">ros__parameters</span><span class="p">:</span>
     <span class="nt">loop_rate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
     <span class="nt">stop_on_failure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span> <span class="s">&quot;waypoint_task_executor&quot;</span>
-      <span class="nt">waypoint_task_executor</span><span class="p">:</span>
+    <span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span> <span class="s">&quot;wait_at_waypoint&quot;</span>
+      <span class="nt">wait_at_waypoint</span><span class="p">:</span>
         <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_waypoint_follower::WaitAtWaypoint&quot;</span>
-          <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-          <span class="nt">waypoint_pause_duration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">waypoint_pause_duration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 </pre></div>
 </div>
 </div>

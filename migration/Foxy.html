@@ -323,10 +323,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#provided-plugins">Provided Plugins</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_waypoint_follower-plugins/photo_at_waypoint.html">PhotoAtWaypoint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_waypoint_follower-plugins/input_at_waypoint.html">InputAtWaypoint</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#default-plugin">Default Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-waypoint-follower.html#example">Example</a></li>
 </ul>
 </li>
@@ -636,9 +637,13 @@ In both cases negative values are silently inverted.</p>
 <h2>New Plugins<a class="headerlink" href="#new-plugins" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> has an action server that takes in a list of waypoints to follow and follow them in order. In some cases we might want robot to
 perform some tasks/behaviours at arrivals of these waypoints. In order to perform such tasks, a generic plugin interface <cite>WaypointTaskExecutor</cite> has been added to <code class="docutils literal notranslate"><span class="pre">nav2_core</span></code>.
-Users can inherit from this interface to implement their own plugin to perform more specific tasks at waypoint arrivals for their needs. An example implementation <cite>WaitAtWaypoint</cite>, is included in
-<code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> as a run-time loadable plugin. <cite>WaitAtWaypoint</cite> simply lets robot to pause for a specified amount of time in milliseconds, at waypoint arrivals. Loading a plugin of this type
-is done through <cite>nav2_bringup/params/nav2_param.yaml</cite>, by specifying plugin’s name, type and it’s used parameters.</p>
+Users can inherit from this interface to implement their own plugin to perform more specific tasks at waypoint arrivals for their needs.</p>
+<p>Several example implementations are included in <code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code>. <code class="docutils literal notranslate"><span class="pre">WaitAtWaypoint</span></code> and <code class="docutils literal notranslate"><span class="pre">PhotoAtWaypoint</span></code> plusings are included in
+<code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> as run-time loadable plugins. <code class="docutils literal notranslate"><span class="pre">WaitAtWaypoint</span></code> simply lets robot to pause for a specified amount of time in milliseconds, at waypoint arrivals.</p>
+<blockquote>
+<div>While <code class="docutils literal notranslate"><span class="pre">PhotoAtWaypoint</span></code> takes photos at waypoint arrivals and saves the taken photos to specified directory, the format for taken photos also can be configured through parameters.
+All major image formats such as <code class="docutils literal notranslate"><span class="pre">png</span></code>, <code class="docutils literal notranslate"><span class="pre">jpeg</span></code>, <code class="docutils literal notranslate"><span class="pre">jpg</span></code> etc. are supported, the default format is <code class="docutils literal notranslate"><span class="pre">png</span></code>.</div></blockquote>
+<p>Loading a plugin of this type is done through <code class="docutils literal notranslate"><span class="pre">nav2_bringup/params/nav2_param.yaml</span></code>, by specifying plugin’s name, type and it’s used parameters.</p>
 <p>For instance;
 .. code-block:: yaml</p>
 <blockquote>
@@ -648,12 +653,15 @@ is done through <cite>nav2_bringup/params/nav2_param.yaml</cite>, by specifying 
 <dt>ros__parameters:</dt>
 <dd><p class="first">loop_rate: 20
 stop_on_failure: false
-waypoint_task_executor_plugin: “waypoint_task_executor”
-waypoint_task_executor:</p>
+waypoint_task_executor_plugin: “wait_at_waypoint”</p>
 <blockquote class="last">
-<div>plugin: “nav2_waypoint_follower::WaitAtWaypoint”
+<div><dl class="docutils">
+<dt>wait_at_waypoint:</dt>
+<dd>plugin: “nav2_waypoint_follower::WaitAtWaypoint”
 enabled: True
-waypoint_pause_duration: 0</div></blockquote>
+waypoint_pause_duration: 0</dd>
+</dl>
+</div></blockquote>
 </dd>
 </dl>
 </dd>
@@ -662,6 +670,8 @@ waypoint_pause_duration: 0</div></blockquote>
 <p>Original GitHub tickets:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1993">WaypointTaskExecutor</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1993">WaitAtWaypoint</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2041">PhotoAtWaypoint</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2049">InputAtWaypoint</a></li>
 </ul>
 </div>
