@@ -156,12 +156,18 @@ Waypoint Task Executors
 |                                 |                        | waypoint arrivals.               |
 |                                 |                        |                                  |
 +---------------------------------+------------------------+----------------------------------+
+| `PhotoAtWaypoint`_              | Fetullah Atas          | A plugin to take and save photos |
+|                                 |                        | to specified directory on        |
+|                                 |                        | waypoint arrivals.               |
+|                                 |                        |                                  |
++---------------------------------+------------------------+----------------------------------+
 | `InputAtWaypoint`_              | Steve Macenski         | A plugin to wait for user input  |
 |                                 |                        | before moving onto the next      |
 |                                 |                        | waypoint.                        |
 +---------------------------------+------------------------+----------------------------------+
 
 .. _WaitAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
+.. _PhotoAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/photo_at_waypoint.cpp
 .. _InputAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/input_at_waypoint.cpp
 
 Goal Checkers
