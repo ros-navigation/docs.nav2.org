@@ -249,7 +249,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
       controller_plugins: ["FollowPath"]
 
       FollowPath:
-        plugin: "pure_pursuit_controller::PurePursuitController"
+        plugin: "nav2_pure_pursuit_controller::PurePursuitController"
         debug_trajectory_details: True
         desired_linear_vel: 0.2
         lookahead_dist: 0.4

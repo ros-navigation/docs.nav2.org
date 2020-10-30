@@ -56,7 +56,7 @@ Original GitHub tickets:
 - `WaypointTaskExecutor <https://github.com/ros-planning/navigation2/pull/1993>`_
 - `WaitAtWaypoint <https://github.com/ros-planning/navigation2/pull/1993>`_
 - `PhotoAtWaypoint <https://github.com/ros-planning/navigation2/pull/2041>`_
-
+- `InputAtWaypoint <https://github.com/ros-planning/navigation2/pull/2049>`_
 
 Costmap Filters
 ***************
