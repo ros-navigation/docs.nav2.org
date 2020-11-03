@@ -291,3 +291,14 @@ These include:
 - 3D costmaps, which represent the space in 3D, but then also requires 3D planning and collision checking
 - Mesh maps, which are similar to gradient maps but with surface meshes at many angles
 - "Vector space", taking in sensor information and using machine learning to detect individual items and locations to track rather than buffering discrete points.
+
+Navigation2 Academic Overview
+*****************************
+
+.. raw:: html
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="708" height="400" src="https://www.youtube.com/embed/QB7lOKp3ZDQ?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+      </div>
+    </h1>
