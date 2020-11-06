@@ -179,6 +179,24 @@ An example can be seen below, where the ``Wait`` BT XML node specifies a non-var
 
   <Wait wait_duration="5"/>
 
+3- Add plugin library name to config
+------------------------------------
+
+In order for the BT Navigator node to discover the plugin we've just registered, we need to list the plugin library name under the bt_navigator node in the configuration YAML file. Configuration should look similar to the one shown below. Take note of nav2_wait_action_bt_node listed under plugin_lib_names.
+
+.. code-block:: text
+
+  bt_navigator:
+    ros__parameters:
+      use_sim_time: True
+      global_frame: map
+      robot_base_frame: base_link
+      odom_topic: /odom
+      default_bt_xml_filename: "navigate_w_replanning_and_recovery.xml"
+      plugin_lib_names:
+      - nav2_back_up_action_bt_node # other plugin 
+      - nav2_wait_action_bt_node    # our new plugin
+
 4- Run Your Custom plugin
 -------------------------
 
