@@ -9,7 +9,17 @@ Groot - The fancy BehaviorTree Editor
 Overview
 ========
 
- .. image:: images/Groot/groot_start_menu.png
+ .. raw:: html
+
+    <h1 align="center">
+      <div>
+        <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+          <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Z6xCat0zaWU?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </h1>
+
+
 
 `Groot <https://github.com/BehaviorTree/Groot>`_ is the companion application of 
 `BehaviorTree.CPP <https://github.com/BehaviorTree/BehaviorTree.CPP>`_ to create, edit, and monitor behavior trees.
