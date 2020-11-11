@@ -1,4 +1,4 @@
-.. costmap_filters:
+.. _keepout_filter:
 
 Keepout Filter Parameters
 =========================
@@ -26,3 +26,14 @@ Keepout Filter Parameters
 
   Description
     Name of the CostmapFilterInfo topic having filter-related information.
+
+:``<filter name>``.transform_tolerance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.0
+  ====== =======
+
+  Description
+    Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.
