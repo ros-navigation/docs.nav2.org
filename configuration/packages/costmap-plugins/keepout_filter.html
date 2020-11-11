@@ -620,7 +620,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="keepout-filter-parameters">
-<h1>Keepout Filter Parameters<a class="headerlink" href="#keepout-filter-parameters" title="Permalink to this headline">¶</a></h1>
+<span id="keepout-filter"></span><h1>Keepout Filter Parameters<a class="headerlink" href="#keepout-filter-parameters" title="Permalink to this headline">¶</a></h1>
 <p><cite>&lt;filter name&gt;</cite>: is the corresponding plugin name selected for this type.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -663,9 +663,31 @@
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Name of the CostmapFilterInfo topic having filter-related information.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.transform_tolerance:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.</p>
 </dd>
 </dl>
 </td>

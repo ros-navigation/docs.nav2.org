@@ -35,7 +35,7 @@ As was written in :ref:`concepts`, any Costmap Filter (including Keepout Filter)
 
 Create a new image with a PGM/PNG/BMP format: copy `turtlebot3_world.pgm <https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.pgm>`_ main map which will be used in a world simulation from a ``navigation2`` repository to a new ``keepout_mask.pgm`` file.
 
-Open ``keepout_mask.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. In the GIMP lightness might be set by choosing ``L`` slider in color changing tool (expressed in percent scale):
+Open ``keepout_mask.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. In the GIMP lightness is expressed through color components value (e.g. ``R`` in percent scale) and might be set by moving ``L`` slider in color changing tool:
 
 .. image:: images/Navigation2_with_Keepout_Filter/ligtness_in_GIMP.png
 
@@ -235,6 +235,8 @@ Costmap Filters are Costamp2D plugins. You can enable the ``KeepoutFilter`` plug
 
 - ``plugin``: type of plugin. In our case ``nav2_costmap_2d::KeepoutFilter``.
 - ``filter_info_topic``: filter info topic name. This need to be equal to ``filter_info_topic`` parameter of Costmap Filter Info Publisher Server from the chapter above.
+
+Full list of parameters supported by ``KeepoutFilter`` are listed at :ref:`keepout_filter` page.
 
 It is important to note that enabling ``KeepoutFilter`` for ``global_costmap`` only will cause the path planner to build plans bypassing keepout zones. Enabling ``KeepoutFilter`` for ``local_costmap`` only will cause the robot to not enter keepout zones, but the path may still go through them. So, the best practice is to enable ``KeepoutFilter`` for global and local costmaps simultaneously by adding it both in ``global_costmap`` and ``local_costmap`` in ``nav2_params.yaml``. However it does not always have to be true. In some cases keepout zones don't have to be the same for global and local costmaps, e.g. if the robot doesn't allowed to intentionally go inside keepout zones, but if its there, the robot can drive in and out really quick if it clips an edge or corner. For this case, there is not need to use extra resources of the local costmap copy.
 
