@@ -81,3 +81,11 @@ A new package, ``SmacPlanner`` was added containing 4 or 8 connected 2D A*, and 
 The ``smac_planner`` package contains an optimized templated A* search algorithm used to create multiple A*-based planners for multiple types of robot platforms. We support differential-drive and omni-directional drive robots using the ``SmacPlanner2D`` planner which implements a cost-aware A* planner. We support cars, car-like, and ackermann vehicles using the ``SmacPlanner`` plugin which implements a Hybrid-A* planner. This plugin is also useful for curvature constrained planning, like when planning robot at high speeds to make sure they don't flip over or otherwise skid out of control.
 
 The `SmacPlanner` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.
+
+
+Costmap2D ``current_`` Usage
+****************************
+
+In costmap2D, ``current_`` was used in ROS1 to represent whether a costmap layer was still enabled and actively processing data. It would be turned to ``false`` only under the situation that the expected update rate of a sensor was not met, so it was getting stale or no messages. It acts as a fail-safe for if a navigation sensor stops publishing.
+
+In galactic, that will remain turn, however it will also add additional capabilities. It is also now set to ``false`` when a costmap is reset due to clearing or other navigation recoveries. That stops the robot from creating a plan or control effort until after the costmap has been updated at least once after a reset. This enables us to make sure we cannot ever create a path or control with a completely empty costmap, potentially leading to collisions, due to clearing the costmap and then immediately requesting an algorithm to run.
