@@ -5,7 +5,7 @@ Smac Planner
 
 Source code and README with design, explanations, and metrics can be found on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/smac_planner
+.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 
 The Smac Planner plugin implements a 2D A* and Hybrid-A* path planners.
 An example of the Hyrid-A* planner can be seen below, planning a 85 meter path in 33ms.
@@ -383,7 +383,7 @@ Example
         use_sim_time: True
 
         GridBased:
-          plugin: "smac_planner/SmacPlanner"
+          plugin: "nav2_smac_planner/SmacPlanner"
           tolerance: 0.5                    # tolerance for planning if unable to reach exact pose, in meters, for 2D node
           downsample_costmap: false         # whether or not to downsample the map
           downsampling_factor: 1            # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)

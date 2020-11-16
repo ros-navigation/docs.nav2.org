@@ -111,8 +111,8 @@ Planners
 +-------------------+---------------------------------------+------------------------------+---------------------+
 
 .. _NavFn Planner: https://github.com/ros-planning/navigation2/tree/main/nav2_navfn_planner
-.. _SmacPlanner: https://github.com/ros-planning/navigation2/tree/main/smac_planner
-.. _SmacPlanner2D: https://github.com/ros-planning/navigation2/tree/main/smac_planner
+.. _SmacPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
+.. _SmacPlanner2D: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 
 Recoveries
 ==========
