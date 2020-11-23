@@ -61,4 +61,4 @@ Example
 
 .. code-block:: xml
 
-  <BackUp backup_dist="-0.2" backup_speed="0.05" service_name="backup_server" server_timeout="10"/>
+  <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10"/>
