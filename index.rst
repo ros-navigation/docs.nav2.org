@@ -120,6 +120,7 @@ Below is an example of the TB3 navigating in a small lounge.
    getting_started/index.rst
    build_instructions/index.rst
    concepts/index.rst
+   setup_guides/index.rst
    tutorials/index.rst
    plugin_tutorials/index.rst
    configuration/index.rst
