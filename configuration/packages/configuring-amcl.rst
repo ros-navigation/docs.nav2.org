@@ -155,7 +155,7 @@ Parameters
   Description
     Maximum distance to do obstacle inflation on map, for use in likelihood_field model.
 
-:laser_max_rage:
+:laser_max_range:
 
   ============== =============================
   Type           Default                                               
