@@ -8,7 +8,7 @@ For this guide, we will be creating the URDF for a simple differential drive rob
 URDF and the Robot State Publisher
 ==================================
 
-As discussed in the previous section, one of the requirements for Navigation2 is the  ``base_link`` => ``laser_link`` transformations. This transformation tree can range from a simple tree with only one link from the  ``base_link`` to ``laser_link`` or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms. 
+As discussed in the previous tutorial, one of the requirements for Navigation2 is the transformation from  ``base_link`` to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  ``base_link`` to ``laser_link`` or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms. 
 
 The Robot State Publisher is a package of ROS2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct Universal Robot Descriptor File (URDF) and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees. 
 

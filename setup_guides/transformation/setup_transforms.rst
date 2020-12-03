@@ -3,7 +3,7 @@
 Setting Up Transformations
 ##########################
 
-In this guide, we will be looking at the necessary transforms required by Navigation2 (Nav2). These transforms allow Nav2 to correctly interpret information coming in from various sources, such as sensors and odometry, by transforming them to the correct coordinate frames.
+In this guide, we will be looking at the necessary transforms required by Nav2. These transforms allow Nav2 to interpret information coming in from various sources, such as sensors and odometry, by transforming them to the coordinate frames for use.
 
 For this tutorial, we will first provide a brief introduction to transforms in ROS. Second, we will outline the necessary transforms that need to be published for Nav2 to function. Lastly, we will be working on a simple command-line demo of a tf2 static publisher to see it in action.
 
@@ -11,7 +11,7 @@ Transforms Introduction
 ***********************
 
 .. note::
-  This section of this guide has been adapted from the `Setting Up You Robot using tf <http://wiki.ros.org/navigation/Tutorials/RobotSetup/TF>`__ tutorial in the Navigation 1 documentation.
+  This section of this guide has been adapted from the `Setting Up You Robot using tf <http://wiki.ros.org/navigation/Tutorials/RobotSetup/TF>`__ tutorial in the ROS (1) Navigation documentation.
 
 Many ROS packages require the transform tree of a robot to be published using the Transform2 ROS package (tf2). A transform tree defines offsets in terms of both translation and rotation between different coordinate frames. To make this more concrete, let us apply an example of a simple robot that has a mobile base with a single laser sensor mounted on top of it. 
 
