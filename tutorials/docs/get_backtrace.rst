@@ -150,7 +150,7 @@ See below for an example debugging SLAM Toolbox.
       package='slam_toolbox',
       executable='sync_slam_toolbox_node',
       name='slam_toolbox',
-      prefix=['gdb -ex run --args'],
+      prefix=['xterm -e gdb -ex run --args'],
       output='screen')
 
 Just as before, this prefix will launch a GDB session, now in ``xterm`` and run the launch file you requested with all the additional launch arguments defined.
