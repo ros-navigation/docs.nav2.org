@@ -727,7 +727,10 @@ While we could set this up through the commandline, we can instead make use of t
 <p>In your launch file, find the node that you’re interested in debugging.
 For this section, we assume that your launch file contains only a single node (and potentially other information as well).
 The <code class="docutils literal notranslate"><span class="pre">Node</span></code> function used in the <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> package will take in a field <code class="docutils literal notranslate"><span class="pre">prefix</span></code> taking a list of prefix arguments.
-We will insert the same GDB snippet here as used in our node example.
+We will insert the GDB snippet here with one change from our node example, use of <code class="docutils literal notranslate"><span class="pre">xterm</span></code>.
+<code class="docutils literal notranslate"><span class="pre">xterm</span></code> will pop up a new terminal window to show and interact with GDB.
+We do this because of issues handling <code class="docutils literal notranslate"><span class="pre">stdin</span></code> on launch files (e.g. if you hit control+C, are you talking to GDB or launch?).
+See <a class="reference external" href="https://github.com/ros2/launch_ros/issues/165">this ticket</a> for more information.
 See below for an example debugging SLAM Toolbox.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start_sync_slam_toolbox_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span>
@@ -737,16 +740,12 @@ See below for an example debugging SLAM Toolbox.</p>
     <span class="n">package</span><span class="o">=</span><span class="s1">&#39;slam_toolbox&#39;</span><span class="p">,</span>
     <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;sync_slam_toolbox_node&#39;</span><span class="p">,</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;slam_toolbox&#39;</span><span class="p">,</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gdb -ex run --args&#39;</span><span class="p">],</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;xterm -e gdb -ex run --args&#39;</span><span class="p">],</span>
     <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Just as before, this prefix will launch a GDB session and run the launch file you requested with all the additional launch arguments defined.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">As of ROS2 Foxy, there may be an issue with <code class="docutils literal notranslate"><span class="pre">prefix</span></code> in launch files not returning <code class="docutils literal notranslate"><span class="pre">gdb</span></code> prompts after a crash. See <a class="reference external" href="https://github.com/ros2/launch_ros/issues/165">this ticket</a> for more information.</p>
-</div>
-<p>Once your server crashes, you’ll see a prompt like below. At this point you can now get a backtrace.</p>
+<p>Just as before, this prefix will launch a GDB session, now in <code class="docutils literal notranslate"><span class="pre">xterm</span></code> and run the launch file you requested with all the additional launch arguments defined.</p>
+<p>Once your server crashes, you’ll see a prompt like below, now in the <code class="docutils literal notranslate"><span class="pre">xterm</span></code> session. At this point you can now get a backtrace.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span>
 </pre></div>
 </div>
