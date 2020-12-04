@@ -134,7 +134,10 @@ While we could set this up through the commandline, we can instead make use of t
 In your launch file, find the node that you're interested in debugging.
 For this section, we assume that your launch file contains only a single node (and potentially other information as well).
 The ``Node`` function used in the ``launch_ros`` package will take in a field ``prefix`` taking a list of prefix arguments.
-We will insert the same GDB snippet here as used in our node example.
+We will insert the GDB snippet here with one change from our node example, use of ``xterm``.
+``xterm`` will pop up a new terminal window to show and interact with GDB.
+We do this because of issues handling ``stdin`` on launch files (e.g. if you hit control+C, are you talking to GDB or launch?).
+See `this ticket <https://github.com/ros2/launch_ros/issues/165>`_ for more information.
 See below for an example debugging SLAM Toolbox.
 
 .. code-block:: python
@@ -147,15 +150,12 @@ See below for an example debugging SLAM Toolbox.
       package='slam_toolbox',
       executable='sync_slam_toolbox_node',
       name='slam_toolbox',
-      prefix=['gdb -ex run --args'],
+      prefix=['xterm -e gdb -ex run --args'],
       output='screen')
 
-Just as before, this prefix will launch a GDB session and run the launch file you requested with all the additional launch arguments defined.
+Just as before, this prefix will launch a GDB session, now in ``xterm`` and run the launch file you requested with all the additional launch arguments defined.
 
-.. note::
-  As of ROS2 Foxy, there may be an issue with ``prefix`` in launch files not returning ``gdb`` prompts after a crash. See `this ticket <https://github.com/ros2/launch_ros/issues/165>`_ for more information.
-
-Once your server crashes, you'll see a prompt like below. At this point you can now get a backtrace.
+Once your server crashes, you'll see a prompt like below, now in the ``xterm`` session. At this point you can now get a backtrace.
 
 .. code-block:: bash
 
