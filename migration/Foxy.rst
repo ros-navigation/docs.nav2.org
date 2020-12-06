@@ -89,3 +89,14 @@ Costmap2D ``current_`` Usage
 In costmap2D, ``current_`` was used in ROS1 to represent whether a costmap layer was still enabled and actively processing data. It would be turned to ``false`` only under the situation that the expected update rate of a sensor was not met, so it was getting stale or no messages. It acts as a fail-safe for if a navigation sensor stops publishing.
 
 In galactic, that will remain turn, however it will also add additional capabilities. It is also now set to ``false`` when a costmap is reset due to clearing or other navigation recoveries. That stops the robot from creating a plan or control effort until after the costmap has been updated at least once after a reset. This enables us to make sure we cannot ever create a path or control with a completely empty costmap, potentially leading to collisions, due to clearing the costmap and then immediately requesting an algorithm to run.
+
+Standard time units in parameters
+*********************************
+To follow the SI units outlined in REP-103 to the "T" nodes below were modified to use seconds consistently in every parameter. Under each node name you can see which parameters changed to seconds instead of using milliseconds.
+
+- lifecycle manager 
+ - ``bond_timeout_ms`` became ``bond_timeout`` in seconds
+- smac planner
+ - ``max_planning_time_ms`` became ``max_planning_time`` in seconds
+- map saver
+ - ``save_map_timeout`` in seconds
