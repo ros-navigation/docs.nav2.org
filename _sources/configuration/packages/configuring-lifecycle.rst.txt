@@ -37,16 +37,16 @@ Parameters
   Description
     Whether to transition nodes to active state on startup.
 
-:bond_timeout_ms:
+:bond_timeout:
 
   ==== =======
   Type Default                                                   
   ---- -------
-  int  4000   
+  int  4.0   
   ==== =======
 
   Description
-    Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in ms. Set to ``0`` to deactivate. Recommended to be always larger than 300ms for all-local node discovery. Note: if a server cleanly exits the manager will immediately be notified.
+    Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in seconds. Set to ``0`` to deactivate. Recommended to be always larger than 0.3s for all-local node discovery. Note: if a server cleanly exits the manager will immediately be notified.
 
 Example
 *******
@@ -56,4 +56,4 @@ Example
       ros__parameters:
         autostart: true
         node_names: ['controller_server', 'planner_server', 'recoveries_server', 'bt_navigator', 'waypoint_follower']
-        bond_timeout_ms: 4000
+        bond_timeout: 4.0

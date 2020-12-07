@@ -518,6 +518,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#standard-time-units-in-parameters">Standard time units in parameters</a></li>
 </ul>
 </li>
 </ul>
@@ -673,8 +674,7 @@ It will also create bond connections with the servrs to ensure they are still up
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">bond_timeout_ms:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">bond_timeout:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="36%" />
 <col width="64%" />
@@ -684,13 +684,13 @@ It will also create bond connections with the servrs to ensure they are still up
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>int</td>
-<td>4000</td>
+<td>4.0</td>
 </tr>
 </tbody>
 </table>
 <dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in ms. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to deactivate. Recommended to be always larger than 300ms for all-local node discovery. Note: if a server cleanly exits the manager will immediately be notified.</p>
+<dd><p class="first last">Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in seconds. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to deactivate. Recommended to be always larger than 0.3s for all-local node discovery. Note: if a server cleanly exits the manager will immediately be notified.</p>
 </dd>
 </dl>
 </td>
@@ -704,7 +704,7 @@ It will also create bond connections with the servrs to ensure they are still up
   <span class="nt">ros__parameters</span><span class="p">:</span>
     <span class="nt">autostart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
     <span class="nt">node_names</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;controller_server&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;planner_server&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;recoveries_server&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;bt_navigator&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;waypoint_follower&#39;</span><span class="p p-Indicator">]</span>
-    <span class="nt">bond_timeout_ms</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4000</span>
+    <span class="nt">bond_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4.0</span>
 </pre></div>
 </div>
 </div>
