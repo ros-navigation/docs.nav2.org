@@ -18,11 +18,11 @@ Map Saver Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            2000   
+  int            2.0   
   ============== =======
 
   Description
-    Timeout to attempt saving the map (ms).
+    Timeout to attempt saving the map (seconds).
 
 :free_thresh_default:
 
@@ -158,7 +158,7 @@ Example
 
     map_saver:
       ros__parameters:
-        save_map_timeout: 5000
+        save_map_timeout: 5.0
         free_thresh_default: 0.25
         occupied_thresh_default: 0.65
 

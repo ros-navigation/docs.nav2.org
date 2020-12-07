@@ -87,16 +87,16 @@ Parameters
   Description
     Maximum number of iterations after the search is within tolerance before returning approximate path with best heuristic if exact path not found.
 
-:``<name>``.max_planning_time_ms:
+:``<name>``.max_planning_time:
 
   ====== =======
   Type   Default                                                   
   ------ -------
-  double  5000.0            
+  double  5.0            
   ====== =======
 
   Description
-    Maximum planning time in ms.
+    Maximum planning time in seconds.
 
 :``<name>``.analytic_expansion_ratio:
 
@@ -261,7 +261,7 @@ Parameters
   ====== =======
 
   Description
-    Maximum time spent smoothing, in seconds. If planning takes too long, this can be dynamically adjusted to ensure the planner meets ``max_planning_time_ms``.
+    Maximum time spent smoothing, in seconds. If planning takes too long, this can be dynamically adjusted to ensure the planner meets ``max_planning_time``.
 
 :``<name>``.smoother.optimizer.max_iterations:
 
@@ -390,7 +390,7 @@ Example
           allow_unknown: false              # allow traveling in unknown space
           max_iterations: -1                # maximum total iterations to search for before failing
           max_on_approach_iterations: 1000  # maximum number of iterations to attempt to reach goal once in tolerance, 2D only
-          max_planning_time_ms: 2000.0      # max time in ms for planner to plan, smooth, and upsample. Will scale maximum smoothing and upsampling times based on remaining time after planning.
+          max_planning_time: 2.0            # max time in seconds for planner to plan, smooth, and upsample. Will scale maximum smoothing and upsampling times based on remaining time after planning.
           smooth_path: false                # Whether to smooth searched path
           motion_model_for_search: "DUBIN"  # 2D Moore, Von Neumann; SE2 Dubin, Redds-Shepp
           angle_quantization_bins: 72       # For SE2 node: Number of angle bins for search, must be 1 for 2D node (no angle search)
