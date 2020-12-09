@@ -69,22 +69,22 @@ Parameters
 
 :groot_zmq_publisher_port:
 
-  ====== ======= =======
-  Type   Default Unit   
-  ------ ------- -------
-  int    1666    Port   
-  ====== ======= =======
+  ====== =======
+  Type   Default  
+  ------ -------
+  int    1666   
+  ====== =======
 
   Description
     ZMQ publisher port for the Groot monitor. Used to consecutive publish the current status of the BT as flatbuffer.
 
 :groot_zmq_server_port:
 
-  ====== ======= ======= 
-  Type   Default Unit   
-  ------ ------- -------
-  int    1667    Port   
-  ====== ======= =======
+  ====== ======= 
+  Type   Default
+  ------ -------
+  int    1667   
+  ====== =======
 
   Description
     ZMQ server port for the Groot monitor. Used to send the current bt factory + configuration as flatbuffer on an (empty) request by Groot.
