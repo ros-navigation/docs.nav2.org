@@ -64,29 +64,27 @@ Parameters
   Description
     Enable live Groot monitoring of the current BT status.
     This is possible due to attaching a ZMQ server and publisher to the active behavior tree.
-    ..
-      Consider checking out the `Use BT Groot Monitoring<>`_ tutorial for using this feature. 
 
     **Attention:** Groot will only work after the behavior tree is running, which means that the nav2 stack has to receive a goal first.
 
 :groot_zmq_publisher_port:
 
-  ====== ======= ======= ========
-  Type   Default Unit    Optional
-  ------ ------- ------- --------
-  int    1666    Port    yes
-  ====== ======= ======= ========
+  ====== ======= =======
+  Type   Default Unit   
+  ------ ------- -------
+  int    1666    Port   
+  ====== ======= =======
 
   Description
     ZMQ publisher port for the Groot monitor. Used to consecutive publish the current status of the BT as flatbuffer.
 
 :groot_zmq_server_port:
 
-  ====== ======= ======= ========
-  Type   Default Unit    Optional
-  ------ ------- ------- --------
-  int    1667    Port    yes
-  ====== ======= ======= ========
+  ====== ======= ======= 
+  Type   Default Unit   
+  ------ ------- -------
+  int    1667    Port   
+  ====== ======= =======
 
   Description
     ZMQ server port for the Groot monitor. Used to send the current bt factory + configuration as flatbuffer on an (empty) request by Groot.
