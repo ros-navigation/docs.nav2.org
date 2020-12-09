@@ -29,8 +29,8 @@ Groot Support
 
 Live Monitoring and Editing of behavior trees with Groot is now possible.
 Switching bt-xmls on the fly through a new goal request is also included.
-Check out our Groot tutorial!
-This is all done without breaking any APIs. All options are off by default.
+This is all done without breaking any APIs.
+Enabled by default.
 
 New Plugins
 ***********
