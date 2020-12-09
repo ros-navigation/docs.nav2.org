@@ -514,6 +514,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#groot-support">Groot Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner">SmacPlanner</a></li>
@@ -636,6 +637,13 @@
 <p><code class="docutils literal notranslate"><span class="pre">speed</span></code> in a backup recovery goal should be positive indicating the speed with which to drive backward.
 <code class="docutils literal notranslate"><span class="pre">target.x</span></code> in a backup recovery goal should be positive indicating the distance to drive backward.
 In both cases negative values are silently inverted.</p>
+</div>
+<div class="section" id="groot-support">
+<h2>Groot Support<a class="headerlink" href="#groot-support" title="Permalink to this headline">¶</a></h2>
+<p>Live Monitoring and Editing of behavior trees with Groot is now possible.
+Switching bt-xmls on the fly through a new goal request is also included.
+This is all done without breaking any APIs.
+Enabled by default.</p>
 </div>
 <div class="section" id="new-plugins">
 <h2>New Plugins<a class="headerlink" href="#new-plugins" title="Permalink to this headline">¶</a></h2>

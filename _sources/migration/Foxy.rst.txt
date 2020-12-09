@@ -24,6 +24,14 @@ BackUp Recovery Interface Changes
 ``target.x`` in a backup recovery goal should be positive indicating the distance to drive backward.
 In both cases negative values are silently inverted.
 
+Groot Support
+*************
+
+Live Monitoring and Editing of behavior trees with Groot is now possible.
+Switching bt-xmls on the fly through a new goal request is also included.
+This is all done without breaking any APIs.
+Enabled by default.
+
 New Plugins
 ***********
 

@@ -514,6 +514,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#groot-support">Groot Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
@@ -692,8 +693,76 @@ in the navigation task and provide a way to easily specify complex robot behavio
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">enable_groot_monitoring:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first">Enable live Groot monitoring of the current BT status.
+This is possible due to attaching a ZMQ server and publisher to the active behavior tree.</p>
+<p class="last"><strong>Attention:</strong> Groot will only work after the behavior tree is running, which means that the nav2 stack has to receive a goal first.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">groot_zmq_publisher_port:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>1666</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">ZMQ publisher port for the Groot monitor. Used to consecutive publish the current status of the BT as flatbuffer.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">groot_zmq_server_port:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>1667</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">ZMQ server port for the Groot monitor. Used to send the current bt factory + configuration as flatbuffer on an (empty) request by Groot.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="30%" />
 <col width="35%" />
@@ -717,7 +786,7 @@ in the navigation task and provide a way to easily specify complex robot behavio
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">global_frame:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">global_frame:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="43%" />
 <col width="57%" />
@@ -738,8 +807,8 @@ in the navigation task and provide a way to easily specify complex robot behavio
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">robot_base_frame:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2">robot_base_frame:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="40%" />
 <col width="60%" />
@@ -760,7 +829,7 @@ in the navigation task and provide a way to easily specify complex robot behavio
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">odom_topic:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">odom_topic:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="40%" />
 <col width="60%" />
@@ -781,7 +850,7 @@ in the navigation task and provide a way to easily specify complex robot behavio
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">use_sim_time:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name">use_sim_time:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="36%" />
 <col width="64%" />
@@ -813,6 +882,9 @@ in the navigation task and provide a way to easily specify complex robot behavio
     <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
     <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
     <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+    <span class="nt">enable_groot_monitoring</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="nt">groot_zmq_publisher_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1666</span>
+    <span class="nt">groot_zmq_server_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1667</span>
     <span class="nt">bt_xml_filename</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span>
     <span class="nt">plugin_lib_names</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nav2_compute_path_to_pose_action_bt_node</span>
