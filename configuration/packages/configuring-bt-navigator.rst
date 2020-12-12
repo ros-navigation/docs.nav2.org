@@ -53,7 +53,7 @@ Parameters
   Description
     List of behavior tree node shared libraries.
 
-    Consider checking out the `Use BT Groot Monitoring<>`_ tutorial for using this feature. 
+    Consider checking out the :ref:`groot_introduction` tutorial for using this feature. 
 :enable_groot_monitoring:
 
   ==== =======
