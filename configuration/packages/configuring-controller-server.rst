@@ -134,6 +134,17 @@ Parameters
     The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
     Odometry values below this threshold (in rad/s) will be set to 0.0.
 
+:speed_limit_topic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "speed_limit"
+  ============== =============================
+
+  Description
+    Speed limiting topic name to subscribe.
+
 Provided Plugins
 ****************
  The plugins listed below are inside the ``nav2_controller`` namespace.

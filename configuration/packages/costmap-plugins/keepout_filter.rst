@@ -25,7 +25,7 @@ Keepout Filter Parameters
   ====== =======
 
   Description
-    Name of the CostmapFilterInfo topic having filter-related information.
+    Name of the incoming `CostmapFilterInfo <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg>`_ topic having filter-related information.
 
 :``<filter name>``.transform_tolerance:
 

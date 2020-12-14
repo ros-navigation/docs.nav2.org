@@ -1,0 +1,63 @@
+.. _speed_filter:
+
+Speed Filter Parameters
+=======================
+
+`<filter name>`: is the corresponding plugin name selected for this type.
+
+:``<filter name>``.enabled:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   True
+  ====== =======
+
+  Description
+    Whether it is enabled.
+
+:``<filter name>``.filter_info_topic:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A
+  ====== =======
+
+  Description
+    Name of the incoming `CostmapFilterInfo <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg>`_ topic having filter-related information.
+
+:``<filter name>``.speed_limit_topic:
+
+  ====== =============
+  Type   Default
+  ------ -------------
+  string "speed_limit"
+  ====== =============
+
+  Description
+    Topic to publish speed limit to. The `messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ have the following fields' meaning:
+
+    - ``percentage``: speed limit is expressed in percentage if ``true`` or in absolute values in ``false`` case. This parameter is set depending on ``type`` field of ``CostmapFilterInfo`` message.
+
+      Note
+        Speed limit in absolute values is not supported yet.
+
+    - ``speed_limit``: non-zero values show maximum allowed speed expressed in a percent of maximum robot speed or in absolute value depending on ``percentage`` value. Zero value means no speed restriction (independently on ``percentage``). ``speed_limit`` is being linearly converted from ``OccupancyGrid`` filter mask value as: ``speed_limit = base + multiplier * mask_value``, where ``base`` and ``multiplier`` coefficients are taken from ``CostmapFilterInfo`` message.
+
+      Note
+        ``speed_limit`` expressed in a percent should belong to ``(0.0 .. 100.0]`` range.
+
+    This topic will be used by a Controller Server. Please refer to :ref:`configuring_controller_server` configuration page to set it appropriately.
+
+
+:``<filter name>``.transform_tolerance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.0
+  ====== =======
+
+  Description
+    Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.

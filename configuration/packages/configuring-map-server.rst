@@ -97,15 +97,15 @@ Costmap Filter Info Server Parameters
     Type of costmap filter used. This is an enum for the type of filter this should be interpreted as. We provide the following pre-defined types:
 
     - 0: keepout zones / preferred lanes filter
-    - 1: speed filter, speed limit is specified in m/s
-    - 2: speed filter, speed limit is specified in % of maximum speed
+    - 1: speed filter, speed limit is specified in % of maximum speed
+    - 2: speed filter, speed limit is specified in absolute value (not implemented yet)
 
 :filter_info_topic:
 
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  string         costmap_filter_info
+  string         "costmap_filter_info"
   ============== =============================
 
   Description
@@ -116,7 +116,7 @@ Costmap Filter Info Server Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  string         filter_mask
+  string         "filter_mask"
   ============== =============================
 
   Description
