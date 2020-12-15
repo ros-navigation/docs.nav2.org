@@ -143,7 +143,7 @@ Parameters
   ============== =============================
 
   Description
-    Speed limiting topic name to subscribe.
+    Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to :ref:`speed_filter` configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish `these messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_.
 
 Provided Plugins
 ****************
