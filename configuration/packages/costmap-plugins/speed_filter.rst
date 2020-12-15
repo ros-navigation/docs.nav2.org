@@ -56,7 +56,7 @@ Speed Filter Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.0
+  double 0.1
   ====== =======
 
   Description
