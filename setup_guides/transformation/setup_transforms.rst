@@ -15,7 +15,7 @@ Transforms Introduction
 
 Many ROS packages require the transform tree of a robot to be published using the TF2 ROS package. A transformation tree defines the relations between different coordinate systems, in terms of translation, rotation, and relative motion. To make this more concrete, let us apply an example of a simple robot that has a mobile base with a single laser sensor mounted on top of it. 
 
-This robot has two defined coordinate frames: one corresponding to the center point of the mobile base of the robot, and one for the center point of the laser that is mounted on top of the base. We'll call the coordinate frame attached to the mobile base  ``base_link`` (for Nav2, we advise that it be placed at the rotational center of the robot if present) and we'll call the coordinate frame attached to the laser ``laser_link``. Note that will be talking more about the naming and conventions of these coordinate frames in the next section. 
+This robot has two defined coordinate frames: one corresponding to the center point of the mobile base of the robot, and one for the center point of the laser that is mounted on top of the base. We'll call the coordinate frame attached to the mobile base  ``base_link`` and we'll call the coordinate frame attached to the laser ``laser_link``. Note that will be talking more about the naming and conventions of these coordinate frames in the next section. 
 
 At this point, let's assume that we have some data from the laser in the form of distance measurements from the laser's center point. In other words, we have some data in the ``laser_link`` coordinate frame. 
 
@@ -42,7 +42,7 @@ With this transform tree set up, converting the laser scan received in the ``las
 Transforms in Navigation2
 *************************
 
-There two important ROS REPs which we highly suggest for you to check out. These documents detail some standards set about by the ROS community to ensure proper operation across different packages. Nav2 also adheres to these standards and conventions.
+There are two important ROS REPs which we highly suggest for you to check out. These documents detail some standards set about by the ROS community to ensure proper operation across different packages. Nav2 also adheres to these standards and conventions.
 
 1. `REP 105 - Coordinate Frames for Mobile Platforms <https://www.ros.org/reps/rep-0105.html>`__
 2. `REP 103 - Standard Units of Measure and Coordinate Conventions <https://www.ros.org/reps/rep-0103.html>`__
@@ -72,7 +72,7 @@ All other statically defined transforms (e.g. ``base_link`` => ``laser_link``, `
 Static Transform Publisher Demo
 *******************************
 
-.. warning:: This section was tested and written with ROS2 Foxy. However, we always recommend to use the latest version of ROS2 if possible. If you are new to ROS2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official `ROS2 Installation Documentation <https://index.ros.org/doc/ros2/Installation/>`__
+.. warning:: If you are new to ROS2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official `ROS2 Installation Documentation <https://index.ros.org/doc/ros2/Installation/>`__
 
 Now let's try publishing a very simple transform using the static_transform_publisher tool provided by TF2. We will be publishing a transformation from the link ``base_link`` to the link ``base_laser`` with a translation of (x: 0.1m, y: 0.0m, z: 0.2m). Note that we will be building the transform from the diagram earlier in this tutorial.
 
@@ -96,7 +96,7 @@ You should be able to observe a repeated output simiar to the one below.
   - Translation: [0.100, 0.000, 0.200]
   - Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
 
-And that's it for this short demo - we were able to successfully publish a transform from ``base_link`` to ``base_laser`` using the TF2 library. Note that we do not recommend using the above demo in publishing transforms for your actual robotics projects, it is just a quick demo to see tf2 in action. For a real robot system, we would create a URDF file which embeds this information and more about your robot for use of the robot_state_publisher rather than the static_transform_publisher. There are more suitable and practical ways to go about this which will be discussed in the :ref:`urdf_handson` tutorial.
+And that's it for this short demo - we were able to successfully publish a transform from ``base_link`` to ``base_laser`` using the TF2 library. Note that we do not recommend using the above demo in publishing transforms for your actual robotics projects, it is just a quick demo to see TF2 in action. For a real robot system, we would create a URDF file which embeds this information and more about your robot for use of the robot_state_publisher rather than the static_transform_publisher. There are more suitable and practical ways to go about this which will be discussed in the :ref:`urdf_handson` tutorial.
 
 .. seealso:: 
   If you would like to learn more about TF2 and how to create your own transform publishers, head onto the official `TF2 Documentation <https://wiki.ros.org/tf2/Tutorials>`__
