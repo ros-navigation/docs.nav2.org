@@ -3,7 +3,7 @@
 Setting Up The URDF
 ###################
 
-For this guide, we will be creating the URDF for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. 
+For this guide, we will be creating the URDF for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
 URDF and the Robot State Publisher
 ==================================
@@ -22,24 +22,20 @@ Another major feature of URDF is that it also supports Xacro (XML Macros) to hel
 Setting Up the Environment
 ==========================
 
-.. warning:: This tutorial was tested and written with ROS2 Foxy. However, we always recommend to use the latest version of ROS2 if possible.
-
 In this guide, we are assuming that you are already familiar with ROS2 and how to setup your development environment, so we'll breeze through the steps in this section.
-
-.. seealso:: If you are new to ROS2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official `ROS2 Installation Documentation <https://index.ros.org/doc/ros2/Installation/>`__
 
 Let's begin by installing some additional ROS2 packages that we will be using during this tutorial.
 
 .. code-block:: shell
 
-  sudo apt install ros-foxy-joint-state-publisher-gui
-  sudo apt install ros-foxy-xacro
+  sudo apt install ros-<ros2-distro>-joint-state-publisher-gui
+  sudo apt install ros-<ros2-distro>-xacro
  
-Next, create a directory for your project, initialize a ROS2 workspace and give your robot a name. For ours, we'll be calling it ``sam-bot``.
+Next, create a directory for your project, initialize a ROS2 workspace and give your robot a name. For ours, we'll be calling it ``sam_bot``.
 
 .. code-block:: shell
 
-  ros2 pkg create --build-type ament_cmake sam-bot
+  ros2 pkg create --build-type ament_cmake sam_bot_description
 
 Writing the URDF
 ================
@@ -55,13 +51,13 @@ Now that we have our project workspace set up, let's dive straight into writing 
 
 |
 
- To get started, create a file named ``sam-bot_description.urdf`` under ``src/description`` and input the following as the initial contents of the file. 
+ To get started, create a file named ``sam_bot_description.urdf`` under ``src/description`` and input the following as the initial contents of the file. 
 
 .. code-block:: xml
   :linenos:
 
   <?xml version="1.0"?>
-  <robot name="sam-bot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <robot name="sam_bot" xmlns:xacro="http://ros.org/wiki/xacro">
 
 
 
@@ -69,7 +65,7 @@ Now that we have our project workspace set up, let's dive straight into writing 
 
 .. note:: The following code snippets should be placed within the ``<robot>`` tags. We suggest to add them in the same order as introduced in this tutorial. We have also included some line numbers to give you a rough idea on where to input the code. This may differ from the actual file you are writing depending on your usage of whitespaces. Also note that the line numbers assume that you are putting in code as they appear in this guide.
 
-Next, let us define some constants that will be used for different sections of our URDF. Note that we will be using XAcro properties to achieve this. 
+Next, let us define some constants using XAcro properties that will be reused throughout the URDF.
 
 .. code-block:: xml
   :lineno-start: 4
@@ -87,9 +83,13 @@ Next, let us define some constants that will be used for different sections of o
 
     <xacro:property name="caster_xoff" value="0.14"/>
 
+Here is a brief discussion on what these properties will represent in our urdf. The ``base_*`` properties all define the size of hte robot's main chassis. The ``wheel_radius`` and ``wheel_width`` define the shape of the robot's two back wheels. The `wheel_ygap` adjusts the gap between the wheel and the chassis along the y-axis whilst ``wheel_zoff`` and ``wheel_xoff`` position the back wheels along the z-axis and x-axis appropriately. Lastly, the ``caster_xoff`` positions the front caster wheel along the x-axis.
+
 Let us then define our ``base_link`` - this link will be a large box and will act as the main chassis of our robot. In URDF, a ``link`` element describes a rigid part or component of our robot. The robot state publisher then utilizes these definitions to determine coordinate frames for each link and publish the transformations between them. 
 
 We will also be defining some of the link's visual properties which can be used by tools such as Gazebo and Rviz to show us a 3D model of our robot. Amongst these properties are `<geometry>` which describes the link's shape and `<material>` which describes it's color.
+
+For the code block block below, we access the ``base`` properties from the robot constants sections we defined before using the ``${property}`` syntax. In addition, we also set the material color of the main chassis to ``Cyan``. Note that we set these parameters under the ``<visual>`` tag so they will only be applied as visual parameters which dont affect any collision or physical properties.
 
 .. code-block:: xml
   :lineno-start: 17
@@ -108,7 +108,7 @@ We will also be defining some of the link's visual properties which can be used 
 
 Next, let us define a ``base_footprint`` link. The ``base_footprint`` link is a virtual (non-physical) link which has no dimensions or collision areas. Its primary purpose is to enable various packages determine the center of a robot projected to the ground. For example, Navigation2 uses this link to determine the center of a circular footprint used in its obstacle avoidance algorithms. Again, we set this link with no dimensions and to which position the robot's center is in when it is projected to the ground plane.
 
-After defining our base_link, we then add a joint to connect it to ``base_link``. In URDF, a ``joint`` element describes the kinematic and dynamic properties between coordinate frames. For this case, we will be defining a ``fixed`` joint with the appropriate offsets to place our ``base_footprint`` link in the proper location based on the description above.
+After defining our base_link, we then add a joint to connect it to ``base_link``. In URDF, a ``joint`` element describes the kinematic and dynamic properties between coordinate frames. For this case, we will be defining a ``fixed`` joint with the appropriate offsets to place our ``base_footprint`` link in the proper location based on the description above. Remember that we want to set our base_footprint to be at the ground plane when projected from the center of the main chassis, hence we get the sum of the ``wheel_radius`` and the ``wheel_zoff`` to get the appropriate location along the z-axis.
 
 .. code-block:: xml
   :lineno-start: 29
@@ -204,9 +204,9 @@ Next, let us create our launch file. Launch files are used by ROS2 to bring up t
   import os
 
   def generate_launch_description():
-      pkg_share = launch_ros.substitutions.FindPackageShare(package='sam-bot').find('sam-bot')
-      default_model_path = os.path.join(pkg_share, 'src/description/sam-bot_description.urdf')
-      default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf-config.rviz')
+      pkg_share = launch_ros.substitutions.FindPackageShare(package='sam_bot_description').find('sam_bot_description')
+      default_model_path = os.path.join(pkg_share, 'src/description/sam_bot_description.urdf')
+      default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config.rviz')
 
       robot_state_publisher_node = launch_ros.actions.Node(
           package='robot_state_publisher',
@@ -248,7 +248,7 @@ Next, let us create our launch file. Launch files are used by ROS2 to bring up t
 
 .. seealso:: For more information regarding the launch system in ROS2, you can have a look at the official `ROS2 Launch System Documentation <https://index.ros.org/doc/ros2/Tutorials/Launch-system/>`__
 
-To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``urdf-config.rviz`` under it. Place the following as the contents of ``urdf-config.rviz``
+To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``urdf_config.rviz`` under it. Place the following as the contents of ``urdf_config.rviz``
 
 .. code-block:: shell
 
@@ -317,6 +317,15 @@ To keep things simpler when we get to visualization, we have provided an RVIz co
         Value: Orbit (rviz)
       Saved: ~
 
+Lastly, let us modify the ``CMakeLists.txt`` file in the project root directory to include the files we just created during the package installation process. Add the following snippet to ``CMakeLists.txt`` file preferrably above the ``if(BUILD_TESTING)`` line:
+
+.. code-block:: shell
+
+  install(
+    DIRECTORY src launch rviz
+    DESTINATION share/${PROJECT_NAME}
+  )
+
 We are now ready to build our project using colcon. Navigate to the project root and execute the following commands.
 
 .. code-block:: shell
@@ -324,13 +333,11 @@ We are now ready to build our project using colcon. Navigate to the project root
   colcon build
   . install/setup.bash
 
-.. note:: If you do not have colcon set up yet, you may install it through the command ``sudo apt install python3-colcon-common-extensions`` or through your preferred package manager.
-
 After a successful build, execute the following commands to install the ROS2 package and launch our project.
 
 .. code-block:: shell
 
-  ros2 launch launch/display.launch.py
+  ros2 launch sam_bot_description display.launch.py
 
 ROS2 should now launch a robot publisher node and start up RVIZ using our URDF. We'll be taking a look at our robot using RVIZ in the next section.
 
@@ -432,13 +439,13 @@ Build your project and then launch RViz using the same commands in the previous 
 
   colcon build
   . install/setup.bash
-  ros2 launch launch/display.launch.py
+  ros2 launch sam_bot_description display.launch.py
 
 You can verify whether you have properly set up the collision areas by enabling ``Collision Enabled`` under ``RobotModel`` on the left pane (it may be easier to see if you also turn off ``Visual Enabled``). For this tutorial we defined a collision area which is similar to our visual properties. Note that this may not always be the case since you may opt for simpler collision areas based on how your robot looks.
 
 .. image:: images/base-bot_5.png
 
-For now, we will have to stop here since we will need to set up a lot more components to actually start simulating our robot in Gazebo. We will be coming back to this project during the course of these setup guides, and we will eventually see our robot move in a virtual environment once we get to the simulation sections.
+For now, we will have to stop here since we will need to set up a lot more components to actually start simulating our robot in Gazebo. We will be coming back to this project during the course of these setup guides, and we will eventually see our robot move in a virtual environment once we get to the simulation sections. The major components that are missing from this work are the simulation plugins required to mimic your robot controllers. We will introduce those and add them to this UDRF in the appropriate section.
 
 Conclusion
 ==========
