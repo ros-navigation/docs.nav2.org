@@ -71,3 +71,20 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
 
   Description
     Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.
+
+Example
+*******
+.. code-block:: yaml
+
+    global_costmap:
+      global_costmap:
+        ros__parameters:
+        ...
+        plugins: ["static_layer", "obstacle_layer", "inflation_layer", "speed_filter"]
+        ...
+        speed_filter:
+          plugin: "nav2_costmap_2d::SpeedFilter"
+          enabled: True
+          filter_info_topic: "/costmap_filter_info"
+          speed_limit_topic: "/speed_limit"
+          transform_tolerance: 0.1
