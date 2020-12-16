@@ -391,6 +391,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="costmap-plugins/speed_filter.html">Speed Filter Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-costmaps.html#example">Example</a></li>
@@ -797,8 +798,8 @@ It also implements a map saver server which will run in the background and save 
 <dd><p class="first">Type of costmap filter used. This is an enum for the type of filter this should be interpreted as. We provide the following pre-defined types:</p>
 <ul class="last simple">
 <li>0: keepout zones / preferred lanes filter</li>
-<li>1: speed filter, speed limit is specified in m/s</li>
-<li>2: speed filter, speed limit is specified in % of maximum speed</li>
+<li>1: speed filter, speed limit is specified in % of maximum speed</li>
+<li>2: speed filter, speed limit is specified in absolute value (not implemented yet)</li>
 </ul>
 </dd>
 </dl>
@@ -815,7 +816,7 @@ It also implements a map saver server which will run in the background and save 
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>string</td>
-<td>costmap_filter_info</td>
+<td>“costmap_filter_info”</td>
 </tr>
 </tbody>
 </table>
@@ -836,7 +837,7 @@ It also implements a map saver server which will run in the background and save 
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>string</td>
-<td>filter_mask</td>
+<td>“filter_mask”</td>
 </tr>
 </tbody>
 </table>

@@ -391,6 +391,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/speed_filter.html">Speed Filter Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#example">Example</a></li>
@@ -696,7 +697,8 @@ waypoint_pause_duration: 0</dd>
 <li><code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code>: slow/speed-restricted areas filter.</li>
 <li>Preferred lanes in industries. This plugin is covered by <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> (see discussion in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1522">corresponding PR</a> for more details).</li>
 </ul>
-<p>Each costmap filter subscribes to filter info topic (publishing by <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>) having all necessary information for loaded costmap filter and filter mask topic.</p>
+<p>Each costmap filter subscribes to filter info topic (publishing by <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>) having all necessary information for loaded costmap filter and filter mask topic.
+<code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> additionally publishes maximum speed restricting <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">messages</a> targeted for a Controller to enforce robot won’t exceed given limit.</p>
 <p>High-level design of this concept could be found <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf">here</a>. The functionality of costmap filters is being disscussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1263">the ticket #1263</a> and carried out by <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1882">PR #1882</a>. The following tutorial: <a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#navigation2-with-keepout-filter"><span class="std std-ref">Navigating with Keepout Zones</span></a> will help to easily get involved with <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> functionality.</p>
 </div>
 <div class="section" id="smacplanner">

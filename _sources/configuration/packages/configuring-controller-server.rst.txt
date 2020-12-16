@@ -134,6 +134,17 @@ Parameters
     The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
     Odometry values below this threshold (in rad/s) will be set to 0.0.
 
+:speed_limit_topic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "speed_limit"
+  ============== =============================
+
+  Description
+    Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to :ref:`speed_filter` configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish `these messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_.
+
 Provided Plugins
 ****************
  The plugins listed below are inside the ``nav2_controller`` namespace.

@@ -329,6 +329,7 @@ Costmap Filters Parameters
   :maxdepth: 1
 
   costmap-plugins/keepout_filter.rst
+  costmap-plugins/speed_filter.rst
 
 Example
 *******

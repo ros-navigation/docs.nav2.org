@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Static Layer Parameters &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Speed Filter Parameters &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -47,8 +47,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Inflation Layer Parameters" href="inflation.html" />
-    <link rel="prev" title="Costmap 2D" href="../configuring-costmaps.html" />
+    <link rel="next" title="Lifecycle Manager" href="../configuring-lifecycle.html" />
+    <link rel="prev" title="Keepout Filter Parameters" href="keepout_filter.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -381,17 +381,17 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#default-plugins">Default Plugins</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Static Layer Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="static.html">Static Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="inflation.html">Inflation Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="obstacle.html">Obstacle Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="voxel.html">Voxel Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="range.html">Range Sensor Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="keepout_filter.html">Keepout Filter Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="speed_filter.html">Speed Filter Parameters</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Speed Filter Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#example">Example</a></li>
@@ -606,7 +606,7 @@
         
           <li><a href="../configuring-costmaps.html">Costmap 2D</a> &raquo;</li>
         
-      <li>Static Layer Parameters</li>
+      <li>Speed Filter Parameters</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -623,18 +623,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="static-layer-parameters">
-<h1>Static Layer Parameters<a class="headerlink" href="#static-layer-parameters" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;static</span> <span class="pre">layer&gt;</span></code> is the corresponding plugin name selected for this type.</p>
+  <div class="section" id="speed-filter-parameters">
+<span id="speed-filter"></span><h1>Speed Filter Parameters<a class="headerlink" href="#speed-filter-parameters" title="Permalink to this headline">¶</a></h1>
+<p>Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. The areas where robot should slow down and values of maximum allowed velocities are encoded at filter mask. Filter mask published by Map Server, goes in a pair with filter info topic published by Costmap Filter Info Server. Speed Filter itself publishes a speed restricting messages which are targeted for a Controller in order to make the robot to not exceed the required velocity.</p>
+<h1 align="center">
+  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe width="800" height="450" src="https://www.youtube.com/embed/pq0r0lqi0Sc?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</h1><p><cite>&lt;filter name&gt;</cite>: is the corresponding plugin name selected for this type.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;static</span> <span class="pre">layer&gt;</span></code>.enabled:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.enabled:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col width="46%" />
+<col width="54%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
@@ -652,51 +657,68 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;static</span> <span class="pre">layer&gt;</span></code>.subscribe_to_updates:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.filter_info_topic:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col width="46%" />
+<col width="54%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>False</td>
+<tr class="row-even"><td>string</td>
+<td>N/A</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Subscribe to static map updates after receiving first.</p>
+<dd><p class="first last">Name of the incoming <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg">CostmapFilterInfo</a> topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the <a class="reference internal" href="../configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> configuration page.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;static</span> <span class="pre">layer&gt;</span></code>.map_subscribe_transient_local:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.speed_limit_topic:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col width="32%" />
+<col width="68%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>True</td>
+<tr class="row-even"><td>string</td>
+<td>“speed_limit”</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">QoS settings for map topic.</p>
+<dd><p class="first">Topic to publish speed limit to. The <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">messages</a> have the following fields’ meaning:</p>
+<ul>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">percentage</span></code>: speed limit is expressed in percentage if <code class="docutils literal notranslate"><span class="pre">true</span></code> or in absolute values in <code class="docutils literal notranslate"><span class="pre">false</span></code> case. This parameter is set depending on <code class="docutils literal notranslate"><span class="pre">type</span></code> field of <code class="docutils literal notranslate"><span class="pre">CostmapFilterInfo</span></code> message.</p>
+<dl class="docutils">
+<dt>Note</dt>
+<dd><p class="first last">Speed limit in absolute values is not supported yet.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">speed_limit</span></code>: non-zero values show maximum allowed speed expressed in a percent of maximum robot speed or in absolute value depending on <code class="docutils literal notranslate"><span class="pre">percentage</span></code> value. Zero value means no speed restriction (independently on <code class="docutils literal notranslate"><span class="pre">percentage</span></code>). <code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> is being linearly converted from <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> filter mask value as: <code class="docutils literal notranslate"><span class="pre">speed_limit</span> <span class="pre">=</span> <span class="pre">base</span> <span class="pre">+</span> <span class="pre">multiplier</span> <span class="pre">*</span> <span class="pre">mask_value</span></code>, where <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> coefficients are taken from <code class="docutils literal notranslate"><span class="pre">CostmapFilterInfo</span></code> message.</p>
+<dl class="docutils">
+<dt>Note</dt>
+<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> expressed in a percent should belong to <code class="docutils literal notranslate"><span class="pre">(0.0</span> <span class="pre">..</span> <span class="pre">100.0]</span></code> range.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p class="last">This topic will be used by a Controller Server. Please refer to <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a> configuration page to set it appropriately.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;static</span> <span class="pre">layer&gt;</span></code>.transform_tolerance:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.transform_tolerance:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
@@ -707,41 +729,36 @@
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>double</td>
-<td>0.0</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">TF tolerance.</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;static</span> <span class="pre">layer&gt;</span></code>.map_topic:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="46%" />
-<col width="54%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>string</td>
-<td>“”</td>
+<td>0.1</td>
 </tr>
 </tbody>
 </table>
 <dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">Map topic to subscribe to. If left empty the map topic will default to the global <cite>map_topic</cite> parameter in <cite>costmap_2d_ros</cite>.</p>
+<dd><p class="first last">Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.</p>
 </dd>
 </dl>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
+  <span class="nt">global_costmap</span><span class="p">:</span>
+    <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="nt">plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;speed_filter&quot;</span><span class="p p-Indicator">]</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="nt">speed_filter</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::SpeedFilter&quot;</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">filter_info_topic</span><span class="p">:</span> <span class="s">&quot;/costmap_filter_info&quot;</span>
+      <span class="nt">speed_limit_topic</span><span class="p">:</span> <span class="s">&quot;/speed_limit&quot;</span>
+      <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 

@@ -63,8 +63,12 @@ Costmap Filters
 | `Keepout Filter`_  | Alexey Merzlyakov  | Maintains keep-out/safety zones   |
 |                    |                    | and preferred lanes for moving    |
 +--------------------+--------------------+-----------------------------------+
+| `Speed Filter`_    | Alexey Merzlyakov  | Limits maximum velocity of robot  |
+|                    |                    | in speed restriction areas        |
++--------------------+--------------------+-----------------------------------+
 
 .. _Keepout Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
+.. _Speed Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/speed_filter.cpp
 
 Controllers
 ===========

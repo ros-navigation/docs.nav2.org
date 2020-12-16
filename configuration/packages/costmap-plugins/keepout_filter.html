@@ -47,7 +47,7 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Lifecycle Manager" href="../configuring-lifecycle.html" />
+    <link rel="next" title="Speed Filter Parameters" href="speed_filter.html" />
     <link rel="prev" title="Range Sensor Parameters" href="range.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
@@ -391,6 +391,7 @@
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="../configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Keepout Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="speed_filter.html">Speed Filter Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#example">Example</a></li>
@@ -624,6 +625,7 @@
             
   <div class="section" id="keepout-filter-parameters">
 <span id="keepout-filter"></span><h1>Keepout Filter Parameters<a class="headerlink" href="#keepout-filter-parameters" title="Permalink to this headline">¶</a></h1>
+<p>Keepout Filter - is a Costmap Filter that enforces robot to avoid keepout areas or stay on preferred lanes, by updating corresponding costmap layer using filter mask information.</p>
 <p><cite>&lt;filter name&gt;</cite>: is the corresponding plugin name selected for this type.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -668,7 +670,7 @@
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Name of the CostmapFilterInfo topic having filter-related information.</p>
+<dd><p class="first last">Name of the incoming <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg">CostmapFilterInfo</a> topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the <a class="reference internal" href="../configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> configuration page.</p>
 </dd>
 </dl>
 </td>
@@ -684,7 +686,7 @@
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>double</td>
-<td>0.0</td>
+<td>0.1</td>
 </tr>
 </tbody>
 </table>
@@ -697,6 +699,34 @@
 </tr>
 </tbody>
 </table>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
+  <span class="nt">global_costmap</span><span class="p">:</span>
+    <span class="nt">ros__parameters</span><span class="p">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="l l-Scalar l-Scalar-Plain">plugins</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;keepout_filter&quot;</span><span class="p p-Indicator">]</span>
+      <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">keepout_filter</span><span class="p">:</span>
+        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::KeepoutFilter&quot;</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">filter_info_topic</span><span class="p">:</span> <span class="s">&quot;/costmap_filter_info&quot;</span>
+        <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="nn">...</span>
+<span class="nt">local_costmap</span><span class="p">:</span>
+  <span class="nt">local_costmap</span><span class="p">:</span>
+    <span class="nt">ros__parameters</span><span class="p">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="l l-Scalar l-Scalar-Plain">plugins</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;keepout_filter&quot;</span><span class="p p-Indicator">]</span>
+      <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="nt">keepout_filter</span><span class="p">:</span>
+        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::KeepoutFilter&quot;</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">filter_info_topic</span><span class="p">:</span> <span class="s">&quot;/costmap_filter_info&quot;</span>
+        <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
