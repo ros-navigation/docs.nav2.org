@@ -3,9 +3,12 @@
 Setting Up Transformations
 ##########################
 
-In this guide, we will be looking at the necessary transforms required by Nav2. These transforms allow Nav2 to interpret information coming in from various sources, such as sensors and odometry, by transforming them to the coordinate frames for use.
+In this guide, we will be looking at the necessary transforms required by Nav2. These transforms allow Nav2 to interpret information coming in from various sources, such as sensors and odometry, by transforming them to the coordinate frames for use. Below is what a full transform tree for a robot looks like but we'll start with something much more simpler.
 
-For this tutorial, we will first provide a brief introduction to transforms in ROS. Second, we will outline the necessary transforms that need to be published for Nav2 to function. Lastly, we will be working on a simple command-line demo of a TF2 static publisher to see it in action.
+.. image:: images/tf_full_tree.png
+  :align: center
+
+For this tutorial, we will first provide a brief introduction to transforms in ROS. Second, we will be working on a simple command-line demo of a TF2 static publisher to see it in action. Lastly, we will outline the necessary transforms that need to be published for Nav2 to function.
 
 Transforms Introduction
 ***********************
@@ -39,36 +42,6 @@ Let's choose the  ``base_link`` coordinate frame as the parent because when othe
 
 With this transform tree set up, converting the laser scan received in the ``laser_link`` frame to the  ``base_link`` frame is as simple as making a call to the TF2 library. Our robot can now use this information to reason about laser scans in the  ``base_link`` frame and safely plan around obstacles in its environment.
 
-Transforms in Navigation2
-*************************
-
-There are two important ROS REPs which we highly suggest for you to check out. These documents detail some standards set about by the ROS community to ensure proper operation across different packages. Nav2 also adheres to these standards and conventions.
-
-1. `REP 105 - Coordinate Frames for Mobile Platforms <https://www.ros.org/reps/rep-0105.html>`__
-2. `REP 103 - Standard Units of Measure and Coordinate Conventions <https://www.ros.org/reps/rep-0103.html>`__
-
-To quickly summarize REP 105, this document specifies the naming conventions and semantic meanings of the different coordinate frames used in ROS. Of interest to this tutorial are the ``base_link``, ``odom`` and ``map`` coordinate frames. The ``base_link`` is a coordinate frame that is attached to a fixed position on the robot, typically at its main chassis and its rotational center. The ``odom`` coordinate frame is a fixed frame relative to the robot's starting position and is mainly used for locally-consistent representations of distances. Lastly, the ``map`` coordinate frame is a world fixed frame that is used for globally-consistent representations of distances.
-
-REP 103, on the other hand, discusses some standard units of measure and other related conventions to keep integration issues between different ROS packages to a minimum. The basic overview is that frames are defined using the right hand rule, with Z up and X forward, and units should be standard SI units.
-
-Now let's move on to some specifics for the Navigation2 package to function correctly. Nav2 requires the following transformations to be published in ROS:
-
-1.	``map`` => ``odom``
-2.	``odom`` => ``base_link``
-3.	``base_link`` => ``laser_link`` (sensor base frames)
-
-.. note::
-  The ``laser_link`` coordinate frame is not included in the REP 105 standard. For this guide, we will be using this name to refer to the coordinate frame for a laser sensor on our robot platform.  If there are multiple sensor base frames (e.g. camera_link, laser_link2, lidar_link etc.), then a transformation back to ``base_link`` for each one is required.
-
-The first transform ``map`` => ``odom`` is usually provided by a different ROS package dealing with localization and mapping such as AMCL. This transform updates live in use so we don't set static values for this in our robot's TF tree. Further detail about how to set this up may be pretty complex, so we highly suggest to have a look at the documentation of the mapping or localization package you are using for your platform. All ROS complaint SLAM and localization packages will provide you with this transformation automatically on launch.
-
-The ``odom`` => ``base_link`` is usually published by our odometry system using sensors such as wheel encoders. This is typically computed via sensor fusion of odometry sensors (IMU, wheel encoders, VIO, etc) using the ``robot_localization`` package.
-
-All other statically defined transforms (e.g. ``base_link`` => ``laser_link``, ``base_link`` => ``wheels``, ``wheels`` => ``IMU``, etc) is what we will be talking about for the rest of this guide. This transformation tree is used by Nav2 to properly relate the information from sensors or other frame of interest to the rest of the robot. The transformation between these two coordinate frames is usually provided to Nav2 through the Robot State Publisher and the Universal Robot Descriptor File (URDF). In cases where there are more sensor coordinate frames on your platform, then a transform tree from ``base_link`` to each sensor coordinate frame needs to be published. 
-
-.. seealso::
-  For a more in-depth discussion on the usage of transforms and how these are used to estimate the current state of your robot, we highly recommend having a look at the State Estimation topic in :ref:`concepts`.
-
 Static Transform Publisher Demo
 *******************************
 
@@ -101,9 +74,42 @@ And that's it for this short demo - we were able to successfully publish a trans
 .. seealso:: 
   If you would like to learn more about TF2 and how to create your own transform publishers, head onto the official `TF2 Documentation <https://wiki.ros.org/tf2/Tutorials>`__
 
+
+Transforms in Navigation2
+*************************
+
+There are two important ROS REPs which we highly suggest for you to check out. These documents detail some standards set about by the ROS community to ensure proper operation across different packages. Nav2 also adheres to these standards and conventions.
+
+1. `REP 105 - Coordinate Frames for Mobile Platforms <https://www.ros.org/reps/rep-0105.html>`__
+2. `REP 103 - Standard Units of Measure and Coordinate Conventions <https://www.ros.org/reps/rep-0103.html>`__
+
+To quickly summarize REP 105, this document specifies the naming conventions and semantic meanings of the different coordinate frames used in ROS. Of interest to this tutorial are the ``base_link``, ``odom`` and ``map`` coordinate frames. The ``base_link`` is a coordinate frame that is attached to a fixed position on the robot, typically at its main chassis and its rotational center. The ``odom`` coordinate frame is a fixed frame relative to the robot's starting position and is mainly used for locally-consistent representations of distances. Lastly, the ``map`` coordinate frame is a world fixed frame that is used for globally-consistent representations of distances.
+
+REP 103, on the other hand, discusses some standard units of measure and other related conventions to keep integration issues between different ROS packages to a minimum. The basic overview is that frames are defined using the right hand rule, with Z up and X forward, and units should be standard SI units.
+
+Now let's move on to some specifics for the Navigation2 package to function correctly. Nav2 requires the following transformations to be published in ROS:
+
+1.	``map`` => ``odom``
+2.	``odom`` => ``base_link``
+3.	``base_link`` => ``laser_link`` (sensor base frames)
+
+.. note::
+  The ``laser_link`` coordinate frame is not included in the REP 105 standard. For this guide, we will be using this name to refer to the coordinate frame for a laser sensor on our robot platform.  If there are multiple sensor base frames (e.g. camera_link, laser_link2, lidar_link etc.), then a transformation back to ``base_link`` for each one is required.
+
+The first transform ``map`` => ``odom`` is usually provided by a different ROS package dealing with localization and mapping such as AMCL. This transform updates live in use so we don't set static values for this in our robot's TF tree. Further detail about how to set this up may be pretty complex, so we highly suggest to have a look at the documentation of the mapping or localization package you are using for your platform. All ROS complaint SLAM and localization packages will provide you with this transformation automatically on launch.
+
+The ``odom`` => ``base_link`` is usually published by our odometry system using sensors such as wheel encoders. This is typically computed via sensor fusion of odometry sensors (IMU, wheel encoders, VIO, etc) using the ``robot_localization`` package.
+
+All other statically defined transforms (e.g. ``base_link`` => ``laser_link``, ``base_link`` => ``wheels``, ``wheels`` => ``IMU``, etc) is what we will be talking about for the rest of this guide. This transformation tree is used by Nav2 to properly relate the information from sensors or other frame of interest to the rest of the robot. The transformation between these two coordinate frames is usually provided to Nav2 through the Robot State Publisher and the Universal Robot Descriptor File (URDF). In cases where there are more sensor coordinate frames on your platform, then a transform tree from ``base_link`` to each sensor coordinate frame needs to be published. 
+
+.. seealso::
+  For a more in-depth discussion on the usage of transforms and how these are used to estimate the current state of your robot, we highly recommend having a look at the State Estimation topic in :ref:`concepts`.
+
 Conclusion
 **********
 
-In this tutorial, we have discussed about the concept of transforms and how they are used in Nav2. We also discussed the three published transform requirements of Nav2 and the neccessary REPs to keep in mind when setting them up. 
+In this tutorial, we have discussed about the concept of transforms and how they are used in Nav2. 
 
 In the last section, we have also explored using the static_transform_publisher of TF2 to publish our transforms. You may use this to set up your transforms for Nav2, but this is generally not the best way to do it. In most robotics projects, we make use of the Robot State Publisher since it is much easier to use and scales well as our robot gets more complex. We will be talking about the Robot State Publisher, URDF, and how to set it up in the next tutorial on :ref:`urdf_handson`.
+
+Lastly, we also discussed the three published transform requirements of Nav2 and the neccessary REPs to keep in mind when setting them up. 
