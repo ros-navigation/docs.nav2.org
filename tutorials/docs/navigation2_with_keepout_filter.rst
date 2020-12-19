@@ -98,7 +98,7 @@ In order to enable Keepout Filter in your configuration, both servers should be 
 
   def generate_launch_description():
       # Get the launch directory
-      keepout_filter_demo_dir = get_package_share_directory('nav2_keepout_filter_demo')
+      costmap_filters_demo_dir = get_package_share_directory('nav2_costmap_filters_demo')
 
       # Create our own temporary YAML files that include substitutions
       lifecycle_nodes = ['filter_mask_server', 'costmap_filter_info_server']
@@ -127,12 +127,12 @@ In order to enable Keepout Filter in your configuration, both servers should be 
 
       declare_params_file_cmd = DeclareLaunchArgument(
               'params_file',
-              default_value=os.path.join(keepout_filter_demo_dir, 'params', 'keepout_params.yaml'),
+              default_value=os.path.join(costmap_filters_demo_dir, 'params', 'keepout_params.yaml'),
               description='Full path to the ROS2 parameters file to use')
 
       declare_mask_yaml_file_cmd = DeclareLaunchArgument(
               'mask',
-              default_value=os.path.join(keepout_filter_demo_dir, 'maps', 'keepout_mask.yaml'),
+              default_value=os.path.join(costmap_filters_demo_dir, 'maps', 'keepout_mask.yaml'),
               description='Full path to filter mask yaml file to load')
 
       # Make re-written yaml
@@ -190,7 +190,6 @@ In order to enable Keepout Filter in your configuration, both servers should be 
 
       return ld
 
-
 where the ``params_file`` variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at :ref:`configuring_map_server` page. Please, refer to it for more information. The example of ``params_file`` could be found below:
 
 .. code-block:: yaml
@@ -216,7 +215,7 @@ Note, that:
  - Filter mask topic name should be the equal for ``mask_topic`` parameter of Costmap Filter Info Publisher Server and ``topic_name`` parameter of Map Server.
  - According to the Costmap Filters design, ``OccupancyGrid`` values are being linearly transformed into feature map in a filter space. For a Keepout Filter these values are directly passed as a filter space values without a linear conversion. Even though ``base`` and ``multiplier`` coefficients are not used in Keepout Filter, they should be set to ``0.0`` and ``1.0`` accordingly in order to explicitly show that we have one-to-one conversion from ``OccupancyGrid`` values -> to a filter value space.
 
-Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in a `nav2_keepout_filter_demo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_keepout_filter_demo>`_ directory of ``navigation2_tutorials`` repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at :ref:`getting_started`, build the demo and launch ``costmap_filter_info.launch.py`` as follows:
+Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in a `nav2_costmap_filters_demo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_costmap_filters_demo>`_ directory of ``navigation2_tutorials`` repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at :ref:`getting_started`, build the demo and launch ``costmap_filter_info.launch.py`` as follows:
 
 .. code-block:: bash
 
@@ -224,9 +223,9 @@ Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and f
   $ cd ~/tutorials_ws/src
   $ git clone https://github.com/ros-planning/navigation2_tutorials.git
   $ cd ~/tutorials_ws
-  $ colcon build --symlink-install --packages-select nav2_keepout_filter_demo
+  $ colcon build --symlink-install --packages-select nav2_costmap_filters_demo
   $ source ~/tutorials_ws/install/setup.bash
-  $ ros2 launch nav2_keepout_filter_demo costmap_filter_info.launch.py params_file:=src/navigation2_tutorials/nav2_keepout_filter_demo/params/keepout_params.yaml mask:=src/navigation2_tutorials/nav2_keepout_filter_demo/maps/keepout_mask.yaml
+  $ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_file:=src/navigation2_tutorials/nav2_costmap_filters_demo/params/keepout_params.yaml mask:=src/navigation2_tutorials/nav2_costmap_filters_demo/maps/keepout_mask.yaml
 
 3. Enable Keepout Filter
 ------------------------
