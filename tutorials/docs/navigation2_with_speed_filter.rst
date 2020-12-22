@@ -7,6 +7,14 @@ Navigating with Speed Limits
 - `Requirements`_
 - `Tutorial Steps`_
 
+.. raw:: html
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="600" height="480" src="https://www.youtube.com/embed/gKDsBsbIem4?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </h1>
+
 Overview
 ========
 
