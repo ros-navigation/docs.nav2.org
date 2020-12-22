@@ -35,17 +35,19 @@ As was written in :ref:`concepts`, any Costmap Filter (including Keepout Filter)
 
 Create a new image with a PGM/PNG/BMP format: copy `turtlebot3_world.pgm <https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.pgm>`_ main map which will be used in a world simulation from a ``navigation2`` repository to a new ``keepout_mask.pgm`` file.
 
-Open ``keepout_mask.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. In the GIMP lightness is expressed through color components value (e.g. ``R`` in percent scale) and might be set by moving ``L`` slider in color changing tool:
+Open ``keepout_mask.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. Another term "darkness" will be understood as the exact opposite of lightness. In other words ``color_darkness = 100% - color_lightness``.
+
+In the GIMP lightness is expressed through color components value (e.g. ``R`` in percent scale) and might be set by moving ``L`` slider in color changing tool:
 
 .. image:: images/Navigation2_with_Keepout_Filter/ligtness_in_GIMP.png
 
 The incoming mask file is being read by the Map Server and converted into ``OccupancyGrid`` values from ``[0..100]`` range (where ``0`` means free cell, ``100`` - occupied, anything in between - less or more occupied cells on map) or be equal to ``-1`` for unknown value. In Navigation2 stack each map has ``mode`` attribute which could be ``trinary``, ``scale`` or ``raw``. Depending on ``mode`` selected, the color lightness of PGM/PNG/BMP is being converted to ``OccupancyGrid`` by one of the following principles:
 
-- ``trinary`` (default mode): Lightness >= ``occupied_thresh`` means that map occupied (``100``). Lightness <= ``free_thresh`` - map free (``0``). Anything in between - unknown status on map (``-1``).
-- ``scale``: Alpha < ``1.0`` - unknown. Lightness >= ``occupied_thresh`` means that map occupied (``100``). Lightness <= ``free_thresh`` - map free (``0``). Anything in between - linearly interpolate to nearest integer from ``[0..100]`` range.
+- ``trinary`` (default mode): Darkness >= ``occupied_thresh`` means that map occupied (``100``). Darkness <= ``free_thresh`` - map free (``0``). Anything in between - unknown status on map (``-1``).
+- ``scale``: Alpha < ``1.0`` - unknown. Darkness >= ``occupied_thresh`` means that map occupied (``100``). Darkness <= ``free_thresh`` - map free (``0``). Anything in between - linearly interpolate to nearest integer from ``[0..100]`` range.
 - ``raw``: Lightness = ``0`` (dark color) means that map is free (``0``). Lightness = ``100`` (in absolute value)  - map is occupied (``100``). Anything in between - ``OccupancyGrid`` value = lightness. Lightness >= ``101`` - unknown (``-1``).
 
-where ``free_thresh`` and ``occupied_thresh`` thresholds are expressed in percentage of maximum lightness level (``255``). Map mode and thresholds are placed in YAML metadata file (see below) as ``mode``, ``free_thresh`` and ``occupied_thresh`` fields.
+where ``free_thresh`` and ``occupied_thresh`` thresholds are expressed in percentage of maximum lightness/darkness level (``255``). Map mode and thresholds are placed in YAML metadata file (see below) as ``mode``, ``free_thresh`` and ``occupied_thresh`` fields.
 
 For Keepout Filter ``OccupancyGrid`` value is proportional to the passibility of area corresponting to this cell: higher values means more impassable areas. Cells with occupied values covers keep-out zones where robot will never enter or pass through. ``KeepoutFilter`` can also act as a "weighted areas layer" by setting the ``OccupancyGrid`` to something between ``[1-99]`` non-occupied values. Robot is allowed to move in these areas, however its presence there would be "undesirable" there (the higher the value, the sooner planners will try to get the robot out of this area).
 
