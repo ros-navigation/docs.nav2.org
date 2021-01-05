@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html4" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Setting Up The URDF &mdash; Navigation 2 1.0.0 documentation</title>
   
@@ -18,7 +18,10 @@
   
     <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   
+
   
+  
+
   
 
   
@@ -66,7 +69,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Navigation 2
+            <a href="../../index.html" class="icon icon-home"> Navigation 2
           
 
           
@@ -616,6 +619,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -629,7 +634,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -644,6 +649,10 @@
   <div class="section" id="setting-up-the-urdf">
 <span id="urdf-handson"></span><h1>Setting Up The URDF<a class="headerlink" href="#setting-up-the-urdf" title="Permalink to this headline">¶</a></h1>
 <p>For this guide, we will be creating the URDF for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">The complete source code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository under the <code class="docutils literal notranslate"><span class="pre">sam_bot_description</span></code> package</p>
+</div>
 <div class="section" id="urdf-and-the-robot-state-publisher">
 <h2>URDF and the Robot State Publisher<a class="headerlink" href="#urdf-and-the-robot-state-publisher" title="Permalink to this headline">¶</a></h2>
 <p>As discussed in the previous tutorial, one of the requirements for Navigation2 is the transformation from  <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to <code class="docutils literal notranslate"><span class="pre">laser_link</span></code> or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms.</p>
@@ -1151,20 +1160,17 @@ ros2 launch sam_bot_description display.launch.py
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020
+        &#169; Copyright 2020.
 
     </p>
   </div> 
 
 </footer>
-
         </div>
 
 
