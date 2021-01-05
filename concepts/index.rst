@@ -196,6 +196,11 @@ In the second, the ``nav2_waypoint_follower`` is a nice sample application / pro
 
 Neither is better than the other, it highly depends on the tasks your robot(s) are completing, in what type of environment, and with what cloud resources available. Often this distinction is very clear for a given business case.
 
+``nav2_waypoint_follower`` also supports pure GPS waypoint following, given GPS coordinates and tools to convert the GPS coordinates to
+robot's map frame. `Robot Localization <https://github.com/cra-ros-pkg/robot_localization/>`_  package is the main tool used here to convert GPS waypoints to robot's map frame.
+There is an action server named ``FollowGPSWaypoints`` within ``nav2_waypoint_follower``. The action server is parallel to
+``FollowWaypoints`` in terms of structure and execution. Difference is that in ``FollowGPSWaypoints`` waypoints are first converted to map frames then executed consequently.
+
 State Estimation
 ****************
 

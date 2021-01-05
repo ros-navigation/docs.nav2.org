@@ -12,6 +12,12 @@ It will take in a set of ordered waypoints to follow and then try to navigate to
 It also hosts a waypoint task executor plugin which can be used to perform custom behavior at a waypoint like waiting for user instruction, taking a picture, or picking up a box.
 If a waypoint is not achievable, the ``stop_on_failure`` parameter will determine whether to continue to the next point or stop.
 
+The Waypoint Follower module also supports pure GPS waypoint following, given GPS coordinates and tools to convert the GPS coordinates to
+robot's map frame. `Robot Localization <https://github.com/cra-ros-pkg/robot_localization/>`_  package is the main tool used here to convert GPS waypoints to robot's map frame.
+There is an action server named ``FollowGPSWaypoints`` within ``nav2_waypoint_follower``. The action server is parallel to
+``FollowWaypoints`` in terms of structure and execution. Difference is that in ``FollowGPSWaypoints`` waypoints are first converted to map frames then executed consequently. Other features of Waypoint Follower module
+such as waypoint task executor plugins are also supported for GPS waypoint following.
+
 Parameters
 **********
 

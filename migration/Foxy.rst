@@ -109,3 +109,9 @@ To follow the SI units outlined in REP-103 to the "T" nodes below were modified 
  - ``max_planning_time_ms`` became ``max_planning_time`` in seconds
 - map saver
  - ``save_map_timeout`` in seconds
+
+Pure GPS Waypoint Following Support
+***********************************
+``nav2_waypoint_follower`` package is now supporting pure GPS waypoint following through an action interface. 
+The action named ``FollowGPSWaypoints`` accepts GPS waypoints with orientation information included. A tutorial that show cases usage of feature has been added to  `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/>`_,
+Also see the General Tutorials section for more detailed instruction on usage of this feature.
