@@ -25,7 +25,6 @@ The requirements for this task are as follows:
 - Setup `Robot Localization <https://github.com/cra-ros-pkg/robot_localization/>`_ such that utm -> map coordinate frame transform is available.
 - Use provided sample action client code to request to action server for following of GPS waypoints.
 
-
 Tutorial Steps
 ==============
 
@@ -308,4 +307,63 @@ The map -> odom -> base_link holy chain should now be available in the TF tree.
 
 2- Let The Robot Follow The GPS Waypoints
 -----------------------------------------
-WIP
+
+Assuming that you have already collected your waypoints and they reside at `navigation2_tutorials/nav2_gps_waypoint_follower_demo/params/demo_gps_waypoints.yaml`. 
+
+You can simply lanch the GPS waypoint following with provided node. 
+
+You need to make sure that you have built packages in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ successfully. 
+After sucessful build do;
+
+.. code-block:: bash
+  source ~/your_colcon_ws/install/setup.bash
+  ros2 launch nav2_gps_waypoint_follower_demo demo_gps_waypoint_follower.launch.py
+
+The launch file looks something like ; 
+ 
+.. code-block:: python
+
+  from ament_index_python.packages import get_package_share_directory
+
+  from launch import LaunchDescription
+  from launch_ros.actions import LifecycleNode
+  from launch.actions import DeclareLaunchArgument
+  from launch.substitutions import LaunchConfiguration
+  from launch.actions import EmitEvent
+  from launch.actions import RegisterEventHandler
+  from launch_ros.events.lifecycle import ChangeState
+  from launch_ros.events.lifecycle import matches_node_name
+  from launch_ros.event_handlers import OnStateTransition
+  from launch.actions import LogInfo
+  from launch.events import matches_action
+  from launch.event_handlers.on_shutdown import OnShutdown
+
+  import lifecycle_msgs.msg
+  import os
+
+
+  def generate_launch_description():
+      share_dir = get_package_share_directory(
+          'nav2_gps_waypoint_follower_demo')
+      parameter_file = LaunchConfiguration('params_file')
+      node_name = 'gps_waypoint_follower_demo'
+
+      params_declare = DeclareLaunchArgument('params_file',
+                                            default_value=os.path.join(
+                                                share_dir, 'params', 'demo_gps_waypoints.yaml'),
+                                            description='FPath to the ROS2 parameters file to use.')
+
+      driver_node = LifecycleNode(package='nav2_gps_waypoint_follower_demo',
+                                  executable='gps_waypoint_follower_demo',
+                                  name=node_name,
+                                  namespace='',
+                                  output='screen',
+                                  parameters=[parameter_file],
+                                  )
+
+      return LaunchDescription([
+          params_declare,
+          driver_node,
+      ])
+
+If you save more than one different waypoint data files then just change the demo_gps_waypoints.yaml with your desired file. 
