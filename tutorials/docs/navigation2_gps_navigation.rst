@@ -125,7 +125,8 @@ Robot Localization provides a dedicated node(`navsat_transform_node`) to convert
 
 More details on integrating GPS data can also be found at `here <http://docs.ros.org/en/melodic/api/robot_localization/html/integrating_gps.html>`_. 
 
-The mentioned 3 nodes above should be configured with the right parameters. THe below configuration was tested in simulation. 
+The mentioned 3 nodes above should be configured with the right parameters. The below configuration was tested in simulation. The main changes should be made to topic names. The description of each indvidual
+parameter is again available at Robot Localization wiki page for EKF node details.
 
 .. code-block:: yaml
   # This is configuration for local pose estmation EKF node
@@ -291,20 +292,19 @@ Now that we have configuration for our nodes, next we should have a launch file 
                 )           
   ])
 
-Please watch out for topic names. Configure right topics for your sensor data in the `dual_ekf_navsat_localization.yaml.`
-
+Please watch out for topic names. Configure right topics for your sensor data in the `dual_ekf_navsat_localization.yaml`.
 The configuration file and launch file are also available in `navigation2_tutorials/nav2_gps_waypoint_follower_demo <https://github.com/ros-planning/navigation2_tutorials>`_. 
  
-You can initialize the robot localization after you have made right changes fo your sensor data with; 
+You can initialize the robot localization nodes after you have made right changes fo your sensor data. 
 
 You need to make sure that you have built packages in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ successfully. 
-After you drove the robot to a waypoint then do ;
+After sucessful build do;
 
 .. code-block:: bash
   source ~/your_colcon_ws/install/setup.bash
   ros2 launch nav2_gps_waypoint_follower_demo dual_ekf_navsat_localization.launch.py
 
-The map -> odom -> base_link holy chain should now be available n the TF tree. 
+The map -> odom -> base_link holy chain should now be available in the TF tree. 
 
 2- Let The Robot Follow The GPS Waypoints
 -----------------------------------------
