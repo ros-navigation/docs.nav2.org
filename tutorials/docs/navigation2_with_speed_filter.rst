@@ -31,7 +31,7 @@ Tutorial Steps
 1. Prepare filter mask
 ----------------------
 
-As was written in :ref:`concepts`, any Costmap Filter (including Speed Filter) are reading the data marked in a filter mask file. All information about filter masks, their types, detailed structure and how to make a new one is written in a :ref:`navigation2_with_keepout_filter` tutorial at "1. Prepare filter maks" chapter. The principal of drawing filter mask for Speed Filter is the same as for Keepout Filter, except that ``OccupancyGrid`` mask values have another meaning: these values are encoded speed limits for the areas corresponding to the cell on map.
+As was written in :ref:`concepts`, any Costmap Filter (including Speed Filter) is reading the data marked in a filter mask file. All information about filter masks, their types, detailed structure and how to make a new one is written in a :ref:`navigation2_with_keepout_filter` tutorial at ``1. Prepare filter masks`` chapter. The principal of drawing the filter mask for Speed Filter is the same as for Keepout Filter (to annotate a map with the requested zones), except that ``OccupancyGrid`` mask values have another meaning: these values are encoded speed limits for the areas corresponding to the cell on map.
 
 Let's look, how it is being decoded. As we know, ``OccupancyGrid`` values are belonging to the ``[0..100]`` range. For Speed Filter ``0`` value means no speed limit in the area corresponding zero-cell on mask. Values from ``[1..100]`` range are being linearly converted into a speed limit value by the following formula:
 
