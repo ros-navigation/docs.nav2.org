@@ -54,7 +54,7 @@ In this tutorial we will use the first type of speed restriction expressed in a 
 
 .. note::
 
-  For speed restriction expressed in a percent, ``speed_limit`` will be used exactly as a percent belonging to ``[0..100]`` range, but not as a share from ``[0.0..1.0]`` range.
+  For speed restriction expressed in a percent, ``speed_limit`` will be used exactly as a percent belonging to ``[0..100]`` range, not ``[0.0..1.0]`` range.
 
 Create a new image with a PGM/PNG/BMP format: copy ``turtlebot3_world.pgm`` main map which will be used in a world simulation from a navigation2 repository to a new ``speed_mask.pgm`` file. Open ``speed_mask.pgm`` in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:
 
