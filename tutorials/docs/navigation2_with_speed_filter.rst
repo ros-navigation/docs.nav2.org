@@ -90,15 +90,11 @@ Like all other maps, the filter mask should have its own YAML metadata file. Cop
   occupied_thresh: 1.0
   free_thresh: 0.0
 
-Save ``speed_mask.yaml`` and the new filter mask is ready to use.
+Since Costmap2D does not support orientation, the last third "yaw" component of the ``origin`` vector should be equal to zero (for example: ``origin: [1.25, -5.18, 0.0]``). Save ``speed_mask.yaml`` and the new filter mask is ready to use.
 
 .. note::
 
   World map itself and filter mask could have different sizes, origin and resolution which might be useful (e.g. for cases when filter mask is covering smaller areas on maps or when one filter mask is used repeatedly many times, like annotating a speed restricted area for same shape rooms in the hotel). For this case, you need to correct ``resolution`` and ``origin`` fields in YAML as well so that the filter mask is correctly laid on top of the original map. This example shows using the main map as a base, but that is not required.
-
-.. note::
-
-  Another important note is that since Costmap2D does not support orientation, the last third "yaw" component of the ``origin`` vector should be equal to zero. For example: ``origin: [1.25, -5.18, 0.0]``.
 
 2. Configure Costmap Filter Info Publisher Server
 -------------------------------------------------
@@ -223,14 +219,14 @@ where the ``params_file`` variable should be set to a YAML-file having ROS param
       use_sim_time: true
       type: 1
       filter_info_topic: "/costmap_filter_info"
-      mask_topic: "/filter_mask"
+      mask_topic: "/speed_filter_mask"
       base: 100.0
       multiplier: -1.0
   filter_mask_server:
     ros__parameters:
       use_sim_time: true
       frame_id: "map"
-      topic_name: "/filter_mask"
+      topic_name: "/speed_filter_mask"
       yaml_filename: "speed_mask.yaml"
 
 Note, that:
@@ -262,11 +258,9 @@ Costmap Filters are Costamp2D plugins. You can enable the ``SpeedFilter`` plugin
 
 Full list of parameters supported by ``SpeedFilter`` are listed at the :ref:`speed_filter` page.
 
-You can place the plugin either in the ``global_costmap`` section in ``nav2_params.yaml`` to have speed restriction mask applied to global costmap or in the ``local_costmap`` to apply speed mask to the local costmap. However, it is highly not recommended to enable ``SpeedFilter`` plugin simultaneously for global and local costmaps. This might produce unwanted multiple "speed restriction" - "no restriction" message chains on speed restriction boundaries, that will cause jerking of the robot or another unpredictable behaviour.
+You can place the plugin either in the ``global_costmap`` section in ``nav2_params.yaml`` to have speed restriction mask applied to global costmap or in the ``local_costmap`` to apply speed mask to the local costmap. However, ``SpeedFilter`` plugin should never be enabled simultaneously for global and local costmaps. Otherwise, it can lead to unwanted multiple "speed restriction" - "no restriction" message chains on speed restriction boundaries, that will cause jerking of the robot or another unpredictable behaviour.
 
-As stated in the `design <https://github.com/ros-planning/navigation2/blob/main/doc/design/CostmapFilters_design.pdf>`_, Speed Filter publishes speed restricting `messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ targeted for a Controller Server so that it could restrict maximum speed of the robot when it needed. Controller Server has a ``speed_limit_topic`` ROS parameter for that, which should be set to the same as in ``speed_filter`` plugin value. This topic in the map server could also be used to any number of other speed-restricted applications beyond the speed limiting zones, such as dynamically adjusting maximum speed by payload mass.
-
-To enable Speed Filter with same mask for both global costmap, use the following configuration:
+In this tutorial, we will enable Speed Filter for the global costmap. For this use the following configuration:
 
 .. code-block:: text
 
@@ -282,21 +276,7 @@ To enable Speed Filter with same mask for both global costmap, use the following
           filter_info_topic: "/costmap_filter_info"
           speed_limit_topic: "/speed_limit"
 
-For using Speed Filter with local costmap, use the following configuration:
-
-.. code-block:: text
-
-  local_costmap:
-    local_costmap:
-      ros__parameters:
-        ...
-        plugins: ["voxel_layer", "inflation_layer", "speed_filter"]
-        ...
-        speed_filter:
-          plugin: "nav2_costmap_2d::SpeedFilter"
-          enabled: True
-          filter_info_topic: "/costmap_filter_info"
-          speed_limit_topic: "/speed_limit"
+As stated in the `design <https://github.com/ros-planning/navigation2/blob/main/doc/design/CostmapFilters_design.pdf>`_, Speed Filter publishes speed restricting `messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ targeted for a Controller Server so that it could restrict maximum speed of the robot when it needed. Controller Server has a ``speed_limit_topic`` ROS parameter for that, which should be set to the same as in ``speed_filter`` plugin value. This topic in the map server could also be used to any number of other speed-restricted applications beyond the speed limiting zones, such as dynamically adjusting maximum speed by payload mass.
 
 Set ``speed_limit_topic`` parameter of a Controller Server to the same value as it set for ``speed_filter`` plugin:
 
@@ -317,7 +297,7 @@ After Costmap Filter Info Publisher Server and Map Server were launched and Spee
 
   ros2 launch nav2_bringup tb3_simulation_launch.py
 
-For better visualization of speed filter mask, in RViz in the left ``Displays`` pane unfold ``Map`` and change ``Topic`` from ``/map`` -> to ``/filter_mask``.
+For better visualization of speed filter mask, in RViz in the left ``Displays`` pane unfold ``Map`` and change ``Topic`` from ``/map`` -> to ``/speed_filter_mask``.
 Set the goal behind the speed restriction areas and check that the filter is working properly: robot should slow down when going through a speed restricting areas. Below is how it might look (first picture shows speed filter enabled for the global costmap, second - ``speed_mask.pgm`` filter mask):
 
 .. image:: images/Navigation2_with_Speed_Filter/speed_global.gif

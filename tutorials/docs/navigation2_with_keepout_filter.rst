@@ -205,14 +205,14 @@ where the ``params_file`` variable should be set to a YAML-file having ROS param
       use_sim_time: true
       type: 0
       filter_info_topic: "/costmap_filter_info"
-      mask_topic: "/filter_mask"
+      mask_topic: "/keepout_filter_mask"
       base: 0.0
       multiplier: 1.0
   filter_mask_server:
     ros__parameters:
       use_sim_time: true
       frame_id: "map"
-      topic_name: "/filter_mask"
+      topic_name: "/keepout_filter_mask"
       yaml_filename: "keepout_mask.yaml"
 
 Note, that:
