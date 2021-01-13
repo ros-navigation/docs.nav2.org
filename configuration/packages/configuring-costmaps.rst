@@ -357,7 +357,8 @@ Example
             scan:
               topic: /scan
               obstacle_range: 2.5
-              raytrace_range: 3.0
+              raytrace_max_range: 3.0
+              raytrace_min_range: 0.0
               max_obstacle_height: 2.0
               min_obstacle_height: 0.0
               clearing: True
@@ -383,7 +384,8 @@ Example
               max_obstacle_height: 2.0
               min_obstacle_height: 0.0
               obstacle_range: 2.5
-              raytrace_range: 3.0
+              raytrace_max_range: 3.0
+              raytrace_min_range: 0.0
               clearing: True
               marking: True
               data_type: "PointCloud2"
