@@ -113,7 +113,7 @@ To follow the SI units outlined in REP-103 to the "T" nodes below were modified 
 
 Ray Tracing Parameters
 **********************
-Raytracing functionality was modified to include a minimum range parameter from which ray tracing starts to clear obstacles to avoid incorrectly clearing obstacles too close to the robot. This issue was mentioned in `ROS Answers <https://answers.ros.org/question/355150/obstacles-in-sensor-deadzone/>`_. An existing parameter `raytrace_range` was renamed to `raytrace_max_range` to reflect the functionality it affects. The renamed parameters and the plugins that they belong to are mentioned below. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2126>`_.
+Raytracing functionality was modified to include a minimum range parameter from which ray tracing starts to clear obstacles to avoid incorrectly clearing obstacles too close to the robot. This issue was mentioned in `ROS Answers <https://answers.ros.org/question/355150/obstacles-in-sensor-deadzone/>`_. An existing parameter ``raytrace_range`` was renamed to ``raytrace_max_range`` to reflect the functionality it affects. The renamed parameters and the plugins that they belong to are mentioned below. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2126>`_.
 
 - obstacle_layer plugin
  - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
