@@ -356,7 +356,8 @@ Example
             combination_method: 1
             scan:
               topic: /scan
-              obstacle_range: 2.5
+              obstacle_max_range: 2.5
+              obstacle_min_range: 0.0
               raytrace_max_range: 3.0
               raytrace_min_range: 0.0
               max_obstacle_height: 2.0
@@ -383,7 +384,8 @@ Example
               topic: /intel_realsense_r200_depth/points
               max_obstacle_height: 2.0
               min_obstacle_height: 0.0
-              obstacle_range: 2.5
+              obstacle_max_range: 2.5
+              obstacle_min_range: 0.0
               raytrace_max_range: 3.0
               raytrace_min_range: 0.0
               clearing: True
