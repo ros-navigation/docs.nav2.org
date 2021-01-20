@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Navigating with Keepout Zones &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Navigating with Speed Limits &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Navigating with Speed Limits" href="navigation2_with_speed_filter.html" />
-    <link rel="prev" title="Dynamic Object Following" href="navigation2_dynamic_point_following.html" />
+    <link rel="next" title="Plugin Tutorials" href="../../plugin_tutorials/index.html" />
+    <link rel="prev" title="Navigating with Keepout Zones" href="navigation2_with_keepout_filter.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -266,26 +266,26 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#run-navigation2-stack">4. Run Navigation2 stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Navigating with Speed Limits</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#prepare-filter-mask">1. Prepare filter mask</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-speed-filter">3. Enable Speed Filter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#run-navigation2-stack">4. Run Navigation2 stack</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#run-navigation2-stack">4. Run Navigation2 stack</a></li>
 </ul>
 </li>
 </ul>
@@ -641,7 +641,7 @@
         
           <li><a href="../index.html">General Tutorials</a> &raquo;</li>
         
-      <li>Navigating with Keepout Zones</li>
+      <li>Navigating with Speed Limits</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -658,8 +658,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="navigating-with-keepout-zones">
-<span id="navigation2-with-keepout-filter"></span><h1>Navigating with Keepout Zones<a class="headerlink" href="#navigating-with-keepout-zones" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="navigating-with-speed-limits">
+<span id="navigation2-with-speed-filter"></span><h1>Navigating with Speed Limits<a class="headerlink" href="#navigating-with-speed-limits" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
@@ -667,61 +667,81 @@
 </ul>
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="600" height="480" src="https://www.youtube.com/embed/iVteYQR5IYQ?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="600" height="480" src="https://www.youtube.com/embed/gKDsBsbIem4?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </h1><div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial shows how to simply utilize keep-out/safety zones where robots can’t enter and preferred lanes for robots moving in industrial environments and warehouses. All this functionality is being covered by <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> costmap filter plugin which will be enabled and used in this document.</p>
+<p>This tutorial shows how to simply utilize Speed Filter which is designed to limit the maximum speed of robots in speed restriction areas marked on a map. This functionality is being covered by <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> costmap filter plugin which will be enabled and used in this document.</p>
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in <a class="reference internal" href="../../build_instructions/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
+<p>It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that the Navigation2 project is also built locally as it was made in <a class="reference internal" href="../../build_instructions/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="prepare-filter-mask">
 <h3>1. Prepare filter mask<a class="headerlink" href="#prepare-filter-mask" title="Permalink to this headline">¶</a></h3>
-<p>As was written in <a class="reference internal" href="../../concepts/index.html#concepts"><span class="std std-ref">Navigation Concepts</span></a>, any Costmap Filter (including Keepout Filter) are reading the data marked in a filter mask file. Filter mask - is the usual Navigation2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The following steps help to understand how to make a new filter mask:</p>
-<p>Create a new image with a PGM/PNG/BMP format: copy <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.pgm">turtlebot3_world.pgm</a> main map which will be used in a world simulation from a <code class="docutils literal notranslate"><span class="pre">navigation2</span></code> repository to a new <code class="docutils literal notranslate"><span class="pre">keepout_mask.pgm</span></code> file.</p>
-<p>Open <code class="docutils literal notranslate"><span class="pre">keepout_mask.pgm</span></code> in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the <code class="docutils literal notranslate"><span class="pre">[0..255]</span></code> range (or <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> in percent scale), where <code class="docutils literal notranslate"><span class="pre">0</span></code> means black color and <code class="docutils literal notranslate"><span class="pre">255</span></code> - white. Another term “darkness” will be understood as the exact opposite of lightness. In other words <code class="docutils literal notranslate"><span class="pre">color_darkness</span> <span class="pre">=</span> <span class="pre">100%</span> <span class="pre">-</span> <span class="pre">color_lightness</span></code>.</p>
-<p>In the GIMP lightness is expressed through color components value (e.g. <code class="docutils literal notranslate"><span class="pre">R</span></code> in percent scale) and might be set by moving <code class="docutils literal notranslate"><span class="pre">L</span></code> slider in color changing tool:</p>
-<img alt="../../_images/ligtness_in_GIMP.png" src="../../_images/ligtness_in_GIMP.png" />
-<p>The incoming mask file is being read by the Map Server and converted into <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values from <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> range (where <code class="docutils literal notranslate"><span class="pre">0</span></code> means free cell, <code class="docutils literal notranslate"><span class="pre">100</span></code> - occupied, anything in between - less or more occupied cells on map) or be equal to <code class="docutils literal notranslate"><span class="pre">-1</span></code> for unknown value. In Navigation2 stack each map has <code class="docutils literal notranslate"><span class="pre">mode</span></code> attribute which could be <code class="docutils literal notranslate"><span class="pre">trinary</span></code>, <code class="docutils literal notranslate"><span class="pre">scale</span></code> or <code class="docutils literal notranslate"><span class="pre">raw</span></code>. Depending on <code class="docutils literal notranslate"><span class="pre">mode</span></code> selected, the color lightness of PGM/PNG/BMP is being converted to <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> by one of the following principles:</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">trinary</span></code> (default mode): Darkness &gt;= <code class="docutils literal notranslate"><span class="pre">occupied_thresh</span></code> means that map occupied (<code class="docutils literal notranslate"><span class="pre">100</span></code>). Darkness &lt;= <code class="docutils literal notranslate"><span class="pre">free_thresh</span></code> - map free (<code class="docutils literal notranslate"><span class="pre">0</span></code>). Anything in between - unknown status on map (<code class="docutils literal notranslate"><span class="pre">-1</span></code>).</li>
-<li><code class="docutils literal notranslate"><span class="pre">scale</span></code>: Alpha &lt; <code class="docutils literal notranslate"><span class="pre">1.0</span></code> - unknown. Darkness &gt;= <code class="docutils literal notranslate"><span class="pre">occupied_thresh</span></code> means that map occupied (<code class="docutils literal notranslate"><span class="pre">100</span></code>). Darkness &lt;= <code class="docutils literal notranslate"><span class="pre">free_thresh</span></code> - map free (<code class="docutils literal notranslate"><span class="pre">0</span></code>). Anything in between - linearly interpolate to nearest integer from <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> range.</li>
-<li><code class="docutils literal notranslate"><span class="pre">raw</span></code>: Lightness = <code class="docutils literal notranslate"><span class="pre">0</span></code> (dark color) means that map is free (<code class="docutils literal notranslate"><span class="pre">0</span></code>). Lightness = <code class="docutils literal notranslate"><span class="pre">100</span></code> (in absolute value)  - map is occupied (<code class="docutils literal notranslate"><span class="pre">100</span></code>). Anything in between - <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> value = lightness. Lightness &gt;= <code class="docutils literal notranslate"><span class="pre">101</span></code> - unknown (<code class="docutils literal notranslate"><span class="pre">-1</span></code>).</li>
-</ul>
-<p>where <code class="docutils literal notranslate"><span class="pre">free_thresh</span></code> and <code class="docutils literal notranslate"><span class="pre">occupied_thresh</span></code> thresholds are expressed in percentage of maximum lightness/darkness level (<code class="docutils literal notranslate"><span class="pre">255</span></code>). Map mode and thresholds are placed in YAML metadata file (see below) as <code class="docutils literal notranslate"><span class="pre">mode</span></code>, <code class="docutils literal notranslate"><span class="pre">free_thresh</span></code> and <code class="docutils literal notranslate"><span class="pre">occupied_thresh</span></code> fields.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">There is another parameter in a YAML metadata file called <code class="docutils literal notranslate"><span class="pre">negate</span></code>. By default it is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>. When it is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, blacker pixels will be considered as free, whiter pixels - as occupied. In this case we should count color lightness instead of darkness for <code class="docutils literal notranslate"><span class="pre">trinary</span></code> and <code class="docutils literal notranslate"><span class="pre">scale</span></code> modes. <code class="docutils literal notranslate"><span class="pre">negate</span></code> has no effect on <code class="docutils literal notranslate"><span class="pre">raw</span></code> mode.</p>
-</div>
-<p>For Keepout Filter <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> value is proportional to the passibility of area corresponting to this cell: higher values means more impassable areas. Cells with occupied values covers keep-out zones where robot will never enter or pass through. <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> can also act as a “weighted areas layer” by setting the <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> to something between <code class="docutils literal notranslate"><span class="pre">[1-99]</span></code> non-occupied values. Robot is allowed to move in these areas, however its presence there would be “undesirable” there (the higher the value, the sooner planners will try to get the robot out of this area).</p>
-<p>Keepout Filter also covers preferred lanes case, where robots should moving only on pre-defined lanes and permitted areas e.g. in warehouses. To use this feaure you need to prepare the mask image where the lanes and permitted areas will be marked with free values while all other areas will be occupied. TIP for drawing the mask in a <code class="docutils literal notranslate"><span class="pre">trinary</span></code> or <code class="docutils literal notranslate"><span class="pre">scale</span></code> mode: typically, amount of pixels belonging to lanes are much less than pixels covering other areas. In this case initially all lanes data might be drawn with a black pencil over white background and then (just before saving a PGM) “color inversion” tool in a image raster editor might be used.</p>
-<p>For simplicity, in the example fill the areas with black color (in <code class="docutils literal notranslate"><span class="pre">trinary</span></code> mode this means occupied map) that you are going to mark as a keep-out zones:</p>
-<a class="reference internal image-reference" href="../../_images/drawing_keepout_mask.png"><img alt="../../_images/drawing_keepout_mask.png" src="../../_images/drawing_keepout_mask.png" style="width: 500px;" /></a>
-<p>After all keepout areas will be filled save the <code class="docutils literal notranslate"><span class="pre">keepout_mask.pgm</span></code> image.</p>
-<p>Like all other maps, filter mask should have its own YAML metadata file. Copy <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.yaml">turtlebot3_world.yaml</a> to <code class="docutils literal notranslate"><span class="pre">keepout_mask.yaml</span></code>. Open <code class="docutils literal notranslate"><span class="pre">keepout_mask.yaml</span></code> and correct <code class="docutils literal notranslate"><span class="pre">image</span></code> field to a newly made PGM mask:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>image: turtlebot3_world.pgm
--&gt;
-image: keepout_mask.pgm
+<p>As was written in <a class="reference internal" href="../../concepts/index.html#concepts"><span class="std std-ref">Navigation Concepts</span></a>, any Costmap Filter (including Speed Filter) is reading the data marked in a filter mask file. All information about filter masks, their types, detailed structure and how to make a new one is written in a <a class="reference internal" href="navigation2_with_keepout_filter.html#navigation2-with-keepout-filter"><span class="std std-ref">Navigating with Keepout Zones</span></a> tutorial at <code class="docutils literal notranslate"><span class="pre">1.</span> <span class="pre">Prepare</span> <span class="pre">filter</span> <span class="pre">masks</span></code> chapter. The principal of drawing the filter mask for Speed Filter is the same as for Keepout Filter (to annotate a map with the requested zones), except that <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> mask values have another meaning: these values are encoded speed limits for the areas corresponding to the cell on map.</p>
+<p>Let’s look, how it is being decoded. As we know, <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values are belonging to the <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> range. For Speed Filter <code class="docutils literal notranslate"><span class="pre">0</span></code> value means no speed limit in the area corresponding zero-cell on mask. Values from <code class="docutils literal notranslate"><span class="pre">[1..100]</span></code> range are being linearly converted into a speed limit value by the following formula:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">speed_limit</span> <span class="o">=</span> <span class="n">filter_mask_data</span> <span class="o">*</span> <span class="n">multiplier</span> <span class="o">+</span> <span class="n">base</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Since filter mask image was created as a copy of main map, other fields of YAML-file do not need to be changed. Save <code class="docutils literal notranslate"><span class="pre">keepout_mask.yaml</span></code> and new filter mask is ready to use.</p>
+<p>where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">filter_mask_data</span></code> - is an <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> value of the corresponding cell on mask where maximum speed should be restricted.</li>
+<li><code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> are coefficients taken from <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> messages published by Costmap Filter Info Server (see in next chapter below).</li>
+</ul>
+</div></blockquote>
+<p>The decoded <code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> value may have one of two meanings:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Speed limit expressed in a percent from maximum robot speed.</li>
+<li>Speed limit expressed in absolute values (e.g. in <code class="docutils literal notranslate"><span class="pre">m/s</span></code>).</li>
+</ul>
+</div></blockquote>
+<p>The meaning used by Speed Filter is being read from <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> messages.
+In this tutorial we will use the first type of speed restriction expressed in a percent from maximum robot speed.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">World map itself and filter mask could have different sizes, origin and resolution which might be useful e.g. for cases when filter mask is covering smaller areas on maps or when one filter mask is used repeatedly many times (like annotating a keepout zone for same shape rooms in the hotel). For this case, you need to correct <code class="docutils literal notranslate"><span class="pre">resolution</span></code> and <code class="docutils literal notranslate"><span class="pre">origin</span></code> fields in YAML as well so that the filter mask is correctly laid on top of the original map.</p>
+<p class="last">For speed restriction expressed in a percent, <code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> will be used exactly as a percent belonging to <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> range, not <code class="docutils literal notranslate"><span class="pre">[0.0..1.0]</span></code> range.</p>
 </div>
+<p>Create a new image with a PGM/PNG/BMP format: copy <code class="docutils literal notranslate"><span class="pre">turtlebot3_world.pgm</span></code> main map which will be used in a world simulation from a navigation2 repository to a new <code class="docutils literal notranslate"><span class="pre">speed_mask.pgm</span></code> file. Open <code class="docutils literal notranslate"><span class="pre">speed_mask.pgm</span></code> in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:</p>
+<a class="reference internal image-reference" href="../../_images/drawing_speed_mask.png"><img alt="../../_images/drawing_speed_mask.png" src="../../_images/drawing_speed_mask.png" style="width: 500px;" /></a>
+<p>Area “A” is filled with <code class="docutils literal notranslate"><span class="pre">40%</span></code> gray color, area “B” - with <code class="docutils literal notranslate"><span class="pre">70%</span></code> gray, that means that speed restriction will take <code class="docutils literal notranslate"><span class="pre">100%</span> <span class="pre">-</span> <span class="pre">40%</span> <span class="pre">=</span> <span class="pre">60%</span></code> in area “A” and <code class="docutils literal notranslate"><span class="pre">100%</span> <span class="pre">-</span> <span class="pre">70%</span> <span class="pre">=</span> <span class="pre">30%</span></code> in area “B” from maximum speed value allowed for this robot.
+We will use <code class="docutils literal notranslate"><span class="pre">scale</span></code> map mode with no thresholds. In this mode darker colors will have higher <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values. E.g. for area “B” with <code class="docutils literal notranslate"><span class="pre">70%</span></code> of gray <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> data will be equal to <code class="docutils literal notranslate"><span class="pre">70</span></code>. So in order to hit the target, we need to choose <code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">=</span> <span class="pre">100.0</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span> <span class="pre">=</span> <span class="pre">-1.0</span></code>. This will reverse the scale <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values to a desired one. No thresholds (<code class="docutils literal notranslate"><span class="pre">free_thresh</span></code> <code class="docutils literal notranslate"><span class="pre">occupied_thresh</span></code>) were chosen for the convenience in the <code class="docutils literal notranslate"><span class="pre">yaml</span></code>  file: to have 1:1 full range conversion of lightness value from filter mask -&gt; to speed restriction percent.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Another important note is that since Costmap2D does not support orientation, the last third “yaw” component of the <code class="docutils literal notranslate"><span class="pre">origin</span></code> vector should be equal to zero. For example: <code class="docutils literal notranslate"><span class="pre">origin:</span> <span class="pre">[1.25,</span> <span class="pre">-5.18,</span> <span class="pre">0.0]</span></code>.</p>
+<p>It is typical but not a mandatory selection of <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code>. For example, you can choose map mode to be <code class="docutils literal notranslate"><span class="pre">raw</span></code>. In this case color lightness is being directly converted into <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values. For masks saved in a <code class="docutils literal notranslate"><span class="pre">raw</span></code> mode, <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> will be equal to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> accordingly.</p>
+<p class="last">Another important thing is that it is not necessary to use the whole <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> percent scale. <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> coefficients could be chosen so that the speed restriction values would belong to somewhere in the middle of percent range. E.g. <code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">=</span> <span class="pre">40.0</span></code>, <code class="docutils literal notranslate"><span class="pre">multiplier</span> <span class="pre">=</span> <span class="pre">0.1</span></code> will give speed restrictions from <code class="docutils literal notranslate"><span class="pre">[40.0%..50.0%]</span></code> range with a step of <code class="docutils literal notranslate"><span class="pre">0.1%</span></code>. This might be useful for fine tuning.</p>
+</div>
+<p>After all speed restriction areas will be filled, save the <code class="docutils literal notranslate"><span class="pre">speed_mask.pgm</span></code> image.</p>
+<p>Like all other maps, the filter mask should have its own YAML metadata file. Copy <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.yaml">turtlebot3_world.yaml</a> to <code class="docutils literal notranslate"><span class="pre">speed_mask.yaml</span></code>. Open <code class="docutils literal notranslate"><span class="pre">speed_mask.yaml</span></code> and update the fields as shown below (as mentioned before for the <code class="docutils literal notranslate"><span class="pre">scale</span></code> mode to use whole color lightness range there should be no thresholds: <code class="docutils literal notranslate"><span class="pre">free_thresh</span> <span class="pre">=</span> <span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">occupied_thresh</span> <span class="pre">=</span> <span class="pre">1.0</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">turtlebot3_world.pgm</span>
+<span class="l l-Scalar l-Scalar-Plain">-&gt;</span>
+<span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">speed_mask.pgm</span>
+
+<span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trinary</span>
+<span class="l l-Scalar l-Scalar-Plain">-&gt;</span>
+<span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scale</span>
+
+<span class="nt">occupied_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.65</span>
+<span class="nt">free_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.196</span>
+<span class="l l-Scalar l-Scalar-Plain">-&gt;</span>
+<span class="nt">occupied_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="nt">free_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+</pre></div>
+</div>
+<p>Since Costmap2D does not support orientation, the last third “yaw” component of the <code class="docutils literal notranslate"><span class="pre">origin</span></code> vector should be equal to zero (for example: <code class="docutils literal notranslate"><span class="pre">origin:</span> <span class="pre">[1.25,</span> <span class="pre">-5.18,</span> <span class="pre">0.0]</span></code>). Save <code class="docutils literal notranslate"><span class="pre">speed_mask.yaml</span></code> and the new filter mask is ready to use.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">World map itself and filter mask could have different sizes, origin and resolution which might be useful (e.g. for cases when filter mask is covering smaller areas on maps or when one filter mask is used repeatedly many times, like annotating a speed restricted area for same shape rooms in the hotel). For this case, you need to correct <code class="docutils literal notranslate"><span class="pre">resolution</span></code> and <code class="docutils literal notranslate"><span class="pre">origin</span></code> fields in YAML as well so that the filter mask is correctly laid on top of the original map. This example shows using the main map as a base, but that is not required.</p>
 </div>
 </div>
 <div class="section" id="configure-costmap-filter-info-publisher-server">
 <h3>2. Configure Costmap Filter Info Publisher Server<a class="headerlink" href="#configure-costmap-filter-info-publisher-server" title="Permalink to this headline">¶</a></h3>
-<p>Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in a messages of <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> type. These messages are being published by <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>. The server is running as a lifecycle node. According to the <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/doc/design/CostmapFilters_design.pdf">design document</a>, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> messages are going in a pair with <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter mask.</p>
-<p>In order to enable Keepout Filter in your configuration, both servers should be enabled as a lifecycle nodes in Python launch-file. For example, this might look as follows:</p>
+<p>Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in messages of <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> type. These messages are being published by <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>. The server is running as a lifecycle node. According to the <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/doc/design/CostmapFilters_design.pdf">design document</a>, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> messages are going in a pair with <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter masks.</p>
+<p>In order to enable Speed Filter in your configuration, both servers should be enabled as lifecycle nodes in Python launch-file. For example, this might look as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
@@ -764,12 +784,12 @@ image: keepout_mask.pgm
 
     <span class="n">declare_params_file_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
             <span class="s1">&#39;params_file&#39;</span><span class="p">,</span>
-            <span class="n">default_value</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">costmap_filters_demo_dir</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">,</span> <span class="s1">&#39;keepout_params.yaml&#39;</span><span class="p">),</span>
+            <span class="n">default_value</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">costmap_filters_demo_dir</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">,</span> <span class="s1">&#39;speed_params.yaml&#39;</span><span class="p">),</span>
             <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Full path to the ROS2 parameters file to use&#39;</span><span class="p">)</span>
 
     <span class="n">declare_mask_yaml_file_cmd</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
             <span class="s1">&#39;mask&#39;</span><span class="p">,</span>
-            <span class="n">default_value</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">costmap_filters_demo_dir</span><span class="p">,</span> <span class="s1">&#39;maps&#39;</span><span class="p">,</span> <span class="s1">&#39;keepout_mask.yaml&#39;</span><span class="p">),</span>
+            <span class="n">default_value</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">costmap_filters_demo_dir</span><span class="p">,</span> <span class="s1">&#39;maps&#39;</span><span class="p">,</span> <span class="s1">&#39;speed_mask.yaml&#39;</span><span class="p">),</span>
             <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Full path to filter mask yaml file to load&#39;</span><span class="p">)</span>
 
     <span class="c1"># Make re-written yaml</span>
@@ -832,85 +852,81 @@ image: keepout_mask.pgm
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">costmap_filter_info_server</span><span class="p">:</span>
   <span class="nt">ros__parameters</span><span class="p">:</span>
     <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
     <span class="nt">filter_info_topic</span><span class="p">:</span> <span class="s">&quot;/costmap_filter_info&quot;</span>
-    <span class="nt">mask_topic</span><span class="p">:</span> <span class="s">&quot;/keepout_filter_mask&quot;</span>
-    <span class="nt">base</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">multiplier</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+    <span class="nt">mask_topic</span><span class="p">:</span> <span class="s">&quot;/speed_filter_mask&quot;</span>
+    <span class="nt">base</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">100.0</span>
+    <span class="nt">multiplier</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1.0</span>
 <span class="nt">filter_mask_server</span><span class="p">:</span>
   <span class="nt">ros__parameters</span><span class="p">:</span>
     <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
     <span class="nt">frame_id</span><span class="p">:</span> <span class="s">&quot;map&quot;</span>
-    <span class="nt">topic_name</span><span class="p">:</span> <span class="s">&quot;/keepout_filter_mask&quot;</span>
-    <span class="nt">yaml_filename</span><span class="p">:</span> <span class="s">&quot;keepout_mask.yaml&quot;</span>
+    <span class="nt">topic_name</span><span class="p">:</span> <span class="s">&quot;/speed_filter_mask&quot;</span>
+    <span class="nt">yaml_filename</span><span class="p">:</span> <span class="s">&quot;speed_mask.yaml&quot;</span>
 </pre></div>
 </div>
 <p>Note, that:</p>
 <blockquote>
 <div><ul class="simple">
-<li>For Keepout Filter the <code class="docutils literal notranslate"><span class="pre">type</span></code> of costmap filter should be set to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</li>
+<li>For Speed Filter setting speed restrictions in a percent from maximum speed, the <code class="docutils literal notranslate"><span class="pre">type</span></code> of costmap filter should be set to <code class="docutils literal notranslate"><span class="pre">1</span></code>. All possible costmap filter types could be found at <a class="reference internal" href="../../configuration/packages/configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> page.</li>
 <li>Filter mask topic name should be the equal for <code class="docutils literal notranslate"><span class="pre">mask_topic</span></code> parameter of Costmap Filter Info Publisher Server and <code class="docutils literal notranslate"><span class="pre">topic_name</span></code> parameter of Map Server.</li>
-<li>According to the Costmap Filters design, <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values are being linearly transformed into feature map in a filter space. For a Keepout Filter these values are directly passed as a filter space values without a linear conversion. Even though <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> coefficients are not used in Keepout Filter, they should be set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> accordingly in order to explicitly show that we have one-to-one conversion from <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values -&gt; to a filter value space.</li>
+<li>As was described in a previous chapter, <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> should be set to <code class="docutils literal notranslate"><span class="pre">100.0</span></code> and <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> accordingly for the purposes of this tutorial example.</li>
 </ul>
 </div></blockquote>
-<p>Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in a <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_costmap_filters_demo">nav2_costmap_filters_demo</a> directory of <code class="docutils literal notranslate"><span class="pre">navigation2_tutorials</span></code> repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>, build the demo and launch <code class="docutils literal notranslate"><span class="pre">costmap_filter_info.launch.py</span></code> as follows:</p>
+<p>Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Speed Filter could be found in a <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_costmap_filters_demo">nav2_costmap_filters_demo</a> directory of <code class="docutils literal notranslate"><span class="pre">navigation2_tutorials</span></code> repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>, build the demo and launch <code class="docutils literal notranslate"><span class="pre">costmap_filter_info.launch.py</span></code> as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir -p ~/tutorials_ws/src
 $ <span class="nb">cd</span> ~/tutorials_ws/src
 $ git clone https://github.com/ros-planning/navigation2_tutorials.git
 $ <span class="nb">cd</span> ~/tutorials_ws
 $ colcon build --symlink-install --packages-select nav2_costmap_filters_demo
 $ <span class="nb">source</span> ~/tutorials_ws/install/setup.bash
-$ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_file:<span class="o">=</span>src/navigation2_tutorials/nav2_costmap_filters_demo/params/keepout_params.yaml mask:<span class="o">=</span>src/navigation2_tutorials/nav2_costmap_filters_demo/maps/keepout_mask.yaml
+$ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_file:<span class="o">=</span>src/navigation2_tutorials/nav2_costmap_filters_demo/params/speed_params.yaml mask:<span class="o">=</span>src/navigation2_tutorials/nav2_costmap_filters_demo/maps/speed_mask.yaml
 </pre></div>
 </div>
 </div>
-<div class="section" id="enable-keepout-filter">
-<h3>3. Enable Keepout Filter<a class="headerlink" href="#enable-keepout-filter" title="Permalink to this headline">¶</a></h3>
-<p>Costmap Filters are Costamp2D plugins. You can enable the <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> plugin in Costmap2D by adding <code class="docutils literal notranslate"><span class="pre">keepout_filter</span></code> to the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>. You can place it in the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> for planning with keepouts and <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> to make sure the robot won’t attempt to drive through a keepout zone. The KeepoutFilter plugin should have the following parameters defined:</p>
+<div class="section" id="enable-speed-filter">
+<h3>3. Enable Speed Filter<a class="headerlink" href="#enable-speed-filter" title="Permalink to this headline">¶</a></h3>
+<p>Costmap Filters are Costamp2D plugins. You can enable the <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> plugin in Costmap2D by adding <code class="docutils literal notranslate"><span class="pre">speed_filter</span></code> to the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>. The Speed Filter plugin should have the following parameters defined:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">plugin</span></code>: type of plugin. In our case <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::KeepoutFilter</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">filter_info_topic</span></code>: filter info topic name. This need to be equal to <code class="docutils literal notranslate"><span class="pre">filter_info_topic</span></code> parameter of Costmap Filter Info Publisher Server from the chapter above.</li>
+<li><code class="docutils literal notranslate"><span class="pre">plugin</span></code>: type of plugin. In our case <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::SpeedFilter</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">filter_info_topic</span></code>: filter info topic name. This needs to be equal to <code class="docutils literal notranslate"><span class="pre">filter_info_topic</span></code> parameter of Costmap Filter Info Publisher Server from the chapter above.</li>
+<li><code class="docutils literal notranslate"><span class="pre">speed_limit_topic</span></code>: name of topic to publish speed limit to.</li>
 </ul>
-<p>Full list of parameters supported by <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> are listed at <a class="reference internal" href="../../configuration/packages/costmap-plugins/keepout_filter.html#keepout-filter"><span class="std std-ref">Keepout Filter Parameters</span></a> page.</p>
-<p>It is important to note that enabling <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> for <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> only will cause the path planner to build plans bypassing keepout zones. Enabling <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> for <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> only will cause the robot to not enter keepout zones, but the path may still go through them. So, the best practice is to enable <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> for global and local costmaps simultaneously by adding it both in <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> and <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>. However it does not always have to be true. In some cases keepout zones don’t have to be the same for global and local costmaps, e.g. if the robot doesn’t allowed to intentionally go inside keepout zones, but if its there, the robot can drive in and out really quick if it clips an edge or corner. For this case, there is not need to use extra resources of the local costmap copy.</p>
-<p>To enable <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> with same mask for both global and local costmaps, use the following configuration:</p>
+<p>Full list of parameters supported by <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> are listed at the <a class="reference internal" href="../../configuration/packages/costmap-plugins/speed_filter.html#speed-filter"><span class="std std-ref">Speed Filter Parameters</span></a> page.</p>
+<p>You can place the plugin either in the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> section in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> to have speed restriction mask applied to global costmap or in the <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> to apply speed mask to the local costmap. However, <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> plugin should never be enabled simultaneously for global and local costmaps. Otherwise, it can lead to unwanted multiple “speed restriction” - “no restriction” message chains on speed restriction boundaries, that will cause jerking of the robot or another unpredictable behaviour.</p>
+<p>In this tutorial, we will enable Speed Filter for the global costmap. For this use the following configuration:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>global_costmap:
   global_costmap:
     ros__parameters:
       ...
-      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;inflation_layer&quot;, &quot;keepout_filter&quot;]
+      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;inflation_layer&quot;, &quot;speed_filter&quot;]
       ...
-      keepout_filter:
-        plugin: &quot;nav2_costmap_2d::KeepoutFilter&quot;
+      speed_filter:
+        plugin: &quot;nav2_costmap_2d::SpeedFilter&quot;
         enabled: True
         filter_info_topic: &quot;/costmap_filter_info&quot;
-...
-local_costmap:
-  local_costmap:
-    ros__parameters:
-      ...
-      plugins: [&quot;voxel_layer&quot;, &quot;inflation_layer&quot;, &quot;keepout_filter&quot;]
-      ...
-      keepout_filter:
-        plugin: &quot;nav2_costmap_2d::KeepoutFilter&quot;
-        enabled: True
-        filter_info_topic: &quot;/costmap_filter_info&quot;
+        speed_limit_topic: &quot;/speed_limit&quot;
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In this example <code class="docutils literal notranslate"><span class="pre">keepout_filter</span></code> goes after the <code class="docutils literal notranslate"><span class="pre">inflation_layer</span></code> so the keepout boundaries aren’t inflated as obstacles, although this is not an obligatory requirement.</p>
+<p>As stated in the <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/doc/design/CostmapFilters_design.pdf">design</a>, Speed Filter publishes speed restricting <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">messages</a> targeted for a Controller Server so that it could restrict maximum speed of the robot when it needed. Controller Server has a <code class="docutils literal notranslate"><span class="pre">speed_limit_topic</span></code> ROS parameter for that, which should be set to the same as in <code class="docutils literal notranslate"><span class="pre">speed_filter</span></code> plugin value. This topic in the map server could also be used to any number of other speed-restricted applications beyond the speed limiting zones, such as dynamically adjusting maximum speed by payload mass.</p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">speed_limit_topic</span></code> parameter of a Controller Server to the same value as it set for <code class="docutils literal notranslate"><span class="pre">speed_filter</span></code> plugin:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>controller_server:
+  ros__parameters:
+    ...
+    speed_limit_topic: &quot;/speed_limit&quot;
+</pre></div>
 </div>
 </div>
 <div class="section" id="run-navigation2-stack">
 <h3>4. Run Navigation2 stack<a class="headerlink" href="#run-navigation2-stack" title="Permalink to this headline">¶</a></h3>
-<p>After Costmap Filter Info Publisher Server and Map Server were launched and Keepout Filter was enabled for global/local costmaps, run navigation2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
+<p>After Costmap Filter Info Publisher Server and Map Server were launched and Speed Filter was enabled for global/local costmap, run navigation2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py
 </pre></div>
 </div>
-<p>And check that filter is working properly as in the pictures below (first picture shows keepout filter enabled for the global costmap, second - differently-sized <code class="docutils literal notranslate"><span class="pre">keepout_mask.pgm</span></code> filter mask):</p>
-<a class="reference internal image-reference" href="../../_images/keepout_global.gif"><img alt="../../_images/keepout_global.gif" src="../../_images/keepout_global.gif" style="height: 400px;" /></a>
-<a class="reference internal image-reference" href="../../_images/keepout_mask.png"><img alt="../../_images/keepout_mask.png" src="../../_images/keepout_mask.png" style="height: 400px;" /></a>
+<p>For better visualization of speed filter mask, in RViz in the left <code class="docutils literal notranslate"><span class="pre">Displays</span></code> pane unfold <code class="docutils literal notranslate"><span class="pre">Map</span></code> and change <code class="docutils literal notranslate"><span class="pre">Topic</span></code> from <code class="docutils literal notranslate"><span class="pre">/map</span></code> -&gt; to <code class="docutils literal notranslate"><span class="pre">/speed_filter_mask</span></code>.
+Set the goal behind the speed restriction areas and check that the filter is working properly: robot should slow down when going through a speed restricting areas. Below is how it might look (first picture shows speed filter enabled for the global costmap, second - <code class="docutils literal notranslate"><span class="pre">speed_mask.pgm</span></code> filter mask):</p>
+<a class="reference internal image-reference" href="../../_images/speed_global.gif"><img alt="../../_images/speed_global.gif" src="../../_images/speed_global.gif" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../../_images/speed_mask.png"><img alt="../../_images/speed_mask.png" src="../../_images/speed_mask.png" style="height: 400px;" /></a>
 </div>
 </div>
 </div>

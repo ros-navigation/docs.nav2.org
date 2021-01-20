@@ -278,6 +278,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#run-navigation2-stack">4. Run Navigation2 stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin_tutorials/index.html">Plugin Tutorials</a><ul>
@@ -724,7 +736,7 @@ waypoint_pause_duration: 0</dd>
 </ul>
 <p>Each costmap filter subscribes to filter info topic (publishing by <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>) having all necessary information for loaded costmap filter and filter mask topic.
 <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> additionally publishes maximum speed restricting <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">messages</a> targeted for a Controller to enforce robot won’t exceed given limit.</p>
-<p>High-level design of this concept could be found <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf">here</a>. The functionality of costmap filters is being disscussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1263">the ticket #1263</a> and carried out by <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1882">PR #1882</a>. The following tutorial: <a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#navigation2-with-keepout-filter"><span class="std std-ref">Navigating with Keepout Zones</span></a> will help to easily get involved with <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> functionality.</p>
+<p>High-level design of this concept could be found <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf">here</a>. The functionality of costmap filters is being disscussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1263">the ticket #1263</a> and carried out by <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1882">PR #1882</a>. The following tutorials: <a class="reference internal" href="../tutorials/docs/navigation2_with_keepout_filter.html#navigation2-with-keepout-filter"><span class="std std-ref">Navigating with Keepout Zones</span></a> and <a class="reference internal" href="../tutorials/docs/navigation2_with_speed_filter.html#navigation2-with-speed-filter"><span class="std std-ref">Navigating with Speed Limits</span></a> will help to easily get involved with <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> and <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> functionalities.</p>
 </div>
 <div class="section" id="smacplanner">
 <h2>SmacPlanner<a class="headerlink" href="#smacplanner" title="Permalink to this headline">¶</a></h2>
