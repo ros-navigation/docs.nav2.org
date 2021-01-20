@@ -62,7 +62,7 @@ Create a new image with a PGM/PNG/BMP format: copy ``turtlebot3_world.pgm`` main
     :width: 500px
 
 Area "A" is filled with ``40%`` gray color, area "B" - with ``70%`` gray, that means that speed restriction will take ``100% - 40% = 60%`` in area "A" and ``100% - 70% = 30%`` in area "B" from maximum speed value allowed for this robot.
-We will use ``scale`` map mode with no thresholds. In this mode darker colors will have higher ``OccupancyGrid`` values. E.g. for area "B" with ``70%`` of gray ``OccupancyGrid`` data will be equal to ``70``. So in order to hit the target, we need to choose ``base = 100.0`` and ``multiplier = -1.0``. This will reverse the scale ``OccupancyGrid`` values to a desired one. No thresholds were chosen for the convenience: to have 1:1 full range conversion of lightness value from filter mask -> to speed restriction percent.
+We will use ``scale`` map mode with no thresholds. In this mode darker colors will have higher ``OccupancyGrid`` values. E.g. for area "B" with ``70%`` of gray ``OccupancyGrid`` data will be equal to ``70``. So in order to hit the target, we need to choose ``base = 100.0`` and ``multiplier = -1.0``. This will reverse the scale ``OccupancyGrid`` values to a desired one. No thresholds (``free_thresh`` ``occupied_thresh``) were chosen for the convenience in the ``yaml``  file: to have 1:1 full range conversion of lightness value from filter mask -> to speed restriction percent.
 
 .. note::
 
