@@ -35,17 +35,23 @@ As was written in :ref:`concepts`, any Costmap Filter (including Keepout Filter)
 
 Create a new image with a PGM/PNG/BMP format: copy `turtlebot3_world.pgm <https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.pgm>`_ main map which will be used in a world simulation from a ``navigation2`` repository to a new ``keepout_mask.pgm`` file.
 
-Open ``keepout_mask.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. In the GIMP lightness is expressed through color components value (e.g. ``R`` in percent scale) and might be set by moving ``L`` slider in color changing tool:
+Open ``keepout_mask.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. Another term "darkness" will be understood as the exact opposite of lightness. In other words ``color_darkness = 100% - color_lightness``.
+
+In the GIMP lightness is expressed through color components value (e.g. ``R`` in percent scale) and might be set by moving ``L`` slider in color changing tool:
 
 .. image:: images/Navigation2_with_Keepout_Filter/ligtness_in_GIMP.png
 
 The incoming mask file is being read by the Map Server and converted into ``OccupancyGrid`` values from ``[0..100]`` range (where ``0`` means free cell, ``100`` - occupied, anything in between - less or more occupied cells on map) or be equal to ``-1`` for unknown value. In Navigation2 stack each map has ``mode`` attribute which could be ``trinary``, ``scale`` or ``raw``. Depending on ``mode`` selected, the color lightness of PGM/PNG/BMP is being converted to ``OccupancyGrid`` by one of the following principles:
 
-- ``trinary`` (default mode): Lightness >= ``occupied_thresh`` means that map occupied (``100``). Lightness <= ``free_thresh`` - map free (``0``). Anything in between - unknown status on map (``-1``).
-- ``scale``: Alpha < ``1.0`` - unknown. Lightness >= ``occupied_thresh`` means that map occupied (``100``). Lightness <= ``free_thresh`` - map free (``0``). Anything in between - linearly interpolate to nearest integer from ``[0..100]`` range.
+- ``trinary`` (default mode): Darkness >= ``occupied_thresh`` means that map occupied (``100``). Darkness <= ``free_thresh`` - map free (``0``). Anything in between - unknown status on map (``-1``).
+- ``scale``: Alpha < ``1.0`` - unknown. Darkness >= ``occupied_thresh`` means that map occupied (``100``). Darkness <= ``free_thresh`` - map free (``0``). Anything in between - linearly interpolate to nearest integer from ``[0..100]`` range.
 - ``raw``: Lightness = ``0`` (dark color) means that map is free (``0``). Lightness = ``100`` (in absolute value)  - map is occupied (``100``). Anything in between - ``OccupancyGrid`` value = lightness. Lightness >= ``101`` - unknown (``-1``).
 
-where ``free_thresh`` and ``occupied_thresh`` thresholds are expressed in percentage of maximum lightness level (``255``). Map mode and thresholds are placed in YAML metadata file (see below) as ``mode``, ``free_thresh`` and ``occupied_thresh`` fields.
+where ``free_thresh`` and ``occupied_thresh`` thresholds are expressed in percentage of maximum lightness/darkness level (``255``). Map mode and thresholds are placed in YAML metadata file (see below) as ``mode``, ``free_thresh`` and ``occupied_thresh`` fields.
+
+.. note::
+
+  There is another parameter in a YAML metadata file called ``negate``. By default it is set to ``false``. When it is set to ``true``, blacker pixels will be considered as free, whiter pixels - as occupied. In this case we should count color lightness instead of darkness for ``trinary`` and ``scale`` modes. ``negate`` has no effect on ``raw`` mode.
 
 For Keepout Filter ``OccupancyGrid`` value is proportional to the passibility of area corresponting to this cell: higher values means more impassable areas. Cells with occupied values covers keep-out zones where robot will never enter or pass through. ``KeepoutFilter`` can also act as a "weighted areas layer" by setting the ``OccupancyGrid`` to something between ``[1-99]`` non-occupied values. Robot is allowed to move in these areas, however its presence there would be "undesirable" there (the higher the value, the sooner planners will try to get the robot out of this area).
 
@@ -98,7 +104,7 @@ In order to enable Keepout Filter in your configuration, both servers should be 
 
   def generate_launch_description():
       # Get the launch directory
-      keepout_filter_demo_dir = get_package_share_directory('nav2_keepout_filter_demo')
+      costmap_filters_demo_dir = get_package_share_directory('nav2_costmap_filters_demo')
 
       # Create our own temporary YAML files that include substitutions
       lifecycle_nodes = ['filter_mask_server', 'costmap_filter_info_server']
@@ -127,12 +133,12 @@ In order to enable Keepout Filter in your configuration, both servers should be 
 
       declare_params_file_cmd = DeclareLaunchArgument(
               'params_file',
-              default_value=os.path.join(keepout_filter_demo_dir, 'params', 'keepout_params.yaml'),
+              default_value=os.path.join(costmap_filters_demo_dir, 'params', 'keepout_params.yaml'),
               description='Full path to the ROS2 parameters file to use')
 
       declare_mask_yaml_file_cmd = DeclareLaunchArgument(
               'mask',
-              default_value=os.path.join(keepout_filter_demo_dir, 'maps', 'keepout_mask.yaml'),
+              default_value=os.path.join(costmap_filters_demo_dir, 'maps', 'keepout_mask.yaml'),
               description='Full path to filter mask yaml file to load')
 
       # Make re-written yaml
@@ -190,7 +196,6 @@ In order to enable Keepout Filter in your configuration, both servers should be 
 
       return ld
 
-
 where the ``params_file`` variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at :ref:`configuring_map_server` page. Please, refer to it for more information. The example of ``params_file`` could be found below:
 
 .. code-block:: yaml
@@ -200,14 +205,14 @@ where the ``params_file`` variable should be set to a YAML-file having ROS param
       use_sim_time: true
       type: 0
       filter_info_topic: "/costmap_filter_info"
-      mask_topic: "/filter_mask"
+      mask_topic: "/keepout_filter_mask"
       base: 0.0
       multiplier: 1.0
   filter_mask_server:
     ros__parameters:
       use_sim_time: true
       frame_id: "map"
-      topic_name: "/filter_mask"
+      topic_name: "/keepout_filter_mask"
       yaml_filename: "keepout_mask.yaml"
 
 Note, that:
@@ -216,7 +221,7 @@ Note, that:
  - Filter mask topic name should be the equal for ``mask_topic`` parameter of Costmap Filter Info Publisher Server and ``topic_name`` parameter of Map Server.
  - According to the Costmap Filters design, ``OccupancyGrid`` values are being linearly transformed into feature map in a filter space. For a Keepout Filter these values are directly passed as a filter space values without a linear conversion. Even though ``base`` and ``multiplier`` coefficients are not used in Keepout Filter, they should be set to ``0.0`` and ``1.0`` accordingly in order to explicitly show that we have one-to-one conversion from ``OccupancyGrid`` values -> to a filter value space.
 
-Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in a `nav2_keepout_filter_demo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_keepout_filter_demo>`_ directory of ``navigation2_tutorials`` repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at :ref:`getting_started`, build the demo and launch ``costmap_filter_info.launch.py`` as follows:
+Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in a `nav2_costmap_filters_demo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_costmap_filters_demo>`_ directory of ``navigation2_tutorials`` repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at :ref:`getting_started`, build the demo and launch ``costmap_filter_info.launch.py`` as follows:
 
 .. code-block:: bash
 
@@ -224,9 +229,9 @@ Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and f
   $ cd ~/tutorials_ws/src
   $ git clone https://github.com/ros-planning/navigation2_tutorials.git
   $ cd ~/tutorials_ws
-  $ colcon build --symlink-install --packages-select nav2_keepout_filter_demo
+  $ colcon build --symlink-install --packages-select nav2_costmap_filters_demo
   $ source ~/tutorials_ws/install/setup.bash
-  $ ros2 launch nav2_keepout_filter_demo costmap_filter_info.launch.py params_file:=src/navigation2_tutorials/nav2_keepout_filter_demo/params/keepout_params.yaml mask:=src/navigation2_tutorials/nav2_keepout_filter_demo/maps/keepout_mask.yaml
+  $ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_file:=src/navigation2_tutorials/nav2_costmap_filters_demo/params/keepout_params.yaml mask:=src/navigation2_tutorials/nav2_costmap_filters_demo/maps/keepout_mask.yaml
 
 3. Enable Keepout Filter
 ------------------------
