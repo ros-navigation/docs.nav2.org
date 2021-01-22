@@ -22,3 +22,4 @@ the best navigation performance.
    packages/configuring-map-server.rst
    packages/configuring-amcl.rst
    packages/configuring-recovery-server.rst
+   packages/configuring-regulated-pp.rst
