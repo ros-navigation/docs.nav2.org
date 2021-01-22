@@ -109,3 +109,25 @@ To follow the SI units outlined in REP-103 to the "T" nodes below were modified 
  - ``max_planning_time_ms`` became ``max_planning_time`` in seconds
 - map saver
  - ``save_map_timeout`` in seconds
+
+Ray Tracing Parameters
+**********************
+Raytracing functionality was modified to include a minimum range parameter from which ray tracing starts to clear obstacles to avoid incorrectly clearing obstacles too close to the robot. This issue was mentioned in `ROS Answers <https://answers.ros.org/question/355150/obstacles-in-sensor-deadzone/>`_. An existing parameter ``raytrace_range`` was renamed to ``raytrace_max_range`` to reflect the functionality it affects. The renamed parameters and the plugins that they belong to are mentioned below. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2126>`_.
+
+- obstacle_layer plugin
+ - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
+ - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
+- voxel_layer plugin
+ - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
+ - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
+
+Obstacle Marking Parameters
+***************************
+Obstacle marking was modified to include a minimum range parameter from which obstacles are marked on the costmap to prevent addition of obstacles in the costmap due to noisy and incorrect measurements. This modification is related to the change with the raytracing parameters. The renamed parameters, newly added parameters and the plugins they belong to are given below.
+
+- obstacle_layer plugin
+ - ``obstacle_min_range`` controls the minimum range from which obstacle are marked on the costmap
+ - ``obstacle_max_range`` controls the maximum range to which obstacles are marked on the costmap
+- voxel_layer plugin
+ - ``obstacle_min_range`` controls the minimum range from which obstacle are marked on the costmap
+ - ``obstacle_max_range`` controls the maximum range to which obstacles are marked on the costmap

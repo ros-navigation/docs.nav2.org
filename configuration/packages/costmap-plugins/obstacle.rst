@@ -172,7 +172,7 @@ Obstacle Layer Parameters
   Description
     Whether source should raytrace clear in costmap.
 
-:``<obstacle layer>``. ``<data source>``.obstacle_range:
+:``<obstacle layer>``. ``<data source>``.obstacle_max_range:
 
   ====== =======
   Type   Default                                                   
@@ -183,7 +183,18 @@ Obstacle Layer Parameters
   Description
     Maximum range to mark obstacles in costmap.
 
-:``<obstacle layer>``. ``<data source>``.raytrace_range:
+:``<obstacle layer>``. ``<data source>``.obstacle_min_range:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  double 0.0           
+  ====== =======
+
+  Description
+    Minimum range to mark obstacles in costmap.
+
+:``<obstacle layer>``. ``<data source>``.raytrace_max_range:
 
   ====== =======
   Type   Default                                                   
@@ -193,3 +204,14 @@ Obstacle Layer Parameters
 
   Description
     Maximum range to raytrace clear obstacles from costmap.
+
+:``<obstacle layer>``. ``<data source>``.raytrace_min_range:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  double 0.0            
+  ====== =======
+
+  Description
+    Minimum range to raytrace clear obstacles from costmap.
