@@ -514,6 +514,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-recovery-server.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html">Regulated Pure Pursuit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html#regulated-pure-pursuit-parameters">Regulated Pure Pursuit Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html#example">Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Navigation Plugins</a><ul>
@@ -554,6 +559,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner">SmacPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#regulatedpurepursuitcontroller">RegulatedPurePursuitController</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#standard-time-units-in-parameters">Standard time units in parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ray-tracing-parameters">Ray Tracing Parameters</a></li>
@@ -696,29 +702,17 @@ Users can inherit from this interface to implement their own plugin to perform m
 <div>While <code class="docutils literal notranslate"><span class="pre">PhotoAtWaypoint</span></code> takes photos at waypoint arrivals and saves the taken photos to specified directory, the format for taken photos also can be configured through parameters.
 All major image formats such as <code class="docutils literal notranslate"><span class="pre">png</span></code>, <code class="docutils literal notranslate"><span class="pre">jpeg</span></code>, <code class="docutils literal notranslate"><span class="pre">jpg</span></code> etc. are supported, the default format is <code class="docutils literal notranslate"><span class="pre">png</span></code>.</div></blockquote>
 <p>Loading a plugin of this type is done through <code class="docutils literal notranslate"><span class="pre">nav2_bringup/params/nav2_param.yaml</span></code>, by specifying plugin’s name, type and it’s used parameters.</p>
-<p>For instance;
-.. code-block:: yaml</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>waypoint_follower:</dt>
-<dd><dl class="first last docutils">
-<dt>ros__parameters:</dt>
-<dd><p class="first">loop_rate: 20
-stop_on_failure: false
-waypoint_task_executor_plugin: “wait_at_waypoint”</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>wait_at_waypoint:</dt>
-<dd>plugin: “nav2_waypoint_follower::WaitAtWaypoint”
-enabled: True
-waypoint_pause_duration: 0</dd>
-</dl>
-</div></blockquote>
-</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">waypoint_follower</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">loop_rate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+    <span class="nt">stop_on_failure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span> <span class="s">&quot;wait_at_waypoint&quot;</span>
+      <span class="nt">wait_at_waypoint</span><span class="p">:</span>
+        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_waypoint_follower::WaitAtWaypoint&quot;</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">waypoint_pause_duration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+</pre></div>
+</div>
 <p>Original GitHub tickets:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1993">WaypointTaskExecutor</a></li>
@@ -742,9 +736,20 @@ waypoint_pause_duration: 0</dd>
 </div>
 <div class="section" id="smacplanner">
 <h2>SmacPlanner<a class="headerlink" href="#smacplanner" title="Permalink to this headline">¶</a></h2>
-<p>A new package, <code class="docutils literal notranslate"><span class="pre">SmacPlanner</span></code> was added containing 4 or 8 connected 2D A*, and Dubin and Reed-shepp model hybrid-A* with smoothing, multi-resolution query, and more.</p>
+<p>A new package, <code class="docutils literal notranslate"><span class="pre">nav2_smac_planner</span></code> was added containing 4 or 8 connected 2D A*, and Dubin and Reed-shepp model hybrid-A* with smoothing, multi-resolution query, and more.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_smac_planner</span></code> package contains an optimized templated A* search algorithm used to create multiple A*-based planners for multiple types of robot platforms. We support differential-drive and omni-directional drive robots using the <code class="docutils literal notranslate"><span class="pre">SmacPlanner2D</span></code> planner which implements a cost-aware A* planner. We support cars, car-like, and ackermann vehicles using the <code class="docutils literal notranslate"><span class="pre">SmacPlanner</span></code> plugin which implements a Hybrid-A* planner. This plugin is also useful for curvature constrained planning, like when planning robot at high speeds to make sure they don’t flip over or otherwise skid out of control.</p>
-<p>The <cite>SmacPlanner</cite> fully-implements the Hybrid-A* planner as proposed in <a class="reference external" href="https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf">Practical Search Techniques in Path Planning for Autonomous Driving</a>, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SmacPlanner</span></code> fully-implements the Hybrid-A* planner as proposed in <a class="reference external" href="https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf">Practical Search Techniques in Path Planning for Autonomous Driving</a>, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.</p>
+</div>
+<div class="section" id="regulatedpurepursuitcontroller">
+<h2>RegulatedPurePursuitController<a class="headerlink" href="#regulatedpurepursuitcontroller" title="Permalink to this headline">¶</a></h2>
+<p>A new package, <code class="docutils literal notranslate"><span class="pre">nav2_regulated_pure_pursuit_controller</span></code> was added containing a novel varient of the Pure Pursuit algorithm.
+It also includes configurations to enable Pure Pursuit and Adaptive Pure Pursuit variations as well.</p>
+<p>This variation is specifically targeting service / industrial robot needs.
+It regulates the linear velocities by curvature of the path to help reduce overshoot at high speeds around blind corners allowing operations to be much more safe.
+It also better follows paths than any other variation currently available of Pure Pursuit.
+It also has heuristics to slow in proximity to other obstacles so that you can slow the robot automatically when nearby potential collisions.
+It also implements the Adaptive lookahead point features to be scaled by velocities to enable more stable behavior in a larger range of translational speeds.</p>
+<p>There’s more this does, that that’s the general information. See the package’s <code class="docutils literal notranslate"><span class="pre">README</span></code> for more.</p>
 </div>
 <div class="section" id="costmap2d-current-usage">
 <h2>Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage<a class="headerlink" href="#costmap2d-current-usage" title="Permalink to this headline">¶</a></h2>

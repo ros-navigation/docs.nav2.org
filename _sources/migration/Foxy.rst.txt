@@ -46,7 +46,6 @@ Several example implementations are included in ``nav2_waypoint_follower``. ``Wa
 
 Loading a plugin of this type is done through ``nav2_bringup/params/nav2_param.yaml``, by specifying plugin's name, type and it's used parameters. 
 
-For instance; 
 .. code-block:: yaml
 
     waypoint_follower:
@@ -85,12 +84,25 @@ High-level design of this concept could be found `here <https://github.com/ros-p
 SmacPlanner
 ***********
 
-A new package, ``SmacPlanner`` was added containing 4 or 8 connected 2D A*, and Dubin and Reed-shepp model hybrid-A* with smoothing, multi-resolution query, and more.
+A new package, ``nav2_smac_planner`` was added containing 4 or 8 connected 2D A*, and Dubin and Reed-shepp model hybrid-A* with smoothing, multi-resolution query, and more.
 
 The ``nav2_smac_planner`` package contains an optimized templated A* search algorithm used to create multiple A*-based planners for multiple types of robot platforms. We support differential-drive and omni-directional drive robots using the ``SmacPlanner2D`` planner which implements a cost-aware A* planner. We support cars, car-like, and ackermann vehicles using the ``SmacPlanner`` plugin which implements a Hybrid-A* planner. This plugin is also useful for curvature constrained planning, like when planning robot at high speeds to make sure they don't flip over or otherwise skid out of control.
 
-The `SmacPlanner` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.
+The ``SmacPlanner`` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.
 
+RegulatedPurePursuitController
+******************************
+
+A new package, ``nav2_regulated_pure_pursuit_controller`` was added containing a novel varient of the Pure Pursuit algorithm.
+It also includes configurations to enable Pure Pursuit and Adaptive Pure Pursuit variations as well.
+
+This variation is specifically targeting service / industrial robot needs.
+It regulates the linear velocities by curvature of the path to help reduce overshoot at high speeds around blind corners allowing operations to be much more safe.
+It also better follows paths than any other variation currently available of Pure Pursuit.
+It also has heuristics to slow in proximity to other obstacles so that you can slow the robot automatically when nearby potential collisions.
+It also implements the Adaptive lookahead point features to be scaled by velocities to enable more stable behavior in a larger range of translational speeds.
+
+There's more this does, that that's the general information. See the package's ``README`` for more.
 
 Costmap2D ``current_`` Usage
 ****************************

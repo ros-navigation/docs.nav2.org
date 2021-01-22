@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>DWB Controller &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Regulated Pure Pursuit &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DWB Controller" href="dwb-params/controller.html" />
-    <link rel="prev" title="StoppedGoalChecker" href="nav2_controller-plugins/stopped_goal_checker.html" />
+    <link rel="next" title="Navigation Plugins" href="../../plugins/index.html" />
+    <link rel="prev" title="Recovery Server" href="configuring-recovery-server.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -465,20 +465,20 @@
 <li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">DWB Controller</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#controller">Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuring-dwb-controller.html">DWB Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/controller.html">DWB Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/iterator.html">XYTheta Iterator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/kinematic.html">Kinematic Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/visualization.html">Publisher</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#plugins">Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#plugins">Plugins</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#trajectory-critics">Trajectory Critics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
@@ -491,7 +491,7 @@
 <li class="toctree-l4"><a class="reference internal" href="trajectory_critics/twirling.html">TwirlingCritic</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-map-server.html">Map Server / Saver</a><ul>
@@ -514,9 +514,9 @@
 <li class="toctree-l3"><a class="reference internal" href="configuring-recovery-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuring-regulated-pp.html">Regulated Pure Pursuit</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuring-regulated-pp.html#regulated-pure-pursuit-parameters">Regulated Pure Pursuit Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuring-regulated-pp.html#example">Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Regulated Pure Pursuit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#regulated-pure-pursuit-parameters">Regulated Pure Pursuit Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
 </ul>
@@ -649,7 +649,7 @@
         
           <li><a href="../index.html">Configuration Guide</a> &raquo;</li>
         
-      <li>DWB Controller</li>
+      <li>Regulated Pure Pursuit</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -666,56 +666,487 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="dwb-controller">
-<span id="configuring-dwb-controller"></span><h1>DWB Controller<a class="headerlink" href="#dwb-controller" title="Permalink to this headline">¶</a></h1>
-<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/master/nav2_dwb_controller">Github</a>.</p>
-<p>The DWB controller is the default controller. It is a fork of <a class="reference external" href="https://github.com/locusrobotics/robot_navigation/tree/master/dwb_local_planner">David Lu’s
-controller</a>
-modified for ROS 2.</p>
-<div class="section" id="controller">
-<h2>Controller<a class="headerlink" href="#controller" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dwb-params/controller.html">DWB Controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dwb-params/iterator.html">XYTheta Iterator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dwb-params/kinematic.html">Kinematic Parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dwb-params/visualization.html">Publisher</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="plugins">
-<h2>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h2>
-<p>The plugins listed below are inside the <code class="docutils literal notranslate"><span class="pre">dwb_plugins</span></code> namespace.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="trajectory-critics">
-<h2>Trajectory Critics<a class="headerlink" href="#trajectory-critics" title="Permalink to this headline">¶</a></h2>
-<p>The trajectory critics listed below are inside the <code class="docutils literal notranslate"><span class="pre">dwb_critics</span></code> namespace.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/obstacle_footprint.html">ObstacleFootprintCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/oscillation.html">OscillationCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/path_align.html">PathAlignCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/path_dist.html">PathDistCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/prefer_forward.html">PreferForwardCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/rotate_to_goal.html">RotateToGoalCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/twirling.html">TwirlingCritic</a></li>
-</ul>
-</div>
+  <div class="section" id="regulated-pure-pursuit">
+<span id="configuring-regulated-pure-puruit"></span><h1>Regulated Pure Pursuit<a class="headerlink" href="#regulated-pure-pursuit" title="Permalink to this headline">¶</a></h1>
+<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller">Github</a>.</p>
+<p>The Regulated Pure Pursuit controller implements a variation on the Pure Pursuit controller that specifically targeting service / industrial robot needs.
+It regulates the linear velocities by curvature of the path to help reduce overshoot at high speeds around blind corners allowing operations to be much more safe.
+It also better follows paths than any other variation currently available of Pure Pursuit.
+It also has heuristics to slow in proximity to other obstacles so that you can slow the robot automatically when nearby potential collisions.
+It also implements the Adaptive lookahead point features to be scaled by velocities to enable more stable behavior in a larger range of translational speeds.</p>
+<p>See the package’s <code class="docutils literal notranslate"><span class="pre">README</span></code> for more complete information.</p>
+<div class="section" id="regulated-pure-pursuit-parameters">
+<h2>Regulated Pure Pursuit Parameters<a class="headerlink" href="#regulated-pure-pursuit-parameters" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">desired_linear_vel:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The desired maximum linear velocity (m/s) to use.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">max_linear_accel:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>2.5</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Maximum acceleration for linear velocity (m/s/s)</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">max_linear_decel:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>2.5</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Maximum deceleration for linear velocity (m/s/s)</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">lookahead_dist:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.6</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The lookahead distance (m) to use to find the lookahead point when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">min_lookahead_dist:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.3</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The minimum lookahead distance (m) threshold when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">max_lookahead_dist:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.9</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The maximum lookahead distance (m) threshold when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">lookahead_time:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>1.5</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The time (s) to project the velocity by when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Also known as the lookahead gain.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">rotate_to_heading_angular_vel:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>1.8</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">If <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, this is the angular velocity to use.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The TF transform tolerance (s).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">use_velocity_scaled_lookahead_dist:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.4</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether to use the velocity scaled lookahead distances or constant <code class="docutils literal notranslate"><span class="pre">lookahead_distance</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">min_approach_linear_velocity:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.05</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress, when <code class="docutils literal notranslate"><span class="pre">use_approach_linear_velocity_scaling</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">use_approach_linear_velocity_scaling:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether to scale the linear velocity down on approach to the goal for a smooth stop.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">max_allowed_time_to_collision:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The time (s) to project a velocity command forward to check for collisions.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">use_regulated_linear_velocity_scaling:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether to use the regulated features for path curvature (e.g. slow on high curvature paths).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">use_cost_regulated_linear_velocity_scaling:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether to use the regulated features for proximity to obstacles (e.g. slow in close proximity to obstacles).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">regulated_linear_scaling_min_radius:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.90</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The turning radius (m) for which the regulation features are triggered when <code class="docutils literal notranslate"><span class="pre">use_regulated_linear_velocity_scaling</span></code> is <code class="docutils literal notranslate"><span class="pre">tru</span></code>. Remember, sharper turns have smaller radii.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">regulated_linear_scaling_min_speed:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.25</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">use_rotate_to_heading:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">rotate_to_heading_min_angle:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.785</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The difference in the path orientation and the starting robot orientation (radians) to trigger a rotate in place, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">max_angular_accel:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>3.2</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Maximum allowable angular acceleration (m/s/s) while rotating to heading, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">goal_dist_tol:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.25</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">XY tolerance from goal to rotate to the goal heading, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. This should match or be smaller than the <code class="docutils literal notranslate"><span class="pre">GoalChecker</span></code>’s translational goal tolerance.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
   <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="c1"># controller server parameters (see Controller Server for more info)</span>
     <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
     <span class="nt">controller_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20.0</span>
     <span class="nt">min_x_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
@@ -724,6 +1155,7 @@ modified for ROS 2.</p>
     <span class="nt">progress_checker_plugin</span><span class="p">:</span> <span class="s">&quot;progress_checker&quot;</span>
     <span class="nt">goal_checker_plugin</span><span class="p">:</span> <span class="s">&quot;goal_checker&quot;</span>
     <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
+
     <span class="nt">progress_checker</span><span class="p">:</span>
       <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span>
       <span class="nt">required_movement_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
@@ -733,46 +1165,29 @@ modified for ROS 2.</p>
       <span class="nt">xy_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
       <span class="nt">yaw_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
       <span class="nt">stateful</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="c1"># DWB controller parameters</span>
     <span class="nt">FollowPath</span><span class="p">:</span>
-      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span>
-      <span class="nt">debug_trajectory_details</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">min_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">min_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">max_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
-      <span class="nt">max_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">max_vel_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
-      <span class="nt">min_speed_xy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">max_speed_xy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
-      <span class="nt">min_speed_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">acc_lim_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
-      <span class="nt">acc_lim_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">acc_lim_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
-      <span class="nt">decel_lim_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-2.5</span>
-      <span class="nt">decel_lim_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">decel_lim_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-3.2</span>
-      <span class="nt">vx_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
-      <span class="nt">vy_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-      <span class="nt">vtheta_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
-      <span class="nt">sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.7</span>
-      <span class="nt">linear_granularity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
-      <span class="nt">angular_granularity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.025</span>
-      <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
-      <span class="nt">xy_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
-      <span class="nt">trans_stopped_velocity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
-      <span class="nt">short_circuit_trajectory_evaluation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">stateful</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">critics</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;RotateToGoal&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;Oscillation&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;BaseObstacle&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;GoalAlign&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PathAlign&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PathDist&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;GoalDist&quot;</span><span class="p p-Indicator">]</span>
-      <span class="nt">BaseObstacle.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.02</span>
-      <span class="nt">PathAlign.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
-      <span class="nt">GoalAlign.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24.0</span>
-      <span class="nt">PathAlign.forward_point_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-      <span class="nt">GoalAlign.forward_point_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-      <span class="nt">PathDist.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
-      <span class="nt">GoalDist.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24.0</span>
-      <span class="nt">RotateToGoal.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
-      <span class="nt">RotateToGoal.slowing_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
-      <span class="nt">RotateToGoal.lookahead_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController&quot;</span>
+      <span class="nt">desired_linear_vel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+      <span class="nt">max_linear_accel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
+      <span class="nt">max_linear_decel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
+      <span class="nt">lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.6</span>
+      <span class="nt">min_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.3</span>
+      <span class="nt">max_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.9</span>
+      <span class="nt">lookahead_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.5</span>
+      <span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.8</span>
+      <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+      <span class="nt">use_velocity_scaled_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">min_approach_linear_velocity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+      <span class="nt">use_approach_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">max_allowed_time_to_collision</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">use_regulated_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">use_cost_regulated_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">regulated_linear_scaling_min_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.9</span>
+      <span class="nt">regulated_linear_scaling_min_speed</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+      <span class="nt">use_rotate_to_heading</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">rotate_to_heading_min_angle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.785</span>
+      <span class="nt">max_angular_accel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
+      <span class="nt">goal_dist_tol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
 </pre></div>
 </div>
 </div>
