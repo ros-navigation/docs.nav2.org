@@ -82,11 +82,16 @@ Controllers
 +--------------------------+--------------------+----------------------------------+-----------------------+
 |  `TEB Controller`_       | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
 |                          |                    | for ackermann, differential, and | Omnidirectional,      |
-|                          |                    | holonomic robots.                | Legged,               |
+|                          |                    | holonomic robots.                | Differential          |
++--------------------------+--------------------+----------------------------------+-----------------------+
+| `Regulated Pure Pursuit`_| Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
+|                          |                    | variation on the pure pursuit    | Omnidirectional,      |
+|                          |                    | algorithm with adaptive features.| Differential          |
 +--------------------------+--------------------+----------------------------------+-----------------------+
 
 .. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
 .. _TEB Controller: https://github.com/rst-tu-dortmund/teb_local_planner
+.. _Regulated Pure Pursuit: https://github.com/navigation2/tree/main/nav2_regulated_pure_persuit_controller
 
 Planners
 ========
