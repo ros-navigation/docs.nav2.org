@@ -556,6 +556,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner">SmacPlanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#standard-time-units-in-parameters">Standard time units in parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ray-tracing-parameters">Ray Tracing Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obstacle-marking-parameters">Obstacle Marking Parameters</a></li>
 </ul>
 </li>
 </ul>
@@ -774,6 +776,50 @@ waypoint_pause_duration: 0</dd>
 <blockquote>
 <div><ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">save_map_timeout</span></code> in seconds</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="ray-tracing-parameters">
+<h2>Ray Tracing Parameters<a class="headerlink" href="#ray-tracing-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Raytracing functionality was modified to include a minimum range parameter from which ray tracing starts to clear obstacles to avoid incorrectly clearing obstacles too close to the robot. This issue was mentioned in <a class="reference external" href="https://answers.ros.org/question/355150/obstacles-in-sensor-deadzone/">ROS Answers</a>. An existing parameter <code class="docutils literal notranslate"><span class="pre">raytrace_range</span></code> was renamed to <code class="docutils literal notranslate"><span class="pre">raytrace_max_range</span></code> to reflect the functionality it affects. The renamed parameters and the plugins that they belong to are mentioned below. The changes were introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2126">pull request</a>.</p>
+<ul class="simple">
+<li>obstacle_layer plugin</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">raytrace_min_range</span></code> controls the minimum range from which ray tracing clears obstacles from the costmap</li>
+<li><code class="docutils literal notranslate"><span class="pre">raytrace_max_range</span></code> controls the maximum range to which ray tracing clears obstacles from the costmap</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>voxel_layer plugin</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">raytrace_min_range</span></code> controls the minimum range from which ray tracing clears obstacles from the costmap</li>
+<li><code class="docutils literal notranslate"><span class="pre">raytrace_max_range</span></code> controls the maximum range to which ray tracing clears obstacles from the costmap</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="obstacle-marking-parameters">
+<h2>Obstacle Marking Parameters<a class="headerlink" href="#obstacle-marking-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Obstacle marking was modified to include a minimum range parameter from which obstacles are marked on the costmap to prevent addition of obstacles in the costmap due to noisy and incorrect measurements. This modification is related to the change with the raytracing parameters. The renamed parameters, newly added parameters and the plugins they belong to are given below.</p>
+<ul class="simple">
+<li>obstacle_layer plugin</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">obstacle_min_range</span></code> controls the minimum range from which obstacle are marked on the costmap</li>
+<li><code class="docutils literal notranslate"><span class="pre">obstacle_max_range</span></code> controls the maximum range to which obstacles are marked on the costmap</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>voxel_layer plugin</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">obstacle_min_range</span></code> controls the minimum range from which obstacle are marked on the costmap</li>
+<li><code class="docutils literal notranslate"><span class="pre">obstacle_max_range</span></code> controls the maximum range to which obstacles are marked on the costmap</li>
 </ul>
 </div></blockquote>
 </div>

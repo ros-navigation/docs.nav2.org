@@ -556,6 +556,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#standard-time-units-in-parameters">Standard time units in parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#ray-tracing-parameters">Ray Tracing Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#obstacle-marking-parameters">Obstacle Marking Parameters</a></li>
 </ul>
 </li>
 </ul>
@@ -1273,8 +1275,10 @@ It is used in the planner and controller servers for creating the space to check
         <span class="nt">combination_method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
         <span class="nt">scan</span><span class="p">:</span>
           <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/scan</span>
-          <span class="nt">obstacle_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
-          <span class="nt">raytrace_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+          <span class="nt">obstacle_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
+          <span class="nt">obstacle_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+          <span class="nt">raytrace_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+          <span class="nt">raytrace_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
           <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
           <span class="nt">min_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
           <span class="nt">clearing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
@@ -1299,8 +1303,10 @@ It is used in the planner and controller servers for creating the space to check
           <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/intel_realsense_r200_depth/points</span>
           <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
           <span class="nt">min_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-          <span class="nt">obstacle_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
-          <span class="nt">raytrace_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+          <span class="nt">obstacle_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
+          <span class="nt">obstacle_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+          <span class="nt">raytrace_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+          <span class="nt">raytrace_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
           <span class="nt">clearing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
           <span class="nt">marking</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
           <span class="nt">data_type</span><span class="p">:</span> <span class="s">&quot;PointCloud2&quot;</span>
