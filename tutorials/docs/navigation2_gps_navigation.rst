@@ -17,7 +17,8 @@ GPS navigation
 Overview
 ========
 
-This tutorial shows how to use Navigation2 for following GPS Navigation, the tutorials shows steps to do a GPS waypoint following.
+This tutorial shows you how to use Navigation2 for GPS Navigation, the tutorial includes steps to do a GPS waypoint following.
+Follow each step carefully.
 
 The requirements for this task are as follows:
 
@@ -33,7 +34,7 @@ Tutorial Steps
 
 We can consider two cases here. GPS waypoint following is possible in both simulation and real. This tutorial was developed based on simulation but all the steps should also apply on a real system. 
 
-Although It might not be the most convinient way, a practical way to collect the GPS waypoints is to traverse the path and collect GPS waypoints on certain points of the path and save the waypoint data to a yaml file.
+Although It might not be the most convinient way, a practical way to collect the GPS waypoints is to traverse the path and collect GPS waypoints on certain points of the path and save the waypoints to a yaml file.
 
 The action client node then can read this waypoints in yaml file and go through them. Assuming that you have ``sensor_msgs::msg::NavSatFix`` message type available under /gps/fix topic and ``sensor_msgs::msg::Imu``  
 message type available under /imu/data topic, you might drive the robot to points and use provided gps_waypoint_collectr node to colect GPS coordinates and robot's orientation at that point. 
@@ -241,10 +242,10 @@ parameter is again available at Robot Localization wiki page for EKF node detail
       zero_altitude: false
       publish_filtered_gps: true
       use_odometry_yaw: true
-      broadcast_utm_transform: false
+      broadcast_utm_transform: true
       broadcast_utm_transform_as_parent_frame: true # this is required when we convert GPS waypoint to map frame
 
-Now that we have configuration for our nodes, next we should have a launch file to start Robot Localization nodes. 
+Now that we have configuration for our nodes, next we should have a launch file to start Robot Localization nodes so that we have a tf tree with as utm -> map -> odom -> base_link -> .... 
 
 .. code-block:: python
 
@@ -303,14 +304,39 @@ After sucessful build do;
   source ~/your_colcon_ws/install/setup.bash
   ros2 launch nav2_gps_waypoint_follower_demo dual_ekf_navsat_localization.launch.py
 
-The map -> odom -> base_link holy chain should now be available in the TF tree. 
+The utm -> map -> odom -> base_link chain should now be available in the TF tree. 
 
-2- Let The Robot Follow The GPS Waypoints
+2- Important navigation2 parameters that effect GPS Navigation
+--------------------------------------------------------------
+
+Normally navigation2 expects you to provide a static map, so nav2_map_server can read up that map and include that information in global costmap.
+Of course it is still possible to map an outdoor Environment but for this tutorial we do not consider SLAM. We assume that the localization is made availbe with GPS,
+see Robot Localization step of this tutorial.
+
+We still need global and local costmaps. These two costmaps basically relies on live sensory data for obstacle free navigation. 
+You might have a pointCloud or laserScan. There are a few important parameters that needs to be setup correctly for costmaps. 
+
+The costmaps should be rolling_window enabled, so that they could `roll` together with robot. 
+
+.. code-block:: python
+  rolling_window: true
+
+The planner cannot provide a plan that exceeds boundry of global costmap, therefore you need to set a reasonable size for your global costmap so that planner can handle requests accordingly.
+For example with adding following configuration, planner will be able to handle goals that are up to 80 metres far away.
+.. code-block:: python
+  width: 80
+  height: 80
+  resolution: 0.2
+
+Adjusts the sizes of global and local costmaps according to your desired reachability.   
+
+
+3- Let The Robot Follow The GPS Waypoints
 -----------------------------------------
 
 Assuming that you have already collected your waypoints and they reside at `navigation2_tutorials/nav2_gps_waypoint_follower_demo/params/demo_gps_waypoints.yaml`. 
 
-You can simply lanch the GPS waypoint following with provided node. 
+You can simply launch the GPS waypoint following with provided node. 
 
 You need to make sure that you have built packages in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ successfully. 
 After sucessful build do;
