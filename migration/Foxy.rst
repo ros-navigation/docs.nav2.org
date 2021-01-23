@@ -46,7 +46,6 @@ Several example implementations are included in ``nav2_waypoint_follower``. ``Wa
 
 Loading a plugin of this type is done through ``nav2_bringup/params/nav2_param.yaml``, by specifying plugin's name, type and it's used parameters. 
 
-For instance; 
 .. code-block:: yaml
 
     waypoint_follower:
@@ -80,17 +79,30 @@ Architecturally, costmap filters consists from ``CostmapFilter`` class which is 
 Each costmap filter subscribes to filter info topic (publishing by `Costmap Filter Info Publisher Server <https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info>`_) having all necessary information for loaded costmap filter and filter mask topic.
 ``SpeedFilter`` additionally publishes maximum speed restricting `messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ targeted for a Controller to enforce robot won't exceed given limit.
 
-High-level design of this concept could be found `here <https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf>`_. The functionality of costmap filters is being disscussed in `the ticket #1263 <https://github.com/ros-planning/navigation2/issues/1263>`_ and carried out by `PR #1882 <https://github.com/ros-planning/navigation2/pull/1882>`_. The following tutorial: :ref:`navigation2_with_keepout_filter` will help to easily get involved with ``KeepoutFilter`` functionality.
+High-level design of this concept could be found `here <https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf>`_. The functionality of costmap filters is being disscussed in `the ticket #1263 <https://github.com/ros-planning/navigation2/issues/1263>`_ and carried out by `PR #1882 <https://github.com/ros-planning/navigation2/pull/1882>`_. The following tutorials: :ref:`navigation2_with_keepout_filter` and :ref:`navigation2_with_speed_filter` will help to easily get involved with ``KeepoutFilter`` and ``SpeedFilter`` functionalities.
 
 SmacPlanner
 ***********
 
-A new package, ``SmacPlanner`` was added containing 4 or 8 connected 2D A*, and Dubin and Reed-shepp model hybrid-A* with smoothing, multi-resolution query, and more.
+A new package, ``nav2_smac_planner`` was added containing 4 or 8 connected 2D A*, and Dubin and Reed-shepp model hybrid-A* with smoothing, multi-resolution query, and more.
 
 The ``nav2_smac_planner`` package contains an optimized templated A* search algorithm used to create multiple A*-based planners for multiple types of robot platforms. We support differential-drive and omni-directional drive robots using the ``SmacPlanner2D`` planner which implements a cost-aware A* planner. We support cars, car-like, and ackermann vehicles using the ``SmacPlanner`` plugin which implements a Hybrid-A* planner. This plugin is also useful for curvature constrained planning, like when planning robot at high speeds to make sure they don't flip over or otherwise skid out of control.
 
-The `SmacPlanner` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.
+The ``SmacPlanner`` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.
 
+RegulatedPurePursuitController
+******************************
+
+A new package, ``nav2_regulated_pure_pursuit_controller`` was added containing a novel varient of the Pure Pursuit algorithm.
+It also includes configurations to enable Pure Pursuit and Adaptive Pure Pursuit variations as well.
+
+This variation is specifically targeting service / industrial robot needs.
+It regulates the linear velocities by curvature of the path to help reduce overshoot at high speeds around blind corners allowing operations to be much more safe.
+It also better follows paths than any other variation currently available of Pure Pursuit.
+It also has heuristics to slow in proximity to other obstacles so that you can slow the robot automatically when nearby potential collisions.
+It also implements the Adaptive lookahead point features to be scaled by velocities to enable more stable behavior in a larger range of translational speeds.
+
+There's more this does, that that's the general information. See the package's ``README`` for more.
 
 Costmap2D ``current_`` Usage
 ****************************
@@ -115,3 +127,24 @@ Pure GPS Waypoint Following Support
 ``nav2_waypoint_follower`` package is now supporting pure GPS waypoint following through an action interface. 
 The action named ``FollowGPSWaypoints`` accepts GPS waypoints with orientation information included. A tutorial that show cases usage of feature has been added to  `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/>`_,
 Also see the General Tutorials section for more detailed instruction on usage of this feature.
+Ray Tracing Parameters
+**********************
+Raytracing functionality was modified to include a minimum range parameter from which ray tracing starts to clear obstacles to avoid incorrectly clearing obstacles too close to the robot. This issue was mentioned in `ROS Answers <https://answers.ros.org/question/355150/obstacles-in-sensor-deadzone/>`_. An existing parameter ``raytrace_range`` was renamed to ``raytrace_max_range`` to reflect the functionality it affects. The renamed parameters and the plugins that they belong to are mentioned below. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2126>`_.
+
+- obstacle_layer plugin
+ - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
+ - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
+- voxel_layer plugin
+ - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
+ - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
+
+Obstacle Marking Parameters
+***************************
+Obstacle marking was modified to include a minimum range parameter from which obstacles are marked on the costmap to prevent addition of obstacles in the costmap due to noisy and incorrect measurements. This modification is related to the change with the raytracing parameters. The renamed parameters, newly added parameters and the plugins they belong to are given below.
+
+- obstacle_layer plugin
+ - ``obstacle_min_range`` controls the minimum range from which obstacle are marked on the costmap
+ - ``obstacle_max_range`` controls the maximum range to which obstacles are marked on the costmap
+- voxel_layer plugin
+ - ``obstacle_min_range`` controls the minimum range from which obstacle are marked on the costmap
+ - ``obstacle_max_range`` controls the maximum range to which obstacles are marked on the costmap
