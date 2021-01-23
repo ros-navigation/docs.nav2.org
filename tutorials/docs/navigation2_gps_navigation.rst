@@ -34,7 +34,7 @@ Tutorial Steps
 
 We can consider two cases here. GPS waypoint following is possible in both simulation and real. This tutorial was developed based on simulation but all the steps should also apply on a real system. 
 
-Although It might not be the most convinient way, a practical way to collect the GPS waypoints is to traverse the path and collect GPS waypoints on certain points of the path and save the waypoints to a yaml file.
+Although It might not be the most convinient way, a practical way to collect the GPS waypoints is to traverse the path and collect GPS waypoints along the way with a frequency.
 
 The action client node then can read this waypoints in yaml file and go through them. Assuming that you have ``sensor_msgs::msg::NavSatFix`` message type available under /gps/fix topic and ``sensor_msgs::msg::Imu``  
 message type available under /imu/data topic, you might drive the robot to points and use provided gps_waypoint_collectr node to colect GPS coordinates and robot's orientation at that point. 
@@ -43,6 +43,7 @@ We are interested in getting latitude, longitude and altitude at this location. 
 how the IMU should report the data at `Robot Localization <http://docs.ros.org/en/melodic/api/robot_localization/html/preparing_sensor_data.html#imu>`_. For the orientation, only yaw angle is our concern here. 
 
 We have provided a node in tutorial source code to collect synced imu and gps data at waypoints. The topics can be configured to your case. ;
+
 ``gps_waypoint_collector.launh.py`` in ``nav2_gps_waypoint_follower_demo`` ;
 
 .. code-block:: python
@@ -65,11 +66,16 @@ We have provided a node in tutorial source code to collect synced imu and gps da
                   name='gps_waypoint_collector_node',
                   output='screen',
                   remappings=[('/gps', '/gps/fix'),
-                              ('/imu', '/imu/data')]
+                              ('/imu', '/imu/data')],  
+                  parameters=[{'frequency': 1},  # dont set to high otherwise you will end up with hundreds of waypoints!
+                              {'yaml_file_out': "/home/user_name/collected_points.yaml"}]  #change this according to your home dir
               )               
   ])
 
+
 remap your topics accordingly. 
+
+frequency parameter will determine density of collected points. Also do not forget to replace your user name in the path given to yaml file.
 
 You need to make sure that you have built packages in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ successfully. 
 After you drove the robot to a waypoint then do ;
@@ -91,9 +97,34 @@ here the values corresponds to ;
 .. code-block:: bash
   curr_gps_waypoint: [lat, long, alt, yaw(radians)]  
 
-This callback is called periodicly, if the robot moves the values will be updated, however it is reccomended that you stop at each waypoint then execute this node, get the latest message and save it in a yaml file.
+This callback is called periodicly accrding to the frequency you set, if the robot moves the values will be updated. The points are published to a topic as well. 
+After you are done with waypoints, simply halt the program, you should be able to see a yaml file dumped to your home directory. The file should include something like; 
 
-Repeat this for each waypoint you would like to collect. Finally your yaml file with collected waypoints should look like soething similar to this;
+.. code-block:: yaml
+  waypoints: see all points colected here
+  wp0: wp0
+  ? - 2.712957971740154e-05
+    - 1.347592728460362e-05
+    - 0.634969487786293
+    - 1.570050106078182
+  : wp1
+  wp1:
+    - 2.713016079966125e-05
+    - 1.347579573177083e-05
+    - 0.6347920279949903
+    - 1.570046328078887
+  wp2: wp2
+  ? - 2.713078967944298e-05
+    - 1.347565623347075e-05
+    - 0.6346014244481921
+    - 1.57004306426722
+  : wp3
+      .
+      .
+      .
+Unfourtunately you would need to put this yaml file in a form seen below. This is simply because I could not spend much time on learning how to use YAML-CPP API sufficintly. 
+
+Finally your yaml file with collected waypoints should look like something similar to this;
 
 .. code-block:: yaml
   gps_waypoint_follower_demo:
@@ -107,9 +138,14 @@ Repeat this for each waypoint you would like to collect. Finally your yaml file 
       wp4: [8.37498018946476e-06, -2.402470336058297e-05, 0.6447164406999946, 3.14]
       .
       .
-
 update the nav2_gps_waypoint_follower_demo/config/demo_gps_waypoints.yaml file with the point you have just collected. 
 
+It is also possible to echo ros topic with;
+
+.. code-block:: bash
+  source ~/your_colcon_ws/install/setup.bash
+  ros2 topic echo /collected_gps_waypoints
+  
 1- Configure Robot Localization
 -------------------------------
 
