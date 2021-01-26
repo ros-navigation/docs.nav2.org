@@ -41,7 +41,8 @@ Tutorial Steps
 --------------------------
 
 For this tutorial, we will use the turtlebot3.
-If you have another robot, replace with suitable instructions.
+If you have another robot, replace with your robot specific interfaces.
+Typically, this includes the robot state publisher of the URDF, simulated or physical robot interfaces, controllers, safety nodes, and the like.
 
 Run the following commands first whenever you open a new terminal during this tutorial.
 
