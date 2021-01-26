@@ -90,3 +90,14 @@ You should see the map update live! To save this map to file:
     :width: 700px
     :alt: Navigation2 with SLAM
     :align: center
+
+4- Getting Started Simplification
+---------------------------------
+
+If you're only interested in running SLAM in the turtlebot3 getting started sandbox world, we also provide a simple way to enable SLAM as a launch configuration.
+Rather than individually launching the interfaces, navigation, and SLAM, you can continue to use the ``tb3_simulation_launch.py`` with ``slam`` config set to true.
+We provide the instructions above with the assumption that you'd like to run SLAM on your own robot which would have separated simulation / robot interfaces and navigation launch files that are combined in ``tb3_simulation_launch.py`` for the purposes of easy testing.
+
+.. code-block:: bash
+
+  ros2 launch nav2_bringup tb3_simulation_launch.py slam:=true

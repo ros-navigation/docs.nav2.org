@@ -239,6 +239,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#launch-navigation2">1- Launch Navigation2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#launch-slam">2- Launch SLAM</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#working-with-slam">3- Working with SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getting-started-simplification">4- Getting Started Simplification</a></li>
 </ul>
 </li>
 </ul>
@@ -734,6 +735,15 @@ For this tutorial, we will use <a class="reference external" href="https://githu
 <blockquote>
 <div><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">nav2_map_server</span> <span class="pre">map_saver_cli</span> <span class="pre">-f</span> <span class="pre">~/map</span></code></div></blockquote>
 <a class="reference internal image-reference" href="../../_images/navigation2_with_slam.gif"><img alt="Navigation2 with SLAM" class="align-center" src="../../_images/navigation2_with_slam.gif" style="width: 700px;" /></a>
+</div>
+<div class="section" id="getting-started-simplification">
+<h3>4- Getting Started Simplification<a class="headerlink" href="#getting-started-simplification" title="Permalink to this headline">¶</a></h3>
+<p>If you’re only interested in running SLAM in the turtlebot3 getting started sandbox world, we also provide a simple way to enable SLAM as a launch configuration.
+Rather than individually launching the interfaces, navigation, and SLAM, you can continue to use the <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code> with <code class="docutils literal notranslate"><span class="pre">slam</span></code> config set to true.
+We provide the instructions above with the assumption that you’d like to run SLAM on your own robot which would have separated simulation / robot interfaces and navigation launch files that are combined in <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code> for the purposes of easy testing.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py slam:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
