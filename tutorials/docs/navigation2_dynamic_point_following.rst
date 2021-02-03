@@ -17,7 +17,7 @@ Dynamic Object Following
 Overview
 ========
 
-This tutorial shows how to use Navigation2 for a different task other than going from point A to point B. In this case, we will use Navigation2 to follow a moving object at a distance indefinitely.
+This tutorial shows how to use Nav2 for a different task other than going from point A to point B. In this case, we will use Nav2 to follow a moving object at a distance indefinitely.
 
 This task is useful in cases such as following a person or another robot. Below are some sample videos of applications that could be created using this capability. The "Carry My Luggage" RoboCup @ Home test, in which the `CATIE Robotics <https://robotics.catie.fr/>`_ team performs the test successfully and this real (future) world application:
 
@@ -131,7 +131,7 @@ For reference, this exact behavior tree is `made available <https://github.com/r
 1- Setup Rviz clicked point
 ---------------------------
 
-We are going to use RViz instead of a full application so you can test at home without finding a detector to get started. We will use the "clicked point" button on the toolbar to substitute object detections to provide goal updates to Navigation2. This button allows you to
+We are going to use RViz instead of a full application so you can test at home without finding a detector to get started. We will use the "clicked point" button on the toolbar to substitute object detections to provide goal updates to Nav2. This button allows you to
 publish coordinates in the topic ``/clicked_point``. This point needs to be sent to the behavior tree, using the program ``clicked_point_to_pose``, from `this repo <https://github.com/fmrico/nav2_test_utils>`_. Clone 
 this repo in your workspace, build, and type in a terminal.
 
@@ -139,10 +139,10 @@ this repo in your workspace, build, and type in a terminal.
 
 Optionally, you can remap this topic in your rviz configuration file to ``goal_updates``.
 
-2- Run Dynamic Object Following in Navigation2 Simulation
----------------------------------------------------------
+2- Run Dynamic Object Following in Nav2 Simulation
+--------------------------------------------------
 
-Start Navigation2 in one terminal:
+Start Nav2 in one terminal:
 
 ``ros2 launch nav2_bringup tb3_simulation_launch.py default_bt_xml_filename:=/path/to/bt.xml``
 
