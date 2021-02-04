@@ -1,9 +1,9 @@
 .. |br|     raw:: html        .. force a line break in HTML output (blank lines needed here)
 
    <br />
-.. |PN| replace:: Navigation 2
+.. |PN| replace:: Nav2
 
-.. |LPN| replace:: ROS 2 Navigation
+.. |LPN| replace:: Nav2
 
 .. _project repo: https://github.com/ros-planning/navigation2
 

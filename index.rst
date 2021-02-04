@@ -18,23 +18,23 @@
 Overview
 ########
 
-The Navigation 2 project is the spiritual successor of the ROS Navigation Stack.
+The Nav2 project is the spiritual successor of the ROS Navigation Stack.
 This project seeks to find a safe way to have a mobile robot move from point A to
 point B. It can also be applied in other applications that involve robot navigation, like following dynamic points. 
 This will complete dynamic path planning, compute velocities for motors,
 avoid obstacles, and structure recovery behaviors.
 To learn more about this project, such as related projects, robots using, ROS1 comparison, and maintainers, see :ref:`about`.
 
-Navigation 2 uses behavior trees to call modular servers to complete an action.
+Nav2 uses behavior trees to call modular servers to complete an action.
 An action can be to compute a path, control effort, recovery, or any other navigation
 related action. These are each separate nodes that communicate with the behavior tree (BT)
 over a ROS action server. The diagram below will give you a good first-look at the structure
-of Navigation 2. Note: It is possible to have multiple plugins for controllers, planners,
+of Nav2. Note: It is possible to have multiple plugins for controllers, planners,
 and recoveries in each of their servers with matching BT plugins. This can be used to
 create contextual navigation behaviors.
 If you would like to see a comparison between this project and ROS (1) Navigation, see :ref:`ros1_comparison`.
 
-The expected inputs to Navigation2 (Nav2) are TF transformations conforming to REP-105, a
+The expected inputs to Nav2 are TF transformations conforming to REP-105, a
 map source if utilizing the Static Costmap Layer, a BT XML file, and any relevant sensor data
 sources. It will then provide valid velocity commands for the motors of a holonomic or
 non-holonomic robot to follow. We currently support holonomic and differential-drive base types
@@ -82,7 +82,7 @@ S. Macenski, F. Martín, R. White, J. Clavero.
 `The Marathon 2: A Navigation System <https://arxiv.org/abs/2003.00368/>`_.
 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020.
 
-IROS 2020 talk on Navigation2 Marathon Experiments:
+IROS 2020 talk on Nav2 Marathon Experiments:
 
 .. raw:: html
 

@@ -10,7 +10,7 @@ endif
 # You can set these variables from the command line.
 SPHINXOPTS    ?= -q
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = "Navigation 2 Documentation"
+SPHINXPROJ    = "Nav2 Documentation"
 SOURCEDIR     = .
 BUILDDIR      = _build
 
