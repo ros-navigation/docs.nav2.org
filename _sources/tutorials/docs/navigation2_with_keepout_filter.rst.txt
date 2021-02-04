@@ -23,7 +23,7 @@ This tutorial shows how to simply utilize keep-out/safety zones where robots can
 Requirements
 ============
 
-It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in :ref:`build-instructions`.
+It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in :ref:`build-instructions`.
 
 Tutorial Steps
 ==============
@@ -31,9 +31,9 @@ Tutorial Steps
 1. Prepare filter mask
 ----------------------
 
-As was written in :ref:`concepts`, any Costmap Filter (including Keepout Filter) are reading the data marked in a filter mask file. Filter mask - is the usual Navigation2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The following steps help to understand how to make a new filter mask:
+As was written in :ref:`concepts`, any Costmap Filter (including Keepout Filter) are reading the data marked in a filter mask file. Filter mask - is the usual Nav2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The following steps help to understand how to make a new filter mask:
 
-Create a new image with a PGM/PNG/BMP format: copy `turtlebot3_world.pgm <https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.pgm>`_ main map which will be used in a world simulation from a ``navigation2`` repository to a new ``keepout_mask.pgm`` file.
+Create a new image with a PGM/PNG/BMP format: copy `turtlebot3_world.pgm <https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.pgm>`_ main map which will be used in a world simulation from a ``Nav2`` repository to a new ``keepout_mask.pgm`` file.
 
 Open ``keepout_mask.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. Another term "darkness" will be understood as the exact opposite of lightness. In other words ``color_darkness = 100% - color_lightness``.
 
@@ -41,7 +41,7 @@ In the GIMP lightness is expressed through color components value (e.g. ``R`` in
 
 .. image:: images/Navigation2_with_Keepout_Filter/ligtness_in_GIMP.png
 
-The incoming mask file is being read by the Map Server and converted into ``OccupancyGrid`` values from ``[0..100]`` range (where ``0`` means free cell, ``100`` - occupied, anything in between - less or more occupied cells on map) or be equal to ``-1`` for unknown value. In Navigation2 stack each map has ``mode`` attribute which could be ``trinary``, ``scale`` or ``raw``. Depending on ``mode`` selected, the color lightness of PGM/PNG/BMP is being converted to ``OccupancyGrid`` by one of the following principles:
+The incoming mask file is being read by the Map Server and converted into ``OccupancyGrid`` values from ``[0..100]`` range (where ``0`` means free cell, ``100`` - occupied, anything in between - less or more occupied cells on map) or be equal to ``-1`` for unknown value. In Nav2 stack each map has ``mode`` attribute which could be ``trinary``, ``scale`` or ``raw``. Depending on ``mode`` selected, the color lightness of PGM/PNG/BMP is being converted to ``OccupancyGrid`` by one of the following principles:
 
 - ``trinary`` (default mode): Darkness >= ``occupied_thresh`` means that map occupied (``100``). Darkness <= ``free_thresh`` - map free (``0``). Anything in between - unknown status on map (``-1``).
 - ``scale``: Alpha < ``1.0`` - unknown. Darkness >= ``occupied_thresh`` means that map occupied (``100``). Darkness <= ``free_thresh`` - map free (``0``). Anything in between - linearly interpolate to nearest integer from ``[0..100]`` range.
@@ -275,10 +275,10 @@ To enable ``KeepoutFilter`` with same mask for both global and local costmaps, u
 
   In this example ``keepout_filter`` goes after the ``inflation_layer`` so the keepout boundaries aren't inflated as obstacles, although this is not an obligatory requirement.
 
-4. Run Navigation2 stack
-------------------------
+4. Run Nav2 stack
+-----------------
 
-After Costmap Filter Info Publisher Server and Map Server were launched and Keepout Filter was enabled for global/local costmaps, run navigation2 stack as written in :ref:`getting_started`:
+After Costmap Filter Info Publisher Server and Map Server were launched and Keepout Filter was enabled for global/local costmaps, run Nav2 stack as written in :ref:`getting_started`:
 
 .. code-block:: bash
 

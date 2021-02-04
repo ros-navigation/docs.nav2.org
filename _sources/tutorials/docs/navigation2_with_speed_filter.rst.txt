@@ -23,7 +23,7 @@ This tutorial shows how to simply utilize Speed Filter which is designed to limi
 Requirements
 ============
 
-It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that the Navigation2 project is also built locally as it was made in :ref:`build-instructions`.
+It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that the Nav2 project is also built locally as it was made in :ref:`build-instructions`.
 
 Tutorial Steps
 ==============
@@ -56,7 +56,7 @@ In this tutorial we will use the first type of speed restriction expressed in a 
 
   For speed restriction expressed in a percent, ``speed_limit`` will be used exactly as a percent belonging to ``[0..100]`` range, not ``[0.0..1.0]`` range.
 
-Create a new image with a PGM/PNG/BMP format: copy ``turtlebot3_world.pgm`` main map which will be used in a world simulation from a navigation2 repository to a new ``speed_mask.pgm`` file. Open ``speed_mask.pgm`` in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:
+Create a new image with a PGM/PNG/BMP format: copy ``turtlebot3_world.pgm`` main map which will be used in a world simulation from a Nav2 repository to a new ``speed_mask.pgm`` file. Open ``speed_mask.pgm`` in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:
 
 .. image:: images/Navigation2_with_Speed_Filter/drawing_speed_mask.png
     :width: 500px
@@ -288,10 +288,10 @@ Set ``speed_limit_topic`` parameter of a Controller Server to the same value as 
       speed_limit_topic: "/speed_limit"
 
 
-4. Run Navigation2 stack
-------------------------
+4. Run Nav2 stack
+-----------------
 
-After Costmap Filter Info Publisher Server and Map Server were launched and Speed Filter was enabled for global/local costmap, run navigation2 stack as written in :ref:`getting_started`:
+After Costmap Filter Info Publisher Server and Map Server were launched and Speed Filter was enabled for global/local costmap, run Nav2 stack as written in :ref:`getting_started`:
 
 .. code-block:: bash
 

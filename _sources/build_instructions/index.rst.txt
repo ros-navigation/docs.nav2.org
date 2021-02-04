@@ -6,7 +6,7 @@ Build and Install
 Install
 *******
 
-Navigation2 and its dependencies are released as binaries.
+Nav2 and its dependencies are released as binaries.
 You may install it via the following to get the latest stable released version:
 
   ``sudo apt install ros-<distro>-navigation2 ros-<distro>-nav2-bringup ros-<distro>-turtlebot3*``
@@ -19,31 +19,31 @@ You may install it via the following to get the latest stable released version:
 Build
 *****
 
-There are 3 ways to build Navigation2.
-Building for a specific released distribution (e.g. ``eloquent``, ``foxy``), build Navigation2 on main branch using a quickstart setup script, or building main branch manually.
+There are 3 ways to build Nav2.
+Building for a specific released distribution (e.g. ``eloquent``, ``foxy``), build Nav2 on main branch using a quickstart setup script, or building main branch manually.
 
 .. rst-class:: content-collapse
 
-Build Navigation2 For Released Distribution
-===========================================
+Build Nav2 For Released Distribution
+====================================
 
 Install ROS
 -----------
 
 Please install ROS 2 via the usual `build instructions <https://index.ros.org/doc/ros2/Installation>`_ for your desired distribution.
 
-Build Navigation2
------------------
+Build Nav2
+----------
 
-We're going to create a new workspace, ``navigation2_ws``, clone our Navigation2 branch into it, and build.
-``rosdep`` will be used to get the dependency binaries for navigation2 in your specific distribution.
+We're going to create a new workspace, ``nav2_ws``, clone our Nav2 branch into it, and build.
+``rosdep`` will be used to get the dependency binaries for Nav2 in your specific distribution.
 
 .. code:: bash
 
-  mkdir -p ~/navigation2_ws/src
-  cd ~/navigation2_ws/src
+  mkdir -p ~/nav2_ws/src
+  cd ~/nav2_ws/src
   git clone https://github.com/ros-planning/navigation2.git --branch <ros2-distro>-devel
-  cd ~/navigation2_ws
+  cd ~/nav2_ws
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install
 
@@ -77,8 +77,8 @@ Ensure there are no ROS environment variables set in your terminal or `.bashrc` 
 The ``initial_ros_setup.sh`` script downloads three ROS workspaces and then builds them in the correct order. The three workspaces are:
 
 - **ROS 2 release**: This is the latest ROS 2 release as defined by the repos file found `here <https://github.com/ros2/ros2>`_
-- **ROS 2 dependencies**: This is a set of ROS 2 packages that aren't included in the ROS 2 release yet. However, you need them to be able to build Navigation2. This also includes packages that are part of the ROS 2 release where Navigation2 uses a different version.
-- **Navigation2**: This repository.
+- **ROS 2 dependencies**: This is a set of ROS 2 packages that aren't included in the ROS 2 release yet. However, you need them to be able to build Nav2. This also includes packages that are part of the ROS 2 release where Nav2 uses a different version.
+- **Nav2**: This repository.
 
 After all the workspaces are downloaded, run the `navigation2/tools/build_all.sh` script. `build_all.sh` builds each repo in the order listed above using the `colcon build --symlink-install` command.
 
@@ -106,15 +106,15 @@ Build ROS 2 Main
 Build ROS 2 main using the `build instructions <https://index.ros.org/doc/ros2/Installation>`_ provided in the ROS 2 documentation.
 
 
-Build Navigation2 Dependencies
-------------------------------
+Build Nav2 Dependencies
+-----------------------
 
 Since we're not building for a released distribution, we must build the dependencies ourselves rather than using binaries.
 First, source the setup.bash file in the ROS 2 build workspace.
 
     ``source ~/ros2_ws/install/setup.bash``
 
-Next, we're going to get the ``underlay.repos`` file from Navigation2.
+Next, we're going to get the ``underlay.repos`` file from Nav2.
 Then, use ``vcs`` to clone the repos and versions in it into a workspace.
 
 .. code:: bash
@@ -127,20 +127,20 @@ Then, use ``vcs`` to clone the repos and versions in it into a workspace.
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
-Build Navigation2 Main
-----------------------
+Build Nav2 Main
+---------------
 
-Finally, now that we have ROS 2 main and the necessary dependencies, we can now build Navigation2 main itself.
+Finally, now that we have ROS 2 main and the necessary dependencies, we can now build Nav2 main itself.
 We'll source the ``nav2_depend_ws``, which will also source the ROS 2 main build workspace packages, to build with dependencies.
 The rest of this should look familiar.
 
 .. code:: bash
 
   source ~/nav2_depend_ws/install/setup.bash
-  mkdir -p ~/navigation2_ws/src
-  cd ~/navigation2_ws/src
+  mkdir -p ~/nav2_ws/src
+  cd ~/nav2_ws/src
   git clone https://github.com/ros-planning/navigation2.git --branch main
-  cd ~/navigation2_ws
+  cd ~/nav2_ws
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install
 
@@ -148,7 +148,7 @@ Docker
 ******
 
 
-There are 2 options for docker with Navigation2:
+There are 2 options for docker with Nav2:
 building a container and using the DockerHub container.
 
 .. rst-class:: content-collapse
@@ -156,7 +156,7 @@ building a container and using the DockerHub container.
 Building Docker Container
 =========================
 
-To build an image from the Dockerfile in the navigation2 folder:
+To build an image from the Dockerfile in the Nav2 folder:
 First, clone the repo to your local system (or see Building the source above)
 
 .. code:: bash
@@ -187,7 +187,7 @@ We allow for you to pull the latest docker image from the main branch at any tim
 Generate Doxygen
 ****************
 
-Run ``doxygen`` in the root of the Navigation2 repository.
+Run ``doxygen`` in the root of the Nav2 repository.
 It will generate a ``/doc/*`` directory containing the documentation.
 The documentation entrypoint in a browser is index.html.
 

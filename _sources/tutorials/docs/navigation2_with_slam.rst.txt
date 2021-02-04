@@ -10,8 +10,8 @@
 Overview
 ========
 
-This document explains how to use Navigation 2 with SLAM.
-The following steps show ROS 2 users how to generate occupancy grid maps and use Navigation 2 to move their robot around.
+This document explains how to use Nav2 with SLAM.
+The following steps show ROS 2 users how to generate occupancy grid maps and use Nav2 to move their robot around.
 This tutorial applies to both simulated and physical robots, but will be completed here on physical robot.
 
 Before completing this tutorial, completing the :ref:`getting_started`. is highly recommended especially if you are new to ROS and Navigation2.
