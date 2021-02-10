@@ -128,4 +128,5 @@ Below is an example of the TB3 navigating in a small lounge.
    migration/index.rst
    contribute/index.rst
    about/index.rst
+   about/robots.rst
    2020summerOfCode/Summer_2020_Student_Program.rst

@@ -9,12 +9,24 @@ Below is a very early list of robots we have encountered using our software as e
 Click on the images below for a link to the drivers or navigation configurations.
 
 +------------------------+------------------------+------------------------+
-|         |tb2|          +          |tb3|         +        |rover|         |
+|          |tri|         +          |Tiago|       +          |rover|       |
 +------------------------+------------------------+------------------------+
-|           |yunji|      +         |RB1|          +        |Tiago|         |
+|           |yunji|      +         |RB1|          +        |elroy|         |
 +------------------------+------------------------+------------------------+
-|         |ubr1|         +         |soon|         +         |soon|         |
+|         |ubr1|         +         |tb2|          +           |tb3|        |
 +------------------------+------------------------+------------------------+
+
+.. |tri| image:: images/tri.png
+    :width: 100%
+    :align: middle
+    :alt: Olympics2020
+    :target: https://www.tri.global/news/toyota-introduces-tris-t-tr1-a-virtual-mobility-2019-7-22/
+
+.. |elroy| image:: images/elroy.png
+    :width: 100%
+    :align: middle
+    :alt: ElroyAir
+    :target: https://elroyair.com/
 
 .. |tb2| image:: images/tb2.png
     :width: 100%
