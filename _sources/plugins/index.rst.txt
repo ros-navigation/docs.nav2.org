@@ -85,8 +85,8 @@ Controllers
 |                          |                    | holonomic robots.                | Differential          |
 +--------------------------+--------------------+----------------------------------+-----------------------+
 | `Regulated Pure Pursuit`_| Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
-|                          |                    | variation on the pure pursuit    | Omnidirectional,      |
-|                          |                    | algorithm with adaptive features.| Differential          |
+|                          |                    | variation on the pure pursuit    | Differential          |
+|                          |                    | algorithm with adaptive features.|                       |
 +--------------------------+--------------------+----------------------------------+-----------------------+
 
 .. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
