@@ -146,8 +146,8 @@ Obstacle marking was modified to include a minimum range parameter from which ob
 
 Recovery Action Changes
 ***********************
-The recovery actions, `Spin` and `BackUp` were modified to correctly return `FAILURE` if the recovery action is aborted due to a potential collision. Previously, these actions incorrectly always returned `SUCCESS`. Changes to this resulted in downstream action clients, such as the default behavior tree. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_.
+The recovery actions, ``Spin`` and ``BackUp`` were modified to correctly return ``FAILURE`` if the recovery action is aborted due to a potential collision. Previously, these actions incorrectly always returned ``SUCCESS``. Changes to this resulted in downstream action clients, such as the default behavior tree. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_.
 
 Default Behavior Tree Changes
 *****************************
-The default behavior tree `navigate_w_replanning_and_recovery.xml` has been updated to allow for replanning in between recoveries. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_. Additionally, an alternative BT `navigate_w_replanning_and_round_robin_recovery.xml` was removed due to similarity with the updated default BT.
+The default behavior tree (BT) ``navigate_w_replanning_and_recovery.xml`` has been updated to allow for replanning in between recoveries. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_. Additionally, an alternative BT ``navigate_w_replanning_and_round_robin_recovery.xml`` was removed due to similarity with the updated default BT.
