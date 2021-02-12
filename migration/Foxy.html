@@ -565,6 +565,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#standard-time-units-in-parameters">Standard time units in parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ray-tracing-parameters">Ray Tracing Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#obstacle-marking-parameters">Obstacle Marking Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovery-action-changes">Recovery Action Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-behavior-tree-changes">Default Behavior Tree Changes</a></li>
 </ul>
 </li>
 </ul>
@@ -828,6 +830,14 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <li><code class="docutils literal notranslate"><span class="pre">obstacle_max_range</span></code> controls the maximum range to which obstacles are marked on the costmap</li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="recovery-action-changes">
+<h2>Recovery Action Changes<a class="headerlink" href="#recovery-action-changes" title="Permalink to this headline">¶</a></h2>
+<p>The recovery actions, <code class="docutils literal notranslate"><span class="pre">Spin</span></code> and <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> were modified to correctly return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> if the recovery action is aborted due to a potential collision. Previously, these actions incorrectly always returned <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. Changes to this resulted in downstream action clients, such as the default behavior tree. The changes were introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1855">pull request</a>.</p>
+</div>
+<div class="section" id="default-behavior-tree-changes">
+<h2>Default Behavior Tree Changes<a class="headerlink" href="#default-behavior-tree-changes" title="Permalink to this headline">¶</a></h2>
+<p>The default behavior tree (BT) <code class="docutils literal notranslate"><span class="pre">navigate_w_replanning_and_recovery.xml</span></code> has been updated to allow for replanning in between recoveries. The changes were introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1855">pull request</a>. Additionally, an alternative BT <code class="docutils literal notranslate"><span class="pre">navigate_w_replanning_and_round_robin_recovery.xml</span></code> was removed due to similarity with the updated default BT.</p>
 </div>
 </div>
 
