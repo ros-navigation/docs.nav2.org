@@ -91,7 +91,7 @@ Controllers
 
 .. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
 .. _TEB Controller: https://github.com/rst-tu-dortmund/teb_local_planner
-.. _Regulated Pure Pursuit: https://github.com/navigation2/tree/main/nav2_regulated_pure_persuit_controller
+.. _Regulated Pure Pursuit: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
 
 Planners
 ========
