@@ -41,6 +41,17 @@ Parameters
   Description
     Whether to prune the path of old, passed points.
 
+:``<dwb plugin>``.shorten_transformed_plan:
+
+  ==== =======
+  Type Default
+  ---- -------
+  bool true   
+  ==== =======
+
+  Description
+    Determines whether we will pass the full plan on to the critics.
+
 :``<dwb plugin>``.prune_distance:
 
   ====== =======
