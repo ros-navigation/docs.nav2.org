@@ -9,6 +9,7 @@ Navigation2 Tutorials
    :maxdepth: 1
 
    docs/camera_calibration.rst
+   docs/custom_behavior_tree.rst
    docs/get_backtrace.rst
    docs/navigation2_on_real_turtlebot3.rst
    docs/navigation2_with_slam.rst
