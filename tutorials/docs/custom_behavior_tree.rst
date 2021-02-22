@@ -165,6 +165,9 @@ The default ``navigate_w_replanning_and_recovery`` has a ``number_of_retries`` o
 
 For more details regarding the ``RecoveryNode`` please see the `configuration guide <../../configuration/packages/bt-plugins/controls/RecoveryNode.html>`_.
 
+Note that the ``RecoveryNode`` is a custom ``control`` type node made for Nav2, but can be replaced by any other control type node based on the application. 
+Replacements in the BT goes without saying for any node, and from here on out I will only call this out for particularly interesting subsitutions.
+
 NavigateWithReplanning
 ======================
 
@@ -220,6 +223,86 @@ And the ASCII representation:
                          |                |                                                                  
                     GoalUpdated  ClearEntireCostmap                                                          
 
+The parent node of this subtree is ``PipelineSequence``, which again is a custom Nav2 BT.
+While this subtree looks complicated, the crux of the tree can be represented with only one parent and two children nodes like this:
+
+.. code-block::
+
+        PipelineSequence         
+                |                
+         _______|_________       
+         |               |       
+         |               |       
+ ComputePathToPose  FollowPath   
+
+The other children and leaves of the tree are simply to throttle, handle failures, and handle updated goals.
+
+The ``PipelineSequence`` allows the ``ComputePathToPose`` to be ticked, and once that succeeds, the ``ComputePathToPose`` and ``FollowPath`` to be ticked.
+The full description of this control node is in the `configuration guide <../../configuration/packages/bt-plugins/controls/PipelineSequence.html>`_.
+In the above distillation of the BT, if ``ComputePathToPose`` or ``FollowPath`` return ``FAILURE``,
+the parent ``PipelineSequence`` will also return ``FAILURE`` and will therefore the BT will tick the ``RecoveryFallback`` node.
+
+However, in the full ``NavigateWithReplanning`` subtree, there are a few other nodes to consider.
+
+For example, the ``RateController`` node simply helps keep the BT ticks at the specified frequency. The default frequency for this BT is 1 hz. 
+This is done to prevent the BT from hitting the planning server with too many useless requests. Consider changing this frequency to something higher or lower depending on the application and the computational cost of 
+calculating the path. 
+
+The next child in this tree is the ``RecoveryNode``, which wraps two children,  the ``ComputePathToPose`` and the ``ReactiveFallback``.
+Recall from above that the ``RecoveryNode`` that this will return ``SUCCESS`` 
+if ``ComputePathToPose`` returns ``SUCCESS`` or if ``ComputePathToPose`` returns ``FAILURE`` but the ``ReactiveFallback`` returns ``SUCCESS``. 
+It will return ``FAILURE`` if both ``ComputePathToPose`` and the ``ReactiveFallback`` returns ``FAILURE``, or if the ``number_of_retries`` is violated (in this case one retry is allowed) .. which will then  cause the BT to enter the ``RecoveryFallback`` subtree.
+
+Consider changing the ``number_of_retries`` parameter in the BT if your application requires more retries before a recovery action is triggered.
+
+The ``ComputePathToPose`` is a simple action client to the ``ComputePathToPose`` ROS 2 action server.
+The guide to configure this action node can be found in the `configuration guide <../../configuration/packages/bt-plugins/actions/ComputePathToPose.html>`_.
+
+Finally the ``ReactiveFallback`` node simply will tick it's 2nd child, ``ClearEntireCostmap`` *unless* the state of the condition node ``GoalUpdated`` returns ``SUCCESS`` (when, as the name suggests, the goal is updated).
+In essence, the global costmap will be cleared unless the goal has been updated. ``ClearEntireCostmap`` is a recovery action that implements the ``clear_entirely_costmap`` service. 
+In this case, the BT has set this to the global costmap, which makes sense as the global costmap would be the costmap that would affect the robot's ability to ``ComputePathToPose``.
+
+For convenience, the ``NavigateWithReplanning`` ASCII representation is below again:
+
+.. code-block::
+
+                                              PipelineSequence                                               
+                                                      |                                                      
+                             _________________________|____________________________                          
+                             |                                                    |                          
+                             |                                                    |                          
+                      RateController                                        RecoveryNode                     
+                             |                                                    |                          
+                            _|                                  __________________|_____                     
+                            |                                   |                      |                     
+                            |                                   |                      |                     
+                      RecoveryNode                         FollowPath          ReactiveFallback              
+                            |                                                          |                     
+         ___________________|________                                       ___________|______               
+         |                          |                                       |                |               
+         |                          |                                       |                |               
+ ComputePathToPose          ReactiveFallback                           GoalUpdated  ClearEntireCostmap       
+                                    |                                                                        
+                         ___________|______                                                                  
+                         |                |                                                                  
+                         |                |                                                                  
+                    GoalUpdated  ClearEntireCostmap                                                          
+
+Now that we have covered the structure of the first major subtree, the ``ComputePathToPose`` subtree, the ``FollowPath`` subtree is largely symetric.
+
+The ``FollowPath`` action node implements the action client to the ``FollowPath`` ROS 2 action server.
+The guide to configure this action node can be found in the `configuration guide <../../configuration/packages/bt-plugins/actions/FollowPath.html>`_.
+
+If the ``FollowPath`` action node returns ``SUCCESS`` then this overall subtree will return ``SUCCESS``,
+however if ``FollowPath`` returns ``FAILURE`` then the ``RecoveryNode`` will tick the ``ReactiveFallback``
+which will tick ``ClearEntireCostmap`` (local) *unless* the ``GoalUpdated`` return ``SUCCESS``.
+The local costmap makes sense to clear in this case as it is the costmap that would impede the robot's ability to follow the path.
+
+In both of these subtrees, checking the ``GoalUpdated`` condition node is what gives this subtree  the name ``NavigateWithReplanning``.
+
+We have now gone completely over the possibilities and actions in the ``NavigateWithReplanning``,
+let's move on to the ``RecoveryFallback`` subtree, which will be ticked if the ``NavigateWithReplanning`` overall returns ``FAILURE``. The most likely scenario for 
+this subtree to return ``FAILURE`` if the ``number_of_retries`` is violated on the ``RecoveryNode`` that wraps either the ``ComputePathToPose`` action, or the ``FollowPath`` action.
 
 RecoveryFallback
 ================
