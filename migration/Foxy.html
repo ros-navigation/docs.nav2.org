@@ -567,6 +567,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#obstacle-marking-parameters">Obstacle Marking Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recovery-action-changes">Recovery Action Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#default-behavior-tree-changes">Default Behavior Tree Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navfn-planner-parameters">NavFn Planner Parameters</a></li>
 </ul>
 </li>
 </ul>
@@ -838,6 +839,10 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <div class="section" id="default-behavior-tree-changes">
 <h2>Default Behavior Tree Changes<a class="headerlink" href="#default-behavior-tree-changes" title="Permalink to this headline">¶</a></h2>
 <p>The default behavior tree (BT) <code class="docutils literal notranslate"><span class="pre">navigate_w_replanning_and_recovery.xml</span></code> has been updated to allow for replanning in between recoveries. The changes were introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1855">pull request</a>. Additionally, an alternative BT <code class="docutils literal notranslate"><span class="pre">navigate_w_replanning_and_round_robin_recovery.xml</span></code> was removed due to similarity with the updated default BT.</p>
+</div>
+<div class="section" id="navfn-planner-parameters">
+<h2>NavFn Planner Parameters<a class="headerlink" href="#navfn-planner-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The NavFn Planner has now its 3 parameters reconfigurable at runtime (<code class="docutils literal notranslate"><span class="pre">tolerance</span></code>, <code class="docutils literal notranslate"><span class="pre">use_astar</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_unknown</span></code>). The changes were introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2181">pull request</a>.</p>
 </div>
 </div>
 
