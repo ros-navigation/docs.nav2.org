@@ -153,5 +153,5 @@ Default Behavior Tree Changes
 The default behavior tree (BT) ``navigate_w_replanning_and_recovery.xml`` has been updated to allow for replanning in between recoveries. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_. Additionally, an alternative BT ``navigate_w_replanning_and_round_robin_recovery.xml`` was removed due to similarity with the updated default BT.
 
 NavFn Planner Parameters
-***********************************************
+************************
 The NavFn Planner has now its 3 parameters reconfigurable at runtime (``tolerance``, ``use_astar`` and ``allow_unknown``). The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2181>`_.
