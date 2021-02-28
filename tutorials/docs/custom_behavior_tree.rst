@@ -306,6 +306,59 @@ this subtree to return ``FAILURE`` if the ``number_of_retries`` is violated on t
 
 RecoveryFallback
 ================
+The recovery fallback subtree is the second big "half" of the Nav2 default ``navigate_w_replanning_and_recovery.xml`` tree.
+In short, this subtree is triggered when the ``NavigateWithReplanning`` subtree returns ``FAILURE`` and this subtree helps select the appropriate recovery to be taken based on how many previous times the recovery and the ``NavigateWithReplanning`` subtree returns ``FAILURE``.
+
+Below is an ASCII representation of the subtree:
+
+.. code-block::
+
+                                        |                                             
+                                ReactiveFallback                                      
+                                        |                                             
+       _________________________________|______                                       
+       |                                      |                                       
+       |                                      |                                       
+  GoalUpdated                            RoundRobin                                   
+                                              |                                       
+                                   ___________|__________________________             
+                                   |                       |     |      |             
+                                   |                       |     |      |             
+                               Sequence                  Spin  Wait  BackUp           
+                                   |                                                  
+                        ___________|_________                                         
+                        |                   |                                         
+                        |                   |                                         
+               ClearEntireCostmap  ClearEntireCostmap                                 
+
+The top most parent is ``ReactiveFallback`` which dictates that unless ``GoalUpdated`` returns ``SUCCESS``, tick the 2nd child (in  this case the ``RoundRobin``.
+This should look familiar to the replanning portions of the ``NavigateWithReplanning`` tree. This is a common BT pattern to handle the situation "Unless 'this condition' happens,Do action A".
+
+Condition nodes can be very powerful, and other custom NAV2 condition nodes include:
+- DistanceTraveled
+- GoalReached
+- isBatteryLow
+- TimeExpired
+
+These condition nodes can be extremely powerful and are typically paired with ``ReactiveFallback``. It can be easy to imagine wrapping this whole ``navigate_w_replanning_and_recovery`` tree
+in a ``ReactiveFallback`` with a ``isBatteryLow``condition -- meaning the ``navigate_w_replanning_and_recovery`` tree will execute *unless* the battery becomes low. 
+
+In this case, ``GoalUpdated`` returns ``FAILURE`` (keep in mind this status is checked asynchronously), then the BT moves on to tick the ``RoundRobin`` node.
+``RoundRobin`` is a custom Nav2 node. This control node will keep on ticking the subsequent child, until ``SUCCESS`` is achieved.
+Before ``RoundRobin`` is explained in detail, let's describe what the ``Sequence`` node is. The ``Sequence`` node will tick both of the ``ClearLocalCostmap`` and if that returns ``SUCCESS`` will return ``ClearGlobalCostmap``.
+If either of the children of the ``Sequence`` node returns ``FAILURE`` so will the node itself. Additionally, note that the ``Spin`` and ``BackUp`` nodes are clients to the Nav2 Recovery server.
+In case a custom recovery action is needed, it can be useful to refer to the source of ``Spin`` ``BackUp`` and ``Wait`` as a reference.
+
+To explain ``RoundRobin`` more clearly, let us assume that the robot is stuck somewhere and we are in this ``RecoveryFallback`` subtree for the first time:
+
+- In the first time, ``RoundRobin`` will tick it's first child, ``Sequence``. Let's assume that these costmap clearing actions return ``SUCCESS``. 
+- Upon the ``SUCCESS`` of the ``Sequence`` child (which just means that the costmaps were correctly cleared), the robot will attempt to renavigate in the ``NavigateWithReplanning`` subtree.
+- Let's say that clearing the costmaps were not enough, the robot is **still** stuck. Upon entering the ``RoundRobin`` portion of the ``RecoveryFallback`` subtree, the subtree will tick the next child ``Spin``. ``RoundRobin`` retains a memory of nodes visited, and will **not** try to re-clear the costmaps again in this recovery.
+- Regardless if ``Spin`` returns ``FAILURE`` or ``SUCCESS`` the next time this portion of the subtree enters, the next subsequent child will be ticked (in this case ``Wait``), and so on. Upon reaching the last child (in this case ``BackUp``), the node will wrap around and tick the ``ClearCostmapSequence`` again. 
+
+``RoundRobin`` will only overall return ``FAILURE`` if **all** children return ``FAILURE``. 
+
+Further details about the ``RoundRobin`` node can be found in the `configuration guide <../../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
 
 Custom Action
 =============
