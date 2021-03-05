@@ -12,6 +12,21 @@ The NavigateToPose input port has been changed to PoseStamped instead of Point a
 
 See :ref:`bt_navigate_to_pose_action` for more information.
 
+ComputePathToPose BT-node Interface Changes
+*******************************************
+
+The ``start`` input port has been added to optionally allow the request of a path from ``start`` to ``goal``  instead of from the current position of the robot to ``goal``.
+
+See :ref:`bt_compute_path_to_pose_action` for more information.
+
+ComputePathToPose Action Interface Changes
+*******************************************
+
+- The goal pose field ``pose`` was changed to ``goal``.
+- The PoseStamped field ``start`` has been added.
+- The bool field ``use_start`` has been added.
+These two additional fields have been added to optionally allow, when ``use_start`` is true, the request of a path from ``start`` to ``goal`` instead of from the current position of the robot to ``goal``. Corresponding changes have been done of the Planner Server.
+
 BackUp BT-node Interface Changes
 ********************************
 
