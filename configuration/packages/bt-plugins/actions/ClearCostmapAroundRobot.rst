@@ -2,7 +2,7 @@
 
 
 ClearCostmapAroundRobot
-==================
+=======================
 
 Action to call a costmap clearing around robot server.
 
