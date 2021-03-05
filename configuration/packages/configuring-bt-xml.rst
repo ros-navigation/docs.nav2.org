@@ -24,6 +24,8 @@ Action Plugins
   bt-plugins/actions/FollowPath.rst
   bt-plugins/actions/NavigateToPose.rst
   bt-plugins/actions/ClearEntireCostmap.rst
+  bt-plugins/actions/ClearCostmapExceptRegion.rst
+  bt-plugins/actions/ClearCostmapAroundRobot.rst
   bt-plugins/actions/ReinitializeGlobalLocalization.rst
   bt-plugins/actions/TruncatePath.rst
 

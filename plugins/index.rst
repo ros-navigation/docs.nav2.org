@@ -217,32 +217,38 @@ Progress Checkers
 Behavior Tree Nodes
 ===================
 
-+--------------------------------------------+---------------------+----------------------------------+
-| Action Plugin Name                         |   Creator           |       Description                |
-+============================================+=====================+==================================+
-| `Back Up Action`_                          | Michael Jeronimo    | Calls backup recovery action     |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Clear Costmap Service`_                   | Carl Delsey         | Calls clear costmap service      |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Compute Path to Pose Action`_             | Michael Jeronimo    | Calls Nav2 planner server        |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Follow Path Action`_                      | Michael Jeronimo    | Calls Nav2 controller server     |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Navigate to Pose Action`_                 | Michael Jeronimo    | BT Node for other                |
-|                                            |                     | BehaviorTree.CPP BTs to call     |
-|                                            |                     | Navigation2 as a subtree action  |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Reinitalize Global Localization Service`_ | Carl Delsey         | Reinitialize AMCL to a new pose  |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Spin Action`_                             | Carl Delsey         | Calls spin recovery action       |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Wait Action`_                             | Steve Macenski      | Calls wait recovery action       |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter|
-+--------------------------------------------+---------------------+----------------------------------+
++--------------------------------------------+---------------------+------------------------------------------+
+| Action Plugin Name                         |   Creator           |       Description                        |
++============================================+=====================+==========================================+
+| `Back Up Action`_                          | Michael Jeronimo    | Calls backup recovery action             |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Clear Entire Costmap Service`_            | Carl Delsey         | Calls clear entire costmap service       |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Clear Costmap Except Region Service`_     | Guillaume Doisy     | Calls clear costmap except region service|
++--------------------------------------------+---------------------+------------------------------------------+
+| `Clear Costmap Around Robot Service`_      | Guillaume Doisy     | Calls clear costmap around robot service |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Compute Path to Pose Action`_             | Michael Jeronimo    | Calls Nav2 planner server                |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Follow Path Action`_                      | Michael Jeronimo    | Calls Nav2 controller server             |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Navigate to Pose Action`_                 | Michael Jeronimo    | BT Node for other                        |
+|                                            |                     | BehaviorTree.CPP BTs to call             |
+|                                            |                     | Navigation2 as a subtree action          |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Reinitalize Global Localization Service`_ | Carl Delsey         | Reinitialize AMCL to a new pose          |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Spin Action`_                             | Carl Delsey         | Calls spin recovery action               |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Wait Action`_                             | Steve Macenski      | Calls wait recovery action               |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter        |
++--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
-.. _Clear Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Clear Entire Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Clear Costmap Except Region Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Clear Costmap Around Robot Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
 .. _Compute Path to Pose Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp
 .. _Follow Path Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/follow_path_action.cpp
 .. _Navigate to Pose Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp
