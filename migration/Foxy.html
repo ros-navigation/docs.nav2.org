@@ -383,6 +383,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/FollowPath.html">FollowPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateToPose.html">NavigateToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
 </ul>
@@ -568,6 +570,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#recovery-action-changes">Recovery Action Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#default-behavior-tree-changes">Default Behavior Tree Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#navfn-planner-parameters">NavFn Planner Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes</a></li>
 </ul>
 </li>
 </ul>
@@ -843,6 +846,10 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <div class="section" id="navfn-planner-parameters">
 <h2>NavFn Planner Parameters<a class="headerlink" href="#navfn-planner-parameters" title="Permalink to this headline">¶</a></h2>
 <p>The NavFn Planner has now its 3 parameters reconfigurable at runtime (<code class="docutils literal notranslate"><span class="pre">tolerance</span></code>, <code class="docutils literal notranslate"><span class="pre">use_astar</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_unknown</span></code>). The changes were introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2181">pull request</a>.</p>
+</div>
+<div class="section" id="new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">
+<h2>New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes<a class="headerlink" href="#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes" title="Permalink to this headline">¶</a></h2>
+<p>The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services <code class="docutils literal notranslate"><span class="pre">(local_or_global)_costmap/clear_except_(local_or_global)_costmap</span></code> and <code class="docutils literal notranslate"><span class="pre">clear_around_(local_or_global)_costmap</span></code> of Costmap 2D were missing, they are now implemented in a similar way. They both expose a <code class="docutils literal notranslate"><span class="pre">reset_distance</span></code> input port. See <a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapExceptRegion.html#bt-clear-costmap-except-region-action"><span class="std std-ref">ClearCostmapExceptRegion</span></a> and <a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.html#bt-clear-entire-costmap-around-robot-action"><span class="std std-ref">ClearCostmapAroundRobot</span></a> for more.  The changes were introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2204">pull request</a>.</p>
 </div>
 </div>
 

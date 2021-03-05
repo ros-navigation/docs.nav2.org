@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Spin &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>ClearCostmapAroundRobot &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,8 @@
     
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="BackUp" href="BackUp.html" />
-    <link rel="prev" title="Wait" href="Wait.html" />
+    <link rel="next" title="ReinitializeGlobalLocalization" href="ReinitializeGlobalLocalization.html" />
+    <link rel="prev" title="ClearCostmapExceptRegion" href="ClearCostmapExceptRegion.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -377,14 +377,14 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="Wait.html">Wait</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Spin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Spin.html">Spin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="BackUp.html">BackUp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputePathToPose.html">ComputePathToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="FollowPath.html">FollowPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="NavigateToPose.html">NavigateToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ClearEntireCostmap.html">ClearEntireCostmap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ClearCostmapAroundRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TruncatePath.html">TruncatePath</a></li>
 </ul>
@@ -658,7 +658,7 @@
         
           <li><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a> &raquo;</li>
         
-      <li>Spin</li>
+      <li>ClearCostmapAroundRobot</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -675,42 +675,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="spin">
-<span id="bt-spin-action"></span><h1>Spin<a class="headerlink" href="#spin" title="Permalink to this headline">¶</a></h1>
-<p>Invokes the Spin ROS 2 action server, which is implemented by the <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries">nav2_recoveries</a> module.
-It performs an in-place rotation by a given angle.
-This action is used in nav2 Behavior Trees as a recovery behavior.</p>
+  <div class="section" id="clearcostmaparoundrobot">
+<span id="bt-clear-entire-costmap-around-robot-action"></span><h1>ClearCostmapAroundRobot<a class="headerlink" href="#clearcostmaparoundrobot" title="Permalink to this headline">¶</a></h1>
+<p>Action to call a costmap clearing around robot server.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">spin_dist:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">reset_distance:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col width="67%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>double</td>
-<td>1.57</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Spin distance (radians).</p>
+<dd><p class="first last">side size of the square area centered on the robot that will be cleared on the costmap (the rest of the costmap won’t)</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name">service_name:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col width="67%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
@@ -723,15 +721,15 @@ This action is used in nav2 Behavior Trees as a recovery behavior.</p>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Action server name.</p>
+<dd><p class="first last">costmap service name responsible for clearing the costmap.</p>
 </dd>
 </dl>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col width="67%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
@@ -754,7 +752,7 @@ This action is used in nav2 Behavior Trees as a recovery behavior.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Spin</span> <span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span> <span class="na">server_name=</span><span class="s">&quot;spin&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ClearCostmapAroundRobot</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_around_local_costmap&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

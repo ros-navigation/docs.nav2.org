@@ -155,3 +155,7 @@ The default behavior tree (BT) ``navigate_w_replanning_and_recovery.xml`` has be
 NavFn Planner Parameters
 ************************
 The NavFn Planner has now its 3 parameters reconfigurable at runtime (``tolerance``, ``use_astar`` and ``allow_unknown``). The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2181>`_.
+
+New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes
+*****************************************************************
+The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services ``(local_or_global)_costmap/clear_except_(local_or_global)_costmap`` and ``clear_around_(local_or_global)_costmap`` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a ``reset_distance`` input port. See :ref:`bt_clear_costmap_except_region_action` and :ref:`bt_clear_entire_costmap_around_robot_action` for more.  The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2204>`_.

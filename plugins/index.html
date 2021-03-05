@@ -383,6 +383,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/FollowPath.html">FollowPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateToPose.html">NavigateToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
 </ul>
@@ -568,6 +570,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#recovery-action-changes">Recovery Action Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#default-behavior-tree-changes">Default Behavior Tree Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navfn-planner-parameters">NavFn Planner Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes</a></li>
 </ul>
 </li>
 </ul>
@@ -1006,9 +1009,9 @@ make progress towards a goal</td>
 <h2>Behavior Tree Nodes<a class="headerlink" href="#behavior-tree-nodes" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="44%" />
-<col width="21%" />
-<col width="34%" />
+<col width="41%" />
+<col width="20%" />
+<col width="39%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Action Plugin Name</th>
@@ -1021,9 +1024,17 @@ make progress towards a goal</td>
 <td>Michael Jeronimo</td>
 <td>Calls backup recovery action</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp">Clear Costmap Service</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp">Clear Entire Costmap Service</a></td>
 <td>Carl Delsey</td>
-<td>Calls clear costmap service</td>
+<td>Calls clear entire costmap service</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp">Clear Costmap Except Region Service</a></td>
+<td>Guillaume Doisy</td>
+<td>Calls clear costmap except region service</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp">Clear Costmap Around Robot Service</a></td>
+<td>Guillaume Doisy</td>
+<td>Calls clear costmap around robot service</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp">Compute Path to Pose Action</a></td>
 <td>Michael Jeronimo</td>
