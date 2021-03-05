@@ -556,6 +556,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../migration/Foxy.html">Foxy to Galactic</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#computepathtopose-bt-node-interface-changes">ComputePathToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#computepathtopose-action-interface-changes">ComputePathToPose Action Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#groot-support">Groot Support</a></li>
@@ -685,7 +687,28 @@ The server address can be remapped using the <code class="docutils literal notra
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">goal:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">start:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. “{start}”.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">goal:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="67%" />
 <col width="33%" />
@@ -706,7 +729,7 @@ The server address can be remapped using the <code class="docutils literal notra
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">planner_id:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">planner_id:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="67%" />
 <col width="33%" />
@@ -727,7 +750,7 @@ The server address can be remapped using the <code class="docutils literal notra
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="67%" />
 <col width="33%" />
@@ -748,7 +771,7 @@ The server address can be remapped using the <code class="docutils literal notra
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="67%" />
 <col width="33%" />

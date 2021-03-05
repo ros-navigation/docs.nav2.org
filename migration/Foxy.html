@@ -556,6 +556,8 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Foxy to Galactic</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computepathtopose-bt-node-interface-changes">ComputePathToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computepathtopose-action-interface-changes">ComputePathToPose Action Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#groot-support">Groot Support</a></li>
@@ -680,6 +682,20 @@
 <h2>NavigateToPose BT-node Interface Changes<a class="headerlink" href="#navigatetopose-bt-node-interface-changes" title="Permalink to this headline">¶</a></h2>
 <p>The NavigateToPose input port has been changed to PoseStamped instead of Point and Quaternion.</p>
 <p>See <a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateToPose.html#bt-navigate-to-pose-action"><span class="std std-ref">NavigateToPose</span></a> for more information.</p>
+</div>
+<div class="section" id="computepathtopose-bt-node-interface-changes">
+<h2>ComputePathToPose BT-node Interface Changes<a class="headerlink" href="#computepathtopose-bt-node-interface-changes" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">start</span></code> input port has been added to optionally allow the request of a path from <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">goal</span></code>  instead of from the current position of the robot to <code class="docutils literal notranslate"><span class="pre">goal</span></code>.</p>
+<p>See <a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathToPose.html#bt-compute-path-to-pose-action"><span class="std std-ref">ComputePathToPose</span></a> for more information.</p>
+</div>
+<div class="section" id="computepathtopose-action-interface-changes">
+<h2>ComputePathToPose Action Interface Changes<a class="headerlink" href="#computepathtopose-action-interface-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The goal pose field <code class="docutils literal notranslate"><span class="pre">pose</span></code> was changed to <code class="docutils literal notranslate"><span class="pre">goal</span></code>.</li>
+<li>The PoseStamped field <code class="docutils literal notranslate"><span class="pre">start</span></code> has been added.</li>
+<li>The bool field <code class="docutils literal notranslate"><span class="pre">use_start</span></code> has been added.</li>
+</ul>
+<p>These two additional fields have been added to optionally allow, when <code class="docutils literal notranslate"><span class="pre">use_start</span></code> is true, the request of a path from <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">goal</span></code> instead of from the current position of the robot to <code class="docutils literal notranslate"><span class="pre">goal</span></code>. Corresponding changes have been done of the Planner Server.</p>
 </div>
 <div class="section" id="backup-bt-node-interface-changes">
 <h2>BackUp BT-node Interface Changes<a class="headerlink" href="#backup-bt-node-interface-changes" title="Permalink to this headline">¶</a></h2>
