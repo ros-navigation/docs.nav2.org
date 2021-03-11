@@ -133,6 +133,17 @@ Parameters
   Description
     Topic on which odometry is published
 
+:goal_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "goal"
+  ====== =======
+
+  Description
+    Blackboard variable to use to supply the goal to the behavior tree. Should match ports of BT XML file.
+
 :use_sim_time:
 
   ==== =======
