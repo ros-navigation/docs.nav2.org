@@ -11,6 +11,8 @@ Check this introduction_ to learn how behavior trees work and the difference bet
 
 .. _introduction: https://www.behaviortree.dev/bt_basics/
 
+Note: ``SingleTrigger`` BT Node is not listed below because it contains no parameters.
+
 Action Plugins
 **************
 
