@@ -174,3 +174,13 @@ The NavFn Planner has now its 3 parameters reconfigurable at runtime (``toleranc
 New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes
 *****************************************************************
 The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services ``(local_or_global)_costmap/clear_except_(local_or_global)_costmap`` and ``clear_around_(local_or_global)_costmap`` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a ``reset_distance`` input port. See :ref:`bt_clear_costmap_except_region_action` and :ref:`bt_clear_entire_costmap_around_robot_action` for more.  The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2204>`_.
+
+New Behavior Tree Nodes
+***********************
+A new behavior tree node was added and dynamically loadable at run-time using behavior tree cpp v3.
+See ``nav2_behavior_tree`` for a full listing, or :ref:`plugins` for the current list of behavior tree plugins and their descriptions.
+These plugins are set as default in the ``nav2_bt_navigator`` but may be overridden by the ``bt_plugins`` parameter to include your specific plugins.
+
+Original GitHub tickets:
+
+- `SingleTrigger <https://github.com/ros-planning/navigation2/pull/2236>`_

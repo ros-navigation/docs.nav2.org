@@ -318,11 +318,15 @@ Behavior Tree Nodes
 | `Goal Updater`_          | Francisco Martín  | Updates the goal received via    |
 |                          |                   | topic subscription.              |
 +--------------------------+-------------------+----------------------------------+
+| `Single Trigger`_        | Steve Macenski    | Triggers nodes/subtrees below    |
+|                          |                   | only a single time per BT run.   |
++--------------------------+-------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
 .. _Distance Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
 .. _Speed Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
 .. _Goal Updater: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
+.. _Single Trigger: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
