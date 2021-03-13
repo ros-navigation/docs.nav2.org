@@ -19,7 +19,7 @@ This document serves as a reference guide to the main behavior tree (BT) used in
 and explains the process for developing and customizing this BT for ROS 2 and Nav2.
 
 There are many example behavior trees provided in ``nav2_bt_navigator/behavior_trees``,
-but these usually have to be configured and modified based on the application of the robot. 
+but these sometimes have to be re-configured based on the application of the robot. 
 The following tutorial will walk through the current main default BT ``navigate_w_replanning_and_recovery.xml``
 and will show users how to modify this BT in potentially useful ways, using the example of developing a BT that follows a predefined path.
 
@@ -120,7 +120,7 @@ using this `XML ASCII tool <https://nickpisacane.github.io/AsciiTree/>`_.
                         GoalUpdated  ClearEntireCostmap                                                                                                                                               
 
 This is likely still a bit overwhelming, but this tree can be broken into two smaller subtrees that we can focus on one at a time.
-These smaller subtrees are the children of the top-most ``RecoveryNode``, let's call these the ``NavigateWithReplanning`` subtree and the ``RecoveryFallback`` subtree.
+These smaller subtrees are the children of the top-most ``RecoveryNode``, let's call these the ``Navigation`` subtree and the ``Recovery`` subtree.
 This can be represented in the following way:
 
 .. code-block::
@@ -146,7 +146,7 @@ This can be represented in the following way:
 Vocabulary can be a large point of confusion here for a beginner.
 
 * A ``Node`` when discussing BT is entirely diferent than a ``Node`` in the ROS2 context. 
-* A ``Recovery`` in the context of BT is entirely different than a ``Recovery`` in the Nav2 context
+* A ``Recovery`` is in the context of BT, not a navigation ``Recovery`` behavior
 
 In Nav2, a ``Recovery`` refers to a specific action executed by the robot. When calling out the ``RecoveryFallback``,
 we mean it in the BT context, but when calling out the ``RecoveryFallback`` we mean it in the Nav2 context.
@@ -223,7 +223,7 @@ And the ASCII representation:
                          |                |                                                                  
                     GoalUpdated  ClearEntireCostmap                                                          
 
-The parent node of this subtree is ``PipelineSequence``, which again is a custom Nav2 BT.
+The parent node of this subtree is ``PipelineSequence``, which is a custom Nav2 BT node.
 While this subtree looks complicated, the crux of the tree can be represented with only one parent and two children nodes like this:
 
 .. code-block::
@@ -235,21 +235,21 @@ While this subtree looks complicated, the crux of the tree can be represented wi
          |               |       
  ComputePathToPose  FollowPath   
 
-The other children and leaves of the tree are simply to throttle, handle failures, and handle updated goals.
+The other children and leaves of the tree are simply to throttle, handle failures, and ensuring the robot is responsive to updated goals.
 
-The ``PipelineSequence`` allows the ``ComputePathToPose`` to be ticked, and once that succeeds, the ``ComputePathToPose`` and ``FollowPath`` to be ticked.
+The ``PipelineSequence`` allows the ``ComputePathToPose`` to be ticked, and once that succeeds, ``FollowPath`` to be ticked.
 The full description of this control node is in the `configuration guide <../../configuration/packages/bt-plugins/controls/PipelineSequence.html>`_.
 In the above distillation of the BT, if ``ComputePathToPose`` or ``FollowPath`` return ``FAILURE``,
 the parent ``PipelineSequence`` will also return ``FAILURE`` and will therefore the BT will tick the ``RecoveryFallback`` node.
 
 However, in the full ``NavigateWithReplanning`` subtree, there are a few other nodes to consider.
 
-For example, the ``RateController`` node simply helps keep the BT ticks at the specified frequency. The default frequency for this BT is 1 hz. 
-This is done to prevent the BT from hitting the planning server with too many useless requests. Consider changing this frequency to something higher or lower depending on the application and the computational cost of 
+For example, the ``RateController`` node simply helps keep planning at the specified frequency. The default frequency for this BT is 1 hz. 
+This is done to prevent the BT from hitting the planning server with too many useless requests at the tree update rate (100Hz). Consider changing this frequency to something higher or lower depending on the application and the computational cost of 
 calculating the path. 
 
 The next child in this tree is the ``RecoveryNode``, which wraps two children,  the ``ComputePathToPose`` and the ``ReactiveFallback``.
-Recall from above that the ``RecoveryNode`` that this will return ``SUCCESS`` 
+Recall from above that the ``RecoveryNode`` will return ``SUCCESS`` 
 if ``ComputePathToPose`` returns ``SUCCESS`` or if ``ComputePathToPose`` returns ``FAILURE`` but the ``ReactiveFallback`` returns ``SUCCESS``. 
 It will return ``FAILURE`` if both ``ComputePathToPose`` and the ``ReactiveFallback`` returns ``FAILURE``, or if the ``number_of_retries`` is violated (in this case one retry is allowed) .. which will then  cause the BT to enter the ``RecoveryFallback`` subtree.
 
@@ -332,7 +332,7 @@ Below is an ASCII representation of the subtree:
                ClearEntireCostmap  ClearEntireCostmap                                 
 
 The top most parent is ``ReactiveFallback`` which dictates that unless ``GoalUpdated`` returns ``SUCCESS``, tick the 2nd child (in  this case the ``RoundRobin``.
-This should look familiar to the replanning portions of the ``NavigateWithReplanning`` tree. This is a common BT pattern to handle the situation "Unless 'this condition' happens,Do action A".
+This should look familiar to the replanning portions of the ``NavigateWithReplanning`` tree. This is a common BT pattern to handle the situation "Unless 'this condition' happens, Do action A".
 
 Condition nodes can be very powerful, and other custom NAV2 condition nodes include:
 - DistanceTraveled
@@ -341,9 +341,9 @@ Condition nodes can be very powerful, and other custom NAV2 condition nodes incl
 - TimeExpired
 
 These condition nodes can be extremely powerful and are typically paired with ``ReactiveFallback``. It can be easy to imagine wrapping this whole ``navigate_w_replanning_and_recovery`` tree
-in a ``ReactiveFallback`` with a ``isBatteryLow``condition -- meaning the ``navigate_w_replanning_and_recovery`` tree will execute *unless* the battery becomes low. 
+in a ``ReactiveFallback`` with a ``isBatteryLow`` condition -- meaning the ``navigate_w_replanning_and_recovery`` tree will execute *unless* the battery becomes low (and then entire a different subtree for docking to recharge). 
 
-In this case, ``GoalUpdated`` returns ``FAILURE`` (keep in mind this status is checked asynchronously), then the BT moves on to tick the ``RoundRobin`` node.
+If ``GoalUpdated`` returns ``FAILURE``, then the BT moves on to tick the ``RoundRobin`` node.
 ``RoundRobin`` is a custom Nav2 node. This control node will keep on ticking the subsequent child, until ``SUCCESS`` is achieved.
 Before ``RoundRobin`` is explained in detail, let's describe what the ``Sequence`` node is. The ``Sequence`` node will tick both of the ``ClearLocalCostmap`` and if that returns ``SUCCESS`` will return ``ClearGlobalCostmap``.
 If either of the children of the ``Sequence`` node returns ``FAILURE`` so will the node itself. Additionally, note that the ``Spin`` and ``BackUp`` nodes are clients to the Nav2 Recovery server.
@@ -368,4 +368,3 @@ Adding to Launch File
 
 Testing
 =======
-
