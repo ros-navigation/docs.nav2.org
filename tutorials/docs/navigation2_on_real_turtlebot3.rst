@@ -18,8 +18,8 @@ Navigating with a Physical Turtlebot 3
 Overview
 ========
 
-This tutorial shows how to control and navigate Turtlebot 3 using the ROS 2 Navigation2 on a physical Turtlebot 3 robot.
-Before completing this tutorials, completing :ref:`getting_started` is highly recommended especially if you are new to ROS and Navigation2.
+This tutorial shows how to control and navigate Turtlebot 3 using the ROS 2 Nav2 on a physical Turtlebot 3 robot.
+Before completing this tutorials, completing :ref:`getting_started` is highly recommended especially if you are new to ROS and Nav2.
 
 This tutorial may take about 1 hour to complete. 
 It depends on your experience with ROS, robots, and what computer system you have.
@@ -27,7 +27,7 @@ It depends on your experience with ROS, robots, and what computer system you hav
 Requirements
 ============
 
-You must install Navigation2, Turtlebot3.
+You must install Nav2, Turtlebot3.
 If you don't have them installed, please follow :ref:`getting_started`.
 
 Tutorial Steps
@@ -48,25 +48,25 @@ You will need to launch your robot's interface,
 
   ``ros2 launch turtlebot3_bringup robot.launch.py  use_sim_time:=False``
 
-2- Launch Navigation2
----------------------
+2- Launch Nav2
+--------------
 
 You need to have a map of the environment where you want to Navigate Turtlebot 3, or create one live with SLAM.
 
-In case you are interested, there is a use case tutorial which shows how to use Navigation2 with SLAM.
-`Navigation2 with SLAM <https://github.com/ros-planning/navigation2/blob/main/doc/use_cases/navigation_with_slam.md>`_
+In case you are interested, there is a use case tutorial which shows how to use Nav2 with SLAM.
+`Nav2 with SLAM <https://github.com/ros-planning/navigation2/blob/main/doc/use_cases/navigation_with_slam.md>`_
 
 Required files:
 
    - ``your-map.map``
    - ``your-map.yaml``
 
-``<your_map>.yaml`` is the configuration file for the map we want to provide Navigation2.
+``<your_map>.yaml`` is the configuration file for the map we want to provide Nav2.
 In this case, it has the map resolution value, threshold values for obstacles and free spaces, and a map file location.
 You need to make sure these values are correct.
 More information about the map.yaml can be found `here <http://wiki.ros.org/map_server>`_.
 
-Launch Navigation 2. If you set autostart:=False, you need to click on the start button in RViz to initialize the nodes.
+Launch Nav2. If you set autostart:=False, you need to click on the start button in RViz to initialize the nodes.
 Make sure `use_sim time` is set to **False**, because we want to use the system time instead of the time simulation time from Gazebo.
 
 ``ros2 launch nav2_bringup bringup_launch.py use_sim_time:=False autostart:=False map:=/path/to/your-map.yaml``
@@ -110,16 +110,16 @@ A small error in the estimated location is tolerable.
 --------------------
 
 Pick a target location for Turtlebot on the map. 
-You can send Turtlebot 3 a goal position and a goal orientation by using the **Navigation2 Goal** or the **GoalTool** buttons.
+You can send Turtlebot 3 a goal position and a goal orientation by using the **Nav2 Goal** or the **GoalTool** buttons.
 
-Note: Navigation2 Goal button uses a ROS 2 Action to send the goal and the GoalTool publishes the goal to a topic.
+Note: Nav2 Goal button uses a ROS 2 Action to send the goal and the GoalTool publishes the goal to a topic.
 
 .. image:: images/Navigation2_on_real_Turtlebot3/rviz_send_goal.png
     :width: 700px
     :align: center
     :alt: Send goal pose in RViz
 
-Once you define the target pose,  Navigation2 will find a global path and start navigating the robot on the map.
+Once you define the target pose,  Nav2 will find a global path and start navigating the robot on the map.
 
 .. image:: images/Navigation2_on_real_Turtlebot3/rviz_robot_navigating.png
     :width: 700px

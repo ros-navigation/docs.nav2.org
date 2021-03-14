@@ -8,7 +8,7 @@ This page is to help familiarize new robotists to the concepts of mobile robot n
 ROS 2
 *****
 
-ROS 2 is the core middleware used for Navigation2. If you are unfamilar with this, please visit `the ROS 2 documentation <https://index.ros.org/doc/ros2/>`_ before continuing.
+ROS 2 is the core middleware used for Nav2. If you are unfamilar with this, please visit `the ROS 2 documentation <https://index.ros.org/doc/ros2/>`_ before continuing.
 
 Action Server
 =============
@@ -60,7 +60,7 @@ The networking interfaces are deactivated and stop processing, deallocate memory
 The lifecycle node framework is used extensively through out this project and all servers utilize it.
 It is best convention for all ROS systems to use lifecycle nodes if it is possible.
 
-Within Navigation2, we use a wrapper of LifecycleNodes, ``nav2_util LifecycleNode``.
+Within Nav2, we use a wrapper of LifecycleNodes, ``nav2_util LifecycleNode``.
 This wrapper wraps much of the complexities of LifecycleNodes for typical applications.
 It also includes a ``bond`` connection for the lifecycle manager to ensure that after a server transitions up, it also remains active.
 If a server crashes, it lets the lifecycle manager know and transition down the system to prevent a critical failure. See :ref:`eloquent_migration` for details.
@@ -85,9 +85,9 @@ We create node plugins which can be constructed into a tree, inside the ``BT Nav
 The node plugins are loaded into the BT and when the XML file of the tree is parsed, the registered names are associated.
 At this point, we can march through the behavior tree to navigate.
 
-One reason this library is used is its ability to load subtrees. This means that the Navigation2 behavior tree can be loaded into another higher-level BT to use this project as node plugin.
-An example would be in soccer play, using the Navigation2 behavior tree as the "go to ball" node with a ball detection as part of a larger task.
-Additionally, we supply a ``NavigateToPoseAction`` plugin for BT so the Navigation2 stack can be called from a client application through the usual action interface.
+One reason this library is used is its ability to load subtrees. This means that the Nav2 behavior tree can be loaded into another higher-level BT to use this project as node plugin.
+An example would be in soccer play, using the Nav2 behavior tree as the "go to ball" node with a ball detection as part of a larger task.
+Additionally, we supply a ``NavigateToPoseAction`` plugin for BT so the Nav2 stack can be called from a client application through the usual action interface.
 
 
 Navigation Servers
@@ -125,7 +125,7 @@ Alternatively, since the BT nodes are trivial plugins calling an action, new BT 
 It is advisable to use the provided servers if possible at all times.
 If, due to the plugin or action interfaces, a new server is needed, that can be sustained with the framework.
 The new server should use the new type and plugin interface, similar to the provided servers.
-A new BT node plugin will need to be created to call the new action server -- however no forking or modification is required in the navigation2 repo itself by making extensive use of servers and plugins.
+A new BT node plugin will need to be created to call the new action server -- however no forking or modification is required in the Nav2 repo itself by making extensive use of servers and plugins.
 
 If you find that you require a new interface to the pluginlib definition or action type, please file a ticket and see if we can rectify that in the same interfaces.
 
@@ -142,7 +142,7 @@ Planners can be written to:
 - Compute complete coverage path
 - Compute paths along sparse or predefined routes
 
-The general task in Navigation2 for the planner is to compute a valid, and potentially optimal, path from the current pose to a goal pose.
+The general task in Nav2 for the planner is to compute a valid, and potentially optimal, path from the current pose to a goal pose.
 However, many classes of plans and routes exist which are supported.
 
 Controllers
@@ -158,7 +158,7 @@ Controllers can be written to:
 - Board an elevator
 - Interface with a tool
 
-The general task in Navigation2 for a controller is to compute a valid control effort to follow the global plan.
+The general task in Nav2 for a controller is to compute a valid control effort to follow the global plan.
 However, many classes of controllers and local planners exist.
 It is the goal of this project that all controller algorithms can be plugins in this server for common research and industrial tasks.
 
@@ -183,7 +183,7 @@ Waypoint following is a basic feature of a navigation system. It tells our syste
 
 The ``nav2_waypoint_follower`` contains a waypoint following program with a plugin interface for specific task executors.
 This is useful if you need to go to a given location and complete a specific task like take a picture, pick up a box, or wait for user input.
-It is a nice demo application for how to use navigation2 in a sample application.
+It is a nice demo application for how to use Nav2 in a sample application.
 
 However, it could be used for more than just a sample application.
 There are 2 schools of thoughts for fleet managers / dispatchers.
@@ -275,7 +275,7 @@ Costmap Filters
 
 Imagine, you're annotating a map file (or any image file) in order to have a specific action occur based on the location in the annotated map. Examples of marking/annotating might be keep out zones to avoid planning inside, or have pixels belong to maximum speeds in marked areas. This annotated map is called "filter mask". Just like a mask overlaid on a surface, it can or cannot be same size, pose and scale as a main map. The main goal of filter mask - is to provide an ability of marking areas on maps with some additional features or behavioral changes.
 
-Costmap filters - is costmap layer based approach of applying spatial-dependent behavioral changes annotated in filter masks, into Navigation2 stack. Costmap filters are implemented as costmap plugins. These plugins are called "filters" as they are filtering a costmap by spatial annotations marked on filter masks. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. This data is being linearly transformed into feature map in a filter space. Having this transformed feature map along with a map/costmap, any sensors data and current robot coordinates filters can update underlying costmap and change behavior of the robot depending on where it is. For example, the following functionality could be made by using of costmap filters:
+Costmap filters - is costmap layer based approach of applying spatial-dependent behavioral changes annotated in filter masks, into Nav2 stack. Costmap filters are implemented as costmap plugins. These plugins are called "filters" as they are filtering a costmap by spatial annotations marked on filter masks. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. This data is being linearly transformed into feature map in a filter space. Having this transformed feature map along with a map/costmap, any sensors data and current robot coordinates filters can update underlying costmap and change behavior of the robot depending on where it is. For example, the following functionality could be made by using of costmap filters:
 
 - Keep-out/safety zones where robots will never enter.
 - Speed restriction areas. Maximum speed of robots going inside those areas will be limited.
@@ -292,8 +292,8 @@ These include:
 - Mesh maps, which are similar to gradient maps but with surface meshes at many angles
 - "Vector space", taking in sensor information and using machine learning to detect individual items and locations to track rather than buffering discrete points.
 
-Navigation2 Academic Overview
-*****************************
+Nav2 Academic Overview
+**********************
 
 .. raw:: html
 

@@ -6,7 +6,6 @@ About and Contact
 .. toctree::
    :hidden:
 
-   robots.rst
    related_projects.rst
    ros1_comparison.rst
 

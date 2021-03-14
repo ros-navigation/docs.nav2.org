@@ -244,7 +244,7 @@ In this case each plugin object will be handled by its own parameters tree in a 
 4- Run GradientLayer plugin
 ---------------------------
 
-Run Turtlebot3 simulation with enabled navigation2. Detailed instructuction how to make it are written at :ref:`getting_started`. Below is shortcut command for that:
+Run Turtlebot3 simulation with enabled Nav2. Detailed instructuction how to make it are written at :ref:`getting_started`. Below is shortcut command for that:
 
 .. code-block:: bash
 

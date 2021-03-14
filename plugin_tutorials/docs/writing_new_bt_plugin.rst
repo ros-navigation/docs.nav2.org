@@ -17,7 +17,7 @@ Requirements
 ============
 
 - ROS 2 (binary or build-from-source)
-- Navigation2 (Including dependencies)
+- Nav2 (Including dependencies)
 - Gazebo
 - Turtlebot3
 

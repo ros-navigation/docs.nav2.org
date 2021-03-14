@@ -10,7 +10,17 @@ The server address can be remapped using the ``server_name`` input port.
 
 Input Ports
 -----------
+:start:
 
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A  
+  ============== =======
+
+  Description
+    	Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
+    	
 :goal:
 
   ============== =======

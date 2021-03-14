@@ -7,16 +7,16 @@ Get Backtrace in ROS2 / Nav2
 - `Preliminaries`_
 - `From a Node`_
 - `From a Launch File`_
-- `From Navigation2 Bringup`_
+- `From Nav2 Bringup`_
 - `Automatic backtrace on crash`_
 
 Overview
 ========
 
-This document explains one set of methods for getting backtraces for ROS 2 and Navigation2.
+This document explains one set of methods for getting backtraces for ROS 2 and Nav2.
 There are many ways to accomplish this, but this is a good starting point for new C++ developers without GDB experience.
 
-The following steps show ROS 2 users how to modify the navigation2 stack to get traces from specific servers when they encounter a problem.
+The following steps show ROS 2 users how to modify the Nav2 stack to get traces from specific servers when they encounter a problem.
 This tutorial applies to both simulated and physical robots.
 
 This will cover how to get a backtrace from a specific node using ``ros2 run``, from a launch file representing a single node using ``ros2 launch``, and from a more complex orchestration of nodes.
@@ -170,8 +170,8 @@ Then you can deduce why it crashed.
 When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
 It may ask you if you want to kill some threads at the end, say yes.
 
-From Navigation2 Bringup
-========================
+From Nav2 Bringup
+=================
 
 Working with launch files with multiple nodes is a little different so you can interact with your GDB session without being bogged down by other logging in the same terminal.
 For this reason, when working with larger launch files, its good to pull out the specific server you're interested in and launching it seperately.

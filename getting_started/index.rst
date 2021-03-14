@@ -60,7 +60,7 @@ Running the Example
       <https://ros.org/reps/rep-2000.html>`_  for improved stablity and feature
       completeness.
 
-   This launch file will launch Navigation2 with the AMCL localizer in the
+   This launch file will launch Nav2 with the AMCL localizer in the
    ``turtlebot3_world`` world.
    It will also launch a the robot state publisher to provide transforms,
    a Gazebo instance with the Turtlebot3 URDF, and RVIZ.
@@ -114,7 +114,7 @@ cloud now.
 
 Next, click the "Navigaton2 Goal" button and choose a destination.
 This will call the BT navigator to go to that goal through an action server.
-You can pause (cancel) or reset the action through the navigation2 rviz plugin shown.
+You can pause (cancel) or reset the action through the Nav2 rviz plugin shown.
 
    .. image:: /images/rviz/navigate-to-pose.png
       :width: 700px

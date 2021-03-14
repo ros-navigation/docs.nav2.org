@@ -21,7 +21,7 @@ Requirements
 ============
 
 - ROS 2 (binary or build-from-source)
-- Navigation2 (Including dependencies)
+- Nav2 (Including dependencies)
 - Gazebo
 - Turtlebot3
 
@@ -256,7 +256,7 @@ We also tell the recovery server that the ``call_for_help`` is of type ``SMSReco
 4- Run Recovery plugin
 ----------------------
 
-Run Turtlebot3 simulation with enabled navigation2. Detailed instruction how to make it are written at :ref:`getting_started`. Below is shortcut command for that:
+Run Turtlebot3 simulation with enabled Nav2. Detailed instruction how to make it are written at :ref:`getting_started`. Below is shortcut command for that:
 
 .. code-block:: bash
 

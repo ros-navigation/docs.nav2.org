@@ -28,7 +28,7 @@ Requirements
 ============
 
 - ROS2 (binary or build-from-source)
-- Navigation2 (Including dependencies)
+- Nav2 (Including dependencies)
 - Gazebo
 - Turtlebot3
 
@@ -117,7 +117,7 @@ In controllers, ``configure()`` method must set member variables from ROS parame
   }
 
 Here, ``plugin_name_ + ".desired_linear_vel"`` is fetching the ROS parameters ``desired_linear_vel`` which is specific to our controller. 
-Navigation2 allows loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name.
+Nav2 allows loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name.
 Now, if we want to retrieve the parameters for that specific plugin, we use ``<mapped_name_of_plugin>.<name_of_parameter>`` as done in the above snippet. 
 For example, our example controller is mapped to the name ``FollowPath`` and to retrieve the ``desired_linear_vel parameter``, which is specific to "FollowPath”, 
 we used ``FollowPath.desired_linear_vel``. In other words, ``FollowPath`` is used as a namespace for plugin-specific parameters. 
@@ -265,12 +265,12 @@ To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_p
 4- Run Pure Pursuit Controller plugin
 -------------------------------------
 
-Run Turtlebot3 simulation with enabled navigation2. Detailed instructions on how to make it run are written at :ref:`getting_started`. Below is a shortcut command for that:
+Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at :ref:`getting_started`. Below is a shortcut command for that:
 
 .. code-block:: bash
 
   $ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
 
 Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on the map as it was described in :ref:`getting_started`. 
-The robot will localize on the map and then click on the "Navigation2 goal" and click on the pose where you want your robot to navigate to. 
+The robot will localize on the map and then click on the "Nav2 goal" and click on the pose where you want your robot to navigate to. 
 After that controller will make the robot follow the global path.

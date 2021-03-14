@@ -47,7 +47,10 @@ Parameters
                  "nav2_recovery_node_bt_node",
                  "nav2_pipeline_sequence_bt_node",
                  "nav2_round_robin_node_bt_node",
-                 "nav2_transform_available_condition_bt_node"]             
+                 "nav2_transform_available_condition_bt_node",
+                 "nav2_time_expired_condition_bt_node",
+                 "nav2_distance_traveled_condition_bt_node",
+                 "nav2_single_trigger_bt_node"]             
   ============== ==========================================================
 
   Description
@@ -133,6 +136,17 @@ Parameters
   Description
     Topic on which odometry is published
 
+:goal_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "goal"
+  ====== =======
+
+  Description
+    Blackboard variable to use to supply the goal to the behavior tree. Should match ports of BT XML file.
+
 :use_sim_time:
 
   ==== =======
@@ -177,3 +191,6 @@ Example
         - nav2_pipeline_sequence_bt_node
         - nav2_round_robin_node_bt_node
         - nav2_transform_available_condition_bt_node
+        - nav2_time_expired_condition_bt_node
+        - nav2_distance_traveled_condition_bt_node
+        - nav2_single_trigger_bt_node
