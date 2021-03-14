@@ -10,8 +10,8 @@
 Overview
 ========
 
-This document explains how to use Navigation 2 with SLAM.
-The following steps show ROS 2 users how to generate occupancy grid maps and use Navigation 2 to move their robot around.
+This document explains how to use Nav2 with SLAM.
+The following steps show ROS 2 users how to generate occupancy grid maps and use Nav2 to move their robot around.
 This tutorial applies to both simulated and physical robots, but will be completed here on physical robot.
 
 Before completing this tutorial, completing the :ref:`getting_started`. is highly recommended especially if you are new to ROS and Navigation2.
@@ -41,7 +41,8 @@ Tutorial Steps
 --------------------------
 
 For this tutorial, we will use the turtlebot3.
-If you have another robot, replace with suitable instructions.
+If you have another robot, replace with your robot specific interfaces.
+Typically, this includes the robot state publisher of the URDF, simulated or physical robot interfaces, controllers, safety nodes, and the like.
 
 Run the following commands first whenever you open a new terminal during this tutorial.
 
@@ -59,7 +60,7 @@ Launch your robot's interface and robot state publisher,
 Launch Navigation without nav2_amcl and nav2_map_server.
 It is assumed that the SLAM node(s) will publish to /map topic and provide the map->odom transform.
               
-  ``ros2 launch nav2_bringup nav2_navigation_launch.py``
+  ``ros2 launch nav2_bringup navigation_launch.py``
 
 2- Launch SLAM
 --------------
@@ -89,3 +90,14 @@ You should see the map update live! To save this map to file:
     :width: 700px
     :alt: Navigation2 with SLAM
     :align: center
+
+4- Getting Started Simplification
+---------------------------------
+
+If you're only interested in running SLAM in the turtlebot3 getting started sandbox world, we also provide a simple way to enable SLAM as a launch configuration.
+Rather than individually launching the interfaces, navigation, and SLAM, you can continue to use the ``tb3_simulation_launch.py`` with ``slam`` config set to true.
+We provide the instructions above with the assumption that you'd like to run SLAM on your own robot which would have separated simulation / robot interfaces and navigation launch files that are combined in ``tb3_simulation_launch.py`` for the purposes of easy testing.
+
+.. code-block:: bash
+
+  ros2 launch nav2_bringup tb3_simulation_launch.py slam:=True

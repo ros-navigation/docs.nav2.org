@@ -12,7 +12,7 @@ We have a community Slack at `navigation2.slack.com <https://navigation2.slack.c
 If you are unable to access it due to not being able to sign up, please send an email to the mentor in the details below and they can manually add you.
 
 Additionally, we have ROS community Discourse.
-If you post on `this discourse page <https://discourse.ros.org>`_ regarding navigation2, a maintainer will respond.
+If you post on `this discourse page <https://discourse.ros.org>`_ regarding Nav2, a maintainer will respond.
 We have the sub-topic Navigation Stack that may be used `here <https://discourse.ros.org/c/navigation/44>`_.
 It is preferred you post in this sub-topic.
 

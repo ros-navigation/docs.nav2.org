@@ -19,6 +19,21 @@ The NavigateToPose input port has been changed to PoseStamped instead of Point a
 
 See :ref:`bt_navigate_to_pose_action` for more information.
 
+ComputePathToPose BT-node Interface Changes
+*******************************************
+
+The ``start`` input port has been added to optionally allow the request of a path from ``start`` to ``goal``  instead of from the current position of the robot to ``goal``.
+
+See :ref:`bt_compute_path_to_pose_action` for more information.
+
+ComputePathToPose Action Interface Changes
+*******************************************
+
+- The goal pose field ``pose`` was changed to ``goal``.
+- The PoseStamped field ``start`` has been added.
+- The bool field ``use_start`` has been added.
+These two additional fields have been added to optionally allow, when ``use_start`` is true, the request of a path from ``start`` to ``goal`` instead of from the current position of the robot to ``goal``. Corresponding changes have been done of the Planner Server.
+
 BackUp BT-node Interface Changes
 ********************************
 
@@ -150,3 +165,29 @@ Obstacle marking was modified to include a minimum range parameter from which ob
 - voxel_layer plugin
  - ``obstacle_min_range`` controls the minimum range from which obstacle are marked on the costmap
  - ``obstacle_max_range`` controls the maximum range to which obstacles are marked on the costmap
+
+Recovery Action Changes
+***********************
+The recovery actions, ``Spin`` and ``BackUp`` were modified to correctly return ``FAILURE`` if the recovery action is aborted due to a potential collision. Previously, these actions incorrectly always returned ``SUCCESS``. Changes to this resulted in downstream action clients, such as the default behavior tree. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_.
+
+Default Behavior Tree Changes
+*****************************
+The default behavior tree (BT) ``navigate_w_replanning_and_recovery.xml`` has been updated to allow for replanning in between recoveries. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_. Additionally, an alternative BT ``navigate_w_replanning_and_round_robin_recovery.xml`` was removed due to similarity with the updated default BT.
+
+NavFn Planner Parameters
+************************
+The NavFn Planner has now its 3 parameters reconfigurable at runtime (``tolerance``, ``use_astar`` and ``allow_unknown``). The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2181>`_.
+
+New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes
+*****************************************************************
+The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services ``(local_or_global)_costmap/clear_except_(local_or_global)_costmap`` and ``clear_around_(local_or_global)_costmap`` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a ``reset_distance`` input port. See :ref:`bt_clear_costmap_except_region_action` and :ref:`bt_clear_entire_costmap_around_robot_action` for more.  The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2204>`_.
+
+New Behavior Tree Nodes
+***********************
+A new behavior tree node was added and dynamically loadable at run-time using behavior tree cpp v3.
+See ``nav2_behavior_tree`` for a full listing, or :ref:`plugins` for the current list of behavior tree plugins and their descriptions.
+These plugins are set as default in the ``nav2_bt_navigator`` but may be overridden by the ``bt_plugins`` parameter to include your specific plugins.
+
+Original GitHub tickets:
+
+- `SingleTrigger <https://github.com/ros-planning/navigation2/pull/2236>`_

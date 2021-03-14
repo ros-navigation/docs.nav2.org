@@ -8,7 +8,7 @@
 
 The Navigation2 stack uses AMCL as its primary localization engine. Over the last 10 years, essentially no updates to AMCL has been made. This is due to the code base for this implementation of an Adaptive Monte Carlo Localizer is written in embedded C, not well structured, and very sensitive to changes. A-MCL implementations have been a hallmark of localization for over a decade but this particular implementation should be deprecated. 
 
-Your target involves designing and creating a new localization engine for the navigation2 stack. The requirements of this are:
+Your target involves designing and creating a new localization engine for the Nav2 stack. The requirements of this are:
 - Support 2D laser scanners
 - Support 3D laser scanners, where 2D case could potentially be a simplified case
 - Accurately track the localization of a robot in a given occupancy grid

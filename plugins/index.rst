@@ -85,13 +85,13 @@ Controllers
 |                          |                    | holonomic robots.                | Differential          |
 +--------------------------+--------------------+----------------------------------+-----------------------+
 | `Regulated Pure Pursuit`_| Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
-|                          |                    | variation on the pure pursuit    | Omnidirectional,      |
-|                          |                    | algorithm with adaptive features.| Differential          |
+|                          |                    | variation on the pure pursuit    | Differential          |
+|                          |                    | algorithm with adaptive features.|                       |
 +--------------------------+--------------------+----------------------------------+-----------------------+
 
 .. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
 .. _TEB Controller: https://github.com/rst-tu-dortmund/teb_local_planner
-.. _Regulated Pure Pursuit: https://github.com/navigation2/tree/main/nav2_regulated_pure_persuit_controller
+.. _Regulated Pure Pursuit: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
 
 Planners
 ========
@@ -217,32 +217,38 @@ Progress Checkers
 Behavior Tree Nodes
 ===================
 
-+--------------------------------------------+---------------------+----------------------------------+
-| Action Plugin Name                         |   Creator           |       Description                |
-+============================================+=====================+==================================+
-| `Back Up Action`_                          | Michael Jeronimo    | Calls backup recovery action     |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Clear Costmap Service`_                   | Carl Delsey         | Calls clear costmap service      |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Compute Path to Pose Action`_             | Michael Jeronimo    | Calls Nav2 planner server        |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Follow Path Action`_                      | Michael Jeronimo    | Calls Nav2 controller server     |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Navigate to Pose Action`_                 | Michael Jeronimo    | BT Node for other                |
-|                                            |                     | BehaviorTree.CPP BTs to call     |
-|                                            |                     | Navigation2 as a subtree action  |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Reinitalize Global Localization Service`_ | Carl Delsey         | Reinitialize AMCL to a new pose  |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Spin Action`_                             | Carl Delsey         | Calls spin recovery action       |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Wait Action`_                             | Steve Macenski      | Calls wait recovery action       |
-+--------------------------------------------+---------------------+----------------------------------+
-| `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter|
-+--------------------------------------------+---------------------+----------------------------------+
++--------------------------------------------+---------------------+------------------------------------------+
+| Action Plugin Name                         |   Creator           |       Description                        |
++============================================+=====================+==========================================+
+| `Back Up Action`_                          | Michael Jeronimo    | Calls backup recovery action             |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Clear Entire Costmap Service`_            | Carl Delsey         | Calls clear entire costmap service       |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Clear Costmap Except Region Service`_     | Guillaume Doisy     | Calls clear costmap except region service|
++--------------------------------------------+---------------------+------------------------------------------+
+| `Clear Costmap Around Robot Service`_      | Guillaume Doisy     | Calls clear costmap around robot service |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Compute Path to Pose Action`_             | Michael Jeronimo    | Calls Nav2 planner server                |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Follow Path Action`_                      | Michael Jeronimo    | Calls Nav2 controller server             |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Navigate to Pose Action`_                 | Michael Jeronimo    | BT Node for other                        |
+|                                            |                     | BehaviorTree.CPP BTs to call             |
+|                                            |                     | Navigation2 as a subtree action          |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Reinitalize Global Localization Service`_ | Carl Delsey         | Reinitialize AMCL to a new pose          |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Spin Action`_                             | Carl Delsey         | Calls spin recovery action               |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Wait Action`_                             | Steve Macenski      | Calls wait recovery action               |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter        |
++--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
-.. _Clear Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Clear Entire Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Clear Costmap Except Region Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Clear Costmap Around Robot Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
 .. _Compute Path to Pose Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp
 .. _Follow Path Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/follow_path_action.cpp
 .. _Navigate to Pose Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp
@@ -312,11 +318,15 @@ Behavior Tree Nodes
 | `Goal Updater`_          | Francisco Martín  | Updates the goal received via    |
 |                          |                   | topic subscription.              |
 +--------------------------+-------------------+----------------------------------+
+| `Single Trigger`_        | Steve Macenski    | Triggers nodes/subtrees below    |
+|                          |                   | only a single time per BT run.   |
++--------------------------+-------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
 .. _Distance Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
 .. _Speed Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
 .. _Goal Updater: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
+.. _Single Trigger: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
