@@ -5,7 +5,7 @@ Foxy to Galactic
 
 Moving from ROS 2 Foxy to Galactic, a number of stability improvements were added that we will not specifically address here.
 
-NavigateToPose Action Feedback Message updates
+NavigateToPose Action Feedback updates
 ****************************************
 
 The NavigateToPose action feedback has two improvements:
