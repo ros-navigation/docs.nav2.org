@@ -5,6 +5,15 @@ Foxy to Galactic
 
 Moving from ROS 2 Foxy to Galactic, a number of stability improvements were added that we will not specifically address here.
 
+NavigateToPose Action Feedback Message updates
+****************************************
+
+The NavigateToPose action feedback has two improvements:
+- ``distance_remaining`` now integrates path poses to report accurate distance remaining to go. Previously, this field reported the euclidean distance between the current pose and the goal pose.
+- Addition of ``estimated_time_remaining`` field. This field reports the estimated time remaining by dividing the remaining distance by the current speed.
+
+See :ref:`bt_navigate_to_pose_action` for more information.
+
 NavigateToPose BT-node Interface Changes
 ****************************************
 
