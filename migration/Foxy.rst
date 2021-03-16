@@ -39,6 +39,13 @@ BackUp Recovery Interface Changes
 ``target.x`` in a backup recovery goal should be positive indicating the distance to drive backward.
 In both cases negative values are silently inverted.
 
+Nav2 Controllers and Goal Checker Plugin Interface Changes
+**********************************************************
+
+As of `this PR <https://github.com/ros-planning/navigation2/pull/2247>`_, the ``controller`` plugins will now be given a pointer to the current goal checker in use of the navigation task in ``computeAndPublishVelocity()``. This is geared to enabling controllers to have access to predictive checks for goal completion as well as access to the state information of the goal checker plugin.
+
+The ``goal_checker`` plugins also have the change of including a ``getTolerances()`` method. This method allows a goal checker holder to access the tolerance information of the goal checker to consider at the goal. Each field of the ``pose`` and ``velocity`` represents the maximum allowable error in each dimension for a goal to be considered completed. In the case of a translational tolerance (combined X and Y components), each the X and Y will be populated with the tolerance value because it is the **maximum** tolerance in the dimension (assuming the other has no error). If the goal checker does not contain any tolerances for a dimension, the ``numeric_limits<double> lowest()`` value is utilized in its place.
+
 Groot Support
 *************
 

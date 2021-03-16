@@ -239,17 +239,6 @@ Regulated Pure Pursuit Parameters
   Description
     Maximum allowable angular acceleration (m/s/s) while rotating to heading, if ``use_rotate_to_heading`` is ``true``.
 
-:goal_dist_tol:
-
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  double         0.25          
-  ============== =============================
-
-  Description
-    XY tolerance from goal to rotate to the goal heading, if ``use_rotate_to_heading`` is ``true``. This should match or be smaller than the ``GoalChecker``'s translational goal tolerance.
-
 Example
 *******
 .. code-block:: yaml
@@ -296,4 +285,3 @@ Example
         use_rotate_to_heading: true
         rotate_to_heading_min_angle: 0.785
         max_angular_accel: 3.2
-        goal_dist_tol: 0.25
