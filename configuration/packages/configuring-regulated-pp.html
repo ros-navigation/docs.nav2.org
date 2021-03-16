@@ -561,6 +561,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#computepathtopose-action-interface-changes">ComputePathToPose Action Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#groot-support">Groot Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
@@ -1123,30 +1124,9 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Maximum allowable angular acceleration (m/s/s) while rotating to heading, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">goal_dist_tol:</th><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="33%" />
-<col width="67%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>double</td>
-<td>0.25</td>
-</tr>
-</tbody>
-</table>
 <dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">XY tolerance from goal to rotate to the goal heading, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. This should match or be smaller than the <code class="docutils literal notranslate"><span class="pre">GoalChecker</span></code>’s translational goal tolerance.</p>
+<dd><p class="first last">Maximum allowable angular acceleration (m/s/s) while rotating to heading, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </dd>
 </dl>
 </td>
@@ -1198,7 +1178,6 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
       <span class="nt">use_rotate_to_heading</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
       <span class="nt">rotate_to_heading_min_angle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.785</span>
       <span class="nt">max_angular_accel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
-      <span class="nt">goal_dist_tol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
 </pre></div>
 </div>
 </div>

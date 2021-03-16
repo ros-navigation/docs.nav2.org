@@ -561,6 +561,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#computepathtopose-action-interface-changes">ComputePathToPose Action Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#groot-support">Groot Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
@@ -716,6 +717,11 @@
 <p><code class="docutils literal notranslate"><span class="pre">speed</span></code> in a backup recovery goal should be positive indicating the speed with which to drive backward.
 <code class="docutils literal notranslate"><span class="pre">target.x</span></code> in a backup recovery goal should be positive indicating the distance to drive backward.
 In both cases negative values are silently inverted.</p>
+</div>
+<div class="section" id="nav2-controllers-and-goal-checker-plugin-interface-changes">
+<h2>Nav2 Controllers and Goal Checker Plugin Interface Changes<a class="headerlink" href="#nav2-controllers-and-goal-checker-plugin-interface-changes" title="Permalink to this headline">¶</a></h2>
+<p>As of <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2247">this PR</a>, the <code class="docutils literal notranslate"><span class="pre">controller</span></code> plugins will now be given a pointer to the current goal checker in use of the navigation task in <code class="docutils literal notranslate"><span class="pre">computeAndPublishVelocity()</span></code>. This is geared to enabling controllers to have access to predictive checks for goal completion as well as access to the state information of the goal checker plugin.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">goal_checker</span></code> plugins also have the change of including a <code class="docutils literal notranslate"><span class="pre">getTolerances()</span></code> method. This method allows a goal checker holder to access the tolerance information of the goal checker to consider at the goal. Each field of the <code class="docutils literal notranslate"><span class="pre">pose</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code> represents the maximum allowable error in each dimension for a goal to be considered completed. In the case of a translational tolerance (combined X and Y components), each the X and Y will be populated with the tolerance value because it is the <strong>maximum</strong> tolerance in the dimension (assuming the other has no error). If the goal checker does not contain any tolerances for a dimension, the <code class="docutils literal notranslate"><span class="pre">numeric_limits&lt;double&gt;</span> <span class="pre">lowest()</span></code> value is utilized in its place.</p>
 </div>
 <div class="section" id="groot-support">
 <h2>Groot Support<a class="headerlink" href="#groot-support" title="Permalink to this headline">¶</a></h2>
