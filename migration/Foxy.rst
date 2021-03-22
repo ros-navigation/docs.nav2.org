@@ -206,14 +206,3 @@ The PlannerSelector behavior is used to switch the planner that will be used by 
 
  - `Pull Request <https://github.com/ros-planning/navigation2/pull/2249>`
  - `Discussion <https://github.com/ros-planning/navigation.ros.org/issues/147>`
- 
- *Example*
- ```
-<root main_tree_to_execute = "MainTree" >
-    <BehaviorTree ID="MainTree">
-        <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased"/>
-        <ComputePathToPoseAction planner_id="{selected_planner}"/>
-    </BehaviorTree>
-</root>
-```
- ```
