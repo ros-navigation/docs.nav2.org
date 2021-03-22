@@ -199,3 +199,21 @@ These plugins are set as default in the ``nav2_bt_navigator`` but may be overrid
 Original GitHub tickets:
 
 - `SingleTrigger <https://github.com/ros-planning/navigation2/pull/2236>`_
+
+Planner Selector Behavior Tree Node
+***********************
+The PlannerSelector behavior is used to switch the planner that will be used by the planner server. It subscribes to a topic "planner_selector" to get the decision about what planner must be used. It is usually used before of the ComputePathToPoseAction. The selected_planner output port is passed to planner_id input port of the ComputePathToPoseAction.
+
+ - `Pull Request <https://github.com/ros-planning/navigation2/pull/2249>`
+ - `Discussion <https://github.com/ros-planning/navigation.ros.org/issues/147>`
+ 
+ *Example*
+ ```
+<root main_tree_to_execute = "MainTree" >
+    <BehaviorTree ID="MainTree">
+        <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased"/>
+        <ComputePathToPoseAction planner_id="{selected_planner}"/>
+    </BehaviorTree>
+</root>
+```
+ ```
