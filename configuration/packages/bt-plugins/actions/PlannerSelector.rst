@@ -3,7 +3,7 @@
 PlannerSelector
 ==============
 
-It is used to select the planner that will be used by the planner server. It subscribes to the _planner_selector_ topic to recive command msgs with the name of the planner to be used. It is commonly used before of the ComputePathToPoseAction. The selected_planner output port is passed to planner_id input port of the ComputePathToPoseAction.
+It is used to select the planner that will be used by the planner server. It subscribes to the ``planner_selector`` topic to receive command messages with the name of the planner to be used. It is commonly used before of the ComputePathToPoseAction. The ``selected_planner`` output port is passed to ``planner_id`` input port of the ComputePathToPoseAction. If none is provided on the topic, the ``default_planner`` is used.
 
 .. _bt_navigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator
 
