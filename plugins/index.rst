@@ -244,7 +244,9 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter        |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Planner Selector`_                        | Pablo Iñigo Blasco  | Selects the global planner               |
+| `Planner Selector`_                        | Pablo Iñigo Blasco  | Selects the global planner based on a    |
+|                                            |                     | topic input, otherwises uses a default   |
+|                                            |                     | planner id                               |
 +--------------------------------------------+---------------------+------------------------------------------+
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Clear Entire Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
