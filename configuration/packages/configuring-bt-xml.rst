@@ -31,6 +31,7 @@ Action Plugins
   bt-plugins/actions/ReinitializeGlobalLocalization.rst
   bt-plugins/actions/TruncatePath.rst
   bt-plugins/actions/PlannerSelector.rst
+  bt-plugins/actions/ControllerSelector.rst
 
 Condition Plugins
 *****************
