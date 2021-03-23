@@ -199,3 +199,4 @@ These plugins are set as default in the ``nav2_bt_navigator`` but may be overrid
 Original GitHub tickets:
 
 - `SingleTrigger <https://github.com/ros-planning/navigation2/pull/2236>`_
+- `PlannerSelector <https://github.com/ros-planning/navigation2/pull/2249>`_

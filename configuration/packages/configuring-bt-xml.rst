@@ -30,6 +30,7 @@ Action Plugins
   bt-plugins/actions/ClearCostmapAroundRobot.rst
   bt-plugins/actions/ReinitializeGlobalLocalization.rst
   bt-plugins/actions/TruncatePath.rst
+  bt-plugins/actions/PlannerSelector.rst
 
 Condition Plugins
 *****************
