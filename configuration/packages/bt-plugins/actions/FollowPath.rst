@@ -31,6 +31,17 @@ Input Ports
   Description
     	Mapped name of the controller plugin type to use, e.g. FollowPath.
 
+:goal_checker_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
+
+  Description
+    	Mapped name of the goal checker plugin type to use, e.g. SimpleGoalChecker.
+
 :server_name:
 
   ====== =======
@@ -59,4 +70,4 @@ Example
 
 .. code-block:: xml
 
-    <FollowPath path="{path}" controller_id="FollowPath" server_name="FollowPath" server_timeout="10"/>
+    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="SimpleGoalChecker" server_name="FollowPath" server_timeout="10"/>

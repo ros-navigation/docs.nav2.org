@@ -32,6 +32,8 @@ Action Plugins
   bt-plugins/actions/TruncatePath.rst
   bt-plugins/actions/PlannerSelector.rst
   bt-plugins/actions/ControllerSelector.rst
+  bt-plugins/actions/GoalCheckerSelector.rst
+
 
 Condition Plugins
 *****************

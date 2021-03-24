@@ -201,3 +201,4 @@ Original GitHub tickets:
 - `SingleTrigger <https://github.com/ros-planning/navigation2/pull/2236>`_
 - `PlannerSelector <https://github.com/ros-planning/navigation2/pull/2249>`_
 - `ControllerSelector <https://github.com/ros-planning/navigation2/pull/2266>`_
+- `GoalCheckerSelector <https://github.com/ros-planning/navigation2/pull/2269>`_
