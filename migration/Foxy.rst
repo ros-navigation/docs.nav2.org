@@ -20,6 +20,16 @@ The NavigateToPose input port has been changed to PoseStamped instead of Point a
 
 See :ref:`bt_navigate_to_pose_action` for more information.
 
+
+NavigateThroughPoses and ComputePathThroughPoses Actions Added
+**************************************************************
+
+The ``NavigateThroughPoses`` action has been added analog to the ``NavigateToPose``. Rather than going to a single position, this Action will allow a user to specify a number of hard intermediary pose constraints between the start and final pose to plan through. The new ``ComputePathThroughPoses`` action has been added to the ``planner_server`` to process these requests through ``N goal_poses``.
+
+The ``ComputePathThroughPoses`` action server will take in a set of ``N`` goals to achieve, plan through each pose and concatenate the output path for use in navigation. The controller and navigator know nothing about the semantics of the generated path, so the robot will not stop or slow on approach to these goals. It will rather continue through each pose as it were any other point on the path continuously. When paired with the ``SmacPlanner``, this feature can be used to generate **completely kinematically feasible trajectories through pose constraints**. 
+
+If you wish to stop at each goal pose, consider using the waypoint follower instead, which will stop and allow a user to optionally execute a task plugin at each pose. 
+
 ComputePathToPose BT-node Interface Changes
 *******************************************
 
@@ -201,3 +211,6 @@ Original GitHub tickets:
 - `SingleTrigger <https://github.com/ros-planning/navigation2/pull/2236>`_
 - `PlannerSelector <https://github.com/ros-planning/navigation2/pull/2249>`_
 - `ControllerSelector <https://github.com/ros-planning/navigation2/pull/2266>`_
+- `NavigateThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
+- `RemovePassedGoals <https://github.com/ros-planning/navigation2/pull/2271>`_
+- `ComputePathThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
