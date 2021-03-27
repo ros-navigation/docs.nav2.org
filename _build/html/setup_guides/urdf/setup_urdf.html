@@ -1,0 +1,1227 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Setting Up The URDF &mdash; Navigation 2 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="General Tutorials" href="../../tutorials/index.html" />
+    <link rel="prev" title="Setting Up Transformations" href="../transformation/setup_transforms.html" />
+
+<link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Navigation 2
+          
+
+          
+            
+            <img src="../../_static/nav2_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#navigating">Navigating</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build_instructions/index.html">Build and Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#build">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#build-nav2-for-released-distribution">Build Nav2 For Released Distribution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#install-ros">Install ROS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-nav2">Build Nav2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#quickstart-build-main">Quickstart Build Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#steps">Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#manually-build-main">Manually Build Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-ros-2-main">Build ROS 2 Main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-nav2-dependencies">Build Nav2 Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-nav2-main">Build Nav2 Main</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#docker">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#building-docker-container">Building Docker Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#using-dockerhub-container">Using DockerHub Container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#generate-doxygen">Generate Doxygen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#help">Help</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/build_docs/build_troubleshooting_guide.html#common-nav2-dependencies-build-failures">Common Nav2 Dependencies Build Failures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/build_docs/build_troubleshooting_guide.html#reporting-issue">Reporting Issue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts/index.html">Navigation Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#ros-2">ROS 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#action-server">Action Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#lifecycle-nodes-and-bond">Lifecycle Nodes and Bond</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#behavior-trees">Behavior Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#navigation-servers">Navigation Servers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#planner-controller-and-recovery-servers">Planner, Controller, and Recovery Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#planners">Planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#controllers">Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#recoveries">Recoveries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#waypoint-following">Waypoint Following</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#state-estimation">State Estimation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#standards">Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#global-positioning-localization-and-slam">Global Positioning: Localization and SLAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#odometry">Odometry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#environmental-representation">Environmental Representation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#costmaps-and-layers">Costmaps and Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#other-forms">Other Forms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#nav2-academic-overview">Nav2 Academic Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">First-Time Robot Setup Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../transformation/setup_transforms.html">Setting Up Transformations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-introduction">Transforms Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#static-transform-publisher-demo">Static Transform Publisher Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-in-navigation2">Transforms in Navigation2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting Up The URDF</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#urdf-and-the-robot-state-publisher">URDF and the Robot State Publisher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-environment">Setting Up the Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-the-urdf">Writing the URDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-and-launch">Build and Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualization-using-rviz">Visualization using RVIZ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-physical-properties">Adding Physical Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">General Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html">Camera Calibration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/custom_behavior_tree.html">Creating a Custom Behavior Tree in ROS2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/custom_behavior_tree.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/custom_behavior_tree.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/custom_behavior_tree.html#navigate-with-replanning-and-recovery">Navigate With Replanning and Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/custom_behavior_tree.html#navigatewithreplanning">NavigateWithReplanning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/custom_behavior_tree.html#recoveryfallback">RecoveryFallback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/custom_behavior_tree.html#custom-action">Custom Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/custom_behavior_tree.html#adding-to-launch-file">Adding to Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/custom_behavior_tree.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#initialize-the-location-of-turtlebot-3">4- Initialize the Location of Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#send-a-goal-pose">5-  Send a Goal Pose</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html">(SLAM) Navigating While Mapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-navigation2">1- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-slam">2- Launch SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#working-with-slam">3- Working with SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#getting-started-simplification">4- Getting Started Simplification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html">(STVL) Using an External Costmap Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#costmap2d-and-stvl">Costmap2D and STVL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#setup">0- Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#install-stvl">1- Install STVL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#modify-navigation2-parameter">1- Modify Navigation2 Parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#launch-navigation2">2- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#rviz">3-  RVIZ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugin_tutorials/index.html">Plugin Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html">Writing a New Costmap2D Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#write-a-new-costmap2d-plugin">1- Write a new Costmap2D plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#export-and-make-gradientlayer-plugin">2- Export and make GradientLayer plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#enable-the-plugin-in-costmap2d">3- Enable the plugin in Costmap2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#run-gradientlayer-plugin">4- Run GradientLayer plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html">Writing a New Planner Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#creating-a-new-planner-plugin">1- Creating a new Planner Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#run-straightline-plugin">4- Run StraightLine plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html">Writing a New Controller Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#exporting-the-controller-plugin">2- Exporting the controller plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html">Writing a New Behavior Tree Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#creating-a-new-bt-plugin">1- Creating a new BT Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#add-plugin-library-name-to-config">3- Add plugin library name to config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html">Writing a New Recovery Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#creating-a-new-recovery-plugin">1- Creating a new Recovery Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#exporting-the-recovery-plugin">2- Exporting the recovery plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#run-recovery-plugin">4- Run Recovery plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html">Waypoint Follower</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_waypoint_follower-plugins/photo_at_waypoint.html">PhotoAtWaypoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_waypoint_follower-plugins/input_at_waypoint.html">InputAtWaypoint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#default-plugin">Default Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html">Behavior-Tree Navigator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#action-plugins">Action Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/Wait.html">Wait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/Spin.html">Spin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/BackUp.html">BackUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ComputePathToPose.html">ComputePathToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/FollowPath.html">FollowPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/NavigateToPose.html">NavigateToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GoalReached.html">GoalReached</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/TransformAvailable.html">TransformAvailable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/DistanceTraveled.html">DistanceTraveled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GoalUpdated.html">GoalUpdated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsStuck.html">IsStuck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/TimeExpired.html">TimeExpired</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsBatteryLow.html">IsBatteryLow</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/PipelineSequence.html">PipelineSequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/RoundRobin.html">RoundRobin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/RecoveryNode.html">RecoveryNode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/RateController.html">RateController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/DistanceController.html">DistanceController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/SpeedController.html">SpeedController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html">Costmap 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/static.html">Static Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/range.html">Range Sensor Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/speed_filter.html">Speed Filter Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-lifecycle.html">Lifecycle Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-lifecycle.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-lifecycle.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html">Planner Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-navfn.html">NavFn Planner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-navfn.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-navfn.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-smac-planner.html">Smac Planner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-smac-planner.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-smac-planner.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html">Controller Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_controller-plugins/simple_progress_checker.html">SimpleProgressChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_controller-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_controller-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html">DWB Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html#controller">Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-params/controller.html">DWB Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-params/iterator.html">XYTheta Iterator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-params/kinematic.html">Kinematic Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-params/visualization.html">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html#plugins">Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/obstacle_footprint.html">ObstacleFootprintCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/oscillation.html">OscillationCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/path_align.html">PathAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/path_dist.html">PathDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/prefer_forward.html">PreferForwardCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/rotate_to_goal.html">RotateToGoalCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/twirling.html">TwirlingCritic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html">Map Server / Saver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#map-saver-parameters">Map Saver Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#map-server-parameters">Map Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#costmap-filter-info-server-parameters">Costmap Filter Info Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-amcl.html">AMCL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-amcl.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-amcl.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html">Recovery Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#recovery-server-parameters">Recovery Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#spin-recovery-parameters">Spin Recovery Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#backup-recovery-parameters">BackUp Recovery Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-regulated-pp.html">Regulated Pure Pursuit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-regulated-pp.html#regulated-pure-pursuit-parameters">Regulated Pure Pursuit Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-regulated-pp.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#planners">Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#recoveries">Recoveries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#goal-checkers">Goal Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../migration/Dashing.html">Dashing to Eloquent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Dashing.html#new-packages">New Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Dashing.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Dashing.html#navigation2-architectural-changes">Navigation2 Architectural Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../migration/Eloquent.html">Eloquent to Foxy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#server-updates">Server Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#map-server-re-work">Map Server Re-Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#new-particle-filter-messages">New Particle Filter Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#followpoint-capability">FollowPoint Capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#new-costmap-layer">New Costmap Layer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../migration/Foxy.html">Foxy to Galactic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#groot-support">Groot Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#regulatedpurepursuitcontroller">RegulatedPurePursuitController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#standard-time-units-in-parameters">Standard time units in parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#ray-tracing-parameters">Ray Tracing Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#obstacle-marking-parameters">Obstacle Marking Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#recovery-action-changes">Recovery Action Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#default-behavior-tree-changes">Default Behavior Tree Changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Getting Involved</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#id1">Getting Involved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#process">Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About and Contact</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about/related_projects.html">Related Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/ros1_comparison.html">ROS to ROS 2 Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/index.html#id1">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/index.html#contact">Contact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_configuration_assistant.html">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS 2 and Environmental Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/testing.html">4. Advanced Navigation Testing Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/navigation_rebranding.html">5. Navigation Branding and Website</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/localization.html">6. 2D/3D Localization Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/dynamic.html">7. Navigation Dynamic Obstacle Integration</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Navigation 2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+<span style="float: right;" >
+    <a class="github-button" href="https://github.com/ros-planning/navigation.ros.org" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Edit ros-planning/navigation.ros.org on GitHub" ">Edit</a>
+</span>
+
+
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">First-Time Robot Setup Guide</a> &raquo;</li>
+        
+      <li>Setting Up The URDF</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setting-up-the-urdf">
+<span id="urdf-handson"></span><h1>Setting Up The URDF<a class="headerlink" href="#setting-up-the-urdf" title="Permalink to this headline">¶</a></h1>
+<p>For this guide, we will be creating the URDF for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The complete source code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository under the <code class="docutils literal notranslate"><span class="pre">sam_bot_description</span></code> package</p>
+</div>
+<div class="section" id="urdf-and-the-robot-state-publisher">
+<h2>URDF and the Robot State Publisher<a class="headerlink" href="#urdf-and-the-robot-state-publisher" title="Permalink to this headline">¶</a></h2>
+<p>As discussed in the previous tutorial, one of the requirements for Navigation2 is the transformation from  <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to <code class="docutils literal notranslate"><span class="pre">laser_link</span></code> or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms.</p>
+<p>The Robot State Publisher is a package of ROS2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct Universal Robot Descriptor File (URDF) and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees.</p>
+<p>The Universal Robot Descriptor File (URDF) is an XML file that represents a robot model. In this tutorial, it will mainly be used to build transformations trees related with the robot geometry, but it also has other uses. One example is how it can be used in visualizing your robot model in RVIZ, a 3D Visualization tool for ROS, by defining visual components such as materials and meshes. Another example is how the URDF can be used to define the physical properties of the robot. These properties are then used in physics simulators such as Gazebo to simulate how your robot will interact in an environment.</p>
+<p>Another major feature of URDF is that it also supports Xacro (XML Macros) to help you create a shorter and readable XML to help in defining complex robots. We can use these macros to eliminate the need for repeating blocks of XML in our URDF. Xacro is also useful in defining configuration constants which can be reused throughout the URDF.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>If you want to learn more about the URDF and the Robot State Publisher, we encourage you to have a look at the official <a class="reference external" href="http://wiki.ros.org/urdf">URDF Documentation</a> and <a class="reference external" href="http://wiki.ros.org/robot_state_publisher">Robot State Publisher Documentation</a></p>
+</div>
+</div>
+<div class="section" id="setting-up-the-environment">
+<h2>Setting Up the Environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this headline">¶</a></h2>
+<p>In this guide, we are assuming that you are already familiar with ROS2 and how to setup your development environment, so we’ll breeze through the steps in this section.</p>
+<p>Let’s begin by installing some additional ROS2 packages that we will be using during this tutorial.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-&lt;ros2-distro&gt;-joint-state-publisher-gui
+sudo apt install ros-&lt;ros2-distro&gt;-xacro
+</pre></div>
+</div>
+<p>Next, create a directory for your project, initialize a ROS2 workspace and give your robot a name. For ours, we’ll be calling it <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 pkg create --build-type ament_cmake sam_bot_description
+</pre></div>
+</div>
+</div>
+<div class="section" id="writing-the-urdf">
+<h2>Writing the URDF<a class="headerlink" href="#writing-the-urdf" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>This section aims to provide you with a beginner-friendly introduction to building URDFs for your robot. If you would like to learn more about URDF and XAcro, we suggest for you to have a look at the official <a class="reference external" href="http://wiki.ros.org/urdf">URDF Documentation</a></p>
+</div>
+<p>Now that we have our project workspace set up, let’s dive straight into writing the URDF. Below is an image of the robot we will be trying to build.</p>
+<a class="reference internal image-reference" href="../../_images/base-bot_1.png"><img alt="../../_images/base-bot_1.png" src="../../_images/base-bot_1.png" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../../_images/base-bot_2.png"><img alt="../../_images/base-bot_2.png" src="../../_images/base-bot_2.png" style="width: 49%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p>To get started, create a file named <code class="docutils literal notranslate"><span class="pre">sam_bot_description.urdf</span></code> under <code class="docutils literal notranslate"><span class="pre">src/description</span></code> and input the following as the initial contents of the file.</p>
+</div></blockquote>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;robot</span> <span class="na">name=</span><span class="s">&quot;sam_bot&quot;</span> <span class="na">xmlns:xacro=</span><span class="s">&quot;http://ros.org/wiki/xacro&quot;</span><span class="nt">&gt;</span>
+
+
+
+<span class="nt">&lt;/robot&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following code snippets should be placed within the <code class="docutils literal notranslate"><span class="pre">&lt;robot&gt;</span></code> tags. We suggest to add them in the same order as introduced in this tutorial. We have also included some line numbers to give you a rough idea on where to input the code. This may differ from the actual file you are writing depending on your usage of whitespaces. Also note that the line numbers assume that you are putting in code as they appear in this guide.</p>
+</div>
+<p>Next, let us define some constants using XAcro properties that will be reused throughout the URDF.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Define robot constants --&gt;</span>
+  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;base_width&quot;</span> <span class="na">value=</span><span class="s">&quot;0.31&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;base_length&quot;</span> <span class="na">value=</span><span class="s">&quot;0.42&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;base_height&quot;</span> <span class="na">value=</span><span class="s">&quot;0.18&quot;</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_radius&quot;</span> <span class="na">value=</span><span class="s">&quot;0.10&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_width&quot;</span> <span class="na">value=</span><span class="s">&quot;0.04&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_ygap&quot;</span> <span class="na">value=</span><span class="s">&quot;0.025&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_zoff&quot;</span> <span class="na">value=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_xoff&quot;</span> <span class="na">value=</span><span class="s">&quot;0.12&quot;</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;caster_xoff&quot;</span> <span class="na">value=</span><span class="s">&quot;0.14&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Here is a brief discussion on what these properties will represent in our urdf. The <code class="docutils literal notranslate"><span class="pre">base_*</span></code> properties all define the size of hte robot’s main chassis. The <code class="docutils literal notranslate"><span class="pre">wheel_radius</span></code> and <code class="docutils literal notranslate"><span class="pre">wheel_width</span></code> define the shape of the robot’s two back wheels. The <code class="docutils literal notranslate"><span class="pre">wheel_ygap</span></code> adjusts the gap between the wheel and the chassis along the y-axis whilst <code class="docutils literal notranslate"><span class="pre">wheel_zoff</span></code> and <code class="docutils literal notranslate"><span class="pre">wheel_xoff</span></code> position the back wheels along the z-axis and x-axis appropriately. Lastly, the <code class="docutils literal notranslate"><span class="pre">caster_xoff</span></code> positions the front caster wheel along the x-axis.</p>
+<p>Let us then define our <code class="docutils literal notranslate"><span class="pre">base_link</span></code> - this link will be a large box and will act as the main chassis of our robot. In URDF, a <code class="docutils literal notranslate"><span class="pre">link</span></code> element describes a rigid part or component of our robot. The robot state publisher then utilizes these definitions to determine coordinate frames for each link and publish the transformations between them.</p>
+<p>We will also be defining some of the link’s visual properties which can be used by tools such as Gazebo and Rviz to show us a 3D model of our robot. Amongst these properties are <code class="docutils literal notranslate"><span class="pre">&lt;geometry&gt;</span></code> which describes the link’s shape and <code class="docutils literal notranslate"><span class="pre">&lt;material&gt;</span></code> which describes it’s color.</p>
+<p>For the code block block below, we access the <code class="docutils literal notranslate"><span class="pre">base</span></code> properties from the robot constants sections we defined before using the <code class="docutils literal notranslate"><span class="pre">${property}</span></code> syntax. In addition, we also set the material color of the main chassis to <code class="docutils literal notranslate"><span class="pre">Cyan</span></code>. Note that we set these parameters under the <code class="docutils literal notranslate"><span class="pre">&lt;visual&gt;</span></code> tag so they will only be applied as visual parameters which dont affect any collision or physical properties.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Robot Base --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;visual&gt;</span>
+      <span class="nt">&lt;geometry&gt;</span>
+        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;${base_length} ${base_width} ${base_height}&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/geometry&gt;</span>
+      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;Cyan&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;0 1.0 1.0 1.0&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/material&gt;</span>
+    <span class="nt">&lt;/visual&gt;</span>
+  <span class="nt">&lt;/link&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Next, let us define a <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> link. The <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> link is a virtual (non-physical) link which has no dimensions or collision areas. Its primary purpose is to enable various packages determine the center of a robot projected to the ground. For example, Navigation2 uses this link to determine the center of a circular footprint used in its obstacle avoidance algorithms. Again, we set this link with no dimensions and to which position the robot’s center is in when it is projected to the ground plane.</p>
+<p>After defining our base_link, we then add a joint to connect it to <code class="docutils literal notranslate"><span class="pre">base_link</span></code>. In URDF, a <code class="docutils literal notranslate"><span class="pre">joint</span></code> element describes the kinematic and dynamic properties between coordinate frames. For this case, we will be defining a <code class="docutils literal notranslate"><span class="pre">fixed</span></code> joint with the appropriate offsets to place our <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> link in the proper location based on the description above. Remember that we want to set our base_footprint to be at the ground plane when projected from the center of the main chassis, hence we get the sum of the <code class="docutils literal notranslate"><span class="pre">wheel_radius</span></code> and the <code class="docutils literal notranslate"><span class="pre">wheel_zoff</span></code> to get the appropriate location along the z-axis.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Robot Footprint --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_footprint&quot;</span> <span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;base_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;base_footprint&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0.0 0.0 ${-(wheel_radius+wheel_zoff)}&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/joint&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now, we will be adding two large drive wheels to our robot. To make our code cleaner and avoid repetition, we will make use of macros to define a block of code that will be repeated with differing parameters. Our macro will have 3 params: <code class="docutils literal notranslate"><span class="pre">prefix</span></code> which simply adds a prefix to our link and joint names, and <code class="docutils literal notranslate"><span class="pre">x_reflect</span></code> and <code class="docutils literal notranslate"><span class="pre">y_reflect</span></code> which allows us to flip the positions of our wheels with respect to the x and y axis respectively. Within this macro, we can also define the visual properties of a single wheel. Lastly, we will also define a <code class="docutils literal notranslate"><span class="pre">continuous</span></code> joint to allow our wheels to freely rotate about an axis. This joint also connects our wheel to the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> at the appropriate location.</p>
+<p>At the end of this code block, we will be instantiating two wheels using the macro we just made through the <code class="docutils literal notranslate"><span class="pre">xacro:wheel</span></code> tags. Note that we also define the parameters to have one wheel on both sides at the back of our robot.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Wheels --&gt;</span>
+  <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;wheel&quot;</span> <span class="na">params=</span><span class="s">&quot;prefix x_reflect y_reflect&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;${prefix}_link&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;visual&gt;</span>
+        <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 0&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;geometry&gt;</span>
+            <span class="nt">&lt;cylinder</span> <span class="na">radius=</span><span class="s">&quot;${wheel_radius}&quot;</span> <span class="na">length=</span><span class="s">&quot;${wheel_width}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/geometry&gt;</span>
+        <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;Gray&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;0.5 0.5 0.5 1.0&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/material&gt;</span>
+      <span class="nt">&lt;/visual&gt;</span>
+    <span class="nt">&lt;/link&gt;</span>
+
+    <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;${prefix}_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;continuous&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;${prefix}_link&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;${x_reflect*wheel_xoff} ${y_reflect*(base_width/2+wheel_ygap)} ${-wheel_zoff}&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;axis</span> <span class="na">xyz=</span><span class="s">&quot;0 1 0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/joint&gt;</span>
+  <span class="nt">&lt;/xacro:macro&gt;</span>
+
+  <span class="nt">&lt;xacro:wheel</span> <span class="na">prefix=</span><span class="s">&quot;drivewhl_l&quot;</span> <span class="na">x_reflect=</span><span class="s">&quot;-1&quot;</span> <span class="na">y_reflect=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;xacro:wheel</span> <span class="na">prefix=</span><span class="s">&quot;drivewhl_r&quot;</span> <span class="na">x_reflect=</span><span class="s">&quot;-1&quot;</span> <span class="na">y_reflect=</span><span class="s">&quot;-1&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Next, we will be adding a caster wheel at the front of our robot. We will be modelling this wheel as a sphere to keep things simple. Again, we define the wheel’s geometry, material and the joint to connect it to <code class="docutils literal notranslate"><span class="pre">base_link</span></code> at the appropriate location.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Caster Wheel --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;front_caster&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;visual&gt;</span>
+      <span class="nt">&lt;geometry&gt;</span>
+        <span class="nt">&lt;sphere</span> <span class="na">radius=</span><span class="s">&quot;${-(wheel_radius+wheel_zoff-(base_height/2))}&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/geometry&gt;</span>
+      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;Cyan&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;0 1.0 1.0 1.0&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/material&gt;</span>
+    <span class="nt">&lt;/visual&gt;</span>
+  <span class="nt">&lt;/link&gt;</span>
+
+  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;caster_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;front_caster&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;${caster_xoff} 0.0 ${-(base_height/2)}&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/joint&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>And that’s it! We have built a URDF for a simple differential drive robot. In the next section, we will focus on building the ROS Package containing our URDF, launching the robot state publisher, and visualizing the robot in RVIz.</p>
+</div>
+<div class="section" id="build-and-launch">
+<h2>Build and Launch<a class="headerlink" href="#build-and-launch" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The launch files from this tutorial were adapted from the official <a class="reference external" href="https://github.com/ros/urdf_tutorial/tree/ros2">URDF Tutorials for ROS2</a></p>
+</div>
+<p>Let’s start this section by adding some dependencies that will be required once we build this project. Open up the root of your project directory and add the following lines to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> (preferably after the <code class="docutils literal notranslate"><span class="pre">&lt;buildtool_depend&gt;</span></code> tag)</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;exec_depend&gt;</span>joint_state_publisher<span class="nt">&lt;/exec_depend&gt;</span>
+<span class="nt">&lt;exec_depend&gt;</span>joint_state_publisher_gui<span class="nt">&lt;/exec_depend&gt;</span>
+<span class="nt">&lt;exec_depend&gt;</span>robot_state_publisher<span class="nt">&lt;/exec_depend&gt;</span>
+<span class="nt">&lt;exec_depend&gt;</span>rviz<span class="nt">&lt;/exec_depend&gt;</span>
+<span class="nt">&lt;exec_depend&gt;</span>xacro<span class="nt">&lt;/exec_depend&gt;</span>
+</pre></div>
+</div>
+<p>Next, let us create our launch file. Launch files are used by ROS2 to bring up the necessary nodes for our package. From the root of the project, create a directory named <code class="docutils literal notranslate"><span class="pre">launch</span></code> and a <code class="docutils literal notranslate"><span class="pre">display.launch.py</span></code> file within it. The launch file below launches a robot publisher node in ROS2 that uses our URDF to publish the transforms for our robot. In addition, the launch file also automatically launches RVIZ so we can visualize our robot as defined by the URDF. Copy and paste the snippet below into your <code class="docutils literal notranslate"><span class="pre">display.launch.py</span></code> file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">launch</span>
+<span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">LaunchConfiguration</span>
+<span class="kn">import</span> <span class="nn">launch_ros</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
+    <span class="n">pkg_share</span> <span class="o">=</span> <span class="n">launch_ros</span><span class="o">.</span><span class="n">substitutions</span><span class="o">.</span><span class="n">FindPackageShare</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="s1">&#39;sam_bot_description&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sam_bot_description&#39;</span><span class="p">)</span>
+    <span class="n">default_model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;src/description/sam_bot_description.urdf&#39;</span><span class="p">)</span>
+    <span class="n">default_rviz_config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;rviz/urdf_config.rviz&#39;</span><span class="p">)</span>
+
+    <span class="n">robot_state_publisher_node</span> <span class="o">=</span> <span class="n">launch_ros</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;robot_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;robot_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;robot_description&#39;</span><span class="p">:</span> <span class="n">Command</span><span class="p">([</span><span class="s1">&#39;xacro &#39;</span><span class="p">,</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">)])}]</span>
+    <span class="p">)</span>
+    <span class="n">joint_state_publisher_node</span> <span class="o">=</span> <span class="n">launch_ros</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">condition</span><span class="o">=</span><span class="n">launch</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">UnlessCondition</span><span class="p">(</span><span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;gui&#39;</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">joint_state_publisher_gui_node</span> <span class="o">=</span> <span class="n">launch_ros</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span><span class="p">,</span>
+        <span class="n">condition</span><span class="o">=</span><span class="n">launch</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">IfCondition</span><span class="p">(</span><span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;gui&#39;</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">rviz_node</span> <span class="o">=</span> <span class="n">launch_ros</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;rviz2&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;rviz2&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;rviz2&#39;</span><span class="p">,</span>
+        <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">,</span>
+        <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;rvizconfig&#39;</span><span class="p">)],</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">launch</span><span class="o">.</span><span class="n">LaunchDescription</span><span class="p">([</span>
+        <span class="n">launch</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;gui&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,</span>
+                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable joint_state_publisher_gui&#39;</span><span class="p">),</span>
+        <span class="n">launch</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="n">default_model_path</span><span class="p">,</span>
+                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Absolute path to robot urdf file&#39;</span><span class="p">),</span>
+        <span class="n">launch</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;rvizconfig&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="n">default_rviz_config_path</span><span class="p">,</span>
+                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Absolute path to rviz config file&#39;</span><span class="p">),</span>
+        <span class="n">joint_state_publisher_node</span><span class="p">,</span>
+        <span class="n">joint_state_publisher_gui_node</span><span class="p">,</span>
+        <span class="n">robot_state_publisher_node</span><span class="p">,</span>
+        <span class="n">rviz_node</span>
+    <span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more information regarding the launch system in ROS2, you can have a look at the official <a class="reference external" href="https://index.ros.org/doc/ros2/Tutorials/Launch-system/">ROS2 Launch System Documentation</a></p>
+</div>
+<p>To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named <code class="docutils literal notranslate"><span class="pre">rviz</span></code> in the root of your project and a file named <code class="docutils literal notranslate"><span class="pre">urdf_config.rviz</span></code> under it. Place the following as the contents of <code class="docutils literal notranslate"><span class="pre">urdf_config.rviz</span></code></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Panels:
+  - Class: rviz_common/Displays
+    Help Height: <span class="m">78</span>
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Status1
+        - /RobotModel1/Links1
+        - /TF1
+      Splitter Ratio: <span class="m">0</span>.5
+    Tree Height: <span class="m">557</span>
+Visualization Manager:
+  Class: <span class="s2">&quot;&quot;</span>
+  Displays:
+    - Alpha: <span class="m">0</span>.5
+      Cell Size: <span class="m">1</span>
+      Class: rviz_default_plugins/Grid
+      Color: <span class="m">160</span><span class="p">;</span> <span class="m">160</span><span class="p">;</span> <span class="m">164</span>
+      Enabled: <span class="nb">true</span>
+      Name: Grid
+    - Alpha: <span class="m">0</span>.6
+      Class: rviz_default_plugins/RobotModel
+      Description Topic:
+        Depth: <span class="m">5</span>
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /robot_description
+      Enabled: <span class="nb">true</span>
+      Name: RobotModel
+      Visual Enabled: <span class="nb">true</span>
+    - Class: rviz_default_plugins/TF
+      Enabled: <span class="nb">true</span>
+      Name: TF
+      Marker Scale: <span class="m">0</span>.3
+      Show Arrows: <span class="nb">true</span>
+      Show Axes: <span class="nb">true</span>
+      Show Names: <span class="nb">true</span>
+  Enabled: <span class="nb">true</span>
+  Global Options:
+    Background Color: <span class="m">48</span><span class="p">;</span> <span class="m">48</span><span class="p">;</span> <span class="m">48</span>
+    Fixed Frame: base_link
+    Frame Rate: <span class="m">30</span>
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: <span class="nb">true</span>
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+      Line color: <span class="m">128</span><span class="p">;</span> <span class="m">128</span><span class="p">;</span> <span class="m">0</span>
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Value: <span class="nb">true</span>
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Name: Current View
+      Target Frame: &lt;Fixed Frame&gt;
+      Value: Orbit <span class="o">(</span>rviz<span class="o">)</span>
+    Saved: ~
+</pre></div>
+</div>
+<p>Lastly, let us modify the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file in the project root directory to include the files we just created during the package installation process. Add the following snippet to <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file preferrably above the <code class="docutils literal notranslate"><span class="pre">if(BUILD_TESTING)</span></code> line:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>install<span class="o">(</span>
+  DIRECTORY src launch rviz
+  DESTINATION share/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+<p>We are now ready to build our project using colcon. Navigate to the project root and execute the following commands.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
+. install/setup.bash
+</pre></div>
+</div>
+<p>After a successful build, execute the following commands to install the ROS2 package and launch our project.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 launch sam_bot_description display.launch.py
+</pre></div>
+</div>
+<p>ROS2 should now launch a robot publisher node and start up RVIZ using our URDF. We’ll be taking a look at our robot using RVIZ in the next section.</p>
+</div>
+<div class="section" id="visualization-using-rviz">
+<h2>Visualization using RVIZ<a class="headerlink" href="#visualization-using-rviz" title="Permalink to this headline">¶</a></h2>
+<p>RVIZ is a robot visualization tool that allows us to see a 3D model of our robot using its URDF. Upon a successful launch using the commands in the previous section, RVIZ should now be visible on your screen and should look like the image below. You may need to move around and manipulate the view to get a good look at your robot.</p>
+<img alt="../../_images/base-bot_3.png" src="../../_images/base-bot_3.png" />
+<p>As you can see, we have successfully created a simple differential drive robot and visualized it in RVIz. It is not necessary to visualize your robot in RVIz, but it’s a good step in order to see if you have properly defined your URDF. This helps you ensure that the robot state publisher is publishing the correct transformations.</p>
+<p>You may have noticed that another window was launched - this is a GUI for the joint state publisher. The joint state publisher is another ROS2 package which publishes the state for our non-fixed joints. You can manipulate this publisher through the small GUI and the new pose of the joints will be reflected in RVIz. Sliding the bars for any of the two wheels will rotate these joints. You can see this in action by viewing RVIZ as you sweep the sliders in the Joint State Publisher GUI.</p>
+<img alt="../../_images/base-bot_4.png" src="../../_images/base-bot_4.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We won’t be interacting much with this package for Nav2, but if you would like to know more about the joint state publisher, feel free to have a look at the official <a class="reference external" href="http://wiki.ros.org/joint_state_publisher">Joint State Publisher Documentation</a>.</p>
+</div>
+<p>At this point, you may already decide to stop with this tutorial since we have already achieved our objective of creating a URDF for a simple differential drive robot. The robot state publisher is now publishing the transforms derived from the URDF. These transforms can now be used by other packages (such as Nav2) to get information regarding the shape and structure of your robot. However, to properly use this URDF in a simulation, we need physical properties so that the robot reacts to physical environments like a real robot would. The visualization fields are only for visualization, not collision, so your robot will drive straight through obstacles. We’ll get into adding these properties in our URDF in the next section.</p>
+</div>
+<div class="section" id="adding-physical-properties">
+<h2>Adding Physical Properties<a class="headerlink" href="#adding-physical-properties" title="Permalink to this headline">¶</a></h2>
+<p>As an additional section to this guide, we will be modifying our current URDF to include some of our robot’s kinematic properties. This information may be used by physics simulators such as Gazebo to model and simulate how our robot will act in the virtual environment.</p>
+<p>Let us first define macros containing the inertial properties of the geometric primitives we used in our project. Place the snippet below after our constants section in the URDF:</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Define intertial property macros  --&gt;</span>
+  <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;box_inertia&quot;</span> <span class="na">params=</span><span class="s">&quot;m w h d&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;inertial&gt;</span>
+      <span class="nt">&lt;mass</span> <span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;inertia</span> <span class="na">ixx=</span><span class="s">&quot;${(m/12) * (h*h + d*d)}&quot;</span> <span class="na">ixy=</span><span class="s">&quot;0.0&quot;</span> <span class="na">ixz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">iyy=</span><span class="s">&quot;${(m/12) * (w*w + d*d)}&quot;</span> <span class="na">iyz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">izz=</span><span class="s">&quot;${(m/12) * (w*w + h*h)}&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/inertial&gt;</span>
+  <span class="nt">&lt;/xacro:macro&gt;</span>
+
+  <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;cylinder_inertia&quot;</span> <span class="na">params=</span><span class="s">&quot;m r h&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;inertial&gt;</span>
+      <span class="nt">&lt;mass</span> <span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;inertia</span> <span class="na">ixx=</span><span class="s">&quot;${(m/12) * (3*r*r + h*h)}&quot;</span> <span class="na">ixy =</span> <span class="s">&quot;0&quot;</span> <span class="na">ixz =</span> <span class="s">&quot;0&quot;</span> <span class="na">iyy=</span><span class="s">&quot;${(m/12) * (3*r*r + h*h)}&quot;</span> <span class="na">iyz =</span> <span class="s">&quot;0&quot;</span> <span class="na">izz=</span><span class="s">&quot;${(m/2) * (r*r)}&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/inertial&gt;</span>
+  <span class="nt">&lt;/xacro:macro&gt;</span>
+
+  <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;sphere_inertia&quot;</span> <span class="na">params=</span><span class="s">&quot;m r&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;inertial&gt;</span>
+      <span class="nt">&lt;mass</span> <span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;inertia</span> <span class="na">ixx=</span><span class="s">&quot;${(2/5) * m * (r*r)}&quot;</span> <span class="na">ixy=</span><span class="s">&quot;0.0&quot;</span> <span class="na">ixz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">iyy=</span><span class="s">&quot;${(2/5) * m * (r*r)}&quot;</span> <span class="na">iyz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">izz=</span><span class="s">&quot;${(2/5) * m * (r*r)}&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/inertial&gt;</span>
+  <span class="nt">&lt;/xacro:macro&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Let us start by adding collision areas to our <code class="docutils literal notranslate"><span class="pre">base_link</span></code> using the <code class="docutils literal notranslate"><span class="pre">&lt;collision&gt;</span></code> tag. We will also be using the box_inertia macro we defined before to add some inertial properties to our <code class="docutils literal notranslate"><span class="pre">base_link</span></code>. Include the following code snippet within <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">name=&quot;base_link&quot;&gt;</span></code> tag of base_link in our URDF.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>50
+51
+52
+53
+54
+55
+56</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="nt">&lt;collision&gt;</span>
+      <span class="nt">&lt;geometry&gt;</span>
+        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;${base_length} ${base_width} ${base_height}&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/geometry&gt;</span>
+    <span class="nt">&lt;/collision&gt;</span>
+
+    <span class="nt">&lt;xacro:box_inertia</span> <span class="na">m=</span><span class="s">&quot;15&quot;</span> <span class="na">w=</span><span class="s">&quot;${base_width}&quot;</span> <span class="na">d=</span><span class="s">&quot;${base_length}&quot;</span> <span class="na">h=</span><span class="s">&quot;${base_height}&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Next, let us do the same for our wheel macros. Include the following code snippet within the <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">name=&quot;${prefix}_link&quot;&gt;</span></code> tag of our wheel macros in our URDF.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>81
+82
+83
+84
+85
+86
+87
+88</pre></div></td><td class="code"><div class="highlight"><pre><span></span>      <span class="nt">&lt;collision&gt;</span>
+        <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 0&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;geometry&gt;</span>
+          <span class="nt">&lt;cylinder</span> <span class="na">radius=</span><span class="s">&quot;${wheel_radius}&quot;</span> <span class="na">length=</span><span class="s">&quot;${wheel_width}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/geometry&gt;</span>
+      <span class="nt">&lt;/collision&gt;</span>
+
+      <span class="nt">&lt;xacro:cylinder_inertia</span> <span class="na">m=</span><span class="s">&quot;0.5&quot;</span> <span class="na">r=</span><span class="s">&quot;${wheel_radius}&quot;</span> <span class="na">h=</span><span class="s">&quot;${wheel_width}&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Lastly, let us add the similar properties to our spherical caster wheels. Include the following in the <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">name=&quot;front_caster&quot;&gt;</span></code> tag of our caster wheel in the URDF.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>113
+114
+115
+116
+117
+118
+119
+120</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="nt">&lt;collision&gt;</span>
+      <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;geometry&gt;</span>
+        <span class="nt">&lt;sphere</span> <span class="na">radius=</span><span class="s">&quot;${-(wheel_radius+wheel_zoff-(base_height/2))}&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/geometry&gt;</span>
+    <span class="nt">&lt;/collision&gt;</span>
+
+    <span class="nt">&lt;xacro:sphere_inertia</span> <span class="na">m=</span><span class="s">&quot;0.5&quot;</span> <span class="na">r=</span><span class="s">&quot;${-(wheel_radius+wheel_zoff-(base_height/2))}&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We did not add any inertial or collision properties to our <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> link since this is a virtual and non-physical link.</p>
+</div>
+<p>Build your project and then launch RViz using the same commands in the previous section.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
+. install/setup.bash
+ros2 launch sam_bot_description display.launch.py
+</pre></div>
+</div>
+<p>You can verify whether you have properly set up the collision areas by enabling <code class="docutils literal notranslate"><span class="pre">Collision</span> <span class="pre">Enabled</span></code> under <code class="docutils literal notranslate"><span class="pre">RobotModel</span></code> on the left pane (it may be easier to see if you also turn off <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Enabled</span></code>). For this tutorial we defined a collision area which is similar to our visual properties. Note that this may not always be the case since you may opt for simpler collision areas based on how your robot looks.</p>
+<img alt="../../_images/base-bot_5.png" src="../../_images/base-bot_5.png" />
+<p>For now, we will have to stop here since we will need to set up a lot more components to actually start simulating our robot in Gazebo. We will be coming back to this project during the course of these setup guides, and we will eventually see our robot move in a virtual environment once we get to the simulation sections. The major components that are missing from this work are the simulation plugins required to mimic your robot controllers. We will introduce those and add them to this UDRF in the appropriate section.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>And that’s it. In this tutorial, you have successfully created a URDF for a simple differential drive robot. You have also set up a ROS2 project that launches a robot publisher node, which then uses your URDF to publish the robot’s transforms. We have also used RViz to visualize our robot to verify whether our URDF is correct. Lastly, we have added in some physical properties to our URDF in order to prepare it for simulation.</p>
+<p>Feel free to use this tutorial as a template for your own robot. Remember that your main goal is to publish the correct transforms from your base_link up to your sensor_frames. Once these have been setup, then you may proceed to our other setup guides.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+
+<script type="text/javascript" src="../../_static/tcs_theme.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+</body>
+</html>
