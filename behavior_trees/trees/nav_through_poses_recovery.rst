@@ -29,11 +29,11 @@ This ensures that the navigation system will be very responsive immediately when
 If these contextual recoveries fail, this behavior tree enters the recovery subtree.
 This subtree is reserved for system-level failures to help resolve issues like the robot being stuck or in a bad spot.
 This subtree also has the ``GoalUpdated`` BT node it ticks every iteration to ensure responsiveness of new goals.
-Next, the recovery subtree will, in order, execute costmap clearing operations, spinning, waiting, and backing up.
-After each attempt, the main navigation subtree will be reattempted. 
+Next, the recovery subtree will the recoveries: costmap clearing operations, spinning, waiting, and backing up.
+After each of the recoveries in the subtree, the main navigation subtree will be reattempted. 
 If it continues to fail, the next recovery in the recovery subtree is ticked.
 
-While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, and ``GoalCheckerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``GridBased`` and ``FollowPath``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system. It may be advisable to instead create different subtree contexts with specified algorithms in unique situations, this can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic.
+While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, and ``GoalCheckerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``GridBased`` and ``FollowPath``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.
 
 .. code-block:: xml
 
