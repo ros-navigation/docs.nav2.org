@@ -3,6 +3,13 @@
 Behavior Tree XMLs
 ##################
 
+.. toctree::
+   :maxdepth: 1
+
+   trees/nav_to_pose_recovery.rst
+   trees/nav_through_poses_recovery.rst
+   trees/follow_point.rst
+
 Nav2 is an incredibly reconfigurable project. It allows users to set many different plugin types, across behavior trees, core algorithms, status checkers, and more.
 This section highlights some of the example behavior tree xml files provided by default in the project to do interesting tasks.
 It should be noted that these can be modified for your specific application, or used as a guide to building your own application-specific behavior tree.
@@ -38,10 +45,3 @@ This tree contains:
 - No subtrees for other behaviors like docking, following, etc.
 
 All of this, and more, can be set and configured for your customized navigation logic in Nav2.
-
-.. toctree::
-   :maxdepth: 1
-
-   trees/nav_to_pose_recovery.rst
-   trees/nav_through_poses_recovery.rst
-   trees/follow_point.rst
