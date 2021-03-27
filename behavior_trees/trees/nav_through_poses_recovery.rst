@@ -14,7 +14,7 @@ In this behavior tree, we attempt to retry the entire navigation task 6 times be
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.
 
 In nominal execution, this will replan the path at every 3 seconds and pass that path onto the controller, similar to the behavior tree in :ref:`behavior_trees`.
-The planner though is now ``ComputePathToPoses``taking a vector, ``goals``, rather than a single pose ``goal`` to plan to.
+The planner though is now ``ComputePathThroughPoses`` taking a vector, ``goals``, rather than a single pose ``goal`` to plan to.
 The ``RemovePassedGoals`` node is used to cull out ``goals`` that the robot has passed on its path. 
 In this case, it is set to remove a pose from the poses when the robot is within ``0.5`` of the goal and it is the next goal in the list.
 This is implemented such that replanning can be computed after the robot has passed by some of the intermediary poses and not continue to try to replan through them in the future.
