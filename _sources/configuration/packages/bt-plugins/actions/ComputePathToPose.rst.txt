@@ -12,22 +12,22 @@ Input Ports
 -----------
 :start:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A  
-  ============== =======
+  ===================================== =======
+  Type                                  Default
+  ------------------------------------- -------
+  geometry_msgs::msg::PoseStamped         N/A  
+  ===================================== =======
 
   Description
     	Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
     	
 :goal:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A  
-  ============== =======
+  ===================================== =======
+  Type                                  Default
+  ------------------------------------- -------
+  geometry_msgs::msg::PoseStamped         N/A  
+  ===================================== =======
 
   Description
     	Goal pose. Takes in a blackboard variable, e.g. "{goal}".
@@ -71,11 +71,11 @@ Output Ports
 
 :path:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         N/A  
-  ============== =======
+  ========================== =======
+  Type                       Default
+  -------------------------- -------
+  nav_msgs::msg::Path         N/A  
+  ========================== =======
 
   Description
     	Path created by action server. Takes in a blackboard variable, e.g. "{path}".

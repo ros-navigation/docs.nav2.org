@@ -389,6 +389,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/PlannerSelector.html">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -526,6 +529,12 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../behavior_trees/index.html">Behavior Tree XMLs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_recovery.html">Navigate To Pose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Navigation Plugins</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-filters">Costmap Filters</a></li>
@@ -559,6 +568,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Foxy to Galactic</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#navigatetopose-action-feedback-updates">NavigateToPose Action Feedback updates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigatethroughposes-and-computepaththroughposes-actions-added">NavigateThroughPoses and ComputePathThroughPoses Actions Added</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#computepathtopose-bt-node-interface-changes">ComputePathToPose BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#computepathtopose-action-interface-changes">ComputePathToPose Action Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
@@ -695,6 +705,12 @@
 <h2>NavigateToPose BT-node Interface Changes<a class="headerlink" href="#navigatetopose-bt-node-interface-changes" title="Permalink to this headline">¶</a></h2>
 <p>The NavigateToPose input port has been changed to PoseStamped instead of Point and Quaternion.</p>
 <p>See <a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateToPose.html#bt-navigate-to-pose-action"><span class="std std-ref">NavigateToPose</span></a> for more information.</p>
+</div>
+<div class="section" id="navigatethroughposes-and-computepaththroughposes-actions-added">
+<h2>NavigateThroughPoses and ComputePathThroughPoses Actions Added<a class="headerlink" href="#navigatethroughposes-and-computepaththroughposes-actions-added" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> action has been added analog to the <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code>. Rather than going to a single position, this Action will allow a user to specify a number of hard intermediary pose constraints between the start and final pose to plan through. The new <code class="docutils literal notranslate"><span class="pre">ComputePathThroughPoses</span></code> action has been added to the <code class="docutils literal notranslate"><span class="pre">planner_server</span></code> to process these requests through <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">goal_poses</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ComputePathThroughPoses</span></code> action server will take in a set of <code class="docutils literal notranslate"><span class="pre">N</span></code> goals to achieve, plan through each pose and concatenate the output path for use in navigation. The controller and navigator know nothing about the semantics of the generated path, so the robot will not stop or slow on approach to these goals. It will rather continue through each pose as it were any other point on the path continuously. When paired with the <code class="docutils literal notranslate"><span class="pre">SmacPlanner</span></code>, this feature can be used to generate <strong>completely kinematically feasible trajectories through pose constraints</strong>.</p>
+<p>If you wish to stop at each goal pose, consider using the waypoint follower instead, which will stop and allow a user to optionally execute a task plugin at each pose.</p>
 </div>
 <div class="section" id="computepathtopose-bt-node-interface-changes">
 <h2>ComputePathToPose BT-node Interface Changes<a class="headerlink" href="#computepathtopose-bt-node-interface-changes" title="Permalink to this headline">¶</a></h2>
@@ -895,6 +911,9 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2236">SingleTrigger</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2249">PlannerSelector</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2266">ControllerSelector</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">NavigateThroughPoses</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">RemovePassedGoals</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">ComputePathThroughPoses</a></li>
 </ul>
 </div>
 </div>

@@ -1,0 +1,51 @@
+.. _bt_navigate_through_poses_action:
+
+NavigateThroughPoses
+====================
+
+Invokes the NavigateThroughPoses ROS 2 action server, which is implemented by the bt_navigator_ module.
+
+.. _bt_navigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator
+
+Input Ports
+-----------
+
+:goals:
+
+  ============================================= =======
+  Type                                          Default
+  --------------------------------------------- -------
+  vector<geometry_msgs::msg::PoseStamped>         N/A  
+  ============================================= =======
+
+  Description
+      Goal poses. Takes in a blackboard variable, e.g. "{goals}".
+
+:server_name:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
+
+  Description
+    	Action server name.
+
+:server_timeout:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 10  
+  ====== =======
+
+  Description
+    	Action server timeout (ms).
+
+Example
+-------
+
+.. code-block:: xml
+
+  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10"/>
