@@ -214,3 +214,14 @@ Original GitHub tickets:
 - `NavigateThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
 - `RemovePassedGoals <https://github.com/ros-planning/navigation2/pull/2271>`_
 - `ComputePathThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
+
+sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change
+********************************************************
+Due to deprecation of `sensor_msgs/PointCloud <https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud.html>`_ the topics which were publishing sensor_msgs/PointCloud are converted to sensor_msgs/PointCloud2. The details on these topics and their respective information are listed below.
+
+- ``clearing_endpoints`` topic in ``voxel_layer`` plugin of ``nav2_costmap_2d`` package
+- ``voxel_marked_cloud`` and ``voxel_unknown_cloud`` topic in ``costmap_2d_cloud`` node of ``nav2_costmap_2d`` package
+- ``cost_cloud`` topic of ``publisher.cpp`` of ``dwb_core`` package.
+
+These changes were introduced inthis `pull request <https://github.com/ros-planning/navigation2/pull/2263>`_.
+

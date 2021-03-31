@@ -588,6 +588,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#navfn-planner-parameters">NavFn Planner Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-behavior-tree-nodes">New Behavior Tree Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change</a></li>
 </ul>
 </li>
 </ul>
@@ -915,6 +916,16 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">RemovePassedGoals</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">ComputePathThroughPoses</a></li>
 </ul>
+</div>
+<div class="section" id="sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">
+<h2>sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change<a class="headerlink" href="#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change" title="Permalink to this headline">¶</a></h2>
+<p>Due to deprecation of <a class="reference external" href="https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud.html">sensor_msgs/PointCloud</a> the topics which were publishing sensor_msgs/PointCloud are converted to sensor_msgs/PointCloud2. The details on these topics and their respective information are listed below.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">clearing_endpoints</span></code> topic in <code class="docutils literal notranslate"><span class="pre">voxel_layer</span></code> plugin of <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> package</li>
+<li><code class="docutils literal notranslate"><span class="pre">voxel_marked_cloud</span></code> and <code class="docutils literal notranslate"><span class="pre">voxel_unknown_cloud</span></code> topic in <code class="docutils literal notranslate"><span class="pre">costmap_2d_cloud</span></code> node of <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> package</li>
+<li><code class="docutils literal notranslate"><span class="pre">cost_cloud</span></code> topic of <code class="docutils literal notranslate"><span class="pre">publisher.cpp</span></code> of <code class="docutils literal notranslate"><span class="pre">dwb_core</span></code> package.</li>
+</ul>
+<p>These changes were introduced inthis <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2263">pull request</a>.</p>
 </div>
 </div>
 
