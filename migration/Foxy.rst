@@ -227,6 +227,5 @@ These changes were introduced inthis `pull request <https://github.com/ros-plann
 
 ControllerServer New Parameter failure_tolerance
 ************************************************
-A new parameter :code:`failure_tolerance` was added to the Controller Server for tolerating controller plugin exceptions without failing immediatly.  See :ref:`configuring_controller_server` for description.
+A new parameter :code:`failure_tolerance` was added to the Controller Server for tolerating controller plugin exceptions without failing immediately. It is analogous to ``controller_patience`` in ROS(1) Nav. See :ref:`configuring_controller_server` for description.
 This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2264>`_.
-
