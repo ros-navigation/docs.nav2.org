@@ -589,6 +589,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-behavior-tree-nodes">New Behavior Tree Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllerserver-new-parameter-failure-tolerance">ControllerServer New Parameter failure_tolerance</a></li>
 </ul>
 </li>
 </ul>
@@ -926,6 +927,11 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <li><code class="docutils literal notranslate"><span class="pre">cost_cloud</span></code> topic of <code class="docutils literal notranslate"><span class="pre">publisher.cpp</span></code> of <code class="docutils literal notranslate"><span class="pre">dwb_core</span></code> package.</li>
 </ul>
 <p>These changes were introduced inthis <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2263">pull request</a>.</p>
+</div>
+<div class="section" id="controllerserver-new-parameter-failure-tolerance">
+<h2>ControllerServer New Parameter failure_tolerance<a class="headerlink" href="#controllerserver-new-parameter-failure-tolerance" title="Permalink to this headline">¶</a></h2>
+<p>A new parameter <code class="code docutils literal notranslate"><span class="pre">failure_tolerance</span></code> was added to the Controller Server for tolerating controller plugin exceptions without failing immediately. It is analogous to <code class="docutils literal notranslate"><span class="pre">controller_patience</span></code> in ROS(1) Nav. See <a class="reference internal" href="../configuration/packages/configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a> for description.
+This change was introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2264">pull request</a>.</p>
 </div>
 </div>
 

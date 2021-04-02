@@ -589,6 +589,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#new-behavior-tree-nodes">New Behavior Tree Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#controllerserver-new-parameter-failure-tolerance">ControllerServer New Parameter failure_tolerance</a></li>
 </ul>
 </li>
 </ul>
@@ -892,8 +893,31 @@ Odometry values below this threshold (in rad/s) will be set to 0.0.</p>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">speed_limit_topic:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2">failure_tolerance:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">The maximum duration in seconds the called controller plugin can fail (i.e. the <code class="code docutils literal notranslate"><span class="pre">computeVelocityCommands</span></code> function of the plugin throwing an exception) before the <code class="code docutils literal notranslate"><span class="pre">nav2_msgs::action::FollowPath</span></code> action fails.
+Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any positive value for the appropriate timeout.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">speed_limit_topic:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -964,6 +988,7 @@ Odometry values below this threshold (in rad/s) will be set to 0.0.</p>
     <span class="nt">min_x_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
     <span class="nt">min_y_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
     <span class="nt">min_theta_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
+    <span class="nt">failure_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.3</span>
     <span class="nt">progress_checker_plugin</span><span class="p">:</span> <span class="s">&quot;progress_checker&quot;</span>
     <span class="nt">goal_checker_plugin</span><span class="p">:</span> <span class="s">&quot;goal_checker&quot;</span>
     <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
