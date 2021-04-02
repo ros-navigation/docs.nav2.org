@@ -225,3 +225,8 @@ Due to deprecation of `sensor_msgs/PointCloud <https://docs.ros2.org/foxy/api/se
 
 These changes were introduced inthis `pull request <https://github.com/ros-planning/navigation2/pull/2263>`_.
 
+ControllerServer New Parameter failure_tolerance
+************************************************
+A new parameter :code:`failure_tolerance` was added to the Controller Server for tolerating controller plugin exceptions without failing immediatly.  See :ref:`configuring_controller_server` for description.
+This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2264>`_.
+
