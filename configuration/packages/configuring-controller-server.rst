@@ -144,7 +144,7 @@ Parameters
 
   Description
     The maximum duration in seconds the called controller plugin can fail (i.e. the :code:`computeVelocityCommands` function of the plugin throwing an exception) before the :code:`nav2_msgs::action::FollowPath` action fails.
-    Setting it to the special value of -1.0 makes it infinite, otherwise it should be set strictly superior to 0.0 to have an effect.
+    Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any positive value for the appropriate timeout.
 
 :speed_limit_topic:
 
