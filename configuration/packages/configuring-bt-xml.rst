@@ -11,6 +11,8 @@ Check this introduction_ to learn how behavior trees work and the difference bet
 
 .. _introduction: https://www.behaviortree.dev/bt_basics/
 
+Note: ``SingleTrigger`` BT Node is not listed below because it contains no parameters.
+
 Action Plugins
 **************
 
@@ -24,8 +26,15 @@ Action Plugins
   bt-plugins/actions/FollowPath.rst
   bt-plugins/actions/NavigateToPose.rst
   bt-plugins/actions/ClearEntireCostmap.rst
+  bt-plugins/actions/ClearCostmapExceptRegion.rst
+  bt-plugins/actions/ClearCostmapAroundRobot.rst
   bt-plugins/actions/ReinitializeGlobalLocalization.rst
   bt-plugins/actions/TruncatePath.rst
+  bt-plugins/actions/PlannerSelector.rst
+  bt-plugins/actions/ControllerSelector.rst
+  bt-plugins/actions/NavigateThroughPoses.rst
+  bt-plugins/actions/ComputePathThroughPoses.rst
+  bt-plugins/actions/RemovePassedGoals.rst
 
 Condition Plugins
 *****************

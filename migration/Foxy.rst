@@ -5,12 +5,45 @@ Foxy to Galactic
 
 Moving from ROS 2 Foxy to Galactic, a number of stability improvements were added that we will not specifically address here.
 
+NavigateToPose Action Feedback updates
+****************************************
+
+The NavigateToPose action feedback has two improvements:
+
+- ``distance_remaining`` now integrates path poses to report accurate distance remaining to go. Previously, this field reported the euclidean distance between the current pose and the goal pose.
+- Addition of ``estimated_time_remaining`` field. This field reports the estimated time remaining by dividing the remaining distance by the current speed.
+
 NavigateToPose BT-node Interface Changes
 ****************************************
 
 The NavigateToPose input port has been changed to PoseStamped instead of Point and Quaternion.
 
 See :ref:`bt_navigate_to_pose_action` for more information.
+
+
+NavigateThroughPoses and ComputePathThroughPoses Actions Added
+**************************************************************
+
+The ``NavigateThroughPoses`` action has been added analog to the ``NavigateToPose``. Rather than going to a single position, this Action will allow a user to specify a number of hard intermediary pose constraints between the start and final pose to plan through. The new ``ComputePathThroughPoses`` action has been added to the ``planner_server`` to process these requests through ``N goal_poses``.
+
+The ``ComputePathThroughPoses`` action server will take in a set of ``N`` goals to achieve, plan through each pose and concatenate the output path for use in navigation. The controller and navigator know nothing about the semantics of the generated path, so the robot will not stop or slow on approach to these goals. It will rather continue through each pose as it were any other point on the path continuously. When paired with the ``SmacPlanner``, this feature can be used to generate **completely kinematically feasible trajectories through pose constraints**. 
+
+If you wish to stop at each goal pose, consider using the waypoint follower instead, which will stop and allow a user to optionally execute a task plugin at each pose. 
+
+ComputePathToPose BT-node Interface Changes
+*******************************************
+
+The ``start`` input port has been added to optionally allow the request of a path from ``start`` to ``goal``  instead of from the current position of the robot to ``goal``.
+
+See :ref:`bt_compute_path_to_pose_action` for more information.
+
+ComputePathToPose Action Interface Changes
+*******************************************
+
+- The goal pose field ``pose`` was changed to ``goal``.
+- The PoseStamped field ``start`` has been added.
+- The bool field ``use_start`` has been added.
+These two additional fields have been added to optionally allow, when ``use_start`` is true, the request of a path from ``start`` to ``goal`` instead of from the current position of the robot to ``goal``. Corresponding changes have been done of the Planner Server.
 
 BackUp BT-node Interface Changes
 ********************************
@@ -23,6 +56,13 @@ BackUp Recovery Interface Changes
 ``speed`` in a backup recovery goal should be positive indicating the speed with which to drive backward.
 ``target.x`` in a backup recovery goal should be positive indicating the distance to drive backward.
 In both cases negative values are silently inverted.
+
+Nav2 Controllers and Goal Checker Plugin Interface Changes
+**********************************************************
+
+As of `this PR <https://github.com/ros-planning/navigation2/pull/2247>`_, the ``controller`` plugins will now be given a pointer to the current goal checker in use of the navigation task in ``computeAndPublishVelocity()``. This is geared to enabling controllers to have access to predictive checks for goal completion as well as access to the state information of the goal checker plugin.
+
+The ``goal_checker`` plugins also have the change of including a ``getTolerances()`` method. This method allows a goal checker holder to access the tolerance information of the goal checker to consider at the goal. Each field of the ``pose`` and ``velocity`` represents the maximum allowable error in each dimension for a goal to be considered completed. In the case of a translational tolerance (combined X and Y components), each the X and Y will be populated with the tolerance value because it is the **maximum** tolerance in the dimension (assuming the other has no error). If the goal checker does not contain any tolerances for a dimension, the ``numeric_limits<double> lowest()`` value is utilized in its place.
 
 Groot Support
 *************
@@ -151,3 +191,26 @@ The recovery actions, ``Spin`` and ``BackUp`` were modified to correctly return 
 Default Behavior Tree Changes
 *****************************
 The default behavior tree (BT) ``navigate_w_replanning_and_recovery.xml`` has been updated to allow for replanning in between recoveries. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_. Additionally, an alternative BT ``navigate_w_replanning_and_round_robin_recovery.xml`` was removed due to similarity with the updated default BT.
+
+NavFn Planner Parameters
+************************
+The NavFn Planner has now its 3 parameters reconfigurable at runtime (``tolerance``, ``use_astar`` and ``allow_unknown``). The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2181>`_.
+
+New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes
+*****************************************************************
+The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services ``(local_or_global)_costmap/clear_except_(local_or_global)_costmap`` and ``clear_around_(local_or_global)_costmap`` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a ``reset_distance`` input port. See :ref:`bt_clear_costmap_except_region_action` and :ref:`bt_clear_entire_costmap_around_robot_action` for more.  The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2204>`_.
+
+New Behavior Tree Nodes
+***********************
+A new behavior tree node was added and dynamically loadable at run-time using behavior tree cpp v3.
+See ``nav2_behavior_tree`` for a full listing, or :ref:`plugins` for the current list of behavior tree plugins and their descriptions.
+These plugins are set as default in the ``nav2_bt_navigator`` but may be overridden by the ``bt_plugins`` parameter to include your specific plugins.
+
+Original GitHub tickets:
+
+- `SingleTrigger <https://github.com/ros-planning/navigation2/pull/2236>`_
+- `PlannerSelector <https://github.com/ros-planning/navigation2/pull/2249>`_
+- `ControllerSelector <https://github.com/ros-planning/navigation2/pull/2266>`_
+- `NavigateThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
+- `RemovePassedGoals <https://github.com/ros-planning/navigation2/pull/2271>`_
+- `ComputePathThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
