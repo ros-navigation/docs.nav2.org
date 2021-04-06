@@ -229,3 +229,10 @@ ControllerServer New Parameter failure_tolerance
 ************************************************
 A new parameter :code:`failure_tolerance` was added to the Controller Server for tolerating controller plugin exceptions without failing immediately. It is analogous to ``controller_patience`` in ROS(1) Nav. See :ref:`configuring_controller_server` for description.
 This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2264>`_.
+
+Removed BT XML Launch Configurations
+************************************
+The launch python configurations for CLI setting of the behavior tree XML file has been removed. Instead, you should use the yaml files to set this value. If you, however, have a ``path`` to the yaml file that is inconsistent in a larger deployment, you can use the ``RewrittenYaml`` tool in your parent launch file to remap the default XML paths utilizing the ``get_shared_package_path()`` directory finder (or as you were before in python3).
+
+The use of map subscription QoS launch configuration was also removed, use parameter file. 
+This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2295>`_.

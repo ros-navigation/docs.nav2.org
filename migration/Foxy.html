@@ -590,6 +590,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-behavior-tree-nodes">New Behavior Tree Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#controllerserver-new-parameter-failure-tolerance">ControllerServer New Parameter failure_tolerance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed-bt-xml-launch-configurations">Removed BT XML Launch Configurations</a></li>
 </ul>
 </li>
 </ul>
@@ -932,6 +933,12 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <h2>ControllerServer New Parameter failure_tolerance<a class="headerlink" href="#controllerserver-new-parameter-failure-tolerance" title="Permalink to this headline">¶</a></h2>
 <p>A new parameter <code class="code docutils literal notranslate"><span class="pre">failure_tolerance</span></code> was added to the Controller Server for tolerating controller plugin exceptions without failing immediately. It is analogous to <code class="docutils literal notranslate"><span class="pre">controller_patience</span></code> in ROS(1) Nav. See <a class="reference internal" href="../configuration/packages/configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a> for description.
 This change was introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2264">pull request</a>.</p>
+</div>
+<div class="section" id="removed-bt-xml-launch-configurations">
+<h2>Removed BT XML Launch Configurations<a class="headerlink" href="#removed-bt-xml-launch-configurations" title="Permalink to this headline">¶</a></h2>
+<p>The launch python configurations for CLI setting of the behavior tree XML file has been removed. Instead, you should use the yaml files to set this value. If you, however, have a <code class="docutils literal notranslate"><span class="pre">path</span></code> to the yaml file that is inconsistent in a larger deployment, you can use the <code class="docutils literal notranslate"><span class="pre">RewrittenYaml</span></code> tool in your parent launch file to remap the default XML paths utilizing the <code class="docutils literal notranslate"><span class="pre">get_shared_package_path()</span></code> directory finder (or as you were before in python3).</p>
+<p>The use of map subscription QoS launch configuration was also removed, use parameter file.
+This change was introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2295">pull request</a>.</p>
 </div>
 </div>
 
