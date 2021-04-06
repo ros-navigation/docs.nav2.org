@@ -14,7 +14,7 @@ in the navigation task and provide a way to easily specify complex robot behavio
 Parameters
 **********
 
-:default_bt_xml_filename:
+:default_nav_to_pose_bt_xml:
 
   ====== =======
   Type   Default
@@ -23,7 +23,21 @@ Parameters
   ====== =======
 
   Description
-    Path to the default behavior tree XML description, see :ref:`configuring_behavior_tree_xml` for details on this file.
+    Path to the default behavior tree XML description for ``NavigateToPose``, see :ref:`configuring_behavior_tree_xml` for details on this file.
+    Used to be ``default_bt_xml_filename`` pre-Galactic.
+
+
+:default_nav_through_poses_bt_xml:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A   
+  ====== =======
+
+  Description
+    Path to the default behavior tree XML description for ``NavigateThroughPoses``, see :ref:`configuring_behavior_tree_xml` for details on this file. New to Galactic after ``NavigateThroughPoses`` was added. 
+
 
 :plugin_lib_names:
 
@@ -145,7 +159,29 @@ Parameters
   ====== =======
 
   Description
-    Blackboard variable to use to supply the goal to the behavior tree. Should match ports of BT XML file.
+    Blackboard variable to use to supply the goal to the behavior tree for ``NavigateToPose``. Should match ports of BT XML file.
+
+:path_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "path"
+  ====== =======
+
+  Description
+    Blackboard variable to get the path from the behavior tree for ``NavigateThroughPoses`` feedback. Should match port names of BT XML file.
+
+:goals_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "goals"
+  ====== =======
+
+  Description
+    Blackboard variable to use to supply the goals to the behavior tree for ``NavigateThroughPoses``. Should match ports of BT XML file.
 
 :use_sim_time:
 
@@ -171,7 +207,11 @@ Example
         enable_groot_monitoring: True
         groot_zmq_publisher_port: 1666
         groot_zmq_server_port: 1667
-        bt_xml_filename: replace/with/path/to/bt.xml
+        default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml
+        default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml
+        goal_blackboard_id: goal
+        goals_blackboard_id: goals
+        path_blackboard_id: path
         plugin_lib_names: 
         - nav2_compute_path_to_pose_action_bt_node
         - nav2_follow_path_action_bt_node
