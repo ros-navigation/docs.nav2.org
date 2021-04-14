@@ -12,18 +12,18 @@ Introduction To Nav2 Specific Nodes
 
 There are quite a few custom Nav2 BT nodes that are provided to be used in the Nav2 specific fashion. Some commonly used Nav2 nodes will be described below.
 The full list of custom BT nodes can be found in the `nav2_behavior_tree plugins folder <https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins>`_.
-The `configuration guide <../../configuration/packages/bt-plugins/configuring-bt-xml.html>`_ can also be quite useful.
+The `configuration guide <../../configuration/packages/configuring-bt-xml.html>`_ can also be quite useful.
 
 Action Nodes
 ------------
 
-- ComputePathToPose - ComputePathToPose Action Server Client (Planner Interface)
+* ComputePathToPose - ComputePathToPose Action Server Client (Planner Interface)
 
-- FollowPath - FollowPath Action Server Client (Controller Interface)
+* FollowPath - FollowPath Action Server Client (Controller Interface)
 
-- Spin, Wait, Backup - Recoveries Action Server Client
+* Spin, Wait, Backup - Recoveries Action Server Client
 
-- ClearCostmapService - ClearCostmapService Server Clients
+* ClearCostmapService - ClearCostmapService Server Clients
 
 Upon completion, these action nodes will return ``SUCCESS`` if the action server believes the action has been completed correctly, ``RUNNING`` when still running, and will return ``FAILURE`` otherwise. Note that in the above list,
 the `ClearCostmapService` action node is *not* an action server client, but a service client.
@@ -31,13 +31,13 @@ the `ClearCostmapService` action node is *not* an action server client, but a se
 Condition Nodes
 ---------------
 
-- GoalUpdated - Checks if the goal on the goal topic has been updated
+* GoalUpdated - Checks if the goal on the goal topic has been updated
 
-- GoalReached - Checks if the goal has been reached
+* GoalReached - Checks if the goal has been reached
 
-- InitialPoseReceived - Checks to see if a pose on the intial_pose topic has been recieved
+* InitialPoseReceived - Checks to see if a pose on the intial_pose topic has been recieved
 
-- isBatteryLow - Checks to see if the battery is low by listening on the battery topic
+* isBatteryLow - Checks to see if the battery is low by listening on the battery topic
 
 The above list of condition nodes can be used to probe particular aspects of the system. Typically they will return ``SUCCESS`` is ``TRUE`` and ``FAILURE`` when ``FALSE``.
 The key condition that is used in the default Nav2 BT is ``GoalUpdated`` which is checked asynchronously within particular subtrees. This condition node allows for the behavior described as "If the goal has updated, then we must replan". 
@@ -46,15 +46,15 @@ Condition nodes are typically paired with ReactiveFallback nodes.
 Decorator Nodes
 ---------------
 
-- Distance Controller - Will tick children nodes every time the robot has traveled a certain distance
+* Distance Controller - Will tick children nodes every time the robot has traveled a certain distance
 
-- Rate Controller - Controls the ticking of it's child node at a constant frequency. The tick rate is an exposed port
+* Rate Controller - Controls the ticking of it's child node at a constant frequency. The tick rate is an exposed port
 
-- Goal Updater - Will update the goal of children nodes via ports on the BT
+* Goal Updater - Will update the goal of children nodes via ports on the BT
 
-- Single Trigger - Will only tick it's child node once, and will return ``FAILURE`` for all subsequent ticks
+* Single Trigger - Will only tick it's child node once, and will return ``FAILURE`` for all subsequent ticks
 
-- Speed Controller - Controls the ticking of it's child node at a rate proportional to the robot's speed
+* Speed Controller - Controls the ticking of it's child node at a rate proportional to the robot's speed
 
 Control: PipelineSequence
 -------------------------
@@ -83,7 +83,7 @@ To explain this further, here is an example BT that uses PipelineSequence.
         </BehaviorTree>
     </root>
 
-1. ``Action_A``, ``Action_B``, and ``Action_C`` are all IDLE. 
+1. ``Action_A``, ``Action_B``, and ``Action_C`` are all ``IDLE``. 
 2. When the parent PipelineSequence is first ticked, let's assume ``Action_A`` returns ``RUNNING``. The parent node will now return ``RUNNING`` and no other nodes are ticked.
 
 |
@@ -129,11 +129,11 @@ Control: Recovery
 The Recovery control node has only two children and returns ``SUCCESS`` if and only if the first child returns ``SUCCESS``. 
 If the first child returns ``FAILURE``, the second child will be ticked. This loop will continue until either:
 
-- The first child returns ``SUCCESS`` (which results in ``SUCCESS`` of the parent node)
+* The first child returns ``SUCCESS`` (which results in ``SUCCESS`` of the parent node)
 
-- The second child returns ``FAILURE`` (which results in ``FAILURE`` of the parent node)
+* The second child returns ``FAILURE`` (which results in ``FAILURE`` of the parent node)
 
-- The ``number_of_retries`` input parameter is violated
+* The ``number_of_retries`` input parameter is violated
 
 This node is usually used to link together an action, and a recovery action as the name suggests. The first action will typically be the "main" behavior,
 and the second action will be something to be done in case of ``FAILURE`` of the main behavior. Often, the ticking of the second child action will promote the chance the first action will succeed.
