@@ -120,7 +120,7 @@ To explain this further, here is an example BT that uses PipelineSequence.
 
 | 
 
-Recall that if ``Action_A``, ``Action_B``, or ``Action_C`` returned ``FAILURE`` at any point  of time, the parent would have returned ``FAILURE`` and halted any children as well.
+Recall that if ``Action_A``, ``Action_B``, or ``Action_C`` returned ``FAILURE`` at any point of time, the parent would have returned ``FAILURE`` and halted any children as well.
 
 For additional details regarding the ``PipelineSequence`` please see the `PipelineSequence configuration guide <../../configuration/packages/bt-plugins/controls/PipelineSequence.html>`_.
 

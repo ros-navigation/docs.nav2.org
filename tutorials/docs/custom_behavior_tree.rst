@@ -5,8 +5,7 @@ Creating a Custom Behavior Tree
 
 - `Overview`_
 - `Prerequisites`_
-- `Introduction To Nav2 Specific Nodes`_
-- `Navigate With Replanning and Recovery`_
+- `Navigate To Pose With Replanning and Recovery`_
 - `Navigation Subtree`_
 - `Recovery Subtree`_
 - `Custom Action`_
@@ -21,7 +20,7 @@ and explains the process for customizing this BT.
 
 There are many example behavior trees provided in ``nav2_bt_navigator/behavior_trees``,
 but these sometimes have to be re-configured based on the application of the robot. 
-The following tutorial will walk through the current main default BT ``navigate_w_replanning_and_recovery.xml``
+The following tutorial will walk through the current main default BT ``navigate_to_pose_w_replanning_and_recovery.xml``
 and will show users how to modify this BT in potentially useful ways, using the example of developing a BT that follows a predefined path.
 
 Prerequisites
@@ -39,10 +38,10 @@ Prerequisites
 
 - Become familiar with the custom `Nav2 specific BT nodes <../../behavior_trees/index.html>`_
 
-Navigate With Replanning and Recovery
-=====================================
+Navigate To Pose With Replanning and Recovery
+=============================================
 
-The following section will describe in detail the concept of the main and default BT currently used in Nav2, ``navigate_w_replanning_and_recovery.xml``.
+The following section will describe in detail the concept of the main and default BT currently used in Nav2, ``navigate_to_pose_w_replanning_and_recovery.xml``.
 This behavior tree replans the global path periodically at 1 Hz and it also has recovery actions.
 
 |
@@ -213,7 +212,7 @@ The only differences in the BT subtree of ``ComputePathToPose`` and ``FollowPath
 
 Recovery Subtree
 ================
-The ``Recovery`` subtree is the second big "half" of the Nav2 default ``navigate_w_replanning_and_recovery.xml`` tree.
+The ``Recovery`` subtree is the second big "half" of the Nav2 default ``navigate_to_pose_w_replanning_and_recovery.xml`` tree.
 In short, this subtree is triggered when the ``Navigation`` subtree returns ``FAILURE`` controls the recoveries at the system level (in the case the contextual recoveries in the ``Navigation`` subtree were not sufficient).
                                
 |
@@ -244,8 +243,8 @@ The top most parent, ``ReactiveFallback`` controls the flow between the rest of 
 If at any point the goal gets updated, this subtree will halt all children and return ``SUCCESS``.
 This should look familiar to the contextual recovery portions of the ``Navigation`` subtree. This is a common BT pattern to handle the situation "Unless 'this condition' happens, Do action A".
 
-These condition nodes can be extremely powerful and are typically paired with ``ReactiveFallback``. It can be easy to imagine wrapping this whole ``navigate_w_replanning_and_recovery`` tree
-in a ``ReactiveFallback`` with a ``isBatteryLow`` condition -- meaning the ``navigate_w_replanning_and_recovery`` tree will execute *unless* the battery becomes low (and then entire a different subtree for docking to recharge). 
+These condition nodes can be extremely powerful and are typically paired with ``ReactiveFallback``. It can be easy to imagine wrapping this whole ``navigate_to_pose_w_replanning_and_recovery`` tree
+in a ``ReactiveFallback`` with a ``isBatteryLow`` condition -- meaning the ``navigate_to_pose_w_replanning_and_recovery`` tree will execute *unless* the battery becomes low (and then entire a different subtree for docking to recharge). 
 
 If the goal is never updated, the behavior tree will go on to the ``RoundRobin`` node. These are the default four system-level recoveries in the BT are:
 
