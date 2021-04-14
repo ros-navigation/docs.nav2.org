@@ -66,7 +66,7 @@ To explain this further, here is an example BT that uses PipelineSequence.
 
 |
 
- .. image:: images/control_pipelineSequence.png
+ .. image:: ../images/control_pipelineSequence.png
     :align: center
 
 |                  
@@ -88,7 +88,7 @@ To explain this further, here is an example BT that uses PipelineSequence.
 
 |
 
- .. image:: images/control_pipelineSequence_RUNNING_IDLE_IDLE.png
+ .. image:: ../images/control_pipelineSequence_RUNNING_IDLE_IDLE.png
     :align: center
 
 | 
@@ -97,7 +97,7 @@ To explain this further, here is an example BT that uses PipelineSequence.
 
 |
 
- .. image:: images/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png
+ .. image:: ../images/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png
     :align: center
 
 | 
@@ -106,7 +106,7 @@ To explain this further, here is an example BT that uses PipelineSequence.
 
 |
 
- .. image:: images/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png
+ .. image:: ../images/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png
     :align: center
 
 | 
@@ -115,7 +115,7 @@ To explain this further, here is an example BT that uses PipelineSequence.
 
 |
 
- .. image:: images/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png
+ .. image:: ../images/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png
     :align: center
 
 | 
@@ -140,7 +140,7 @@ and the second action will be something to be done in case of ``FAILURE`` of the
 
 |
 
- .. image:: images/control_recovery_node.png
+ .. image:: ../images/control_recovery_node.png
     :align: center
 
 | 
@@ -170,7 +170,7 @@ Here is an example BT we will use to walk through the concept.
 
 |
 
- .. image:: images/control_round_robin.png
+ .. image:: ../images/control_round_robin.png
     :align: center
 
 |                  
@@ -191,7 +191,7 @@ Here is an example BT we will use to walk through the concept.
 
 |
 
- .. image:: images/control_round_robin_IDLE_IDLE_IDLE.png
+ .. image:: ../images/control_round_robin_IDLE_IDLE_IDLE.png
     :align: center
 
 | 
@@ -201,7 +201,7 @@ In this case, no other children are ticked and the parent node returns ``RUNNING
 
 |
 
- .. image:: images/control_round_robin_RUNNING_IDLE_IDLE.png
+ .. image:: ../images/control_round_robin_RUNNING_IDLE_IDLE.png
     :align: center
 
 | 
@@ -212,7 +212,7 @@ Let's assume ``Action_B`` returns ``RUNNING`` this time. That means the parent R
 
 |
 
- .. image:: images/control_round_robin_FAILURE_RUNNING_IDLE.png
+ .. image:: ../images/control_round_robin_FAILURE_RUNNING_IDLE.png
     :align: center
 
 | 
@@ -222,7 +222,7 @@ The parent node retains this state information, and will tick ``Action_C`` upon 
 
 |
 
- .. image:: images/control_round_robin_FAILURE_SUCCESS_IDLE.png
+ .. image:: ../images/control_round_robin_FAILURE_SUCCESS_IDLE.png
     :align: center
 
 | 
@@ -231,7 +231,7 @@ The parent node retains this state information, and will tick ``Action_C`` upon 
 
 |
 
- .. image:: images/control_round_robin_FAILURE_SUCCESS_RUNNING.png
+ .. image:: ../images/control_round_robin_FAILURE_SUCCESS_RUNNING.png
     :align: center
 
 | 
@@ -241,7 +241,7 @@ The parent node retains this state information, and will tick ``Action_C`` upon 
 
 |
 
- .. image:: images/control_round_robin_RUNNING_IDLE_FAILURE.png
+ .. image:: ../images/control_round_robin_RUNNING_IDLE_FAILURE.png
     :align: center
 
 | 
