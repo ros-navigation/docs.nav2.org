@@ -5,7 +5,7 @@ Behavior Tree XMLs
 
 .. toctree::
    :maxdepth: 1
-
+   nav2_specifc_nodes.rst
    trees/nav_to_pose_recovery.rst
    trees/nav_through_poses_recovery.rst
    trees/follow_point.rst
