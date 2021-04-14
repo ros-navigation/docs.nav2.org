@@ -130,8 +130,8 @@ This happens until the ``number_of_retries`` for the parent ``RecoveryNode`` is 
 Navigation Subtree
 ======================
 
-Now that we have gone over the control flow between the ``Navigation`` subtree and the ``Recovery`` subtree, 
-let's focus on the Navigation subtree.
+Now that we have gone over the control flow between the ``Navigation`` subtree and the ``Recovery`` subtree, let's focus on the Navigation subtree.
+
 |
 
  .. image:: images/custom_behavior_tree/navigation_subtree.png
