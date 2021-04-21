@@ -275,7 +275,7 @@ To enable ``KeepoutFilter`` with same mask for both global and local costmaps, u
 
 .. note::
 
-  All costmap filters should be enabled through a ``filters`` parameter. This is made for separation of plugins and filters work. For keepout filter this prevents the keepout boundaries from inflation as obstacles.
+  All costmap filters should be enabled through a ``filters`` parameter -- though it is technically possible to include in the layered costmap itself. This is separated from the layer plugins to prevent interference in the layers, particularly the  inflation layer.
 
 4. Run Nav2 stack
 -----------------
