@@ -48,7 +48,8 @@ Example
       global_costmap:
         ros__parameters:
           ...
-          plugins: ["static_layer", "obstacle_layer", "inflation_layer", "keepout_filter"]
+          plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+          filters: ["keepout_filter"]
           ...
           keepout_filter:
             plugin: "nav2_costmap_2d::KeepoutFilter"
@@ -60,7 +61,8 @@ Example
       local_costmap:
         ros__parameters:
           ...
-          plugins: ["voxel_layer", "inflation_layer", "keepout_filter"]
+          plugins: ["voxel_layer", "inflation_layer"]
+          filters: ["keepout_filter"]
           ...
           keepout_filter:
             plugin: "nav2_costmap_2d::KeepoutFilter"

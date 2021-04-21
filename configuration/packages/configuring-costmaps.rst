@@ -295,6 +295,33 @@ Costmap2D ROS Parameters
               plugin: "nav2_costmap_2d::InflationLayer"
     ..
 
+:filters:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  vector<string> {}
+  ============== =======
+
+  Description
+    List of mapped costmap filter names for parameter namespaces and names.
+
+  Note
+    Actually, costmap filters are also loadable plugins. The separation is made to avoid plugins and filters work interferences. As well as for common plugins, each costmap filter namespace defined in this list needs to have a :code:`plugin` parameter defining the type of filter plugin to be loaded in the namespace.
+
+    Example:
+
+    .. code-block:: yaml
+
+        local_costmap:
+          ros__parameters:
+            filters: ["keepout_filter", "speed_filter"]
+            keepout_filter:
+              plugin: "nav2_costmap_2d::KeepoutFilter"
+            speed_filter:
+              plugin: "nav2_costmap_2d::SpeedFilter"
+    ..
+
 Default Plugins
 ***************
 
