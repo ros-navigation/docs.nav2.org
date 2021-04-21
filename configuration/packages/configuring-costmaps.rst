@@ -307,7 +307,7 @@ Costmap2D ROS Parameters
     List of mapped costmap filter names for parameter namespaces and names.
 
   Note
-    Actually, costmap filters are also loadable plugins. The separation is made to avoid plugins and filters work interferences. As well as for common plugins, each costmap filter namespace defined in this list needs to have a :code:`plugin` parameter defining the type of filter plugin to be loaded in the namespace.
+    Costmap filters are also loadable plugins just as ordinary costmap layers. This separation is made to avoid plugin and filter interference and places these filters on top of the combined layered costmap. As  with plugins, each costmap filter namespace defined in this list needs to have a :code:`plugin` parameter defining the type of filter plugin to be loaded in the namespace.
 
     Example:
 
