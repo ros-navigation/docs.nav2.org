@@ -913,7 +913,8 @@ $ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_fil
   global_costmap:
     ros__parameters:
       ...
-      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;inflation_layer&quot;, &quot;keepout_filter&quot;]
+      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;inflation_layer&quot;]
+      filters: [&quot;keepout_filter&quot;]
       ...
       keepout_filter:
         plugin: &quot;nav2_costmap_2d::KeepoutFilter&quot;
@@ -924,7 +925,8 @@ local_costmap:
   local_costmap:
     ros__parameters:
       ...
-      plugins: [&quot;voxel_layer&quot;, &quot;inflation_layer&quot;, &quot;keepout_filter&quot;]
+      plugins: [&quot;voxel_layer&quot;, &quot;inflation_layer&quot;]
+      filters: [&quot;keepout_filter&quot;]
       ...
       keepout_filter:
         plugin: &quot;nav2_costmap_2d::KeepoutFilter&quot;
@@ -934,7 +936,7 @@ local_costmap:
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In this example <code class="docutils literal notranslate"><span class="pre">keepout_filter</span></code> goes after the <code class="docutils literal notranslate"><span class="pre">inflation_layer</span></code> so the keepout boundaries aren’t inflated as obstacles, although this is not an obligatory requirement.</p>
+<p class="last">All costmap filters should be enabled through a <code class="docutils literal notranslate"><span class="pre">filters</span></code> parameter – though it is technically possible to include in the layered costmap itself. This is separated from the layer plugins to prevent interference in the layers, particularly the  inflation layer.</p>
 </div>
 </div>
 <div class="section" id="run-nav2-stack">

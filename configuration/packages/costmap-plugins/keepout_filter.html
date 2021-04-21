@@ -777,7 +777,8 @@
   <span class="nt">global_costmap</span><span class="p">:</span>
     <span class="nt">ros__parameters</span><span class="p">:</span>
       <span class="l l-Scalar l-Scalar-Plain">...</span>
-      <span class="l l-Scalar l-Scalar-Plain">plugins</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;keepout_filter&quot;</span><span class="p p-Indicator">]</span>
+      <span class="l l-Scalar l-Scalar-Plain">plugins</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
+      <span class="nt">filters</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;keepout_filter&quot;</span><span class="p p-Indicator">]</span>
       <span class="l l-Scalar l-Scalar-Plain">...</span>
       <span class="nt">keepout_filter</span><span class="p">:</span>
         <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::KeepoutFilter&quot;</span>
@@ -789,7 +790,8 @@
   <span class="nt">local_costmap</span><span class="p">:</span>
     <span class="nt">ros__parameters</span><span class="p">:</span>
       <span class="l l-Scalar l-Scalar-Plain">...</span>
-      <span class="l l-Scalar l-Scalar-Plain">plugins</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;keepout_filter&quot;</span><span class="p p-Indicator">]</span>
+      <span class="l l-Scalar l-Scalar-Plain">plugins</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
+      <span class="nt">filters</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;keepout_filter&quot;</span><span class="p p-Indicator">]</span>
       <span class="l l-Scalar l-Scalar-Plain">...</span>
       <span class="nt">keepout_filter</span><span class="p">:</span>
         <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::KeepoutFilter&quot;</span>

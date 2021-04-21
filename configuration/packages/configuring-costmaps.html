@@ -1213,7 +1213,7 @@ It is used in the planner and controller servers for creating the space to check
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">List of mapped plugin names for parameter namespaces and names.</p>
 </dd>
@@ -1229,6 +1229,40 @@ It is used in the planner and controller servers for creating the space to check
       <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::VoxelLayer&quot;</span>
     <span class="nt">inflation_layer</span><span class="p">:</span>
       <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">filters:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>vector&lt;string&gt;</td>
+<td>{}</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">List of mapped costmap filter names for parameter namespaces and names.</p>
+</dd>
+<dt>Note</dt>
+<dd><p class="first">Costmap filters are also loadable plugins just as ordinary costmap layers. This separation is made to avoid plugin and filter interference and places these filters on top of the combined layered costmap. As  with plugins, each costmap filter namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of filter plugin to be loaded in the namespace.</p>
+<p>Example:</p>
+<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">local_costmap</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">filters</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;keepout_filter&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;speed_filter&quot;</span><span class="p p-Indicator">]</span>
+    <span class="nt">keepout_filter</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::KeepoutFilter&quot;</span>
+    <span class="nt">speed_filter</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::SpeedFilter&quot;</span>
 </pre></div>
 </div>
 </dd>

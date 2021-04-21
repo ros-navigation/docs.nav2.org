@@ -934,7 +934,8 @@ $ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_fil
   global_costmap:
     ros__parameters:
       ...
-      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;inflation_layer&quot;, &quot;speed_filter&quot;]
+      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;inflation_layer&quot;]
+      filters: [&quot;speed_filter&quot;]
       ...
       speed_filter:
         plugin: &quot;nav2_costmap_2d::SpeedFilter&quot;
