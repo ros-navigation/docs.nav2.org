@@ -36,7 +36,7 @@ Input Ports
 
 
 Output Ports
------------
+------------
 
 :selected_goal_checker:
 
