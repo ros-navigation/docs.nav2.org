@@ -55,4 +55,4 @@ Example
 
 .. code-block:: xml
 
-  <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="SimpleGoalChecker" topic_name="goal_checker_selector"/>
+  <GoalCheckerSelector selected_goal_checker="{selected_goal_checker}" default_goal_checker="precise_goal_checker" topic_name="goal_checker_selector"/>

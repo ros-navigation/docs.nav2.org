@@ -70,4 +70,4 @@ Example
 
 .. code-block:: xml
 
-    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="SimpleGoalChecker" server_name="FollowPath" server_timeout="10"/>
+    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10"/>

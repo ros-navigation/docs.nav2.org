@@ -54,6 +54,35 @@ As of `this PR <https://github.com/ros-planning/navigation2/pull/2247>`_, the ``
 
 The ``goal_checker`` plugins also have the change of including a ``getTolerances()`` method. This method allows a goal checker holder to access the tolerance information of the goal checker to consider at the goal. Each field of the ``pose`` and ``velocity`` represents the maximum allowable error in each dimension for a goal to be considered completed. In the case of a translational tolerance (combined X and Y components), each the X and Y will be populated with the tolerance value because it is the **maximum** tolerance in the dimension (assuming the other has no error). If the goal checker does not contain any tolerances for a dimension, the ``numeric_limits<double> lowest()`` value is utilized in its place.
 
+FollowPath goal_checker_id attribute
+**********************************************************
+For example: you could use for some specific navigation motion a more precise goal checker than the default one that it is used in usual motions.
+
+.. code-block:: xml
+    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10"/>
+
+- The previous usage of the `goal_checker_plugin` parameter to declare the controller_server goal_checker is now obsolete and removed.
+- The controller_server parameters now support the declaration of a list of goal checkers `goal_checker_plugins`. 
+
+- The specification of the selected goal checker is mandatory when more than one checker is defined in the controller_server parameter configuration. If only one goal_checker is configured in the controller_server it is selected by default even if no goal_checker is specified.
+
+Below it is shown an example of goal_checker configuration of the controller_server node.
+
+.. code-block:: yaml
+    controller_server:
+      ros__parameters:
+          goal_checker_plugins: ["general_goal_checker", "precise_goal_checker"]
+          precise_goal_checker:
+              plugin: "nav2_controller::SimpleGoalChecker"
+              xy_goal_tolerance: 0.25
+             yaw_goal_tolerance: 0.25
+          general_goal_checker:
+              plugin: "nav2_controller::SimpleGoalChecker"
+              xy_goal_tolerance: 0.25
+
+
+
+
 Groot Support
 *************
 
