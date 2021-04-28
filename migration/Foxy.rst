@@ -71,7 +71,7 @@ For example: you could use for some specific navigation motion a more precise go
 .. code-block:: xml
     <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10"/>
 
-- The previous usage of the `goal_checker_plugin` parameter to declare the controller_server goal_checker is now obsolete and removed.
+- The previous usage of the ``goal_checker_plugin`` parameter to declare the controller_server goal_checker is now obsolete and removed.
 - The controller_server parameters now support the declaration of a list of goal checkers `goal_checker_plugins`. 
 
 - The specification of the selected goal checker is mandatory when more than one checker is defined in the controller_server parameter configuration. If only one goal_checker is configured in the controller_server it is selected by default even if no goal_checker is specified.
