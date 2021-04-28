@@ -252,6 +252,10 @@ Behavior Tree Nodes
 |                                            |                     | topic input, otherwises uses a default   |
 |                                            |                     | controller id                            |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Goal Checker Selector`_                   | Pablo Iñigo Blasco  | Selects the goal checker based on a      |
+|                                            |                     | topic input, otherwises uses a default   |
+|                                            |                     | goal checker id                          |
++--------------------------------------------+---------------------+------------------------------------------+
 | `Navigate Through Poses`_                  | Steve Macenski      | BT Node for other BehaviorTree.CPP BTs   |
 |                                            |                     | to call Nav2's NavThroughPoses action    |
 |                                            |                     |                                          |
@@ -276,8 +280,9 @@ Behavior Tree Nodes
 .. _Spin Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_action.cpp
 .. _Wait Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_action.cpp
 .. _Truncate Path: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_action.cpp
-.. _Planner Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/planner_selector.cpp
-.. _Controller Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector.cpp
+.. _Planner Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/planner_selector_node.cpp
+.. _Controller Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector_node.cpp
+.. _Goal Checker Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
 .. _Navigate Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
 .. _Remove Passed Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
 .. _Compute Path Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
