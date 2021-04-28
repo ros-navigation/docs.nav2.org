@@ -389,6 +389,7 @@
 <li class="toctree-l4"><a class="reference internal" href="TruncatePath.html">TruncatePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="PlannerSelector.html">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="RemovePassedGoals.html">RemovePassedGoals</a></li>
@@ -574,6 +575,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#followpath-goal-checker-id-attribute">FollowPath goal_checker_id attribute</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#groot-support">Groot Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
@@ -747,7 +749,29 @@ The server address can be remapped using the <code class="docutils literal notra
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2">goal_checker_id:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Mapped name of the goal checker plugin type to use, e.g. SimpleGoalChecker.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -768,7 +792,7 @@ The server address can be remapped using the <code class="docutils literal notra
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="67%" />
 <col width="33%" />
@@ -794,7 +818,7 @@ The server address can be remapped using the <code class="docutils literal notra
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span> <span class="na">server_name=</span><span class="s">&quot;FollowPath&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span> <span class="na">goal_checker_id=</span><span class="s">&quot;precise_goal_checker&quot;</span> <span class="na">server_name=</span><span class="s">&quot;FollowPath&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

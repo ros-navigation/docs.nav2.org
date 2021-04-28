@@ -389,6 +389,7 @@
 <li class="toctree-l4"><a class="reference internal" href="TruncatePath.html">TruncatePath</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="RemovePassedGoals.html">RemovePassedGoals</a></li>
@@ -574,6 +575,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#followpath-goal-checker-id-attribute">FollowPath goal_checker_id attribute</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#groot-support">Groot Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
@@ -698,6 +700,7 @@
   <div class="section" id="plannerselector">
 <span id="bt-planner-selector-node"></span><h1>PlannerSelector<a class="headerlink" href="#plannerselector" title="Permalink to this headline">¶</a></h1>
 <p>It is used to select the planner that will be used by the planner server. It subscribes to the <code class="docutils literal notranslate"><span class="pre">planner_selector</span></code> topic to receive command messages with the name of the planner to be used. It is commonly used before of the ComputePathToPoseAction. The <code class="docutils literal notranslate"><span class="pre">selected_planner</span></code> output port is passed to <code class="docutils literal notranslate"><span class="pre">planner_id</span></code> input port of the ComputePathToPoseAction. If none is provided on the topic, the <code class="docutils literal notranslate"><span class="pre">default_planner</span></code> is used.</p>
+<p>Any publisher to this topic needs to be configured with some QoS defined as <code class="docutils literal notranslate"><span class="pre">reliable</span></code> and <code class="docutils literal notranslate"><span class="pre">transient</span> <span class="pre">local</span></code>.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">

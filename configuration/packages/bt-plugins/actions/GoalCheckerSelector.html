@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>NavigateToPose &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>GoalCheckerSelector &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,8 @@
     
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="ClearEntireCostmap" href="ClearEntireCostmap.html" />
-    <link rel="prev" title="FollowPath" href="FollowPath.html" />
+    <link rel="next" title="NavigateThroughPoses" href="NavigateThroughPoses.html" />
+    <link rel="prev" title="ControllerSelector" href="ControllerSelector.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -381,7 +381,7 @@
 <li class="toctree-l4"><a class="reference internal" href="BackUp.html">BackUp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputePathToPose.html">ComputePathToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="FollowPath.html">FollowPath</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">NavigateToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="NavigateToPose.html">NavigateToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ClearEntireCostmap.html">ClearEntireCostmap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
@@ -389,7 +389,7 @@
 <li class="toctree-l4"><a class="reference internal" href="TruncatePath.html">TruncatePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="PlannerSelector.html">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ControllerSelector.html">ControllerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GoalCheckerSelector.html">GoalCheckerSelector</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="RemovePassedGoals.html">RemovePassedGoals</a></li>
@@ -680,7 +680,7 @@
         
           <li><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a> &raquo;</li>
         
-      <li>NavigateToPose</li>
+      <li>GoalCheckerSelector</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -697,37 +697,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="navigatetopose">
-<span id="bt-navigate-to-pose-action"></span><h1>NavigateToPose<a class="headerlink" href="#navigatetopose" title="Permalink to this headline">¶</a></h1>
-<p>Invokes the NavigateToPose ROS 2 action server, which is implemented by the <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator">bt_navigator</a> module.</p>
+  <div class="section" id="goalcheckerselector">
+<span id="bt-goal-checker-selector-node"></span><h1>GoalCheckerSelector<a class="headerlink" href="#goalcheckerselector" title="Permalink to this headline">¶</a></h1>
+<p>It is used to select the GoalChecker that will be used by the goal_checker server. It subscribes to the <code class="docutils literal notranslate"><span class="pre">goal_checker_selector</span></code> topic to receive command messages with the name of the GoalChecker to be used. It is commonly used before of the FollowPathAction. The <code class="docutils literal notranslate"><span class="pre">selected_goal_checker</span></code> output port is passed to <code class="docutils literal notranslate"><span class="pre">goal_checker_id</span></code> input port of the FollowPathAction. If none is provided on the topic, the <code class="docutils literal notranslate"><span class="pre">default_goal_checker</span></code> is used.</p>
+<p>Any publisher to this topic needs to be configured with some QoS defined as <code class="docutils literal notranslate"><span class="pre">reliable</span></code> and <code class="docutils literal notranslate"><span class="pre">transient</span> <span class="pre">local</span></code>.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">goal:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">topic_name:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="61%" />
-<col width="39%" />
+<col width="22%" />
+<col width="78%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>PoseStamped</td>
-<td>N/A</td>
+<tr class="row-even"><td>string</td>
+<td>goal_checker_selector</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Takes in a blackboard variable containing the goal, eg. “{goal}”.</p>
+<dd><p class="first last">The name of the topic used to received select command messages. This is used to support multiple GoalCheckerSelector nodes.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2">default_goal_checker:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -741,14 +743,24 @@
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
+<dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">Action server name.</p>
+<dd><p class="first last">The default value for the selected GoalChecker if no message is received from the input topic.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
+</tbody>
+</table>
+</div>
+<div class="section" id="output-ports">
+<h2>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">selected_goal_checker:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -757,14 +769,14 @@
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>10</td>
+<tr class="row-even"><td>string</td>
+<td>N/A</td>
 </tr>
 </tbody>
 </table>
 <dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">Action server timeout (ms).</p>
+<dd><p class="first last">The output selected GoalChecker id. This selected_goal_checker string is usually passed to the FollowPath behavior via the goal_checker_id input port.</p>
 </dd>
 </dl>
 </td>
@@ -774,7 +786,7 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NavigateToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">server_name=</span><span class="s">&quot;NavigateToPose&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalCheckerSelector</span> <span class="na">selected_goal_checker=</span><span class="s">&quot;{selected_goal_checker}&quot;</span> <span class="na">default_goal_checker=</span><span class="s">&quot;precise_goal_checker&quot;</span> <span class="na">topic_name=</span><span class="s">&quot;goal_checker_selector&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

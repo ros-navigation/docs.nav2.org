@@ -389,6 +389,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/PlannerSelector.html">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
@@ -574,6 +575,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#followpath-goal-checker-id-attribute">FollowPath goal_checker_id attribute</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#groot-support">Groot Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
@@ -1086,30 +1088,36 @@ Navigation2 as a subtree action</td>
 <td>Francisco Martín</td>
 <td>Modifies a path making it shorter</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/planner_selector.cpp">Planner Selector</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/planner_selector_node.cpp">Planner Selector</a></td>
 <td>Pablo Iñigo Blasco</td>
 <td>Selects the global planner based on a
 topic input, otherwises uses a default
 planner id</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector.cpp">Controller Selector</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector_node.cpp">Controller Selector</a></td>
 <td>Pablo Iñigo Blasco</td>
 <td>Selects the controller based on a
 topic input, otherwises uses a default
 controller id</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp">Navigate Through Poses</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp">Goal Checker Selector</a></td>
+<td>Pablo Iñigo Blasco</td>
+<td>Selects the goal checker based on a
+topic input, otherwises uses a default
+goal checker id</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp">Navigate Through Poses</a></td>
 <td>Steve Macenski</td>
 <td>BT Node for other BehaviorTree.CPP BTs
 to call Nav2’s NavThroughPoses action</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp">Remove Passed Goals</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp">Remove Passed Goals</a></td>
 <td>Steve Macenski</td>
 <td>Removes goal poses passed or within a
 tolerance for culling old viapoints from
 path re-planning</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp">Compute Path Through Poses</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp">Compute Path Through Poses</a></td>
 <td>Steve Macenski</td>
 <td>Computes a path through a set of poses
 rather than a single end goal pose

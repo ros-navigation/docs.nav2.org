@@ -389,6 +389,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/PlannerSelector.html">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
@@ -574,6 +575,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#followpath-goal-checker-id-attribute">FollowPath goal_checker_id attribute</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#groot-support">Groot Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
@@ -743,6 +745,16 @@ In both cases negative values are silently inverted.</p>
 <h2>Nav2 Controllers and Goal Checker Plugin Interface Changes<a class="headerlink" href="#nav2-controllers-and-goal-checker-plugin-interface-changes" title="Permalink to this headline">¶</a></h2>
 <p>As of <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2247">this PR</a>, the <code class="docutils literal notranslate"><span class="pre">controller</span></code> plugins will now be given a pointer to the current goal checker in use of the navigation task in <code class="docutils literal notranslate"><span class="pre">computeAndPublishVelocity()</span></code>. This is geared to enabling controllers to have access to predictive checks for goal completion as well as access to the state information of the goal checker plugin.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">goal_checker</span></code> plugins also have the change of including a <code class="docutils literal notranslate"><span class="pre">getTolerances()</span></code> method. This method allows a goal checker holder to access the tolerance information of the goal checker to consider at the goal. Each field of the <code class="docutils literal notranslate"><span class="pre">pose</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code> represents the maximum allowable error in each dimension for a goal to be considered completed. In the case of a translational tolerance (combined X and Y components), each the X and Y will be populated with the tolerance value because it is the <strong>maximum</strong> tolerance in the dimension (assuming the other has no error). If the goal checker does not contain any tolerances for a dimension, the <code class="docutils literal notranslate"><span class="pre">numeric_limits&lt;double&gt;</span> <span class="pre">lowest()</span></code> value is utilized in its place.</p>
+</div>
+<div class="section" id="followpath-goal-checker-id-attribute">
+<h2>FollowPath goal_checker_id attribute<a class="headerlink" href="#followpath-goal-checker-id-attribute" title="Permalink to this headline">¶</a></h2>
+<p>For example: you could use for some specific navigation motion a more precise goal checker than the default one that it is used in usual motions.</p>
+<ul class="simple">
+<li>The previous usage of the <code class="docutils literal notranslate"><span class="pre">goal_checker_plugin</span></code> parameter to declare the controller_server goal_checker is now obsolete and removed.</li>
+<li>The controller_server parameters now support the declaration of a list of goal checkers <code class="docutils literal notranslate"><span class="pre">goal_checker_plugins</span></code> mapped to unique identifier names, such as is the case with <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> and <code class="docutils literal notranslate"><span class="pre">GridBased</span></code> for the controller and planner plugins, respectively.</li>
+<li>The specification of the selected goal checker is mandatory when more than one checker is defined in the controller_server parameter configuration. If only one goal_checker is configured in the controller_server it is selected by default even if no goal_checker is specified.</li>
+</ul>
+<p>Below it is shown an example of goal_checker configuration of the controller_server node.</p>
 </div>
 <div class="section" id="groot-support">
 <h2>Groot Support<a class="headerlink" href="#groot-support" title="Permalink to this headline">¶</a></h2>
@@ -914,6 +926,7 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2236">SingleTrigger</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2249">PlannerSelector</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2266">ControllerSelector</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2269">GoalCheckerSelector</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">NavigateThroughPoses</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">RemovePassedGoals</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">ComputePathThroughPoses</a></li>
