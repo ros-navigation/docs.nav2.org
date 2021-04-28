@@ -65,7 +65,7 @@ As of `this PR <https://github.com/ros-planning/navigation2/pull/2247>`_, the ``
 The ``goal_checker`` plugins also have the change of including a ``getTolerances()`` method. This method allows a goal checker holder to access the tolerance information of the goal checker to consider at the goal. Each field of the ``pose`` and ``velocity`` represents the maximum allowable error in each dimension for a goal to be considered completed. In the case of a translational tolerance (combined X and Y components), each the X and Y will be populated with the tolerance value because it is the **maximum** tolerance in the dimension (assuming the other has no error). If the goal checker does not contain any tolerances for a dimension, the ``numeric_limits<double> lowest()`` value is utilized in its place.
 
 FollowPath goal_checker_id attribute
-**********************************************************
+************************************
 For example: you could use for some specific navigation motion a more precise goal checker than the default one that it is used in usual motions.
 
 .. code-block:: xml
