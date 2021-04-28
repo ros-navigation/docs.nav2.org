@@ -5,6 +5,8 @@ ControllerSelector
 
 It is used to select the Controller that will be used by the Controller server. It subscribes to the ``controller_selector`` topic to receive command messages with the name of the Controller to be used. It is commonly used before of the FollowPathAction. The ``selected_controller`` output port is passed to ``controller_id`` input port of the FollowPathAction. If none is provided on the topic, the ``default_controller`` is used.
 
+Any publisher to this topic needs to be configured with some QoS defined as ``reliable`` and ``transient local``.
+
 .. _bt_navigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator
 
 Input Ports
