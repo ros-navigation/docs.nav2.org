@@ -1,7 +1,7 @@
 .. _bt_goal_checker_selector_node:
 
 GoalCheckerSelector
-==============
+===================
 
 It is used to select the GoalChecker that will be used by the goal_checker server. It subscribes to the ``goal_checker_selector`` topic to receive command messages with the name of the GoalChecker to be used. It is commonly used before of the FollowPathAction. The ``selected_goal_checker`` output port is passed to ``goal_checker_id`` input port of the FollowPathAction. If none is provided on the topic, the ``default_goal_checker`` is used.
 
