@@ -256,6 +256,19 @@ Behavior Tree Nodes
 |                                            |                     | topic input, otherwises uses a default   |
 |                                            |                     | goal checker id                          |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Navigate Through Poses`_                  | Steve Macenski      | BT Node for other BehaviorTree.CPP BTs   |
+|                                            |                     | to call Nav2's NavThroughPoses action    |
+|                                            |                     |                                          |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Remove Passed Goals`_                     | Steve Macenski      | Removes goal poses passed or within a    |
+|                                            |                     | tolerance for culling old viapoints from |
+|                                            |                     | path re-planning                         |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Compute Path Through Poses`_              | Steve Macenski      | Computes a path through a set of poses   |
+|                                            |                     | rather than a single end goal pose       |
+|                                            |                     | using the planner plugin specified       |
++--------------------------------------------+---------------------+------------------------------------------+
+
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Clear Entire Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
 .. _Clear Costmap Except Region Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
@@ -270,6 +283,9 @@ Behavior Tree Nodes
 .. _Planner Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/planner_selector_node.cpp
 .. _Controller Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector_node.cpp
 .. _Goal Checker Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
+.. _Navigate Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
+.. _Remove Passed Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
+.. _Compute Path Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
 
 
 

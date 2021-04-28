@@ -1,9 +1,9 @@
-.. _bt_compute_path_to_pose_action:
+.. _bt_compute_path_through_poses_action:
 
-ComputePathToPose
-=================
+ComputePathThroughPoses
+=======================
 
-Invokes the ComputePathToPose ROS 2 action server, which is implemented by the nav2_planner_ module. 
+Invokes the ComputePathThroughPoses ROS 2 action server, which is implemented by the nav2_planner_ module. 
 The server address can be remapped using the ``server_name`` input port.
 
 .. _nav2_planner: https://github.com/ros-planning/navigation2/tree/main/nav2_planner
@@ -21,16 +21,16 @@ Input Ports
   Description
     	Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
     	
-:goal:
+:goals:
 
-  ===================================== =======
-  Type                                  Default
-  ------------------------------------- -------
-  geometry_msgs::msg::PoseStamped         N/A  
-  ===================================== =======
+  ============================================= =======
+  Type                                          Default
+  --------------------------------------------- -------
+  vector<geometry_msgs::msg::PoseStamped>         N/A  
+  ============================================= =======
 
   Description
-    	Goal pose. Takes in a blackboard variable, e.g. "{goal}".
+    	Goal poses. Takes in a blackboard variable, e.g. "{goals}".
 
 :planner_id:
 
@@ -85,4 +85,4 @@ Example
 
 .. code-block:: xml
 
-  <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" server_name="ComputePathToPose" server_timeout="10"/>
+  <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased" server_name="ComputePathThroughPoses" server_timeout="10"/>

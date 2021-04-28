@@ -133,6 +133,18 @@ Parameters
   Description
     The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
     Odometry values below this threshold (in rad/s) will be set to 0.0.
+    
+:failure_tolerance:
+
+  ============== =============================
+  Type           Default                                               
+  -------------- -----------------------------
+  double         0.0           
+  ============== =============================
+
+  Description
+    The maximum duration in seconds the called controller plugin can fail (i.e. the :code:`computeVelocityCommands` function of the plugin throwing an exception) before the :code:`nav2_msgs::action::FollowPath` action fails.
+    Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any positive value for the appropriate timeout.
 
 :speed_limit_topic:
 
@@ -182,6 +194,7 @@ Example
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5
         min_theta_velocity_threshold: 0.001
+        failure_tolerance: 0.3
         progress_checker_plugin: "progress_checker"
         goal_checker_plugin: "goal_checker"
         controller_plugins: ["FollowPath"]

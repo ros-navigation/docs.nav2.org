@@ -20,6 +20,16 @@ The NavigateToPose input port has been changed to PoseStamped instead of Point a
 
 See :ref:`bt_navigate_to_pose_action` for more information.
 
+
+NavigateThroughPoses and ComputePathThroughPoses Actions Added
+**************************************************************
+
+The ``NavigateThroughPoses`` action has been added analog to the ``NavigateToPose``. Rather than going to a single position, this Action will allow a user to specify a number of hard intermediary pose constraints between the start and final pose to plan through. The new ``ComputePathThroughPoses`` action has been added to the ``planner_server`` to process these requests through ``N goal_poses``.
+
+The ``ComputePathThroughPoses`` action server will take in a set of ``N`` goals to achieve, plan through each pose and concatenate the output path for use in navigation. The controller and navigator know nothing about the semantics of the generated path, so the robot will not stop or slow on approach to these goals. It will rather continue through each pose as it were any other point on the path continuously. When paired with the ``SmacPlanner``, this feature can be used to generate **completely kinematically feasible trajectories through pose constraints**. 
+
+If you wish to stop at each goal pose, consider using the waypoint follower instead, which will stop and allow a user to optionally execute a task plugin at each pose. 
+
 ComputePathToPose BT-node Interface Changes
 *******************************************
 
@@ -127,7 +137,7 @@ Original GitHub tickets:
 Costmap Filters
 ***************
 
-A new concept interacting with spatial-dependent objects called "Costmap Filters" appeared in Galactic (more information about this concept could be found at :ref:`concepts` page). Costmap filters are acting as a costmap plugins. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin's algorithms to make required updates in the resulting costmap and robot's behavor.
+A new concept interacting with spatial-dependent objects called "Costmap Filters" appeared in Galactic (more information about this concept could be found at :ref:`concepts` page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin's algorithms to make required updates in the resulting costmap and robot's behavor.
 
 Architecturally, costmap filters consists from ``CostmapFilter`` class which is a basic class incorporating much common of its inherited filter plugins:
 
@@ -231,3 +241,28 @@ Original GitHub tickets:
 - `PlannerSelector <https://github.com/ros-planning/navigation2/pull/2249>`_
 - `ControllerSelector <https://github.com/ros-planning/navigation2/pull/2266>`_
 - `GoalCheckerSelector <https://github.com/ros-planning/navigation2/pull/2269>`_
+- `NavigateThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
+- `RemovePassedGoals <https://github.com/ros-planning/navigation2/pull/2271>`_
+- `ComputePathThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
+
+sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change
+********************************************************
+Due to deprecation of `sensor_msgs/PointCloud <https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud.html>`_ the topics which were publishing sensor_msgs/PointCloud are converted to sensor_msgs/PointCloud2. The details on these topics and their respective information are listed below.
+
+- ``clearing_endpoints`` topic in ``voxel_layer`` plugin of ``nav2_costmap_2d`` package
+- ``voxel_marked_cloud`` and ``voxel_unknown_cloud`` topic in ``costmap_2d_cloud`` node of ``nav2_costmap_2d`` package
+- ``cost_cloud`` topic of ``publisher.cpp`` of ``dwb_core`` package.
+
+These changes were introduced inthis `pull request <https://github.com/ros-planning/navigation2/pull/2263>`_.
+
+ControllerServer New Parameter failure_tolerance
+************************************************
+A new parameter :code:`failure_tolerance` was added to the Controller Server for tolerating controller plugin exceptions without failing immediately. It is analogous to ``controller_patience`` in ROS(1) Nav. See :ref:`configuring_controller_server` for description.
+This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2264>`_.
+
+Removed BT XML Launch Configurations
+************************************
+The launch python configurations for CLI setting of the behavior tree XML file has been removed. Instead, you should use the yaml files to set this value. If you, however, have a ``path`` to the yaml file that is inconsistent in a larger deployment, you can use the ``RewrittenYaml`` tool in your parent launch file to remap the default XML paths utilizing the ``get_shared_package_path()`` directory finder (or as you were before in python3).
+
+The use of map subscription QoS launch configuration was also removed, use parameter file. 
+This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2295>`_.
