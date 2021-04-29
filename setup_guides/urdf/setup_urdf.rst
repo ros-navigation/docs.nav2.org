@@ -166,7 +166,7 @@ Next, we will be adding a caster wheel at the front of our robot. We will be mod
     <link name="front_caster">
       <visual>
         <geometry>
-          <sphere radius="${-(wheel_radius+wheel_zoff-(base_height/2))}"/>
+          <sphere radius="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
         </geometry>
         <material name="Cyan">
           <color rgba="0 1.0 1.0 1.0"/>
@@ -374,6 +374,7 @@ Let us first define macros containing the inertial properties of the geometric p
     <!-- Define intertial property macros  -->
     <xacro:macro name="box_inertia" params="m w h d">
       <inertial>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
         <mass value="${m}"/>
         <inertia ixx="${(m/12) * (h*h + d*d)}" ixy="0.0" ixz="0.0" iyy="${(m/12) * (w*w + d*d)}" iyz="0.0" izz="${(m/12) * (w*w + h*h)}"/>
       </inertial>
@@ -381,6 +382,7 @@ Let us first define macros containing the inertial properties of the geometric p
 
     <xacro:macro name="cylinder_inertia" params="m r h">
       <inertial>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
         <mass value="${m}"/>
         <inertia ixx="${(m/12) * (3*r*r + h*h)}" ixy = "0" ixz = "0" iyy="${(m/12) * (3*r*r + h*h)}" iyz = "0" izz="${(m/2) * (r*r)}"/> 
       </inertial>
@@ -396,7 +398,7 @@ Let us first define macros containing the inertial properties of the geometric p
 Let us start by adding collision areas to our ``base_link`` using the ``<collision>`` tag. We will also be using the box_inertia macro we defined before to add some inertial properties to our ``base_link``. Include the following code snippet within ``<link name="base_link">`` tag of base_link in our URDF.
 
 .. code-block:: xml
-  :lineno-start: 50
+  :lineno-start: 52
 
       <collision>
         <geometry>
@@ -409,7 +411,7 @@ Let us start by adding collision areas to our ``base_link`` using the ``<collisi
 Next, let us do the same for our wheel macros. Include the following code snippet within the ``<link name="${prefix}_link">`` tag of our wheel macros in our URDF.
 
 .. code-block:: xml
-  :lineno-start: 81
+  :lineno-start: 83
 
         <collision>
           <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
@@ -423,16 +425,16 @@ Next, let us do the same for our wheel macros. Include the following code snippe
 Lastly, let us add the similar properties to our spherical caster wheels. Include the following in the ``<link name="front_caster">`` tag of our caster wheel in the URDF.
 
 .. code-block:: xml
-  :lineno-start: 113
+  :lineno-start: 114
 
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <sphere radius="${-(wheel_radius+wheel_zoff-(base_height/2))}"/>
+          <sphere radius="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
         </geometry>
       </collision>
 
-      <xacro:sphere_inertia m="0.5" r="${-(wheel_radius+wheel_zoff-(base_height/2))}"/>
+      <xacro:sphere_inertia m="0.5" r="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
 
 .. note:: We did not add any inertial or collision properties to our ``base_footprint`` link since this is a virtual and non-physical link.
 
