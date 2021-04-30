@@ -96,7 +96,7 @@ For our robot, we will be using the `GazeboRosImuSensor <http://gazebosim.org/tu
 Now, we will set up our IMU sensor plugin according to the description above by adding the following lines before the ``</robot>`` line in our URDF:
 
 .. code-block:: xml
-  :lineno-start: 130
+  :lineno-start: 132
 
   <link name="imu_link">
     <visual>
@@ -194,7 +194,7 @@ Now, let us add the differential drive ModelPlugin. We will configure the plugin
 To include this plugin in our URDF, add the following lines after the ``</gazebo>`` tag of the IMU plugin:
 
 .. code-block:: xml
-  :lineno-start: 221
+  :lineno-start: 223
   
   <gazebo>
     <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
