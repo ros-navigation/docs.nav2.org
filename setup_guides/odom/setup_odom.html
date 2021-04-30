@@ -1,0 +1,1332 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Setting Up Odometry &mdash; Navigation 2 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="General Tutorials" href="../../tutorials/index.html" />
+    <link rel="prev" title="Setting Up The URDF" href="../urdf/setup_urdf.html" />
+
+<link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Navigation 2
+          
+
+          
+            
+            <img src="../../_static/nav2_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#navigating">Navigating</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build_instructions/index.html">Build and Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#build">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#build-nav2-for-released-distribution">Build Nav2 For Released Distribution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#install-ros">Install ROS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-nav2">Build Nav2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#quickstart-build-main">Quickstart Build Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#steps">Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#manually-build-main">Manually Build Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-ros-2-main">Build ROS 2 Main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-nav2-dependencies">Build Nav2 Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-nav2-main">Build Nav2 Main</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#docker">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#building-docker-container">Building Docker Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#using-dockerhub-container">Using DockerHub Container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#generate-doxygen">Generate Doxygen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#help">Help</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/build_docs/build_troubleshooting_guide.html#common-nav2-dependencies-build-failures">Common Nav2 Dependencies Build Failures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/build_docs/build_troubleshooting_guide.html#reporting-issue">Reporting Issue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts/index.html">Navigation Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#ros-2">ROS 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#action-server">Action Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#lifecycle-nodes-and-bond">Lifecycle Nodes and Bond</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#behavior-trees">Behavior Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#navigation-servers">Navigation Servers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#planner-controller-and-recovery-servers">Planner, Controller, and Recovery Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#planners">Planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#controllers">Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#recoveries">Recoveries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#waypoint-following">Waypoint Following</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#state-estimation">State Estimation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#standards">Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#global-positioning-localization-and-slam">Global Positioning: Localization and SLAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#odometry">Odometry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#environmental-representation">Environmental Representation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#costmaps-and-layers">Costmaps and Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#other-forms">Other Forms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#nav2-academic-overview">Nav2 Academic Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">First-Time Robot Setup Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../transformation/setup_transforms.html">Setting Up Transformations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-introduction">Transforms Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#static-transform-publisher-demo">Static Transform Publisher Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-in-navigation2">Transforms in Navigation2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../urdf/setup_urdf.html">Setting Up The URDF</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#urdf-and-the-robot-state-publisher">URDF and the Robot State Publisher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#setting-up-the-environment">Setting Up the Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#writing-the-urdf">Writing the URDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#build-and-launch">Build and Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#visualization-using-rviz">Visualization using RVIZ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#adding-physical-properties">Adding Physical Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting Up Odometry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#odometry-introduction">Odometry Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-odometry-on-your-robot">Setting Up Odometry on your Robot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulating-an-odometry-system-using-gazebo">Simulating an Odometry System using Gazebo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup-and-prerequisites">Setup and Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-gazebo-plugins-to-a-urdf">Adding Gazebo Plugins to a URDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#launch-and-build-files">Launch and Build Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-run-and-verification">Build, Run and Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#robot-localization-demo">Robot Localization Demo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-robot-localization">Configuring Robot Localization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Launch and Build Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Build, Run and Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">General Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html">Camera Calibration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#initialize-the-location-of-turtlebot-3">4- Initialize the Location of Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#send-a-goal-pose">5-  Send a Goal Pose</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html">(SLAM) Navigating While Mapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-navigation2">1- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-slam">2- Launch SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#working-with-slam">3- Working with SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#getting-started-simplification">4- Getting Started Simplification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html">(STVL) Using an External Costmap Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#costmap2d-and-stvl">Costmap2D and STVL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#setup">0- Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#install-stvl">1- Install STVL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#modify-navigation2-parameter">1- Modify Navigation2 Parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#launch-navigation2">2- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#rviz">3-  RVIZ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugin_tutorials/index.html">Plugin Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html">Writing a New Costmap2D Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#write-a-new-costmap2d-plugin">1- Write a new Costmap2D plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#export-and-make-gradientlayer-plugin">2- Export and make GradientLayer plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#enable-the-plugin-in-costmap2d">3- Enable the plugin in Costmap2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#run-gradientlayer-plugin">4- Run GradientLayer plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html">Writing a New Planner Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#creating-a-new-planner-plugin">1- Creating a new Planner Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#run-straightline-plugin">4- Run StraightLine plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html">Writing a New Controller Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#exporting-the-controller-plugin">2- Exporting the controller plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html">Writing a New Behavior Tree Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#creating-a-new-bt-plugin">1- Creating a new BT Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#add-plugin-library-name-to-config">3- Add plugin library name to config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html">Writing a New Recovery Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#creating-a-new-recovery-plugin">1- Creating a new Recovery Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#exporting-the-recovery-plugin">2- Exporting the recovery plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_recovery_plugin.html#run-recovery-plugin">4- Run Recovery plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html">Waypoint Follower</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_waypoint_follower-plugins/wait_at_waypoint.html">WaitAtWaypoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_waypoint_follower-plugins/photo_at_waypoint.html">PhotoAtWaypoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_waypoint_follower-plugins/input_at_waypoint.html">InputAtWaypoint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#default-plugin">Default Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-waypoint-follower.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html">Behavior-Tree Navigator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#action-plugins">Action Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/Wait.html">Wait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/Spin.html">Spin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/BackUp.html">BackUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ComputePathToPose.html">ComputePathToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/FollowPath.html">FollowPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/NavigateToPose.html">NavigateToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/PlannerSelector.html">PlannerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GoalReached.html">GoalReached</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/TransformAvailable.html">TransformAvailable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/DistanceTraveled.html">DistanceTraveled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GoalUpdated.html">GoalUpdated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsStuck.html">IsStuck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/TimeExpired.html">TimeExpired</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsBatteryLow.html">IsBatteryLow</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/PipelineSequence.html">PipelineSequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/RoundRobin.html">RoundRobin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/RecoveryNode.html">RecoveryNode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/RateController.html">RateController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/DistanceController.html">DistanceController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/SpeedController.html">SpeedController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html">Costmap 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/static.html">Static Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/range.html">Range Sensor Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/costmap-plugins/speed_filter.html">Speed Filter Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-costmaps.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-lifecycle.html">Lifecycle Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-lifecycle.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-lifecycle.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html">Planner Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-planner-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-navfn.html">NavFn Planner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-navfn.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-navfn.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-smac-planner.html">Smac Planner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-smac-planner.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-smac-planner.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html">Controller Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_controller-plugins/simple_progress_checker.html">SimpleProgressChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_controller-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/nav2_controller-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-controller-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html">DWB Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html#controller">Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-params/controller.html">DWB Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-params/iterator.html">XYTheta Iterator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-params/kinematic.html">Kinematic Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-params/visualization.html">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html#plugins">Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/obstacle_footprint.html">ObstacleFootprintCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/oscillation.html">OscillationCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/path_align.html">PathAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/path_dist.html">PathDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/prefer_forward.html">PreferForwardCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/rotate_to_goal.html">RotateToGoalCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/trajectory_critics/twirling.html">TwirlingCritic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-dwb-controller.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html">Map Server / Saver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#map-saver-parameters">Map Saver Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#map-server-parameters">Map Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#costmap-filter-info-server-parameters">Costmap Filter Info Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-map-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-amcl.html">AMCL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-amcl.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-amcl.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html">Recovery Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#recovery-server-parameters">Recovery Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#spin-recovery-parameters">Spin Recovery Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#backup-recovery-parameters">BackUp Recovery Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-recovery-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-regulated-pp.html">Regulated Pure Pursuit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-regulated-pp.html#regulated-pure-pursuit-parameters">Regulated Pure Pursuit Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-regulated-pp.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../behavior_trees/index.html">Behavior Tree XMLs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_to_pose_recovery.html">Navigate To Pose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#planners">Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#recoveries">Recoveries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#goal-checkers">Goal Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#progress-checkers">Progress Checkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../migration/Dashing.html">Dashing to Eloquent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Dashing.html#new-packages">New Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Dashing.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Dashing.html#navigation2-architectural-changes">Navigation2 Architectural Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../migration/Eloquent.html">Eloquent to Foxy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#server-updates">Server Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#map-server-re-work">Map Server Re-Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#new-particle-filter-messages">New Particle Filter Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#followpoint-capability">FollowPoint Capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Eloquent.html#new-costmap-layer">New Costmap Layer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../migration/Foxy.html">Foxy to Galactic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#navigatetopose-action-feedback-updates">NavigateToPose Action Feedback updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#navigatethroughposes-and-computepaththroughposes-actions-added">NavigateThroughPoses and ComputePathThroughPoses Actions Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#computepathtopose-bt-node-interface-changes">ComputePathToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#computepathtopose-action-interface-changes">ComputePathToPose Action Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#followpath-goal-checker-id-attribute">FollowPath goal_checker_id attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#groot-support">Groot Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#regulatedpurepursuitcontroller">RegulatedPurePursuitController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#standard-time-units-in-parameters">Standard time units in parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#ray-tracing-parameters">Ray Tracing Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#obstacle-marking-parameters">Obstacle Marking Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#recovery-action-changes">Recovery Action Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#default-behavior-tree-changes">Default Behavior Tree Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#navfn-planner-parameters">NavFn Planner Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#new-behavior-tree-nodes">New Behavior Tree Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#controllerserver-new-parameter-failure-tolerance">ControllerServer New Parameter failure_tolerance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Foxy.html#removed-bt-xml-launch-configurations">Removed BT XML Launch Configurations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Getting Involved</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#id1">Getting Involved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#process">Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#licensing">Licensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About and Contact</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about/related_projects.html">Related Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/ros1_comparison.html">ROS to ROS 2 Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/index.html#id1">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/index.html#contact">Contact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_configuration_assistant.html">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS 2 and Environmental Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/testing.html">4. Advanced Navigation Testing Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/navigation_rebranding.html">5. Navigation Branding and Website</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/localization.html">6. 2D/3D Localization Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/dynamic.html">7. Navigation Dynamic Obstacle Integration</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Navigation 2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+<span style="float: right;" >
+    <a class="github-button" href="https://github.com/ros-planning/navigation.ros.org" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Edit ros-planning/navigation.ros.org on GitHub" ">Edit</a>
+</span>
+
+
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">First-Time Robot Setup Guide</a> &raquo;</li>
+        
+      <li>Setting Up Odometry</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setting-up-odometry">
+<h1>Setting Up Odometry<a class="headerlink" href="#setting-up-odometry" title="Permalink to this headline">¶</a></h1>
+<p>In this guide, we will be looking at how to integrate our robot’s odometry system with Nav2. First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly. Next, we will show how to setup odometry with two different cases. In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders. In the second case, we will build a demo that simulates a functioning odometry system on <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> (the robot that we built in the previous section) using Gazebo. Afterwards, we will discuss how various sources of odometry can be fused to provide a smoothed odometry using the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package. Lastly, we will also show how to publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform using <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">The complete source code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository under the <code class="docutils literal notranslate"><span class="pre">sam_bot_description</span></code> package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.</p>
+</div>
+<div class="section" id="odometry-introduction">
+<h2>Odometry Introduction<a class="headerlink" href="#odometry-introduction" title="Permalink to this headline">¶</a></h2>
+<p>The odometry system provides a locally accurate estimate of a robot’s pose and velocity based on its motion. The odometry information can be obtained from various sources such as IMU, LIDAR, RADAR, VIO, and wheel encoders. One thing to note is that IMUs drift over time while wheel encoders drift over distance traveled, thus they are often used together to counter each other’s negative characteristics.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame and the transformation associated with it use a robot’s odometry system to publish localization information that is continuous but becomes less accurate over time or distance (depending on the sensor modalities and drift). In spite of this, the information can still be used by the robot to navigate its immediate vicinity (e.g collision avoidance). To obtain consistently accurate odometry information over time, the <code class="docutils literal notranslate"><span class="pre">map</span></code> frame provides globally accurate information that is used to correct the <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame.</p>
+<p>As discussed in the previous guides and in <a class="reference external" href="https://www.ros.org/reps/rep-0105.html">REP 105</a>, the <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame is connected to the rest of the system and Nav2 through the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform. This transform is published by a tf2 broadcaster or by frameworks such as <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, which also provide additional functionalities. We will be talking more about <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> in a following section.</p>
+<p>In addition to the required <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform, Nav2 also requires the publishing of <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message because this message provides the velocity information of the robot. In detail, the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message contains the following information:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># This represents estimates of position and velocity in free space.</span>
+<span class="c1"># The pose in this message should be specified in the coordinate frame given by header.frame_id</span>
+<span class="c1"># The twist in this message should be specified in the coordinate frame given by the child_frame_id</span>
+
+<span class="c1"># Includes the frame id of the pose parent.</span>
+std_msgs/Header header
+
+<span class="c1"># Frame id the pose is pointing at. The twist is in this coordinate frame.</span>
+string child_frame_id
+
+<span class="c1"># Estimated pose that is typically relative to a fixed world frame.</span>
+geometry_msgs/PoseWithCovariance pose
+
+<span class="c1"># Estimated linear and angular velocity relative to child_frame_id.</span>
+geometry_msgs/TwistWithCovariance twist
+</pre></div>
+</div>
+<p>This message tells us the estimates for the pose and velocity of the robot. The <code class="docutils literal notranslate"><span class="pre">header</span></code> message provides the timestamped data in a given coordinate frame. The <code class="docutils literal notranslate"><span class="pre">pose</span></code> message provides the position and orientation of the robot relative to the frame specified in <code class="docutils literal notranslate"><span class="pre">header.frame_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">twist</span></code> message gives the linear and angular velocity relative to the frame defined in <code class="docutils literal notranslate"><span class="pre">child_frame_id</span></code>.</p>
+</div>
+<div class="section" id="setting-up-odometry-on-your-robot">
+<h2>Setting Up Odometry on your Robot<a class="headerlink" href="#setting-up-odometry-on-your-robot" title="Permalink to this headline">¶</a></h2>
+<p>Setting up the odometry system for Nav2 for your physical robot depends a lot on which odometry sensors are available with your robot. Due to the large number of configurations your robot may have, specific setup instructions will not be within the scope of this tutorial. Instead, we will provide some basic examples and useful resources to help you configure your robot for Nav2.</p>
+<p>To start, we will use an example of a robot with wheel encoders as its odometry source. Note that wheel encoders are not required for Nav2 but it is common in most setups. The goal in setting up the odometry is to compute the odometry information and publish the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message and <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform over ROS2. To calculate this information, you will need to setup some code that will translate wheel encoder information into odometry information, similar to the snippet below:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">linear</span> <span class="o">=</span> <span class="o">(</span>right_wheel_est_vel + left_wheel_est_vel<span class="o">)</span> / <span class="m">2</span>
+<span class="nv">angular</span> <span class="o">=</span> <span class="o">(</span>right_wheel_est_vel - left_wheel_est_vel<span class="o">)</span> / wheel_separation<span class="p">;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> are the estimated velocities of the right and left wheels respectively, and the <code class="docutils literal notranslate"><span class="pre">wheel</span> <span class="pre">separation</span></code> is the distance between the wheels. The values of <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> can be obtained by simply getting the changes in the positions of the wheel joints over time. This information can then be used to publish the Nav2 requirements. A basic example on how to do this can be found in the Navigation documentation on odometry located <a class="reference external" href="http://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom/">here</a></p>
+<p>An alternative to manually publishing this information that we recommend is through the <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> framework. The <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> framework contains various packages for real-time control of robots in ROS 2. For wheel encoders, <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> has a <code class="docutils literal notranslate"><span class="pre">diff_drive_controller</span></code> (differential drive controller) under the <code class="docutils literal notranslate"><span class="pre">ros2_controller</span></code> package. The <code class="docutils literal notranslate"><span class="pre">diff_drive_controller</span></code> takes in the <code class="docutils literal notranslate"><span class="pre">geometry_msgs/Twist</span></code> messages published on <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic, computes odometry information, and publishes <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages on <code class="docutils literal notranslate"><span class="pre">odom</span></code> topic. Other packages that deal with different kind of sensors are also available in <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information, see the <a class="reference external" href="https://ros-controls.github.io/control.ros.org/">ros2_control documentation</a> and the <a class="reference external" href="https://github.com/ros-controls/ros2_controllers/tree/master/diff_drive_controller/">Github repository of diff_drive_controller</a>.</p>
+</div>
+<p>For other types of sensors such as IMU, VIO, etc, their respective ROS drivers should have documentation on how publish the odometry information. Keep in mind that Nav2 requires the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message and <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transforms to be published and this should be your goal when setting up your odometry system.</p>
+</div>
+<div class="section" id="simulating-an-odometry-system-using-gazebo">
+<h2>Simulating an Odometry System using Gazebo<a class="headerlink" href="#simulating-an-odometry-system-using-gazebo" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we will be using Gazebo to simulate the odometry system of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the complete source <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description/">here</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you are working on your own physical robot and have already set up your odometry sensors, you may opt to skip this section and head onto the next one where we fuse IMU and odometry messages to provide a smooth <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transformation.</p>
+</div>
+<p>As an overview for this section, we will first setup Gazebo and the necessary packages required to make it work with ROS 2. Next, we will be adding Gazebo plugins, which simulate an IMU sensor and a differential drive odometry system, in order to publish <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> and <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages respectively. Lastly, we will spawn <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in a Gazebo environment and verify the published <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> and <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages over ROS 2.</p>
+<div class="section" id="setup-and-prerequisites">
+<h3>Setup and Prerequisites<a class="headerlink" href="#setup-and-prerequisites" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://gazebosim.org/">Gazebo</a> is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the <a class="reference external" href="http://gazebosim.org/tutorials?cat=install">Gazebo Installation Documentation</a>.</p>
+<p>We also need to install the <code class="docutils literal notranslate"><span class="pre">gazebo_ros_pkgs</span></code> package to simulate odometry and control the robot with ROS 2 in Gazebo:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-&lt;ros2-distro&gt;-gazebo-ros-pkgs
+</pre></div>
+</div>
+<p>You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros2_installing&amp;cat=connect_ros#TestingGazeboandROS2integration">here</a>.</p>
+<p>Note that we described <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> using URDF. However, Gazebo uses <a class="reference external" href="http://sdformat.org/">Simulation Description Format (SDF)</a> to describe a robot in its simulated environment. Fortunately, Gazebo automatically translates compatible URDF files into SDF. The main requirement for the URDF to be compatible with Gazebo is to have an <code class="docutils literal notranslate"><span class="pre">&lt;inertia&gt;</span></code> element within each <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> element. This requirement is already satisfied in the URDF file of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, so it can already be used in Gazebo.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information on how to use URDF in Gazebo, see <a class="reference external" href="http://gazebosim.org/tutorials/?tut=ros_urdf">Tutorial: Using a URDF in Gazebo</a>.</p>
+</div>
+</div>
+<div class="section" id="adding-gazebo-plugins-to-a-urdf">
+<h3>Adding Gazebo Plugins to a URDF<a class="headerlink" href="#adding-gazebo-plugins-to-a-urdf" title="Permalink to this headline">¶</a></h3>
+<p>We will now add the IMU sensor and the differential drive plugins of Gazebo to our URDF. For an overview of the different plugins available in Gazebo, have a look at <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros_gzplugins">Tutorial: Using Gazebo plugins with ROS</a>.</p>
+<p>For our robot, we will be using the <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros_gzplugins#IMUsensor(GazeboRosImuSensor)">GazeboRosImuSensor</a> which is a SensorPlugin. A SensorPlugin must be attached to a link, thus we will create an <code class="docutils literal notranslate"><span class="pre">imu_link</span></code> to which the IMU sensor will be attached. This link will be referenced under the <code class="docutils literal notranslate"><span class="pre">&lt;gazebo&gt;</span></code> element. Next, we will set <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> as the topic to which the IMU will be publishing its information, and we will comply with <a class="reference external" href="https://www.ros.org/reps/rep-0145.html">REP145</a> by setting <code class="docutils literal notranslate"><span class="pre">initalOrientationAsReference</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>. We will also add some noise to the sensor configuration using Gazebo’s <a class="reference external" href="http://gazebosim.org/tutorials?tut=sensor_noise">sensor noise model</a>.</p>
+<p>Now, we will set up our IMU sensor plugin according to the description above by adding the following lines before the <code class="docutils literal notranslate"><span class="pre">&lt;/robot&gt;</span></code> line in our URDF:</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;visual&gt;</span>
+    <span class="nt">&lt;geometry&gt;</span>
+      <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.1 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/geometry&gt;</span>
+  <span class="nt">&lt;/visual&gt;</span>
+
+  <span class="nt">&lt;collision&gt;</span>
+    <span class="nt">&lt;geometry&gt;</span>
+      <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.1 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/geometry&gt;</span>
+  <span class="nt">&lt;/collision&gt;</span>
+
+  <span class="nt">&lt;xacro:box_inertia</span> <span class="na">m=</span><span class="s">&quot;0.1&quot;</span> <span class="na">w=</span><span class="s">&quot;0.1&quot;</span> <span class="na">d=</span><span class="s">&quot;0.1&quot;</span> <span class="na">h=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/link&gt;</span>
+
+<span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;imu_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0.01&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/joint&gt;</span>
+
+ <span class="nt">&lt;gazebo</span> <span class="na">reference=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;sensor</span> <span class="na">name=</span><span class="s">&quot;imu_sensor&quot;</span> <span class="na">type=</span><span class="s">&quot;imu&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;plugin</span> <span class="na">filename=</span><span class="s">&quot;libgazebo_ros_imu_sensor.so&quot;</span> <span class="na">name=</span><span class="s">&quot;imu_plugin&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ros&gt;</span>
+        <span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
+        <span class="nt">&lt;remapping&gt;</span>~/out:=imu<span class="nt">&lt;/remapping&gt;</span>
+      <span class="nt">&lt;/ros&gt;</span>
+      <span class="nt">&lt;initial_orientation_as_reference&gt;</span>false<span class="nt">&lt;/initial_orientation_as_reference&gt;</span>
+    <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;always_on&gt;</span>true<span class="nt">&lt;/always_on&gt;</span>
+    <span class="nt">&lt;update_rate&gt;</span>100<span class="nt">&lt;/update_rate&gt;</span>
+    <span class="nt">&lt;visualize&gt;</span>true<span class="nt">&lt;/visualize&gt;</span>
+    <span class="nt">&lt;imu&gt;</span>
+      <span class="nt">&lt;angular_velocity&gt;</span>
+        <span class="nt">&lt;x&gt;</span>
+          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+            <span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
+            <span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
+            <span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
+          <span class="nt">&lt;/noise&gt;</span>
+        <span class="nt">&lt;/x&gt;</span>
+        <span class="nt">&lt;y&gt;</span>
+          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+            <span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
+            <span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
+            <span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
+          <span class="nt">&lt;/noise&gt;</span>
+        <span class="nt">&lt;/y&gt;</span>
+        <span class="nt">&lt;z&gt;</span>
+          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+            <span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
+            <span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
+            <span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
+          <span class="nt">&lt;/noise&gt;</span>
+        <span class="nt">&lt;/z&gt;</span>
+      <span class="nt">&lt;/angular_velocity&gt;</span>
+      <span class="nt">&lt;linear_acceleration&gt;</span>
+        <span class="nt">&lt;x&gt;</span>
+          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+            <span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
+            <span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
+            <span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
+          <span class="nt">&lt;/noise&gt;</span>
+        <span class="nt">&lt;/x&gt;</span>
+        <span class="nt">&lt;y&gt;</span>
+          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+            <span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
+            <span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
+            <span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
+          <span class="nt">&lt;/noise&gt;</span>
+        <span class="nt">&lt;/y&gt;</span>
+        <span class="nt">&lt;z&gt;</span>
+          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+            <span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
+            <span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
+            <span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
+          <span class="nt">&lt;/noise&gt;</span>
+        <span class="nt">&lt;/z&gt;</span>
+      <span class="nt">&lt;/linear_acceleration&gt;</span>
+    <span class="nt">&lt;/imu&gt;</span>
+  <span class="nt">&lt;/sensor&gt;</span>
+<span class="nt">&lt;/gazebo&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now, let us add the differential drive ModelPlugin. We will configure the plugin such that <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages are published on the <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> topic. The joints of the left and right wheels will be set to the wheel joints of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. The wheel separation and wheel diameter are set according to the values of the defined values of <code class="docutils literal notranslate"><span class="pre">wheel_ygap</span></code> and <code class="docutils literal notranslate"><span class="pre">wheel_radius</span></code> respectively.</p>
+<p>To include this plugin in our URDF, add the following lines after the <code class="docutils literal notranslate"><span class="pre">&lt;/gazebo&gt;</span></code> tag of the IMU plugin:</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;gazebo&gt;</span>
+  <span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&#39;diff_drive&#39;</span> <span class="na">filename=</span><span class="s">&#39;libgazebo_ros_diff_drive.so&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ros&gt;</span>
+      <span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
+    <span class="nt">&lt;/ros&gt;</span>
+
+    <span class="c">&lt;!-- wheels --&gt;</span>
+    <span class="nt">&lt;left_joint&gt;</span>drivewhl_l_joint<span class="nt">&lt;/left_joint&gt;</span>
+    <span class="nt">&lt;right_joint&gt;</span>drivewhl_r_joint<span class="nt">&lt;/right_joint&gt;</span>
+
+    <span class="c">&lt;!-- kinematics --&gt;</span>
+    <span class="nt">&lt;wheel_separation&gt;</span>0.025<span class="nt">&lt;/wheel_separation&gt;</span>
+    <span class="nt">&lt;wheel_diameter&gt;</span>0.2<span class="nt">&lt;/wheel_diameter&gt;</span>
+
+    <span class="c">&lt;!-- limits --&gt;</span>
+    <span class="nt">&lt;max_wheel_torque&gt;</span>20<span class="nt">&lt;/max_wheel_torque&gt;</span>
+    <span class="nt">&lt;max_wheel_acceleration&gt;</span>1.0<span class="nt">&lt;/max_wheel_acceleration&gt;</span>
+
+    <span class="c">&lt;!-- output --&gt;</span>
+    <span class="nt">&lt;publish_odom&gt;</span>true<span class="nt">&lt;/publish_odom&gt;</span>
+    <span class="nt">&lt;publish_odom_tf&gt;</span>true<span class="nt">&lt;/publish_odom_tf&gt;</span>
+    <span class="nt">&lt;publish_wheel_tf&gt;</span>true<span class="nt">&lt;/publish_wheel_tf&gt;</span>
+
+    <span class="nt">&lt;odometry_frame&gt;</span>odom<span class="nt">&lt;/odometry_frame&gt;</span>
+    <span class="nt">&lt;robot_base_frame&gt;</span>base_link<span class="nt">&lt;/robot_base_frame&gt;</span>
+  <span class="nt">&lt;/plugin&gt;</span>
+<span class="nt">&lt;/gazebo&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="launch-and-build-files">
+<h3>Launch and Build Files<a class="headerlink" href="#launch-and-build-files" title="Permalink to this headline">¶</a></h3>
+<p>We will now edit our launch file, <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py">launch/display.launch.py</a>, to spawn <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in Gazebo. Since we will be simulating our robot, we can remove the GUI for the joint state publisher by deleting the following lines inside the <code class="docutils literal notranslate"><span class="pre">generate_launch_description()</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">joint_state_publisher_gui_node</span> <span class="o">=</span> launch_ros.actions.Node<span class="o">(</span>
+  <span class="nv">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
+  <span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
+  <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
+  <span class="nv">condition</span><span class="o">=</span>launch.conditions.IfCondition<span class="o">(</span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;gui&#39;</span><span class="o">))</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Delete the following line inside the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>joint_state_publisher_gui_node,
+</pre></div>
+</div>
+<p>Next, open <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/package.xml">package.xml</a> and delete the line:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;exec_depend&gt;joint_state_publisher_gui&lt;/exec_depend&gt;
+</pre></div>
+</div>
+<p>To launch Gazebo, add the following before the <code class="docutils literal notranslate"><span class="pre">joint_state_publisher_node,</span></code> line</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>launch.actions.ExecuteProcess<span class="o">(</span><span class="nv">cmd</span><span class="o">=[</span><span class="s1">&#39;gazebo&#39;</span>, <span class="s1">&#39;--verbose&#39;</span>, <span class="s1">&#39;-s&#39;</span>, <span class="s1">&#39;libgazebo_ros_factory.so&#39;</span><span class="o">]</span>, <span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="o">)</span>,
+</pre></div>
+</div>
+<p>We will now add a node that spawns <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in Gazebo. Open <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py">launch/display.launch.py</a> again and paste the following lines before the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> line.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">spawn_entity</span> <span class="o">=</span> launch_ros.actions.Node<span class="o">(</span>
+  <span class="nv">package</span><span class="o">=</span><span class="s1">&#39;gazebo_ros&#39;</span>,
+  <span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;spawn_entity.py&#39;</span>,
+  <span class="nv">arguments</span><span class="o">=[</span><span class="s1">&#39;-entity&#39;</span>, <span class="s1">&#39;sam_bot&#39;</span>, <span class="s1">&#39;-topic&#39;</span>, <span class="s1">&#39;robot_description&#39;</span><span class="o">]</span>,
+  <span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Then add the line <code class="docutils literal notranslate"><span class="pre">spawn_entity,</span></code> before the <code class="docutils literal notranslate"><span class="pre">rviz_node</span></code> line, as shown below.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>      robot_state_publisher_node,
+      spawn_entity,
+      rviz_node
+<span class="o">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-run-and-verification">
+<h3>Build, Run and Verification<a class="headerlink" href="#build-run-and-verification" title="Permalink to this headline">¶</a></h3>
+<p>Let us run our package to check if the <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> topics are active in the system.</p>
+<p>Navigate to the root of the project and execute the following lines:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
+. install/setup.bash
+ros2 launch sam_bot_description display.launch.py
+</pre></div>
+</div>
+<p>Gazebo should launch and you should see a 3D model of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>:</p>
+<a class="reference internal image-reference" href="../../_images/gazebo_sam_bot.png"><img alt="../../_images/gazebo_sam_bot.png" class="align-center" src="../../_images/gazebo_sam_bot.png" style="width: 50%;" /></a>
+<p>To see the active topics in the system, open a new terminal and execute:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 topic list
+</pre></div>
+</div>
+<p>You should see <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> in the list of topics.</p>
+<p>To see more information about the topics, execute:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 topic info /demo/imu
+ros2 topic info /demo/odom
+</pre></div>
+</div>
+<p>You should see an output similar to below:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Type: sensor_msgs/msg/Imu
+Publisher count: <span class="m">1</span>
+Subscription count: <span class="m">0</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Type: nav_msgs/msg/Odometry
+Publisher count: <span class="m">1</span>
+Subscription count: <span class="m">0</span>
+</pre></div>
+</div>
+<p>Observe that the <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> topic publishes <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> type messages while the <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> topic publishes <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> type messages. The information being published on these topics come from the gazebo simulation of the IMU sensor and the differential drive respectively. Also note that both topics currently have no subscribers. In the next section, we will create a <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> node that will subscribe to these two topics. It will then use the messages published on both topics to provide a fused, locally accurate and smooth odometry information for Nav2.</p>
+</div>
+</div>
+<div class="section" id="robot-localization-demo">
+<h2>Robot Localization Demo<a class="headerlink" href="#robot-localization-demo" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package is used to provide a fused and locally accurate smooth odometry information from the data provided by <code class="docutils literal notranslate"><span class="pre">N</span></code> odometry sensor inputs. These information can be provided to the package through <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code>, <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code>, <code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseWithCovarianceStamped</span></code>, and <code class="docutils literal notranslate"><span class="pre">geometry_msgs/TwistWithCovarianceStamped</span></code> messages.</p>
+<p>A usual robot setup consists of at least the wheel encoders and IMU as its odometry sensor sources. When multiple sources are provided to <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, it is able to fuse the odometry information given by the sensors through the use of state estimation nodes. These nodes make use of either an Extended Kalman filter (<code class="docutils literal notranslate"><span class="pre">ekf_node</span></code>) or an Unscented Kalman Filter (<code class="docutils literal notranslate"><span class="pre">ukf_node</span></code>) to implement this fusion. In addition, the package also implements a <code class="docutils literal notranslate"><span class="pre">navsat_transform_node</span></code> which transforms geographic coordinates into the robot’s world frame when working with GPS.</p>
+<p>Fused sensor data is published by the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package through the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code> and the <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code> topics, if enabled in its configuration. In addition, it can also publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform on the <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topic.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">More details on <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> can be found in the official <a class="reference external" href="http://docs.ros.org/en/noetic/api/robot_localization/html/index.html">Robot Localization Documentation</a>.</p>
+</div>
+<p>If your robot is only able to provide one odometry source, the use of <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> would have minimal effects aside from smoothing. In this case, an alternative approach is to publish transforms through a tf2 broadcaster in your single source of odometry node. Nevertheless, you can still opt to use <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> to publish the transforms and some smoothing properties may still be observed in the output.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information on how to write a tf2 broadcaster, you can check Writing a tf2 broadcaster <a class="reference external" href="http://wiki.ros.org/tf2/Tutorials/Writing%20a%20tf2%20broadcaster%20%28C%2B%2B%29/">(C++)</a>  <a class="reference external" href="http://wiki.ros.org/tf2/Tutorials/Writing%20a%20tf2%20broadcaster%20%28Python%29/">(Python)</a>.</p>
+</div>
+<p>For the rest of this section, we will show how to use <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> to fuse the sensors of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. It will use the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> messages published on <code class="docutils literal notranslate"><span class="pre">/demo/Imu</span></code> and the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message published on <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> and then it will publish data on <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>,  <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics.</p>
+<div class="section" id="configuring-robot-localization">
+<h3>Configuring Robot Localization<a class="headerlink" href="#configuring-robot-localization" title="Permalink to this headline">¶</a></h3>
+<p>Let us now configure the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package to use an Extended Kalman Filter (<code class="docutils literal notranslate"><span class="pre">ekf_node</span></code>) to fuse odometry information and publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform.</p>
+<p>First, install the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package using your machines package manager or by executing the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-&lt;ros2-distro&gt;-robot-localization
+</pre></div>
+</div>
+<p>Next, we specify the parameters of the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> using a YAML file. Create a directory named <code class="docutils literal notranslate"><span class="pre">config</span></code> at the root of your project and create a file named <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code>. Copy the following lines of code into your <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code> file.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">### ekf config file ###</span>
+<span class="nt">ekf_filter_node</span><span class="p">:</span>
+    <span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="c1"># The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin</span>
+<span class="c1"># computation until it receives at least one message from one of theinputs. It will then run continuously at the</span>
+<span class="c1"># frequency specified here, regardless of whether it receives more measurements. Defaults to 30 if unspecified.</span>
+        <span class="nt">frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30.0</span>
+
+<span class="c1"># ekf_localization_node and ukf_localization_node both use a 3D omnidirectional motion model. If this parameter is</span>
+<span class="c1"># set to true, no 3D information will be used in your state estimate. Use this if you are operating in a planar</span>
+<span class="c1"># environment and want to ignore the effect of small variations in the ground plane that might otherwise be detected</span>
+<span class="c1"># by, for example, an IMU. Defaults to false if unspecified.</span>
+        <span class="nt">two_d_mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="c1"># Whether to publish the acceleration state. Defaults to false if unspecified.</span>
+        <span class="nt">publish_acceleration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="c1"># Whether to broadcast the transformation over the /tf topic. Defaultsto true if unspecified.</span>
+        <span class="nt">publish_tf</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="c1"># 1. Set the map_frame, odom_frame, and base_link frames to the appropriate frame names for your system.</span>
+<span class="c1">#     1a. If your system does not have a map_frame, just remove it, and make sure &quot;world_frame&quot; is set to the value of odom_frame.</span>
+<span class="c1"># 2. If you are fusing continuous position data such as wheel encoder odometry, visual odometry, or IMU data, set &quot;world_frame&quot;</span>
+<span class="c1">#    to your odom_frame value. This is the default behavior for robot_localization&#39;s state estimation nodes.</span>
+<span class="c1"># 3. If you are fusing global absolute position data that is subject to discrete jumps (e.g., GPS or position updates from landmark</span>
+<span class="c1">#    observations) then:</span>
+<span class="c1">#     3a. Set your &quot;world_frame&quot; to your map_frame value</span>
+<span class="c1">#     3b. MAKE SURE something else is generating the odom-&gt;base_link transform. Note that this can even be another state estimation node</span>
+<span class="c1">#         from robot_localization! However, that instance should *not* fuse the global data.</span>
+        <span class="nt">map_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>              <span class="c1"># Defaults to &quot;map&quot; if unspecified</span>
+        <span class="nt">odom_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">odom</span>            <span class="c1"># Defaults to &quot;odom&quot; if unspecified</span>
+        <span class="nt">base_link_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>  <span class="c1"># Defaults to &quot;base_link&quot; ifunspecified</span>
+        <span class="nt">world_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">odom</span>           <span class="c1"># Defaults to the value ofodom_frame if unspecified</span>
+
+        <span class="nt">odom0</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">demo/odom</span>
+        <span class="nt">odom0_config</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">true</span><span class="p p-Indicator">,</span>  <span class="nv">true</span><span class="p p-Indicator">,</span>  <span class="nv">true</span><span class="p p-Indicator">,</span>
+                       <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
+                       <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
+                       <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
+                       <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">]</span>
+
+        <span class="nt">imu0</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">demo/imu</span>
+        <span class="nt">imu0_config</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
+                      <span class="nv">true</span><span class="p p-Indicator">,</span>  <span class="nv">true</span><span class="p p-Indicator">,</span>  <span class="nv">true</span><span class="p p-Indicator">,</span>
+                      <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
+                      <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
+                      <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>In this configuration, we defined the parameter values of <code class="docutils literal notranslate"><span class="pre">frequency</span></code>, <code class="docutils literal notranslate"><span class="pre">two_d_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_acceleration</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_tf</span></code>, <code class="docutils literal notranslate"><span class="pre">map_frame</span></code>, <code class="docutils literal notranslate"><span class="pre">odom_frame</span></code>, <code class="docutils literal notranslate"><span class="pre">base_link_frame</span></code>, and <code class="docutils literal notranslate"><span class="pre">world_frame</span></code>. For more information on the other parameters you can modify, see <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/state_estimation_nodes.html#parameters">Parameters of state estimation nodes</a>, and a sample <code class="docutils literal notranslate"><span class="pre">efk.yaml</span></code> can be found <a class="reference external" href="https://github.com/cra-ros-pkg/robot_localization/blob/foxy-devel/params/ekf.yaml">here</a>.</p>
+<p>To add a sensor input to the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code>, add the next number in the sequence to its base name (odom, imu, pose, twist). In our case, we have one <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> and one <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> as inputs to the filter, thus we use <code class="docutils literal notranslate"><span class="pre">odom0</span></code> and <code class="docutils literal notranslate"><span class="pre">imu0</span></code>. We set the value of <code class="docutils literal notranslate"><span class="pre">odom0</span></code> to <code class="docutils literal notranslate"><span class="pre">demo/odom</span></code>, which is the topic that publishes the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code>. Similarly, we set the value of <code class="docutils literal notranslate"><span class="pre">imu0</span></code> to the topic that publishes <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code>, which is <code class="docutils literal notranslate"><span class="pre">demo/imu</span></code>.</p>
+<p>You can specify which values from a sensor are to be used by the filter using the <code class="docutils literal notranslate"><span class="pre">_config</span></code> parameter. The order of the values of this parameter is x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. In our example, we set everything in <code class="docutils literal notranslate"><span class="pre">odom0_config</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code> except the 1st, 2nd, 3rd, and 12th entries, which means the filter will only use the x, y, z, and the vyaw values of <code class="docutils literal notranslate"><span class="pre">odom0</span></code>.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">imu0_config</span></code> matrix, you’ll notice that only roll, pitch, and yaw are used. Typical mobile robot-grade IMUs will also provide angular velocities and linear accelerations. For <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> to work properly, you should not fuse in multiple fields that are derivative of each other. Since angular velocity is fused internally to the IMU to provide the roll, pitch and yaw estimates, we should not fuse in the angular velocities used to derive that information. We also do not fuse in angular velocity due to the noisy characteristics it has when not using exceptionally high quality (and expensive) IMUs.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more advise on configuration of input data to <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, see <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/preparing_sensor_data.html#odometry">Preparing Your Data for Use with robot_localization</a>, and <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html">Configuring robot_localization</a>.</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Launch and Build Files<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Now, let us add the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> into the launch file. Open <code class="docutils literal notranslate"><span class="pre">launch/display.launch.py</span></code> and paste the following lines before the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> line.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">robot_localization_node</span> <span class="o">=</span> launch_ros.actions.Node<span class="o">(</span>
+       <span class="nv">package</span><span class="o">=</span><span class="s1">&#39;robot_localization&#39;</span>,
+       <span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;ekf_node&#39;</span>,
+       <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;ekf_filter_node&#39;</span>,
+       <span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>,
+       <span class="nv">parameters</span><span class="o">=[</span>os.path.join<span class="o">(</span>pkg_share, <span class="s1">&#39;config/ekf.yaml&#39;</span><span class="o">)</span>, <span class="o">{</span><span class="s1">&#39;use_sim_time&#39;</span>: LaunchConfiguration<span class="o">(</span><span class="s1">&#39;use_sim_time&#39;</span><span class="o">)}]</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Next, add the following launch arguments within the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> block.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>launch.actions.DeclareLaunchArgument<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;use_sim_time&#39;</span>, <span class="nv">default_value</span><span class="o">=</span><span class="s1">&#39;True&#39;</span>,
+                                            <span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable use_sim_time&#39;</span><span class="o">)</span>,
+</pre></div>
+</div>
+<p>Lastly, add <code class="docutils literal notranslate"><span class="pre">robot_localization,</span></code> above the <code class="docutils literal notranslate"><span class="pre">rviz_node</span></code> line to launch the robot localization node.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>      robot_state_publisher_node,
+      spawn_entity,
+      robot_localization_node,
+      rviz_node
+<span class="o">])</span>
+</pre></div>
+</div>
+<p>Next, we need to add the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> dependency to our package definition. Open <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> and add the following line below the last <code class="docutils literal notranslate"><span class="pre">&lt;exec_depend&gt;</span></code> tag.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;exec_depend&gt;robot_localization&lt;/exec_depend&gt;
+</pre></div>
+</div>
+<p>Lastly, open <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and append the <code class="docutils literal notranslate"><span class="pre">config</span></code> directory inside the <code class="docutils literal notranslate"><span class="pre">install(DIRECTORY...)</span></code>, as shown in the snippet below.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>install<span class="o">(</span>
+  DIRECTORY src launch rviz config
+  DESTINATION share/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>Build, Run and Verification<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Let us now build and run our package. Navigate to the root of the project and execute the following lines:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
+. install/setup.bash
+ros2 launch sam_bot_description display.launch.py
+</pre></div>
+</div>
+<p>Gazebo and RVIZ should launch. In the RVIZ window, you should see the model and TF frames of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>:</p>
+<a class="reference internal image-reference" href="../../_images/rviz.png"><img alt="../../_images/rviz.png" class="align-center" src="../../_images/rviz.png" style="width: 100%;" /></a>
+<p>Next, let us verify that the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>,  <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics are active in the system. Open a new terminal and execute:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 topic list
+</pre></div>
+</div>
+<p>You should see <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>, <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> in the list of the topics.</p>
+<p>You can also check the subscriber count of these topics again by executing:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 topic info /demo/imu
+ros2 topic info /demo/odom
+</pre></div>
+</div>
+<p>You should see that <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> now both have 1 subscriber each.</p>
+<p>To verify that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> are the subscribers of these topics, execute:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 node info /ekf_filter_node
+</pre></div>
+</div>
+<p>You should see an output as shown below.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/ekf_filter_node
+Subscribers:
+  /demo/imu: sensor_msgs/msg/Imu
+  /demo/odom: nav_msgs/msg/Odometry
+  /parameter_events: rcl_interfaces/msg/ParameterEvent
+  /set_pose: geometry_msgs/msg/PoseWithCovarianceStamped
+Publishers:
+  /accel/filtered: geometry_msgs/msg/AccelWithCovarianceStamped
+  /diagnostics: diagnostic_msgs/msg/DiagnosticArray
+  /odometry/filtered: nav_msgs/msg/Odometry
+  /parameter_events: rcl_interfaces/msg/ParameterEvent
+  /rosout: rcl_interfaces/msg/Log
+  /tf: tf2_msgs/msg/TFMessage
+Service Servers:
+   ...
+</pre></div>
+</div>
+<p>From the output above, we can see that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> is subscribed to <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code>. We can also see that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> publishes on the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>, <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics.</p>
+<p>You may also verify that <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> is publishing the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform by using the tf2_echo utility. Run the folllowing command in a separate command line terminal:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 run tf2_ros tf2_echo odom base_link
+</pre></div>
+</div>
+<p>You should see a continuous output similar to what is shown below.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>At <span class="nb">time</span> <span class="m">8</span>.842000000
+- Translation: <span class="o">[</span><span class="m">0</span>.003, -0.000, <span class="m">0</span>.127<span class="o">]</span>
+- Rotation: <span class="k">in</span> Quaternion <span class="o">[</span>-0.000, <span class="m">0</span>.092, <span class="m">0</span>.003, <span class="m">0</span>.996<span class="o">]</span>
+At <span class="nb">time</span> <span class="m">9</span>.842000000
+- Translation: <span class="o">[</span><span class="m">0</span>.002, -0.000, <span class="m">0</span>.127<span class="o">]</span>
+- Rotation: <span class="k">in</span> Quaternion <span class="o">[</span>-0.000, <span class="m">0</span>.092, <span class="m">0</span>.003, <span class="m">0</span>.996<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>In this guide, we have discussed the messages and transforms that are expected by Nav2 from the odometry system. We have seen how to set up an odometry system and how to verify the published messages. We also have discussed how multiple odometry sensors can be used to provide a filtered and smoothed odometry using <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>. We have also checked if the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform is being published correctly by <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+
+<script type="text/javascript" src="../../_static/tcs_theme.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+</body>
+</html>
