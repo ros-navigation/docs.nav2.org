@@ -6,7 +6,7 @@ Setting Up The URDF
 For this guide, we will be creating the URDF for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
 .. seealso::
-  The complete source code in this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description>`_ repository under the ``sam_bot_description`` package
+  The complete source code in this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description>`_ repository under the ``sam_bot_description`` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 URDF and the Robot State Publisher
 ==================================
@@ -117,7 +117,9 @@ After defining our base_link, we then add a joint to connect it to ``base_link``
   :lineno-start: 29
 
     <!-- Robot Footprint -->
-    <link name="base_footprint" />
+    <link name="base_footprint">
+      <xacro:box_inertia m="0" w="0" d="0" h="0"/>
+    </link>
 
     <joint name="base_joint" type="fixed">
       <parent link="base_link"/>
