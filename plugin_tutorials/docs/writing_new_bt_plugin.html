@@ -631,14 +631,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2020 Summer Student Program</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_configuration_assistant.html">1. Create a Configuration Assistant (Analog to MoveIt)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/create_plugins.html">2. Create New Planner and Controller Plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/grid_maps.html">3. Port Grid Maps to ROS 2 and Environmental Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/testing.html">4. Advanced Navigation Testing Framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/navigation_rebranding.html">5. Navigation Branding and Website</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/localization.html">6. 2D/3D Localization Improvements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/dynamic.html">7. Navigation Dynamic Obstacle Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/assisted_teleop.html">1. Assisted Teleop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/multithreading.html">2. Navigation MultiThreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/safety_node.html">3. Navigation Safety Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/smoothing.html">4. Path Smoothing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
 </ul>
 </li>
 </ul>
@@ -842,9 +840,9 @@ So in this example, we set the duration to the time we want to wait by so that t
 Ports can be thought of as parameters that the behavior tree node has access to from the behavior tree itself.
 For our example, there is only a single input port, the <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> which can be set in the BT XML for each instance of the <code class="docutils literal notranslate"><span class="pre">wait</span></code> recovery.
 We set the type, <code class="docutils literal notranslate"><span class="pre">int</span></code>, the default <code class="docutils literal notranslate"><span class="pre">1</span></code>, the name <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code>, and a description of the port <code class="docutils literal notranslate"><span class="pre">Wait</span> <span class="pre">time</span></code>.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span> <span class="n">providedPorts</span><span class="p">()</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span> <span class="nf">providedPorts</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">return</span> <span class="nf">providedBasicPorts</span><span class="p">(</span>
+  <span class="k">return</span> <span class="n">providedBasicPorts</span><span class="p">(</span>
     <span class="p">{</span>
       <span class="n">BT</span><span class="o">::</span><span class="n">InputPort</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;wait_duration&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Wait time&quot;</span><span class="p">)</span>
     <span class="p">});</span>
@@ -855,7 +853,7 @@ We set the type, <code class="docutils literal notranslate"><span class="pre">in
 For the wait BT node, we simply want to notify a counter on the blackboard that an action plugin that corresponds to a recovery was ticked.
 This is useful to keep metrics about the number of recoveries executed during a specific navigation run.
 You could also log or update the <code class="docutils literal notranslate"><span class="pre">goal_</span></code> waiting duration if that is a variable input.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">WaitAction</span><span class="o">::</span><span class="n">on_tick</span><span class="p">()</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">WaitAction::on_tick</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="n">increment_recovery_count</span><span class="p">();</span>
 <span class="p">}</span>
