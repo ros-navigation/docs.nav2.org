@@ -4,7 +4,7 @@
 Projects for 2021 Summer Student Program
 ########################################
 
-The `Summer 2020 Student Program <https://summer.iscas.ac.cn/help/en/student/>`_ us upon us!
+The `Summer 2021 Student Program <https://summer.iscas.ac.cn/help/en/student/>`_ us upon us!
 See below for the list of project proposals for students to review and apply for.
 This is by no means the only list of potential projects, please check our issue tracker or propose another if there's something you think you're well suited for that would be useful for Nav2.
 
