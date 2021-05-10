@@ -159,6 +159,12 @@ The ``nav2_smac_planner`` package contains an optimized templated A* search algo
 
 The ``SmacPlanner`` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.
 
+ThetaStarPlanner
+****************
+A new package, ``nav2_theta_star_planner`` was added containing 4 or 8 connected Theta* implementation for 2D maps.
+
+This package implements an optimized version of the Theta* Path Planner (specifically the `Lazy Theta\* P <http://idm-lab.org/bib/abstracts/papers/aaai10b.pdf>`_ variant) to plan any-angled paths for differential-drive and omni-directional robots, while also taking into account the costmap costs. This plugin is useful for the cases where you might want to plan a path at a higher rate but without requiring extremely smooth paths around the corners which, for example, could be handled by a local planner/controller.
+
 RegulatedPurePursuitController
 ******************************
 
