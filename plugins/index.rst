@@ -118,10 +118,17 @@ Planners
 |                   |                                       | with smoother and            |                     |
 |                   |                                       | multi-resolution query       |                     |
 +-------------------+---------------------------------------+------------------------------+---------------------+
+|`ThetaStarPlanner`_| Anshumaan Singh                       | An implementaion of Theta*   | Differential,       |
+|                   |                                       | using either 4 or 8          | Omnidirectional     |
+|                   |                                       | connected neighborhoods,     |                     |
+|                   |                                       | assumes the robot as a       |                     |
+|                   |                                       | 2D holonomic particle        |                     |
++-------------------+---------------------------------------+------------------------------+---------------------+
 
 .. _NavFn Planner: https://github.com/ros-planning/navigation2/tree/main/nav2_navfn_planner
 .. _SmacPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 .. _SmacPlanner2D: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
+.. _ThetaStarPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
 
 Recoveries
 ==========
