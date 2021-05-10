@@ -29,3 +29,4 @@ Have fun and we look forward to working with you this summer!
    projects/safety_node.rst
    projects/smoothing.rst
    projects/spinners.rst
+   projects/twist_n_config.rst

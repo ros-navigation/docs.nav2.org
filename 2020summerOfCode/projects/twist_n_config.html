@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>(SLAM) Navigating While Mapping &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="(STVL) Using an External Costmap Plugin" href="navigation2_with_stvl.html" />
-    <link rel="prev" title="Navigating with a Physical Turtlebot 3" href="navigation2_on_real_turtlebot3.html" />
+    <link rel="prev" title="5. Reduce ROS2 Nodes and Determinism" href="spinners.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -220,92 +219,92 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">General Tutorials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="camera_calibration.html">Camera Calibration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">General Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html">Camera Calibration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-a-node">From a Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-nav2-bringup">From Nav2 Bringup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#initialize-the-location-of-turtlebot-3">4- Initialize the Location of Turtlebot 3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#send-a-goal-pose">5-  Send a Goal Pose</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">(SLAM) Navigating While Mapping</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-navigation2">1- Launch Navigation2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-slam">2- Launch SLAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#working-with-slam">3- Working with SLAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#getting-started-simplification">4- Getting Started Simplification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#initialize-the-location-of-turtlebot-3">4- Initialize the Location of Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#send-a-goal-pose">5-  Send a Goal Pose</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_with_stvl.html">(STVL) Using an External Costmap Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_stvl.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_stvl.html#costmap2d-and-stvl">Costmap2D and STVL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_stvl.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#setup">0- Setup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#install-stvl">1- Install STVL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#modify-navigation2-parameter">1- Modify Navigation2 Parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#launch-navigation2">2- Launch Navigation2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#rviz">3-  RVIZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html">(SLAM) Navigating While Mapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-navigation2">1- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-slam">2- Launch SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#working-with-slam">3- Working with SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#getting-started-simplification">4- Getting Started Simplification</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_dynamic_point_following.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html">(STVL) Using an External Costmap Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#costmap2d-and-stvl">Costmap2D and STVL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#setup">0- Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#install-stvl">1- Install STVL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#modify-navigation2-parameter">1- Modify Navigation2 Parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#launch-navigation2">2- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#rviz">3-  RVIZ</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
 </ul>
 </li>
 </ul>
@@ -637,13 +636,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../2020summerOfCode/Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/assisted_teleop.html">1. Assisted Teleop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/multithreading.html">2. Navigation MultiThreading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/safety_node.html">3. Navigation Safety Node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/smoothing.html">4. Path Smoothing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2020summerOfCode/projects/twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -700,9 +699,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../index.html">General Tutorials</a> &raquo;</li>
+          <li><a href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
         
-      <li>(SLAM) Navigating While Mapping</li>
+      <li>6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -719,85 +718,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="slam-navigating-while-mapping">
-<span id="navigation2-with-slam"></span><h1>(SLAM) Navigating While Mapping<a class="headerlink" href="#slam-navigating-while-mapping" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="convert-twist-to-twiststamped-in-ecosystem-and-run-time-configuration">
+<span id="spinners"></span><h1>6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration<a class="headerlink" href="#convert-twist-to-twiststamped-in-ecosystem-and-run-time-configuration" title="Permalink to this headline">¶</a></h1>
+<p><strong>Task description</strong></p>
+<p>This project is comprised of 2 smaller projects that can be easily worked on in parallel.</p>
+<p>Subproject A: Convert Twist to TwistStamped in Ecosystem</p>
+<p>The aim of this project is to identify places in the ROS2 ecosystem that make use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> in the context of <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> coming out of Navigation. This includes things like Nav2, ROS2 Control, Gazebo ROS Plugins, Yuk’s Velocity Filter, major robot drivers, etc. A set of previously identified places is shown in the ticket linked below.</p>
+<p>Once you’ve created a list of places in the ecosystem where it is used, your project will be to submit PRs on their ROS2 branches to change the interface to make use of a <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">Twist</span></code>.</p>
+<p>Subproject B: Run-time Reconfiguration of Parameters</p>
+<p>In the meantime while you’re waiting for PRs to be merged or blocked by reviews on converting all of the ecosystems <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> to <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code>, your project will be to enable run-time reconfiguration of the major parameters in Nav2. In ROS2 this is done via the parameter change event callbacks. See tickets below for a list of plugins or servers needing dynamically reconfigurable parameter support added.</p>
+<p><strong>Project difficulty: Medium</strong></p>
+<p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
+<p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
+<p><strong>Project output requirements</strong>
+- Convert all the major ecosystem projects into TwistStamped
+- Enable run-time reconfiguration of the remaining plugins and servers in Nav2 missing
+- Ensure that reconfiguration is thread-safe by using locks, atomic variables, or callback groups</p>
+<p><strong>Skills required</strong></p>
 <ul class="simple">
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#requirements">Requirements</a></li>
-<li><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></li>
+<li>C++, Python3</li>
+<li>ROS2</li>
 </ul>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This document explains how to use Nav2 with SLAM.
-The following steps show ROS 2 users how to generate occupancy grid maps and use Nav2 to move their robot around.
-This tutorial applies to both simulated and physical robots, but will be completed here on physical robot.</p>
-<p>Before completing this tutorial, completing the <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. is highly recommended especially if you are new to ROS and Navigation2.</p>
-<p>In this tutorial we’ll be using SLAM Toolbox. More information can be found in the <a class="reference external" href="https://vimeo.com/378682207">ROSCon talk for SLAM Toolbox</a></p>
-</div>
-<div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>You must install Navigation2, Turtlebot3, and SLAM Toolbox.
-If you don’t have them installed, please follow <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.</p>
-<p>SLAM Toolbox can be installed via:</p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;ros2-distro&gt;-slam-toolbox</span></code></div></blockquote>
-<p>or from built from source in your workspace with:</p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">-b</span> <span class="pre">&lt;ros2-distro&gt;-devel</span> <span class="pre">git&#64;github.com:stevemacenski/slam_toolbox.git</span></code></div></blockquote>
-</div>
-<div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="launch-robot-interfaces">
-<h3>0- Launch Robot Interfaces<a class="headerlink" href="#launch-robot-interfaces" title="Permalink to this headline">¶</a></h3>
-<p>For this tutorial, we will use the turtlebot3.
-If you have another robot, replace with your robot specific interfaces.
-Typically, this includes the robot state publisher of the URDF, simulated or physical robot interfaces, controllers, safety nodes, and the like.</p>
-<p>Run the following commands first whenever you open a new terminal during this tutorial.</p>
+<p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/opt/ros/&lt;ros2-distro&gt;/setup.bash</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">TURTLEBOT3_MODEL=waffle</span></code></li>
+<li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
+<li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/956">Github ticket</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1594">Github ticket2</a></li>
+<li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
+<li><a class="reference external" href="https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf">Some related works</a></li>
 </ul>
-<p>Launch your robot’s interface and robot state publisher,</p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">turtlebot3_bringup</span> <span class="pre">robot.launch.py</span></code></div></blockquote>
-</div>
-<div class="section" id="launch-navigation2">
-<h3>1- Launch Navigation2<a class="headerlink" href="#launch-navigation2" title="Permalink to this headline">¶</a></h3>
-<p>Launch Navigation without nav2_amcl and nav2_map_server.
-It is assumed that the SLAM node(s) will publish to /map topic and provide the map-&gt;odom transform.</p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">nav2_bringup</span> <span class="pre">navigation_launch.py</span></code></div></blockquote>
-</div>
-<div class="section" id="launch-slam">
-<h3>2- Launch SLAM<a class="headerlink" href="#launch-slam" title="Permalink to this headline">¶</a></h3>
-<p>Bring up your choice of SLAM implementation.
-Make sure it provides the map-&gt;odom transform and /map topic.
-Run Rviz and add the topics you want to visualize such as /map, /tf, /laserscan etc.
-For this tutorial, we will use <a class="reference external" href="https://github.com/SteveMacenski/slam_toolbox">SLAM Toolbox</a>.</p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">slam_toolbox</span> <span class="pre">online_async_launch.py</span></code></div></blockquote>
-</div>
-<div class="section" id="working-with-slam">
-<h3>3- Working with SLAM<a class="headerlink" href="#working-with-slam" title="Permalink to this headline">¶</a></h3>
-<p>Move your robot by requesting a goal through RViz or the ROS 2 CLI, ie:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic pub /goal_pose geometry_msgs/PoseStamped <span class="s2">&quot;{header: {stamp: {sec: 0}, frame_id: &#39;map&#39;}, pose: {position: {x: 0.2, y: 0.0, z: 0.0}, orientation: {w: 1.0}}}&quot;</span>
-</pre></div>
-</div>
-<p>You should see the map update live! To save this map to file:</p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">nav2_map_server</span> <span class="pre">map_saver_cli</span> <span class="pre">-f</span> <span class="pre">~/map</span></code></div></blockquote>
-<a class="reference internal image-reference" href="../../_images/navigation2_with_slam.gif"><img alt="Navigation2 with SLAM" class="align-center" src="../../_images/navigation2_with_slam.gif" style="width: 700px;" /></a>
-</div>
-<div class="section" id="getting-started-simplification">
-<h3>4- Getting Started Simplification<a class="headerlink" href="#getting-started-simplification" title="Permalink to this headline">¶</a></h3>
-<p>If you’re only interested in running SLAM in the turtlebot3 getting started sandbox world, we also provide a simple way to enable SLAM as a launch configuration.
-Rather than individually launching the interfaces, navigation, and SLAM, you can continue to use the <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code> with <code class="docutils literal notranslate"><span class="pre">slam</span></code> config set to true.
-We provide the instructions above with the assumption that you’d like to run SLAM on your own robot which would have separated simulation / robot interfaces and navigation launch files that are combined in <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code> for the purposes of easy testing.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py slam:<span class="o">=</span>True
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Licensing</strong>
+- All contributions will be under the Apache 2.0 license.
+- No other CLA’s are required.</p>
 </div>
 
 
