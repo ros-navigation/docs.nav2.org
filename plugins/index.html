@@ -481,6 +481,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-smac-planner.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-thetastar.html">Theta Star Planner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-thetastar.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-thetastar.html#example">Example</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html">Controller Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#provided-plugins">Provided Plugins</a><ul>
@@ -599,6 +604,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-plugins">New Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#thetastarplanner">ThetaStarPlanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#regulatedpurepursuitcontroller">RegulatedPurePursuitController</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#standard-time-units-in-parameters">Standard time units in parameters</a></li>
@@ -903,6 +909,16 @@ multi-resolution query</td>
 <td>Differential,
 Omnidirectional,
 Legged</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner">ThetaStarPlanner</a></td>
+<td>Anshumaan Singh</td>
+<td>An implementaion of Theta*
+using either 4 or 8
+connected neighborhoods,
+assumes the robot as a
+2D holonomic particle</td>
+<td>Differential,
+Omnidirectional</td>
 </tr>
 </tbody>
 </table>
