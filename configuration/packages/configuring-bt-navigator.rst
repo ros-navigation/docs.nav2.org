@@ -70,6 +70,29 @@ Parameters
   Description
     List of behavior tree node shared libraries.
 
+:bt_loop_duration:
+
+  ==== =======
+  Type Default
+  ---- -------
+  int  10
+  ==== =======
+
+  Description
+    Duration (in milliseconds) for each iteration of BT execution.
+
+:default_server_timeout:
+
+  ==== =======
+  Type Default
+  ---- -------
+  int  20
+  ==== =======
+
+  Description
+    Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
+    This value will be overwritten for a BT node if the input port "server_timeout" is provided.
+
 :enable_groot_monitoring:
 
   ==== =======
