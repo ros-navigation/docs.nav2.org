@@ -124,6 +124,7 @@ Then, use ``vcs`` to clone the repos and versions in it into a workspace.
   cd ~/nav2_depend_ws
   wget https://raw.githubusercontent.com/ros-planning/navigation2/main/tools/underlay.repos
   vcs import src < underlay.repos
+  vcs custom --args checkout foxy
   rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
