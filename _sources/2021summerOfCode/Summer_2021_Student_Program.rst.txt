@@ -1,4 +1,4 @@
-.. _summer_2020_student_program:
+.. _summer_2021_student_program:
 
 
 Projects for 2021 Summer Student Program

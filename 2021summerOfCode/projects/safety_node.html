@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>6. 2D/3D Localization Improvements &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>3. Navigation Safety Node &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,6 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Path Smoothing" href="smoothing.html" />
+    <link rel="prev" title="2. Navigation MultiThreading" href="multithreading.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -105,7 +107,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -635,10 +637,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
@@ -698,7 +700,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>6. 2D/3D Localization Improvements</li>
+          <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
+        
+      <li>3. Navigation Safety Node</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -715,35 +719,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="d-3d-localization-improvements">
-<span id="localization"></span><h1>6. 2D/3D Localization Improvements<a class="headerlink" href="#d-3d-localization-improvements" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="navigation-safety-node">
+<span id="safety-node"></span><h1>3. Navigation Safety Node<a class="headerlink" href="#navigation-safety-node" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p>The Navigation2 stack uses AMCL as its primary localization engine. Over the last 10 years, essentially no updates to AMCL has been made. This is due to the code base for this implementation of an Adaptive Monte Carlo Localizer is written in embedded C, not well structured, and very sensitive to changes. A-MCL implementations have been a hallmark of localization for over a decade but this particular implementation should be deprecated.</p>
-<p>Your target involves designing and creating a new localization engine for the Nav2 stack. The requirements of this are:
-- Support 2D laser scanners
-- Support 3D laser scanners, where 2D case could potentially be a simplified case
-- Accurately track the localization of a robot in a given occupancy grid</p>
-<p>The reason that specific method is left open-ended is to allow for creativity, novelty, or reimplementation of a what you feel is best. We have, however, analyzed other MCL variants as being good options. This may include reimplementing an A-MCL that is designed to be modified with modular components and support sampling from a 3D lidar. Another option is a NDT-MCL using NDT 2D/3D scan matching. Other options may be proposed and discussed with mentors during the application phase. The task involves 3D as well since there is no standard 3D localizer in ROS 2 yet and more and more robust 3D SLAM libraries have emerged over the last 2 years.</p>
-<p>An optional but recommended feature of this work would be to also accept the inputs from multiple laser scanners. However it is not strictly required.</p>
-<p><strong>Project difficulty: High</strong></p>
+<p>The aim of this project is to create a safety watchdog node to ensure the robot is acting properly and not about to collide with an obstacle. Typical safety-rated lidars will contain “safety zones” whereas if any sensor points are located in a box around the lidar, then the lidar will send a signal to the robot to stop due to a potential collision. However, less and less people are using safety-rated lidars as consumer available lidars are dropping in cost and 3D lidars are seeing more use in mobile robotics.</p>
+<p>Your project will be to re-create this logic at the Navigation level. While this wouldn’t be “safety certified”, this is a significant functional improvement on safety that could potentially safe real people from real injuries in the real-world. The project will be to create a node that sits below the navigation stack but above the robot controller to do the following:</p>
+<ul class="simple">
+<li>Take in the current command velocity from navigation and the most recent laser or RGBD scan</li>
+<li>Projecting the velocity forward in time <code class="docutils literal notranslate"><span class="pre">N</span></code> seconds, check if that velocity will result in a collision with any sensor measurements</li>
+<li>If not, allow the velocity command through to the base</li>
+<li>If it does collide, scale back the velocity such that the robot will always be at minimum <code class="docutils literal notranslate"><span class="pre">N</span></code> seconds from a collision</li>
+<li>Optionally if a flag is set, if <code class="docutils literal notranslate"><span class="pre">M</span></code> or more points are in defined bounding boxes around the robot, send only <code class="docutils literal notranslate"><span class="pre">0</span></code> commands to enact an emergency stop.</li>
+</ul>
+<p>This will be an excellent chance to make mobile robots and Nav2 users significantly safer and run at higher speeds in their production or research environments. It goes a long way for functional safety for those not using safety-rated lidars which contain similar features.</p>
+<p><strong>Project difficulty: Medium</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
 <p><strong>Project output requirements</strong>
-- 2D and 3D localization system based on laser scanners
-- 65% or higher test coverage
-- Designed with modular components that can be reliably modified over time</p>
+- Creation of a ROS2 node that will prevent robot collision based on lidar and/or RGBD data
+- Node should be able to run at lidar data speed (40hz+) and adjust velocity commands accordingly
+- If time allots, work on tuning / adding new critics to the DWB local planner to improve safety of its performance for users out of the box</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C/C++</li>
-<li>Localization, particle filter, or SLAM techniques</li>
-<li>Ability to read and implement academic works</li>
-<li>Recommended: Gazebo simulation and Navigation experience</li>
+<li>C++, ROS</li>
+<li>Mobile robot navigation experience</li>
+<li>Geometry and statistics</li>
+<li>Recommended: Gazebo simulation, ROS navigation</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1391">Original Github Issue</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1899">Github ticket</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
 </ul>
 <p><strong>Licensing</strong>

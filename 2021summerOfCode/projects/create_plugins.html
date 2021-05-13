@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4. Path Smoothing &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>2. Create New Planner and Controller Plugins &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,6 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5. Reduce ROS2 Nodes and Determinism" href="spinners.html" />
-    <link rel="prev" title="3. Navigation Safety Node" href="safety_node.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -107,7 +105,7 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -637,11 +635,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Path Smoothing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
@@ -700,9 +698,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
-        
-      <li>4. Path Smoothing</li>
+      <li>2. Create New Planner and Controller Plugins</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -719,40 +715,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="path-smoothing">
-<span id="smoothing"></span><h1>4. Path Smoothing<a class="headerlink" href="#path-smoothing" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="create-new-planner-and-controller-plugins">
+<span id="create-plugins"></span><h1>2. Create New Planner and Controller Plugins<a class="headerlink" href="#create-new-planner-and-controller-plugins" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p>This project is to create a generic path smoothing node or library to help in smoothing out paths generated from search-based planners used in Nav2 (Dijkstra, A*, NavFn, Hybrid-A*, State Lattice, etc) to make them more drivable at higher speeds and remove any non-optimal artifacts from the searching process due to imperfect heuristic functions.</p>
-<p>Common ways to smooth paths include:
-- Non-linear optimization
-- Gradient Descent (related)
-- Splines
-- Curve fitting
-- etc</p>
-<p>Your task will be to create a path smoother that will take in a given path and smooth it to be more drivable and return that path to the requester.</p>
-<p><strong>Project difficulty: Medium</strong></p>
+<p>The ROS 2 Navigation Stack has a number of plugin interfaces to help users create or select specific plugins for planning, control, and recovery for their applications. Two specific areas that the Nav2 stack could use more algorithm plugins for is for path planning (referred to as a planner plugin) and local trajectory generation (referred to as controller plugins). A simple tutorial for creating a <a class="reference external" href="https://navigation.ros.org/tutorials/docs/writing_new_nav2planner_plugin.html">planner plugin can be found here.</a> Currently, we have one planner, NavFn which implements an A* and Dijkstra’s planner. It also has two controllers, DWB and TEB which implement a DWA and timed elastic-band optimization techniques. There is also a Hybrid-A* and OMPL planner in development.</p>
+<p>Your task will be to create a high-quality implementation of one of the following algorithms for the Nav2 plugin interfaces. Alternative algorithms may also be considered upon approval, please ask &#64;steve in the application phase. Please select only one to discuss.</p>
+<ul class="simple">
+<li>Planner Plugin Options: D* or variant, Vornoi planner, Navigation graph route planner, State Lattice planner, kinodynamic planner, and any planning method given a set of dynamic and static obstacles.</li>
+<li>Controller Plugin Options: CiLQR, iLQR, MPC, Splines, path following or dynamic obstacle following controllers.</li>
+<li>Additional options: helping in completing the OMPL or Hybrid-A* planner.</li>
+</ul>
+<p><strong>Project difficulty: High</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
-<p><strong>Project output requirements</strong>
-- Can run in real-time (&lt; 100ms) on average
-- Can smooth paths of arbitrary lengths and from arbitrary path planning algorithms used in Nav2
-- Returned paths with tangent orientation vectors included (see ticket 2)
-- May be in Python or C++
-- If time allots, and in Python, convert to C++</p>
+<p><strong>Project output requirements</strong></p>
+<ul class="simple">
+<li>A functional planner or controller plugin for the Nav2 stack</li>
+<li>Plugin should be optimized for run-time performance with 50% or greater test coverage</li>
+</ul>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++, Python, ROS</li>
-<li>Mobile robot navigation experience</li>
-<li>Geometry, splines, and/or optimization</li>
-<li>Recommended: Gazebo simulation, ROS navigation</li>
+<li>C++</li>
+<li>Path planning or motion planning</li>
+<li>Algorithm optimization</li>
+<li>ROS / Pluginlib</li>
+<li>Recommended: Gazebo simulation and Navigation experience</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2230">Github ticket</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2162">Github ticket2</a></li>
-<li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1710">Github issue page</a></li>
+<li><a class="reference external" href="https://navigation.ros.org/">Nav2</a></li>
 </ul>
 <p><strong>Licensing</strong>
 - All contributions will be under the Apache 2.0 license.

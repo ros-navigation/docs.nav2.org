@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>3. Navigation Safety Node &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>3. Port Grid Maps to ROS 2 and Environmental Model &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,6 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Path Smoothing" href="smoothing.html" />
-    <link rel="prev" title="2. Navigation MultiThreading" href="multithreading.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -107,7 +105,7 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -637,10 +635,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Navigation Safety Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
@@ -700,9 +698,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
-        
-      <li>3. Navigation Safety Node</li>
+      <li>3. Port Grid Maps to ROS 2 and Environmental Model</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -719,38 +715,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="navigation-safety-node">
-<span id="safety-node"></span><h1>3. Navigation Safety Node<a class="headerlink" href="#navigation-safety-node" title="Permalink to this headline">¶</a></h1>
-<p><strong>Task description</strong></p>
-<p>The aim of this project is to create a safety watchdog node to ensure the robot is acting properly and not about to collide with an obstacle. Typical safety-rated lidars will contain “safety zones” whereas if any sensor points are located in a box around the lidar, then the lidar will send a signal to the robot to stop due to a potential collision. However, less and less people are using safety-rated lidars as consumer available lidars are dropping in cost and 3D lidars are seeing more use in mobile robotics.</p>
-<p>Your project will be to re-create this logic at the Navigation level. While this wouldn’t be “safety certified”, this is a significant functional improvement on safety that could potentially safe real people from real injuries in the real-world. The project will be to create a node that sits below the navigation stack but above the robot controller to do the following:</p>
-<ul class="simple">
-<li>Take in the current command velocity from navigation and the most recent laser or RGBD scan</li>
-<li>Projecting the velocity forward in time <code class="docutils literal notranslate"><span class="pre">N</span></code> seconds, check if that velocity will result in a collision with any sensor measurements</li>
-<li>If not, allow the velocity command through to the base</li>
-<li>If it does collide, scale back the velocity such that the robot will always be at minimum <code class="docutils literal notranslate"><span class="pre">N</span></code> seconds from a collision</li>
-<li>Optionally if a flag is set, if <code class="docutils literal notranslate"><span class="pre">M</span></code> or more points are in defined bounding boxes around the robot, send only <code class="docutils literal notranslate"><span class="pre">0</span></code> commands to enact an emergency stop.</li>
-</ul>
-<p>This will be an excellent chance to make mobile robots and Nav2 users significantly safer and run at higher speeds in their production or research environments. It goes a long way for functional safety for those not using safety-rated lidars which contain similar features.</p>
-<p><strong>Project difficulty: Medium</strong></p>
+  <div class="section" id="port-grid-maps-to-ros-2-and-environmental-model">
+<span id="grid-maps"></span><h1>3. Port Grid Maps to ROS 2 and Environmental Model<a class="headerlink" href="#port-grid-maps-to-ros-2-and-environmental-model" title="Permalink to this headline">¶</a></h1>
+<p><strong>Task description</strong>
+Grid Maps was created by ETH Zurich and later transferred to ANYbotics. It is a universal grid map library for mobile robotic mapping that can be used as the basis of environmental models and various forms of grid maps available in ROS 1. This library is one of the top downloaded ROS packages. Your task will be to work with the community and the mentor to port grid_maps metapackage from ROS 1 to ROS 2 and help develop the next generation environment model in ROS 2 to replace costmap_2d.</p>
+<p>This will involve porting code from ROS 1 to ROS 2, analyzing uses of the environmental model to define an abstract interface to allow replacement of costmap_2d with grid_map, and building up the basic grid-operations for costmaps. It is not expected to complete the full new model with sensor processing over the course of the summer. If completed early, you may be able to help design a gradient model to complement your implemented costmap model using grid_maps. This will allow robots to select a gradient or a costmap model on startup.</p>
+<p><strong>Project difficulty: High</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
-<p><strong>Project output requirements</strong>
-- Creation of a ROS2 node that will prevent robot collision based on lidar and/or RGBD data
-- Node should be able to run at lidar data speed (40hz+) and adjust velocity commands accordingly
-- If time allots, work on tuning / adding new critics to the DWB local planner to improve safety of its performance for users out of the box</p>
+<p><strong>Project output requirements</strong></p>
+<ul class="simple">
+<li>Grid Maps ported to ROS 2 and merged into the main ROS 2 branch</li>
+<li>Defined plugin interfaces to replace costmap 2D with grid maps</li>
+<li>Implementing low-level operations on top of grid_maps to replace the base costmap_2d object.</li>
+<li>You will not be expected to reimplement the full sensor processing mechanics of costmap_2d.</li>
+</ul>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++, ROS</li>
-<li>Mobile robot navigation experience</li>
-<li>Geometry and statistics</li>
-<li>Recommended: Gazebo simulation, ROS navigation</li>
+<li>C++ and Git</li>
+<li>ROS recommended ROS 2, but you can pick it up before starting</li>
+<li>Coordinate transformations and basic geometry</li>
+<li>Recommended: Gazebo simulation and Navigation experience</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1899">Github ticket</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1278">Original github issue 1</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1517">Original github issue 2</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
 </ul>
 <p><strong>Licensing</strong>

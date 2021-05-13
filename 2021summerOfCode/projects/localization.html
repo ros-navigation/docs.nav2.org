@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>7. Navigation Dynamic Obstacle Integration &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>6. 2D/3D Localization Improvements &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -635,7 +635,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
@@ -698,7 +698,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>7. Navigation Dynamic Obstacle Integration</li>
+      <li>6. 2D/3D Localization Improvements</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -715,35 +715,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="navigation-dynamic-obstacle-integration">
-<span id="dynamic"></span><h1>7. Navigation Dynamic Obstacle Integration<a class="headerlink" href="#navigation-dynamic-obstacle-integration" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="d-3d-localization-improvements">
+<span id="localization"></span><h1>6. 2D/3D Localization Improvements<a class="headerlink" href="#d-3d-localization-improvements" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p>The Navigation Stack has long provided robust navigation in a wide range of environments. Controllers have been developed to operate effectively in the presence of dynamic obstacles without explicitly modeling the characteristics of dynamic obstacles. However, as the field has progressed and we see more and more robots using ROS deployed in human-filled spaces, more consideration must be taken with respect to dynamic obstacles such as people, carts, animals, and vehicles.</p>
-<p>Your task will be to create integrations with existing machine learning tools that create dynamic obstacle information (ComplexYolo, Yolo3D, etc) and tie them into the navigation stack for use. It is not in the scope for you to retrain or otherwise become an expert in 3D machine learning, but some basic knowledge will be helpful.</p>
-<p>This task will involve identifying a few techniques that produce position and velocity information about dynamic obstacles that can run on a mobile robot (using high-power Intel CPU, Nvidia Jetson SoC, external GPUs, etc) and get them running with ROS and Navigation. Next, you will help create a new costmap layer to use this information to mark the dynamic obstacle in the costmap to ensure a robot does not collide with a future trajectory of an obstacle.</p>
-<p>If time permits, you may also work to also integrate this dynamic information into a path planner and/or controller to help in direct motion consideration. This will likely be in collaboration with another community member.</p>
+<p>The Navigation2 stack uses AMCL as its primary localization engine. Over the last 10 years, essentially no updates to AMCL has been made. This is due to the code base for this implementation of an Adaptive Monte Carlo Localizer is written in embedded C, not well structured, and very sensitive to changes. A-MCL implementations have been a hallmark of localization for over a decade but this particular implementation should be deprecated.</p>
+<p>Your target involves designing and creating a new localization engine for the Nav2 stack. The requirements of this are:
+- Support 2D laser scanners
+- Support 3D laser scanners, where 2D case could potentially be a simplified case
+- Accurately track the localization of a robot in a given occupancy grid</p>
+<p>The reason that specific method is left open-ended is to allow for creativity, novelty, or reimplementation of a what you feel is best. We have, however, analyzed other MCL variants as being good options. This may include reimplementing an A-MCL that is designed to be modified with modular components and support sampling from a 3D lidar. Another option is a NDT-MCL using NDT 2D/3D scan matching. Other options may be proposed and discussed with mentors during the application phase. The task involves 3D as well since there is no standard 3D localizer in ROS 2 yet and more and more robust 3D SLAM libraries have emerged over the last 2 years.</p>
+<p>An optional but recommended feature of this work would be to also accept the inputs from multiple laser scanners. However it is not strictly required.</p>
 <p><strong>Project difficulty: High</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
 <p><strong>Project output requirements</strong>
-- Integrations of 2-5 methods of dynamic obstacle detection in ROS 2
-- Creation of a costmap_2d layer to use this information to mark future trajectories into a costmap
-- Test these capabilities on real data or a live robot to demonstrate functionality
-- 65% test coverage or higher</p>
+- 2D and 3D localization system based on laser scanners
+- 65% or higher test coverage
+- Designed with modular components that can be reliably modified over time</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++, Python, ROS</li>
-<li>Mobile robot navigation experience</li>
-<li>Geometry and statistics</li>
-<li>Recommended: Gazebo simulation, machine learning, ROS navigation</li>
+<li>C/C++</li>
+<li>Localization, particle filter, or SLAM techniques</li>
+<li>Ability to read and implement academic works</li>
+<li>Recommended: Gazebo simulation and Navigation experience</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1617">OGithub ticket</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1391">Original Github Issue</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
-<li><a class="reference external" href="https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf">Some related works</a></li>
 </ul>
 <p><strong>Licensing</strong>
 - All contributions will be under the Apache 2.0 license.

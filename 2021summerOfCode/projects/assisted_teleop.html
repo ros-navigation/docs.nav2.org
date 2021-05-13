@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>3. Port Grid Maps to ROS 2 and Environmental Model &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>1. Assisted Teleop &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,6 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. Navigation MultiThreading" href="multithreading.html" />
+    <link rel="prev" title="Projects for 2021 Summer Student Program" href="../Summer_2021_Student_Program.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -105,7 +107,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -635,8 +637,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
@@ -698,7 +700,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>3. Port Grid Maps to ROS 2 and Environmental Model</li>
+          <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
+        
+      <li>1. Assisted Teleop</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -715,34 +719,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="port-grid-maps-to-ros-2-and-environmental-model">
-<span id="grid-maps"></span><h1>3. Port Grid Maps to ROS 2 and Environmental Model<a class="headerlink" href="#port-grid-maps-to-ros-2-and-environmental-model" title="Permalink to this headline">¶</a></h1>
-<p><strong>Task description</strong>
-Grid Maps was created by ETH Zurich and later transferred to ANYbotics. It is a universal grid map library for mobile robotic mapping that can be used as the basis of environmental models and various forms of grid maps available in ROS 1. This library is one of the top downloaded ROS packages. Your task will be to work with the community and the mentor to port grid_maps metapackage from ROS 1 to ROS 2 and help develop the next generation environment model in ROS 2 to replace costmap_2d.</p>
-<p>This will involve porting code from ROS 1 to ROS 2, analyzing uses of the environmental model to define an abstract interface to allow replacement of costmap_2d with grid_map, and building up the basic grid-operations for costmaps. It is not expected to complete the full new model with sensor processing over the course of the summer. If completed early, you may be able to help design a gradient model to complement your implemented costmap model using grid_maps. This will allow robots to select a gradient or a costmap model on startup.</p>
-<p><strong>Project difficulty: High</strong></p>
+  <div class="section" id="assisted-teleop">
+<span id="id1"></span><h1>1. Assisted Teleop<a class="headerlink" href="#assisted-teleop" title="Permalink to this headline">¶</a></h1>
+<p><strong>Task description</strong></p>
+<p>In mobile robot and autonomous vehicle navigation, there are situations where a human driver is required to intervene to get the vehicle out of a sticky situation. This can be both as a backup in case of autonomy failure as well as the primary function of the robot (e.g. telepresence robots).</p>
+<p>This project’s aim is to create an assisted teleop feature in Nav2 by means of a new behavior tree configuration file (the file that defines the flow of information for the navigation task) and potentially new plugins. This feature should make sure to use the local costmap and/or sensor data in order to avoid obstacles and take position and/or velocity commands to attempt to follow.</p>
+<p>An example application of this is a telepresence robot, where a human driver is driving the robot through a space to visit in an office building or hospital. Another example would be an autonomous delivery robot stuck requiring a human driver to navigate it back into an open space for the robot to continue its task.</p>
+<p>This will be an excellent chance to make a substantial new feature in the Nav2 system to be used by hundreds of robots in the future. This project could also be a good candidate for a ROSCon talk in future events.</p>
+<p><strong>Project difficulty: Medium</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
-<p><strong>Project output requirements</strong></p>
-<ul class="simple">
-<li>Grid Maps ported to ROS 2 and merged into the main ROS 2 branch</li>
-<li>Defined plugin interfaces to replace costmap 2D with grid maps</li>
-<li>Implementing low-level operations on top of grid_maps to replace the base costmap_2d object.</li>
-<li>You will not be expected to reimplement the full sensor processing mechanics of costmap_2d.</li>
-</ul>
+<p><strong>Project output requirements</strong>
+- Integrations of an assisted teleop feature in Nav2 as either a set of plugins and/or a behavior tree configuration
+- Robot can successfully navigate a space by a user teleop without collision
+- If time allots, work on tuning / adding new critics to the DWB local planner to improve safety of its performance for users out of the box</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++ and Git</li>
-<li>ROS recommended ROS 2, but you can pick it up before starting</li>
-<li>Coordinate transformations and basic geometry</li>
-<li>Recommended: Gazebo simulation and Navigation experience</li>
+<li>C++, XML, ROS</li>
+<li>Mobile robot navigation experience</li>
+<li>Recommended: Gazebo simulation, ROS navigation, Behavior trees</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1278">Original github issue 1</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1517">Original github issue 2</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2226">Github ticket</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
 </ul>
 <p><strong>Licensing</strong>

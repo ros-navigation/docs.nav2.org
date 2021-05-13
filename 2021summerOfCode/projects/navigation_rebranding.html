@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>1. Assisted Teleop &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>5. Navigation Branding and Website &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,6 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. Navigation MultiThreading" href="multithreading.html" />
-    <link rel="prev" title="Projects for 2021 Summer Student Program" href="../Summer_2020_Student_Program.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -107,7 +105,7 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -637,8 +635,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Assisted Teleop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
@@ -700,9 +698,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
-        
-      <li>1. Assisted Teleop</li>
+      <li>5. Navigation Branding and Website</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -719,31 +715,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="assisted-teleop">
-<span id="id1"></span><h1>1. Assisted Teleop<a class="headerlink" href="#assisted-teleop" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="navigation-branding-and-website">
+<span id="rebranding"></span><h1>5. Navigation Branding and Website<a class="headerlink" href="#navigation-branding-and-website" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p>In mobile robot and autonomous vehicle navigation, there are situations where a human driver is required to intervene to get the vehicle out of a sticky situation. This can be both as a backup in case of autonomy failure as well as the primary function of the robot (e.g. telepresence robots).</p>
-<p>This project’s aim is to create an assisted teleop feature in Nav2 by means of a new behavior tree configuration file (the file that defines the flow of information for the navigation task) and potentially new plugins. This feature should make sure to use the local costmap and/or sensor data in order to avoid obstacles and take position and/or velocity commands to attempt to follow.</p>
-<p>An example application of this is a telepresence robot, where a human driver is driving the robot through a space to visit in an office building or hospital. Another example would be an autonomous delivery robot stuck requiring a human driver to navigate it back into an open space for the robot to continue its task.</p>
-<p>This will be an excellent chance to make a substantial new feature in the Nav2 system to be used by hundreds of robots in the future. This project could also be a good candidate for a ROSCon talk in future events.</p>
+<p>Navigation2 has made significant strides to be the best navigation system in the world. Over time, the original navigation stack in ROS has gained a reputation, fair or unfair, of being relatively limited in the types of tasks it can accomplish that are no longer true in ROS 2 Navigation2.</p>
+<p>As such, we would like to initiate a re-branding effort to help differentiate it from its foundings. <a class="reference external" href="https://moveit.ros.org/">MoveIt</a> has a high-quality landing page with consistent graphics, color schemes, logos, and a catchy name. Your task will be to create a logo, color scheme, and work with maintainers to develop a new name to use in creating a new website for Navigation2. The <a class="reference external" href="https://navigation.ros.org/">existing website</a> is a Read The Docs design with just the technical tutorials and details. We would like the new Navigation2 website to be analog to the MoveIt website and allow for future expansions such as a blog and pages highlighting demos and robots using the framework.</p>
 <p><strong>Project difficulty: Medium</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
 <p><strong>Project output requirements</strong>
-- Integrations of an assisted teleop feature in Nav2 as either a set of plugins and/or a behavior tree configuration
-- Robot can successfully navigate a space by a user teleop without collision
-- If time allots, work on tuning / adding new critics to the DWB local planner to improve safety of its performance for users out of the box</p>
+- Work with maintainers to come up with a new name, logo, and color scheme
+- Develop a new landing package using these elements and developed graphics
+- Migrate the existing website to the new one
+- Add a blog feature and document the structure and editing process for future developers</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++, XML, ROS</li>
-<li>Mobile robot navigation experience</li>
-<li>Recommended: Gazebo simulation, ROS navigation, Behavior trees</li>
+<li>Design and graphics packages</li>
+<li>Web technologies</li>
+<li>Creative thinking</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
-<li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
-<li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2226">Github ticket</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1485">Github issue</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
 </ul>
 <p><strong>Licensing</strong>

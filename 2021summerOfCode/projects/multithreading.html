@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>2. Navigation MultiThreading &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,7 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="5. Reduce ROS2 Nodes and Determinism" href="spinners.html" />
+    <link rel="next" title="3. Navigation Safety Node" href="safety_node.html" />
+    <link rel="prev" title="1. Assisted Teleop" href="assisted_teleop.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -636,13 +637,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -699,9 +700,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
+          <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
         
-      <li>6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</li>
+      <li>2. Navigation MultiThreading</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -718,35 +719,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="convert-twist-to-twiststamped-in-ecosystem-and-run-time-configuration">
-<span id="spinners"></span><h1>6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration<a class="headerlink" href="#convert-twist-to-twiststamped-in-ecosystem-and-run-time-configuration" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="navigation-multithreading">
+<span id="multhrreading"></span><h1>2. Navigation MultiThreading<a class="headerlink" href="#navigation-multithreading" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p>This project is comprised of 2 smaller projects that can be easily worked on in parallel.</p>
-<p>Subproject A: Convert Twist to TwistStamped in Ecosystem</p>
-<p>The aim of this project is to identify places in the ROS2 ecosystem that make use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> in the context of <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> coming out of Navigation. This includes things like Nav2, ROS2 Control, Gazebo ROS Plugins, Yuk’s Velocity Filter, major robot drivers, etc. A set of previously identified places is shown in the ticket linked below.</p>
-<p>Once you’ve created a list of places in the ecosystem where it is used, your project will be to submit PRs on their ROS2 branches to change the interface to make use of a <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">Twist</span></code>.</p>
-<p>Subproject B: Run-time Reconfiguration of Parameters</p>
-<p>In the meantime while you’re waiting for PRs to be merged or blocked by reviews on converting all of the ecosystems <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> to <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code>, your project will be to enable run-time reconfiguration of the major parameters in Nav2. In ROS2 this is done via the parameter change event callbacks. See tickets below for a list of plugins or servers needing dynamically reconfigurable parameter support added.</p>
+<p>The aim of this project is the significantly improve the run-time performance of Nav2 making sure to leverage the full capabilities of multi-processor core CPUs. We seek to identify areas in the Nav2 stack that could leverage multi-threading or parallel processing to speed up computations and improve overall user performance on a broad range of compute platforms.</p>
+<p>Some examples include:
+- AMCL particle cloud updates
+- Costmap layer updates
+- Costmap sensor data population
+- Controller critic evalulation
+- Collision checking
+- Voxel grid ray casting
+- and more.</p>
+<p>We are seeking a student interested in learning about multi-threading and parallel processing, ideally with some exposure to these concepts and libraries already, to analyze potential areas for parallel computing. Then, select the top candidates and implement them with parallel processing and benchmark the improvements to the Nav2 stack they provide.</p>
+<p>This will be an excellent chance to apply (or obtain) C++ parallel computing skills while also learning a great deal about how to build mobile robot navigation systems – both very valuable skillsets.</p>
 <p><strong>Project difficulty: Medium</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
 <p><strong>Project output requirements</strong>
-- Convert all the major ecosystem projects into TwistStamped
-- Enable run-time reconfiguration of the remaining plugins and servers in Nav2 missing
-- Ensure that reconfiguration is thread-safe by using locks, atomic variables, or callback groups</p>
+- Analysis of potential areas in the Nav2 stack that can benefit from parallel processing
+- Integrations of 3-5 areas in the Nav2 stack that non-trivially improves run-time performance of the stack using multithreading
+- Benchmark performance improvements</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++, Python3</li>
-<li>ROS2</li>
+<li>C++, ROS</li>
+<li>Mobile robot navigation experience</li>
+<li>Working knowledge (or ability to quickly obtain) on one or more of: TBB, OpenMP, OpenCL, Cuda, and similar</li>
+<li>Recommended: Gazebo simulation, ROS navigation</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/956">Github ticket</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1594">Github ticket2</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2042">Github ticket</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
-<li><a class="reference external" href="https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf">Some related works</a></li>
 </ul>
 <p><strong>Licensing</strong>
 - All contributions will be under the Apache 2.0 license.

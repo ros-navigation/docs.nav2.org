@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>5. Navigation Branding and Website &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,6 +50,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="5. Reduce ROS2 Nodes and Determinism" href="spinners.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -105,7 +106,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -635,13 +636,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -698,7 +699,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>5. Navigation Branding and Website</li>
+          <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
+        
+      <li>6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -715,29 +718,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="navigation-branding-and-website">
-<span id="rebranding"></span><h1>5. Navigation Branding and Website<a class="headerlink" href="#navigation-branding-and-website" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="convert-twist-to-twiststamped-in-ecosystem-and-run-time-configuration">
+<span id="spinners"></span><h1>6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration<a class="headerlink" href="#convert-twist-to-twiststamped-in-ecosystem-and-run-time-configuration" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p>Navigation2 has made significant strides to be the best navigation system in the world. Over time, the original navigation stack in ROS has gained a reputation, fair or unfair, of being relatively limited in the types of tasks it can accomplish that are no longer true in ROS 2 Navigation2.</p>
-<p>As such, we would like to initiate a re-branding effort to help differentiate it from its foundings. <a class="reference external" href="https://moveit.ros.org/">MoveIt</a> has a high-quality landing page with consistent graphics, color schemes, logos, and a catchy name. Your task will be to create a logo, color scheme, and work with maintainers to develop a new name to use in creating a new website for Navigation2. The <a class="reference external" href="https://navigation.ros.org/">existing website</a> is a Read The Docs design with just the technical tutorials and details. We would like the new Navigation2 website to be analog to the MoveIt website and allow for future expansions such as a blog and pages highlighting demos and robots using the framework.</p>
+<p>This project is comprised of 2 smaller projects that can be easily worked on in parallel.</p>
+<p>Subproject A: Convert Twist to TwistStamped in Ecosystem</p>
+<p>The aim of this project is to identify places in the ROS2 ecosystem that make use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> in the context of <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> coming out of Navigation. This includes things like Nav2, ROS2 Control, Gazebo ROS Plugins, Yuk’s Velocity Filter, major robot drivers, etc. A set of previously identified places is shown in the ticket linked below.</p>
+<p>Once you’ve created a list of places in the ecosystem where it is used, your project will be to submit PRs on their ROS2 branches to change the interface to make use of a <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">Twist</span></code>.</p>
+<p>Subproject B: Run-time Reconfiguration of Parameters</p>
+<p>In the meantime while you’re waiting for PRs to be merged or blocked by reviews on converting all of the ecosystems <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> to <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code>, your project will be to enable run-time reconfiguration of the major parameters in Nav2. In ROS2 this is done via the parameter change event callbacks. See tickets below for a list of plugins or servers needing dynamically reconfigurable parameter support added.</p>
 <p><strong>Project difficulty: Medium</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
 <p><strong>Project output requirements</strong>
-- Work with maintainers to come up with a new name, logo, and color scheme
-- Develop a new landing package using these elements and developed graphics
-- Migrate the existing website to the new one
-- Add a blog feature and document the structure and editing process for future developers</p>
+- Convert all the major ecosystem projects into TwistStamped
+- Enable run-time reconfiguration of the remaining plugins and servers in Nav2 missing
+- Ensure that reconfiguration is thread-safe by using locks, atomic variables, or callback groups</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>Design and graphics packages</li>
-<li>Web technologies</li>
-<li>Creative thinking</li>
+<li>C++, Python3</li>
+<li>ROS2</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1485">Github issue</a></li>
+<li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
+<li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/956">Github ticket</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1594">Github ticket2</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
+<li><a class="reference external" href="https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf">Some related works</a></li>
 </ul>
 <p><strong>Licensing</strong>
 - All contributions will be under the Apache 2.0 license.

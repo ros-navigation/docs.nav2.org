@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4. Advanced Navigation Testing Framework &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>4. Path Smoothing &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,6 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5. Reduce ROS2 Nodes and Determinism" href="spinners.html" />
+    <link rel="prev" title="3. Navigation Safety Node" href="safety_node.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -105,7 +107,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -635,11 +637,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Path Smoothing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
@@ -698,7 +700,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>4. Advanced Navigation Testing Framework</li>
+          <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
+        
+      <li>4. Path Smoothing</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -715,31 +719,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="advanced-navigation-testing-framework">
-<span id="testing"></span><h1>4. Advanced Navigation Testing Framework<a class="headerlink" href="#advanced-navigation-testing-framework" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="path-smoothing">
+<span id="smoothing"></span><h1>4. Path Smoothing<a class="headerlink" href="#path-smoothing" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p>The ROS 2 Navigation Stack has had a focus on testing and reliability as a characteristic change from ROS 1 to ROS 2. We currently have a test coverage rate of 65% and do full system simulations in Continuous Integration (CI) to test the entire navigation system with a real robot completing real navigation tasks. Your task will be to increase the testing coverage rate to 70% (or +5% from your starting) and improve on the existing system tests to represent a more realistic environment. You will then work to make sure of that environment to actively block the robot from completing its task to simulate worst-case conditions.</p>
+<p>This project is to create a generic path smoothing node or library to help in smoothing out paths generated from search-based planners used in Nav2 (Dijkstra, A*, NavFn, Hybrid-A*, State Lattice, etc) to make them more drivable at higher speeds and remove any non-optimal artifacts from the searching process due to imperfect heuristic functions.</p>
+<p>Common ways to smooth paths include:
+- Non-linear optimization
+- Gradient Descent (related)
+- Splines
+- Curve fitting
+- etc</p>
+<p>Your task will be to create a path smoother that will take in a given path and smooth it to be more drivable and return that path to the requester.</p>
 <p><strong>Project difficulty: Medium</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
-<p><strong>Project output requirements</strong></p>
-<ul class="simple">
-<li>Test line coverage of 70% or higher on the repository as reported by codecov (currently 65%)</li>
-<li>An improved simulation environment for a more realistic mobile robotics application</li>
-<li>Updated system tests to take advantage of that environment to fault or un-ideal cases of the stack</li>
-</ul>
+<p><strong>Project output requirements</strong>
+- Can run in real-time (&lt; 100ms) on average
+- Can smooth paths of arbitrary lengths and from arbitrary path planning algorithms used in Nav2
+- Returned paths with tangent orientation vectors included (see ticket 2)
+- May be in Python or C++
+- If time allots, and in Python, convert to C++</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++, Python3, gtest</li>
-<li>Gazebo, recommended experience with Gazebo plugins</li>
-<li>Recommended: Navigation experience</li>
+<li>C++, Python, ROS</li>
+<li>Mobile robot navigation experience</li>
+<li>Geometry, splines, and/or optimization</li>
+<li>Recommended: Gazebo simulation, ROS navigation</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2230">Github ticket</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2162">Github ticket2</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests">Navigation2 Repo System Tests</a></li>
 </ul>
 <p><strong>Licensing</strong>
 - All contributions will be under the Apache 2.0 license.

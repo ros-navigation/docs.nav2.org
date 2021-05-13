@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>2. Create New Planner and Controller Plugins &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>1. Create a Configuration Assistant (Analog to MoveIt) &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -635,7 +635,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
@@ -698,7 +698,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>2. Create New Planner and Controller Plugins</li>
+      <li>1. Create a Configuration Assistant (Analog to MoveIt)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -715,38 +715,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="create-new-planner-and-controller-plugins">
-<span id="create-plugins"></span><h1>2. Create New Planner and Controller Plugins<a class="headerlink" href="#create-new-planner-and-controller-plugins" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="create-a-configuration-assistant-analog-to-moveit">
+<span id="create-moveit-analog"></span><h1>1. Create a Configuration Assistant (Analog to MoveIt)<a class="headerlink" href="#create-a-configuration-assistant-analog-to-moveit" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p>The ROS 2 Navigation Stack has a number of plugin interfaces to help users create or select specific plugins for planning, control, and recovery for their applications. Two specific areas that the Nav2 stack could use more algorithm plugins for is for path planning (referred to as a planner plugin) and local trajectory generation (referred to as controller plugins). A simple tutorial for creating a <a class="reference external" href="https://navigation.ros.org/tutorials/docs/writing_new_nav2planner_plugin.html">planner plugin can be found here.</a> Currently, we have one planner, NavFn which implements an A* and Dijkstra’s planner. It also has two controllers, DWB and TEB which implement a DWA and timed elastic-band optimization techniques. There is also a Hybrid-A* and OMPL planner in development.</p>
-<p>Your task will be to create a high-quality implementation of one of the following algorithms for the Nav2 plugin interfaces. Alternative algorithms may also be considered upon approval, please ask &#64;steve in the application phase. Please select only one to discuss.</p>
+<p><a class="reference external" href="https://moveit.ros.org/">Moveit</a> has long has a QT <a class="reference external" href="http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html">configuration assistant</a>. This setup assistent helps the user configure their UDRF and needs to setup MoveIt configuration files.</p>
+<p>A configuration assistant could be extremely beneficial to Navigation2 users as a way to minimize friction. We should provide a gui tool to cover the following configurations:</p>
 <ul class="simple">
-<li>Planner Plugin Options: D* or variant, Vornoi planner, Navigation graph route planner, State Lattice planner, kinodynamic planner, and any planning method given a set of dynamic and static obstacles.</li>
-<li>Controller Plugin Options: CiLQR, iLQR, MPC, Splines, path following or dynamic obstacle following controllers.</li>
-<li>Additional options: helping in completing the OMPL or Hybrid-A* planner.</li>
+<li>the broad strokes with the costmap, with a visualizer to show the user what it will look like</li>
+<li>Select configurable costmap layers</li>
+<li>Select recovery behavior parameters</li>
+<li>URDF, footprint, and frame selection to make sure the options comply with standards, planner, and controller</li>
+<li>Set minimum and maximum speed and other kinematic parameters</li>
+<li>Select from a dropdown of possible planners and controllers</li>
+<li>Helpful notes throughout the prompts to aid in selecting appropriate parameters</li>
+<li>Selecting at behavior tree</li>
+<li>&#64;steve please add more specific options</li>
 </ul>
+<p>After the items are configured, there should be a preview to see how the parameters effect the robot.</p>
 <p><strong>Project difficulty: High</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
+<p><strong>Contact information for the cooperating mentor (optional):  juzhenatpku&#64;gmail.com</strong></p>
 <p><strong>Project output requirements</strong></p>
 <ul class="simple">
-<li>A functional planner or controller plugin for the Nav2 stack</li>
-<li>Plugin should be optimized for run-time performance with 50% or greater test coverage</li>
+<li>A QT based GUI configuration assistant that support the parameters listed above</li>
+<li>A preview panel to display the parameters’ effection on the robot</li>
 </ul>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++</li>
-<li>Path planning or motion planning</li>
-<li>Algorithm optimization</li>
-<li>ROS / Pluginlib</li>
-<li>Recommended: Gazebo simulation and Navigation experience</li>
+<li>C++, Python3, QT framework</li>
+<li>JSON/XML parsing</li>
+<li>3D programming (maybe needed in the preview)</li>
+<li>Recommended: Gazebo simulation, ROS, and Navigation experience</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
-<li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
+<li><a class="reference external" href="https://www.qt.io/">QT</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1710">Github issue page</a></li>
-<li><a class="reference external" href="https://navigation.ros.org/">Nav2</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1721">Original github issue page</a></li>
 </ul>
 <p><strong>Licensing</strong>
 - All contributions will be under the Apache 2.0 license.

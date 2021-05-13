@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>1. Create a Configuration Assistant (Analog to MoveIt) &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>5. Reduce ROS2 Nodes and Determinism &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,6 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration" href="twist_n_config.html" />
+    <link rel="prev" title="4. Path Smoothing" href="smoothing.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -105,7 +107,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -635,12 +637,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Summer_2020_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Reduce ROS2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
@@ -698,7 +700,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>1. Create a Configuration Assistant (Analog to MoveIt)</li>
+          <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
+        
+      <li>5. Reduce ROS2 Nodes and Determinism</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -715,44 +719,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="create-a-configuration-assistant-analog-to-moveit">
-<span id="create-moveit-analog"></span><h1>1. Create a Configuration Assistant (Analog to MoveIt)<a class="headerlink" href="#create-a-configuration-assistant-analog-to-moveit" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="reduce-ros2-nodes-and-determinism">
+<span id="spinners"></span><h1>5. Reduce ROS2 Nodes and Determinism<a class="headerlink" href="#reduce-ros2-nodes-and-determinism" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p><a class="reference external" href="https://moveit.ros.org/">Moveit</a> has long has a QT <a class="reference external" href="http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html">configuration assistant</a>. This setup assistent helps the user configure their UDRF and needs to setup MoveIt configuration files.</p>
-<p>A configuration assistant could be extremely beneficial to Navigation2 users as a way to minimize friction. We should provide a gui tool to cover the following configurations:</p>
-<ul class="simple">
-<li>the broad strokes with the costmap, with a visualizer to show the user what it will look like</li>
-<li>Select configurable costmap layers</li>
-<li>Select recovery behavior parameters</li>
-<li>URDF, footprint, and frame selection to make sure the options comply with standards, planner, and controller</li>
-<li>Set minimum and maximum speed and other kinematic parameters</li>
-<li>Select from a dropdown of possible planners and controllers</li>
-<li>Helpful notes throughout the prompts to aid in selecting appropriate parameters</li>
-<li>Selecting at behavior tree</li>
-<li>&#64;steve please add more specific options</li>
-</ul>
-<p>After the items are configured, there should be a preview to see how the parameters effect the robot.</p>
-<p><strong>Project difficulty: High</strong></p>
+<p>This project is admittedly abstract to explain to someone unfamiliar with the inner-details of ROS2 and its layers. If you’re interested in working on this, you will become one of the few that truly understand the inner workings of it and be a very marketable skill. We do not expect anyone applying for this project to have that knowledge beforehand and we will help you learn the necessary items.</p>
+<p>ROS2 architecturally was changed before Foxy in order to ensure that any single process containing multiple ROS2 node objects will share the same DDS participant on the network. This is important due to the overhead that each additional DDS participant has on the system.</p>
+<p>In order for nav2 to leverage this the best, we need to adjust our usage of ROS2 nodes and executors to further minimize the number of node objects in existance. In the early days of ROS2 when Nav2 was being built, we were required to have many nodes in a single server in order to handle action requests and other callbacks. Now, we can make use of multi-threaded spinners, callback groups, and individual executors for specific tasks.</p>
+<p>This project will involve identifying all of the Node objects in the stack (control+F makes this easy) and work with mentors to ensure by the end of the summer each server contains only a single node. Additionally, the behavior tree plugins should be updated to leverage callback groups to ensure that any single BT node spinning to check if any new messages are on its callback will <strong>only</strong> trigger its own callback by the same mechanisms.</p>
+<p>More details about this project can be supplied if interested, but the tickets linked below also provide more context. Trust me to say this is a very achievable goal over the course of the summer and will also let you look under the hood of both Nav2 and rclcpp, giving you valuable insight future in your career (and put you in the top 10% of ROS2 developers that know it to this degree).</p>
+<p><strong>Project difficulty: Medium</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
-<p><strong>Contact information for the cooperating mentor (optional):  juzhenatpku&#64;gmail.com</strong></p>
-<p><strong>Project output requirements</strong></p>
-<ul class="simple">
-<li>A QT based GUI configuration assistant that support the parameters listed above</li>
-<li>A preview panel to display the parameters’ effection on the robot</li>
-</ul>
+<p><strong>Project output requirements</strong>
+- Remove excess ROS2 nodes from stack and replace with executors and multi-threaded executors
+- Replace Behavior Tree node spinners with local executors to ensure deterministic execution &amp; processing only callback groups of the current BT node
+- If time allots, create a single <code class="docutils literal notranslate"><span class="pre">main()</span></code> function Nav2 executable composing all Nav2 processes and benchmarking improvements in performance</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++, Python3, QT framework</li>
-<li>JSON/XML parsing</li>
-<li>3D programming (maybe needed in the preview)</li>
-<li>Recommended: Gazebo simulation, ROS, and Navigation experience</li>
+<li>C++, ROS</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
-<li><a class="reference external" href="https://www.qt.io/">QT</a></li>
+<li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1721">Original github issue page</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2251">Github ticket</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/816">Github ticket2</a></li>
+<li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
+<li><a class="reference external" href="https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf">Some related works</a></li>
 </ul>
 <p><strong>Licensing</strong>
 - All contributions will be under the Apache 2.0 license.
