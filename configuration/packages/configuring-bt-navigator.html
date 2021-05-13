@@ -818,6 +818,51 @@ Used to be <code class="docutils literal notranslate"><span class="pre">default_
 </dl>
 </td>
 </tr>
+<tr class="field-even field"><th class="field-name" colspan="2">bt_loop_duration:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Duration (in milliseconds) for each iteration of BT execution.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">default_server_timeout:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
+This value will be overwritten for a BT node if the input port “server_timeout” is provided.</p>
+</dd>
+</dl>
+</td>
+</tr>
 <tr class="field-even field"><th class="field-name" colspan="2">enable_groot_monitoring:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
