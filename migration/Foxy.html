@@ -618,6 +618,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#controllerserver-new-parameter-failure-tolerance">ControllerServer New Parameter failure_tolerance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-bt-xml-launch-configurations">Removed BT XML Launch Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nav2-rviz-panel-action-feedback-information">Nav2 RViz Panel Action Feedback Information</a></li>
 </ul>
 </li>
 </ul>
@@ -969,7 +970,7 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <li><code class="docutils literal notranslate"><span class="pre">voxel_marked_cloud</span></code> and <code class="docutils literal notranslate"><span class="pre">voxel_unknown_cloud</span></code> topic in <code class="docutils literal notranslate"><span class="pre">costmap_2d_cloud</span></code> node of <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> package</li>
 <li><code class="docutils literal notranslate"><span class="pre">cost_cloud</span></code> topic of <code class="docutils literal notranslate"><span class="pre">publisher.cpp</span></code> of <code class="docutils literal notranslate"><span class="pre">dwb_core</span></code> package.</li>
 </ul>
-<p>These changes were introduced inthis <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2263">pull request</a>.</p>
+<p>These changes were introduced in <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2263">pull request</a>.</p>
 </div>
 <div class="section" id="controllerserver-new-parameter-failure-tolerance">
 <h2>ControllerServer New Parameter failure_tolerance<a class="headerlink" href="#controllerserver-new-parameter-failure-tolerance" title="Permalink to this headline">¶</a></h2>
@@ -981,6 +982,13 @@ This change was introduced in this <a class="reference external" href="https://g
 <p>The launch python configurations for CLI setting of the behavior tree XML file has been removed. Instead, you should use the yaml files to set this value. If you, however, have a <code class="docutils literal notranslate"><span class="pre">path</span></code> to the yaml file that is inconsistent in a larger deployment, you can use the <code class="docutils literal notranslate"><span class="pre">RewrittenYaml</span></code> tool in your parent launch file to remap the default XML paths utilizing the <code class="docutils literal notranslate"><span class="pre">get_shared_package_path()</span></code> directory finder (or as you were before in python3).</p>
 <p>The use of map subscription QoS launch configuration was also removed, use parameter file.
 This change was introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2295">pull request</a>.</p>
+</div>
+<div class="section" id="nav2-rviz-panel-action-feedback-information">
+<h2>Nav2 RViz Panel Action Feedback Information<a class="headerlink" href="#nav2-rviz-panel-action-feedback-information" title="Permalink to this headline">¶</a></h2>
+<p>The Nav2 RViz Panel now displays the action feedback published by <code class="docutils literal notranslate"><span class="pre">nav2_msgs/NavigateToPose</span></code> and <code class="docutils literal notranslate"><span class="pre">nav2_msgs/NavigateThroughPoses</span></code> actions.
+Users can find information like the estimated time of arrival, distance remaining to goal, time elapsed since navigation started, and number of recoveries performed during a navigation action directly through the RViz panel.
+This feature was introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2338">pull request</a>.</p>
+<a class="reference internal image-reference" href="../_images/panel-feedback.gif"><img alt="Navigation feedback in RViz." class="align-center" src="../_images/panel-feedback.gif" style="width: 600px;" /></a>
 </div>
 </div>
 
