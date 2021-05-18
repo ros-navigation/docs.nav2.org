@@ -251,6 +251,8 @@ Original GitHub tickets:
 - `RemovePassedGoals <https://github.com/ros-planning/navigation2/pull/2271>`_
 - `ComputePathThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
 
+Additionally, behavior tree nodes were modified to contain their own local executors to spin for actions, topics, services, etc to ensure that each behavior tree node is independent of each other (e.g. spinning in one BT node doesn't trigger a callback in another). 
+
 sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change
 ********************************************************
 Due to deprecation of `sensor_msgs/PointCloud <https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud.html>`_ the topics which were publishing sensor_msgs/PointCloud are converted to sensor_msgs/PointCloud2. The details on these topics and their respective information are listed below.
