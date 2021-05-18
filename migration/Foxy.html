@@ -961,6 +961,7 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">RemovePassedGoals</a></li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">ComputePathThroughPoses</a></li>
 </ul>
+<p>Additionally, behavior tree nodes were modified to contain their own local executors to spin for actions, topics, services, etc to ensure that each behavior tree node is independent of each other (e.g. spinning in one BT node doesn’t trigger a callback in another).</p>
 </div>
 <div class="section" id="sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">
 <h2>sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change<a class="headerlink" href="#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change" title="Permalink to this headline">¶</a></h2>
