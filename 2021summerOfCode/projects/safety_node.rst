@@ -1,7 +1,7 @@
 
 .. _safety_node:
 
-3. Navigation Safety Node
+5. Navigation Safety Node
 =========================
 
 **Task description** 

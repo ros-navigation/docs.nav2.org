@@ -2,7 +2,7 @@
 .. _spinners:
 
 
-6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration
+8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration
 ========================================================================
 
 **Task description** 

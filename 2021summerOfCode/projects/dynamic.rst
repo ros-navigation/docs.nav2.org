@@ -2,7 +2,7 @@
 .. _dynamic:
 
 
-7. Navigation Dynamic Obstacle Integration
+1. Navigation Dynamic Obstacle Integration
 ==========================================
 
 **Task description** 

@@ -1,7 +1,7 @@
 
 .. _assisted_teleop:
 
-1. Assisted Teleop
+3. Assisted Teleop
 ==================
 
 **Task description** 

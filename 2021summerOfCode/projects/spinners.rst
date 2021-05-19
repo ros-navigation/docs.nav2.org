@@ -2,7 +2,7 @@
 .. _spinners:
 
 
-5. Reduce ROS2 Nodes and Determinism
+7. Reduce ROS2 Nodes and Determinism
 ====================================
 
 **Task description** 
