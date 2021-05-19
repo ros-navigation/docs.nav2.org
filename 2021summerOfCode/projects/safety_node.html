@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>3. Navigation Safety Node &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>5. Navigation Safety Node &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Semantic Integration" href="semantics.html" />
-    <link rel="prev" title="2. Navigation MultiThreading" href="multithreading.html" />
+    <link rel="next" title="6. Semantic Integration" href="semantics.html" />
+    <link rel="prev" title="4. Navigation MultiThreading" href="multithreading.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -639,14 +639,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="dynamic.html">7. Navigation Dynamic Obstacle Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html">4. Advanced Navigation Testing Framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Navigation Safety Node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="semantics.html">4. Semantic Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic.html">1. Navigation Dynamic Obstacle Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">2. Advanced Navigation Testing Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">3. Assisted Teleop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multithreading.html">4. Navigation MultiThreading</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Navigation Safety Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semantics.html">6. Semantic Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spinners.html">7. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -705,7 +705,7 @@
         
           <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
         
-      <li>3. Navigation Safety Node</li>
+      <li>5. Navigation Safety Node</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -723,7 +723,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="navigation-safety-node">
-<span id="safety-node"></span><h1>3. Navigation Safety Node<a class="headerlink" href="#navigation-safety-node" title="Permalink to this headline">¶</a></h1>
+<span id="safety-node"></span><h1>5. Navigation Safety Node<a class="headerlink" href="#navigation-safety-node" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
 <p>The aim of this project is to create a safety watchdog node to ensure the robot is acting properly and not about to collide with an obstacle. Typical safety-rated lidars will contain “safety zones” whereas if any sensor points are located in a box around the lidar, then the lidar will send a signal to the robot to stop due to a potential collision. However, less and less people are using safety-rated lidars as consumer available lidars are dropping in cost and 3D lidars are seeing more use in mobile robotics.</p>
 <p>Your project will be to re-create this logic at the Navigation level. While this wouldn’t be “safety certified”, this is a significant functional improvement on safety that could potentially safe real people from real injuries in the real-world. The project will be to create a node that sits below the navigation stack but above the robot controller to do the following:</p>

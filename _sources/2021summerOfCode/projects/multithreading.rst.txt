@@ -1,7 +1,7 @@
 
 .. _multhrreading:
 
-2. Navigation MultiThreading
+4. Navigation MultiThreading
 ============================
 
 **Task description** 

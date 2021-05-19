@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>7. Navigation Dynamic Obstacle Integration &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>1. Navigation Dynamic Obstacle Integration &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,7 +50,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Advanced Navigation Testing Framework" href="testing.html" />
+    <link rel="next" title="2. Advanced Navigation Testing Framework" href="testing.html" />
     <link rel="prev" title="Projects for 2021 Summer Student Program" href="../Summer_2021_Student_Program.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
@@ -639,14 +639,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7. Navigation Dynamic Obstacle Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html">4. Advanced Navigation Testing Framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="semantics.html">4. Semantic Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Navigation Dynamic Obstacle Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">2. Advanced Navigation Testing Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">3. Assisted Teleop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multithreading.html">4. Navigation MultiThreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safety_node.html">5. Navigation Safety Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semantics.html">6. Semantic Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spinners.html">7. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -705,7 +705,7 @@
         
           <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
         
-      <li>7. Navigation Dynamic Obstacle Integration</li>
+      <li>1. Navigation Dynamic Obstacle Integration</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -723,7 +723,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="navigation-dynamic-obstacle-integration">
-<span id="dynamic"></span><h1>7. Navigation Dynamic Obstacle Integration<a class="headerlink" href="#navigation-dynamic-obstacle-integration" title="Permalink to this headline">¶</a></h1>
+<span id="dynamic"></span><h1>1. Navigation Dynamic Obstacle Integration<a class="headerlink" href="#navigation-dynamic-obstacle-integration" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
 <p>The Navigation Stack has long provided robust navigation in a wide range of environments. Controllers have been developed to operate effectively in the presence of dynamic obstacles without explicitly modeling the characteristics of dynamic obstacles. However, as the field has progressed and we see more and more robots using ROS deployed in human-filled spaces, more consideration must be taken with respect to dynamic obstacles such as people, carts, animals, and vehicles.</p>
 <p>Your task will be to create integrations with existing machine learning tools that create dynamic obstacle information (ComplexYolo, Yolo3D, etc) and tie them into the navigation stack for use. It is not in the scope for you to retrain or otherwise become an expert in 3D machine learning, but some basic knowledge will be helpful. We already have a starting point in the project links below that needs to be driven to completion. This includes completing the on-going work to integrate yolact edge into this work to replace detectron2 and benchmark these capabilities on GPUs to verify sufficient run-time performance, as well as other tangental feature development.</p>

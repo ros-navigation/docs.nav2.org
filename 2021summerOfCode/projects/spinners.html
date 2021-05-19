@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>5. Reduce ROS2 Nodes and Determinism &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>7. Reduce ROS2 Nodes and Determinism &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -50,8 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration" href="twist_n_config.html" />
-    <link rel="prev" title="4. Semantic Integration" href="semantics.html" />
+    <link rel="next" title="8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration" href="twist_n_config.html" />
+    <link rel="prev" title="6. Semantic Integration" href="semantics.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -639,14 +639,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="dynamic.html">7. Navigation Dynamic Obstacle Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html">4. Advanced Navigation Testing Framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="semantics.html">4. Semantic Integration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Reduce ROS2 Nodes and Determinism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic.html">1. Navigation Dynamic Obstacle Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">2. Advanced Navigation Testing Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">3. Assisted Teleop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multithreading.html">4. Navigation MultiThreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safety_node.html">5. Navigation Safety Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semantics.html">6. Semantic Integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -705,7 +705,7 @@
         
           <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
         
-      <li>5. Reduce ROS2 Nodes and Determinism</li>
+      <li>7. Reduce ROS2 Nodes and Determinism</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -723,7 +723,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="reduce-ros2-nodes-and-determinism">
-<span id="spinners"></span><h1>5. Reduce ROS2 Nodes and Determinism<a class="headerlink" href="#reduce-ros2-nodes-and-determinism" title="Permalink to this headline">¶</a></h1>
+<span id="spinners"></span><h1>7. Reduce ROS2 Nodes and Determinism<a class="headerlink" href="#reduce-ros2-nodes-and-determinism" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
 <p>This project is admittedly abstract to explain to someone unfamiliar with the inner-details of ROS2 and its layers. If you’re interested in working on this, you will become one of the few that truly understand the inner workings of it and be a very marketable skill. We do not expect anyone applying for this project to have that knowledge beforehand and we will help you learn the necessary items.</p>
 <p>ROS2 architecturally was changed before Foxy in order to ensure that any single process containing multiple ROS2 node objects will share the same DDS participant on the network. This is important due to the overhead that each additional DDS participant has on the system.</p>

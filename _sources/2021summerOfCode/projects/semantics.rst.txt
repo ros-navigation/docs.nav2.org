@@ -1,7 +1,7 @@
 
 .. _semantics:
 
-4. Semantic Integration
+6. Semantic Integration
 =======================
 
 **Task description**
