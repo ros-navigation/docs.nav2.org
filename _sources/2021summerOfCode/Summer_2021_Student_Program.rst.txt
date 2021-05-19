@@ -24,9 +24,11 @@ Have fun and we look forward to working with you this summer!
 .. toctree::
    :maxdepth: 1
 
+   projects/dynamic.rst
+   projects/testing.rst
    projects/assisted_teleop.rst
    projects/multithreading.rst
    projects/safety_node.rst
-   projects/smoothing.rst
+   projects/semantics.rst
    projects/spinners.rst
    projects/twist_n_config.rst

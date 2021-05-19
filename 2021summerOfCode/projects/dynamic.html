@@ -50,6 +50,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Advanced Navigation Testing Framework" href="testing.html" />
+    <link rel="prev" title="Projects for 2021 Summer Student Program" href="../Summer_2021_Student_Program.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -105,7 +107,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -636,11 +638,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7. Navigation Dynamic Obstacle Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">4. Advanced Navigation Testing Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="smoothing.html">4. Path Smoothing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semantics.html">4. Semantic Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
@@ -699,6 +703,8 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
+        
       <li>7. Navigation Dynamic Obstacle Integration</li>
     
     
@@ -720,17 +726,16 @@
 <span id="dynamic"></span><h1>7. Navigation Dynamic Obstacle Integration<a class="headerlink" href="#navigation-dynamic-obstacle-integration" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
 <p>The Navigation Stack has long provided robust navigation in a wide range of environments. Controllers have been developed to operate effectively in the presence of dynamic obstacles without explicitly modeling the characteristics of dynamic obstacles. However, as the field has progressed and we see more and more robots using ROS deployed in human-filled spaces, more consideration must be taken with respect to dynamic obstacles such as people, carts, animals, and vehicles.</p>
-<p>Your task will be to create integrations with existing machine learning tools that create dynamic obstacle information (ComplexYolo, Yolo3D, etc) and tie them into the navigation stack for use. It is not in the scope for you to retrain or otherwise become an expert in 3D machine learning, but some basic knowledge will be helpful.</p>
+<p>Your task will be to create integrations with existing machine learning tools that create dynamic obstacle information (ComplexYolo, Yolo3D, etc) and tie them into the navigation stack for use. It is not in the scope for you to retrain or otherwise become an expert in 3D machine learning, but some basic knowledge will be helpful. We already have a starting point in the project links below that needs to be driven to completion. This includes completing the on-going work to integrate yolact edge into this work to replace detectron2 and benchmark these capabilities on GPUs to verify sufficient run-time performance, as well as other tangental feature development.</p>
 <p>This task will involve identifying a few techniques that produce position and velocity information about dynamic obstacles that can run on a mobile robot (using high-power Intel CPU, Nvidia Jetson SoC, external GPUs, etc) and get them running with ROS and Navigation. Next, you will help create a new costmap layer to use this information to mark the dynamic obstacle in the costmap to ensure a robot does not collide with a future trajectory of an obstacle.</p>
 <p>If time permits, you may also work to also integrate this dynamic information into a path planner and/or controller to help in direct motion consideration. This will likely be in collaboration with another community member.</p>
 <p><strong>Project difficulty: High</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
 <p><strong>Project output requirements</strong>
-- Integrations of 2-5 methods of dynamic obstacle detection in ROS 2
-- Creation of a costmap_2d layer to use this information to mark future trajectories into a costmap
+- Integrations of 1 method of dynamic obstacle detection in ROS 2, using machine learning
 - Test these capabilities on real data or a live robot to demonstrate functionality
-- 65% test coverage or higher</p>
+- 85% test coverage or higher</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
 <li>C++, Python, ROS</li>
@@ -740,9 +745,10 @@
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2_dynamic/">Starting project</a></li>
 <li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1617">OGithub ticket</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1617">Github ticket</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
 <li><a class="reference external" href="https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf">Some related works</a></li>
 </ul>

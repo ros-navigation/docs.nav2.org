@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4. Path Smoothing &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>4. Semantic Integration &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -639,10 +639,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dynamic.html">7. Navigation Dynamic Obstacle Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">4. Advanced Navigation Testing Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="assisted_teleop.html">1. Assisted Teleop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">2. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">3. Navigation Safety Node</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Path Smoothing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Semantic Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spinners.html">5. Reduce ROS2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twist_n_config.html">6. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
@@ -703,7 +705,7 @@
         
           <li><a href="../Summer_2021_Student_Program.html">Projects for 2021 Summer Student Program</a> &raquo;</li>
         
-      <li>4. Path Smoothing</li>
+      <li>4. Semantic Integration</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -720,39 +722,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="path-smoothing">
-<span id="smoothing"></span><h1>4. Path Smoothing<a class="headerlink" href="#path-smoothing" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="semantic-integration">
+<span id="semantics"></span><h1>4. Semantic Integration<a class="headerlink" href="#semantic-integration" title="Permalink to this headline">¶</a></h1>
 <p><strong>Task description</strong></p>
-<p>This project is to create a generic path smoothing node or library to help in smoothing out paths generated from search-based planners used in Nav2 (Dijkstra, A*, NavFn, Hybrid-A*, State Lattice, etc) to make them more drivable at higher speeds and remove any non-optimal artifacts from the searching process due to imperfect heuristic functions.</p>
-<p>Common ways to smooth paths include:
-- Non-linear optimization
-- Gradient Descent (related)
-- Splines
-- Curve fitting
-- etc</p>
-<p>Your task will be to create a path smoother that will take in a given path and smooth it to be more drivable and return that path to the requester.</p>
-<p><strong>Project difficulty: Medium</strong></p>
+<p>This project is to create a semantics library and integrate it into the Nav2 system. The major aim is to enable a generic semantic representation format that navigation (and potentially other ROS projects) may use for representing their environment, objects within it, or points of interest.</p>
+<p>After creating the generic representation, your project will be to create demonstrations within Nav2 using this capability including a route planning server to replace the planner server in situations where you have a pre-defined set of potential locales (non-free space planning) and another demonstration of your choice.</p>
+<p><strong>Project difficulty: Hard</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
 <p><strong>Project output requirements</strong>
-- Can run in real-time (&lt; 100ms) on average
-- Can smooth paths of arbitrary lengths and from arbitrary path planning algorithms used in Nav2
-- Returned paths with tangent orientation vectors included (see ticket 2)
-- May be in Python or C++
-- If time allots, and in Python, convert to C++</p>
+- Generic semantics standard added to Nav2 documentation
+- Generic semsntics ROS2 library that implements the standard and makes it easy for applications to get, retreive, or analyze semantic data for custom purposes
+- A route server to enable navigation-graph and/or route following capabilities
+- 1 more demonstration using the semantics library of your choice (could be costmap layer with different rules in different rooms or with different objects, a multi-story building demo using semantic info to allow a robot to plan and execute multi-story trajectories, etc)</p>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++, Python, ROS</li>
-<li>Mobile robot navigation experience</li>
-<li>Geometry, splines, and/or optimization</li>
+<li>C++, Python, ROS2</li>
+<li>Mobile robot navigation or manipulation experience</li>
+<li>Perception, semantic information motivation, or similar.</li>
 <li>Recommended: Gazebo simulation, ROS navigation</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
 <li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2230">Github ticket</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2162">Github ticket2</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1595">Github ticket</a></li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2229">Github ticket2</a></li>
 <li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
 </ul>
 <p><strong>Licensing</strong>
