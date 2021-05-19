@@ -7,7 +7,7 @@
 
 **Task description** 
 
-The ROS 2 Navigation Stack has had a focus on testing and reliability as a characteristic change from ROS 1 to ROS 2. We currently have a test coverage rate of 65% and do full system simulations in Continuous Integration (CI) to test the entire navigation system with a real robot completing real navigation tasks. Your task will be to increase the testing coverage rate to 70% (or +5% from your starting) and improve on the existing system tests to represent a more realistic environment. You will then work to make sure of that environment to actively block the robot from completing its task to simulate worst-case conditions.
+The ROS 2 Navigation Stack has had a focus on testing and reliability as a characteristic change from ROS 1 to ROS 2. We currently have a test coverage rate of 85% and do full system simulations in Continuous Integration (CI) to test the entire navigation system with a real robot completing real navigation tasks. Your task will be to increase the testing coverage rate to 90% (or +5% from your starting) and improve on the existing system tests to represent a more realistic environment. You will then work to make sure of that environment to actively block the robot from completing its task to simulate worst-case conditions.
 
 **Project difficulty: Medium**
 
@@ -17,7 +17,7 @@ The ROS 2 Navigation Stack has had a focus on testing and reliability as a chara
 
 **Project output requirements**
 
-- Test line coverage of 70% or higher on the repository as reported by codecov (currently 65%)
+- Test line coverage of 90% or higher on the repository as reported by codecov (currently 85%)
 - An improved simulation environment for a more realistic mobile robotics application
 - Updated system tests to take advantage of that environment to fault or un-ideal cases of the stack
 
