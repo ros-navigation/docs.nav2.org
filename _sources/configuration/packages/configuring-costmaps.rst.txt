@@ -255,17 +255,6 @@ Costmap2D ROS Parameters
   Description
     whether when combining costmaps to use the maximum cost or override.
 
-:clearable_layers:
-
-  ============== =====================================================
-  Type           Default                                              
-  -------------- -----------------------------------------------------
-  vector<string> {"obstacle_layer", "voxel_layer", "range_layer"}
-  ============== =====================================================
-
-  Description
-    Layers that may be cleared using the clearing service.
-
 :plugins:
 
   ============== =====================================================
