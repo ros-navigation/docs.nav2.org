@@ -195,12 +195,12 @@ For example:
          width: 3
          height: 3
          resolution: 0.05
-  -      plugin_names: ["obstacle_layer", "voxel_layer", "inflation_layer"] # For Foxy and earlier
-  -      plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_costmap_2d::InflationLayer"] # For Foxy and earlier
-  +      plugin_names: ["obstacle_layer", "voxel_layer", "gradient_layer"] # For Foxy and earlier
-  +      plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Foxy and earlier
-  -      plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"] # For Galactic and later
-  +      plugins: ["obstacle_layer", "voxel_layer", "gradient_layer"] # For Galactic and later
+  -      plugin_names: ["obstacle_layer", "voxel_layer", "inflation_layer"] # For Eloquent and earlier
+  -      plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_costmap_2d::InflationLayer"] # For Eloquent and earlier
+  +      plugin_names: ["obstacle_layer", "voxel_layer", "gradient_layer"] # For Eloquent and earlier
+  +      plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Eloquent and earlier
+  -      plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"] # For Foxy and later
+  +      plugins: ["obstacle_layer", "voxel_layer", "gradient_layer"] # For Foxy and later
          robot_radius: 0.22
          inflation_layer:
            cost_scaling_factor: 3.0
@@ -208,12 +208,12 @@ For example:
          robot_base_frame: base_link
          global_frame: map
          use_sim_time: True
-  -      plugin_names: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"] # For Foxy and earlier
-  -      plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_costmap_2d::InflationLayer"] # For Foxy and earlier
-  +      plugin_names: ["static_layer", "obstacle_layer", "voxel_layer", "gradient_layer"] # For Foxy and earlier
-  +      plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Foxy and earlier
-  -      plugins: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"] # For Galactic and later
-  +      plugins: ["static_layer", "obstacle_layer", "voxel_layer", "gradient_layer"] # For Galactic and later
+  -      plugin_names: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"] # For Eloquent and earlier
+  -      plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_costmap_2d::InflationLayer"] # For Eloquent and earlier
+  +      plugin_names: ["static_layer", "obstacle_layer", "voxel_layer", "gradient_layer"] # For Eloquent and earlier
+  +      plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer", "nav2_costmap_2d::VoxelLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Eloquent and earlier
+  -      plugins: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"] # For Foxy and later
+  +      plugins: ["static_layer", "obstacle_layer", "voxel_layer", "gradient_layer"] # For Foxy and later
          robot_radius: 0.22
          resolution: 0.05
          obstacle_layer:
@@ -224,20 +224,20 @@ NOTE: there could be many simultaneously loaded plugin objects of one type. For 
 
 .. code-block:: text
 
-  plugin_names: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"] # For Foxy and earlier
-  plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_gradient_costmap_plugin/GradientLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Foxy and earlier
-  plugins: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"] # For Galactic and later
+  plugin_names: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"] # For Eloquent and earlier
+  plugin_types: ["nav2_costmap_2d::ObstacleLayer", "nav2_gradient_costmap_plugin/GradientLayer", "nav2_gradient_costmap_plugin/GradientLayer"] # For Eloquent and earlier
+  plugins: ["obstacle_layer", "gradient_layer_1", "gradient_layer_2"] # For Foxy and later
 
 In this case each plugin object will be handled by its own parameters tree in a YAML-file, like:
 
 .. code-block:: text
 
   gradient_layer_1:
-    plugin: nav2_gradient_costmap_plugin/GradientLayer # For Galactic and later
+    plugin: nav2_gradient_costmap_plugin/GradientLayer # For Foxy and later
     enabled: True
     ...
   gradient_layer_2:
-    plugin: nav2_gradient_costmap_plugin/GradientLayer # For Galactic and later
+    plugin: nav2_gradient_costmap_plugin/GradientLayer # For Foxy and later
     enabled: False
     ...
 
