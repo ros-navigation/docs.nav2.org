@@ -147,7 +147,7 @@ The rest of this should look familiar.
 Docker
 ******
 
-The official Dockerhub entries are primarily for use in the Nav2 CI, but they may also be used for development use to get a docker image that tracks Nav2 ``main`` branch. The ``Dockerfile`` in the root of the repository is recommended for production use, set to your distribution of choice.
+The official Dockerhub entries are primarily for use in the Nav2 CI, but they may also be used for development. It is useful to have a docker image that tracks Nav2 ``main`` branch. The ``Dockerfile`` in the root of the repository is recommended for production use, set to your distribution of choice.
 
 It is though generally recomended to install Nav2 releases from the apt repository inside a container if you'd like to use our released binaries.
 
