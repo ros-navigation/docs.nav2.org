@@ -177,7 +177,7 @@ If proxies are needed:
 
 Note: You may also need to configure your docker for DNS to work. See article here for details: https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/
 
-If you would like to build from dockerhub cache to seped up the build
+If you would like to build from dockerhub cache to speed up the build
 
 .. code:: bash
 
