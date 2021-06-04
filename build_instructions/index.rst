@@ -184,7 +184,8 @@ If you would like to build from dockerhub cache to speed up the build
 Using DockerHub Container
 =========================
 We allow for you to pull the latest docker image from the main branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
-This docker image will not contain a built overlay, and you must build the overlay Nav2 workspace yourself (see Build Nav2 Main up above)
+This docker image will not contain a built overlay, and you must build the overlay Nav2 workspace yourself (see Build Nav2 Main up above).
+
 .. code:: bash
   sudo docker pull rosplanning/navigation2:main
 
