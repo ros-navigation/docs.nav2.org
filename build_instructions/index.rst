@@ -147,9 +147,14 @@ The rest of this should look familiar.
 Docker
 ******
 
+.. note::
 
-Docker is primarily used for the Nav2 CI.
-For Nav2 production use inside a container, it is typically better to install Nav2 releases from the apt repository inside a ROS container.
+  To avoid using `sudo` to use docker, add your use to the `docker` group as outlined here for a Linux host machine: https://docs.docker.com/engine/install/linux-postinstall/
+  If you choose not to do this, you must run the below docker commands as `sudo`
+
+The official Dockerfile and Dockerhub container are primarily for use in the Nav2 CI
+
+For Nav2 production containerized use, it is reccomended to install Nav2 releases from the apt repository inside a ROS container
 
 .. rst-class:: content-collapse
 
@@ -158,26 +163,26 @@ Building Docker Container
 
 To build an image from the Dockerfile in the Nav2 folder:
 First, clone the repo to your local system (or see Building the source above)
-You may cache from the Dockerhub container.
+
 
 .. code:: bash
 
-  sudo docker build -t nav2/latest .
+  docker build -t nav2/latest .
 
 If proxies are needed:
 
 .. code:: bash
 
-  sudo docker build -t nav2/latest --build-arg http_proxy=http://proxy.my.com:### --build-arg https_proxy=http://proxy.my.com:### .
+  docker build -t nav2/latest --build-arg http_proxy=http://proxy.my.com:### --build-arg https_proxy=http://proxy.my.com:### .
 
 Note: You may also need to configure your docker for DNS to work. See article here for details: https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/
 
-If you would like to build from dockerhub cache
+If you would like to build from dockerhub cache to seped up the build
 
 .. code:: bash
 
-  sudo docker pull rosplanning/navigation2:main
-  sudo docker build -t nav2/latest --cache-from rosplanning/navigation2:main .
+  docker pull rosplanning/navigation2:main
+  docker build -t nav2/latest --cache-from rosplanning/navigation2:main .
 
 
 .. rst-class:: content-collapse
