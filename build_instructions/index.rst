@@ -152,9 +152,9 @@ Docker
   To avoid using `sudo` to use docker, add your use to the `docker` group as outlined here for a Linux host machine: https://docs.docker.com/engine/install/linux-postinstall/
   If you choose not to do this, you must run the below docker commands as `sudo`
 
-The official Dockerfile and Dockerhub container are primarily for use in the Nav2 CI
+The official Dockerhub entries are primarily for use in the Nav2 CI, but they may also be used for development use to get a docker image that tracks Nav2 ``main`` branch. The ``Dockerfile`` in the root of the repository is recommended for production use, set to your distribution of choice. 
 
-For Nav2 production containerized use, it is reccomended to install Nav2 releases from the apt repository inside a ROS container
+It is though generally recomended to install Nav2 releases from the apt repository inside a container if you'd like to use our released binaries.
 
 .. rst-class:: content-collapse
 
