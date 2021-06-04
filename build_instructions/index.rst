@@ -187,6 +187,7 @@ We allow for you to pull the latest docker image from the main branch at any tim
 This docker image will not contain a built overlay, and you must build the overlay Nav2 workspace yourself (see Build Nav2 Main up above).
 
 .. code:: bash
+
   sudo docker pull rosplanning/navigation2:main
 
 !!!!
