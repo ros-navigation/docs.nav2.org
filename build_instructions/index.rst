@@ -147,12 +147,7 @@ The rest of this should look familiar.
 Docker
 ******
 
-.. note::
-
-  To avoid using `sudo` to use docker, add your use to the `docker` group as outlined here for a Linux host machine: https://docs.docker.com/engine/install/linux-postinstall/
-  If you choose not to do this, you must run the below docker commands as `sudo`
-
-The official Dockerhub entries are primarily for use in the Nav2 CI, but they may also be used for development use to get a docker image that tracks Nav2 ``main`` branch. The ``Dockerfile`` in the root of the repository is recommended for production use, set to your distribution of choice. 
+The official Dockerhub entries are primarily for use in the Nav2 CI, but they may also be used for development use to get a docker image that tracks Nav2 ``main`` branch. The ``Dockerfile`` in the root of the repository is recommended for production use, set to your distribution of choice.
 
 It is though generally recomended to install Nav2 releases from the apt repository inside a container if you'd like to use our released binaries.
 
@@ -167,13 +162,13 @@ First, clone the repo to your local system (or see Building the source above)
 
 .. code:: bash
 
-  docker build -t nav2/latest .
+  sudo docker build -t nav2/latest .
 
 If proxies are needed:
 
 .. code:: bash
 
-  docker build -t nav2/latest --build-arg http_proxy=http://proxy.my.com:### --build-arg https_proxy=http://proxy.my.com:### .
+  sudo docker build -t nav2/latest --build-arg http_proxy=http://proxy.my.com:### --build-arg https_proxy=http://proxy.my.com:### .
 
 Note: You may also need to configure your docker for DNS to work. See article here for details: https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/
 
@@ -181,8 +176,8 @@ If you would like to build from dockerhub cache to speed up the build
 
 .. code:: bash
 
-  docker pull rosplanning/navigation2:main
-  docker build -t nav2/latest --cache-from rosplanning/navigation2:main .
+  sudo docker pull rosplanning/navigation2:main
+  sudo docker build -t nav2/latest --cache-from rosplanning/navigation2:main .
 
 
 .. rst-class:: content-collapse
