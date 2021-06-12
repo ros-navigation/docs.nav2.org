@@ -8,7 +8,8 @@ Source code and README with design, explanations, and metrics can be found on Gi
 .. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 
 The Smac Planner plugin implements a 2D A* and Hybrid-A* path planners.
-An example of the Hyrid-A* planner can be seen below, planning a 85 meter path in 33ms.
+It is important to know that as of June 2021, the planner received a **major** update improving path quality and run-times by 2-3x.
+An example of the Hybrid-A* planner can be seen below, planning a 60 meter path in 73ms. Usual planning time is below 100ms for most environments, occasionally up to 200ms.
 
 .. image:: smac/path.png
     :width: 640px
@@ -70,7 +71,7 @@ Parameters
   ==== =======
   Type Default                                                   
   ---- -------
-  int  -1            
+  int  1000000            
   ==== =======
 
   Description
@@ -85,7 +86,7 @@ Parameters
   ==== =======
 
   Description
-    Maximum number of iterations after the search is within tolerance before returning approximate path with best heuristic if exact path not found.
+    Maximum number of iterations after the search is within tolerance before returning approximate path with best heuristic if exact path not found. 2D only.
 
 :``<name>``.max_planning_time:
 
@@ -103,22 +104,11 @@ Parameters
   ====== =======
   Type   Default                                                   
   ------ -------
-  double  2.0            
+  double 3.5            
   ====== =======
 
   Description
     SE2 node will attempt to complete an analytic expansions proportional to this value and the minimum heuristic.
-
-:``<name>``.smooth_path:
-
-  ==== =======
-  Type Default                                                   
-  ---- -------
-  bool False            
-  ==== =======
-
-  Description
-    Whether to smooth path with CG smoother.
 
 :``<name>``.motion_model_for_search:
 
@@ -129,7 +119,19 @@ Parameters
   ====== =======
 
   Description
-    Motion model enum string to search with. For SE2 node, default is "DUBIN". For 2D it is "MOORE". Options for SE2 are DUBIN or REEDS_SHEPP. Options for 2D is MOORE and VON_NEUMANN.
+    Motion model enum string to search with. For Hybrid-A* node, default is "DUBIN". For 2D it is "MOORE". Options for SE2 are DUBIN or REEDS_SHEPP. Options for 2D is MOORE and VON_NEUMANN. For state lattice, use STATE_LATTICE.
+
+:``<name>``.cost_travel_multiplier:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  double 2.0            
+  ====== =======
+
+  Description
+    For 2D: Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-`FREE` cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A*.
+
 
 :``<name>``.angle_quantization_bins:
 
@@ -147,7 +149,7 @@ Parameters
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 0.2          
+  double 0.4          
   ====== =======
 
   Description
@@ -169,7 +171,7 @@ Parameters
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 0.5          
+  double 0.15          
   ====== =======
 
   Description
@@ -180,7 +182,7 @@ Parameters
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 1.05         
+  double 1.50         
   ====== =======
 
   Description
@@ -191,234 +193,121 @@ Parameters
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 1.2         
+  double 1.7         
   ====== =======
 
   Description
     Heuristic penalty to apply to SE2 node for cost at pose. Allows Hybrid-A* to be cost aware.
 
-:``<name>``.smoother.smoother.w_curve:
+:``<name>``.lattice_filepath:
 
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 1.5         
+  string ""         
   ====== =======
 
   Description
-    CG smoother cost function weight on  the curvature of path.
+    The filepath to the state lattice graph
 
-:``<name>``.smoother.smoother.w_dist:
+:``<name>``.lookup_table_size:
 
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 0.0         
+  double 20.0         
   ====== =======
 
   Description
-    CG smoother cost function weight on the distance from the original path. Disabled by default.
+    Size of the dubin/reeds-sheep distance window to cache, in meters.
 
-:``<name>``.smoother.smoother.w_smooth:
+:``<name>``.cache_obstacle_heuristic:
 
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 15000.0         
+  bool   false         
   ====== =======
 
   Description
-    CG smoother cost function weight on the distance between nodes.
+    Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
 
-:``<name>``.smoother.smoother.w_cost:
+:``<name>``.smoother.max_iterations:
 
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 1.5         
+  int    1000         
   ====== =======
 
   Description
-    CG smoother cost function weight on the costmap's cost.
+    Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
 
-:``<name>``.smoother.smoother.cost_scaling_factor:
+:``<name>``.smoother.w_smooth:
 
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 10.0        
+  double 0.3         
   ====== =======
 
   Description
-    Scale factor for the inflation layer. Must be the same as your inflation layer's value. Used to approximate a Voronoi field.
+    Weight for smoother to apply to smooth out the data points
 
-:``<name>``.smoother.optimizer.max_time:
+:``<name>``.smoother.w_data:
 
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 0.10        
+  double 0.2         
   ====== =======
 
   Description
-    Maximum time spent smoothing, in seconds. If planning takes too long, this can be dynamically adjusted to ensure the planner meets ``max_planning_time``.
+    Weight for smoother to apply to retain original data information
 
-:``<name>``.smoother.optimizer.max_iterations:
+:``<name>``.smoother.tolerance:
 
   ====== =======
   Type   Default                                                   
   ------ -------
-  int    500        
+  double 1e-10       
   ====== =======
 
   Description
-    Maximum number of iterations we can run the CG smoother.
-
-:``<name>``.smoother.optimizer.debug_optimizer:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  bool   False        
-  ====== =======
-
-  Description
-    Whether to print debug info from Ceres.
-
-:``<name>``.smoother.optimizer.gradient_tol:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  double 1e-10      
-  ====== =======
-
-  Description
-    Minimum change in gradient to terminate smoothing.
-
-:``<name>``.smoother.optimizer.fn_tol:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  double 1e-7      
-  ====== =======
-
-  Description
-    Minimum change in function to terminate smoothing.
-
-:``<name>``.smoother.optimizer.param_tol:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  double 1e-15      
-  ====== =======
-
-  Description
-    Minimum change in parameter blocks to terminate smoothing.
-
-:``<name>``.smoother.optimizer.advanced.min_line_search_step_size:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  double 1e-20      
-  ====== =======
-
-  Description
-    Terminate smoothing iteration if change in parameter block less than this.
-
-:``<name>``.smoother.optimizer.advanced.max_num_line_search_step_size_iterations:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  int    50    
-  ====== =======
-
-  Description
-    Maximum iterations for line search in CG smoother.
-
-:``<name>``.smoother.optimizer.advanced.line_search_sufficient_function_decrease:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  double 1e-20      
-  ====== =======
-
-  Description
-    Function decrease amount to terminate current line search iteration.
-
-:``<name>``.smoother.optimizer.advanced.max_num_line_search_direction_restarts:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  int    10    
-  ====== =======
-
-  Description
-    Maximum umber of restarts of line search when over-shoots.
-
-:``<name>``.smoother.optimizer.advanced.max_line_search_step_expansion:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  int    50    
-  ====== =======
-
-  Description
-    Step size multiplier at each iteration of line search.
+    Parameter tolerance change amount to terminate smoothing session
 
 Example
 *******
 .. code-block:: yaml
 
-    planner_server:
-      ros__parameters:
-        planner_plugins: ["GridBased"]
-        use_sim_time: True
+  planner_server:
+    ros__parameters:
+      planner_plugins: ["GridBased"]
+      use_sim_time: True
 
-        GridBased:
-          plugin: "smac_planner/SmacPlanner"
-          tolerance: 0.5                    # tolerance for planning if unable to reach exact pose, in meters, for 2D node
-          downsample_costmap: false         # whether or not to downsample the map
-          downsampling_factor: 1            # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
-          allow_unknown: false              # allow traveling in unknown space
-          max_iterations: -1                # maximum total iterations to search for before failing
-          max_on_approach_iterations: 1000  # maximum number of iterations to attempt to reach goal once in tolerance, 2D only
-          max_planning_time: 2.0            # max time in seconds for planner to plan, smooth, and upsample. Will scale maximum smoothing and upsampling times based on remaining time after planning.
-          smooth_path: false                # Whether to smooth searched path
-          motion_model_for_search: "DUBIN"  # 2D Moore, Von Neumann; SE2 Dubin, Redds-Shepp
-          angle_quantization_bins: 72       # For SE2 node: Number of angle bins for search, must be 1 for 2D node (no angle search)
-          minimum_turning_radius: 0.20      # For SE2 node & smoother: minimum turning radius in m of path / vehicle
-          reverse_penalty: 2.1              # For Reeds-Shepp model: penalty to apply if motion is reversing, must be => 1
-          change_penalty: 0.20              # For SE2 node: penalty to apply if motion is changing directions, must be >= 0
-          non_straight_penalty: 1.05        # For SE2 node: penalty to apply if motion is non-straight, must be => 1
-          cost_penalty: 1.3                 # For SE2 node: penalty to apply to higher cost zones
-
-          smoother:
-            smoother:
-              w_curve: 30.0                 # weight to minimize curvature of path
-              w_dist: 0.0                   # weight to bind path to original as optional replacement for cost weight
-              w_smooth: 30000.0             # weight to maximize smoothness of path
-              w_cost: 0.025                 # weight to steer robot away from collision and cost
-              cost_scaling_factor: 10.0     # this should match the inflation layer's parameter
-
-            # I do not recommend users mess with this unless they're doing production tuning
-            optimizer:
-              max_time: 0.10                # maximum compute time for smoother
-              max_iterations: 500           # max iterations of smoother
-              debug_optimizer: false        # print debug info
-              gradient_tol: 1.0e-10
-              fn_tol: 1.0e-20
-              param_tol: 1.0e-15
-              advanced:
-                min_line_search_step_size: 1.0e-20
-                max_num_line_search_step_size_iterations: 50
-                line_search_sufficient_function_decrease: 1.0e-20
-                max_num_line_search_direction_restarts: 10
-                max_line_search_step_expansion: 50
+      GridBased:
+        plugin: "nav2_smac_planner/SmacPlanner"
+        tolerance: 0.5                      # tolerance for planning if unable to reach exact pose, in meters, for 2D node
+        downsample_costmap: false           # whether or not to downsample the map
+        downsampling_factor: 1              # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
+        allow_unknown: false                # allow traveling in unknown space
+        max_iterations: 1000000             # maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
+        max_on_approach_iterations: 1000    # maximum number of iterations to attempt to reach goal once in tolerance, 2D only
+        max_planning_time: 3.5              # max time in s for planner to plan, smooth, and upsample. Will scale maximum smoothing and upsampling times based on remaining time after planning.
+        motion_model_for_search: "DUBIN"    # 2D Moore, Von Neumann; Hybrid Dubin, Redds-Shepp; State Lattice set internally
+        cost_travel_multiplier: 2.0         # For 2D: Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-`FREE` cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A*.
+        angle_quantization_bins: 64         # For Hybrid/Lattice nodes: Number of angle bins for search, must be 1 for 2D node (no angle search)
+        analytic_expansion_ratio: 3.5       # For Hybrid/Lattice nodes: The ratio to attempt analytic expansions during search for final approach.
+        minimum_turning_radius: 0.40        # For Hybrid/Lattice nodes: minimum turning radius in m of path / vehicle
+        reverse_penalty: 2.1                # For Reeds-Shepp model: penalty to apply if motion is reversing, must be => 1
+        change_penalty: 0.15                # For Hybrid/Lattice nodes: penalty to apply if motion is changing directions, must be >= 0
+        non_straight_penalty: 1.50          # For Hybrid/Lattice nodes: penalty to apply if motion is non-straight, must be => 1
+        cost_penalty: 1.7                   # For Hybrid/Lattice nodes: penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
+        lattice_filepath: ""                # For Lattice node: the filepath to the state lattice graph
+        lookup_table_size: 20               # For Hybrid/Lattice nodes: Size of the dubin/reeds-sheep distance window to cache, in meters.
+        cache_obstacle_heuristic: True      # For Hybrid/Lattice nodes: Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.     
+        smoother:
+          max_iterations: 1000
+          w_smooth: 0.3
+          w_data: 0.2
+          tolerance: 1e-10

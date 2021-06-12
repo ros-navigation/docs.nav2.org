@@ -20,3 +20,4 @@ Navigation2 guides for migration between distributions.
    Dashing.rst
    Eloquent.rst
    Foxy.rst
+   Galactic.rst
