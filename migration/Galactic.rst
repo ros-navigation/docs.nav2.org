@@ -32,3 +32,46 @@ The tl;dr of these improvements is:
   - Plans are 2-3x as fast as they were before, well under 200ms for nearly all situations, making it as fast as NavFn and Global Planner (but now kinematically feasible). Typical planning times are sub-100ms without even making use of the caching or downsampling features.
   - Paths are of significantly higher quality via improved smoothers and a novel heuristic that steers the robot towards the center of aisleways implicitly. This makes smoother paths that are also further from obstacles whenever possible. 
   - Using caching or downsampler parameterizations, can easily achieve path planning with sub-50ms in nearly any sized space.
+
+
+Simple (Python) Commander
+*************************
+
+`This PR <https://github.com/ros-planning/navigation2/pull/2411>`_ introduces a new package to Nav2, called the ``nav2_simple_commander``. It is a set of functions in an object, ``BasicNavigator``, which can be used to build Nav2-powered autonomy tasks in Python3 without concerning yourself with the Nav2, ROS2, or Action server details. It contains a simple API taking common types (primarily ``PoseStamped``) and handles all of the implementation details behind the hood. For example, this is a simple navigation task using this API:
+
+.. code-block:: python3
+
+    def main():
+        rclpy.init()
+        navigator = BasicNavigator()
+
+        # Set our demo's initial pose
+        initial_pose = PoseStamped()
+        ... populate pose ...
+        navigator.setInitialPose(initial_pose)
+
+        # Wait for navigation to fully activate
+        navigator.waitUntilNav2Active()
+
+        # Go to our demos first goal pose
+        goal_pose = PoseStamped()
+        ... populate pose ...
+        navigator.goToPose(goal_pose)
+
+        while not navigator.isNavComplete():
+            feedback = navigator.getFeedback()
+            ... do something with feedback ...
+
+            # Basic navigation timeout
+            if Duration.from_msg(feedback.navigation_time) > Duration(seconds=600.0):
+                navigator.cancelNav()
+
+        result = navigator.getResult()
+        if result == NavigationResult.SUCCEEDED:
+            print('Goal succeeded!')
+        elif result == NavigationResult.CANCELED:
+            print('Goal was canceled!')
+        elif result == NavigationResult.FAILED:
+            print('Goal failed!')
+
+`The full API can be found in the README of the package <https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander>`_. A number of well commented examples and demos can also be found in the package's source code at the link prior.
