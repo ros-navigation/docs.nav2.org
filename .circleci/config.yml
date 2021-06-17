@@ -8,8 +8,6 @@ references:
     run:
       name: Install Doc Dependencies
       command: |
-        apt install python3.8
-        python3 -m ensurepip
         pip3 install sphinx==1.7.5 docutils==0.14 sphinx_rtd_theme breathe==4.9.1 sphinxcontrib-plantuml
         apt install make
         apt install doxygen
