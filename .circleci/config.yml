@@ -8,6 +8,7 @@ references:
     run:
       name: Install Doc Dependencies
       command: |
+        export DEBIAN_FRONTEND=noninteractive
         apt update
         apt install make -y
         apt install doxygen -y
