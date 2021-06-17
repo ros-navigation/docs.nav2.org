@@ -8,13 +8,14 @@ references:
     run:
       name: Install Doc Dependencies
       command: |
-        # pip3 install sphinx==1.7.5 docutils==0.14 sphinx_rtd_theme breathe==4.9.1 sphinxcontrib-plantuml
+        apt update
         apt install make
         apt install doxygen
         apt install graphviz
         apt install ttf-dejavu
         apt install openjdk-8-jre
         apt install bash git openssh-server
+        pip3 install sphinx==1.7.5 docutils==0.14 sphinx_rtd_theme breathe==4.9.1 sphinxcontrib-plantuml
   make_docs: &make_docs
     run:
       command: |
