@@ -9,12 +9,12 @@ references:
       name: Install Doc Dependencies
       command: |
         apt update
-        apt install make
-        apt install doxygen
-        apt install graphviz
-        apt install ttf-dejavu
-        apt install openjdk-8-jre
-        apt install bash git openssh-server
+        apt install make -y
+        apt install doxygen -y
+        apt install graphviz -y
+        apt install ttf-dejavu -y
+        apt install openjdk-8-jre -y
+        apt install bash git openssh-server -y
         pip3 install sphinx==1.7.5 docutils==0.14 sphinx_rtd_theme breathe==4.9.1 sphinxcontrib-plantuml
   make_docs: &make_docs
     run:
