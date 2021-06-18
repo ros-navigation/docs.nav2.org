@@ -98,12 +98,13 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool true
+  bool false
   ==== =======
 
   Description
     Enable live Groot monitoring of the current BT status.
     This is possible due to attaching a ZMQ server and publisher to the active behavior tree.
+    If running multiple robots, make sure to change the port parameters below so that they are unique to prevent collisions in ZMQ.
 
     **Attention:** Groot will only work after the behavior tree is running, which means that the nav2 stack has to receive a goal first.
 
