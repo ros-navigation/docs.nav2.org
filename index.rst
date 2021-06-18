@@ -37,8 +37,9 @@ If you would like to see a comparison between this project and ROS (1) Navigatio
 The expected inputs to Nav2 are TF transformations conforming to REP-105, a
 map source if utilizing the Static Costmap Layer, a BT XML file, and any relevant sensor data
 sources. It will then provide valid velocity commands for the motors of a holonomic or
-non-holonomic robot to follow. We currently support holonomic and differential-drive base types
-but plan to support Ackermann (car-like) robots as well in the near future.
+non-holonomic robot to follow. We currently support all of the major robot types:
+holonomic, differential-drive, legged, and ackermann (car-like) base types! We support
+them uniquely with both circular and arbitrarily-shaped robots for SE2 collision checking. 
 
 
 It has tools to:
