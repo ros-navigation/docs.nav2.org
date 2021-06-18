@@ -50,7 +50,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Getting Involved" href="../contribute/index.html" />
+    <link rel="next" title="Simple Commander API" href="../commander_api/index.html" />
     <link rel="prev" title="Foxy to Galactic" href="Foxy.html" />
 
 <link rel="stylesheet" href="../_static/tcs_theme.css" type="text/css" />
@@ -623,8 +623,15 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Galactic to Humble</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#major-improvements-to-smac-planners">Major improvements to Smac Planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-python-commander">Simple (Python) Commander</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commander_api/index.html">Simple Commander API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#id1">Commander API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#examples-and-demos">Examples and Demos</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Getting Involved</a><ul>
@@ -762,6 +769,45 @@
 </ul>
 </dd>
 </dl>
+</div>
+<div class="section" id="simple-python-commander">
+<h2>Simple (Python) Commander<a class="headerlink" href="#simple-python-commander" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2411">This PR</a> introduces a new package to Nav2, called the <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code>. It is a set of functions in an object, <code class="docutils literal notranslate"><span class="pre">BasicNavigator</span></code>, which can be used to build Nav2-powered autonomy tasks in Python3 without concerning yourself with the Nav2, ROS2, or Action server details. It contains a simple API taking common types (primarily <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) and handles all of the implementation details behind the hood. For example, this is a simple navigation task using this API:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">navigator</span> <span class="o">=</span> <span class="n">BasicNavigator</span><span class="p">()</span>
+
+    <span class="c1"># Set our demo&#39;s initial pose</span>
+    <span class="n">initial_pose</span> <span class="o">=</span> <span class="n">PoseStamped</span><span class="p">()</span>
+    <span class="o">...</span> <span class="n">populate</span> <span class="n">pose</span> <span class="o">...</span>
+    <span class="n">navigator</span><span class="o">.</span><span class="n">setInitialPose</span><span class="p">(</span><span class="n">initial_pose</span><span class="p">)</span>
+
+    <span class="c1"># Wait for navigation to fully activate</span>
+    <span class="n">navigator</span><span class="o">.</span><span class="n">waitUntilNav2Active</span><span class="p">()</span>
+
+    <span class="c1"># Go to our demos first goal pose</span>
+    <span class="n">goal_pose</span> <span class="o">=</span> <span class="n">PoseStamped</span><span class="p">()</span>
+    <span class="o">...</span> <span class="n">populate</span> <span class="n">pose</span> <span class="o">...</span>
+    <span class="n">navigator</span><span class="o">.</span><span class="n">goToPose</span><span class="p">(</span><span class="n">goal_pose</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">navigator</span><span class="o">.</span><span class="n">isNavComplete</span><span class="p">():</span>
+        <span class="n">feedback</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">getFeedback</span><span class="p">()</span>
+        <span class="o">...</span> <span class="n">do</span> <span class="n">something</span> <span class="k">with</span> <span class="n">feedback</span> <span class="o">...</span>
+
+        <span class="c1"># Basic navigation timeout</span>
+        <span class="k">if</span> <span class="n">Duration</span><span class="o">.</span><span class="n">from_msg</span><span class="p">(</span><span class="n">feedback</span><span class="o">.</span><span class="n">navigation_time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Duration</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mf">600.0</span><span class="p">):</span>
+            <span class="n">navigator</span><span class="o">.</span><span class="n">cancelNav</span><span class="p">()</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">getResult</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">NavigationResult</span><span class="o">.</span><span class="n">SUCCEEDED</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goal succeeded!&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">NavigationResult</span><span class="o">.</span><span class="n">CANCELED</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goal was canceled!&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">NavigationResult</span><span class="o">.</span><span class="n">FAILED</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goal failed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander">The full API can be found in the README of the package</a>. A number of well commented examples and demos can also be found in the package’s source code at the link prior.</p>
 </div>
 </div>
 
