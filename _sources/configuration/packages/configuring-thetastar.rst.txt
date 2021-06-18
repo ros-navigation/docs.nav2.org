@@ -53,7 +53,7 @@ The parameters of the planner are:
   ============== =======
   Type           Default
   -------------- -------
-  double         5.0 
+  double         2.0 
   ============== =======
 
   Description
@@ -88,5 +88,5 @@ Example
     GridBased:
       how_many_corners: 8
       w_euc_cost: 1.0
-      w_traversal_cost: 5.0
+      w_traversal_cost: 2.0
       w_heuristic_cost: 1.0
