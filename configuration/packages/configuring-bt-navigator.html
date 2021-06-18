@@ -888,14 +888,15 @@ This value will be overwritten for a BT node if the input port “server_timeout
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>bool</td>
-<td>true</td>
+<td>false</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first">Enable live Groot monitoring of the current BT status.
-This is possible due to attaching a ZMQ server and publisher to the active behavior tree.</p>
+This is possible due to attaching a ZMQ server and publisher to the active behavior tree.
+If running multiple robots, make sure to change the port parameters below so that they are unique to prevent collisions in ZMQ.</p>
 <p class="last"><strong>Attention:</strong> Groot will only work after the behavior tree is running, which means that the nav2 stack has to receive a goal first.</p>
 </dd>
 </dl>
