@@ -251,6 +251,8 @@ Original GitHub tickets:
 - `RemovePassedGoals <https://github.com/ros-planning/navigation2/pull/2271>`_
 - `ComputePathThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
 
+Additionally, behavior tree nodes were modified to contain their own local executors to spin for actions, topics, services, etc to ensure that each behavior tree node is independent of each other (e.g. spinning in one BT node doesn't trigger a callback in another). 
+
 sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change
 ********************************************************
 Due to deprecation of `sensor_msgs/PointCloud <https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud.html>`_ the topics which were publishing sensor_msgs/PointCloud are converted to sensor_msgs/PointCloud2. The details on these topics and their respective information are listed below.
@@ -259,7 +261,7 @@ Due to deprecation of `sensor_msgs/PointCloud <https://docs.ros2.org/foxy/api/se
 - ``voxel_marked_cloud`` and ``voxel_unknown_cloud`` topic in ``costmap_2d_cloud`` node of ``nav2_costmap_2d`` package
 - ``cost_cloud`` topic of ``publisher.cpp`` of ``dwb_core`` package.
 
-These changes were introduced inthis `pull request <https://github.com/ros-planning/navigation2/pull/2263>`_.
+These changes were introduced in `pull request <https://github.com/ros-planning/navigation2/pull/2263>`_.
 
 ControllerServer New Parameter failure_tolerance
 ************************************************
@@ -272,3 +274,14 @@ The launch python configurations for CLI setting of the behavior tree XML file h
 
 The use of map subscription QoS launch configuration was also removed, use parameter file. 
 This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2295>`_.
+
+Nav2 RViz Panel Action Feedback Information
+*******************************************
+The Nav2 RViz Panel now displays the action feedback published by ``nav2_msgs/NavigateToPose`` and ``nav2_msgs/NavigateThroughPoses`` actions.
+Users can find information like the estimated time of arrival, distance remaining to goal, time elapsed since navigation started, and number of recoveries performed during a navigation action directly through the RViz panel.
+This feature was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2338>`_.
+
+.. image:: /images/rviz/panel-feedback.gif
+    :width: 600px
+    :align: center
+    :alt: Navigation feedback in RViz.

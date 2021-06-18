@@ -96,6 +96,7 @@ Controllers
 Planners
 ========
 
+<<<<<<< HEAD
 +-------------------+---------------------------------------+------------------------------+---------------------+
 | Plugin Name       |         Creator                       |       Description            | Drivetrain support  |
 +===================+=======================================+==============================+=====================+
@@ -124,9 +125,39 @@ Planners
 |                   |                                       | assumes the robot as a       |                     |
 |                   |                                       | 2D holonomic particle        |                     |
 +-------------------+---------------------------------------+------------------------------+---------------------+
+=======
++---------------------------+---------------------------------------+------------------------------+---------------------+
+| Plugin Name               |         Creator                       |       Description            | Drivetrain support  |
++===========================+=======================================+==============================+=====================+
+|  `NavFn Planner`_         | Eitan Marder-Eppstein & Kurt Konolige | A navigation function        | Differential,       |
+|                           |                                       | using A* or Dijkstras        | Omnidirectional,    |
+|                           |                                       | expansion, assumes 2D        | Legged              |
+|                           |                                       | holonomic particle           |                     |
++---------------------------+---------------------------------------+------------------------------+---------------------+
+| `SmacPlannerHybrid`_      | Steve Macenski                        | A SE2 Hybrid-A*              | **Ackermann**,      |
+|  (formerly `SmacPlanner`) |                                       | implementation using either  | Differential,       |
+|                           |                                       | Dubin or Reeds-shepp motion  | Omnidirectional,    |
+|                           |                                       | models with smoother and     | Legged              |
+|                           |                                       | multi-resolution query.      |                     |
+|                           |                                       | Cars, car-like, and          |                     |
+|                           |                                       | ackermann vehicles.          |                     |
++---------------------------+---------------------------------------+------------------------------+---------------------+
+|  `SmacPlanner2D`_         | Steve Macenski                        | A 2D A* implementation       | Differential,       |
+|                           |                                       | Using either 4 or 8          | Omnidirectional,    |
+|                           |                                       | connected neighborhoods      | Legged              |
+|                           |                                       | with smoother and            |                     |
+|                           |                                       | multi-resolution query       |                     |
++---------------------------+---------------------------------------+------------------------------+---------------------+
+|`ThetaStarPlanner`_        | Anshumaan Singh                       | An implementaion of Theta*   | Differential,       |
+|                           |                                       | using either 4 or 8          | Omnidirectional     |
+|                           |                                       | connected neighborhoods,     |                     |
+|                           |                                       | assumes the robot as a       |                     |
+|                           |                                       | 2D holonomic particle        |                     |
++---------------------------+---------------------------------------+------------------------------+---------------------+
+>>>>>>> nav2_docs/master
 
 .. _NavFn Planner: https://github.com/ros-planning/navigation2/tree/main/nav2_navfn_planner
-.. _SmacPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
+.. _SmacPlannerHybrid: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 .. _SmacPlanner2D: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 .. _ThetaStarPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
 

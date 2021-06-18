@@ -117,9 +117,7 @@ After defining our base_link, we then add a joint to connect it to ``base_link``
   :lineno-start: 29
 
     <!-- Robot Footprint -->
-    <link name="base_footprint">
-      <xacro:box_inertia m="0" w="0" d="0" h="0"/>
-    </link>
+    <link name="base_footprint"/>
 
     <joint name="base_joint" type="fixed">
       <parent link="base_link"/>
