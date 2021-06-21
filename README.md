@@ -11,3 +11,4 @@ Dependencies for Build:
 
 Build the docs locally with `make html` and you'll find the built docs entry point in `_build/html/index.html`.
 
+Any images, diagrams, or videos are subject to their own copyrights, trademarks, and licenses. 
