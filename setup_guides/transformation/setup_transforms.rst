@@ -45,7 +45,7 @@ With this transform tree set up, converting the laser scan received in the ``bas
 Static Transform Publisher Demo
 *******************************
 
-.. warning:: If you are new to ROS2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official `ROS2 Installation Documentation <https://index.ros.org/doc/ros2/Installation/>`__
+.. warning:: If you are new to ROS 2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official `ROS 2 Installation Documentation <https://docs.ros.org/en/rolling/Installation.html>`__
 
 Now let's try publishing a very simple transform using the static_transform_publisher tool provided by TF2. We will be publishing a transformation from the link ``base_link`` to the link ``base_laser`` with a translation of (x: 0.1m, y: 0.0m, z: 0.2m). Note that we will be building the transform from the diagram earlier in this tutorial.
 
