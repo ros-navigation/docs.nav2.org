@@ -893,7 +893,7 @@ For this reason, when working with larger launch files, its good to pull out the
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> you can give it the path to the new parameters file, remaps, or names. See <a class="reference external" href="https://index.ros.org/doc/ros2/Tutorials/Node-arguments/">this ROS2 tutorial</a> for the commandline arguments required.</p>
+<p>Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> you can give it the path to the new parameters file, remaps, or names. See <a class="reference external" href="https://docs.ros.org/en/rolling/Guides/Node-arguments.html">this ROS2 tutorial</a> for the commandline arguments required.</p>
 <p class="last">We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be <code class="docutils literal notranslate"><span class="pre">--ros-args</span> <span class="pre">-r</span> <span class="pre">__node:=&lt;node_name&gt;</span> <span class="pre">--params-file</span> <span class="pre">/absolute/path/to/params.yaml</span></code> (as a template).</p>
 </div>
 <p>Once your server crashes, you’ll see a prompt like below in the specific server’s terminal. At this point you can now get a backtrace.</p>
