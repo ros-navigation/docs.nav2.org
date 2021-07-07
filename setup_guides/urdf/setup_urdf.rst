@@ -249,7 +249,7 @@ Next, let us create our launch file. Launch files are used by ROS2 to bring up t
           rviz_node
       ])
 
-.. seealso:: For more information regarding the launch system in ROS2, you can have a look at the official `ROS2 Launch System Documentation <https://index.ros.org/doc/ros2/Tutorials/Launch-system/>`__
+.. seealso:: For more information regarding the launch system in ROS 2, you can have a look at the official `ROS 2 Launch System Documentation <https://docs.ros.org/en/rolling/Tutorials/Launch-system.html>`__
 
 To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``urdf_config.rviz`` under it. Place the following as the contents of ``urdf_config.rviz``
 

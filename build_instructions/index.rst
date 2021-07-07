@@ -30,7 +30,7 @@ Build Nav2 For Released Distribution
 Install ROS
 -----------
 
-Please install ROS 2 via the usual `build instructions <https://index.ros.org/doc/ros2/Installation>`_ for your desired distribution.
+Please install ROS 2 via the usual `build instructions <https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Binary.html>`_ for your desired distribution.
 
 Build Nav2
 ----------
@@ -59,7 +59,7 @@ Quickstart Build Main
 Steps
 -----
 
-Install all ROS 2 dependencies from the `ROS 2 Installation page <https://index.ros.org/doc/ros2/Installation/>`_.
+Install all ROS 2 dependencies from the `ROS 2 Installation page <https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html#system-setup>`_.
 Ensure there are no ROS environment variables set in your terminal or `.bashrc` file before taking the steps below.*
 
 
@@ -103,7 +103,7 @@ Build ROS 2 Main
 
    When building ROS 2 from source, make sure that the `ros2.repos` file is from the `main` branch.
 
-Build ROS 2 main using the `build instructions <https://index.ros.org/doc/ros2/Installation>`_ provided in the ROS 2 documentation.
+Build ROS 2 main using the `build instructions <https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html>`_ provided in the ROS 2 documentation.
 
 
 Build Nav2 Dependencies
