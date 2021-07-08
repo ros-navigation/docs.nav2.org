@@ -217,7 +217,7 @@ Regulated Pure Pursuit Parameters
   Description
     Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place. 
 
-    **Attention:** Remember that both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true``at the same time.
+    Note: both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time as it would result in ambiguous situations.
 
 :allow_reversing:
 
