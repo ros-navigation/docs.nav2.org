@@ -230,7 +230,7 @@ Regulated Pure Pursuit Parameters
   Description
     Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). 
 
-    **Attention:** Remember that both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time.
+    Note: both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time as it would result in ambiguous situations.
 
 :rotate_to_heading_min_angle:
 
