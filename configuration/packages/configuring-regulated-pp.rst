@@ -215,7 +215,9 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.
+    Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place. 
+
+    **Attention:** Remember that both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true``at the same time.
 
 :allow_reversing:
 
@@ -226,7 +228,9 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    Enable the robot to drive in the reverse direction, by setting this parameter to ``true``. Remember that both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time.
+    Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). 
+
+    **Attention:** Remember that both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time.
 
 :rotate_to_heading_min_angle:
 
