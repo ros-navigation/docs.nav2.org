@@ -1137,13 +1137,37 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.</p>
+<dd><p class="first">Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.</p>
+<p class="last">Note: both <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code> cannot be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> at the same time as it would result in ambiguous situations.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">rotate_to_heading_min_angle:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">allow_reversing:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first">Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps).</p>
+<p class="last">Note: both <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code> cannot be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> at the same time as it would result in ambiguous situations.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">rotate_to_heading_min_angle:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -1164,8 +1188,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">max_angular_accel:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2">max_angular_accel:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -1231,6 +1255,7 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
       <span class="nt">regulated_linear_scaling_min_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.9</span>
       <span class="nt">regulated_linear_scaling_min_speed</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
       <span class="nt">use_rotate_to_heading</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">allow_reversing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
       <span class="nt">rotate_to_heading_min_angle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.785</span>
       <span class="nt">max_angular_accel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
 </pre></div>
