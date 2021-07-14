@@ -624,6 +624,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Galactic to Humble</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#major-improvements-to-smac-planners">Major improvements to Smac Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simple-python-commander">Simple (Python) Commander</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
 </ul>
 </li>
 </ul>
@@ -808,6 +809,16 @@
 </pre></div>
 </div>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander">The full API can be found in the README of the package</a>. A number of well commented examples and demos can also be found in the package’s source code at the link prior.</p>
+</div>
+<div class="section" id="reduce-nodes-and-executors">
+<h2>Reduce Nodes and Executors<a class="headerlink" href="#reduce-nodes-and-executors" title="Permalink to this headline">¶</a></h2>
+<p>In order for nav2 to make the best use of ROS2, we need minimize the number of nodes and executors in nav2, which can improve performance.</p>
+<p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/816">the ticket #816</a>, and carried out in</p>
+<blockquote>
+<div><ul class="simple">
+<li>Remove <code class="docutils literal notranslate"><span class="pre">client_node_</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">WaypointFollower</span></code> : <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2441">PR</a></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 

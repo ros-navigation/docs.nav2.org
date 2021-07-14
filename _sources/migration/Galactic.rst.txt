@@ -75,3 +75,13 @@ Simple (Python) Commander
             print('Goal failed!')
 
 `The full API can be found in the README of the package <https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander>`_. A number of well commented examples and demos can also be found in the package's source code at the link prior.
+
+
+Reduce Nodes and Executors
+**************************
+
+In order for nav2 to make the best use of ROS2, we need minimize the number of nodes and executors in nav2, which can improve performance. 
+
+This functionality has been discussed in `the ticket #816 <https://github.com/ros-planning/navigation2/issues/816>`_, and carried out in
+
+  - Remove ``client_node_`` in ``class WaypointFollower`` : `PR <https://github.com/ros-planning/navigation2/pull/2441>`_
