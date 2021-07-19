@@ -101,7 +101,23 @@ IROS 2020 talk on Nav2 Marathon Experiments:
    booktitle = {2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
    year = {2020}
    }
-    
+
+If you use our work on VSLAM and formal comparisons for service robot needs, please cite the paper:
+
+A. Merzlyakov, S. Macenski.
+` A Comparison of Modern General-Purpose Visual SLAM Approaches <https://arxiv.org/abs/2107.07589>`_.
+IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021.
+
+.. code-block:: bash
+
+   @InProceedings{vslamComparison2021,
+   author = {Merzlyakov, Alexey and Macenski, Steven},
+   title = {A Comparison of Modern General-Purpose Visual SLAM Approaches},
+   booktitle = {2021 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+   year = {2021}
+   }
+
+
 Example
 #######
 
