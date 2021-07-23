@@ -85,3 +85,6 @@ In order for nav2 to make the best use of ROS2, we need minimize the number of n
 This functionality has been discussed in `the ticket #816 <https://github.com/ros-planning/navigation2/issues/816>`_, and carried out in
 
   - Remove ``client_node_`` in ``class WaypointFollower`` : `PR <https://github.com/ros-planning/navigation2/pull/2441>`_
+  - Remove ``rclcpp_node_`` in ``class MapSaver`` : `PR <https://github.com/ros-planning/navigation2/pull/2454>`_
+  - Remove ``bond_client_node_`` in ``class LifecycleManager`` : `PR <https://github.com/ros-planning/navigation2/pull/2456>`_
+  - Remove ``node_`` in ``class LifecycleManagerClient`` : `PR <https://github.com/ros-planning/navigation2/pull/2469>`_
