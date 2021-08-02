@@ -27,6 +27,7 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A* implem
   - A caching heuristic setting to enable 25hz planning rates using cached obstacle heuristic values when the goal remains the same
   - Leveraging the symmetry in the dubin and reeds-sheep space to reduce cache size by 50% to increase the window size available for heuristic lookup.
   - Precompute primitives at all orientation bins
+  - SmacPlanner2D parameters are now all reconfigurable
 
 The tl;dr of these improvements is:
   - Plans are 2-3x as fast as they were before, well under 200ms for nearly all situations, making it as fast as NavFn and Global Planner (but now kinematically feasible). Typical planning times are sub-100ms without even making use of the caching or downsampling features.
