@@ -1,6 +1,6 @@
 .. _get_backtrace:
 
-Get Backtrace in ROS2 / Nav2
+Get Backtrace in ROS 2 / Nav2
 ****************************
 
 - `Overview`_
@@ -20,7 +20,7 @@ The following steps show ROS 2 users how to modify the Nav2 stack to get traces 
 This tutorial applies to both simulated and physical robots.
 
 This will cover how to get a backtrace from a specific node using ``ros2 run``, from a launch file representing a single node using ``ros2 launch``, and from a more complex orchestration of nodes.
-By the end of this tutorial, you should be able to get a backtrace when you notice a server crashing in ROS2.
+By the end of this tutorial, you should be able to get a backtrace when you notice a server crashing in ROS 2.
 
 Preliminaries
 =============
@@ -60,13 +60,13 @@ However, since this is a ROS project with lots of node configurations and other 
 
   gdb ex run --args /path/to/exe/program
 
-Below are sections to describe the 3 major situations you could run into with ROS2-based systems.
+Below are sections to describe the 3 major situations you could run into with ROS 2-based systems.
 Read the section that best describes the problem you're attempting to solve.
 
 From a Node
 ===========
 
-Just as in our non-ROS example, we need to setup a GDB session before launching our ROS2 node.
+Just as in our non-ROS example, we need to setup a GDB session before launching our ROS 2 node.
 While we could set this up through the commandline with some knowledge of the ROS 2 file system, we can instead use the launch ``--prefix`` option the kind folks at Open Robotics provided for us.
 
 ``--prefix`` will execute some bits of code before our ``ros2`` command allowing us to insert some information.
@@ -128,7 +128,7 @@ It may ask you if you want to kill some threads at the end, say yes.
 From a Launch File
 ==================
 
-Just as in our non-ROS example, we need to setup a GDB session before launching our ROS2 launch file.
+Just as in our non-ROS example, we need to setup a GDB session before launching our ROS 2 launch file.
 While we could set this up through the commandline, we can instead make use of the same mechanics that we did in the ``ros2 run`` node example, now using a launch file.
 
 In your launch file, find the node that you're interested in debugging.
@@ -199,7 +199,7 @@ Alternatively, if you server of interest is being launched in these files direct
 - Launch the server's node in another terminal following the instructions in `From a Node`_.
 
 .. note::
-  Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using ``--ros-args`` you can give it the path to the new parameters file, remaps, or names. See `this ROS2 tutorial <https://docs.ros.org/en/rolling/Guides/Node-arguments.html>`_ for the commandline arguments required.
+  Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using ``--ros-args`` you can give it the path to the new parameters file, remaps, or names. See `this ROS 2 tutorial <https://docs.ros.org/en/rolling/Guides/Node-arguments.html>`_ for the commandline arguments required.
 
   We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be ``--ros-args -r __node:=<node_name> --params-file /absolute/path/to/params.yaml`` (as a template).
 
