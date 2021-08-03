@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Get Backtrace in ROS2 / Nav2 &mdash; Navigation 2 1.0.0 documentation</title>
+  <title>Get Backtrace in ROS 2 / Nav2 &mdash; Navigation 2 1.0.0 documentation</title>
   
 
   
@@ -227,7 +227,7 @@
 <li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Get Backtrace in ROS 2 / Nav2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preliminaries">Preliminaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#from-a-node">From a Node</a></li>
@@ -657,7 +657,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/multithreading.html">4. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/safety_node.html">5. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/semantics.html">6. Semantic Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/spinners.html">7. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/spinners.html">7. Reduce ROS 2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/twist_n_config.html">8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
@@ -717,7 +717,7 @@
         
           <li><a href="../index.html">General Tutorials</a> &raquo;</li>
         
-      <li>Get Backtrace in ROS2 / Nav2</li>
+      <li>Get Backtrace in ROS 2 / Nav2</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -734,8 +734,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="get-backtrace-in-ros2-nav2">
-<span id="get-backtrace"></span><h1>Get Backtrace in ROS2 / Nav2<a class="headerlink" href="#get-backtrace-in-ros2-nav2" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="get-backtrace-in-ros-2-nav2">
+<span id="get-backtrace"></span><h1>Get Backtrace in ROS 2 / Nav2<a class="headerlink" href="#get-backtrace-in-ros-2-nav2" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#preliminaries">Preliminaries</a></li>
@@ -751,7 +751,7 @@ There are many ways to accomplish this, but this is a good starting point for ne
 <p>The following steps show ROS 2 users how to modify the Nav2 stack to get traces from specific servers when they encounter a problem.
 This tutorial applies to both simulated and physical robots.</p>
 <p>This will cover how to get a backtrace from a specific node using <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code>, from a launch file representing a single node using <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span></code>, and from a more complex orchestration of nodes.
-By the end of this tutorial, you should be able to get a backtrace when you notice a server crashing in ROS2.</p>
+By the end of this tutorial, you should be able to get a backtrace when you notice a server crashing in ROS 2.</p>
 </div>
 <div class="section" id="preliminaries">
 <h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
@@ -783,12 +783,12 @@ However, since this is a ROS project with lots of node configurations and other 
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdb ex run --args /path/to/exe/program
 </pre></div>
 </div>
-<p>Below are sections to describe the 3 major situations you could run into with ROS2-based systems.
+<p>Below are sections to describe the 3 major situations you could run into with ROS 2-based systems.
 Read the section that best describes the problem you’re attempting to solve.</p>
 </div>
 <div class="section" id="from-a-node">
 <h2>From a Node<a class="headerlink" href="#from-a-node" title="Permalink to this headline">¶</a></h2>
-<p>Just as in our non-ROS example, we need to setup a GDB session before launching our ROS2 node.
+<p>Just as in our non-ROS example, we need to setup a GDB session before launching our ROS 2 node.
 While we could set this up through the commandline with some knowledge of the ROS 2 file system, we can instead use the launch <code class="docutils literal notranslate"><span class="pre">--prefix</span></code> option the kind folks at Open Robotics provided for us.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--prefix</span></code> will execute some bits of code before our <code class="docutils literal notranslate"><span class="pre">ros2</span></code> command allowing us to insert some information.
 If you attempted to do <code class="docutils literal notranslate"><span class="pre">gdb</span> <span class="pre">ex</span> <span class="pre">run</span> <span class="pre">--args</span> <span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">&lt;pkg&gt;</span> <span class="pre">&lt;node&gt;</span></code> as analog to our example in the preliminaries, you’d find that it couldn’t find the <code class="docutils literal notranslate"><span class="pre">ros2</span></code> command.
@@ -838,7 +838,7 @@ It may ask you if you want to kill some threads at the end, say yes.</p>
 </div>
 <div class="section" id="from-a-launch-file">
 <h2>From a Launch File<a class="headerlink" href="#from-a-launch-file" title="Permalink to this headline">¶</a></h2>
-<p>Just as in our non-ROS example, we need to setup a GDB session before launching our ROS2 launch file.
+<p>Just as in our non-ROS example, we need to setup a GDB session before launching our ROS 2 launch file.
 While we could set this up through the commandline, we can instead make use of the same mechanics that we did in the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> node example, now using a launch file.</p>
 <p>In your launch file, find the node that you’re interested in debugging.
 For this section, we assume that your launch file contains only a single node (and potentially other information as well).
@@ -894,7 +894,7 @@ For this reason, when working with larger launch files, its good to pull out the
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> you can give it the path to the new parameters file, remaps, or names. See <a class="reference external" href="https://docs.ros.org/en/rolling/Guides/Node-arguments.html">this ROS2 tutorial</a> for the commandline arguments required.</p>
+<p>Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> you can give it the path to the new parameters file, remaps, or names. See <a class="reference external" href="https://docs.ros.org/en/rolling/Guides/Node-arguments.html">this ROS 2 tutorial</a> for the commandline arguments required.</p>
 <p class="last">We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be <code class="docutils literal notranslate"><span class="pre">--ros-args</span> <span class="pre">-r</span> <span class="pre">__node:=&lt;node_name&gt;</span> <span class="pre">--params-file</span> <span class="pre">/absolute/path/to/params.yaml</span></code> (as a template).</p>
 </div>
 <p>Once your server crashes, you’ll see a prompt like below in the specific server’s terminal. At this point you can now get a backtrace.</p>

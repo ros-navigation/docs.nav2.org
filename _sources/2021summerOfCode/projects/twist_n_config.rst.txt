@@ -11,14 +11,14 @@ This project is comprised of 2 smaller projects that can be easily worked on in 
 
 Subproject A: Convert Twist to TwistStamped in Ecosystem
 
-The aim of this project is to identify places in the ROS2 ecosystem that make use of ``Twist`` in the context of ``cmd_vel`` coming out of Navigation. This includes things like Nav2, ROS2 Control, Gazebo ROS Plugins, Yuk's Velocity Filter, major robot drivers, etc. A set of previously identified places is shown in the ticket linked below.
+The aim of this project is to identify places in the ROS 2 ecosystem that make use of ``Twist`` in the context of ``cmd_vel`` coming out of Navigation. This includes things like Nav2, ROS 2 Control, Gazebo ROS Plugins, Yuk's Velocity Filter, major robot drivers, etc. A set of previously identified places is shown in the ticket linked below.
 
-Once you've created a list of places in the ecosystem where it is used, your project will be to submit PRs on their ROS2 branches to change the interface to make use of a ``TwistStamped`` instead of a ``Twist``.
+Once you've created a list of places in the ecosystem where it is used, your project will be to submit PRs on their ROS 2 branches to change the interface to make use of a ``TwistStamped`` instead of a ``Twist``.
 
 
 Subproject B: Run-time Reconfiguration of Parameters
 
-In the meantime while you're waiting for PRs to be merged or blocked by reviews on converting all of the ecosystems ``cmd_vel`` use of ``Twist`` to ``TwistStamped``, your project will be to enable run-time reconfiguration of the major parameters in Nav2. In ROS2 this is done via the parameter change event callbacks. See tickets below for a list of plugins or servers needing dynamically reconfigurable parameter support added. 
+In the meantime while you're waiting for PRs to be merged or blocked by reviews on converting all of the ecosystems ``cmd_vel`` use of ``Twist`` to ``TwistStamped``, your project will be to enable run-time reconfiguration of the major parameters in Nav2. In ROS 2 this is done via the parameter change event callbacks. See tickets below for a list of plugins or servers needing dynamically reconfigurable parameter support added. 
 
 
 **Project difficulty: Medium**
@@ -35,7 +35,7 @@ In the meantime while you're waiting for PRs to be merged or blocked by reviews 
 **Skills required**
 
 - C++, Python3
-- ROS2
+- ROS 2
 
 **List of relevant open source software repositories and refs** 
 

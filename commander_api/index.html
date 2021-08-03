@@ -227,7 +227,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
@@ -657,7 +657,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/multithreading.html">4. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/safety_node.html">5. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/semantics.html">6. Semantic Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/spinners.html">7. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/spinners.html">7. Reduce ROS 2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/twist_n_config.html">8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
@@ -736,7 +736,7 @@
 <span id="commander-api"></span><h1>Simple Commander API<a class="headerlink" href="#simple-commander-api" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The goal of the Nav2 Simple (Python3) Commander is to provide a “navigation as a library” capability to Python3 users. We provide an API that handles all the ROS2 and Action Server tasks for you such that you can focus on building an application leveraging the capabilities of Nav2 (after you’ve configured it to your liking with your plugins of choice). <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander">We also provide you with demos and examples of API usage</a> to build common basic capabilities in autonomous mobile robotics in the <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code> package.</p>
+<p>The goal of the Nav2 Simple (Python3) Commander is to provide a “navigation as a library” capability to Python3 users. We provide an API that handles all the ROS 2 and Action Server tasks for you such that you can focus on building an application leveraging the capabilities of Nav2 (after you’ve configured it to your liking with your plugins of choice). <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander">We also provide you with demos and examples of API usage</a> to build common basic capabilities in autonomous mobile robotics in the <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code> package.</p>
 <p>A simple demonstration is shown below. Note: <code class="docutils literal notranslate"><span class="pre">goToPose()</span></code>, <code class="docutils literal notranslate"><span class="pre">goThroughPoses()</span></code>, <code class="docutils literal notranslate"><span class="pre">followWaypoints()</span></code> and similar are <strong>non-blocking</strong> such that you can receive and process feedback in a single-threaded application. As such while waiting for a task to be completed, the <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">not</span> <span class="pre">nav.isNavComplete()</span></code> design is necessary to poll for changes in the navigation completion, and if not complete some tasks of interest to your application (like processing feedback, doing something with the data the robot is collecting, or checking for faults).</p>
 <p>You may use this simple commander preempt commands of the same type (e.g. you can preempt a <code class="docutils literal notranslate"><span class="pre">goToPose()</span></code> with another <code class="docutils literal notranslate"><span class="pre">goToPose()</span></code>) but you must explicitly cancel a current command and issue a new one if switching between <code class="docutils literal notranslate"><span class="pre">goToPose()</span></code>, <code class="docutils literal notranslate"><span class="pre">goThroughPoses()</span></code>, or <code class="docutils literal notranslate"><span class="pre">followWaypoints()</span></code>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nav2_simple_commander.robot_navigator</span> <span class="kn">import</span> <span class="n">BasicNavigator</span>

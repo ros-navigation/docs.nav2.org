@@ -227,7 +227,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
@@ -657,7 +657,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/multithreading.html">4. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/safety_node.html">5. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/semantics.html">6. Semantic Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/spinners.html">7. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/spinners.html">7. Reduce ROS 2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/twist_n_config.html">8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
@@ -769,7 +769,7 @@ geometry_msgs/TwistWithCovariance twist
 <div class="section" id="setting-up-odometry-on-your-robot">
 <h2>Setting Up Odometry on your Robot<a class="headerlink" href="#setting-up-odometry-on-your-robot" title="Permalink to this headline">¶</a></h2>
 <p>Setting up the odometry system for Nav2 for your physical robot depends a lot on which odometry sensors are available with your robot. Due to the large number of configurations your robot may have, specific setup instructions will not be within the scope of this tutorial. Instead, we will provide some basic examples and useful resources to help you configure your robot for Nav2.</p>
-<p>To start, we will use an example of a robot with wheel encoders as its odometry source. Note that wheel encoders are not required for Nav2 but it is common in most setups. The goal in setting up the odometry is to compute the odometry information and publish the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message and <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform over ROS2. To calculate this information, you will need to setup some code that will translate wheel encoder information into odometry information, similar to the snippet below:</p>
+<p>To start, we will use an example of a robot with wheel encoders as its odometry source. Note that wheel encoders are not required for Nav2 but it is common in most setups. The goal in setting up the odometry is to compute the odometry information and publish the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message and <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform over ROS 2. To calculate this information, you will need to setup some code that will translate wheel encoder information into odometry information, similar to the snippet below:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">linear</span> <span class="o">=</span> <span class="o">(</span>right_wheel_est_vel + left_wheel_est_vel<span class="o">)</span> / <span class="m">2</span>
 <span class="nv">angular</span> <span class="o">=</span> <span class="o">(</span>right_wheel_est_vel - left_wheel_est_vel<span class="o">)</span> / wheel_separation<span class="p">;</span>
 </pre></div>

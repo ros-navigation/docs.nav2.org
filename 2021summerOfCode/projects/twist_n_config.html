@@ -50,7 +50,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="7. Reduce ROS2 Nodes and Determinism" href="spinners.html" />
+    <link rel="prev" title="7. Reduce ROS 2 Nodes and Determinism" href="spinners.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -226,7 +226,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
@@ -656,7 +656,7 @@
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">4. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety_node.html">5. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="semantics.html">6. Semantic Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spinners.html">7. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spinners.html">7. Reduce ROS 2 Nodes and Determinism</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
@@ -738,10 +738,10 @@
 <p><strong>Task description</strong></p>
 <p>This project is comprised of 2 smaller projects that can be easily worked on in parallel.</p>
 <p>Subproject A: Convert Twist to TwistStamped in Ecosystem</p>
-<p>The aim of this project is to identify places in the ROS2 ecosystem that make use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> in the context of <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> coming out of Navigation. This includes things like Nav2, ROS2 Control, Gazebo ROS Plugins, Yuk’s Velocity Filter, major robot drivers, etc. A set of previously identified places is shown in the ticket linked below.</p>
-<p>Once you’ve created a list of places in the ecosystem where it is used, your project will be to submit PRs on their ROS2 branches to change the interface to make use of a <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">Twist</span></code>.</p>
+<p>The aim of this project is to identify places in the ROS 2 ecosystem that make use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> in the context of <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> coming out of Navigation. This includes things like Nav2, ROS 2 Control, Gazebo ROS Plugins, Yuk’s Velocity Filter, major robot drivers, etc. A set of previously identified places is shown in the ticket linked below.</p>
+<p>Once you’ve created a list of places in the ecosystem where it is used, your project will be to submit PRs on their ROS 2 branches to change the interface to make use of a <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">Twist</span></code>.</p>
 <p>Subproject B: Run-time Reconfiguration of Parameters</p>
-<p>In the meantime while you’re waiting for PRs to be merged or blocked by reviews on converting all of the ecosystems <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> to <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code>, your project will be to enable run-time reconfiguration of the major parameters in Nav2. In ROS2 this is done via the parameter change event callbacks. See tickets below for a list of plugins or servers needing dynamically reconfigurable parameter support added.</p>
+<p>In the meantime while you’re waiting for PRs to be merged or blocked by reviews on converting all of the ecosystems <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> use of <code class="docutils literal notranslate"><span class="pre">Twist</span></code> to <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code>, your project will be to enable run-time reconfiguration of the major parameters in Nav2. In ROS 2 this is done via the parameter change event callbacks. See tickets below for a list of plugins or servers needing dynamically reconfigurable parameter support added.</p>
 <p><strong>Project difficulty: Medium</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
@@ -752,7 +752,7 @@
 <p><strong>Skills required</strong></p>
 <ul class="simple">
 <li>C++, Python3</li>
-<li>ROS2</li>
+<li>ROS 2</li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">

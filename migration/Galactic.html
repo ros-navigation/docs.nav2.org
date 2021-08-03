@@ -227,7 +227,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
@@ -657,7 +657,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/multithreading.html">4. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/safety_node.html">5. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/semantics.html">6. Semantic Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/spinners.html">7. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/spinners.html">7. Reduce ROS 2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2021summerOfCode/projects/twist_n_config.html">8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
@@ -774,7 +774,7 @@
 </div>
 <div class="section" id="simple-python-commander">
 <h2>Simple (Python) Commander<a class="headerlink" href="#simple-python-commander" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2411">This PR</a> introduces a new package to Nav2, called the <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code>. It is a set of functions in an object, <code class="docutils literal notranslate"><span class="pre">BasicNavigator</span></code>, which can be used to build Nav2-powered autonomy tasks in Python3 without concerning yourself with the Nav2, ROS2, or Action server details. It contains a simple API taking common types (primarily <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) and handles all of the implementation details behind the hood. For example, this is a simple navigation task using this API:</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2411">This PR</a> introduces a new package to Nav2, called the <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code>. It is a set of functions in an object, <code class="docutils literal notranslate"><span class="pre">BasicNavigator</span></code>, which can be used to build Nav2-powered autonomy tasks in Python3 without concerning yourself with the Nav2, ROS 2, or Action server details. It contains a simple API taking common types (primarily <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) and handles all of the implementation details behind the hood. For example, this is a simple navigation task using this API:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
     <span class="n">navigator</span> <span class="o">=</span> <span class="n">BasicNavigator</span><span class="p">()</span>
@@ -813,7 +813,7 @@
 </div>
 <div class="section" id="reduce-nodes-and-executors">
 <h2>Reduce Nodes and Executors<a class="headerlink" href="#reduce-nodes-and-executors" title="Permalink to this headline">¶</a></h2>
-<p>In order for nav2 to make the best use of ROS2, we need minimize the number of nodes and executors in nav2, which can improve performance.</p>
+<p>In order for nav2 to make the best use of ROS 2, we need minimize the number of nodes and executors in nav2, which can improve performance.</p>
 <p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/816">the ticket #816</a>, and carried out in</p>
 <blockquote>
 <div><ul class="simple">

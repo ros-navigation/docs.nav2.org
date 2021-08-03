@@ -25,7 +25,7 @@ This will be an excellent chance to make mobile robots and Nav2 users significan
 **Mentor contact details: [See link above, link in GitHub profile description]**
 
 **Project output requirements**
-- Creation of a ROS2 node that will prevent robot collision based on lidar and/or RGBD data
+- Creation of a ROS 2 node that will prevent robot collision based on lidar and/or RGBD data
 - Node should be able to run at lidar data speed (40hz+) and adjust velocity commands accordingly
 - If time allots, work on tuning / adding new critics to the DWB local planner to improve safety of its performance for users out of the box
 

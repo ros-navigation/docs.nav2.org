@@ -227,7 +227,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS2 / Nav2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
@@ -657,7 +657,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/multithreading.html">4. Navigation MultiThreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/safety_node.html">5. Navigation Safety Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/semantics.html">6. Semantic Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/spinners.html">7. Reduce ROS2 Nodes and Determinism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/spinners.html">7. Reduce ROS 2 Nodes and Determinism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2021summerOfCode/projects/twist_n_config.html">8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration</a></li>
 </ul>
 </li>
@@ -753,7 +753,7 @@ You can find the source code matching this tutorial <a class="reference external
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>ROS2 (binary or build-from-source)</li>
+<li>ROS 2 (binary or build-from-source)</li>
 <li>Nav2 (Including dependencies)</li>
 <li>Gazebo</li>
 <li>Turtlebot3</li>
@@ -923,7 +923,7 @@ This algorithm assumes a constant linear velocity and computes the angular veloc
 <div class="section" id="exporting-the-controller-plugin">
 <h3>2- Exporting the controller plugin<a class="headerlink" href="#exporting-the-controller-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Now that we have created our custom controller, we need to export our controller plugin so that it would be visible to the controller server.
-Plugins are loaded at runtime, and if they are not visible, then our controller server won’t be able to load it. In ROS2, exporting and loading
+Plugins are loaded at runtime, and if they are not visible, then our controller server won’t be able to load it. In ROS 2, exporting and loading
 plugins is handled by <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
 <p>Coming to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller::PurePursuitController</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::Controller</span></code> which is our base class.</p>
 <ol class="arabic simple">

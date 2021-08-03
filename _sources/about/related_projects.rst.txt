@@ -8,7 +8,7 @@ This is a community maintained list of related repositories and projects to Navi
 +--------------------------------+------------------------+----------------------------------+
 |                   Name         |         Maintainer     |       Description                |
 +================================+========================+==================================+
-| `Navigation2`_                 | Steve Macenski         | Main ROS2 Navigation Stack       |
+| `Navigation2`_                 | Steve Macenski         | Main ROS 2 Navigation Stack      |
 +--------------------------------+------------------------+----------------------------------+
 | `navigation.ros.org`_          | Steve Macenski         | Official documentation website   |
 |                                |                        | source code                      |
@@ -18,10 +18,10 @@ This is a community maintained list of related repositories and projects to Navi
 +--------------------------------+------------------------+----------------------------------+
 | `navigation2_dynamic`_         | Steve Macenski         | Tools, algorithms, and           |
 |                                |                        | capabilities for working with    |
-|                                |                        | dynamic obstacles in ROS2        |
+|                                |                        | dynamic obstacles in ROS 2       |
 +--------------------------------+------------------------+----------------------------------+
 |  `robot_localization`_         | Tom Moore              | State estimation software for    |
-|                                |                        | ROS2 used for odometry fusion    |
+|                                |                        | ROS 2 used for odometry fusion   |
 |                                |                        | and GPS transformations          |
 +--------------------------------+------------------------+----------------------------------+
 | `slam_toolbox`_                |  Steve Macenski        | Default 2D SLAM library          |
