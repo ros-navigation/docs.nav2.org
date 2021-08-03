@@ -16,7 +16,7 @@ Action Server
 Just as in ROS, action servers are a common way to control long running tasks like navigation.
 This stack makes more extensive use of actions, and in some cases, without an easy topic interface.
 It is more important to understand action servers as a developer in ROS 2.
-Some simple CLI examples can be found in the `ROS 2 documementation <https://docs.ros.org/en/rolling/Tutorials/Understanding-ROS 2-Actions.html>`_.
+Some simple CLI examples can be found in the `ROS 2 documementation <https://docs.ros.org/en/rolling/Tutorials/Understanding-ROS2-Actions.html>`_.
 
 Action servers are similar to a canonical service server.
 A client will request some task to be completed, except, this task may take a long time.
