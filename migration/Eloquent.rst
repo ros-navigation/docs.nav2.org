@@ -143,5 +143,5 @@ This functionality has been discussed in `the ticket #1660 <https://github.com/r
 New Costmap Layer
 *****************
 The range sensor costmap has not been ported to navigation2 as ``nav2_costmap_2d::RangeSensorLayer"``. It uses the same
-probabilistic model as the `ROS1 <http://wiki.ros.org/range_sensor_layer>`_ layer as well as much of the
+probabilistic model as the `ROS <http://wiki.ros.org/range_sensor_layer>`_ layer as well as much of the
 same interface. Documentation on parameters has been added to docs/parameters and the navigation.ros.org under ``Configuration Guide``.
