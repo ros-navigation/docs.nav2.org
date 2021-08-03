@@ -148,7 +148,7 @@ In order to enable Speed Filter in your configuration, both servers should be en
       declare_params_file_cmd = DeclareLaunchArgument(
               'params_file',
               default_value=os.path.join(costmap_filters_demo_dir, 'params', 'speed_params.yaml'),
-              description='Full path to the ROS2 parameters file to use')
+              description='Full path to the ROS 2 parameters file to use')
 
       declare_mask_yaml_file_cmd = DeclareLaunchArgument(
               'mask',

@@ -38,7 +38,7 @@ The tl;dr of these improvements is:
 Simple (Python) Commander
 *************************
 
-`This PR <https://github.com/ros-planning/navigation2/pull/2411>`_ introduces a new package to Nav2, called the ``nav2_simple_commander``. It is a set of functions in an object, ``BasicNavigator``, which can be used to build Nav2-powered autonomy tasks in Python3 without concerning yourself with the Nav2, ROS2, or Action server details. It contains a simple API taking common types (primarily ``PoseStamped``) and handles all of the implementation details behind the hood. For example, this is a simple navigation task using this API:
+`This PR <https://github.com/ros-planning/navigation2/pull/2411>`_ introduces a new package to Nav2, called the ``nav2_simple_commander``. It is a set of functions in an object, ``BasicNavigator``, which can be used to build Nav2-powered autonomy tasks in Python3 without concerning yourself with the Nav2, ROS 2, or Action server details. It contains a simple API taking common types (primarily ``PoseStamped``) and handles all of the implementation details behind the hood. For example, this is a simple navigation task using this API:
 
 .. code-block:: python3
 
@@ -81,7 +81,7 @@ Simple (Python) Commander
 Reduce Nodes and Executors
 **************************
 
-In order for nav2 to make the best use of ROS2, we need minimize the number of nodes and executors in nav2, which can improve performance. 
+In order for nav2 to make the best use of ROS 2, we need minimize the number of nodes and executors in nav2, which can improve performance. 
 
 This functionality has been discussed in `the ticket #816 <https://github.com/ros-planning/navigation2/issues/816>`_, and carried out in
 

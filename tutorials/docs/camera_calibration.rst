@@ -55,7 +55,7 @@ Tutorial Steps
 
 |
 
- .. image:: images/Camera_Calibration/ROS2_topic_hz.png
+ .. image:: images/Camera_Calibration/ROS 2_topic_hz.png
     :height: 300px
     :width: 400px
     :align: center

@@ -13,7 +13,7 @@ URDF and the Robot State Publisher
 
 As discussed in the previous tutorial, one of the requirements for Navigation2 is the transformation from  ``base_link`` to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  ``base_link`` to ``laser_link`` or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms. 
 
-The Robot State Publisher is a package of ROS2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct Universal Robot Descriptor File (URDF) and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees. 
+The Robot State Publisher is a package of ROS 2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct Universal Robot Descriptor File (URDF) and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees. 
 
 The Universal Robot Descriptor File (URDF) is an XML file that represents a robot model. In this tutorial, it will mainly be used to build transformations trees related with the robot geometry, but it also has other uses. One example is how it can be used in visualizing your robot model in RVIZ, a 3D Visualization tool for ROS, by defining visual components such as materials and meshes. Another example is how the URDF can be used to define the physical properties of the robot. These properties are then used in physics simulators such as Gazebo to simulate how your robot will interact in an environment.
 
@@ -25,16 +25,16 @@ Another major feature of URDF is that it also supports Xacro (XML Macros) to hel
 Setting Up the Environment
 ==========================
 
-In this guide, we are assuming that you are already familiar with ROS2 and how to setup your development environment, so we'll breeze through the steps in this section.
+In this guide, we are assuming that you are already familiar with ROS 2 and how to setup your development environment, so we'll breeze through the steps in this section.
 
-Let's begin by installing some additional ROS2 packages that we will be using during this tutorial.
+Let's begin by installing some additional ROS 2 packages that we will be using during this tutorial.
 
 .. code-block:: shell
 
   sudo apt install ros-<ros2-distro>-joint-state-publisher-gui
   sudo apt install ros-<ros2-distro>-xacro
  
-Next, create a directory for your project, initialize a ROS2 workspace and give your robot a name. For ours, we'll be calling it ``sam_bot``.
+Next, create a directory for your project, initialize a ROS 2 workspace and give your robot a name. For ours, we'll be calling it ``sam_bot``.
 
 .. code-block:: shell
 
@@ -185,7 +185,7 @@ And that's it! We have built a URDF for a simple differential drive robot. In th
 Build and Launch
 ================
 
-.. seealso:: The launch files from this tutorial were adapted from the official `URDF Tutorials for ROS2 <https://github.com/ros/urdf_tutorial/tree/ros2>`__
+.. seealso:: The launch files from this tutorial were adapted from the official `URDF Tutorials for ROS 2 <https://github.com/ros/urdf_tutorial/tree/ros2>`__
 
 Let's start this section by adding some dependencies that will be required once we build this project. Open up the root of your project directory and add the following lines to your ``package.xml`` (preferably after the ``<buildtool_depend>`` tag)
 
@@ -197,7 +197,7 @@ Let's start this section by adding some dependencies that will be required once 
   <exec_depend>rviz</exec_depend>
   <exec_depend>xacro</exec_depend>
 
-Next, let us create our launch file. Launch files are used by ROS2 to bring up the necessary nodes for our package. From the root of the project, create a directory named ``launch`` and a ``display.launch.py`` file within it. The launch file below launches a robot publisher node in ROS2 that uses our URDF to publish the transforms for our robot. In addition, the launch file also automatically launches RVIZ so we can visualize our robot as defined by the URDF. Copy and paste the snippet below into your ``display.launch.py`` file. 
+Next, let us create our launch file. Launch files are used by ROS 2 to bring up the necessary nodes for our package. From the root of the project, create a directory named ``launch`` and a ``display.launch.py`` file within it. The launch file below launches a robot publisher node in ROS 2 that uses our URDF to publish the transforms for our robot. In addition, the launch file also automatically launches RVIZ so we can visualize our robot as defined by the URDF. Copy and paste the snippet below into your ``display.launch.py`` file. 
 
 .. code-block:: python
 
@@ -336,13 +336,13 @@ We are now ready to build our project using colcon. Navigate to the project root
   colcon build
   . install/setup.bash
 
-After a successful build, execute the following commands to install the ROS2 package and launch our project.
+After a successful build, execute the following commands to install the ROS 2 package and launch our project.
 
 .. code-block:: shell
 
   ros2 launch sam_bot_description display.launch.py
 
-ROS2 should now launch a robot publisher node and start up RVIZ using our URDF. We'll be taking a look at our robot using RVIZ in the next section.
+ROS 2 should now launch a robot publisher node and start up RVIZ using our URDF. We'll be taking a look at our robot using RVIZ in the next section.
 
 Visualization using RVIZ
 ========================
@@ -353,7 +353,7 @@ RVIZ is a robot visualization tool that allows us to see a 3D model of our robot
 
 As you can see, we have successfully created a simple differential drive robot and visualized it in RVIz. It is not necessary to visualize your robot in RVIz, but it's a good step in order to see if you have properly defined your URDF. This helps you ensure that the robot state publisher is publishing the correct transformations. 
 
-You may have noticed that another window was launched - this is a GUI for the joint state publisher. The joint state publisher is another ROS2 package which publishes the state for our non-fixed joints. You can manipulate this publisher through the small GUI and the new pose of the joints will be reflected in RVIz. Sliding the bars for any of the two wheels will rotate these joints. You can see this in action by viewing RVIZ as you sweep the sliders in the Joint State Publisher GUI.
+You may have noticed that another window was launched - this is a GUI for the joint state publisher. The joint state publisher is another ROS 2 package which publishes the state for our non-fixed joints. You can manipulate this publisher through the small GUI and the new pose of the joints will be reflected in RVIz. Sliding the bars for any of the two wheels will rotate these joints. You can see this in action by viewing RVIZ as you sweep the sliders in the Joint State Publisher GUI.
 
 .. image:: images/base-bot_4.png
 
@@ -455,6 +455,6 @@ For now, we will have to stop here since we will need to set up a lot more compo
 Conclusion
 ==========
 
-And that's it. In this tutorial, you have successfully created a URDF for a simple differential drive robot. You have also set up a ROS2 project that launches a robot publisher node, which then uses your URDF to publish the robot's transforms. We have also used RViz to visualize our robot to verify whether our URDF is correct. Lastly, we have added in some physical properties to our URDF in order to prepare it for simulation.
+And that's it. In this tutorial, you have successfully created a URDF for a simple differential drive robot. You have also set up a ROS 2 project that launches a robot publisher node, which then uses your URDF to publish the robot's transforms. We have also used RViz to visualize our robot to verify whether our URDF is correct. Lastly, we have added in some physical properties to our URDF in order to prepare it for simulation.
 
 Feel free to use this tutorial as a template for your own robot. Remember that your main goal is to publish the correct transforms from your base_link up to your sensor_frames. Once these have been setup, then you may proceed to our other setup guides.
