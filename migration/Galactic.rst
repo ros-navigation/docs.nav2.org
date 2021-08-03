@@ -94,7 +94,7 @@ This functionality has been discussed in `the ticket #816 <https://github.com/ro
 
 
 Extending the BtServiceNode to process Service-Results
-**************************
+******************************************************
 
 `This PR <https://github.com/ros-planning/navigation2/pull/2481>`_ addresses `this Ticket <https://github.com/ros-planning/navigation2/issues/2467>`_ and adds a virtual ``on_completion()`` function to the ``BtServiceNode`` class (`here <https://github.com/ros-planning/navigation2/blob/c417e2fd267e1dfa880b7ff9d37aaaa7b5eab9ca/nav2_behavior_tree/include/nav2_behavior_tree/bt_service_node.hpp>`_).
 Similar to the already existing virtual ``on_wait_for_result()`` function, it can be overwritten in the child class to react to a respective event with some user-defined operation.
