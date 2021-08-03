@@ -23,7 +23,7 @@ This project seeks to find a safe way to have a mobile robot move from point A t
 point B. It can also be applied in other applications that involve robot navigation, like following dynamic points. 
 This will complete dynamic path planning, compute velocities for motors,
 avoid obstacles, and structure recovery behaviors.
-To learn more about this project, such as related projects, robots using, ROS comparison, and maintainers, see :ref:`about`.
+To learn more about this project, such as related projects, robots using, ROS1 comparison, and maintainers, see :ref:`about`.
 
 Nav2 uses behavior trees to call modular servers to complete an action.
 An action can be to compute a path, control effort, recovery, or any other navigation
