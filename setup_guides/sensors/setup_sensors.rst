@@ -30,46 +30,28 @@ sensor_msgs/LaserScan
 
 This message represents a single scan from a planar laser range-finder. This message is used in ``slam_toolbox`` and ``nav2_amcl`` for localization and mapping, or in ``nav2_costmap_2d`` for perception.
 
-.. image:: images/sensor_laserscan_gazebo.png
-    :class: with-border
-    :width: 49 %
-
-.. image:: images/sensor_laserscan_rviz.png
-    :class: with-border
-    :width: 49 %   
+.. image:: images/sensor_laserscan.png
 
 sensor_msgs/PointCloud2
 -----------------------
 
 This message holds a collection of 3D points, plus optional additional information about each point. This can be from a 3D lidar, a 2D lidar, a depth camera or more.
 
-.. image:: images/sensor_pointcloud2_gazebo.png
-    :width: 35 %
-
-.. image:: images/sensor_pointcloud2_rviz.png
-    :width: 49 %  
+.. image:: images/sensor_pointcloud2.png
 
 sensor_msgs/Range
 -----------------
 
 This is a single range reading from an active ranger that emits energy and reports one range reading that is valid along an arc at the distance measured. A sonar, IR sensor, or 1D range finder are examples of sensors that use this message.
 
-.. image:: images/sensor_range_gazebo.png
-    :width: 49 %
-
-.. image:: images/sensor_range_rviz.png
-    :width: 49 %   
+.. image:: images/sensor_range.png
 
 sensor_msgs/Image
 -----------------
 
 This represents the sensor readings from RGB or depth camera, corresponding to RGB or range values.
 
-.. image:: images/sensor_image_gazebo.png
-    :width: 43 %
-
-.. image:: images/sensor_image_rviz.png
-    :width: 49 %   
+.. image:: images/sensor_image.png
 
 Simulating Sensors using Gazebo
 *******************************
@@ -84,7 +66,7 @@ Adding Gazebo Plugins to a URDF
 Let us first add a lidar sensor to ``sam_bot``. Open the URDF file, `src/description/sam_bot_description.urdf <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/src/description/sam_bot_description.urdf>`_ and paste the following lines before the ``</robot>`` tag.
 
 .. code-block:: xml
-  :lineno-start: 249
+  :lineno-start: 251
 
   <link name="lidar_link">
     <inertial>
@@ -141,7 +123,6 @@ Let us first add a lidar sensor to ``sam_bot``. Open the URDF file, `src/descrip
       </ray>
       <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
         <ros>
-          <namespace>/demo</namespace>
           <remapping>~/out:=scan</remapping>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
@@ -150,12 +131,12 @@ Let us first add a lidar sensor to ``sam_bot``. Open the URDF file, `src/descrip
     </sensor>
   </gazebo>
 
-In the code snippet above, we create a ``lidar_link`` which will be referenced by the ``gazebo_ros_ray_sensor`` plugin as the location to attach our sensor. We also set values to the simulated lidar's scan and range properties. Lastly, we set the ``demo/scan`` as the topic to which it will publish the ``sensor_msgs/LaserScan`` messages.
+In the code snippet above, we create a ``lidar_link`` which will be referenced by the ``gazebo_ros_ray_sensor`` plugin as the location to attach our sensor. We also set values to the simulated lidar's scan and range properties. Lastly, we set the ``/scan`` as the topic to which it will publish the ``sensor_msgs/LaserScan`` messages.
 
 Next, let us add a depth camera to ``sam_bot``. Paste the following lines after the ``</gazebo>`` tag of the lidar sensor. 
 
 .. code-block:: xml
-  :lineno-start: 313
+  :lineno-start: 314
 
   <link name="camera_link">
     <visual>
@@ -210,9 +191,6 @@ Next, let us add a depth camera to ``sam_bot``. Paste the following lines after 
         </clip>
       </camera>
       <plugin name="depth_camera_controller" filename="libgazebo_ros_camera.so">
-        <ros>
-          <namespace>/demo</namespace>
-        </ros>
         <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
@@ -233,7 +211,7 @@ Next, let us add a depth camera to ``sam_bot``. Paste the following lines after 
     </sensor>
   </gazebo>
 
-Similar to the lidar sensor, we create ``camera_link`` which will be referenced by the ``gazebo_ros_camera`` plugin as the sensor attachment location. We also create a ``camera_depth_frame`` that is attached to the ``camera_link`` and will be set as the ``<frameName>`` of the depth camera plugin.  We also configure the plugin such that it will publish ``sensor_msgs/Image`` and ``sensor_msgs/PointCloud2`` messages to ``/demo/depth_camera/image_raw`` and  ``/demo/depth_camera/points`` topics respectively. Lastly, we also set up other basic configuration properties for our depth camera.
+Similar to the lidar sensor, we create ``camera_link`` which will be referenced by the ``gazebo_ros_camera`` plugin as the sensor attachment location. We also create a ``camera_depth_frame`` that is attached to the ``camera_link`` and will be set as the ``<frameName>`` of the depth camera plugin.  We also configure the plugin such that it will publish ``sensor_msgs/Image`` and ``sensor_msgs/PointCloud2`` messages to ``/depth_camera/image_raw`` and  ``/depth_camera/points`` topics respectively. Lastly, we also set up other basic configuration properties for our depth camera.
 
 Launch and Build Files
 ======================
@@ -285,25 +263,22 @@ In the RViz window, we can verify if we have properly modeled our sensors and if
 .. image:: images/rviz_sensors.png
     :align: center
 
-Lastly, we can also visualize the sensor readings in RViz.  To visualize the ``sensor_msgs/LaserScan`` message published on ``demo/scan`` topic, click the add button at the bottom part of the RViz window. Then go to the ``By topic`` tab and select the ``LaserScan`` option under ``/demo/scan``, as shown below.
+Lastly, we can also visualize the sensor readings in RViz.  To visualize the ``sensor_msgs/LaserScan`` message published on ``/scan`` topic, click the add button at the bottom part of the RViz window. Then go to the ``By topic`` tab and select the ``LaserScan`` option under ``/scan``, as shown below.
 
 .. image:: images/add_topic_laserscan.png
     :align: center
+    :width: 400
 
-Next, set the ``Reliability Policy`` to ``Best Effort`` and set the ``size`` to 0.1 to see the points clearer. You should see the visualized ``LaserScan`` detection as shown below. This corresponds to the detected cube and sphere that we added to the Gazebo world. 
+Next, set the ``Reliability Policy`` in RViz to ``Best Effort`` and set the ``size`` to 0.1 to see the points clearer. You should see the visualized ``LaserScan`` detection as shown below. This corresponds to the detected cube and sphere that we added to the Gazebo world. 
 
 .. image:: images/demo_laserscan_rviz.png
     :align: center
 
-To visualize ``sensor_msgs/Image`` and ``sensor_msgs/PointCloud2``, do the same for topics ``demo/depth_camera/image_raw`` and ``/demo/depth_camera/points`` respectively:
+To visualize ``sensor_msgs/Image`` and ``sensor_msgs/PointCloud2``, do the same for topics ``/depth_camera/image_raw`` and ``/depth_camera/points`` respectively:
 
-.. image:: images/add_topic_image.png
-    :width: 49 %
+.. image:: images/add_topic_image_pointcloud2.png
 
-.. image:: images/add_topic_pointcloud2.png
-    :width: 49 %
-
-After adding the ``demo/depth_camera/image_raw`` topic in RViz, you should see the cube in the image window at the lower-left side of the RViz window, as shown below.
+After adding the ``/depth_camera/image_raw`` topic in RViz, set the ``Reliability Policy`` in RViz to ``Best Effort``. Then you should see the cube in the image window at the lower-left side of the RViz window, as shown below.
 
 .. image:: images/demo_image_rviz.png
     :align: center
@@ -318,7 +293,9 @@ Mapping and Localization
 ************************
 Now that we have a robot with its sensors set up, we can use the obtained sensor information to build a map of the environment and to localize the robot on the map. The ``slam_toolbox`` package is a set of tools and capabilities for 2D Simultaneous Localization and Mapping (SLAM) in potentially massive maps with ROS2. It is also one of the officially supported SLAM libraries in Nav2, and we recommend to use this package in situations you need to use SLAM on your robot setup. Aside from the ``slam_toolbox``, localization can also be implemented through the ``nav2_amcl`` package. This package implements Adaptive Monte Carlo Localization (AMCL) which estimates the position and orientation of the robot in a map. Other techniques may also be available, please check Nav2 documentation for more information.
 
-Both the ``slam_toolbox`` and ``nav2_amcl`` use information from the laser scan sensor to be able to perceive the robot's environment. Hence, to verify that they can access the laser scan sensor readings, we must make sure that they are subscribed to the correct topic that publishes the ``sensor_msgs/LaserScan`` message. This can be configured by setting their ``scan_topic`` parameters to the topic that publishes that message. In-depth discussions on the complete configuration parameters will not be a scope of our tutorials since they can be pretty complex. Instead, we recommend you to have a look at their official documentation in the links below.
+Both the ``slam_toolbox`` and ``nav2_amcl`` use information from the laser scan sensor to be able to perceive the robot's environment. Hence, to verify that they can access the laser scan sensor readings, we must make sure that they are subscribed to the correct topic that publishes the ``sensor_msgs/LaserScan`` message. This can be configured by setting their ``scan_topic`` parameters to the topic that publishes that message. It is a convention to publish the ``sensor_msgs/LaserScan`` messages to  ``/scan`` topic. Thus, by default, the ``scan_topic`` parameter is set to ``/scan``. Recall that when we added the lidar sensor to ``sam_bot`` in the previous section, we set the topic to which the lidar sensor will publish the ``sensor_msgs/LaserScan`` messages as ``/scan``. 
+
+In-depth discussions on the complete configuration parameters will not be a scope of our tutorials since they can be pretty complex. Instead, we recommend you to have a look at their official documentation in the links below.
 
 .. seealso::
   | For the complete list of configuration parameters of ``slam_toolbox``, see the `Github repository of slam_toolbox <https://github.com/SteveMacenski/slam_toolbox#readme>`_.
@@ -328,18 +305,17 @@ Both the ``slam_toolbox`` and ``nav2_amcl`` use information from the laser scan 
 You can also refer to the `(SLAM) Navigating While Mapping guide <https://navigation.ros.org/tutorials/docs/navigation2_with_slam.html>`_ for the tutorial on how to use Nav2 with SLAM. You can verify that ``slam_toolbox`` and ``nav2_amcl`` have been correctly setup by visualizing the map and the robot's pose in RViz, similar to what was shown in the previous section.
 
 
-Costmap_2D
+Costmap 2D
 **********
-The costmap represents the environment of the robot in the form of an occupancy grid. The cells in the occupancy grid store cost values between 0-254 which denote a cost to travel through these zones. A cost of 0 means the cell is free while a cost of 254 means that the cell is lethally occupied. Values in between these extremes are used by navigation algorithms to steer your robot away from obstacles as a potential field. Costmaps in Nav2 are implemented through the ``nav2_costmap_2d`` package. 
+The costmap 2D package makes use of the sensor information to provide a representation of the robot's environment in the form of an occupancy grid. The cells in the occupancy grid store cost values between 0-254 which denote a cost to travel through these zones. A cost of 0 means the cell is free while a cost of 254 means that the cell is lethally occupied. Values in between these extremes are used by navigation algorithms to steer your robot away from obstacles as a potential field. Costmaps in Nav2 are implemented through the ``nav2_costmap_2d`` package. 
 
-The costmap implementation consists of multiple layers, each of which has a certain function that contributes to a cell's overall cost. The package consists of the following layers, but are plugin-based to allow customization and new layers to be used as well: static layer, inflation layer, range layer, obstacle layer, and voxel layer. The static layer represents the map section of the costmap, like those produced by SLAM. The obstacle layer includes the obstacles reported by sensors in 2D. The voxel layer is similar to the obstacle layer but handles 3D data instead. The range layer allows for the inclusion of sonar and infrared data to our costmap. Lastly, the inflation layer represents the added cost values around lethal obstacles such that our robot avoids navigating into obstacles due to the robot's geometry. In the next subsection of this tutorial, we will have some discussion about the basic configuration of the different layers in ``nav2_costmap_2d``. 
+The costmap implementation consists of multiple layers, each of which has a certain function that contributes to a cell's overall cost. The package consists of the following layers, but are plugin-based to allow customization and new layers to be used as well: static layer, inflation layer, range layer, obstacle layer, and voxel layer. The static layer represents the map section of the costmap, obtained from the messages published to the ``/map`` topic like those produced by SLAM.  The obstacle layer includes the objects detected by sensors that publish either or both the ``LaserScan`` and ``PointCloud2`` messages. The voxel layer is similar to the obstacle layer such that it can use either or both the ``LaserScan`` and ``PointCloud2`` sensor information but handles 3D data instead. The range layer allows for the inclusion of information provided by sonar and infrared sensors. Lastly, the inflation layer represents the added cost values around lethal obstacles such that our robot avoids navigating into obstacles due to the robot's geometry. In the next subsection of this tutorial, we will have some discussion about the basic configuration of the different layers in ``nav2_costmap_2d``. 
 
 The layers are integrated into the costmap through a plugin interface and then inflated using a user-specified `inflation radius <http://wiki.ros.org/costmap_2d/hydro/inflation>`_, if the inflation layer is enabled. For a deeper discussion on costmap concepts, you can have a look at the `ROS1 costmap_2D documentation <http://wiki.ros.org/costmap_2d>`_. Note that the ``nav2_costmap_2d`` package is mostly a straightforward ROS2 port of the ROS1 navigation stack version with minor changes required for ROS2 support and some new layer plugins.
 
-Configuring Costmap_2D
-======================
-
-In this subsection, we will show an example configuration of ``costmap_2d`` and explain the basic configuration parameters for your sensors. The code block below is an example of ``costmap_2d`` configuration using static layer, obstacle layer, voxel layer, and inflation layer. Note that this block of parameters will be included in the `config/nav2_params.yaml <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml>`_ file  when we launch Nav2 at the end of this section.
+Configuring nav2_costmap_2d
+===========================
+In this subsection, we will show an example configuration of ``nav2_costmap_2d`` such that it uses the information provided by the lidar sensor of ``sam_bot``. We will show an example configuration that uses static layer, obstacle layer, voxel layer, and inflation layer. We set both the obstacle and voxel layer to use the ``LaserScan`` messages published  to the ``/scan`` topic by the lidar sensor. We also set some of the basic parameters to define how the detected obstacles are reflected in the costmap. Note that this configuration is to be included in the configuration file of Nav2. 
 
 .. code-block:: yaml
   :lineno-start: 1
@@ -352,10 +328,10 @@ In this subsection, we will show an example configuration of ``costmap_2d`` and 
         global_frame: map
         robot_base_frame: base_link
         use_sim_time: True
-        robot_radius: 0.3
+        robot_radius: 0.22
         resolution: 0.05
-        track_unknown_space: true
-        rolling_window: true
+        track_unknown_space: false
+        rolling_window: false
         plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
         static_layer:
           plugin: "nav2_costmap_2d::StaticLayer"
@@ -365,7 +341,7 @@ In this subsection, we will show an example configuration of ``costmap_2d`` and 
           enabled: True
           observation_sources: scan
           scan:
-            topic: /demo/scan
+            topic: /scan
             max_obstacle_height: 2.0
             clearing: True
             marking: True
@@ -392,7 +368,7 @@ In this subsection, we will show an example configuration of ``costmap_2d`` and 
         width: 3
         height: 3
         resolution: 0.05
-        footprint: "[ [0.21, 0.195], [0.21, -0.195], [-0.21, -0.195], [-0.21, 0.195] ]"
+        robot_radius: 0.22
         plugins: ["voxel_layer", "inflation_layer"]
         voxel_layer:
           plugin: "nav2_costmap_2d::VoxelLayer"
@@ -405,7 +381,7 @@ In this subsection, we will show an example configuration of ``costmap_2d`` and 
           mark_threshold: 0
           observation_sources: scan
           scan:
-            topic: /demo/scan
+            topic: /scan
             max_obstacle_height: 2.0
             clearing: True
             marking: True
@@ -422,7 +398,7 @@ The layers that we use for our configuration are defined in the ``plugins`` para
 
 For the static layer (lines 14-16), we set the ``map_subscribe_transient_local`` parameter to ``True``. This sets the QoS settings for the map topic. Another important parameter for the static layer is the ``map_topic`` which defines the map topic to subscribe to. This defaults to ``/map`` topic when not defined. 
 
-For the obstacle layer (lines 17-30), we define its sensor source under the ``observation_sources`` parameter (line 20) as ``scan`` whose parameters are set up in lines 22-30. We set its ``topic`` parameter as the topic that publishes the defined sensor source and we set the ``data_type`` according to the sensor source it will use. In our configuration, the obstacle layer will use the ``LaserScan`` published by the lidar scanner on the ``/demo/scan``. 
+For the obstacle layer (lines 17-30), we define its sensor source under the ``observation_sources`` parameter (line 20) as ``scan`` whose parameters are set up in lines 22-30. We set its ``topic`` parameter as the topic that publishes the defined sensor source and we set the ``data_type`` according to the sensor source it will use. In our configuration, the obstacle layer will use the ``LaserScan`` published by the lidar sensor to ``/scan``. 
 
 Note that the obstacle layer and voxel layer can use either or both ``LaserScan`` and ``PointCloud2`` as their ``data_type`` but it is set to ``LaserScan`` by default. The code snippet below shows an example of using both the ``LaserScan`` and ``PointCloud2`` as the sensor sources. This may be particularly useful when setting up your own physical robot.
 
@@ -433,17 +409,17 @@ Note that the obstacle layer and voxel layer can use either or both ``LaserScan`
     enabled: True
     observation_sources: scan pointcloud
     scan:
-      topic: /demo/scan
+      topic: /scan
       data_type: "LaserScan"
     pointcloud:
-      topic: /demo/depth_camera/points
+      topic: /depth_camera/points
       data_type: "PointCloud2"
 
 For the other parameters of the obstacle layer, the ``max_obstacle_height`` parameter sets the maximum height of the sensor reading to return to the occupancy grid. The minimum height of the sensor reading can also be set using the ``min_obstacle_height`` parameter, which defaults to 0 since we did not set it in the configation. The ``clearing`` parameter is used to set whether the obstacle is to be removed from the costmap or not. The clearing operation is done by raytracing through the grid. The maximum and minimum range to raytrace clear objects from the costmap is set using the ``raytrace_max_range`` and ``raytrace_min_range`` respectively. The ``marking`` parameter is used to set whether the inserted obstacle is marked into the costmap or not. We also set the maximum and minimum range to mark obstacles in the costmap through the ``obstacle_max_range`` and ``obstacle_min_range`` respectively. 
 
 For the inflation layer (lines 31-34 and 67-70), we set the exponential decay factor across the inflation radius using the ``cost_scaling_factor`` parameter. The value of the radius to inflate around lethal obstacles is defined using the ``inflation_radius``. 
 
-For the voxel layer (lines 51-66), we set the ``publish_voxel_map`` parameter to ``True`` to enable the publishing of the 3D voxel grid. The resolution of the voxels in height is defined using the ``z_resolution`` parameter, while the number of voxels in each column is defined using the ``z_voxels`` parameter. The ``mark_threshold`` parameter sets the minimum number of voxels in a column to mark as occupied in the occupancy grid. We set the ``observation_sources`` parameter of the voxel layer to ``scan``, and we set the scan parameters (in lines 61-66) similar to the parameters that we have discussed for the obstacle layer. As defined in its ``topic`` and ``data_type`` parameters, the voxel layer will use the ``LaserSCan`` published on the ``/demo/scan`` topic by the lidar scanner.
+For the voxel layer (lines 51-66), we set the ``publish_voxel_map`` parameter to ``True`` to enable the publishing of the 3D voxel grid. The resolution of the voxels in height is defined using the ``z_resolution`` parameter, while the number of voxels in each column is defined using the ``z_voxels`` parameter. The ``mark_threshold`` parameter sets the minimum number of voxels in a column to mark as occupied in the occupancy grid. We set the ``observation_sources`` parameter of the voxel layer to ``scan``, and we set the scan parameters (in lines 61-66) similar to the parameters that we have discussed for the obstacle layer. As defined in its ``topic`` and ``data_type`` parameters, the voxel layer will use the ``LaserSCan`` published on the ``/scan`` topic by the lidar scanner.
 
 Note that the we are not using a range layer for our configuration but it may be useful for your own robot setup. For the range layer, its basic parameters are the ``topics``, ``input_sensor_type``, and ``clear_on_max_reading`` parameters. The range topics to subscribe to are defined in the ``topics`` parameter. The ``input_sensor_type`` is set to either ``ALL``, ``VARIABLE``, or ``FIXED``. The ``clear_on_max_reading`` is a boolean parameter that sets whether to clear the sensor readings on max range.  Have a look at the configuration guide in the link below in case you need to set it up. 
 
@@ -453,10 +429,24 @@ Note that the we are not using a range layer for our configuration but it may be
 
 Build, Run and Verification
 ===========================
+We will first launch ``display.launch.py`` which launches the robot state publisher that provides the ``base_link`` => ``sensors`` transformations in our URDF. It also launches Gazebo that acts as our physics simulator and also provides the ``odom`` => ``base_link`` from the differential drive plugin, which we added to ``sam_bot`` in the previous guide, `Simulating an Odometry System Using Gazebo <https://navigation.ros.org/setup_guides/odom/setup_odom.html#simulating-an-odometry-system-using-gazebo>`_. It also launches RViz which we can use to visualize the robot and sensor information. 
 
-In this subsection, we will first configure ``slam_toolbox`` to make it subscribe to ``/demo/scan`` topic and then launch it to publish to ``/map`` topic and provide the ``map`` => ``odom`` transform. Recall that the ``map`` => ``odom`` transfrom is one of the primary requirements of the Nav2 system. The messages published on the ``/map`` topic will then be used by the static layer of the ``global_costmap``. 
+Then we will launch ``slam_toolbox`` to publish to ``/map`` topic and provide the ``map`` => ``odom`` transform. Recall that the ``map`` => ``odom`` transform is one of the primary requirements of the Nav2 system. The messages published on the ``/map`` topic will then be used by the static layer of the ``global_costmap``. 
 
-Now that we have properly setup our robot descirption, odometry sensors, and necessary transforms, we can finally launch the Nav2 system itself. For now, we will only be exploring the costmap generation system of Nav2. After launching Nav2, we will visualize the costmaps in RViz to confirm our output. 
+After we have properly setup our robot description, odometry sensors, and necessary transforms, we will finally launch the Nav2 system itself. For now, we will only be exploring the costmap generation system of Nav2. After launching Nav2, we will visualize the costmaps in RViz to confirm our output. 
+
+Launching display.launch.py
+---------------------------
+
+To launch ``display.launch.py``, open a new terminal and execute the lines below. 
+
+.. code-block:: shell
+
+  colcon build
+  . install/setup.bash
+  ros2 launch sam_bot_description display.launch.py
+
+RViz and the Gazebo should be launched with ``sam_bot`` present in both. The ``odom`` => ``base_link`` and ``base_link`` => ``sensors`` transforms should also show without errors in RViz.
 
 Launching slam_toolbox
 ----------------------
@@ -467,23 +457,11 @@ To be able to launch ``slam_toolbox``, make sure that you have installed the ``s
 
   sudo apt install ros-<ros2-distro>-slam-toolbox
 
-Now, we will configure the parameters of ``slam_toolbox``. Go to the ``config`` directory and create a ``mapper_params.yaml`` file. Then copy the contents of `config/mapper_params.yaml <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/config/mapper_params.yaml>`_ and paste them into ``mapper_params.yaml``. 
-
-The important thing to note in the configuration of ``mapper_params.yaml`` is that we make ``slam_toolbox`` use the laser data published in ``/demo/scan`` by setting the ``scan_topic`` parameter to ``/demo/scan``. Again, the in-depth discussion of other parameters is not included in this tutorial, please refer to the official documentation of `slam_toolbox <https://github.com/SteveMacenski/slam_toolbox#readme>`_  for more information on other parameters. 
-
-Before we launch the ``slam_toolbox``, make sure you have launched sam_bot's ``display.launch.py`` by executing the the lines below. Remember that this provides our ``odom`` => ``base_link`` and ``base_link`` => ``sensors`` transformations. It also launches RViz which we can use to visualize the robot and Gazebo which acts as our physics simulator.
+We will launch the ``async_slam_toolbox_node`` of ``slam_toolbox`` using the package's built-in launch files. Open a new terminal and then execute the following lines:
 
 .. code-block:: shell
 
-  colcon build
-  . install/setup.bash
-  ros2 launch sam_bot_description display.launch.py
-
-Then, we will launch the ``async_slam_toolbox_node`` of ``slam_toolbox`` and set its parameters to ``mapper_params.yaml`` using the package's built-in launch files. Open a new terminal and then execute the following lines:
-
-.. code-block:: shell
-
-  ros2 launch slam_toolbox online_async_launch.py slam_params_file:=<full/path/to/config/mapper_params.yaml>
+  ros2 launch slam_toolbox online_async_launch.py
 
 The ``slam_toolbox`` should now be publishing to the ``/map`` topic and providing the ``map`` => ``odom`` transform. 
 
@@ -505,9 +483,6 @@ The line above will create a ``frames.pdf`` file that shows the current transfor
 
 Launching Nav2
 --------------
-
-Next, we will configure the costmap parameters of Nav2 before we launch it.
-
 First, Make sure you have installed the Nav2 packages by executing the following:
 
 .. code-block:: shell
@@ -515,15 +490,13 @@ First, Make sure you have installed the Nav2 packages by executing the following
   sudo apt install ros-<ros2-distro>-navigation2
   sudo apt install ros-<ros2-distro>-nav2-bringup
 
-We will configure the parameters of Nav2 to use our costmap configuration in the previous subsection. Create a file named ``nav2_params.yaml`` under the ``config`` directory and then copy the contents of `config/nav2_params.yaml <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml>`_ and paste them into the newly created ``nav2_params.yaml`` file.
-
-Notice that the parameters of the ``nav2_costmap_2d`` that we discussed in the previous subsection are included in the `config/nav2_params.yaml <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml>`_ file. Aside from the ``nav2_costmap_2d`` parameters, we also set some basic parameters for the other nodes that are included in Nav2 implementation. 
-
-We will now launch Nav2 using the parameters in ``config/nav2_params.yaml``. Open a new terminal and execute the following:
+We will now launch Nav2 using the ``nav2_bringup``'s built-in launch file, ``navigation_launch.py`` . Open a new terminal and execute the following:
 
 .. code-block:: shell
 
-  ros2 launch nav2_bringup navigation_launch.py params_file:=<full/path/to/config/nav2_params.yaml>
+  ros2 launch nav2_bringup navigation_launch.py
+
+Note that the parameters of the ``nav2_costmap_2d`` that we discussed in the previous subsection are included in the default parameters of ``navigation_launch.py``. Aside from the ``nav2_costmap_2d`` parameters, it also contains parameters for the other nodes that are included in Nav2 implementation. 
 
 After we have properly set up and launched Nav2, the ``/global_costmap`` and ``/local_costmap`` topics should now be active.
 
@@ -537,7 +510,7 @@ To visualize the ``global_costmap`` in RViz, click the add button at the bottom-
 .. image:: images/costmap_global_rviz.png
     :align: center
 
-To visualize the ``local_costmap`` in RViz, select the ``Map`` under the ``/local_costmap/costmap`` topic. Set the ``color scheme`` in RViz to ``costmap`` to make it appear similar to the image below. 
+To visualize the ``local_costmap``  in RViz, select the ``Map`` under the ``/local_costmap/costmap`` topic. Set the ``color scheme`` in RViz to ``costmap`` to make it appear similar to the image below. 
 
 .. image:: images/local_costmap_rviz.png
     :align: center
