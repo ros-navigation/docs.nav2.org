@@ -625,6 +625,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#major-improvements-to-smac-planners">Major improvements to Smac Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simple-python-commander">Simple (Python) Commander</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extending-the-btservicenode-to-process-service-results">Extending the BtServiceNode to process Service-Results</a></li>
 </ul>
 </li>
 </ul>
@@ -825,6 +826,25 @@
 <li>Remove <code class="docutils literal notranslate"><span class="pre">rclcpp_node_</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">PlannerServer</span></code> : <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2459">PR2459</a>, <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2480">PR2480</a></li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="extending-the-btservicenode-to-process-service-results">
+<h2>Extending the BtServiceNode to process Service-Results<a class="headerlink" href="#extending-the-btservicenode-to-process-service-results" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2481">This PR</a> addresses <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2467">this Ticket</a> and adds a virtual <code class="docutils literal notranslate"><span class="pre">on_completion()</span></code> function to the <code class="docutils literal notranslate"><span class="pre">BtServiceNode</span></code> class (<a class="reference external" href="https://github.com/ros-planning/navigation2/blob/c417e2fd267e1dfa880b7ff9d37aaaa7b5eab9ca/nav2_behavior_tree/include/nav2_behavior_tree/bt_service_node.hpp">here</a>).
+Similar to the already existing virtual <code class="docutils literal notranslate"><span class="pre">on_wait_for_result()</span></code> function, it can be overwritten in the child class to react to a respective event with some user-defined operation.
+The added <code class="docutils literal notranslate"><span class="pre">on_completion()</span></code> function will be called after the service interaction of the <code class="docutils literal notranslate"><span class="pre">BtServiceNode</span></code> has been successfully completed.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm">* @brief Function to perform some user-defined operation upon successful</span>
+<span class="cm">* completion of the service. Could put a value on the blackboard.</span>
+<span class="cm">* @return BT::NodeStatus Returns SUCCESS by default, user may override to return another value</span>
+<span class="cm">*/</span>
+<span class="k">virtual</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="nf">on_completion</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The returned <code class="docutils literal notranslate"><span class="pre">BT::NodeStatus</span></code> will set the current status of the BT-Node. Since the function has access to the results of the service, the returned node-status can depend on those service results, for example.
+The normal behavior of the <code class="docutils literal notranslate"><span class="pre">BtServiceNode</span></code> is not affected by introducing the <code class="docutils literal notranslate"><span class="pre">on_completion()</span></code> function, since the the default implementation still simply returns <code class="docutils literal notranslate"><span class="pre">BT::NodeStatus::SUCCESS</span></code>, if the service interaction completed successfully.</p>
 </div>
 </div>
 
