@@ -91,3 +91,26 @@ This functionality has been discussed in `the ticket #816 <https://github.com/ro
   - Remove ``node_`` in ``class LifecycleManagerClient`` : `PR2469 <https://github.com/ros-planning/navigation2/pull/2469>`_
   - Remove ``rclcpp_node_`` in ``class ControllerServer`` : `PR2459 <https://github.com/ros-planning/navigation2/pull/2459>`_, `PR2479 <https://github.com/ros-planning/navigation2/pull/2479>`_
   - Remove ``rclcpp_node_`` in ``class PlannerServer`` : `PR2459 <https://github.com/ros-planning/navigation2/pull/2459>`_, `PR2480 <https://github.com/ros-planning/navigation2/pull/2480>`_
+
+
+Extending the BtServiceNode to process Service-Results
+******************************************************
+
+`This PR <https://github.com/ros-planning/navigation2/pull/2481>`_ addresses `this Ticket <https://github.com/ros-planning/navigation2/issues/2467>`_ and adds a virtual ``on_completion()`` function to the ``BtServiceNode`` class (`here <https://github.com/ros-planning/navigation2/blob/c417e2fd267e1dfa880b7ff9d37aaaa7b5eab9ca/nav2_behavior_tree/include/nav2_behavior_tree/bt_service_node.hpp>`_).
+Similar to the already existing virtual ``on_wait_for_result()`` function, it can be overwritten in the child class to react to a respective event with some user-defined operation.
+The added ``on_completion()`` function will be called after the service interaction of the ``BtServiceNode`` has been successfully completed.
+
+.. code-block:: cpp
+
+    /**
+    * @brief Function to perform some user-defined operation upon successful
+    * completion of the service. Could put a value on the blackboard.
+    * @return BT::NodeStatus Returns SUCCESS by default, user may override to return another value
+    */
+    virtual BT::NodeStatus on_completion()
+    {
+      return BT::NodeStatus::SUCCESS;
+    }
+
+The returned ``BT::NodeStatus`` will set the current status of the BT-Node. Since the function has access to the results of the service, the returned node-status can depend on those service results, for example.
+The normal behavior of the ``BtServiceNode`` is not affected by introducing the ``on_completion()`` function, since the the default implementation still simply returns ``BT::NodeStatus::SUCCESS``, if the service interaction completed successfully.
