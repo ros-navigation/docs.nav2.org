@@ -435,10 +435,10 @@ Then we will launch ``slam_toolbox`` to publish to ``/map`` topic and provide th
 
 After we have properly setup our robot description, odometry sensors, and necessary transforms, we will finally launch the Nav2 system itself. For now, we will only be exploring the costmap generation system of Nav2. After launching Nav2, we will visualize the costmaps in RViz to confirm our output. 
 
-Launching display.launch.py
----------------------------
+Launching Description Nodes, RViz and Gazebo
+--------------------------------------------
 
-To launch ``display.launch.py``, open a new terminal and execute the lines below. 
+Let us now launch our Robot Description Nodes, RViz and Gazebo through the launch file ``display.launch.py``. Open a new terminal and execute the lines below. 
 
 .. code-block:: shell
 
@@ -446,7 +446,7 @@ To launch ``display.launch.py``, open a new terminal and execute the lines below
   . install/setup.bash
   ros2 launch sam_bot_description display.launch.py
 
-RViz and the Gazebo should be launched with ``sam_bot`` present in both. The ``odom`` => ``base_link`` and ``base_link`` => ``sensors`` transforms should also show without errors in RViz.
+RViz and the Gazebo should now be launched with ``sam_bot`` present in both. Recall that the ``base_link`` => ``sensors`` transform is now being published by ``robot_state_publisher`` and the ``odom`` => ``base_link`` transform by our Gazebo plugins. Both transforms should now be dislpayed show without errors in RViz.
 
 Launching slam_toolbox
 ----------------------
@@ -510,7 +510,7 @@ To visualize the ``global_costmap`` in RViz, click the add button at the bottom-
 .. image:: images/costmap_global_rviz.png
     :align: center
 
-To visualize the ``local_costmap``  in RViz, select the ``Map`` under the ``/local_costmap/costmap`` topic. Set the ``color scheme`` in RViz to ``costmap`` to make it appear similar to the image below. 
+To visualize the ``local_costmap`` in RViz, select the ``Map`` under the ``/local_costmap/costmap`` topic. Set the ``color scheme`` in RViz to ``costmap`` to make it appear similar to the image below. 
 
 .. image:: images/local_costmap_rviz.png
     :align: center
