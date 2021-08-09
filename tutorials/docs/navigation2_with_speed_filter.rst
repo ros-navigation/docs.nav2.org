@@ -268,7 +268,8 @@ In this tutorial, we will enable Speed Filter for the global costmap. For this u
     global_costmap:
       ros__parameters:
         ...
-        plugins: ["static_layer", "obstacle_layer", "inflation_layer", "speed_filter"]
+        plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+        filters: ["speed_filter"]
         ...
         speed_filter:
           plugin: "nav2_costmap_2d::SpeedFilter"

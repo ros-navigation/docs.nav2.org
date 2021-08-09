@@ -253,7 +253,8 @@ To enable ``KeepoutFilter`` with same mask for both global and local costmaps, u
     global_costmap:
       ros__parameters:
         ...
-        plugins: ["static_layer", "obstacle_layer", "inflation_layer", "keepout_filter"]
+        plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+        filters: ["keepout_filter"]
         ...
         keepout_filter:
           plugin: "nav2_costmap_2d::KeepoutFilter"
@@ -264,7 +265,8 @@ To enable ``KeepoutFilter`` with same mask for both global and local costmaps, u
     local_costmap:
       ros__parameters:
         ...
-        plugins: ["voxel_layer", "inflation_layer", "keepout_filter"]
+        plugins: ["voxel_layer", "inflation_layer"]
+        filters: ["keepout_filter"]
         ...
         keepout_filter:
           plugin: "nav2_costmap_2d::KeepoutFilter"
@@ -273,7 +275,7 @@ To enable ``KeepoutFilter`` with same mask for both global and local costmaps, u
 
 .. note::
 
-  In this example ``keepout_filter`` goes after the ``inflation_layer`` so the keepout boundaries aren't inflated as obstacles, although this is not an obligatory requirement.
+  All costmap filters should be enabled through a ``filters`` parameter -- though it is technically possible to include in the layered costmap itself. This is separated from the layer plugins to prevent interference in the layers, particularly the  inflation layer.
 
 4. Run Nav2 stack
 -----------------

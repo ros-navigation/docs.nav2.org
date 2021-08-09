@@ -255,17 +255,6 @@ Costmap2D ROS Parameters
   Description
     whether when combining costmaps to use the maximum cost or override.
 
-:clearable_layers:
-
-  ============== =====================================================
-  Type           Default                                              
-  -------------- -----------------------------------------------------
-  vector<string> {"obstacle_layer", "voxel_layer", "range_layer"}
-  ============== =====================================================
-
-  Description
-    Layers that may be cleared using the clearing service.
-
 :plugins:
 
   ============== =====================================================
@@ -293,6 +282,33 @@ Costmap2D ROS Parameters
               plugin: "nav2_costmap_2d::VoxelLayer"
             inflation_layer:
               plugin: "nav2_costmap_2d::InflationLayer"
+    ..
+
+:filters:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  vector<string> {}
+  ============== =======
+
+  Description
+    List of mapped costmap filter names for parameter namespaces and names.
+
+  Note
+    Costmap filters are also loadable plugins just as ordinary costmap layers. This separation is made to avoid plugin and filter interference and places these filters on top of the combined layered costmap. As  with plugins, each costmap filter namespace defined in this list needs to have a :code:`plugin` parameter defining the type of filter plugin to be loaded in the namespace.
+
+    Example:
+
+    .. code-block:: yaml
+
+        local_costmap:
+          ros__parameters:
+            filters: ["keepout_filter", "speed_filter"]
+            keepout_filter:
+              plugin: "nav2_costmap_2d::KeepoutFilter"
+            speed_filter:
+              plugin: "nav2_costmap_2d::SpeedFilter"
     ..
 
 Default Plugins

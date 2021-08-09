@@ -64,6 +64,35 @@ As of `this PR <https://github.com/ros-planning/navigation2/pull/2247>`_, the ``
 
 The ``goal_checker`` plugins also have the change of including a ``getTolerances()`` method. This method allows a goal checker holder to access the tolerance information of the goal checker to consider at the goal. Each field of the ``pose`` and ``velocity`` represents the maximum allowable error in each dimension for a goal to be considered completed. In the case of a translational tolerance (combined X and Y components), each the X and Y will be populated with the tolerance value because it is the **maximum** tolerance in the dimension (assuming the other has no error). If the goal checker does not contain any tolerances for a dimension, the ``numeric_limits<double> lowest()`` value is utilized in its place.
 
+FollowPath goal_checker_id attribute
+************************************
+For example: you could use for some specific navigation motion a more precise goal checker than the default one that it is used in usual motions.
+
+.. code-block:: xml
+    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10"/>
+
+- The previous usage of the ``goal_checker_plugin`` parameter to declare the controller_server goal_checker is now obsolete and removed.
+- The controller_server parameters now support the declaration of a list of goal checkers ``goal_checker_plugins`` mapped to unique identifier names, such as is the case with ``FollowPath`` and ``GridBased`` for the controller and planner plugins, respectively. 
+
+- The specification of the selected goal checker is mandatory when more than one checker is defined in the controller_server parameter configuration. If only one goal_checker is configured in the controller_server it is selected by default even if no goal_checker is specified.
+
+Below it is shown an example of goal_checker configuration of the controller_server node.
+
+.. code-block:: yaml
+    controller_server:
+      ros__parameters:
+          goal_checker_plugins: ["general_goal_checker", "precise_goal_checker"]
+          precise_goal_checker:
+              plugin: "nav2_controller::SimpleGoalChecker"
+              xy_goal_tolerance: 0.25
+             yaw_goal_tolerance: 0.25
+          general_goal_checker:
+              plugin: "nav2_controller::SimpleGoalChecker"
+              xy_goal_tolerance: 0.25
+
+
+
+
 Groot Support
 *************
 
@@ -108,7 +137,7 @@ Original GitHub tickets:
 Costmap Filters
 ***************
 
-A new concept interacting with spatial-dependent objects called "Costmap Filters" appeared in Galactic (more information about this concept could be found at :ref:`concepts` page). Costmap filters are acting as a costmap plugins. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin's algorithms to make required updates in the resulting costmap and robot's behavor.
+A new concept interacting with spatial-dependent objects called "Costmap Filters" appeared in Galactic (more information about this concept could be found at :ref:`concepts` page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin's algorithms to make required updates in the resulting costmap and robot's behavor.
 
 Architecturally, costmap filters consists from ``CostmapFilter`` class which is a basic class incorporating much common of its inherited filter plugins:
 
@@ -129,6 +158,12 @@ A new package, ``nav2_smac_planner`` was added containing 4 or 8 connected 2D A*
 The ``nav2_smac_planner`` package contains an optimized templated A* search algorithm used to create multiple A*-based planners for multiple types of robot platforms. We support differential-drive and omni-directional drive robots using the ``SmacPlanner2D`` planner which implements a cost-aware A* planner. We support cars, car-like, and ackermann vehicles using the ``SmacPlanner`` plugin which implements a Hybrid-A* planner. This plugin is also useful for curvature constrained planning, like when planning robot at high speeds to make sure they don't flip over or otherwise skid out of control.
 
 The ``SmacPlanner`` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.
+
+ThetaStarPlanner
+****************
+A new package, ``nav2_theta_star_planner`` was added containing 4 or 8 connected Theta* implementation for 2D maps.
+
+This package implements an optimized version of the Theta* Path Planner (specifically the `Lazy Theta\* P <http://idm-lab.org/bib/abstracts/papers/aaai10b.pdf>`_ variant) to plan any-angled paths for differential-drive and omni-directional robots, while also taking into account the costmap costs. This plugin is useful for the cases where you might want to plan a path at a higher rate but without requiring extremely smooth paths around the corners which, for example, could be handled by a local planner/controller.
 
 RegulatedPurePursuitController
 ******************************
@@ -211,9 +246,12 @@ Original GitHub tickets:
 - `SingleTrigger <https://github.com/ros-planning/navigation2/pull/2236>`_
 - `PlannerSelector <https://github.com/ros-planning/navigation2/pull/2249>`_
 - `ControllerSelector <https://github.com/ros-planning/navigation2/pull/2266>`_
+- `GoalCheckerSelector <https://github.com/ros-planning/navigation2/pull/2269>`_
 - `NavigateThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
 - `RemovePassedGoals <https://github.com/ros-planning/navigation2/pull/2271>`_
 - `ComputePathThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
+
+Additionally, behavior tree nodes were modified to contain their own local executors to spin for actions, topics, services, etc to ensure that each behavior tree node is independent of each other (e.g. spinning in one BT node doesn't trigger a callback in another). 
 
 sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change
 ********************************************************
@@ -223,7 +261,7 @@ Due to deprecation of `sensor_msgs/PointCloud <https://docs.ros2.org/foxy/api/se
 - ``voxel_marked_cloud`` and ``voxel_unknown_cloud`` topic in ``costmap_2d_cloud`` node of ``nav2_costmap_2d`` package
 - ``cost_cloud`` topic of ``publisher.cpp`` of ``dwb_core`` package.
 
-These changes were introduced inthis `pull request <https://github.com/ros-planning/navigation2/pull/2263>`_.
+These changes were introduced in `pull request <https://github.com/ros-planning/navigation2/pull/2263>`_.
 
 ControllerServer New Parameter failure_tolerance
 ************************************************
@@ -236,3 +274,14 @@ The launch python configurations for CLI setting of the behavior tree XML file h
 
 The use of map subscription QoS launch configuration was also removed, use parameter file. 
 This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2295>`_.
+
+Nav2 RViz Panel Action Feedback Information
+*******************************************
+The Nav2 RViz Panel now displays the action feedback published by ``nav2_msgs/NavigateToPose`` and ``nav2_msgs/NavigateThroughPoses`` actions.
+Users can find information like the estimated time of arrival, distance remaining to goal, time elapsed since navigation started, and number of recoveries performed during a navigation action directly through the RViz panel.
+This feature was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2338>`_.
+
+.. image:: /images/rviz/panel-feedback.gif
+    :width: 600px
+    :align: center
+    :alt: Navigation feedback in RViz.
