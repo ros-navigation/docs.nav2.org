@@ -237,7 +237,7 @@ The parent node retains this state information, and will tick ``Action_C`` upon 
 | 
 
    
-6. On this last tick, let's assume ``Action_C`` returns ``FAILURE``. The parent will circle and tick ``Action_A`` again. ``Action_A`` returns ``RUNNING`` and so will the parent RoundRobin node. This pattern will continue indefinitely.
+6. On this last tick, let's assume ``Action_C`` returns ``FAILURE``. The parent will circle and tick ``Action_A`` again. ``Action_A`` returns ``RUNNING`` and so will the parent RoundRobin node. This pattern will continue indefinitely unless all children return ``FAILURE``.
 
 |
 

@@ -34,7 +34,7 @@ Prerequisites
   
     - Read the short explanation in `navigation concepts <../../concepts/index.html>`_
   
-    - Read the general tutorial ang guide (not Nav2 specific) on the `BehaviorTree CPP V3 <https://www.behaviortree.dev/>`_ website. Specifically, the "Learn the Basics" section on the BehaviorTree CPP V3 website explains the basic generic nodes that will be used that this guide will build upon.
+    - Read the general tutorial and guide (not Nav2 specific) on the `BehaviorTree CPP V3 <https://www.behaviortree.dev/>`_ website. Specifically, the "Learn the Basics" section on the BehaviorTree CPP V3 website explains the basic generic nodes that will be used that this guide will build upon.
 
 - Become familiar with the custom `Nav2 specific BT nodes <../../behavior_trees/index.html>`_
 
@@ -204,7 +204,7 @@ The only differences in the BT subtree of ``ComputePathToPose`` and ``FollowPath
 - The ``RateController`` that decorates the ``ComputePathToPose`` subtree
     The ``RateController`` decorates the ``ComputePathToPose`` subtree to keep planning at the specified frequency. The default frequency for this BT is 1 hz. 
     This is done to prevent the BT from flooding the planning server with too many useless requests at the tree update rate (100Hz). Consider changing this frequency to something higher or lower depending on the application and the computational cost of 
-    calculating the path. 
+    calculating the path. There are other decorators that can be used instead of the ``RateController``. Consider using the ``SpeedController`` or ``DistanceController`` decorators if appropriate.
     
 - The costmap that is being cleared within the contextual recovery:
     - The ``ComputePathToPose`` subtree clears the global costmap. The global costmap is the relevant costmap in the context of the planner
@@ -270,9 +270,11 @@ For example, let's say the robot is stuck and the ``Navigation`` subtree returns
 
 4. Let's say the next recovery action, ``Wait`` returns ``SUCCESS``. The robot will then move on to the ``Navigation`` subtree
 
-5. Assume  the ``Navigation`` subtree returns ``FAILURE`` (clearing the costmaps, attempting a spin, and waiting were *still* not sufficient to recover the system. The robot will move onto the ``Recovery`` subtree and attempt the ``BackUp`` action
+5. Assume  the ``Navigation`` subtree returns ``FAILURE`` (clearing the costmaps, attempting a spin, and waiting were *still* not sufficient to recover the system. The robot will move onto the ``Recovery`` subtree and attempt the ``BackUp`` action. Let's say that the robot attempts the ``BackUp`` action and was able to successfully complete the action. The ``BackUp`` action node returns ``SUCCESS`` and so now we move on to the Navigation subtree again. 
 
-The above logic will go on indefinitely until the ``number_of_retries`` in the parent of the ``Navigate`` subtree and ``Recovery`` subtree is exceeded, or if all the system-wide recoveries in the ``Recovery`` subtree return ``FAILURE`` (this is unlikely, and likely points to some other system failure).
+6. In this hypothetical scenario, let's assume that the ``BackUp`` action allowed the robot to successfully navigate in the ``Navigation`` subtree, and the robot reaches the goal. In this case, the overall BT will still return ``SUCCESS``.
+
+If the ``BackUp`` action was not sufficient enough to allow the robot to become un-stuck, the above logic will go on indefinitely until the ``number_of_retries`` in the parent of the ``Navigate`` subtree and ``Recovery`` subtree is exceeded, or if all the system-wide recoveries in the ``Recovery`` subtree return ``FAILURE`` (this is unlikely, and likely points to some other system failure).
 
 Custom Action
 =============
