@@ -849,23 +849,23 @@ Returns the value the BT node will report back to the tree.</td>
 <p>For this tutorial, we will only be using the <code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> method.</p>
 <p>In the constructor, we need to get any non-variable parameters that apply to the behavior tree node.
 In this example, we need to get the value of the duration to sleep from the input port of the behavior tree XML.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">WaitAction</span><span class="o">::</span><span class="n">WaitAction</span><span class="p">(</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">xml_tag_name</span><span class="p">,</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">action_name</span><span class="p">,</span>
-  <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span> <span class="o">&amp;</span> <span class="n">conf</span><span class="p">)</span>
-<span class="o">:</span> <span class="n">BtActionNode</span><span class="o">&lt;</span><span class="n">nav2_msgs</span><span class="o">::</span><span class="n">action</span><span class="o">::</span><span class="n">Wait</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xml_tag_name</span><span class="p">,</span> <span class="n">action_name</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="kt">int</span> <span class="n">duration</span><span class="p">;</span>
-  <span class="n">getInput</span><span class="p">(</span><span class="s">&quot;wait_duration&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">duration</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">RCLCPP_WARN</span><span class="p">(</span>
-      <span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span> <span class="s">&quot;Wait duration is negative or zero &quot;</span>
-      <span class="s">&quot;(%i). Setting to positive.&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
-    <span class="n">duration</span> <span class="o">*=</span> <span class="mi">-1</span><span class="p">;</span>
-  <span class="p">}</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">WaitAction</span><span class="o">::</span><span class="n">WaitAction</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">xml_tag_name</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">action_name</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">conf</span><span class="p">)</span><span class="w"></span>
+<span class="o">:</span><span class="w"> </span><span class="n">BtActionNode</span><span class="o">&lt;</span><span class="n">nav2_msgs</span><span class="o">::</span><span class="n">action</span><span class="o">::</span><span class="n">Wait</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xml_tag_name</span><span class="p">,</span><span class="w"> </span><span class="n">action_name</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">getInput</span><span class="p">(</span><span class="s">&quot;wait_duration&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">duration</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">duration</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">RCLCPP_WARN</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Wait duration is negative or zero &quot;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;(%i). Setting to positive.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">duration</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">duration</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">goal_</span><span class="p">.</span><span class="n">time</span><span class="p">.</span><span class="n">sec</span> <span class="o">=</span> <span class="n">duration</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="n">goal_</span><span class="p">.</span><span class="n">time</span><span class="p">.</span><span class="n">sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Here, we give the input of the <code class="docutils literal notranslate"><span class="pre">xml_tag_name</span></code> which tells the BT node plugin the string in the XML that corresponds to this node.
@@ -883,23 +883,23 @@ So in this example, we set the duration to the time we want to wait by so that t
 Ports can be thought of as parameters that the behavior tree node has access to from the behavior tree itself.
 For our example, there is only a single input port, the <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> which can be set in the BT XML for each instance of the <code class="docutils literal notranslate"><span class="pre">wait</span></code> recovery.
 We set the type, <code class="docutils literal notranslate"><span class="pre">int</span></code>, the default <code class="docutils literal notranslate"><span class="pre">1</span></code>, the name <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code>, and a description of the port <code class="docutils literal notranslate"><span class="pre">Wait</span> <span class="pre">time</span></code>.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span> <span class="nf">providedPorts</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">providedBasicPorts</span><span class="p">(</span>
-    <span class="p">{</span>
-      <span class="n">BT</span><span class="o">::</span><span class="n">InputPort</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;wait_duration&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Wait time&quot;</span><span class="p">)</span>
-    <span class="p">});</span>
-<span class="p">}</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span><span class="w"> </span><span class="nf">providedPorts</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">providedBasicPorts</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">BT</span><span class="o">::</span><span class="n">InputPort</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;wait_duration&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Wait time&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> method is called when the behavior tree ticks a specific node.
 For the wait BT node, we simply want to notify a counter on the blackboard that an action plugin that corresponds to a recovery was ticked.
 This is useful to keep metrics about the number of recoveries executed during a specific navigation run.
 You could also log or update the <code class="docutils literal notranslate"><span class="pre">goal_</span></code> waiting duration if that is a variable input.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">WaitAction::on_tick</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">increment_recovery_count</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">WaitAction::on_tick</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">increment_recovery_count</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The remaining methods are not used and not mandatory to override them.
@@ -911,16 +911,16 @@ The success, aborted, and cancelled methods will default to <code class="docutil
 <p>Now that we have created our custom BT node, we need to export our plugin so that it would be visible to the behavior tree when it loads a custom BT XML.
 Plugins are loaded at runtime and if they are not visible, then our BT Navigator server won’t be able to load it or use it.
 In BehaviorTree.CPP, exporting and loading plugins is handled by the <code class="docutils literal notranslate"><span class="pre">BT_REGISTER_NODES</span></code> macro.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">BT_REGISTER_NODES</span><span class="p">(</span><span class="n">factory</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">BT</span><span class="o">::</span><span class="n">NodeBuilder</span> <span class="n">builder</span> <span class="o">=</span>
-    <span class="p">[](</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span> <span class="o">&amp;</span> <span class="n">config</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">nav2_behavior_tree</span><span class="o">::</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;wait&quot;</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
-    <span class="p">};</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">BT_REGISTER_NODES</span><span class="p">(</span><span class="n">factory</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeBuilder</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">config</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">nav2_behavior_tree</span><span class="o">::</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-  <span class="n">factory</span><span class="p">.</span><span class="n">registerBuilder</span><span class="o">&lt;</span><span class="n">nav2_behavior_tree</span><span class="o">::</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Wait&quot;</span><span class="p">,</span> <span class="n">builder</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="n">factory</span><span class="p">.</span><span class="n">registerBuilder</span><span class="o">&lt;</span><span class="n">nav2_behavior_tree</span><span class="o">::</span><span class="n">WaitAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Wait&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">builder</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In this macro, we must create a <code class="docutils literal notranslate"><span class="pre">NodeBuilder</span></code> so that our custom action node can have a non-default constructor signature (for the action and xml names).

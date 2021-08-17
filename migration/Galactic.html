@@ -856,11 +856,11 @@ The added <code class="docutils literal notranslate"><span class="pre">on_comple
 <span class="cm">* @brief Function to perform some user-defined operation upon successful</span>
 <span class="cm">* completion of the service. Could put a value on the blackboard.</span>
 <span class="cm">* @return BT::NodeStatus Returns SUCCESS by default, user may override to return another value</span>
-<span class="cm">*/</span>
-<span class="k">virtual</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="nf">on_completion</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="k">virtual</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="w"> </span><span class="nf">on_completion</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The returned <code class="docutils literal notranslate"><span class="pre">BT::NodeStatus</span></code> will set the current status of the BT-Node. Since the function has access to the results of the service, the returned node-status can depend on those service results, for example.
