@@ -646,6 +646,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#simple-python-commander">Simple (Python) Commander</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extending-the-btservicenode-to-process-service-results">Extending the BtServiceNode to process Service-Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spawning-the-robot-in-gazebo">Spawning the robot in Gazebo</a></li>
 </ul>
 </li>
 </ul>
@@ -865,6 +866,17 @@ The added <code class="docutils literal notranslate"><span class="pre">on_comple
 </div>
 <p>The returned <code class="docutils literal notranslate"><span class="pre">BT::NodeStatus</span></code> will set the current status of the BT-Node. Since the function has access to the results of the service, the returned node-status can depend on those service results, for example.
 The normal behavior of the <code class="docutils literal notranslate"><span class="pre">BtServiceNode</span></code> is not affected by introducing the <code class="docutils literal notranslate"><span class="pre">on_completion()</span></code> function, since the the default implementation still simply returns <code class="docutils literal notranslate"><span class="pre">BT::NodeStatus::SUCCESS</span></code>, if the service interaction completed successfully.</p>
+</div>
+<div class="section" id="spawning-the-robot-in-gazebo">
+<h2>Spawning the robot in Gazebo<a class="headerlink" href="#spawning-the-robot-in-gazebo" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2473">This PR</a> deletes the pkg <code class="docutils literal notranslate"><span class="pre">nav2_gazebo_spawner</span></code> inside nav2_bringup directory. Instead of <code class="docutils literal notranslate"><span class="pre">nav2_gazebo_spawner</span></code> the Node <a class="reference external" href="https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py">spawn_entity.py</a> of <code class="docutils literal notranslate"><span class="pre">gazebo_ros</span></code> is recomended to spawn the robot in gazebo.
+Note that</p>
+<blockquote>
+<div><ul class="simple">
+<li>gazebo should be started with both <code class="docutils literal notranslate"><span class="pre">libgazebo_ros_init.so</span></code> and <code class="docutils literal notranslate"><span class="pre">libgazebo_ros_factory.so</span></code> to work correctly.</li>
+<li>spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument <code class="docutils literal notranslate"><span class="pre">&lt;remapping&gt;/tf:=tf&lt;/remapping&gt;</span></code>  <code class="docutils literal notranslate"><span class="pre">&lt;remapping&gt;/tf_static:=tf_static&lt;/remapping&gt;</span></code> under ros2 tag in each plugin which publishs transforms in the SDF file. It is essential to differentiate the tf’s of the different robot.</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
