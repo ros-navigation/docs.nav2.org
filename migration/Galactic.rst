@@ -114,3 +114,11 @@ The added ``on_completion()`` function will be called after the service interact
 
 The returned ``BT::NodeStatus`` will set the current status of the BT-Node. Since the function has access to the results of the service, the returned node-status can depend on those service results, for example.
 The normal behavior of the ``BtServiceNode`` is not affected by introducing the ``on_completion()`` function, since the the default implementation still simply returns ``BT::NodeStatus::SUCCESS``, if the service interaction completed successfully.
+
+Spawning the robot in Gazebo
+****************************
+
+`This PR <https://github.com/ros-planning/navigation2/pull/2473>`_ deletes the pkg ``nav2_gazebo_spawner`` inside nav2_bringup directory. Instead of ``nav2_gazebo_spawner`` the Node `spawn_entity.py <https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py>`_ of ``gazebo_ros`` is recomended to spawn the robot in gazebo. 
+Note that
+  * gazebo should be started with both ``libgazebo_ros_init.so`` and ``libgazebo_ros_factory.so`` to work correctly.
+  * spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument ``<remapping>/tf:=tf</remapping>``  ``<remapping>/tf_static:=tf_static</remapping>`` under ros2 tag in each plugin which publishs transforms in the SDF file. It is essential to differentiate the tf's of the different robot.
