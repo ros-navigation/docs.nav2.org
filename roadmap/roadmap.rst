@@ -31,7 +31,7 @@ For a full list of important completed changes in the project, see the Migration
 |   from Master to Rolling`_     |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| Push Test Coverage to 88\%     |  Medium                
+| Push Test Coverage to 88\%     |  Medium                |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
