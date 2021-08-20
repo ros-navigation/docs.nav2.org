@@ -240,7 +240,7 @@ And the XML snippet:
     </ReactiveFallback>
 
 The top most parent, ``ReactiveFallback`` controls the flow between the rest of the system wide recoveries, and asynchronously checking if a new goal has been received.
-If at any point the goal gets updated, this subtree will halt all children and return ``SUCCESS``.
+If at any point the goal gets updated, this subtree will halt all children and return ``SUCCESS``. This allows for quick reactions to new goals and preempt currently executing recoveries.
 This should look familiar to the contextual recovery portions of the ``Navigation`` subtree. This is a common BT pattern to handle the situation "Unless 'this condition' happens, Do action A".
 
 These condition nodes can be extremely powerful and are typically paired with ``ReactiveFallback``. It can be easy to imagine wrapping this whole ``navigate_to_pose_w_replanning_and_recovery`` tree

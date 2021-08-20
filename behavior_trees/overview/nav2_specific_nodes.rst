@@ -35,7 +35,7 @@ Condition Nodes
 
 * GoalReached - Checks if the goal has been reached
 
-* InitialPoseReceived - Checks to see if a pose on the intial_pose topic has been recieved
+* InitialPoseReceived - Checks to see if a pose on the ``intial_pose`` topic has been received
 
 * isBatteryLow - Checks to see if the battery is low by listening on the battery topic
 
@@ -60,7 +60,7 @@ Control: PipelineSequence
 -------------------------
 The ``PipelineSequence`` control node re-ticks previous children when a child returns ``RUNNING``.
 This node is similar to the ``Sequence`` node, with the additional property that the children prior to the "current" are re-ticked, (resembling the flow of water in a pipe).
-If at any point a child returns ``FAILURE``, all children will be halted and the parent node will also return ``FAILURE``. Upon ``SUCCESS`` of the last node in the sequence, this node will halt and return ``SUCCESS``.
+If at any point a child returns ``FAILURE``, all children will be halted and the parent node will also return ``FAILURE``. Upon ``SUCCESS`` of the **last node** in the sequence, this node will halt and return ``SUCCESS``.
 
 To explain this further, here is an example BT that uses PipelineSequence.
 
