@@ -12,8 +12,8 @@ Nav2 Behavior Trees
    trees/nav_through_poses_recovery.rst
    trees/follow_point.rst
 
-Nav2 is an incredibly reconfigurable project. It allows users to set many different plugin types, across behavior trees, core algorithms, status checkers, and more.
-This section highlights some of the example behavior tree xml files and nodes provided by default in the project to do interesting tasks.
+Nav2 is an incredibly reconfigurable project. It allows users to set many different plugin types, across behavior trees, core algorithms, status checkers, and more!
+This section highlights some of the example behavior tree xml files provided by default in the project to do interesting tasks.
 It should be noted that these can be modified for your specific application, or used as a guide to building your own application-specific behavior tree.
 These are some exemplary examples of how you can reconfigure your navigation behavior significantly by using behavior trees.
 Other behavior trees are provided by Nav2 in the ``nav2_bt_navigator`` package, but this section highlights the important ones.

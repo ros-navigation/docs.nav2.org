@@ -37,8 +37,9 @@ If you would like to see a comparison between this project and ROS (1) Navigatio
 The expected inputs to Nav2 are TF transformations conforming to REP-105, a
 map source if utilizing the Static Costmap Layer, a BT XML file, and any relevant sensor data
 sources. It will then provide valid velocity commands for the motors of a holonomic or
-non-holonomic robot to follow. We currently support holonomic and differential-drive base types
-but plan to support Ackermann (car-like) robots as well in the near future.
+non-holonomic robot to follow. We currently support all of the major robot types:
+holonomic, differential-drive, legged, and ackermann (car-like) base types! We support
+them uniquely with both circular and arbitrarily-shaped robots for SE2 collision checking. 
 
 
 It has tools to:
@@ -100,7 +101,23 @@ IROS 2020 talk on Nav2 Marathon Experiments:
    booktitle = {2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
    year = {2020}
    }
-    
+
+If you use our work on VSLAM and formal comparisons for service robot needs, please cite the paper:
+
+A. Merzlyakov, S. Macenski.
+`A Comparison of Modern General-Purpose Visual SLAM Approaches <https://arxiv.org/abs/2107.07589>`_.
+IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021.
+
+.. code-block:: bash
+
+   @InProceedings{vslamComparison2021,
+   author = {Merzlyakov, Alexey and Macenski, Steven},
+   title = {A Comparison of Modern General-Purpose Visual SLAM Approaches},
+   booktitle = {2021 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+   year = {2021}
+   }
+
+
 Example
 #######
 
@@ -127,6 +144,8 @@ Below is an example of the TB3 navigating in a small lounge.
    behavior_trees/index.rst
    plugins/index.rst
    migration/index.rst
+   commander_api/index.rst
+   roadmap/roadmap.rst
    contribute/index.rst
    about/index.rst
    about/robots.rst

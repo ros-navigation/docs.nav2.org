@@ -30,7 +30,7 @@ Build Nav2 For Released Distribution
 Install ROS
 -----------
 
-Please install ROS 2 via the usual `build instructions <https://index.ros.org/doc/ros2/Installation>`_ for your desired distribution.
+Please install ROS 2 via the usual `build instructions <https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Binary.html>`_ for your desired distribution.
 
 Build Nav2
 ----------
@@ -59,7 +59,7 @@ Quickstart Build Main
 Steps
 -----
 
-Install all ROS 2 dependencies from the `ROS 2 Installation page <https://index.ros.org/doc/ros2/Installation/>`_.
+Install all ROS 2 dependencies from the `ROS 2 Installation page <https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html#system-setup>`_.
 Ensure there are no ROS environment variables set in your terminal or `.bashrc` file before taking the steps below.*
 
 
@@ -103,7 +103,7 @@ Build ROS 2 Main
 
    When building ROS 2 from source, make sure that the `ros2.repos` file is from the `main` branch.
 
-Build ROS 2 main using the `build instructions <https://index.ros.org/doc/ros2/Installation>`_ provided in the ROS 2 documentation.
+Build ROS 2 main using the `build instructions <https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html>`_ provided in the ROS 2 documentation.
 
 
 Build Nav2 Dependencies
@@ -147,9 +147,9 @@ The rest of this should look familiar.
 Docker
 ******
 
+The official Dockerhub entries are primarily for use in the Nav2 CI, but they may also be used for development. It is useful to have a docker image that tracks Nav2 ``main`` branch. The ``Dockerfile`` in the root of the repository is recommended for production use, set to your distribution of choice.
 
-There are 2 options for docker with Nav2:
-building a container and using the DockerHub container.
+It is though generally recomended to install Nav2 releases from the apt repository inside a container if you'd like to use our released binaries.
 
 .. rst-class:: content-collapse
 
@@ -158,6 +158,7 @@ Building Docker Container
 
 To build an image from the Dockerfile in the Nav2 folder:
 First, clone the repo to your local system (or see Building the source above)
+
 
 .. code:: bash
 
@@ -171,16 +172,23 @@ If proxies are needed:
 
 Note: You may also need to configure your docker for DNS to work. See article here for details: https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/
 
+If you would like to build from dockerhub cache to speed up the build
+
+.. code:: bash
+
+  sudo docker pull rosplanning/navigation2:main
+  sudo docker build -t nav2/latest --cache-from rosplanning/navigation2:main .
+
 .. rst-class:: content-collapse
 
 Using DockerHub Container
 =========================
-
 We allow for you to pull the latest docker image from the main branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
+This docker image will not contain a built overlay, and you must build the overlay Nav2 workspace yourself (see Build Nav2 Main up above).
 
 .. code:: bash
 
-  sudo docker pull rosplanning/navigation2:main.release
+  sudo docker pull rosplanning/navigation2:main
 
 !!!!
 

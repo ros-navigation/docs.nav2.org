@@ -30,3 +30,4 @@ To guide you through the first-time setup of your robot, we will be tackling the
    transformation/setup_transforms.rst
    urdf/setup_urdf.rst
    odom/setup_odom.rst
+   sensors/setup_sensors.rst

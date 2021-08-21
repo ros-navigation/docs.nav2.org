@@ -19,9 +19,9 @@
 
 .. |PP| replace:: https://github.com/ros-planning/navigation2/blob/main
 
-.. _`ROS 2 binary packages`: https://index.ros.org/doc/ros2/Installation/
+.. _`ROS 2 binary packages`: https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Binary.html
 
-.. _`official Turtlebot 3 manual`: http://emanual.robotis.com/docs/en/platform/turtlebot3/ros2_setup/
+.. _`official Turtlebot 3 manual`: https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/
 
 .. These are replacement strings for non-ASCII characters used within the project
    using the same name as the html entity names (e.g., &copy;) for that character

@@ -27,7 +27,7 @@ You can find the source code matching this tutorial `here <https://github.com/ro
 Requirements
 ============
 
-- ROS2 (binary or build-from-source)
+- ROS 2 (binary or build-from-source)
 - Nav2 (Including dependencies)
 - Gazebo
 - Turtlebot3
@@ -189,7 +189,7 @@ The remaining methods are not used, but it's mandatory to override them. As per 
 ----------------------------------
 
 Now that we have created our custom controller, we need to export our controller plugin so that it would be visible to the controller server. 
-Plugins are loaded at runtime, and if they are not visible, then our controller server won't be able to load it. In ROS2, exporting and loading 
+Plugins are loaded at runtime, and if they are not visible, then our controller server won't be able to load it. In ROS 2, exporting and loading 
 plugins is handled by ``pluginlib``.
 
 Coming to our tutorial, class ``nav2_pure_pursuit_controller::PurePursuitController`` is loaded dynamically as ``nav2_core::Controller`` which is our base class.
