@@ -1,42 +1,34 @@
-.. _custom_behavior_tree:
+.. _detailed_behavior_tree_walkthrough:
 
-Creating a Custom Behavior Tree
-*******************************
+Detailed Behavior Tree Walkthrough
+**********************************
 
 - `Overview`_
 - `Prerequisites`_
 - `Navigate To Pose With Replanning and Recovery`_
 - `Navigation Subtree`_
 - `Recovery Subtree`_
-- `Custom Action`_
-- `Adding to Launch File`_
-- `Testing`_
 
 Overview
 ========
 
-This document serves as a reference guide to the main behavior tree (BT) used in Nav2,
-and explains the process for customizing this BT.
+This document serves as a reference guide to the main behavior tree (BT) used in Nav2.
 
 There are many example behavior trees provided in ``nav2_bt_navigator/behavior_trees``,
 but these sometimes have to be re-configured based on the application of the robot. 
-The following tutorial will walk through the current main default BT ``navigate_to_pose_w_replanning_and_recovery.xml``
-and will show users how to modify this BT in potentially useful ways, using the example of developing a BT that follows a predefined path.
+The following document will walk through the current main default BT ``navigate_to_pose_w_replanning_and_recovery.xml``
+in great detail.
 
 Prerequisites
 =============
 
-- Have a valid installation of Nav2 (see the `getting started guide <../../getting_started/index.html>`_)
-
-- Have a robot (simulated, or physical) that can be used for testing that can already navigate with Nav2
-
-- Become familiar with the concept of a behavior tree before continuing with this tutorial
+- Become familiar with the concept of a behavior tree before continuing with this walkthrough
   
     - Read the short explanation in `navigation concepts <../../concepts/index.html>`_
   
     - Read the general tutorial and guide (not Nav2 specific) on the `BehaviorTree CPP V3 <https://www.behaviortree.dev/>`_ website. Specifically, the "Learn the Basics" section on the BehaviorTree CPP V3 website explains the basic generic nodes that will be used that this guide will build upon.
 
-- Become familiar with the custom `Nav2 specific BT nodes <../../behavior_trees/overview/nav2_specific_nodes.html>`_
+- Become familiar with the custom `Nav2 specific BT nodes <../nav2_specific_nodes.html>`_
 
 Navigate To Pose With Replanning and Recovery
 =============================================
@@ -46,7 +38,7 @@ This behavior tree replans the global path periodically at 1 Hz and it also has 
 
 |
 
- .. image:: images/custom_behavior_tree/overall_bt.png
+ .. image:: images/walkthrough/overall_bt.png
     :align: center
 
 |                  
@@ -99,7 +91,7 @@ This can be represented in the following way:
 
 |
 
- .. image:: images/custom_behavior_tree/overall_bt_w_breakdown.png
+ .. image:: images/walkthrough/overall_bt_w_breakdown.png
     :align: center
 
 |          
@@ -133,7 +125,7 @@ Now that we have gone over the control flow between the ``Navigation`` subtree a
 
 |
 
- .. image:: images/custom_behavior_tree/navigation_subtree.png
+ .. image:: images/walkthrough/navigation_subtree.png
     :align: center
 
 |         
@@ -167,7 +159,7 @@ The crux of the tree can be represented with only one parent and two children no
 
 |
 
- .. image:: images/custom_behavior_tree/navigation_subtree_bare.png
+ .. image:: images/walkthrough/navigation_subtree_bare.png
     :align: center
 
 |       
@@ -185,7 +177,7 @@ The below is the ``ComputePathToPose`` subtree:
 
 |
 
- .. image:: images/custom_behavior_tree/contextual_recoveries.png
+ .. image:: images/walkthrough/contextual_recoveries.png
     :align: center
 
 |      
@@ -217,7 +209,7 @@ In short, this subtree is triggered when the ``Navigation`` subtree returns ``FA
                                
 |
 
- .. image:: images/custom_behavior_tree/recovery_subtree.png
+ .. image:: images/walkthrough/recovery_subtree.png
     :align: center
 
 |         
@@ -276,11 +268,5 @@ For example, let's say the robot is stuck and the ``Navigation`` subtree returns
 
 If the ``BackUp`` action was not sufficient enough to allow the robot to become un-stuck, the above logic will go on indefinitely until the ``number_of_retries`` in the parent of the ``Navigate`` subtree and ``Recovery`` subtree is exceeded, or if all the system-wide recoveries in the ``Recovery`` subtree return ``FAILURE`` (this is unlikely, and likely points to some other system failure).
 
-Custom Action
-=============
 
-Adding to Launch File
-=====================
 
-Testing
-=======
