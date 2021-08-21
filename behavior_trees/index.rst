@@ -7,7 +7,7 @@ Nav2 Behavior Trees
    :maxdepth: 1
 
    overview/nav2_specific_nodes.rst
-   overview/detailed_behavior_tree_walkthough.rst
+   overview/detailed_behavior_tree_walkthrough.rst
    trees/nav_to_pose_recovery.rst
    trees/nav_through_poses_recovery.rst
    trees/follow_point.rst
