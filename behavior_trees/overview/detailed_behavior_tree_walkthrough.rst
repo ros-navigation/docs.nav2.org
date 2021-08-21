@@ -38,7 +38,7 @@ This behavior tree replans the global path periodically at 1 Hz and it also has 
 
 |
 
- .. image:: images/walkthrough/overall_bt.png
+ .. image:: ../images/walkthrough/overall_bt.png
     :align: center
 
 |                  
@@ -91,7 +91,7 @@ This can be represented in the following way:
 
 |
 
- .. image:: images/walkthrough/overall_bt_w_breakdown.png
+ .. image:: ../images/walkthrough/overall_bt_w_breakdown.png
     :align: center
 
 |          
@@ -125,7 +125,7 @@ Now that we have gone over the control flow between the ``Navigation`` subtree a
 
 |
 
- .. image:: images/walkthrough/navigation_subtree.png
+ .. image:: ../images/walkthrough/navigation_subtree.png
     :align: center
 
 |         
@@ -159,7 +159,7 @@ The crux of the tree can be represented with only one parent and two children no
 
 |
 
- .. image:: images/walkthrough/navigation_subtree_bare.png
+ .. image:: ../images/walkthrough/navigation_subtree_bare.png
     :align: center
 
 |       
@@ -177,7 +177,7 @@ The below is the ``ComputePathToPose`` subtree:
 
 |
 
- .. image:: images/walkthrough/contextual_recoveries.png
+ .. image:: ../images/walkthrough/contextual_recoveries.png
     :align: center
 
 |      
@@ -209,7 +209,7 @@ In short, this subtree is triggered when the ``Navigation`` subtree returns ``FA
                                
 |
 
- .. image:: images/walkthrough/recovery_subtree.png
+ .. image:: ../images/walkthrough/recovery_subtree.png
     :align: center
 
 |         
