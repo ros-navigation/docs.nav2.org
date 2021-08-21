@@ -574,7 +574,24 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../behavior_trees/index.html">Behavior Tree XMLs</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../behavior_trees/index.html">Nav2 Behavior Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html">Introduction To Nav2 Specific Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#action-nodes">Action Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#condition-nodes">Condition Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#decorator-nodes">Decorator Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#control-pipelinesequence">Control: PipelineSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#control-recovery">Control: Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#control-roundrobin">Control: RoundRobin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#navigate-to-pose-with-replanning-and-recovery">Navigate To Pose With Replanning and Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#navigation-subtree">Navigation Subtree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#recovery-subtree">Recovery Subtree</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_to_pose_recovery.html">Navigate To Pose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
@@ -833,22 +850,31 @@ recovery actions.</p>
         <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
           <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;ComputePathToPose&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;ReactiveFallback</span> <span class="na">name=</span><span class="s">&quot;ComputePathToPoseRecoveryFallback&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;GoalUpdated/&gt;</span>
+              <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/ReactiveFallback&gt;</span>
           <span class="nt">&lt;/RecoveryNode&gt;</span>
         <span class="nt">&lt;/RateController&gt;</span>
         <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">&gt;</span>
           <span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;ReactiveFallback</span> <span class="na">name=</span><span class="s">&quot;FollowPathRecoveryFallback&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;GoalUpdated/&gt;</span>
+            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/ReactiveFallback&gt;</span>
         <span class="nt">&lt;/RecoveryNode&gt;</span>
       <span class="nt">&lt;/PipelineSequence&gt;</span>
       <span class="nt">&lt;ReactiveFallback</span> <span class="na">name=</span><span class="s">&quot;RecoveryFallback&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;GoalUpdated/&gt;</span>
-        <span class="nt">&lt;SequenceStar</span> <span class="na">name=</span><span class="s">&quot;RecoveryActions&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;RoundRobin</span> <span class="na">name=</span><span class="s">&quot;RecoveryActions&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Sequence</span> <span class="na">name=</span><span class="s">&quot;ClearingActions&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/Sequence&gt;</span>
           <span class="nt">&lt;Spin</span> <span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span><span class="nt">/&gt;</span>
           <span class="nt">&lt;Wait</span> <span class="na">wait_duration=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/SequenceStar&gt;</span>
+          <span class="nt">&lt;BackUp</span> <span class="na">backup_dist=</span><span class="s">&quot;0.15&quot;</span> <span class="na">backup_speed=</span><span class="s">&quot;0.025&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/RoundRobin&gt;</span>
       <span class="nt">&lt;/ReactiveFallback&gt;</span>
     <span class="nt">&lt;/RecoveryNode&gt;</span>
   <span class="nt">&lt;/BehaviorTree&gt;</span>

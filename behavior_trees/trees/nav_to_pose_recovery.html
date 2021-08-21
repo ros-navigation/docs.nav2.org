@@ -51,7 +51,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Navigate Through Poses" href="nav_through_poses_recovery.html" />
-    <link rel="prev" title="Behavior Tree XMLs" href="../index.html" />
+    <link rel="prev" title="Detailed Behavior Tree Walkthrough" href="../overview/detailed_behavior_tree_walkthrough.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -574,7 +574,24 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Behavior Tree XMLs</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Nav2 Behavior Trees</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview/nav2_specific_nodes.html">Introduction To Nav2 Specific Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#action-nodes">Action Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#condition-nodes">Condition Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#decorator-nodes">Decorator Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#control-pipelinesequence">Control: PipelineSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#control-recovery">Control: Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#control-roundrobin">Control: RoundRobin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#navigate-to-pose-with-replanning-and-recovery">Navigate To Pose With Replanning and Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#navigation-subtree">Navigation Subtree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#recovery-subtree">Recovery Subtree</a></li>
+</ul>
+</li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Navigate To Pose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nav_through_poses_recovery.html">Navigate Through Poses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="follow_point.html">Follow Dynamic Point</a></li>
@@ -738,7 +755,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../index.html">Behavior Tree XMLs</a> &raquo;</li>
+          <li><a href="../index.html">Nav2 Behavior Trees</a> &raquo;</li>
         
       <li>Navigate To Pose</li>
     
@@ -759,7 +776,7 @@
             
   <div class="section" id="navigate-to-pose">
 <span id="behavior-tree-nav-to-pose"></span><h1>Navigate To Pose<a class="headerlink" href="#navigate-to-pose" title="Permalink to this headline">¶</a></h1>
-<p>This behavior tree implements a significantly more mature version of the behavior tree on <a class="reference internal" href="../index.html#behavior-trees"><span class="std std-ref">Behavior Tree XMLs</span></a>.
+<p>This behavior tree implements a significantly more mature version of the behavior tree on <a class="reference internal" href="../index.html#behavior-trees"><span class="std std-ref">Nav2 Behavior Trees</span></a>.
 It navigates from a starting point to a single point goal in freespace.
 It contains both use of custom recoveries in specific sub-contexts as well as a global recovery subtree for system-level failures.
 It also provides the opportunity for users to retry tasks multiple times before returning a failed state.</p>
@@ -767,7 +784,7 @@ It also provides the opportunity for users to retry tasks multiple times before 
 By convention we name these by the style of algorithms that they are (e.g. not <code class="docutils literal notranslate"><span class="pre">DWB</span></code> but rather <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>) such that a behavior tree or application developer need not worry about the technical specifics. They just want to use a path following controller.</p>
 <p>In this behavior tree, we attempt to retry the entire navigation task 6 times before returning to the caller that the task has failed.
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.</p>
-<p>In nominal execution, this will replan the path at every second and pass that path onto the controller, similar to the behavior tree in <a class="reference internal" href="../index.html#behavior-trees"><span class="std std-ref">Behavior Tree XMLs</span></a>.
+<p>In nominal execution, this will replan the path at every second and pass that path onto the controller, similar to the behavior tree in <a class="reference internal" href="../index.html#behavior-trees"><span class="std std-ref">Nav2 Behavior Trees</span></a>.
 However, this time, if the planner fails, it will trigger contextually aware recoveries in its subtree, clearing the global costmap.
 Additional recoveries can be added here for additional context-specific recoveries, such as trying another algorithm.</p>
 <p>Similarly, the controller has similar logic. If it fails, it also attempts a costmap clearing of the local costmap impacting the controller.

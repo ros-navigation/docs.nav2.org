@@ -574,7 +574,24 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Behavior Tree XMLs</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Nav2 Behavior Trees</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview/nav2_specific_nodes.html">Introduction To Nav2 Specific Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#action-nodes">Action Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#condition-nodes">Condition Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#decorator-nodes">Decorator Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#control-pipelinesequence">Control: PipelineSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#control-recovery">Control: Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#control-roundrobin">Control: RoundRobin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#navigate-to-pose-with-replanning-and-recovery">Navigate To Pose With Replanning and Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#navigation-subtree">Navigation Subtree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#recovery-subtree">Recovery Subtree</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="nav_to_pose_recovery.html">Navigate To Pose</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Navigate Through Poses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="follow_point.html">Follow Dynamic Point</a></li>
@@ -738,7 +755,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../index.html">Behavior Tree XMLs</a> &raquo;</li>
+          <li><a href="../index.html">Nav2 Behavior Trees</a> &raquo;</li>
         
       <li>Navigate Through Poses</li>
     
@@ -766,7 +783,7 @@ It also provides the opportunity for users to retry tasks multiple times before 
 By convention we name these by the style of algorithms that they are (e.g. not <code class="docutils literal notranslate"><span class="pre">DWB</span></code> but rather <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>) such that a behavior tree or application developer need not worry about the technical specifics. They just want to use a path following controller.</p>
 <p>In this behavior tree, we attempt to retry the entire navigation task 6 times before returning to the caller that the task has failed.
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.</p>
-<p>In nominal execution, this will replan the path at every 3 seconds and pass that path onto the controller, similar to the behavior tree in <a class="reference internal" href="../index.html#behavior-trees"><span class="std std-ref">Behavior Tree XMLs</span></a>.
+<p>In nominal execution, this will replan the path at every 3 seconds and pass that path onto the controller, similar to the behavior tree in <a class="reference internal" href="../index.html#behavior-trees"><span class="std std-ref">Nav2 Behavior Trees</span></a>.
 The planner though is now <code class="docutils literal notranslate"><span class="pre">ComputePathThroughPoses</span></code> taking a vector, <code class="docutils literal notranslate"><span class="pre">goals</span></code>, rather than a single pose <code class="docutils literal notranslate"><span class="pre">goal</span></code> to plan to.
 The <code class="docutils literal notranslate"><span class="pre">RemovePassedGoals</span></code> node is used to cull out <code class="docutils literal notranslate"><span class="pre">goals</span></code> that the robot has passed on its path.
 In this case, it is set to remove a pose from the poses when the robot is within <code class="docutils literal notranslate"><span class="pre">0.5</span></code> of the goal and it is the next goal in the list.
