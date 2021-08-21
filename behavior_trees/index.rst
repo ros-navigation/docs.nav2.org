@@ -1,11 +1,13 @@
 .. _behavior_trees:
 
-Behavior Tree XMLs
+Nav2 Behavior Trees
 ##################
 
 .. toctree::
    :maxdepth: 1
 
+   overview/nav2_specific_nodes.rst
+   overview/detailed_behavior_tree_walkthrough.rst
    trees/nav_to_pose_recovery.rst
    trees/nav_through_poses_recovery.rst
    trees/follow_point.rst
