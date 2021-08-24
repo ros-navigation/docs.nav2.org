@@ -23,6 +23,8 @@ Common Nav2 Dependencies Build Failures
 
 * Search `GitHub Issues <https://github.com/ros-planning/navigation2/issues>`_
 
+* Make sure you're using the correct branch for your distribution. There is no cross support from branch for ``DistroA`` in ``DistroB``. The main development branch uses the rolling distribution.
+
 Still can't solve it? Let us know about your issue. `Open a ticket <https://github.com/ros-planning/navigation2/issues/new>`_.
 
 Reporting Issue
