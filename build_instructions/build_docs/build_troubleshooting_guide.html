@@ -117,19 +117,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Build and Install</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#install">Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#build">Build</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#build-nav2-for-released-distribution">Build Nav2 For Released Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#for-released-distributions">For Released Distributions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#install-ros">Install ROS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#build-nav2">Build Nav2</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#quickstart-build-main">Quickstart Build Main</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../index.html#steps">Steps</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../index.html#options">Options</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#manually-build-main">Manually Build Main</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#for-main-branch-development">For Main Branch Development</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#build-ros-2-main">Build ROS 2 Main</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../index.html#build-nav2-dependencies">Build Nav2 Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#build-nav2-main">Build Nav2 Main</a></li>
 </ul>
 </li>
@@ -788,6 +782,7 @@
 <li>If you see a bunch of errors on startup about <code class="docutils literal notranslate"><span class="pre">map</span></code> or <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame not existing, remember to activate drivers (or gazebo for simulation) and set an initial pose in <code class="docutils literal notranslate"><span class="pre">map</span></code> frame. Costmap2D will block activation until a full TF tree is available.</li>
 <li>Make sure you’ve activated the lifecycle nodes if you’re not seeing transforms or servers running.</li>
 <li>Search <a class="reference external" href="https://github.com/ros-planning/navigation2/issues">GitHub Issues</a></li>
+<li>Make sure you’re using the correct branch for your distribution. There is no cross support from branch for <code class="docutils literal notranslate"><span class="pre">DistroA</span></code> in <code class="docutils literal notranslate"><span class="pre">DistroB</span></code>. The main development branch uses the rolling distribution.</li>
 </ul>
 <p>Still can’t solve it? Let us know about your issue. <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/new">Open a ticket</a>.</p>
 </div>
