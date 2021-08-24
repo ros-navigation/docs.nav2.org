@@ -24,8 +24,8 @@ Building for a specific released distribution (e.g. ``foxy``, ``galactic``), bui
 
 .. rst-class:: content-collapse
 
-Build Nav2 For Released Distribution
-====================================
+For Released Distributions
+==========================
 
 Install ROS
 -----------
@@ -56,8 +56,8 @@ Note: You need to change ``--rosdistro`` to the selected ROS 2 distribution name
 .. rst-class:: content-collapse
 
 
-Manually Main Branch on Rolling
-===============================
+For Main Branch Development
+===========================
 
 Build ROS 2 Main
 ----------------
@@ -70,7 +70,7 @@ Build Nav2 Main
 Now that ROS 2 ``rolling`` is installed, we have to install our dependencies and build Nav2 itself. 
 We'll create a new workspace, ``nav2_ws`` and clone the Nav2 project into it.
 Afterwards, we'll use ``rosdep`` to automatically find and install our dependencies that were not included in the core ROS 2 install itself (``behaviortree.CPP``, ``ompl``, etc).
-If you would like to use a custom version of any of these dependencies, simply overlay them in your ``nav2_ws`` rather than the binary installed versions for development.
+If you would like to use a custom version of any of these dependencies, simply overlay them in your ``nav2_ws`` and it will use those rather than the binary installed versions.
 
 .. code:: bash
 
