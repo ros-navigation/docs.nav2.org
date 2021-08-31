@@ -142,6 +142,6 @@ SmacPlanner2D and Theta*: fix goal orientation being ignored
 `This PR <https://github.com/ros-planning/navigation2/pull/2488>`_ fixes `the  issue <https://github.com/ros-planning/navigation2/issues/2482>`_ of the goal pose orientation being ignored (the end path pose orientation was always set to 0).
 
 SmacPlanner2D, NavFn and Theta*: fix small path corner cases
-********************************************************
+************************************************************
 
 `This PR <https://github.com/ros-planning/navigation2/pull/2488>`_ ensures the planners are not failing when the distance between the start and the goal is small (i.e. when they are on the same costmap cell), and in that case the output path is constructed with a single pose.
