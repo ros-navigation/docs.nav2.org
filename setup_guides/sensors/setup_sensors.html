@@ -26,7 +26,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="General Tutorials" href="../../tutorials/index.html" />
+    <link rel="next" title="Setting Up the Robot’s Footprint" href="../footprint/setup_footprint.html" />
     <link rel="prev" title="Setting Up Odometry" href="../odom/setup_odom.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
@@ -171,10 +171,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#mapping-and-localization">Mapping and Localization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap-2d">Costmap 2D</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#configuring-nav2-costmap-2d">Configuring nav2_costmap_2d</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Build, Run and Verification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Build, Run and Verification</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#footprint-introduction">Footprint Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#configuring-the-robot-s-footprint">Configuring the Robot’s Footprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#build-run-and-verification">Build, Run and Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#visualizing-footprint-in-rviz">Visualizing Footprint in RViz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
 </ul>
@@ -676,7 +684,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="setting-up-sensors">
-<h1>Setting Up Sensors<a class="headerlink" href="#setting-up-sensors" title="Permalink to this headline">¶</a></h1>
+<span id="setup-sensors"></span><h1>Setting Up Sensors<a class="headerlink" href="#setting-up-sensors" title="Permalink to this headline">¶</a></h1>
 <p>In this guide, we will discuss the importance of the sensors in navigating a robot safely and how to set up the sensors with Nav2. In the first half of this tutorial, we will take a brief look at commonly used sensors and common sensor messages in Nav2. Next, we will add a basic sensor setup on our previously built simulated robot, <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. Lastly, we will then verify the simulated sensor messages of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> by visualizing them in RViz.</p>
 <p>Once sensors have been set up on a robot, their readings can be used in mapping, localization, and perception tasks. In the second half of this guide, we will first discuss how mapping and localization use the sensor data. Then, we will also take a look at one of Nav2’s packages, <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code>, which generates costmaps that will eventually be used in Nav2 path planning. We will set up basic configuration parameters for this package so it properly takes in sensor information from <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. Lastly, we visualize a generated costmaps in RViz to verify its received data.</p>
 <div class="section" id="sensor-introduction">
@@ -1064,7 +1072,7 @@ ros2 launch sam_bot_description display.launch.py
 <p>The costmap implementation consists of multiple layers, each of which has a certain function that contributes to a cell’s overall cost. The package consists of the following layers, but are plugin-based to allow customization and new layers to be used as well: static layer, inflation layer, range layer, obstacle layer, and voxel layer. The static layer represents the map section of the costmap, obtained from the messages published to the <code class="docutils literal notranslate"><span class="pre">/map</span></code> topic like those produced by SLAM.  The obstacle layer includes the objects detected by sensors that publish either or both the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> and <code class="docutils literal notranslate"><span class="pre">PointCloud2</span></code> messages. The voxel layer is similar to the obstacle layer such that it can use either or both the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> and <code class="docutils literal notranslate"><span class="pre">PointCloud2</span></code> sensor information but handles 3D data instead. The range layer allows for the inclusion of information provided by sonar and infrared sensors. Lastly, the inflation layer represents the added cost values around lethal obstacles such that our robot avoids navigating into obstacles due to the robot’s geometry. In the next subsection of this tutorial, we will have some discussion about the basic configuration of the different layers in <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code>.</p>
 <p>The layers are integrated into the costmap through a plugin interface and then inflated using a user-specified <a class="reference external" href="http://wiki.ros.org/costmap_2d/hydro/inflation">inflation radius</a>, if the inflation layer is enabled. For a deeper discussion on costmap concepts, you can have a look at the <a class="reference external" href="http://wiki.ros.org/costmap_2d">ROS1 costmap_2D documentation</a>. Note that the <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> package is mostly a straightforward ROS2 port of the ROS1 navigation stack version with minor changes required for ROS2 support and some new layer plugins.</p>
 <div class="section" id="configuring-nav2-costmap-2d">
-<h3>Configuring nav2_costmap_2d<a class="headerlink" href="#configuring-nav2-costmap-2d" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>Configuring nav2_costmap_2d<a class="headerlink" href="#configuring-nav2-costmap-2d" title="Permalink to this headline">¶</a></h3>
 <p>In this subsection, we will show an example configuration of <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> such that it uses the information provided by the lidar sensor of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. We will show an example configuration that uses static layer, obstacle layer, voxel layer, and inflation layer. We set both the obstacle and voxel layer to use the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> messages published  to the <code class="docutils literal notranslate"><span class="pre">/scan</span></code> topic by the lidar sensor. We also set some of the basic parameters to define how the detected obstacles are reflected in the costmap. Note that this configuration is to be included in the configuration file of Nav2.</p>
 <div class="highlight-yaml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1235,8 +1243,8 @@ ros2 launch sam_bot_description display.launch.py
 <p class="last">For more information on <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> and the complete list of layer plugin parameters, see the <a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-costmaps.html">Costmap 2D Configuration Guide</a>.</p>
 </div>
 </div>
-<div class="section" id="id1">
-<h3>Build, Run and Verification<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Build, Run and Verification<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>We will first launch <code class="docutils literal notranslate"><span class="pre">display.launch.py</span></code> which launches the robot state publisher that provides the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">sensors</span></code> transformations in our URDF. It also launches Gazebo that acts as our physics simulator and also provides the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> from the differential drive plugin, which we added to <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in the previous guide, <a class="reference external" href="https://navigation.ros.org/setup_guides/odom/setup_odom.html#simulating-an-odometry-system-using-gazebo">Simulating an Odometry System Using Gazebo</a>. It also launches RViz which we can use to visualize the robot and sensor information.</p>
 <p>Then we will launch <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> to publish to <code class="docutils literal notranslate"><span class="pre">/map</span></code> topic and provide the <code class="docutils literal notranslate"><span class="pre">map</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code> transform. Recall that the <code class="docutils literal notranslate"><span class="pre">map</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code> transform is one of the primary requirements of the Nav2 system. The messages published on the <code class="docutils literal notranslate"><span class="pre">/map</span></code> topic will then be used by the static layer of the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code>.</p>
 <p>After we have properly setup our robot description, odometry sensors, and necessary transforms, we will finally launch the Nav2 system itself. For now, we will only be exploring the costmap generation system of Nav2. After launching Nav2, we will visualize the costmaps in RViz to confirm our output.</p>
