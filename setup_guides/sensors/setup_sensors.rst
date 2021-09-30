@@ -1,3 +1,5 @@
+.. _setup_sensors:
+
 Setting Up Sensors
 ##################
 
@@ -312,6 +314,8 @@ The costmap 2D package makes use of the sensor information to provide a represen
 The costmap implementation consists of multiple layers, each of which has a certain function that contributes to a cell's overall cost. The package consists of the following layers, but are plugin-based to allow customization and new layers to be used as well: static layer, inflation layer, range layer, obstacle layer, and voxel layer. The static layer represents the map section of the costmap, obtained from the messages published to the ``/map`` topic like those produced by SLAM.  The obstacle layer includes the objects detected by sensors that publish either or both the ``LaserScan`` and ``PointCloud2`` messages. The voxel layer is similar to the obstacle layer such that it can use either or both the ``LaserScan`` and ``PointCloud2`` sensor information but handles 3D data instead. The range layer allows for the inclusion of information provided by sonar and infrared sensors. Lastly, the inflation layer represents the added cost values around lethal obstacles such that our robot avoids navigating into obstacles due to the robot's geometry. In the next subsection of this tutorial, we will have some discussion about the basic configuration of the different layers in ``nav2_costmap_2d``. 
 
 The layers are integrated into the costmap through a plugin interface and then inflated using a user-specified `inflation radius <http://wiki.ros.org/costmap_2d/hydro/inflation>`_, if the inflation layer is enabled. For a deeper discussion on costmap concepts, you can have a look at the `ROS1 costmap_2D documentation <http://wiki.ros.org/costmap_2d>`_. Note that the ``nav2_costmap_2d`` package is mostly a straightforward ROS2 port of the ROS1 navigation stack version with minor changes required for ROS2 support and some new layer plugins.
+
+.. _configuring_nav2_costmap_2d:
 
 Configuring nav2_costmap_2d
 ===========================

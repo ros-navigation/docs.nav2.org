@@ -31,3 +31,4 @@ To guide you through the first-time setup of your robot, we will be tackling the
    urdf/setup_urdf.rst
    odom/setup_odom.rst
    sensors/setup_sensors.rst
+   footprint/setup_footprint.rst
