@@ -157,6 +157,18 @@ Parameters
   Description
     Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to :ref:`speed_filter` configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish `these messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_.
 
+:odom_topic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "odom"
+  ============== =============================
+
+  Description
+    Topic to get instantaneous measurement of speed from.
+
+
 Provided Plugins
 ****************
  The plugins listed below are inside the ``nav2_controller`` namespace.
@@ -195,6 +207,7 @@ Example
         min_y_velocity_threshold: 0.5
         min_theta_velocity_threshold: 0.001
         failure_tolerance: 0.3
+        odom_topic: "odom"
         progress_checker_plugin: "progress_checker"
         goal_checker_plugin: "goal_checker"
         controller_plugins: ["FollowPath"]

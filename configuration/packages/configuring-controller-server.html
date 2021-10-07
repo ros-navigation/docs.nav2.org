@@ -922,9 +922,30 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to <a class="reference internal" href="costmap-plugins/speed_filter.html#speed-filter"><span class="std std-ref">Speed Filter Parameters</span></a> configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">these messages</a>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">odom_topic:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>“odom”</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Topic to get instantaneous measurement of speed from.</p>
 </dd>
 </dl>
 </td>
@@ -980,6 +1001,7 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
     <span class="nt">min_y_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
     <span class="nt">min_theta_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
     <span class="nt">failure_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.3</span>
+    <span class="nt">odom_topic</span><span class="p">:</span> <span class="s">&quot;odom&quot;</span>
     <span class="nt">progress_checker_plugin</span><span class="p">:</span> <span class="s">&quot;progress_checker&quot;</span>
     <span class="nt">goal_checker_plugin</span><span class="p">:</span> <span class="s">&quot;goal_checker&quot;</span>
     <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
