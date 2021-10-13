@@ -15,6 +15,8 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |ubr1|         +         |tb2|          +           |tb3|        |
 +------------------------+------------------------+------------------------+
+|         |mpo_700|      +                        +                        |
++------------------------+------------------------+------------------------+
 
 .. |tri| image:: images/tri.png
     :width: 100%
@@ -69,6 +71,12 @@ Click on the images below for a link to the drivers or navigation configurations
     :height: 350px
     :alt: UBR-1
     :target: https://www.robotandchisel.com/2020/09/01/navigation2
+    
+.. |mpo_700| image:: images/mpo_700.png
+    :width: 100%
+    :align: middle
+    :alt: Neobotix MPO-700
+    :target: https://github.com/neobotix/neo_mpo_700-2
 
 .. |soon| image:: images/coming_soon.jpeg
     :width: 100%

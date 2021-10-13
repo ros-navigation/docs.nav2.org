@@ -252,7 +252,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    Maximum allowable angular acceleration (m/s/s) while rotating to heading, if ``use_rotate_to_heading`` is ``true``.
+    Maximum allowable angular acceleration (rad/s/s) while rotating to heading, if ``use_rotate_to_heading`` is ``true``.
 
 Example
 *******
