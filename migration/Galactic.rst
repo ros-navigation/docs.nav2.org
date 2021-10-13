@@ -149,3 +149,8 @@ SmacPlanner2D, NavFn and Theta*: fix small path corner cases
 ************************************************************
 
 `This PR <https://github.com/ros-planning/navigation2/pull/2488>`_ ensures the planners are not failing when the distance between the start and the goal is small (i.e. when they are on the same costmap cell), and in that case the output path is constructed with a single pose.
+
+Change and fix behevior of dynamic parameter change detection
+*************************************************************
+
+`This <https://github.com/ros-planning/navigation2/pull/2576>`_ and `this PR <https://github.com/ros-planning/navigation2/pull/2585>`_ modify the method used to catch the changes of dynamic parameters. The motivation was to fix the issue that ``void on_parameter_event_callback(const rcl_interfaces::msg::ParameterEvent::SharedPtr event)`` was called for every parameter change of every node leading to unwanted parameter changes if 2 different nodes had the same parameter name.
