@@ -615,6 +615,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-parameter-use-final-approach-orientation-for-the-3-2d-planners">New parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> for the 3 2D planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner2d-and-theta-fix-goal-orientation-being-ignored">SmacPlanner2D and Theta*: fix goal orientation being ignored</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">SmacPlanner2D, NavFn and Theta*: fix small path corner cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-and-fix-behevior-of-dynamic-parameter-change-detection">Change and fix behevior of dynamic parameter change detection</a></li>
 </ul>
 </li>
 </ul>
@@ -824,6 +825,10 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <div class="section" id="smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">
 <h2>SmacPlanner2D, NavFn and Theta*: fix small path corner cases<a class="headerlink" href="#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2488">This PR</a> ensures the planners are not failing when the distance between the start and the goal is small (i.e. when they are on the same costmap cell), and in that case the output path is constructed with a single pose.</p>
+</div>
+<div class="section" id="change-and-fix-behevior-of-dynamic-parameter-change-detection">
+<h2>Change and fix behevior of dynamic parameter change detection<a class="headerlink" href="#change-and-fix-behevior-of-dynamic-parameter-change-detection" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2576">This</a> and <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2585">this PR</a> modify the method used to catch the changes of dynamic parameters. The motivation was to fix the issue that <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">on_parameter_event_callback(const</span> <span class="pre">rcl_interfaces::msg::ParameterEvent::SharedPtr</span> <span class="pre">event)</span></code> was called for every parameter change of every node leading to unwanted parameter changes if 2 different nodes had the same parameter name.</p>
 </div>
 </div>
 
