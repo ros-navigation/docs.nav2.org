@@ -23,6 +23,17 @@ Input Ports
   Description
     	Spin distance (radians).
 
+:time_allowance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 10.0
+  ====== =======
+
+  Description
+      Time to envoke recovery for, if exceeds considers it a stuck condition or failure case (seconds).
+
 :server_name:
 
   ====== =======

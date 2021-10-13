@@ -611,6 +611,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Galactic.html#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Galactic.html#extending-the-btservicenode-to-process-service-results">Extending the BtServiceNode to process Service-Results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Galactic.html#spawning-the-robot-in-gazebo">Spawning the robot in Gazebo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Galactic.html#recovery-behavior-timeout">Recovery Behavior Timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Galactic.html#new-parameter-use-final-approach-orientation-for-the-3-2d-planners">New parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> for the 3 2D planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Galactic.html#smacplanner2d-and-theta-fix-goal-orientation-being-ignored">SmacPlanner2D and Theta*: fix goal orientation being ignored</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Galactic.html#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">SmacPlanner2D, NavFn and Theta*: fix small path corner cases</a></li>
@@ -716,7 +717,28 @@ This action is used in nav2 Behavior Trees as a recovery behavior.</p>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name">time_allowance:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>10.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Time to envoke recovery for, if exceeds considers it a stuck condition or failure case (seconds).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -737,7 +759,7 @@ This action is used in nav2 Behavior Trees as a recovery behavior.</p>
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />

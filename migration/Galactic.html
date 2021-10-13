@@ -611,6 +611,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extending-the-btservicenode-to-process-service-results">Extending the BtServiceNode to process Service-Results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spawning-the-robot-in-gazebo">Spawning the robot in Gazebo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovery-behavior-timeout">Recovery Behavior Timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-parameter-use-final-approach-orientation-for-the-3-2d-planners">New parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> for the 3 2D planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner2d-and-theta-fix-goal-orientation-being-ignored">SmacPlanner2D and Theta*: fix goal orientation being ignored</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">SmacPlanner2D, NavFn and Theta*: fix small path corner cases</a></li>
@@ -804,6 +805,10 @@ Note that</p>
 <li>spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument <code class="docutils literal notranslate"><span class="pre">&lt;remapping&gt;/tf:=tf&lt;/remapping&gt;</span></code>  <code class="docutils literal notranslate"><span class="pre">&lt;remapping&gt;/tf_static:=tf_static&lt;/remapping&gt;</span></code> under ros2 tag in each plugin which publishs transforms in the SDF file. It is essential to differentiate the tf’s of the different robot.</li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="recovery-behavior-timeout">
+<h2>Recovery Behavior Timeout<a class="headerlink" href="#recovery-behavior-timeout" title="Permalink to this headline">¶</a></h2>
+<p>Recoveries in Nav2, spin and backup, now have <code class="docutils literal notranslate"><span class="pre">time_allowance</span></code> ports in their BT nodes and request fields in their actions to specify a timeout. This helps ensure that the robot can exit a backup or spin primitive behavior in case it gets stuck or otherwise is unable to backup the full distance over a reasonable block of time.</p>
 </div>
 <div class="section" id="new-parameter-use-final-approach-orientation-for-the-3-2d-planners">
 <h2>New parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> for the 3 2D planners<a class="headerlink" href="#new-parameter-use-final-approach-orientation-for-the-3-2d-planners" title="Permalink to this headline">¶</a></h2>
