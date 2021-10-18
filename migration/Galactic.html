@@ -617,6 +617,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">SmacPlanner2D, NavFn and Theta*: fix small path corner cases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#change-and-fix-behevior-of-dynamic-parameter-change-detection">Change and fix behevior of dynamic parameter change detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap2dros-parameters-are-now-dynamic">Costmap2DROS parameters are now dynamic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
 </ul>
 </li>
 </ul>
@@ -834,6 +835,10 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <div class="section" id="costmap2dros-parameters-are-now-dynamic">
 <h2>Costmap2DROS parameters are now dynamic<a class="headerlink" href="#costmap2dros-parameters-are-now-dynamic" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2592">This PR</a> makes most of the Costmap2DROS parameters dynamic</p>
+</div>
+<div class="section" id="bt-action-nodes-exception-changes">
+<h2>BT Action Nodes Exception Changes<a class="headerlink" href="#bt-action-nodes-exception-changes" title="Permalink to this headline">¶</a></h2>
+<p>When BT action nodes throw exceptions due to networking or action server failures, they now return a status code of <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> to fail that particular action in the behavior tree to react to. This is in contrast to prior where the exceptions thrown from networking were sent to the root tree which would count as a task-level failure that the tree could not react to.</p>
 </div>
 </div>
 
