@@ -158,3 +158,8 @@ Change and fix behevior of dynamic parameter change detection
 Costmap2DROS parameters are now dynamic
 ***************************************
 `This PR <https://github.com/ros-planning/navigation2/pull/2592>`_ makes most of the Costmap2DROS parameters dynamic
+
+BT Action Nodes Exception Changes
+*********************************
+
+When BT action nodes throw exceptions due to networking or action server failures, they now return a status code of ``FAILURE`` to fail that particular action in the behavior tree to react to. This is in contrast to prior where the exceptions thrown from networking were sent to the root tree which would count as a task-level failure that the tree could not react to.  
