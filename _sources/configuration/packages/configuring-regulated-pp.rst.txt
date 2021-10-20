@@ -30,28 +30,6 @@ Regulated Pure Pursuit Parameters
   Description
     The desired maximum linear velocity (m/s) to use.
 
-:max_linear_accel:
-
-  ============== ===================================
-  Type           Default                                               
-  -------------- -----------------------------------
-  double         2.5            
-  ============== ===================================
-
-  Description
-    Maximum acceleration for linear velocity (m/s/s)
-
-:max_linear_decel:
-
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  double         2.5
-  ============== =============================
-
-  Description
-    Maximum deceleration for linear velocity (m/s/s)
-
 :lookahead_dist:
 
   ============== =============================
@@ -281,8 +259,6 @@ Example
       FollowPath:
         plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
         desired_linear_vel: 0.5
-        max_linear_accel: 2.5
-        max_linear_decel: 2.5
         lookahead_dist: 0.6
         min_lookahead_dist: 0.3
         max_lookahead_dist: 0.9

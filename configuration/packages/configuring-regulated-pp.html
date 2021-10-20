@@ -724,50 +724,6 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">max_linear_accel:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="29%" />
-<col width="71%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>double</td>
-<td>2.5</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Maximum acceleration for linear velocity (m/s/s)</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">max_linear_decel:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="33%" />
-<col width="67%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>double</td>
-<td>2.5</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Maximum deceleration for linear velocity (m/s/s)</p>
-</dd>
-</dl>
-</td>
-</tr>
 <tr class="field-even field"><th class="field-name">lookahead_dist:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
@@ -1192,8 +1148,6 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
     <span class="nt">FollowPath</span><span class="p">:</span>
       <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController&quot;</span>
       <span class="nt">desired_linear_vel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
-      <span class="nt">max_linear_accel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
-      <span class="nt">max_linear_decel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
       <span class="nt">lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.6</span>
       <span class="nt">min_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.3</span>
       <span class="nt">max_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.9</span>
