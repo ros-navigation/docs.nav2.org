@@ -163,3 +163,9 @@ BT Action Nodes Exception Changes
 *********************************
 
 When BT action nodes throw exceptions due to networking or action server failures, they now return a status code of ``FAILURE`` to fail that particular action in the behavior tree to react to. This is in contrast to prior where the exceptions thrown from networking were sent to the root tree which would count as a task-level failure that the tree could not react to.  
+
+Removed Kinematic Limiting in RPP
+*********************************
+
+The parameters ``max_linear_accel`` and ``max_linear_decel`` were removed along with the kinematic limiting in the controller causing instabilities. Instead, use a velocity smoother available in the ROS ecosystem if you would like similar behavior.
+
