@@ -32,3 +32,4 @@ To guide you through the first-time setup of your robot, we will be tackling the
    odom/setup_odom.rst
    sensors/setup_sensors.rst
    footprint/setup_footprint.rst
+   algorithm/select_algorithm.rst
