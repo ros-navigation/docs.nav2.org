@@ -3,7 +3,7 @@
 Setting Up Navigation Plugins
 #############################
 
-In this part of the guide, we discuss how your robot can utilize different planner and controller algorithms to complete navigation tasks. We will discuss some of the available algorithm plugins you can use based on your robot type and environment. Take note that this guide only sets up a few prerequisites that we will need for the full navigation stack. 
+In this part of the guide, we discuss how your robot can utilize different planner and controller algorithms to complete navigation tasks. We will discuss some of the available algorithm plugins you can use based on your robot type and environment. 
 
 Planner and Controller Servers
 ******************************
