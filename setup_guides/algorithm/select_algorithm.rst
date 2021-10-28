@@ -7,7 +7,7 @@ In this part of the guide, we discuss how your robot can utilize different plann
 
 Planner and Controller Servers
 ******************************
-Navigation algorithms are implemented in Nav2 through the use of plugins running on ROS action servers - the planner, controller and recovery servers. For this section, we discuss the planner and controller servers, which are the heart of the navigation stack. These servers may implement one or more algorithm plugins each with its own configuration tailored for a specific action or robot state. We will talk about how our robot can select between these different plugins and adjust its behavior in a future guide. 
+Navigation algorithms are implemented in Nav2 through the use of plugins running on ROS action servers - the planner, controller and recovery servers (among others). For this section, we discuss the planner and controller servers, which are the heart of the navigation stack. These servers may implement one or more algorithm plugins each with its own configuration tailored for a specific action or robot state. This guide will highlight the different algorithms based on the type of robot and environment the robot is deployed in. This guide will not cover recoveries, smoothers, etc as those are dependent on application and not hardware/environment to offer generalized advice.
 
 The planner server is responsible for implementing algorithms that compute the robot's path. For example, one plugin can be configured to compute a simple shortest path between two relatively near locations while another plugin computes for a path to locations that cover the entire robot environment. 
 
