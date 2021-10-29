@@ -7,7 +7,7 @@ Source code on Github_.
 
 .. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
 
-The Smoother Server implements the server for handling smooth path requests and hosting a vector of plugins implementing various C++ recoveries.
+The Smoother Server implements the server for handling smooth path requests and hosting a vector of plugins implementing various C++ smoothers.
 The server allows multiple smoothers to share resources such as costmaps and TF buffers to lower incremental costs for new behaviors.
 
 Smoother Server Parameters
