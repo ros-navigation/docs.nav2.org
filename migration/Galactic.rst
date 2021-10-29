@@ -169,3 +169,7 @@ Removed Kinematic Limiting in RPP
 
 The parameters ``max_linear_accel`` and ``max_linear_decel`` were removed along with the kinematic limiting in the controller causing instabilities. Instead, use a velocity smoother available in the ROS ecosystem if you would like similar behavior.
 
+Added Smoother Server
+*********************
+
+A new task server was added which loads smoother plugins and executes them to improve quality of an existing planned path. Smoothing action can be called from a behavior tree using SmoothPath action node.

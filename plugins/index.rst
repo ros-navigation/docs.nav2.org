@@ -130,6 +130,15 @@ Planners
 .. _SmacPlanner2D: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 .. _ThetaStarPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
 
+Smoothers
+========
+
++---------------------------+---------------------------------------+------------------------------+---------------------+
+| Plugin Name               |         Creator                       |       Description            | Drivetrain support  |
++===========================+=======================================+==============================+=====================+
+|                           |                                       |                              |                     |
++---------------------------+---------------------------------------+------------------------------+---------------------+
+
 Recoveries
 ==========
 
@@ -237,6 +246,8 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Compute Path to Pose Action`_             | Michael Jeronimo    | Calls Nav2 planner server                |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Smooth Path Action`_                      | Matej Vargovcik     | Calls Nav2 smoother server               |
++--------------------------------------------+---------------------+------------------------------------------+
 | `Follow Path Action`_                      | Michael Jeronimo    | Calls Nav2 controller server             |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Navigate to Pose Action`_                 | Michael Jeronimo    | BT Node for other                        |
@@ -281,6 +292,7 @@ Behavior Tree Nodes
 .. _Clear Costmap Except Region Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
 .. _Clear Costmap Around Robot Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
 .. _Compute Path to Pose Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp
+.. _Smooth Path Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/smooth_path_action.cpp
 .. _Follow Path Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/follow_path_action.cpp
 .. _Navigate to Pose Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp
 .. _Reinitalize Global Localization Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp
