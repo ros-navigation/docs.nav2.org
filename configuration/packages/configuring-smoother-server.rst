@@ -18,7 +18,7 @@ Smoother Server Parameters
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  string         "local_costmap/costmap_raw"   
+  string         "global_costmap/costmap_raw"   
   ============== ===========================
 
   Description
@@ -29,7 +29,7 @@ Smoother Server Parameters
   ============== ===================================
   Type           Default                                               
   -------------- -----------------------------------
-  string         "local_costmap/published_footprint"            
+  string         "global_costmap/published_footprint"            
   ============== ===================================
 
   Description
@@ -51,7 +51,7 @@ Smoother Server Parameters
   ============== =============================
   Type           Default                                               
   -------------- -----------------------------
-  string         "odom" 
+  string         "map" 
   ============== =============================
 
   Description
