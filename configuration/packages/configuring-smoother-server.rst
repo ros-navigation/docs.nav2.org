@@ -109,9 +109,9 @@ Example
 
     smoother_server:
       ros__parameters:
-        costmap_topic: local_costmap/costmap_raw
-        footprint_topic: local_costmap/published_footprint
-        global_frame: odom
+        costmap_topic: global_costmap/costmap_raw
+        footprint_topic: global_costmap/published_footprint
+        global_frame: map
         robot_base_frame: base_link
         transform_timeout: 0.1
         smoother_plugins: ["SmoothPath"]
