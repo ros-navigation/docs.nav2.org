@@ -229,8 +229,10 @@ Example
         robot_base_frame: base_link
         transform_tolerance: 0.1
         enable_groot_monitoring: True
-        groot_zmq_publisher_port: 1666
-        groot_zmq_server_port: 1667
+        pose_groot_publisher_port: 1666
+        pose_groot_server_port: 1667
+        poses_groot_publisher_port: 1668
+        poses_groot_server_port: 1669
         default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml
         default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml
         goal_blackboard_id: goal
