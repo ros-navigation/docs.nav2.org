@@ -171,3 +171,8 @@ BT Navigator Groot Multiple Navigators
 
 There is some thought into the future regarding complete deprecation of live BT monitoring using Groot due to this quirk and the almost-certain infux of tickets on the topic. Groot will however always be supported for visualizing behavior tree XML files and modifications, simply not visualizing the BT execution live during robot navigation. 
 
+Removed Kinematic Limiting in RPP
+*********************************
+
+The parameters ``max_linear_accel`` and ``max_linear_decel`` were removed along with the kinematic limiting in the controller causing instabilities. Instead, use a velocity smoother available in the ROS ecosystem if you would like similar behavior.
+
