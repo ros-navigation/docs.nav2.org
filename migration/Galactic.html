@@ -626,7 +626,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner2d-and-theta-fix-goal-orientation-being-ignored">SmacPlanner2D and Theta*: fix goal orientation being ignored</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">SmacPlanner2D, NavFn and Theta*: fix small path corner cases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#change-and-fix-behevior-of-dynamic-parameter-change-detection">Change and fix behevior of dynamic parameter change detection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#costmap2dros-parameters-are-now-dynamic">Costmap2DROS parameters are now dynamic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-parameters">Dynamic Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
@@ -844,9 +844,13 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <h2>Change and fix behevior of dynamic parameter change detection<a class="headerlink" href="#change-and-fix-behevior-of-dynamic-parameter-change-detection" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2576">This</a> and <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2585">this PR</a> modify the method used to catch the changes of dynamic parameters. The motivation was to fix the issue that <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">on_parameter_event_callback(const</span> <span class="pre">rcl_interfaces::msg::ParameterEvent::SharedPtr</span> <span class="pre">event)</span></code> was called for every parameter change of every node leading to unwanted parameter changes if 2 different nodes had the same parameter name.</p>
 </div>
-<div class="section" id="costmap2dros-parameters-are-now-dynamic">
-<h2>Costmap2DROS parameters are now dynamic<a class="headerlink" href="#costmap2dros-parameters-are-now-dynamic" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2592">This PR</a> makes most of the Costmap2DROS parameters dynamic</p>
+<div class="section" id="dynamic-parameters">
+<h2>Dynamic Parameters<a class="headerlink" href="#dynamic-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Newly added dynamic parameters to:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2592">This PR</a> makes most of the Costmap2DROS parameters dynamic</li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2607">This PR</a> makes most of the Regulated Pure Pursuit parameters dynamic</li>
+</ul>
 </div>
 <div class="section" id="bt-action-nodes-exception-changes">
 <h2>BT Action Nodes Exception Changes<a class="headerlink" href="#bt-action-nodes-exception-changes" title="Permalink to this headline">¶</a></h2>

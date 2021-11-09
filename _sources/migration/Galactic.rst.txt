@@ -155,9 +155,13 @@ Change and fix behevior of dynamic parameter change detection
 
 `This <https://github.com/ros-planning/navigation2/pull/2576>`_ and `this PR <https://github.com/ros-planning/navigation2/pull/2585>`_ modify the method used to catch the changes of dynamic parameters. The motivation was to fix the issue that ``void on_parameter_event_callback(const rcl_interfaces::msg::ParameterEvent::SharedPtr event)`` was called for every parameter change of every node leading to unwanted parameter changes if 2 different nodes had the same parameter name.
 
-Costmap2DROS parameters are now dynamic
-***************************************
-`This PR <https://github.com/ros-planning/navigation2/pull/2592>`_ makes most of the Costmap2DROS parameters dynamic
+Dynamic Parameters
+******************
+
+Newly added dynamic parameters to: 
+
+-  `This PR <https://github.com/ros-planning/navigation2/pull/2592>`_ makes most of the Costmap2DROS parameters dynamic
+-  `This PR <https://github.com/ros-planning/navigation2/pull/2607>`_ makes most of the Regulated Pure Pursuit parameters dynamic
 
 BT Action Nodes Exception Changes
 *********************************
@@ -175,4 +179,3 @@ Removed Kinematic Limiting in RPP
 *********************************
 
 The parameters ``max_linear_accel`` and ``max_linear_decel`` were removed along with the kinematic limiting in the controller causing instabilities. Instead, use a velocity smoother available in the ROS ecosystem if you would like similar behavior.
-
