@@ -315,11 +315,11 @@ Parameters
   ============== =============================
   Type           Default                                               
   -------------- -----------------------------
-  string         "differential"         
+  string         "nav2_amcl::DifferentialMotionModel"         
   ============== =============================
 
   Description
-    Name of robot model type. Options are differential and omnidirectional.
+    The fully-qualified type of the plugin class. Options are nav2_amcl::DifferentialMotionModel and nav2_amcl::OmniMotionModel.
 
 :save_pose_rate:
 
@@ -496,7 +496,7 @@ Example
         recovery_alpha_fast: 0.0
         recovery_alpha_slow: 0.0
         resample_interval: 1
-        robot_model_type: "differential"
+        robot_model_type: "nav2_amcl::DifferentialMotionModel"
         save_pose_rate: 0.5
         sigma_hit: 0.2
         tf_broadcast: true
@@ -510,3 +510,18 @@ Example
         always_reset_initial_pose: false
         scan_topic: scan
         map_topic: map
+  
+  
+Example XML file
+****************
+  
+.. code-block:: xml
+
+  <library path="motion_models">
+    <class type="nav2_amcl::DifferentialMotionModel" base_class_type="nav2_amcl::MotionModel">
+      <description>This is a differential motion model plugin.</description>
+    </class>
+    <class type="nav2_amcl::OmniMotionModel" base_class_type="nav2_amcl::MotionModel">
+      <description>This is a omni motion model plugin.</description>
+    </class>
+  </library>
