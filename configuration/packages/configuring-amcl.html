@@ -630,6 +630,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
 </ul>
 </li>
 </ul>
@@ -1291,21 +1292,21 @@
 <tr class="field-even field"><th class="field-name" colspan="2">robot_model_type:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col width="28%" />
+<col width="72%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>string</td>
-<td>“differential”</td>
+<td>“nav2_amcl::DifferentialMotionModel”</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">Name of robot model type. Options are differential and omnidirectional.</p>
+<dd><p class="first last">The fully-qualified type of the plugin class. Options are nav2_amcl::DifferentialMotionModel and nav2_amcl::OmniMotionModel.</p>
 </dd>
 </dl>
 </td>
@@ -1618,7 +1619,7 @@
     <span class="nt">recovery_alpha_fast</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
     <span class="nt">recovery_alpha_slow</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
     <span class="nt">resample_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="nt">robot_model_type</span><span class="p">:</span> <span class="s">&quot;differential&quot;</span>
+    <span class="nt">robot_model_type</span><span class="p">:</span> <span class="s">&quot;nav2_amcl::DifferentialMotionModel&quot;</span>
     <span class="nt">save_pose_rate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
     <span class="nt">sigma_hit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
     <span class="nt">tf_broadcast</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
