@@ -510,18 +510,4 @@ Example
         always_reset_initial_pose: false
         scan_topic: scan
         map_topic: map
-  
-  
-Example XML file
-****************
-  
-.. code-block:: xml
-
-  <library path="motion_models">
-    <class type="nav2_amcl::DifferentialMotionModel" base_class_type="nav2_amcl::MotionModel">
-      <description>This is a differential motion model plugin.</description>
-    </class>
-    <class type="nav2_amcl::OmniMotionModel" base_class_type="nav2_amcl::MotionModel">
-      <description>This is a omni motion model plugin.</description>
-    </class>
-  </library>
+        
