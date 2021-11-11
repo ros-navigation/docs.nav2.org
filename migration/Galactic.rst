@@ -183,4 +183,4 @@ The parameters ``max_linear_accel`` and ``max_linear_decel`` were removed along 
 Refactored AMCL motion models as plugins
 ****************************************
 
-`This PR <https://github.com/ros-planning/navigation2/pull/2642>`_ creates plugins for the different motion models currently used in AMCL.This functionality enables users to use any custom motion model by creating it as a plugin and changing the robot_model_type parameter to the name of the plugin in nav2_params.yaml file.This helps to use custom motion models without the need to modify the AMCL source code.
+`This PR <https://github.com/ros-planning/navigation2/pull/2642>`_ creates plugins for the different motion models currently used in AMCL. This functionality enables users to use any custom motion model by creating it as a plugin and changing the robot_model_type parameter to the name of the plugin in nav2_params.yaml file. This helps to use custom motion models without the need to modify the AMCL source code.
