@@ -162,6 +162,7 @@ Newly added dynamic parameters to:
 
 -  `This PR <https://github.com/ros-planning/navigation2/pull/2592>`_ makes most of the Costmap2DROS parameters dynamic
 -  `This PR <https://github.com/ros-planning/navigation2/pull/2607>`_ makes most of the Regulated Pure Pursuit parameters dynamic
+-  `This PR <https://github.com/ros-planning/navigation2/pull/2665>`_ makes most of the Theta * Planner parameters dynamic
 
 BT Action Nodes Exception Changes
 *********************************
