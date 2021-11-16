@@ -111,12 +111,23 @@ Planners
 |                           |                                       | multi-resolution query.      |                     |
 |                           |                                       | Cars, car-like, and          |                     |
 |                           |                                       | ackermann vehicles.          |                     |
+|                           |                                       | Kinematically feasible.      |                     |
 +---------------------------+---------------------------------------+------------------------------+---------------------+
 |  `SmacPlanner2D`_         | Steve Macenski                        | A 2D A* implementation       | Differential,       |
 |                           |                                       | Using either 4 or 8          | Omnidirectional,    |
 |                           |                                       | connected neighborhoods      | Legged              |
 |                           |                                       | with smoother and            |                     |
 |                           |                                       | multi-resolution query       |                     |
++---------------------------+---------------------------------------+------------------------------+---------------------+
+|  `SmacPlannerLattice`_    | Steve Macenski                        | An implementation of State   | Differential,       |
+|                           |                                       | Lattice Planner using        | Omnidirectional,    |
+|                           |                                       | pre-generated minimum control| Ackermann,          |
+|                           |                                       | sets for kinematically       | Legged,             |
+|                           |                                       | feasible planning with any   | Arbitrary / Custom  |
+|                           |                                       | type of vehicle imaginable.  |                     |
+|                           |                                       | Includes generator script for|                     |
+|                           |                                       | Ackermann, diff, omni, and   |                     |
+|                           |                                       | legged robots.               |                     |
 +---------------------------+---------------------------------------+------------------------------+---------------------+
 |`ThetaStarPlanner`_        | Anshumaan Singh                       | An implementaion of Theta*   | Differential,       |
 |                           |                                       | using either 4 or 8          | Omnidirectional     |
@@ -129,6 +140,7 @@ Planners
 .. _SmacPlannerHybrid: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 .. _SmacPlanner2D: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 .. _ThetaStarPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
+.. _SmacPlannerLattice: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 
 Recoveries
 ==========
