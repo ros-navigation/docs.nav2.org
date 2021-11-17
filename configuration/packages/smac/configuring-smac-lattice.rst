@@ -114,7 +114,7 @@ Parameters
   ====== =======
 
   Description
-    The filepath to the state lattice minimum control set graph
+    The filepath to the state lattice minimum control set graph, this will default to a 16 bin, 0.4m turning radius control set located in ``test/`` for basic testing and evaluation.
 
 :``<name>``.lookup_table_size:
 
