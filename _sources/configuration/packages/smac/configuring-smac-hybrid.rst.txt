@@ -79,17 +79,6 @@ Parameters
   Description
     Planner will attempt to complete an analytic expansions in a frequency proportional to this value and the minimum heuristic.
 
-:``<name>``.analytic_expansion_max_length:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  double 3.0            
-  ====== =======
-
-  Description
-    If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.
-
 :``<name>``.motion_model_for_search:
 
   ====== =======
@@ -252,7 +241,6 @@ Example
         motion_model_for_search: "DUBIN"    # Hybrid-A* Dubin, Redds-Shepp
         angle_quantization_bins: 72         # Number of angle bins for search
         analytic_expansion_ratio: 3.5       # The ratio to attempt analytic expansions during search for final approach.
-        analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes: The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
         minimum_turning_radius: 0.40        # minimum turning radius in m of path / vehicle
         reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
         change_penalty: 0.2                 # Penalty to apply if motion is changing directions (L to R), must be >= 0

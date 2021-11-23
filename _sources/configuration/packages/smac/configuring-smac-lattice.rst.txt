@@ -61,17 +61,6 @@ Parameters
   Description
     SE2 node will attempt to complete an analytic expansion with frequency proportional to this value and the minimum heuristic.
 
-:``<name>``.analytic_expansion_max_length:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  double 3.0            
-  ====== =======
-
-  Description
-    If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.
-
 :``<name>``.reverse_penalty:
 
   ====== =======
@@ -220,7 +209,6 @@ Example
         max_iterations: 1000000             # Maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
         max_planning_time: 5.0              # Max time in s for planner to plan, smooth
         analytic_expansion_ratio: 3.5       # The ratio to attempt analytic expansions during search for final approach.
-        analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes: The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
         reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
         change_penalty: 0.05                # Penalty to apply if motion is changing directions (L to R), must be >= 0
         non_straight_penalty: 1.05          # Penalty to apply if motion is non-straight, must be => 1
