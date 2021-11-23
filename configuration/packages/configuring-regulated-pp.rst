@@ -116,7 +116,8 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress, when ``use_approach_linear_velocity_scaling`` is ``true``.
+    The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress.
+    
 
 :max_allowed_time_to_collision:
 
