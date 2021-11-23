@@ -733,6 +733,7 @@
 </ul>
 </dd>
 </dl>
+<p>Additional improvements were made to include a <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_length</span></code> parameter such that analytic expansions are limited in their potential length. If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.</p>
 </div>
 <div class="section" id="simple-python-commander">
 <h2>Simple (Python) Commander<a class="headerlink" href="#simple-python-commander" title="Permalink to this headline">¶</a></h2>
