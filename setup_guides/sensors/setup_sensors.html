@@ -974,7 +974,7 @@
 <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;camera_depth_frame&quot;</span><span class="nt">/&gt;</span>
 
 <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;camera_depth_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;${-pi/2} 0 ${-pi}&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;${-pi/2} 0 ${-pi/2}&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;camera_link&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;camera_depth_frame&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/joint&gt;</span>
@@ -999,7 +999,7 @@
       <span class="nt">&lt;baseline&gt;</span>0.2<span class="nt">&lt;/baseline&gt;</span>
       <span class="nt">&lt;alwaysOn&gt;</span>true<span class="nt">&lt;/alwaysOn&gt;</span>
       <span class="nt">&lt;updateRate&gt;</span>0.0<span class="nt">&lt;/updateRate&gt;</span>
-      <span class="nt">&lt;frameName&gt;</span>camera_depth_frame<span class="nt">&lt;/frameName&gt;</span>
+      <span class="nt">&lt;frame_name&gt;</span>camera_depth_frame<span class="nt">&lt;/frame_name&gt;</span>
       <span class="nt">&lt;pointCloudCutoff&gt;</span>0.5<span class="nt">&lt;/pointCloudCutoff&gt;</span>
       <span class="nt">&lt;pointCloudCutoffMax&gt;</span>3.0<span class="nt">&lt;/pointCloudCutoffMax&gt;</span>
       <span class="nt">&lt;distortionK1&gt;</span>0<span class="nt">&lt;/distortionK1&gt;</span>
@@ -1017,7 +1017,7 @@
 <span class="nt">&lt;/gazebo&gt;</span>
 </pre></div>
 </td></tr></table></div>
-<p>Similar to the lidar sensor, we create <code class="docutils literal notranslate"><span class="pre">camera_link</span></code> which will be referenced by the <code class="docutils literal notranslate"><span class="pre">gazebo_ros_camera</span></code> plugin as the sensor attachment location. We also create a <code class="docutils literal notranslate"><span class="pre">camera_depth_frame</span></code> that is attached to the <code class="docutils literal notranslate"><span class="pre">camera_link</span></code> and will be set as the <code class="docutils literal notranslate"><span class="pre">&lt;frameName&gt;</span></code> of the depth camera plugin.  We also configure the plugin such that it will publish <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Image</span></code> and <code class="docutils literal notranslate"><span class="pre">sensor_msgs/PointCloud2</span></code> messages to <code class="docutils literal notranslate"><span class="pre">/depth_camera/image_raw</span></code> and  <code class="docutils literal notranslate"><span class="pre">/depth_camera/points</span></code> topics respectively. Lastly, we also set up other basic configuration properties for our depth camera.</p>
+<p>Similar to the lidar sensor, we create <code class="docutils literal notranslate"><span class="pre">camera_link</span></code> which will be referenced by the <code class="docutils literal notranslate"><span class="pre">gazebo_ros_camera</span></code> plugin as the sensor attachment location. We also create a <code class="docutils literal notranslate"><span class="pre">camera_depth_frame</span></code> that is attached to the <code class="docutils literal notranslate"><span class="pre">camera_link</span></code> and will be set as the <code class="docutils literal notranslate"><span class="pre">&lt;frame_name&gt;</span></code> of the depth camera plugin.  We also configure the plugin such that it will publish <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Image</span></code> and <code class="docutils literal notranslate"><span class="pre">sensor_msgs/PointCloud2</span></code> messages to <code class="docutils literal notranslate"><span class="pre">/depth_camera/image_raw</span></code> and  <code class="docutils literal notranslate"><span class="pre">/depth_camera/points</span></code> topics respectively. Lastly, we also set up other basic configuration properties for our depth camera.</p>
 </div>
 <div class="section" id="launch-and-build-files">
 <h3>Launch and Build Files<a class="headerlink" href="#launch-and-build-files" title="Permalink to this headline">¶</a></h3>
@@ -1061,7 +1061,7 @@ ros2 launch sam_bot_description display.launch.py
 <p>After adding the <code class="docutils literal notranslate"><span class="pre">/depth_camera/image_raw</span></code> topic in RViz, set the <code class="docutils literal notranslate"><span class="pre">Reliability</span> <span class="pre">Policy</span></code> in RViz to <code class="docutils literal notranslate"><span class="pre">Best</span> <span class="pre">Effort</span></code>. Then you should see the cube in the image window at the lower-left side of the RViz window, as shown below.</p>
 <img alt="../../_images/demo_image_rviz.png" class="align-center" src="../../_images/demo_image_rviz.png" />
 <p>You should also see the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/PointCloud2</span></code>, as shown below.</p>
-<img alt="../../_images/demo_pointcloud2_rviz.png" class="align-center" src="../../_images/demo_pointcloud2_rviz.png" />
+<img alt="../../_images/pointcloud2_data.png" class="align-center" src="../../_images/pointcloud2_data.png" />
 </div>
 </div>
 <div class="section" id="mapping-and-localization">
