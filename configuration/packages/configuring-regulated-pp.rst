@@ -118,17 +118,6 @@ Regulated Pure Pursuit Parameters
   Description
     The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress, when ``use_approach_linear_velocity_scaling`` is ``true``.
 
-:use_approach_linear_velocity_scaling:
-
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  bool           true            
-  ============== =============================
-
-  Description
-    Whether to scale the linear velocity down on approach to the goal for a smooth stop.
-
 :max_allowed_time_to_collision:
 
   ============== =============================
@@ -267,7 +256,6 @@ Example
         transform_tolerance: 0.1
         use_velocity_scaled_lookahead_dist: false
         min_approach_linear_velocity: 0.05
-        use_approach_linear_velocity_scaling: true
         max_allowed_time_to_collision: 1.0
         use_regulated_linear_velocity_scaling: true
         use_cost_regulated_linear_velocity_scaling: false
