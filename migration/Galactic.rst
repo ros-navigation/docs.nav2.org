@@ -181,6 +181,11 @@ Removed Kinematic Limiting in RPP
 
 The parameters ``max_linear_accel`` and ``max_linear_decel`` were removed along with the kinematic limiting in the controller causing instabilities. Instead, use a velocity smoother available in the ROS ecosystem if you would like similar behavior.
 
+Removed Use Approach Velocity Scaling Param in RPP
+**************************************************
+
+The parameter ``use_approach_linear_velocity_scaling`` is removed in favor of always on to help in smooth transitions to the goal. `This PR <https://github.com/ros-planning/navigation2/pull/2701>`_ implements.
+
 Refactored AMCL motion models as plugins
 ****************************************
 
