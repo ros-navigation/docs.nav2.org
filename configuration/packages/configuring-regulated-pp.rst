@@ -116,7 +116,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress.
+    The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be ``> 0.01``. 
     
 
 :max_allowed_time_to_collision:
@@ -172,7 +172,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature.
+    The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be ``> 0.1``. 
 
 :use_rotate_to_heading:
 
