@@ -635,6 +635,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Galactic.html#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Galactic.html#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Galactic.html#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Galactic.html#removed-use-approach-velocity-scaling-param-in-rpp">Removed Use Approach Velocity Scaling Param in RPP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Galactic.html#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Galactic.html#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
 </ul>
@@ -838,8 +839,30 @@
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.motion_model_for_search:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.analytic_expansion_max_length:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>3.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.motion_model_for_search:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -860,8 +883,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.angle_quantization_bins:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.angle_quantization_bins:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="36%" />
 <col width="64%" />
@@ -882,8 +905,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.minimum_turning_radius:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.minimum_turning_radius:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -904,8 +927,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.reverse_penalty:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.reverse_penalty:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -926,8 +949,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.change_penalty:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.change_penalty:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -948,8 +971,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.non_straight_penalty:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.non_straight_penalty:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -970,8 +993,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cost_penalty:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cost_penalty:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -992,8 +1015,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.lookup_table_size:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.lookup_table_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1014,8 +1037,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cache_obstacle_heuristic:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cache_obstacle_heuristic:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1036,8 +1059,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.max_iterations:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.max_iterations:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1058,8 +1081,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_smooth:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_smooth:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1080,8 +1103,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_data:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_data:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1102,8 +1125,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.tolerance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.tolerance:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1144,6 +1167,7 @@
       <span class="nt">motion_model_for_search</span><span class="p">:</span> <span class="s">&quot;DUBIN&quot;</span>    <span class="c1"># Hybrid-A* Dubin, Redds-Shepp</span>
       <span class="nt">angle_quantization_bins</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">72</span>         <span class="c1"># Number of angle bins for search</span>
       <span class="nt">analytic_expansion_ratio</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.5</span>       <span class="c1"># The ratio to attempt analytic expansions during search for final approach.</span>
+      <span class="nt">analytic_expansion_max_length</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>  <span class="c1"># For Hybrid/Lattice nodes: The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting</span>
       <span class="nt">minimum_turning_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.40</span>        <span class="c1"># minimum turning radius in m of path / vehicle</span>
       <span class="nt">reverse_penalty</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>                <span class="c1"># Penalty to apply if motion is reversing, must be =&gt; 1</span>
       <span class="nt">change_penalty</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>                 <span class="c1"># Penalty to apply if motion is changing directions (L to R), must be &gt;= 0</span>

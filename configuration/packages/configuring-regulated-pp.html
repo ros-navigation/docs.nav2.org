@@ -635,6 +635,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#removed-use-approach-velocity-scaling-param-in-rpp">Removed Use Approach Velocity Scaling Param in RPP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
 </ul>
@@ -901,35 +902,13 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress, when <code class="docutils literal notranslate"><span class="pre">use_approach_linear_velocity_scaling</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<dd><p class="first last">The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress.</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">use_approach_linear_velocity_scaling:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2">max_allowed_time_to_collision:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="33%" />
-<col width="67%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to scale the linear velocity down on approach to the goal for a smooth stop.</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">max_allowed_time_to_collision:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -950,8 +929,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">use_regulated_linear_velocity_scaling:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2">use_regulated_linear_velocity_scaling:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -972,8 +951,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">use_cost_regulated_linear_velocity_scaling:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2">use_cost_regulated_linear_velocity_scaling:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -994,8 +973,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">regulated_linear_scaling_min_radius:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2">regulated_linear_scaling_min_radius:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -1016,8 +995,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">regulated_linear_scaling_min_speed:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2">regulated_linear_scaling_min_speed:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -1038,8 +1017,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">use_rotate_to_heading:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2">use_rotate_to_heading:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -1061,8 +1040,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">allow_reversing:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2">allow_reversing:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -1084,8 +1063,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">rotate_to_heading_min_angle:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2">rotate_to_heading_min_angle:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -1106,8 +1085,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">max_angular_accel:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2">max_angular_accel:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
 <col width="67%" />
@@ -1164,7 +1143,6 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
       <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
       <span class="nt">use_velocity_scaled_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
       <span class="nt">min_approach_linear_velocity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
-      <span class="nt">use_approach_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
       <span class="nt">max_allowed_time_to_collision</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
       <span class="nt">use_regulated_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
       <span class="nt">use_cost_regulated_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>

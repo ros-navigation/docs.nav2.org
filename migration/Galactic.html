@@ -635,6 +635,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed-use-approach-velocity-scaling-param-in-rpp">Removed Use Approach Velocity Scaling Param in RPP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
 </ul>
@@ -732,6 +733,7 @@
 </ul>
 </dd>
 </dl>
+<p>Additional improvements were made to include a <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_length</span></code> parameter such that analytic expansions are limited in their potential length. If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.</p>
 </div>
 <div class="section" id="simple-python-commander">
 <h2>Simple (Python) Commander<a class="headerlink" href="#simple-python-commander" title="Permalink to this headline">¶</a></h2>
@@ -861,6 +863,10 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <div class="section" id="removed-kinematic-limiting-in-rpp">
 <h2>Removed Kinematic Limiting in RPP<a class="headerlink" href="#removed-kinematic-limiting-in-rpp" title="Permalink to this headline">¶</a></h2>
 <p>The parameters <code class="docutils literal notranslate"><span class="pre">max_linear_accel</span></code> and <code class="docutils literal notranslate"><span class="pre">max_linear_decel</span></code> were removed along with the kinematic limiting in the controller causing instabilities. Instead, use a velocity smoother available in the ROS ecosystem if you would like similar behavior.</p>
+</div>
+<div class="section" id="removed-use-approach-velocity-scaling-param-in-rpp">
+<h2>Removed Use Approach Velocity Scaling Param in RPP<a class="headerlink" href="#removed-use-approach-velocity-scaling-param-in-rpp" title="Permalink to this headline">¶</a></h2>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">use_approach_linear_velocity_scaling</span></code> is removed in favor of always on to help in smooth transitions to the goal. <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2701">This PR</a> implements.</p>
 </div>
 <div class="section" id="refactored-amcl-motion-models-as-plugins">
 <h2>Refactored AMCL motion models as plugins<a class="headerlink" href="#refactored-amcl-motion-models-as-plugins" title="Permalink to this headline">¶</a></h2>
