@@ -13,6 +13,8 @@ Check this introduction_ to learn how behavior trees work and the difference bet
 
 Note: ``SingleTrigger`` BT Node is not listed below because it contains no parameters.
 
+Consider checking out the :ref:`groot_introduction` tutorial for using Groot to visualize and modify behavior trees.
+
 Action Plugins
 **************
 
