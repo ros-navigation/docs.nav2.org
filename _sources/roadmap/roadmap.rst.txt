@@ -11,11 +11,11 @@ For a full list of important completed changes in the project, see the Migration
 +--------------------------------+------------------------+
 |            Plugin Name         |         Size           |
 +================================+========================+
-| `Nav2 1 Node Per Server`_      | Medium                 |
+| `Nav2 1 Node Per Server`_      | Medium  (in progress)  |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Smac Lattice Planner`_        | Very Large             |
+| `Smac Lattice Planner`_        | Large (in progress)    |
 |                                |                        |
 |                                |                        |
 |                                |                        |
@@ -24,18 +24,18 @@ For a full list of important completed changes in the project, see the Migration
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Fix Min Range Bug`_           | Small                  |
+| `Fix Min Range Bug`_           | Small  (DONE)          |
 |                                |                        |
 +--------------------------------+------------------------+
-|   `Move Development            | Small                  |
+|   `Move Development            | Small (DONE)           |
 |   from Master to Rolling`_     |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| Push Test Coverage to 88\%     |  Medium                |
+| Push Test Coverage to 88\%     |  Medium (in progress)  |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Complete First Time Guide`_   |  Medium                |
+| `Complete First Time Guide`_   |  Medium (in progress)  |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
