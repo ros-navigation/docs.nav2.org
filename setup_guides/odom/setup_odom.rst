@@ -207,7 +207,7 @@ To include this plugin in our URDF, add the following lines after the ``</gazebo
       <right_joint>drivewhl_r_joint</right_joint>
 
       <!-- kinematics -->
-      <wheel_separation>0.025</wheel_separation>
+      <wheel_separation>0.4</wheel_separation>
       <wheel_diameter>0.2</wheel_diameter>
 
       <!-- limits -->	
