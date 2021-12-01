@@ -294,6 +294,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#adding-a-custom-node">Adding A Custom Node</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html">Using Rotation Shim Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#what-is-the-rotation-shim-controller">What is the Rotation Shim Controller?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#configuring-rotation-shim-controller">Configuring Rotation Shim Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#configuring-primary-controller">Configuring Primary Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_shim_controller.html#demo-execution">Demo Execution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin_tutorials/index.html">Plugin Tutorials</a><ul>
@@ -541,6 +549,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html">Rotation Shim Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#rotation-shim-controller-parameters">Rotation Shim Controller Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#example">Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../behavior_trees/index.html">Nav2 Behavior Trees</a><ul>
@@ -632,12 +645,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#simple-python-commander">Simple (Python) Commander</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extending-the-btservicenode-to-process-service-results">Extending the BtServiceNode to process Service-Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#including-new-rotation-shim-controller-plugin">Including new Rotation Shim Controller Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spawning-the-robot-in-gazebo">Spawning the robot in Gazebo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recovery-behavior-timeout">Recovery Behavior Timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-parameter-use-final-approach-orientation-for-the-3-2d-planners">New parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> for the 3 2D planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner2d-and-theta-fix-goal-orientation-being-ignored">SmacPlanner2D and Theta*: fix goal orientation being ignored</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">SmacPlanner2D, NavFn and Theta*: fix small path corner cases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#change-and-fix-behevior-of-dynamic-parameter-change-detection">Change and fix behevior of dynamic parameter change detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-and-fix-behavior-of-dynamic-parameter-change-detection">Change and fix behavior of dynamic parameter change detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dynamic-parameters">Dynamic Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
@@ -818,6 +832,16 @@ The added <code class="docutils literal notranslate"><span class="pre">on_comple
 <p>The returned <code class="docutils literal notranslate"><span class="pre">BT::NodeStatus</span></code> will set the current status of the BT-Node. Since the function has access to the results of the service, the returned node-status can depend on those service results, for example.
 The normal behavior of the <code class="docutils literal notranslate"><span class="pre">BtServiceNode</span></code> is not affected by introducing the <code class="docutils literal notranslate"><span class="pre">on_completion()</span></code> function, since the the default implementation still simply returns <code class="docutils literal notranslate"><span class="pre">BT::NodeStatus::SUCCESS</span></code>, if the service interaction completed successfully.</p>
 </div>
+<div class="section" id="including-new-rotation-shim-controller-plugin">
+<h2>Including new Rotation Shim Controller Plugin<a class="headerlink" href="#including-new-rotation-shim-controller-plugin" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2718">This PR</a> introduces the new <code class="docutils literal notranslate"><span class="pre">nav2_rotation_shim_controller</span></code>. This controller will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the primary controller to execute. If it is outside of the threshold, this controller will rotate the robot towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot is still going to be rotating, allowing the current plugin to take control for a smooth hand off into path tracking.</p>
+<p>The Rotation Shim Controller is suitable for:</p>
+<ul class="simple">
+<li>Robots that can rotate in place, such as differential and omnidirectional robots.</li>
+<li>Preference to rotate in place rather than ‘spiral out’ when starting to track a new path that is at a significantly different heading than the robot’s current heading.</li>
+<li>Using planners that are non-kinematically feasible, such as NavFn, Theta*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot’s actual starting heading, requiring no rotation).</li>
+</ul>
+</div>
 <div class="section" id="spawning-the-robot-in-gazebo">
 <h2>Spawning the robot in Gazebo<a class="headerlink" href="#spawning-the-robot-in-gazebo" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2473">This PR</a> deletes the pkg <code class="docutils literal notranslate"><span class="pre">nav2_gazebo_spawner</span></code> inside nav2_bringup directory. Instead of <code class="docutils literal notranslate"><span class="pre">nav2_gazebo_spawner</span></code> the Node <a class="reference external" href="https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py">spawn_entity.py</a> of <code class="docutils literal notranslate"><span class="pre">gazebo_ros</span></code> is recomended to spawn the robot in gazebo.
@@ -848,8 +872,8 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <h2>SmacPlanner2D, NavFn and Theta*: fix small path corner cases<a class="headerlink" href="#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2488">This PR</a> ensures the planners are not failing when the distance between the start and the goal is small (i.e. when they are on the same costmap cell), and in that case the output path is constructed with a single pose.</p>
 </div>
-<div class="section" id="change-and-fix-behevior-of-dynamic-parameter-change-detection">
-<h2>Change and fix behevior of dynamic parameter change detection<a class="headerlink" href="#change-and-fix-behevior-of-dynamic-parameter-change-detection" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="change-and-fix-behavior-of-dynamic-parameter-change-detection">
+<h2>Change and fix behavior of dynamic parameter change detection<a class="headerlink" href="#change-and-fix-behavior-of-dynamic-parameter-change-detection" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2576">This</a> and <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2585">this PR</a> modify the method used to catch the changes of dynamic parameters. The motivation was to fix the issue that <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">on_parameter_event_callback(const</span> <span class="pre">rcl_interfaces::msg::ParameterEvent::SharedPtr</span> <span class="pre">event)</span></code> was called for every parameter change of every node leading to unwanted parameter changes if 2 different nodes had the same parameter name.</p>
 </div>
 <div class="section" id="dynamic-parameters">
@@ -859,6 +883,7 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2592">This PR</a> makes most of the Costmap2DROS parameters dynamic</li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2607">This PR</a> makes most of the Regulated Pure Pursuit parameters dynamic</li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2665">This PR</a> makes most of the Theta * Planner parameters dynamic</li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2704">This PR</a> makes Waypoint Follower, Planner Server, and Controller Server’s params reconfigurable</li>
 </ul>
 </div>
 <div class="section" id="bt-action-nodes-exception-changes">
