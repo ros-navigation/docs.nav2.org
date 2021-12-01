@@ -120,6 +120,18 @@ The added ``on_completion()`` function will be called after the service interact
 The returned ``BT::NodeStatus`` will set the current status of the BT-Node. Since the function has access to the results of the service, the returned node-status can depend on those service results, for example.
 The normal behavior of the ``BtServiceNode`` is not affected by introducing the ``on_completion()`` function, since the the default implementation still simply returns ``BT::NodeStatus::SUCCESS``, if the service interaction completed successfully.
 
+Including new Rotation Shim Controller Plugin
+*********************************************
+
+`This PR <https://github.com/ros-planning/navigation2/pull/2718>`_ introduces the new ``nav2_rotation_shim_controller``. This controller will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the primary controller to execute. If it is outside of the threshold, this controller will rotate the robot towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot is still going to be rotating, allowing the current plugin to take control for a smooth hand off into path tracking. 
+
+
+The Rotation Shim Controller is suitable for:
+
+- Robots that can rotate in place, such as differential and omnidirectional robots.
+- Preference to rotate in place rather than 'spiral out' when starting to track a new path that is at a significantly different heading than the robot's current heading.
+- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot's actual starting heading, requiring no rotation). 
+
 Spawning the robot in Gazebo
 ****************************
 
@@ -155,7 +167,7 @@ SmacPlanner2D, NavFn and Theta*: fix small path corner cases
 
 `This PR <https://github.com/ros-planning/navigation2/pull/2488>`_ ensures the planners are not failing when the distance between the start and the goal is small (i.e. when they are on the same costmap cell), and in that case the output path is constructed with a single pose.
 
-Change and fix behevior of dynamic parameter change detection
+Change and fix behavior of dynamic parameter change detection
 *************************************************************
 
 `This <https://github.com/ros-planning/navigation2/pull/2576>`_ and `this PR <https://github.com/ros-planning/navigation2/pull/2585>`_ modify the method used to catch the changes of dynamic parameters. The motivation was to fix the issue that ``void on_parameter_event_callback(const rcl_interfaces::msg::ParameterEvent::SharedPtr event)`` was called for every parameter change of every node leading to unwanted parameter changes if 2 different nodes had the same parameter name.

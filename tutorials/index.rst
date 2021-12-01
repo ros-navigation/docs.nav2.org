@@ -17,3 +17,4 @@ Navigation2 Tutorials
    docs/navigation2_with_keepout_filter.rst
    docs/navigation2_with_speed_filter.rst
    docs/using_groot.rst
+   docs/using_shim_controller.rst

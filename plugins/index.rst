@@ -73,25 +73,30 @@ Costmap Filters
 Controllers
 ===========
 
-+--------------------------+--------------------+----------------------------------+-----------------------+
-|      Plugin Name         |       Creator      |       Description                | Drivetrain support    |
-+==========================+====================+==================================+=======================+
-|  `DWB Controller`_       | David Lu!!         | A highly configurable  DWA       | Differential,         |
-|                          |                    | implementation with plugin       | Omnidirectional,      |
-|                          |                    | interfaces                       | Legged                |
-+--------------------------+--------------------+----------------------------------+-----------------------+
-|  `TEB Controller`_       | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
-|                          |                    | for ackermann, differential, and | Omnidirectional,      |
-|                          |                    | holonomic robots.                | Differential          |
-+--------------------------+--------------------+----------------------------------+-----------------------+
-| `Regulated Pure Pursuit`_| Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
-|                          |                    | variation on the pure pursuit    | Differential          |
-|                          |                    | algorithm with adaptive features.|                       |
-+--------------------------+--------------------+----------------------------------+-----------------------+
++----------------------------+--------------------+----------------------------------+-----------------------+
+|      Plugin Name           |       Creator      |       Description                | Drivetrain support    |
++============================+====================+==================================+=======================+
+|  `DWB Controller`_         | David Lu!!         | A highly configurable  DWA       | Differential,         |
+|                            |                    | implementation with plugin       | Omnidirectional,      |
+|                            |                    | interfaces                       | Legged                |
++----------------------------+--------------------+----------------------------------+-----------------------+
+|  `TEB Controller`_         | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
+|                            |                    | for ackermann, differential, and | Omnidirectional,      |
+|                            |                    | holonomic robots.                | Differential          |
++----------------------------+--------------------+----------------------------------+-----------------------+
+| `Regulated Pure Pursuit`_  | Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
+|                            |                    | variation on the pure pursuit    | Differential          |
+|                            |                    | algorithm with adaptive features.|                       |
++----------------------------+--------------------+----------------------------------+-----------------------+
+| `Rotation Shim Controller`_| Steve Macenski     | A "shim" controller to rotate    | Differential, Omni,   |
+|                            |                    | to path heading before passing   | model rotate in place |
+|                            |                    | to main controller for  tracking.|                       |
++----------------------------+--------------------+----------------------------------+-----------------------+
 
 .. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
 .. _TEB Controller: https://github.com/rst-tu-dortmund/teb_local_planner
 .. _Regulated Pure Pursuit: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
+.. _Rotation Shim Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller
 
 Planners
 ========
