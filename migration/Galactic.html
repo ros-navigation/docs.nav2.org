@@ -720,6 +720,7 @@
 <li>Precomputing the Reedshepp and Dubin paths offline so at runtime its just a lookup table</li>
 <li>Replacing the wavefront heuristic with a new, and novel, heuristic dubbed the obstacle heuristic. This computes a Dijkstra’s path taking into account the 8 connected space, as well as weights for the cost at the positions to guide the heuristic into the center of aisle ways. It also downsamples the costmap such that it can reduce the number of expansions by 75% and have a very small error introduced into the heuristic by being off by at most a partial fraction of a single cell distance</li>
 <li>Improvements to the analytic expansion algorithm to remove the possibility of loops at the end of paths, whenever possible to remove</li>
+<li>Improving analytic expansions to provide maximum path length to prevent skirting close to obstacles</li>
 <li>2D A* travel cost and heuristic improvements to speed up planning times and also increase the path quality significantly</li>
 <li>Replaced smoother with a bespoke gradient descent implementation</li>
 <li>Abstract out common utilities of planners into a utils file</li>
@@ -729,6 +730,7 @@
 <li>Leveraging the symmetry in the dubin and reeds-sheep space to reduce cache size by 50% to increase the window size available for heuristic lookup.</li>
 <li>Precompute primitives at all orientation bins</li>
 <li>SmacPlanner2D parameters are now all reconfigurable</li>
+<li>Both Hybrid-A* and State Lattice planners are now fully admissible</li>
 </ul>
 </div></blockquote>
 <dl class="docutils">
@@ -741,6 +743,7 @@
 </dd>
 </dl>
 <p>Additional improvements were made to include a <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_length</span></code> parameter such that analytic expansions are limited in their potential length. If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.</p>
+<p>Further, the traversal cost and heuristic cost computations were updated <strong>requiring retuning of your penalty functions</strong> if you have a previously existing configuration. Defaults of the algorithm were also retuned appropriately to the change for similar our of the box behavior as before (to use as a reference).</p>
 </div>
 <div class="section" id="simple-python-commander">
 <h2>Simple (Python) Commander<a class="headerlink" href="#simple-python-commander" title="Permalink to this headline">¶</a></h2>
@@ -856,6 +859,7 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2592">This PR</a> makes most of the Costmap2DROS parameters dynamic</li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2607">This PR</a> makes most of the Regulated Pure Pursuit parameters dynamic</li>
 <li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2665">This PR</a> makes most of the Theta * Planner parameters dynamic</li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2704">This PR</a> makes Waypoint Follower, Planner Server, and Controller Server’s params reconfigurable</li>
 </ul>
 </div>
 <div class="section" id="bt-action-nodes-exception-changes">
