@@ -22,9 +22,9 @@ What is the Rotation Shim Controller?
 
 This was developed due to quirks in TEB and DWB, but applicable to any other controller plugin type that you'd like to have rotation in place behavior with. ``TEB``'s behavior tends to whip the robot around with small turns, or when the path is starting at a very different heading than current, in a somewhat surprising way due to the elastic band approach. ``DWB`` can be tuned to have any type of behavior, but typically to tune it to be an excellent path follower also makes it less optimally capable of smooth transitions to new paths at far away headings -- there are always trade offs. Giving both TEB and DWB a better starting point to start tracking a path makes tuning the controllers significantly easier and creates more intuitive results for on-lookers. 
 
-Note that it is not required to use this with **any** plugin. Many users are perfectly successful without using this controller, but in many situations, if a robot may rotate in place before beginning its path tracking task (or others), it is advantageous to do so. 
+Note that it is not required to use this with **any** plugin. Many users are perfectly successful without using this controller, but if a robot may rotate in place before beginning its path tracking task (or others), it can be advantageous to do so. 
 
-The ``nav2_rotation_shim_controller`` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the ``primary_controller`` to execute the task. If it is outside of the threshold, this controller will rotate the robot towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task. 
+The ``nav2_rotation_shim_controller`` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the ``primary_controller`` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task. 
 
 The ``RotationShimController`` is most suitable for:
 
@@ -65,7 +65,7 @@ As such, its configuration looks very similar to that of any other plugin. In th
           stateful: True
         FollowPath:
           plugin: "nav2_rotation_shim_controller::RotationShimController"
-          angular_dist_threshold: 0.7
+          angular_dist_threshold: 0.785
           forward_sampling_distance: 0.5
           rotate_to_heading_angular_vel: 1.8
           max_angular_accel: 3.2
@@ -95,7 +95,7 @@ There is one more remaining parameter of the ``RotationShimController`` not ment
         FollowPath:
           plugin: "nav2_rotation_shim_controller::RotationShimController"
           primary_controller: "dwb_core::DWBLocalPlanner"
-          angular_dist_threshold: 0.610865
+          angular_dist_threshold: 0.785
           forward_sampling_distance: 0.5
           rotate_to_heading_angular_vel: 1.8
           max_angular_accel: 3.2

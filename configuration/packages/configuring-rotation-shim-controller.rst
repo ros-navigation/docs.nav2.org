@@ -7,13 +7,13 @@ Source code on Github_.
 
 .. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller
 
-This controller will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the primary controller to execute. If it is outside of the threshold, this controller will rotate the robot towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot is still going to be rotating, allowing the current plugin to take control for a smooth hand off into path tracking. 
+The ``nav2_rotation_shim_controller`` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the ``primary_controller`` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task. 
 
-The Rotation Shim Controller is suitable for:
+The ``RotationShimController`` is most suitable for:
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
-- Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot's current heading - or when tuning your controller to track paths it has problems rotating to far-off heading errors.
-- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot's actual starting heading, requiring no rotation). 
+- Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot's current heading -- or when tuning your controller for its task makes tight rotations difficult.
+- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot's actual starting heading, requiring no rotation since their paths are guaranteed drivable by physical constraints). 
 
 See the package's ``README`` for more complete information.
 
@@ -102,7 +102,7 @@ Example
       FollowPath:
         plugin: "nav2_rotation_shim_controller::RotationShimController"
         primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-        angular_dist_threshold: 0.610865
+        angular_dist_threshold: 0.785
         forward_sampling_distance: 0.5
         rotate_to_heading_angular_vel: 1.8
         max_angular_accel: 3.2
