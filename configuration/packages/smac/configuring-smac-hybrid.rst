@@ -139,18 +139,18 @@ Parameters
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 0.2          
+  double 0.0          
   ====== =======
 
   Description
-    Heuristic penalty to apply to SE2 node if changing direction (e.g. left to right) in search.
+    Heuristic penalty to apply to SE2 node if changing direction (e.g. left to right) in search. Disabled by default after change to guarantee admissibility of the Hybrid-A* planner.
 
 :``<name>``.non_straight_penalty:
 
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 1.25         
+  double 1.20         
   ====== =======
 
   Description
@@ -255,8 +255,8 @@ Example
         analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes: The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
         minimum_turning_radius: 0.40        # minimum turning radius in m of path / vehicle
         reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
-        change_penalty: 0.2                 # Penalty to apply if motion is changing directions (L to R), must be >= 0
-        non_straight_penalty: 1.25          # Penalty to apply if motion is non-straight, must be => 1
+        change_penalty: 0.0                 # Penalty to apply if motion is changing directions (L to R), must be >= 0
+        non_straight_penalty: 1.2           # Penalty to apply if motion is non-straight, must be => 1
         cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
         cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.   

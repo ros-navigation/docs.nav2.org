@@ -19,6 +19,7 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A* implem
   - Precomputing the Reedshepp and Dubin paths offline so at runtime its just a lookup table
   - Replacing the wavefront heuristic with a new, and novel, heuristic dubbed the obstacle heuristic. This computes a Dijkstra's path taking into account the 8 connected space, as well as weights for the cost at the positions to guide the heuristic into the center of aisle ways. It also downsamples the costmap such that it can reduce the number of expansions by 75% and have a very small error introduced into the heuristic by being off by at most a partial fraction of a single cell distance
   - Improvements to the analytic expansion algorithm to remove the possibility of loops at the end of paths, whenever possible to remove
+  - Improving analytic expansions to provide maximum path length to prevent skirting close to obstacles
   - 2D A* travel cost and heuristic improvements to speed up planning times and also increase the path quality significantly
   - Replaced smoother with a bespoke gradient descent implementation
   - Abstract out common utilities of planners into a utils file
@@ -28,6 +29,7 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A* implem
   - Leveraging the symmetry in the dubin and reeds-sheep space to reduce cache size by 50% to increase the window size available for heuristic lookup.
   - Precompute primitives at all orientation bins
   - SmacPlanner2D parameters are now all reconfigurable
+  - Both Hybrid-A* and State Lattice planners are now fully admissible
 
 The tl;dr of these improvements is:
   - Plans are 2-3x as fast as they were before, well under 200ms for nearly all situations, making it as fast as NavFn and Global Planner (but now kinematically feasible). Typical planning times are sub-100ms without even making use of the caching or downsampling features.
@@ -35,6 +37,8 @@ The tl;dr of these improvements is:
   - Using caching or downsampler parameterizations, can easily achieve path planning with sub-50ms in nearly any sized space.
 
 Additional improvements were made to include a ``analytic_expansion_max_length`` parameter such that analytic expansions are limited in their potential length. If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.
+
+Further, the traversal cost and heuristic cost computations were updated **requiring retuning of your penalty functions** if you have a previously existing configuration. Defaults of the algorithm were also retuned appropriately to the change for similar our of the box behavior as before (to use as a reference).
 
 Simple (Python) Commander
 *************************
@@ -176,6 +180,8 @@ Newly added dynamic parameters to:
 -  `This PR <https://github.com/ros-planning/navigation2/pull/2592>`_ makes most of the Costmap2DROS parameters dynamic
 -  `This PR <https://github.com/ros-planning/navigation2/pull/2607>`_ makes most of the Regulated Pure Pursuit parameters dynamic
 -  `This PR <https://github.com/ros-planning/navigation2/pull/2665>`_ makes most of the Theta * Planner parameters dynamic
+-  `This PR <https://github.com/ros-planning/navigation2/pull/2704>`_ makes Waypoint Follower, Planner Server, and Controller Server's params reconfigurable
+
 
 BT Action Nodes Exception Changes
 *********************************
