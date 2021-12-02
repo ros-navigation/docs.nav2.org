@@ -64,4 +64,5 @@ If you are willing to chip in!
 - Controller selection
 - Planner selection
 - Costmap plugin selection
+- Ideas in https://github.com/ros-planning/navigation.ros.org/issues/204
 - ... anything you think would be insightful!
