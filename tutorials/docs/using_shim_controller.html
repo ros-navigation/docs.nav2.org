@@ -776,6 +776,7 @@
       <span class="nt">forward_sampling_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
       <span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.8</span>
       <span class="nt">max_angular_accel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
+      <span class="nt">simulate_ahead_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
 </pre></div>
 </div>
 <p>The Rotation Shim Controller is very simple and only has a couple of parameters to dictate the conditions it should be enacted.</p>
@@ -784,6 +785,7 @@
 <li><code class="docutils literal notranslate"><span class="pre">forward_sampling_distance</span></code>: The distance (in meters) away from the robot to select a point on the path to approximate the path’s starting heading at. This is analogous to a “lookahead” point.</li>
 <li><code class="docutils literal notranslate"><span class="pre">rotate_to_heading_angular_vel</span></code>: The angular velocity (in rad/s) to have the robot rotate to heading by, when the behavior is enacted.</li>
 <li><code class="docutils literal notranslate"><span class="pre">max_angular_accel</span></code>: The angular acceleration (in rad/s/s) to have the robot rotate to heading by, when the behavior is enacted.</li>
+<li><code class="docutils literal notranslate"><span class="pre">simulate_ahead_time</span></code>: The Time (s) to forward project the rotation command to check for collision</li>
 </ul>
 </div>
 <div class="section" id="configuring-primary-controller">
@@ -804,6 +806,7 @@
       <span class="nt">forward_sampling_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
       <span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.8</span>
       <span class="nt">max_angular_accel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
+      <span class="nt">simulate_ahead_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
 
       <span class="c1"># DWB parameters</span>
       <span class="l l-Scalar l-Scalar-Plain">...</span>

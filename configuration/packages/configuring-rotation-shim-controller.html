@@ -841,9 +841,31 @@
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Maximum angular acceleration for rotation to heading (rad/s/s)</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">simulate_ahead_time:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Time in seconds to forward simulate a rotation command to check for collisions. If a collision is found, forwards control back to the primary controller plugin.</p>
 </dd>
 </dl>
 </td>
@@ -880,6 +902,7 @@
       <span class="nt">forward_sampling_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
       <span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.8</span>
       <span class="nt">max_angular_accel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
+      <span class="nt">simulate_ahead_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
 
       <span class="c1"># Primary controller params can be placed here below</span>
       <span class="c1"># ...</span>
