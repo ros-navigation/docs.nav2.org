@@ -83,6 +83,17 @@ Rotation Shim Controller Parameters
   Description
     Maximum angular acceleration for rotation to heading (rad/s/s)
 
+:simulate_ahead_time:
+
+  ============== =============================
+  Type           Default                                               
+  -------------- -----------------------------
+  double         1.0
+  ============== =============================
+
+  Description
+    Time in seconds to forward simulate a rotation command to check for collisions. If a collision is found, forwards control back to the primary controller plugin.
+
 Example
 *******
 .. code-block:: yaml
@@ -114,6 +125,7 @@ Example
         forward_sampling_distance: 0.5
         rotate_to_heading_angular_vel: 1.8
         max_angular_accel: 3.2
+        simulate_ahead_time: 1.0
 
         # Primary controller params can be placed here below
         # ...
