@@ -1080,8 +1080,30 @@
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.max_iterations:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smooth_path:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">If true, does simple and fast smoothing post-processing to the path from search</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.max_iterations:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1102,8 +1124,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_smooth:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_smooth:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1124,8 +1146,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_data:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_data:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1146,8 +1168,8 @@
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.tolerance:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -1196,6 +1218,7 @@
       <span class="nt">cost_penalty</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>                   <span class="c1"># Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.</span>
       <span class="nt">lookup_table_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20.0</span>             <span class="c1"># Size of the dubin/reeds-sheep distance window to cache, in meters.</span>
       <span class="nt">cache_obstacle_heuristic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>     <span class="c1"># Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.</span>
+      <span class="nt">smooth_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>                   <span class="c1"># If true, does a simple and quick smoothing post-processing to the path</span>
 
       <span class="nt">smoother</span><span class="p">:</span>
         <span class="nt">max_iterations</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1000</span>
