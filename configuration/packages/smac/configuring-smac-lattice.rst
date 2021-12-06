@@ -160,6 +160,17 @@ Parameters
   Description
     If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
 
+:``<name>``.smooth_path:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   true      
+  ====== =======
+
+  Description
+    If true, does simple and fast smoothing post-processing to the path from search
+
 :``<name>``.smoother.max_iterations:
 
   ====== =======
@@ -229,6 +240,7 @@ Example
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
         cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
         allow_reverse_expansion: false      # If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
+        smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
         smoother:
           max_iterations: 1000
           w_smooth: 0.3
