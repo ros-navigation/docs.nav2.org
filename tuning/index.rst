@@ -108,6 +108,39 @@ Finally, the Rotation Shim Plugin helps assist plugins like TEB and DWB (among o
 .. note::
    These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the :ref:`writing_new_nav2controller_plugin` tutorial for more details. If you're willing to contribute this work back to the community, please file a ticket or contact a maintainer! They'd love to hear from you.
 
+Caching Obstacle Heuristic in Smac Planners
+===========================================
+
+Smac's Hybrid-A* and State Lattice Planners provide an option, ``cache_obstacle_heuristic``. This can be used to cache the heuristic to use between replannings to the same goal pose, which can increase the speed of the planner **significantly** (40-300% depending on many factors). The obstacle heuristic is used to steer the robot into the middle of spaces, respecting costs, and drives the kinematically feasible search down the corridors towards a valid solution. Think of it like a 2D cost-aware search to "prime" the planner about where it should go when it needs to expend more effort in the fully feasible search / SE2 collision checking.
+
+This is useful to speed up performance to achieve better replanning speeds. However, if you cache this heuristic, it will not be updated with the most current information in the costmap to steer search. During planning, the planner will still make use of the newest cost information for collision checking, *thusly this will not impact the safety of the path*. However, it may steer the search down newly blocked corridors or guide search towards areas that may have new dynamic obstacles in them, which can slow things down significantly if entire solution spaces are blocked.
+
+Therefore, it is the recommendation of the maintainers to enable this only when working in largely static (e.g. not many moving things or changes, not using live sensor updates in the global costmap, etc) environments when planning across large spaces to singular goals. Between goal changes to Nav2, this heuristic will be updated with the most current set of information, so it is not very helpful if you change goals very frequently. 
+
+Nav2 Launch Options
+===================
+
+Nav2's launch files are made to be very configurable. Obviously for any serious application, a user should use ``nav2_bringup`` as the basis of their navigation launch system, but should be moved to a specific repository for a users' work. A typical thing to do is to have a ``<robot_name>_nav`` configuration package containing the launch and parameter files.
+
+Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``. This is the main file used for simulating the robot and contains the following configurations:
+
+- ``slam`` : Whether or not to use AMCL or SLAM Toolbox for localization and/or mapping. Default ``false`` to AMCL.
+- ``map`` : The filepath to the map to use for navigation. Defaults to ``map.yaml`` in the package's ``maps/`` directory.
+- ``world`` : The filepath to the world file to use in simulation. Defaults to the ``worlds/`` directory in the package.
+- ``param_file`` : The main navigation configuration file. Defaults to ``nav2_params.yaml`` in the package's ``params/`` directory.
+- ``autostart`` : Whether to autostart the navigation system's lifecycle management system. Defaults to ``true`` to transition up the Nav2 stack on creation to the activated state, ready for use.
+- ``use_composition`` : Whether to launch each Nav2 server into individual processes or in a single composed node, to leverage savings in CPU and memory. Default ``true`` to use single process Nav2.
+- ``use_sim_time`` : Whether to set all the nodes to use simulation time, needed in simulation. Default ``true`` for simulation.
+- ``rviz_config_file`` : The filepath to the rviz configuration file to use. Defaults to the ``rviz/`` directory's file.
+- ``use_simulator`` : Whether or not to start the Gazebo simulator with the Nav2 stack. Defaults to ``true`` to launch Gazebo.
+- ``use_robot_state_pub`` : Whether or not to start the robot state publisher to publish the robot's URDF transformations to TF2. Defaults to ``true`` to publish the robot's TF2 transformations.
+- ``use_rviz`` : Whether or not to launch rviz for visualization. Defaults to ``true`` to show rviz.
+- ``headless`` : Whether or not to launch the Gazebo front-end alongside the background Gazebo simulation. Defaults to ``true`` to display the Gazebo window.
+- ``namespace`` : The namespace to launch robots into, if need be.
+- ``use_namespace`` : Whether or not to launch robots into this namespace. Default ``false`` and uses global namespace for single robot.
+- ``robot_name`` : The name of the robot to launch.
+- ``robot_sdf`` : The filepath to the robot's gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.
+- ``x_pose``, ``y_pose``, ``z_pose``, ``roll``, ``pitch``, ``yaw`` : Parameters to set the initial position of the robot in the simulation. 
 
 Other Pages We'd Love To Offer
 ==============================
@@ -117,7 +150,6 @@ TODO update maintainers list to include tuning guide updates
 If you are willing to chip in!
 
 - Kinematic parameters for behaviors, controllers, etc
-- Caching obstacle heuristic (Smac Hybrid-A*, State Lattice)
 
 - AMCL / weights
 - Costmap 2D (local size + speed, update rate, downsampling sensors, resolution, unknown space/inflate, obstacle/voxel params, etc)
