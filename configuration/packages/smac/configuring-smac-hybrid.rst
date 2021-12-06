@@ -189,6 +189,17 @@ Parameters
   Description
     Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
 
+:``<name>``.smooth_path:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   true      
+  ====== =======
+
+  Description
+    If true, does simple and fast smoothing post-processing to the path from search
+
 :``<name>``.smoother.max_iterations:
 
   ====== =======
@@ -260,6 +271,7 @@ Example
         cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
         cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.   
+        smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
 
         smoother:
           max_iterations: 1000
