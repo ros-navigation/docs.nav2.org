@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build and Install &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Tuning Guide &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -26,8 +26,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Build Troubleshooting Guide" href="build_docs/build_troubleshooting_guide.html" />
-    <link rel="prev" title="Getting Started" href="../getting_started/index.html" />
+    <link rel="next" title="Nav2 Behavior Trees" href="../behavior_trees/index.html" />
+    <link rel="prev" title="Rotation Shim Controller" href="../configuration/packages/configuring-rotation-shim-controller.html" />
 
 <link rel="stylesheet" href="../_static/tcs_theme.css" type="text/css" />
 
@@ -59,31 +59,31 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/index.html#navigating">Navigating</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Build and Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#build">Build</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#for-released-distributions">For Released Distributions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#install-ros">Install ROS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build-nav2">Build Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_instructions/index.html">Build and Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/index.html#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/index.html#build">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#for-released-distributions">For Released Distributions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#install-ros">Install ROS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-nav2">Build Nav2</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#for-main-branch-development">For Main Branch Development</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#build-ros-2-main">Build ROS 2 Main</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build-nav2-main">Build Nav2 Main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#for-main-branch-development">For Main Branch Development</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-ros-2-main">Build ROS 2 Main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/index.html#build-nav2-main">Build Nav2 Main</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#docker">Docker</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#building-docker-container">Building Docker Container</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-dockerhub-container">Using DockerHub Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/index.html#docker">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#building-docker-container">Building Docker Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/index.html#using-dockerhub-container">Using DockerHub Container</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#generate-doxygen">Generate Doxygen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#help">Help</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="build_docs/build_troubleshooting_guide.html#common-nav2-dependencies-build-failures">Common Nav2 Dependencies Build Failures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="build_docs/build_troubleshooting_guide.html#reporting-issue">Reporting Issue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/index.html#generate-doxygen">Generate Doxygen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/index.html#help">Help</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/build_docs/build_troubleshooting_guide.html#common-nav2-dependencies-build-failures">Common Nav2 Dependencies Build Failures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/build_docs/build_troubleshooting_guide.html#reporting-issue">Reporting Issue</a></li>
 </ul>
 </li>
 </ul>
@@ -556,15 +556,15 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tuning/index.html">Tuning Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#inflation-potential-fields">Inflation Potential Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#robot-footprint-vs-radius">Robot Footprint vs Radius</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#rotate-in-place-behavior">Rotate in Place Behavior</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#planner-plugin-selection">Planner Plugin Selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#controller-plugin-selection">Controller Plugin Selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#caching-obstacle-heuristic-in-smac-planners">Caching Obstacle Heuristic in Smac Planners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#nav2-launch-options">Nav2 Launch Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tuning/index.html#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tuning Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#inflation-potential-fields">Inflation Potential Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#robot-footprint-vs-radius">Robot Footprint vs Radius</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rotate-in-place-behavior">Rotate in Place Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#planner-plugin-selection">Planner Plugin Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#controller-plugin-selection">Controller Plugin Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caching-obstacle-heuristic-in-smac-planners">Caching Obstacle Heuristic in Smac Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nav2-launch-options">Nav2 Launch Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../behavior_trees/index.html">Nav2 Behavior Trees</a><ul>
@@ -718,7 +718,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Build and Install</li>
+      <li>Tuning Guide</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -727,115 +727,155 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="build-and-install">
-<span id="build-instructions"></span><h1>Build and Install<a class="headerlink" href="#build-and-install" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<p>Nav2 and its dependencies are released as binaries.
-You may install it via the following to get the latest stable released version:</p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;distro&gt;-navigation2</span> <span class="pre">ros-&lt;distro&gt;-nav2-bringup</span> <span class="pre">ros-&lt;distro&gt;-turtlebot3*</span></code></div></blockquote>
-<p>(For Ubuntu 20.04 use this command as the parsing of wildcards have been changed:</p>
-<blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;distro&gt;-navigation2</span> <span class="pre">ros-&lt;distro&gt;-nav2-bringup</span> <span class="pre">'~ros-&lt;distro&gt;-turtlebot3-.*'</span></code></div></blockquote>
+  <div class="section" id="tuning-guide">
+<span id="tuning"></span><h1>Tuning Guide<a class="headerlink" href="#tuning-guide" title="Permalink to this headline">¶</a></h1>
+<p>This guide is meant to assist users in tuning their navigation system. While <a class="reference internal" href="../configuration/index.html#configuration"><span class="std std-ref">Configuration Guide</span></a> is the home of the list of parameters for all of Nav2, it doesn’t contain much <em>color</em> for how to tune a system using the most important of them. The aim of this guide is to give more advice in how to setup your system beyond a first time setup, which you can find at <a class="reference internal" href="../setup_guides/index.html#setup-guides"><span class="std std-ref">First-Time Robot Setup Guide</span></a>. This will by no means cover all of the parameters (so please, do review the configuration guides for the packages of interest), but will give some helpful hints and tips.</p>
+<p>This tuning guide is a perpetual work in progress. If you see some insights you have missing, please feel free to file a ticket or pull request with the wisdom you would like to share. This is an open section supported by the generosity of Nav2 users and maintainers. Please consider paying it forward.</p>
+<div class="section" id="inflation-potential-fields">
+<h2>Inflation Potential Fields<a class="headerlink" href="#inflation-potential-fields" title="Permalink to this headline">¶</a></h2>
+<p>Many users and ecosystem navigation configuration files the maintainers find are really missing the point of the inflation layer. While it’s true that you can simply inflate a small radius around the walls to weight against critical collisions, the <em>true</em> value of the inflation layer is creating a consistent potential field around the entire map.</p>
+<p>Some of the most popular tuning guides for ROS Navigation / Nav2 even <a class="reference external" href="https://arxiv.org/pdf/1706.09068.pdf">call this out specifically</a> that there’s substantial benefit to creating a gentle potential field across the width of the map - after inscribed costs are applied - yet very few users do this in practice.</p>
+<p>This habit actually results in paths produced by NavFn, Theta*, and Smac Planner to be somewhat suboptimal. They really want to look for a smooth potential field rather than wide open 0-cost spaces in order to stay in the middle of spaces and deal with close-by moving obstacles better. It will allow search to be weighted towards freespace far before the search algorithm runs into the obstacle that the inflation is caused by, letting the planner give obstacles as wide of a berth as possible.</p>
+<p>So it is the maintainers’ recommendation, as well as all other cost-aware search planners available in ROS, to increase your inflation layer cost scale and radius in order to adequately produce a smooth potential across the entire map. For very large open spaces, its fine to have 0-cost areas in the middle, but for halls, aisles, and similar; <strong>please create a smooth potential to provide the best performance</strong>.</p>
 </div>
-<div class="section" id="build">
-<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
-<p>There are 3 ways to build Nav2.
-Building for a specific released distribution (e.g. <code class="docutils literal notranslate"><span class="pre">foxy</span></code>, <code class="docutils literal notranslate"><span class="pre">galactic</span></code>), build Nav2 on main branch using a quickstart setup script, or building main branch manually.</p>
-<div class="content-collapse section" id="for-released-distributions">
-<h3>For Released Distributions<a class="headerlink" href="#for-released-distributions" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="install-ros">
-<h4>Install ROS<a class="headerlink" href="#install-ros" title="Permalink to this headline">¶</a></h4>
-<p>Please install ROS 2 via the usual <a class="reference external" href="https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Binary.html">install instructions</a> for your desired distribution.
-Note: <code class="docutils literal notranslate"><span class="pre">&lt;ros2-distro&gt;-devel</span></code> was the branch naming schema pre-<code class="docutils literal notranslate"><span class="pre">galactic</span></code>.
-For Galactic and newer, it is simply <code class="docutils literal notranslate"><span class="pre">&lt;ros2-distro&gt;</span></code>.</p>
+<div class="section" id="robot-footprint-vs-radius">
+<h2>Robot Footprint vs Radius<a class="headerlink" href="#robot-footprint-vs-radius" title="Permalink to this headline">¶</a></h2>
+<p>Nav2 allows users to specify the robot’s shape in 2 ways: a geometric <code class="docutils literal notranslate"><span class="pre">footprint</span></code> or the radius of a circle encompassing the robot. In ROS (1), it was pretty reasonable to always specify a radius approximation of the robot, since the global planning algorithms didn’t use it and the local planners / costmaps were set up with the circular assumption baked in.</p>
+<p>However, in Nav2, we now have multiple planning and controller algorithms that make use of the full SE2 footprint. If your robot is non-circular, it is recommended that you give the planners and controllers the actual, geometric footprint of your robot. This will allow the planners and controllers to plan or create trajectories into tighter spaces. For example, if you have a very long but skinny robot, the circular assumption wouldn’t allow a robot to plan into a space only a little wider than your robot, since the robot would not fit length-wise.</p>
+<p>The kinematically feasible planners (e.g. Smac Hybrid-A*, Smac State Lattice) will use the SE2 footprint for collision checking to create kinematically feasible plans, if provided with the actual footprint. As of December, 2021 all of the controller plugins support full footprint collision checking to ensure safe path tracking. If you provide a footprint of your robot, it will be used to make sure trajectories are valid and it is recommended you do so. It will prevent a number of “stuck robot” situations that could have been easily avoided.</p>
+<p>If your robot is truly circular, continue to use the <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> parameter. The three valid reasons for a non-circular robot to use the radius instead:</p>
+<ul class="simple">
+<li>The robot is very small relative to the environment (e.g. RC car in a warehouse)</li>
+<li>The robot has such limited compute power, using SE2 footprint checking would add too much computational burden (e.g. embedded micro-processors)</li>
+<li>If you plan to use a holonomic planner (e.g. Theta*, Smac 2D-A*, or NavFn), you may continue to use the circular footprint, since these planners are not kinematically feasible and will not make use of the SE2 footprint anyway.</li>
+</ul>
 </div>
-<div class="section" id="build-nav2">
-<h4>Build Nav2<a class="headerlink" href="#build-nav2" title="Permalink to this headline">¶</a></h4>
-<p>We’re going to create a new workspace, <code class="docutils literal notranslate"><span class="pre">nav2_ws</span></code>, clone our Nav2 branch into it, and build.
-<code class="docutils literal notranslate"><span class="pre">rosdep</span></code> will be used to get the dependency binaries for Nav2 in your specific distribution.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">nav2_ws</span><span class="o">/</span><span class="n">src</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">nav2_ws</span><span class="o">/</span><span class="n">src</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ros</span><span class="o">-</span><span class="n">planning</span><span class="o">/</span><span class="n">navigation2</span><span class="o">.</span><span class="n">git</span> <span class="o">--</span><span class="n">branch</span> <span class="o">&lt;</span><span class="n">ros2</span><span class="o">-</span><span class="n">distro</span><span class="o">&gt;-</span><span class="n">devel</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">nav2_ws</span>
-<span class="n">rosdep</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">q</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">paths</span> <span class="n">src</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">src</span> <span class="o">--</span><span class="n">rosdistro</span> <span class="o">&lt;</span><span class="n">ros2</span><span class="o">-</span><span class="n">distro</span><span class="o">&gt;</span>
-<span class="n">colcon</span> <span class="n">build</span> <span class="o">--</span><span class="n">symlink</span><span class="o">-</span><span class="n">install</span>
-</pre></div>
+<div class="section" id="rotate-in-place-behavior">
+<h2>Rotate in Place Behavior<a class="headerlink" href="#rotate-in-place-behavior" title="Permalink to this headline">¶</a></h2>
+<p>Using the <a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#configuring-rotation-shim"><span class="std std-ref">Rotation Shim Controller</span></a>, a robot will simply rotate in place before starting to track a holonomic path. This allows a developer to tune a controller plugin to be optimized for path tracking and give you clean rotations, out of the box.</p>
+<p>This was added due to quirks in some existing controllers whereas tuning the controller for a task can make it rigid – or the algorithm simply doesn’t rotate in place when working with holonomic paths (if that’s a desirable trait). The result is an awkward, stuttering, or whipping around behavior when your robot’s initial and path heading’s are significantly divergent. Giving a controller a better starting point to start tracking a path makes tuning the controllers significantly easier and creates more intuitive results for on-lookers (in one maintainer’s opinion).</p>
+<p>Note: If using a non-holonomic, kinematically feasible planner (e.g. Smac Hybrid-A*, Smac State Lattice), this is not a necessary behavioral optimization. This class of planner will create plans that take into account the robot’s starting heading, not requiring any rotation behaviors.</p>
+<p>This behavior is most optimially for:</p>
+<ul class="simple">
+<li>Robots that can rotate in place, such as differential and omnidirectional robots.</li>
+<li>Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot’s current heading – or when tuning your controller for its task makes tight rotations difficult.</li>
+</ul>
 </div>
-<p>Note: You need to change <code class="docutils literal notranslate"><span class="pre">--rosdistro</span></code> to the selected ROS 2 distribution name (e.g <code class="docutils literal notranslate"><span class="pre">foxy</span></code>, <code class="docutils literal notranslate"><span class="pre">galactic</span></code>).</p>
-</div>
-</div>
-<div class="content-collapse section" id="for-main-branch-development">
-<h3>For Main Branch Development<a class="headerlink" href="#for-main-branch-development" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="build-ros-2-main">
-<h4>Build ROS 2 Main<a class="headerlink" href="#build-ros-2-main" title="Permalink to this headline">¶</a></h4>
-<p>Build or install ROS 2 <code class="docutils literal notranslate"><span class="pre">rolling</span></code> using the <a class="reference external" href="https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html">build instructions</a> provided in the ROS 2 documentation.
-All development is done using the <code class="docutils literal notranslate"><span class="pre">rolling</span></code> distribution on Nav2’s <code class="docutils literal notranslate"><span class="pre">main</span></code> branch and cherry-picked over to released distributions during syncs (if ABI compatible).</p>
-</div>
-<div class="section" id="build-nav2-main">
-<h4>Build Nav2 Main<a class="headerlink" href="#build-nav2-main" title="Permalink to this headline">¶</a></h4>
-<p>Now that ROS 2 <code class="docutils literal notranslate"><span class="pre">rolling</span></code> is installed, we have to install our dependencies and build Nav2 itself.
-We’ll create a new workspace, <code class="docutils literal notranslate"><span class="pre">nav2_ws</span></code> and clone the Nav2 project into it.
-Afterwards, we’ll use <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> to automatically find and install our dependencies that were not included in the core ROS 2 install itself (<code class="docutils literal notranslate"><span class="pre">behaviortree.CPP</span></code>, <code class="docutils literal notranslate"><span class="pre">ompl</span></code>, etc).
-If you would like to use a custom version of any of these dependencies, simply overlay them in your <code class="docutils literal notranslate"><span class="pre">nav2_ws</span></code> and it will use those rather than the binary installed versions.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">nav2_ws</span><span class="o">/</span><span class="n">src</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">nav2_ws</span><span class="o">/</span><span class="n">src</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ros</span><span class="o">-</span><span class="n">planning</span><span class="o">/</span><span class="n">navigation2</span><span class="o">.</span><span class="n">git</span> <span class="o">--</span><span class="n">branch</span> <span class="n">main</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">nav2_ws</span>
-<span class="n">rosdep</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">q</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">paths</span> <span class="n">src</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">src</span> <span class="o">--</span><span class="n">rosdistro</span> <span class="n">rolling</span>
-<span class="n">colcon</span> <span class="n">build</span> <span class="o">--</span><span class="n">symlink</span><span class="o">-</span><span class="n">install</span>
-<span class="n">source</span> <span class="n">install</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
-</pre></div>
-</div>
-<p>You are now ready for the demonstrations!</p>
-</div>
-</div>
-</div>
-<div class="section" id="docker">
-<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
-<p>The official Dockerhub entries are primarily for use in the Nav2 CI, but they may also be used for development. It is useful to have a docker image that tracks Nav2 <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. The <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> in the root of the repository is recommended for production use, set to your distribution of choice.</p>
-<p>It is though generally recomended to install Nav2 releases from the apt repository inside a container if you’d like to use our released binaries.</p>
-<div class="content-collapse section" id="building-docker-container">
-<h3>Building Docker Container<a class="headerlink" href="#building-docker-container" title="Permalink to this headline">¶</a></h3>
-<p>To build an image from the Dockerfile in the Nav2 folder:
-First, clone the repo to your local system (or see Building the source above)</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">nav2</span><span class="o">/</span><span class="n">latest</span> <span class="o">.</span>
-</pre></div>
-</div>
-<p>If proxies are needed:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">nav2</span><span class="o">/</span><span class="n">latest</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">arg</span> <span class="n">http_proxy</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">proxy</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="c1">### --build-arg https_proxy=http://proxy.my.com:### .</span>
-</pre></div>
-</div>
-<p>Note: You may also need to configure your docker for DNS to work. See article here for details: <a class="reference external" href="https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/">https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/</a></p>
-<p>If you would like to build from dockerhub cache to speed up the build</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">pull</span> <span class="n">rosplanning</span><span class="o">/</span><span class="n">navigation2</span><span class="p">:</span><span class="n">main</span>
-<span class="n">sudo</span> <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">nav2</span><span class="o">/</span><span class="n">latest</span> <span class="o">--</span><span class="n">cache</span><span class="o">-</span><span class="kn">from</span> <span class="nn">rosplanning</span><span class="o">/</span><span class="n">navigation2</span><span class="p">:</span><span class="n">main</span> <span class="o">.</span>
-</pre></div>
+<div class="section" id="planner-plugin-selection">
+<h2>Planner Plugin Selection<a class="headerlink" href="#planner-plugin-selection" title="Permalink to this headline">¶</a></h2>
+<p>Nav2 provides a number of planning plugins out of the box. For a first-time setup, see <a class="reference internal" href="../setup_guides/algorithm/select_algorithm.html#select-algorithm"><span class="std std-ref">Setting Up Navigation Plugins</span></a> for a more verbose breakdown of algorithm styles within Nav2, and <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for a full accounting of the current list of plugins available (which may be updated over time).</p>
+<p>In general though, the following table is a good guide for the optimal planning plugin for different types of robot bases:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Plugin Name</th>
+<th class="head">Supported Robot Types</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>NavFn Planner</td>
+<td rowspan="3">Circular Differential, Circular Omnidirectional</td>
+</tr>
+<tr class="row-odd"><td>Smac Planner 2D</td>
+</tr>
+<tr class="row-even"><td>Theta Star Planner</td>
+</tr>
+<tr class="row-odd"><td>Smac Hybrid-A* Planner</td>
+<td>Non-circular or Circular Ackermann, Non-circular or Circular Legged</td>
+</tr>
+<tr class="row-even"><td>Smac Lattice Planner</td>
+<td>Non-circular Differential, Non-circular Omnidirectional, Arbitrary</td>
+</tr>
+</tbody>
+</table>
+<p>If you are using a non-circular robot with very limited compute, it may be worth assessing the benefits of using one of the holonomic planners (e.g. particle assumption planners). It is the recommendation of the maintainers to start using one of the more advanced algorithms appropriate for your platform <em>first</em>, but to scale back the planner if need be. The run-time of the feasible planners are typically on par (or sometimes faster) than their holonomic counterparts, so don’t let the more recent nature of them fool you.</p>
+<p>Since the planning problem is primarily driven by the robot type, the table accurately summarizes the advice to users by the maintainers. Within the circular robot regime, the choice of planning algorithm is dependent on application and desirable behavior. NavFn will typically make broad, sweeping curves; Theta* prefers straight lines and supports them at any angle; and Smac 2D is essentially a classical A* algorithm with cost-aware penalties.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These are simply the default and available plugins from the community. For a specific application / platform, you may also choose to use none of these and create your own, and that’s the intention of the Nav2 framework. See the <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#writing-new-nav2planner-plugin"><span class="std std-ref">Writing a New Planner Plugin</span></a> tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.</p>
 </div>
 </div>
-<div class="content-collapse section" id="using-dockerhub-container">
-<h3>Using DockerHub Container<a class="headerlink" href="#using-dockerhub-container" title="Permalink to this headline">¶</a></h3>
-<p>We allow for you to pull the latest docker image from the main branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
-This docker image will not contain a built overlay, and you must build the overlay Nav2 workspace yourself (see Build Nav2 Main up above).</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">pull</span> <span class="n">rosplanning</span><span class="o">/</span><span class="n">navigation2</span><span class="p">:</span><span class="n">main</span>
-</pre></div>
+<div class="section" id="controller-plugin-selection">
+<h2>Controller Plugin Selection<a class="headerlink" href="#controller-plugin-selection" title="Permalink to this headline">¶</a></h2>
+<p>Nav2 provides a number of controller plugins out of the box. For a first-time setup, see <a class="reference internal" href="../setup_guides/algorithm/select_algorithm.html#select-algorithm"><span class="std std-ref">Setting Up Navigation Plugins</span></a> for a more verbose breakdown of algorithm styles within Nav2, and <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for a full accounting of the current list of plugins available (which may be updated over time).</p>
+<p>In general though, the following table is a good first-order description of the controller plugins available for different types of robot bases:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="54%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Plugin Name</th>
+<th class="head">Supported Robot Types</th>
+<th class="head">Task</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DWB controller</td>
+<td>Differential, Omnidirectional</td>
+<td rowspan="2"><p class="first">Dynamic obstacle avoidance</p>
+<p class="last">Dynamic obstacle avoidance</p>
+</td>
+</tr>
+<tr class="row-odd"><td>TEB Controller</td>
+<td>Differential, Omnidirectional, Ackermann, Legged</td>
+</tr>
+<tr class="row-even"><td>RPP controller</td>
+<td>Differential, Ackermann, Legged</td>
+<td>Exact path following</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line">RPP controller | Differential, Ackermann, Legged                   | Exact path following       |</div>
+</div>
+<p>All of the above controllers can handle both circular and arbitrary shaped robots in configuration.</p>
+<p>Regulated Pure Pursuit is good for exact path following and is typically paired with one of the kinematically feasible planners (eg State Lattice, Hybrid-A*, etc) since those paths are known to be drivable given hard physical constraints. However, it can also be applied to differential drive robots who can easily pivot to match any holonomic path. This is the plugin of choice if you simply want your robot to follow the path, rather exactly, without any dynamic obstacle avoidance or deviation. It is simple and geometric, as well as slowing the robot in the presence of near-by obstacles <em>and</em> while making sharp turns.</p>
+<p>DWB and TEB are both options that will track paths, but also diverge from the path if there are dynamic obstacles present (in order to avoid them). DWB does this through scoring multiple trajectories on a set of critics. These trajectories are also generated via plugins that can be replaced, but support out of the box Omni and Diff robot types within the valid velocity and acceleration restrictions. These critics are plugins that can be selected at run-time and contain weights that may be tuned to create the desired behavior, such as minimizing path distance, minimizing distance to the goal or headings, and other action penalties that can be designed. This does require a bit of tuning for a given platform, application, and desired behavior, but it is possible to tune DWB to do nearly any single thing well.</p>
+<p>TEB on the other hand implements an optimization based approach, generating a graph-solving problem for path tracking in the presense of obstacles. TEB is pretty good at handling dynamic situations well with other moving agents in the scene, but at a much higher compute cost that makes it largely unsuitable for smaller compute platform robots (e.g. minimum i3 and running at 20hz). This typically works pretty well out of the box, but to tune for specific behaviors, you may have to modify optimization engine parameters which are not as intuitive or rooted in something physical as DWB, but have pretty decent defaults.</p>
+<p>Finally, the Rotation Shim Plugin helps assist plugins like TEB and DWB (among others) to rotate the robot in place towards a new path’s heading before starting to track the path. This allows you to tune your local trajectory planner to operate with a desired behavior without having to worry about being able to rotate on a dime with a significant deviation in angular distance over a very small euclidean distance. Some controllers when heavily tuned for accurate path tracking are constrained in their actions and don’t very cleanly rotate to a new heading. Other controllers have a ‘spiral out’ behavior because their sampling requires some translational velocity, preventing it from simply rotating in place. This helps alleviate that problem and makes the robot rotate in place very smoothly.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#writing-new-nav2controller-plugin"><span class="std std-ref">Writing a New Controller Plugin</span></a> tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.</p>
 </div>
 </div>
+<div class="section" id="caching-obstacle-heuristic-in-smac-planners">
+<h2>Caching Obstacle Heuristic in Smac Planners<a class="headerlink" href="#caching-obstacle-heuristic-in-smac-planners" title="Permalink to this headline">¶</a></h2>
+<p>Smac’s Hybrid-A* and State Lattice Planners provide an option, <code class="docutils literal notranslate"><span class="pre">cache_obstacle_heuristic</span></code>. This can be used to cache the heuristic to use between replannings to the same goal pose, which can increase the speed of the planner <strong>significantly</strong> (40-300% depending on many factors). The obstacle heuristic is used to steer the robot into the middle of spaces, respecting costs, and drives the kinematically feasible search down the corridors towards a valid solution. Think of it like a 2D cost-aware search to “prime” the planner about where it should go when it needs to expend more effort in the fully feasible search / SE2 collision checking.</p>
+<p>This is useful to speed up performance to achieve better replanning speeds. However, if you cache this heuristic, it will not be updated with the most current information in the costmap to steer search. During planning, the planner will still make use of the newest cost information for collision checking, <em>thusly this will not impact the safety of the path</em>. However, it may steer the search down newly blocked corridors or guide search towards areas that may have new dynamic obstacles in them, which can slow things down significantly if entire solution spaces are blocked.</p>
+<p>Therefore, it is the recommendation of the maintainers to enable this only when working in largely static (e.g. not many moving things or changes, not using live sensor updates in the global costmap, etc) environments when planning across large spaces to singular goals. Between goal changes to Nav2, this heuristic will be updated with the most current set of information, so it is not very helpful if you change goals very frequently.</p>
 </div>
-<hr class="docutils" />
-<div class="section" id="generate-doxygen">
-<h2>Generate Doxygen<a class="headerlink" href="#generate-doxygen" title="Permalink to this headline">¶</a></h2>
-<p>Run <code class="docutils literal notranslate"><span class="pre">doxygen</span></code> in the root of the Nav2 repository.
-It will generate a <code class="docutils literal notranslate"><span class="pre">/doc/*</span></code> directory containing the documentation.
-The documentation entrypoint in a browser is index.html.</p>
+<div class="section" id="nav2-launch-options">
+<h2>Nav2 Launch Options<a class="headerlink" href="#nav2-launch-options" title="Permalink to this headline">¶</a></h2>
+<p>Nav2’s launch files are made to be very configurable. Obviously for any serious application, a user should use <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code> as the basis of their navigation launch system, but should be moved to a specific repository for a users’ work. A typical thing to do is to have a <code class="docutils literal notranslate"><span class="pre">&lt;robot_name&gt;_nav</span></code> configuration package containing the launch and parameter files.</p>
+<p>Within <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>, there is a main entryfile <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code>. This is the main file used for simulating the robot and contains the following configurations:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">slam</span></code> : Whether or not to use AMCL or SLAM Toolbox for localization and/or mapping. Default <code class="docutils literal notranslate"><span class="pre">false</span></code> to AMCL.</li>
+<li><code class="docutils literal notranslate"><span class="pre">map</span></code> : The filepath to the map to use for navigation. Defaults to <code class="docutils literal notranslate"><span class="pre">map.yaml</span></code> in the package’s <code class="docutils literal notranslate"><span class="pre">maps/</span></code> directory.</li>
+<li><code class="docutils literal notranslate"><span class="pre">world</span></code> : The filepath to the world file to use in simulation. Defaults to the <code class="docutils literal notranslate"><span class="pre">worlds/</span></code> directory in the package.</li>
+<li><code class="docutils literal notranslate"><span class="pre">param_file</span></code> : The main navigation configuration file. Defaults to <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> in the package’s <code class="docutils literal notranslate"><span class="pre">params/</span></code> directory.</li>
+<li><code class="docutils literal notranslate"><span class="pre">autostart</span></code> : Whether to autostart the navigation system’s lifecycle management system. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to transition up the Nav2 stack on creation to the activated state, ready for use.</li>
+<li><code class="docutils literal notranslate"><span class="pre">use_composition</span></code> : Whether to launch each Nav2 server into individual processes or in a single composed node, to leverage savings in CPU and memory. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> to use single process Nav2.</li>
+<li><code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> : Whether to set all the nodes to use simulation time, needed in simulation. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> for simulation.</li>
+<li><code class="docutils literal notranslate"><span class="pre">rviz_config_file</span></code> : The filepath to the rviz configuration file to use. Defaults to the <code class="docutils literal notranslate"><span class="pre">rviz/</span></code> directory’s file.</li>
+<li><code class="docutils literal notranslate"><span class="pre">use_simulator</span></code> : Whether or not to start the Gazebo simulator with the Nav2 stack. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to launch Gazebo.</li>
+<li><code class="docutils literal notranslate"><span class="pre">use_robot_state_pub</span></code> : Whether or not to start the robot state publisher to publish the robot’s URDF transformations to TF2. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to publish the robot’s TF2 transformations.</li>
+<li><code class="docutils literal notranslate"><span class="pre">use_rviz</span></code> : Whether or not to launch rviz for visualization. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to show rviz.</li>
+<li><code class="docutils literal notranslate"><span class="pre">headless</span></code> : Whether or not to launch the Gazebo front-end alongside the background Gazebo simulation. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to display the Gazebo window.</li>
+<li><code class="docutils literal notranslate"><span class="pre">namespace</span></code> : The namespace to launch robots into, if need be.</li>
+<li><code class="docutils literal notranslate"><span class="pre">use_namespace</span></code> : Whether or not to launch robots into this namespace. Default <code class="docutils literal notranslate"><span class="pre">false</span></code> and uses global namespace for single robot.</li>
+<li><code class="docutils literal notranslate"><span class="pre">robot_name</span></code> : The name of the robot to launch.</li>
+<li><code class="docutils literal notranslate"><span class="pre">robot_sdf</span></code> : The filepath to the robot’s gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.</li>
+<li><code class="docutils literal notranslate"><span class="pre">x_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">y_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">z_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">roll</span></code>, <code class="docutils literal notranslate"><span class="pre">pitch</span></code>, <code class="docutils literal notranslate"><span class="pre">yaw</span></code> : Parameters to set the initial position of the robot in the simulation.</li>
+</ul>
 </div>
-<hr class="docutils" />
-<div class="section" id="help">
-<h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="build_docs/build_troubleshooting_guide.html#build-troubleshooting-guide"><span class="std std-ref">Build Troubleshooting Guide</span></a></p>
-<div class="toctree-wrapper compound">
-</div>
+<div class="section" id="other-pages-we-d-love-to-offer">
+<h2>Other Pages We’d Love To Offer<a class="headerlink" href="#other-pages-we-d-love-to-offer" title="Permalink to this headline">¶</a></h2>
+<p>If you are willing to chip in, some ideas are in <a class="reference external" href="https://github.com/ros-planning/navigation.ros.org/issues/204">https://github.com/ros-planning/navigation.ros.org/issues/204</a>, but we’d be open to anything you think would be insightful!</p>
 </div>
 </div>
 
