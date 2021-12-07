@@ -145,18 +145,4 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 Other Pages We'd Love To Offer
 ==============================
 
-TODO update maintainers list to include tuning guide updates
-
-If you are willing to chip in!
-
-- Kinematic parameters for behaviors, controllers, etc
-
-- AMCL / weights
-- Costmap 2D (local size + speed, update rate, downsampling sensors, resolution, unknown space/inflate, obstacle/voxel params, etc)
-- DWB (critics, generator, plugin, weights)
-- Goal checkers
-- Progress checkers
-- recovery speeds / sim times
-- Costmap plugin selection
-- Ideas in https://github.com/ros-planning/navigation.ros.org/issues/204
-- ... anything you think would be insightful!
+If you are willing to chip in, some ideas are in https://github.com/ros-planning/navigation.ros.org/issues/204, but we'd be open to anything you think would be insightful!
