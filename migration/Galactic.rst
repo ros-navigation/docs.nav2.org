@@ -31,11 +31,13 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A* implem
   - SmacPlanner2D parameters are now all reconfigurable
   - Both Hybrid-A* and State Lattice planners are now fully admissible
   - Hybrid-A* and State Lattice have had their parameterization for path smoothing readded.
+  - The smoother now enables kinematically feasible boundary conditions.
 
 The tl;dr of these improvements is:
   - Plans are 2-3x as fast as they were before, well under 200ms for nearly all situations, making it as fast as NavFn and Global Planner (but now kinematically feasible). Typical planning times are sub-100ms without even making use of the caching or downsampling features.
   - Paths are of significantly higher quality via improved smoothers and a novel heuristic that steers the robot towards the center of aisleways implicitly. This makes smoother paths that are also further from obstacles whenever possible. 
   - Using caching or downsampler parameterizations, can easily achieve path planning with sub-50ms in nearly any sized space.
+  - Smoother is now able to do more refinements and can create kinematically feasible boundary conditions, even while reversing.
 
 Additional improvements were made to include a ``analytic_expansion_max_length`` parameter such that analytic expansions are limited in their potential length. If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.
 
