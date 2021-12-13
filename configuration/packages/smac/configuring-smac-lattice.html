@@ -1130,9 +1130,31 @@
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Parameter tolerance change amount to terminate smoothing session</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.do_refinement:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A* planner but can be helpful on the state lattice planner to reduce the “blocky” movements in State Lattice caused by the limited number of headings.</p>
 </dd>
 </dl>
 </td>
@@ -1168,6 +1190,7 @@
         <span class="nt">w_smooth</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.3</span>
         <span class="nt">w_data</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
         <span class="nt">tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1e-10</span>
+        <span class="nt">do_refinement</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
 </div>

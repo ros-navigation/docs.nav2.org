@@ -214,7 +214,17 @@ Parameters
 
   Description
     Parameter tolerance change amount to terminate smoothing session
-    
+
+:``<name>``.smoother.do_refinement:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   true       
+  ====== =======
+
+  Description
+    Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A* planner but can be helpful on the state lattice planner to reduce the "blocky" movements in State Lattice caused by the limited number of headings.
 
 Example
 *******
@@ -246,3 +256,4 @@ Example
           w_smooth: 0.3
           w_data: 0.2
           tolerance: 1e-10
+          do_refinement: true
