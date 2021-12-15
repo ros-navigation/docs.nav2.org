@@ -101,7 +101,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
   Type           Default                                               
   -------------- -----------------------------
-  double         0.4            
+  bool           false            
   ============== =============================
 
   Description
