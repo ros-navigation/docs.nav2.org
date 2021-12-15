@@ -939,7 +939,7 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">max_allowed_time_to_collision:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2">max_allowed_time_to_collision_up_to_carrot:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="33%" />
@@ -956,7 +956,7 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">The time (s) to project a velocity command forward to check for collisions.</p>
+<dd><p class="first last">The time (s) to project a velocity command forward to check for collisions. Pre-<code class="docutils literal notranslate"><span class="pre">Humble</span></code>, this was <code class="docutils literal notranslate"><span class="pre">max_allowed_time_to_collision</span></code>.</p>
 </dd>
 </dl>
 </td>
@@ -1175,7 +1175,7 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
       <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
       <span class="nt">use_velocity_scaled_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
       <span class="nt">min_approach_linear_velocity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
-      <span class="nt">max_allowed_time_to_collision</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">max_allowed_time_to_collision_up_to_carrot</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
       <span class="nt">use_regulated_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
       <span class="nt">use_cost_regulated_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
       <span class="nt">regulated_linear_scaling_min_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.9</span>
