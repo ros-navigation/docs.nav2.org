@@ -32,6 +32,7 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A* implem
   - Both Hybrid-A* and State Lattice planners are now fully admissible
   - Hybrid-A* and State Lattice have had their parameterization for path smoothing readded.
   - The smoother now enables kinematically feasible boundary conditions.
+  - State Lattice supports turning in place primitive types
 
 The tl;dr of these improvements is:
   - Plans are 2-3x as fast as they were before, well under 200ms for nearly all situations, making it as fast as NavFn and Global Planner (but now kinematically feasible). Typical planning times are sub-100ms without even making use of the caching or downsampling features.
