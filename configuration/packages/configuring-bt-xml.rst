@@ -49,10 +49,12 @@ Condition Plugins
   bt-plugins/conditions/TransformAvailable.rst
   bt-plugins/conditions/DistanceTraveled.rst
   bt-plugins/conditions/GoalUpdated.rst
+  bt-plugins/conditions/GloballyUpdatedGoal.rst
   bt-plugins/conditions/InitialPoseReceived.rst
   bt-plugins/conditions/IsStuck.rst
   bt-plugins/conditions/TimeExpired.rst
   bt-plugins/conditions/IsBatteryLow.rst
+  bt-plugins/conditions/IsPathValid.rst
 
 Control Plugins
 ***************
