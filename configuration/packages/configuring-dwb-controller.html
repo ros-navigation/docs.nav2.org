@@ -785,66 +785,66 @@ modified for ROS 2.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
-  <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="c1"># controller server parameters (see Controller Server for more info)</span>
-    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="nt">controller_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20.0</span>
-    <span class="nt">min_x_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
-    <span class="nt">min_y_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
-    <span class="nt">min_theta_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
-    <span class="nt">progress_checker_plugin</span><span class="p">:</span> <span class="s">&quot;progress_checker&quot;</span>
-    <span class="nt">goal_checker_plugin</span><span class="p">:</span> <span class="s">&quot;goal_checker&quot;</span>
-    <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
-    <span class="nt">progress_checker</span><span class="p">:</span>
-      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span>
-      <span class="nt">required_movement_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
-      <span class="nt">movement_time_allowance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
-    <span class="nt">goal_checker</span><span class="p">:</span>
-      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_controller::SimpleGoalChecker&quot;</span>
-      <span class="nt">xy_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
-      <span class="nt">yaw_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
-      <span class="nt">stateful</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="c1"># DWB controller parameters</span>
-    <span class="nt">FollowPath</span><span class="p">:</span>
-      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span>
-      <span class="nt">debug_trajectory_details</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">min_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">min_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">max_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
-      <span class="nt">max_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">max_vel_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
-      <span class="nt">min_speed_xy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">max_speed_xy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
-      <span class="nt">min_speed_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">acc_lim_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
-      <span class="nt">acc_lim_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">acc_lim_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
-      <span class="nt">decel_lim_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-2.5</span>
-      <span class="nt">decel_lim_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">decel_lim_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-3.2</span>
-      <span class="nt">vx_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
-      <span class="nt">vy_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-      <span class="nt">vtheta_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
-      <span class="nt">sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.7</span>
-      <span class="nt">linear_granularity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
-      <span class="nt">angular_granularity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.025</span>
-      <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
-      <span class="nt">xy_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
-      <span class="nt">trans_stopped_velocity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
-      <span class="nt">short_circuit_trajectory_evaluation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">stateful</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">critics</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;RotateToGoal&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;Oscillation&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;BaseObstacle&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;GoalAlign&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PathAlign&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PathDist&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;GoalDist&quot;</span><span class="p p-Indicator">]</span>
-      <span class="nt">BaseObstacle.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.02</span>
-      <span class="nt">PathAlign.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
-      <span class="nt">GoalAlign.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24.0</span>
-      <span class="nt">PathAlign.forward_point_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-      <span class="nt">GoalAlign.forward_point_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-      <span class="nt">PathDist.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
-      <span class="nt">GoalDist.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24.0</span>
-      <span class="nt">RotateToGoal.scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32.0</span>
-      <span class="nt">RotateToGoal.slowing_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
-      <span class="nt">RotateToGoal.lookahead_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># controller server parameters (see Controller Server for more info)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">min_x_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span><span class="w"></span>
+<span class="w">    </span><span class="nt">min_y_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
+<span class="w">    </span><span class="nt">min_theta_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span><span class="w"></span>
+<span class="w">    </span><span class="nt">progress_checker_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;progress_checker&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">goal_checker_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;goal_checker&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">progress_checker</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">required_movement_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">movement_time_allowance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">goal_checker</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleGoalChecker&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
+<span class="w">      </span><span class="nt">yaw_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
+<span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># DWB controller parameters</span><span class="w"></span>
+<span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">debug_trajectory_details</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">min_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">min_vel_y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">max_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.26</span><span class="w"></span>
+<span class="w">      </span><span class="nt">max_vel_y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">max_vel_theta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">min_speed_xy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">max_speed_xy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.26</span><span class="w"></span>
+<span class="w">      </span><span class="nt">min_speed_theta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">acc_lim_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">acc_lim_y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">acc_lim_theta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span><span class="w"></span>
+<span class="w">      </span><span class="nt">decel_lim_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-2.5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">decel_lim_y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">decel_lim_theta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-3.2</span><span class="w"></span>
+<span class="w">      </span><span class="nt">vx_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
+<span class="w">      </span><span class="nt">vy_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">vtheta_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
+<span class="w">      </span><span class="nt">sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.7</span><span class="w"></span>
+<span class="w">      </span><span class="nt">linear_granularity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
+<span class="w">      </span><span class="nt">angular_granularity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.025</span><span class="w"></span>
+<span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w"></span>
+<span class="w">      </span><span class="nt">xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
+<span class="w">      </span><span class="nt">trans_stopped_velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
+<span class="w">      </span><span class="nt">short_circuit_trajectory_evaluation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">critics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;RotateToGoal&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Oscillation&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;BaseObstacle&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalAlign&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAlign&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathDist&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalDist&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">BaseObstacle.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.02</span><span class="w"></span>
+<span class="w">      </span><span class="nt">PathAlign.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">GoalAlign.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">PathAlign.forward_point_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">GoalAlign.forward_point_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">PathDist.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">GoalDist.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">RotateToGoal.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">RotateToGoal.slowing_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">RotateToGoal.lookahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span><span class="w"></span>
 </pre></div>
 </div>
 </div>

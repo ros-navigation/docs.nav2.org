@@ -797,11 +797,11 @@
 </div>
 <div class="section" id="example-configuration">
 <h4>Example Configuration<a class="headerlink" href="#example-configuration" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span>
-  <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="nt">planner_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;GridBased&#39;</span><span class="p p-Indicator">]</span>
-    <span class="nt">GridBased</span><span class="p">:</span>
-      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&#39;nav2_navfn_planner/NavfnPlanner&#39;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">planner_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;GridBased&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">GridBased</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nav2_navfn_planner/NavfnPlanner&#39;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>An example configuration of the planner server is shown above. The <code class="docutils literal notranslate"><span class="pre">planner_plugins</span></code> parameter accepts a list of mapped planner plugin names. For each plugin namespace defined in <code class="docutils literal notranslate"><span class="pre">planner_plugins</span></code> (<code class="docutils literal notranslate"><span class="pre">GridBased</span></code> in our example), we specify the type of plugin to be loaded in the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter. Additional configurations must then be specified in this namespace based on the algorithm to be used. Please see the <a class="reference external" href="https://navigation.ros.org/configuration/index.html">Configuration Guide</a> for more details.</p>
@@ -845,11 +845,11 @@
 </div>
 <div class="section" id="id2">
 <h4>Example Configuration<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span>
-  <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
-    <span class="nt">FollowPath</span><span class="p">:</span>
-       <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Shown above is a sample basic configuration of the controller server. The list of mapped names for controller plugins are defined in the <code class="docutils literal notranslate"><span class="pre">controller_plugins</span></code> parameter. Similar to the planner server, each namespace defined in the <code class="docutils literal notranslate"><span class="pre">controller_plugins</span></code> (<code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> in our example) must define the type of plugin it will use in the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter. Additional configurations must also be made for the selected algorithm in the namespace. Please see the <a class="reference external" href="https://navigation.ros.org/configuration/index.html">Configuration Guide</a> for more details.</p>

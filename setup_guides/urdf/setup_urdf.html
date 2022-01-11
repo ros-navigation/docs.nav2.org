@@ -812,7 +812,7 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Define robot constants --&gt;</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="cm">&lt;!-- Define robot constants --&gt;</span>
   <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;base_width&quot;</span> <span class="na">value=</span><span class="s">&quot;0.31&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;base_length&quot;</span> <span class="na">value=</span><span class="s">&quot;0.42&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;base_height&quot;</span> <span class="na">value=</span><span class="s">&quot;0.18&quot;</span><span class="nt">/&gt;</span>
@@ -840,7 +840,7 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Robot Base --&gt;</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="cm">&lt;!-- Robot Base --&gt;</span>
   <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;visual&gt;</span>
       <span class="nt">&lt;geometry&gt;</span>
@@ -862,7 +862,7 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Robot Footprint --&gt;</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="cm">&lt;!-- Robot Footprint --&gt;</span>
   <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_footprint&quot;</span><span class="nt">/&gt;</span>
 
   <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;base_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
@@ -897,7 +897,7 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Wheels --&gt;</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="cm">&lt;!-- Wheels --&gt;</span>
   <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;wheel&quot;</span> <span class="na">params=</span><span class="s">&quot;prefix x_reflect y_reflect&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;${prefix}_link&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;visual&gt;</span>
@@ -940,7 +940,7 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Caster Wheel --&gt;</span>
+<span class="normal">79</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="cm">&lt;!-- Caster Wheel --&gt;</span>
   <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;front_caster&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;visual&gt;</span>
       <span class="nt">&lt;geometry&gt;</span>
@@ -1153,7 +1153,7 @@ Visualization Manager:
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Define intertial property macros  --&gt;</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="cm">&lt;!-- Define intertial property macros  --&gt;</span>
   <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;box_inertia&quot;</span> <span class="na">params=</span><span class="s">&quot;m w h d&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;inertial&gt;</span>
       <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 ${pi/2}&quot;</span><span class="nt">/&gt;</span>

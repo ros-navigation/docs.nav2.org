@@ -849,16 +849,16 @@ This planner requires you to tune the <cite>cost_scaling_factor</cite> parameter
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span>
-<span class="nt">ros__parameters</span><span class="p">:</span>
-  <span class="nt">expected_planner_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20.0</span>
-  <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-  <span class="nt">planner_plugin_ids</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;GridBased&quot;</span><span class="p p-Indicator">]</span>
-  <span class="nt">GridBased</span><span class="p">:</span>
-    <span class="nt">plugin_types</span><span class="p">:</span> <span class="s">&quot;nav2_theta_star_planner/ThetaStarPlanner&quot;</span>
-    <span class="nt">how_many_corners</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
-    <span class="nt">w_euc_cost</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
-    <span class="nt">w_traversal_cost</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span><span class="w"></span>
+<span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">expected_planner_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">  </span><span class="nt">planner_plugin_ids</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;GridBased&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">GridBased</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">plugin_types</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_theta_star_planner/ThetaStarPlanner&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">how_many_corners</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span><span class="w"></span>
+<span class="w">    </span><span class="nt">w_euc_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">w_traversal_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
 </pre></div>
 </div>
 </div>

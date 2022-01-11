@@ -1199,77 +1199,77 @@ ros2 launch sam_bot_description display.launch.py
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
-  <span class="nt">global_costmap</span><span class="p">:</span>
-    <span class="nt">ros__parameters</span><span class="p">:</span>
-      <span class="nt">update_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
-      <span class="nt">publish_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
-      <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
-      <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
-      <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">robot_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.22</span>
-      <span class="nt">resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
-      <span class="nt">track_unknown_space</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-      <span class="nt">rolling_window</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-      <span class="nt">plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
-      <span class="nt">static_layer</span><span class="p">:</span>
-        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span>
-        <span class="nt">map_subscribe_transient_local</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">obstacle_layer</span><span class="p">:</span>
-        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::ObstacleLayer&quot;</span>
-        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-        <span class="nt">observation_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scan</span>
-        <span class="nt">scan</span><span class="p">:</span>
-          <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/scan</span>
-          <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
-          <span class="nt">clearing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-          <span class="nt">marking</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-          <span class="nt">data_type</span><span class="p">:</span> <span class="s">&quot;LaserScan&quot;</span>
-          <span class="nt">raytrace_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
-          <span class="nt">raytrace_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-          <span class="nt">obstacle_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.5</span>
-          <span class="nt">obstacle_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-      <span class="nt">inflation_layer</span><span class="p">:</span>
-        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span>
-        <span class="nt">cost_scaling_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
-        <span class="nt">inflation_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.55</span>
-      <span class="nt">always_send_full_costmap</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">update_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">publish_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span><span class="w"></span>
+<span class="w">      </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w"></span>
+<span class="w">      </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">robot_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.22</span><span class="w"></span>
+<span class="w">      </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
+<span class="w">      </span><span class="nt">track_unknown_space</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">      </span><span class="nt">rolling_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">static_layer</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">map_subscribe_transient_local</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">obstacle_layer</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::ObstacleLayer&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">        </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scan</span><span class="w"></span>
+<span class="w">        </span><span class="nt">scan</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/scan</span><span class="w"></span>
+<span class="w">          </span><span class="nt">max_obstacle_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
+<span class="w">          </span><span class="nt">clearing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">          </span><span class="nt">marking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">          </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LaserScan&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">raytrace_max_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w"></span>
+<span class="w">          </span><span class="nt">raytrace_min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">          </span><span class="nt">obstacle_max_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.5</span><span class="w"></span>
+<span class="w">          </span><span class="nt">obstacle_min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">inflation_layer</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_scaling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">inflation_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.55</span><span class="w"></span>
+<span class="w">      </span><span class="nt">always_send_full_costmap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
 
-<span class="nt">local_costmap</span><span class="p">:</span>
-  <span class="nt">local_costmap</span><span class="p">:</span>
-    <span class="nt">ros__parameters</span><span class="p">:</span>
-      <span class="nt">update_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
-      <span class="nt">publish_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
-      <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">odom</span>
-      <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
-      <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">rolling_window</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-      <span class="nt">width</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-      <span class="nt">height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-      <span class="nt">resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
-      <span class="nt">robot_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.22</span>
-      <span class="nt">plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
-      <span class="nt">voxel_layer</span><span class="p">:</span>
-        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::VoxelLayer&quot;</span>
-        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-        <span class="nt">publish_voxel_map</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-        <span class="nt">origin_z</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-        <span class="nt">z_resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
-        <span class="nt">z_voxels</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">16</span>
-        <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
-        <span class="nt">mark_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
-        <span class="nt">observation_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scan</span>
-        <span class="nt">scan</span><span class="p">:</span>
-          <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/scan</span>
-          <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
-          <span class="nt">clearing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-          <span class="nt">marking</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-          <span class="nt">data_type</span><span class="p">:</span> <span class="s">&quot;LaserScan&quot;</span>
-      <span class="nt">inflation_layer</span><span class="p">:</span>
-        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span>
-        <span class="nt">cost_scaling_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
-        <span class="nt">inflation_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.55</span>
-      <span class="nt">always_send_full_costmap</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="nt">local_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">local_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">update_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">publish_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w"></span>
+<span class="w">      </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w"></span>
+<span class="w">      </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">rolling_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">      </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">      </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
+<span class="w">      </span><span class="nt">robot_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.22</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">voxel_layer</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::VoxelLayer&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">        </span><span class="nt">publish_voxel_map</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">        </span><span class="nt">origin_z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">z_resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
+<span class="w">        </span><span class="nt">z_voxels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span><span class="w"></span>
+<span class="w">        </span><span class="nt">max_obstacle_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">mark_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scan</span><span class="w"></span>
+<span class="w">        </span><span class="nt">scan</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/scan</span><span class="w"></span>
+<span class="w">          </span><span class="nt">max_obstacle_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
+<span class="w">          </span><span class="nt">clearing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">          </span><span class="nt">marking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">          </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LaserScan&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">inflation_layer</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_scaling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">inflation_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.55</span><span class="w"></span>
+<span class="w">      </span><span class="nt">always_send_full_costmap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
 </pre></div>
 </td></tr></table></div>
 <p>In the configuration above, notice that we set the parameters for two different costmaps: <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> and <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code>. We set up two costmaps since the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> is mainly used for long-term planning over the whole map while <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> is for short-term planning and collision avoidance.</p>

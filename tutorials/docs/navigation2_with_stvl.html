@@ -795,13 +795,13 @@ The ROSCon talk for STVL can be found <a class="reference external" href="https:
 <h3>1- Modify Navigation2 Parameter<a class="headerlink" href="#modify-navigation2-parameter" title="Permalink to this headline">¶</a></h3>
 <p>STVL is an optional plugin, like all plugins, in Costmap2D. Costmap Plugins in Navigation2 are loaded in the <code class="docutils literal notranslate"><span class="pre">plugin_names</span></code> and <code class="docutils literal notranslate"><span class="pre">plugin_types</span></code> variables inside of their respective costmaps.
 For example, the following will load the static and obstacle layer plugins into the name <code class="docutils literal notranslate"><span class="pre">static_layer</span></code> and <code class="docutils literal notranslate"><span class="pre">obstacle_layer</span></code>, respectively:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
-  <span class="nt">global_costmap</span><span class="p">:</span>
-    <span class="nt">ros__parameters</span><span class="p">:</span>
-      <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">plugin_names</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">]</span> <span class="c1"># For Eloquent and earlier</span>
-      <span class="nt">plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">]</span> <span class="c1"># For Foxy and later</span>
-      <span class="nt">plugin_types</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;nav2_costmap_2d::ObstacleLayer&quot;</span><span class="p p-Indicator">]</span> <span class="c1"># For Eloquent and earlier</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin_names</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># For Eloquent and earlier</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># For Foxy and later</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::ObstacleLayer&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># For Eloquent and earlier</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -810,54 +810,54 @@ For example, the following will load the static and obstacle layer plugins into 
 </div>
 <p>To load the STVL plugin, a new plugin name and type must be added.
 For example, if the application required an STVL layer and no obstacle layer, our file would be:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
-  <span class="nt">global_costmap</span><span class="p">:</span>
-    <span class="nt">ros__parameters</span><span class="p">:</span>
-      <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-      <span class="nt">plugin_names</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;stvl_layer&quot;</span><span class="p p-Indicator">]</span> <span class="c1"># For Eloquent and earlier</span>
-      <span class="nt">plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;stvl_layer&quot;</span><span class="p p-Indicator">]</span> <span class="c1"># For Foxy and later</span>
-      <span class="nt">plugin_types</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer&quot;</span><span class="p p-Indicator">]</span> <span class="c1"># For Eloquent and earlier</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin_names</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;stvl_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># For Eloquent and earlier</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;stvl_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># For Foxy and later</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># For Eloquent and earlier</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Similar to the Voxel Layer, after registering the plugin, we can add the configuration of the STVL layer under the namespace <code class="docutils literal notranslate"><span class="pre">stvl_layer</span></code>.
 An example fully-described parameterization of an STVL configuration is:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">stvl_layer</span><span class="p">:</span>
-  <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer&quot;</span> <span class="c1"># For Foxy and later</span>
-  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">voxel_decay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">15.</span>
-  <span class="nt">decay_model</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
-  <span class="nt">voxel_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
-  <span class="nt">track_unknown_space</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
-  <span class="nt">unknown_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">15</span>
-  <span class="nt">mark_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
-  <span class="nt">update_footprint_enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">combination_method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-  <span class="nt">origin_z</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-  <span class="nt">publish_voxel_map</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
-  <span class="nt">mapping_mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">map_save_duration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60.0</span>
-  <span class="nt">observation_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pointcloud</span>
-  <span class="nt">pointcloud</span><span class="p">:</span>
-    <span class="nt">data_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PointCloud2</span>
-    <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/intel_realsense_r200_depth/points</span>
-    <span class="nt">marking</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">clearing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">obstacle_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
-    <span class="nt">min_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
-    <span class="nt">expected_update_rate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">observation_persistence</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
-    <span class="nt">inf_is_valid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">voxel_filter</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">clear_after_reading</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">max_z</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">7.0</span>
-    <span class="nt">min_z</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-    <span class="nt">vertical_fov_angle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.8745</span>
-    <span class="nt">horizontal_fov_angle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.048</span>
-    <span class="nt">decay_acceleration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">15.0</span>
-    <span class="nt">model_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">stvl_layer</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer&quot;</span><span class="w"> </span><span class="c1"># For Foxy and later</span><span class="w"></span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">voxel_decay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">decay_model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">voxel_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
+<span class="w">  </span><span class="nt">track_unknown_space</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">max_obstacle_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">unknown_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span><span class="w"></span>
+<span class="w">  </span><span class="nt">mark_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">update_footprint_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">combination_method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">origin_z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">publish_voxel_map</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">mapping_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">map_save_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60.0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pointcloud</span><span class="w"></span>
+<span class="w">  </span><span class="nt">pointcloud</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PointCloud2</span><span class="w"></span>
+<span class="w">    </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/intel_realsense_r200_depth/points</span><span class="w"></span>
+<span class="w">    </span><span class="nt">marking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">clearing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">obstacle_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">min_obstacle_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">max_obstacle_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expected_update_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">observation_persistence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">inf_is_valid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">voxel_filter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">clear_after_reading</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">max_z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">min_z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">vertical_fov_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8745</span><span class="w"></span>
+<span class="w">    </span><span class="nt">horizontal_fov_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.048</span><span class="w"></span>
+<span class="w">    </span><span class="nt">decay_acceleration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">model_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Please copy-paste the text above, with the <code class="docutils literal notranslate"><span class="pre">plugin_names</span></code> and <code class="docutils literal notranslate"><span class="pre">plugin_types</span></code> registration, into your <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> to enable STVL in your application.

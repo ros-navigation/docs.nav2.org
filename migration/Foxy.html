@@ -817,15 +817,15 @@ Users can inherit from this interface to implement their own plugin to perform m
 <div>While <code class="docutils literal notranslate"><span class="pre">PhotoAtWaypoint</span></code> takes photos at waypoint arrivals and saves the taken photos to specified directory, the format for taken photos also can be configured through parameters.
 All major image formats such as <code class="docutils literal notranslate"><span class="pre">png</span></code>, <code class="docutils literal notranslate"><span class="pre">jpeg</span></code>, <code class="docutils literal notranslate"><span class="pre">jpg</span></code> etc. are supported, the default format is <code class="docutils literal notranslate"><span class="pre">png</span></code>.</div></blockquote>
 <p>Loading a plugin of this type is done through <code class="docutils literal notranslate"><span class="pre">nav2_bringup/params/nav2_param.yaml</span></code>, by specifying plugin’s name, type and it’s used parameters.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">waypoint_follower</span><span class="p">:</span>
-  <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="nt">loop_rate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
-    <span class="nt">stop_on_failure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span> <span class="s">&quot;wait_at_waypoint&quot;</span>
-      <span class="nt">wait_at_waypoint</span><span class="p">:</span>
-        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_waypoint_follower::WaitAtWaypoint&quot;</span>
-        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-        <span class="nt">waypoint_pause_duration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">waypoint_follower</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">loop_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
+<span class="w">    </span><span class="nt">stop_on_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;wait_at_waypoint&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">wait_at_waypoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_waypoint_follower::WaitAtWaypoint&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">        </span><span class="nt">waypoint_pause_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Original GitHub tickets:</p>

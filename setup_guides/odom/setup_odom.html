@@ -1028,19 +1028,19 @@ geometry_msgs/TwistWithCovariance twist
       <span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
     <span class="nt">&lt;/ros&gt;</span>
 
-    <span class="c">&lt;!-- wheels --&gt;</span>
+    <span class="cm">&lt;!-- wheels --&gt;</span>
     <span class="nt">&lt;left_joint&gt;</span>drivewhl_l_joint<span class="nt">&lt;/left_joint&gt;</span>
     <span class="nt">&lt;right_joint&gt;</span>drivewhl_r_joint<span class="nt">&lt;/right_joint&gt;</span>
 
-    <span class="c">&lt;!-- kinematics --&gt;</span>
+    <span class="cm">&lt;!-- kinematics --&gt;</span>
     <span class="nt">&lt;wheel_separation&gt;</span>0.4<span class="nt">&lt;/wheel_separation&gt;</span>
     <span class="nt">&lt;wheel_diameter&gt;</span>0.2<span class="nt">&lt;/wheel_diameter&gt;</span>
 
-    <span class="c">&lt;!-- limits --&gt;</span>
+    <span class="cm">&lt;!-- limits --&gt;</span>
     <span class="nt">&lt;max_wheel_torque&gt;</span>20<span class="nt">&lt;/max_wheel_torque&gt;</span>
     <span class="nt">&lt;max_wheel_acceleration&gt;</span>1.0<span class="nt">&lt;/max_wheel_acceleration&gt;</span>
 
-    <span class="c">&lt;!-- output --&gt;</span>
+    <span class="cm">&lt;!-- output --&gt;</span>
     <span class="nt">&lt;publish_odom&gt;</span>true<span class="nt">&lt;/publish_odom&gt;</span>
     <span class="nt">&lt;publish_odom_tf&gt;</span>true<span class="nt">&lt;/publish_odom_tf&gt;</span>
     <span class="nt">&lt;publish_wheel_tf&gt;</span>true<span class="nt">&lt;/publish_wheel_tf&gt;</span>
@@ -1150,53 +1150,53 @@ Subscription count: <span class="m">0</span>
 </pre></div>
 </div>
 <p>Next, we specify the parameters of the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> using a YAML file. Create a directory named <code class="docutils literal notranslate"><span class="pre">config</span></code> at the root of your project and create a file named <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code>. Copy the following lines of code into your <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code> file.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">### ekf config file ###</span>
-<span class="nt">ekf_filter_node</span><span class="p">:</span>
-    <span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="c1"># The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin</span>
-<span class="c1"># computation until it receives at least one message from one of theinputs. It will then run continuously at the</span>
-<span class="c1"># frequency specified here, regardless of whether it receives more measurements. Defaults to 30 if unspecified.</span>
-        <span class="nt">frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30.0</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">### ekf config file ###</span><span class="w"></span>
+<span class="nt">ekf_filter_node</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="c1"># The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin</span><span class="w"></span>
+<span class="c1"># computation until it receives at least one message from one of theinputs. It will then run continuously at the</span><span class="w"></span>
+<span class="c1"># frequency specified here, regardless of whether it receives more measurements. Defaults to 30 if unspecified.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span><span class="w"></span>
 
-<span class="c1"># ekf_localization_node and ukf_localization_node both use a 3D omnidirectional motion model. If this parameter is</span>
-<span class="c1"># set to true, no 3D information will be used in your state estimate. Use this if you are operating in a planar</span>
-<span class="c1"># environment and want to ignore the effect of small variations in the ground plane that might otherwise be detected</span>
-<span class="c1"># by, for example, an IMU. Defaults to false if unspecified.</span>
-        <span class="nt">two_d_mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="c1"># ekf_localization_node and ukf_localization_node both use a 3D omnidirectional motion model. If this parameter is</span><span class="w"></span>
+<span class="c1"># set to true, no 3D information will be used in your state estimate. Use this if you are operating in a planar</span><span class="w"></span>
+<span class="c1"># environment and want to ignore the effect of small variations in the ground plane that might otherwise be detected</span><span class="w"></span>
+<span class="c1"># by, for example, an IMU. Defaults to false if unspecified.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">two_d_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 
-<span class="c1"># Whether to publish the acceleration state. Defaults to false if unspecified.</span>
-        <span class="nt">publish_acceleration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="c1"># Whether to publish the acceleration state. Defaults to false if unspecified.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">publish_acceleration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-<span class="c1"># Whether to broadcast the transformation over the /tf topic. Defaultsto true if unspecified.</span>
-        <span class="nt">publish_tf</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="c1"># Whether to broadcast the transformation over the /tf topic. Defaultsto true if unspecified.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">publish_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-<span class="c1"># 1. Set the map_frame, odom_frame, and base_link frames to the appropriate frame names for your system.</span>
-<span class="c1">#     1a. If your system does not have a map_frame, just remove it, and make sure &quot;world_frame&quot; is set to the value of odom_frame.</span>
-<span class="c1"># 2. If you are fusing continuous position data such as wheel encoder odometry, visual odometry, or IMU data, set &quot;world_frame&quot;</span>
-<span class="c1">#    to your odom_frame value. This is the default behavior for robot_localization&#39;s state estimation nodes.</span>
-<span class="c1"># 3. If you are fusing global absolute position data that is subject to discrete jumps (e.g., GPS or position updates from landmark</span>
-<span class="c1">#    observations) then:</span>
-<span class="c1">#     3a. Set your &quot;world_frame&quot; to your map_frame value</span>
-<span class="c1">#     3b. MAKE SURE something else is generating the odom-&gt;base_link transform. Note that this can even be another state estimation node</span>
-<span class="c1">#         from robot_localization! However, that instance should *not* fuse the global data.</span>
-        <span class="nt">map_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>              <span class="c1"># Defaults to &quot;map&quot; if unspecified</span>
-        <span class="nt">odom_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">odom</span>            <span class="c1"># Defaults to &quot;odom&quot; if unspecified</span>
-        <span class="nt">base_link_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>  <span class="c1"># Defaults to &quot;base_link&quot; ifunspecified</span>
-        <span class="nt">world_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">odom</span>           <span class="c1"># Defaults to the value ofodom_frame if unspecified</span>
+<span class="c1"># 1. Set the map_frame, odom_frame, and base_link frames to the appropriate frame names for your system.</span><span class="w"></span>
+<span class="c1">#     1a. If your system does not have a map_frame, just remove it, and make sure &quot;world_frame&quot; is set to the value of odom_frame.</span><span class="w"></span>
+<span class="c1"># 2. If you are fusing continuous position data such as wheel encoder odometry, visual odometry, or IMU data, set &quot;world_frame&quot;</span><span class="w"></span>
+<span class="c1">#    to your odom_frame value. This is the default behavior for robot_localization&#39;s state estimation nodes.</span><span class="w"></span>
+<span class="c1"># 3. If you are fusing global absolute position data that is subject to discrete jumps (e.g., GPS or position updates from landmark</span><span class="w"></span>
+<span class="c1">#    observations) then:</span><span class="w"></span>
+<span class="c1">#     3a. Set your &quot;world_frame&quot; to your map_frame value</span><span class="w"></span>
+<span class="c1">#     3b. MAKE SURE something else is generating the odom-&gt;base_link transform. Note that this can even be another state estimation node</span><span class="w"></span>
+<span class="c1">#         from robot_localization! However, that instance should *not* fuse the global data.</span><span class="w"></span>
+<span class="w">        </span><span class="nt">map_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span><span class="w">              </span><span class="c1"># Defaults to &quot;map&quot; if unspecified</span><span class="w"></span>
+<span class="w">        </span><span class="nt">odom_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w">            </span><span class="c1"># Defaults to &quot;odom&quot; if unspecified</span><span class="w"></span>
+<span class="w">        </span><span class="nt">base_link_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w">  </span><span class="c1"># Defaults to &quot;base_link&quot; ifunspecified</span><span class="w"></span>
+<span class="w">        </span><span class="nt">world_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w">           </span><span class="c1"># Defaults to the value ofodom_frame if unspecified</span><span class="w"></span>
 
-        <span class="nt">odom0</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">demo/odom</span>
-        <span class="nt">odom0_config</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">true</span><span class="p p-Indicator">,</span>  <span class="nv">true</span><span class="p p-Indicator">,</span>  <span class="nv">true</span><span class="p p-Indicator">,</span>
-                       <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
-                       <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
-                       <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-                       <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">odom0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo/odom</span><span class="w"></span>
+<span class="w">        </span><span class="nt">odom0_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">]</span><span class="w"></span>
 
-        <span class="nt">imu0</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">demo/imu</span>
-        <span class="nt">imu0_config</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
-                      <span class="nv">true</span><span class="p p-Indicator">,</span>  <span class="nv">true</span><span class="p p-Indicator">,</span>  <span class="nv">true</span><span class="p p-Indicator">,</span>
-                      <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
-                      <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
-                      <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">,</span> <span class="nv">false</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">imu0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo/imu</span><span class="w"></span>
+<span class="w">        </span><span class="nt">imu0_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">                      </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">]</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In this configuration, we defined the parameter values of <code class="docutils literal notranslate"><span class="pre">frequency</span></code>, <code class="docutils literal notranslate"><span class="pre">two_d_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_acceleration</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_tf</span></code>, <code class="docutils literal notranslate"><span class="pre">map_frame</span></code>, <code class="docutils literal notranslate"><span class="pre">odom_frame</span></code>, <code class="docutils literal notranslate"><span class="pre">base_link_frame</span></code>, and <code class="docutils literal notranslate"><span class="pre">world_frame</span></code>. For more information on the other parameters you can modify, see <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/state_estimation_nodes.html#parameters">Parameters of state estimation nodes</a>, and a sample <code class="docutils literal notranslate"><span class="pre">efk.yaml</span></code> can be found <a class="reference external" href="https://github.com/cra-ros-pkg/robot_localization/blob/foxy-devel/params/ekf.yaml">here</a>.</p>
@@ -1225,7 +1225,7 @@ Subscription count: <span class="m">0</span>
                                             <span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable use_sim_time&#39;</span><span class="o">)</span>,
 </pre></div>
 </div>
-<p>Lastly, add <code class="docutils literal notranslate"><span class="pre">robot_localization,</span></code> above the <code class="docutils literal notranslate"><span class="pre">rviz_node</span></code> line to launch the robot localization node.</p>
+<p>Lastly, add <code class="docutils literal notranslate"><span class="pre">robot_localization_node,</span></code> above the <code class="docutils literal notranslate"><span class="pre">rviz_node</span></code> line to launch the robot localization node.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>      robot_state_publisher_node,
       spawn_entity,
       robot_localization_node,

@@ -797,15 +797,15 @@ Each server defines a parameter where the list of names for the plugins to be lo
 <p>The type of plugin to be mapped to a particular name has to be defined using the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter in the plugin namespace for each name defined in the server plugin list.
 Each name in the plugin parameter list is expected to have the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter defined.</p>
 <p>An example: <code class="docutils literal notranslate"><span class="pre">controller_server</span></code> defines the parameter <code class="docutils literal notranslate"><span class="pre">controller_plugins</span></code> where a list of plugin names can be defined:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
-  <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;DynamicFollowPath&quot;</span><span class="p p-Indicator">]</span>
-    <span class="nt">FollowPath</span><span class="p">:</span>
-      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;dwb_core/DWBLocalPlanner&quot;</span>
-      <span class="nt">max_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.26</span>
-    <span class="nt">DynamicFollowPath</span><span class="p">:</span>
-      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;teb_local_planner/TEBLocalPlanner&quot;</span>
-      <span class="nt">max_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;DynamicFollowPath&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dwb_core/DWBLocalPlanner&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">max_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.26</span><span class="w"></span>
+<span class="w">    </span><span class="nt">DynamicFollowPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;teb_local_planner/TEBLocalPlanner&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">max_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> controller is of type <code class="docutils literal notranslate"><span class="pre">dwb_local_planner/DWBLocalPlanner</span></code> and <code class="docutils literal notranslate"><span class="pre">DynamicFollowPath</span></code> of type <code class="docutils literal notranslate"><span class="pre">teb_local_planner/TEBLocalPlanner</span></code>.

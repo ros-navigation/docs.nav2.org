@@ -797,19 +797,19 @@ We will use <code class="docutils literal notranslate"><span class="pre">scale</
 </div>
 <p>After all speed restriction areas will be filled, save the <code class="docutils literal notranslate"><span class="pre">speed_mask.pgm</span></code> image.</p>
 <p>Like all other maps, the filter mask should have its own YAML metadata file. Copy <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.yaml">turtlebot3_world.yaml</a> to <code class="docutils literal notranslate"><span class="pre">speed_mask.yaml</span></code>. Open <code class="docutils literal notranslate"><span class="pre">speed_mask.yaml</span></code> and update the fields as shown below (as mentioned before for the <code class="docutils literal notranslate"><span class="pre">scale</span></code> mode to use whole color lightness range there should be no thresholds: <code class="docutils literal notranslate"><span class="pre">free_thresh</span> <span class="pre">=</span> <span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">occupied_thresh</span> <span class="pre">=</span> <span class="pre">1.0</span></code>):</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">turtlebot3_world.pgm</span>
-<span class="l l-Scalar l-Scalar-Plain">-&gt;</span>
-<span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">speed_mask.pgm</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">turtlebot3_world.pgm</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">-&gt;</span><span class="w"></span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">speed_mask.pgm</span><span class="w"></span>
 
-<span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trinary</span>
-<span class="l l-Scalar l-Scalar-Plain">-&gt;</span>
-<span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scale</span>
+<span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trinary</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">-&gt;</span><span class="w"></span>
+<span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scale</span><span class="w"></span>
 
-<span class="nt">occupied_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.65</span>
-<span class="nt">free_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.196</span>
-<span class="l l-Scalar l-Scalar-Plain">-&gt;</span>
-<span class="nt">occupied_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
-<span class="nt">free_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="nt">occupied_thresh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.65</span><span class="w"></span>
+<span class="nt">free_thresh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.196</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">-&gt;</span><span class="w"></span>
+<span class="nt">occupied_thresh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
+<span class="nt">free_thresh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Since Costmap2D does not support orientation, the last third “yaw” component of the <code class="docutils literal notranslate"><span class="pre">origin</span></code> vector should be equal to zero (for example: <code class="docutils literal notranslate"><span class="pre">origin:</span> <span class="pre">[1.25,</span> <span class="pre">-5.18,</span> <span class="pre">0.0]</span></code>). Save <code class="docutils literal notranslate"><span class="pre">speed_mask.yaml</span></code> and the new filter mask is ready to use.</p>
@@ -929,20 +929,20 @@ We will use <code class="docutils literal notranslate"><span class="pre">scale</
 </pre></div>
 </div>
 <p>where the <code class="docutils literal notranslate"><span class="pre">params_file</span></code> variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at <a class="reference internal" href="../../configuration/packages/configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> page. Please, refer to it for more information. The example of <code class="docutils literal notranslate"><span class="pre">params_file</span></code> could be found below:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">costmap_filter_info_server</span><span class="p">:</span>
-  <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="nt">filter_info_topic</span><span class="p">:</span> <span class="s">&quot;/costmap_filter_info&quot;</span>
-    <span class="nt">mask_topic</span><span class="p">:</span> <span class="s">&quot;/speed_filter_mask&quot;</span>
-    <span class="nt">base</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">100.0</span>
-    <span class="nt">multiplier</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1.0</span>
-<span class="nt">filter_mask_server</span><span class="p">:</span>
-  <span class="nt">ros__parameters</span><span class="p">:</span>
-    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">frame_id</span><span class="p">:</span> <span class="s">&quot;map&quot;</span>
-    <span class="nt">topic_name</span><span class="p">:</span> <span class="s">&quot;/speed_filter_mask&quot;</span>
-    <span class="nt">yaml_filename</span><span class="p">:</span> <span class="s">&quot;speed_mask.yaml&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">costmap_filter_info_server</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">filter_info_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/costmap_filter_info&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mask_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/speed_filter_mask&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">multiplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span><span class="w"></span>
+<span class="nt">filter_mask_server</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/speed_filter_mask&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">yaml_filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;speed_mask.yaml&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Note, that:</p>
