@@ -444,7 +444,7 @@ Next, add the following launch arguments within the ``return launch.LaunchDescri
   launch.actions.DeclareLaunchArgument(name='use_sim_time', default_value='True',
                                               description='Flag to enable use_sim_time'),
 
-Lastly, add ``robot_localization,`` above the ``rviz_node`` line to launch the robot localization node.
+Lastly, add ``robot_localization_node,`` above the ``rviz_node`` line to launch the robot localization node.
 
 .. code-block:: shell
 
