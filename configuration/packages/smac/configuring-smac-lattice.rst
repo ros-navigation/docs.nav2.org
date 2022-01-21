@@ -116,6 +116,19 @@ Parameters
   Description
     Heuristic penalty to apply to SE2 node for cost at pose. Allows State Lattice to be cost aware.
 
+
+
+:``<name>``.rotation_penalty:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  double 5.0         
+  ====== =======
+
+  Description
+    Penalty to apply for rotations in place, if minimum control set contains in-place rotations. This should always be set sufficiently high to weight against in-place rotations unless strictly necessary for obstacle avoidance or there may be frequent discontinuities in the plan where the plan requests the robot to rotate in place to short-cut an otherwise smooth forward-moving path for marginal path distance savings.
+
 :``<name>``.lattice_filepath:
 
   ====== =======
@@ -246,6 +259,7 @@ Example
         change_penalty: 0.05                # Penalty to apply if motion is changing directions (L to R), must be >= 0
         non_straight_penalty: 1.05          # Penalty to apply if motion is non-straight, must be => 1
         cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
+        rotation_penalty: 5.0               # Penalty to apply to in-place rotations, if minimum control set contains them
         lattice_filepath: ""                # The filepath to the state lattice graph
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
         cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
