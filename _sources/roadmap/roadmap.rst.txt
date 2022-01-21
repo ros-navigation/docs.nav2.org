@@ -35,11 +35,15 @@ For a full list of important completed changes in the project, see the Migration
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Complete First Time Guide`_   |  Medium (in progress)  |
+| `Complete First Time Guide`_   |  Medium (DONE)         |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
 | `Rotation Shim Controller`_    |  Small (DONE)          |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `Dynamic Composition`_         |  Medium (DONE)         |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
@@ -51,3 +55,4 @@ For a full list of important completed changes in the project, see the Migration
 .. _Complete First Time Guide: https://github.com/ros-planning/navigation2/issues/1589
 .. _Rotation Shim Controller: https://github.com/ros-planning/navigation2/pull/2718
 .. _Move Development from Master to Rolling: https://github.com/ros-planning/navigation2/issues/2337
+.. _Dynamic Composition: https://github.com/ros-planning/navigation2/issues/2147
