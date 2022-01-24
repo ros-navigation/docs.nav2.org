@@ -16,7 +16,7 @@ Action Server
 Just as in ROS, action servers are a common way to control long running tasks like navigation.
 This stack makes more extensive use of actions, and in some cases, without an easy topic interface.
 It is more important to understand action servers as a developer in ROS 2.
-Some simple CLI examples can be found in the `ROS 2 documementation <https://docs.ros.org/en/rolling/Tutorials/Understanding-ROS2-Actions.html>`_.
+Some simple CLI examples can be found in the `ROS 2 documentation <https://docs.ros.org/en/rolling/Tutorials/Understanding-ROS2-Actions.html>`_.
 
 Action servers are similar to a canonical service server.
 A client will request some task to be completed, except, this task may take a long time.
@@ -48,7 +48,7 @@ It also helps users structure their programs in reasonable ways for commercial u
 
 When a node is started, it is in the unconfigured state, only processing the node's constructor which should **not** contain any ROS networking setup or parameter reading.
 By the launch system, or the supplied lifecycle manager, the nodes need to be transitioned to inactive by configuring.
-After, it is possible to activate the node by transitioning through the activing stage.
+After, it is possible to activate the node by transitioning through the activating stage.
 
 This state will allow the node to process information and be fully setup to run.
 The configuration stage, triggering the ``on_configure()`` method, will setup all parameters, ROS networking interfaces, and for safety systems, all dynamically allocated memory.
