@@ -749,7 +749,7 @@
 <p>Just as in ROS, action servers are a common way to control long running tasks like navigation.
 This stack makes more extensive use of actions, and in some cases, without an easy topic interface.
 It is more important to understand action servers as a developer in ROS 2.
-Some simple CLI examples can be found in the <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Understanding-ROS2-Actions.html">ROS 2 documementation</a>.</p>
+Some simple CLI examples can be found in the <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Understanding-ROS2-Actions.html">ROS 2 documentation</a>.</p>
 <p>Action servers are similar to a canonical service server.
 A client will request some task to be completed, except, this task may take a long time.
 An example would be moving the shovel up from a bulldozer or ask a robot to travel 10 meters to the right.</p>
@@ -775,7 +775,7 @@ This helps in determinstic behavior of ROS systems in startup and shutdown.
 It also helps users structure their programs in reasonable ways for commercial uses and debugging.</p>
 <p>When a node is started, it is in the unconfigured state, only processing the node’s constructor which should <strong>not</strong> contain any ROS networking setup or parameter reading.
 By the launch system, or the supplied lifecycle manager, the nodes need to be transitioned to inactive by configuring.
-After, it is possible to activate the node by transitioning through the activing stage.</p>
+After, it is possible to activate the node by transitioning through the activating stage.</p>
 <p>This state will allow the node to process information and be fully setup to run.
 The configuration stage, triggering the <code class="docutils literal notranslate"><span class="pre">on_configure()</span></code> method, will setup all parameters, ROS networking interfaces, and for safety systems, all dynamically allocated memory.
 The activation stage, triggering the <code class="docutils literal notranslate"><span class="pre">on_activate()</span></code> method, will active the ROS networking interfaces and set any states in the program to start processing information.</p>
