@@ -681,6 +681,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fix-costmaplayer-cleararea-invert-param-logic">Fix CostmapLayer clearArea invert param logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-composition">Dynamic Composition</a></li>
 </ul>
 </li>
 </ul>
@@ -944,6 +945,37 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <div class="section" id="fix-costmaplayer-cleararea-invert-param-logic">
 <h2>Fix CostmapLayer clearArea invert param logic<a class="headerlink" href="#fix-costmaplayer-cleararea-invert-param-logic" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2772">This PR</a> fixes the invert paramlogic of the CostmapLayer clearArea fonction. Hence correcting the behavior of the clearAroundRobot and clearExceptRegion services and their corresponding BT actions.</p>
+</div>
+<div class="section" id="dynamic-composition">
+<h2>Dynamic Composition<a class="headerlink" href="#dynamic-composition" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2750">This PR</a> provides a optional bringup based on ROS2 dynamic composition for users. It can be used to compose all Nav2 nodes in a single process instead of launching these nodes separately, which is useful for embedded systems users that need to make optimizations due to harsh resource constraints. it’s used by default, but can be disabled by using the launch argument <code class="docutils literal notranslate"><span class="pre">use_composition:=False</span></code>.</p>
+<p>Some experiments to show performance improvement of dynamic composition, and the cpu and memory are captured by <code class="docutils literal notranslate"><span class="pre">psutil</span></code> :</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="79%" />
+<col width="9%" />
+<col width="12%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CPU: Intel(R) i7-8700 (6Cores 12Threads), Memory: 32GB</th>
+<th class="head">cpu(%)</th>
+<th class="head">memory(%)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>normal multiple processes</td>
+<td>44</td>
+<td>0.76</td>
+</tr>
+<tr class="row-odd"><td>dynamic composition (use <code class="docutils literal notranslate"><span class="pre">component_container_isolated</span></code>)</td>
+<td>38</td>
+<td>0.23</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu (saves ~13%) than normal multiple processes.</p>
 </div>
 </div>
 
