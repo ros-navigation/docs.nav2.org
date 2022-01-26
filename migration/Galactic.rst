@@ -227,3 +227,19 @@ So, what I propose here is to remove live monitoring of the BT from Nav2. **We c
 Fix CostmapLayer clearArea invert param logic
 *********************************************
 `This PR <https://github.com/ros-planning/navigation2/pull/2772>`_ fixes the invert paramlogic of the CostmapLayer clearArea fonction. Hence correcting the behavior of the clearAroundRobot and clearExceptRegion services and their corresponding BT actions.
+
+Dynamic Composition
+*********************************************
+
+`This PR <https://github.com/ros-planning/navigation2/pull/2750>`_ provides a optional bringup based on ROS2 dynamic composition for users. It can be used to compose all Nav2 nodes in a single process instead of launching these nodes separately, which is useful for embedded systems users that need to make optimizations due to harsh resource constraints. it's used by default, but can be disabled by using the launch argument ``use_composition:=False``.
+
+Some experiments to show performance improvement of dynamic composition, and the cpu and memory are captured by ``psutil`` :
+
+ ============================================================================== ========= ============ 
+  CPU: Intel(R) i7-8700 (6Cores 12Threads), Memory: 32GB                         cpu(%)    memory(%)   
+ ============================================================================== ========= ============ 
+  normal multiple processes                                                        44        0.76      
+  dynamic composition (use ``component_container_isolated``)                       38        0.23      
+ ============================================================================== ========= ============ 
+
+The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu (saves ~13%) than noqrmal multiple processes.
