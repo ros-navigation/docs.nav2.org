@@ -4,7 +4,7 @@ IsPathValid
 =======
 
 Checks to see if the global path is valid. If there is a
-LETHAL obstacle along the path, the condition returns FAILURE, otherwise
+obstacle along the path, the condition returns FAILURE, otherwise
 it returns SUCCESS. 
 
 Example
@@ -12,4 +12,4 @@ Example
 
 .. code-block:: xml
 
-    <IsPathValid path="{path}"/>
+    <IsPathValid server_timeout="10" path="{path}"/>

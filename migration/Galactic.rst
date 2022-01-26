@@ -222,4 +222,7 @@ It was a great feature idea but never quite panned out, especially after we intr
 
 So, what I propose here is to remove live monitoring of the BT from Nav2. **We can still use Groot to modify, visualize, and generally work with behavior trees**, the only thing being removed is to live view the executing behavior tree as Nav2 is currently executing it (it used to light up the boxes of the current nodes). This was of dubious value anyhow, since the tree ticks so fast its difficult to visualize and get meaningful insights into things as the system is moving so quickly.
 
+Replanning Only if Path is Invalid
+**********************************
+
 `This PR <https://github.com/ros-planning/navigation2/pull/2591>`_ creates two new condition BT node to facilitate replanning only if path becomes invalid. These new nodes were integrated into the defualt BT. 
