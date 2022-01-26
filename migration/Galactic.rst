@@ -242,4 +242,4 @@ Some experiments to show performance improvement of dynamic composition, and the
   dynamic composition (use ``component_container_isolated``)                       38        0.23      
  ============================================================================== ========= ============ 
 
-The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu (saves ~13%) than noqrmal multiple processes.
+The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu (saves ~13%) than normal multiple processes.
