@@ -216,7 +216,7 @@ To include this plugin in our URDF, add the following lines after the ``</gazebo
 
       <!-- output -->
       <publish_odom>true</publish_odom>
-      <publish_odom_tf>true</publish_odom_tf>
+      <publish_odom_tf>false</publish_odom_tf>
       <publish_wheel_tf>true</publish_wheel_tf>
       
       <odometry_frame>odom</odometry_frame>
@@ -255,7 +255,7 @@ To launch Gazebo, add the following before the ``joint_state_publisher_node,`` l
 
 .. code-block:: shell
   
-  launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_factory.so'], output='screen'),
+  launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'], output='screen'),
 
 We will now add a node that spawns ``sam_bot`` in Gazebo. Open `launch/display.launch.py <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_ again and paste the following lines before the ``return launch.LaunchDescription([`` line.
 
