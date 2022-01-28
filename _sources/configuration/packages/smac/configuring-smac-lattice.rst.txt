@@ -132,7 +132,7 @@ Parameters
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 0.025         
+  double 0.015         
   ====== =======
 
   Description
