@@ -136,7 +136,7 @@ Parameters
   ====== =======
 
   Description
-    Heuristic penalty to apply to SE2 node penalty. Causes State Lattice to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be >= 0.0 and <= 1.0.
+    Heuristic penalty to apply to SE2 node penalty. Causes State Lattice to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be >= 0.0 and <= 1.0. Must be `0.0` to be fully admissible. 
 
 :``<name>``.lattice_filepath:
 
