@@ -116,8 +116,6 @@ Parameters
   Description
     Heuristic penalty to apply to SE2 node for cost at pose. Allows State Lattice to be cost aware.
 
-
-
 :``<name>``.rotation_penalty:
 
   ====== =======
@@ -128,6 +126,17 @@ Parameters
 
   Description
     Penalty to apply for rotations in place, if minimum control set contains in-place rotations. This should always be set sufficiently high to weight against in-place rotations unless strictly necessary for obstacle avoidance or there may be frequent discontinuities in the plan where the plan requests the robot to rotate in place to short-cut an otherwise smooth forward-moving path for marginal path distance savings.
+
+:``<name>``.retrospective_penalty:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  double 0.025         
+  ====== =======
+
+  Description
+    Heuristic penalty to apply to SE2 node penalty. Causes State Lattice to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be >= 0.0 and <= 1.0.
 
 :``<name>``.lattice_filepath:
 
