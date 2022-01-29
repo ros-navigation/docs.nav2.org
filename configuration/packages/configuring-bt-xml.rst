@@ -38,6 +38,7 @@ Action Plugins
   bt-plugins/actions/NavigateThroughPoses.rst
   bt-plugins/actions/ComputePathThroughPoses.rst
   bt-plugins/actions/RemovePassedGoals.rst
+  bt-plugins/actions/CancelControl.rst
 
 Condition Plugins
 *****************

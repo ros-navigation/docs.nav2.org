@@ -17,7 +17,7 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A* implem
   - Computing the possibly inscribed zones, or the cost over which some part of the footprint may be in collision with a boundary to check the full footprint. Else, check center cost since promised to not be in a potential collision state
   - Renaming Hybrid-A* planner to SmacPlannerHybrid
   - Precomputing the Reedshepp and Dubin paths offline so at runtime its just a lookup table
-  - Replacing the wavefront heuristic with a new, and novel, heuristic dubbed the obstacle heuristic. This computes a Dijkstra's path taking into account the 8 connected space, as well as weights for the cost at the positions to guide the heuristic into the center of aisle ways. It also downsamples the costmap such that it can reduce the number of expansions by 75% and have a very small error introduced into the heuristic by being off by at most a partial fraction of a single cell distance
+  - Replacing the wavefront heuristic with a new, and novel, heuristic dubbed the obstacle heuristic. This computes a Dijkstra's path using Differential A* search taking into account the 8 connected space, as well as weights for the cost at the positions to guide the heuristic into the center of aisle ways. It also downsamples the costmap such that it can reduce the number of expansions by 75% and have a very small error introduced into the heuristic by being off by at most a partial fraction of a single cell distance
   - Improvements to the analytic expansion algorithm to remove the possibility of loops at the end of paths, whenever possible to remove
   - Improving analytic expansions to provide maximum path length to prevent skirting close to obstacles
   - 2D A* travel cost and heuristic improvements to speed up planning times and also increase the path quality significantly
@@ -32,6 +32,8 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A* implem
   - Both Hybrid-A* and State Lattice planners are now fully admissible
   - Hybrid-A* and State Lattice have had their parameterization for path smoothing readded.
   - The smoother now enables kinematically feasible boundary conditions.
+  - State Lattice supports turning in place primitive types
+  - Retrospective penalty added to speed up the planner, making it prioritize later search branches before earlier ones, which have negligible chance to improve path in vast majority of situations
 
 The tl;dr of these improvements is:
   - Plans are 2-3x as fast as they were before, well under 200ms for nearly all situations, making it as fast as NavFn and Global Planner (but now kinematically feasible). Typical planning times are sub-100ms without even making use of the caching or downsampling features.
@@ -226,3 +228,28 @@ Replanning Only if Path is Invalid
 **********************************
 
 `This PR <https://github.com/ros-planning/navigation2/pull/2591>`_ creates two new condition BT node to facilitate replanning only if path becomes invalid rather than constantly replanning. These new nodes were integrated into the default BT. 
+
+Fix CostmapLayer clearArea invert param logic
+*********************************************
+`This PR <https://github.com/ros-planning/navigation2/pull/2772>`_ fixes the invert paramlogic of the CostmapLayer clearArea fonction. Hence correcting the behavior of the clearAroundRobot and clearExceptRegion services and their corresponding BT actions.
+
+Dynamic Composition
+*********************************************
+
+`This PR <https://github.com/ros-planning/navigation2/pull/2750>`_ provides a optional bringup based on ROS2 dynamic composition for users. It can be used to compose all Nav2 nodes in a single process instead of launching these nodes separately, which is useful for embedded systems users that need to make optimizations due to harsh resource constraints. it's used by default, but can be disabled by using the launch argument ``use_composition:=False``.
+
+Some experiments to show performance improvement of dynamic composition, and the cpu and memory are captured by ``psutil`` :
+
+ ============================================================================== ========= ============ 
+  CPU: Intel(R) i7-8700 (6Cores 12Threads), Memory: 32GB                         cpu(%)    memory(%)   
+ ============================================================================== ========= ============ 
+  normal multiple processes                                                        44        0.76      
+  dynamic composition (use ``component_container_isolated``)                       38        0.23      
+ ============================================================================== ========= ============ 
+
+The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu (saves ~13%) than normal multiple processes.
+
+BT Cancel Node
+**************
+
+`This PR <https://github.com/ros-planning/navigation2/pull/2787>`_ caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the ``CancelControl`` behavior to cancel the goal given to the controller_server.
