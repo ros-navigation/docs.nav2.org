@@ -414,6 +414,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelControl.html">CancelControl</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -682,6 +683,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fix-costmaplayer-cleararea-invert-param-logic">Fix CostmapLayer clearArea invert param logic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dynamic-composition">Dynamic Composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bt-cancel-node">BT Cancel Node</a></li>
 </ul>
 </li>
 </ul>
@@ -977,6 +979,10 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 </table>
 </div></blockquote>
 <p>The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu (saves ~13%) than normal multiple processes.</p>
+</div>
+<div class="section" id="bt-cancel-node">
+<h2>BT Cancel Node<a class="headerlink" href="#bt-cancel-node" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2787">This PR</a> caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the <code class="docutils literal notranslate"><span class="pre">CancelControl</span></code> behavior to cancel the goal given to the controller_server.</p>
 </div>
 </div>
 
