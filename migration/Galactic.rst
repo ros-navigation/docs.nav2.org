@@ -244,3 +244,8 @@ Some experiments to show performance improvement of dynamic composition, and the
  ============================================================================== ========= ============ 
 
 The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu (saves ~13%) than normal multiple processes.
+
+BT Cancel Node
+**************
+
+`This PR <https://github.com/ros-planning/navigation2/pull/2787>`_ caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the ``CancelControl`` behavior to cancel the goal given to the controller_server.
