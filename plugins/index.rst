@@ -325,6 +325,10 @@ Behavior Tree Nodes
 | `Goal Updated Condition`_          |Aitor Miguel Blanco | Checks if goal is      |
 |                                    |                    | preempted.             |
 +------------------------------------+--------------------+------------------------+
+| `Globally Updated Goal Condition`_ | Joshua Wallace     | Checks if goal is      |
+|                                    |                    | preempted in the global|
+|                                    |                    | BT context             |
++------------------------------------+--------------------+------------------------+
 | `Initial Pose received Condition`_ | Carl Delsey        | Checks if initial pose |
 |                                    |                    | has been set           |
 +------------------------------------+--------------------+------------------------+
@@ -351,15 +355,23 @@ Behavior Tree Nodes
 |                                    |                    | percentage is below    |
 |                                    |                    | a specified value.     |
 +------------------------------------+--------------------+------------------------+
+| `Is Path Valid Condition`_         |  Joshua Wallace    | Checks if a path is    |
+|                                    |                    | valid by making sure   |
+|                                    |                    | there are no LETHAL    |
+|                                    |                    | obstacles along the    |
+|                                    |                    | path.                  |
++------------------------------------+--------------------+------------------------+
 
 .. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
+.. _Globally Updated Goal Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
 .. _Initial Pose received Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
 .. _Is Stuck Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
 .. _Transform Available Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
 .. _Distance Traveled Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
 .. _Time Expired Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
 .. _Is Battery Low Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
+.. _Is Path Valid Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
 
 +--------------------------+-------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator        |       Description                |
