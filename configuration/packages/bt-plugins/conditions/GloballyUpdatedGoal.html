@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DistanceTraveled &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>GloballyUpdatedGoal &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
@@ -26,8 +26,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="GoalUpdated" href="GoalUpdated.html" />
-    <link rel="prev" title="TransformAvailable" href="TransformAvailable.html" />
+    <link rel="next" title="InitialPoseReceived" href="InitialPoseReceived.html" />
+    <link rel="prev" title="GoalUpdated" href="GoalUpdated.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -420,9 +420,9 @@
 <li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="GoalReached.html">GoalReached</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TransformAvailable.html">TransformAvailable</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">DistanceTraveled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DistanceTraveled.html">DistanceTraveled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GloballyUpdatedGoal.html">GloballyUpdatedGoal</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">GloballyUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TimeExpired.html">TimeExpired</a></li>
@@ -738,7 +738,7 @@
       <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../../index.html">Configuration Guide</a> &raquo;</li>
           <li><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a> &raquo;</li>
-      <li>DistanceTraveled</li>
+      <li>GloballyUpdatedGoal</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -747,106 +747,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="distancetraveled">
-<span id="bt-distance-traveled-condition"></span><h1>DistanceTraveled<a class="headerlink" href="#distancetraveled" title="Permalink to this headline">¶</a></h1>
-<p>Node that returns success when a configurable distance has been traveled.</p>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">Defined and declared in <a class="reference internal" href="../../configuring-bt-navigator.html#configuring-bt-navigator"><span class="std std-ref">Behavior-Tree Navigator</span></a>.</td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="globallyupdatedgoal">
+<span id="bt-globally-updated-goal-condition"></span><h1>GloballyUpdatedGoal<a class="headerlink" href="#globallyupdatedgoal" title="Permalink to this headline">¶</a></h1>
+<p>Checks if the global navigation goal has changed in the blackboard.
+Returns failure if the goal is the same, if it changes, it returns success.</p>
+<p>This node differs from the GoalUpdated by retaining the state of the current goal/goals throughout each tick of the BehaviorTree
+such that it will update on any “global” change to the goal.</p>
 <div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">bt_navigator</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="c1"># other bt_navigator parameters</span><span class="w"></span>
-<span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="input-ports">
-<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">distance:</th><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="46%" />
-<col width="54%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>double</td>
-<td>1.0</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The distance that must travel before returning success (m).</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">global_frame:</th><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="46%" />
-<col width="54%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>string</td>
-<td>“map”</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Reference frame.</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">robot_base_frame:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="35%" />
-<col width="65%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>string</td>
-<td>“base_link”</td>
-</tr>
-</tbody>
-</table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Robot base frame.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id1">
-<h2>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DistanceTraveled</span> <span class="na">distance=</span><span class="s">&quot;0.8&quot;</span> <span class="na">global_frame=</span><span class="s">&quot;map&quot;</span> <span class="na">robot_base_frame=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GlobalUpdatedGoal/&gt;</span>
 </pre></div>
 </div>
 </div>

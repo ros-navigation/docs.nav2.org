@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2. Advanced Navigation Testing Framework &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Navigate To Pose and Replan Only if Path Invalid &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -26,6 +26,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Follow Dynamic Point" href="follow_point.html" />
+    <link rel="prev" title="Navigate Through Poses" href="nav_through_poses_recovery.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -50,7 +52,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -578,28 +580,28 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tuning/index.html#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../behavior_trees/index.html">Nav2 Behavior Trees</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html">Introduction To Nav2 Specific Nodes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#action-nodes">Action Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#condition-nodes">Condition Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#decorator-nodes">Decorator Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#control-pipelinesequence">Control: PipelineSequence</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#control-recovery">Control: Recovery</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/nav2_specific_nodes.html#control-roundrobin">Control: RoundRobin</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Nav2 Behavior Trees</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview/nav2_specific_nodes.html">Introduction To Nav2 Specific Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#action-nodes">Action Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#condition-nodes">Condition Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#decorator-nodes">Decorator Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#control-pipelinesequence">Control: PipelineSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#control-recovery">Control: Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/nav2_specific_nodes.html#control-roundrobin">Control: RoundRobin</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#navigate-to-pose-with-replanning-and-recovery">Navigate To Pose With Replanning and Recovery</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#navigation-subtree">Navigation Subtree</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../behavior_trees/overview/detailed_behavior_tree_walkthrough.html#recovery-subtree">Recovery Subtree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#navigate-to-pose-with-replanning-and-recovery">Navigate To Pose With Replanning and Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#navigation-subtree">Navigation Subtree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/detailed_behavior_tree_walkthrough.html#recovery-subtree">Recovery Subtree</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_to_pose_recovery.html">Navigate To Pose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_to_pose_and_replan_if_path_invalid.html">Navigate To Pose and Replan Only if Path Invalid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav_to_pose_recovery.html">Navigate To Pose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav_through_poses_recovery.html">Navigate Through Poses</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Navigate To Pose and Replan Only if Path Invalid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="follow_point.html">Follow Dynamic Point</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
@@ -734,7 +736,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>2. Advanced Navigation Testing Framework</li>
+          <li><a href="../index.html">Nav2 Behavior Trees</a> &raquo;</li>
+      <li>Navigate To Pose and Replan Only if Path Invalid</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -743,35 +746,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="advanced-navigation-testing-framework">
-<span id="testing"></span><h1>2. Advanced Navigation Testing Framework<a class="headerlink" href="#advanced-navigation-testing-framework" title="Permalink to this headline">¶</a></h1>
-<p><strong>Task description</strong></p>
-<p>The ROS 2 Navigation Stack has had a focus on testing and reliability as a characteristic change from ROS 1 to ROS 2. We currently have a test coverage rate of 85% and do full system simulations in Continuous Integration (CI) to test the entire navigation system with a real robot completing real navigation tasks. Your task will be to increase the testing coverage rate to 90% (or +5% from your starting) and improve on the existing system tests to represent a more realistic environment. You will then work to make sure of that environment to actively block the robot from completing its task to simulate worst-case conditions.</p>
-<p><strong>Project difficulty: Medium</strong></p>
-<p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
-<p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
-<p><strong>Project output requirements</strong></p>
-<ul class="simple">
-<li>Test line coverage of 90% or higher on the repository as reported by codecov (currently 85%)</li>
-<li>An improved simulation environment for a more realistic mobile robotics application</li>
-<li>Updated system tests to take advantage of that environment to fault or un-ideal cases of the stack</li>
-</ul>
-<p><strong>Skills required</strong></p>
-<ul class="simple">
-<li>C++, Python3, gtest</li>
-<li>Gazebo, recommended experience with Gazebo plugins</li>
-<li>Recommended: Navigation experience</li>
-</ul>
-<p><strong>List of relevant open source software repositories and refs</strong></p>
-<ul class="simple">
-<li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
-<li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://navigation.ros.org/">Navigation2</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_system_tests">Navigation2 Repo System Tests</a></li>
-</ul>
-<p><strong>Licensing</strong>
-- All contributions will be under the Apache 2.0 license.
-- No other CLA’s are required.</p>
+  <div class="section" id="navigate-to-pose-and-replan-only-if-path-invalid">
+<span id="behavior-tree-nav-to-pose-and-replan-if-path-invalid"></span><h1>Navigate To Pose and Replan Only if Path Invalid<a class="headerlink" href="#navigate-to-pose-and-replan-only-if-path-invalid" title="Permalink to this headline">¶</a></h1>
+<p>This behavior tree implements a significantly more mature version of the behavior tree on <a class="reference internal" href="../index.html#behavior-trees"><span class="std std-ref">Nav2 Behavior Trees</span></a>.
+It navigates from a starting point to a single point goal in freespace.
+It contains both use of custom recoveries in specific sub-contexts as well as a global recovery subtree for system-level failures.
+It also provides the opportunity for users to retry tasks multiple times before returning a failed state.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> and <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> BT nodes both also specify their algorithms to utilize.
+By convention we name these by the style of algorithms that they are (e.g. not <code class="docutils literal notranslate"><span class="pre">DWB</span></code> but rather <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>) such that a behavior tree or application developer need not worry about the technical specifics. They just want to use a path following controller.</p>
+<p>In this behavior tree, we attempt to retry the entire navigation task 6 times before returning to the caller that the task has failed.
+This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.</p>
+<p>In nominal execution, this will replan only if the previous path is invalid and pass a new path onto the controller.
+However, this time, if the planner fails, it will trigger contextually aware recoveries in its subtree, clearing the global costmap.
+Additional recoveries can be added here for additional context-specific recoveries, such as trying another algorithm.</p>
+<p>Similarly, the controller has similar logic. If it fails, it also attempts a costmap clearing of the local costmap impacting the controller.
+It is worth noting the <code class="docutils literal notranslate"><span class="pre">GoalUpdated</span></code> node in the reactive fallback.
+This allows us to exit recovery conditions when a new goal has been passed to the navigation system through a preemption.
+This ensures that the navigation system will be very responsive immediately when a new goal is issued, even when the last goal was in an attempted recovery.</p>
+<p>If these contextual recoveries fail, this behavior tree enters the recovery subtree.
+This subtree is reserved for system-level failures to help resolve issues like the robot being stuck or in a bad spot.
+This subtree also has the <code class="docutils literal notranslate"><span class="pre">GoalUpdated</span></code> BT node it ticks every iteration to ensure responsiveness of new goals.
+Next, the recovery subtree will the recoveries: costmap clearing operations, spinning, waiting, and backing up.
+After each of the recoveries in the subtree, the main navigation subtree will be reattempted.
+If it continues to fail, the next recovery in the recovery subtree is ticked.</p>
+<p>While this behavior tree does not make use of it, the <code class="docutils literal notranslate"><span class="pre">PlannerSelector</span></code>, <code class="docutils literal notranslate"><span class="pre">ControllerSelector</span></code>, and <code class="docutils literal notranslate"><span class="pre">GoalCheckerSelector</span></code> behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (<code class="docutils literal notranslate"><span class="pre">GridBased</span></code> and <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;6&quot;</span> <span class="na">name=</span><span class="s">&quot;NavigateRecovery&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;ComputePathToPose&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Fallback&gt;</span>
+              <span class="nt">&lt;ReactiveSequence&gt;</span>
+                <span class="nt">&lt;Inverter&gt;</span>
+                  <span class="nt">&lt;GlobalUpdatedGoal/&gt;</span>
+                <span class="nt">&lt;/Inverter&gt;</span>
+                <span class="nt">&lt;IsPathValid</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="nt">/&gt;</span>
+              <span class="nt">&lt;/ReactiveSequence&gt;</span>
+              <span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/Fallback&gt;</span>
+            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/RecoveryNode&gt;</span>
+        <span class="nt">&lt;/RateController&gt;</span>
+        <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/RecoveryNode&gt;</span>
+      <span class="nt">&lt;/PipelineSequence&gt;</span>
+      <span class="nt">&lt;ReactiveFallback</span> <span class="na">name=</span><span class="s">&quot;RecoveryFallback&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;GoalUpdated/&gt;</span>
+        <span class="nt">&lt;RoundRobin</span> <span class="na">name=</span><span class="s">&quot;RecoveryActions&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Sequence</span> <span class="na">name=</span><span class="s">&quot;ClearingActions&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/Sequence&gt;</span>
+          <span class="nt">&lt;Spin</span> <span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;Wait</span> <span class="na">wait_duration=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;BackUp</span> <span class="na">backup_dist=</span><span class="s">&quot;0.30&quot;</span> <span class="na">backup_speed=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/RoundRobin&gt;</span>
+      <span class="nt">&lt;/ReactiveFallback&gt;</span>
+    <span class="nt">&lt;/RecoveryNode&gt;</span>
+  <span class="nt">&lt;/BehaviorTree&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</pre></div>
+</div>
 </div>
 
 
