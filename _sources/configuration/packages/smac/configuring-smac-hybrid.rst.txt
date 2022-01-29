@@ -172,7 +172,7 @@ Parameters
   ====== =======
   Type   Default                                                   
   ------ -------
-  double 0.025         
+  double 0.015         
   ====== =======
 
   Description
@@ -291,6 +291,7 @@ Example
         change_penalty: 0.0                 # Penalty to apply if motion is changing directions (L to R), must be >= 0
         non_straight_penalty: 1.2           # Penalty to apply if motion is non-straight, must be => 1
         cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
+        retrospective_penalty: 0.015
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
         cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.   
         smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
