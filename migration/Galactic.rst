@@ -225,4 +225,4 @@ So, what I propose here is to remove live monitoring of the BT from Nav2. **We c
 Replanning Only if Path is Invalid
 **********************************
 
-`This PR <https://github.com/ros-planning/navigation2/pull/2591>`_ creates two new condition BT node to facilitate replanning only if path becomes invalid. These new nodes were integrated into the defualt BT. 
+`This PR <https://github.com/ros-planning/navigation2/pull/2591>`_ creates two new condition BT node to facilitate replanning only if path becomes invalid rather than constantly replanning. These new nodes were integrated into the default BT. 
