@@ -63,6 +63,11 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | followWaypoints(poses)            | Requests the robot to follow a set of waypoints (list of ``PoseStamped``). | 
 |                                   | This will execute the chosen ``TaskExecutor`` plugin at each pose.         |
 +-----------------------------------+----------------------------------------------------------------------------+
+| spin(spin_dist, time_allowance)   | Requests the robot to performs an in-place rotation by a given angle.      | 
++-----------------------------------+----------------------------------------------------------------------------+
+| backup(backup_dist,               |  Requests the robot to back up by a given distance.                        | 
+| backup_speed, time_allowance)     |                                                                            |
++-----------------------------------+----------------------------------------------------------------------------+
 | cancelNav()                       | Cancel an ongoing ``goThroughPoses`` ``goToPose`` or ``followWaypoints``.  |
 +-----------------------------------+----------------------------------------------------------------------------+
 | isNavComplete()                   | Checks if navigation is complete yet, times out at ``100ms``.  Returns     | 
