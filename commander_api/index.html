@@ -812,6 +812,13 @@ If a server fails, it may throw an exception or return a <cite>None</cite> objec
 <td>Requests the robot to follow a set of waypoints (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).
 This will execute the chosen <code class="docutils literal notranslate"><span class="pre">TaskExecutor</span></code> plugin at each pose.</td>
 </tr>
+<tr class="row-even"><td>spin(spin_dist, time_allowance)</td>
+<td>Requests the robot to performs an in-place rotation by a given angle.</td>
+</tr>
+<tr class="row-odd"><td>backup(backup_dist,
+backup_speed, time_allowance)</td>
+<td>Requests the robot to back up by a given distance.</td>
+</tr>
 <tr class="row-even"><td>cancelNav()</td>
 <td>Cancel an ongoing <code class="docutils literal notranslate"><span class="pre">goThroughPoses</span></code> <code class="docutils literal notranslate"><span class="pre">goToPose</span></code> or <code class="docutils literal notranslate"><span class="pre">followWaypoints</span></code>.</td>
 </tr>
