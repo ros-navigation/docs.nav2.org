@@ -812,63 +812,67 @@ If a server fails, it may throw an exception or return a <cite>None</cite> objec
 <td>Requests the robot to follow a set of waypoints (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).
 This will execute the chosen <code class="docutils literal notranslate"><span class="pre">TaskExecutor</span></code> plugin at each pose.</td>
 </tr>
-<tr class="row-even"><td>spin(spin_dist, time_allowance)</td>
+<tr class="row-even"><td>followPath(path)</td>
+<td>Requests the robot to follow a path from a starting to a goal
+<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>spin(spin_dist, time_allowance)</td>
 <td>Requests the robot to performs an in-place rotation by a given angle.</td>
 </tr>
-<tr class="row-odd"><td>backup(backup_dist,
+<tr class="row-even"><td>backup(backup_dist,
 backup_speed, time_allowance)</td>
 <td>Requests the robot to back up by a given distance.</td>
 </tr>
-<tr class="row-even"><td>cancelNav()</td>
+<tr class="row-odd"><td>cancelNav()</td>
 <td>Cancel an ongoing <code class="docutils literal notranslate"><span class="pre">goThroughPoses</span></code> <code class="docutils literal notranslate"><span class="pre">goToPose</span></code> or <code class="docutils literal notranslate"><span class="pre">followWaypoints</span></code>.</td>
 </tr>
-<tr class="row-odd"><td>isNavComplete()</td>
+<tr class="row-even"><td>isNavComplete()</td>
 <td>Checks if navigation is complete yet, times out at <code class="docutils literal notranslate"><span class="pre">100ms</span></code>.  Returns
 <code class="docutils literal notranslate"><span class="pre">True</span></code> if completed and <code class="docutils literal notranslate"><span class="pre">False</span></code> if still going.</td>
 </tr>
-<tr class="row-even"><td>getFeedback()</td>
+<tr class="row-odd"><td>getFeedback()</td>
 <td>Gets feedback from navigation task, returns action server feedback msg.</td>
 </tr>
-<tr class="row-odd"><td>getResult()</td>
+<tr class="row-even"><td>getResult()</td>
 <td>Gets final result of navigation task, to be called after <code class="docutils literal notranslate"><span class="pre">isNavComplete</span></code>
 returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. Returns action server result msg.</td>
 </tr>
-<tr class="row-even"><td>getPath(start, goal)</td>
+<tr class="row-odd"><td>getPath(start, goal)</td>
 <td>Gets a path from a starting to a goal <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
 </tr>
-<tr class="row-odd"><td>getPathThroughPoses(start, goals)</td>
+<tr class="row-even"><td>getPathThroughPoses(start, goals)</td>
 <td>Gets a path through a starting to a set of goals, a list
 of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
 </tr>
-<tr class="row-even"><td>changeMap(map_filepath)</td>
+<tr class="row-odd"><td>changeMap(map_filepath)</td>
 <td>Requests a change from the current map to <cite>map_filepath</cite>’s yaml.</td>
 </tr>
-<tr class="row-odd"><td>clearAllCostmaps()</td>
+<tr class="row-even"><td>clearAllCostmaps()</td>
 <td>Clears both the global and local costmaps.</td>
 </tr>
-<tr class="row-even"><td>clearLocalCostmap()</td>
+<tr class="row-odd"><td>clearLocalCostmap()</td>
 <td>Clears the local costmap.</td>
 </tr>
-<tr class="row-odd"><td>clearGlobalCostmap()</td>
+<tr class="row-even"><td>clearGlobalCostmap()</td>
 <td>Clears the global costmap.</td>
 </tr>
-<tr class="row-even"><td>getGlobalCostmap()</td>
+<tr class="row-odd"><td>getGlobalCostmap()</td>
 <td>Returns the global costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</td>
 </tr>
-<tr class="row-odd"><td>getLocalCostmap()</td>
+<tr class="row-even"><td>getLocalCostmap()</td>
 <td>Returns the local costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</td>
 </tr>
-<tr class="row-even"><td>waitUntilNav2Active()</td>
+<tr class="row-odd"><td>waitUntilNav2Active()</td>
 <td>Blocks until Nav2 is completely online and lifecycle nodes are in the
 active state. To be used in conjunction with autostart or external
 lifecycle bringup.</td>
 </tr>
-<tr class="row-odd"><td>lifecycleStartup()</td>
+<tr class="row-even"><td>lifecycleStartup()</td>
 <td>Sends a request to all lifecycle management servers to bring them into
 the active state, to be used if autostart is <code class="docutils literal notranslate"><span class="pre">False</span></code> and you want this
 program to control Nav2’s lifecycle.</td>
 </tr>
-<tr class="row-even"><td>lifecycleShutdown()</td>
+<tr class="row-odd"><td>lifecycleShutdown()</td>
 <td>Sends a request to all lifecycle management servers to shut them down.</td>
 </tr>
 </tbody>
@@ -882,7 +886,8 @@ program to control Nav2’s lifecycle.</td>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">example_nav_to_pose.py</span></code> - Demonstrates the navigate to pose capabilities of the navigator, as well as a number of auxiliary methods.</li>
 <li><code class="docutils literal notranslate"><span class="pre">example_nav_through_poses.py</span></code> - Demonstrates the navigate through poses capabilities of the navigator, as well as a number of auxiliary methods.</li>
-<li><code class="docutils literal notranslate"><span class="pre">example_waypoint_follower.py</span></code> - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods required.</li>
+<li><code class="docutils literal notranslate"><span class="pre">example_waypoint_follower.py</span></code> - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.</li>
+<li><code class="docutils literal notranslate"><span class="pre">example_follow_path.py</span></code> - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods.</li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code> has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:</p>
 <ul class="simple">
