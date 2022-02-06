@@ -8,7 +8,7 @@ Overview
 
 The goal of the Nav2 Simple (Python3) Commander is to provide a "navigation as a library" capability to Python3 users. We provide an API that handles all the ROS 2 and Action Server tasks for you such that you can focus on building an application leveraging the capabilities of Nav2 (after you've configured it to your liking with your plugins of choice). `We also provide you with demos and examples of API usage <https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander>`_ to build common basic capabilities in autonomous mobile robotics in the ``nav2_simple_commander`` package.
 
-A simple demonstration is shown below. Note: ``goToPose()``, ``goThroughPoses()``, ``followWaypoints()`` and similar are **non-blocking** such that you can receive and process feedback in a single-threaded application. As such while waiting for a task to be completed, the ``while not nav.isNavComplete()`` design is necessary to poll for changes in the navigation completion, and if not complete some tasks of interest to your application (like processing feedback, doing something with the data the robot is collecting, or checking for faults).
+A simple demonstration is shown below. Note: ``goToPose()``, ``goThroughPoses()``, ``followWaypoints()`` and similar are **non-blocking** such that you can receive and process feedback in a single-threaded application. As such while waiting for a task to be completed, the ``while not nav.isTaskComplete()`` design is necessary to poll for changes in the navigation completion, and if not complete some tasks of interest to your application (like processing feedback, doing something with the data the robot is collecting, or checking for faults).
 
 You may use this simple commander preempt commands of the same type (e.g. you can preempt a ``goToPose()`` with another ``goToPose()``) but you must explicitly cancel a current command and issue a new one if switching between ``goToPose()``, ``goThroughPoses()``, or ``followWaypoints()``.
 
@@ -28,19 +28,19 @@ You may use this simple commander preempt commands of the same type (e.g. you ca
   # ...
   
   nav.goToPose(goal_pose)
-  while not nav.isNavComplete():
+  while not nav.isTaskComplete():
     feedback = nav.getFeedback()
     if feedback.navigation_duration > 600:
-      nav.cancelNav()
+      nav.cancelTask()
   
   # ...
   
   result = nav.getResult()
-  if result == NavigationResult.SUCCEEDED:
+  if result == TaskResult.SUCCEEDED:
       print('Goal succeeded!')
-  elif result == NavigationResult.CANCELED:
+  elif result == TaskResult.CANCELED:
       print('Goal was canceled!')
-  elif result == NavigationResult.FAILED:
+  elif result == TaskResult.FAILED:
       print('Goal failed!')
 
 
@@ -68,14 +68,14 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | backup(backup_dist,               |  Requests the robot to back up by a given distance.                        | 
 | backup_speed, time_allowance)     |                                                                            |
 +-----------------------------------+----------------------------------------------------------------------------+
-| cancelNav()                       | Cancel an ongoing ``goThroughPoses`` ``goToPose`` or ``followWaypoints``.  |
+| cancelTask()                       | Cancel an ongoing task.  |
 +-----------------------------------+----------------------------------------------------------------------------+
-| isNavComplete()                   | Checks if navigation is complete yet, times out at ``100ms``.  Returns     | 
+| isTaskComplete()                   | Checks if task is complete yet, times out at ``100ms``.  Returns     | 
 |                                   | ``True`` if completed and ``False`` if still going.                        |
 +-----------------------------------+----------------------------------------------------------------------------+
 | getFeedback()                     | Gets feedback from navigation task, returns action server feedback msg.    |
 +-----------------------------------+----------------------------------------------------------------------------+
-| getResult()                       | Gets final result of navigation task, to be called after ``isNavComplete`` |
+| getResult()                       | Gets final result of navigation task, to be called after ``isTaskComplete`` |
 |                                   | returns ``True``. Returns action server result msg.                        |
 +-----------------------------------+----------------------------------------------------------------------------+
 | getPath(start, goal)              | Gets a path from a starting to a goal ``PoseStamped``, ``nav_msgs/Path``.  |

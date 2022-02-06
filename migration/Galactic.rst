@@ -69,7 +69,7 @@ Simple (Python) Commander
         ... populate pose ...
         navigator.goToPose(goal_pose)
 
-        while not navigator.isNavComplete():
+        while not navigator.isTaskComplete():
             feedback = navigator.getFeedback()
             ... do something with feedback ...
 
@@ -78,11 +78,11 @@ Simple (Python) Commander
                 navigator.cancelNav()
 
         result = navigator.getResult()
-        if result == NavigationResult.SUCCEEDED:
+        if result == TaskResult.SUCCEEDED:
             print('Goal succeeded!')
-        elif result == NavigationResult.CANCELED:
+        elif result == TaskResult.CANCELED:
             print('Goal was canceled!')
-        elif result == NavigationResult.FAILED:
+        elif result == TaskResult.FAILED:
             print('Goal failed!')
 
 `The full API can be found in the README of the package <https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander>`_. A number of well commented examples and demos can also be found in the package's source code at the link prior.
