@@ -63,10 +63,15 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | followWaypoints(poses)            | Requests the robot to follow a set of waypoints (list of ``PoseStamped``). | 
 |                                   | This will execute the chosen ``TaskExecutor`` plugin at each pose.         |
 +-----------------------------------+----------------------------------------------------------------------------+
+| followPath(path)                  | Requests the robot to follow a path from a starting to a goal              |
+|                                   | ``PoseStamped``, ``nav_msgs/Path``.                                        |
++-----------------------------------+----------------------------------------------------------------------------+
 | spin(spin_dist, time_allowance)   | Requests the robot to performs an in-place rotation by a given angle.      | 
 +-----------------------------------+----------------------------------------------------------------------------+
 | backup(backup_dist,               |  Requests the robot to back up by a given distance.                        | 
 | backup_speed, time_allowance)     |                                                                            |
++-----------------------------------+----------------------------------------------------------------------------+
+| cancelNav()                       | Cancel an ongoing ``goThroughPoses`` ``goToPose`` or ``followWaypoints``.  |
 +-----------------------------------+----------------------------------------------------------------------------+
 | cancelTask()                       | Cancel an ongoing task.  |
 +-----------------------------------+----------------------------------------------------------------------------+
@@ -120,7 +125,8 @@ The ``nav2_simple_commander`` has a few examples to highlight the API functions 
 
 - ``example_nav_to_pose.py`` - Demonstrates the navigate to pose capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_nav_through_poses.py`` - Demonstrates the navigate through poses capabilities of the navigator, as well as a number of auxiliary methods.
-- ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods required.
+- ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.
+- ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods.
 
 The ``nav2_simple_commander`` has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:
 
