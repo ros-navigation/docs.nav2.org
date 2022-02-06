@@ -71,16 +71,14 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | backup(backup_dist,               |  Requests the robot to back up by a given distance.                        | 
 | backup_speed, time_allowance)     |                                                                            |
 +-----------------------------------+----------------------------------------------------------------------------+
-| cancelNav()                       | Cancel an ongoing ``goThroughPoses`` ``goToPose`` or ``followWaypoints``.  |
+| cancelTask()                       | Cancel an ongoing task.                                                   |
 +-----------------------------------+----------------------------------------------------------------------------+
-| cancelTask()                       | Cancel an ongoing task.  |
-+-----------------------------------+----------------------------------------------------------------------------+
-| isTaskComplete()                   | Checks if task is complete yet, times out at ``100ms``.  Returns     | 
+| isTaskComplete()                   | Checks if task is complete yet, times out at ``100ms``.  Returns          | 
 |                                   | ``True`` if completed and ``False`` if still going.                        |
 +-----------------------------------+----------------------------------------------------------------------------+
 | getFeedback()                     | Gets feedback from navigation task, returns action server feedback msg.    |
 +-----------------------------------+----------------------------------------------------------------------------+
-| getResult()                       | Gets final result of navigation task, to be called after ``isTaskComplete`` |
+| getResult()                       | Gets final result of navigation task, to be called after ``isTaskComplete``|
 |                                   | returns ``True``. Returns action server result msg.                        |
 +-----------------------------------+----------------------------------------------------------------------------+
 | getPath(start, goal)              | Gets a path from a starting to a goal ``PoseStamped``, ``nav_msgs/Path``.  |
