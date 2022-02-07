@@ -50,64 +50,64 @@ Commander API
 The methods provided by the basic navigator are shown below, with inputs and expected returns.
 If a server fails, it may throw an exception or return a `None` object, so please be sure to properly wrap your navigation calls in try/catch and check returns for `None` type.
 
-+-----------------------------------+----------------------------------------------------------------------------+
-| Robot Navigator Method            | Description                                                                |
-+===================================+============================================================================+
-| setInitialPose(initial_pose)      | Sets the initial pose (``PoseStamped``) of the robot to localization.      |
-+-----------------------------------+----------------------------------------------------------------------------+
-| goThroughPoses(poses)             | Requests the robot to drive through a set of poses                         |
-|                                   | (list of ``PoseStamped``).                                                 |
-+-----------------------------------+----------------------------------------------------------------------------+
-| goToPose(pose)                    | Requests the robot to drive to a pose (``PoseStamped``).                   |
-+-----------------------------------+----------------------------------------------------------------------------+
-| followWaypoints(poses)            | Requests the robot to follow a set of waypoints (list of ``PoseStamped``). | 
-|                                   | This will execute the chosen ``TaskExecutor`` plugin at each pose.         |
-+-----------------------------------+----------------------------------------------------------------------------+
-| followPath(path)                  | Requests the robot to follow a path from a starting to a goal              |
-|                                   | ``PoseStamped``, ``nav_msgs/Path``.                                        |
-+-----------------------------------+----------------------------------------------------------------------------+
-| spin(spin_dist, time_allowance)   | Requests the robot to performs an in-place rotation by a given angle.      | 
-+-----------------------------------+----------------------------------------------------------------------------+
-| backup(backup_dist,               |  Requests the robot to back up by a given distance.                        | 
-| backup_speed, time_allowance)     |                                                                            |
-+-----------------------------------+----------------------------------------------------------------------------+
-| cancelTask()                      | Cancel an ongoing task.                                                    |
-+-----------------------------------+----------------------------------------------------------------------------+
-| isTaskComplete()                  | Checks if task is complete yet, times out at ``100ms``. Returns            | 
-|                                   | ``True`` if completed and ``False`` if still going.                        |
-+-----------------------------------+----------------------------------------------------------------------------+
-| getFeedback()                     | Gets feedback from task, returns action server feedback msg.               |
-+-----------------------------------+----------------------------------------------------------------------------+
-| getResult()                       | Gets final result of task, to be called after ``isTaskComplete``           |
-|                                   | returns ``True``. Returns action server result msg.                        |
-+-----------------------------------+----------------------------------------------------------------------------+
-| getPath(start, goal)              | Gets a path from a starting to a goal ``PoseStamped``, ``nav_msgs/Path``.  |
-+-----------------------------------+----------------------------------------------------------------------------+
-| getPathThroughPoses(start, goals) | Gets a path through a starting to a set of goals, a list                   |
-|                                   | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
-+-----------------------------------+----------------------------------------------------------------------------+
-| changeMap(map_filepath)           | Requests a change from the current map to `map_filepath`'s yaml.           |
-+-----------------------------------+----------------------------------------------------------------------------+
-| clearAllCostmaps()                | Clears both the global and local costmaps.                                 |
-+-----------------------------------+----------------------------------------------------------------------------+
-| clearLocalCostmap()               | Clears the local costmap.                                                  |
-+-----------------------------------+----------------------------------------------------------------------------+
-| clearGlobalCostmap()              | Clears the global costmap.                                                 |
-+-----------------------------------+----------------------------------------------------------------------------+
-| getGlobalCostmap()                | Returns the global costmap, ``nav2_msgs/Costmap``.                         |
-+-----------------------------------+----------------------------------------------------------------------------+
-| getLocalCostmap()                 | Returns the local costmap, ``nav2_msgs/Costmap``.                          |
-+-----------------------------------+----------------------------------------------------------------------------+
-| waitUntilNav2Active()             | Blocks until Nav2 is completely online and lifecycle nodes are in the      | 
-|                                   | active state. To be used in conjunction with autostart or external         |
-|                                   | lifecycle bringup.                                                         |
-+-----------------------------------+----------------------------------------------------------------------------+
-| lifecycleStartup()                | Sends a request to all lifecycle management servers to bring them into     | 
-|                                   | the active state, to be used if autostart is ``False`` and you want this   | 
-|                                   | program to control Nav2's lifecycle.                                       |
-+-----------------------------------+----------------------------------------------------------------------------+
-| lifecycleShutdown()               | Sends a request to all lifecycle management servers to shut them down.     |
-+-----------------------------------+----------------------------------------------------------------------------+
++---------------------------------------+----------------------------------------------------------------------------+
+| Robot Navigator Method                | Description                                                                |
++===================================----+============================================================================+
+| setInitialPose(initial_pose)          | Sets the initial pose (``PoseStamped``) of the robot to localization.      |
++---------------------------------------+----------------------------------------------------------------------------+
+| goThroughPoses(poses)                 | Requests the robot to drive through a set of poses                         |
+|                                       | (list of ``PoseStamped``).                                                 |
++---------------------------------------+----------------------------------------------------------------------------+
+| goToPose(pose)                        | Requests the robot to drive to a pose (``PoseStamped``).                   |
++---------------------------------------+----------------------------------------------------------------------------+
+| followWaypoints(poses)                | Requests the robot to follow a set of waypoints (list of ``PoseStamped``). | 
+|                                       | This will execute the chosen ``TaskExecutor`` plugin at each pose.         |
++---------------------------------------+----------------------------------------------------------------------------+
+| followPath(path)                      | Requests the robot to follow a path from a starting to a goal              |
+|                                       | ``PoseStamped``, ``nav_msgs/Path``.                                        |
++---------------------------------------+----------------------------------------------------------------------------+
+| spin(spin_dist, time_allowance)       | Requests the robot to performs an in-place rotation by a given angle.      | 
++---------------------------------------+----------------------------------------------------------------------------+
+| backup(backup_dist,                   |  Requests the robot to back up by a given distance.                        | 
+| backup_speed, time_allowance)         |                                                                            |
++---------------------------------------+----------------------------------------------------------------------------+
+| cancelTask()                          | Cancel an ongoing task.                                                    |
++---------------------------------------+----------------------------------------------------------------------------+
+| isTaskComplete()                      | Checks if task is complete yet, times out at ``100ms``. Returns            | 
+|                                       | ``True`` if completed and ``False`` if still going.                        |
++---------------------------------------+----------------------------------------------------------------------------+
+| getFeedback()                         | Gets feedback from task, returns action server feedback msg.               |
++---------------------------------------+----------------------------------------------------------------------------+
+| getResult()                           | Gets final result of task, to be called after ``isTaskComplete``           |
+|                                       | returns ``True``. Returns action server result msg.                        |
++---------------------------------------+----------------------------------------------------------------------------+
+| getPath(start, goal, planner_id=None) | Gets a path from a starting to a goal ``PoseStamped``, ``nav_msgs/Path``.  |
++---------------------------------------+----------------------------------------------------------------------------+
+| getPathThroughPoses(start, goals)     | Gets a path through a starting to a set of goals, a list                   |
+|                                       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
++---------------------------------------+----------------------------------------------------------------------------+
+| changeMap(map_filepath)               | Requests a change from the current map to `map_filepath`'s yaml.           |
++---------------------------------------+----------------------------------------------------------------------------+
+| clearAllCostmaps()                    | Clears both the global and local costmaps.                                 |
++---------------------------------------+----------------------------------------------------------------------------+
+| clearLocalCostmap()                   | Clears the local costmap.                                                  |
++---------------------------------------+----------------------------------------------------------------------------+
+| clearGlobalCostmap()                  | Clears the global costmap.                                                 |
++---------------------------------------+----------------------------------------------------------------------------+
+| getGlobalCostmap()                    | Returns the global costmap, ``nav2_msgs/Costmap``.                         |
++---------------------------------------+----------------------------------------------------------------------------+
+| getLocalCostmap()                     | Returns the local costmap, ``nav2_msgs/Costmap``.                          |
++---------------------------------------+----------------------------------------------------------------------------+
+| waitUntilNav2Active()                 | Blocks until Nav2 is completely online and lifecycle nodes are in the      | 
+|                                       | active state. To be used in conjunction with autostart or external         |
+|                                       | lifecycle bringup.                                                         |
++---------------------------------------+----------------------------------------------------------------------------+
+| lifecycleStartup()                    | Sends a request to all lifecycle management servers to bring them into     | 
+|                                       | the active state, to be used if autostart is ``False`` and you want this   | 
+|                                       | program to control Nav2's lifecycle.                                       |
++---------------------------------------+----------------------------------------------------------------------------+
+| lifecycleShutdown()                   | Sends a request to all lifecycle management servers to shut them down.     |
++---------------------------------------+----------------------------------------------------------------------------+
 
 Examples and Demos
 ******************
