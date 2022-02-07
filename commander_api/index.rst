@@ -71,7 +71,7 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | backup(backup_dist,               |  Requests the robot to back up by a given distance.                        | 
 | backup_speed, time_allowance)     |                                                                            |
 +-----------------------------------+----------------------------------------------------------------------------+
-| cancelTask()                       | Cancel an ongoing task.                                                   |
+| cancelTask()                      | Cancel an ongoing task.                                                    |
 +-----------------------------------+----------------------------------------------------------------------------+
 | isTaskComplete()                  | Checks if task is complete yet, times out at ``100ms``. Returns            | 
 |                                   | ``True`` if completed and ``False`` if still going.                        |
