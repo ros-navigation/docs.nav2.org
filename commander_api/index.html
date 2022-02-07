@@ -750,7 +750,7 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The goal of the Nav2 Simple (Python3) Commander is to provide a “navigation as a library” capability to Python3 users. We provide an API that handles all the ROS 2 and Action Server tasks for you such that you can focus on building an application leveraging the capabilities of Nav2 (after you’ve configured it to your liking with your plugins of choice). <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander">We also provide you with demos and examples of API usage</a> to build common basic capabilities in autonomous mobile robotics in the <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code> package.</p>
-<p>A simple demonstration is shown below. Note: <code class="docutils literal notranslate"><span class="pre">goToPose()</span></code>, <code class="docutils literal notranslate"><span class="pre">goThroughPoses()</span></code>, <code class="docutils literal notranslate"><span class="pre">followWaypoints()</span></code> and similar are <strong>non-blocking</strong> such that you can receive and process feedback in a single-threaded application. As such while waiting for a task to be completed, the <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">not</span> <span class="pre">nav.isNavComplete()</span></code> design is necessary to poll for changes in the navigation completion, and if not complete some tasks of interest to your application (like processing feedback, doing something with the data the robot is collecting, or checking for faults).</p>
+<p>A simple demonstration is shown below. Note: <code class="docutils literal notranslate"><span class="pre">goToPose()</span></code>, <code class="docutils literal notranslate"><span class="pre">goThroughPoses()</span></code>, <code class="docutils literal notranslate"><span class="pre">followWaypoints()</span></code> and similar are <strong>non-blocking</strong> such that you can receive and process feedback in a single-threaded application. As such while waiting for a task to be completed, the <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">not</span> <span class="pre">nav.isTaskComplete()</span></code> design is necessary to poll for changes in the navigation completion, and if not complete some tasks of interest to your application (like processing feedback, doing something with the data the robot is collecting, or checking for faults).</p>
 <p>You may use this simple commander preempt commands of the same type (e.g. you can preempt a <code class="docutils literal notranslate"><span class="pre">goToPose()</span></code> with another <code class="docutils literal notranslate"><span class="pre">goToPose()</span></code>) but you must explicitly cancel a current command and issue a new one if switching between <code class="docutils literal notranslate"><span class="pre">goToPose()</span></code>, <code class="docutils literal notranslate"><span class="pre">goThroughPoses()</span></code>, or <code class="docutils literal notranslate"><span class="pre">followWaypoints()</span></code>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nav2_simple_commander.robot_navigator</span> <span class="kn">import</span> <span class="n">BasicNavigator</span>
 <span class="kn">import</span> <span class="nn">rclpy</span>
@@ -766,19 +766,19 @@
 <span class="c1"># ...</span>
 
 <span class="n">nav</span><span class="o">.</span><span class="n">goToPose</span><span class="p">(</span><span class="n">goal_pose</span><span class="p">)</span>
-<span class="k">while</span> <span class="ow">not</span> <span class="n">nav</span><span class="o">.</span><span class="n">isNavComplete</span><span class="p">():</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">nav</span><span class="o">.</span><span class="n">isTaskComplete</span><span class="p">():</span>
   <span class="n">feedback</span> <span class="o">=</span> <span class="n">nav</span><span class="o">.</span><span class="n">getFeedback</span><span class="p">()</span>
   <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">navigation_duration</span> <span class="o">&gt;</span> <span class="mi">600</span><span class="p">:</span>
-    <span class="n">nav</span><span class="o">.</span><span class="n">cancelNav</span><span class="p">()</span>
+    <span class="n">nav</span><span class="o">.</span><span class="n">cancelTask</span><span class="p">()</span>
 
 <span class="c1"># ...</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">nav</span><span class="o">.</span><span class="n">getResult</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">NavigationResult</span><span class="o">.</span><span class="n">SUCCEEDED</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">TaskResult</span><span class="o">.</span><span class="n">SUCCEEDED</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goal succeeded!&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">NavigationResult</span><span class="o">.</span><span class="n">CANCELED</span><span class="p">:</span>
+<span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">TaskResult</span><span class="o">.</span><span class="n">CANCELED</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goal was canceled!&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">NavigationResult</span><span class="o">.</span><span class="n">FAILED</span><span class="p">:</span>
+<span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">TaskResult</span><span class="o">.</span><span class="n">FAILED</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goal failed!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -823,18 +823,18 @@ This will execute the chosen <code class="docutils literal notranslate"><span cl
 backup_speed, time_allowance)</td>
 <td>Requests the robot to back up by a given distance.</td>
 </tr>
-<tr class="row-odd"><td>cancelNav()</td>
-<td>Cancel an ongoing <code class="docutils literal notranslate"><span class="pre">goThroughPoses</span></code> <code class="docutils literal notranslate"><span class="pre">goToPose</span></code> or <code class="docutils literal notranslate"><span class="pre">followWaypoints</span></code>.</td>
+<tr class="row-odd"><td>cancelTask()</td>
+<td>Cancel an ongoing task.</td>
 </tr>
-<tr class="row-even"><td>isNavComplete()</td>
-<td>Checks if navigation is complete yet, times out at <code class="docutils literal notranslate"><span class="pre">100ms</span></code>.  Returns
+<tr class="row-even"><td>isTaskComplete()</td>
+<td>Checks if task is complete yet, times out at <code class="docutils literal notranslate"><span class="pre">100ms</span></code>. Returns
 <code class="docutils literal notranslate"><span class="pre">True</span></code> if completed and <code class="docutils literal notranslate"><span class="pre">False</span></code> if still going.</td>
 </tr>
 <tr class="row-odd"><td>getFeedback()</td>
-<td>Gets feedback from navigation task, returns action server feedback msg.</td>
+<td>Gets feedback from task, returns action server feedback msg.</td>
 </tr>
 <tr class="row-even"><td>getResult()</td>
-<td>Gets final result of navigation task, to be called after <code class="docutils literal notranslate"><span class="pre">isNavComplete</span></code>
+<td>Gets final result of task, to be called after <code class="docutils literal notranslate"><span class="pre">isTaskComplete</span></code>
 returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. Returns action server result msg.</td>
 </tr>
 <tr class="row-odd"><td>getPath(start, goal)</td>

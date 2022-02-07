@@ -813,7 +813,7 @@
     <span class="o">...</span> <span class="n">populate</span> <span class="n">pose</span> <span class="o">...</span>
     <span class="n">navigator</span><span class="o">.</span><span class="n">goToPose</span><span class="p">(</span><span class="n">goal_pose</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="ow">not</span> <span class="n">navigator</span><span class="o">.</span><span class="n">isNavComplete</span><span class="p">():</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">navigator</span><span class="o">.</span><span class="n">isTaskComplete</span><span class="p">():</span>
         <span class="n">feedback</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">getFeedback</span><span class="p">()</span>
         <span class="o">...</span> <span class="n">do</span> <span class="n">something</span> <span class="k">with</span> <span class="n">feedback</span> <span class="o">...</span>
 
@@ -822,11 +822,11 @@
             <span class="n">navigator</span><span class="o">.</span><span class="n">cancelNav</span><span class="p">()</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">getResult</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">NavigationResult</span><span class="o">.</span><span class="n">SUCCEEDED</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">TaskResult</span><span class="o">.</span><span class="n">SUCCEEDED</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goal succeeded!&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">NavigationResult</span><span class="o">.</span><span class="n">CANCELED</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">TaskResult</span><span class="o">.</span><span class="n">CANCELED</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goal was canceled!&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">NavigationResult</span><span class="o">.</span><span class="n">FAILED</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">TaskResult</span><span class="o">.</span><span class="n">FAILED</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goal failed!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
