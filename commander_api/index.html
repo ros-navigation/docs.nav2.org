@@ -789,18 +789,24 @@
 If a server fails, it may throw an exception or return a <cite>None</cite> object, so please be sure to properly wrap your navigation calls in try/catch and check returns for <cite>None</cite> type.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
-<col width="68%" />
+<col width="34%" />
+<col width="66%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Robot Navigator Method</th>
-<th class="head">Description</th>
-</tr>
-</thead>
 <tbody valign="top">
-<tr class="row-even"><td>setInitialPose(initial_pose)</td>
-<td>Sets the initial pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) of the robot to localization.</td>
+<tr class="row-odd"><td rowspan="2"><blockquote class="first">
+<div>Robot Navigator Method</div></blockquote>
+<dl class="last docutils">
+<dt>===================================—-</dt>
+<dd>setInitialPose(initial_pose)</dd>
+</dl>
+</td>
+<td rowspan="2"><blockquote class="first">
+<div>Description</div></blockquote>
+<blockquote class="last">
+<div>Sets the initial pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) of the robot to localization.</div></blockquote>
+</td>
 </tr>
+<tr class="row-even"></tr>
 <tr class="row-odd"><td>goThroughPoses(poses)</td>
 <td>Requests the robot to drive through a set of poses
 (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).</td>
@@ -837,7 +843,7 @@ backup_speed, time_allowance)</td>
 <td>Gets final result of task, to be called after <code class="docutils literal notranslate"><span class="pre">isTaskComplete</span></code>
 returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. Returns action server result msg.</td>
 </tr>
-<tr class="row-odd"><td>getPath(start, goal)</td>
+<tr class="row-odd"><td>getPath(start, goal, planner_id=None)</td>
 <td>Gets a path from a starting to a goal <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
 </tr>
 <tr class="row-even"><td>getPathThroughPoses(start, goals)</td>
