@@ -67,14 +67,3 @@ Parameters
     
     Description
         Weighed scale for critic.
-
-:``<dwb plugin>``.\ ``<name>``.scale:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  double 1.0 
-  ====== =======
-    
-    Description
-        Weighed scale for critic.
