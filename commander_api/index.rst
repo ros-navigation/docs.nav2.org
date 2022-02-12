@@ -52,7 +52,7 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 
 +---------------------------------------+----------------------------------------------------------------------------+
 | Robot Navigator Method                | Description                                                                |
-+===================================----+============================================================================+
++=======================================+============================================================================+
 | setInitialPose(initial_pose)          | Sets the initial pose (``PoseStamped``) of the robot to localization.      |
 +---------------------------------------+----------------------------------------------------------------------------+
 | goThroughPoses(poses)                 | Requests the robot to drive through a set of poses                         |
@@ -99,7 +99,7 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | getLocalCostmap()                     | Returns the local costmap, ``nav2_msgs/Costmap``.                          |
 +---------------------------------------+----------------------------------------------------------------------------+
 | waitUntilNav2Active(                  | Blocks until Nav2 is completely online and lifecycle nodes are in the      |
-|             navigator='bt_navigator', | active state. To be used in conjunction with autostart or external         |                                                                  |
+|             navigator='bt_navigator', | active state. To be used in conjunction with autostart or external         |
 |             localizer='amcl')         | lifecycle bringup. Custom navigator and localizer nodes can be specified   |
 +---------------------------------------+----------------------------------------------------------------------------+
 | lifecycleStartup()                    | Sends a request to all lifecycle management servers to bring them into     |
