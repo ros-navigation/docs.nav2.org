@@ -792,21 +792,15 @@ If a server fails, it may throw an exception or return a <cite>None</cite> objec
 <col width="34%" />
 <col width="66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td rowspan="2"><blockquote class="first">
-<div>Robot Navigator Method</div></blockquote>
-<dl class="last docutils">
-<dt>===================================—-</dt>
-<dd>setInitialPose(initial_pose)</dd>
-</dl>
-</td>
-<td rowspan="2"><blockquote class="first">
-<div>Description</div></blockquote>
-<blockquote class="last">
-<div>Sets the initial pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) of the robot to localization.</div></blockquote>
-</td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Robot Navigator Method</th>
+<th class="head">Description</th>
 </tr>
-<tr class="row-even"></tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>setInitialPose(initial_pose)</td>
+<td>Sets the initial pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) of the robot to localization.</td>
+</tr>
 <tr class="row-odd"><td>goThroughPoses(poses)</td>
 <td>Requests the robot to drive through a set of poses
 (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).</td>
@@ -868,10 +862,15 @@ of <code class="docutils literal notranslate"><span class="pre">PoseStamped</spa
 <tr class="row-even"><td>getLocalCostmap()</td>
 <td>Returns the local costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</td>
 </tr>
-<tr class="row-odd"><td>waitUntilNav2Active()</td>
+<tr class="row-odd"><td><dl class="first last docutils">
+<dt>waitUntilNav2Active(</dt>
+<dd>navigator=’bt_navigator’,
+localizer=’amcl’)</dd>
+</dl>
+</td>
 <td>Blocks until Nav2 is completely online and lifecycle nodes are in the
 active state. To be used in conjunction with autostart or external
-lifecycle bringup.</td>
+lifecycle bringup. Custom navigator and localizer nodes can be specified</td>
 </tr>
 <tr class="row-even"><td>lifecycleStartup()</td>
 <td>Sends a request to all lifecycle management servers to bring them into

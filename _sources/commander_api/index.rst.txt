@@ -52,7 +52,7 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 
 +---------------------------------------+----------------------------------------------------------------------------+
 | Robot Navigator Method                | Description                                                                |
-+===================================----+============================================================================+
++=======================================+============================================================================+
 | setInitialPose(initial_pose)          | Sets the initial pose (``PoseStamped``) of the robot to localization.      |
 +---------------------------------------+----------------------------------------------------------------------------+
 | goThroughPoses(poses)                 | Requests the robot to drive through a set of poses                         |
@@ -60,20 +60,20 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 +---------------------------------------+----------------------------------------------------------------------------+
 | goToPose(pose)                        | Requests the robot to drive to a pose (``PoseStamped``).                   |
 +---------------------------------------+----------------------------------------------------------------------------+
-| followWaypoints(poses)                | Requests the robot to follow a set of waypoints (list of ``PoseStamped``). | 
+| followWaypoints(poses)                | Requests the robot to follow a set of waypoints (list of ``PoseStamped``). |
 |                                       | This will execute the chosen ``TaskExecutor`` plugin at each pose.         |
 +---------------------------------------+----------------------------------------------------------------------------+
 | followPath(path)                      | Requests the robot to follow a path from a starting to a goal              |
 |                                       | ``PoseStamped``, ``nav_msgs/Path``.                                        |
 +---------------------------------------+----------------------------------------------------------------------------+
-| spin(spin_dist, time_allowance)       | Requests the robot to performs an in-place rotation by a given angle.      | 
+| spin(spin_dist, time_allowance)       | Requests the robot to performs an in-place rotation by a given angle.      |
 +---------------------------------------+----------------------------------------------------------------------------+
-| backup(backup_dist,                   |  Requests the robot to back up by a given distance.                        | 
+| backup(backup_dist,                   |  Requests the robot to back up by a given distance.                        |
 | backup_speed, time_allowance)         |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | cancelTask()                          | Cancel an ongoing task.                                                    |
 +---------------------------------------+----------------------------------------------------------------------------+
-| isTaskComplete()                      | Checks if task is complete yet, times out at ``100ms``. Returns            | 
+| isTaskComplete()                      | Checks if task is complete yet, times out at ``100ms``. Returns            |
 |                                       | ``True`` if completed and ``False`` if still going.                        |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getFeedback()                         | Gets feedback from task, returns action server feedback msg.               |
@@ -98,12 +98,12 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 +---------------------------------------+----------------------------------------------------------------------------+
 | getLocalCostmap()                     | Returns the local costmap, ``nav2_msgs/Costmap``.                          |
 +---------------------------------------+----------------------------------------------------------------------------+
-| waitUntilNav2Active()                 | Blocks until Nav2 is completely online and lifecycle nodes are in the      | 
-|                                       | active state. To be used in conjunction with autostart or external         |
-|                                       | lifecycle bringup.                                                         |
+| waitUntilNav2Active(                  | Blocks until Nav2 is completely online and lifecycle nodes are in the      |
+|             navigator='bt_navigator', | active state. To be used in conjunction with autostart or external         |
+|             localizer='amcl')         | lifecycle bringup. Custom navigator and localizer nodes can be specified   |
 +---------------------------------------+----------------------------------------------------------------------------+
-| lifecycleStartup()                    | Sends a request to all lifecycle management servers to bring them into     | 
-|                                       | the active state, to be used if autostart is ``False`` and you want this   | 
+| lifecycleStartup()                    | Sends a request to all lifecycle management servers to bring them into     |
+|                                       | the active state, to be used if autostart is ``False`` and you want this   |
 |                                       | program to control Nav2's lifecycle.                                       |
 +---------------------------------------+----------------------------------------------------------------------------+
 | lifecycleShutdown()                   | Sends a request to all lifecycle management servers to shut them down.     |
