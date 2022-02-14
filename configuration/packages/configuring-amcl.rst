@@ -319,7 +319,10 @@ Parameters
   ============== =============================
 
   Description
-    The fully-qualified type of the plugin class. Options are nav2_amcl::DifferentialMotionModel and nav2_amcl::OmniMotionModel.
+    The fully-qualified type of the plugin class. Options are "nav2_amcl::DifferentialMotionModel" and "nav2_amcl::OmniMotionModel". Users can also provide their own custom motion model plugin type.
+
+  Note for users of galactic and earlier
+    The above options are only available for users of a source build or the rolling release. Up until the galactic release only two models are selectable by string key (valid options: "differential", "omnidirectional").
 
 :save_pose_rate:
 
