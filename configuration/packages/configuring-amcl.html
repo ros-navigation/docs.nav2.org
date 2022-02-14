@@ -1352,7 +1352,10 @@
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">The fully-qualified type of the plugin class. Options are nav2_amcl::DifferentialMotionModel and nav2_amcl::OmniMotionModel.</p>
+<dd><p class="first last">The fully-qualified type of the plugin class. Options are “nav2_amcl::DifferentialMotionModel” and “nav2_amcl::OmniMotionModel”. Users can also provide their own custom motion model plugin type.</p>
+</dd>
+<dt>Note for users of galactic and earlier</dt>
+<dd><p class="first last">The models are selectable by string key (valid options: “differential”, “omnidirectional”) rather than plugins.</p>
 </dd>
 </dl>
 </td>
