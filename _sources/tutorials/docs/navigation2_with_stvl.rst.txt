@@ -110,7 +110,6 @@ An example fully-described parameterization of an STVL configuration is:
       decay_model: 0
       voxel_size: 0.05
       track_unknown_space: true
-      max_obstacle_height: 2.0
       unknown_threshold: 15
       mark_threshold: 0
       update_footprint_enabled: true
