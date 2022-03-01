@@ -101,8 +101,8 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | getLocalCostmap()                     | Returns the local costmap, ``nav2_msgs/Costmap``.                          |
 +---------------------------------------+----------------------------------------------------------------------------+
 | waitUntilNav2Active(                  | Blocks until Nav2 is completely online and lifecycle nodes are in the      |
-|             navigator='bt_navigator', | active state. To be used in conjunction with autostart or external         |
-|             localizer='amcl')         | lifecycle bringup. Custom navigator and localizer nodes can be specified   |
+| navigator='bt_navigator',             | active state. To be used in conjunction with autostart or external         |
+| localizer='amcl')                     | lifecycle bringup. Custom navigator and localizer nodes can be specified   |
 +---------------------------------------+----------------------------------------------------------------------------+
 | lifecycleStartup()                    | Sends a request to all lifecycle management servers to bring them into     |
 |                                       | the active state, to be used if autostart is ``False`` and you want this   |
