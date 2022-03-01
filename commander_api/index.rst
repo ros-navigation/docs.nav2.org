@@ -52,28 +52,29 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 
 +---------------------------------------+----------------------------------------------------------------------------+
 | Robot Navigator Method                | Description                                                                |
-+===================================----+============================================================================+
++=======================================+============================================================================+
 | setInitialPose(initial_pose)          | Sets the initial pose (``PoseStamped``) of the robot to localization.      |
 +---------------------------------------+----------------------------------------------------------------------------+
-| goThroughPoses(poses)                 | Requests the robot to drive through a set of poses                         |
-|                                       | (list of ``PoseStamped``).                                                 |
+| goThroughPoses(poses,                 | Requests the robot to drive through a set of poses                         |
+| behavior_tree='')                     | (list of ``PoseStamped``).                                                 |
 +---------------------------------------+----------------------------------------------------------------------------+
-| goToPose(pose)                        | Requests the robot to drive to a pose (``PoseStamped``).                   |
+| goToPose(pose, behavior_tree='')      | Requests the robot to drive to a pose (``PoseStamped``).                   |
 +---------------------------------------+----------------------------------------------------------------------------+
-| followWaypoints(poses)                | Requests the robot to follow a set of waypoints (list of ``PoseStamped``). | 
+| followWaypoints(poses)                | Requests the robot to follow a set of waypoints (list of ``PoseStamped``). |
 |                                       | This will execute the chosen ``TaskExecutor`` plugin at each pose.         |
 +---------------------------------------+----------------------------------------------------------------------------+
-| followPath(path)                      | Requests the robot to follow a path from a starting to a goal              |
-|                                       | ``PoseStamped``, ``nav_msgs/Path``.                                        |
+| followPath(path, controller_id='',    | Requests the robot to follow a path from a starting to a goal              |
+| goal_checker_id='')                   | ``PoseStamped``, ``nav_msgs/Path``.                                        |
 +---------------------------------------+----------------------------------------------------------------------------+
-| spin(spin_dist, time_allowance)       | Requests the robot to performs an in-place rotation by a given angle.      | 
+| spin(spin_dist=1.57,                  | Requests the robot to performs an in-place rotation by a given angle.      |
+| time_allowance=10)                    |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
-| backup(backup_dist,                   |  Requests the robot to back up by a given distance.                        | 
-| backup_speed, time_allowance)         |                                                                            |
+| backup(backup_dist=0.15,              | Requests the robot to back up by a given distance.                         |
+| backup_speed=0.025, time_allowance=10)|                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | cancelTask()                          | Cancel an ongoing task.                                                    |
 +---------------------------------------+----------------------------------------------------------------------------+
-| isTaskComplete()                      | Checks if task is complete yet, times out at ``100ms``. Returns            | 
+| isTaskComplete()                      | Checks if task is complete yet, times out at ``100ms``. Returns            |
 |                                       | ``True`` if completed and ``False`` if still going.                        |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getFeedback()                         | Gets feedback from task, returns action server feedback msg.               |
@@ -81,10 +82,11 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | getResult()                           | Gets final result of task, to be called after ``isTaskComplete``           |
 |                                       | returns ``True``. Returns action server result msg.                        |
 +---------------------------------------+----------------------------------------------------------------------------+
-| getPath(start, goal, planner_id=None) | Gets a path from a starting to a goal ``PoseStamped``, ``nav_msgs/Path``.  |
+| getPath(start, goal,                  | Gets a path from a starting to a goal ``PoseStamped``, ``nav_msgs/Path``.  |
+| planner_id='', use_start=False)       |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
-| getPathThroughPoses(start, goals)     | Gets a path through a starting to a set of goals, a list                   |
-|                                       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
+| getPathThroughPoses(start, goals,     | Gets a path through a starting to a set of goals, a list                   |
+| planner_id='', use_start=False)       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
 +---------------------------------------+----------------------------------------------------------------------------+
 | changeMap(map_filepath)               | Requests a change from the current map to `map_filepath`'s yaml.           |
 +---------------------------------------+----------------------------------------------------------------------------+
@@ -98,12 +100,12 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 +---------------------------------------+----------------------------------------------------------------------------+
 | getLocalCostmap()                     | Returns the local costmap, ``nav2_msgs/Costmap``.                          |
 +---------------------------------------+----------------------------------------------------------------------------+
-| waitUntilNav2Active()                 | Blocks until Nav2 is completely online and lifecycle nodes are in the      | 
+| waitUntilNav2Active()                 | Blocks until Nav2 is completely online and lifecycle nodes are in the      |
 |                                       | active state. To be used in conjunction with autostart or external         |
 |                                       | lifecycle bringup.                                                         |
 +---------------------------------------+----------------------------------------------------------------------------+
-| lifecycleStartup()                    | Sends a request to all lifecycle management servers to bring them into     | 
-|                                       | the active state, to be used if autostart is ``False`` and you want this   | 
+| lifecycleStartup()                    | Sends a request to all lifecycle management servers to bring them into     |
+|                                       | the active state, to be used if autostart is ``False`` and you want this   |
 |                                       | program to control Nav2's lifecycle.                                       |
 +---------------------------------------+----------------------------------------------------------------------------+
 | lifecycleShutdown()                   | Sends a request to all lifecycle management servers to shut them down.     |
