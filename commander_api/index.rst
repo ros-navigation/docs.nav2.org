@@ -55,21 +55,22 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 +=======================================+============================================================================+
 | setInitialPose(initial_pose)          | Sets the initial pose (``PoseStamped``) of the robot to localization.      |
 +---------------------------------------+----------------------------------------------------------------------------+
-| goThroughPoses(poses)                 | Requests the robot to drive through a set of poses                         |
-|                                       | (list of ``PoseStamped``).                                                 |
+| goThroughPoses(poses,                 | Requests the robot to drive through a set of poses                         |
+| behavior_tree='')                     | (list of ``PoseStamped``).                                                 |
 +---------------------------------------+----------------------------------------------------------------------------+
-| goToPose(pose)                        | Requests the robot to drive to a pose (``PoseStamped``).                   |
+| goToPose(pose, behavior_tree='')      | Requests the robot to drive to a pose (``PoseStamped``).                   |
 +---------------------------------------+----------------------------------------------------------------------------+
 | followWaypoints(poses)                | Requests the robot to follow a set of waypoints (list of ``PoseStamped``). |
 |                                       | This will execute the chosen ``TaskExecutor`` plugin at each pose.         |
 +---------------------------------------+----------------------------------------------------------------------------+
-| followPath(path)                      | Requests the robot to follow a path from a starting to a goal              |
-|                                       | ``PoseStamped``, ``nav_msgs/Path``.                                        |
+| followPath(path, controller_id='',    | Requests the robot to follow a path from a starting to a goal              |
+| goal_checker_id='')                   | ``PoseStamped``, ``nav_msgs/Path``.                                        |
 +---------------------------------------+----------------------------------------------------------------------------+
-| spin(spin_dist, time_allowance)       | Requests the robot to performs an in-place rotation by a given angle.      |
+| spin(spin_dist=1.57,                  | Requests the robot to performs an in-place rotation by a given angle.      |
+| time_allowance=10)                    |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
-| backup(backup_dist,                   |  Requests the robot to back up by a given distance.                        |
-| backup_speed, time_allowance)         |                                                                            |
+| backup(backup_dist=0.15,              | Requests the robot to back up by a given distance.                         |
+| backup_speed=0.025, time_allowance=10)|                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | cancelTask()                          | Cancel an ongoing task.                                                    |
 +---------------------------------------+----------------------------------------------------------------------------+
@@ -81,10 +82,11 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | getResult()                           | Gets final result of task, to be called after ``isTaskComplete``           |
 |                                       | returns ``True``. Returns action server result msg.                        |
 +---------------------------------------+----------------------------------------------------------------------------+
-| getPath(start, goal, planner_id=None) | Gets a path from a starting to a goal ``PoseStamped``, ``nav_msgs/Path``.  |
+| getPath(start, goal,                  | Gets a path from a starting to a goal ``PoseStamped``, ``nav_msgs/Path``.  |
+| planner_id='', use_start=False)       |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
-| getPathThroughPoses(start, goals)     | Gets a path through a starting to a set of goals, a list                   |
-|                                       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
+| getPathThroughPoses(start, goals,     | Gets a path through a starting to a set of goals, a list                   |
+| planner_id='', use_start=False)       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
 +---------------------------------------+----------------------------------------------------------------------------+
 | changeMap(map_filepath)               | Requests a change from the current map to `map_filepath`'s yaml.           |
 +---------------------------------------+----------------------------------------------------------------------------+
