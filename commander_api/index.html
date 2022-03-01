@@ -801,26 +801,29 @@ If a server fails, it may throw an exception or return a <cite>None</cite> objec
 <tr class="row-even"><td>setInitialPose(initial_pose)</td>
 <td>Sets the initial pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) of the robot to localization.</td>
 </tr>
-<tr class="row-odd"><td>goThroughPoses(poses)</td>
+<tr class="row-odd"><td>goThroughPoses(poses,
+behavior_tree=’‘)</td>
 <td>Requests the robot to drive through a set of poses
 (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).</td>
 </tr>
-<tr class="row-even"><td>goToPose(pose)</td>
+<tr class="row-even"><td>goToPose(pose, behavior_tree=’‘)</td>
 <td>Requests the robot to drive to a pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).</td>
 </tr>
 <tr class="row-odd"><td>followWaypoints(poses)</td>
 <td>Requests the robot to follow a set of waypoints (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).
 This will execute the chosen <code class="docutils literal notranslate"><span class="pre">TaskExecutor</span></code> plugin at each pose.</td>
 </tr>
-<tr class="row-even"><td>followPath(path)</td>
+<tr class="row-even"><td>followPath(path, controller_id=’‘,
+goal_checker_id=’‘)</td>
 <td>Requests the robot to follow a path from a starting to a goal
 <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
 </tr>
-<tr class="row-odd"><td>spin(spin_dist, time_allowance)</td>
+<tr class="row-odd"><td>spin(spin_dist=1.57,
+time_allowance=10)</td>
 <td>Requests the robot to performs an in-place rotation by a given angle.</td>
 </tr>
-<tr class="row-even"><td>backup(backup_dist,
-backup_speed, time_allowance)</td>
+<tr class="row-even"><td>backup(backup_dist=0.15,
+backup_speed=0.025, time_allowance=10)</td>
 <td>Requests the robot to back up by a given distance.</td>
 </tr>
 <tr class="row-odd"><td>cancelTask()</td>
@@ -837,10 +840,12 @@ backup_speed, time_allowance)</td>
 <td>Gets final result of task, to be called after <code class="docutils literal notranslate"><span class="pre">isTaskComplete</span></code>
 returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. Returns action server result msg.</td>
 </tr>
-<tr class="row-odd"><td>getPath(start, goal, planner_id=None)</td>
+<tr class="row-odd"><td>getPath(start, goal,
+planner_id=’‘, use_start=False)</td>
 <td>Gets a path from a starting to a goal <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
 </tr>
-<tr class="row-even"><td>getPathThroughPoses(start, goals)</td>
+<tr class="row-even"><td>getPathThroughPoses(start, goals,
+planner_id=’‘, use_start=False)</td>
 <td>Gets a path through a starting to a set of goals, a list
 of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
 </tr>
@@ -862,12 +867,9 @@ of <code class="docutils literal notranslate"><span class="pre">PoseStamped</spa
 <tr class="row-even"><td>getLocalCostmap()</td>
 <td>Returns the local costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</td>
 </tr>
-<tr class="row-odd"><td><dl class="first last docutils">
-<dt>waitUntilNav2Active(</dt>
-<dd>navigator=’bt_navigator’,
-localizer=’amcl’)</dd>
-</dl>
-</td>
+<tr class="row-odd"><td>waitUntilNav2Active(
+navigator=’bt_navigator’,
+localizer=’amcl’)</td>
 <td>Blocks until Nav2 is completely online and lifecycle nodes are in the
 active state. To be used in conjunction with autostart or external
 lifecycle bringup. Custom navigator and localizer nodes can be specified</td>
