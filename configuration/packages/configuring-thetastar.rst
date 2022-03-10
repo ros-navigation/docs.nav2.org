@@ -83,9 +83,9 @@ Example
   ros__parameters:
     expected_planner_frequency: 20.0
     use_sim_time: True
-    planner_plugin_ids: ["GridBased"]
+    planner_plugins: ["GridBased"]
     GridBased:
-      plugin_types: "nav2_theta_star_planner/ThetaStarPlanner"
+      plugin: "nav2_theta_star_planner/ThetaStarPlanner"
       how_many_corners: 8
       w_euc_cost: 1.0
       w_traversal_cost: 2.0
