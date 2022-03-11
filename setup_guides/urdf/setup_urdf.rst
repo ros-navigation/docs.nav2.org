@@ -86,7 +86,7 @@ Next, let us define some constants using XAcro properties that will be reused th
 
     <xacro:property name="caster_xoff" value="0.14"/>
 
-Here is a brief discussion on what these properties will represent in our urdf. The ``base_*`` properties all define the size of hte robot's main chassis. The ``wheel_radius`` and ``wheel_width`` define the shape of the robot's two back wheels. The ``wheel_ygap`` adjusts the gap between the wheel and the chassis along the y-axis whilst ``wheel_zoff`` and ``wheel_xoff`` position the back wheels along the z-axis and x-axis appropriately. Lastly, the ``caster_xoff`` positions the front caster wheel along the x-axis.
+Here is a brief discussion on what these properties will represent in our urdf. The ``base_*`` properties all define the size of the robot's main chassis. The ``wheel_radius`` and ``wheel_width`` define the shape of the robot's two back wheels. The ``wheel_ygap`` adjusts the gap between the wheel and the chassis along the y-axis whilst ``wheel_zoff`` and ``wheel_xoff`` position the back wheels along the z-axis and x-axis appropriately. Lastly, the ``caster_xoff`` positions the front caster wheel along the x-axis.
 
 Let us then define our ``base_link`` - this link will be a large box and will act as the main chassis of our robot. In URDF, a ``link`` element describes a rigid part or component of our robot. The robot state publisher then utilizes these definitions to determine coordinate frames for each link and publish the transformations between them. 
 
