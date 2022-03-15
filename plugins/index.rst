@@ -373,30 +373,35 @@ Behavior Tree Nodes
 .. _Is Battery Low Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
 .. _Is Path Valid Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
 
-+--------------------------+-------------------+----------------------------------+
-| Decorator Plugin Name    |    Creator        |       Description                |
-+==========================+===================+==================================+
-| `Rate Controller`_       | Michael Jeronimo  | Throttles child node to a given  |
-|                          |                   | rate                             |
-+--------------------------+-------------------+----------------------------------+
-| `Distance Controller`_   | Sarthak Mittal    | Ticks child node based on the    |
-|                          |                   | distance traveled by the robot   |
-+--------------------------+-------------------+----------------------------------+
-| `Speed Controller`_      | Sarthak Mittal    | Throttles child node to a rate   |
-|                          |                   | based on current robot speed.    |
-+--------------------------+-------------------+----------------------------------+
-| `Goal Updater`_          | Francisco Martín  | Updates the goal received via    |
-|                          |                   | topic subscription.              |
-+--------------------------+-------------------+----------------------------------+
-| `Single Trigger`_        | Steve Macenski    | Triggers nodes/subtrees below    |
-|                          |                   | only a single time per BT run.   |
-+--------------------------+-------------------+----------------------------------+
++--------------------------+---------------------+----------------------------------+
+| Decorator Plugin Name    |    Creator          |       Description                |
++==========================+=====================+==================================+
+| `Rate Controller`_       | Michael Jeronimo    | Throttles child node to a given  |
+|                          |                     | rate                             |
++--------------------------+---------------------+----------------------------------+
+| `Distance Controller`_   | Sarthak Mittal      | Ticks child node based on the    |
+|                          |                     | distance traveled by the robot   |
++--------------------------+---------------------+----------------------------------+
+| `Speed Controller`_      | Sarthak Mittal      | Throttles child node to a rate   |
+|                          |                     | based on current robot speed.    |
++--------------------------+---------------------+----------------------------------+
+| `Goal Updater`_          | Francisco Martín    | Updates the goal received via    |
+|                          |                     | topic subscription.              |
++--------------------------+---------------------+----------------------------------+
+| `Single Trigger`_        | Steve Macenski      | Triggers nodes/subtrees below    |
+|                          |                     | only a single time per BT run.   |
++--------------------------+---------------------+----------------------------------+
+| `PathLongerOnApproach`_  | Pradheep Padmanabhan| Triggers child nodes if the new  |
+|                          |                     | global path is significantly     |
+|                          |                     | larger than the old global path  |
++--------------------------+---------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
 .. _Distance Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
 .. _Speed Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
 .. _Goal Updater: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
 .. _Single Trigger: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
+.. _PathLongerOnApproach: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
