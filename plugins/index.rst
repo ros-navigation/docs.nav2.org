@@ -394,6 +394,7 @@ Behavior Tree Nodes
 | `PathLongerOnApproach`_  | Pradheep Padmanabhan| Triggers child nodes if the new  |
 |                          |                     | global path is significantly     |
 |                          |                     | larger than the old global path  |
+|                          |                     | on approach to the goal          |
 +--------------------------+---------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp

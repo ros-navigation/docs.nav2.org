@@ -257,7 +257,7 @@ BT Cancel Node
 BT PathLongerOnApproach Node
 ****************************
 
-In the `PR <https://github.com/ros-planning/navigation2/pull/2802>`_, a new Decorator BT node known as ``PathLongerOnApproach`` has been added to provide with the functionality to check and potentially handle longer path generated due to an obstacle in the given goal proximity. To demonstrate this functionality, a new BT `navigate_to_pose_w_replanning_goal_patience_and_recovery.xml` would serve both as an example and ready-to-use BT for a specific application that wishes to optimize their process cycle time. Demo of the developed BT can be seen below:
+In the `PR <https://github.com/ros-planning/navigation2/pull/2802>`_, a new Decorator BT node known as ``PathLongerOnApproach`` has been added to provide with the functionality to check and potentially handle longer path generated due to an obstacle in the given goal proximity. To demonstrate this functionality, a new BT ``navigate_to_pose_w_replanning_goal_patience_and_recovery.xml`` would serve both as an example and ready-to-use BT for a specific application that wishes to optimize their process cycle time. Demo of the developed BT can be seen below, where the robot pauses when close to a goal to see if the dynamic obstacle moves out of the way. Else, it executes the replan:
 
 Obstacle does not clear at all, with `obstacle_clearance_time` to be 3 seconds: 
 

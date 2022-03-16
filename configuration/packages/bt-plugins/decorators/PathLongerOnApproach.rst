@@ -3,7 +3,7 @@
 PathLongerOnApproach
 ====================
 
-This node checks if the newly generated global path is significantly larger than the old global path in the user-defined robot's goal proximity and triggers their corresponding children. This particular behavior allows the users to optimize the cycle time by providing with the possibility to avoid their robots to travel through larger corridors, because of a temprorary obstacle closer to the robot's goal proximity. 
+This node checks if the newly generated global path is significantly larger than the old global path in the user-defined robot's goal proximity and triggers their corresponding children. This allows users to enact special behaviors before a robot attempts to execute a path significantly longer than the prior path when close to a goal (e.g. going around an dynamic obstacle that may just need a few seconds to move out of the way).
 
 Input Ports
 -----------
