@@ -11,6 +11,7 @@ Nav2 Behavior Trees
    trees/nav_to_pose_recovery.rst
    trees/nav_through_poses_recovery.rst
    trees/nav_to_pose_and_replan_if_path_invalid.rst
+   trees/nav_to_pose_and_pause_near_goal_obstacle.rst
    trees/follow_point.rst
 
 Nav2 is an incredibly reconfigurable project. It allows users to set many different plugin types, across behavior trees, core algorithms, status checkers, and more!
