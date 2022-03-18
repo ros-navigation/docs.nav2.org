@@ -150,8 +150,8 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#robot-localization-demo">Robot Localization Demo</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#configuring-robot-localization">Configuring Robot Localization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Launch and Build Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">Build, Run and Verification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Launch and Build Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Build, Run and Verification</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
@@ -786,7 +786,7 @@ geometry_msgs/TwistWithCovariance twist
 <span class="nv">angular</span> <span class="o">=</span> <span class="o">(</span>right_wheel_est_vel - left_wheel_est_vel<span class="o">)</span> / wheel_separation<span class="p">;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> are the estimated velocities of the right and left wheels respectively, and the <code class="docutils literal notranslate"><span class="pre">wheel</span> <span class="pre">separation</span></code> is the distance between the wheels. The values of <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> can be obtained by simply getting the changes in the positions of the wheel joints over time. This information can then be used to publish the Nav2 requirements. A basic example on how to do this can be found in the Navigation documentation on odometry located <a class="reference external" href="http://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom/">here</a></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> are the estimated velocities of the right and left wheels respectively, and the <code class="docutils literal notranslate"><span class="pre">wheel</span> <span class="pre">separation</span></code> is the distance between the wheels. The values of <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> can be obtained by simply getting the changes in the positions of the wheel joints over time. This information can then be used to publish the Nav2 requirements. A basic example on how to do this can be found in the Navigation documentation on odometry <a class="reference external" href="http://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom/">located here</a></p>
 <p>An alternative to manually publishing this information that we recommend is through the <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> framework. The <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> framework contains various packages for real-time control of robots in ROS 2. For wheel encoders, <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> has a <code class="docutils literal notranslate"><span class="pre">diff_drive_controller</span></code> (differential drive controller) under the <code class="docutils literal notranslate"><span class="pre">ros2_controller</span></code> package. The <code class="docutils literal notranslate"><span class="pre">diff_drive_controller</span></code> takes in the <code class="docutils literal notranslate"><span class="pre">geometry_msgs/Twist</span></code> messages published on <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic, computes odometry information, and publishes <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages on <code class="docutils literal notranslate"><span class="pre">odom</span></code> topic. Other packages that deal with different kind of sensors are also available in <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code>.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -796,7 +796,7 @@ geometry_msgs/TwistWithCovariance twist
 </div>
 <div class="section" id="simulating-an-odometry-system-using-gazebo">
 <h2>Simulating an Odometry System using Gazebo<a class="headerlink" href="#simulating-an-odometry-system-using-gazebo" title="Permalink to this headline">¶</a></h2>
-<p>In this section, we will be using Gazebo to simulate the odometry system of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the complete source <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description/">here</a>.</p>
+<p>In this section, we will be using Gazebo to simulate the odometry system of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description/">complete source here</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you are working on your own physical robot and have already set up your odometry sensors, you may opt to skip this section and head onto the next one where we fuse IMU and odometry messages to provide a smooth <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transformation.</p>
@@ -809,7 +809,7 @@ geometry_msgs/TwistWithCovariance twist
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-&lt;ros2-distro&gt;-gazebo-ros-pkgs
 </pre></div>
 </div>
-<p>You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros2_installing&amp;cat=connect_ros#TestingGazeboandROS2integration">here</a>.</p>
+<p>You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros2_installing&amp;cat=connect_ros#TestingGazeboandROS2integration">given here</a>.</p>
 <p>Note that we described <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> using URDF. However, Gazebo uses <a class="reference external" href="http://sdformat.org/">Simulation Description Format (SDF)</a> to describe a robot in its simulated environment. Fortunately, Gazebo automatically translates compatible URDF files into SDF. The main requirement for the URDF to be compatible with Gazebo is to have an <code class="docutils literal notranslate"><span class="pre">&lt;inertia&gt;</span></code> element within each <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> element. This requirement is already satisfied in the URDF file of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, so it can already be used in Gazebo.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -1216,8 +1216,8 @@ Subscription count: <span class="m">0</span>
 <p class="last">For more advise on configuration of input data to <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, see <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/preparing_sensor_data.html#odometry">Preparing Your Data for Use with robot_localization</a>, and <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html">Configuring robot_localization</a>.</p>
 </div>
 </div>
-<div class="section" id="id6">
-<h3>Launch and Build Files<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Launch and Build Files<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Now, let us add the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> into the launch file. Open <code class="docutils literal notranslate"><span class="pre">launch/display.launch.py</span></code> and paste the following lines before the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> line.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">robot_localization_node</span> <span class="o">=</span> launch_ros.actions.Node<span class="o">(</span>
        <span class="nv">package</span><span class="o">=</span><span class="s1">&#39;robot_localization&#39;</span>,
@@ -1253,8 +1253,8 @@ Subscription count: <span class="m">0</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h3>Build, Run and Verification<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>Build, Run and Verification<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>Let us now build and run our package. Navigate to the root of the project and execute the following lines:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
 . install/setup.bash

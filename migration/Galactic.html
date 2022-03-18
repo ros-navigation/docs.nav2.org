@@ -150,8 +150,8 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../setup_guides/odom/setup_odom.html#robot-localization-demo">Robot Localization Demo</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../setup_guides/odom/setup_odom.html#configuring-robot-localization">Configuring Robot Localization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../setup_guides/odom/setup_odom.html#id6">Launch and Build Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../setup_guides/odom/setup_odom.html#id7">Build, Run and Verification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup_guides/odom/setup_odom.html#id3">Launch and Build Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup_guides/odom/setup_odom.html#id4">Build, Run and Verification</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../setup_guides/odom/setup_odom.html#conclusion">Conclusion</a></li>
@@ -795,7 +795,7 @@
 </div>
 <div class="section" id="simple-python-commander">
 <h2>Simple (Python) Commander<a class="headerlink" href="#simple-python-commander" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2411">This PR</a> introduces a new package to Nav2, called the <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code>. It is a set of functions in an object, <code class="docutils literal notranslate"><span class="pre">BasicNavigator</span></code>, which can be used to build Nav2-powered autonomy tasks in Python3 without concerning yourself with the Nav2, ROS 2, or Action server details. It contains a simple API taking common types (primarily <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) and handles all of the implementation details behind the hood. For example, this is a simple navigation task using this API:</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2411">This PR 2411</a> introduces a new package to Nav2, called the <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code>. It is a set of functions in an object, <code class="docutils literal notranslate"><span class="pre">BasicNavigator</span></code>, which can be used to build Nav2-powered autonomy tasks in Python3 without concerning yourself with the Nav2, ROS 2, or Action server details. It contains a simple API taking common types (primarily <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) and handles all of the implementation details behind the hood. For example, this is a simple navigation task using this API:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
     <span class="n">navigator</span> <span class="o">=</span> <span class="n">BasicNavigator</span><span class="p">()</span>
@@ -849,7 +849,7 @@
 </div>
 <div class="section" id="extending-the-btservicenode-to-process-service-results">
 <h2>Extending the BtServiceNode to process Service-Results<a class="headerlink" href="#extending-the-btservicenode-to-process-service-results" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2481">This PR</a> addresses <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2467">this Ticket</a> and adds a virtual <code class="docutils literal notranslate"><span class="pre">on_completion()</span></code> function to the <code class="docutils literal notranslate"><span class="pre">BtServiceNode</span></code> class (<a class="reference external" href="https://github.com/ros-planning/navigation2/blob/c417e2fd267e1dfa880b7ff9d37aaaa7b5eab9ca/nav2_behavior_tree/include/nav2_behavior_tree/bt_service_node.hpp">here</a>).
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2481">This PR 2481</a> addresses <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2467">this Ticket</a> and adds a virtual <code class="docutils literal notranslate"><span class="pre">on_completion()</span></code> function to the <code class="docutils literal notranslate"><span class="pre">BtServiceNode</span></code> class (<a class="reference external" href="https://github.com/ros-planning/navigation2/blob/c417e2fd267e1dfa880b7ff9d37aaaa7b5eab9ca/nav2_behavior_tree/include/nav2_behavior_tree/bt_service_node.hpp">can be found here</a>).
 Similar to the already existing virtual <code class="docutils literal notranslate"><span class="pre">on_wait_for_result()</span></code> function, it can be overwritten in the child class to react to a respective event with some user-defined operation.
 The added <code class="docutils literal notranslate"><span class="pre">on_completion()</span></code> function will be called after the service interaction of the <code class="docutils literal notranslate"><span class="pre">BtServiceNode</span></code> has been successfully completed.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -868,7 +868,7 @@ The normal behavior of the <code class="docutils literal notranslate"><span clas
 </div>
 <div class="section" id="including-new-rotation-shim-controller-plugin">
 <h2>Including new Rotation Shim Controller Plugin<a class="headerlink" href="#including-new-rotation-shim-controller-plugin" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2718">This PR</a> introduces the new <code class="docutils literal notranslate"><span class="pre">nav2_rotation_shim_controller</span></code>. This controller will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the primary controller to execute. If it is outside of the threshold, this controller will rotate the robot towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot is still going to be rotating, allowing the current plugin to take control for a smooth hand off into path tracking.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2718">This PR 2718</a> introduces the new <code class="docutils literal notranslate"><span class="pre">nav2_rotation_shim_controller</span></code>. This controller will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the primary controller to execute. If it is outside of the threshold, this controller will rotate the robot towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot is still going to be rotating, allowing the current plugin to take control for a smooth hand off into path tracking.</p>
 <p>The Rotation Shim Controller is suitable for:</p>
 <ul class="simple">
 <li>Robots that can rotate in place, such as differential and omnidirectional robots.</li>
@@ -878,7 +878,7 @@ The normal behavior of the <code class="docutils literal notranslate"><span clas
 </div>
 <div class="section" id="spawning-the-robot-in-gazebo">
 <h2>Spawning the robot in Gazebo<a class="headerlink" href="#spawning-the-robot-in-gazebo" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2473">This PR</a> deletes the pkg <code class="docutils literal notranslate"><span class="pre">nav2_gazebo_spawner</span></code> inside nav2_bringup directory. Instead of <code class="docutils literal notranslate"><span class="pre">nav2_gazebo_spawner</span></code> the Node <a class="reference external" href="https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py">spawn_entity.py</a> of <code class="docutils literal notranslate"><span class="pre">gazebo_ros</span></code> is recomended to spawn the robot in gazebo.
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2473">This PR 2473</a> deletes the pkg <code class="docutils literal notranslate"><span class="pre">nav2_gazebo_spawner</span></code> inside nav2_bringup directory. Instead of <code class="docutils literal notranslate"><span class="pre">nav2_gazebo_spawner</span></code> the Node <a class="reference external" href="https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py">spawn_entity.py</a> of <code class="docutils literal notranslate"><span class="pre">gazebo_ros</span></code> is recomended to spawn the robot in gazebo.
 Note that</p>
 <blockquote>
 <div><ul class="simple">
@@ -893,18 +893,18 @@ Note that</p>
 </div>
 <div class="section" id="new-parameter-use-final-approach-orientation-for-the-3-2d-planners">
 <h2>New parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> for the 3 2D planners<a class="headerlink" href="#new-parameter-use-final-approach-orientation-for-the-3-2d-planners" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2488">This PR</a> adds a new parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> to the 3 2D planners (Theta*, SmacPlanner2D and NavFn), <code class="docutils literal notranslate"><span class="pre">false</span></code> by default. If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the last pose of the path generated by the planner will have its orientation set to the approach orientation, i.e. the orientation of the vector connecting the last two points of the path. It allows sending the robot to a position (x,y) instead of a pose (x,y,theta) by effectively ignoring the goal orientation.
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2488">Pull request 2488</a> adds a new parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> to the 3 2D planners (Theta*, SmacPlanner2D and NavFn), <code class="docutils literal notranslate"><span class="pre">false</span></code> by default. If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the last pose of the path generated by the planner will have its orientation set to the approach orientation, i.e. the orientation of the vector connecting the last two points of the path. It allows sending the robot to a position (x,y) instead of a pose (x,y,theta) by effectively ignoring the goal orientation.
 For example, below, for the same goal with an orientaton pointed left of the screen, <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation=false</span></code> (left) and <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation=true</span></code> (right)</p>
 <a class="reference internal image-reference" href="../_images/use_final_approach_orientation_false.gif"><img alt="../_images/use_final_approach_orientation_false.gif" src="../_images/use_final_approach_orientation_false.gif" style="width: 45%;" /></a>
 <a class="reference internal image-reference" href="../_images/use_final_approach_orientation_true.gif"><img alt="../_images/use_final_approach_orientation_true.gif" src="../_images/use_final_approach_orientation_true.gif" style="width: 45%;" /></a>
 </div>
 <div class="section" id="smacplanner2d-and-theta-fix-goal-orientation-being-ignored">
 <h2>SmacPlanner2D and Theta*: fix goal orientation being ignored<a class="headerlink" href="#smacplanner2d-and-theta-fix-goal-orientation-being-ignored" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2488">This PR</a> fixes <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2482">the  issue</a> of the goal pose orientation being ignored (the end path pose orientation was always set to 0).</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2488">This pull request 2488</a> fixes <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2482">the  issue</a> of the goal pose orientation being ignored (the end path pose orientation was always set to 0).</p>
 </div>
 <div class="section" id="smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">
 <h2>SmacPlanner2D, NavFn and Theta*: fix small path corner cases<a class="headerlink" href="#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2488">This PR</a> ensures the planners are not failing when the distance between the start and the goal is small (i.e. when they are on the same costmap cell), and in that case the output path is constructed with a single pose.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2488">This PR 2488</a> ensures the planners are not failing when the distance between the start and the goal is small (i.e. when they are on the same costmap cell), and in that case the output path is constructed with a single pose.</p>
 </div>
 <div class="section" id="change-and-fix-behavior-of-dynamic-parameter-change-detection">
 <h2>Change and fix behavior of dynamic parameter change detection<a class="headerlink" href="#change-and-fix-behavior-of-dynamic-parameter-change-detection" title="Permalink to this headline">¶</a></h2>
@@ -914,10 +914,10 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <h2>Dynamic Parameters<a class="headerlink" href="#dynamic-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Newly added dynamic parameters to:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2592">This PR</a> makes most of the Costmap2DROS parameters dynamic</li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2607">This PR</a> makes most of the Regulated Pure Pursuit parameters dynamic</li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2665">This PR</a> makes most of the Theta * Planner parameters dynamic</li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2704">This PR</a> makes Waypoint Follower, Planner Server, and Controller Server’s params reconfigurable</li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2592">This PR 2592</a> makes most of the Costmap2DROS parameters dynamic</li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2607">This PR 2607</a> makes most of the Regulated Pure Pursuit parameters dynamic</li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2665">This PR 2665</a> makes most of the Theta * Planner parameters dynamic</li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2704">This PR 2704</a> makes Waypoint Follower, Planner Server, and Controller Server’s params reconfigurable</li>
 </ul>
 </div>
 <div class="section" id="bt-action-nodes-exception-changes">
@@ -926,7 +926,7 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 </div>
 <div class="section" id="bt-navigator-groot-multiple-navigators">
 <h2>BT Navigator Groot Multiple Navigators<a class="headerlink" href="#bt-navigator-groot-multiple-navigators" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2627">This PR</a> creates separate parameters for groot monitoring for the NavToPose and NavThroughPoses navigator types so you can individually track the state of each behavior tree through the ZMQ publisher. This resolves a long-standing problem after we added multiple navigator types to BT Navigator that you could only view the nav to poses BT execution live. BT.CPP and Groot only support one static ZMQ stream at a time, so there is a bit of a quirk where you must locally reset Groot after switching trees in order to view the live stream of the Nav Through Poses BT, if in use. This is a state of the BT.CPP and Groot libraries and not something we can resolve withing Nav2.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2627">This PR 2627</a> creates separate parameters for groot monitoring for the NavToPose and NavThroughPoses navigator types so you can individually track the state of each behavior tree through the ZMQ publisher. This resolves a long-standing problem after we added multiple navigator types to BT Navigator that you could only view the nav to poses BT execution live. BT.CPP and Groot only support one static ZMQ stream at a time, so there is a bit of a quirk where you must locally reset Groot after switching trees in order to view the live stream of the Nav Through Poses BT, if in use. This is a state of the BT.CPP and Groot libraries and not something we can resolve withing Nav2.</p>
 <p>There is some thought into the future regarding complete deprecation of live BT monitoring using Groot due to this quirk and the almost-certain infux of tickets on the topic. Groot will however always be supported for visualizing behavior tree XML files and modifications, simply not visualizing the BT execution live during robot navigation.</p>
 </div>
 <div class="section" id="removed-kinematic-limiting-in-rpp">
@@ -935,11 +935,11 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 </div>
 <div class="section" id="removed-use-approach-velocity-scaling-param-in-rpp">
 <h2>Removed Use Approach Velocity Scaling Param in RPP<a class="headerlink" href="#removed-use-approach-velocity-scaling-param-in-rpp" title="Permalink to this headline">¶</a></h2>
-<p>The parameter <code class="docutils literal notranslate"><span class="pre">use_approach_linear_velocity_scaling</span></code> is removed in favor of always on to help in smooth transitions to the goal. <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2701">This PR</a> implements.</p>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">use_approach_linear_velocity_scaling</span></code> is removed in favor of always on to help in smooth transitions to the goal. <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2701">This PR 2701</a> implements.</p>
 </div>
 <div class="section" id="refactored-amcl-motion-models-as-plugins">
 <h2>Refactored AMCL motion models as plugins<a class="headerlink" href="#refactored-amcl-motion-models-as-plugins" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2642">This PR</a> creates plugins for the different motion models currently used in AMCL. This functionality enables users to use any custom motion model by creating it as a plugin and changing the robot_model_type parameter to the name of the plugin in nav2_params.yaml file. This helps to use custom motion models without the need to modify the AMCL source code.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2642">This PR 2642</a> creates plugins for the different motion models currently used in AMCL. This functionality enables users to use any custom motion model by creating it as a plugin and changing the robot_model_type parameter to the name of the plugin in nav2_params.yaml file. This helps to use custom motion models without the need to modify the AMCL source code.</p>
 </div>
 <div class="section" id="dropping-support-for-live-groot-monitoring-of-nav2">
 <h2>Dropping Support for Live Groot Monitoring of Nav2<a class="headerlink" href="#dropping-support-for-live-groot-monitoring-of-nav2" title="Permalink to this headline">¶</a></h2>
@@ -951,15 +951,15 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 </div>
 <div class="section" id="replanning-only-if-path-is-invalid">
 <h2>Replanning Only if Path is Invalid<a class="headerlink" href="#replanning-only-if-path-is-invalid" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2591">This PR</a> creates two new condition BT node to facilitate replanning only if path becomes invalid rather than constantly replanning. These new nodes were integrated into the default BT.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2591">This PR 2591</a> creates two new condition BT node to facilitate replanning only if path becomes invalid rather than constantly replanning. These new nodes were integrated into the default BT.</p>
 </div>
 <div class="section" id="fix-costmaplayer-cleararea-invert-param-logic">
 <h2>Fix CostmapLayer clearArea invert param logic<a class="headerlink" href="#fix-costmaplayer-cleararea-invert-param-logic" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2772">This PR</a> fixes the invert paramlogic of the CostmapLayer clearArea fonction. Hence correcting the behavior of the clearAroundRobot and clearExceptRegion services and their corresponding BT actions.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2772">This PR 2772</a> fixes the invert paramlogic of the CostmapLayer clearArea fonction. Hence correcting the behavior of the clearAroundRobot and clearExceptRegion services and their corresponding BT actions.</p>
 </div>
 <div class="section" id="dynamic-composition">
 <h2>Dynamic Composition<a class="headerlink" href="#dynamic-composition" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2750">This PR</a> provides a optional bringup based on ROS2 dynamic composition for users. It can be used to compose all Nav2 nodes in a single process instead of launching these nodes separately, which is useful for embedded systems users that need to make optimizations due to harsh resource constraints. it’s used by default, but can be disabled by using the launch argument <code class="docutils literal notranslate"><span class="pre">use_composition:=False</span></code>.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2750">This PR 2750</a> provides a optional bringup based on ROS2 dynamic composition for users. It can be used to compose all Nav2 nodes in a single process instead of launching these nodes separately, which is useful for embedded systems users that need to make optimizations due to harsh resource constraints. it’s used by default, but can be disabled by using the launch argument <code class="docutils literal notranslate"><span class="pre">use_composition:=False</span></code>.</p>
 <p>Some experiments to show performance improvement of dynamic composition, and the cpu and memory are captured by <code class="docutils literal notranslate"><span class="pre">psutil</span></code> :</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -990,7 +990,7 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 </div>
 <div class="section" id="bt-cancel-node">
 <h2>BT Cancel Node<a class="headerlink" href="#bt-cancel-node" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2787">This PR</a> caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the <code class="docutils literal notranslate"><span class="pre">CancelControl</span></code> behavior to cancel the goal given to the controller_server.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2787">This PR 2787</a> caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the <code class="docutils literal notranslate"><span class="pre">CancelControl</span></code> behavior to cancel the goal given to the controller_server.</p>
 </div>
 </div>
 
