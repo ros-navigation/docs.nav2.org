@@ -361,6 +361,12 @@ Behavior Tree Nodes
 |                                    |                    | obstacles along the    |
 |                                    |                    | path.                  |
 +------------------------------------+--------------------+------------------------+
+| `Path Expiring Timer`_             |  Joshua Wallace    | Checks if the timer has|
+|                                    |                    | expired. The timer is  |
+|                                    |                    | reset if the path gets |
+|                                    |                    | updated.               |
++------------------------------------+--------------------+------------------------+
+
 
 .. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
@@ -372,6 +378,7 @@ Behavior Tree Nodes
 .. _Time Expired Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
 .. _Is Battery Low Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
 .. _Is Path Valid Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
+.. _Path Expiring Timer: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
 
 +--------------------------+-------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator        |       Description                |
