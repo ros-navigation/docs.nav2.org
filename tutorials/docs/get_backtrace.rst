@@ -8,6 +8,7 @@ Get Backtrace in ROS 2 / Nav2
 - `From a Node`_
 - `From a Launch File`_
 - `From Nav2 Bringup`_
+- `Using VSCode`_
 - `Automatic backtrace on crash`_
 
 Overview
@@ -217,6 +218,85 @@ These traces take some time to get used to reading, but in general, start at the
 Then you can deduce why it crashed.
 When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
 It may ask you if you want to kill some threads at the end, say yes.
+
+Using VSCode
+=================
+
+Debugging on VSCode can be more intuitive as you can add the breakpoints, go step by step seeing the lines through the editor, as well as having the call stack and the variables accessible without any commands.
+
+First you need to install the `C/C++ VSCode Extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools>`_
+
+You also need to compile your package with the debugging symbols using ``add_compile_options(-g)``. Another way to do it is to simply set the CMake build type parameter to ``Debug`` or ``RelWithDebugInfo`` Info:
+
+.. code-block:: bash
+
+  colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug
+
+Now, you have to run the GDB Server VSCode will attach itself to. In this example we will use localhost and the port 3000, you can choose any free port you want. The same way you want to run a gdb session, you can use the ``--prefix`` option for ``ros2 run``:
+
+.. code-block:: bash
+
+  ros2 run --prefix 'gdbserver localhost:3000' <pkg> <node> --all-other-launch arguments
+
+If the node is ran through a launch file, use:
+
+.. code-block:: python
+
+  start_sync_slam_toolbox_node = Node(
+      parameters=[
+        get_package_share_directory("slam_toolbox") + '/config/mapper_params_online_sync.yaml',
+        {'use_sim_time': use_sim_time}
+      ],
+      package='slam_toolbox',
+      executable='sync_slam_toolbox_node',
+      name='slam_toolbox',
+      prefix=['gdbserver localhost:3000'],
+      output='screen')
+
+The last configuration step is to create a ``launch.json`` file. 
+
+- Open your ROS2 workspace in VSCode. 
+
+- Go to the ``Run and Debug`` on the sidebar (Ctrl+Shift+D) 
+
+- Add a new configuration using the C++ environment.
+
+- Create the launch.json file.
+
+- Your structure should look like this:
+
+.. code-block:: bash
+
+  .
+  ├── .vscode
+  │   └──launch.json
+  ├── build
+  ├── install
+  ├── log
+  └── src
+
+- The ``launch.json`` file content should look like this:
+
+.. code-block:: json
+
+  {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "C++ Debugger",
+                "request": "launch",
+                "type": "cppdbg",
+                "miDebuggerServerAddress": "localhost:3000",
+                "cwd": "/",
+                "program": "$path_to_build_executable"
+            }
+        ]
+  }
+
+The path to the build executable will be printed out when running gdbserver. You can also find it using ``ros2 pkg prefix $package_name``. This gives you the prefix. Add ``/lib/$package_name/$node_name`` to the prefix path to have the absolute path of the build executable.
+
+You should be all set to debug with VSCode: run the GDB server, then use the ``Run and Debug`` panel to attach and start debugging your application.
 
 Automatic backtrace on crash
 ============================
