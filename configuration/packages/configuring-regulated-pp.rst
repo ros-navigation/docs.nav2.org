@@ -222,6 +222,17 @@ Regulated Pure Pursuit Parameters
   Description
     Maximum allowable angular acceleration (rad/s/s) while rotating to heading, if ``use_rotate_to_heading`` is ``true``.
 
+:max_robot_pose_search_dist:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         Local costmap max extent (max(width, height) / 2)
+  ============== =============================
+
+  Description
+    Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting.
+
 Example
 *******
 .. code-block:: yaml
@@ -266,3 +277,4 @@ Example
         allow_reversing: false
         rotate_to_heading_min_angle: 0.785
         max_angular_accel: 3.2
+        max_robot_pose_search_dist: 10.0
