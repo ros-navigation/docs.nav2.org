@@ -224,11 +224,11 @@ Regulated Pure Pursuit Parameters
 
 :max_robot_pose_search_dist:
 
-  ============== =============================
+  ============== =================================================
   Type           Default
-  -------------- -----------------------------
+  -------------- -------------------------------------------------
   double         Local costmap max extent (max(width, height) / 2)
-  ============== =============================
+  ============== =================================================
 
   Description
     Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting.
