@@ -15,7 +15,7 @@ For a full list of important completed changes in the project, see the Migration
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Smac Lattice Planner`_        | Large (in progress)    |
+| `Smac Lattice Planner`_        | Large (DONE)           |
 |                                |                        |
 |                                |                        |
 |                                |                        |
