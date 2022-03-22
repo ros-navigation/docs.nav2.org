@@ -4,7 +4,7 @@ Navigate To Pose and Pause Near Goal-Obstacle
 This behavior tree is a soft extension to the :ref:`behavior_tree_nav_to_pose`. 
 :ref:`behavior_tree_nav_to_pose` aids the robot in navigating from a starting point to a single point goal in freespace with all the necessary recoveries to handle navigation failures. 
 In addition, this behavior tree allows the robot to efficiently handle an obstacle (e.g. forklift, person, or other temporary obstacle) close to the goal by pausing the robot's navigation and wait until the obstacle has cleared.
-navigating along a significantly longer path to reach the goal location.
+Then, the robot will continue to the goal after the obstacle has moved. If the obstacle is unmoved, navigation will continue using the longer path around to reach the final goal location.
 
 The behavior tree is depicted in the image below. 
 From the image, it can be noted that, there is an additional branch known as ``MonitorAndFollowPath``, this branch is created with an intention for the users to perform any kind of monitoring behavior that their robot should exhibit. 
