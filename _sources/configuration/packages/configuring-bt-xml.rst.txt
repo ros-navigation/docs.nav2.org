@@ -39,6 +39,9 @@ Action Plugins
   bt-plugins/actions/ComputePathThroughPoses.rst
   bt-plugins/actions/RemovePassedGoals.rst
   bt-plugins/actions/CancelControl.rst
+  bt-plugins/actions/CancelBackUp.rst
+  bt-plugins/actions/CancelSpin.rst
+  bt-plugins/actions/CancelWait.rst
 
 Condition Plugins
 *****************
