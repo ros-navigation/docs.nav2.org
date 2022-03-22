@@ -236,7 +236,7 @@ Fix CostmapLayer clearArea invert param logic
 `This PR 2772 <https://github.com/ros-planning/navigation2/pull/2772>`_ fixes the invert paramlogic of the CostmapLayer clearArea fonction. Hence correcting the behavior of the clearAroundRobot and clearExceptRegion services and their corresponding BT actions.
 
 Dynamic Composition
-*********************************************
+*******************
 
 `This PR 2750 <https://github.com/ros-planning/navigation2/pull/2750>`_ provides a optional bringup based on ROS2 dynamic composition for users. It can be used to compose all Nav2 nodes in a single process instead of launching these nodes separately, which is useful for embedded systems users that need to make optimizations due to harsh resource constraints. it's used by default, but can be disabled by using the launch argument ``use_composition:=False``.
 
@@ -254,4 +254,4 @@ The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu
 BT Cancel Node
 **************
 
-`This PR 2787 <https://github.com/ros-planning/navigation2/pull/2787>`_ caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the ``CancelControl`` behavior to cancel the goal given to the controller_server.
+`This PR 2787 <https://github.com/ros-planning/navigation2/pull/2787>`_ caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the ``CancelControl`` behavior to cancel the goal given to the controller_server. As an addition to the ``CancelControl`` `This PR 2856 <https://github.com/ros-planning/navigation2/pull/2856>`_ provides the users with the option to cancel the recoveries such as the ``backup``, ``spin`` and ``wait``.
