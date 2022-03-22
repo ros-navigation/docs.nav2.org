@@ -17,7 +17,7 @@ Input Ports
   ====== =======
 
   Description
-      Service name. if not using default of ``backup`` due to remapping.
+      Service name, if not using default of ``backup`` due to remapping.
 
 
 :server_timeout:
