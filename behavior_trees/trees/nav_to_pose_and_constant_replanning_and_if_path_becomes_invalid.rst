@@ -15,18 +15,14 @@ In this behavior tree, we attempt to retry the entire navigation task 6 times be
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.
 
 In nominal execution, replanning can be triggered by an a invalid previous path, a new goal or if a new path has not been created for 15 seconds.
-However, this time, if the planner fails, it will trigger contextually aware recoveries in its subtree, clearing the global costmap.
-Additional recoveries can be added here for additional context-specific recoveries, such as trying another algorithm.
-
-Similarly, the controller has similar logic. If it fails, it also attempts a costmap clearing of the local costmap impacting the controller.
-It is worth noting the ``GoalUpdated`` node in the reactive fallback.
-This allows us to exit recovery conditions when a new goal has been passed to the navigation system through a preemption.
-This ensures that the navigation system will be very responsive immediately when a new goal is issued, even when the last goal was in an attempted recovery.
+If the planner or controller fails, it will trigger contextually aware recoveries in its subtree.
+Currently, the recoveries will clear the global costmap if the planner fails and clear the local costmap if the controller fails.
+Additional context-specific recoveries can be added to these subtrees.
 
 If these contextual recoveries fail, this behavior tree enters the recovery subtree.
 This subtree is reserved for system-level failures to help resolve issues like the robot being stuck or in a bad spot.
-This subtree also has the ``GoalUpdated`` BT node it ticks every iteration to ensure responsiveness of new goals.
-Next, the recovery subtree will the recoveries: costmap clearing operations, spinning, waiting, and backing up.
+This subtree has the ``GoalUpdated`` BT node which ticks every iteration to ensure responsiveness of new goals.
+Next, the recovery subtree will attempt the following recoveries: costmap clearing operations, spinning, waiting, and backing up.
 After each of the recoveries in the subtree, the main navigation subtree will be reattempted.
 If it continues to fail, the next recovery in the recovery subtree is ticked.
 

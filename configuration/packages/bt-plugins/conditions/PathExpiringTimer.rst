@@ -11,4 +11,4 @@ Example
 
 .. code-block:: xml
 
-    <PathExpiringTimer path="{path}"/>
+    <PathExpiringTimer seconds="15" path="{path}"/>
