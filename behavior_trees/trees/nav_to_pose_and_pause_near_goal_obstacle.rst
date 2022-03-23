@@ -14,7 +14,7 @@ If there is no significantly longer path, the monitor node goes into the ``Follo
 .. image:: ../images/walkthrough/patience_and_recovery.png
 
 Once there is a significantly longer path, the child node for the ``PathLongerOnApproach`` node ticks.
-The child node is a sequence node, that cancels the controller server employing the ``CancelControl`` node, followed by the ``Wait`` node. 
+The child node is a sequence node, that cancels the controller server employing the ``CancelControl`` node, followed by the ``Wait`` node, that enables the robot to wait for the given user specified time. 
 Here we need to note that, the ``MonitorAndFollowPath`` is a ``ReactiveSequence`` node, therefore the ``PathLongerOnApproach`` node needs to return SUCCESS, before the ``FollowPath`` node can be ticked once again. 
 
 In the below GIF, it can be seen that, the robot is approaching the goal location, but it found an obstacle in the goal proximity, because of which the the global planner, plans a longer path around. 
@@ -27,6 +27,8 @@ Alternatively if the obstacles are cleared, then there is a shorter path generat
 Now, the ``PathLongerOnApproach`` returns SUCCESS, that cause the ``FollowPath`` to continue with the robot navigation.
 
 .. image:: ../../migration/images/nav2_patience_near_goal_and_clear_obstacle.gif
+
+Apart from the above scenarios, we also need to note that, the robot will take the longer path to the goal location, if the obstacle does not clears up in the given user-specific wait time. 
 
 As a conclusion, this particular BT would serve, both as an example and ready-to-use BT for an organizational specific application, who wishes to optimize their process cycle time.
 
