@@ -6,7 +6,7 @@ Foxy to Galactic
 Moving from ROS 2 Foxy to Galactic, a number of stability improvements were added that we will not specifically address here.
 
 NavigateToPose Action Feedback updates
-****************************************
+**************************************
 
 The NavigateToPose action feedback has two improvements:
 
@@ -43,6 +43,7 @@ ComputePathToPose Action Interface Changes
 - The goal pose field ``pose`` was changed to ``goal``.
 - The PoseStamped field ``start`` has been added.
 - The bool field ``use_start`` has been added.
+
 These two additional fields have been added to optionally allow, when ``use_start`` is true, the request of a path from ``start`` to ``goal`` instead of from the current position of the robot to ``goal``. Corresponding changes have been done of the Planner Server.
 
 BackUp BT-node Interface Changes
@@ -60,7 +61,7 @@ In both cases negative values are silently inverted.
 Nav2 Controllers and Goal Checker Plugin Interface Changes
 **********************************************************
 
-As of `this PR <https://github.com/ros-planning/navigation2/pull/2247>`_, the ``controller`` plugins will now be given a pointer to the current goal checker in use of the navigation task in ``computeAndPublishVelocity()``. This is geared to enabling controllers to have access to predictive checks for goal completion as well as access to the state information of the goal checker plugin.
+As of `this PR 2247 <https://github.com/ros-planning/navigation2/pull/2247>`_, the ``controller`` plugins will now be given a pointer to the current goal checker in use of the navigation task in ``computeAndPublishVelocity()``. This is geared to enabling controllers to have access to predictive checks for goal completion as well as access to the state information of the goal checker plugin.
 
 The ``goal_checker`` plugins also have the change of including a ``getTolerances()`` method. This method allows a goal checker holder to access the tolerance information of the goal checker to consider at the goal. Each field of the ``pose`` and ``velocity`` represents the maximum allowable error in each dimension for a goal to be considered completed. In the case of a translational tolerance (combined X and Y components), each the X and Y will be populated with the tolerance value because it is the **maximum** tolerance in the dimension (assuming the other has no error). If the goal checker does not contain any tolerances for a dimension, the ``numeric_limits<double> lowest()`` value is utilized in its place.
 
@@ -69,6 +70,7 @@ FollowPath goal_checker_id attribute
 For example: you could use for some specific navigation motion a more precise goal checker than the default one that it is used in usual motions.
 
 .. code-block:: xml
+
     <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10"/>
 
 - The previous usage of the ``goal_checker_plugin`` parameter to declare the controller_server goal_checker is now obsolete and removed.
@@ -79,6 +81,7 @@ For example: you could use for some specific navigation motion a more precise go
 Below it is shown an example of goal_checker configuration of the controller_server node.
 
 .. code-block:: yaml
+
     controller_server:
       ros__parameters:
           goal_checker_plugins: ["general_goal_checker", "precise_goal_checker"]
@@ -110,8 +113,8 @@ Users can inherit from this interface to implement their own plugin to perform m
 
 Several example implementations are included in ``nav2_waypoint_follower``. ``WaitAtWaypoint`` and ``PhotoAtWaypoint`` plusings are included in 
 ``nav2_waypoint_follower`` as run-time loadable plugins. ``WaitAtWaypoint`` simply lets robot to pause for a specified amount of time in milliseconds, at waypoint arrivals.
- While ``PhotoAtWaypoint`` takes photos at waypoint arrivals and saves the taken photos to specified directory, the format for taken photos also can be configured through parameters.
- All major image formats such as ``png``, ``jpeg``, ``jpg`` etc. are supported, the default format is ``png``.
+While ``PhotoAtWaypoint`` takes photos at waypoint arrivals and saves the taken photos to specified directory, the format for taken photos also can be configured through parameters.
+All major image formats such as ``png``, ``jpeg``, ``jpg`` etc. are supported, the default format is ``png``.
 
 Loading a plugin of this type is done through ``nav2_bringup/params/nav2_param.yaml``, by specifying plugin's name, type and it's used parameters. 
 
@@ -191,49 +194,64 @@ Standard time units in parameters
 To follow the SI units outlined in REP-103 to the "T" nodes below were modified to use seconds consistently in every parameter. Under each node name you can see which parameters changed to seconds instead of using milliseconds.
 
 - lifecycle manager 
- - ``bond_timeout_ms`` became ``bond_timeout`` in seconds
+
+  - ``bond_timeout_ms`` became ``bond_timeout`` in seconds
+
 - smac planner
- - ``max_planning_time_ms`` became ``max_planning_time`` in seconds
+
+  - ``max_planning_time_ms`` became ``max_planning_time`` in seconds
+
 - map saver
- - ``save_map_timeout`` in seconds
+
+  - ``save_map_timeout`` in seconds
 
 Ray Tracing Parameters
 **********************
 Raytracing functionality was modified to include a minimum range parameter from which ray tracing starts to clear obstacles to avoid incorrectly clearing obstacles too close to the robot. This issue was mentioned in `ROS Answers <https://answers.ros.org/question/355150/obstacles-in-sensor-deadzone/>`_. An existing parameter ``raytrace_range`` was renamed to ``raytrace_max_range`` to reflect the functionality it affects. The renamed parameters and the plugins that they belong to are mentioned below. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2126>`_.
 
 - obstacle_layer plugin
- - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
- - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
+
+  - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
+
+  - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
+
 - voxel_layer plugin
- - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
- - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
+ 
+  - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
+ 
+  - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
 
 Obstacle Marking Parameters
 ***************************
 Obstacle marking was modified to include a minimum range parameter from which obstacles are marked on the costmap to prevent addition of obstacles in the costmap due to noisy and incorrect measurements. This modification is related to the change with the raytracing parameters. The renamed parameters, newly added parameters and the plugins they belong to are given below.
 
 - obstacle_layer plugin
- - ``obstacle_min_range`` controls the minimum range from which obstacle are marked on the costmap
- - ``obstacle_max_range`` controls the maximum range to which obstacles are marked on the costmap
+
+  - ``obstacle_min_range`` controls the minimum range from which obstacle are marked on the costmap
+
+  - ``obstacle_max_range`` controls the maximum range to which obstacles are marked on the costmap
+
 - voxel_layer plugin
- - ``obstacle_min_range`` controls the minimum range from which obstacle are marked on the costmap
- - ``obstacle_max_range`` controls the maximum range to which obstacles are marked on the costmap
+
+  - ``obstacle_min_range`` controls the minimum range from which obstacle are marked on the costmap
+
+  - ``obstacle_max_range`` controls the maximum range to which obstacles are marked on the costmap
 
 Recovery Action Changes
 ***********************
-The recovery actions, ``Spin`` and ``BackUp`` were modified to correctly return ``FAILURE`` if the recovery action is aborted due to a potential collision. Previously, these actions incorrectly always returned ``SUCCESS``. Changes to this resulted in downstream action clients, such as the default behavior tree. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_.
+The recovery actions, ``Spin`` and ``BackUp`` were modified to correctly return ``FAILURE`` if the recovery action is aborted due to a potential collision. Previously, these actions incorrectly always returned ``SUCCESS``. Changes to this resulted in downstream action clients, such as the default behavior tree. The changes were introduced in this `pull request 1855 <https://github.com/ros-planning/navigation2/pull/1855>`_.
 
 Default Behavior Tree Changes
 *****************************
-The default behavior tree (BT) ``navigate_w_replanning_and_recovery.xml`` has been updated to allow for replanning in between recoveries. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/1855>`_. Additionally, an alternative BT ``navigate_w_replanning_and_round_robin_recovery.xml`` was removed due to similarity with the updated default BT.
+The default behavior tree (BT) ``navigate_w_replanning_and_recovery.xml`` has been updated to allow for replanning in between recoveries. The changes were introduced in this `PR 1855 <https://github.com/ros-planning/navigation2/pull/1855>`_. Additionally, an alternative BT ``navigate_w_replanning_and_round_robin_recovery.xml`` was removed due to similarity with the updated default BT.
 
 NavFn Planner Parameters
 ************************
-The NavFn Planner has now its 3 parameters reconfigurable at runtime (``tolerance``, ``use_astar`` and ``allow_unknown``). The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2181>`_.
+The NavFn Planner has now its 3 parameters reconfigurable at runtime (``tolerance``, ``use_astar`` and ``allow_unknown``). The changes were introduced in this `pull request 2181 <https://github.com/ros-planning/navigation2/pull/2181>`_.
 
 New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes
 *****************************************************************
-The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services ``(local_or_global)_costmap/clear_except_(local_or_global)_costmap`` and ``clear_around_(local_or_global)_costmap`` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a ``reset_distance`` input port. See :ref:`bt_clear_costmap_except_region_action` and :ref:`bt_clear_entire_costmap_around_robot_action` for more.  The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2204>`_.
+The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services ``(local_or_global)_costmap/clear_except_(local_or_global)_costmap`` and ``clear_around_(local_or_global)_costmap`` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a ``reset_distance`` input port. See :ref:`bt_clear_costmap_except_region_action` and :ref:`bt_clear_entire_costmap_around_robot_action` for more.  The changes were introduced in this `pull request 2204 <https://github.com/ros-planning/navigation2/pull/2204>`_.
 
 New Behavior Tree Nodes
 ***********************
@@ -261,25 +279,25 @@ Due to deprecation of `sensor_msgs/PointCloud <https://docs.ros2.org/foxy/api/se
 - ``voxel_marked_cloud`` and ``voxel_unknown_cloud`` topic in ``costmap_2d_cloud`` node of ``nav2_costmap_2d`` package
 - ``cost_cloud`` topic of ``publisher.cpp`` of ``dwb_core`` package.
 
-These changes were introduced in `pull request <https://github.com/ros-planning/navigation2/pull/2263>`_.
+These changes were introduced in `pull request 2263 <https://github.com/ros-planning/navigation2/pull/2263>`_.
 
 ControllerServer New Parameter failure_tolerance
 ************************************************
 A new parameter :code:`failure_tolerance` was added to the Controller Server for tolerating controller plugin exceptions without failing immediately. It is analogous to ``controller_patience`` in ROS(1) Nav. See :ref:`configuring_controller_server` for description.
-This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2264>`_.
+This change was introduced in this `pull request 2264 <https://github.com/ros-planning/navigation2/pull/2264>`_.
 
 Removed BT XML Launch Configurations
 ************************************
 The launch python configurations for CLI setting of the behavior tree XML file has been removed. Instead, you should use the yaml files to set this value. If you, however, have a ``path`` to the yaml file that is inconsistent in a larger deployment, you can use the ``RewrittenYaml`` tool in your parent launch file to remap the default XML paths utilizing the ``get_shared_package_path()`` directory finder (or as you were before in python3).
 
 The use of map subscription QoS launch configuration was also removed, use parameter file. 
-This change was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2295>`_.
+This change was introduced in this `pull request 2295 <https://github.com/ros-planning/navigation2/pull/2295>`_.
 
 Nav2 RViz Panel Action Feedback Information
 *******************************************
 The Nav2 RViz Panel now displays the action feedback published by ``nav2_msgs/NavigateToPose`` and ``nav2_msgs/NavigateThroughPoses`` actions.
 Users can find information like the estimated time of arrival, distance remaining to goal, time elapsed since navigation started, and number of recoveries performed during a navigation action directly through the RViz panel.
-This feature was introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2338>`_.
+This feature was introduced in this `pull request 2338 <https://github.com/ros-planning/navigation2/pull/2338>`_.
 
 .. image:: /images/rviz/panel-feedback.gif
     :width: 600px

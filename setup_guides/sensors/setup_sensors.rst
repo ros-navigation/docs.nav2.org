@@ -480,6 +480,7 @@ We can also check that the transforms are correct by executing the following lin
 
   ros2 run tf2_tools view_frames.py
 
+Note: For Galactic and newer, it should be ``view_frames`` and not ``view_frames.py``
 The line above will create a ``frames.pdf`` file that shows the current transform tree. Your tranform tree should be similar to the one shown below:
 
 .. image:: images/view_frames.png
