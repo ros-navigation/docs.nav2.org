@@ -294,6 +294,12 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Control Action`_                   |Pradheep Padmanabhan | Cancels Nav2 controller server           |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel BackUp Action`_                    |Pradheep Padmanabhan | Cancels backup recovery action           |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Spin Action`_                      |Pradheep Padmanabhan | Cancels spin recovery action             |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Wait Action`_                      |Pradheep Padmanabhan | Cancels wait recovery action             |
++--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Clear Entire Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
@@ -313,7 +319,9 @@ Behavior Tree Nodes
 .. _Remove Passed Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
 .. _Compute Path Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
 .. _Cancel Control Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
-
+.. _Cancel BackUp Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
+.. _Cancel Spin Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
+.. _Cancel Wait Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
 
 
 +------------------------------------+--------------------+------------------------+
