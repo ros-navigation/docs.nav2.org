@@ -256,5 +256,6 @@ BT Cancel Node
 
 Replanning at a Constant Rate and if the Path is Invalid
 ********************************************************
-`This PR <https://github.com/ros-planning/navigation2/pull/2591>`_ creates one new condition BT node to trigger replanning at a constant rate. This PR build on
-'<https://github.com/ros-planning/navigation2/pull/2591>' to allow for constant replanning and replanning if the path is invalid.
+`This PR <https://github.com/ros-planning/navigation2/pull/2841>`_ introduces a new behavior tree that navigates to pose with consistent replanning and if the path becomes invalid.
+To facilitate the new behavior tree a new condition node PathExpiringTimer was introduced to trigger replanning at a consistent rate.
+

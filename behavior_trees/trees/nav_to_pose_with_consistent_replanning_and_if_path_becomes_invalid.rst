@@ -1,7 +1,7 @@
 .. _behavior_tree_nav_to_pose_and_replan_if_path_invalid:
 
-Navigate To Pose And Constant Replanning And If Path Becomes Invalid
-####################################################################
+Navigate To Pose With Consistent Replanning And If Path Becomes Invalid
+#######################################################################
 
 This behavior tree implements a significantly more mature version of the behavior tree on :ref:`behavior_trees`.
 It navigates from a starting point to a single point goal in freespace.
