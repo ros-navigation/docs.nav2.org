@@ -255,7 +255,14 @@ BT Cancel Node
 **************
 `This PR 2787 <https://github.com/ros-planning/navigation2/pull/2787>`_ caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the ``CancelControl`` behavior to cancel the goal given to the controller_server. As an addition to the ``CancelControl`` `This PR 2856 <https://github.com/ros-planning/navigation2/pull/2856>`_ provides the users with the option to cancel the recoveries such as the ``backup``, ``spin`` and ``wait``.
 
+
 Replanning at a Constant Rate and if the Path is Invalid
 ********************************************************
 `This PR 2804 <https://github.com/ros-planning/navigation2/pull/2841>`_ introduces a new behavior tree that navigates to pose with consistent replanning and if the path becomes invalid.
 To facilitate the new behavior tree a new condition node PathExpiringTimer was introduced to trigger replanning at a consistent rate.
+
+Euclidean Distance 2D
+*********************
+
+`This PR 2865 <https://github.com/ros-planning/navigation2/pull/2865>`_ changes Euclidean distance calculation throughout nav2 to project on to the XY plane (i.e. discard any information related to components in Z).
+This may potentially subtly change the way certain BT nodes, BT Navigators, controller servers, planner servers, and RPP behave if using custom plugins outside the Nav2 ecosystem.
