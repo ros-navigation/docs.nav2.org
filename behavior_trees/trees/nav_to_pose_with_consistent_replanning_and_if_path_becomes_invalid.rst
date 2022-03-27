@@ -14,7 +14,7 @@ By convention we name these by the style of algorithms that they are (e.g. not `
 In this behavior tree, we attempt to retry the entire navigation task 6 times before returning to the caller that the task has failed.
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.
 
-In nominal execution, replanning can be triggered by an a invalid previous path, a new goal or if a new path has not been created for 15 seconds.
+In nominal execution, replanning can be triggered by an a invalid previous path, a new goal or if a new path has not been created for 10 seconds.
 If the planner or controller fails, it will trigger contextually aware recoveries in its subtree.
 Currently, the recoveries will clear the global costmap if the planner fails and clear the local costmap if the controller fails.
 Additional context-specific recoveries can be added to these subtrees.
@@ -39,7 +39,7 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
 		    <Fallback>
 		      <ReactiveSequence>
 		        <Inverter>
-		          <PathExpiringTimer seconds="15" path="{path}"/>
+		          <PathExpiringTimer seconds="10" path="{path}"/>
 		        </Inverter>
 		        <Inverter>
 		          <GlobalUpdatedGoal/>
