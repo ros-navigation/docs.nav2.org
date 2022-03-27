@@ -1,7 +1,7 @@
 .. _behavior_trees:
 
 Nav2 Behavior Trees
-##################
+###################
 
 .. toctree::
    :maxdepth: 1
