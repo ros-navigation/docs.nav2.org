@@ -7,7 +7,7 @@ If the obstacle has moved during the waiting time, the robot will continue to th
 Ultimately, for a given task, this behavior tree aids in solving the problem of long cycle time, which is caused because of the long path generated due to the temporary obstacles present close to the goal location. 
 
 The behavior tree is depicted in the image below. 
-From the image, it can be noted that, there is an additional branch known as ``MonitorAndFollowPath``, this branch is created with an intention for the users to perform any kind of monitoring behavior that their robot should exhibit. 
+From the image, it can be noted that, there is an additional branch in the Navigation Subtree known as ``MonitorAndFollowPath``. This branch is created with an intention for the users to perform any kind of monitoring behavior that their robot should exhibit. 
 In this particular BT, the monitoring branch is exclusively utilized by ``PathLongerOnApproach`` BT node for checking if the global planner has decided to plan a significantly longer path for the robot on approaching the user-specified goal proximity. 
 If there is no significantly longer path, the monitor node goes into the ``FollowPath`` recovery node, which then generates the necessary control commands. 
 
