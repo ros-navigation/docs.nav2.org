@@ -268,3 +268,9 @@ Obstacle does not clear at all, with `obstacle_clearance_time` to be 3 seconds:
 Obstacle clears and you can see the robot pass through the (could have been ideally the) same path:
 
 .. image:: images/nav2_patience_near_goal_and_go_around.gif
+
+Euclidean Distance 2D
+*********************
+
+`This PR 2865 <https://github.com/ros-planning/navigation2/pull/2865>`_ changes Euclidean distance calculation throughout nav2 to project on to the XY plane (i.e. discard any information related to components in Z).
+This may potentially subtly change the way certain BT nodes, BT Navigators, controller servers, planner servers, and RPP behave if using custom plugins outside the Nav2 ecosystem.
