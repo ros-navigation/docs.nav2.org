@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Navigate To Pose and Replan Only if Path Invalid &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Navigate To Pose With Consistent Replanning And If Path Becomes Invalid &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -431,6 +431,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/TimeExpired.html">TimeExpired</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsBatteryLow.html">IsBatteryLow</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsPathValid.html">IsPathValid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/PathExpiringTimer.html">PathExpiringTimer</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -603,7 +604,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="nav_to_pose_recovery.html">Navigate To Pose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nav_through_poses_recovery.html">Navigate Through Poses</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Navigate To Pose and Replan Only if Path Invalid</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Navigate To Pose With Consistent Replanning And If Path Becomes Invalid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="follow_point.html">Follow Dynamic Point</a></li>
 </ul>
 </li>
@@ -691,6 +692,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#fix-costmaplayer-cleararea-invert-param-logic">Fix CostmapLayer clearArea invert param logic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#dynamic-composition">Dynamic Composition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#bt-cancel-node">BT Cancel Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#replanning-at-a-constant-rate-and-if-the-path-is-invalid">Replanning at a Constant Rate and if the Path is Invalid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#euclidean-distance-2d">Euclidean Distance 2D</a></li>
 </ul>
 </li>
@@ -741,7 +743,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Nav2 Behavior Trees</a> &raquo;</li>
-      <li>Navigate To Pose and Replan Only if Path Invalid</li>
+      <li>Navigate To Pose With Consistent Replanning And If Path Becomes Invalid</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -750,8 +752,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="navigate-to-pose-and-replan-only-if-path-invalid">
-<span id="behavior-tree-nav-to-pose-and-replan-if-path-invalid"></span><h1>Navigate To Pose and Replan Only if Path Invalid<a class="headerlink" href="#navigate-to-pose-and-replan-only-if-path-invalid" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="navigate-to-pose-with-consistent-replanning-and-if-path-becomes-invalid">
+<span id="behavior-tree-nav-to-pose-and-replan-if-path-invalid"></span><h1>Navigate To Pose With Consistent Replanning And If Path Becomes Invalid<a class="headerlink" href="#navigate-to-pose-with-consistent-replanning-and-if-path-becomes-invalid" title="Permalink to this headline">¶</a></h1>
 <p>This behavior tree implements a significantly more mature version of the behavior tree on <a class="reference internal" href="../index.html#behavior-trees"><span class="std std-ref">Nav2 Behavior Trees</span></a>.
 It navigates from a starting point to a single point goal in freespace.
 It contains both use of custom recoveries in specific sub-contexts as well as a global recovery subtree for system-level failures.
@@ -760,17 +762,14 @@ It also provides the opportunity for users to retry tasks multiple times before 
 By convention we name these by the style of algorithms that they are (e.g. not <code class="docutils literal notranslate"><span class="pre">DWB</span></code> but rather <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>) such that a behavior tree or application developer need not worry about the technical specifics. They just want to use a path following controller.</p>
 <p>In this behavior tree, we attempt to retry the entire navigation task 6 times before returning to the caller that the task has failed.
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.</p>
-<p>In nominal execution, this will replan only if the previous path is invalid and pass a new path onto the controller.
-However, this time, if the planner fails, it will trigger contextually aware recoveries in its subtree, clearing the global costmap.
-Additional recoveries can be added here for additional context-specific recoveries, such as trying another algorithm.</p>
-<p>Similarly, the controller has similar logic. If it fails, it also attempts a costmap clearing of the local costmap impacting the controller.
-It is worth noting the <code class="docutils literal notranslate"><span class="pre">GoalUpdated</span></code> node in the reactive fallback.
-This allows us to exit recovery conditions when a new goal has been passed to the navigation system through a preemption.
-This ensures that the navigation system will be very responsive immediately when a new goal is issued, even when the last goal was in an attempted recovery.</p>
+<p>In nominal execution, replanning can be triggered by an a invalid previous path, a new goal or if a new path has not been created for 10 seconds.
+If the planner or controller fails, it will trigger contextually aware recoveries in its subtree.
+Currently, the recoveries will clear the global costmap if the planner fails and clear the local costmap if the controller fails.
+Additional context-specific recoveries can be added to these subtrees.</p>
 <p>If these contextual recoveries fail, this behavior tree enters the recovery subtree.
 This subtree is reserved for system-level failures to help resolve issues like the robot being stuck or in a bad spot.
-This subtree also has the <code class="docutils literal notranslate"><span class="pre">GoalUpdated</span></code> BT node it ticks every iteration to ensure responsiveness of new goals.
-Next, the recovery subtree will the recoveries: costmap clearing operations, spinning, waiting, and backing up.
+This subtree has the <code class="docutils literal notranslate"><span class="pre">GoalUpdated</span></code> BT node which ticks every iteration to ensure responsiveness of new goals.
+Next, the recovery subtree will attempt the following recoveries: costmap clearing operations, spinning, waiting, and backing up.
 After each of the recoveries in the subtree, the main navigation subtree will be reattempted.
 If it continues to fail, the next recovery in the recovery subtree is ticked.</p>
 <p>While this behavior tree does not make use of it, the <code class="docutils literal notranslate"><span class="pre">PlannerSelector</span></code>, <code class="docutils literal notranslate"><span class="pre">ControllerSelector</span></code>, and <code class="docutils literal notranslate"><span class="pre">GoalCheckerSelector</span></code> behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (<code class="docutils literal notranslate"><span class="pre">GridBased</span></code> and <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.</p>
@@ -778,10 +777,13 @@ If it continues to fail, the next recovery in the recovery subtree is ticked.</p
   <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;6&quot;</span> <span class="na">name=</span><span class="s">&quot;NavigateRecovery&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;2.0&quot;</span><span class="nt">&gt;</span>
           <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;ComputePathToPose&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;Fallback&gt;</span>
               <span class="nt">&lt;ReactiveSequence&gt;</span>
+                <span class="nt">&lt;Inverter&gt;</span>
+                  <span class="nt">&lt;PathExpiringTimer</span> <span class="na">seconds=</span><span class="s">&quot;10&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/Inverter&gt;</span>
                 <span class="nt">&lt;Inverter&gt;</span>
                   <span class="nt">&lt;GlobalUpdatedGoal/&gt;</span>
                 <span class="nt">&lt;/Inverter&gt;</span>
