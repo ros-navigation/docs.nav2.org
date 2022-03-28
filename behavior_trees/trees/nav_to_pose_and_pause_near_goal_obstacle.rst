@@ -1,6 +1,8 @@
 Navigate To Pose and Pause Near Goal-Obstacle
 #############################################
 
+.. note:: As a prerequiste, we encourage the users to go through the `Behavior Tree documentation <https://www.behaviortree.dev/tutorial_03_generic_ports/>`_, that explains about different behaviors nodes used in this trees such as ``ReactiveSequence``, ``SequenceStar`` and ``RetryUntilSucessfull``. 
+
 This behavior tree is a soft extension to the :ref:`behavior_tree_nav_to_pose`. 
 Apart from the functionalities of :ref:`behavior_tree_nav_to_pose`, this behavior tree allows the robot to efficiently handle an obstacle (e.g. forklift, person, or other temporary obstacle) close to the goal by pausing the robot's navigation and wait for a user specified time to check if the obstacle has cleared.
 If the obstacle has moved during the waiting time, the robot will continue to the goal taking the shorter path. If the obstacle has not moved during the waiting time or the waiting time expires, then the robot will use the longer path around to reach the final goal location.
@@ -14,8 +16,10 @@ If there is no significantly longer path, the monitor node goes into the ``Follo
 .. image:: ../images/walkthrough/patience_and_recovery.png
 
 Once there is a significantly longer path, the child node for the ``PathLongerOnApproach`` node ticks.
-The child node is a sequence node, that cancels the controller server employing the ``CancelControl`` node, followed by the ``Wait`` node, that enables the robot to wait for the given user specified time. 
-Here we need to note that, the ``MonitorAndFollowPath`` is a ``ReactiveSequence`` node, therefore the ``PathLongerOnApproach`` node needs to return SUCCESS, before the ``FollowPath`` node can be ticked once again. 
+The child node is a ``RetryUntilSuccesfull`` decorator node, that ticks it's child until they return SUCCESS.
+If the child does not return SUCCESS within the specified limit, the ``RetryUntilSuccesfull`` node in turn returns a FAILURE.   
+The child node of the ``RetryUntilSuccesfull`` decorator node is a ``SequenceStar`` node, that cancels the controller server employing the ``CancelControl`` node, followed by the ``Wait`` node, that enables the robot to wait for the given user specified time. 
+Here we need to note that, the ``MonitorAndFollowPath`` is a ``ReactiveSequence`` node, therefore the ``PathLongerOnApproach`` node needs to return SUCCESS, before the ``FollowPath`` node can be ticked once again.
 
 In the below GIF, it can be seen that, the robot is approaching the goal location, but it found an obstacle in the goal proximity, because of which the the global planner, plans a longer path around. 
 This is the point where the ``PathLongerOnApproach`` ticks and ticks it's children, consequently cancelling the ``controller_server`` and wait to see if the obstacle clears up. 
