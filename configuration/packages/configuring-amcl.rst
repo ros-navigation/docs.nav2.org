@@ -476,7 +476,7 @@ Parameters
   ============== =============================
 
   Description
-    Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you're using the `LoadMap` service in `map_server`.
+    Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you're using the `LoadMap` service in `map_server`. Prior to Humble, this is ``first_map_only_``.
 
 
 Example
