@@ -467,6 +467,18 @@ Parameters
   Description
     Map topic to subscribe to.
 
+:first_map_only:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           False
+  ============== =============================
+
+  Description
+    Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you're using the `LoadMap` service in `map_server`. Prior to Humble, this is ``first_map_only_``.
+
+
 Example
 *******
 .. code-block:: yaml
@@ -513,6 +525,7 @@ Example
         map_topic: map
         set_initial_pose: false
         always_reset_initial_pose: false
+        first_map_only: false
         initial_pose:
           x: 0.0
           y: 0.0
