@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NavigateThroughPoses &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>SingleTrigger &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
@@ -26,8 +26,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="ComputePathThroughPoses" href="ComputePathThroughPoses.html" />
-    <link rel="prev" title="GoalCheckerSelector" href="GoalCheckerSelector.html" />
+    <link rel="next" title="Costmap 2D" href="../../configuring-costmaps.html" />
+    <link rel="prev" title="GoalUpdater" href="GoalUpdater.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -396,28 +396,28 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="Wait.html">Wait</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spin.html">Spin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="BackUp.html">BackUp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ComputePathToPose.html">ComputePathToPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="FollowPath.html">FollowPath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="NavigateToPose.html">NavigateToPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ClearEntireCostmap.html">ClearEntireCostmap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="TruncatePath.html">TruncatePath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="PlannerSelector.html">PlannerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ControllerSelector.html">ControllerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GoalCheckerSelector.html">GoalCheckerSelector</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">NavigateThroughPoses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RemovePassedGoals.html">RemovePassedGoals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelControl.html">CancelControl</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelBackUp.html">CancelBackUp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelSpin.html">CancelSpin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelWait.html">CancelWait</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../actions/Wait.html">Wait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/Spin.html">Spin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/BackUp.html">BackUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ComputePathToPose.html">ComputePathToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/FollowPath.html">FollowPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/NavigateToPose.html">NavigateToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/TruncatePath.html">TruncatePath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/PlannerSelector.html">PlannerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelControl.html">CancelControl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelBackUp.html">CancelBackUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelSpin.html">CancelSpin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelWait.html">CancelWait</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -440,12 +440,12 @@
 <li class="toctree-l4"><a class="reference internal" href="../controls/RecoveryNode.html">RecoveryNode</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/RateController.html">RateController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/DistanceController.html">DistanceController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/SpeedController.html">SpeedController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/GoalUpdater.html">GoalUpdater</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="RateController.html">RateController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DistanceController.html">DistanceController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SpeedController.html">SpeedController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="GoalUpdater.html">GoalUpdater</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">SingleTrigger</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#example">Example</a></li>
@@ -745,7 +745,7 @@
       <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../../index.html">Configuration Guide</a> &raquo;</li>
           <li><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a> &raquo;</li>
-      <li>NavigateThroughPoses</li>
+      <li>SingleTrigger</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -754,84 +754,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="navigatethroughposes">
-<span id="bt-navigate-through-poses-action"></span><h1>NavigateThroughPoses<a class="headerlink" href="#navigatethroughposes" title="Permalink to this headline">¶</a></h1>
-<p>Invokes the NavigateThroughPoses ROS 2 action server, which is implemented by the <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator">bt_navigator</a> module.</p>
-<div class="section" id="input-ports">
-<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">goals:</th><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="87%" />
-<col width="13%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>vector&lt;geometry_msgs::msg::PoseStamped&gt;</td>
-<td>N/A</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Goal poses. Takes in a blackboard variable, e.g. “{goals}”.</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="46%" />
-<col width="54%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>string</td>
-<td>N/A</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Action server name.</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
-<colgroup>
-<col width="46%" />
-<col width="54%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-</tr>
-<tr class="row-even"><td>double</td>
-<td>10</td>
-</tr>
-</tbody>
-</table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Action server timeout (ms).</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+  <div class="section" id="singletrigger">
+<span id="id1"></span><h1>SingleTrigger<a class="headerlink" href="#singletrigger" title="Permalink to this headline">¶</a></h1>
+<p>This node triggers its child only once and returns FAILURE for every succeeding tick.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NavigateThroughPoses</span> <span class="na">goals=</span><span class="s">&quot;{goals}&quot;</span> <span class="na">server_name=</span><span class="s">&quot;NavigateThroughPoses&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;SingleTrigger&gt;</span>
+  <span class="cm">&lt;!--Add tree components here---&gt;</span>
+<span class="nt">&lt;/SingleTrigger&gt;</span>
 </pre></div>
 </div>
 </div>
