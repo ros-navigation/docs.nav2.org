@@ -525,7 +525,7 @@ Example
         map_topic: map
         set_initial_pose: false
         always_reset_initial_pose: false
-        first_map_only_: false
+        first_map_only: false
         initial_pose:
           x: 0.0
           y: 0.0
