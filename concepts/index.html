@@ -98,10 +98,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#behavior-trees">Behavior Trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#navigation-servers">Navigation Servers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#planner-controller-and-recovery-servers">Planner, Controller, and Recovery Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#planner-controller-smoother-and-recovery-servers">Planner, Controller, Smoother and Recovery Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#planners">Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#controllers">Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recoveries">Recoveries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smoothers">Smoothers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#waypoint-following">Waypoint Following</a></li>
 </ul>
 </li>
@@ -562,6 +563,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-recovery-server.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-smoother-server.html">Smoother Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-smoother-server.html#smoother-server-parameters">Smoother Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-smoother-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-smoother-server.html#example">Example</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html">Regulated Pure Pursuit</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html#regulated-pure-pursuit-parameters">Regulated Pure Pursuit Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html#example">Example</a></li>
@@ -614,6 +621,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#controllers">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#planners">Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#smoothers">Smoothers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#recoveries">Recoveries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#goal-checkers">Goal Checkers</a></li>
@@ -686,6 +694,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#added-smoother-task-server">Added Smoother Task Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#removed-use-approach-velocity-scaling-param-in-rpp">Removed Use Approach Velocity Scaling Param in RPP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
@@ -828,17 +837,18 @@ Additionally, we supply a <code class="docutils literal notranslate"><span class
 <h2>Navigation Servers<a class="headerlink" href="#navigation-servers" title="Permalink to this headline">¶</a></h2>
 <p>Planners and controllers are at the heart of a navigation task.
 Recoveries are used to get the robot out of a bad situation or attempt to deal with various forms of issues to make the system fault-tolerant.
+Smoothers can be used for additional quality improvements of the planned path.
 In this section, the general concepts around them and their uses in this project are analyzed.</p>
-<div class="section" id="planner-controller-and-recovery-servers">
-<h3>Planner, Controller, and Recovery Servers<a class="headerlink" href="#planner-controller-and-recovery-servers" title="Permalink to this headline">¶</a></h3>
-<p>Three of the action servers in this project are the planner, recovery, and controller servers.
+<div class="section" id="planner-controller-smoother-and-recovery-servers">
+<h3>Planner, Controller, Smoother and Recovery Servers<a class="headerlink" href="#planner-controller-smoother-and-recovery-servers" title="Permalink to this headline">¶</a></h3>
+<p>Four of the action servers in this project are the planner, recovery, smoother and controller servers.
 These action servers are used to host a map of algorithm plugins to complete various tasks.
 They also host the environmental representation used by the algorithm plugins to compute their outputs.</p>
-<p>The planner and controller servers will be configured at runtime with the names (aliases) and types of algorithms to use.
+<p>The planner, smoother and controller servers will be configured at runtime with the names (aliases) and types of algorithms to use.
 These types are the pluginlib names that have been registered and the names are the aliases for the task.
 An example would be the DWB controller used with name <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>, as it follows a reference path.
 In this case, then all parameters for DWB would be placed in that namespace, e.g. <code class="docutils literal notranslate"><span class="pre">FollowPath.&lt;param&gt;</span></code>.</p>
-<p>These two servers then expose an action interface corresponding to its task.
+<p>These three servers then expose an action interface corresponding to its task.
 When the behavior tree ticks the corresponding BT node, it will call the action server to process its task.
 The action server callback inside the server will call the chosen algorithm by its name (e.g. <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>) that maps to a specific algorithm.
 This allows a user to abstract the algorithm used in the behavior tree to classes of algorithms.
@@ -896,6 +906,15 @@ The clear costmap recovery would then be triggered to allow the robot to move.</
 Backing up or spinning in place, if permissible, allow the robot to move from a poor location into free space it may navigate successfully.</p>
 <p>Finally, in the case of a total failure, a recovery may be implemented to call an operators attention for help.
 This can be done with email, SMS, Slack, Matrix, etc.</p>
+</div>
+<div class="section" id="smoothers">
+<h3>Smoothers<a class="headerlink" href="#smoothers" title="Permalink to this headline">¶</a></h3>
+<p>As criteria for optimality of the path searched by a planner are usually reduced compared to reality, additional path refinement is often beneficial.
+Smoothers have been introduced for this purpose, typically responsible for reducing path raggedness and smoothing abrupt rotations,
+but also for increasing distance from obstacles and high-cost areas as the smoothers have access to a global environmental representation.</p>
+<p>Use of a separate smoother over one that is included as a part of a planner is advantageous when combining different planners with different smoothers or when a specific control over smoothing is required, e.g. smoothing ony a specific part of the path.</p>
+<p>The general task in Nav2 for a smoother is to receive a path and return its improved version.
+However, different input paths, criteria of the improvements and methods of acquiring them exist, creating space for multitude of smoothers that can be registered in this server.</p>
 </div>
 <div class="section" id="waypoint-following">
 <h3>Waypoint Following<a class="headerlink" href="#waypoint-following" title="Permalink to this headline">¶</a></h3>

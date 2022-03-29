@@ -99,10 +99,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="concepts/index.html#behavior-trees">Behavior Trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="concepts/index.html#navigation-servers">Navigation Servers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="concepts/index.html#planner-controller-and-recovery-servers">Planner, Controller, and Recovery Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="concepts/index.html#planner-controller-smoother-and-recovery-servers">Planner, Controller, Smoother and Recovery Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="concepts/index.html#planners">Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="concepts/index.html#controllers">Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="concepts/index.html#recoveries">Recoveries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="concepts/index.html#smoothers">Smoothers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="concepts/index.html#waypoint-following">Waypoint Following</a></li>
 </ul>
 </li>
@@ -563,6 +564,12 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-recovery-server.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/packages/configuring-smoother-server.html">Smoother Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-smoother-server.html#smoother-server-parameters">Smoother Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-smoother-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-smoother-server.html#example">Example</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="configuration/packages/configuring-regulated-pp.html">Regulated Pure Pursuit</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-regulated-pp.html#regulated-pure-pursuit-parameters">Regulated Pure Pursuit Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-regulated-pp.html#example">Example</a></li>
@@ -615,6 +622,7 @@
 <li class="toctree-l2"><a class="reference internal" href="plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/index.html#controllers">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/index.html#planners">Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html#smoothers">Smoothers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/index.html#recoveries">Recoveries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/index.html#waypoint-task-executors">Waypoint Task Executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/index.html#goal-checkers">Goal Checkers</a></li>
@@ -687,6 +695,7 @@
 <li class="toctree-l3"><a class="reference internal" href="migration/Galactic.html#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Galactic.html#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Galactic.html#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration/Galactic.html#added-smoother-task-server">Added Smoother Task Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Galactic.html#removed-use-approach-velocity-scaling-param-in-rpp">Removed Use Approach Velocity Scaling Param in RPP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Galactic.html#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Galactic.html#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
