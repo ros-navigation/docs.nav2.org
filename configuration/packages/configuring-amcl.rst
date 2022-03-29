@@ -467,7 +467,7 @@ Parameters
   Description
     Map topic to subscribe to.
 
-:first_map_only_:
+:first_map_only:
 
   ============== =============================
   Type           Default
