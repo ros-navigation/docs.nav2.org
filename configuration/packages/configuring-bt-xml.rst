@@ -40,6 +40,7 @@ Action Plugins
   bt-plugins/actions/CancelBackUp.rst
   bt-plugins/actions/CancelSpin.rst
   bt-plugins/actions/CancelWait.rst
+  bt-plugins/actions/Smooth.rst
 
 Condition Plugins
 *****************
