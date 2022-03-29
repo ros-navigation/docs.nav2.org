@@ -37,7 +37,7 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A* implem
 
 The tl;dr of these improvements is:
   - Plans are 2-3x as fast as they were before, well under 200ms for nearly all situations, making it as fast as NavFn and Global Planner (but now kinematically feasible). Typical planning times are sub-100ms without even making use of the caching or downsampling features.
-  - Paths are of significantly higher quality via improved smoothers and a novel heuristic that steers the robot towards the center of aisleways implicitly. This makes smoother paths that are also further from obstacles whenever possible. 
+  - Paths are of significantly higher quality via improved smoothers and a novel heuristic that steers the robot towards the center of aisleways implicitly. This makes smoother paths that are also further from obstacles whenever possible.
   - Using caching or downsampler parameterizations, can easily achieve path planning with sub-50ms in nearly any sized space.
   - Smoother is now able to do more refinements and can create kinematically feasible boundary conditions, even while reversing.
 
@@ -91,7 +91,7 @@ Simple (Python) Commander
 Reduce Nodes and Executors
 **************************
 
-In order for nav2 to make the best use of ROS 2, we need minimize the number of nodes and executors in nav2, which can improve performance. 
+In order for nav2 to make the best use of ROS 2, we need minimize the number of nodes and executors in nav2, which can improve performance.
 
 This functionality has been discussed in `the ticket #816 <https://github.com/ros-planning/navigation2/issues/816>`_, and carried out in
 
@@ -128,30 +128,30 @@ The normal behavior of the ``BtServiceNode`` is not affected by introducing the 
 Including new Rotation Shim Controller Plugin
 *********************************************
 
-`This PR 2718 <https://github.com/ros-planning/navigation2/pull/2718>`_ introduces the new ``nav2_rotation_shim_controller``. This controller will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the primary controller to execute. If it is outside of the threshold, this controller will rotate the robot towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot is still going to be rotating, allowing the current plugin to take control for a smooth hand off into path tracking. 
+`This PR 2718 <https://github.com/ros-planning/navigation2/pull/2718>`_ introduces the new ``nav2_rotation_shim_controller``. This controller will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the primary controller to execute. If it is outside of the threshold, this controller will rotate the robot towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot is still going to be rotating, allowing the current plugin to take control for a smooth hand off into path tracking.
 
 
 The Rotation Shim Controller is suitable for:
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
 - Preference to rotate in place rather than 'spiral out' when starting to track a new path that is at a significantly different heading than the robot's current heading.
-- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot's actual starting heading, requiring no rotation). 
+- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot's actual starting heading, requiring no rotation).
 
 Spawning the robot in Gazebo
 ****************************
 
-`This PR 2473 <https://github.com/ros-planning/navigation2/pull/2473>`_ deletes the pkg ``nav2_gazebo_spawner`` inside nav2_bringup directory. Instead of ``nav2_gazebo_spawner`` the Node `spawn_entity.py <https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py>`_ of ``gazebo_ros`` is recomended to spawn the robot in gazebo. 
+`This PR 2473 <https://github.com/ros-planning/navigation2/pull/2473>`_ deletes the pkg ``nav2_gazebo_spawner`` inside nav2_bringup directory. Instead of ``nav2_gazebo_spawner`` the Node `spawn_entity.py <https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py>`_ of ``gazebo_ros`` is recomended to spawn the robot in gazebo.
 Note that
-  
+
   * gazebo should be started with both ``libgazebo_ros_init.so`` and ``libgazebo_ros_factory.so`` to work correctly.
-  
+
   * spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument ``<remapping>/tf:=tf</remapping>``  ``<remapping>/tf_static:=tf_static</remapping>`` under ros2 tag in each plugin which publishs transforms in the SDF file. It is essential to differentiate the tf's of the different robot.
 
 Recovery Behavior Timeout
 *************************
 
-Recoveries in Nav2, spin and backup, now have ``time_allowance`` ports in their BT nodes and request fields in their actions to specify a timeout. This helps ensure that the robot can exit a backup or spin primitive behavior in case it gets stuck or otherwise is unable to backup the full distance over a reasonable block of time. 
-  
+Recoveries in Nav2, spin and backup, now have ``time_allowance`` ports in their BT nodes and request fields in their actions to specify a timeout. This helps ensure that the robot can exit a backup or spin primitive behavior in case it gets stuck or otherwise is unable to backup the full distance over a reasonable block of time.
+
 New parameter ``use_final_approach_orientation`` for the 3 2D planners
 **********************************************************************
 
@@ -162,8 +162,8 @@ For example, below, for the same goal with an orientaton pointed left of the scr
   :width: 45%
 .. image:: images/use_final_approach_orientation_true.gif
   :width: 45%
-  
-  
+
+
 SmacPlanner2D and Theta*: fix goal orientation being ignored
 ************************************************************
 
@@ -182,7 +182,7 @@ Change and fix behavior of dynamic parameter change detection
 Dynamic Parameters
 ******************
 
-Newly added dynamic parameters to: 
+Newly added dynamic parameters to:
 
 -  `This PR 2592 <https://github.com/ros-planning/navigation2/pull/2592>`_ makes most of the Costmap2DROS parameters dynamic
 -  `This PR 2607 <https://github.com/ros-planning/navigation2/pull/2607>`_ makes most of the Regulated Pure Pursuit parameters dynamic
@@ -198,9 +198,9 @@ When BT action nodes throw exceptions due to networking or action server failure
 BT Navigator Groot Multiple Navigators
 **************************************
 
-`This PR 2627 <https://github.com/ros-planning/navigation2/pull/2627>`_ creates separate parameters for groot monitoring for the NavToPose and NavThroughPoses navigator types so you can individually track the state of each behavior tree through the ZMQ publisher. This resolves a long-standing problem after we added multiple navigator types to BT Navigator that you could only view the nav to poses BT execution live. BT.CPP and Groot only support one static ZMQ stream at a time, so there is a bit of a quirk where you must locally reset Groot after switching trees in order to view the live stream of the Nav Through Poses BT, if in use. This is a state of the BT.CPP and Groot libraries and not something we can resolve withing Nav2. 
+`This PR 2627 <https://github.com/ros-planning/navigation2/pull/2627>`_ creates separate parameters for groot monitoring for the NavToPose and NavThroughPoses navigator types so you can individually track the state of each behavior tree through the ZMQ publisher. This resolves a long-standing problem after we added multiple navigator types to BT Navigator that you could only view the nav to poses BT execution live. BT.CPP and Groot only support one static ZMQ stream at a time, so there is a bit of a quirk where you must locally reset Groot after switching trees in order to view the live stream of the Nav Through Poses BT, if in use. This is a state of the BT.CPP and Groot libraries and not something we can resolve withing Nav2.
 
-There is some thought into the future regarding complete deprecation of live BT monitoring using Groot due to this quirk and the almost-certain infux of tickets on the topic. Groot will however always be supported for visualizing behavior tree XML files and modifications, simply not visualizing the BT execution live during robot navigation. 
+There is some thought into the future regarding complete deprecation of live BT monitoring using Groot due to this quirk and the almost-certain infux of tickets on the topic. Groot will however always be supported for visualizing behavior tree XML files and modifications, simply not visualizing the BT execution live during robot navigation.
 
 Removed Kinematic Limiting in RPP
 *********************************
@@ -229,7 +229,7 @@ So, what I propose here is to remove live monitoring of the BT from Nav2. **We c
 Replanning Only if Path is Invalid
 **********************************
 
-`This PR 2591 <https://github.com/ros-planning/navigation2/pull/2591>`_ creates two new condition BT node to facilitate replanning only if path becomes invalid rather than constantly replanning. These new nodes were integrated into the default BT. 
+`This PR 2591 <https://github.com/ros-planning/navigation2/pull/2591>`_ creates two new condition BT node to facilitate replanning only if path becomes invalid rather than constantly replanning. These new nodes were integrated into the default BT.
 
 Fix CostmapLayer clearArea invert param logic
 *********************************************
@@ -242,18 +242,17 @@ Dynamic Composition
 
 Some experiments to show performance improvement of dynamic composition, and the cpu and memory are captured by ``psutil`` :
 
- ============================================================================== ========= ============ 
-  CPU: Intel(R) i7-8700 (6Cores 12Threads), Memory: 32GB                         cpu(%)    memory(%)   
- ============================================================================== ========= ============ 
-  normal multiple processes                                                        44        0.76      
-  dynamic composition (use ``component_container_isolated``)                       38        0.23      
- ============================================================================== ========= ============ 
+ ============================================================================== ========= ============
+  CPU: Intel(R) i7-8700 (6Cores 12Threads), Memory: 32GB                         cpu(%)    memory(%)
+ ============================================================================== ========= ============
+  normal multiple processes                                                        44        0.76
+  dynamic composition (use ``component_container_isolated``)                       38        0.23
+ ============================================================================== ========= ============
 
 The way of dynamic composition consumes lower memory(saves ~70%),  and lower cpu (saves ~13%) than normal multiple processes.
 
 BT Cancel Node
 **************
-
 `This PR 2787 <https://github.com/ros-planning/navigation2/pull/2787>`_ caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the ``CancelControl`` behavior to cancel the goal given to the controller_server. As an addition to the ``CancelControl`` `This PR 2856 <https://github.com/ros-planning/navigation2/pull/2856>`_ provides the users with the option to cancel the recoveries such as the ``backup``, ``spin`` and ``wait``.
 
 BT PathLongerOnApproach Node
@@ -268,6 +267,11 @@ Obstacle does not clear at all, with `obstacle_clearance_time` to be 3 seconds:
 Obstacle clears and you can see the robot pass through the (could have been ideally the) same path:
 
 .. image:: images/nav2_patience_near_goal_and_go_around.gif
+
+Replanning at a Constant Rate and if the Path is Invalid
+********************************************************
+`This PR 2804 <https://github.com/ros-planning/navigation2/pull/2841>`_ introduces a new behavior tree that navigates to pose with consistent replanning and if the path becomes invalid.
+To facilitate the new behavior tree a new condition node PathExpiringTimer was introduced to trigger replanning at a consistent rate.
 
 Euclidean Distance 2D
 *********************

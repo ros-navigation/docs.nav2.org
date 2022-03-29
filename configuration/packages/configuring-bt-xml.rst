@@ -59,6 +59,7 @@ Condition Plugins
   bt-plugins/conditions/TimeExpired.rst
   bt-plugins/conditions/IsBatteryLow.rst
   bt-plugins/conditions/IsPathValid.rst
+  bt-plugins/conditions/PathExpiringTimer.rst
 
 Control Plugins
 ***************
