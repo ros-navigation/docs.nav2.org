@@ -171,7 +171,7 @@ Next, let us add a depth camera to ``sam_bot``. Paste the following lines after 
   <link name="camera_depth_frame"/>
 
   <joint name="camera_depth_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi}"/>
+    <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
     <parent link="camera_link"/>
     <child link="camera_depth_frame"/>
   </joint>
@@ -196,7 +196,7 @@ Next, let us add a depth camera to ``sam_bot``. Paste the following lines after 
         <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <frameName>camera_depth_frame</frameName>
+        <frame_name>camera_depth_frame</frame_name>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
         <distortionK1>0</distortionK1>
@@ -213,7 +213,7 @@ Next, let us add a depth camera to ``sam_bot``. Paste the following lines after 
     </sensor>
   </gazebo>
 
-Similar to the lidar sensor, we create ``camera_link`` which will be referenced by the ``gazebo_ros_camera`` plugin as the sensor attachment location. We also create a ``camera_depth_frame`` that is attached to the ``camera_link`` and will be set as the ``<frameName>`` of the depth camera plugin.  We also configure the plugin such that it will publish ``sensor_msgs/Image`` and ``sensor_msgs/PointCloud2`` messages to ``/depth_camera/image_raw`` and  ``/depth_camera/points`` topics respectively. Lastly, we also set up other basic configuration properties for our depth camera.
+Similar to the lidar sensor, we create ``camera_link`` which will be referenced by the ``gazebo_ros_camera`` plugin as the sensor attachment location. We also create a ``camera_depth_frame`` that is attached to the ``camera_link`` and will be set as the ``<frame_name>`` of the depth camera plugin.  We also configure the plugin such that it will publish ``sensor_msgs/Image`` and ``sensor_msgs/PointCloud2`` messages to ``/depth_camera/image_raw`` and  ``/depth_camera/points`` topics respectively. Lastly, we also set up other basic configuration properties for our depth camera.
 
 Launch and Build Files
 ======================
@@ -233,7 +233,7 @@ Lastly, add the world path in the ``launch.actions.ExecuteProcess(cmd=['gazebo',
 
 .. code-block:: shell
 
-  launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_factory.so', world_path], output='screen'),
+  launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so', world_path], output='screen'),
 
 We also have to add the ``world`` directory to our ``CMakeLists.txt`` file. Open `CmakeLists.txt <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/CMakeLists.txt>`_ and append the ``world`` directory inside the install(DIRECTORY...), as shown in the snippet below.
 
@@ -287,7 +287,7 @@ After adding the ``/depth_camera/image_raw`` topic in RViz, set the ``Reliabilit
 
 You should also see the ``sensor_msgs/PointCloud2``, as shown below.
 
-.. image:: images/demo_pointcloud2_rviz.png
+.. image:: images/pointcloud2_data.png
     :align: center
 
 
@@ -480,6 +480,7 @@ We can also check that the transforms are correct by executing the following lin
 
   ros2 run tf2_tools view_frames.py
 
+Note: For Galactic and newer, it should be ``view_frames`` and not ``view_frames.py``
 The line above will create a ``frames.pdf`` file that shows the current transform tree. Your tranform tree should be similar to the one shown below:
 
 .. image:: images/view_frames.png

@@ -25,3 +25,4 @@ the best navigation performance.
    packages/configuring-recovery-server.rst
    packages/configuring-smoother-server.rst
    packages/configuring-regulated-pp.rst
+   packages/configuring-rotation-shim-controller.rst

@@ -78,7 +78,7 @@ Note: Don't forget to change **/path/to/your-map.yaml** to the actual path to th
 
 Launch RVIZ with a pre-defined configuration file.
 
-  ``ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/launch/nav2_default_view.rviz``
+  ``ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz``
 
 Now, you should see a shadow of Turtlebot 3 robot model in the center of the plot in Rviz.
 Click on the Start button (Bottom Left) if you set the auto_start parameter to false.

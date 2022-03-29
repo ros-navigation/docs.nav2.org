@@ -3,7 +3,7 @@
 Setting Up The URDF
 ###################
 
-For this guide, we will be creating the URDF for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
+For this guide, we will be creating the Unified Robot Description Format (URDF) file for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
 .. seealso::
   The complete source code in this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description>`_ repository under the ``sam_bot_description`` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
@@ -13,9 +13,9 @@ URDF and the Robot State Publisher
 
 As discussed in the previous tutorial, one of the requirements for Navigation2 is the transformation from  ``base_link`` to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  ``base_link`` to ``laser_link`` or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms. 
 
-The Robot State Publisher is a package of ROS 2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct Universal Robot Descriptor File (URDF) and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees. 
+The Robot State Publisher is a package of ROS 2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct URDF and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees. 
 
-The Universal Robot Descriptor File (URDF) is an XML file that represents a robot model. In this tutorial, it will mainly be used to build transformations trees related with the robot geometry, but it also has other uses. One example is how it can be used in visualizing your robot model in RVIZ, a 3D Visualization tool for ROS, by defining visual components such as materials and meshes. Another example is how the URDF can be used to define the physical properties of the robot. These properties are then used in physics simulators such as Gazebo to simulate how your robot will interact in an environment.
+The Unified Robot Description Format (URDF) is an XML file that represents a robot model. In this tutorial, it will mainly be used to build transformations trees related with the robot geometry, but it also has other uses. One example is how it can be used in visualizing your robot model in RVIZ, a 3D Visualization tool for ROS, by defining visual components such as materials and meshes. Another example is how the URDF can be used to define the physical properties of the robot. These properties are then used in physics simulators such as Gazebo to simulate how your robot will interact in an environment.
 
 Another major feature of URDF is that it also supports Xacro (XML Macros) to help you create a shorter and readable XML to help in defining complex robots. We can use these macros to eliminate the need for repeating blocks of XML in our URDF. Xacro is also useful in defining configuration constants which can be reused throughout the URDF.
 
@@ -86,7 +86,7 @@ Next, let us define some constants using XAcro properties that will be reused th
 
     <xacro:property name="caster_xoff" value="0.14"/>
 
-Here is a brief discussion on what these properties will represent in our urdf. The ``base_*`` properties all define the size of hte robot's main chassis. The ``wheel_radius`` and ``wheel_width`` define the shape of the robot's two back wheels. The ``wheel_ygap`` adjusts the gap between the wheel and the chassis along the y-axis whilst ``wheel_zoff`` and ``wheel_xoff`` position the back wheels along the z-axis and x-axis appropriately. Lastly, the ``caster_xoff`` positions the front caster wheel along the x-axis.
+Here is a brief discussion on what these properties will represent in our urdf. The ``base_*`` properties all define the size of the robot's main chassis. The ``wheel_radius`` and ``wheel_width`` define the shape of the robot's two back wheels. The ``wheel_ygap`` adjusts the gap between the wheel and the chassis along the y-axis whilst ``wheel_zoff`` and ``wheel_xoff`` position the back wheels along the z-axis and x-axis appropriately. Lastly, the ``caster_xoff`` positions the front caster wheel along the x-axis.
 
 Let us then define our ``base_link`` - this link will be a large box and will act as the main chassis of our robot. In URDF, a ``link`` element describes a rigid part or component of our robot. The robot state publisher then utilizes these definitions to determine coordinate frames for each link and publish the transformations between them. 
 

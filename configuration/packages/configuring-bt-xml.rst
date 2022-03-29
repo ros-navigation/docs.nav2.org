@@ -1,7 +1,7 @@
 .. _configuring_behavior_tree_xml:
 
 Behavior Tree XML Nodes
-#################################
+#######################
 
 The nav2_behavior_tree_ package provides several navigation-specific nodes that are pre-registered and can be included in Behavior Trees.
 
@@ -11,7 +11,7 @@ Check this introduction_ to learn how behavior trees work and the difference bet
 
 .. _introduction: https://www.behaviortree.dev/bt_basics/
 
-Note: ``SingleTrigger`` BT Node is not listed below because it contains no parameters.
+Consider checking out the :ref:`groot_introduction` tutorial for using Groot to visualize and modify behavior trees.
 
 Action Plugins
 **************
@@ -36,6 +36,10 @@ Action Plugins
   bt-plugins/actions/NavigateThroughPoses.rst
   bt-plugins/actions/ComputePathThroughPoses.rst
   bt-plugins/actions/RemovePassedGoals.rst
+  bt-plugins/actions/CancelControl.rst
+  bt-plugins/actions/CancelBackUp.rst
+  bt-plugins/actions/CancelSpin.rst
+  bt-plugins/actions/CancelWait.rst
 
 Condition Plugins
 *****************
@@ -47,10 +51,13 @@ Condition Plugins
   bt-plugins/conditions/TransformAvailable.rst
   bt-plugins/conditions/DistanceTraveled.rst
   bt-plugins/conditions/GoalUpdated.rst
+  bt-plugins/conditions/GloballyUpdatedGoal.rst
   bt-plugins/conditions/InitialPoseReceived.rst
   bt-plugins/conditions/IsStuck.rst
   bt-plugins/conditions/TimeExpired.rst
   bt-plugins/conditions/IsBatteryLow.rst
+  bt-plugins/conditions/IsPathValid.rst
+  bt-plugins/conditions/PathExpiringTimer.rst
 
 Control Plugins
 ***************
@@ -72,6 +79,7 @@ Decorator Plugins
   bt-plugins/decorators/DistanceController.rst
   bt-plugins/decorators/SpeedController.rst
   bt-plugins/decorators/GoalUpdater.rst
+  bt-plugins/decorators/SingleTrigger.rst
 
 
 Example

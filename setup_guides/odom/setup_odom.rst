@@ -50,7 +50,7 @@ To start, we will use an example of a robot with wheel encoders as its odometry 
   linear = (right_wheel_est_vel + left_wheel_est_vel) / 2
   angular = (right_wheel_est_vel - left_wheel_est_vel) / wheel_separation;
 
-The ``right_wheel_est_vel`` and ``left_wheel_est_vel`` are the estimated velocities of the right and left wheels respectively, and the ``wheel separation`` is the distance between the wheels. The values of ``right_wheel_est_vel`` and ``left_wheel_est_vel`` can be obtained by simply getting the changes in the positions of the wheel joints over time. This information can then be used to publish the Nav2 requirements. A basic example on how to do this can be found in the Navigation documentation on odometry located `here <http://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom/>`_
+The ``right_wheel_est_vel`` and ``left_wheel_est_vel`` are the estimated velocities of the right and left wheels respectively, and the ``wheel separation`` is the distance between the wheels. The values of ``right_wheel_est_vel`` and ``left_wheel_est_vel`` can be obtained by simply getting the changes in the positions of the wheel joints over time. This information can then be used to publish the Nav2 requirements. A basic example on how to do this can be found in the Navigation documentation on odometry `located here <http://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom/>`_
 
 An alternative to manually publishing this information that we recommend is through the ``ros2_control`` framework. The ``ros2_control`` framework contains various packages for real-time control of robots in ROS 2. For wheel encoders, ``ros2_control`` has a ``diff_drive_controller`` (differential drive controller) under the ``ros2_controller`` package. The ``diff_drive_controller`` takes in the ``geometry_msgs/Twist`` messages published on ``cmd_vel`` topic, computes odometry information, and publishes ``nav_msgs/Odometry`` messages on ``odom`` topic. Other packages that deal with different kind of sensors are also available in ``ros2_control``. 
 
@@ -62,7 +62,7 @@ For other types of sensors such as IMU, VIO, etc, their respective ROS drivers s
 Simulating an Odometry System using Gazebo
 ******************************************
 
-In this section, we will be using Gazebo to simulate the odometry system of ``sam_bot``, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the complete source `here  <https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description/>`_. 
+In this section, we will be using Gazebo to simulate the odometry system of ``sam_bot``, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the `complete source here  <https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description/>`_. 
 
 .. note:: If you are working on your own physical robot and have already set up your odometry sensors, you may opt to skip this section and head onto the next one where we fuse IMU and odometry messages to provide a smooth ``odom`` => ``base_link`` transformation.
 
@@ -79,7 +79,7 @@ We also need to install the ``gazebo_ros_pkgs`` package to simulate odometry and
  
   sudo apt install ros-<ros2-distro>-gazebo-ros-pkgs
 
-You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions `here <http://gazebosim.org/tutorials?tut=ros2_installing&cat=connect_ros#TestingGazeboandROS2integration>`_. 
+You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions `given here <http://gazebosim.org/tutorials?tut=ros2_installing&cat=connect_ros#TestingGazeboandROS2integration>`_. 
 
 Note that we described ``sam_bot`` using URDF. However, Gazebo uses `Simulation Description Format (SDF) <http://sdformat.org/>`_ to describe a robot in its simulated environment. Fortunately, Gazebo automatically translates compatible URDF files into SDF. The main requirement for the URDF to be compatible with Gazebo is to have an ``<inertia>`` element within each ``<link>`` element. This requirement is already satisfied in the URDF file of ``sam_bot``, so it can already be used in Gazebo. 
 
@@ -207,7 +207,7 @@ To include this plugin in our URDF, add the following lines after the ``</gazebo
       <right_joint>drivewhl_r_joint</right_joint>
 
       <!-- kinematics -->
-      <wheel_separation>0.025</wheel_separation>
+      <wheel_separation>0.4</wheel_separation>
       <wheel_diameter>0.2</wheel_diameter>
 
       <!-- limits -->	
@@ -216,7 +216,7 @@ To include this plugin in our URDF, add the following lines after the ``</gazebo
 
       <!-- output -->
       <publish_odom>true</publish_odom>
-      <publish_odom_tf>true</publish_odom_tf>
+      <publish_odom_tf>false</publish_odom_tf>
       <publish_wheel_tf>true</publish_wheel_tf>
       
       <odometry_frame>odom</odometry_frame>
@@ -255,7 +255,7 @@ To launch Gazebo, add the following before the ``joint_state_publisher_node,`` l
 
 .. code-block:: shell
   
-  launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_factory.so'], output='screen'),
+  launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'], output='screen'),
 
 We will now add a node that spawns ``sam_bot`` in Gazebo. Open `launch/display.launch.py <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_ again and paste the following lines before the ``return launch.LaunchDescription([`` line.
 
@@ -343,7 +343,7 @@ Fused sensor data is published by the ``robot_localization`` package through the
 If your robot is only able to provide one odometry source, the use of ``robot_localization`` would have minimal effects aside from smoothing. In this case, an alternative approach is to publish transforms through a tf2 broadcaster in your single source of odometry node. Nevertheless, you can still opt to use ``robot_localization`` to publish the transforms and some smoothing properties may still be observed in the output.
 
 .. seealso::
-  For more information on how to write a tf2 broadcaster, you can check Writing a tf2 broadcaster `(C++)  <http://wiki.ros.org/tf2/Tutorials/Writing%20a%20tf2%20broadcaster%20%28C%2B%2B%29/>`_  `(Python)  <http://wiki.ros.org/tf2/Tutorials/Writing%20a%20tf2%20broadcaster%20%28Python%29/>`_.
+  For more information on how to write a tf2 broadcaster, you can check Writing a tf2 broadcaster `(C++)  <https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html>`_  `(Python)  <https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Py.html>`_.
 
 For the rest of this section, we will show how to use ``robot_localization`` to fuse the sensors of ``sam_bot``. It will use the ``sensor_msgs/Imu`` messages published on ``/demo/Imu`` and the ``nav_msgs/Odometry`` message published on ``/demo/odom`` and then it will publish data on ``odometry/filtered``,  ``accel/filtered``, and ``/tf`` topics.
 
@@ -444,7 +444,7 @@ Next, add the following launch arguments within the ``return launch.LaunchDescri
   launch.actions.DeclareLaunchArgument(name='use_sim_time', default_value='True',
                                               description='Flag to enable use_sim_time'),
 
-Lastly, add ``robot_localization,`` above the ``rviz_node`` line to launch the robot localization node.
+Lastly, add ``robot_localization_node,`` above the ``rviz_node`` line to launch the robot localization node.
 
 .. code-block:: shell
 

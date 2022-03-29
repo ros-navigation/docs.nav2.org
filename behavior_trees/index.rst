@@ -1,7 +1,7 @@
 .. _behavior_trees:
 
 Nav2 Behavior Trees
-##################
+###################
 
 .. toctree::
    :maxdepth: 1
@@ -10,6 +10,7 @@ Nav2 Behavior Trees
    overview/detailed_behavior_tree_walkthrough.rst
    trees/nav_to_pose_recovery.rst
    trees/nav_through_poses_recovery.rst
+   trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.rst
    trees/follow_point.rst
 
 Nav2 is an incredibly reconfigurable project. It allows users to set many different plugin types, across behavior trees, core algorithms, status checkers, and more!

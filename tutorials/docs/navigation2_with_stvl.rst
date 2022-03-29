@@ -27,7 +27,7 @@ This tutorial assumes knowledge of navigation and basic understanding of costmap
 
 .. note::
 
-  For Ubuntu 20.04 users, there's a known issue with OpenVDB and its binaries as of July 2020 with ``libjmalloc``. If you see an error such as ``Could not load library LoadLibrary error: /usr/lib/x86_64-linux-gnu/libjemalloc.so.2: cannot allocate memory in static TLS block``, it can be resolved with ``export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2`` until new binaries are released of OpenVDB.
+  For Ubuntu 20.04 users before December 2021, there's a known issue with OpenVDB and its binaries with ``libjmalloc``. If you see an error such as ``Could not load library LoadLibrary error: /usr/lib/x86_64-linux-gnu/libjemalloc.so.2: cannot allocate memory in static TLS block``, it can be resolved with ``export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2`` until new binaries are released of OpenVDB.
 
 
 Costmap2D and STVL
@@ -110,7 +110,6 @@ An example fully-described parameterization of an STVL configuration is:
       decay_model: 0
       voxel_size: 0.05
       track_unknown_space: true
-      max_obstacle_height: 2.0
       unknown_threshold: 15
       mark_threshold: 0
       update_footprint_enabled: true

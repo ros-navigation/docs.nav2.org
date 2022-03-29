@@ -141,6 +141,7 @@ Below is an example of the TB3 navigating in a small lounge.
    tutorials/index.rst
    plugin_tutorials/index.rst
    configuration/index.rst
+   tuning/index.rst
    behavior_trees/index.rst
    plugins/index.rst
    migration/index.rst
@@ -149,4 +150,3 @@ Below is an example of the TB3 navigating in a small lounge.
    contribute/index.rst
    about/index.rst
    about/robots.rst
-   2021summerOfCode/Summer_2021_Student_Program.rst

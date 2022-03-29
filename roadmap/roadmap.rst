@@ -11,31 +11,39 @@ For a full list of important completed changes in the project, see the Migration
 +--------------------------------+------------------------+
 |            Plugin Name         |         Size           |
 +================================+========================+
-| `Nav2 1 Node Per Server`_      | Medium                 |
+| `Nav2 1 Node Per Server`_      | Medium  (in progress)  |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Smac Lattice Planner`_        | Very Large             |
+| `Smac Lattice Planner`_        | Large (DONE)           |
 |                                |                        |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Safety Collision Nodes`_      | Medium                 |
+| `Safety Collision Nodes`_      | Medium (in progress)   |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Fix Min Range Bug`_           | Small                  |
+| `Fix Min Range Bug`_           | Small  (DONE)          |
 |                                |                        |
 +--------------------------------+------------------------+
-|   `Move Development            | Small                  |
+|   `Move Development            | Small (DONE)           |
 |   from Master to Rolling`_     |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| Push Test Coverage to 88\%     |  Medium                |
+| Push Test Coverage to 88\%     |  Medium (DONE)         |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Complete First Time Guide`_   |  Medium                |
+| `Complete First Time Guide`_   |  Medium (DONE)         |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `Rotation Shim Controller`_    |  Small (DONE)          |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `Dynamic Composition`_         |  Medium (DONE)         |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
@@ -45,4 +53,6 @@ For a full list of important completed changes in the project, see the Migration
 .. _Safety Collision Nodes: https://github.com/ros-planning/navigation2/issues/1899
 .. _Fix Min Range Bug: https://github.com/ros-planning/navigation2/pull/2460
 .. _Complete First Time Guide: https://github.com/ros-planning/navigation2/issues/1589
+.. _Rotation Shim Controller: https://github.com/ros-planning/navigation2/pull/2718
 .. _Move Development from Master to Rolling: https://github.com/ros-planning/navigation2/issues/2337
+.. _Dynamic Composition: https://github.com/ros-planning/navigation2/issues/2147

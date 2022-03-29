@@ -11,6 +11,8 @@ The BT Navigator (Behavior Tree Navigator) module implements the NavigateToPose 
 It is a Behavior Tree-based implementation of navigation that is intended to allow for flexibility 
 in the navigation task and provide a way to easily specify complex robot behaviors, including recovery.
 
+Consider checking out the :ref:`groot_introduction` tutorial for using Groot to visualize and modify behavior trees.
+
 Parameters
 **********
 
@@ -92,43 +94,6 @@ Parameters
   Description
     Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
     This value will be overwritten for a BT node if the input port "server_timeout" is provided.
-
-:enable_groot_monitoring:
-
-  ==== =======
-  Type Default
-  ---- -------
-  bool false
-  ==== =======
-
-  Description
-    Enable live Groot monitoring of the current BT status.
-    This is possible due to attaching a ZMQ server and publisher to the active behavior tree.
-    If running multiple robots, make sure to change the port parameters below so that they are unique to prevent collisions in ZMQ.
-
-    **Attention:** Groot will only work after the behavior tree is running, which means that the nav2 stack has to receive a goal first.
-
-:groot_zmq_publisher_port:
-
-  ====== =======
-  Type   Default  
-  ------ -------
-  int    1666   
-  ====== =======
-
-  Description
-    ZMQ publisher port for the Groot monitor. Used to consecutive publish the current status of the BT as flatbuffer.
-
-:groot_zmq_server_port:
-
-  ====== ======= 
-  Type   Default
-  ------ -------
-  int    1667   
-  ====== =======
-
-  Description
-    ZMQ server port for the Groot monitor. Used to send the current bt factory + configuration as flatbuffer on an (empty) request by Groot.
 
 :transform_tolerance:
 
@@ -228,9 +193,6 @@ Example
         global_frame: map
         robot_base_frame: base_link
         transform_tolerance: 0.1
-        enable_groot_monitoring: True
-        groot_zmq_publisher_port: 1666
-        groot_zmq_server_port: 1667
         default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml
         default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml
         goal_blackboard_id: goal

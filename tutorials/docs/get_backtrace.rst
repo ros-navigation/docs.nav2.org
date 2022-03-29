@@ -1,7 +1,7 @@
 .. _get_backtrace:
 
 Get Backtrace in ROS 2 / Nav2
-****************************
+*****************************
 
 - `Overview`_
 - `Preliminaries`_

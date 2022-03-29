@@ -101,7 +101,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
   Type           Default                                               
   -------------- -----------------------------
-  double         0.4            
+  bool           false            
   ============== =============================
 
   Description
@@ -116,20 +116,10 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress, when ``use_approach_linear_velocity_scaling`` is ``true``.
+    The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be ``> 0.01``. 
+    
 
-:use_approach_linear_velocity_scaling:
-
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  bool           true            
-  ============== =============================
-
-  Description
-    Whether to scale the linear velocity down on approach to the goal for a smooth stop.
-
-:max_allowed_time_to_collision:
+:max_allowed_time_to_collision_up_to_carrot:
 
   ============== =============================
   Type           Default                                               
@@ -138,7 +128,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    The time (s) to project a velocity command forward to check for collisions.
+    The time (s) to project a velocity command forward to check for collisions. Pre-``Humble``, this was ``max_allowed_time_to_collision``.
 
 :use_regulated_linear_velocity_scaling:
 
@@ -182,7 +172,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature.
+    The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be ``> 0.1``. 
 
 :use_rotate_to_heading:
 
@@ -232,6 +222,17 @@ Regulated Pure Pursuit Parameters
   Description
     Maximum allowable angular acceleration (rad/s/s) while rotating to heading, if ``use_rotate_to_heading`` is ``true``.
 
+:max_robot_pose_search_dist:
+
+  ============== =================================================
+  Type           Default
+  -------------- -------------------------------------------------
+  double         Local costmap max extent (max(width, height) / 2)
+  ============== =================================================
+
+  Description
+    Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting.
+
 Example
 *******
 .. code-block:: yaml
@@ -267,8 +268,7 @@ Example
         transform_tolerance: 0.1
         use_velocity_scaled_lookahead_dist: false
         min_approach_linear_velocity: 0.05
-        use_approach_linear_velocity_scaling: true
-        max_allowed_time_to_collision: 1.0
+        max_allowed_time_to_collision_up_to_carrot: 1.0
         use_regulated_linear_velocity_scaling: true
         use_cost_regulated_linear_velocity_scaling: false
         regulated_linear_scaling_min_radius: 0.9
@@ -277,3 +277,4 @@ Example
         allow_reversing: false
         rotate_to_heading_min_angle: 0.785
         max_angular_accel: 3.2
+        max_robot_pose_search_dist: 10.0

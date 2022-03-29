@@ -101,7 +101,7 @@ Example Configuration
 
 .. code-block:: yaml
 
-    planner_server:
+    controller_server:
       ros__parameters:
         controller_plugins: ["FollowPath"]
         FollowPath:

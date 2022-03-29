@@ -73,25 +73,30 @@ Costmap Filters
 Controllers
 ===========
 
-+--------------------------+--------------------+----------------------------------+-----------------------+
-|      Plugin Name         |       Creator      |       Description                | Drivetrain support    |
-+==========================+====================+==================================+=======================+
-|  `DWB Controller`_       | David Lu!!         | A highly configurable  DWA       | Differential,         |
-|                          |                    | implementation with plugin       | Omnidirectional,      |
-|                          |                    | interfaces                       | Legged                |
-+--------------------------+--------------------+----------------------------------+-----------------------+
-|  `TEB Controller`_       | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
-|                          |                    | for ackermann, differential, and | Omnidirectional,      |
-|                          |                    | holonomic robots.                | Differential          |
-+--------------------------+--------------------+----------------------------------+-----------------------+
-| `Regulated Pure Pursuit`_| Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
-|                          |                    | variation on the pure pursuit    | Differential          |
-|                          |                    | algorithm with adaptive features.|                       |
-+--------------------------+--------------------+----------------------------------+-----------------------+
++----------------------------+--------------------+----------------------------------+-----------------------+
+|      Plugin Name           |       Creator      |       Description                | Drivetrain support    |
++============================+====================+==================================+=======================+
+|  `DWB Controller`_         | David Lu!!         | A highly configurable  DWA       | Differential,         |
+|                            |                    | implementation with plugin       | Omnidirectional,      |
+|                            |                    | interfaces                       | Legged                |
++----------------------------+--------------------+----------------------------------+-----------------------+
+|  `TEB Controller`_         | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
+|                            |                    | for ackermann, differential, and | Omnidirectional,      |
+|                            |                    | holonomic robots.                | Differential          |
++----------------------------+--------------------+----------------------------------+-----------------------+
+| `Regulated Pure Pursuit`_  | Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
+|                            |                    | variation on the pure pursuit    | Differential          |
+|                            |                    | algorithm with adaptive features.|                       |
++----------------------------+--------------------+----------------------------------+-----------------------+
+| `Rotation Shim Controller`_| Steve Macenski     | A "shim" controller to rotate    | Differential, Omni,   |
+|                            |                    | to path heading before passing   | model rotate in place |
+|                            |                    | to main controller for  tracking.|                       |
++----------------------------+--------------------+----------------------------------+-----------------------+
 
 .. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
 .. _TEB Controller: https://github.com/rst-tu-dortmund/teb_local_planner
 .. _Regulated Pure Pursuit: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
+.. _Rotation Shim Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller
 
 Planners
 ========
@@ -111,12 +116,23 @@ Planners
 |                           |                                       | multi-resolution query.      |                     |
 |                           |                                       | Cars, car-like, and          |                     |
 |                           |                                       | ackermann vehicles.          |                     |
+|                           |                                       | Kinematically feasible.      |                     |
 +---------------------------+---------------------------------------+------------------------------+---------------------+
 |  `SmacPlanner2D`_         | Steve Macenski                        | A 2D A* implementation       | Differential,       |
 |                           |                                       | Using either 4 or 8          | Omnidirectional,    |
 |                           |                                       | connected neighborhoods      | Legged              |
 |                           |                                       | with smoother and            |                     |
 |                           |                                       | multi-resolution query       |                     |
++---------------------------+---------------------------------------+------------------------------+---------------------+
+|  `SmacPlannerLattice`_    | Steve Macenski                        | An implementation of State   | Differential,       |
+|                           |                                       | Lattice Planner using        | Omnidirectional,    |
+|                           |                                       | pre-generated minimum control| Ackermann,          |
+|                           |                                       | sets for kinematically       | Legged,             |
+|                           |                                       | feasible planning with any   | Arbitrary / Custom  |
+|                           |                                       | type of vehicle imaginable.  |                     |
+|                           |                                       | Includes generator script for|                     |
+|                           |                                       | Ackermann, diff, omni, and   |                     |
+|                           |                                       | legged robots.               |                     |
 +---------------------------+---------------------------------------+------------------------------+---------------------+
 |`ThetaStarPlanner`_        | Anshumaan Singh                       | An implementaion of Theta*   | Differential,       |
 |                           |                                       | using either 4 or 8          | Omnidirectional     |
@@ -129,6 +145,7 @@ Planners
 .. _SmacPlannerHybrid: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 .. _SmacPlanner2D: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 .. _ThetaStarPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
+.. _SmacPlannerLattice: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 
 Smoothers
 ========
@@ -286,6 +303,14 @@ Behavior Tree Nodes
 |                                            |                     | rather than a single end goal pose       |
 |                                            |                     | using the planner plugin specified       |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Control Action`_                   |Pradheep Padmanabhan | Cancels Nav2 controller server           |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel BackUp Action`_                    |Pradheep Padmanabhan | Cancels backup recovery action           |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Spin Action`_                      |Pradheep Padmanabhan | Cancels spin recovery action             |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Wait Action`_                      |Pradheep Padmanabhan | Cancels wait recovery action             |
++--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Clear Entire Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
@@ -305,7 +330,10 @@ Behavior Tree Nodes
 .. _Navigate Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
 .. _Remove Passed Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
 .. _Compute Path Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
-
+.. _Cancel Control Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
+.. _Cancel BackUp Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
+.. _Cancel Spin Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
+.. _Cancel Wait Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
 
 
 +------------------------------------+--------------------+------------------------+
@@ -316,6 +344,10 @@ Behavior Tree Nodes
 +------------------------------------+--------------------+------------------------+
 | `Goal Updated Condition`_          |Aitor Miguel Blanco | Checks if goal is      |
 |                                    |                    | preempted.             |
++------------------------------------+--------------------+------------------------+
+| `Globally Updated Goal Condition`_ | Joshua Wallace     | Checks if goal is      |
+|                                    |                    | preempted in the global|
+|                                    |                    | BT context             |
 +------------------------------------+--------------------+------------------------+
 | `Initial Pose received Condition`_ | Carl Delsey        | Checks if initial pose |
 |                                    |                    | has been set           |
@@ -343,15 +375,30 @@ Behavior Tree Nodes
 |                                    |                    | percentage is below    |
 |                                    |                    | a specified value.     |
 +------------------------------------+--------------------+------------------------+
+| `Is Path Valid Condition`_         |  Joshua Wallace    | Checks if a path is    |
+|                                    |                    | valid by making sure   |
+|                                    |                    | there are no LETHAL    |
+|                                    |                    | obstacles along the    |
+|                                    |                    | path.                  |
++------------------------------------+--------------------+------------------------+
+| `Path Expiring Timer`_             |  Joshua Wallace    | Checks if the timer has|
+|                                    |                    | expired. The timer is  |
+|                                    |                    | reset if the path gets |
+|                                    |                    | updated.               |
++------------------------------------+--------------------+------------------------+
+
 
 .. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
+.. _Globally Updated Goal Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
 .. _Initial Pose received Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
 .. _Is Stuck Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
 .. _Transform Available Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
 .. _Distance Traveled Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
 .. _Time Expired Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
 .. _Is Battery Low Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
+.. _Is Path Valid Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
+.. _Path Expiring Timer: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
 
 +--------------------------+-------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator        |       Description                |
