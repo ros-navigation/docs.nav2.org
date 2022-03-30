@@ -10,7 +10,6 @@ Nav2 Behavior Trees
    overview/detailed_behavior_tree_walkthrough.rst
    trees/nav_to_pose_recovery.rst
    trees/nav_through_poses_recovery.rst
-   trees/nav_to_pose_and_replan_if_path_invalid.rst
    trees/nav_to_pose_and_pause_near_goal_obstacle.rst
    trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.rst
    trees/follow_point.rst
