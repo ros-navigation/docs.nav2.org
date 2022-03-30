@@ -20,7 +20,7 @@ For a full list of important completed changes in the project, see the Migration
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Safety Collision Nodes`_      | Medium                 |
+| `Safety Collision Nodes`_      | Medium (in progress)   |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
