@@ -238,7 +238,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
   Type           Default                      
   -------------- -----------------------------
-  bool           false                        
+  bool           true                         
   ============== =============================
 
   Description
