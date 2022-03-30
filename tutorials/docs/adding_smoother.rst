@@ -83,6 +83,6 @@ This line calls the planner server and return a path to the ``path`` blackboard 
       <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}"/>
     </Sequence>
 
-And its as simple as that! You can now compile or use this behavior tree in your system and see that the plans are now smoothed and the controllers are now tracking this smoothed path.
+And its as simple as that! You can now compile or use this behavior tree in your system and see that the plans are now smoothed and the controllers are now tracking this smoothed path. The image at the top of the tutorial shows the unsmoothed path from NavFn (red) and the smoothed path (black). Note the smoother approach to goal, turns, and transitions in the straight-line segments.
 
 If you wish to see the difference, but not track the smoothed path, you may wish to remove the ``smoothed_path="{path}"`` portion to compute the smoothed path, but not replace the original path with it. Instead, the topic ``/smoothed_path`` contains this information published by the smoother server for visualization or use by other parts of the system. You may also remap the smoothed path to another blackboard variable to interact with it in other parts of the behavior tree (e.g. ``smoothed_path="{smoothed_path}"``).
