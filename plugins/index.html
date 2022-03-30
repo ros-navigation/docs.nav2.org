@@ -446,6 +446,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/DistanceController.html">DistanceController</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/SpeedController.html">SpeedController</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/SingleTrigger.html">SingleTrigger</a></li>
 </ul>
 </li>
@@ -612,6 +613,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_recovery.html">Navigate To Pose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.html">Navigate To Pose and Pause Near Goal-Obstacle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.html">Navigate To Pose With Consistent Replanning And If Path Becomes Invalid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
 </ul>
@@ -702,6 +704,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#fix-costmaplayer-cleararea-invert-param-logic">Fix CostmapLayer clearArea invert param logic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#dynamic-composition">Dynamic Composition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-cancel-node">BT Cancel Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-pathlongeronapproach-node">BT PathLongerOnApproach Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#replanning-at-a-constant-rate-and-if-the-path-is-invalid">Replanning at a Constant Rate and if the Path is Invalid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#euclidean-distance-2d">Euclidean Distance 2D</a></li>
 </ul>
@@ -1364,9 +1367,9 @@ updated.</td>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="33%" />
-<col width="24%" />
-<col width="43%" />
+<col width="32%" />
+<col width="26%" />
+<col width="42%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Decorator Plugin Name</th>
@@ -1399,6 +1402,13 @@ topic subscription.</td>
 <td>Steve Macenski</td>
 <td>Triggers nodes/subtrees below
 only a single time per BT run.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp">PathLongerOnApproach</a></td>
+<td>Pradheep Padmanabhan</td>
+<td>Triggers child nodes if the new
+global path is significantly
+larger than the old global path
+on approach to the goal</td>
 </tr>
 </tbody>
 </table>

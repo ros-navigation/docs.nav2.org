@@ -446,6 +446,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/DistanceController.html">DistanceController</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/SpeedController.html">SpeedController</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/SingleTrigger.html">SingleTrigger</a></li>
 </ul>
 </li>
@@ -612,6 +613,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_recovery.html">Navigate To Pose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.html">Navigate To Pose and Pause Near Goal-Obstacle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.html">Navigate To Pose With Consistent Replanning And If Path Becomes Invalid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
 </ul>
@@ -702,6 +704,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#fix-costmaplayer-cleararea-invert-param-logic">Fix CostmapLayer clearArea invert param logic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dynamic-composition">Dynamic Composition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bt-cancel-node">BT Cancel Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bt-pathlongeronapproach-node">BT PathLongerOnApproach Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#replanning-at-a-constant-rate-and-if-the-path-is-invalid">Replanning at a Constant Rate and if the Path is Invalid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#euclidean-distance-2d">Euclidean Distance 2D</a></li>
 </ul>
@@ -1011,6 +1014,14 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <div class="section" id="bt-cancel-node">
 <h2>BT Cancel Node<a class="headerlink" href="#bt-cancel-node" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2787">This PR 2787</a> caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the <code class="docutils literal notranslate"><span class="pre">CancelControl</span></code> behavior to cancel the goal given to the controller_server. As an addition to the <code class="docutils literal notranslate"><span class="pre">CancelControl</span></code> <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2856">This PR 2856</a> provides the users with the option to cancel the recoveries such as the <code class="docutils literal notranslate"><span class="pre">backup</span></code>, <code class="docutils literal notranslate"><span class="pre">spin</span></code> and <code class="docutils literal notranslate"><span class="pre">wait</span></code>.</p>
+</div>
+<div class="section" id="bt-pathlongeronapproach-node">
+<h2>BT PathLongerOnApproach Node<a class="headerlink" href="#bt-pathlongeronapproach-node" title="Permalink to this headline">¶</a></h2>
+<p>In the <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2802">PR</a>, a new Decorator BT node known as <code class="docutils literal notranslate"><span class="pre">PathLongerOnApproach</span></code> has been added to provide with the functionality to check and potentially handle longer path generated due to an obstacle in the given goal proximity. To demonstrate this functionality, a new BT <code class="docutils literal notranslate"><span class="pre">navigate_to_pose_w_replanning_goal_patience_and_recovery.xml</span></code> would serve both as an example and ready-to-use BT for a specific application that wishes to optimize their process cycle time. Demo of the developed BT can be seen below, where the robot pauses when close to a goal to see if the dynamic obstacle moves out of the way. Else, it executes the replan:</p>
+<p>Obstacle does not clear at all, with <cite>obstacle_clearance_time</cite> to be 3 seconds:</p>
+<img alt="../_images/nav2_patience_near_goal_and_clear_obstacle1.gif" src="../_images/nav2_patience_near_goal_and_clear_obstacle1.gif" />
+<p>Obstacle clears and you can see the robot pass through the (could have been ideally the) same path:</p>
+<img alt="../_images/nav2_patience_near_goal_and_go_around1.gif" src="../_images/nav2_patience_near_goal_and_go_around1.gif" />
 </div>
 <div class="section" id="replanning-at-a-constant-rate-and-if-the-path-is-invalid">
 <h2>Replanning at a Constant Rate and if the Path is Invalid<a class="headerlink" href="#replanning-at-a-constant-rate-and-if-the-path-is-invalid" title="Permalink to this headline">¶</a></h2>
