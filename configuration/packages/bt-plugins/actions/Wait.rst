@@ -3,10 +3,10 @@
 Wait
 ====
 
-Invokes the Wait ROS 2 action server, which is implemented by the nav2_recoveries_ module. 
+Invokes the Wait ROS 2 action server, which is implemented by the nav2_behaviors_ module.
 This action is used in nav2 Behavior Trees as a recovery behavior.
 
-.. _nav2_recoveries: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries
+.. _nav2_behaviors: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors
 
 Input Ports
 -----------
@@ -27,7 +27,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -38,7 +38,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 10  
+  double 10
   ====== =======
 
   Description

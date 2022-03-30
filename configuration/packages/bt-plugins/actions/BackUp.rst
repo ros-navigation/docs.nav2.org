@@ -5,9 +5,9 @@ BackUp
 
 Invokes the BackUp ROS 2 action server, which causes the robot to back up by a specific displacement.
 It performs an linear translation by a given distance.
-This is used in nav2 Behavior Trees as a recovery behavior. The nav2_recoveries_ module implements the BackUp action server.
+This is used in nav2 Behavior Trees as a recovery behavior. The nav2_behaviors_ module implements the BackUp action server.
 
-.. _nav2_recoveries: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries
+.. nav2_behaviors_: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors
 
 Input Ports
 ***********
@@ -17,7 +17,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double -0.15  
+  double -0.15
   ====== =======
 
   Description
@@ -28,7 +28,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 0.025 
+  double 0.025
   ====== =======
 
   Description
@@ -43,14 +43,14 @@ Input Ports
   ====== =======
 
   Description
-      Time to envoke recovery for, if exceeds considers it a stuck condition or failure case (seconds).
+      Time to envoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
 :server_name:
 
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -61,7 +61,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 10  
+  double 10
   ====== =======
 
   Description
