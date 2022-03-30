@@ -79,8 +79,8 @@ Decorator Plugins
   bt-plugins/decorators/DistanceController.rst
   bt-plugins/decorators/SpeedController.rst
   bt-plugins/decorators/GoalUpdater.rst
+  bt-plugins/decorators/PathLongerOnApproach.rst
   bt-plugins/decorators/SingleTrigger.rst
-
 
 Example
 *******

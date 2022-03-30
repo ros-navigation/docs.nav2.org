@@ -260,6 +260,18 @@ BT Cancel Node
 **************
 `This PR 2787 <https://github.com/ros-planning/navigation2/pull/2787>`_ caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the ``CancelControl`` behavior to cancel the goal given to the controller_server. As an addition to the ``CancelControl`` `This PR 2856 <https://github.com/ros-planning/navigation2/pull/2856>`_ provides the users with the option to cancel the recoveries such as the ``backup``, ``spin`` and ``wait``.
 
+BT PathLongerOnApproach Node
+****************************
+
+In the `PR <https://github.com/ros-planning/navigation2/pull/2802>`_, a new Decorator BT node known as ``PathLongerOnApproach`` has been added to provide with the functionality to check and potentially handle longer path generated due to an obstacle in the given goal proximity. To demonstrate this functionality, a new BT ``navigate_to_pose_w_replanning_goal_patience_and_recovery.xml`` would serve both as an example and ready-to-use BT for a specific application that wishes to optimize their process cycle time. Demo of the developed BT can be seen below, where the robot pauses when close to a goal to see if the dynamic obstacle moves out of the way. Else, it executes the replan:
+
+Obstacle does not clear at all, with `obstacle_clearance_time` to be 3 seconds: 
+
+.. image:: images/nav2_patience_near_goal_and_clear_obstacle.gif
+
+Obstacle clears and you can see the robot pass through the (could have been ideally the) same path:
+
+.. image:: images/nav2_patience_near_goal_and_go_around.gif
 
 Replanning at a Constant Rate and if the Path is Invalid
 ********************************************************
