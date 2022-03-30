@@ -9,6 +9,7 @@ Adding a Smoother to a BT
 
 .. image:: images/smoothing_path.png
     :width: 60%
+    :align: center
 
 Overview
 ========
@@ -34,7 +35,7 @@ The :ref:`bt_smooth_action`_ BT node is a behavior tree node that interacts with
 
 Please see the BT node's configuration page to familiarize yourself with all aspects, but the core ports to note are the ``unsmoothed_path`` input port and the ``smoothed_path`` output port. The first takes in a raw path from a planning algorithm and the latter will set the value of the smoothed output path post-smoothing. Other ports are available that fully implements the Smoother Server's action API.
 
-0- Specifying a Smoother Plugin
+1- Specifying a Smoother Plugin
 -------------------------------
 
 In order to use a smoother in your BT node, you must first configure the smoother server itself to contain the smoother plugins of interest. These plugins implement the specific algorithms that you would like to use. 
@@ -60,7 +61,7 @@ Under each name, the parameters for that particular algorithm must be specified 
           plugin: "nav2_ceres_costaware_smoother/CeresCostawareSmoother"
 
 
-1- Modifying your BT XML
+2- Modifying your BT XML
 ------------------------
 
 Now that you have selected and configured the smoother server for your given plugin(s), it is time to use those smoother(s) in your behavior tree for navigation behavior. While there are many places / ways to use this in a BT, what is shown below is probably the most likely situation you would want to use the smoother in (to smooth a path returned by the path planner and then using that smoothed path for path tracking).
@@ -82,6 +83,6 @@ This line calls the planner server and return a path to the ``path`` blackboard 
       <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}"/>
     </Sequence>
 
-And its as simple as that! You can now compile or use this behavior tree in your system and see that the plans are now smoothed and the controllers are now tracking this smoothed path.
+And its as simple as that! You can now compile or use this behavior tree in your system and see that the plans are now smoothed and the controllers are now tracking this smoothed path. The image at the top of the tutorial shows the unsmoothed path from NavFn (red) and the smoothed path (black). Note the smoother approach to goal, turns, and transitions in the straight-line segments.
 
 If you wish to see the difference, but not track the smoothed path, you may wish to remove the ``smoothed_path="{path}"`` portion to compute the smoothed path, but not replace the original path with it. Instead, the topic ``/smoothed_path`` contains this information published by the smoother server for visualization or use by other parts of the system. You may also remap the smoothed path to another blackboard variable to interact with it in other parts of the behavior tree (e.g. ``smoothed_path="{smoothed_path}"``).
