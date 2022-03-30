@@ -9,6 +9,7 @@ Adding a Smoother to a BT
 
 .. image:: images/smoothing_path.png
     :width: 60%
+    :align: center
 
 Overview
 ========
