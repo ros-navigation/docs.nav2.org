@@ -1,7 +1,7 @@
 .. _configuring_behavior_tree_xml:
 
 Behavior Tree XML Nodes
-#################################
+#######################
 
 The nav2_behavior_tree_ package provides several navigation-specific nodes that are pre-registered and can be included in Behavior Trees.
 
@@ -10,8 +10,6 @@ The nav2_behavior_tree_ package provides several navigation-specific nodes that 
 Check this introduction_ to learn how behavior trees work and the difference between actions, conditions, controls and decorators.
 
 .. _introduction: https://www.behaviortree.dev/bt_basics/
-
-Note: ``SingleTrigger`` BT Node is not listed below because it contains no parameters.
 
 Consider checking out the :ref:`groot_introduction` tutorial for using Groot to visualize and modify behavior trees.
 
@@ -81,7 +79,8 @@ Decorator Plugins
   bt-plugins/decorators/DistanceController.rst
   bt-plugins/decorators/SpeedController.rst
   bt-plugins/decorators/GoalUpdater.rst
-
+  bt-plugins/decorators/PathLongerOnApproach.rst
+  bt-plugins/decorators/SingleTrigger.rst
 
 Example
 *******
