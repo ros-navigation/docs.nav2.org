@@ -19,7 +19,7 @@ Action Nodes
 
 * FollowPath - FollowPath Action Server Client (Controller Interface)
 
-* Spin, Wait, Backup - Action Server Client
+* Spin, Wait, Backup - Behaviors Action Server Client
 
 * ClearCostmapService - ClearCostmapService Server Clients
 

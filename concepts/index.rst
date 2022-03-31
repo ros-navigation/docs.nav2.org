@@ -176,6 +176,8 @@ Backing up or spinning in place, if permissible, allow the robot to move from a 
 Finally, in the case of a total failure, a recovery may be implemented to call an operators attention for help.
 This can be done with email, SMS, Slack, Matrix, etc.
 
+This server can also host non recovery behaviors that need access to expensive resources like the costmap and TF buffer.
+
 Waypoint Following
 ==================
 
