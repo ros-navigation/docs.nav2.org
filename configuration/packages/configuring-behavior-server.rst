@@ -5,7 +5,7 @@ Behavior Server
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries
+.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors
 
 The Behavior Server implements the server for handling recovery behavior requests and hosting a vector of plugins implementing various C++ behaviors.
 It is also possible to implement independent behavior servers for each custom behavior, but this server will allow multiple behaviors to share resources such as costmaps and TF buffers to lower incremental costs for new behaviors.
@@ -103,11 +103,11 @@ Behavior Server Parameters
           ros__parameters:
             behavior_plugins: ["spin", "backup", "wait"]
             spin:
-              plugin: "nav2_recoveries/Spin"
+              plugin: "nav2_behaviors/Spin"
             backup:
-              plugin: "nav2_recoveries/BackUp"
+              plugin: "nav2_behaviors/BackUp"
             wait:
-              plugin: "nav2_recoveries/Wait"
+              plugin: "nav2_behaviors/Wait"
     ..
 
 Default Plugins
@@ -118,14 +118,14 @@ When the :code:`behavior_plugins` parameter is not overridden, the following def
   ================= =====================================================
   Namespace         Plugin
   ----------------- -----------------------------------------------------
-  "spin"            "nav2_recoveries/Spin"
+  "spin"            "nav2_behaviors/Spin"
   ----------------- -----------------------------------------------------
-  "backup"          "nav2_recoveries/BackUp"
+  "backup"          "nav2_behaviors/BackUp"
   ----------------- -----------------------------------------------------
-  "wait"            "nav2_recoveries/Wait"
+  "wait"            "nav2_behaviors/Wait"
   ================= =====================================================
 
-Spin Recovery Parameters
+Spin Behavior Parameters
 ************************
 
 Spin distance is given from the action request
@@ -174,7 +174,7 @@ Spin distance is given from the action request
   Description
     maximum rotational acceleration (rad/s^2).
 
-BackUp Recovery Parameters
+BackUp Behavior Parameters
 **************************
 
 Backup distance is given from the action request.
