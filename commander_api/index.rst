@@ -26,7 +26,12 @@ You may use this simple commander preempt commands of the same type (e.g. you ca
   nav.waitUntilNav2Active() # if autostarted, else use lifecycleStartup()
   
   # ...
+
+  path = nav.getPath(init_pose, goal_pose)
+  smoothed_path = nav.smoothPath(path)
   
+  # ...
+
   nav.goToPose(goal_pose)
   while not nav.isTaskComplete():
     feedback = nav.getFeedback()
@@ -130,7 +135,7 @@ The ``nav2_simple_commander`` has a few examples to highlight the API functions 
 - ``example_nav_to_pose.py`` - Demonstrates the navigate to pose capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_nav_through_poses.py`` - Demonstrates the navigate through poses capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.
-- ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods.
+- ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.
 
 The ``nav2_simple_commander`` has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:
 
