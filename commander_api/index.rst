@@ -88,6 +88,10 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | getPathThroughPoses(start, goals,     | Gets a path through a starting to a set of goals, a list                   |
 | planner_id='', use_start=False)       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
 +---------------------------------------+----------------------------------------------------------------------------+
+| smoothPath(path, smoother_id='',      | Smooths a given path of type ``nav_msgs/Path``.                            |
+| max_duration=2.0,                     |                                                                            |
+| check_for_collision=False)            |                                                                            |
++---------------------------------------+----------------------------------------------------------------------------+
 | changeMap(map_filepath)               | Requests a change from the current map to `map_filepath`'s yaml.           |
 +---------------------------------------+----------------------------------------------------------------------------+
 | clearAllCostmaps()                    | Clears both the global and local costmaps.                                 |
