@@ -95,21 +95,22 @@ Navigation Servers
 
 Planners and controllers are at the heart of a navigation task.
 Recoveries are used to get the robot out of a bad situation or attempt to deal with various forms of issues to make the system fault-tolerant.
+Smoothers can be used for additional quality improvements of the planned path.
 In this section, the general concepts around them and their uses in this project are analyzed.
 
-Planner, Controller, and Behavior Servers
-=========================================
+Planner, Controller, Smoother and Recovery Servers
+==================================================
+Four of the action servers in this project are the planner, behavior, smoother and controller servers.
 
-Three of the action servers in this project are the planner, behavior, and controller servers.
 These action servers are used to host a map of algorithm plugins to complete various tasks.
 They also host the environmental representation used by the algorithm plugins to compute their outputs.
 
-The planner and controller servers will be configured at runtime with the names (aliases) and types of algorithms to use.
+The planner, smoother and controller servers will be configured at runtime with the names (aliases) and types of algorithms to use.
 These types are the pluginlib names that have been registered and the names are the aliases for the task.
 An example would be the DWB controller used with name ``FollowPath``, as it follows a reference path.
 In this case, then all parameters for DWB would be placed in that namespace, e.g. ``FollowPath.<param>``.
 
-These two servers then expose an action interface corresponding to its task.
+These three servers then expose an action interface corresponding to its task.
 When the behavior tree ticks the corresponding BT node, it will call the action server to process its task.
 The action server callback inside the server will call the chosen algorithm by its name (e.g. ``FollowPath``) that maps to a specific algorithm.
 This allows a user to abstract the algorithm used in the behavior tree to classes of algorithms.
@@ -176,7 +177,17 @@ Backing up or spinning in place, if permissible, allow the robot to move from a 
 Finally, in the case of a total failure, a recovery may be implemented to call an operators attention for help.
 This can be done with email, SMS, Slack, Matrix, etc.
 
-This server can also host non recovery behaviors that need access to expensive resources like the costmap and TF buffer.
+Smoothers
+=========
+
+As criteria for optimality of the path searched by a planner are usually reduced compared to reality, additional path refinement is often beneficial.
+Smoothers have been introduced for this purpose, typically responsible for reducing path raggedness and smoothing abrupt rotations,
+but also for increasing distance from obstacles and high-cost areas as the smoothers have access to a global environmental representation.
+
+Use of a separate smoother over one that is included as a part of a planner is advantageous when combining different planners with different smoothers or when a specific control over smoothing is required, e.g. smoothing ony a specific part of the path.
+
+The general task in Nav2 for a smoother is to receive a path and return its improved version.
+However, different input paths, criteria of the improvements and methods of acquiring them exist, creating space for multitude of smoothers that can be registered in this server.
 
 Waypoint Following
 ==================
