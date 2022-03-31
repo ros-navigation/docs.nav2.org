@@ -288,4 +288,4 @@ This may potentially subtly change the way certain BT nodes, BT Navigators, cont
 Recovery To Behavior
 ********************
 `This PR 2867 <https://github.com/ros-planning/navigation.ros.org/pull/298>`_ renames the nav2_recoveries to nav2_behaviors.
-Changes were made to the launch files that launched the nav2_recoveries, yaml file parameters, nav2_recovery server and nav2_core.
+Changes will need to made to the launch files that launched the nav2_recoveries, yaml file parameters and plugin namespace changes.
