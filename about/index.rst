@@ -41,13 +41,10 @@ Our current leadership team includes:
 +================+===================+=================+==============+
 | Steve Macenski | Samsung Research  | SteveMacenski_  | Project Lead |
 +----------------+-------------------+-----------------+--------------+
-| Carl Delsey    | Intel Corporation | crdelsey_       | Maintainer   |
-+----------------+-------------------+-----------------+--------------+
 | Ruffin White   | UC San Diego      | ruffsl_         | CI Wizard    |
 +----------------+-------------------+-----------------+--------------+
 
 .. _SteveMacenski: https://github.com/SteveMacenski
-.. _crdelsey: https://github.com/crdelsey
 .. _ruffsl: https://github.com/ruffsl
 
 Our former leadership team includes:
@@ -59,9 +56,12 @@ Our former leadership team includes:
 +----------------+-------------------+-----------------+---------------------+
 | Brian Wilcox   | Intel Corporation | bpwilcox_       | Former Maintainer   |
 +----------------+-------------------+-----------------+---------------------+
+| Carl Delsey    | Intel Corporation | crdelsey_       | Maintainer          |
++----------------+-------------------+-----------------+---------------------+
 
 .. _mkhansen: https://github.com/mkhansen-intel
 .. _bpwilcox: https://github.com/bpwilcox
+.. _crdelsey: https://github.com/crdelsey
 
 Contact
 *******
