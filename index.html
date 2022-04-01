@@ -816,6 +816,7 @@ them uniquely with both circular and arbitrarily-shaped robots for SE2 collision
 <li>localize the robot on the map (AMCL)</li>
 <li>plan a path from A to B around obstacles (Nav2 Planner)</li>
 <li>control the robot as it follows the path (Nav2 Controller)</li>
+<li>Smooth path plans to be more continuous and feasible (Nav2 Smoother)</li>
 <li>convert sensor data into a costmap representation of the world (Nav2 Costmap 2D)</li>
 <li>build complicated robot behaviors using behavior trees (Nav2 Behavior Trees and BT Navigator)</li>
 <li>Compute recovery behaviors in case of failure (Nav2 Recoveries)</li>
@@ -823,7 +824,7 @@ them uniquely with both circular and arbitrarily-shaped robots for SE2 collision
 <li>Manage the lifecycle and watchdog for the servers (Nav2 Lifecycle Manager)</li>
 <li>Plugins to enable your own custom algorithms and behaviors (Nav2 Core)</li>
 </ul>
-<a class="reference internal image-reference" href="_images/architectural_diagram.png"><img alt="Navigation2 Block Diagram" class="align-center" src="_images/architectural_diagram.png" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="_images/nav2_architecture.png"><img alt="Navigation2 Block Diagram" class="align-center" src="_images/nav2_architecture.png" style="width: 700px;" /></a>
 <p>We also provide a set of starting plugins to get you going. NavFn computes the shortest path
 from a pose to a goal pose using A* or Dijkstra’s algorithm. DWB will use the DWA algorithm
 to compute a control effort to follow a path, with several plugins of its own for trajectory
