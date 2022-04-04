@@ -4,7 +4,7 @@ Navigation Plugins
 ##################
 
 There are a number of plugin interfaces for users to create their own custom applications or algorithms with.
-Namely, the costmap layer, planner, controller, behavior tree, and recovery plugins.
+Namely, the costmap layer, planner, controller, behavior tree, and behavior plugins.
 A list of all known plugins are listed here below for ROS 2 Navigation.
 If you know of a plugin, or you have created a new plugin, please consider submitting a pull request with that information.
 
@@ -147,8 +147,9 @@ Planners
 .. _ThetaStarPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
 .. _SmacPlannerLattice: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 
+
 Smoothers
-========
+=========
 
 +---------------------------+---------------------------------------+------------------------------+
 | Plugin Name               |         Creator                       |       Description            |
@@ -160,8 +161,8 @@ Smoothers
 
 .. _Simple Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
 
-Recoveries
-==========
+Behaviors
+=========
 
 +----------------------+------------------------+----------------------------------+
 |  Plugin Name         |         Creator        |       Description                |
@@ -170,25 +171,25 @@ Recoveries
 |                      |                        | costmap in case of incorrect     |
 |                      |                        | perception or robot is stuck     |
 +----------------------+------------------------+----------------------------------+
-|  `Spin`_             | Steve Macenski         | Rotate recovery of configurable  |
+|  `Spin`_             | Steve Macenski         | Rotate behavior of configurable  |
 |                      |                        | angles to clear out free space   |
 |                      |                        | and nudge robot out of potential |
 |                      |                        | local failures                   |
 +----------------------+------------------------+----------------------------------+
-|    `Back Up`_        | Brian Wilcox           | Back up recovery of configurable |
+|    `Back Up`_        | Brian Wilcox           | Back up behavior of configurable |
 |                      |                        | distance to back out of a        |
 |                      |                        | situation where the robot is     |
 |                      |                        | stuck                            |
 +----------------------+------------------------+----------------------------------+
-|             `Wait`_  | Steve Macenski         | Wait recovery with configurable  |
+|             `Wait`_  | Steve Macenski         | Wait behavior with configurable  |
 |                      |                        | time to wait in case of time     |
 |                      |                        | based obstacle like human traffic|
 |                      |                        | or getting more sensor data      |
 +----------------------+------------------------+----------------------------------+
 
-.. _Back Up: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins
-.. _Spin: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins
-.. _Wait: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins
+.. _Back Up: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
+.. _Spin: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
+.. _Wait: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
 .. _Clear Costmap: https://github.com/ros-planning/navigation2/blob/main/nav2_costmap_2d/src/clear_costmap_service.cpp
 
 Waypoint Task Executors
@@ -257,7 +258,7 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | Action Plugin Name                         |   Creator           |       Description                        |
 +============================================+=====================+==========================================+
-| `Back Up Action`_                          | Michael Jeronimo    | Calls backup recovery action             |
+| `Back Up Action`_                          | Michael Jeronimo    | Calls backup behavior action             |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Clear Entire Costmap Service`_            | Carl Delsey         | Calls clear entire costmap service       |
 +--------------------------------------------+---------------------+------------------------------------------+
@@ -277,9 +278,9 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Reinitalize Global Localization Service`_ | Carl Delsey         | Reinitialize AMCL to a new pose          |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Spin Action`_                             | Carl Delsey         | Calls spin recovery action               |
+| `Spin Action`_                             | Carl Delsey         | Calls spin behavior action               |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Wait Action`_                             | Steve Macenski      | Calls wait recovery action               |
+| `Wait Action`_                             | Steve Macenski      | Calls wait behavior action               |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter        |
 +--------------------------------------------+---------------------+------------------------------------------+
@@ -309,11 +310,11 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Control Action`_                   |Pradheep Padmanabhan | Cancels Nav2 controller server           |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel BackUp Action`_                    |Pradheep Padmanabhan | Cancels backup recovery action           |
+| `Cancel BackUp Action`_                    |Pradheep Padmanabhan | Cancels backup behavior action           |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Spin Action`_                      |Pradheep Padmanabhan | Cancels spin recovery action             |
+| `Cancel Spin Action`_                      |Pradheep Padmanabhan | Cancels spin behavior action             |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Wait Action`_                      |Pradheep Padmanabhan | Cancels wait recovery action             |
+| `Cancel Wait Action`_                      |Pradheep Padmanabhan | Cancels wait behavior action             |
 +--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp

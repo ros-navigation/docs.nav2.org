@@ -3,11 +3,11 @@
 Spin
 ====
 
-Invokes the Spin ROS 2 action server, which is implemented by the nav2_recoveries_ module.
-It performs an in-place rotation by a given angle. 
+Invokes the Spin ROS 2 action server, which is implemented by the nav2_behaviors_ module.
+It performs an in-place rotation by a given angle.
 This action is used in nav2 Behavior Trees as a recovery behavior.
 
-.. _nav2_recoveries: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries
+.. _nav2_behaviors: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors
 
 Input Ports
 -----------
@@ -32,14 +32,14 @@ Input Ports
   ====== =======
 
   Description
-      Time to envoke recovery for, if exceeds considers it a stuck condition or failure case (seconds).
+      Time to envoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
 :server_name:
 
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -50,7 +50,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 10  
+  double 10
   ====== =======
 
   Description
@@ -62,4 +62,4 @@ Example
 .. code-block:: xml
 
   <Spin spin_dist="1.57" server_name="spin" server_timeout="10"/>
-    
+

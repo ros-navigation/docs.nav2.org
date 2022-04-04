@@ -10,13 +10,13 @@ This allows Navigation2 to have highly configurable navigation behavior without 
 in a behavior tree xml file.
 
 The *nav2_bt_navigator* replaces ``move_base`` at the top level, with an *Action* interface to complete a navigation task with a tree-based action model.
-It uses *Behavior Trees* to make it possible to have more complex state machines and to add in recovery behaviors as additional *Action Servers*.
+It uses *Behavior Trees* to make it possible to have more complex state machines and to add in behaviors as additional *Action Servers*.
 These behavior trees are configurable XMLs and we provide several starting examples.
 
-The planning, recovery, and controller servers are also action servers that the BT navigator can call to compute.
+The planning, behaviors, and controller servers are also action servers that the BT navigator can call to compute.
 All 3 servers can host many plugins of many algorithms each and individually called from the navigation behavior tree for specific behaviors.
-The default plugins provided are ported from ROS 1, namely: DWB, NavFn, and similar recoveries such as spinning and clearing costmaps.
-A new recovery for waiting a fixed duration was also added.
+The default plugins provided are ported from ROS 1, namely: DWB, NavFn, and similar behaviors such as spinning and clearing costmaps.
+A new behavior for waiting a fixed duration was also added.
 These servers are called from the BT navigator through their action servers to compute a result or complete a task.
 The state is maintained by the BT navigator behavior tree.
 

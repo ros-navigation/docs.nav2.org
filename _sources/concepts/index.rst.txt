@@ -100,8 +100,8 @@ In this section, the general concepts around them and their uses in this project
 
 Planner, Controller, Smoother and Recovery Servers
 ==================================================
+Four of the action servers in this project are the planner, behavior, smoother and controller servers.
 
-Four of the action servers in this project are the planner, recovery, smoother and controller servers.
 These action servers are used to host a map of algorithm plugins to complete various tasks.
 They also host the environmental representation used by the algorithm plugins to compute their outputs.
 
@@ -117,9 +117,9 @@ This allows a user to abstract the algorithm used in the behavior tree to classe
 For instance, you can have ``N`` plugin controllers to follow paths, dock with charger, avoid dynamic obstacles, or interface with a tool.
 Having all of these plugins in the same server allows the user to make use of a single environmental representation object, which is costly to duplicate.
 
-For the recovery server, each of the recoveries also contains their own name, however, each plugin will also expose its own special action server.
-This is done because of the wide variety of recovery actions that may be created cannot have a single simple interface to share.
-The recovery server also contains a costmap subscriber to the local costmap, receiving real-time updates from the controller server, to compute its tasks.
+For the behavior server, each of the behaviors also contains their own name, however, each plugin will also expose its own special action server.
+This is done because of the wide variety of behavior actions that may be created cannot have a single simple interface to share.
+The behavior server also contains a costmap subscriber to the local costmap, receiving real-time updates from the controller server, to compute its tasks.
 We do this to avoid having multiple instances of the local costmap which are computationally expensive to duplicate.
 
 Alternatively, since the BT nodes are trivial plugins calling an action, new BT nodes can be created to call other action servers with other action types.
@@ -163,10 +163,10 @@ The general task in Nav2 for a controller is to compute a valid control effort t
 However, many classes of controllers and local planners exist.
 It is the goal of this project that all controller algorithms can be plugins in this server for common research and industrial tasks.
 
-Recoveries
+Behaviors
 ==========
 
-Recoveries are a mainstay of fault-tolerant systems.
+Recovery behaviors are a mainstay of fault-tolerant systems.
 The goal of recoveries are to deal with unknown or failure conditions of the system and autonomously handle them.
 Examples may include faults in the perception system resulting in the environmental representation being full of fake obstacles.
 The clear costmap recovery would then be triggered to allow the robot to move.
@@ -176,6 +176,8 @@ Backing up or spinning in place, if permissible, allow the robot to move from a 
 
 Finally, in the case of a total failure, a recovery may be implemented to call an operators attention for help.
 This can be done with email, SMS, Slack, Matrix, etc.
+
+It is important to note that the behavior server can hold any behavior to share access to expensive resources like costmaps or TF buffers, not just recovery behaviors. Each may have their own API.
 
 Smoothers
 =========
