@@ -266,7 +266,7 @@ BT PathLongerOnApproach Node
 
 In the `PR <https://github.com/ros-planning/navigation2/pull/2802>`_, a new Decorator BT node known as ``PathLongerOnApproach`` has been added to provide with the functionality to check and potentially handle longer path generated due to an obstacle in the given goal proximity. To demonstrate this functionality, a new BT ``navigate_to_pose_w_replanning_goal_patience_and_recovery.xml`` would serve both as an example and ready-to-use BT for a specific application that wishes to optimize their process cycle time. Demo of the developed BT can be seen below, where the robot pauses when close to a goal to see if the dynamic obstacle moves out of the way. Else, it executes the replan:
 
-Obstacle does not clear at all, with `obstacle_clearance_time` to be 3 seconds: 
+Obstacle does not clear at all, with `obstacle_clearance_time` to be 3 seconds:
 
 .. image:: images/nav2_patience_near_goal_and_clear_obstacle.gif
 
@@ -284,3 +284,11 @@ Euclidean Distance 2D
 
 `This PR 2865 <https://github.com/ros-planning/navigation2/pull/2865>`_ changes Euclidean distance calculation throughout nav2 to project on to the XY plane (i.e. discard any information related to components in Z).
 This may potentially subtly change the way certain BT nodes, BT Navigators, controller servers, planner servers, and RPP behave if using custom plugins outside the Nav2 ecosystem.
+
+
+Recovery To Behavior
+********************
+`This PR 2867 <https://github.com/ros-planning/navigation.ros.org/pull/298>`_ renames the nav2_recoveries to nav2_behaviors.
+
+In navigation_launch.py recoveries_server -> behavior_server and nav2_recoveries -> nav2_behaviors.
+In nav2_params.yaml recovery_plugins -> behavior_plugins and nav2_recoveries -> nav2_behaviors.

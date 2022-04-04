@@ -12,4 +12,4 @@ Navigation2 Tutorials
    docs/writing_new_nav2planner_plugin.rst
    docs/writing_new_nav2controller_plugin.rst
    docs/writing_new_bt_plugin.rst
-   docs/writing_new_recovery_plugin.rst
+   docs/writing_new_behavior_plugin.rst

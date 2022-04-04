@@ -1,26 +1,27 @@
-.. _configuring_recovery_server:
+.. _configuring_behavior_server:
 
-Recovery Server
+Behavior Server
 ###############
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries
+.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors
 
-The Recovery Server implements the server for handling recovery requests and hosting a vector of plugins implementing various C++ recoveries.
-It is also possible to implement independent recovery servers for each custom recovery, but this server will allow multiple recoveries to share resources such as costmaps and TF buffers to lower incremental costs for new behaviors.
+The Behavior Server implements the server for handling recovery behavior requests and hosting a vector of plugins implementing various C++ behaviors.
+It is also possible to implement independent behavior servers for each custom behavior, but this server will allow multiple behaviors to share resources such as costmaps and TF buffers to lower incremental costs for new behaviors.
 
-Note: the wait recovery has no parameters, the duration to wait is given in the action request.
+Note: the wait recovery behavior has no parameters, the duration to wait is given in the action request.
+Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Launch files, behaviors and tests were all renamed.
 
-Recovery Server Parameters
+Behavior Server Parameters
 **************************
 
 :costmap_topic:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  string         "local_costmap/costmap_raw"   
+  string         "local_costmap/costmap_raw"
   ============== ===========================
 
   Description
@@ -29,9 +30,9 @@ Recovery Server Parameters
 :footprint_topic:
 
   ============== ===================================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------------
-  string         "local_costmap/published_footprint"            
+  string         "local_costmap/published_footprint"
   ============== ===================================
 
   Description
@@ -40,20 +41,20 @@ Recovery Server Parameters
 :cycle_frequency:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         10.0 
+  double         10.0
   ============== =============================
 
   Description
-    Frequency to run recovery plugins.
+    Frequency to run behavior plugins.
 
 :transform_tolerance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.1 
+  double         0.1
   ============== =============================
 
   Description
@@ -62,9 +63,9 @@ Recovery Server Parameters
 :global_frame:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "odom" 
+  string         "odom"
   ============== =============================
 
   Description
@@ -73,18 +74,18 @@ Recovery Server Parameters
 :robot_base_frame:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "base_link" 
+  string         "base_link"
   ============== =============================
 
   Description
     Robot base frame.
 
-:recovery_plugins:
+:behavior_plugins:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
   vector<string> {"spin", "back_up", "wait"}
   ============== =============================
@@ -101,31 +102,31 @@ Recovery Server Parameters
 
         recoveries_server:
           ros__parameters:
-            recovery_plugins: ["spin", "backup", "wait"]
+            behavior_plugins: ["spin", "backup", "wait"]
             spin:
-              plugin: "nav2_recoveries/Spin"
+              plugin: "nav2_behaviors/Spin"
             backup:
-              plugin: "nav2_recoveries/BackUp"
+              plugin: "nav2_behaviors/BackUp"
             wait:
-              plugin: "nav2_recoveries/Wait"
+              plugin: "nav2_behaviors/Wait"
     ..
 
 Default Plugins
 ***************
 
-When the :code:`recovery_plugins` parameter is not overridden, the following default plugins are loaded:
+When the :code:`behavior_plugins` parameter is not overridden, the following default plugins are loaded:
 
   ================= =====================================================
   Namespace         Plugin
   ----------------- -----------------------------------------------------
-  "spin"            "nav2_recoveries/Spin"
+  "spin"            "nav2_behaviors/Spin"
   ----------------- -----------------------------------------------------
-  "backup"          "nav2_recoveries/BackUp"
+  "backup"          "nav2_behaviors/BackUp"
   ----------------- -----------------------------------------------------
-  "wait"            "nav2_recoveries/Wait"
+  "wait"            "nav2_behaviors/Wait"
   ================= =====================================================
 
-Spin Recovery Parameters
+Spin Behavior Parameters
 ************************
 
 Spin distance is given from the action request
@@ -133,9 +134,9 @@ Spin distance is given from the action request
 :simulate_ahead_time:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         2.0            
+  double         2.0
   ============== =============================
 
   Description
@@ -144,9 +145,9 @@ Spin distance is given from the action request
 :max_rotational_vel:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         1.0            
+  double         1.0
   ============== =============================
 
   Description
@@ -155,9 +156,9 @@ Spin distance is given from the action request
 :min_rotational_vel:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.4            
+  double         0.4
   ============== =============================
 
   Description
@@ -166,15 +167,15 @@ Spin distance is given from the action request
 :rotational_acc_lim:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         3.2            
+  double         3.2
   ============== =============================
 
   Description
     maximum rotational acceleration (rad/s^2).
 
-BackUp Recovery Parameters
+BackUp Behavior Parameters
 **************************
 
 Backup distance is given from the action request.
@@ -182,9 +183,9 @@ Backup distance is given from the action request.
 :simulate_ahead_time:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         2.0            
+  double         2.0
   ============== =============================
 
   Description
@@ -199,13 +200,13 @@ Example
         costmap_topic: local_costmap/costmap_raw
         footprint_topic: local_costmap/published_footprint
         cycle_frequency: 10.0
-        recovery_plugins: ["spin", "backup", "wait"]
+        behavior_plugins: ["spin", "backup", "wait"]
         spin:
-          plugin: "nav2_recoveries/Spin"
+          plugin: "nav2_behaviors/Spin"
         backup:
-          plugin: "nav2_recoveries/BackUp"
+          plugin: "nav2_behaviors/BackUp"
         wait:
-          plugin: "nav2_recoveries/Wait"
+          plugin: "nav2_behaviors/Wait"
         global_frame: odom
         robot_base_frame: base_link
         transform_timeout: 0.1
