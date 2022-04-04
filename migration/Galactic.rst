@@ -210,7 +210,8 @@ The parameters ``max_linear_accel`` and ``max_linear_decel`` were removed along 
 Added Smoother Task Server
 **************************
 
-A new task server was added which loads smoother plugins and executes them to improve quality of an existing planned path. Smoothing action can be called from a behavior tree using SmoothPath action node.
+A new task server was added which loads smoother plugins and executes them to improve quality of an existing planned path. Smoothing action can be called from a behavior tree using SmoothPath action node. `PR 2569 <https://github.com/ros-planning/navigation2/pull/2569>`_ implements and `PR 2875 <https://github.com/ros-planning/navigation2/pull/2875>`_ adds in the first of the plugins using it with a simple smoother. Other smoothers are in development and will be added in the future.
+
 
 Removed Use Approach Velocity Scaling Param in RPP
 **************************************************

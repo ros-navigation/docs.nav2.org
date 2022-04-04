@@ -24,6 +24,6 @@ the best navigation performance.
    packages/configuring-amcl.rst
    packages/configuring-behavior-server.rst
    packages/configuring-smoother-server.rst
-
+   packages/configuring-simple-smoother.rst
    packages/configuring-regulated-pp.rst
    packages/configuring-rotation-shim-controller.rst
