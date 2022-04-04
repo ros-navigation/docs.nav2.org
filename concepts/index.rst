@@ -177,6 +177,8 @@ Backing up or spinning in place, if permissible, allow the robot to move from a 
 Finally, in the case of a total failure, a recovery may be implemented to call an operators attention for help.
 This can be done with email, SMS, Slack, Matrix, etc.
 
+It is important to note that the behavior server can hold any behavior that need access to costmap or TF buffer not just recovery behaviors.
+
 Smoothers
 =========
 

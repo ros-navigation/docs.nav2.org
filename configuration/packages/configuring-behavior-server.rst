@@ -11,6 +11,7 @@ The Behavior Server implements the server for handling recovery behavior request
 It is also possible to implement independent behavior servers for each custom behavior, but this server will allow multiple behaviors to share resources such as costmaps and TF buffers to lower incremental costs for new behaviors.
 
 Note: the wait recovery behavior has no parameters, the duration to wait is given in the action request.
+Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Launch files, behaviors and tests were all renamed.
 
 Behavior Server Parameters
 **************************
