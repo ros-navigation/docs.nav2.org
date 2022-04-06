@@ -364,7 +364,7 @@ Example
           use_sim_time: True
           robot_radius: 0.22 # radius set and used, so no footprint points
           resolution: 0.05
-          plugins: ["static_layer", "obstacle_layer", "voxel_layer", "denoise_layer", "inflation_layer"]
+          plugins: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"]
           obstacle_layer:
             plugin: "nav2_costmap_2d::ObstacleLayer"
             enabled: True
@@ -422,11 +422,6 @@ Example
             cost_scaling_factor: 1.0
             inflate_unknown: false
             inflate_around_unknown: true
-          denoise_layer:
-            plugin: "nav2_costmap_2d::DenoiseLayer"
-            enabled: true
-            minimal_group_size: 2
-            group_connectivity_type: 8
           always_send_full_costmap: True
 
 
