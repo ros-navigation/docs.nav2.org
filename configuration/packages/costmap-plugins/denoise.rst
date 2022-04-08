@@ -8,9 +8,9 @@ Denoise Layer Parameters
 :``<denoise layer>``.enabled:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
@@ -19,7 +19,7 @@ Denoise Layer Parameters
 :``<denoise layer>``.minimal_group_size:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
   int  2
   ==== =======
@@ -34,7 +34,7 @@ Denoise Layer Parameters
 :``<denoise layer>``.group_connectivity_type:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
   int    8
   ====== =======
