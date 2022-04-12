@@ -48,6 +48,28 @@ Parameters
   Description
     Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in seconds. Set to ``0`` to deactivate. Recommended to be always larger than 0.3s for all-local node discovery. Note: if a server cleanly exits the manager will immediately be notified.
 
+:attempt_respawn_reconnection:
+
+  ==== =======
+  Type Default
+  ---- -------
+  bool true
+  ==== =======
+
+  Description
+    Whether to try to reconnect to servers that go down, presumably because respawn is set to ``true`` to re-create crashed nodes. While default to ``true``, reconnections will not be made unless respawn is set to true in your launch files or your watchdog systems will bring up the server externally.
+
+:bond_respawn_max_duration:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double  10.0
+  ====== =======
+
+  Description
+    When a server crashes or becomes non-responsive, the lifecycle manager will bring down all nodes for safety. This is the duration of which the lifecycle manager will attempt to reconnect with the failed server(s) during to recover and re-activate the system. If this passes, it will stop attempts and will require a manual re-activation once the problem is manually resolved. Units: seconds.
+
 Example
 *******
 .. code-block:: yaml
@@ -57,3 +79,5 @@ Example
         autostart: true
         node_names: ['controller_server', 'planner_server', 'behavior_server', 'bt_navigator', 'waypoint_follower']
         bond_timeout: 4.0
+        attempt_respawn_reconnection: true
+        bond_respawn_max_duration: 10.0
