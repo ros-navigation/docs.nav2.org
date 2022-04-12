@@ -724,6 +724,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#replanning-at-a-constant-rate-and-if-the-path-is-invalid">Replanning at a Constant Rate and if the Path is Invalid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#euclidean-distance-2d">Euclidean Distance 2D</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#recovery-to-behavior">Recovery To Behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#respawn-support-in-launch-and-lifecycle-manager">Respawn Support in Launch and Lifecycle Manager</a></li>
 </ul>
 </li>
 </ul>
@@ -851,9 +852,53 @@ It will also create bond connections with the servrs to ensure they are still up
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in seconds. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to deactivate. Recommended to be always larger than 0.3s for all-local node discovery. Note: if a server cleanly exits the manager will immediately be notified.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">attempt_respawn_reconnection:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Whether to try to reconnect to servers that go down, presumably because respawn is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> to re-create crashed nodes. While default to <code class="docutils literal notranslate"><span class="pre">true</span></code>, reconnections will not be made unless respawn is set to true in your launch files or your watchdog systems will bring up the server externally.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">bond_respawn_max_duration:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>10.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">When a server crashes or becomes non-responsive, the lifecycle manager will bring down all nodes for safety. This is the duration of which the lifecycle manager will attempt to reconnect with the failed server(s) during to recover and re-activate the system. If this passes, it will stop attempts and will require a manual re-activation once the problem is manually resolved. Units: seconds.</p>
 </dd>
 </dl>
 </td>
@@ -868,6 +913,8 @@ It will also create bond connections with the servrs to ensure they are still up
 <span class="w">    </span><span class="nt">autostart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 <span class="w">    </span><span class="nt">node_names</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;controller_server&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;planner_server&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;behavior_server&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;bt_navigator&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;waypoint_follower&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">    </span><span class="nt">bond_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">attempt_respawn_reconnection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">bond_respawn_max_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"></span>
 </pre></div>
 </div>
 </div>

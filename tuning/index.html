@@ -724,6 +724,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#replanning-at-a-constant-rate-and-if-the-path-is-invalid">Replanning at a Constant Rate and if the Path is Invalid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#euclidean-distance-2d">Euclidean Distance 2D</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#recovery-to-behavior">Recovery To Behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#respawn-support-in-launch-and-lifecycle-manager">Respawn Support in Launch and Lifecycle Manager</a></li>
 </ul>
 </li>
 </ul>
@@ -914,6 +915,7 @@
 <li><code class="docutils literal notranslate"><span class="pre">param_file</span></code> : The main navigation configuration file. Defaults to <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> in the package’s <code class="docutils literal notranslate"><span class="pre">params/</span></code> directory.</li>
 <li><code class="docutils literal notranslate"><span class="pre">autostart</span></code> : Whether to autostart the navigation system’s lifecycle management system. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to transition up the Nav2 stack on creation to the activated state, ready for use.</li>
 <li><code class="docutils literal notranslate"><span class="pre">use_composition</span></code> : Whether to launch each Nav2 server into individual processes or in a single composed node, to leverage savings in CPU and memory. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> to use single process Nav2.</li>
+<li><code class="docutils literal notranslate"><span class="pre">use_respawn</span></code> : Whether to allow server that crash to automatically respawn. When also configured with the lifecycle manager, the manager will transition systems back up if already activated and went down due to a crash. Only works in non-composed bringup since all of the nodes are in the same process / container otherwise.</li>
 <li><code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> : Whether to set all the nodes to use simulation time, needed in simulation. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> for simulation.</li>
 <li><code class="docutils literal notranslate"><span class="pre">rviz_config_file</span></code> : The filepath to the rviz configuration file to use. Defaults to the <code class="docutils literal notranslate"><span class="pre">rviz/</span></code> directory’s file.</li>
 <li><code class="docutils literal notranslate"><span class="pre">use_simulator</span></code> : Whether or not to start the Gazebo simulator with the Nav2 stack. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to launch Gazebo.</li>
