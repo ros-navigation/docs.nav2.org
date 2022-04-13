@@ -14,7 +14,7 @@ Filtering of noise-induced obstacles
 Overview
 ========
 
-This tutorial shows how to configure filtering of false obstacles caused by noise. This function is provided by the ``DenoiseLayer`` costmap layer plugin which will be enabled and used in this document.
+This tutorial shows how to configure filtering of false obstacles caused by noise. This functionality is provided by the ``DenoiseLayer`` costmap layer plugin which will be enabled and used in this document.
 
 Requirements
 ============
@@ -27,7 +27,7 @@ Tutorial Steps
 1. Enable Denoise Layer
 ------------------------
 
-Denoise Layer are Costamp2D plugin. You can enable the ``DenoiseLayer`` plugin in Costmap2D by adding ``denoise_layer`` to the ``plugins`` parameter in ``nav2_params.yaml``. You can place it in the ``global_costmap`` and (or) ``local_costmap`` to filter noise on a global or local map. The DenoiseLayer plugin should have the following parameter defined:
+Denoise Layer is Costmap2D plugin. You can enable the ``DenoiseLayer`` plugin in Costmap2D by adding ``denoise_layer`` to the ``plugins`` parameter in ``nav2_params.yaml``. You can place it in the ``global_costmap`` and (or) ``local_costmap`` to filter noise on a global or local map. The DenoiseLayer plugin should have the following parameter defined:
 
 - ``plugin``: type of plugin. In our case ``nav2_costmap_2d::DenoiseLayer``.
 
@@ -69,7 +69,7 @@ To enable ``DenoiseLayer`` for both global and local costmaps, use the following
   More formally, an obstacle is discarded if there are no obstacles among the adjacent eight cells.
   This should be sufficient in typical cases.
 
-  If (1) a some sensor generates intercorrellated noise-induced obstacles and (2) small obstacles in the world are unlikely, small groups of obstacles can be removed.
+  If a some sensor generates intercorrellated noise-induced obstacles and small obstacles in the world are unlikely, small groups of obstacles can be removed.
   To configure the ``DenoiseLayer`` to such cases and understand how it works, refer to the section `How it works`_.
 
 2. Run Nav2 stack
@@ -110,7 +110,7 @@ To select groups of adjacent obstacles, the algorithm performs their segmentatio
 The type of cell connectivity in one segment is determined by the parameter ``group_connectivity_type``.
 Next, the size of each segment is calculated.
 Obstacles segments with size less than the ``minimal_group_size`` are replaced with empty cells.
-This algorithm is about 10 times slower, so use it with caution and only when necessary.
+This algorithm is about 10 times slower than first, so use it with caution and only when necessary.
 Its execution time depends on the size of the processed map fragment (and not depend on the value of ``minimal_group_size``).
 
 This algorithm is illustrated in the animation below (``group_connectivity_type`` = 8).
