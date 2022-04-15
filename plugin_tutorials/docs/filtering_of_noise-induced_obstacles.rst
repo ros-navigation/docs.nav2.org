@@ -14,6 +14,7 @@ Filtering of noise-induced obstacles
 Overview
 ========
 
+Incorrect definition of the robot position on the map or noisy sensor measurements can cause to errors in ``Voxel Layer`` or ``Obstacle Layer``. As a result, salt and pepper noise may appear on the costmap. This noise creates false obstacles that prevent the robot from finding the best path on the map.
 This tutorial shows how to configure filtering of false obstacles caused by noise. This functionality is provided by the ``DenoiseLayer`` costmap layer plugin which will be enabled and used in this document.
 
 Requirements
@@ -82,7 +83,7 @@ After Denoise Layer was enabled for global/local costmaps, run Nav2 stack as wri
   ros2 launch nav2_bringup tb3_simulation_launch.py
 
 And check that filter is working properly: with the default parameters,
-no standalone obstacles should remain on the cost map. This can be checked, for example, in RVis GUI.
+no standalone obstacles should remain on the cost map. This can be checked, for example, in RViz main window displaying local and global costmaps after removing unnecessary particles (illustrated at the top of this tutorial).
 
 
 How it works
@@ -91,14 +92,17 @@ How it works
 The plugin is based on two algorithms.
 
 When parameter ``minimal_group_size`` = 2, the first algorithm turns on.
-It apply erosion function with kernel from image below (left if ``group_connectivity_type`` = 4 or right if ``group_connectivity_type`` = 8) to the costmap.
-As a result of this window function an image is created. The pixel of this image is 255 if there is an obstacle nearby, 0 in other case.
-After that, obstacles corresponding to zero pixels are removed.
+It apply `erosion <https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html>`_ function with kernel from image below (left if ``group_connectivity_type`` = 4 or right if ``group_connectivity_type`` = 8) to the costmap.
+White color of the kernel pixel means to use the value, black means to ignore it.
 
 .. image:: images/Filtering_of_noise-induced_obstacles/3x3_kernels.png
     :width: 222px
 
-This process is illustrated in the animation below (``group_connectivity_type`` = 4).
+As a result of erosion function the neighbors image is created. Each possible position of the kernel on the costmap corresponds to one pixel of the neighbors image. The pixel value of this image is equal to the maximum of 4/8 costmap pixels corresponding to the white pixels of the mask.
+In other words, the pixel of the neighbors image is equal to the obstacle code if there is an obstacle nearby, the free space code in other case.
+After that, obstacles corresponding to free space code on neighbors image are removed.
+
+This process is illustrated below. On the left side of the image is a costmap, on the right is a neighbors image. White pixels are free space, black pixels are obstacles, ``group_connectivity_type`` = 4.
 Obstacles marked at the end of the animation will be removed.
 
 .. image:: images/Filtering_of_noise-induced_obstacles/dilate.gif
