@@ -1,7 +1,7 @@
 .. _filtering_of_noise-induced_obstacles:
 
 Filtering of noise-induced obstacles
-***********************************************
+************************************
 
 - `Overview`_
 - `Requirements`_
@@ -26,7 +26,7 @@ Tutorial Steps
 ==============
 
 1. Enable Denoise Layer
-------------------------
+-----------------------
 
 Denoise Layer is Costmap2D plugin. You can enable the ``DenoiseLayer`` plugin in Costmap2D by adding ``denoise_layer`` to the ``plugins`` parameter in ``nav2_params.yaml``. You can place it in the ``global_costmap`` and (or) ``local_costmap`` to filter noise on a global or local map. The DenoiseLayer plugin should have the following parameter defined:
 
@@ -87,7 +87,7 @@ no standalone obstacles should remain on the cost map. This can be checked, for 
 
 
 How it works
-==============
+============
 
 The plugin is based on two algorithms.
 
