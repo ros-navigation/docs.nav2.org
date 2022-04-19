@@ -70,7 +70,7 @@ To enable ``DenoiseLayer`` for both global and local costmaps, use the following
   More formally, an obstacle is discarded if there are no obstacles among the adjacent eight cells.
   This should be sufficient in typical cases.
 
-  If a some sensor generates intercorrellated noise-induced obstacles and small obstacles in the world are unlikely, small groups of obstacles can be removed.
+  If some sensor generates intercorrellated noise-induced obstacles and small obstacles in the world are unlikely, small groups of obstacles can be removed.
   To configure the ``DenoiseLayer`` to such cases and understand how it works, refer to the section `How it works`_.
 
 2. Run Nav2 stack
