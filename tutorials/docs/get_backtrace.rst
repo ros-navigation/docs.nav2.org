@@ -233,7 +233,7 @@ You also need to compile your package with the debugging symbols using ``add_com
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug
 
-Now, you have to run the GDB Server VSCode will attach itself to. In this example we will use localhost and the port 3000, you can choose any free port you want. The same way you want to run a gdb session, you can use the ``--prefix`` option for ``ros2 run``:
+Now, you have to run the GDB Server that VSCode will attach itself to. In this example we will use localhost and the port 3000, you can choose any free port you want. The same way you want to run a gdb session, you can use the ``--prefix`` option for ``ros2 run``:
 
 .. code-block:: bash
 
