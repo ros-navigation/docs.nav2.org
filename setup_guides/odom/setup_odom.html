@@ -858,7 +858,7 @@ geometry_msgs/TwistWithCovariance twist
 <p>We will now add the IMU sensor and the differential drive plugins of Gazebo to our URDF. For an overview of the different plugins available in Gazebo, have a look at <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros_gzplugins">Tutorial: Using Gazebo plugins with ROS</a>.</p>
 <p>For our robot, we will be using the <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros_gzplugins#IMUsensor(GazeboRosImuSensor)">GazeboRosImuSensor</a> which is a SensorPlugin. A SensorPlugin must be attached to a link, thus we will create an <code class="docutils literal notranslate"><span class="pre">imu_link</span></code> to which the IMU sensor will be attached. This link will be referenced under the <code class="docutils literal notranslate"><span class="pre">&lt;gazebo&gt;</span></code> element. Next, we will set <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> as the topic to which the IMU will be publishing its information, and we will comply with <a class="reference external" href="https://www.ros.org/reps/rep-0145.html">REP145</a> by setting <code class="docutils literal notranslate"><span class="pre">initalOrientationAsReference</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>. We will also add some noise to the sensor configuration using Gazebo’s <a class="reference external" href="http://gazebosim.org/tutorials?tut=sensor_noise">sensor noise model</a>.</p>
 <p>Now, we will set up our IMU sensor plugin according to the description above by adding the following lines before the <code class="docutils literal notranslate"><span class="pre">&lt;/robot&gt;</span></code> line in our URDF:</p>
-<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">132</span>
+<div class="highlight-xml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
 <span class="normal">135</span>
@@ -947,7 +947,7 @@ geometry_msgs/TwistWithCovariance twist
 <span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
-<span class="normal">221</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
+<span class="normal">221</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;visual&gt;</span>
     <span class="nt">&lt;geometry&gt;</span>
       <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.1 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
@@ -1037,11 +1037,11 @@ geometry_msgs/TwistWithCovariance twist
     <span class="nt">&lt;/imu&gt;</span>
   <span class="nt">&lt;/sensor&gt;</span>
 <span class="nt">&lt;/gazebo&gt;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 <p>Now, let us add the differential drive ModelPlugin. We will configure the plugin such that <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages are published on the <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> topic. The joints of the left and right wheels will be set to the wheel joints of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. The wheel separation and wheel diameter are set according to the values of the defined values of <code class="docutils literal notranslate"><span class="pre">wheel_ygap</span></code> and <code class="docutils literal notranslate"><span class="pre">wheel_radius</span></code> respectively.</p>
 <p>To include this plugin in our URDF, add the following lines after the <code class="docutils literal notranslate"><span class="pre">&lt;/gazebo&gt;</span></code> tag of the IMU plugin:</p>
-<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">223</span>
+<div class="highlight-xml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">223</span>
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
@@ -1067,7 +1067,7 @@ geometry_msgs/TwistWithCovariance twist
 <span class="normal">246</span>
 <span class="normal">247</span>
 <span class="normal">248</span>
-<span class="normal">249</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;gazebo&gt;</span>
+<span class="normal">249</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">&lt;gazebo&gt;</span>
   <span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&#39;diff_drive&#39;</span> <span class="na">filename=</span><span class="s">&#39;libgazebo_ros_diff_drive.so&#39;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ros&gt;</span>
       <span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
@@ -1094,8 +1094,8 @@ geometry_msgs/TwistWithCovariance twist
     <span class="nt">&lt;robot_base_frame&gt;</span>base_link<span class="nt">&lt;/robot_base_frame&gt;</span>
   <span class="nt">&lt;/plugin&gt;</span>
 <span class="nt">&lt;/gazebo&gt;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <div class="section" id="launch-and-build-files">
 <h3>Launch and Build Files<a class="headerlink" href="#launch-and-build-files" title="Permalink to this headline">¶</a></h3>

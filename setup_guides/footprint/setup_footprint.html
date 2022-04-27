@@ -810,21 +810,21 @@
 <p class="last">The default configuration file for Nav2 can be found in the official <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/galactic/nav2_bringup/bringup/params/nav2_params.yaml">Navigation2 repository</a>.</p>
 </div>
 <p>Below is the code snippet from <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> defining the local costmap footprint. In this configuration file, the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> parameter of the local costmap has already been set with a rectangular-shaped footprint. This box is centered at the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>.</p>
-<div class="highlight-yaml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">188</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">188</span>
 <span class="normal">189</span>
-<span class="normal">190</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
+<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
 <span class="nt">footprint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[</span><span class="nv"> </span><span class="s">[0.21,</span><span class="nv"> </span><span class="s">0.195],</span><span class="nv"> </span><span class="s">[0.21,</span><span class="nv"> </span><span class="s">-0.195],</span><span class="nv"> </span><span class="s">[-0.21,</span><span class="nv"> </span><span class="s">-0.195],</span><span class="nv"> </span><span class="s">[-0.21,</span><span class="nv"> </span><span class="s">0.195]</span><span class="nv"> </span><span class="s">]&quot;</span><span class="w"></span>
 <span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 <p>For the global costmap, we have already set the <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> parameter to create a circular footprint that matches <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>’s size and centered at <code class="docutils literal notranslate"><span class="pre">base_link</span></code>. The parameter that was modified is shown in the code snippet below.</p>
-<div class="highlight-yaml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">232</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">232</span>
 <span class="normal">233</span>
-<span class="normal">234</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
 <span class="nt">robot_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span><span class="w"></span>
 <span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <div class="section" id="build-run-and-verification">
 <h2>Build, Run and Verification<a class="headerlink" href="#build-run-and-verification" title="Permalink to this headline">¶</a></h2>

@@ -119,6 +119,8 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 +---------------------------------------+----------------------------------------------------------------------------+
 | lifecycleShutdown()                   | Sends a request to all lifecycle management servers to shut them down.     |
 +---------------------------------------+----------------------------------------------------------------------------+
+| destroyNode()                         | Releases the resources used by the object.                                 |
++---------------------------------------+----------------------------------------------------------------------------+
 
 Examples and Demos
 ******************

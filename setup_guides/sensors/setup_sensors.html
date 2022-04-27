@@ -833,7 +833,7 @@
 <div class="section" id="adding-gazebo-plugins-to-a-urdf">
 <h3>Adding Gazebo Plugins to a URDF<a class="headerlink" href="#adding-gazebo-plugins-to-a-urdf" title="Permalink to this headline">¶</a></h3>
 <p>Let us first add a lidar sensor to <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. Open the URDF file, <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/src/description/sam_bot_description.urdf">src/description/sam_bot_description.urdf</a> and paste the following lines before the <code class="docutils literal notranslate"><span class="pre">&lt;/robot&gt;</span></code> tag.</p>
-<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">251</span>
+<div class="highlight-xml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">251</span>
 <span class="normal">252</span>
 <span class="normal">253</span>
 <span class="normal">254</span>
@@ -894,7 +894,7 @@
 <span class="normal">309</span>
 <span class="normal">310</span>
 <span class="normal">311</span>
-<span class="normal">312</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;lidar_link&quot;</span><span class="nt">&gt;</span>
+<span class="normal">312</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;lidar_link&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;inertial&gt;</span>
     <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;mass</span> <span class="na">value=</span><span class="s">&quot;0.125&quot;</span><span class="nt">/&gt;</span>
@@ -956,11 +956,11 @@
     <span class="nt">&lt;/plugin&gt;</span>
   <span class="nt">&lt;/sensor&gt;</span>
 <span class="nt">&lt;/gazebo&gt;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 <p>In the code snippet above, we create a <code class="docutils literal notranslate"><span class="pre">lidar_link</span></code> which will be referenced by the <code class="docutils literal notranslate"><span class="pre">gazebo_ros_ray_sensor</span></code> plugin as the location to attach our sensor. We also set values to the simulated lidar’s scan and range properties. Lastly, we set the <code class="docutils literal notranslate"><span class="pre">/scan</span></code> as the topic to which it will publish the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/LaserScan</span></code> messages.</p>
 <p>Next, let us add a depth camera to <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. Paste the following lines after the <code class="docutils literal notranslate"><span class="pre">&lt;/gazebo&gt;</span></code> tag of the lidar sensor.</p>
-<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">314</span>
+<div class="highlight-xml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">314</span>
 <span class="normal">315</span>
 <span class="normal">316</span>
 <span class="normal">317</span>
@@ -1031,7 +1031,7 @@
 <span class="normal">382</span>
 <span class="normal">383</span>
 <span class="normal">384</span>
-<span class="normal">385</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;camera_link&quot;</span><span class="nt">&gt;</span>
+<span class="normal">385</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;camera_link&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;visual&gt;</span>
     <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;geometry&gt;</span>
@@ -1103,8 +1103,8 @@
     <span class="nt">&lt;/plugin&gt;</span>
   <span class="nt">&lt;/sensor&gt;</span>
 <span class="nt">&lt;/gazebo&gt;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 <p>Similar to the lidar sensor, we create <code class="docutils literal notranslate"><span class="pre">camera_link</span></code> which will be referenced by the <code class="docutils literal notranslate"><span class="pre">gazebo_ros_camera</span></code> plugin as the sensor attachment location. We also create a <code class="docutils literal notranslate"><span class="pre">camera_depth_frame</span></code> that is attached to the <code class="docutils literal notranslate"><span class="pre">camera_link</span></code> and will be set as the <code class="docutils literal notranslate"><span class="pre">&lt;frame_name&gt;</span></code> of the depth camera plugin.  We also configure the plugin such that it will publish <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Image</span></code> and <code class="docutils literal notranslate"><span class="pre">sensor_msgs/PointCloud2</span></code> messages to <code class="docutils literal notranslate"><span class="pre">/depth_camera/image_raw</span></code> and  <code class="docutils literal notranslate"><span class="pre">/depth_camera/points</span></code> topics respectively. Lastly, we also set up other basic configuration properties for our depth camera.</p>
 </div>
 <div class="section" id="launch-and-build-files">
@@ -1174,7 +1174,7 @@ ros2 launch sam_bot_description display.launch.py
 <div class="section" id="configuring-nav2-costmap-2d">
 <span id="id1"></span><h3>Configuring nav2_costmap_2d<a class="headerlink" href="#configuring-nav2-costmap-2d" title="Permalink to this headline">¶</a></h3>
 <p>In this subsection, we will show an example configuration of <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> such that it uses the information provided by the lidar sensor of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. We will show an example configuration that uses static layer, obstacle layer, voxel layer, and inflation layer. We set both the obstacle and voxel layer to use the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> messages published  to the <code class="docutils literal notranslate"><span class="pre">/scan</span></code> topic by the lidar sensor. We also set some of the basic parameters to define how the detected obstacles are reflected in the costmap. Note that this configuration is to be included in the configuration file of Nav2.</p>
-<div class="highlight-yaml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1244,7 +1244,7 @@ ros2 launch sam_bot_description display.launch.py
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">update_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
@@ -1315,8 +1315,8 @@ ros2 launch sam_bot_description display.launch.py
 <span class="w">        </span><span class="nt">cost_scaling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w"></span>
 <span class="w">        </span><span class="nt">inflation_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.55</span><span class="w"></span>
 <span class="w">      </span><span class="nt">always_send_full_costmap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 <p>In the configuration above, notice that we set the parameters for two different costmaps: <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> and <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code>. We set up two costmaps since the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> is mainly used for long-term planning over the whole map while <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> is for short-term planning and collision avoidance.</p>
 <p>The layers that we use for our configuration are defined in the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> parameter, as shown in line 13 for the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> and line 50 for the <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code>. These values are set as a list of mapped layer names that also serve as namespaces for the layer parameters we set up starting at lines 14 and line 51. Note that each layer/namespace in this list must have a <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter (as indicated in lines 15, 18, 32, 52, and 68) defining the type of plugin to be loaded for that specific layer.</p>
 <p>For the static layer (lines 14-16), we set the <code class="docutils literal notranslate"><span class="pre">map_subscribe_transient_local</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code>. This sets the QoS settings for the map topic. Another important parameter for the static layer is the <code class="docutils literal notranslate"><span class="pre">map_topic</span></code> which defines the map topic to subscribe to. This defaults to <code class="docutils literal notranslate"><span class="pre">/map</span></code> topic when not defined.</p>
