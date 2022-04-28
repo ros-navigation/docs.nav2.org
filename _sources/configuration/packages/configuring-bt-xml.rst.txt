@@ -22,6 +22,7 @@ Action Plugins
   bt-plugins/actions/Wait.rst
   bt-plugins/actions/Spin.rst
   bt-plugins/actions/BackUp.rst
+  bt-plugins/actions/DriveOnHeading.rst
   bt-plugins/actions/ComputePathToPose.rst
   bt-plugins/actions/FollowPath.rst
   bt-plugins/actions/NavigateToPose.rst
@@ -40,6 +41,7 @@ Action Plugins
   bt-plugins/actions/CancelBackUp.rst
   bt-plugins/actions/CancelSpin.rst
   bt-plugins/actions/CancelWait.rst
+  bt-plugins/actions/CancelDriveOnHeading.rst
   bt-plugins/actions/Smooth.rst
 
 Condition Plugins

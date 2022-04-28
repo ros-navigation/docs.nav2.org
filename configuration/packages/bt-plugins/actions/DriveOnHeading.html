@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ControllerSelector &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>DriveOnHeading &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
@@ -26,8 +26,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="GoalCheckerSelector" href="GoalCheckerSelector.html" />
-    <link rel="prev" title="PlannerSelector" href="PlannerSelector.html" />
+    <link rel="next" title="ComputePathToPose" href="ComputePathToPose.html" />
+    <link rel="prev" title="BackUp" href="BackUp.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -412,7 +412,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Wait.html">Wait</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Spin.html">Spin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="BackUp.html">BackUp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="DriveOnHeading.html">DriveOnHeading</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">DriveOnHeading</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputePathToPose.html">ComputePathToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="FollowPath.html">FollowPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="NavigateToPose.html">NavigateToPose</a></li>
@@ -422,7 +422,7 @@
 <li class="toctree-l4"><a class="reference internal" href="ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TruncatePath.html">TruncatePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="PlannerSelector.html">PlannerSelector</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ControllerSelector.html">ControllerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
@@ -777,7 +777,7 @@
       <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../../index.html">Configuration Guide</a> &raquo;</li>
           <li><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a> &raquo;</li>
-      <li>ControllerSelector</li>
+      <li>DriveOnHeading</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -786,39 +786,80 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="controllerselector">
-<span id="bt-controller-selector-node"></span><h1>ControllerSelector<a class="headerlink" href="#controllerselector" title="Permalink to this headline">¶</a></h1>
-<p>It is used to select the Controller that will be used by the Controller server. It subscribes to the <code class="docutils literal notranslate"><span class="pre">controller_selector</span></code> topic to receive command messages with the name of the Controller to be used. It is commonly used before of the FollowPathAction. The <code class="docutils literal notranslate"><span class="pre">selected_controller</span></code> output port is passed to <code class="docutils literal notranslate"><span class="pre">controller_id</span></code> input port of the FollowPathAction. If none is provided on the topic, the <code class="docutils literal notranslate"><span class="pre">default_controller</span></code> is used.</p>
-<p>Any publisher to this topic needs to be configured with some QoS defined as <code class="docutils literal notranslate"><span class="pre">reliable</span></code> and <code class="docutils literal notranslate"><span class="pre">transient</span> <span class="pre">local</span></code>.</p>
+  <div class="section" id="driveonheading">
+<span id="bt-driveonheading-action"></span><h1>DriveOnHeading<a class="headerlink" href="#driveonheading" title="Permalink to this headline">¶</a></h1>
+<p>Invokes the DriveOnHeading ROS 2 action server, which causes the robot to drive on the current heading by a specific displacement.
+It performs an linear translation by a given distance. The <a href="#id1"><span class="problematic" id="id2">nav2_behaviors_</span></a> module implements the DriveOnHeading action server.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">topic_name:</th><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">dist_to_travel:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col width="46%" />
+<col width="54%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>controller_selector</td>
+<tr class="row-even"><td>double</td>
+<td>0.15</td>
 </tr>
 </tbody>
 </table>
 <dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">The name of the topic used to received select command messages. This is used to support multiple ControllerSelector nodes.</p>
+<dd><p class="first last">Distance to travel (m).</p>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">default_controller:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-even field"><th class="field-name">speed:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>0.025</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Speed at which to travel (m/s).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">time_allowance:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>10.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Description</dt>
+<dd><p class="first last">Time to envoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">server_name:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -832,24 +873,14 @@
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
-<dd><p class="first last">The default value for the selected Controller if no message is received from the input topic.</p>
+<dd><p class="first last">Action server name.</p>
 </dd>
 </dl>
 </td>
 </tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="output-ports">
-<h2>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">selected_controller:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<tr class="field-odd field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
 <col width="46%" />
 <col width="54%" />
@@ -858,25 +889,25 @@
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>N/A</td>
+<tr class="row-even"><td>double</td>
+<td>10</td>
 </tr>
 </tbody>
 </table>
 <dl class="last docutils">
 <dt>Description</dt>
-<dd><p class="first last">The output selected Controller id. This selected_controller string is usually passed to the FollowPath behavior via the controller_id input port.</p>
+<dd><p class="first last">Action server timeout (ms).</p>
 </dd>
 </dl>
 </td>
 </tr>
 </tbody>
 </table>
-</div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ControllerSelector</span> <span class="na">selected_controller=</span><span class="s">&quot;{selected_controller}&quot;</span> <span class="na">default_controller=</span><span class="s">&quot;FollowPath&quot;</span> <span class="na">topic_name=</span><span class="s">&quot;controller_selector&quot;</span><span class="nt">/&gt;</span>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DriveOnHeading</span> <span class="na">dist_to_travel=</span><span class="s">&quot;0.2&quot;</span> <span class="na">speed=</span><span class="s">&quot;0.05&quot;</span> <span class="na">server_name=</span><span class="s">&quot;backup_server&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
