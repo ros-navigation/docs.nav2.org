@@ -84,11 +84,11 @@ Behavior Server Parameters
 
 :behavior_plugins:
 
-  ============== =============================
+  ============== ===============================================
   Type           Default
-  -------------- -----------------------------
-  vector<string> {"spin", "back_up", "wait"}
-  ============== =============================
+  -------------- -----------------------------------------------
+  vector<string> {"spin", "back_up", "drive_on_heading", "wait"}
+  ============== ===============================================
 
   Description
     List of plugin names to use, also matches action server names.
@@ -102,11 +102,13 @@ Behavior Server Parameters
 
         recoveries_server:
           ros__parameters:
-            behavior_plugins: ["spin", "backup", "wait"]
+            behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
             spin:
               plugin: "nav2_behaviors/Spin"
             backup:
               plugin: "nav2_behaviors/BackUp"
+            drive_on_heading:
+              plugin: "nav2_behaviors/DriveOnHeading"
             wait:
               plugin: "nav2_behaviors/Wait"
     ..
@@ -116,15 +118,17 @@ Default Plugins
 
 When the :code:`behavior_plugins` parameter is not overridden, the following default plugins are loaded:
 
-  ================= =====================================================
-  Namespace         Plugin
-  ----------------- -----------------------------------------------------
-  "spin"            "nav2_behaviors/Spin"
-  ----------------- -----------------------------------------------------
-  "backup"          "nav2_behaviors/BackUp"
-  ----------------- -----------------------------------------------------
-  "wait"            "nav2_behaviors/Wait"
-  ================= =====================================================
+  ================== =====================================================
+  Namespace          Plugin
+  ------------------ -----------------------------------------------------
+  "spin"             "nav2_behaviors/Spin"
+  ------------------ -----------------------------------------------------
+  "backup"           "nav2_behaviors/BackUp"
+  ------------------ -----------------------------------------------------
+  "drive_on_heading" "nav2_behaviors/DriveOnHeading"
+  ------------------ -----------------------------------------------------
+  "wait"             "nav2_behaviors/Wait"
+  ================== =====================================================
 
 Spin Behavior Parameters
 ************************
@@ -178,7 +182,23 @@ Spin distance is given from the action request
 BackUp Behavior Parameters
 **************************
 
-Backup distance is given from the action request.
+Backup distance, speed and time_allowance is given from the action request.
+
+:simulate_ahead_time:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         2.0
+  ============== =============================
+
+  Description
+    Time to look ahead for collisions (s).
+
+DriveOnHeading Behavior Parameters
+**********************************
+
+DriveOnHeading distance, speed and time_allowance is given from the action request.
 
 :simulate_ahead_time:
 
@@ -200,11 +220,13 @@ Example
         costmap_topic: local_costmap/costmap_raw
         footprint_topic: local_costmap/published_footprint
         cycle_frequency: 10.0
-        behavior_plugins: ["spin", "backup", "wait"]
+        behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
         spin:
           plugin: "nav2_behaviors/Spin"
         backup:
           plugin: "nav2_behaviors/BackUp"
+        drive_on_heading:
+          plugin: "nav2_behaviors/DriveOnHeading"
         wait:
           plugin: "nav2_behaviors/Wait"
         global_frame: odom
