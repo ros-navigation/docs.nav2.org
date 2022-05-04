@@ -575,6 +575,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spin-behavior-parameters">Spin Behavior Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-behavior-parameters">BackUp Behavior Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#driveonheading-behavior-parameters">DriveOnHeading Behavior Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -931,15 +932,15 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 <tr class="field-odd field"><th class="field-name" colspan="2">behavior_plugins:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col width="23%" />
+<col width="77%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Type</td>
 <td>Default</td>
 </tr>
 <tr class="row-even"><td>vector&lt;string&gt;</td>
-<td>{“spin”, “back_up”, “wait”}</td>
+<td>{“spin”, “back_up”, “drive_on_heading”, “wait”}</td>
 </tr>
 </tbody>
 </table>
@@ -952,11 +953,13 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 <p>Example:</p>
 <div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">recoveries_server</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;drive_on_heading&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">    </span><span class="nt">spin</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">backup</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/BackUp&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">drive_on_heading</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/DriveOnHeading&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">wait</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span><span class="w"></span>
 </pre></div>
@@ -974,8 +977,8 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col width="25%" />
+<col width="75%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Namespace</td>
@@ -987,7 +990,10 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 <tr class="row-odd"><td>“backup”</td>
 <td>“nav2_behaviors/BackUp”</td>
 </tr>
-<tr class="row-even"><td>“wait”</td>
+<tr class="row-even"><td>“drive_on_heading”</td>
+<td>“nav2_behaviors/DriveOnHeading”</td>
+</tr>
+<tr class="row-odd"><td>“wait”</td>
 <td>“nav2_behaviors/Wait”</td>
 </tr>
 </tbody>
@@ -1094,7 +1100,39 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 </div>
 <div class="section" id="backup-behavior-parameters">
 <h2>BackUp Behavior Parameters<a class="headerlink" href="#backup-behavior-parameters" title="Permalink to this headline">¶</a></h2>
-<p>Backup distance is given from the action request.</p>
+<p>Backup distance, speed and time_allowance is given from the action request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">simulate_ahead_time:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Time to look ahead for collisions (s).</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="driveonheading-behavior-parameters">
+<h2>DriveOnHeading Behavior Parameters<a class="headerlink" href="#driveonheading-behavior-parameters" title="Permalink to this headline">¶</a></h2>
+<p>DriveOnHeading distance, speed and time_allowance is given from the action request.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1131,11 +1169,13 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 <span class="w">    </span><span class="nt">costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/costmap_raw</span><span class="w"></span>
 <span class="w">    </span><span class="nt">footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/published_footprint</span><span class="w"></span>
 <span class="w">    </span><span class="nt">cycle_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;drive_on_heading&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">    </span><span class="nt">spin</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">backup</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/BackUp&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">drive_on_heading</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/DriveOnHeading&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">wait</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w"></span>
