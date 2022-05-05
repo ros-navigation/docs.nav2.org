@@ -26,3 +26,4 @@ the best navigation performance.
    packages/configuring-smoother-server.rst
    packages/configuring-regulated-pp.rst
    packages/configuring-rotation-shim-controller.rst
+   packages/configuring-constrained-smoother.rst

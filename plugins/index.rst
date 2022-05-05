@@ -148,7 +148,7 @@ Planners
 .. _SmacPlannerLattice: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 
 Smoothers
-========
+=========
 
 +---------------------------+---------------------------------------+------------------------------+---------------------+
 | Plugin Name               |         Creator                       |       Description            | Drivetrain support  |
