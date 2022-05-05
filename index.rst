@@ -48,6 +48,7 @@ It has tools to:
 - localize the robot on the map (AMCL)
 - plan a path from A to B around obstacles (Nav2 Planner)
 - control the robot as it follows the path (Nav2 Controller)
+- Smooth path plans to be more continuous and feasible (Nav2 Smoother)
 - convert sensor data into a costmap representation of the world (Nav2 Costmap 2D)
 - build complicated robot behaviors using behavior trees (Nav2 Behavior Trees and BT Navigator)
 - Compute recovery behaviors in case of failure (Nav2 Recoveries)
@@ -55,7 +56,7 @@ It has tools to:
 - Manage the lifecycle and watchdog for the servers (Nav2 Lifecycle Manager)
 - Plugins to enable your own custom algorithms and behaviors (Nav2 Core)
 
-.. image:: images/architectural_diagram.png
+.. image:: images/nav2_architecture.png
     :width: 700px
     :align: center
     :alt: Navigation2 Block Diagram

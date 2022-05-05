@@ -20,7 +20,7 @@ Overview
 
 This tutorial shows how to load and use an external plugin.
 This example uses the `Spatio Temporal Voxel Layer <https://github.com/SteveMacenski/spatio_temporal_voxel_layer/>`_ (STVL) costmap `pluginlib <http://wiki.ros.org/pluginlib/>`_ plugin as an example.
-STVL is a demonstrative pluginlib plugin and the same process can be followed for other costmap plugins as well as plugin planners, controllers, and recoveries.
+STVL is a demonstrative pluginlib plugin and the same process can be followed for other costmap plugins as well as plugin planners, controllers, and behaviors.
 
 Before completing this tutorial, please look at the previous two tutorials on navigation in simulation and physical hardware, if available.
 This tutorial assumes knowledge of navigation and basic understanding of costmaps.
@@ -143,7 +143,7 @@ An example fully-described parameterization of an STVL configuration is:
 Please copy-paste the text above, with the ``plugin_names`` and ``plugin_types`` registration, into your ``nav2_params.yaml`` to enable STVL in your application.
 Make sure to change both the local and global costmaps.
 
-Note: Pluginlib plugins for other Navigation2 servers such as planning, recovery, and control can be set in this same way.
+Note: Pluginlib plugins for other Navigation2 servers such as planning, behavior, and control can be set in this same way.
 
 2- Launch Navigation2
 ---------------------

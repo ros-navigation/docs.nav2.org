@@ -130,6 +130,7 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 - ``param_file`` : The main navigation configuration file. Defaults to ``nav2_params.yaml`` in the package's ``params/`` directory.
 - ``autostart`` : Whether to autostart the navigation system's lifecycle management system. Defaults to ``true`` to transition up the Nav2 stack on creation to the activated state, ready for use.
 - ``use_composition`` : Whether to launch each Nav2 server into individual processes or in a single composed node, to leverage savings in CPU and memory. Default ``true`` to use single process Nav2.
+- ``use_respawn`` : Whether to allow server that crash to automatically respawn. When also configured with the lifecycle manager, the manager will transition systems back up if already activated and went down due to a crash. Only works in non-composed bringup since all of the nodes are in the same process / container otherwise.
 - ``use_sim_time`` : Whether to set all the nodes to use simulation time, needed in simulation. Default ``true`` for simulation.
 - ``rviz_config_file`` : The filepath to the rviz configuration file to use. Defaults to the ``rviz/`` directory's file.
 - ``use_simulator`` : Whether or not to start the Gazebo simulator with the Nav2 stack. Defaults to ``true`` to launch Gazebo.

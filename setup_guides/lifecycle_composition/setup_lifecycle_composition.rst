@@ -9,7 +9,7 @@ In this guide, we will discuss two new concepts in ROS 2, namely Lifecycle and C
 Lifecycle
 **********
 
-Lifecycle is introduced in ROS 2 to systematically manage the bringup and shutdown of the different nodes involved in the robot's operation. The use of Lifecycle nodes ensures that all nodes are successfully instantiated before they begin their execution and Nav2 shuts down all nodes if there is any unresponsive node. 
+Lifecycle is introduced in ROS 2 to systematically manage the bringup and shutdown of the different nodes involved in the robot's operation. The use of Lifecycle nodes ensures that all nodes are successfully instantiated before they begin their execution and Nav2 shuts down all nodes if there is any unresponsive node.
 
 
 Lifecycle nodes contain state machine transitions that enable deterministic behavior in ROS 2 servers. The Lifecycle node transitions in Nav2 are handled by the ``Lifecycle Manager``. The Lifecycle Manager transitions the states of the Lifecycle nodes and provides greater control over the state of a system.
@@ -20,20 +20,20 @@ The primary states of a Lifecycle node are ``Unconfigured``, ``Inactive``, ``Act
 .. seealso::
     For more information on Lifecycle management, see the article on `Managed Nodes <https://design.ros2.org/articles/node_lifecycle.html>`_.
 
-The Lifecycle node framework is heavily used by the Nav2 servers, such as the planner and controller servers which were discussed in the previous tutorial. 
+The Lifecycle node framework is heavily used by the Nav2 servers, such as the planner and controller servers which were discussed in the previous tutorial.
 
-You may wish to integrate your own nodes into the Nav2 framework or add new lifecycle nodes to your system. As an example, we will add a new notional lifecycle node ``sensor_driver``, and have it be controlled via the Nav2 Lifecycle Manager to ensure sensor feeds are available before activating navigation. You can do so by adding a ``sensor_driver`` node in your launch file and adding it to the list of nodes to be activated by the ``lifecycle_manager`` before navigation, as shown in the example below. 
+You may wish to integrate your own nodes into the Nav2 framework or add new lifecycle nodes to your system. As an example, we will add a new notional lifecycle node ``sensor_driver``, and have it be controlled via the Nav2 Lifecycle Manager to ensure sensor feeds are available before activating navigation. You can do so by adding a ``sensor_driver`` node in your launch file and adding it to the list of nodes to be activated by the ``lifecycle_manager`` before navigation, as shown in the example below.
 
 .. code-block:: python
-    
+
     lifecycle_nodes = ['sensor_driver',
                        'controller_server',
                        'smoother_server',
                        'planner_server',
-                       'recoveries_server',
+                       'behavior_server',
                        'bt_navigator',
                        'waypoint_follower']
-    
+
     ...
 
     Node(
@@ -51,9 +51,9 @@ You may wish to integrate your own nodes into the Nav2 framework or add new life
         output='screen',
         parameters=[{'autostart': autostart},
                     {'node_names': lifecycle_nodes}]),
-    
-     
-In the snippet above, the nodes to be handled by the Lifecycle Manager are set using the ``node_names`` parameter. The ``node_names`` parameter takes in an ordered list of nodes to bringup through the Lifecycle transition. As shown in the snippet, the ``node_names`` parameter takes in ``lifecycle_nodes`` which contains the list of nodes to be added to the Lifecycle Manager. The Lifecycle Manager implements bringup transitions (``Configuring`` and ``Activating``) to the nodes one-by-one and in order, while the nodes are processed in reverse order for shutdown transitions. Hence, the ``sensor_driver`` is listed first before the other navigation servers so that the sensor data is available before the navigation servers are activated.  
+
+
+In the snippet above, the nodes to be handled by the Lifecycle Manager are set using the ``node_names`` parameter. The ``node_names`` parameter takes in an ordered list of nodes to bringup through the Lifecycle transition. As shown in the snippet, the ``node_names`` parameter takes in ``lifecycle_nodes`` which contains the list of nodes to be added to the Lifecycle Manager. The Lifecycle Manager implements bringup transitions (``Configuring`` and ``Activating``) to the nodes one-by-one and in order, while the nodes are processed in reverse order for shutdown transitions. Hence, the ``sensor_driver`` is listed first before the other navigation servers so that the sensor data is available before the navigation servers are activated.
 
 Two other parameters of the Lifecycle Manager are ``autostart`` and ``bond_timeout``. Set ``autostart`` to ``true`` if you want to set the transition nodes to the ``Active`` state on startup. Otherwise, you will need to manually trigger Lifecycle Manager to transition up the system. The ``bond_timeout`` sets the waiting time to decide when to transition down all of the nodes if a node is not responding.
 
@@ -77,39 +77,39 @@ For manual composition, there is an existing manually composed bringup file, `co
 
 
 1. Add the following to `composed_bringup.cpp <https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/src/composed_bringup.cpp>`_:
-    
-    Add the the header file of ``route_server``. 
-    
-    .. code-block:: cpp  
+
+    Add the the header file of ``route_server``.
+
+    .. code-block:: cpp
 
         #include "nav2_route_server/route_server.hpp"
 
-    Create shared pointer ``route_node`` and add it to ``navigation_node_names`` to transition up with the lifecycle manager, if a lifecycle node. 
+    Create shared pointer ``route_node`` and add it to ``navigation_node_names`` to transition up with the lifecycle manager, if a lifecycle node.
 
 
-    .. code-block:: cpp  
+    .. code-block:: cpp
 
          auto route_node = std::make_shared<nav2_route_server::RouteServer>();
          navigation_node_names.push_back(route_node->get_name());
 
-    
+
     Add ``route_node`` to ``threads`` to create single thread executor for ``route_node``.
 
-    .. code-block:: cpp  
+    .. code-block:: cpp
 
          threads.push_back(create_spin_thread(route_node));
-   
+
 
 2. Add the package containing the server as a dependency to your ``package.xml`` file.
 
-    .. code-block:: xml  
+    .. code-block:: xml
 
         <exec_depend>nav2_route_server</exec_depend>
 
 3. Include the package in the ``CMakeLists.txt`` file.
 
     .. code-block:: xml
-        
+
         find_package(nav2_route_server REQUIRED)
         set(dependencies nav2_route_server)
 
@@ -134,17 +134,17 @@ In dynamic composition, we make use of the launch files to compose different ser
             ],
             output='screen',
         )
-        
+
     .. seealso::
         See example in composition demo's `composition_demo.launch.py <https://github.com/ros2/demos/blob/master/composition/launch/composition_demo.launch.py>`_.
 
 2. Add the package containing the server to your ``package.xml`` file.
 
-    .. code-block:: xml  
+    .. code-block:: xml
 
         <exec_depend>nav2_route_server</exec_depend>
 
 Conclusion
 **********
 
-In this section of the guide, we have discussed Lifecycle and Composition nodes which are new and important concepts in ROS 2. We also showed how to implement Lifecycle and Composition to your newly created nodes/servers with Nav2. These two concepts are helpful to efficiently run your system and therefore are encouraged to be used throughout Nav2. 
+In this section of the guide, we have discussed Lifecycle and Composition nodes which are new and important concepts in ROS 2. We also showed how to implement Lifecycle and Composition to your newly created nodes/servers with Nav2. These two concepts are helpful to efficiently run your system and therefore are encouraged to be used throughout Nav2.

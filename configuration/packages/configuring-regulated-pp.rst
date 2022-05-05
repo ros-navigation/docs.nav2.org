@@ -233,6 +233,17 @@ Regulated Pure Pursuit Parameters
   Description
     Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting.
 
+:use_interpolation:
+
+  ============== =============================
+  Type           Default                      
+  -------------- -----------------------------
+  bool           true                         
+  ============== =============================
+
+  Description
+    Enable linear interpolation between poses for lookahead point selection. Leads to smoother commanded linear and angular velocities.
+
 Example
 *******
 .. code-block:: yaml
@@ -245,7 +256,7 @@ Example
       min_y_velocity_threshold: 0.5
       min_theta_velocity_threshold: 0.001
       progress_checker_plugin: "progress_checker"
-      goal_checker_plugin: "goal_checker"
+      goal_checker_plugins: "goal_checker"
       controller_plugins: ["FollowPath"]
 
       progress_checker:
@@ -278,3 +289,4 @@ Example
         rotate_to_heading_min_angle: 0.785
         max_angular_accel: 3.2
         max_robot_pose_search_dist: 10.0
+        use_interpolation: false
