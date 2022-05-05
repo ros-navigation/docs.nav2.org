@@ -46,17 +46,6 @@ Smoother Server Parameters
   Description
     TF transform tolerance.
 
-:global_frame:
-
-  ============== =============================
-  Type           Default                                               
-  -------------- -----------------------------
-  string         "map" 
-  ============== =============================
-
-  Description
-    Reference frame.
-
 :robot_base_frame:
 
   ============== =============================
@@ -70,11 +59,11 @@ Smoother Server Parameters
 
 :smoother_plugins:
 
-  ============== =============================
+  ============== =================================
   Type           Default                                               
-  -------------- -----------------------------
-  vector<string> {}
-  ============== =============================
+  -------------- ---------------------------------
+  vector<string> {"nav2_smoother::SimpleSmoother"}
+  ============== =================================
 
   Description
     List of plugin names to use, also matches action server names.
@@ -88,20 +77,13 @@ Smoother Server Parameters
 
         smoother_server:
           ros__parameters:
-            smoother_plugins: ["SmoothPath"]
-            SmoothPath:
+            smoother_plugins: ["simple_smoother", "curvature_smoother"]
+            curvature_smoother:
               plugin: "nav2_ceres_costaware_smoother/CeresCostawareSmoother"
+            simple_smoother:
+              plugin: "nav2_smoother::SimpleSmoother"
+
     ..
-
-Default Plugins
-***************
-
-When the :code:`smoother_plugins` parameter is not overridden, the following default plugins are loaded:
-
-  ================= =====================================================
-  Namespace         Plugin
-  ----------------- -----------------------------------------------------
-  ================= =====================================================
 
 Example
 *******
@@ -111,13 +93,10 @@ Example
       ros__parameters:
         costmap_topic: global_costmap/costmap_raw
         footprint_topic: global_costmap/published_footprint
-        global_frame: map
         robot_base_frame: base_link
         transform_timeout: 0.1
-        smoother_plugins: ["SmoothPath"]
-
-        SmoothPath:
-          plugin: "my_plugin_package/MyPlugin"
-          minimum_turning_radius: 0.5
-          smoothing_intensity: 10.0
-          my_other_param: 1.0
+        smoother_plugins: ["simple_smoother"]
+        simple_smoother:
+          plugin: "nav2_smoother::SimpleSmoother"
+          tolerance: 1.0e-10
+          do_refinement: True

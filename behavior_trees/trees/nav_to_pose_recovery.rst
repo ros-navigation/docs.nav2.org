@@ -5,7 +5,7 @@ Navigate To Pose
 
 This behavior tree implements a significantly more mature version of the behavior tree on :ref:`behavior_trees`.
 It navigates from a starting point to a single point goal in freespace.
-It contains both use of custom recoveries in specific sub-contexts as well as a global recovery subtree for system-level failures.
+It contains both use of custom recovery behaviors in specific sub-contexts as well as a global recovery subtree for system-level failures.
 It also provides the opportunity for users to retry tasks multiple times before returning a failed state.
 
 The ``ComputePathToPose`` and ``FollowPath`` BT nodes both also specify their algorithms to utilize.
@@ -15,8 +15,8 @@ In this behavior tree, we attempt to retry the entire navigation task 6 times be
 This allows the navigation system ample opportunity to try to recovery from failure conditions or wait for transient issues to pass, such as crowding from people or a temporary sensor failure.
 
 In nominal execution, this will replan the path at every second and pass that path onto the controller, similar to the behavior tree in :ref:`behavior_trees`.
-However, this time, if the planner fails, it will trigger contextually aware recoveries in its subtree, clearing the global costmap.
-Additional recoveries can be added here for additional context-specific recoveries, such as trying another algorithm.
+However, this time, if the planner fails, it will trigger contextually aware recovery behaviors in its subtree, clearing the global costmap.
+Additional recovery behaviors can be added here for additional context-specific recoveries, such as trying another algorithm.
 
 Similarly, the controller has similar logic. If it fails, it also attempts a costmap clearing of the local costmap impacting the controller.
 It is worth noting the ``GoalUpdated`` node in the reactive fallback.
@@ -27,7 +27,7 @@ If these contextual recoveries fail, this behavior tree enters the recovery subt
 This subtree is reserved for system-level failures to help resolve issues like the robot being stuck or in a bad spot.
 This subtree also has the ``GoalUpdated`` BT node it ticks every iteration to ensure responsiveness of new goals.
 Next, the recovery subtree will the recoveries: costmap clearing operations, spinning, waiting, and backing up.
-After each of the recoveries in the subtree, the main navigation subtree will be reattempted. 
+After each of the recoveries in the subtree, the main navigation subtree will be reattempted.
 If it continues to fail, the next recovery in the recovery subtree is ticked.
 
 While this behavior tree does not make use of it, the ``PlannerSelector``, ``ControllerSelector``, and ``GoalCheckerSelector`` behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (``GridBased`` and ``FollowPath``), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.

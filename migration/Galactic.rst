@@ -210,7 +210,8 @@ The parameters ``max_linear_accel`` and ``max_linear_decel`` were removed along 
 Added Smoother Task Server
 **************************
 
-A new task server was added which loads smoother plugins and executes them to improve quality of an existing planned path. Smoothing action can be called from a behavior tree using SmoothPath action node.
+A new task server was added which loads smoother plugins and executes them to improve quality of an existing planned path. Smoothing action can be called from a behavior tree using SmoothPath action node. `PR 2569 <https://github.com/ros-planning/navigation2/pull/2569>`_ implements and `PR 2875 <https://github.com/ros-planning/navigation2/pull/2875>`_ adds in the first of the plugins using it with a simple smoother. Other smoothers are in development and will be added in the future.
+
 
 Removed Use Approach Velocity Scaling Param in RPP
 **************************************************
@@ -260,6 +261,18 @@ BT Cancel Node
 **************
 `This PR 2787 <https://github.com/ros-planning/navigation2/pull/2787>`_ caters the users with an abstract node to develop cancel behaviors for different servers present in the Nav2 stack such as the controller_server, recovery_server and so on. As a start, this PR also provides the ``CancelControl`` behavior to cancel the goal given to the controller_server. As an addition to the ``CancelControl`` `This PR 2856 <https://github.com/ros-planning/navigation2/pull/2856>`_ provides the users with the option to cancel the recoveries such as the ``backup``, ``spin`` and ``wait``.
 
+BT PathLongerOnApproach Node
+****************************
+
+In the `PR <https://github.com/ros-planning/navigation2/pull/2802>`_, a new Decorator BT node known as ``PathLongerOnApproach`` has been added to provide with the functionality to check and potentially handle longer path generated due to an obstacle in the given goal proximity. To demonstrate this functionality, a new BT ``navigate_to_pose_w_replanning_goal_patience_and_recovery.xml`` would serve both as an example and ready-to-use BT for a specific application that wishes to optimize their process cycle time. Demo of the developed BT can be seen below, where the robot pauses when close to a goal to see if the dynamic obstacle moves out of the way. Else, it executes the replan:
+
+Obstacle does not clear at all, with `obstacle_clearance_time` to be 3 seconds:
+
+.. image:: images/nav2_patience_near_goal_and_clear_obstacle.gif
+
+Obstacle clears and you can see the robot pass through the (could have been ideally the) same path:
+
+.. image:: images/nav2_patience_near_goal_and_go_around.gif
 
 Replanning at a Constant Rate and if the Path is Invalid
 ********************************************************
@@ -271,3 +284,18 @@ Euclidean Distance 2D
 
 `This PR 2865 <https://github.com/ros-planning/navigation2/pull/2865>`_ changes Euclidean distance calculation throughout nav2 to project on to the XY plane (i.e. discard any information related to components in Z).
 This may potentially subtly change the way certain BT nodes, BT Navigators, controller servers, planner servers, and RPP behave if using custom plugins outside the Nav2 ecosystem.
+
+
+Recovery To Behavior
+********************
+`This PR 2867 <https://github.com/ros-planning/navigation.ros.org/pull/298>`_ renames the nav2_recoveries to nav2_behaviors.
+
+In navigation_launch.py recoveries_server -> behavior_server and nav2_recoveries -> nav2_behaviors.
+In nav2_params.yaml recovery_plugins -> behavior_plugins and nav2_recoveries -> nav2_behaviors.
+
+Respawn Support in Launch and Lifecycle Manager
+***********************************************
+
+`PR 2752 <https://github.com/ros-planning/navigation2/pull/2910>`_ enables respawn support in Nav2. In the launch files, you may set ``use_respawn`` to ``true`` to enable respawning of servers that crash. This is only available in non-composed systems, since in composed systems, all of the nodes are under a single process and a crash anywhere will bring everything down (including the lifecycle manager itself). Even if the container was set to respawn, it would only respawn the empty container, not with all of the components loaded into it.
+
+That PR also enables the lifecycle manager to check if a system goes down due to a crash. If so, it allows the manager to check if the server comes back online within a given timeout period. If it does, it will automatically retransition the system back up to active to continue on its task automatically.

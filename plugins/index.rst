@@ -4,7 +4,7 @@ Navigation Plugins
 ##################
 
 There are a number of plugin interfaces for users to create their own custom applications or algorithms with.
-Namely, the costmap layer, planner, controller, behavior tree, and recovery plugins.
+Namely, the costmap layer, planner, controller, behavior tree, and behavior plugins.
 A list of all known plugins are listed here below for ROS 2 Navigation.
 If you know of a plugin, or you have created a new plugin, please consider submitting a pull request with that information.
 
@@ -147,17 +147,22 @@ Planners
 .. _ThetaStarPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
 .. _SmacPlannerLattice: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
 
+
 Smoothers
-========
+=========
 
-+---------------------------+---------------------------------------+------------------------------+---------------------+
-| Plugin Name               |         Creator                       |       Description            | Drivetrain support  |
-+===========================+=======================================+==============================+=====================+
-|                           |                                       |                              |                     |
-+---------------------------+---------------------------------------+------------------------------+---------------------+
++---------------------------+---------------------------------------+------------------------------+
+| Plugin Name               |         Creator                       |       Description            |
++===========================+=======================================+==============================+
+|  `Simple Smoother`_       | Steve Macenski                        | A simple path smoother for   |
+|                           |                                       | infeasible (e.g. 2D)         |
+|                           |                                       | planners                     |
++---------------------------+---------------------------------------+------------------------------+
 
-Recoveries
-==========
+.. _Simple Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
+
+Behaviors
+=========
 
 +----------------------+------------------------+----------------------------------+
 |  Plugin Name         |         Creator        |       Description                |
@@ -166,25 +171,29 @@ Recoveries
 |                      |                        | costmap in case of incorrect     |
 |                      |                        | perception or robot is stuck     |
 +----------------------+------------------------+----------------------------------+
-|  `Spin`_             | Steve Macenski         | Rotate recovery of configurable  |
+|  `Spin`_             | Steve Macenski         | Rotate behavior of configurable  |
 |                      |                        | angles to clear out free space   |
 |                      |                        | and nudge robot out of potential |
 |                      |                        | local failures                   |
 +----------------------+------------------------+----------------------------------+
-|    `Back Up`_        | Brian Wilcox           | Back up recovery of configurable |
+|    `Back Up`_        | Brian Wilcox           | Back up behavior of configurable |
 |                      |                        | distance to back out of a        |
 |                      |                        | situation where the robot is     |
 |                      |                        | stuck                            |
 +----------------------+------------------------+----------------------------------+
-|             `Wait`_  | Steve Macenski         | Wait recovery with configurable  |
+|             `Wait`_  | Steve Macenski         | Wait behavior with configurable  |
 |                      |                        | time to wait in case of time     |
 |                      |                        | based obstacle like human traffic|
 |                      |                        | or getting more sensor data      |
 +----------------------+------------------------+----------------------------------+
+|  `Drive On Heading`_ | Joshua Wallace         | Drive on heading behavior with   |
+|                      |                        | configurable distance to drive   |
++----------------------+------------------------+----------------------------------+
 
-.. _Back Up: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins
-.. _Spin: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins
-.. _Wait: https://github.com/ros-planning/navigation2/tree/main/nav2_recoveries/plugins
+.. _Back Up: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
+.. _Spin: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
+.. _Wait: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
+.. _Drive On Heading: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
 .. _Clear Costmap: https://github.com/ros-planning/navigation2/blob/main/nav2_costmap_2d/src/clear_costmap_service.cpp
 
 Waypoint Task Executors
@@ -253,7 +262,9 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | Action Plugin Name                         |   Creator           |       Description                        |
 +============================================+=====================+==========================================+
-| `Back Up Action`_                          | Michael Jeronimo    | Calls backup recovery action             |
+| `Back Up Action`_                          | Michael Jeronimo    | Calls backup behavior action             |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Drive On Heading Action`_                 | Joshua Wallace      | Calls drive on heading behavior action   |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Clear Entire Costmap Service`_            | Carl Delsey         | Calls clear entire costmap service       |
 +--------------------------------------------+---------------------+------------------------------------------+
@@ -273,9 +284,9 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Reinitalize Global Localization Service`_ | Carl Delsey         | Reinitialize AMCL to a new pose          |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Spin Action`_                             | Carl Delsey         | Calls spin recovery action               |
+| `Spin Action`_                             | Carl Delsey         | Calls spin behavior action               |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Wait Action`_                             | Steve Macenski      | Calls wait recovery action               |
+| `Wait Action`_                             | Steve Macenski      | Calls wait behavior action               |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter        |
 +--------------------------------------------+---------------------+------------------------------------------+
@@ -305,14 +316,17 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Control Action`_                   |Pradheep Padmanabhan | Cancels Nav2 controller server           |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel BackUp Action`_                    |Pradheep Padmanabhan | Cancels backup recovery action           |
+| `Cancel BackUp Action`_                    |Pradheep Padmanabhan | Cancels backup behavior action           |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Spin Action`_                      |Pradheep Padmanabhan | Cancels spin recovery action             |
+| `Cancel Spin Action`_                      |Pradheep Padmanabhan | Cancels spin behavior action             |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Wait Action`_                      |Pradheep Padmanabhan | Cancels wait recovery action             |
+| `Cancel Wait Action`_                      |Pradheep Padmanabhan | Cancels wait behavior action             |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Drive on Heading Action`_          |Jousha Wallace       | Cancels drive on heading behavior action |
 +--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
+.. _Drive On Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
 .. _Clear Entire Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
 .. _Clear Costmap Except Region Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
 .. _Clear Costmap Around Robot Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
@@ -334,6 +348,7 @@ Behavior Tree Nodes
 .. _Cancel BackUp Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
 .. _Cancel Spin Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
 .. _Cancel Wait Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
+.. _Cancel Drive on Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp
 
 
 +------------------------------------+--------------------+------------------------+
@@ -400,30 +415,36 @@ Behavior Tree Nodes
 .. _Is Path Valid Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
 .. _Path Expiring Timer: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
 
-+--------------------------+-------------------+----------------------------------+
-| Decorator Plugin Name    |    Creator        |       Description                |
-+==========================+===================+==================================+
-| `Rate Controller`_       | Michael Jeronimo  | Throttles child node to a given  |
-|                          |                   | rate                             |
-+--------------------------+-------------------+----------------------------------+
-| `Distance Controller`_   | Sarthak Mittal    | Ticks child node based on the    |
-|                          |                   | distance traveled by the robot   |
-+--------------------------+-------------------+----------------------------------+
-| `Speed Controller`_      | Sarthak Mittal    | Throttles child node to a rate   |
-|                          |                   | based on current robot speed.    |
-+--------------------------+-------------------+----------------------------------+
-| `Goal Updater`_          | Francisco Martín  | Updates the goal received via    |
-|                          |                   | topic subscription.              |
-+--------------------------+-------------------+----------------------------------+
-| `Single Trigger`_        | Steve Macenski    | Triggers nodes/subtrees below    |
-|                          |                   | only a single time per BT run.   |
-+--------------------------+-------------------+----------------------------------+
++--------------------------+---------------------+----------------------------------+
+| Decorator Plugin Name    |    Creator          |       Description                |
++==========================+=====================+==================================+
+| `Rate Controller`_       | Michael Jeronimo    | Throttles child node to a given  |
+|                          |                     | rate                             |
++--------------------------+---------------------+----------------------------------+
+| `Distance Controller`_   | Sarthak Mittal      | Ticks child node based on the    |
+|                          |                     | distance traveled by the robot   |
++--------------------------+---------------------+----------------------------------+
+| `Speed Controller`_      | Sarthak Mittal      | Throttles child node to a rate   |
+|                          |                     | based on current robot speed.    |
++--------------------------+---------------------+----------------------------------+
+| `Goal Updater`_          | Francisco Martín    | Updates the goal received via    |
+|                          |                     | topic subscription.              |
++--------------------------+---------------------+----------------------------------+
+| `Single Trigger`_        | Steve Macenski      | Triggers nodes/subtrees below    |
+|                          |                     | only a single time per BT run.   |
++--------------------------+---------------------+----------------------------------+
+| `PathLongerOnApproach`_  | Pradheep Padmanabhan| Triggers child nodes if the new  |
+|                          |                     | global path is significantly     |
+|                          |                     | larger than the old global path  |
+|                          |                     | on approach to the goal          |
++--------------------------+---------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
 .. _Distance Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
 .. _Speed Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
 .. _Goal Updater: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
 .. _Single Trigger: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
+.. _PathLongerOnApproach: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |

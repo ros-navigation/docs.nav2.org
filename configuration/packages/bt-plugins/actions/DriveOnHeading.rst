@@ -1,29 +1,28 @@
-.. _bt_backup_action:
+.. _bt_driveonheading_action:
 
-BackUp
-======
+DriveOnHeading
+==============
 
-Invokes the BackUp ROS 2 action server, which causes the robot to back up by a specific displacement.
-It performs an linear translation by a given distance.
-This is used in nav2 Behavior Trees as a recovery behavior. The nav2_behaviors_ module implements the BackUp action server.
+Invokes the DriveOnHeading ROS 2 action server, which causes the robot to drive on the current heading by a specific displacement.
+It performs an linear translation by a given distance. The nav2_behaviors_ module implements the DriveOnHeading action server.
 
 .. nav2_behaviors_: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors
 
 Input Ports
 ***********
 
-:backup_dist:
+:dist_to_travel:
 
   ====== =======
   Type   Default
   ------ -------
-  double -0.15
+  double 0.15
   ====== =======
 
   Description
-    	Total distance to backup (m).
+    	Distance to travel (m).
 
-:backup_speed:
+:speed:
 
   ====== =======
   Type   Default
@@ -32,7 +31,7 @@ Input Ports
   ====== =======
 
   Description
-    	Backup speed (m/s).
+    	Speed at which to travel (m/s).
 
 :time_allowance:
 
@@ -72,4 +71,4 @@ Example
 
 .. code-block:: xml
 
-  <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10"/>
+  <DriveOnHeading dist_to_travel="0.2" speed="0.05" server_name="backup_server" server_timeout="10"/>

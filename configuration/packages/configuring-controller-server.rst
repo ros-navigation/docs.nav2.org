@@ -74,7 +74,7 @@ Parameters
               plugin: "nav2_controller::SimpleProgressChecker"
     ..
 
-:goal_checker_plugin:
+:goal_checker_plugins:
 
   ============== ==============
   Type           Default
@@ -94,7 +94,7 @@ Parameters
 
         controller_server:
           ros__parameters:
-            goal_checker_plugin: "goal_checker"
+            goal_checker_plugins: ["goal_checker"]
             goal_checker:
               plugin: "nav2_controller::SimpleGoalChecker"
 

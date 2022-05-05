@@ -3,7 +3,7 @@
 CancelBackUp
 ============
 
-Used to cancel the backup action that is part of the recovery server. The server address can be remapped using the ``server_name`` input port.
+Used to cancel the backup action that is part of the behavior server. The server address can be remapped using the ``server_name`` input port.
 
 Input Ports
 -----------
@@ -13,7 +13,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -25,7 +25,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 10  
+  double 10
   ====== =======
 
   Description
