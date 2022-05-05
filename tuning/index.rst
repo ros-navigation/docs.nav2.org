@@ -94,6 +94,7 @@ In general though, the following table is a good first-order description of the 
 +----------------+---------------------------------------------------+----------------------------+
 | Rotation Shim  | Differential, Omnidirectional                     | Rotate to rough heading    |
 
+
 All of the above controllers can handle both circular and arbitrary shaped robots in configuration.
 
 Regulated Pure Pursuit is good for exact path following and is typically paired with one of the kinematically feasible planners (eg State Lattice, Hybrid-A\*, etc) since those paths are known to be drivable given hard physical constraints. However, it can also be applied to differential drive robots who can easily pivot to match any holonomic path. This is the plugin of choice if you simply want your robot to follow the path, rather exactly, without any dynamic obstacle avoidance or deviation. It is simple and geometric, as well as slowing the robot in the presence of near-by obstacles *and* while making sharp turns.
