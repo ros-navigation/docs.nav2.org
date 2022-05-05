@@ -93,7 +93,6 @@ In general though, the following table is a good first-order description of the 
 | RPP controller | Differential, Ackermann, Legged                   | Exact path following       |
 +----------------+---------------------------------------------------+----------------------------+
 | Rotation Shim  | Differential, Omnidirectional                     | Rotate to rough heading    |
-+----------------+---------------------------------------------------+----------------------------+
 
 All of the above controllers can handle both circular and arbitrary shaped robots in configuration.
 
