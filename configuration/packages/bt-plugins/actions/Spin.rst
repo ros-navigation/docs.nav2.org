@@ -56,10 +56,21 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+:is_recovery:
+
+  ==== =======
+  Type Default
+  ---- -------
+  bool True
+  ==== =======
+
+  Description
+    	True if the action is being used as a recovery.
+
 Example
 -------
 
 .. code-block:: xml
 
-  <Spin spin_dist="1.57" server_name="spin" server_timeout="10"/>
+  <Spin spin_dist="1.57" server_name="spin" server_timeout="10" is_recovery="false"/>
 
