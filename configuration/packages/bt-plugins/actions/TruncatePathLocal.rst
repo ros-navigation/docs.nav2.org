@@ -85,20 +85,6 @@ Input Ports
   Description
     	Weight of angular distance relative to positional distance when finding which path pose is closest to robot. Not applicable on paths without orientations assigned.
 
-:transform_tolerance:
-
-  ====== ===========
-  Type   Default
-  ------ -----------
-  double 0.2
-  ====== ===========
-
-  Description
-    	Robot pose lookup tolerance.
-
-Ouput Ports
------------
-
 :max_robot_pose_search_dist:
 
   ====== ========
@@ -109,6 +95,20 @@ Ouput Ports
 
   Description
     	Maximum forward integrated distance along the path (starting from the last detected pose) to bound the search for the closest pose to the robot. When set to infinity (default), whole path is searched every time.
+
+Ouput Ports
+-----------
+
+:output_path:
+
+  ============= =======
+  Type          Default
+  ------------- -------
+  nav_msgs/Path N/A
+  ============= =======
+
+  Description
+    	The resulting truncated path.
 
 Example
 -------
