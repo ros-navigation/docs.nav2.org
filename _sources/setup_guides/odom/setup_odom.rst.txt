@@ -239,11 +239,23 @@ We will now edit our launch file, `launch/display.launch.py <https://github.com/
     condition=launch.conditions.IfCondition(LaunchConfiguration('gui'))
   )
 
-Delete the following line inside the ``return launch.LaunchDescription``.
+Remove the following `gui` param:
 
 .. code-block:: shell
-  
-  joint_state_publisher_gui_node,
+
+  DeclareLaunchArgument(name='gui', default_value='True',
+                        description='Flag to enable joint_state_publisher_gui')
+                        
+Remove the condition from the `joint_state_publisher_node`:
+
+.. code-block:: shell
+
+  joint_state_publisher_node = launch_ros.actions.Node(
+    package='joint_state_publisher',
+    executable='joint_state_publisher',
+    name='joint_state_publisher',
+    condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui')) # Remove this line
+  )
 
 Next, open `package.xml <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/package.xml>`_ and delete the line:
 
