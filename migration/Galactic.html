@@ -421,6 +421,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePathLocal.html">TruncatePathLocal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/PlannerSelector.html">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ControllerSelector.html">ControllerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
@@ -599,6 +600,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-constrained-smoother.html">Constrained smoother</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-constrained-smoother.html#smoother-server-parameters">Smoother Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-constrained-smoother.html#example">Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tuning/index.html">Tuning Guide</a><ul>
@@ -724,6 +730,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#dynamic-composition">Dynamic Composition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bt-cancel-node">BT Cancel Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bt-pathlongeronapproach-node">BT PathLongerOnApproach Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bt-truncatepathlocal-node">BT TruncatePathLocal Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constrained-smoother">Constrained Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#replanning-at-a-constant-rate-and-if-the-path-is-invalid">Replanning at a Constant Rate and if the Path is Invalid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#euclidean-distance-2d">Euclidean Distance 2D</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recovery-to-behavior">Recovery To Behavior</a></li>
@@ -1043,6 +1051,14 @@ For example, below, for the same goal with an orientaton pointed left of the scr
 <img alt="../_images/nav2_patience_near_goal_and_clear_obstacle1.gif" src="../_images/nav2_patience_near_goal_and_clear_obstacle1.gif" />
 <p>Obstacle clears and you can see the robot pass through the (could have been ideally the) same path:</p>
 <img alt="../_images/nav2_patience_near_goal_and_go_around1.gif" src="../_images/nav2_patience_near_goal_and_go_around1.gif" />
+</div>
+<div class="section" id="bt-truncatepathlocal-node">
+<h2>BT TruncatePathLocal Node<a class="headerlink" href="#bt-truncatepathlocal-node" title="Permalink to this headline">¶</a></h2>
+<p>In the <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2753">PR 2753</a>, a new Action BT node named <code class="docutils literal notranslate"><span class="pre">TruncatePathLocal</span></code> has been added to extract a bounded-length path section near robot to be used e.g. for collision checking or computationally expensive smoothers</p>
+</div>
+<div class="section" id="constrained-smoother">
+<h2>Constrained Smoother<a class="headerlink" href="#constrained-smoother" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2753">the PR 2753</a>, a new Smoother named <code class="docutils literal notranslate"><span class="pre">nav2_constrained_smoother::ConstrainedSmoother</span></code> has been added to optimize various path criteria such as smoothness or distance from obstacles, maintaining minimum turning radius</p>
 </div>
 <div class="section" id="replanning-at-a-constant-rate-and-if-the-path-is-invalid">
 <h2>Replanning at a Constant Rate and if the Path is Invalid<a class="headerlink" href="#replanning-at-a-constant-rate-and-if-the-path-is-invalid" title="Permalink to this headline">¶</a></h2>

@@ -158,8 +158,17 @@ Smoothers
 |                           |                                       | infeasible (e.g. 2D)         |
 |                           |                                       | planners                     |
 +---------------------------+---------------------------------------+------------------------------+
+|  `Constrained Smoother`_  | Matej Vargovcik & Steve Macenski      | A path smoother using a      |
+|                           |                                       | constraints problem solver   |
+|                           |                                       | to optimize various criteria |
+|                           |                                       | such as smoothness or        |
+|                           |                                       | distance from obstacles,     |
+|                           |                                       | maintaining minimum turning  |
+|                           |                                       | radius                       |
++---------------------------+---------------------------------------+------------------------------+
 
 .. _Simple Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
+.. _Constrained Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_constrained_smoother
 
 Behaviors
 =========
@@ -290,6 +299,8 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter        |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Truncate Path Local`_                     | Matej Vargovcik     | Extracts a path section around robot     |
++--------------------------------------------+---------------------+------------------------------------------+
 | `Planner Selector`_                        | Pablo Iñigo Blasco  | Selects the global planner based on a    |
 |                                            |                     | topic input, otherwises uses a default   |
 |                                            |                     | planner id                               |
@@ -338,6 +349,7 @@ Behavior Tree Nodes
 .. _Spin Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_action.cpp
 .. _Wait Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_action.cpp
 .. _Truncate Path: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_action.cpp
+.. _Truncate Path Local: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_local_action.cpp
 .. _Planner Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/planner_selector_node.cpp
 .. _Controller Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector_node.cpp
 .. _Goal Checker Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
