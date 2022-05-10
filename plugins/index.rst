@@ -163,7 +163,7 @@ Smoothers
 |                           |                                       | to optimize various criteria |
 |                           |                                       | such as smoothness or        |
 |                           |                                       | distance from obstacles,     |
-|                           |                                       | maintaining minumum turning  |
+|                           |                                       | maintaining minimum turning  |
 |                           |                                       | radius                       |
 +---------------------------+---------------------------------------+------------------------------+
 
