@@ -282,7 +282,7 @@ In the `PR 2753 <https://github.com/ros-planning/navigation2/pull/2753>`_, a new
 Constrained Smoother
 ****************************
 
-In the `PR <https://github.com/ros-planning/navigation2/pull/2753>`, a new Smoother named ``nav2_constrained_smoother::ConstrainedSmoother`` has been added to optimize various path criteria such as smoothness or distance from obstacles, maintaining minumum turning radius
+In `the PR 2753 <https://github.com/ros-planning/navigation2/pull/2753>`_, a new Smoother named ``nav2_constrained_smoother::ConstrainedSmoother`` has been added to optimize various path criteria such as smoothness or distance from obstacles, maintaining minimum turning radius
 
 Replanning at a Constant Rate and if the Path is Invalid
 ********************************************************
