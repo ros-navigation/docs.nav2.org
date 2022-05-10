@@ -280,7 +280,7 @@ BT TruncatePathLocal Node
 In the `PR 2753 <https://github.com/ros-planning/navigation2/pull/2753>`_, a new Action BT node named ``TruncatePathLocal`` has been added to extract a bounded-length path section near robot to be used e.g. for collision checking or computationally expensive smoothers
 
 Constrained Smoother
-****************************
+********************
 
 In `the PR 2753 <https://github.com/ros-planning/navigation2/pull/2753>`_, a new Smoother named ``nav2_constrained_smoother::ConstrainedSmoother`` has been added to optimize various path criteria such as smoothness or distance from obstacles, maintaining minimum turning radius
 
