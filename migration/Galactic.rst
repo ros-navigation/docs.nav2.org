@@ -274,6 +274,16 @@ Obstacle clears and you can see the robot pass through the (could have been idea
 
 .. image:: images/nav2_patience_near_goal_and_go_around.gif
 
+BT TruncatePathLocal Node
+*************************
+
+In the `PR 2753 <https://github.com/ros-planning/navigation2/pull/2753>`_, a new Action BT node named ``TruncatePathLocal`` has been added to extract a bounded-length path section near robot to be used e.g. for collision checking or computationally expensive smoothers
+
+Constrained Smoother
+********************
+
+In `the PR 2753 <https://github.com/ros-planning/navigation2/pull/2753>`_, a new Smoother named ``nav2_constrained_smoother::ConstrainedSmoother`` has been added to optimize various path criteria such as smoothness or distance from obstacles, maintaining minimum turning radius
+
 Replanning at a Constant Rate and if the Path is Invalid
 ********************************************************
 `This PR 2804 <https://github.com/ros-planning/navigation2/pull/2841>`_ introduces a new behavior tree that navigates to pose with consistent replanning and if the path becomes invalid.
