@@ -277,7 +277,7 @@ Obstacle clears and you can see the robot pass through the (could have been idea
 BT TruncatePathLocal Node
 ****************************
 
-In the `PR <https://github.com/ros-planning/navigation2/pull/2753>`, a new Action BT node named ``TruncatePathLocal`` has been added to extract a bounded-length path section near robot to be used e.g. for collision checking or computationally expensive smoothers
+In the `PR 2753 <https://github.com/ros-planning/navigation2/pull/2753>`_, a new Action BT node named ``TruncatePathLocal`` has been added to extract a bounded-length path section near robot to be used e.g. for collision checking or computationally expensive smoothers
 
 Constrained Smoother
 ****************************
