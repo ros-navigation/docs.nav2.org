@@ -860,9 +860,30 @@
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Action server timeout (ms).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">behavior_tree:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>string</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">Behavior tree absolute path. If none is specified, NavigateThroughPoses action server uses a default behavior tree.</p>
 </dd>
 </dl>
 </td>
@@ -872,7 +893,8 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NavigateThroughPoses</span> <span class="na">goals=</span><span class="s">&quot;{goals}&quot;</span> <span class="na">server_name=</span><span class="s">&quot;NavigateThroughPoses&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NavigateThroughPoses</span> <span class="na">goals=</span><span class="s">&quot;{goals}&quot;</span> <span class="na">server_name=</span><span class="s">&quot;NavigateThroughPoses&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span>
+                      <span class="na">behavior_tree=</span><span class="s">&quot;&lt;some-path&gt;/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
