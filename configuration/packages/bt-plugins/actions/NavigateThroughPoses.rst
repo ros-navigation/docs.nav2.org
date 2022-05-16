@@ -43,9 +43,21 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+:behavior_tree:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
+
+  Description
+    	Behavior tree absolute path. If none is specified, NavigateThroughPoses action server uses a default behavior tree.
+
 Example
 -------
 
 .. code-block:: xml
 
-  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10"/>
+  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10" 
+                        behavior_tree="<some-path>/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml"/>
