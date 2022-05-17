@@ -144,7 +144,7 @@ Parameters
   Description
     Exponential decay parameter for z_short part of model.
 
-:laser_likihood_max_dist:
+:laser_likelihood_max_dist:
 
   ============== =============================
   Type           Default                                               
