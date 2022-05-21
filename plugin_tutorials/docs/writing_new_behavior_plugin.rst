@@ -191,7 +191,7 @@ It is good practice to place these lines at the end of the file but technically,
 
 5. Compile and it should be registered. Next, we'll use this plugin.
 
-3- Pass the plugin name through params file
+3- Pass the plugin name through params file(Galactic and earlier)
 -------------------------------------------
 
 To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below to replace following params
@@ -203,7 +203,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below t
       costmap_topic: local_costmap/costmap_raw
       footprint_topic: local_costmap/published_footprint
       cycle_frequency: 10.0
-      behavior_plugins: ["spin", "backup", "wait"]
+      recovery_plugins: ["spin", "backup", "wait"]
       spin:
         plugin: "nav2_behaviors/Spin"
       backup:
@@ -228,7 +228,7 @@ with
       costmap_topic: local_costmap/costmap_raw
       footprint_topic: local_costmap/published_footprint
       cycle_frequency: 10.0
-      behavior_plugins: ["spin", "backup", "wait", "call_for_help"]
+      recovery_plugins: ["spin", "backup", "wait", "call_for_help"]
       spin:
         plugin: "nav2_behaviors/Spin"
       backup:
