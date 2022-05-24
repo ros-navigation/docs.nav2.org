@@ -309,3 +309,8 @@ Respawn Support in Launch and Lifecycle Manager
 `PR 2752 <https://github.com/ros-planning/navigation2/pull/2910>`_ enables respawn support in Nav2. In the launch files, you may set ``use_respawn`` to ``true`` to enable respawning of servers that crash. This is only available in non-composed systems, since in composed systems, all of the nodes are under a single process and a crash anywhere will bring everything down (including the lifecycle manager itself). Even if the container was set to respawn, it would only respawn the empty container, not with all of the components loaded into it.
 
 That PR also enables the lifecycle manager to check if a system goes down due to a crash. If so, it allows the manager to check if the server comes back online within a given timeout period. If it does, it will automatically retransition the system back up to active to continue on its task automatically.
+
+New Nav2 Velocity Smoother
+**************************
+
+`PR 2964 <https://github.com/ros-planning/navigation2/pull/2964>`_ introduces the ``nav2_velocity_smoother`` for smoothing velocity commands from Nav2 to a robot controller by velocity, acceleration, and deadband constraints. See :ref:`configuring_velocity_smoother` for more details.
