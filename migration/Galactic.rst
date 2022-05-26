@@ -313,4 +313,4 @@ That PR also enables the lifecycle manager to check if a system goes down due to
 New Nav2 Velocity Smoother
 **************************
 
-`PR 2964 <https://github.com/ros-planning/navigation2/pull/2964>`_ introduces the ``nav2_velocity_smoother`` for smoothing velocity commands from Nav2 to a robot controller by velocity, acceleration, and deadband constraints. See :ref:`configuring_velocity_smoother` for more details.
+`PR 2964 <https://github.com/ros-planning/navigation2/pull/2964>`_ introduces the ``nav2_velocity_smoother`` for smoothing velocity commands from Nav2 to a robot controller by velocity, acceleration, and deadband constraints. See :ref:`configuring_velocity_smoother` for more details. It is not included in the default bringup batteries included from ``nav2_bringup``.
