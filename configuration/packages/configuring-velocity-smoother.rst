@@ -130,7 +130,7 @@ Velocity Smoother Parameters
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         0.3
+  double         0.1
   ============== ===========================
 
   Description
@@ -152,4 +152,4 @@ Example
       max_accel: [2.5, 0.0, 3.2]
       max_decel: [-2.5, 0.0, -3.2]
       odom_topic: "odom"
-      odom_duration: 0.3
+      odom_duration: 0.1
