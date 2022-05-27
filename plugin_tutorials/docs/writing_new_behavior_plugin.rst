@@ -31,9 +31,9 @@ Tutorial Steps
 1- Creating a new Behavior Plugin
 ---------------------------------
 
-We will create a simple call for help behavior.
+We will create a simple send sms behavior.
 It will use Twilio to send a message via SMS to a remote operations center.
-The code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as ``nav2_sms_recovery``.
+The code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as ``nav2_sms_behavior``.
 This package can be a considered as a reference for writing Behavior Plugin.
 
 Our example plugin implements the plugin class of ``nav2_core::Behavior``.
@@ -95,7 +95,7 @@ For the case of our call for help behavior behavior, we can trivially compute al
 
 .. code-block:: c++
 
-  Status SMSRecovery::onRun(const std::shared_ptr<const Action::Goal> command)
+  Status SendSms::onRun(const std::shared_ptr<const Action::Goal> command)
   {
     std::string response;
     bool message_success = _twilio->send_message(
@@ -133,7 +133,7 @@ For our example, we simply return success because we already completed our missi
 
 .. code-block:: c++
 
-  Status SMSRecovery::onCycleUpdate()
+  Status SendSms::onCycleUpdate()
   {
     return Status::SUCCEEDED;
   }
@@ -145,20 +145,20 @@ The remaining methods are not used and not mandatory to override them.
 
 Now that we have created our custom behavior, we need to export our Behavior Plugin so that it would be visible to the behavior server. Plugins are loaded at runtime and if they are not visible, then our behavior server won't be able to load it. In ROS 2, exporting and loading plugins is handled by ``pluginlib``.
 
-Coming to our tutorial, class ``nav2_sms_recovery::SMSRecovery`` is loaded dynamically as ``nav2_core::Behavior`` which is our base class.
+Coming to our tutorial, class ``nav2_sms_bahavior::SendSms`` is loaded dynamically as ``nav2_core::Behavior`` which is our base class.
 
 1. To export the behavior, we need to provide two lines
 
 .. code-block:: c++
 
   #include "pluginlib/class_list_macros.hpp"
-  PLUGINLIB_EXPORT_CLASS(nav2_sms_recovery::SMSRecovery, nav2_core::Behavior)
+  PLUGINLIB_EXPORT_CLASS(nav2_sms_bahavior::SendSms, nav2_core::Behavior)
 
 Note that it requires pluginlib to export out plugin's class. Pluginlib would provide as macro ``PLUGINLIB_EXPORT_CLASS`` which does all the work of exporting.
 
 It is good practice to place these lines at the end of the file but technically, you can also write at the top.
 
-2. Next step would be to create plugin's description file in the root directory of the package. For example, ``recovery_plugin.xml`` file in our tutorial package. This file contains following information
+2. Next step would be to create plugin's description file in the root directory of the package. For example, ``behavior_plugin.xml`` file in our tutorial package. This file contains following information
 
  - ``library path``: Plugin's library name and it's location.
  - ``class name``: Name of the class.
@@ -168,8 +168,8 @@ It is good practice to place these lines at the end of the file but technically,
 
 .. code-block:: xml
 
-  <library path="nav2_sms_recovery_plugin">
-    <class name="nav2_sms_recovery/SMSRecovery" type="nav2_sms_recovery::SMSRecovery" base_class_type="nav2_core::Behavior">
+  <library path="nav2_sms_behavior_plugin">
+    <class name="nav2_sms_behavior/SendSms" type="nav2_sms_behavior::SendSms" base_class_type="nav2_core::Behavior">
       <description>This is an example plugin which produces an SMS text message recovery.</description>
     </class>
   </library>
@@ -178,7 +178,7 @@ It is good practice to place these lines at the end of the file but technically,
 
 .. code-block:: text
 
-  pluginlib_export_plugin_description_file(nav2_core recovery_plugin.xml)
+  pluginlib_export_plugin_description_file(nav2_core behavior_plugin.xml)
 
 4. Plugin description file should also be added to ``package.xml``
 
@@ -186,19 +186,19 @@ It is good practice to place these lines at the end of the file but technically,
 
   <export>
     <build_type>ament_cmake</build_type>
-    <nav2_core plugin="${prefix}/recovery_plugin.xml" />
+    <nav2_core plugin="${prefix}/behavior_plugin.xml" />
   </export>
 
 5. Compile and it should be registered. Next, we'll use this plugin.
 
-3- Pass the plugin name through params file(Galactic and earlier)
--------------------------------------------
+3- Pass the plugin name through params file (Galactic and earlier)
+------------------------------------------------------------------
 
 To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below to replace following params
 
 .. code-block:: text
 
-  recoveries_server:
+  recoveries_server: 
     ros__parameters:
       costmap_topic: local_costmap/costmap_raw
       footprint_topic: local_costmap/published_footprint
@@ -228,19 +228,19 @@ with
       costmap_topic: local_costmap/costmap_raw
       footprint_topic: local_costmap/published_footprint
       cycle_frequency: 10.0
-      recovery_plugins: ["spin", "backup", "wait", "call_for_help"]
+      recovery_plugins: ["spin", "backup", "wait", "send_sms"]
       spin:
         plugin: "nav2_behaviors/Spin"
       backup:
         plugin: "nav2_behaviors/BackUp"
       wait:
         plugin: "nav2_behaviors/Wait"
-      call_for_help:
-        plugin: "nav2_sms_recovery/SMSRecovery"
-        account_sid: ... # your sid
-        auth_token: ... # your token
-        from_number: ... # your number
-        to_number: ... # the operations center number
+      send_sms:
+        plugin: "nav2_sms_behavior/SendSms"
+      account_sid: ... # your sid
+      auth_token: ... # your token
+      from_number: ... # your number
+      to_number: ... # the operations center number
       global_frame: odom
       robot_base_frame: base_link
       transform_timeout: 0.1
@@ -250,8 +250,67 @@ with
       min_rotational_vel: 0.4
       rotational_acc_lim: 3.2
 
-In the above snippet, you can observe that we add the SMS recovery under the ``call_for_help`` ROS 2 action server name.
-We also tell the behavior server that the ``call_for_help`` is of type ``SMSRecovery`` and give it our parameters for your Twilio account.
+3- Pass the plugin name through params file (Humble and later)
+--------------------------------------------------------------
+
+To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below to replace following params_file
+
+.. code-block:: text
+
+  behavior_server: 
+    ros__parameters:
+      costmap_topic: local_costmap/costmap_raw
+      footprint_topic: local_costmap/published_footprint
+      cycle_frequency: 10.0
+      behavior_plugins: ["spin", "backup", "wait"]
+      spin:
+        plugin: "nav2_behaviors/Spin"
+      backup:
+        plugin: "nav2_behaviors/BackUp"
+      wait:
+        plugin: "nav2_behaviors/Wait"
+      global_frame: odom
+      robot_base_frame: base_link
+      transform_timeout: 0.1
+      use_sim_time: true
+      simulate_ahead_time: 2.0
+      max_rotational_vel: 1.0
+      min_rotational_vel: 0.4
+      rotational_acc_lim: 3.2
+
+with
+
+.. code-block:: text
+
+  behavior_server:
+    ros__parameters:
+      costmap_topic: local_costmap/costmap_raw
+      footprint_topic: local_costmap/published_footprint
+      cycle_frequency: 10.0
+      behavior_plugins: ["spin", "backup", "wait", "send_sms"]
+      spin:
+        plugin: "nav2_behaviors/Spin"
+      backup:
+        plugin: "nav2_behaviors/BackUp"
+      wait:
+        plugin: "nav2_behaviors/Wait"
+      send_sms:
+        plugin: "nav2_sms_behavior/SendSms"
+      account_sid: ... # your sid
+      auth_token: ... # your token
+      from_number: ... # your number
+      to_number: ... # the operations center number
+      global_frame: odom
+      robot_base_frame: base_link
+      transform_timeout: 0.1
+      use_sim_time: true
+      simulate_ahead_time: 2.0
+      max_rotational_vel: 1.0
+      min_rotational_vel: 0.4
+      rotational_acc_lim: 3.2
+
+In the above snippet, you can observe that we add the SMS behavior under the ``send_sms`` ROS 2 action server name.
+We also tell the behavior server that the ``send_sms`` is of type ``SendSms`` and give it our parameters for your Twilio account.
 
 4- Run Behavior Plugin
 ----------------------
@@ -266,4 +325,4 @@ In a new terminal run:
 
 .. code-block:: bash
 
-  $ ros2 action send_goal "call_for_help" nav2_sms_recovery/action/SmsRecovery "Help! Robot 42 is being mean :( Tell him to stop!"
+  $ ros2 action send_goal "send_sms" nav2_sms_behavior/action/SendSms "{message : Hello!! Navigation2 World }"
