@@ -311,7 +311,7 @@ Respawn Support in Launch and Lifecycle Manager
 That PR also enables the lifecycle manager to check if a system goes down due to a crash. If so, it allows the manager to check if the server comes back online within a given timeout period. If it does, it will automatically retransition the system back up to active to continue on its task automatically.
 
 
-Goal Checker Interface Changed
+Goal Checker API Changed
 ******************************
 `PR 2965 <https://github.com/ros-planning/navigation2/pull/2965>`_ adds an extra argument in the initialize function of the `nav2_core::GoalChecker` class.
 The extra argument is a costmap_ros pointer. This is used to check if the goal is in collision, so that we can avoid moving towards the goal and replanning can be initiates using some BT plugin.
