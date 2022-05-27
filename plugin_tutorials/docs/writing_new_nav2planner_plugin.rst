@@ -197,9 +197,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as belowto
 
   planner_server:
   ros__parameters:
-    planner_plugin_types: ["nav2_navfn_planner/NavfnPlanner"] # For Eloquent and earlier
-    planner_plugin_ids: ["GridBased"] # For Eloquent and earlier
-    plugins: ["GridBased"] # For Foxy and later
+    plugins: ["GridBased"]
     use_sim_time: True
     GridBased:
       plugin: nav2_navfn_planner/NavfnPlanner # For Foxy and later
@@ -213,12 +211,10 @@ with
 
   planner_server:
   ros__parameters:
-    planner_plugin_types: ["nav2_straightline_planner/StraightLine"] # For Eloquent and earlier
-    planner_plugin_ids: ["GridBased"] # For Eloquent and earlier
-    plugins: ["GridBased"] # For Foxy and later
+    plugins: ["GridBased"]
     use_sim_time: True
     GridBased:
-      plugin: nav2_straightline_planner/StraightLine # For Foxy and later
+      plugin: nav2_straightline_planner/StraightLine
       interpolation_resolution: 0.1
 
 In the above snippet, you can observe the mapping of our ``nav2_straightline_planner/StraightLine`` planner to its id ``GridBased``. To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
