@@ -103,6 +103,13 @@ This functionality has been discussed in `the ticket #816 <https://github.com/ro
   - Remove ``rclcpp_node_`` in ``class PlannerServer`` : `PR2459 <https://github.com/ros-planning/navigation2/pull/2459>`_, `PR2480 <https://github.com/ros-planning/navigation2/pull/2480>`_
 
 
+API Change for nav2_core
+**************************
+
+`PR 2976 <https://github.com/ros-planning/navigation2/pull/2976>`_ changes the API for ``nav2_core::Controller`` and ``nav2_core::Smoother`` by replacing the use of shared pointer references ``(const shared_ptr<> &)`` to shared pointers ``(shared_ptr<>)``.
+Use of shared pointer references meant that the shared pointer counter was never incremented.
+
+
 Extending the BtServiceNode to process Service-Results
 ******************************************************
 
