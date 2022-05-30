@@ -226,13 +226,13 @@ with
 
 .. code-block:: text
 
-  behavior_server: (Humble and later)
+  behavior_server: (Humble and newer)
   recoveries_server: (Galactic and earlier)
     ros__parameters:
       costmap_topic: local_costmap/costmap_raw
       footprint_topic: local_costmap/published_footprint
       cycle_frequency: 10.0
-      behavior_plugins: ["spin", "backup", "wait","send_sms"] (Humble and later)
+      behavior_plugins: ["spin", "backup", "wait","send_sms"] (Humble and newer)
       recovery_plugins: ["spin", "backup", "wait","send_sms"] (Galactic and earlier)
       spin:
         plugin: "nav2_behaviors/Spin"
