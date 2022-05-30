@@ -191,78 +191,22 @@ It is good practice to place these lines at the end of the file but technically,
 
 5. Compile and it should be registered. Next, we'll use this plugin.
 
-3- Pass the plugin name through params file (Galactic and earlier)
-------------------------------------------------------------------
 
-To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below to replace following params
-
-.. code-block:: text
-
-  recoveries_server: 
-    ros__parameters:
-      costmap_topic: local_costmap/costmap_raw
-      footprint_topic: local_costmap/published_footprint
-      cycle_frequency: 10.0
-      recovery_plugins: ["spin", "backup", "wait"]
-      spin:
-        plugin: "nav2_behaviors/Spin"
-      backup:
-        plugin: "nav2_behaviors/BackUp"
-      wait:
-        plugin: "nav2_behaviors/Wait"
-      global_frame: odom
-      robot_base_frame: base_link
-      transform_timeout: 0.1
-      use_sim_time: true
-      simulate_ahead_time: 2.0
-      max_rotational_vel: 1.0
-      min_rotational_vel: 0.4
-      rotational_acc_lim: 3.2
-
-with
-
-.. code-block:: text
-
-  recoveries_server:
-    ros__parameters:
-      costmap_topic: local_costmap/costmap_raw
-      footprint_topic: local_costmap/published_footprint
-      cycle_frequency: 10.0
-      recovery_plugins: ["spin", "backup", "wait", "send_sms"]
-      spin:
-        plugin: "nav2_behaviors/Spin"
-      backup:
-        plugin: "nav2_behaviors/BackUp"
-      wait:
-        plugin: "nav2_behaviors/Wait"
-      send_sms:
-        plugin: "nav2_sms_behavior/SendSms"
-      account_sid: ... # your sid
-      auth_token: ... # your token
-      from_number: ... # your number
-      to_number: ... # the operations center number
-      global_frame: odom
-      robot_base_frame: base_link
-      transform_timeout: 0.1
-      use_sim_time: true
-      simulate_ahead_time: 2.0
-      max_rotational_vel: 1.0
-      min_rotational_vel: 0.4
-      rotational_acc_lim: 3.2
-
-3- Pass the plugin name through params file (Humble and later)
+3- Pass the plugin name through params file
 --------------------------------------------------------------
 
 To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below to replace following params_file
 
 .. code-block:: text
 
-  behavior_server: 
+  behavior_server: (Humble and later)
+  recoveries_server: (Galactic and earlier)
     ros__parameters:
       costmap_topic: local_costmap/costmap_raw
       footprint_topic: local_costmap/published_footprint
       cycle_frequency: 10.0
-      behavior_plugins: ["spin", "backup", "wait"]
+      behavior_plugins: ["spin", "backup", "wait"] (Humble and later)
+      recovery_plugins: ["spin", "backup", "wait"] (Galactic and earlier)
       spin:
         plugin: "nav2_behaviors/Spin"
       backup:
@@ -282,12 +226,14 @@ with
 
 .. code-block:: text
 
-  behavior_server:
+  behavior_server: (Humble and later)
+  recoveries_server: (Galactic and earlier)
     ros__parameters:
       costmap_topic: local_costmap/costmap_raw
       footprint_topic: local_costmap/published_footprint
       cycle_frequency: 10.0
-      behavior_plugins: ["spin", "backup", "wait", "send_sms"]
+      behavior_plugins: ["spin", "backup", "wait","send_sms"] (Humble and later)
+      recovery_plugins: ["spin", "backup", "wait","send_sms"] (Galactic and earlier)
       spin:
         plugin: "nav2_behaviors/Spin"
       backup:
