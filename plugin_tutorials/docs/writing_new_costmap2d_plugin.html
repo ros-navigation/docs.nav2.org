@@ -982,12 +982,8 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 <span class="w"> </span>      width: 3<span class="w"></span>
 <span class="w"> </span>      height: 3<span class="w"></span>
 <span class="w"> </span>      resolution: 0.05<span class="w"></span>
-<span class="gd">-      plugin_names: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;] # For Eloquent and earlier</span><span class="w"></span>
-<span class="gd">-      plugin_types: [&quot;nav2_costmap_2d::ObstacleLayer&quot;, &quot;nav2_costmap_2d::VoxelLayer&quot;, &quot;nav2_costmap_2d::InflationLayer&quot;] # For Eloquent and earlier</span><span class="w"></span>
-<span class="gi">+      plugin_names: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;] # For Eloquent and earlier</span><span class="w"></span>
-<span class="gi">+      plugin_types: [&quot;nav2_costmap_2d::ObstacleLayer&quot;, &quot;nav2_costmap_2d::VoxelLayer&quot;, &quot;nav2_gradient_costmap_plugin/GradientLayer&quot;] # For Eloquent and earlier</span><span class="w"></span>
-<span class="gd">-      plugins: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;] # For Foxy and later</span><span class="w"></span>
-<span class="gi">+      plugins: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;] # For Foxy and later</span><span class="w"></span>
+<span class="gd">-      plugins: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;]</span><span class="w"></span>
+<span class="gi">+      plugins: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;]</span><span class="w"></span>
 <span class="w"> </span>      robot_radius: 0.22<span class="w"></span>
 <span class="w"> </span>      inflation_layer:<span class="w"></span>
 <span class="w"> </span>        cost_scaling_factor: 3.0<span class="w"></span>
@@ -995,12 +991,8 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 <span class="w"> </span>      robot_base_frame: base_link<span class="w"></span>
 <span class="w"> </span>      global_frame: map<span class="w"></span>
 <span class="w"> </span>      use_sim_time: True<span class="w"></span>
-<span class="gd">-      plugin_names: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;] # For Eloquent and earlier</span><span class="w"></span>
-<span class="gd">-      plugin_types: [&quot;nav2_costmap_2d::StaticLayer&quot;, &quot;nav2_costmap_2d::ObstacleLayer&quot;, &quot;nav2_costmap_2d::VoxelLayer&quot;, &quot;nav2_costmap_2d::InflationLayer&quot;] # For Eloquent and earlier</span><span class="w"></span>
-<span class="gi">+      plugin_names: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;] # For Eloquent and earlier</span><span class="w"></span>
-<span class="gi">+      plugin_types: [&quot;nav2_costmap_2d::StaticLayer&quot;, &quot;nav2_costmap_2d::ObstacleLayer&quot;, &quot;nav2_costmap_2d::VoxelLayer&quot;, &quot;nav2_gradient_costmap_plugin/GradientLayer&quot;] # For Eloquent and earlier</span><span class="w"></span>
-<span class="gd">-      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;] # For Foxy and later</span><span class="w"></span>
-<span class="gi">+      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;] # For Foxy and later</span><span class="w"></span>
+<span class="gd">-      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;]</span><span class="w"></span>
+<span class="gi">+      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;]</span><span class="w"></span>
 <span class="w"> </span>      robot_radius: 0.22<span class="w"></span>
 <span class="w"> </span>      resolution: 0.05<span class="w"></span>
 <span class="w"> </span>      obstacle_layer:<span class="w"></span>
@@ -1008,18 +1000,16 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 </div>
 <p>YAML-file may also contain the list of parameters (if any) for each plugin, identified by plugins object name.</p>
 <p>NOTE: there could be many simultaneously loaded plugin objects of one type. For this, <code class="docutils literal notranslate"><span class="pre">plugin_names</span></code> list should contain different plugins names whether the <code class="docutils literal notranslate"><span class="pre">plugin_types</span></code> will remain the same types. For example:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plugin_names: [&quot;obstacle_layer&quot;, &quot;gradient_layer_1&quot;, &quot;gradient_layer_2&quot;] # For Eloquent and earlier
-plugin_types: [&quot;nav2_costmap_2d::ObstacleLayer&quot;, &quot;nav2_gradient_costmap_plugin/GradientLayer&quot;, &quot;nav2_gradient_costmap_plugin/GradientLayer&quot;] # For Eloquent and earlier
-plugins: [&quot;obstacle_layer&quot;, &quot;gradient_layer_1&quot;, &quot;gradient_layer_2&quot;] # For Foxy and later
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plugins: [&quot;obstacle_layer&quot;, &quot;gradient_layer_1&quot;, &quot;gradient_layer_2&quot;]
 </pre></div>
 </div>
 <p>In this case each plugin object will be handled by its own parameters tree in a YAML-file, like:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>gradient_layer_1:
-  plugin: nav2_gradient_costmap_plugin/GradientLayer # For Foxy and later
+  plugin: nav2_gradient_costmap_plugin/GradientLayer
   enabled: True
   ...
 gradient_layer_2:
-  plugin: nav2_gradient_costmap_plugin/GradientLayer # For Foxy and later
+  plugin: nav2_gradient_costmap_plugin/GradientLayer
   enabled: False
   ...
 </pre></div>
