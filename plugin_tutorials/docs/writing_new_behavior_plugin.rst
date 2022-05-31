@@ -193,10 +193,9 @@ It is good practice to place these lines at the end of the file but technically,
 
 
 3- Pass the plugin name through params file
---------------------------------------------------------------
+-------------------------------------------
 
-To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below to replace following params_file
-
+To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below to replace following params
 .. code-block:: text
 
   behavior_server: (Humble and later)
