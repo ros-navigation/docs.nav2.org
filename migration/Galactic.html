@@ -709,6 +709,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#major-improvements-to-smac-planners">Major improvements to Smac Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simple-python-commander">Simple (Python) Commander</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-change-for-nav2-core">API Change for nav2_core</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extending-the-btservicenode-to-process-service-results">Extending the BtServiceNode to process Service-Results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#including-new-rotation-shim-controller-plugin">Including new Rotation Shim Controller Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spawning-the-robot-in-gazebo">Spawning the robot in Gazebo</a></li>
@@ -895,6 +896,11 @@
 <li>Remove <code class="docutils literal notranslate"><span class="pre">rclcpp_node_</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">PlannerServer</span></code> : <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2459">PR2459</a>, <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2480">PR2480</a></li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="api-change-for-nav2-core">
+<h2>API Change for nav2_core<a class="headerlink" href="#api-change-for-nav2-core" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2976">PR 2976</a> changes the API for <code class="docutils literal notranslate"><span class="pre">nav2_core::Controller</span></code> and <code class="docutils literal notranslate"><span class="pre">nav2_core::Smoother</span></code> by replacing the use of shared pointer references <code class="docutils literal notranslate"><span class="pre">(const</span> <span class="pre">shared_ptr&lt;&gt;</span> <span class="pre">&amp;)</span></code> to shared pointers <code class="docutils literal notranslate"><span class="pre">(shared_ptr&lt;&gt;)</span></code>.
+Use of shared pointer references meant that the shared pointer counter was never incremented.</p>
 </div>
 <div class="section" id="extending-the-btservicenode-to-process-service-results">
 <h2>Extending the BtServiceNode to process Service-Results<a class="headerlink" href="#extending-the-btservicenode-to-process-service-results" title="Permalink to this headline">¶</a></h2>
