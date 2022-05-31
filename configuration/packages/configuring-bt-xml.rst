@@ -23,6 +23,7 @@ Action Plugins
   bt-plugins/actions/Spin.rst
   bt-plugins/actions/BackUp.rst
   bt-plugins/actions/DriveOnHeading.rst
+  bt-plugins/actions/AssistedTeleop.rst
   bt-plugins/actions/ComputePathToPose.rst
   bt-plugins/actions/FollowPath.rst
   bt-plugins/actions/NavigateToPose.rst

@@ -211,6 +211,22 @@ DriveOnHeading distance, speed and time_allowance is given from the action reque
   Description
     Time to look ahead for collisions (s).
 
+AssistedTeleop Behavior Parameters
+**********************************
+
+AssistedTeleop time_allowance is given in the action request
+
+:is_recovery:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    If true increment the recovery counter.
+
 Example
 *******
 .. code-block:: yaml
@@ -220,7 +236,7 @@ Example
         costmap_topic: local_costmap/costmap_raw
         footprint_topic: local_costmap/published_footprint
         cycle_frequency: 10.0
-        behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
+        behavior_plugins: ["spin", "backup", "drive_on_heading", "wait", "assisted_teleop"]
         spin:
           plugin: "nav2_behaviors/Spin"
         backup:
@@ -229,6 +245,8 @@ Example
           plugin: "nav2_behaviors/DriveOnHeading"
         wait:
           plugin: "nav2_behaviors/Wait"
+        assisted_teleop:
+          plugin: "nav2_behaviors/AssistedTeleop"
         global_frame: odom
         robot_base_frame: base_link
         transform_timeout: 0.1
