@@ -641,6 +641,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.html">Navigate To Pose and Pause Near Goal-Obstacle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.html">Navigate To Pose With Consistent Replanning And If Path Becomes Invalid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/odometry_calibration.html">Odometry Calibration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../plugins/index.html">Navigation Plugins</a><ul>
@@ -885,9 +886,30 @@ This action is used in nav2 Behavior Trees as a recovery behavior.</p>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
+<dl class="docutils">
 <dt>Description</dt>
 <dd><p class="first last">Action server timeout (ms).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">is_recovery:</th><td class="field-body"><table border="1" class="first docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Type</td>
+<td>Default</td>
+</tr>
+<tr class="row-even"><td>bool</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>Description</dt>
+<dd><p class="first last">True if the action is being used as a recovery.</p>
 </dd>
 </dl>
 </td>
@@ -897,7 +919,7 @@ This action is used in nav2 Behavior Trees as a recovery behavior.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Spin</span> <span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span> <span class="na">server_name=</span><span class="s">&quot;spin&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Spin</span> <span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span> <span class="na">server_name=</span><span class="s">&quot;spin&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span> <span class="na">is_recovery=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
