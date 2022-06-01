@@ -18,13 +18,13 @@ The robot will traverse each side of the square at 0.2 (m/s) for 2 meters before
     <BehaviorTree ID="MainTree">
       <Repeat num_cycles="3">
         <Sequence name="Drive in a square">
-          <DriveOnHeading dist_to_travel="2.0" speed="0.1" time_allowance="12"/>
+          <DriveOnHeading dist_to_travel="2.0" speed="0.2" time_allowance="12"/>
           <Spin spin_dist="1.570796" is_recovery="false"/>
-          <DriveOnHeading dist_to_travel="2.0" speed="0.1" time_allowance="12"/>
+          <DriveOnHeading dist_to_travel="2.0" speed="0.2" time_allowance="12"/>
           <Spin spin_dist="1.570796" is_recovery="false"/>
-          <DriveOnHeading dist_to_travel="2.0" speed="0.1" time_allowance="12"/>
+          <DriveOnHeading dist_to_travel="2.0" speed="0.2" time_allowance="12"/>
           <Spin spin_dist="1.570796" is_recovery="false"/>
-          <DriveOnHeading dist_to_travel="2.0" speed="0.1" time_allowance="12"/>
+          <DriveOnHeading dist_to_travel="2.0" speed="0.2" time_allowance="12"/>
           <Spin spin_dist="1.570796" is_recovery="false"/>
         </Sequence>
       </Repeat>
