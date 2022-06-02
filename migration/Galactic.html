@@ -895,8 +895,19 @@
 <li>Remove <code class="docutils literal notranslate"><span class="pre">node_</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">LifecycleManagerClient</span></code> : <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2469">PR2469</a></li>
 <li>Remove <code class="docutils literal notranslate"><span class="pre">rclcpp_node_</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">ControllerServer</span></code> : <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2459">PR2459</a>, <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2479">PR2479</a></li>
 <li>Remove <code class="docutils literal notranslate"><span class="pre">rclcpp_node_</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">PlannerServer</span></code> : <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2459">PR2459</a>, <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2480">PR2480</a></li>
+<li>Remove <code class="docutils literal notranslate"><span class="pre">rclcpp_node_</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">AmclNode</span></code> : <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2483">PR2483</a></li>
+<li>Remove <code class="docutils literal notranslate"><span class="pre">rclcpp_node_</span></code> and <code class="docutils literal notranslate"><span class="pre">clinet_node_</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Costmap2DROS</span></code> : <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2489">PR2489</a></li>
+<li>Remove <code class="docutils literal notranslate"><span class="pre">rclcpp_node_</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">LifecycleNode</span></code> : <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2993">PR2993</a></li>
 </ul>
 </div></blockquote>
+<dl class="docutils">
+<dt>some APIs are changed in these PRs:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2489">PR2489</a> removes arguments <code class="docutils literal notranslate"><span class="pre">client_node</span></code>, <code class="docutils literal notranslate"><span class="pre">rclcpp_node</span></code> and adds argument <code class="docutils literal notranslate"><span class="pre">callback_group</span></code> in the initialize function of class <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::Layer</span></code>. <code class="docutils literal notranslate"><span class="pre">callback_group</span></code> is used to replace <code class="docutils literal notranslate"><span class="pre">rclcpp_node</span></code>.</li>
+<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2993">PR2993</a> removes argument <code class="docutils literal notranslate"><span class="pre">use_rclcpp_node</span> <span class="pre">``</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">constructor</span> <span class="pre">of</span> <span class="pre">class</span> <span class="pre">``nav2_util::LifecycleNode</span></code>.</li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="api-change-for-nav2-core">
 <h2>API Change for nav2_core<a class="headerlink" href="#api-change-for-nav2-core" title="Permalink to this headline">¶</a></h2>
