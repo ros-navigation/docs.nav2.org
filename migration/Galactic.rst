@@ -113,7 +113,7 @@ Use of shared pointer references meant that the shared pointer counter was never
 Extending the BtServiceNode to process Service-Results
 ******************************************************
 
-`This PR 2481 <https://github.com/ros-planning/navigation2/pull/2481>`_ addresses `this Ticket <https://github.com/ros-planning/navigation2/issues/2467>`_ and adds a virtual ``on_completion()`` function to the ``BtServiceNode`` class (`can be found here <https://github.com/ros-planning/navigation2/blob/c417e2fd267e1dfa880b7ff9d37aaaa7b5eab9ca/nav2_behavior_tree/include/nav2_behavior_tree/bt_service_node.hpp>`_).
+`This PR 2481 <https://github.com/ros-planning/navigation2/pull/2481>`_ and `PR 2992 <https://github.com/ros-planning/navigation2/pull/2992>`_  address `the ticket <https://github.com/ros-planning/navigation2/issues/2467>`_ and `this ticket <https://github.com/ros-planning/navigation2/issues/2968>`_ and adds a virtual ``on_completion()`` function to the ``BtServiceNode`` class (`can be found here <https://github.com/ros-planning/navigation2/blob/c417e2fd267e1dfa880b7ff9d37aaaa7b5eab9ca/nav2_behavior_tree/include/nav2_behavior_tree/bt_service_node.hpp>`_).
 Similar to the already existing virtual ``on_wait_for_result()`` function, it can be overwritten in the child class to react to a respective event with some user-defined operation.
 The added ``on_completion()`` function will be called after the service interaction of the ``BtServiceNode`` has been successfully completed.
 
@@ -122,9 +122,10 @@ The added ``on_completion()`` function will be called after the service interact
     /**
     * @brief Function to perform some user-defined operation upon successful
     * completion of the service. Could put a value on the blackboard.
+    * @param response can be used to get the result of the service call in the BT Node.
     * @return BT::NodeStatus Returns SUCCESS by default, user may override to return another value
     */
-    virtual BT::NodeStatus on_completion()
+    virtual BT::NodeStatus on_completion(std::shared_ptr<typename ServiceT::Response>/*response*/)
     {
       return BT::NodeStatus::SUCCESS;
     }
