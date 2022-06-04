@@ -216,16 +216,38 @@ AssistedTeleop Behavior Parameters
 
 AssistedTeleop time_allowance is given in the action request
 
-:is_recovery:
+:projection_time:
 
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  double         1.0
   ============== =============================
 
   Description
-    If true increment the recovery counter.
+    Time to look ahead for collisions (s).
+
+:simulation_time_step:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    Time step for projections (s).
+
+:teleop_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         teleop_cmd_vel
+  ============== =============================
+
+  Description
+    Topic to listen for teleop messages.
 
 Example
 *******
