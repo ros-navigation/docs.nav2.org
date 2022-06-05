@@ -5,7 +5,7 @@ AssistedTeleop
 
 Invokes the AssistedTeleop ROS 2 action server, which filters teleop twist commands to prevent
 collisions. This is used in nav2 Behavior Trees as a recovery behavior or a regular behavior.
-The nav2_behaviors_ module implements the BackUp action server.
+The nav2_behaviors_ module implements the AssistedTeleop action server.
 
 .. _nav2_behaviors: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors
 

@@ -44,6 +44,7 @@ Action Plugins
   bt-plugins/actions/CancelSpin.rst
   bt-plugins/actions/CancelWait.rst
   bt-plugins/actions/CancelDriveOnHeading.rst
+  bt-plugins/actions/CancelAssistedTeleop.rst
   bt-plugins/actions/Smooth.rst
 
 Condition Plugins
