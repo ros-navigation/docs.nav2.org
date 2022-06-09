@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setting Up the Robot’s Footprint &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -805,8 +795,8 @@
 <p>The footprint outlines the robot’s 2D shape when projected to the ground and is primarily used by Nav2 to avoid collisions during planning. The algorithms involved in this task makes sure that the robot does not collide with the obstacles in the costmap while it computes the robot’s paths or plans.</p>
 <p>The footprint is set up using the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> or <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> parameter of the global and local costmaps which we tackled in the previous tutorials (<a class="reference internal" href="../sensors/setup_sensors.html#setup-sensors"><span class="std std-ref">Setting Up Sensors Guide</span></a>). The value defined in the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> parameter is an ordered vector of 2-D points defining the robot’s footprint with the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame as the origin. The first and last points in the vector are joined into the last line segment to close the footprint’s shape. As an alternative, you may also use the <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> parameter wherein circular footprint is automatically generated and centered at <code class="docutils literal notranslate"><span class="pre">base_link</span></code>.  In cases both the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> and <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> parameters have been defined in the configuration, the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> is used.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">A section in the previous guide, <a class="reference internal" href="../sensors/setup_sensors.html#configuring-nav2-costmap-2d"><span class="std std-ref">Configuring nav2_costmap_2d</span></a>, explains how to configure basic costmap parameters. Please refer to that guide for more details on costmap configuration.</p>
+<p class="admonition-title">See also</p>
+<p>A section in the previous guide, <a class="reference internal" href="../sensors/setup_sensors.html#configuring-nav2-costmap-2d"><span class="std std-ref">Configuring nav2_costmap_2d</span></a>, explains how to configure basic costmap parameters. Please refer to that guide for more details on costmap configuration.</p>
 </div>
 <p>For the global costmap footprint, the decision to choose between the <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> (circular) or <code class="docutils literal notranslate"><span class="pre">footprint</span></code> (polygon) parameter depends on the robot, its environment, and the path planning algorithm you will use. Even if you are working with a non-circular robot, there may be situations where a circular footprint is acceptable. For example, path planning algorithms like <a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-navfn.html">NavFn</a> assume that the robot is circular since it only checks for collision per grid cell, so it will not be necessary to outline the robot’s exact shape for its footprint. On the other hand, algorithms such as <a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-smac-planner.html">Smac Planner’s Hybrid-A*</a> perform collision checking on the robot’s polygon-shaped footprint if possible and necessary. Hence, it might be useful to use a polygon-shaped footprint. Another example is having a small RC car sized robot roaming a warehouse. This robot is so small it won’t need to make confined maneuvers – thusly approximating it with the largest cross-sectional radius is a good time-saving optimization.</p>
 <p>For the local costmap footprint, it is typical for non-circular robots to be set up with <code class="docutils literal notranslate"><span class="pre">footprint</span></code> (polygon). Some situations where this is not recommended is when you do not have enough computing resources to implement collision avoidance algorithms on a polygon-shaped footprint. Another possible reason to use <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> (circular) for the local costmap is when the robot is very small relative to its environment such that precise collision avoidance is not necessary. However, generally the local trajectory planner should use the actual footprint polygon of the robot.</p>
@@ -815,13 +805,13 @@
 <h2>Configuring the Robot’s Footprint<a class="headerlink" href="#configuring-the-robot-s-footprint" title="Permalink to this headline">¶</a></h2>
 <p>In this section, we will configure the footprint of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> such that <code class="docutils literal notranslate"><span class="pre">footprint</span></code> (polygon) is used for the local costmap and <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> (circular) is used for the global costmap. We will utilize the default configuration file of Nav2 with a modified footprint parameter for the global and local costmaps.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The complete source code for <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository.</p>
+<p class="admonition-title">Note</p>
+<p>The complete source code for <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository.</p>
 </div>
 <p>Under the <code class="docutils literal notranslate"><span class="pre">config</span></code> directory, create a new file named  <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>. Next, copy the contents of <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml">config/nav2_params.yaml</a> and paste them into the newly created file. The contents of <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml">config/nav2_params.yaml</a> are copied from the default configuration file of Nav2 but with changes in the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> and  <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> parameters to match the shape of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">The default configuration file for Nav2 can be found in the official <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/galactic/nav2_bringup/bringup/params/nav2_params.yaml">Navigation2 repository</a>.</p>
+<p class="admonition-title">See also</p>
+<p>The default configuration file for Nav2 can be found in the official <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/galactic/nav2_bringup/bringup/params/nav2_params.yaml">Navigation2 repository</a>.</p>
 </div>
 <p>Below is the code snippet from <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> defining the local costmap footprint. In this configuration file, the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> parameter of the local costmap has already been set with a rectangular-shaped footprint. This box is centered at the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">188</span>

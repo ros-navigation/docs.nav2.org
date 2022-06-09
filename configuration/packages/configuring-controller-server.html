@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Controller Server &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -804,55 +794,48 @@
 It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">controller_frequency:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">controller_frequency</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>20.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>20.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Frequency to run controller (Hz).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Frequency to run controller (Hz).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">controller_plugins:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">controller_plugins</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>vector&lt;string&gt;</td>
-<td>[‘FollowPath’]</td>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>[‘FollowPath’]</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">List of mapped names for controller plugins for processing requests and parameters.</p>
+<dl>
+<dt>Description</dt><dd><p>List of mapped names for controller plugins for processing requests and parameters.</p>
 </dd>
-<dt>Note</dt>
-<dd><p class="first">Each plugin namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<dt>Note</dt><dd><p>Each plugin namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
 <p>Example:</p>
-<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span><span class="w"></span>
@@ -861,31 +844,28 @@ It will take in path and plugin names for controller, progress checker and goal 
 </div>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">progress_checker_plugin:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">progress_checker_plugin</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="44%" />
-<col width="56%" />
+<col style="width: 44%" />
+<col style="width: 56%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>‘progress_checker’</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>‘progress_checker’</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Mapped name for progress checker plugin for checking progress made by robot.</p>
+<dl>
+<dt>Description</dt><dd><p>Mapped name for progress checker plugin for checking progress made by robot.</p>
 </dd>
-<dt>Note</dt>
-<dd><p class="first">The plugin namespace defined needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<dt>Note</dt><dd><p>The plugin namespace defined needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
 <p>Example:</p>
-<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">progress_checker_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;progress_checker&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">progress_checker</span><span class="p">:</span><span class="w"></span>
@@ -894,31 +874,28 @@ It will take in path and plugin names for controller, progress checker and goal 
 </div>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">goal_checker_plugins:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">goal_checker_plugins</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>‘goal_checker’</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>‘goal_checker’</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Mapped name for goal checker plugin for checking goal is reached.</p>
+<dl>
+<dt>Description</dt><dd><p>Mapped name for goal checker plugin for checking goal is reached.</p>
 </dd>
-<dt>Note</dt>
-<dd><p class="first">The plugin namespace defined needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<dt>Note</dt><dd><p>The plugin namespace defined needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
 <p>Example:</p>
-<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">goal_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;goal_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">    </span><span class="nt">goal_checker</span><span class="p">:</span><span class="w"></span>
@@ -927,150 +904,138 @@ It will take in path and plugin names for controller, progress checker and goal 
 </div>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">min_x_velocity_threshold:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">min_x_velocity_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.0001</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0001</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
+<dl class="simple">
+<dt>Description</dt><dd><p>The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
 Odometry values below this threshold (in m/s) will be set to 0.0.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">min_y_velocity_threshold:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">min_y_velocity_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.0001</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0001</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
+<dl class="simple">
+<dt>Description</dt><dd><p>The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
 Odometry values below this threshold (in m/s) will be set to 0.0. For non-holonomic robots</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">min_theta_velocity_threshold:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">min_theta_velocity_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.0001</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0001</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
+<dl class="simple">
+<dt>Description</dt><dd><p>The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
 Odometry values below this threshold (in rad/s) will be set to 0.0.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">failure_tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">failure_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The maximum duration in seconds the called controller plugin can fail (i.e. the <code class="code docutils literal notranslate"><span class="pre">computeVelocityCommands</span></code> function of the plugin throwing an exception) before the <code class="code docutils literal notranslate"><span class="pre">nav2_msgs::action::FollowPath</span></code> action fails.
+<dl class="simple">
+<dt>Description</dt><dd><p>The maximum duration in seconds the called controller plugin can fail (i.e. the <code class="code docutils literal notranslate"><span class="pre">computeVelocityCommands</span></code> function of the plugin throwing an exception) before the <code class="code docutils literal notranslate"><span class="pre">nav2_msgs::action::FollowPath</span></code> action fails.
 Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any positive value for the appropriate timeout.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">speed_limit_topic:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">speed_limit_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“speed_limit”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“speed_limit”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to <a class="reference internal" href="costmap-plugins/speed_filter.html#speed-filter"><span class="std std-ref">Speed Filter Parameters</span></a> configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">these messages</a>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to <a class="reference internal" href="costmap-plugins/speed_filter.html#speed-filter"><span class="std std-ref">Speed Filter Parameters</span></a> configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">these messages</a>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">odom_topic:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">odom_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“odom”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“odom”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Topic to get instantaneous measurement of speed from.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic to get instantaneous measurement of speed from.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="provided-plugins">
 <h2>Provided Plugins<a class="headerlink" href="#provided-plugins" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>The plugins listed below are inside the <code class="docutils literal notranslate"><span class="pre">nav2_controller</span></code> namespace.</div></blockquote>
+<div><p>The plugins listed below are inside the <code class="docutils literal notranslate"><span class="pre">nav2_controller</span></code> namespace.</p>
+</div></blockquote>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="nav2_controller-plugins/simple_progress_checker.html">SimpleProgressChecker</a></li>
@@ -1083,23 +1048,23 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 <h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
 <p>When the <code class="code docutils literal notranslate"><span class="pre">progress_checker_plugin</span></code>, <code class="code docutils literal notranslate"><span class="pre">goal_checker_plugin</span></code> or <code class="code docutils literal notranslate"><span class="pre">controller_plugins</span></code> parameters are not overridden, the following default plugins are loaded:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="25%" />
-<col width="75%" />
+<col style="width: 25%" />
+<col style="width: 75%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Namespace</td>
-<td>Plugin</td>
+<tbody>
+<tr class="row-odd"><td><p>Namespace</p></td>
+<td><p>Plugin</p></td>
 </tr>
-<tr class="row-even"><td>“progress_checker”</td>
-<td>“nav2_controller::SimpleProgressChecker”</td>
+<tr class="row-even"><td><p>“progress_checker”</p></td>
+<td><p>“nav2_controller::SimpleProgressChecker”</p></td>
 </tr>
-<tr class="row-odd"><td>“goal_checker”</td>
-<td>“nav2_controller::SimpleGoalChecker”</td>
+<tr class="row-odd"><td><p>“goal_checker”</p></td>
+<td><p>“nav2_controller::SimpleGoalChecker”</p></td>
 </tr>
-<tr class="row-even"><td>“FollowPath”</td>
-<td>“dwb_core::DWBLocalPlanner”</td>
+<tr class="row-even"><td><p>“FollowPath”</p></td>
+<td><p>“dwb_core::DWBLocalPlanner”</p></td>
 </tr>
 </tbody>
 </table>

@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Costmap 2D &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -804,505 +794,468 @@
 It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around.</p>
 <div class="section" id="costmap2d-ros-parameters">
 <h2>Costmap2D ROS Parameters<a class="headerlink" href="#costmap2d-ros-parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">always_send_full_costmap:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">always_send_full_costmap</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>False</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to send full costmap every update, rather than updates.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to send full costmap every update, rather than updates.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">footprint_padding:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">footprint_padding</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.01</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.01</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Amount to pad footprint (m).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Amount to pad footprint (m).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">footprint:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">footprint</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>vector&lt;double&gt;</td>
-<td>“[]”</td>
+<tr class="row-even"><td><p>vector&lt;double&gt;</p></td>
+<td><p>“[]”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters <cite>footprint: “[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]”</cite>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters <cite>footprint: “[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]”</cite>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">global_frame:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">global_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“map”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“map”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Reference frame.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Reference frame.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">height:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">height</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>5</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>5</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Height of costmap (m).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Height of costmap (m).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">width:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">width</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>5</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>5</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Width of costmap (m).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Width of costmap (m).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">lethal_cost_threshold:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">lethal_cost_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>100</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>100</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Minimum cost of an occupancy grid map to be considered a lethal obstacle.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimum cost of an occupancy grid map to be considered a lethal obstacle.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">map_topic:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">map_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“map”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“map”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Topic of map from map_server or SLAM.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic of map from map_server or SLAM.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">observation_sources:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">observation_sources</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">List of sources of sensors as a string, to be used if not specified in plugin specific configurations. Ex. “static_layer stvl_layer”</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>List of sources of sensors as a string, to be used if not specified in plugin specific configurations. Ex. “static_layer stvl_layer”</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">origin_x:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">origin_x</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">X origin of the costmap relative to width (m).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>X origin of the costmap relative to width (m).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">origin_y:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">origin_y</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Y origin of the costmap relative to height (m).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Y origin of the costmap relative to height (m).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">publish_frequency:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">publish_frequency</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Frequency to publish costmap to topic.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Frequency to publish costmap to topic.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">resolution:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">resolution</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.1</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Resolution of 1 pixel of the costmap, in meters.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Resolution of 1 pixel of the costmap, in meters.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">robot_base_frame:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">robot_base_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="56%" />
-<col width="44%" />
+<col style="width: 56%" />
+<col style="width: 44%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“base_link”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“base_link”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Robot base frame.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Robot base frame.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">robot_radius:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">robot_radius</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.1</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Robot radius to use, if footprint coordinates not provided.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Robot radius to use, if footprint coordinates not provided.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">rolling_window:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">rolling_window</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>False</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether costmap should roll with robot base frame.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether costmap should roll with robot base frame.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">track_unknown_space:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">track_unknown_space</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>False</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">If false, treats unknown space as free space, else as unknown space.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>If false, treats unknown space as free space, else as unknown space.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">transform_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.3</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">TF transform tolerance.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>TF transform tolerance.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">trinary_costmap:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">trinary_costmap</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>True</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">If occupancy grid map should be interpreted as only 3 values (free, occupied, unknown) or with its stored values.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>If occupancy grid map should be interpreted as only 3 values (free, occupied, unknown) or with its stored values.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">unknown_cost_value:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">unknown_cost_value</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>255</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>255</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Cost of unknown space if tracking it.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Cost of unknown space if tracking it.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">update_frequency:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">update_frequency</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>5.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>5.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Costmap update frequency.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Costmap update frequency.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">use_maximum:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">use_maximum</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>False</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">whether when combining costmaps to use the maximum cost or override.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>whether when combining costmaps to use the maximum cost or override.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">plugins:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">plugins</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="21%" />
-<col width="79%" />
+<col style="width: 21%" />
+<col style="width: 79%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>vector&lt;string&gt;</td>
-<td>{“static_layer”, “obstacle_layer”, “inflation_layer”}</td>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>{“static_layer”, “obstacle_layer”, “inflation_layer”}</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">List of mapped plugin names for parameter namespaces and names.</p>
+<dl>
+<dt>Description</dt><dd><p>List of mapped plugin names for parameter namespaces and names.</p>
 </dd>
-<dt>Note</dt>
-<dd><p class="first">Each plugin namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<dt>Note</dt><dd><p>Each plugin namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
 <p>Example:</p>
-<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">local_costmap</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">local_costmap</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">    </span><span class="nt">obstacle_layer</span><span class="p">:</span><span class="w"></span>
@@ -1315,30 +1268,28 @@ It is used in the planner and controller servers for creating the space to check
 </div>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">filters:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">filters</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>vector&lt;string&gt;</td>
-<td>{}</td>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>{}</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">List of mapped costmap filter names for parameter namespaces and names.</p>
+<dl>
+<dt>Description</dt><dd><p>List of mapped costmap filter names for parameter namespaces and names.</p>
 </dd>
-<dt>Note</dt>
-<dd><p class="first">Costmap filters are also loadable plugins just as ordinary costmap layers. This separation is made to avoid plugin and filter interference and places these filters on top of the combined layered costmap. As  with plugins, each costmap filter namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of filter plugin to be loaded in the namespace.</p>
+<dt>Note</dt><dd><p>Costmap filters are also loadable plugins just as ordinary costmap layers. This separation is made to avoid plugin and filter interference and places these filters on top of the combined layered costmap. As  with plugins, each costmap filter namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of filter plugin to be loaded in the namespace.</p>
 <p>Example:</p>
-<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">local_costmap</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">local_costmap</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">filters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;keepout_filter&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;speed_filter&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">    </span><span class="nt">keepout_filter</span><span class="p">:</span><span class="w"></span>
@@ -1349,32 +1300,30 @@ It is used in the planner and controller servers for creating the space to check
 </div>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="default-plugins">
 <h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
 <p>When the <code class="code docutils literal notranslate"><span class="pre">plugins</span></code> parameter is not overridden, the following default plugins are loaded:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col style="width: 24%" />
+<col style="width: 76%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Namespace</td>
-<td>Plugin</td>
+<tbody>
+<tr class="row-odd"><td><p>Namespace</p></td>
+<td><p>Plugin</p></td>
 </tr>
-<tr class="row-even"><td>“static_layer”</td>
-<td>“nav2_costmap_2d::StaticLayer”</td>
+<tr class="row-even"><td><p>“static_layer”</p></td>
+<td><p>“nav2_costmap_2d::StaticLayer”</p></td>
 </tr>
-<tr class="row-odd"><td>“obstacle_layer”</td>
-<td>“nav2_costmap_2d::ObstacleLayer”</td>
+<tr class="row-odd"><td><p>“obstacle_layer”</p></td>
+<td><p>“nav2_costmap_2d::ObstacleLayer”</p></td>
 </tr>
-<tr class="row-even"><td>“inflation_layer”</td>
-<td>“nav2_costmap_2d::InflationLayer”</td>
+<tr class="row-even"><td><p>“inflation_layer”</p></td>
+<td><p>“nav2_costmap_2d::InflationLayer”</p></td>
 </tr>
 </tbody>
 </table>

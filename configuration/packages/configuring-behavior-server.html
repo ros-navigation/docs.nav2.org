@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Behavior Server &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -806,163 +796,148 @@ It is also possible to implement independent behavior servers for each custom be
 Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Launch files, behaviors and tests were all renamed.</p>
 <div class="section" id="behavior-server-parameters">
 <h2>Behavior Server Parameters<a class="headerlink" href="#behavior-server-parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">costmap_topic:</th><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">costmap_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“local_costmap/costmap_raw”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“local_costmap/costmap_raw”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Raw costmap topic for collision checking.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Raw costmap topic for collision checking.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">footprint_topic:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">footprint_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="29%" />
-<col width="71%" />
+<col style="width: 29%" />
+<col style="width: 71%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“local_costmap/published_footprint”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“local_costmap/published_footprint”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Topic for footprint in the costmap frame.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic for footprint in the costmap frame.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">cycle_frequency:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">cycle_frequency</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>10.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>10.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Frequency to run behavior plugins.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Frequency to run behavior plugins.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">transform_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.1</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">TF transform tolerance.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>TF transform tolerance.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">global_frame:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">global_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“odom”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“odom”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Reference frame.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Reference frame.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">robot_base_frame:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">robot_base_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“base_link”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“base_link”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Robot base frame.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Robot base frame.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">behavior_plugins:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">behavior_plugins</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="23%" />
-<col width="77%" />
+<col style="width: 23%" />
+<col style="width: 77%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>vector&lt;string&gt;</td>
-<td>{“spin”, “back_up”, “drive_on_heading”, “wait”}</td>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>{“spin”, “back_up”, “drive_on_heading”, “wait”}</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">List of plugin names to use, also matches action server names.</p>
+<dl>
+<dt>Description</dt><dd><p>List of plugin names to use, also matches action server names.</p>
 </dd>
-<dt>Note</dt>
-<dd><p class="first">Each plugin namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
+<dt>Note</dt><dd><p>Each plugin namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
 <p>Example:</p>
-<div class="last highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">recoveries_server</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">recoveries_server</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;drive_on_heading&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">    </span><span class="nt">spin</span><span class="p">:</span><span class="w"></span>
@@ -977,35 +952,33 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 </div>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="default-plugins">
 <h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
 <p>When the <code class="code docutils literal notranslate"><span class="pre">behavior_plugins</span></code> parameter is not overridden, the following default plugins are loaded:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="25%" />
-<col width="75%" />
+<col style="width: 25%" />
+<col style="width: 75%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Namespace</td>
-<td>Plugin</td>
+<tbody>
+<tr class="row-odd"><td><p>Namespace</p></td>
+<td><p>Plugin</p></td>
 </tr>
-<tr class="row-even"><td>“spin”</td>
-<td>“nav2_behaviors/Spin”</td>
+<tr class="row-even"><td><p>“spin”</p></td>
+<td><p>“nav2_behaviors/Spin”</p></td>
 </tr>
-<tr class="row-odd"><td>“backup”</td>
-<td>“nav2_behaviors/BackUp”</td>
+<tr class="row-odd"><td><p>“backup”</p></td>
+<td><p>“nav2_behaviors/BackUp”</p></td>
 </tr>
-<tr class="row-even"><td>“drive_on_heading”</td>
-<td>“nav2_behaviors/DriveOnHeading”</td>
+<tr class="row-even"><td><p>“drive_on_heading”</p></td>
+<td><p>“nav2_behaviors/DriveOnHeading”</p></td>
 </tr>
-<tr class="row-odd"><td>“wait”</td>
-<td>“nav2_behaviors/Wait”</td>
+<tr class="row-odd"><td><p>“wait”</p></td>
+<td><p>“nav2_behaviors/Wait”</p></td>
 </tr>
 </tbody>
 </table>
@@ -1014,164 +987,140 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 <div class="section" id="spin-behavior-parameters">
 <h2>Spin Behavior Parameters<a class="headerlink" href="#spin-behavior-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Spin distance is given from the action request</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">simulate_ahead_time:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">simulate_ahead_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>2.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Time to look ahead for collisions (s).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time to look ahead for collisions (s).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">max_rotational_vel:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">max_rotational_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Maximum rotational velocity (rad/s).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum rotational velocity (rad/s).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">min_rotational_vel:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">min_rotational_vel</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.4</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.4</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Minimum rotational velocity (rad/s).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimum rotational velocity (rad/s).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">rotational_acc_lim:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">rotational_acc_lim</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>3.2</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.2</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">maximum rotational acceleration (rad/s^2).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>maximum rotational acceleration (rad/s^2).</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="backup-behavior-parameters">
 <h2>BackUp Behavior Parameters<a class="headerlink" href="#backup-behavior-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Backup distance, speed and time_allowance is given from the action request.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">simulate_ahead_time:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">simulate_ahead_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>2.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Time to look ahead for collisions (s).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time to look ahead for collisions (s).</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="driveonheading-behavior-parameters">
 <h2>DriveOnHeading Behavior Parameters<a class="headerlink" href="#driveonheading-behavior-parameters" title="Permalink to this headline">¶</a></h2>
 <p>DriveOnHeading distance, speed and time_allowance is given from the action request.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">simulate_ahead_time:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">simulate_ahead_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>2.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Time to look ahead for collisions (s).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time to look ahead for collisions (s).</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>

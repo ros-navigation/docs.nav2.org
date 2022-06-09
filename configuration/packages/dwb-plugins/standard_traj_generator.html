@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StandardTrajectoryGenerator &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -803,156 +793,140 @@
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.sim_time:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.sim_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.7</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.7</p></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<div><dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Time to simulate ahead by (s).</p>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Time to simulate ahead by (s).</p>
 </dd>
 </dl>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.discretize_by_time:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.discretize_by_time</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>false</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<div><dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">If true, forward simulate by time. If False, forward simulate by linear and angular granularity.</p>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>If true, forward simulate by time. If False, forward simulate by linear and angular granularity.</p>
 </dd>
 </dl>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.time_granularity:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.time_granularity</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.5</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<div><dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Time ahead to project.</p>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Time ahead to project.</p>
 </dd>
 </dl>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.linear_granularity:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.linear_granularity</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.5</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<div><dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Linear distance forward to project.</p>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Linear distance forward to project.</p>
 </dd>
 </dl>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.angular_granularity:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.angular_granularity</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.025</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.025</p></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<div><dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Angular distance to project.</p>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Angular distance to project.</p>
 </dd>
 </dl>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.include_last_point:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.include_last_point</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to include the last pose in the trajectory.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Whether to include the last pose in the trajectory.</p>
 </dd>
 </dl>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 </div>
 

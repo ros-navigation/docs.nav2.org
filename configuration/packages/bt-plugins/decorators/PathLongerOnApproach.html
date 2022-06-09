@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PathLongerOnApproach &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
@@ -803,75 +793,68 @@
 <p>This node checks if the newly generated global path is significantly larger than the old global path in the user-defined robot’s goal proximity and triggers their corresponding children. This allows users to enact special behaviors before a robot attempts to execute a path significantly longer than the prior path when close to a goal (e.g. going around an dynamic obstacle that may just need a few seconds to move out of the way).</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">path:</th><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">path</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="79%" />
-<col width="21%" />
+<col style="width: 79%" />
+<col style="width: 21%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>nav_msgs::msg::Path</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>nav_msgs::msg::Path</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Path created by action server. Takes in a blackboard variable, e.g. “{path}”.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Path created by action server. Takes in a blackboard variable, e.g. “{path}”.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">prox_len:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">prox_len</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="65%" />
-<col width="35%" />
+<col style="width: 65%" />
+<col style="width: 35%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>3.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Proximity length (m) for the path to be longer on approach.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Proximity length (m) for the path to be longer on approach.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">length_factor:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">length_factor</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="65%" />
-<col width="35%" />
+<col style="width: 65%" />
+<col style="width: 35%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>2.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Length multiplication factor to check if the path is significantly longer.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Length multiplication factor to check if the path is significantly longer.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>

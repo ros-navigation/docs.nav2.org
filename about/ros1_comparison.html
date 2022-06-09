@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ROS to ROS 2 Navigation &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -821,26 +811,26 @@ See each package README.md for more details.</p>
 <p>Ported packages:</p>
 <blockquote>
 <div><ul class="simple">
-<li>amcl: Ported to nav2_amcl</li>
-<li>map_server: Ported to nav2_map_server</li>
-<li>nav2_planner: Replaces global_planner, hosts <code class="docutils literal notranslate"><span class="pre">N</span></code> planner plugins</li>
-<li>nav2_controller: Replaces local_planner, hosts <code class="docutils literal notranslate"><span class="pre">N</span></code> controller plugins</li>
-<li>Navfn: Ported to nav2_navfn_planner</li>
-<li>DWB: Replaces DWA and ported to ROS 2 under nav2_dwb_controller metapackage</li>
-<li>nav_core: Ported as nav2_core with updates to interfaces</li>
-<li>costmap_2d: Ported as nav2_costmap_2d</li>
+<li><p>amcl: Ported to nav2_amcl</p></li>
+<li><p>map_server: Ported to nav2_map_server</p></li>
+<li><p>nav2_planner: Replaces global_planner, hosts <code class="docutils literal notranslate"><span class="pre">N</span></code> planner plugins</p></li>
+<li><p>nav2_controller: Replaces local_planner, hosts <code class="docutils literal notranslate"><span class="pre">N</span></code> controller plugins</p></li>
+<li><p>Navfn: Ported to nav2_navfn_planner</p></li>
+<li><p>DWB: Replaces DWA and ported to ROS 2 under nav2_dwb_controller metapackage</p></li>
+<li><p>nav_core: Ported as nav2_core with updates to interfaces</p></li>
+<li><p>costmap_2d: Ported as nav2_costmap_2d</p></li>
 </ul>
 </div></blockquote>
 <p>New packages:</p>
 <blockquote>
 <div><ul class="simple">
-<li>nav2_bt_navigator: replaces <code class="docutils literal notranslate"><span class="pre">move_base</span></code> state machine</li>
-<li>nav2_lifecycle_manager: Handles the server program lifecycles</li>
-<li>nav2_waypoint_follower: Can take in many waypoints to execute a complex task through</li>
-<li>nav2_system_tests: A set of integration tests for CI and basic tutorials in simulation</li>
-<li>nav2_rviz_plugins: An rviz plugin to control the Navigation2 servers, command, cancel, and navigation with</li>
-<li>nav2_experimental: Experimental (and incomplete) work for deep reinforement learning controllers</li>
-<li>navigation2_behavior_trees: wrappers for the behavior tree library to call ROS action servers</li>
+<li><p>nav2_bt_navigator: replaces <code class="docutils literal notranslate"><span class="pre">move_base</span></code> state machine</p></li>
+<li><p>nav2_lifecycle_manager: Handles the server program lifecycles</p></li>
+<li><p>nav2_waypoint_follower: Can take in many waypoints to execute a complex task through</p></li>
+<li><p>nav2_system_tests: A set of integration tests for CI and basic tutorials in simulation</p></li>
+<li><p>nav2_rviz_plugins: An rviz plugin to control the Navigation2 servers, command, cancel, and navigation with</p></li>
+<li><p>nav2_experimental: Experimental (and incomplete) work for deep reinforement learning controllers</p></li>
+<li><p>navigation2_behavior_trees: wrappers for the behavior tree library to call ROS action servers</p></li>
 </ul>
 </div></blockquote>
 </div>

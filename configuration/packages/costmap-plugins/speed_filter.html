@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Speed Filter Parameters &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -806,112 +796,98 @@
     <iframe width="800" height="450" src="https://www.youtube.com/embed/pq0r0lqi0Sc?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </h1><p><cite>&lt;filter name&gt;</cite>: is the corresponding plugin name selected for this type.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.enabled:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.enabled</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>True</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether it is enabled.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether it is enabled.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.filter_info_topic:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.filter_info_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Name of the incoming <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg">CostmapFilterInfo</a> topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the <a class="reference internal" href="../configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> configuration page.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Name of the incoming <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg">CostmapFilterInfo</a> topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the <a class="reference internal" href="../configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> configuration page.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.speed_limit_topic:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.speed_limit_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="32%" />
-<col width="68%" />
+<col style="width: 32%" />
+<col style="width: 68%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“speed_limit”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“speed_limit”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first">Topic to publish speed limit to. The <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">messages</a> have the following fields’ meaning:</p>
+<dl>
+<dt>Description</dt><dd><p>Topic to publish speed limit to. The <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">messages</a> have the following fields’ meaning:</p>
 <ul>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">percentage</span></code>: speed limit is expressed in percentage if <code class="docutils literal notranslate"><span class="pre">true</span></code> or in absolute values in <code class="docutils literal notranslate"><span class="pre">false</span></code> case. This parameter is set depending on <code class="docutils literal notranslate"><span class="pre">type</span></code> field of <code class="docutils literal notranslate"><span class="pre">CostmapFilterInfo</span></code> message.</p>
-</li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">speed_limit</span></code>: non-zero values show maximum allowed speed expressed in a percent of maximum robot speed or in absolute value depending on <code class="docutils literal notranslate"><span class="pre">percentage</span></code> value. Zero value means no speed restriction (independently on <code class="docutils literal notranslate"><span class="pre">percentage</span></code>). <code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> is being linearly converted from <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> filter mask value as: <code class="docutils literal notranslate"><span class="pre">speed_limit</span> <span class="pre">=</span> <span class="pre">base</span> <span class="pre">+</span> <span class="pre">multiplier</span> <span class="pre">*</span> <span class="pre">mask_value</span></code>, where <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> coefficients are taken from <code class="docutils literal notranslate"><span class="pre">CostmapFilterInfo</span></code> message.</p>
-<dl class="docutils">
-<dt>Note</dt>
-<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> expressed in a percent should belong to <code class="docutils literal notranslate"><span class="pre">(0.0</span> <span class="pre">..</span> <span class="pre">100.0]</span></code> range.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">percentage</span></code>: speed limit is expressed in percentage if <code class="docutils literal notranslate"><span class="pre">true</span></code> or in absolute values in <code class="docutils literal notranslate"><span class="pre">false</span></code> case. This parameter is set depending on <code class="docutils literal notranslate"><span class="pre">type</span></code> field of <code class="docutils literal notranslate"><span class="pre">CostmapFilterInfo</span></code> message.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">speed_limit</span></code>: non-zero values show maximum allowed speed expressed in a percent of maximum robot speed or in absolute value depending on <code class="docutils literal notranslate"><span class="pre">percentage</span></code> value. Zero value means no speed restriction (independently on <code class="docutils literal notranslate"><span class="pre">percentage</span></code>). <code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> is being linearly converted from <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> filter mask value as: <code class="docutils literal notranslate"><span class="pre">speed_limit</span> <span class="pre">=</span> <span class="pre">base</span> <span class="pre">+</span> <span class="pre">multiplier</span> <span class="pre">*</span> <span class="pre">mask_value</span></code>, where <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> coefficients are taken from <code class="docutils literal notranslate"><span class="pre">CostmapFilterInfo</span></code> message.</p>
+<dl class="simple">
+<dt>Note</dt><dd><p><code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> expressed in a percent should belong to <code class="docutils literal notranslate"><span class="pre">(0.0</span> <span class="pre">..</span> <span class="pre">100.0]</span></code> range.</p>
 </dd>
 </dl>
 </li>
 </ul>
-<p class="last">This topic will be used by a Controller Server. Please refer to <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a> configuration page to set it appropriately.</p>
+<p>This topic will be used by a Controller Server. Please refer to <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a> configuration page to set it appropriately.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.transform_tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.transform_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.1</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>

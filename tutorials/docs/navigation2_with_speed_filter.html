@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Navigating with Speed Limits &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -800,9 +790,9 @@
   <div class="section" id="navigating-with-speed-limits">
 <span id="navigation2-with-speed-filter"></span><h1>Navigating with Speed Limits<a class="headerlink" href="#navigating-with-speed-limits" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#requirements">Requirements</a></li>
-<li><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
@@ -828,31 +818,31 @@
 <p>where:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">filter_mask_data</span></code> - is an <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> value of the corresponding cell on mask where maximum speed should be restricted.</li>
-<li><code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> are coefficients taken from <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> messages published by Costmap Filter Info Server (see in next chapter below).</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter_mask_data</span></code> - is an <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> value of the corresponding cell on mask where maximum speed should be restricted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> are coefficients taken from <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> messages published by Costmap Filter Info Server (see in next chapter below).</p></li>
 </ul>
 </div></blockquote>
 <p>The decoded <code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> value may have one of two meanings:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Speed limit expressed in a percent from maximum robot speed.</li>
-<li>Speed limit expressed in absolute values (e.g. in <code class="docutils literal notranslate"><span class="pre">m/s</span></code>).</li>
+<li><p>Speed limit expressed in a percent from maximum robot speed.</p></li>
+<li><p>Speed limit expressed in absolute values (e.g. in <code class="docutils literal notranslate"><span class="pre">m/s</span></code>).</p></li>
 </ul>
 </div></blockquote>
 <p>The meaning used by Speed Filter is being read from <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> messages.
 In this tutorial we will use the first type of speed restriction expressed in a percent from maximum robot speed.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For speed restriction expressed in a percent, <code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> will be used exactly as a percent belonging to <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> range, not <code class="docutils literal notranslate"><span class="pre">[0.0..1.0]</span></code> range.</p>
+<p class="admonition-title">Note</p>
+<p>For speed restriction expressed in a percent, <code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> will be used exactly as a percent belonging to <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> range, not <code class="docutils literal notranslate"><span class="pre">[0.0..1.0]</span></code> range.</p>
 </div>
 <p>Create a new image with a PGM/PNG/BMP format: copy <code class="docutils literal notranslate"><span class="pre">turtlebot3_world.pgm</span></code> main map which will be used in a world simulation from a Nav2 repository to a new <code class="docutils literal notranslate"><span class="pre">speed_mask.pgm</span></code> file. Open <code class="docutils literal notranslate"><span class="pre">speed_mask.pgm</span></code> in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:</p>
 <a class="reference internal image-reference" href="../../_images/drawing_speed_mask.png"><img alt="../../_images/drawing_speed_mask.png" src="../../_images/drawing_speed_mask.png" style="width: 500px;" /></a>
 <p>Area “A” is filled with <code class="docutils literal notranslate"><span class="pre">40%</span></code> gray color, area “B” - with <code class="docutils literal notranslate"><span class="pre">70%</span></code> gray, that means that speed restriction will take <code class="docutils literal notranslate"><span class="pre">100%</span> <span class="pre">-</span> <span class="pre">40%</span> <span class="pre">=</span> <span class="pre">60%</span></code> in area “A” and <code class="docutils literal notranslate"><span class="pre">100%</span> <span class="pre">-</span> <span class="pre">70%</span> <span class="pre">=</span> <span class="pre">30%</span></code> in area “B” from maximum speed value allowed for this robot.
 We will use <code class="docutils literal notranslate"><span class="pre">scale</span></code> map mode with no thresholds. In this mode darker colors will have higher <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values. E.g. for area “B” with <code class="docutils literal notranslate"><span class="pre">70%</span></code> of gray <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> data will be equal to <code class="docutils literal notranslate"><span class="pre">70</span></code>. So in order to hit the target, we need to choose <code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">=</span> <span class="pre">100.0</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span> <span class="pre">=</span> <span class="pre">-1.0</span></code>. This will reverse the scale <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values to a desired one. No thresholds (<code class="docutils literal notranslate"><span class="pre">free_thresh</span></code> <code class="docutils literal notranslate"><span class="pre">occupied_thresh</span></code>) were chosen for the convenience in the <code class="docutils literal notranslate"><span class="pre">yaml</span></code>  file: to have 1:1 full range conversion of lightness value from filter mask -&gt; to speed restriction percent.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>It is typical but not a mandatory selection of <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code>. For example, you can choose map mode to be <code class="docutils literal notranslate"><span class="pre">raw</span></code>. In this case color lightness is being directly converted into <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> values. For masks saved in a <code class="docutils literal notranslate"><span class="pre">raw</span></code> mode, <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> will be equal to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> accordingly.</p>
-<p class="last">Another important thing is that it is not necessary to use the whole <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> percent scale. <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> coefficients could be chosen so that the speed restriction values would belong to somewhere in the middle of percent range. E.g. <code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">=</span> <span class="pre">40.0</span></code>, <code class="docutils literal notranslate"><span class="pre">multiplier</span> <span class="pre">=</span> <span class="pre">0.1</span></code> will give speed restrictions from <code class="docutils literal notranslate"><span class="pre">[40.0%..50.0%]</span></code> range with a step of <code class="docutils literal notranslate"><span class="pre">0.1%</span></code>. This might be useful for fine tuning.</p>
+<p>Another important thing is that it is not necessary to use the whole <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> percent scale. <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> coefficients could be chosen so that the speed restriction values would belong to somewhere in the middle of percent range. E.g. <code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">=</span> <span class="pre">40.0</span></code>, <code class="docutils literal notranslate"><span class="pre">multiplier</span> <span class="pre">=</span> <span class="pre">0.1</span></code> will give speed restrictions from <code class="docutils literal notranslate"><span class="pre">[40.0%..50.0%]</span></code> range with a step of <code class="docutils literal notranslate"><span class="pre">0.1%</span></code>. This might be useful for fine tuning.</p>
 </div>
 <p>After all speed restriction areas will be filled, save the <code class="docutils literal notranslate"><span class="pre">speed_mask.pgm</span></code> image.</p>
 <p>Like all other maps, the filter mask should have its own YAML metadata file. Copy <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.yaml">turtlebot3_world.yaml</a> to <code class="docutils literal notranslate"><span class="pre">speed_mask.yaml</span></code>. Open <code class="docutils literal notranslate"><span class="pre">speed_mask.yaml</span></code> and update the fields as shown below (as mentioned before for the <code class="docutils literal notranslate"><span class="pre">scale</span></code> mode to use whole color lightness range there should be no thresholds: <code class="docutils literal notranslate"><span class="pre">free_thresh</span> <span class="pre">=</span> <span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">occupied_thresh</span> <span class="pre">=</span> <span class="pre">1.0</span></code>):</p>
@@ -873,8 +863,8 @@ We will use <code class="docutils literal notranslate"><span class="pre">scale</
 </div>
 <p>Since Costmap2D does not support orientation, the last third “yaw” component of the <code class="docutils literal notranslate"><span class="pre">origin</span></code> vector should be equal to zero (for example: <code class="docutils literal notranslate"><span class="pre">origin:</span> <span class="pre">[1.25,</span> <span class="pre">-5.18,</span> <span class="pre">0.0]</span></code>). Save <code class="docutils literal notranslate"><span class="pre">speed_mask.yaml</span></code> and the new filter mask is ready to use.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">World map itself and filter mask could have different sizes, origin and resolution which might be useful (e.g. for cases when filter mask is covering smaller areas on maps or when one filter mask is used repeatedly many times, like annotating a speed restricted area for same shape rooms in the hotel). For this case, you need to correct <code class="docutils literal notranslate"><span class="pre">resolution</span></code> and <code class="docutils literal notranslate"><span class="pre">origin</span></code> fields in YAML as well so that the filter mask is correctly laid on top of the original map. This example shows using the main map as a base, but that is not required.</p>
+<p class="admonition-title">Note</p>
+<p>World map itself and filter mask could have different sizes, origin and resolution which might be useful (e.g. for cases when filter mask is covering smaller areas on maps or when one filter mask is used repeatedly many times, like annotating a speed restricted area for same shape rooms in the hotel). For this case, you need to correct <code class="docutils literal notranslate"><span class="pre">resolution</span></code> and <code class="docutils literal notranslate"><span class="pre">origin</span></code> fields in YAML as well so that the filter mask is correctly laid on top of the original map. This example shows using the main map as a base, but that is not required.</p>
 </div>
 </div>
 <div class="section" id="configure-costmap-filter-info-publisher-server">
@@ -1007,9 +997,9 @@ We will use <code class="docutils literal notranslate"><span class="pre">scale</
 <p>Note, that:</p>
 <blockquote>
 <div><ul class="simple">
-<li>For Speed Filter setting speed restrictions in a percent from maximum speed, the <code class="docutils literal notranslate"><span class="pre">type</span></code> of costmap filter should be set to <code class="docutils literal notranslate"><span class="pre">1</span></code>. All possible costmap filter types could be found at <a class="reference internal" href="../../configuration/packages/configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> page.</li>
-<li>Filter mask topic name should be the equal for <code class="docutils literal notranslate"><span class="pre">mask_topic</span></code> parameter of Costmap Filter Info Publisher Server and <code class="docutils literal notranslate"><span class="pre">topic_name</span></code> parameter of Map Server.</li>
-<li>As was described in a previous chapter, <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> should be set to <code class="docutils literal notranslate"><span class="pre">100.0</span></code> and <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> accordingly for the purposes of this tutorial example.</li>
+<li><p>For Speed Filter setting speed restrictions in a percent from maximum speed, the <code class="docutils literal notranslate"><span class="pre">type</span></code> of costmap filter should be set to <code class="docutils literal notranslate"><span class="pre">1</span></code>. All possible costmap filter types could be found at <a class="reference internal" href="../../configuration/packages/configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> page.</p></li>
+<li><p>Filter mask topic name should be the equal for <code class="docutils literal notranslate"><span class="pre">mask_topic</span></code> parameter of Costmap Filter Info Publisher Server and <code class="docutils literal notranslate"><span class="pre">topic_name</span></code> parameter of Map Server.</p></li>
+<li><p>As was described in a previous chapter, <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> should be set to <code class="docutils literal notranslate"><span class="pre">100.0</span></code> and <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> accordingly for the purposes of this tutorial example.</p></li>
 </ul>
 </div></blockquote>
 <p>Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Speed Filter could be found in a <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_costmap_filters_demo">nav2_costmap_filters_demo</a> directory of <code class="docutils literal notranslate"><span class="pre">navigation2_tutorials</span></code> repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>, build the demo and launch <code class="docutils literal notranslate"><span class="pre">costmap_filter_info.launch.py</span></code> as follows:</p>
@@ -1027,9 +1017,9 @@ $ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_fil
 <h3>3. Enable Speed Filter<a class="headerlink" href="#enable-speed-filter" title="Permalink to this headline">¶</a></h3>
 <p>Costmap Filters are Costamp2D plugins. You can enable the <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> plugin in Costmap2D by adding <code class="docutils literal notranslate"><span class="pre">speed_filter</span></code> to the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>. The Speed Filter plugin should have the following parameters defined:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">plugin</span></code>: type of plugin. In our case <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::SpeedFilter</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">filter_info_topic</span></code>: filter info topic name. This needs to be equal to <code class="docutils literal notranslate"><span class="pre">filter_info_topic</span></code> parameter of Costmap Filter Info Publisher Server from the chapter above.</li>
-<li><code class="docutils literal notranslate"><span class="pre">speed_limit_topic</span></code>: name of topic to publish speed limit to.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin</span></code>: type of plugin. In our case <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::SpeedFilter</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter_info_topic</span></code>: filter info topic name. This needs to be equal to <code class="docutils literal notranslate"><span class="pre">filter_info_topic</span></code> parameter of Costmap Filter Info Publisher Server from the chapter above.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">speed_limit_topic</span></code>: name of topic to publish speed limit to.</p></li>
 </ul>
 <p>Full list of parameters supported by <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> are listed at the <a class="reference internal" href="../../configuration/packages/costmap-plugins/speed_filter.html#speed-filter"><span class="std std-ref">Speed Filter Parameters</span></a> page.</p>
 <p>You can place the plugin either in the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> section in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> to have speed restriction mask applied to global costmap or in the <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> to apply speed mask to the local costmap. However, <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> plugin should never be enabled simultaneously for global and local costmaps. Otherwise, it can lead to unwanted multiple “speed restriction” - “no restriction” message chains on speed restriction boundaries, that will cause jerking of the robot or another unpredictable behaviour.</p>

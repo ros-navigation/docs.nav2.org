@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Constrained smoother &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -809,431 +799,393 @@ increasing its smoothness and distance from obstacles. Resulting path is marked 
 <a class="reference internal image-reference" href="../../_images/constrained_smoother.png"><img alt="../../_images/constrained_smoother.png" class="align-center" src="../../_images/constrained_smoother.png" style="width: 698px; height: 593px;" /></a>
 <div class="section" id="smoother-server-parameters">
 <h2>Smoother Server Parameters<a class="headerlink" href="#smoother-server-parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">reversing_enabled:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">reversing_enabled</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">path_downsampling_factor:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">path_downsampling_factor</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>1</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Every n-th node of the path is taken for optimization. Useful for speed-up</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Every n-th node of the path is taken for optimization. Useful for speed-up</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">path_upsampling_factor:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">path_upsampling_factor</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>1</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Upsampling factor for refining. 0 - path remains downsampled (see <code class="docutils literal notranslate"><span class="pre">path_downsampling_factor</span></code>), 1 - path is upsampled back to original granularity using cubic bezier, 2… - more upsampling</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Upsampling factor for refining. 0 - path remains downsampled (see <code class="docutils literal notranslate"><span class="pre">path_downsampling_factor</span></code>), 1 - path is upsampled back to original granularity using cubic bezier, 2… - more upsampling</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">keep_start_orientation:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">keep_start_orientation</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to prevent the start orientation from being smoothed</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to prevent the start orientation from being smoothed</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">keep_goal_orientation:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">keep_goal_orientation</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to prevent the goal orientation from being smoothed</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to prevent the goal orientation from being smoothed</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">minimum_turning_radius:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">minimum_turning_radius</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.4</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.4</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">w_curve:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">w_curve</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>30.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>30.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Weight to enforce minimum_turning_radius</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to enforce minimum_turning_radius</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">w_dist:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">w_dist</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Weight to bind path to original as optional replacement for cost weight</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to bind path to original as optional replacement for cost weight</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">w_smooth:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">w_smooth</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>15000.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>15000.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Weight to maximize smoothness of path</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to maximize smoothness of path</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">w_cost:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">w_cost</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.015</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.015</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Weight to steer robot away from collision and cost</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to steer robot away from collision and cost</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">w_cost_cusp_multiplier:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">w_cost_cusp_multiplier</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>3.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first">Option to use higher weight during forward/reverse direction change, helping optimizer to converge or add an extra obstacle avoidance at these problematic segments.
+<dl>
+<dt>Description</dt><dd><p>Option to use higher weight during forward/reverse direction change, helping optimizer to converge or add an extra obstacle avoidance at these problematic segments.
 Following image depicts improvement of the path with <code class="docutils literal notranslate"><span class="pre">w_cost_cusp_multiplier</span></code> (green) compared to one without it (purple). Original path has cyan color.</p>
-<a class="last reference internal image-reference" href="../../_images/w_cost_cusp_multiplier.png"><img alt="../../_images/w_cost_cusp_multiplier.png" class="align-center" src="../../_images/w_cost_cusp_multiplier.png" style="width: 282px; height: 429px;" /></a>
+<a class="reference internal image-reference" href="../../_images/w_cost_cusp_multiplier.png"><img alt="../../_images/w_cost_cusp_multiplier.png" class="align-center" src="../../_images/w_cost_cusp_multiplier.png" style="width: 282px; height: 429px;" /></a>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">cusp_zone_length:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">cusp_zone_length</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>2.5</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.5</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Length of the section around cusp in which nodes use <code class="docutils literal notranslate"><span class="pre">w_cost_cusp_multiplier</span></code> (w_cost rises gradually inside the zone towards the cusp point, whose costmap weight eqals w_cost*w_cost_cusp_multiplier)</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Length of the section around cusp in which nodes use <code class="docutils literal notranslate"><span class="pre">w_cost_cusp_multiplier</span></code> (w_cost rises gradually inside the zone towards the cusp point, whose costmap weight eqals w_cost*w_cost_cusp_multiplier)</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">cost_check_points:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">cost_check_points</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>array of double</td>
-<td>[]</td>
+<tr class="row-even"><td><p>array of double</p></td>
+<td><p>[]</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first">Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, …].</p>
+<dl>
+<dt>Description</dt><dd><p>Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, …].</p>
 <p>IMPORTANT: Requires much higher number of optimizer iterations to actually improve the path. Use only if you really need it (highly elongated/asymmetric robots)</p>
 <p>Following image depicts how two cost check points can be used to improve cost awareness of a rectangular robot.</p>
-<a class="last reference internal image-reference" href="../../_images/cost_check_points.png"><img alt="../../_images/cost_check_points.png" class="align-center" src="../../_images/cost_check_points.png" style="width: 176px; height: 284px;" /></a>
+<a class="reference internal image-reference" href="../../_images/cost_check_points.png"><img alt="../../_images/cost_check_points.png" class="align-center" src="../../_images/cost_check_points.png" style="width: 176px; height: 284px;" /></a>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">optimizer.max_iterations:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">optimizer.max_iterations</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>100</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>100</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Maximum number of optimizer iterations</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum number of optimizer iterations</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">optimizer.debug_optimizer:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">optimizer.debug_optimizer</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>false</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to print optimizer debug info</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to print optimizer debug info</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">optimizer.linear_solver_type:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">optimizer.linear_solver_type</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“SPARSE_NORMAL_CHOLESKY”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“SPARSE_NORMAL_CHOLESKY”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Linear solver type to be used by optimizer. Valid values are <code class="docutils literal notranslate"><span class="pre">SPARSE_NORMAL_CHOLESKY</span></code> and <code class="docutils literal notranslate"><span class="pre">DENSE_QR</span></code></p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Linear solver type to be used by optimizer. Valid values are <code class="docutils literal notranslate"><span class="pre">SPARSE_NORMAL_CHOLESKY</span></code> and <code class="docutils literal notranslate"><span class="pre">DENSE_QR</span></code></p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">optimizer.gradient_tol:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">optimizer.gradient_tol</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>1e-10</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>1e-10</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Gradient tolerance optimization termination criterion</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Gradient tolerance optimization termination criterion</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">optimizer.fn_tol:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">optimizer.fn_tol</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>1e-7</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>1e-7</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Function tolerance optimization termination criterion</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Function tolerance optimization termination criterion</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">optimizer.param_tol:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">optimizer.param_tol</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>1e-15</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>1e-15</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Parameter tolerance optimization termination criterion</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Parameter tolerance optimization termination criterion</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>

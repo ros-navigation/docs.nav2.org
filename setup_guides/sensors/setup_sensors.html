@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setting Up Sensors &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -807,16 +797,16 @@
 <p>Examples of commonly used sensors are lidar, radar, RGB camera, depth camera, IMU, and GPS. To standardize the message formats of these sensors and allow for easier interoperation between vendors, ROS provides the <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package that defines the common sensor interfaces. This also allows users to use any sensor vendor as long as it follows the standard format in <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code>. In the next subsection, we introduce some of commonly used messages in navigation, namely the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/LaserScan</span></code>, <code class="docutils literal notranslate"><span class="pre">sensor_msgs/PointCloud2</span></code>, <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Range</span></code>, and <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Image</span></code>.</p>
 <p>Aside from the <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package, there are also the <code class="docutils literal notranslate"><span class="pre">radar_msgs</span></code> and <code class="docutils literal notranslate"><span class="pre">vision_msgs</span></code> standard interfaces you should be aware of.  The <code class="docutils literal notranslate"><span class="pre">radar_msgs</span></code> defines the messages for radar-specific sensors while the <code class="docutils literal notranslate"><span class="pre">vision_msgs</span></code> package defines the messages used in computer vision such as object detection, segmentation, and other machine learning models. Messages supported by this package are <code class="docutils literal notranslate"><span class="pre">vision_msgs/Classification2D</span></code>, <code class="docutils literal notranslate"><span class="pre">vision_msgs/Classification3D</span></code>, <code class="docutils literal notranslate"><span class="pre">vision_msgs/Detection2D</span></code>, and <code class="docutils literal notranslate"><span class="pre">vision_msgs/Detection3D</span></code>, to name a few.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more information, see the API documentation of <a class="reference external" href="http://wiki.ros.org/sensor_msgs">sensor_msgs</a>, <a class="reference external" href="http://wiki.ros.org/radar_msgs">radar_msgs</a>, and <a class="reference external" href="http://wiki.ros.org/vision_msgs">vision_msgs</a>.</p>
+<p class="admonition-title">See also</p>
+<p>For more information, see the API documentation of <a class="reference external" href="http://wiki.ros.org/sensor_msgs">sensor_msgs</a>, <a class="reference external" href="http://wiki.ros.org/radar_msgs">radar_msgs</a>, and <a class="reference external" href="http://wiki.ros.org/vision_msgs">vision_msgs</a>.</p>
 </div>
 <p>Your physical robot’s sensors probably have ROS drivers written for them (e.g. a ROS node that connects to the sensors, populates data into messages, and publishes them for your robot to use) that follow the standard interface in the <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package. The <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package makes it easy for you to use many different sensors from different manufacturers. General software packages like Nav2 can then can read these standardized messages and perform tasks independent of the sensor hardware. On simulated robots such as <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, Gazebo has sensor plugins which also publish their information following the <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package.</p>
 <div class="section" id="common-sensor-messages">
 <h3>Common Sensor Messages<a class="headerlink" href="#common-sensor-messages" title="Permalink to this headline">¶</a></h3>
 <p>In this subsection, we discuss some of the common types of <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> you might encounter when setting up Nav2. We will provide a brief description for each sensor, an image of it being simulated in Gazebo and the corresponding visualization of the sensor readings in RViz.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">There are other types of <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> aside from the ones listed below.  The complete list of messages and their definitions can be found in the <a class="reference external" href="http://wiki.ros.org/sensor_msgs">sensor_msgs documentation</a>.</p>
+<p class="admonition-title">Note</p>
+<p>There are other types of <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> aside from the ones listed below.  The complete list of messages and their definitions can be found in the <a class="reference external" href="http://wiki.ros.org/sensor_msgs">sensor_msgs documentation</a>.</p>
 </div>
 <div class="section" id="sensor-msgs-laserscan">
 <h4>sensor_msgs/LaserScan<a class="headerlink" href="#sensor-msgs-laserscan" title="Permalink to this headline">¶</a></h4>
@@ -1172,8 +1162,8 @@ ros2 launch sam_bot_description display.launch.py
 <p>Both the <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> and <code class="docutils literal notranslate"><span class="pre">nav2_amcl</span></code> use information from the laser scan sensor to be able to perceive the robot’s environment. Hence, to verify that they can access the laser scan sensor readings, we must make sure that they are subscribed to the correct topic that publishes the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/LaserScan</span></code> message. This can be configured by setting their <code class="docutils literal notranslate"><span class="pre">scan_topic</span></code> parameters to the topic that publishes that message. It is a convention to publish the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/LaserScan</span></code> messages to  <code class="docutils literal notranslate"><span class="pre">/scan</span></code> topic. Thus, by default, the <code class="docutils literal notranslate"><span class="pre">scan_topic</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">/scan</span></code>. Recall that when we added the lidar sensor to <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in the previous section, we set the topic to which the lidar sensor will publish the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/LaserScan</span></code> messages as <code class="docutils literal notranslate"><span class="pre">/scan</span></code>.</p>
 <p>In-depth discussions on the complete configuration parameters will not be a scope of our tutorials since they can be pretty complex. Instead, we recommend you to have a look at their official documentation in the links below.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<div class="last line-block">
+<p class="admonition-title">See also</p>
+<div class="line-block">
 <div class="line">For the complete list of configuration parameters of <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code>, see the <a class="reference external" href="https://github.com/SteveMacenski/slam_toolbox#readme">Github repository of slam_toolbox</a>.</div>
 <div class="line">For the complete list of configuration parameters and example configuration of <code class="docutils literal notranslate"><span class="pre">nav2_amcl</span></code>, see the <a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-amcl.html">AMCL Configuration Guide</a>.</div>
 </div>
@@ -1353,8 +1343,8 @@ ros2 launch sam_bot_description display.launch.py
 <p>For the voxel layer (lines 51-66), we set the <code class="docutils literal notranslate"><span class="pre">publish_voxel_map</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code> to enable the publishing of the 3D voxel grid. The resolution of the voxels in height is defined using the <code class="docutils literal notranslate"><span class="pre">z_resolution</span></code> parameter, while the number of voxels in each column is defined using the <code class="docutils literal notranslate"><span class="pre">z_voxels</span></code> parameter. The <code class="docutils literal notranslate"><span class="pre">mark_threshold</span></code> parameter sets the minimum number of voxels in a column to mark as occupied in the occupancy grid. We set the <code class="docutils literal notranslate"><span class="pre">observation_sources</span></code> parameter of the voxel layer to <code class="docutils literal notranslate"><span class="pre">scan</span></code>, and we set the scan parameters (in lines 61-66) similar to the parameters that we have discussed for the obstacle layer. As defined in its <code class="docutils literal notranslate"><span class="pre">topic</span></code> and <code class="docutils literal notranslate"><span class="pre">data_type</span></code> parameters, the voxel layer will use the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> published on the <code class="docutils literal notranslate"><span class="pre">/scan</span></code> topic by the lidar scanner.</p>
 <p>Note that the we are not using a range layer for our configuration but it may be useful for your own robot setup. For the range layer, its basic parameters are the <code class="docutils literal notranslate"><span class="pre">topics</span></code>, <code class="docutils literal notranslate"><span class="pre">input_sensor_type</span></code>, and <code class="docutils literal notranslate"><span class="pre">clear_on_max_reading</span></code> parameters. The range topics to subscribe to are defined in the <code class="docutils literal notranslate"><span class="pre">topics</span></code> parameter. The <code class="docutils literal notranslate"><span class="pre">input_sensor_type</span></code> is set to either <code class="docutils literal notranslate"><span class="pre">ALL</span></code>, <code class="docutils literal notranslate"><span class="pre">VARIABLE</span></code>, or <code class="docutils literal notranslate"><span class="pre">FIXED</span></code>. The <code class="docutils literal notranslate"><span class="pre">clear_on_max_reading</span></code> is a boolean parameter that sets whether to clear the sensor readings on max range.  Have a look at the configuration guide in the link below in case you need to set it up.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more information on <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> and the complete list of layer plugin parameters, see the <a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-costmaps.html">Costmap 2D Configuration Guide</a>.</p>
+<p class="admonition-title">See also</p>
+<p>For more information on <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> and the complete list of layer plugin parameters, see the <a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-costmaps.html">Costmap 2D Configuration Guide</a>.</p>
 </div>
 </div>
 <div class="section" id="id2">

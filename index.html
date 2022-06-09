@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nav2 &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -828,17 +818,17 @@ holonomic, differential-drive, legged, and ackermann (car-like) base types! We s
 them uniquely with both circular and arbitrarily-shaped robots for SE2 collision checking.</p>
 <p>It has tools to:</p>
 <ul class="simple">
-<li>load, serve, and store maps (Map Server)</li>
-<li>localize the robot on the map (AMCL)</li>
-<li>plan a path from A to B around obstacles (Nav2 Planner)</li>
-<li>control the robot as it follows the path (Nav2 Controller)</li>
-<li>Smooth path plans to be more continuous and feasible (Nav2 Smoother)</li>
-<li>convert sensor data into a costmap representation of the world (Nav2 Costmap 2D)</li>
-<li>build complicated robot behaviors using behavior trees (Nav2 Behavior Trees and BT Navigator)</li>
-<li>Compute recovery behaviors in case of failure (Nav2 Recoveries)</li>
-<li>Follow sequential waypoints (Nav2 Waypoint Follower)</li>
-<li>Manage the lifecycle and watchdog for the servers (Nav2 Lifecycle Manager)</li>
-<li>Plugins to enable your own custom algorithms and behaviors (Nav2 Core)</li>
+<li><p>load, serve, and store maps (Map Server)</p></li>
+<li><p>localize the robot on the map (AMCL)</p></li>
+<li><p>plan a path from A to B around obstacles (Nav2 Planner)</p></li>
+<li><p>control the robot as it follows the path (Nav2 Controller)</p></li>
+<li><p>Smooth path plans to be more continuous and feasible (Nav2 Smoother)</p></li>
+<li><p>convert sensor data into a costmap representation of the world (Nav2 Costmap 2D)</p></li>
+<li><p>build complicated robot behaviors using behavior trees (Nav2 Behavior Trees and BT Navigator)</p></li>
+<li><p>Compute recovery behaviors in case of failure (Nav2 Recoveries)</p></li>
+<li><p>Follow sequential waypoints (Nav2 Waypoint Follower)</p></li>
+<li><p>Manage the lifecycle and watchdog for the servers (Nav2 Lifecycle Manager)</p></li>
+<li><p>Plugins to enable your own custom algorithms and behaviors (Nav2 Core)</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/nav2_architecture.png"><img alt="Navigation2 Block Diagram" class="align-center" src="_images/nav2_architecture.png" style="width: 700px;" /></a>
 <p>We also provide a set of starting plugins to get you going. NavFn computes the shortest path

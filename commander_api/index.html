@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simple Commander API &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -843,108 +833,108 @@
 <h2>Commander API<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>The methods provided by the basic navigator are shown below, with inputs and expected returns.
 If a server fails, it may throw an exception or return a <cite>None</cite> object, so please be sure to properly wrap your navigation calls in try/catch and check returns for <cite>None</cite> type.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Robot Navigator Method</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Robot Navigator Method</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>setInitialPose(initial_pose)</td>
-<td>Sets the initial pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) of the robot to localization.</td>
+<tbody>
+<tr class="row-even"><td><p>setInitialPose(initial_pose)</p></td>
+<td><p>Sets the initial pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>) of the robot to localization.</p></td>
 </tr>
-<tr class="row-odd"><td>goThroughPoses(poses,
-behavior_tree=’‘)</td>
-<td>Requests the robot to drive through a set of poses
-(list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).</td>
+<tr class="row-odd"><td><p>goThroughPoses(poses,
+behavior_tree=’‘)</p></td>
+<td><p>Requests the robot to drive through a set of poses
+(list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td>goToPose(pose, behavior_tree=’‘)</td>
-<td>Requests the robot to drive to a pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).</td>
+<tr class="row-even"><td><p>goToPose(pose, behavior_tree=’‘)</p></td>
+<td><p>Requests the robot to drive to a pose (<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td>followWaypoints(poses)</td>
-<td>Requests the robot to follow a set of waypoints (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).
-This will execute the chosen <code class="docutils literal notranslate"><span class="pre">TaskExecutor</span></code> plugin at each pose.</td>
+<tr class="row-odd"><td><p>followWaypoints(poses)</p></td>
+<td><p>Requests the robot to follow a set of waypoints (list of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>).
+This will execute the chosen <code class="docutils literal notranslate"><span class="pre">TaskExecutor</span></code> plugin at each pose.</p></td>
 </tr>
-<tr class="row-even"><td>followPath(path, controller_id=’‘,
-goal_checker_id=’‘)</td>
-<td>Requests the robot to follow a path from a starting to a goal
-<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
+<tr class="row-even"><td><p>followPath(path, controller_id=’‘,
+goal_checker_id=’‘)</p></td>
+<td><p>Requests the robot to follow a path from a starting to a goal
+<code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td>spin(spin_dist=1.57,
-time_allowance=10)</td>
-<td>Requests the robot to performs an in-place rotation by a given angle.</td>
+<tr class="row-odd"><td><p>spin(spin_dist=1.57,
+time_allowance=10)</p></td>
+<td><p>Requests the robot to performs an in-place rotation by a given angle.</p></td>
 </tr>
-<tr class="row-even"><td>backup(backup_dist=0.15,
-backup_speed=0.025, time_allowance=10)</td>
-<td>Requests the robot to back up by a given distance.</td>
+<tr class="row-even"><td><p>backup(backup_dist=0.15,
+backup_speed=0.025, time_allowance=10)</p></td>
+<td><p>Requests the robot to back up by a given distance.</p></td>
 </tr>
-<tr class="row-odd"><td>cancelTask()</td>
-<td>Cancel an ongoing task.</td>
+<tr class="row-odd"><td><p>cancelTask()</p></td>
+<td><p>Cancel an ongoing task.</p></td>
 </tr>
-<tr class="row-even"><td>isTaskComplete()</td>
-<td>Checks if task is complete yet, times out at <code class="docutils literal notranslate"><span class="pre">100ms</span></code>. Returns
-<code class="docutils literal notranslate"><span class="pre">True</span></code> if completed and <code class="docutils literal notranslate"><span class="pre">False</span></code> if still going.</td>
+<tr class="row-even"><td><p>isTaskComplete()</p></td>
+<td><p>Checks if task is complete yet, times out at <code class="docutils literal notranslate"><span class="pre">100ms</span></code>. Returns
+<code class="docutils literal notranslate"><span class="pre">True</span></code> if completed and <code class="docutils literal notranslate"><span class="pre">False</span></code> if still going.</p></td>
 </tr>
-<tr class="row-odd"><td>getFeedback()</td>
-<td>Gets feedback from task, returns action server feedback msg.</td>
+<tr class="row-odd"><td><p>getFeedback()</p></td>
+<td><p>Gets feedback from task, returns action server feedback msg.</p></td>
 </tr>
-<tr class="row-even"><td>getResult()</td>
-<td>Gets final result of task, to be called after <code class="docutils literal notranslate"><span class="pre">isTaskComplete</span></code>
-returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. Returns action server result msg.</td>
+<tr class="row-even"><td><p>getResult()</p></td>
+<td><p>Gets final result of task, to be called after <code class="docutils literal notranslate"><span class="pre">isTaskComplete</span></code>
+returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. Returns action server result msg.</p></td>
 </tr>
-<tr class="row-odd"><td>getPath(start, goal,
-planner_id=’‘, use_start=False)</td>
-<td>Gets a path from a starting to a goal <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
+<tr class="row-odd"><td><p>getPath(start, goal,
+planner_id=’‘, use_start=False)</p></td>
+<td><p>Gets a path from a starting to a goal <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td>getPathThroughPoses(start, goals,
-planner_id=’‘, use_start=False)</td>
-<td>Gets a path through a starting to a set of goals, a list
-of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
+<tr class="row-even"><td><p>getPathThroughPoses(start, goals,
+planner_id=’‘, use_start=False)</p></td>
+<td><p>Gets a path through a starting to a set of goals, a list
+of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td>smoothPath(path, smoother_id=’‘,
+<tr class="row-odd"><td><p>smoothPath(path, smoother_id=’‘,
 max_duration=2.0,
-check_for_collision=False)</td>
-<td>Smooths a given path of type <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</td>
+check_for_collision=False)</p></td>
+<td><p>Smooths a given path of type <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td>changeMap(map_filepath)</td>
-<td>Requests a change from the current map to <cite>map_filepath</cite>’s yaml.</td>
+<tr class="row-even"><td><p>changeMap(map_filepath)</p></td>
+<td><p>Requests a change from the current map to <cite>map_filepath</cite>’s yaml.</p></td>
 </tr>
-<tr class="row-odd"><td>clearAllCostmaps()</td>
-<td>Clears both the global and local costmaps.</td>
+<tr class="row-odd"><td><p>clearAllCostmaps()</p></td>
+<td><p>Clears both the global and local costmaps.</p></td>
 </tr>
-<tr class="row-even"><td>clearLocalCostmap()</td>
-<td>Clears the local costmap.</td>
+<tr class="row-even"><td><p>clearLocalCostmap()</p></td>
+<td><p>Clears the local costmap.</p></td>
 </tr>
-<tr class="row-odd"><td>clearGlobalCostmap()</td>
-<td>Clears the global costmap.</td>
+<tr class="row-odd"><td><p>clearGlobalCostmap()</p></td>
+<td><p>Clears the global costmap.</p></td>
 </tr>
-<tr class="row-even"><td>getGlobalCostmap()</td>
-<td>Returns the global costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</td>
+<tr class="row-even"><td><p>getGlobalCostmap()</p></td>
+<td><p>Returns the global costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td>getLocalCostmap()</td>
-<td>Returns the local costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</td>
+<tr class="row-odd"><td><p>getLocalCostmap()</p></td>
+<td><p>Returns the local costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td>waitUntilNav2Active(
+<tr class="row-even"><td><p>waitUntilNav2Active(
 navigator=’bt_navigator’,
-localizer=’amcl’)</td>
-<td>Blocks until Nav2 is completely online and lifecycle nodes are in the
+localizer=’amcl’)</p></td>
+<td><p>Blocks until Nav2 is completely online and lifecycle nodes are in the
 active state. To be used in conjunction with autostart or external
-lifecycle bringup. Custom navigator and localizer nodes can be specified</td>
+lifecycle bringup. Custom navigator and localizer nodes can be specified</p></td>
 </tr>
-<tr class="row-odd"><td>lifecycleStartup()</td>
-<td>Sends a request to all lifecycle management servers to bring them into
+<tr class="row-odd"><td><p>lifecycleStartup()</p></td>
+<td><p>Sends a request to all lifecycle management servers to bring them into
 the active state, to be used if autostart is <code class="docutils literal notranslate"><span class="pre">False</span></code> and you want this
-program to control Nav2’s lifecycle.</td>
+program to control Nav2’s lifecycle.</p></td>
 </tr>
-<tr class="row-even"><td>lifecycleShutdown()</td>
-<td>Sends a request to all lifecycle management servers to shut them down.</td>
+<tr class="row-even"><td><p>lifecycleShutdown()</p></td>
+<td><p>Sends a request to all lifecycle management servers to shut them down.</p></td>
 </tr>
-<tr class="row-odd"><td>destroyNode()</td>
-<td>Releases the resources used by the object.</td>
+<tr class="row-odd"><td><p>destroyNode()</p></td>
+<td><p>Releases the resources used by the object.</p></td>
 </tr>
 </tbody>
 </table>
@@ -955,16 +945,16 @@ program to control Nav2’s lifecycle.</td>
 <a class="reference internal image-reference" href="../_images/readme.gif"><img alt="Alternative text" class="align-center" src="../_images/readme.gif" style="width: 800px;" /></a>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code> has a few examples to highlight the API functions available to you as a user:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">example_nav_to_pose.py</span></code> - Demonstrates the navigate to pose capabilities of the navigator, as well as a number of auxiliary methods.</li>
-<li><code class="docutils literal notranslate"><span class="pre">example_nav_through_poses.py</span></code> - Demonstrates the navigate through poses capabilities of the navigator, as well as a number of auxiliary methods.</li>
-<li><code class="docutils literal notranslate"><span class="pre">example_waypoint_follower.py</span></code> - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.</li>
-<li><code class="docutils literal notranslate"><span class="pre">example_follow_path.py</span></code> - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">example_nav_to_pose.py</span></code> - Demonstrates the navigate to pose capabilities of the navigator, as well as a number of auxiliary methods.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">example_nav_through_poses.py</span></code> - Demonstrates the navigate through poses capabilities of the navigator, as well as a number of auxiliary methods.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">example_waypoint_follower.py</span></code> - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">example_follow_path.py</span></code> - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code> has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">demo_security.py</span></code> - A simple security robot application, showing how to have a robot follow a security route using Navigate Through Poses to do a patrol route, indefinitely.</li>
-<li><code class="docutils literal notranslate"><span class="pre">demo_picking.py</span></code> - A simple item picking application, showing how to have a robot drive to a specific shelf in a warehouse to either pick an item or have a person place an item into a basket and deliver it to a destination for shipping using Navigate To Pose.</li>
-<li><code class="docutils literal notranslate"><span class="pre">demo_inspection.py</span></code> - A simple shelf inspection application, showing how to use the Waypoint Follower and task executors to take pictures, RFID scans, etc of shelves to analyze the current shelf statuses and locate items in the warehouse.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">demo_security.py</span></code> - A simple security robot application, showing how to have a robot follow a security route using Navigate Through Poses to do a patrol route, indefinitely.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">demo_picking.py</span></code> - A simple item picking application, showing how to have a robot drive to a specific shelf in a warehouse to either pick an item or have a person place an item into a basket and deliver it to a destination for shipping using Navigate To Pose.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">demo_inspection.py</span></code> - A simple shelf inspection application, showing how to use the Waypoint Follower and task executors to take pictures, RFID scans, etc of shelves to analyze the current shelf statuses and locate items in the warehouse.</p></li>
 </ul>
 </div>
 </div>

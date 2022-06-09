@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Writing a New Behavior Tree Plugin &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -800,9 +790,9 @@
   <div class="section" id="writing-a-new-behavior-tree-plugin">
 <span id="writing-new-nbt-plugin"></span><h1>Writing a New Behavior Tree Plugin<a class="headerlink" href="#writing-a-new-behavior-tree-plugin" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#requirements">Requirements</a></li>
-<li><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
@@ -812,10 +802,10 @@ The BT plugins are used as nodes in the behavior tree XML processed by the BT Na
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>ROS 2 (binary or build-from-source)</li>
-<li>Nav2 (Including dependencies)</li>
-<li>Gazebo</li>
-<li>Turtlebot3</li>
+<li><p>ROS 2 (binary or build-from-source)</p></li>
+<li><p>Nav2 (Including dependencies)</p></li>
+<li><p>Gazebo</p></li>
+<li><p>Turtlebot3</p></li>
 </ul>
 </div>
 <div class="section" id="tutorial-steps">
@@ -835,56 +825,56 @@ An <code class="docutils literal notranslate"><span class="pre">BTActionNode</sp
 For BT action nodes that do <em>not</em> utilize ROS 2 action interfaces, use the <code class="docutils literal notranslate"><span class="pre">BT::ActionNodeBase</span></code> base class itself.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> class provides 5 virtual methods to use, in addition to the information provided in the constructor.
 Lets learn more about the methods needed to write a BT action plugin.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="18%" />
-<col width="62%" />
-<col width="20%" />
+<col style="width: 18%" />
+<col style="width: 62%" />
+<col style="width: 20%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>method</strong></td>
-<td><strong>Method description</strong></td>
-<td><strong>Required?</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>method</strong></p></td>
+<td><p><strong>Method description</strong></p></td>
+<td><p><strong>Required?</strong></p></td>
 </tr>
-<tr class="row-even"><td>Constructor</td>
-<td>Constructor to indicate the corresponding XML tag name to that matches
+<tr class="row-even"><td><p>Constructor</p></td>
+<td><p>Constructor to indicate the corresponding XML tag name to that matches
 the plugin, the name of the action server to call using the plugin,
-and any BehaviorTree.CPP special configurations required.</td>
-<td>Yes</td>
+and any BehaviorTree.CPP special configurations required.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td>providedPorts()</td>
-<td>A function to define the input and output ports a BT node may have.
+<tr class="row-odd"><td><p>providedPorts()</p></td>
+<td><p>A function to define the input and output ports a BT node may have.
 These are analogous to parameters that are defined in the BT XML
-by hardcoded values or by the value of other output ports of other nodes.</td>
-<td>Yes</td>
+by hardcoded values or by the value of other output ports of other nodes.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td>on_tick()</td>
-<td>Method is called when this BT node is ticked by the behavior tree while
+<tr class="row-even"><td><p>on_tick()</p></td>
+<td><p>Method is called when this BT node is ticked by the behavior tree while
 executing. This should be used to get dynamic updates like new blackboard
-values, input ports, or parameters. May also reset state for the action.</td>
-<td>No</td>
+values, input ports, or parameters. May also reset state for the action.</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>on_wait_for_result()</td>
-<td>Method is called when the behavior tree node is waiting for a result from
+<tr class="row-odd"><td><p>on_wait_for_result()</p></td>
+<td><p>Method is called when the behavior tree node is waiting for a result from
 the ROS 2 action server it called. This could be used to check for updates
 to preempt the current task, check for a timeout, or anything to compute
-while waiting for the action to complete.</td>
-<td>No</td>
+while waiting for the action to complete.</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>on_success()</td>
-<td>Method is called when the ROS 2 action server returns a successful result.
-Returns the value the BT node will report back to the tree.</td>
-<td>No</td>
+<tr class="row-even"><td><p>on_success()</p></td>
+<td><p>Method is called when the ROS 2 action server returns a successful result.
+Returns the value the BT node will report back to the tree.</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>on_aborted()</td>
-<td>Method is called when the ROS 2 action server returns an aborted result.
-Returns the value the BT node will report back to the tree.</td>
-<td>No</td>
+<tr class="row-odd"><td><p>on_aborted()</p></td>
+<td><p>Method is called when the ROS 2 action server returns an aborted result.
+Returns the value the BT node will report back to the tree.</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>on_cancelled()</td>
-<td>MMethod is called when the ROS 2 action server returns a cancelled result.
-Returns the value the BT node will report back to the tree.</td>
-<td>No</td>
+<tr class="row-even"><td><p>on_cancelled()</p></td>
+<td><p>MMethod is called when the ROS 2 action server returns a cancelled result.
+Returns the value the BT node will report back to the tree.</p></td>
+<td><p>No</p></td>
 </tr>
 </tbody>
 </table>

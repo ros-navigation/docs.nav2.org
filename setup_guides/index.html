@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>First-Time Robot Setup Guide &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -800,24 +790,24 @@
 <span id="setup-guides"></span><h1>First-Time Robot Setup Guide<a class="headerlink" href="#first-time-robot-setup-guide" title="Permalink to this headline">¶</a></h1>
 <p>This section is a collection of guides that aims to provide readers a good resource for setting up Nav2. The objectives for this section are as follows:</p>
 <ul class="simple">
-<li>Help new users with setting up Navigation2 with a new robot</li>
-<li>Help people with custom built robots to properly set up their robots to be used in ROS/Navigation2</li>
-<li>Act as a checklist, template or boilerplate reference for more experienced readers</li>
-<li>Provide examples which can be run on simulators/tools like Gazebo or RViz to guide readers on the Nav2 setup process even without a physical robot.</li>
-<li>Broad strokes tips and tricks for configuring certain packages and integrating different components of the robot platform (sensors, odometry, etc.)</li>
+<li><p>Help new users with setting up Navigation2 with a new robot</p></li>
+<li><p>Help people with custom built robots to properly set up their robots to be used in ROS/Navigation2</p></li>
+<li><p>Act as a checklist, template or boilerplate reference for more experienced readers</p></li>
+<li><p>Provide examples which can be run on simulators/tools like Gazebo or RViz to guide readers on the Nav2 setup process even without a physical robot.</p></li>
+<li><p>Broad strokes tips and tricks for configuring certain packages and integrating different components of the robot platform (sensors, odometry, etc.)</p></li>
 </ul>
 <p>To guide you through the first-time setup of your robot, we will be tackling the following topics:</p>
 <ul class="simple">
-<li>Introduce TF2 and setup your robot URDF</li>
-<li>Setup sensor sources for robot odometry</li>
-<li>Setup sensor sources for perception</li>
-<li>Configure round or arbitrary shaped footprints for your robot</li>
-<li>Select and setup planner and controller navigation plugins for your robot’s navigation tasks</li>
-<li>Lifecycle node management for easy bringup of other related sensors or nodes</li>
+<li><p>Introduce TF2 and setup your robot URDF</p></li>
+<li><p>Setup sensor sources for robot odometry</p></li>
+<li><p>Setup sensor sources for perception</p></li>
+<li><p>Configure round or arbitrary shaped footprints for your robot</p></li>
+<li><p>Select and setup planner and controller navigation plugins for your robot’s navigation tasks</p></li>
+<li><p>Lifecycle node management for easy bringup of other related sensors or nodes</p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the <a class="reference internal" href="../configuration/index.html#configuration"><span class="std std-ref">Configuration Guide</span></a> section.</p>
+<p class="admonition-title">Note</p>
+<p>These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the <a class="reference internal" href="../configuration/index.html#configuration"><span class="std std-ref">Configuration Guide</span></a> section.</p>
 </div>
 <p><strong>Table of Contents:</strong></p>
 <div class="toctree-wrapper compound">

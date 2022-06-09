@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tuning Guide &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -814,9 +804,9 @@
 <p>The kinematically feasible planners (e.g. Smac Hybrid-A*, Smac State Lattice) will use the SE2 footprint for collision checking to create kinematically feasible plans, if provided with the actual footprint. As of December, 2021 all of the controller plugins support full footprint collision checking to ensure safe path tracking. If you provide a footprint of your robot, it will be used to make sure trajectories are valid and it is recommended you do so. It will prevent a number of “stuck robot” situations that could have been easily avoided.</p>
 <p>If your robot is truly circular, continue to use the <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> parameter. The three valid reasons for a non-circular robot to use the radius instead:</p>
 <ul class="simple">
-<li>The robot is very small relative to the environment (e.g. RC car in a warehouse)</li>
-<li>The robot has such limited compute power, using SE2 footprint checking would add too much computational burden (e.g. embedded micro-processors)</li>
-<li>If you plan to use a holonomic planner (e.g. Theta*, Smac 2D-A*, or NavFn), you may continue to use the circular footprint, since these planners are not kinematically feasible and will not make use of the SE2 footprint anyway.</li>
+<li><p>The robot is very small relative to the environment (e.g. RC car in a warehouse)</p></li>
+<li><p>The robot has such limited compute power, using SE2 footprint checking would add too much computational burden (e.g. embedded micro-processors)</p></li>
+<li><p>If you plan to use a holonomic planner (e.g. Theta*, Smac 2D-A*, or NavFn), you may continue to use the circular footprint, since these planners are not kinematically feasible and will not make use of the SE2 footprint anyway.</p></li>
 </ul>
 </div>
 <div class="section" id="rotate-in-place-behavior">
@@ -826,76 +816,76 @@
 <p>Note: If using a non-holonomic, kinematically feasible planner (e.g. Smac Hybrid-A*, Smac State Lattice), this is not a necessary behavioral optimization. This class of planner will create plans that take into account the robot’s starting heading, not requiring any rotation behaviors.</p>
 <p>This behavior is most optimially for:</p>
 <ul class="simple">
-<li>Robots that can rotate in place, such as differential and omnidirectional robots.</li>
-<li>Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot’s current heading – or when tuning your controller for its task makes tight rotations difficult.</li>
+<li><p>Robots that can rotate in place, such as differential and omnidirectional robots.</p></li>
+<li><p>Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot’s current heading – or when tuning your controller for its task makes tight rotations difficult.</p></li>
 </ul>
 </div>
 <div class="section" id="planner-plugin-selection">
 <h2>Planner Plugin Selection<a class="headerlink" href="#planner-plugin-selection" title="Permalink to this headline">¶</a></h2>
 <p>Nav2 provides a number of planning plugins out of the box. For a first-time setup, see <a class="reference internal" href="../setup_guides/algorithm/select_algorithm.html#select-algorithm"><span class="std std-ref">Setting Up Navigation Plugins</span></a> for a more verbose breakdown of algorithm styles within Nav2, and <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for a full accounting of the current list of plugins available (which may be updated over time).</p>
 <p>In general though, the following table is a good guide for the optimal planning plugin for different types of robot bases:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="26%" />
-<col width="74%" />
+<col style="width: 26%" />
+<col style="width: 74%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Plugin Name</th>
-<th class="head">Supported Robot Types</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
+<th class="head"><p>Supported Robot Types</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>NavFn Planner</td>
-<td rowspan="3">Circular Differential, Circular Omnidirectional</td>
+<tbody>
+<tr class="row-even"><td><p>NavFn Planner</p></td>
+<td rowspan="3"><p>Circular Differential, Circular Omnidirectional</p></td>
 </tr>
-<tr class="row-odd"><td>Smac Planner 2D</td>
+<tr class="row-odd"><td><p>Smac Planner 2D</p></td>
 </tr>
-<tr class="row-even"><td>Theta Star Planner</td>
+<tr class="row-even"><td><p>Theta Star Planner</p></td>
 </tr>
-<tr class="row-odd"><td>Smac Hybrid-A* Planner</td>
-<td>Non-circular or Circular Ackermann, Non-circular or Circular Legged</td>
+<tr class="row-odd"><td><p>Smac Hybrid-A* Planner</p></td>
+<td><p>Non-circular or Circular Ackermann, Non-circular or Circular Legged</p></td>
 </tr>
-<tr class="row-even"><td>Smac Lattice Planner</td>
-<td>Non-circular Differential, Non-circular Omnidirectional, Arbitrary</td>
+<tr class="row-even"><td><p>Smac Lattice Planner</p></td>
+<td><p>Non-circular Differential, Non-circular Omnidirectional, Arbitrary</p></td>
 </tr>
 </tbody>
 </table>
 <p>If you are using a non-circular robot with very limited compute, it may be worth assessing the benefits of using one of the holonomic planners (e.g. particle assumption planners). It is the recommendation of the maintainers to start using one of the more advanced algorithms appropriate for your platform <em>first</em>, but to scale back the planner if need be. The run-time of the feasible planners are typically on par (or sometimes faster) than their holonomic counterparts, so don’t let the more recent nature of them fool you.</p>
 <p>Since the planning problem is primarily driven by the robot type, the table accurately summarizes the advice to users by the maintainers. Within the circular robot regime, the choice of planning algorithm is dependent on application and desirable behavior. NavFn will typically make broad, sweeping curves; Theta* prefers straight lines and supports them at any angle; and Smac 2D is essentially a classical A* algorithm with cost-aware penalties.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">These are simply the default and available plugins from the community. For a specific application / platform, you may also choose to use none of these and create your own, and that’s the intention of the Nav2 framework. See the <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#writing-new-nav2planner-plugin"><span class="std std-ref">Writing a New Planner Plugin</span></a> tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.</p>
+<p class="admonition-title">Note</p>
+<p>These are simply the default and available plugins from the community. For a specific application / platform, you may also choose to use none of these and create your own, and that’s the intention of the Nav2 framework. See the <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#writing-new-nav2planner-plugin"><span class="std std-ref">Writing a New Planner Plugin</span></a> tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.</p>
 </div>
 </div>
 <div class="section" id="controller-plugin-selection">
 <h2>Controller Plugin Selection<a class="headerlink" href="#controller-plugin-selection" title="Permalink to this headline">¶</a></h2>
 <p>Nav2 provides a number of controller plugins out of the box. For a first-time setup, see <a class="reference internal" href="../setup_guides/algorithm/select_algorithm.html#select-algorithm"><span class="std std-ref">Setting Up Navigation Plugins</span></a> for a more verbose breakdown of algorithm styles within Nav2, and <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for a full accounting of the current list of plugins available (which may be updated over time).</p>
 <p>In general though, the following table is a good first-order description of the controller plugins available for different types of robot bases:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="17%" />
-<col width="54%" />
-<col width="29%" />
+<col style="width: 17%" />
+<col style="width: 54%" />
+<col style="width: 29%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Plugin Name</th>
-<th class="head">Supported Robot Types</th>
-<th class="head">Task</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
+<th class="head"><p>Supported Robot Types</p></th>
+<th class="head"><p>Task</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>DWB controller</td>
-<td>Differential, Omnidirectional</td>
-<td rowspan="2"><p class="first">Dynamic obstacle avoidance</p>
-<p class="last">Dynamic obstacle avoidance</p>
+<tbody>
+<tr class="row-even"><td><p>DWB controller</p></td>
+<td><p>Differential, Omnidirectional</p></td>
+<td rowspan="2"><p>Dynamic obstacle avoidance</p>
+<p>Dynamic obstacle avoidance</p>
 </td>
 </tr>
-<tr class="row-odd"><td>TEB Controller</td>
-<td>Differential, Omnidirectional, Ackermann, Legged</td>
+<tr class="row-odd"><td><p>TEB Controller</p></td>
+<td><p>Differential, Omnidirectional, Ackermann, Legged</p></td>
 </tr>
-<tr class="row-even"><td>RPP controller</td>
-<td>Differential, Ackermann, Legged</td>
-<td>Exact path following</td>
+<tr class="row-even"><td><p>RPP controller</p></td>
+<td><p>Differential, Ackermann, Legged</p></td>
+<td><p>Exact path following</p></td>
 </tr>
 </tbody>
 </table>
@@ -908,8 +898,8 @@
 <p>TEB on the other hand implements an optimization based approach, generating a graph-solving problem for path tracking in the presense of obstacles. TEB is pretty good at handling dynamic situations well with other moving agents in the scene, but at a much higher compute cost that makes it largely unsuitable for smaller compute platform robots (e.g. minimum i3 and running at 20hz). This typically works pretty well out of the box, but to tune for specific behaviors, you may have to modify optimization engine parameters which are not as intuitive or rooted in something physical as DWB, but have pretty decent defaults.</p>
 <p>Finally, the Rotation Shim Plugin helps assist plugins like TEB and DWB (among others) to rotate the robot in place towards a new path’s heading before starting to track the path. This allows you to tune your local trajectory planner to operate with a desired behavior without having to worry about being able to rotate on a dime with a significant deviation in angular distance over a very small euclidean distance. Some controllers when heavily tuned for accurate path tracking are constrained in their actions and don’t very cleanly rotate to a new heading. Other controllers have a ‘spiral out’ behavior because their sampling requires some translational velocity, preventing it from simply rotating in place. This helps alleviate that problem and makes the robot rotate in place very smoothly.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#writing-new-nav2controller-plugin"><span class="std std-ref">Writing a New Controller Plugin</span></a> tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.</p>
+<p class="admonition-title">Note</p>
+<p>These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#writing-new-nav2controller-plugin"><span class="std std-ref">Writing a New Controller Plugin</span></a> tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.</p>
 </div>
 </div>
 <div class="section" id="caching-obstacle-heuristic-in-smac-planners">
@@ -923,24 +913,24 @@
 <p>Nav2’s launch files are made to be very configurable. Obviously for any serious application, a user should use <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code> as the basis of their navigation launch system, but should be moved to a specific repository for a users’ work. A typical thing to do is to have a <code class="docutils literal notranslate"><span class="pre">&lt;robot_name&gt;_nav</span></code> configuration package containing the launch and parameter files.</p>
 <p>Within <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>, there is a main entryfile <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code>. This is the main file used for simulating the robot and contains the following configurations:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">slam</span></code> : Whether or not to use AMCL or SLAM Toolbox for localization and/or mapping. Default <code class="docutils literal notranslate"><span class="pre">false</span></code> to AMCL.</li>
-<li><code class="docutils literal notranslate"><span class="pre">map</span></code> : The filepath to the map to use for navigation. Defaults to <code class="docutils literal notranslate"><span class="pre">map.yaml</span></code> in the package’s <code class="docutils literal notranslate"><span class="pre">maps/</span></code> directory.</li>
-<li><code class="docutils literal notranslate"><span class="pre">world</span></code> : The filepath to the world file to use in simulation. Defaults to the <code class="docutils literal notranslate"><span class="pre">worlds/</span></code> directory in the package.</li>
-<li><code class="docutils literal notranslate"><span class="pre">param_file</span></code> : The main navigation configuration file. Defaults to <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> in the package’s <code class="docutils literal notranslate"><span class="pre">params/</span></code> directory.</li>
-<li><code class="docutils literal notranslate"><span class="pre">autostart</span></code> : Whether to autostart the navigation system’s lifecycle management system. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to transition up the Nav2 stack on creation to the activated state, ready for use.</li>
-<li><code class="docutils literal notranslate"><span class="pre">use_composition</span></code> : Whether to launch each Nav2 server into individual processes or in a single composed node, to leverage savings in CPU and memory. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> to use single process Nav2.</li>
-<li><code class="docutils literal notranslate"><span class="pre">use_respawn</span></code> : Whether to allow server that crash to automatically respawn. When also configured with the lifecycle manager, the manager will transition systems back up if already activated and went down due to a crash. Only works in non-composed bringup since all of the nodes are in the same process / container otherwise.</li>
-<li><code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> : Whether to set all the nodes to use simulation time, needed in simulation. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> for simulation.</li>
-<li><code class="docutils literal notranslate"><span class="pre">rviz_config_file</span></code> : The filepath to the rviz configuration file to use. Defaults to the <code class="docutils literal notranslate"><span class="pre">rviz/</span></code> directory’s file.</li>
-<li><code class="docutils literal notranslate"><span class="pre">use_simulator</span></code> : Whether or not to start the Gazebo simulator with the Nav2 stack. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to launch Gazebo.</li>
-<li><code class="docutils literal notranslate"><span class="pre">use_robot_state_pub</span></code> : Whether or not to start the robot state publisher to publish the robot’s URDF transformations to TF2. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to publish the robot’s TF2 transformations.</li>
-<li><code class="docutils literal notranslate"><span class="pre">use_rviz</span></code> : Whether or not to launch rviz for visualization. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to show rviz.</li>
-<li><code class="docutils literal notranslate"><span class="pre">headless</span></code> : Whether or not to launch the Gazebo front-end alongside the background Gazebo simulation. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to display the Gazebo window.</li>
-<li><code class="docutils literal notranslate"><span class="pre">namespace</span></code> : The namespace to launch robots into, if need be.</li>
-<li><code class="docutils literal notranslate"><span class="pre">use_namespace</span></code> : Whether or not to launch robots into this namespace. Default <code class="docutils literal notranslate"><span class="pre">false</span></code> and uses global namespace for single robot.</li>
-<li><code class="docutils literal notranslate"><span class="pre">robot_name</span></code> : The name of the robot to launch.</li>
-<li><code class="docutils literal notranslate"><span class="pre">robot_sdf</span></code> : The filepath to the robot’s gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.</li>
-<li><code class="docutils literal notranslate"><span class="pre">x_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">y_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">z_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">roll</span></code>, <code class="docutils literal notranslate"><span class="pre">pitch</span></code>, <code class="docutils literal notranslate"><span class="pre">yaw</span></code> : Parameters to set the initial position of the robot in the simulation.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slam</span></code> : Whether or not to use AMCL or SLAM Toolbox for localization and/or mapping. Default <code class="docutils literal notranslate"><span class="pre">false</span></code> to AMCL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span></code> : The filepath to the map to use for navigation. Defaults to <code class="docutils literal notranslate"><span class="pre">map.yaml</span></code> in the package’s <code class="docutils literal notranslate"><span class="pre">maps/</span></code> directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">world</span></code> : The filepath to the world file to use in simulation. Defaults to the <code class="docutils literal notranslate"><span class="pre">worlds/</span></code> directory in the package.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">param_file</span></code> : The main navigation configuration file. Defaults to <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> in the package’s <code class="docutils literal notranslate"><span class="pre">params/</span></code> directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autostart</span></code> : Whether to autostart the navigation system’s lifecycle management system. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to transition up the Nav2 stack on creation to the activated state, ready for use.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_composition</span></code> : Whether to launch each Nav2 server into individual processes or in a single composed node, to leverage savings in CPU and memory. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> to use single process Nav2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_respawn</span></code> : Whether to allow server that crash to automatically respawn. When also configured with the lifecycle manager, the manager will transition systems back up if already activated and went down due to a crash. Only works in non-composed bringup since all of the nodes are in the same process / container otherwise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> : Whether to set all the nodes to use simulation time, needed in simulation. Default <code class="docutils literal notranslate"><span class="pre">true</span></code> for simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rviz_config_file</span></code> : The filepath to the rviz configuration file to use. Defaults to the <code class="docutils literal notranslate"><span class="pre">rviz/</span></code> directory’s file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_simulator</span></code> : Whether or not to start the Gazebo simulator with the Nav2 stack. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to launch Gazebo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_robot_state_pub</span></code> : Whether or not to start the robot state publisher to publish the robot’s URDF transformations to TF2. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to publish the robot’s TF2 transformations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_rviz</span></code> : Whether or not to launch rviz for visualization. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to show rviz.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">headless</span></code> : Whether or not to launch the Gazebo front-end alongside the background Gazebo simulation. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to display the Gazebo window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">namespace</span></code> : The namespace to launch robots into, if need be.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_namespace</span></code> : Whether or not to launch robots into this namespace. Default <code class="docutils literal notranslate"><span class="pre">false</span></code> and uses global namespace for single robot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">robot_name</span></code> : The name of the robot to launch.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">robot_sdf</span></code> : The filepath to the robot’s gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">y_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">z_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">roll</span></code>, <code class="docutils literal notranslate"><span class="pre">pitch</span></code>, <code class="docutils literal notranslate"><span class="pre">yaw</span></code> : Parameters to set the initial position of the robot in the simulation.</p></li>
 </ul>
 </div>
 <div class="section" id="other-pages-we-d-love-to-offer">

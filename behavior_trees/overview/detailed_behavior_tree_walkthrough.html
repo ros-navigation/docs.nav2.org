@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Detailed Behavior Tree Walkthrough &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -800,11 +790,11 @@
   <div class="section" id="detailed-behavior-tree-walkthrough">
 <span id="id1"></span><h1>Detailed Behavior Tree Walkthrough<a class="headerlink" href="#detailed-behavior-tree-walkthrough" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li><a class="reference internal" href="#navigate-to-pose-with-replanning-and-recovery">Navigate To Pose With Replanning and Recovery</a></li>
-<li><a class="reference internal" href="#navigation-subtree">Navigation Subtree</a></li>
-<li><a class="reference internal" href="#recovery-subtree">Recovery Subtree</a></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#prerequisites">Prerequisites</a></p></li>
+<li><p><a class="reference internal" href="#navigate-to-pose-with-replanning-and-recovery">Navigate To Pose With Replanning and Recovery</a></p></li>
+<li><p><a class="reference internal" href="#navigation-subtree">Navigation Subtree</a></p></li>
+<li><p><a class="reference internal" href="#recovery-subtree">Recovery Subtree</a></p></li>
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
@@ -817,16 +807,15 @@ in great detail.</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first">Become familiar with the concept of a behavior tree before continuing with this walkthrough</p>
+<li><p>Become familiar with the concept of a behavior tree before continuing with this walkthrough</p>
 <blockquote>
 <div><ul class="simple">
-<li>Read the short explanation in <a class="reference external" href="../../concepts/index.html">navigation concepts</a></li>
-<li>Read the general tutorial and guide (not Nav2 specific) on the <a class="reference external" href="https://www.behaviortree.dev/">BehaviorTree CPP V3</a> website. Specifically, the “Learn the Basics” section on the BehaviorTree CPP V3 website explains the basic generic nodes that will be used that this guide will build upon.</li>
+<li><p>Read the short explanation in <a class="reference external" href="../../concepts/index.html">navigation concepts</a></p></li>
+<li><p>Read the general tutorial and guide (not Nav2 specific) on the <a class="reference external" href="https://www.behaviortree.dev/">BehaviorTree CPP V3</a> website. Specifically, the “Learn the Basics” section on the BehaviorTree CPP V3 website explains the basic generic nodes that will be used that this guide will build upon.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Become familiar with the custom <a class="reference external" href="nav2_specific_nodes.html">Nav2 specific BT nodes</a></p>
-</li>
+<li><p>Become familiar with the custom <a class="reference external" href="nav2_specific_nodes.html">Nav2 specific BT nodes</a></p></li>
 </ul>
 </div>
 <div class="section" id="navigate-to-pose-with-replanning-and-recovery">
@@ -895,9 +884,9 @@ This can be represented in the following way:</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree mainly involves actual navigation behavior:</p>
 <ul class="simple">
-<li>calculating a path</li>
-<li>following a path</li>
-<li>contextual recovery behaviors for each of the above primary navigation behaviors</li>
+<li><p>calculating a path</p></li>
+<li><p>following a path</p></li>
+<li><p>contextual recovery behaviors for each of the above primary navigation behaviors</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree includes behaviors for system level failures or items that were not easily dealt with internally.</p>
 <p>The overall BT will (hopefully) spend most of its time in the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree. If either of the two main behaviors in the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree fail
@@ -958,8 +947,8 @@ The crux of the tree can be represented with only one parent and two children no
 While the <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> subtree is being ticked, the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree will be ticked as well. This allows for the path to be recomputed as the robot moves around.</p>
 <p>Both the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> and the <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> follow the same general structure.</p>
 <ul class="simple">
-<li>Do the action</li>
-<li>If the action fails, try to see if we can contextually recover</li>
+<li><p>Do the action</p></li>
+<li><p>If the action fails, try to see if we can contextually recover</p></li>
 </ul>
 <p>The below is the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree:</p>
 <div class="line-block">
@@ -976,27 +965,25 @@ The contextual recoveries for both <code class="docutils literal notranslate"><s
 <p>Consider changing the <code class="docutils literal notranslate"><span class="pre">number_of_retries</span></code> parameter in the parent <code class="docutils literal notranslate"><span class="pre">RecoveryNode</span></code> control node if your application can tolerate more attempts at contextual recoveries before moving on to system-level recoveries.</p>
 <p>The only differences in the BT subtree of <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> and <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> are outlined below:</p>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>The action node in the subtree:</dt>
-<dd><ul class="first last">
-<li>The <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree centers around the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> action.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> subtree centers around the <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> action.</li>
+<li><dl class="simple">
+<dt>The action node in the subtree:</dt><dd><ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree centers around the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> action.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> subtree centers around the <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> action.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>The <code class="docutils literal notranslate"><span class="pre">RateController</span></code> that decorates the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree</dt>
-<dd>The <code class="docutils literal notranslate"><span class="pre">RateController</span></code> decorates the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree to keep planning at the specified frequency. The default frequency for this BT is 1 hz.
+<li><dl class="simple">
+<dt>The <code class="docutils literal notranslate"><span class="pre">RateController</span></code> that decorates the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">RateController</span></code> decorates the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree to keep planning at the specified frequency. The default frequency for this BT is 1 hz.
 This is done to prevent the BT from flooding the planning server with too many useless requests at the tree update rate (100Hz). Consider changing this frequency to something higher or lower depending on the application and the computational cost of
-calculating the path. There are other decorators that can be used instead of the <code class="docutils literal notranslate"><span class="pre">RateController</span></code>. Consider using the <code class="docutils literal notranslate"><span class="pre">SpeedController</span></code> or <code class="docutils literal notranslate"><span class="pre">DistanceController</span></code> decorators if appropriate.</dd>
+calculating the path. There are other decorators that can be used instead of the <code class="docutils literal notranslate"><span class="pre">RateController</span></code>. Consider using the <code class="docutils literal notranslate"><span class="pre">SpeedController</span></code> or <code class="docutils literal notranslate"><span class="pre">DistanceController</span></code> decorators if appropriate.</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>The costmap that is being cleared within the contextual recovery:</dt>
-<dd><ul class="first last">
-<li>The <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree clears the global costmap. The global costmap is the relevant costmap in the context of the planner</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> subtree clears the local costmap. The local costmap is the relevant costmap in the context of the controller</li>
+<li><dl class="simple">
+<dt>The costmap that is being cleared within the contextual recovery:</dt><dd><ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> subtree clears the global costmap. The global costmap is the relevant costmap in the context of the planner</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> subtree clears the local costmap. The local costmap is the relevant costmap in the context of the controller</p></li>
 </ul>
 </dd>
 </dl>
@@ -1038,22 +1025,22 @@ This should look familiar to the contextual recovery portions of the <code class
 in a <code class="docutils literal notranslate"><span class="pre">ReactiveFallback</span></code> with a <code class="docutils literal notranslate"><span class="pre">isBatteryLow</span></code> condition – meaning the <code class="docutils literal notranslate"><span class="pre">navigate_to_pose_w_replanning_and_recovery</span></code> tree will execute <em>unless</em> the battery becomes low (and then entire a different subtree for docking to recharge).</p>
 <p>If the goal is never updated, the behavior tree will go on to the <code class="docutils literal notranslate"><span class="pre">RoundRobin</span></code> node. These are the default four system-level recoveries in the BT are:</p>
 <ul class="simple">
-<li>A sequence that clears both costmaps (local, and global)</li>
-<li><code class="docutils literal notranslate"><span class="pre">Spin</span></code> action</li>
-<li><code class="docutils literal notranslate"><span class="pre">Wait</span></code> action</li>
-<li><code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action</li>
+<li><p>A sequence that clears both costmaps (local, and global)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Spin</span></code> action</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Wait</span></code> action</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action</p></li>
 </ul>
 <p>Upon <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> of any of the four children of the parent <code class="docutils literal notranslate"><span class="pre">RoundRobin</span></code>, the robot will attempt to renavigate in the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree.
 If this renavigation was not successful, the next child of the <code class="docutils literal notranslate"><span class="pre">RoundRobin</span></code> will be ticked.</p>
 <p>For example, let’s say the robot is stuck and the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>:
 (for the sake of this example, let’s assume that the goal is never updated).</p>
 <ol class="arabic simple">
-<li>The Costmap clearing sequence in the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree is attempted, and returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. The robot now moves to <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree again</li>
-<li>Let’s assume that clearing both costmaps was not sufficient, and the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> once again. The robot now ticks the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree</li>
-<li>In the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree, the <code class="docutils literal notranslate"><span class="pre">Spin</span></code> action will be ticked. If this returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, then the robot will return to the main <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree <em>BUT</em> let’s assume that the <code class="docutils literal notranslate"><span class="pre">Spin</span></code> action returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>. In this case, the tree will <em>remain</em> in the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree</li>
-<li>Let’s say the next action, <code class="docutils literal notranslate"><span class="pre">Wait</span></code> returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. The robot will then move on to the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree</li>
-<li>Assume  the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> (clearing the costmaps, attempting a spin, and waiting were <em>still</em> not sufficient to recover the system. The robot will move onto the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree and attempt the <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action. Let’s say that the robot attempts the <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action and was able to successfully complete the action. The <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action node returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> and so now we move on to the Navigation subtree again.</li>
-<li>In this hypothetical scenario, let’s assume that the <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action allowed the robot to successfully navigate in the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree, and the robot reaches the goal. In this case, the overall BT will still return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.</li>
+<li><p>The Costmap clearing sequence in the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree is attempted, and returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. The robot now moves to <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree again</p></li>
+<li><p>Let’s assume that clearing both costmaps was not sufficient, and the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> once again. The robot now ticks the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree, the <code class="docutils literal notranslate"><span class="pre">Spin</span></code> action will be ticked. If this returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, then the robot will return to the main <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree <em>BUT</em> let’s assume that the <code class="docutils literal notranslate"><span class="pre">Spin</span></code> action returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>. In this case, the tree will <em>remain</em> in the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree</p></li>
+<li><p>Let’s say the next action, <code class="docutils literal notranslate"><span class="pre">Wait</span></code> returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. The robot will then move on to the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree</p></li>
+<li><p>Assume  the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> (clearing the costmaps, attempting a spin, and waiting were <em>still</em> not sufficient to recover the system. The robot will move onto the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree and attempt the <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action. Let’s say that the robot attempts the <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action and was able to successfully complete the action. The <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action node returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> and so now we move on to the Navigation subtree again.</p></li>
+<li><p>In this hypothetical scenario, let’s assume that the <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action allowed the robot to successfully navigate in the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree, and the robot reaches the goal. In this case, the overall BT will still return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.</p></li>
 </ol>
 <p>If the <code class="docutils literal notranslate"><span class="pre">BackUp</span></code> action was not sufficient enough to allow the robot to become un-stuck, the above logic will go on indefinitely until the <code class="docutils literal notranslate"><span class="pre">number_of_retries</span></code> in the parent of the <code class="docutils literal notranslate"><span class="pre">Navigate</span></code> subtree and <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree is exceeded, or if all the system-wide recoveries in the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> (this is unlikely, and likely points to some other system failure).</p>
 </div>

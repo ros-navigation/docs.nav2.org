@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction To Nav2 Specific Nodes &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -800,12 +790,11 @@
   <div class="section" id="introduction-to-nav2-specific-nodes">
 <span id="nav2-specifc-nodes"></span><h1>Introduction To Nav2 Specific Nodes<a class="headerlink" href="#introduction-to-nav2-specific-nodes" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<dl class="last docutils">
-<dt>Vocabulary can be a large point of confusion here when first starting out.</dt>
-<dd><ul class="first last simple">
-<li>A <code class="docutils literal notranslate"><span class="pre">Node</span></code> when discussing BT is entirely different than a <code class="docutils literal notranslate"><span class="pre">Node</span></code> in the ROS2 context</li>
-<li>An <code class="docutils literal notranslate"><span class="pre">ActionNode</span></code> in the context of BT is not necessarily connected to an Action Server in the ROS2 context (but often it is)</li>
+<p class="admonition-title">Warning</p>
+<dl class="simple">
+<dt>Vocabulary can be a large point of confusion here when first starting out.</dt><dd><ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">Node</span></code> when discussing BT is entirely different than a <code class="docutils literal notranslate"><span class="pre">Node</span></code> in the ROS2 context</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">ActionNode</span></code> in the context of BT is not necessarily connected to an Action Server in the ROS2 context (but often it is)</p></li>
 </ul>
 </dd>
 </dl>
@@ -816,10 +805,10 @@ The <a class="reference external" href="../../configuration/packages/configuring
 <div class="section" id="action-nodes">
 <h2>Action Nodes<a class="headerlink" href="#action-nodes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>ComputePathToPose - ComputePathToPose Action Server Client (Planner Interface)</li>
-<li>FollowPath - FollowPath Action Server Client (Controller Interface)</li>
-<li>Spin, Wait, Backup - Behaviors Action Server Client</li>
-<li>ClearCostmapService - ClearCostmapService Server Clients</li>
+<li><p>ComputePathToPose - ComputePathToPose Action Server Client (Planner Interface)</p></li>
+<li><p>FollowPath - FollowPath Action Server Client (Controller Interface)</p></li>
+<li><p>Spin, Wait, Backup - Behaviors Action Server Client</p></li>
+<li><p>ClearCostmapService - ClearCostmapService Server Clients</p></li>
 </ul>
 <p>Upon completion, these action nodes will return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> if the action server believes the action has been completed correctly, <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code> when still running, and will return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> otherwise. Note that in the above list,
 the <cite>ClearCostmapService</cite> action node is <em>not</em> an action server client, but a service client.</p>
@@ -827,10 +816,10 @@ the <cite>ClearCostmapService</cite> action node is <em>not</em> an action serve
 <div class="section" id="condition-nodes">
 <h2>Condition Nodes<a class="headerlink" href="#condition-nodes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>GoalUpdated - Checks if the goal on the goal topic has been updated</li>
-<li>GoalReached - Checks if the goal has been reached</li>
-<li>InitialPoseReceived - Checks to see if a pose on the <code class="docutils literal notranslate"><span class="pre">intial_pose</span></code> topic has been received</li>
-<li>isBatteryLow - Checks to see if the battery is low by listening on the battery topic</li>
+<li><p>GoalUpdated - Checks if the goal on the goal topic has been updated</p></li>
+<li><p>GoalReached - Checks if the goal has been reached</p></li>
+<li><p>InitialPoseReceived - Checks to see if a pose on the <code class="docutils literal notranslate"><span class="pre">intial_pose</span></code> topic has been received</p></li>
+<li><p>isBatteryLow - Checks to see if the battery is low by listening on the battery topic</p></li>
 </ul>
 <p>The above list of condition nodes can be used to probe particular aspects of the system. Typically they will return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> is <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> and <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> when <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.
 The key condition that is used in the default Nav2 BT is <code class="docutils literal notranslate"><span class="pre">GoalUpdated</span></code> which is checked asynchronously within particular subtrees. This condition node allows for the behavior described as “If the goal has updated, then we must replan”.
@@ -839,11 +828,11 @@ Condition nodes are typically paired with ReactiveFallback nodes.</p>
 <div class="section" id="decorator-nodes">
 <h2>Decorator Nodes<a class="headerlink" href="#decorator-nodes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Distance Controller - Will tick children nodes every time the robot has traveled a certain distance</li>
-<li>Rate Controller - Controls the ticking of it’s child node at a constant frequency. The tick rate is an exposed port</li>
-<li>Goal Updater - Will update the goal of children nodes via ports on the BT</li>
-<li>Single Trigger - Will only tick it’s child node once, and will return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> for all subsequent ticks</li>
-<li>Speed Controller - Controls the ticking of it’s child node at a rate proportional to the robot’s speed</li>
+<li><p>Distance Controller - Will tick children nodes every time the robot has traveled a certain distance</p></li>
+<li><p>Rate Controller - Controls the ticking of it’s child node at a constant frequency. The tick rate is an exposed port</p></li>
+<li><p>Goal Updater - Will update the goal of children nodes via ports on the BT</p></li>
+<li><p>Single Trigger - Will only tick it’s child node once, and will return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> for all subsequent ticks</p></li>
+<li><p>Speed Controller - Controls the ticking of it’s child node at a rate proportional to the robot’s speed</p></li>
 </ul>
 </div>
 <div class="section" id="control-pipelinesequence">
@@ -873,8 +862,8 @@ If at any point a child returns <code class="docutils literal notranslate"><span
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">Action_A</span></code>, <code class="docutils literal notranslate"><span class="pre">Action_B</span></code>, and <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> are all <code class="docutils literal notranslate"><span class="pre">IDLE</span></code>.</li>
-<li>When the parent PipelineSequence is first ticked, let’s assume <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>. The parent node will now return <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code> and no other nodes are ticked.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Action_A</span></code>, <code class="docutils literal notranslate"><span class="pre">Action_B</span></code>, and <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> are all <code class="docutils literal notranslate"><span class="pre">IDLE</span></code>.</p></li>
+<li><p>When the parent PipelineSequence is first ticked, let’s assume <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>. The parent node will now return <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code> and no other nodes are ticked.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -886,7 +875,7 @@ If at any point a child returns <code class="docutils literal notranslate"><span
 <div class="line"><br /></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Now, let’s assume <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, <code class="docutils literal notranslate"><span class="pre">Action_B</span></code> will now get ticked and will return <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>. <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> has not yet been ticked so will return <code class="docutils literal notranslate"><span class="pre">IDLE</span></code>.</li>
+<li><p>Now, let’s assume <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, <code class="docutils literal notranslate"><span class="pre">Action_B</span></code> will now get ticked and will return <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>. <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> has not yet been ticked so will return <code class="docutils literal notranslate"><span class="pre">IDLE</span></code>.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -898,7 +887,7 @@ If at any point a child returns <code class="docutils literal notranslate"><span
 <div class="line"><br /></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><code class="docutils literal notranslate"><span class="pre">Action_A</span></code> gets ticked again and returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>, and <code class="docutils literal notranslate"><span class="pre">Action_B</span></code> gets re-ticked and returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> and therefore the BT goes on to tick <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> for the first time. Let’s assume <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>. The retick-ing of <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> is what makes PipelineSequence useful.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Action_A</span></code> gets ticked again and returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>, and <code class="docutils literal notranslate"><span class="pre">Action_B</span></code> gets re-ticked and returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> and therefore the BT goes on to tick <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> for the first time. Let’s assume <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>. The retick-ing of <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> is what makes PipelineSequence useful.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -910,7 +899,7 @@ If at any point a child returns <code class="docutils literal notranslate"><span
 <div class="line"><br /></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>All actions in the sequence will be re-ticked. Let’s assume <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> still returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>, where as <code class="docutils literal notranslate"><span class="pre">Action_B</span></code> returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> again, and <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> now returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> on this tick. The sequence is now complete, and therefore <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> is halted, even though it was still <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>.</li>
+<li><p>All actions in the sequence will be re-ticked. Let’s assume <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> still returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>, where as <code class="docutils literal notranslate"><span class="pre">Action_B</span></code> returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> again, and <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> now returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> on this tick. The sequence is now complete, and therefore <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> is halted, even though it was still <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -929,9 +918,9 @@ If at any point a child returns <code class="docutils literal notranslate"><span
 <p>The Recovery control node has only two children and returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> if and only if the first child returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.
 If the first child returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>, the second child will be ticked. This loop will continue until either:</p>
 <ul class="simple">
-<li>The first child returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> (which results in <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> of the parent node)</li>
-<li>The second child returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> (which results in <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> of the parent node)</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">number_of_retries</span></code> input parameter is violated</li>
+<li><p>The first child returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> (which results in <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> of the parent node)</p></li>
+<li><p>The second child returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> (which results in <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> of the parent node)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">number_of_retries</span></code> input parameter is violated</p></li>
 </ul>
 <p>This node is usually used to link together an action, and a recovery action as the name suggests. The first action will typically be the “main” behavior,
 and the second action will be something to be done in case of <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> of the main behavior. Often, the ticking of the second child action will promote the chance the first action will succeed.</p>
@@ -984,7 +973,7 @@ If all children return <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li>All the nodes start at <code class="docutils literal notranslate"><span class="pre">IDLE</span></code></li>
+<li><p>All the nodes start at <code class="docutils literal notranslate"><span class="pre">IDLE</span></code></p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1030,7 +1019,7 @@ The parent node retains this state information, and will tick <code class="docut
 <div class="line"><br /></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>On this tick, let’s assume <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>, and so does the parent RoundRobin. No other nodes are ticked.</li>
+<li><p>On this tick, let’s assume <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>, and so does the parent RoundRobin. No other nodes are ticked.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1042,7 +1031,7 @@ The parent node retains this state information, and will tick <code class="docut
 <div class="line"><br /></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>On this last tick, let’s assume <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>. The parent will circle and tick <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> again. <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code> and so will the parent RoundRobin node. This pattern will continue indefinitely unless all children return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>.</li>
+<li><p>On this last tick, let’s assume <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>. The parent will circle and tick <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> again. <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code> and so will the parent RoundRobin node. This pattern will continue indefinitely unless all children return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>

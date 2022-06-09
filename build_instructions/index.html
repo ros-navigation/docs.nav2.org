@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Build and Install &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -803,10 +793,12 @@
 <p>Nav2 and its dependencies are released as binaries.
 You may install it via the following to get the latest stable released version:</p>
 <blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;distro&gt;-navigation2</span> <span class="pre">ros-&lt;distro&gt;-nav2-bringup</span> <span class="pre">ros-&lt;distro&gt;-turtlebot3*</span></code></div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;distro&gt;-navigation2</span> <span class="pre">ros-&lt;distro&gt;-nav2-bringup</span> <span class="pre">ros-&lt;distro&gt;-turtlebot3*</span></code></p>
+</div></blockquote>
 <p>(For Ubuntu 20.04 use this command as the parsing of wildcards have been changed:</p>
 <blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;distro&gt;-navigation2</span> <span class="pre">ros-&lt;distro&gt;-nav2-bringup</span> <span class="pre">'~ros-&lt;distro&gt;-turtlebot3-.*'</span></code></div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;distro&gt;-navigation2</span> <span class="pre">ros-&lt;distro&gt;-nav2-bringup</span> <span class="pre">'~ros-&lt;distro&gt;-turtlebot3-.*'</span></code></p>
+</div></blockquote>
 </div>
 <div class="section" id="build">
 <h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
@@ -824,12 +816,12 @@ For Galactic and newer, it is simply <code class="docutils literal notranslate">
 <h4>Build Nav2<a class="headerlink" href="#build-nav2" title="Permalink to this headline">¶</a></h4>
 <p>We’re going to create a new workspace, <code class="docutils literal notranslate"><span class="pre">nav2_ws</span></code>, clone our Nav2 branch into it, and build.
 <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> will be used to get the dependency binaries for Nav2 in your specific distribution.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">nav2_ws</span><span class="o">/</span><span class="n">src</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">nav2_ws</span><span class="o">/</span><span class="n">src</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ros</span><span class="o">-</span><span class="n">planning</span><span class="o">/</span><span class="n">navigation2</span><span class="o">.</span><span class="n">git</span> <span class="o">--</span><span class="n">branch</span> <span class="o">&lt;</span><span class="n">ros2</span><span class="o">-</span><span class="n">distro</span><span class="o">&gt;-</span><span class="n">devel</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">nav2_ws</span>
-<span class="n">rosdep</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">q</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">paths</span> <span class="n">src</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">src</span> <span class="o">--</span><span class="n">rosdistro</span> <span class="o">&lt;</span><span class="n">ros2</span><span class="o">-</span><span class="n">distro</span><span class="o">&gt;</span>
-<span class="n">colcon</span> <span class="n">build</span> <span class="o">--</span><span class="n">symlink</span><span class="o">-</span><span class="n">install</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/nav2_ws/src
+<span class="nb">cd</span> ~/nav2_ws/src
+git clone https://github.com/ros-planning/navigation2.git --branch &lt;ros2-distro&gt;-devel
+<span class="nb">cd</span> ~/nav2_ws
+rosdep install -y -r -q --from-paths src --ignore-src --rosdistro &lt;ros2-distro&gt;
+colcon build --symlink-install
 </pre></div>
 </div>
 <p>Note: You need to change <code class="docutils literal notranslate"><span class="pre">--rosdistro</span></code> to the selected ROS 2 distribution name (e.g <code class="docutils literal notranslate"><span class="pre">foxy</span></code>, <code class="docutils literal notranslate"><span class="pre">galactic</span></code>).</p>
@@ -848,13 +840,13 @@ All development is done using the <code class="docutils literal notranslate"><sp
 We’ll create a new workspace, <code class="docutils literal notranslate"><span class="pre">nav2_ws</span></code> and clone the Nav2 project into it.
 Afterwards, we’ll use <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> to automatically find and install our dependencies that were not included in the core ROS 2 install itself (<code class="docutils literal notranslate"><span class="pre">behaviortree.CPP</span></code>, <code class="docutils literal notranslate"><span class="pre">ompl</span></code>, etc).
 If you would like to use a custom version of any of these dependencies, simply overlay them in your <code class="docutils literal notranslate"><span class="pre">nav2_ws</span></code> and it will use those rather than the binary installed versions.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">nav2_ws</span><span class="o">/</span><span class="n">src</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">nav2_ws</span><span class="o">/</span><span class="n">src</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ros</span><span class="o">-</span><span class="n">planning</span><span class="o">/</span><span class="n">navigation2</span><span class="o">.</span><span class="n">git</span> <span class="o">--</span><span class="n">branch</span> <span class="n">main</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">nav2_ws</span>
-<span class="n">rosdep</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">q</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">paths</span> <span class="n">src</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">src</span> <span class="o">--</span><span class="n">rosdistro</span> <span class="n">rolling</span>
-<span class="n">colcon</span> <span class="n">build</span> <span class="o">--</span><span class="n">symlink</span><span class="o">-</span><span class="n">install</span>
-<span class="n">source</span> <span class="n">install</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/nav2_ws/src
+<span class="nb">cd</span> ~/nav2_ws/src
+git clone https://github.com/ros-planning/navigation2.git --branch main
+<span class="nb">cd</span> ~/nav2_ws
+rosdep install -y -r -q --from-paths src --ignore-src --rosdistro rolling
+colcon build --symlink-install
+<span class="nb">source</span> install/setup.bash
 </pre></div>
 </div>
 <p>You are now ready for the demonstrations!</p>
@@ -869,17 +861,17 @@ If you would like to use a custom version of any of these dependencies, simply o
 <h3>Building Docker Container<a class="headerlink" href="#building-docker-container" title="Permalink to this headline">¶</a></h3>
 <p>To build an image from the Dockerfile in the Nav2 folder:
 First, clone the repo to your local system (or see Building the source above)</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">nav2</span><span class="o">/</span><span class="n">latest</span> <span class="o">.</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker build -t nav2/latest .
 </pre></div>
 </div>
 <p>If proxies are needed:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">nav2</span><span class="o">/</span><span class="n">latest</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">arg</span> <span class="n">http_proxy</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">proxy</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="c1">### --build-arg https_proxy=http://proxy.my.com:### .</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker build -t nav2/latest --build-arg <span class="nv">http_proxy</span><span class="o">=</span>http://proxy.my.com:### --build-arg <span class="nv">https_proxy</span><span class="o">=</span>http://proxy.my.com:### .
 </pre></div>
 </div>
 <p>Note: You may also need to configure your docker for DNS to work. See article here for details: <a class="reference external" href="https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/">https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/</a></p>
 <p>If you would like to build from dockerhub cache to speed up the build</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">pull</span> <span class="n">rosplanning</span><span class="o">/</span><span class="n">navigation2</span><span class="p">:</span><span class="n">main</span>
-<span class="n">sudo</span> <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">nav2</span><span class="o">/</span><span class="n">latest</span> <span class="o">--</span><span class="n">cache</span><span class="o">-</span><span class="kn">from</span> <span class="nn">rosplanning</span><span class="o">/</span><span class="n">navigation2</span><span class="p">:</span><span class="n">main</span> <span class="o">.</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker pull rosplanning/navigation2:main
+sudo docker build -t nav2/latest --cache-from rosplanning/navigation2:main .
 </pre></div>
 </div>
 </div>
@@ -887,7 +879,7 @@ First, clone the repo to your local system (or see Building the source above)</p
 <h3>Using DockerHub Container<a class="headerlink" href="#using-dockerhub-container" title="Permalink to this headline">¶</a></h3>
 <p>We allow for you to pull the latest docker image from the main branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
 This docker image will not contain a built overlay, and you must build the overlay Nav2 workspace yourself (see Build Nav2 Main up above).</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">pull</span> <span class="n">rosplanning</span><span class="o">/</span><span class="n">navigation2</span><span class="p">:</span><span class="n">main</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker pull rosplanning/navigation2:main
 </pre></div>
 </div>
 </div>

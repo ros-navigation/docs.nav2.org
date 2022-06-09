@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setting Up The URDF &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -801,8 +791,8 @@
 <span id="urdf-handson"></span><h1>Setting Up The URDF<a class="headerlink" href="#setting-up-the-urdf" title="Permalink to this headline">¶</a></h1>
 <p>For this guide, we will be creating the Unified Robot Description Format (URDF) file for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">The complete source code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository under the <code class="docutils literal notranslate"><span class="pre">sam_bot_description</span></code> package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.</p>
+<p class="admonition-title">See also</p>
+<p>The complete source code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository under the <code class="docutils literal notranslate"><span class="pre">sam_bot_description</span></code> package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.</p>
 </div>
 <div class="section" id="urdf-and-the-robot-state-publisher">
 <h2>URDF and the Robot State Publisher<a class="headerlink" href="#urdf-and-the-robot-state-publisher" title="Permalink to this headline">¶</a></h2>
@@ -811,8 +801,8 @@
 <p>The Unified Robot Description Format (URDF) is an XML file that represents a robot model. In this tutorial, it will mainly be used to build transformations trees related with the robot geometry, but it also has other uses. One example is how it can be used in visualizing your robot model in RVIZ, a 3D Visualization tool for ROS, by defining visual components such as materials and meshes. Another example is how the URDF can be used to define the physical properties of the robot. These properties are then used in physics simulators such as Gazebo to simulate how your robot will interact in an environment.</p>
 <p>Another major feature of URDF is that it also supports Xacro (XML Macros) to help you create a shorter and readable XML to help in defining complex robots. We can use these macros to eliminate the need for repeating blocks of XML in our URDF. Xacro is also useful in defining configuration constants which can be reused throughout the URDF.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">If you want to learn more about the URDF and the Robot State Publisher, we encourage you to have a look at the official <a class="reference external" href="http://wiki.ros.org/urdf">URDF Documentation</a> and <a class="reference external" href="http://wiki.ros.org/robot_state_publisher">Robot State Publisher Documentation</a></p>
+<p class="admonition-title">See also</p>
+<p>If you want to learn more about the URDF and the Robot State Publisher, we encourage you to have a look at the official <a class="reference external" href="http://wiki.ros.org/urdf">URDF Documentation</a> and <a class="reference external" href="http://wiki.ros.org/robot_state_publisher">Robot State Publisher Documentation</a></p>
 </div>
 </div>
 <div class="section" id="setting-up-the-environment">
@@ -831,8 +821,8 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <div class="section" id="writing-the-urdf">
 <h2>Writing the URDF<a class="headerlink" href="#writing-the-urdf" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">This section aims to provide you with a beginner-friendly introduction to building URDFs for your robot. If you would like to learn more about URDF and XAcro, we suggest for you to have a look at the official <a class="reference external" href="http://wiki.ros.org/urdf">URDF Documentation</a></p>
+<p class="admonition-title">See also</p>
+<p>This section aims to provide you with a beginner-friendly introduction to building URDFs for your robot. If you would like to learn more about URDF and XAcro, we suggest for you to have a look at the official <a class="reference external" href="http://wiki.ros.org/urdf">URDF Documentation</a></p>
 </div>
 <p>Now that we have our project workspace set up, let’s dive straight into writing the URDF. Below is an image of the robot we will be trying to build.</p>
 <a class="reference internal image-reference" href="../../_images/base-bot_1.png"><img alt="../../_images/base-bot_1.png" src="../../_images/base-bot_1.png" style="width: 49%;" /></a>
@@ -841,7 +831,8 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <div class="line"><br /></div>
 </div>
 <blockquote>
-<div>To get started, create a file named <code class="docutils literal notranslate"><span class="pre">sam_bot_description.urdf</span></code> under <code class="docutils literal notranslate"><span class="pre">src/description</span></code> and input the following as the initial contents of the file.</div></blockquote>
+<div><p>To get started, create a file named <code class="docutils literal notranslate"><span class="pre">sam_bot_description.urdf</span></code> under <code class="docutils literal notranslate"><span class="pre">src/description</span></code> and input the following as the initial contents of the file.</p>
+</div></blockquote>
 <div class="highlight-xml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -856,8 +847,8 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 </pre></div></td></tr></table></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The following code snippets should be placed within the <code class="docutils literal notranslate"><span class="pre">&lt;robot&gt;</span></code> tags. We suggest to add them in the same order as introduced in this tutorial. We have also included some line numbers to give you a rough idea on where to input the code. This may differ from the actual file you are writing depending on your usage of whitespaces. Also note that the line numbers assume that you are putting in code as they appear in this guide.</p>
+<p class="admonition-title">Note</p>
+<p>The following code snippets should be placed within the <code class="docutils literal notranslate"><span class="pre">&lt;robot&gt;</span></code> tags. We suggest to add them in the same order as introduced in this tutorial. We have also included some line numbers to give you a rough idea on where to input the code. This may differ from the actual file you are writing depending on your usage of whitespaces. Also note that the line numbers assume that you are putting in code as they appear in this guide.</p>
 </div>
 <p>Next, let us define some constants using XAcro properties that will be reused throughout the URDF.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 4</span>
@@ -1023,8 +1014,8 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <div class="section" id="build-and-launch">
 <h2>Build and Launch<a class="headerlink" href="#build-and-launch" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">The launch files from this tutorial were adapted from the official <a class="reference external" href="https://github.com/ros/urdf_tutorial/tree/ros2">URDF Tutorials for ROS 2</a></p>
+<p class="admonition-title">See also</p>
+<p>The launch files from this tutorial were adapted from the official <a class="reference external" href="https://github.com/ros/urdf_tutorial/tree/ros2">URDF Tutorials for ROS 2</a></p>
 </div>
 <p>Let’s start this section by adding some dependencies that will be required once we build this project. Open up the root of your project directory and add the following lines to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> (preferably after the <code class="docutils literal notranslate"><span class="pre">&lt;buildtool_depend&gt;</span></code> tag)</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;exec_depend&gt;</span>joint_state_publisher<span class="nt">&lt;/exec_depend&gt;</span>
@@ -1085,8 +1076,8 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 </pre></div>
 </div>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more information regarding the launch system in ROS 2, you can have a look at the official <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Launch-system.html">ROS 2 Launch System Documentation</a></p>
+<p class="admonition-title">See also</p>
+<p>For more information regarding the launch system in ROS 2, you can have a look at the official <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Launch-system.html">ROS 2 Launch System Documentation</a></p>
 </div>
 <p>To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named <code class="docutils literal notranslate"><span class="pre">rviz</span></code> in the root of your project and a file named <code class="docutils literal notranslate"><span class="pre">urdf_config.rviz</span></code> under it. Place the following as the contents of <code class="docutils literal notranslate"><span class="pre">urdf_config.rviz</span></code></p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Panels:
@@ -1181,8 +1172,8 @@ Visualization Manager:
 <p>You may have noticed that another window was launched - this is a GUI for the joint state publisher. The joint state publisher is another ROS 2 package which publishes the state for our non-fixed joints. You can manipulate this publisher through the small GUI and the new pose of the joints will be reflected in RVIz. Sliding the bars for any of the two wheels will rotate these joints. You can see this in action by viewing RVIZ as you sweep the sliders in the Joint State Publisher GUI.</p>
 <img alt="../../_images/base-bot_4.png" src="../../_images/base-bot_4.png" />
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">We won’t be interacting much with this package for Nav2, but if you would like to know more about the joint state publisher, feel free to have a look at the official <a class="reference external" href="http://wiki.ros.org/joint_state_publisher">Joint State Publisher Documentation</a>.</p>
+<p class="admonition-title">Note</p>
+<p>We won’t be interacting much with this package for Nav2, but if you would like to know more about the joint state publisher, feel free to have a look at the official <a class="reference external" href="http://wiki.ros.org/joint_state_publisher">Joint State Publisher Documentation</a>.</p>
 </div>
 <p>At this point, you may already decide to stop with this tutorial since we have already achieved our objective of creating a URDF for a simple differential drive robot. The robot state publisher is now publishing the transforms derived from the URDF. These transforms can now be used by other packages (such as Nav2) to get information regarding the shape and structure of your robot. However, to properly use this URDF in a simulation, we need physical properties so that the robot reacts to physical environments like a real robot would. The visualization fields are only for visualization, not collision, so your robot will drive straight through obstacles. We’ll get into adding these properties in our URDF in the next section.</p>
 </div>
@@ -1290,8 +1281,8 @@ Visualization Manager:
 </pre></div></td></tr></table></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">We did not add any inertial or collision properties to our <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> link since this is a virtual and non-physical link.</p>
+<p class="admonition-title">Note</p>
+<p>We did not add any inertial or collision properties to our <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> link since this is a virtual and non-physical link.</p>
 </div>
 <p>Build your project and then launch RViz using the same commands in the previous section.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build

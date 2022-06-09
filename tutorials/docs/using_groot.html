@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Groot - Interacting with Behavior Trees &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -803,10 +793,10 @@
 <img alt="../../_images/groot_start_menu.png" src="../../_images/groot_start_menu.png" />
 </div>
 <ul class="simple">
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#visualize-behavior-trees">Visualize Behavior Trees</a></li>
-<li><a class="reference internal" href="#edit-behavior-trees">Edit Behavior Trees</a></li>
-<li><a class="reference internal" href="#adding-a-custom-node">Adding A Custom Node</a></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#visualize-behavior-trees">Visualize Behavior Trees</a></p></li>
+<li><p><a class="reference internal" href="#edit-behavior-trees">Edit Behavior Trees</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-custom-node">Adding A Custom Node</a></p></li>
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
@@ -827,58 +817,58 @@ Groot not only displays the current Behavior Tree while the robot is operating. 
 </div>
 <div class="section" id="visualize-behavior-trees">
 <h2>Visualize Behavior Trees<a class="headerlink" href="#visualize-behavior-trees" title="Permalink to this headline">¶</a></h2>
-<p>To display a Behavior Tree like that in <a class="reference internal" href="#groot-nav2-default-bt"><span class="std std-numref">Figure 4</span></a>, we will first start the Groot executable.
+<p>To display a Behavior Tree like that in <a class="reference internal" href="#groot-nav2-default-bt"><span class="std std-numref">Figure 3</span></a>, we will first start the Groot executable.
 Out of the box, Groot can only display Behavior Trees and nodes that are from the defaults in BT.CPP, since it does not know anything about Nav2 or your other projects.
 Therefore, we must point Groot to our pallet, or index, of Nav2 / custom behavior tree nodes:</p>
 <ol class="arabic simple">
-<li>Open Groot in editor mode. Now, Groot should look like in <a class="reference internal" href="#groot-bt-editor"><span class="std std-numref">Figure 2</span></a>.</li>
-<li>Select the <cite>Load palette from file</cite> option either via the context menu or the import icon in the top middle of the menu bar.</li>
-<li>Open the file <cite>/path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml</cite> to import all the custom behavior tree nodes used for navigation. This is the pallet of Nav2 custom behavior tree nodes. Now, Groot should look like in <a class="reference internal" href="#groot-bt-editor-with-nodes"><span class="std std-numref">Figure 3</span></a>.</li>
-<li>Select <cite>Load tree</cite> option near the top left corner</li>
-<li>Browse the tree you want to visualize, then select <cite>OK</cite>. The Nav2 BTs exist in <cite>/path/to/navigation2/nav2_bt_navigator/behavior_trees/</cite></li>
+<li><p>Open Groot in editor mode. Now, Groot should look like in <a class="reference internal" href="#groot-bt-editor"><span class="std std-numref">Figure 1</span></a>.</p></li>
+<li><p>Select the <cite>Load palette from file</cite> option either via the context menu or the import icon in the top middle of the menu bar.</p></li>
+<li><p>Open the file <cite>/path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml</cite> to import all the custom behavior tree nodes used for navigation. This is the pallet of Nav2 custom behavior tree nodes. Now, Groot should look like in <a class="reference internal" href="#groot-bt-editor-with-nodes"><span class="std std-numref">Figure 2</span></a>.</p></li>
+<li><p>Select <cite>Load tree</cite> option near the top left corner</p></li>
+<li><p>Browse the tree you want to visualize, then select <cite>OK</cite>. The Nav2 BTs exist in <cite>/path/to/navigation2/nav2_bt_navigator/behavior_trees/</cite></p></li>
 </ol>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><div class="first last figure" id="groot-bt-editor">
+<tbody>
+<tr class="row-odd"><td><div class="figure align-default" id="groot-bt-editor">
 <img alt="../../_images/groot_bt_editor.png" src="../../_images/groot_bt_editor.png" />
-<p class="caption"><span class="caption-number">Figure 2 </span><span class="caption-text">Default Editor View</span></p>
+<p class="caption"><span class="caption-number">Figure 1 </span><span class="caption-text">Default Editor View</span><a class="headerlink" href="#groot-bt-editor" title="Permalink to this image">¶</a></p>
 </div>
 </td>
-<td><div class="first last figure" id="groot-bt-editor-with-nodes">
+<td><div class="figure align-default" id="groot-bt-editor-with-nodes">
 <img alt="../../_images/groot_with_nav2_custom_nodes.png" src="../../_images/groot_with_nav2_custom_nodes.png" />
-<p class="caption"><span class="caption-number">Figure 3 </span><span class="caption-text">Editor with Custom Nodes loaded in blue</span></p>
+<p class="caption"><span class="caption-number">Figure 2 </span><span class="caption-text">Editor with Custom Nodes loaded in blue</span><a class="headerlink" href="#groot-bt-editor-with-nodes" title="Permalink to this image">¶</a></p>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
-<p>If you select the default tree <cite>navigate_w_replanning_and_recovery.xml</cite>, then a Groot editor should look like <a class="reference internal" href="#groot-nav2-default-bt"><span class="std std-numref">Figure 4</span></a>.</p>
-<table border="1" class="docutils">
+<p>If you select the default tree <cite>navigate_w_replanning_and_recovery.xml</cite>, then a Groot editor should look like <a class="reference internal" href="#groot-nav2-default-bt"><span class="std std-numref">Figure 3</span></a>.</p>
+<table class="docutils align-default">
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><div class="first last figure" id="groot-nav2-default-bt">
+<tbody>
+<tr class="row-odd"><td><div class="figure align-default" id="groot-nav2-default-bt">
 <img alt="../../_images/bt_w_replanning_and_recovery.png" src="../../_images/bt_w_replanning_and_recovery.png" />
-<p class="caption"><span class="caption-number">Figure 4 </span><span class="caption-text">Full Nav2 Default BehaviorTree</span></p>
+<p class="caption"><span class="caption-number">Figure 3 </span><span class="caption-text">Full Nav2 Default BehaviorTree</span><a class="headerlink" href="#groot-nav2-default-bt" title="Permalink to this image">¶</a></p>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If a tree cannot be visualized because some nodes are missing in the pallet, you might need to add it to your pallet. While we try to keep Nav2’s BT nodes and pallets in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.</p>
+<p class="admonition-title">Note</p>
+<p>If a tree cannot be visualized because some nodes are missing in the pallet, you might need to add it to your pallet. While we try to keep Nav2’s BT nodes and pallets in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.</p>
 </div>
 </div>
 <div class="section" id="edit-behavior-trees">
 <h2>Edit Behavior Trees<a class="headerlink" href="#edit-behavior-trees" title="Permalink to this headline">¶</a></h2>
 <p>Now that you have a Nav2 BT open in Groot in editor mode, you should be able to trivially modify it using the GUI.
-Starting from a screen like that shown in <a class="reference internal" href="#groot-nav2-default-bt"><span class="std std-numref">Figure 4</span></a>, you can pull in new nodes from the side panel to add them to the workspace.
+Starting from a screen like that shown in <a class="reference internal" href="#groot-nav2-default-bt"><span class="std std-numref">Figure 3</span></a>, you can pull in new nodes from the side panel to add them to the workspace.
 You may then connect the nodes using a “drag and drop” motion between the node’s input and output ports to assemble the new nodes into the tree.</p>
 <p>If you select a given node, you can change metadata about it such as its name or values of parameterizable ports. When you’re done modifying, simply save the new configuration file and use that on your robot the next time!</p>
 </div>
@@ -889,46 +879,46 @@ Sometimes, its useful to create new nodes and add them to your pallet during the
 This helps designers abstract away the implementation specifics of the nodes from the higher level logic of the tree itself and how they’d like to interact with a given node (e.g. type, ports, etc).
 Within Groot, you may create new custom nodes to add to your tree and export these new nodes back to your pallet.
 Implementing the node itself needs to be done separately from Groot, which is described in <a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#writing-new-nbt-plugin"><span class="std std-ref">Writing a New Behavior Tree Plugin</span></a>.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><div class="first last figure" id="groot-create-custom-node">
+<tbody>
+<tr class="row-odd"><td><div class="figure align-default" id="groot-create-custom-node">
 <img alt="../../_images/groot_create_custom_node.png" src="../../_images/groot_create_custom_node.png" />
-<p class="caption"><span class="caption-number">Figure 5 </span><span class="caption-text">Create a new Custom Node</span></p>
+<p class="caption"><span class="caption-number">Figure 4 </span><span class="caption-text">Create a new Custom Node</span><a class="headerlink" href="#groot-create-custom-node" title="Permalink to this image">¶</a></p>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Creating a new custom node can be started by clicking the orange marked icon in <a class="reference internal" href="#groot-create-custom-node"><span class="std std-numref">Figure 5</span></a>, while Groot is in Editor mode.
-This should load a new window, similar to <a class="reference internal" href="#groot-interactive-node-creation"><span class="std std-numref">Figure 6</span></a>.
+<p>Creating a new custom node can be started by clicking the orange marked icon in <a class="reference internal" href="#groot-create-custom-node"><span class="std std-numref">Figure 4</span></a>, while Groot is in Editor mode.
+This should load a new window, similar to <a class="reference internal" href="#groot-interactive-node-creation"><span class="std std-numref">Figure 5</span></a>.
 In this new window, it asks you to fill in the metadata about this new node, in order to create it.
 It will ask you for standard information such as name (green box), type of node (orange box), and any optional ports for parameterization or access to blackboard variables (blue box).</p>
-<p>After completing, select <cite>OK</cite> in <a class="reference internal" href="#groot-interactive-node-creation"><span class="std std-numref">Figure 6</span></a>, the new custom node should appear in blue in the <cite>TreeNode Palette</cite> as in <a class="reference internal" href="#groot-export-new-node"><span class="std std-numref">Figure 7</span></a>.</p>
-<table border="1" class="docutils">
+<p>After completing, select <cite>OK</cite> in <a class="reference internal" href="#groot-interactive-node-creation"><span class="std std-numref">Figure 5</span></a>, the new custom node should appear in blue in the <cite>TreeNode Palette</cite> as in <a class="reference internal" href="#groot-export-new-node"><span class="std std-numref">Figure 6</span></a>.</p>
+<table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><div class="first last figure" id="groot-interactive-node-creation">
+<tbody>
+<tr class="row-odd"><td><div class="figure align-default" id="groot-interactive-node-creation">
 <img alt="../../_images/groot_interactive_node_creation.png" src="../../_images/groot_interactive_node_creation.png" />
-<p class="caption"><span class="caption-number">Figure 6 </span><span class="caption-text">UI to describing new Nodes</span></p>
+<p class="caption"><span class="caption-number">Figure 5 </span><span class="caption-text">UI to describing new Nodes</span><a class="headerlink" href="#groot-interactive-node-creation" title="Permalink to this image">¶</a></p>
 </div>
 </td>
-<td><div class="first last figure" id="groot-export-new-node">
+<td><div class="figure align-default" id="groot-export-new-node">
 <a class="reference internal image-reference" href="../../_images/groot_export_new_node.png"><img alt="../../_images/groot_export_new_node.png" src="../../_images/groot_export_new_node.png" style="width: 180%;" /></a>
-<p class="caption"><span class="caption-number">Figure 7 </span><span class="caption-text">Exporting the new Custom Node</span></p>
+<p class="caption"><span class="caption-number">Figure 6 </span><span class="caption-text">Exporting the new Custom Node</span><a class="headerlink" href="#groot-export-new-node" title="Permalink to this image">¶</a></p>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Before starting to create a new BT based on the new custom nodes, it is recommend to export the newly created nodes to save in case of Groot crashing.
-This can be performed with the icon highlighted in green from <a class="reference internal" href="#groot-export-new-node"><span class="std std-numref">Figure 7</span></a>.
-The resulting XML output from the node created in <a class="reference internal" href="#groot-interactive-node-creation"><span class="std std-numref">Figure 6</span></a> can be seen below.
+This can be performed with the icon highlighted in green from <a class="reference internal" href="#groot-export-new-node"><span class="std std-numref">Figure 6</span></a>.
+The resulting XML output from the node created in <a class="reference internal" href="#groot-interactive-node-creation"><span class="std std-numref">Figure 5</span></a> can be seen below.
 You can see more examples in <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml">Nav2’s BT Node Pallet XML</a>.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root&gt;</span>
     <span class="nt">&lt;TreeNodesModel&gt;</span>

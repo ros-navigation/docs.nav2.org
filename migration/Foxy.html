@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Foxy to Galactic &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -804,8 +794,8 @@
 <h2>NavigateToPose Action Feedback updates<a class="headerlink" href="#navigatetopose-action-feedback-updates" title="Permalink to this headline">¶</a></h2>
 <p>The NavigateToPose action feedback has two improvements:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">distance_remaining</span></code> now integrates path poses to report accurate distance remaining to go. Previously, this field reported the euclidean distance between the current pose and the goal pose.</li>
-<li>Addition of <code class="docutils literal notranslate"><span class="pre">estimated_time_remaining</span></code> field. This field reports the estimated time remaining by dividing the remaining distance by the current speed.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance_remaining</span></code> now integrates path poses to report accurate distance remaining to go. Previously, this field reported the euclidean distance between the current pose and the goal pose.</p></li>
+<li><p>Addition of <code class="docutils literal notranslate"><span class="pre">estimated_time_remaining</span></code> field. This field reports the estimated time remaining by dividing the remaining distance by the current speed.</p></li>
 </ul>
 </div>
 <div class="section" id="navigatetopose-bt-node-interface-changes">
@@ -827,9 +817,9 @@
 <div class="section" id="computepathtopose-action-interface-changes">
 <h2>ComputePathToPose Action Interface Changes<a class="headerlink" href="#computepathtopose-action-interface-changes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The goal pose field <code class="docutils literal notranslate"><span class="pre">pose</span></code> was changed to <code class="docutils literal notranslate"><span class="pre">goal</span></code>.</li>
-<li>The PoseStamped field <code class="docutils literal notranslate"><span class="pre">start</span></code> has been added.</li>
-<li>The bool field <code class="docutils literal notranslate"><span class="pre">use_start</span></code> has been added.</li>
+<li><p>The goal pose field <code class="docutils literal notranslate"><span class="pre">pose</span></code> was changed to <code class="docutils literal notranslate"><span class="pre">goal</span></code>.</p></li>
+<li><p>The PoseStamped field <code class="docutils literal notranslate"><span class="pre">start</span></code> has been added.</p></li>
+<li><p>The bool field <code class="docutils literal notranslate"><span class="pre">use_start</span></code> has been added.</p></li>
 </ul>
 <p>These two additional fields have been added to optionally allow, when <code class="docutils literal notranslate"><span class="pre">use_start</span></code> is true, the request of a path from <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">goal</span></code> instead of from the current position of the robot to <code class="docutils literal notranslate"><span class="pre">goal</span></code>. Corresponding changes have been done of the Planner Server.</p>
 </div>
@@ -855,9 +845,9 @@ In both cases negative values are silently inverted.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li>The previous usage of the <code class="docutils literal notranslate"><span class="pre">goal_checker_plugin</span></code> parameter to declare the controller_server goal_checker is now obsolete and removed.</li>
-<li>The controller_server parameters now support the declaration of a list of goal checkers <code class="docutils literal notranslate"><span class="pre">goal_checker_plugins</span></code> mapped to unique identifier names, such as is the case with <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> and <code class="docutils literal notranslate"><span class="pre">GridBased</span></code> for the controller and planner plugins, respectively.</li>
-<li>The specification of the selected goal checker is mandatory when more than one checker is defined in the controller_server parameter configuration. If only one goal_checker is configured in the controller_server it is selected by default even if no goal_checker is specified.</li>
+<li><p>The previous usage of the <code class="docutils literal notranslate"><span class="pre">goal_checker_plugin</span></code> parameter to declare the controller_server goal_checker is now obsolete and removed.</p></li>
+<li><p>The controller_server parameters now support the declaration of a list of goal checkers <code class="docutils literal notranslate"><span class="pre">goal_checker_plugins</span></code> mapped to unique identifier names, such as is the case with <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> and <code class="docutils literal notranslate"><span class="pre">GridBased</span></code> for the controller and planner plugins, respectively.</p></li>
+<li><p>The specification of the selected goal checker is mandatory when more than one checker is defined in the controller_server parameter configuration. If only one goal_checker is configured in the controller_server it is selected by default even if no goal_checker is specified.</p></li>
 </ul>
 <p>Below it is shown an example of goal_checker configuration of the controller_server node.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
@@ -903,10 +893,10 @@ All major image formats such as <code class="docutils literal notranslate"><span
 </div>
 <p>Original GitHub tickets:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1993">WaypointTaskExecutor</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1993">WaitAtWaypoint</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2041">PhotoAtWaypoint</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2049">InputAtWaypoint</a></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1993">WaypointTaskExecutor</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1993">WaitAtWaypoint</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2041">PhotoAtWaypoint</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2049">InputAtWaypoint</a></p></li>
 </ul>
 </div>
 <div class="section" id="costmap-filters">
@@ -914,9 +904,9 @@ All major image formats such as <code class="docutils literal notranslate"><span
 <p>A new concept interacting with spatial-dependent objects called “Costmap Filters” appeared in Galactic (more information about this concept could be found at <a class="reference internal" href="../concepts/index.html#concepts"><span class="std std-ref">Navigation Concepts</span></a> page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot’s behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin’s algorithms to make required updates in the resulting costmap and robot’s behavor.</p>
 <p>Architecturally, costmap filters consists from <code class="docutils literal notranslate"><span class="pre">CostmapFilter</span></code> class which is a basic class incorporating much common of its inherited filter plugins:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code>: keep-out/safety zones filter plugin.</li>
-<li><code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code>: slow/speed-restricted areas filter.</li>
-<li>Preferred lanes in industries. This plugin is covered by <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> (see discussion in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1522">corresponding PR</a> for more details).</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code>: keep-out/safety zones filter plugin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code>: slow/speed-restricted areas filter.</p></li>
+<li><p>Preferred lanes in industries. This plugin is covered by <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> (see discussion in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1522">corresponding PR</a> for more details).</p></li>
 </ul>
 <p>Each costmap filter subscribes to filter info topic (publishing by <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>) having all necessary information for loaded costmap filter and filter mask topic.
 <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code> additionally publishes maximum speed restricting <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">messages</a> targeted for a Controller to enforce robot won’t exceed given limit.</p>
@@ -953,16 +943,19 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <h2>Standard time units in parameters<a class="headerlink" href="#standard-time-units-in-parameters" title="Permalink to this headline">¶</a></h2>
 <p>To follow the SI units outlined in REP-103 to the “T” nodes below were modified to use seconds consistently in every parameter. Under each node name you can see which parameters changed to seconds instead of using milliseconds.</p>
 <ul class="simple">
-<li>lifecycle manager<ul>
-<li><code class="docutils literal notranslate"><span class="pre">bond_timeout_ms</span></code> became <code class="docutils literal notranslate"><span class="pre">bond_timeout</span></code> in seconds</li>
+<li><p>lifecycle manager</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bond_timeout_ms</span></code> became <code class="docutils literal notranslate"><span class="pre">bond_timeout</span></code> in seconds</p></li>
 </ul>
 </li>
-<li>smac planner<ul>
-<li><code class="docutils literal notranslate"><span class="pre">max_planning_time_ms</span></code> became <code class="docutils literal notranslate"><span class="pre">max_planning_time</span></code> in seconds</li>
+<li><p>smac planner</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_planning_time_ms</span></code> became <code class="docutils literal notranslate"><span class="pre">max_planning_time</span></code> in seconds</p></li>
 </ul>
 </li>
-<li>map saver<ul>
-<li><code class="docutils literal notranslate"><span class="pre">save_map_timeout</span></code> in seconds</li>
+<li><p>map saver</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">save_map_timeout</span></code> in seconds</p></li>
 </ul>
 </li>
 </ul>
@@ -971,14 +964,16 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <h2>Ray Tracing Parameters<a class="headerlink" href="#ray-tracing-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Raytracing functionality was modified to include a minimum range parameter from which ray tracing starts to clear obstacles to avoid incorrectly clearing obstacles too close to the robot. This issue was mentioned in <a class="reference external" href="https://answers.ros.org/question/355150/obstacles-in-sensor-deadzone/">ROS Answers</a>. An existing parameter <code class="docutils literal notranslate"><span class="pre">raytrace_range</span></code> was renamed to <code class="docutils literal notranslate"><span class="pre">raytrace_max_range</span></code> to reflect the functionality it affects. The renamed parameters and the plugins that they belong to are mentioned below. The changes were introduced in this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2126">pull request</a>.</p>
 <ul class="simple">
-<li>obstacle_layer plugin<ul>
-<li><code class="docutils literal notranslate"><span class="pre">raytrace_min_range</span></code> controls the minimum range from which ray tracing clears obstacles from the costmap</li>
-<li><code class="docutils literal notranslate"><span class="pre">raytrace_max_range</span></code> controls the maximum range to which ray tracing clears obstacles from the costmap</li>
+<li><p>obstacle_layer plugin</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">raytrace_min_range</span></code> controls the minimum range from which ray tracing clears obstacles from the costmap</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raytrace_max_range</span></code> controls the maximum range to which ray tracing clears obstacles from the costmap</p></li>
 </ul>
 </li>
-<li>voxel_layer plugin<ul>
-<li><code class="docutils literal notranslate"><span class="pre">raytrace_min_range</span></code> controls the minimum range from which ray tracing clears obstacles from the costmap</li>
-<li><code class="docutils literal notranslate"><span class="pre">raytrace_max_range</span></code> controls the maximum range to which ray tracing clears obstacles from the costmap</li>
+<li><p>voxel_layer plugin</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">raytrace_min_range</span></code> controls the minimum range from which ray tracing clears obstacles from the costmap</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raytrace_max_range</span></code> controls the maximum range to which ray tracing clears obstacles from the costmap</p></li>
 </ul>
 </li>
 </ul>
@@ -987,14 +982,16 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <h2>Obstacle Marking Parameters<a class="headerlink" href="#obstacle-marking-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Obstacle marking was modified to include a minimum range parameter from which obstacles are marked on the costmap to prevent addition of obstacles in the costmap due to noisy and incorrect measurements. This modification is related to the change with the raytracing parameters. The renamed parameters, newly added parameters and the plugins they belong to are given below.</p>
 <ul class="simple">
-<li>obstacle_layer plugin<ul>
-<li><code class="docutils literal notranslate"><span class="pre">obstacle_min_range</span></code> controls the minimum range from which obstacle are marked on the costmap</li>
-<li><code class="docutils literal notranslate"><span class="pre">obstacle_max_range</span></code> controls the maximum range to which obstacles are marked on the costmap</li>
+<li><p>obstacle_layer plugin</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">obstacle_min_range</span></code> controls the minimum range from which obstacle are marked on the costmap</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obstacle_max_range</span></code> controls the maximum range to which obstacles are marked on the costmap</p></li>
 </ul>
 </li>
-<li>voxel_layer plugin<ul>
-<li><code class="docutils literal notranslate"><span class="pre">obstacle_min_range</span></code> controls the minimum range from which obstacle are marked on the costmap</li>
-<li><code class="docutils literal notranslate"><span class="pre">obstacle_max_range</span></code> controls the maximum range to which obstacles are marked on the costmap</li>
+<li><p>voxel_layer plugin</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">obstacle_min_range</span></code> controls the minimum range from which obstacle are marked on the costmap</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obstacle_max_range</span></code> controls the maximum range to which obstacles are marked on the costmap</p></li>
 </ul>
 </li>
 </ul>
@@ -1022,13 +1019,13 @@ See <code class="docutils literal notranslate"><span class="pre">nav2_behavior_t
 These plugins are set as default in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> but may be overridden by the <code class="docutils literal notranslate"><span class="pre">bt_plugins</span></code> parameter to include your specific plugins.</p>
 <p>Original GitHub tickets:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2236">SingleTrigger</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2249">PlannerSelector</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2266">ControllerSelector</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2269">GoalCheckerSelector</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">NavigateThroughPoses</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">RemovePassedGoals</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">ComputePathThroughPoses</a></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2236">SingleTrigger</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2249">PlannerSelector</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2266">ControllerSelector</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2269">GoalCheckerSelector</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">NavigateThroughPoses</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">RemovePassedGoals</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2271">ComputePathThroughPoses</a></p></li>
 </ul>
 <p>Additionally, behavior tree nodes were modified to contain their own local executors to spin for actions, topics, services, etc to ensure that each behavior tree node is independent of each other (e.g. spinning in one BT node doesn’t trigger a callback in another).</p>
 </div>
@@ -1036,9 +1033,9 @@ These plugins are set as default in the <code class="docutils literal notranslat
 <h2>sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change<a class="headerlink" href="#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change" title="Permalink to this headline">¶</a></h2>
 <p>Due to deprecation of <a class="reference external" href="https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud.html">sensor_msgs/PointCloud</a> the topics which were publishing sensor_msgs/PointCloud are converted to sensor_msgs/PointCloud2. The details on these topics and their respective information are listed below.</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">clearing_endpoints</span></code> topic in <code class="docutils literal notranslate"><span class="pre">voxel_layer</span></code> plugin of <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> package</li>
-<li><code class="docutils literal notranslate"><span class="pre">voxel_marked_cloud</span></code> and <code class="docutils literal notranslate"><span class="pre">voxel_unknown_cloud</span></code> topic in <code class="docutils literal notranslate"><span class="pre">costmap_2d_cloud</span></code> node of <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> package</li>
-<li><code class="docutils literal notranslate"><span class="pre">cost_cloud</span></code> topic of <code class="docutils literal notranslate"><span class="pre">publisher.cpp</span></code> of <code class="docutils literal notranslate"><span class="pre">dwb_core</span></code> package.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clearing_endpoints</span></code> topic in <code class="docutils literal notranslate"><span class="pre">voxel_layer</span></code> plugin of <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> package</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">voxel_marked_cloud</span></code> and <code class="docutils literal notranslate"><span class="pre">voxel_unknown_cloud</span></code> topic in <code class="docutils literal notranslate"><span class="pre">costmap_2d_cloud</span></code> node of <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> package</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cost_cloud</span></code> topic of <code class="docutils literal notranslate"><span class="pre">publisher.cpp</span></code> of <code class="docutils literal notranslate"><span class="pre">dwb_core</span></code> package.</p></li>
 </ul>
 <p>These changes were introduced in <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2263">pull request 2263</a>.</p>
 </div>

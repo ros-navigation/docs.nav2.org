@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eloquent to Foxy &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -822,34 +812,34 @@ Proposals to reduce this latency will be considered before the next release.</p>
 <p>All plugin servers (controller, planner, recovery) now supports the use of multiple plugins.
 This can be done by loading a map of plugins, mapping the name of the plugin to its intended use-case.
 Each server defines a parameter where the list of names for the plugins to be loaded can be defined.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="49%" />
-<col width="51%" />
+<col style="width: 49%" />
+<col style="width: 51%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Server Name</th>
-<th class="head">Plugin Parameter</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Server Name</p></th>
+<th class="head"><p>Plugin Parameter</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Controller Server</td>
-<td>progress_checker_plugin</td>
+<tbody>
+<tr class="row-even"><td><p>Controller Server</p></td>
+<td><p>progress_checker_plugin</p></td>
 </tr>
-<tr class="row-odd"><td>Controller Server</td>
-<td>goal_checker_plugin</td>
+<tr class="row-odd"><td><p>Controller Server</p></td>
+<td><p>goal_checker_plugin</p></td>
 </tr>
-<tr class="row-even"><td>Controller Server</td>
-<td>controller_plugins</td>
+<tr class="row-even"><td><p>Controller Server</p></td>
+<td><p>controller_plugins</p></td>
 </tr>
-<tr class="row-odd"><td>Planner Server</td>
-<td>planner_plugins</td>
+<tr class="row-odd"><td><p>Planner Server</p></td>
+<td><p>planner_plugins</p></td>
 </tr>
-<tr class="row-even"><td>Recovery Server</td>
-<td>recovery_plugins</td>
+<tr class="row-even"><td><p>Recovery Server</p></td>
+<td><p>recovery_plugins</p></td>
 </tr>
-<tr class="row-odd"><td>Costmap Node</td>
-<td>plugins</td>
+<tr class="row-odd"><td><p>Costmap Node</p></td>
+<td><p>plugins</p></td>
 </tr>
 </tbody>
 </table>
@@ -885,16 +875,16 @@ See <code class="docutils literal notranslate"><span class="pre">nav2_behavior_t
 These plugins are set as default in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> but may be overridden by the <code class="docutils literal notranslate"><span class="pre">bt_plugins</span></code> parameter to include your specific plugins.</p>
 <p>Original GitHub tickets:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1699">DistanceController</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1744">SpeedController</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1712">GoalUpdatedCondition</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">DistanceTraveledCondition</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">TimeExpiredCondition</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1859">UpdateGoal</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1859">TruncatePath</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1974">IsBatteryLowCondition</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">ProgressChecker</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">GoalChecker</a></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1699">DistanceController</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1744">SpeedController</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1712">GoalUpdatedCondition</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">DistanceTraveledCondition</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">TimeExpiredCondition</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1859">UpdateGoal</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1859">TruncatePath</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1974">IsBatteryLowCondition</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">ProgressChecker</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">GoalChecker</a></p></li>
 </ul>
 </div>
 <div class="section" id="map-server-re-work">

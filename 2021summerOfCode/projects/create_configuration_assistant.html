@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1. Create a Configuration Assistant (Analog to MoveIt) &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -800,15 +790,15 @@
 <p><a class="reference external" href="https://moveit.ros.org/">Moveit</a> has long has a QT <a class="reference external" href="http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html">configuration assistant</a>. This setup assistent helps the user configure their UDRF and needs to setup MoveIt configuration files.</p>
 <p>A configuration assistant could be extremely beneficial to Navigation2 users as a way to minimize friction. We should provide a gui tool to cover the following configurations:</p>
 <ul class="simple">
-<li>the broad strokes with the costmap, with a visualizer to show the user what it will look like</li>
-<li>Select configurable costmap layers</li>
-<li>Select recovery behavior parameters</li>
-<li>URDF, footprint, and frame selection to make sure the options comply with standards, planner, and controller</li>
-<li>Set minimum and maximum speed and other kinematic parameters</li>
-<li>Select from a dropdown of possible planners and controllers</li>
-<li>Helpful notes throughout the prompts to aid in selecting appropriate parameters</li>
-<li>Selecting at behavior tree</li>
-<li>&#64;steve please add more specific options</li>
+<li><p>the broad strokes with the costmap, with a visualizer to show the user what it will look like</p></li>
+<li><p>Select configurable costmap layers</p></li>
+<li><p>Select recovery behavior parameters</p></li>
+<li><p>URDF, footprint, and frame selection to make sure the options comply with standards, planner, and controller</p></li>
+<li><p>Set minimum and maximum speed and other kinematic parameters</p></li>
+<li><p>Select from a dropdown of possible planners and controllers</p></li>
+<li><p>Helpful notes throughout the prompts to aid in selecting appropriate parameters</p></li>
+<li><p>Selecting at behavior tree</p></li>
+<li><p>&#64;steve please add more specific options</p></li>
 </ul>
 <p>After the items are configured, there should be a preview to see how the parameters effect the robot.</p>
 <p><strong>Project difficulty: High</strong></p>
@@ -817,21 +807,21 @@
 <p><strong>Contact information for the cooperating mentor (optional):  juzhenatpku&#64;gmail.com</strong></p>
 <p><strong>Project output requirements</strong></p>
 <ul class="simple">
-<li>A QT based GUI configuration assistant that support the parameters listed above</li>
-<li>A preview panel to display the parameters’ effection on the robot</li>
+<li><p>A QT based GUI configuration assistant that support the parameters listed above</p></li>
+<li><p>A preview panel to display the parameters’ effection on the robot</p></li>
 </ul>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++, Python3, QT framework</li>
-<li>JSON/XML parsing</li>
-<li>3D programming (maybe needed in the preview)</li>
-<li>Recommended: Gazebo simulation, ROS, and Navigation experience</li>
+<li><p>C++, Python3, QT framework</p></li>
+<li><p>JSON/XML parsing</p></li>
+<li><p>3D programming (maybe needed in the preview)</p></li>
+<li><p>Recommended: Gazebo simulation, ROS, and Navigation experience</p></li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
-<li><a class="reference external" href="https://www.qt.io/">QT</a></li>
-<li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1721">Original github issue page</a></li>
+<li><p><a class="reference external" href="https://www.qt.io/">QT</a></p></li>
+<li><p><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1721">Original github issue page</a></p></li>
 </ul>
 <p><strong>Licensing</strong>
 - All contributions will be under the Apache 2.0 license.

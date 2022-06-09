@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Navigation Concepts &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -908,9 +898,9 @@ Two canonical examples are computing a plan to a goal (e.g. from current positio
 The planner will have access to a global environmental representation and sensor data buffered into it.
 Planners can be written to:</p>
 <ul class="simple">
-<li>Compute shortest path</li>
-<li>Compute complete coverage path</li>
-<li>Compute paths along sparse or predefined routes</li>
+<li><p>Compute shortest path</p></li>
+<li><p>Compute complete coverage path</p></li>
+<li><p>Compute paths along sparse or predefined routes</p></li>
 </ul>
 <p>The general task in Nav2 for the planner is to compute a valid, and potentially optimal, path from the current pose to a goal pose.
 However, many classes of plans and routes exist which are supported.</p>
@@ -922,10 +912,10 @@ The controller will have access to a local environment representation to attempt
 Many controller will project the robot forward in space and compute a locally feasible path at each update iteration.
 Controllers can be written to:</p>
 <ul class="simple">
-<li>Follow a path</li>
-<li>Dock with a charging station using detectors in the odometric frame</li>
-<li>Board an elevator</li>
-<li>Interface with a tool</li>
+<li><p>Follow a path</p></li>
+<li><p>Dock with a charging station using detectors in the odometric frame</p></li>
+<li><p>Board an elevator</p></li>
+<li><p>Interface with a tool</p></li>
 </ul>
 <p>The general task in Nav2 for a controller is to compute a valid control effort to follow the global plan.
 However, many classes of controllers and local planners exist.
@@ -972,8 +962,8 @@ There are 2 schools of thoughts for fleet managers / dispatchers.
 <p>Within the navigation project, there are 2 major transformations that need to be provided, according to community standards.
 The <code class="docutils literal notranslate"><span class="pre">map</span></code> to <code class="docutils literal notranslate"><span class="pre">odom</span></code> transform is provided by a positioning system (localization, mapping, SLAM) and <code class="docutils literal notranslate"><span class="pre">odom</span></code> to <code class="docutils literal notranslate"><span class="pre">base_link</span></code> by an odometry system.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">There is <strong>no</strong> requirement on using a LIDAR on your robot to use the navigation system. There is no requirement to use lidar-based collision avoidance,
+<p class="admonition-title">Note</p>
+<p>There is <strong>no</strong> requirement on using a LIDAR on your robot to use the navigation system. There is no requirement to use lidar-based collision avoidance,
 localization, or slam. However, we do provide instructions and support tried and true implementations of these things using lidars.
 You can be equally as successful using a vision or depth based positioning system and using other sensors for collision avoidance.
 The only requirement is that you follow the standards below with your choice of implementation.</p>
@@ -1030,9 +1020,9 @@ Finally, they may be used to buffer live data into the 2D or 3D world for binary
 <p>Imagine, you’re annotating a map file (or any image file) in order to have a specific action occur based on the location in the annotated map. Examples of marking/annotating might be keep out zones to avoid planning inside, or have pixels belong to maximum speeds in marked areas. This annotated map is called “filter mask”. Just like a mask overlaid on a surface, it can or cannot be same size, pose and scale as a main map. The main goal of filter mask - is to provide an ability of marking areas on maps with some additional features or behavioral changes.</p>
 <p>Costmap filters - is costmap layer based approach of applying spatial-dependent behavioral changes annotated in filter masks, into Nav2 stack. Costmap filters are implemented as costmap plugins. These plugins are called “filters” as they are filtering a costmap by spatial annotations marked on filter masks. In order to make a filtered costmap and change robot’s behavior in annotated areas, filter plugin reads the data came from filter mask. This data is being linearly transformed into feature map in a filter space. Having this transformed feature map along with a map/costmap, any sensors data and current robot coordinates filters can update underlying costmap and change behavior of the robot depending on where it is. For example, the following functionality could be made by using of costmap filters:</p>
 <ul class="simple">
-<li>Keep-out/safety zones where robots will never enter.</li>
-<li>Speed restriction areas. Maximum speed of robots going inside those areas will be limited.</li>
-<li>Preferred lanes for robots moving in industrial environments and warehouses.</li>
+<li><p>Keep-out/safety zones where robots will never enter.</p></li>
+<li><p>Speed restriction areas. Maximum speed of robots going inside those areas will be limited.</p></li>
+<li><p>Preferred lanes for robots moving in industrial environments and warehouses.</p></li>
 </ul>
 </div>
 <div class="section" id="other-forms">
@@ -1040,10 +1030,10 @@ Finally, they may be used to buffer live data into the 2D or 3D world for binary
 <p>Various other forms of environmental representations exist.
 These include:</p>
 <ul class="simple">
-<li>gradient maps, which are similar to costmaps but represent surface gradients to check traversibility over</li>
-<li>3D costmaps, which represent the space in 3D, but then also requires 3D planning and collision checking</li>
-<li>Mesh maps, which are similar to gradient maps but with surface meshes at many angles</li>
-<li>“Vector space”, taking in sensor information and using machine learning to detect individual items and locations to track rather than buffering discrete points.</li>
+<li><p>gradient maps, which are similar to costmaps but represent surface gradients to check traversibility over</p></li>
+<li><p>3D costmaps, which represent the space in 3D, but then also requires 3D planning and collision checking</p></li>
+<li><p>Mesh maps, which are similar to gradient maps but with surface meshes at many angles</p></li>
+<li><p>“Vector space”, taking in sensor information and using machine learning to detect individual items and locations to track rather than buffering discrete points.</p></li>
 </ul>
 </div>
 </div>

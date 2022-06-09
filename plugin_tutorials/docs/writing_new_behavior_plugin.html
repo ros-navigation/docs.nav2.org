@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Writing a New Behavior Plugin &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -800,9 +790,9 @@
   <div class="section" id="writing-a-new-behavior-plugin">
 <span id="writing-new-behavior-plugin"></span><h1>Writing a New Behavior Plugin<a class="headerlink" href="#writing-a-new-behavior-plugin" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#requirements">Requirements</a></li>
-<li><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
@@ -816,10 +806,10 @@ This allows for massive flexibility in the behavior server enabling any behavior
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>ROS 2 (binary or build-from-source)</li>
-<li>Nav2 (Including dependencies)</li>
-<li>Gazebo</li>
-<li>Turtlebot3</li>
+<li><p>ROS 2 (binary or build-from-source)</p></li>
+<li><p>Nav2 (Including dependencies)</p></li>
+<li><p>Gazebo</p></li>
+<li><p>Turtlebot3</p></li>
 </ul>
 </div>
 <div class="section" id="tutorial-steps">
@@ -836,79 +826,79 @@ This wrapper class derives from the <code class="docutils literal notranslate"><
 <p>The base class from <code class="docutils literal notranslate"><span class="pre">nav2_core</span></code> provides 4 pure virtual methods to implement a Behavior Plugin.
 The plugin will be used by the behavior server to host the plugins, but each plugin will provide their own unique action server interface.
 Lets learn more about the methods needed to write a Behavior Plugin <strong>if you did not use the ``nav2_behaviors`` wrapper</strong>.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="18%" />
-<col width="62%" />
-<col width="20%" />
+<col style="width: 18%" />
+<col style="width: 62%" />
+<col style="width: 20%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Virtual method</strong></td>
-<td><strong>Method description</strong></td>
-<td><strong>Requires override?</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Virtual method</strong></p></td>
+<td><p><strong>Method description</strong></p></td>
+<td><p><strong>Requires override?</strong></p></td>
 </tr>
-<tr class="row-even"><td>configure()</td>
-<td>Method is called at when server enters on_configure state. Ideally
+<tr class="row-even"><td><p>configure()</p></td>
+<td><p>Method is called at when server enters on_configure state. Ideally
 this methods should perform declarations of ROS parameters and
 initialization of behavior’s member variables. This method takes 4 input
 params: shared pointer to parent node, behavior name, tf buffer pointer
-and shared pointer to a collision checker</td>
-<td>Yes</td>
+and shared pointer to a collision checker</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td>activate()</td>
-<td>Method is called when behavior server enters on_activate state. Ideally
+<tr class="row-odd"><td><p>activate()</p></td>
+<td><p>Method is called when behavior server enters on_activate state. Ideally
 this method should implement operations which are neccessary before the
-behavior to an active state.</td>
-<td>Yes</td>
+behavior to an active state.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td>deactivate()</td>
-<td>Method is called when behavior server enters on_deactivate state. Ideally
+<tr class="row-even"><td><p>deactivate()</p></td>
+<td><p>Method is called when behavior server enters on_deactivate state. Ideally
 this method should implement operations which are neccessary before
-behavior goes to an inactive state.</td>
-<td>Yes</td>
+behavior goes to an inactive state.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td>cleanup()</td>
-<td>Method is called when behavior server goes to on_cleanup state. Ideally
-this method should clean up resoures which are created for the behavior.</td>
-<td>Yes</td>
+<tr class="row-odd"><td><p>cleanup()</p></td>
+<td><p>Method is called when behavior server goes to on_cleanup state. Ideally
+this method should clean up resoures which are created for the behavior.</p></td>
+<td><p>Yes</p></td>
 </tr>
 </tbody>
 </table>
 <p>For the <code class="docutils literal notranslate"><span class="pre">nav2_behaviors</span></code> wrapper, which provides the ROS 2 action interface and boilerplate, we have 4 virtual methods to implement.
 This tutorial uses this wrapper so these are the main elements we will address.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="18%" />
-<col width="62%" />
-<col width="20%" />
+<col style="width: 18%" />
+<col style="width: 62%" />
+<col style="width: 20%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Virtual method</strong></td>
-<td><strong>Method description</strong></td>
-<td><strong>Requires override?</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Virtual method</strong></p></td>
+<td><p><strong>Method description</strong></p></td>
+<td><p><strong>Requires override?</strong></p></td>
 </tr>
-<tr class="row-even"><td>onRun()</td>
-<td>Method is called immediately when a new behavior action request is
+<tr class="row-even"><td><p>onRun()</p></td>
+<td><p>Method is called immediately when a new behavior action request is
 received. Gives the action goal to process and should start behavior
-initialization / process.</td>
-<td>Yes</td>
+initialization / process.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td>onCycleUpdate()</td>
-<td>Method is called at the behavior update rate and should complete any
+<tr class="row-odd"><td><p>onCycleUpdate()</p></td>
+<td><p>Method is called at the behavior update rate and should complete any
 necessary updates. An example for spinning is computing the command
-velocity for the current cycle, publishing it and checking for completion.</td>
-<td>Yes</td>
+velocity for the current cycle, publishing it and checking for completion.</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td>onConfigure()</td>
-<td>Method is called when behavior server enters on_configure state. Ideally
+<tr class="row-even"><td><p>onConfigure()</p></td>
+<td><p>Method is called when behavior server enters on_configure state. Ideally
 this method should implement operations which are neccessary before
-behavior goes to an configured state (get parameters, etc).</td>
-<td>No</td>
+behavior goes to an configured state (get parameters, etc).</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>onCleanup()</td>
-<td>Method is called when behavior server goes to on_cleanup state. Ideally
-this method should clean up resoures which are created for the behavior.</td>
-<td>No</td>
+<tr class="row-odd"><td><p>onCleanup()</p></td>
+<td><p>Method is called when behavior server goes to on_cleanup state. Ideally
+this method should clean up resoures which are created for the behavior.</p></td>
+<td><p>No</p></td>
 </tr>
 </tbody>
 </table>
@@ -962,7 +952,7 @@ For our example, we simply return success because we already completed our missi
 <p>Now that we have created our custom behavior, we need to export our Behavior Plugin so that it would be visible to the behavior server. Plugins are loaded at runtime and if they are not visible, then our behavior server won’t be able to load it. In ROS 2, exporting and loading plugins is handled by <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
 <p>Coming to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_sms_bahavior::SendSms</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::Behavior</span></code> which is our base class.</p>
 <ol class="arabic simple">
-<li>To export the behavior, we need to provide two lines</li>
+<li><p>To export the behavior, we need to provide two lines</p></li>
 </ol>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pluginlib/class_list_macros.hpp&quot;</span><span class="cp"></span>
 <span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_sms_bahavior</span><span class="o">::</span><span class="n">SendSms</span><span class="p">,</span><span class="w"> </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">Behavior</span><span class="p">)</span><span class="w"></span>
@@ -971,15 +961,15 @@ For our example, we simply return success because we already completed our missi
 <p>Note that it requires pluginlib to export out plugin’s class. Pluginlib would provide as macro <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code> which does all the work of exporting.</p>
 <p>It is good practice to place these lines at the end of the file but technically, you can also write at the top.</p>
 <ol class="arabic simple" start="2">
-<li>Next step would be to create plugin’s description file in the root directory of the package. For example, <code class="docutils literal notranslate"><span class="pre">behavior_plugin.xml</span></code> file in our tutorial package. This file contains following information</li>
+<li><p>Next step would be to create plugin’s description file in the root directory of the package. For example, <code class="docutils literal notranslate"><span class="pre">behavior_plugin.xml</span></code> file in our tutorial package. This file contains following information</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">library</span> <span class="pre">path</span></code>: Plugin’s library name and it’s location.</li>
-<li><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">name</span></code>: Name of the class.</li>
-<li><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">type</span></code>: Type of class.</li>
-<li><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">class</span></code>: Name of the base class.</li>
-<li><code class="docutils literal notranslate"><span class="pre">description</span></code>: Description of the plugin.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">library</span> <span class="pre">path</span></code>: Plugin’s library name and it’s location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">name</span></code>: Name of the class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">type</span></code>: Type of class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">class</span></code>: Name of the base class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Description of the plugin.</p></li>
 </ul>
 </div></blockquote>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span> <span class="na">path=</span><span class="s">&quot;nav2_sms_behavior_plugin&quot;</span><span class="nt">&gt;</span>
@@ -990,13 +980,13 @@ For our example, we simply return success because we already completed our missi
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Next step would be to export plugin using <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> by using cmake function <code class="docutils literal notranslate"><span class="pre">pluginlib_export_plugin_description_file()</span></code>. This function installs plugin description file to <code class="docutils literal notranslate"><span class="pre">share</span></code> directory and sets ament indexes to make it discoverable.</li>
+<li><p>Next step would be to export plugin using <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> by using cmake function <code class="docutils literal notranslate"><span class="pre">pluginlib_export_plugin_description_file()</span></code>. This function installs plugin description file to <code class="docutils literal notranslate"><span class="pre">share</span></code> directory and sets ament indexes to make it discoverable.</p></li>
 </ol>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pluginlib_export_plugin_description_file(nav2_core behavior_plugin.xml)
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Plugin description file should also be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code></li>
+<li><p>Plugin description file should also be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code></p></li>
 </ol>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;export&gt;</span>
   <span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
@@ -1005,7 +995,7 @@ For our example, we simply return success because we already completed our missi
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Compile and it should be registered. Next, we’ll use this plugin.</li>
+<li><p>Compile and it should be registered. Next, we’ll use this plugin.</p></li>
 </ol>
 </div>
 <div class="section" id="pass-the-plugin-name-through-params-file">
@@ -1016,23 +1006,23 @@ For our example, we simply return success because we already completed our missi
 <div><p>behavior_server: (Humble and later)
 recoveries_server: (Galactic and earlier)</p>
 <blockquote>
-<div><dl class="docutils">
-<dt>ros__parameters:</dt>
-<dd><p class="first">costmap_topic: local_costmap/costmap_raw
+<div><dl>
+<dt>ros__parameters:</dt><dd><p>costmap_topic: local_costmap/costmap_raw
 footprint_topic: local_costmap/published_footprint
 cycle_frequency: 10.0
 behavior_plugins: [“spin”, “backup”, “wait”] (Humble and later)
 recovery_plugins: [“spin”, “backup”, “wait”] (Galactic and earlier)
 spin:</p>
 <blockquote>
-<div>plugin: “nav2_behaviors/Spin”</div></blockquote>
-<dl class="docutils">
-<dt>backup:</dt>
-<dd>plugin: “nav2_behaviors/BackUp”</dd>
-<dt>wait:</dt>
-<dd>plugin: “nav2_behaviors/Wait”</dd>
+<div><p>plugin: “nav2_behaviors/Spin”</p>
+</div></blockquote>
+<dl class="simple">
+<dt>backup:</dt><dd><p>plugin: “nav2_behaviors/BackUp”</p>
+</dd>
+<dt>wait:</dt><dd><p>plugin: “nav2_behaviors/Wait”</p>
+</dd>
 </dl>
-<p class="last">global_frame: odom
+<p>global_frame: odom
 robot_base_frame: base_link
 transform_timeout: 0.1
 use_sim_time: true

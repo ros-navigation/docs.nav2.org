@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2. Create New Planner and Controller Plugins &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -800,32 +790,32 @@
 <p>The ROS 2 Navigation Stack has a number of plugin interfaces to help users create or select specific plugins for planning, control, and behaviors for their applications. Two specific areas that the Nav2 stack could use more algorithm plugins for is for path planning (referred to as a planner plugin) and local trajectory generation (referred to as controller plugins). A simple tutorial for creating a <a class="reference external" href="https://navigation.ros.org/tutorials/docs/writing_new_nav2planner_plugin.html">planner plugin can be found here.</a> Currently, we have one planner, NavFn which implements an A* and Dijkstra’s planner. It also has two controllers, DWB and TEB which implement a DWA and timed elastic-band optimization techniques. There is also a Hybrid-A* and OMPL planner in development.</p>
 <p>Your task will be to create a high-quality implementation of one of the following algorithms for the Nav2 plugin interfaces. Alternative algorithms may also be considered upon approval, please ask &#64;steve in the application phase. Please select only one to discuss.</p>
 <ul class="simple">
-<li>Planner Plugin Options: D* or variant, Vornoi planner, Navigation graph route planner, State Lattice planner, kinodynamic planner, and any planning method given a set of dynamic and static obstacles.</li>
-<li>Controller Plugin Options: CiLQR, iLQR, MPC, Splines, path following or dynamic obstacle following controllers.</li>
-<li>Additional options: helping in completing the OMPL or Hybrid-A* planner.</li>
+<li><p>Planner Plugin Options: D* or variant, Vornoi planner, Navigation graph route planner, State Lattice planner, kinodynamic planner, and any planning method given a set of dynamic and static obstacles.</p></li>
+<li><p>Controller Plugin Options: CiLQR, iLQR, MPC, Splines, path following or dynamic obstacle following controllers.</p></li>
+<li><p>Additional options: helping in completing the OMPL or Hybrid-A* planner.</p></li>
 </ul>
 <p><strong>Project difficulty: High</strong></p>
 <p><strong>Project community mentor: Steve Macenski</strong> <a class="reference external" href="https://github.com/SteveMacenski">&#64;SteveMacenski</a></p>
 <p><strong>Mentor contact details: [See link above, link in GitHub profile description]</strong></p>
 <p><strong>Project output requirements</strong></p>
 <ul class="simple">
-<li>A functional planner or controller plugin for the Nav2 stack</li>
-<li>Plugin should be optimized for run-time performance with 50% or greater test coverage</li>
+<li><p>A functional planner or controller plugin for the Nav2 stack</p></li>
+<li><p>Plugin should be optimized for run-time performance with 50% or greater test coverage</p></li>
 </ul>
 <p><strong>Skills required</strong></p>
 <ul class="simple">
-<li>C++</li>
-<li>Path planning or motion planning</li>
-<li>Algorithm optimization</li>
-<li>ROS / Pluginlib</li>
-<li>Recommended: Gazebo simulation and Navigation experience</li>
+<li><p>C++</p></li>
+<li><p>Path planning or motion planning</p></li>
+<li><p>Algorithm optimization</p></li>
+<li><p>ROS / Pluginlib</p></li>
+<li><p>Recommended: Gazebo simulation and Navigation experience</p></li>
 </ul>
 <p><strong>List of relevant open source software repositories and refs</strong></p>
 <ul class="simple">
-<li><a class="reference external" href="https://www.ros.org/">ROS</a></li>
-<li><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></li>
-<li><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1710">Github issue page</a></li>
-<li><a class="reference external" href="https://navigation.ros.org/">Nav2</a></li>
+<li><p><a class="reference external" href="https://www.ros.org/">ROS</a></p></li>
+<li><p><a class="reference external" href="http://gazebosim.org/">Gazebo Simulator</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1710">Github issue page</a></p></li>
+<li><p><a class="reference external" href="https://navigation.ros.org/">Nav2</a></p></li>
 </ul>
 <p><strong>Licensing</strong>
 - All contributions will be under the Apache 2.0 license.

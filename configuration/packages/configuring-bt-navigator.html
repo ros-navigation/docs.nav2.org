@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Behavior-Tree Navigator &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -806,67 +796,60 @@ in the navigation task and provide a way to easily specify complex robot behavio
 <p>Consider checking out the <a class="reference internal" href="../../tutorials/docs/using_groot.html#groot-introduction"><span class="std std-ref">Groot - Interacting with Behavior Trees</span></a> tutorial for using Groot to visualize and modify behavior trees.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">default_nav_to_pose_bt_xml:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">default_nav_to_pose_bt_xml</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Path to the default behavior tree XML description for <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code>, see <a class="reference internal" href="configuring-bt-xml.html#configuring-behavior-tree-xml"><span class="std std-ref">Behavior Tree XML Nodes</span></a> for details on this file.
+<dl class="simple">
+<dt>Description</dt><dd><p>Path to the default behavior tree XML description for <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code>, see <a class="reference internal" href="configuring-bt-xml.html#configuring-behavior-tree-xml"><span class="std std-ref">Behavior Tree XML Nodes</span></a> for details on this file.
 Used to be <code class="docutils literal notranslate"><span class="pre">default_bt_xml_filename</span></code> pre-Galactic.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">default_nav_through_poses_bt_xml:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">default_nav_through_poses_bt_xml</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Path to the default behavior tree XML description for <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code>, see <a class="reference internal" href="configuring-bt-xml.html#configuring-behavior-tree-xml"><span class="std std-ref">Behavior Tree XML Nodes</span></a> for details on this file. New to Galactic after <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> was added.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Path to the default behavior tree XML description for <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code>, see <a class="reference internal" href="configuring-bt-xml.html#configuring-behavior-tree-xml"><span class="std std-ref">Behavior Tree XML Nodes</span></a> for details on this file. New to Galactic after <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> was added.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">plugin_lib_names:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">plugin_lib_names</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="19%" />
-<col width="81%" />
+<col style="width: 19%" />
+<col style="width: 81%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>vector&lt;string&gt;</td>
-<td>[“nav2_compute_path_to_pose_action_bt_node”,
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>[“nav2_compute_path_to_pose_action_bt_node”,
 “nav2_follow_path_action_bt_node”,
 “nav2_back_up_action_bt_node”,
 “nav2_spin_action_bt_node”,
@@ -886,240 +869,220 @@ Used to be <code class="docutils literal notranslate"><span class="pre">default_
 “nav2_transform_available_condition_bt_node”,
 “nav2_time_expired_condition_bt_node”,
 “nav2_distance_traveled_condition_bt_node”,
-“nav2_single_trigger_bt_node”]</td>
+“nav2_single_trigger_bt_node”]</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">List of behavior tree node shared libraries.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>List of behavior tree node shared libraries.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">bt_loop_duration:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">bt_loop_duration</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>10</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>10</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Duration (in milliseconds) for each iteration of BT execution.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Duration (in milliseconds) for each iteration of BT execution.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">default_server_timeout:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">default_server_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>20</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>20</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
+<dl class="simple">
+<dt>Description</dt><dd><p>Default timeout value (in milliseconds) while a BT action node is waiting for acknowledgement from an action server.
 This value will be overwritten for a BT node if the input port “server_timeout” is provided.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">transform_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="30%" />
-<col width="35%" />
-<col width="35%" />
+<col style="width: 30%" />
+<col style="width: 35%" />
+<col style="width: 35%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
-<td>Unit</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+<td><p>Unit</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.1</td>
-<td>seconds</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
+<td><p>seconds</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">TF transform tolerance.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>TF transform tolerance.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">global_frame:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">global_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="43%" />
-<col width="57%" />
+<col style="width: 43%" />
+<col style="width: 57%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>map</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>map</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Reference frame.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Reference frame.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">robot_base_frame:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">robot_base_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="40%" />
-<col width="60%" />
+<col style="width: 40%" />
+<col style="width: 60%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>base_link</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>base_link</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Path to behavior tree XML description.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Path to behavior tree XML description.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">odom_topic:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">odom_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="40%" />
-<col width="60%" />
+<col style="width: 40%" />
+<col style="width: 60%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>odom</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>odom</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Topic on which odometry is published</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic on which odometry is published</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">goal_blackboard_id:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">goal_blackboard_id</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“goal”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“goal”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Blackboard variable to use to supply the goal to the behavior tree for <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code>. Should match ports of BT XML file.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Blackboard variable to use to supply the goal to the behavior tree for <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code>. Should match ports of BT XML file.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">path_blackboard_id:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">path_blackboard_id</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“path”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“path”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Blackboard variable to get the path from the behavior tree for <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> feedback. Should match port names of BT XML file.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Blackboard variable to get the path from the behavior tree for <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> feedback. Should match port names of BT XML file.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">goals_blackboard_id:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">goals_blackboard_id</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“goals”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“goals”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Blackboard variable to use to supply the goals to the behavior tree for <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code>. Should match ports of BT XML file.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Blackboard variable to use to supply the goals to the behavior tree for <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code>. Should match ports of BT XML file.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">use_sim_time:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">use_sim_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>false</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Use time provided by simulation.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Use time provided by simulation.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>

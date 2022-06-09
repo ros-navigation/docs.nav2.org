@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setting Up Lifecycle and Composition Nodes &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -806,8 +796,8 @@
 <p>Lifecycle nodes contain state machine transitions that enable deterministic behavior in ROS 2 servers. The Lifecycle node transitions in Nav2 are handled by the <code class="docutils literal notranslate"><span class="pre">Lifecycle</span> <span class="pre">Manager</span></code>. The Lifecycle Manager transitions the states of the Lifecycle nodes and provides greater control over the state of a system.</p>
 <p>The primary states of a Lifecycle node are <code class="docutils literal notranslate"><span class="pre">Unconfigured</span></code>, <code class="docutils literal notranslate"><span class="pre">Inactive</span></code>, <code class="docutils literal notranslate"><span class="pre">Active</span></code>, and <code class="docutils literal notranslate"><span class="pre">Finalized</span></code>. A Lifecycle node starts in an <code class="docutils literal notranslate"><span class="pre">Unconfigured</span></code> state after being instantiated. The Lifecycle Manager transitions a node from <code class="docutils literal notranslate"><span class="pre">Unconfigured</span></code> to <code class="docutils literal notranslate"><span class="pre">Inactive</span></code> by implementing the <code class="docutils literal notranslate"><span class="pre">Configurating</span></code> transition. The <code class="docutils literal notranslate"><span class="pre">Configurating</span></code> transition sets up all configuration parameters and prepares any required setup such as memory allocation and the set up of the static publication and subscription topics. A node in the <code class="docutils literal notranslate"><span class="pre">Inactive</span></code> state is allowed to reconfigure its parameters and but cannot perform any processing. From the <code class="docutils literal notranslate"><span class="pre">Inactive</span></code> state, the Lifecyle Manager implements the <code class="docutils literal notranslate"><span class="pre">Activating</span></code> transition state to transition the node from <code class="docutils literal notranslate"><span class="pre">Inactive</span></code> to <code class="docutils literal notranslate"><span class="pre">Active</span></code>, which is the main state. A node in the <code class="docutils literal notranslate"><span class="pre">Active</span></code> state is allowed to perform any processing operation. In case a node crashes, the Lifecycle Manager shuts down the system to prevent any critical failures. On shutdown, the necessary cleanup operations are performed and the nodes are transitioned to the <code class="docutils literal notranslate"><span class="pre">Finalized</span></code> state via <code class="docutils literal notranslate"><span class="pre">Deactivating</span></code>, <code class="docutils literal notranslate"><span class="pre">CleaningUp</span></code>, and <code class="docutils literal notranslate"><span class="pre">ShuttingDown</span></code> transition states.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more information on Lifecycle management, see the article on <a class="reference external" href="https://design.ros2.org/articles/node_lifecycle.html">Managed Nodes</a>.</p>
+<p class="admonition-title">See also</p>
+<p>For more information on Lifecycle management, see the article on <a class="reference external" href="https://design.ros2.org/articles/node_lifecycle.html">Managed Nodes</a>.</p>
 </div>
 <p>The Lifecycle node framework is heavily used by the Nav2 servers, such as the planner and controller servers which were discussed in the previous tutorial.</p>
 <p>You may wish to integrate your own nodes into the Nav2 framework or add new lifecycle nodes to your system. As an example, we will add a new notional lifecycle node <code class="docutils literal notranslate"><span class="pre">sensor_driver</span></code>, and have it be controlled via the Nav2 Lifecycle Manager to ensure sensor feeds are available before activating navigation. You can do so by adding a <code class="docutils literal notranslate"><span class="pre">sensor_driver</span></code> node in your launch file and adding it to the list of nodes to be activated by the <code class="docutils literal notranslate"><span class="pre">lifecycle_manager</span></code> before navigation, as shown in the example below.</p>
@@ -841,23 +831,23 @@
 <p>In the snippet above, the nodes to be handled by the Lifecycle Manager are set using the <code class="docutils literal notranslate"><span class="pre">node_names</span></code> parameter. The <code class="docutils literal notranslate"><span class="pre">node_names</span></code> parameter takes in an ordered list of nodes to bringup through the Lifecycle transition. As shown in the snippet, the <code class="docutils literal notranslate"><span class="pre">node_names</span></code> parameter takes in <code class="docutils literal notranslate"><span class="pre">lifecycle_nodes</span></code> which contains the list of nodes to be added to the Lifecycle Manager. The Lifecycle Manager implements bringup transitions (<code class="docutils literal notranslate"><span class="pre">Configuring</span></code> and <code class="docutils literal notranslate"><span class="pre">Activating</span></code>) to the nodes one-by-one and in order, while the nodes are processed in reverse order for shutdown transitions. Hence, the <code class="docutils literal notranslate"><span class="pre">sensor_driver</span></code> is listed first before the other navigation servers so that the sensor data is available before the navigation servers are activated.</p>
 <p>Two other parameters of the Lifecycle Manager are <code class="docutils literal notranslate"><span class="pre">autostart</span></code> and <code class="docutils literal notranslate"><span class="pre">bond_timeout</span></code>. Set <code class="docutils literal notranslate"><span class="pre">autostart</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you want to set the transition nodes to the <code class="docutils literal notranslate"><span class="pre">Active</span></code> state on startup. Otherwise, you will need to manually trigger Lifecycle Manager to transition up the system. The <code class="docutils literal notranslate"><span class="pre">bond_timeout</span></code> sets the waiting time to decide when to transition down all of the nodes if a node is not responding.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">More information on Lifecycle Manager parameters can be found in the <a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-lifecycle.html">Configuration Guide of Lifecycle Manager</a></p>
+<p class="admonition-title">Note</p>
+<p>More information on Lifecycle Manager parameters can be found in the <a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-lifecycle.html">Configuration Guide of Lifecycle Manager</a></p>
 </div>
 </div>
 <div class="section" id="composition">
 <h2>Composition<a class="headerlink" href="#composition" title="Permalink to this headline">¶</a></h2>
 <p>Composition is another new concept in ROS 2 that was introduced to reduce the memory and CPU resources by putting multiple nodes in a single process. In Nav2, Composition can be used to compose all Nav2 nodes in a single process instead of launching them separately. This is useful for deployment on embedded systems where developers need to optimize resource usage.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">More information on Composition can be found <a class="reference external" href="https://docs.ros.org/en/galactic/Tutorials/Composition.html">here</a>.</p>
+<p class="admonition-title">See also</p>
+<p>More information on Composition can be found <a class="reference external" href="https://docs.ros.org/en/galactic/Tutorials/Composition.html">here</a>.</p>
 </div>
 <p>In the following subsections, we give an example on how to add a new Nav2 server, which we notionally call the <code class="docutils literal notranslate"><span class="pre">route_server</span></code>, to our system. This can be done either through manual composition or dynamic composition.</p>
 <div class="section" id="manual-composition">
 <h3>Manual Composition<a class="headerlink" href="#manual-composition" title="Permalink to this headline">¶</a></h3>
 <p>For manual composition, there is an existing manually composed bringup file, <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/src/composed_bringup.cpp">composed_bringup.cpp</a>, in <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>. You can add <code class="docutils literal notranslate"><span class="pre">route_server</span></code> to this existing manual composition by doing the following steps:</p>
 <ol class="arabic">
-<li><p class="first">Add the following to <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/src/composed_bringup.cpp">composed_bringup.cpp</a>:</p>
+<li><p>Add the following to <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/src/composed_bringup.cpp">composed_bringup.cpp</a>:</p>
 <blockquote>
 <div><p>Add the the header file of <code class="docutils literal notranslate"><span class="pre">route_server</span></code>.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;nav2_route_server/route_server.hpp&quot;</span><span class="cp"></span>
@@ -874,14 +864,14 @@
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Add the package containing the server as a dependency to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file.</p>
+<li><p>Add the package containing the server as a dependency to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file.</p>
 <blockquote>
 <div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;exec_depend&gt;</span>nav2_route_server<span class="nt">&lt;/exec_depend&gt;</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Include the package in the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p>
+<li><p>Include the package in the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p>
 <blockquote>
 <div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>find_package(nav2_route_server REQUIRED)
 set(dependencies nav2_route_server)
@@ -895,7 +885,7 @@ set(dependencies nav2_route_server)
 <h3>Dynamic Composition<a class="headerlink" href="#dynamic-composition" title="Permalink to this headline">¶</a></h3>
 <p>In dynamic composition, we make use of the launch files to compose different servers into a single process. The process is established by the <code class="docutils literal notranslate"><span class="pre">ComposableNodeContainer</span></code> container that is populated with composition nodes via <code class="docutils literal notranslate"><span class="pre">ComposableNode</span></code>. This container can then be launched and used the same as any other Nav2 node.</p>
 <ol class="arabic">
-<li><p class="first">Add a new <code class="docutils literal notranslate"><span class="pre">ComposableNode()</span></code> instance in your launch file pointing to the component container of your choice.</p>
+<li><p>Add a new <code class="docutils literal notranslate"><span class="pre">ComposableNode()</span></code> instance in your launch file pointing to the component container of your choice.</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">container</span> <span class="o">=</span> <span class="n">ComposableNodeContainer</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_container&#39;</span><span class="p">,</span>
@@ -913,12 +903,12 @@ set(dependencies nav2_route_server)
 </pre></div>
 </div>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">See example in composition demo’s <a class="reference external" href="https://github.com/ros2/demos/blob/master/composition/launch/composition_demo.launch.py">composition_demo.launch.py</a>.</p>
+<p class="admonition-title">See also</p>
+<p>See example in composition demo’s <a class="reference external" href="https://github.com/ros2/demos/blob/master/composition/launch/composition_demo.launch.py">composition_demo.launch.py</a>.</p>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Add the package containing the server to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file.</p>
+<li><p>Add the package containing the server to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file.</p>
 <blockquote>
 <div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;exec_depend&gt;</span>nav2_route_server<span class="nt">&lt;/exec_depend&gt;</span>
 </pre></div>

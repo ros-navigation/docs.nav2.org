@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smac Hybrid-A* Planner &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -804,518 +794,468 @@
 <p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is the corresponding planner plugin ID selected for this type.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.downsample_costmap:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.downsample_costmap</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>False</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to downsample costmap to another resolution for search.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to downsample costmap to another resolution for search.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.downsampling_factor:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.downsampling_factor</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>1</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Multiplier factor to downsample costmap by (e.g. if 5cm costmap at 2 <code class="docutils literal notranslate"><span class="pre">downsample_factor</span></code>, 10cm output).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Multiplier factor to downsample costmap by (e.g. if 5cm costmap at 2 <code class="docutils literal notranslate"><span class="pre">downsample_factor</span></code>, 10cm output).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.allow_unknown:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.allow_unknown</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>True</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to allow traversing/search in unknown space.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to allow traversing/search in unknown space.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_iterations:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_iterations</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>1000000</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1000000</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Maximum number of search iterations before failing to limit compute time, disabled by -1.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum number of search iterations before failing to limit compute time, disabled by -1.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_planning_time:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_planning_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>5.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>5.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Maximum planning time in seconds.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum planning time in seconds.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.analytic_expansion_ratio:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.analytic_expansion_ratio</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>3.5</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.5</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Planner will attempt to complete an analytic expansions in a frequency proportional to this value and the minimum heuristic.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Planner will attempt to complete an analytic expansions in a frequency proportional to this value and the minimum heuristic.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.analytic_expansion_max_length:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.analytic_expansion_max_length</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>3.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>If the length is too far, reject this expansion. This prevents unsafe shortcutting of paths into higher cost areas far out from the goal itself, let search to the work of getting close before the analytic expansion brings it home. This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.motion_model_for_search:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.motion_model_for_search</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“DUBIN”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“DUBIN”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Motion model enum string to search with. For Hybrid-A* node, default is “DUBIN”. Options for SE2 are DUBIN or REEDS_SHEPP.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Motion model enum string to search with. For Hybrid-A* node, default is “DUBIN”. Options for SE2 are DUBIN or REEDS_SHEPP.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.angle_quantization_bins:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.angle_quantization_bins</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>72</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>72</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Number of angular bins to use for SE2 search. This can be any even number, but a good baseline is 64 or 72 (for 5 degree increments).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Number of angular bins to use for SE2 search. This can be any even number, but a good baseline is 64 or 72 (for 5 degree increments).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.minimum_turning_radius:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.minimum_turning_radius</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.4</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.4</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Minimum turning radius in meters of vehicle. Also used in the smoother to compute maximum curvature.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimum turning radius in meters of vehicle. Also used in the smoother to compute maximum curvature.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.reverse_penalty:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.reverse_penalty</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>2.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Heuristic penalty to apply to SE2 node if searching in reverse direction. Only used in <code class="docutils literal notranslate"><span class="pre">REEDS_SHEPP</span></code> motion model.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node if searching in reverse direction. Only used in <code class="docutils literal notranslate"><span class="pre">REEDS_SHEPP</span></code> motion model.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.change_penalty:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.change_penalty</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Heuristic penalty to apply to SE2 node if changing direction (e.g. left to right) in search. Disabled by default after change to guarantee admissibility of the Hybrid-A* planner.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node if changing direction (e.g. left to right) in search. Disabled by default after change to guarantee admissibility of the Hybrid-A* planner.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.non_straight_penalty:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.non_straight_penalty</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.20</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.20</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Heuristic penalty to apply to SE2 node if searching in non-straight direction.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node if searching in non-straight direction.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cost_penalty:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cost_penalty</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>2.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Heuristic penalty to apply to SE2 node for cost at pose. Allows Hybrid-A* to be cost aware.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node for cost at pose. Allows Hybrid-A* to be cost aware.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.retrospective_penalty:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.retrospective_penalty</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.015</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.015</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Heuristic penalty to apply to SE2 node penalty. Causes Hybrid-A* to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be &gt;= 0.0 and &lt;= 1.0. Must be <cite>0.0</cite> to be fully admissible.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node penalty. Causes Hybrid-A* to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be &gt;= 0.0 and &lt;= 1.0. Must be <cite>0.0</cite> to be fully admissible.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.lookup_table_size:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.lookup_table_size</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>20.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>20.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Size of the dubin/reeds-sheep distance window to cache, in meters.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Size of the dubin/reeds-sheep distance window to cache, in meters.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cache_obstacle_heuristic:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cache_obstacle_heuristic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>false</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smooth_path:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smooth_path</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">If true, does simple and fast smoothing post-processing to the path from search</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>If true, does simple and fast smoothing post-processing to the path from search</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.max_iterations:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.max_iterations</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>int</td>
-<td>1000</td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1000</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The maximum number of iterations the smoother has to smooth the path, to bound potential computation.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The maximum number of iterations the smoother has to smooth the path, to bound potential computation.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_smooth:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_smooth</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.3</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Weight for smoother to apply to smooth out the data points</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight for smoother to apply to smooth out the data points</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_data:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_data</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.2</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.2</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Weight for smoother to apply to retain original data information</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight for smoother to apply to retain original data information</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.tolerance:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1e-10</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1e-10</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Parameter tolerance change amount to terminate smoothing session</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Parameter tolerance change amount to terminate smoothing session</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.do_refinement:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.do_refinement</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A* planner due to the extra “wobbling” it can have due to the very small primitive lengths but may cause the path to get slightly closer to some obstacles.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A* planner due to the extra “wobbling” it can have due to the very small primitive lengths but may cause the path to get slightly closer to some obstacles.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>

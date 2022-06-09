@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setting Up Odometry &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -801,8 +791,8 @@
 <h1>Setting Up Odometry<a class="headerlink" href="#setting-up-odometry" title="Permalink to this headline">¶</a></h1>
 <p>In this guide, we will be looking at how to integrate our robot’s odometry system with Nav2. First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly. Next, we will show how to setup odometry with two different cases. In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders. In the second case, we will build a demo that simulates a functioning odometry system on <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> (the robot that we built in the previous section) using Gazebo. Afterwards, we will discuss how various sources of odometry can be fused to provide a smoothed odometry using the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package. Lastly, we will also show how to publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform using <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">The complete source code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository under the <code class="docutils literal notranslate"><span class="pre">sam_bot_description</span></code> package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.</p>
+<p class="admonition-title">See also</p>
+<p>The complete source code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository under the <code class="docutils literal notranslate"><span class="pre">sam_bot_description</span></code> package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.</p>
 </div>
 <div class="section" id="odometry-introduction">
 <h2>Odometry Introduction<a class="headerlink" href="#odometry-introduction" title="Permalink to this headline">¶</a></h2>
@@ -840,8 +830,8 @@ geometry_msgs/TwistWithCovariance twist
 <p>The <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> are the estimated velocities of the right and left wheels respectively, and the <code class="docutils literal notranslate"><span class="pre">wheel</span> <span class="pre">separation</span></code> is the distance between the wheels. The values of <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> can be obtained by simply getting the changes in the positions of the wheel joints over time. This information can then be used to publish the Nav2 requirements. A basic example on how to do this can be found in the Navigation documentation on odometry <a class="reference external" href="http://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom/">located here</a></p>
 <p>An alternative to manually publishing this information that we recommend is through the <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> framework. The <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> framework contains various packages for real-time control of robots in ROS 2. For wheel encoders, <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> has a <code class="docutils literal notranslate"><span class="pre">diff_drive_controller</span></code> (differential drive controller) under the <code class="docutils literal notranslate"><span class="pre">ros2_controller</span></code> package. The <code class="docutils literal notranslate"><span class="pre">diff_drive_controller</span></code> takes in the <code class="docutils literal notranslate"><span class="pre">geometry_msgs/Twist</span></code> messages published on <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic, computes odometry information, and publishes <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages on <code class="docutils literal notranslate"><span class="pre">odom</span></code> topic. Other packages that deal with different kind of sensors are also available in <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code>.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more information, see the <a class="reference external" href="https://ros-controls.github.io/control.ros.org/">ros2_control documentation</a> and the <a class="reference external" href="https://github.com/ros-controls/ros2_controllers/tree/master/diff_drive_controller/">Github repository of diff_drive_controller</a>.</p>
+<p class="admonition-title">See also</p>
+<p>For more information, see the <a class="reference external" href="https://ros-controls.github.io/control.ros.org/">ros2_control documentation</a> and the <a class="reference external" href="https://github.com/ros-controls/ros2_controllers/tree/master/diff_drive_controller/">Github repository of diff_drive_controller</a>.</p>
 </div>
 <p>For other types of sensors such as IMU, VIO, etc, their respective ROS drivers should have documentation on how publish the odometry information. Keep in mind that Nav2 requires the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message and <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transforms to be published and this should be your goal when setting up your odometry system.</p>
 </div>
@@ -849,8 +839,8 @@ geometry_msgs/TwistWithCovariance twist
 <h2>Simulating an Odometry System using Gazebo<a class="headerlink" href="#simulating-an-odometry-system-using-gazebo" title="Permalink to this headline">¶</a></h2>
 <p>In this section, we will be using Gazebo to simulate the odometry system of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description/">complete source here</a>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you are working on your own physical robot and have already set up your odometry sensors, you may opt to skip this section and head onto the next one where we fuse IMU and odometry messages to provide a smooth <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transformation.</p>
+<p class="admonition-title">Note</p>
+<p>If you are working on your own physical robot and have already set up your odometry sensors, you may opt to skip this section and head onto the next one where we fuse IMU and odometry messages to provide a smooth <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transformation.</p>
 </div>
 <p>As an overview for this section, we will first setup Gazebo and the necessary packages required to make it work with ROS 2. Next, we will be adding Gazebo plugins, which simulate an IMU sensor and a differential drive odometry system, in order to publish <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> and <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages respectively. Lastly, we will spawn <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in a Gazebo environment and verify the published <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> and <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages over ROS 2.</p>
 <div class="section" id="setup-and-prerequisites">
@@ -863,8 +853,8 @@ geometry_msgs/TwistWithCovariance twist
 <p>You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros2_installing&amp;cat=connect_ros#TestingGazeboandROS2integration">given here</a>.</p>
 <p>Note that we described <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> using URDF. However, Gazebo uses <a class="reference external" href="http://sdformat.org/">Simulation Description Format (SDF)</a> to describe a robot in its simulated environment. Fortunately, Gazebo automatically translates compatible URDF files into SDF. The main requirement for the URDF to be compatible with Gazebo is to have an <code class="docutils literal notranslate"><span class="pre">&lt;inertia&gt;</span></code> element within each <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> element. This requirement is already satisfied in the URDF file of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, so it can already be used in Gazebo.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more information on how to use URDF in Gazebo, see <a class="reference external" href="http://gazebosim.org/tutorials/?tut=ros_urdf">Tutorial: Using a URDF in Gazebo</a>.</p>
+<p class="admonition-title">See also</p>
+<p>For more information on how to use URDF in Gazebo, see <a class="reference external" href="http://gazebosim.org/tutorials/?tut=ros_urdf">Tutorial: Using a URDF in Gazebo</a>.</p>
 </div>
 </div>
 <div class="section" id="adding-gazebo-plugins-to-a-urdf">
@@ -1202,13 +1192,13 @@ Subscription count: <span class="m">0</span>
 <p>A usual robot setup consists of at least the wheel encoders and IMU as its odometry sensor sources. When multiple sources are provided to <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, it is able to fuse the odometry information given by the sensors through the use of state estimation nodes. These nodes make use of either an Extended Kalman filter (<code class="docutils literal notranslate"><span class="pre">ekf_node</span></code>) or an Unscented Kalman Filter (<code class="docutils literal notranslate"><span class="pre">ukf_node</span></code>) to implement this fusion. In addition, the package also implements a <code class="docutils literal notranslate"><span class="pre">navsat_transform_node</span></code> which transforms geographic coordinates into the robot’s world frame when working with GPS.</p>
 <p>Fused sensor data is published by the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package through the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code> and the <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code> topics, if enabled in its configuration. In addition, it can also publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform on the <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topic.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">More details on <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> can be found in the official <a class="reference external" href="http://docs.ros.org/en/noetic/api/robot_localization/html/index.html">Robot Localization Documentation</a>.</p>
+<p class="admonition-title">See also</p>
+<p>More details on <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> can be found in the official <a class="reference external" href="http://docs.ros.org/en/noetic/api/robot_localization/html/index.html">Robot Localization Documentation</a>.</p>
 </div>
 <p>If your robot is only able to provide one odometry source, the use of <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> would have minimal effects aside from smoothing. In this case, an alternative approach is to publish transforms through a tf2 broadcaster in your single source of odometry node. Nevertheless, you can still opt to use <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> to publish the transforms and some smoothing properties may still be observed in the output.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more information on how to write a tf2 broadcaster, you can check Writing a tf2 broadcaster <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">(C++)</a>  <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Py.html">(Python)</a>.</p>
+<p class="admonition-title">See also</p>
+<p>For more information on how to write a tf2 broadcaster, you can check Writing a tf2 broadcaster <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">(C++)</a>  <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Py.html">(Python)</a>.</p>
 </div>
 <p>For the rest of this section, we will show how to use <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> to fuse the sensors of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. It will use the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> messages published on <code class="docutils literal notranslate"><span class="pre">/demo/Imu</span></code> and the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message published on <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> and then it will publish data on <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>,  <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics.</p>
 <div class="section" id="configuring-robot-localization">
@@ -1273,8 +1263,8 @@ Subscription count: <span class="m">0</span>
 <p>You can specify which values from a sensor are to be used by the filter using the <code class="docutils literal notranslate"><span class="pre">_config</span></code> parameter. The order of the values of this parameter is x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. In our example, we set everything in <code class="docutils literal notranslate"><span class="pre">odom0_config</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code> except the 1st, 2nd, 3rd, and 12th entries, which means the filter will only use the x, y, z, and the vyaw values of <code class="docutils literal notranslate"><span class="pre">odom0</span></code>.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">imu0_config</span></code> matrix, you’ll notice that only roll, pitch, and yaw are used. Typical mobile robot-grade IMUs will also provide angular velocities and linear accelerations. For <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> to work properly, you should not fuse in multiple fields that are derivative of each other. Since angular velocity is fused internally to the IMU to provide the roll, pitch and yaw estimates, we should not fuse in the angular velocities used to derive that information. We also do not fuse in angular velocity due to the noisy characteristics it has when not using exceptionally high quality (and expensive) IMUs.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more advise on configuration of input data to <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, see <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/preparing_sensor_data.html#odometry">Preparing Your Data for Use with robot_localization</a>, and <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html">Configuring robot_localization</a>.</p>
+<p class="admonition-title">See also</p>
+<p>For more advise on configuration of input data to <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, see <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/preparing_sensor_data.html#odometry">Preparing Your Data for Use with robot_localization</a>, and <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html">Configuring robot_localization</a>.</p>
 </div>
 </div>
 <div class="section" id="id3">

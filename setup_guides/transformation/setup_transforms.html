@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setting Up Transformations &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -805,8 +795,8 @@
 <div class="section" id="transforms-introduction">
 <h2>Transforms Introduction<a class="headerlink" href="#transforms-introduction" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This section of this guide has been adapted from the <a class="reference external" href="http://wiki.ros.org/navigation/Tutorials/RobotSetup/TF">Setting Up You Robot using tf</a> tutorial in the ROS (1) Navigation documentation.</p>
+<p class="admonition-title">Note</p>
+<p>This section of this guide has been adapted from the <a class="reference external" href="http://wiki.ros.org/navigation/Tutorials/RobotSetup/TF">Setting Up You Robot using tf</a> tutorial in the ROS (1) Navigation documentation.</p>
 </div>
 <p>Many ROS packages require the transform tree of a robot to be published using the TF2 ROS package. A transformation tree defines the relations between different coordinate systems, in terms of translation, rotation, and relative motion. To make this more concrete, let us apply an example of a simple robot that has a mobile base with a single laser sensor mounted on top of it.</p>
 <p>This robot has two defined coordinate frames: one corresponding to the center point of the mobile base of the robot, and one for the center point of the laser that is mounted on top of the base. We’ll call the coordinate frame attached to the mobile base  <code class="docutils literal notranslate"><span class="pre">base_link</span></code> and we’ll call the coordinate frame attached to the laser <code class="docutils literal notranslate"><span class="pre">base_laser</span></code>. Note that will be talking more about the naming and conventions of these coordinate frames in the next section.</p>
@@ -824,8 +814,8 @@
 <div class="section" id="static-transform-publisher-demo">
 <h2>Static Transform Publisher Demo<a class="headerlink" href="#static-transform-publisher-demo" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">If you are new to ROS 2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official <a class="reference external" href="https://docs.ros.org/en/rolling/Installation.html">ROS 2 Installation Documentation</a></p>
+<p class="admonition-title">Warning</p>
+<p>If you are new to ROS 2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official <a class="reference external" href="https://docs.ros.org/en/rolling/Installation.html">ROS 2 Installation Documentation</a></p>
 </div>
 <p>Now let’s try publishing a very simple transform using the static_transform_publisher tool provided by TF2. We will be publishing a transformation from the link <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to the link <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> with a translation of (x: 0.1m, y: 0.0m, z: 0.2m). Note that we will be building the transform from the diagram earlier in this tutorial.</p>
 <p>Open up your command line and execute the following command:</p>
@@ -844,35 +834,35 @@
 </div>
 <p>And that’s it for this short demo - we were able to successfully publish a transform from <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> using the TF2 library. Note that we do not recommend using the above demo in publishing transforms for your actual robotics projects, it is just a quick demo to see TF2 in action. For a real robot system, we would create a URDF file which embeds this information and more about your robot for use of the robot_state_publisher rather than the static_transform_publisher. There are more suitable and practical ways to go about this which will be discussed in the <a class="reference internal" href="../urdf/setup_urdf.html#urdf-handson"><span class="std std-ref">Setting Up The URDF</span></a> tutorial.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">If you would like to learn more about TF2 and how to create your own transform publishers, head onto the official <a class="reference external" href="https://wiki.ros.org/tf2/Tutorials">TF2 Documentation</a></p>
+<p class="admonition-title">See also</p>
+<p>If you would like to learn more about TF2 and how to create your own transform publishers, head onto the official <a class="reference external" href="https://wiki.ros.org/tf2/Tutorials">TF2 Documentation</a></p>
 </div>
 </div>
 <div class="section" id="transforms-in-navigation2">
 <h2>Transforms in Navigation2<a class="headerlink" href="#transforms-in-navigation2" title="Permalink to this headline">¶</a></h2>
 <p>There are two important ROS REPs which we highly suggest for you to check out. These documents detail some standards set about by the ROS community to ensure proper operation across different packages. Nav2 also adheres to these standards and conventions.</p>
 <ol class="arabic simple">
-<li><a class="reference external" href="https://www.ros.org/reps/rep-0105.html">REP 105 - Coordinate Frames for Mobile Platforms</a></li>
-<li><a class="reference external" href="https://www.ros.org/reps/rep-0103.html">REP 103 - Standard Units of Measure and Coordinate Conventions</a></li>
+<li><p><a class="reference external" href="https://www.ros.org/reps/rep-0105.html">REP 105 - Coordinate Frames for Mobile Platforms</a></p></li>
+<li><p><a class="reference external" href="https://www.ros.org/reps/rep-0103.html">REP 103 - Standard Units of Measure and Coordinate Conventions</a></p></li>
 </ol>
 <p>To quickly summarize REP 105, this document specifies the naming conventions and semantic meanings of the different coordinate frames used in ROS. Of interest to this tutorial are the <code class="docutils literal notranslate"><span class="pre">base_link</span></code>, <code class="docutils literal notranslate"><span class="pre">odom</span></code> and <code class="docutils literal notranslate"><span class="pre">map</span></code> coordinate frames. The <code class="docutils literal notranslate"><span class="pre">base_link</span></code> is a coordinate frame that is attached to a fixed position on the robot, typically at its main chassis and its rotational center. The <code class="docutils literal notranslate"><span class="pre">odom</span></code> coordinate frame is a fixed frame relative to the robot’s starting position and is mainly used for locally-consistent representations of distances. Lastly, the <code class="docutils literal notranslate"><span class="pre">map</span></code> coordinate frame is a world fixed frame that is used for globally-consistent representations of distances.</p>
 <p>REP 103, on the other hand, discusses some standard units of measure and other related conventions to keep integration issues between different ROS packages to a minimum. The basic overview is that frames are defined using the right hand rule, with Z up and X forward, and units should be standard SI units.</p>
 <p>Now let’s move on to some specifics for the Navigation2 package to function correctly. Nav2 requires the following transformations to be published in ROS:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">map</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">base_link</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> (sensor base frames)</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_link</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> (sensor base frames)</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> coordinate frame is not included in the REP 105 standard. For this guide, we will be using this name to refer to the coordinate frame for a laser sensor on our robot platform.  If there are multiple sensor base frames (e.g. camera_link, base_laser2, lidar_link etc.), then a transformation back to <code class="docutils literal notranslate"><span class="pre">base_link</span></code> for each one is required.</p>
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> coordinate frame is not included in the REP 105 standard. For this guide, we will be using this name to refer to the coordinate frame for a laser sensor on our robot platform.  If there are multiple sensor base frames (e.g. camera_link, base_laser2, lidar_link etc.), then a transformation back to <code class="docutils literal notranslate"><span class="pre">base_link</span></code> for each one is required.</p>
 </div>
 <p>The first transform <code class="docutils literal notranslate"><span class="pre">map</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code> is usually provided by a different ROS package dealing with localization and mapping such as AMCL. This transform updates live in use so we don’t set static values for this in our robot’s TF tree. Further detail about how to set this up may be pretty complex, so we highly suggest to have a look at the documentation of the mapping or localization package you are using for your platform. All ROS compliant SLAM and localization packages will provide you with this transformation automatically on launch.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> is usually published by our odometry system using sensors such as wheel encoders. This is typically computed via sensor fusion of odometry sensors (IMU, wheel encoders, VIO, etc) using the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package.</p>
 <p>All other statically defined transforms (e.g. <code class="docutils literal notranslate"><span class="pre">base_link</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_laser</span></code>, <code class="docutils literal notranslate"><span class="pre">base_link</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">wheels</span></code>, <code class="docutils literal notranslate"><span class="pre">wheels</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">IMU</span></code>, etc) is what we will be talking about for the rest of this guide. This transformation tree is used by Nav2 to properly relate the information from sensors or other frame of interest to the rest of the robot. The transformation between these two coordinate frames is usually provided to Nav2 through the Robot State Publisher and the Universal Robot Descriptor File (URDF). In cases where there are more sensor coordinate frames on your platform, then a transform tree from <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to each sensor coordinate frame needs to be published.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For a more in-depth discussion on the usage of transforms and how these are used to estimate the current state of your robot, we highly recommend having a look at the State Estimation topic in <a class="reference internal" href="../../concepts/index.html#concepts"><span class="std std-ref">Navigation Concepts</span></a>.</p>
+<p class="admonition-title">See also</p>
+<p>For a more in-depth discussion on the usage of transforms and how these are used to estimate the current state of your robot, we highly recommend having a look at the State Estimation topic in <a class="reference internal" href="../../concepts/index.html#concepts"><span class="std std-ref">Navigation Concepts</span></a>.</p>
 </div>
 </div>
 <div class="section" id="conclusion">

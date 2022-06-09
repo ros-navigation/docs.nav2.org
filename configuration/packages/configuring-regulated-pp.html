@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Regulated Pure Pursuit &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -808,452 +798,410 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <p>See the package’s <code class="docutils literal notranslate"><span class="pre">README</span></code> for more complete information.</p>
 <div class="section" id="regulated-pure-pursuit-parameters">
 <h2>Regulated Pure Pursuit Parameters<a class="headerlink" href="#regulated-pure-pursuit-parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">desired_linear_vel:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">desired_linear_vel</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.5</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The desired maximum linear velocity (m/s) to use.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The desired maximum linear velocity (m/s) to use.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">lookahead_dist:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">lookahead_dist</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.6</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.6</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The lookahead distance (m) to use to find the lookahead point when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The lookahead distance (m) to use to find the lookahead point when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">min_lookahead_dist:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">min_lookahead_dist</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.3</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The minimum lookahead distance (m) threshold when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The minimum lookahead distance (m) threshold when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">max_lookahead_dist:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">max_lookahead_dist</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.9</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.9</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The maximum lookahead distance (m) threshold when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The maximum lookahead distance (m) threshold when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">lookahead_time:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">lookahead_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.5</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.5</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The time (s) to project the velocity by when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Also known as the lookahead gain.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The time (s) to project the velocity by when <code class="docutils literal notranslate"><span class="pre">use_velocity_scaled_lookahead_dist</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Also known as the lookahead gain.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">rotate_to_heading_angular_vel:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">rotate_to_heading_angular_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.8</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.8</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">If <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, this is the angular velocity to use.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, this is the angular velocity to use.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">transform_tolerance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.1</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The TF transform tolerance (s).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The TF transform tolerance (s).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">use_velocity_scaled_lookahead_dist:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">use_velocity_scaled_lookahead_dist</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>false</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to use the velocity scaled lookahead distances or constant <code class="docutils literal notranslate"><span class="pre">lookahead_distance</span></code>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use the velocity scaled lookahead distances or constant <code class="docutils literal notranslate"><span class="pre">lookahead_distance</span></code>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">min_approach_linear_velocity:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">min_approach_linear_velocity</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.05</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.05</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">0.01</span></code>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">0.01</span></code>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">max_allowed_time_to_collision_up_to_carrot:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">max_allowed_time_to_collision_up_to_carrot</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The time (s) to project a velocity command forward to check for collisions. Pre-<code class="docutils literal notranslate"><span class="pre">Humble</span></code>, this was <code class="docutils literal notranslate"><span class="pre">max_allowed_time_to_collision</span></code>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The time (s) to project a velocity command forward to check for collisions. Pre-<code class="docutils literal notranslate"><span class="pre">Humble</span></code>, this was <code class="docutils literal notranslate"><span class="pre">max_allowed_time_to_collision</span></code>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">use_regulated_linear_velocity_scaling:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">use_regulated_linear_velocity_scaling</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to use the regulated features for path curvature (e.g. slow on high curvature paths).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use the regulated features for path curvature (e.g. slow on high curvature paths).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">use_cost_regulated_linear_velocity_scaling:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">use_cost_regulated_linear_velocity_scaling</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to use the regulated features for proximity to obstacles (e.g. slow in close proximity to obstacles).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use the regulated features for proximity to obstacles (e.g. slow in close proximity to obstacles).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">regulated_linear_scaling_min_radius:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">regulated_linear_scaling_min_radius</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.90</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.90</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The turning radius (m) for which the regulation features are triggered when <code class="docutils literal notranslate"><span class="pre">use_regulated_linear_velocity_scaling</span></code> is <code class="docutils literal notranslate"><span class="pre">tru</span></code>. Remember, sharper turns have smaller radii.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The turning radius (m) for which the regulation features are triggered when <code class="docutils literal notranslate"><span class="pre">use_regulated_linear_velocity_scaling</span></code> is <code class="docutils literal notranslate"><span class="pre">tru</span></code>. Remember, sharper turns have smaller radii.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">regulated_linear_scaling_min_speed:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">regulated_linear_scaling_min_speed</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.25</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.25</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">0.1</span></code>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">0.1</span></code>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">use_rotate_to_heading:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">use_rotate_to_heading</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first">Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.</p>
-<p class="last">Note: both <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code> cannot be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> at the same time as it would result in ambiguous situations.</p>
+<dl>
+<dt>Description</dt><dd><p>Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.</p>
+<p>Note: both <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code> cannot be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> at the same time as it would result in ambiguous situations.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">allow_reversing:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">allow_reversing</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>false</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first">Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the <a class="reference internal" href="configuring-smac-planner.html#configuring-smac-planner"><span class="std std-ref">Smac Planner</span></a> to know more.</p>
-<p class="last">Note: both <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code> cannot be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> at the same time as it would result in ambiguous situations.</p>
+<dl>
+<dt>Description</dt><dd><p>Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the <a class="reference internal" href="configuring-smac-planner.html#configuring-smac-planner"><span class="std std-ref">Smac Planner</span></a> to know more.</p>
+<p>Note: both <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code> cannot be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> at the same time as it would result in ambiguous situations.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">rotate_to_heading_min_angle:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">rotate_to_heading_min_angle</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.785</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.785</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The difference in the path orientation and the starting robot orientation (radians) to trigger a rotate in place, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The difference in the path orientation and the starting robot orientation (radians) to trigger a rotate in place, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">max_angular_accel:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">max_angular_accel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>3.2</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.2</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Maximum allowable angular acceleration (rad/s/s) while rotating to heading, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum allowable angular acceleration (rad/s/s) while rotating to heading, if <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">max_robot_pose_search_dist:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd">max_robot_pose_search_dist</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="22%" />
-<col width="78%" />
+<col style="width: 22%" />
+<col style="width: 78%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>Local costmap max extent (max(width, height) / 2)</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>Local costmap max extent (max(width, height) / 2)</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">use_interpolation:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">use_interpolation</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Enable linear interpolation between poses for lookahead point selection. Leads to smoother commanded linear and angular velocities.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Enable linear interpolation between poses for lookahead point selection. Leads to smoother commanded linear and angular velocities.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>

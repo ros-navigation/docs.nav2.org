@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClearEntireCostmap &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
@@ -803,54 +793,48 @@
 <p>Action to call a costmap clearing server.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">service_name:</th><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">service_name</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">costmap service name responsible for clearing the costmap.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>costmap service name responsible for clearing the costmap.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">server_timeout:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">server_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>10</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>10</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Action server timeout (ms).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Action server timeout (ms).</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>

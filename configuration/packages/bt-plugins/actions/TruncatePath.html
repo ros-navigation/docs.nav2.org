@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TruncatePath &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
@@ -803,84 +793,73 @@
 <p>A custom control node, which modifies a path making it shorter. It removes parts of the path closer than a distance to the goal pose. The resulting last pose of the path orientates the robot to the original goal pose.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">input_path:</th><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">input_path</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="65%" />
-<col width="35%" />
+<col style="width: 65%" />
+<col style="width: 35%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>nav_msgs/Path</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>nav_msgs/Path</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">The original path to be truncated.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The original path to be truncated.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">distance:</th><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even">distance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="35%" />
-<col width="65%" />
+<col style="width: 35%" />
+<col style="width: 65%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>1.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">The distance to the original goal for truncating the path.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The distance to the original goal for truncating the path.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="ouput-ports">
 <h2>Ouput Ports<a class="headerlink" href="#ouput-ports" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">output_path:</th><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd">output_path</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="65%" />
-<col width="35%" />
+<col style="width: 65%" />
+<col style="width: 35%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>nav_msgs/Path</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>nav_msgs/Path</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">The resulting truncated path.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>The resulting truncated path.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>

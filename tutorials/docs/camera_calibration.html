@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Camera Calibration &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -800,9 +790,9 @@
   <div class="section" id="camera-calibration">
 <span id="id1"></span><h1>Camera Calibration<a class="headerlink" href="#camera-calibration" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#requirements">Requirements</a></li>
-<li><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
@@ -818,13 +808,14 @@
 </div></blockquote>
 <p>2- Image Pipeline need to be built from source in your workspace with:</p>
 <blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">–</span> <span class="pre">b</span> <span class="pre">&lt;ros2-distro&gt;</span> <span class="pre">git&#64;github.com:ros-perception/image_pipeline.git</span></code></div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">–</span> <span class="pre">b</span> <span class="pre">&lt;ros2-distro&gt;</span> <span class="pre">git&#64;github.com:ros-perception/image_pipeline.git</span></code></p>
+</div></blockquote>
 <p><strong>Also, make sure you have the following:</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>A large checkerboard with known dimensions. This tutorial uses a 7x9 checkerboard with 200mm squares. <strong>Calibration uses the interior vertex points of the checkerboard, so an “8x10” board uses the interior vertex parameter “7x9” as in the example below.</strong> The checkerboard with set dimensions can be downloaded from <a class="reference external" href="https://calib.io/pages/camera-calibration-pattern-generator">here</a>.</li>
-<li>A well lit 5m x 5m area clear of obstructions and check board patterns</li>
-<li>A monocular camera publishing images over ROS</li>
+<li><p>A large checkerboard with known dimensions. This tutorial uses a 7x9 checkerboard with 200mm squares. <strong>Calibration uses the interior vertex points of the checkerboard, so an “8x10” board uses the interior vertex parameter “7x9” as in the example below.</strong> The checkerboard with set dimensions can be downloaded from <a class="reference external" href="https://calib.io/pages/camera-calibration-pattern-generator">here</a>.</p></li>
+<li><p>A well lit 5m x 5m area clear of obstructions and check board patterns</p></li>
+<li><p>A monocular camera publishing images over ROS</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -834,10 +825,12 @@
 <p>2- Launch the ROS driver for your specific camera.</p>
 <p>3- Make sure camera is publishing images over ROS. This can be tested by running:</p>
 <blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">list</span></code></div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">list</span></code></p>
+</div></blockquote>
 <p>4- This will show you all the topics published make sure that there is an image_raw topic /camera/image_raw. To confirm that its a real topic and actually publishing check topic hz:</p>
 <blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">hz</span> <span class="pre">/camera/image_raw</span></code></div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">hz</span> <span class="pre">/camera/image_raw</span></code></p>
+</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -849,7 +842,8 @@
 </div>
 <p>5- Start the camera calibration node</p>
 <blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">camera_calibration</span> <span class="pre">cameracalibrator</span> <span class="pre">--size</span> <span class="pre">7x9</span> <span class="pre">--square</span> <span class="pre">0.20</span> <span class="pre">image:=/my_camera/image_raw</span> <span class="pre">camera:=/my_camera</span></code></div></blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">camera_calibration</span> <span class="pre">cameracalibrator</span> <span class="pre">--size</span> <span class="pre">7x9</span> <span class="pre">--square</span> <span class="pre">0.20</span> <span class="pre">image:=/my_camera/image_raw</span> <span class="pre">camera:=/my_camera</span></code></p>
+</div></blockquote>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Camera</span> <span class="n">Name</span><span class="p">:</span>
 
 <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">camera_name</span>
@@ -904,18 +898,15 @@
 <p>6- In order to get a good calibration you will need to move the checkerboard around in the camera frame such that:</p>
 <blockquote>
 <div><ul>
-<li><dl class="first docutils">
-<dt>checkerboard on the camera’s left, right, top and bottom of field of view</dt>
-<dd><p class="first">◦ X bar - left/right in field of view</p>
+<li><dl>
+<dt>checkerboard on the camera’s left, right, top and bottom of field of view</dt><dd><p>◦ X bar - left/right in field of view</p>
 <p>◦ Y bar - top/bottom in field of view</p>
-<p class="last">◦ Size bar - toward/away and tilt from the camera</p>
+<p>◦ Size bar - toward/away and tilt from the camera</p>
 </dd>
 </dl>
 </li>
-<li><p class="first">checkerboard filling the whole field of view</p>
-</li>
-<li><p class="first">checkerboard tilted to the left, right, top and bottom (Skew)</p>
-</li>
+<li><p>checkerboard filling the whole field of view</p></li>
+<li><p>checkerboard tilted to the left, right, top and bottom (Skew)</p></li>
 </ul>
 </div></blockquote>
 <div class="line-block">
@@ -957,9 +948,9 @@
 <div class="line"><br /></div>
 </div>
 <p>9-Press the save button to see the result. Data is saved to  “/tmp/calibrationdata.tar.gz”</p>
-<dl class="docutils">
-<dt>10-To use the the calibration file unzip the calibration.tar.gz</dt>
-<dd><code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xvf</span> <span class="pre">calibration.tar.gz</span></code></dd>
+<dl class="simple">
+<dt>10-To use the the calibration file unzip the calibration.tar.gz</dt><dd><p><code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xvf</span> <span class="pre">calibration.tar.gz</span></code></p>
+</dd>
 </dl>
 <p>11-In the folder images used for calibration are available and also “<strong>ost.yaml</strong>” and “<strong>ost.txt</strong>”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.</p>
 </div>

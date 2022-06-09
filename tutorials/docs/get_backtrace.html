@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Backtrace in ROS 2 / Nav2 &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -800,12 +790,12 @@
   <div class="section" id="get-backtrace-in-ros-2-nav2">
 <span id="get-backtrace"></span><h1>Get Backtrace in ROS 2 / Nav2<a class="headerlink" href="#get-backtrace-in-ros-2-nav2" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#preliminaries">Preliminaries</a></li>
-<li><a class="reference internal" href="#from-a-node">From a Node</a></li>
-<li><a class="reference internal" href="#from-a-launch-file">From a Launch File</a></li>
-<li><a class="reference internal" href="#from-nav2-bringup">From Nav2 Bringup</a></li>
-<li><a class="reference internal" href="#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#preliminaries">Preliminaries</a></p></li>
+<li><p><a class="reference internal" href="#from-a-node">From a Node</a></p></li>
+<li><p><a class="reference internal" href="#from-a-launch-file">From a Launch File</a></p></li>
+<li><p><a class="reference internal" href="#from-nav2-bringup">From Nav2 Bringup</a></p></li>
+<li><p><a class="reference internal" href="#automatic-backtrace-on-crash">Automatic backtrace on crash</a></p></li>
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
@@ -890,9 +880,9 @@ For example:</p>
 </div>
 <p>In this example you should read this in the following way, starting at the bottom:</p>
 <ul class="simple">
-<li>In the main function, on line 25 we call a function VectorCrash.</li>
-<li>In VectorCrash, on line 44, we crashed in the Vector’s <code class="docutils literal notranslate"><span class="pre">at()</span></code> method with input <code class="docutils literal notranslate"><span class="pre">100</span></code>.</li>
-<li>It crashed in <code class="docutils literal notranslate"><span class="pre">at()</span></code> on STL vector line 1091 after throwing an exception from a range check failure.</li>
+<li><p>In the main function, on line 25 we call a function VectorCrash.</p></li>
+<li><p>In VectorCrash, on line 44, we crashed in the Vector’s <code class="docutils literal notranslate"><span class="pre">at()</span></code> method with input <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p></li>
+<li><p>It crashed in <code class="docutils literal notranslate"><span class="pre">at()</span></code> on STL vector line 1091 after throwing an exception from a range check failure.</p></li>
 </ul>
 <p>These traces take some time to get used to reading, but in general, start at the bottom and follow it up the stack until you see the line it crashed on.
 Then you can deduce why it crashed.
@@ -943,22 +933,22 @@ For this reason, when working with larger launch files, its good to pull out the
 <p>As such, for this case, when you see a crash you’d like to investigate, its beneficial to separate this server from the others.</p>
 <p>If your server of interest is being launched from a nested launch file (e.g. an included launch file) you may want to do the following:</p>
 <ul class="simple">
-<li>Comment out the launch file inclusion from the parent launch file</li>
-<li>Recompile the package of interest with <code class="docutils literal notranslate"><span class="pre">-g</span></code> flag for debug symbols</li>
-<li>Launch the parent launch file in a terminal</li>
-<li>Launch the server’s launch file in another terminal following the instructions in <a class="reference internal" href="#from-a-launch-file">From a Launch File</a>.</li>
+<li><p>Comment out the launch file inclusion from the parent launch file</p></li>
+<li><p>Recompile the package of interest with <code class="docutils literal notranslate"><span class="pre">-g</span></code> flag for debug symbols</p></li>
+<li><p>Launch the parent launch file in a terminal</p></li>
+<li><p>Launch the server’s launch file in another terminal following the instructions in <a class="reference internal" href="#from-a-launch-file">From a Launch File</a>.</p></li>
 </ul>
 <p>Alternatively, if you server of interest is being launched in these files directly (e.g. you see a <code class="docutils literal notranslate"><span class="pre">Node</span></code>, <code class="docutils literal notranslate"><span class="pre">LifecycleNode</span></code>, or inside a <code class="docutils literal notranslate"><span class="pre">ComponentContainer</span></code>), you will need to seperate this from the others:</p>
 <ul class="simple">
-<li>Comment out the node’s inclusion from the parent launch file</li>
-<li>Recompile the package of interest with <code class="docutils literal notranslate"><span class="pre">-g</span></code> flag for debug symbols</li>
-<li>Launch the parent launch file in a terminal</li>
-<li>Launch the server’s node in another terminal following the instructions in <a class="reference internal" href="#from-a-node">From a Node</a>.</li>
+<li><p>Comment out the node’s inclusion from the parent launch file</p></li>
+<li><p>Recompile the package of interest with <code class="docutils literal notranslate"><span class="pre">-g</span></code> flag for debug symbols</p></li>
+<li><p>Launch the parent launch file in a terminal</p></li>
+<li><p>Launch the server’s node in another terminal following the instructions in <a class="reference internal" href="#from-a-node">From a Node</a>.</p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>Note that in this case, you may need to remap or provide parameter files to this node if it was previously provided by the launch file. Using <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> you can give it the path to the new parameters file, remaps, or names. See <a class="reference external" href="https://docs.ros.org/en/rolling/Guides/Node-arguments.html">this ROS 2 tutorial</a> for the commandline arguments required.</p>
-<p class="last">We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be <code class="docutils literal notranslate"><span class="pre">--ros-args</span> <span class="pre">-r</span> <span class="pre">__node:=&lt;node_name&gt;</span> <span class="pre">--params-file</span> <span class="pre">/absolute/path/to/params.yaml</span></code> (as a template).</p>
+<p>We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be <code class="docutils literal notranslate"><span class="pre">--ros-args</span> <span class="pre">-r</span> <span class="pre">__node:=&lt;node_name&gt;</span> <span class="pre">--params-file</span> <span class="pre">/absolute/path/to/params.yaml</span></code> (as a template).</p>
 </div>
 <p>Once your server crashes, you’ll see a prompt like below in the specific server’s terminal. At this point you can now get a backtrace.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span>

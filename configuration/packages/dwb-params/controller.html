@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DWB Controller &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-      <script>
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'1.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -803,430 +793,388 @@
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.critics:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.critics</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="67%" />
-<col width="33%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>vector&lt;string&gt;</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">List of critic plugins to use.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>List of critic plugins to use.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.default_critic_namespaces:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.default_critic_namespaces</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="48%" />
-<col width="52%" />
+<col style="width: 48%" />
+<col style="width: 52%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>vector&lt;string&gt;</td>
-<td>[“dwb_critics”]</td>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>[“dwb_critics”]</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Namespaces to load critics in.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Namespaces to load critics in.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.prune_plan:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.prune_plan</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Whether to prune the path of old, passed points.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to prune the path of old, passed points.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.shorten_transformed_plan:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.shorten_transformed_plan</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Determines whether we will pass the full plan on to the critics.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Determines whether we will pass the full plan on to the critics.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.prune_distance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.prune_distance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="46%" />
-<col width="54%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>2.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Distance (m) to prune backward until.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance (m) to prune backward until.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.debug_trajectory_details:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.debug_trajectory_details</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>false</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Publish debug information (on what topic???).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Publish debug information (on what topic???).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.trajectory_generator_name:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.trajectory_generator_name</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="88%" />
+<col style="width: 13%" />
+<col style="width: 88%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“dwb_plugins::StandardTrajectoryGenerator”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“dwb_plugins::StandardTrajectoryGenerator”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Trajectory generator plugin name.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Trajectory generator plugin name.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.goal_checker_name:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.goal_checker_name</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col style="width: 30%" />
+<col style="width: 70%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>string</td>
-<td>“dwb_plugins::SimpleGoalChecker”</td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“dwb_plugins::SimpleGoalChecker”</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Goal checker plugin name.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Goal checker plugin name.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.transform_tolerance:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>0.1</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">TF transform tolerance (s).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>TF transform tolerance (s).</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.short_circuit_trajectory_evaluation:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.short_circuit_trajectory_evaluation</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>bool</td>
-<td>true</td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Stop evaluating scores after best score is found.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Stop evaluating scores after best score is found.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.path_distance_bias (Legacy):</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.path_distance_bias (Legacy)</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Old version of PathAlign.scale, use that instead.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Old version of PathAlign.scale, use that instead.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.goal_distance_bias (Legacy):</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.goal_distance_bias (Legacy)</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Old version of GoalAlign.scale, use that instead.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Old version of GoalAlign.scale, use that instead.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.occdist_scale (Legacy):</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.occdist_scale (Legacy)</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Old version of ObstacleFootprint.scale, use that instead.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Old version of ObstacleFootprint.scale, use that instead.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.max_scaling_factor (Legacy):</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.max_scaling_factor (Legacy)</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Old version of ObstacleFootprint.max_scaling_factor, use that instead.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Old version of ObstacleFootprint.max_scaling_factor, use that instead.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.scaling_speed (Legacy):</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.scaling_speed (Legacy)</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>N/A</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Old version of ObstacleFootprint.scaling_speed, use that instead.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Old version of ObstacleFootprint.scaling_speed, use that instead.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.PathAlign.scale:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.PathAlign.scale</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>32.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>32.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Scale for path align critic, overriding local default.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Scale for path align critic, overriding local default.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.GoalAlign.scale:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.GoalAlign.scale</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>24.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>24.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Scale for goal align critic, overriding local default.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Scale for goal align critic, overriding local default.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.PathDist.scale:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.PathDist.scale</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>32.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>32.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Description</dt>
-<dd><p class="first last">Scale for path distance critic, overriding local default.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Scale for path distance critic, overriding local default.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.GoalDist.scale:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><table border="1" class="first docutils">
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.GoalDist.scale</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Type</td>
-<td>Default</td>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td>double</td>
-<td>24.0</td>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>24.0</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="last docutils">
-<dt>Description</dt>
-<dd><p class="first last">Scale for goal distance critic, overriding local default.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Scale for goal distance critic, overriding local default.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 </div>
 
