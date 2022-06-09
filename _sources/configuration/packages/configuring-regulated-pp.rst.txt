@@ -196,7 +196,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). 
+    Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the :ref:`configuring_smac_planner` to know more.
 
     Note: both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time as it would result in ambiguous situations.
 
