@@ -238,12 +238,12 @@ AssistedTeleop time_allowance is given in the action request
   Description
     Time step for projections (s).
 
-:teleop_cmd_vel:
+:cmd_vel_teleop:
 
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  string         teleop_cmd_vel
+  string         cmd_vel_teleop
   ============== =============================
 
   Description
