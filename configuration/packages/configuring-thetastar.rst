@@ -89,3 +89,4 @@ Example
       how_many_corners: 8
       w_euc_cost: 1.0
       w_traversal_cost: 2.0
+      w_heuristic_cost: 1.0
