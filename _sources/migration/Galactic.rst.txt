@@ -324,6 +324,10 @@ Respawn Support in Launch and Lifecycle Manager
 
 That PR also enables the lifecycle manager to check if a system goes down due to a crash. If so, it allows the manager to check if the server comes back online within a given timeout period. If it does, it will automatically retransition the system back up to active to continue on its task automatically.
 
+New Nav2 Velocity Smoother
+**************************
+
+`PR 2964 <https://github.com/ros-planning/navigation2/pull/2964>`_ introduces the ``nav2_velocity_smoother`` for smoothing velocity commands from Nav2 to a robot controller by velocity, acceleration, and deadband constraints. See :ref:`configuring_velocity_smoother` for more details. It is not included in the default bringup batteries included from ``nav2_bringup``.
 
 Goal Checker API Changed
 ************************
