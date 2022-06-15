@@ -403,6 +403,7 @@
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/Spin.html">Spin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/BackUp.html">BackUp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/DriveOnHeading.html">DriveOnHeading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/AssistedTeleop.html">AssistedTeleop</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/ComputePathToPose.html">ComputePathToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/FollowPath.html">FollowPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/NavigateToPose.html">NavigateToPose</a></li>
@@ -423,6 +424,7 @@
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/CancelSpin.html">CancelSpin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/CancelWait.html">CancelWait</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/CancelDriveOnHeading.html">CancelDriveOnHeading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/CancelAssistedTeleop.html">CancelAssistedTeleop</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/Smooth.html">SmoothPath</a></li>
 </ul>
 </li>
@@ -567,6 +569,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#spin-behavior-parameters">Spin Behavior Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backup-behavior-parameters">BackUp Behavior Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#driveonheading-behavior-parameters">DriveOnHeading Behavior Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assistedteleop-behavior-parameters">AssistedTeleop Behavior Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -735,6 +738,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#respawn-support-in-launch-and-lifecycle-manager">Respawn Support in Launch and Lifecycle Manager</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#new-nav2-velocity-smoother">New Nav2 Velocity Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#goal-checker-api-changed">Goal Checker API Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Galactic.html#added-assisted-teleop">Added Assisted Teleop</a></li>
 </ul>
 </li>
 </ul>
@@ -1128,6 +1132,72 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 </dd>
 </dl>
 </div>
+<div class="section" id="assistedteleop-behavior-parameters">
+<h2>AssistedTeleop Behavior Parameters<a class="headerlink" href="#assistedteleop-behavior-parameters" title="Permalink to this headline">¶</a></h2>
+<p>AssistedTeleop time_allowance is given in the action request</p>
+<dl class="field-list">
+<dt class="field-odd">projection_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time to look ahead for collisions (s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">simulation_time_step</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time step for projections (s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">cmd_vel_teleop</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>cmd_vel_teleop</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic to listen for teleop messages.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">recoveries_server</span><span class="p">:</span><span class="w"></span>
@@ -1135,7 +1205,7 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 <span class="w">    </span><span class="nt">costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/costmap_raw</span><span class="w"></span>
 <span class="w">    </span><span class="nt">footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/published_footprint</span><span class="w"></span>
 <span class="w">    </span><span class="nt">cycle_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;drive_on_heading&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;drive_on_heading&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;assisted_teleop&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">    </span><span class="nt">spin</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">backup</span><span class="p">:</span><span class="w"></span>
@@ -1144,6 +1214,8 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/DriveOnHeading&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">wait</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">assisted_teleop</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/AssistedTeleop&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w"></span>
 <span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w"></span>
 <span class="w">    </span><span class="nt">transform_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RateController &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>AssistedTeleop &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
@@ -16,8 +16,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="DistanceController" href="DistanceController.html" />
-    <link rel="prev" title="RecoveryNode" href="../controls/RecoveryNode.html" />
+    <link rel="next" title="ComputePathToPose" href="ComputePathToPose.html" />
+    <link rel="prev" title="DriveOnHeading" href="DriveOnHeading.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -398,34 +398,34 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../actions/Wait.html">Wait</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/Spin.html">Spin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/BackUp.html">BackUp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/DriveOnHeading.html">DriveOnHeading</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/AssistedTeleop.html">AssistedTeleop</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ComputePathToPose.html">ComputePathToPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/FollowPath.html">FollowPath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/NavigateToPose.html">NavigateToPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/TruncatePath.html">TruncatePath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/TruncatePathLocal.html">TruncatePathLocal</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/PlannerSelector.html">PlannerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ControllerSelector.html">ControllerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/CancelControl.html">CancelControl</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/CancelBackUp.html">CancelBackUp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/CancelSpin.html">CancelSpin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/CancelWait.html">CancelWait</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/CancelDriveOnHeading.html">CancelDriveOnHeading</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/CancelAssistedTeleop.html">CancelAssistedTeleop</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../actions/Smooth.html">SmoothPath</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Wait.html">Wait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Spin.html">Spin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="BackUp.html">BackUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DriveOnHeading.html">DriveOnHeading</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">AssistedTeleop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ComputePathToPose.html">ComputePathToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FollowPath.html">FollowPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="NavigateToPose.html">NavigateToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ClearEntireCostmap.html">ClearEntireCostmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TruncatePath.html">TruncatePath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TruncatePathLocal.html">TruncatePathLocal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PlannerSelector.html">PlannerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="GoalCheckerSelector.html">GoalCheckerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="NavigateThroughPoses.html">NavigateThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RemovePassedGoals.html">RemovePassedGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CancelControl.html">CancelControl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CancelBackUp.html">CancelBackUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CancelSpin.html">CancelSpin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CancelWait.html">CancelWait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CancelDriveOnHeading.html">CancelDriveOnHeading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CancelAssistedTeleop.html">CancelAssistedTeleop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Smooth.html">SmoothPath</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -448,13 +448,13 @@
 <li class="toctree-l4"><a class="reference internal" href="../controls/RecoveryNode.html">RecoveryNode</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">RateController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="DistanceController.html">DistanceController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="SpeedController.html">SpeedController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GoalUpdater.html">GoalUpdater</a></li>
-<li class="toctree-l4"><a class="reference internal" href="PathLongerOnApproach.html">PathLongerOnApproach</a></li>
-<li class="toctree-l4"><a class="reference internal" href="SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../decorators/RateController.html">RateController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../decorators/DistanceController.html">DistanceController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../decorators/SpeedController.html">SpeedController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../decorators/GoalUpdater.html">GoalUpdater</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../decorators/SingleTrigger.html">SingleTrigger</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#example">Example</a></li>
@@ -789,7 +789,7 @@
       <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../../index.html">Configuration Guide</a> &raquo;</li>
           <li><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a> &raquo;</li>
-      <li>RateController</li>
+      <li>AssistedTeleop</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -798,18 +798,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="ratecontroller">
-<span id="bt-rate-controller"></span><h1>RateController<a class="headerlink" href="#ratecontroller" title="Permalink to this headline">¶</a></h1>
-<p>A node that throttles the tick rate for its child.
-The tick rate can be supplied to the node as a parameter.
-The node returns RUNNING when it is not ticking its child.
-Currently, in the navigation stack, the <code class="docutils literal notranslate"><span class="pre">RateController</span></code> is
-used to adjust the rate at which the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> and <code class="docutils literal notranslate"><span class="pre">GoalReached</span></code> nodes are ticked.</p>
+  <div class="section" id="assistedteleop">
+<span id="bt-assisted-teleop-action"></span><h1>AssistedTeleop<a class="headerlink" href="#assistedteleop" title="Permalink to this headline">¶</a></h1>
+<p>Invokes the AssistedTeleop ROS 2 action server, which filters teleop twist commands to prevent
+collisions. This is used in nav2 Behavior Trees as a recovery behavior or a regular behavior.
+The <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors">nav2_behaviors</a> module implements the AssistedTeleop action server.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list">
-<dt class="field-odd">hz</dt>
+<dt class="field-odd">is_recovery</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>If true increment the recovery counter.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">time_allowance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -824,18 +842,56 @@ used to adjust the rate at which the <code class="docutils literal notranslate">
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Rate to throttle an action or a group of actions.</p>
+<dt>Description</dt><dd><p>Time to envoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">server_name</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Action server name.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">server_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>10</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Action server timeout (ms).</p>
 </dd>
 </dl>
 </dd>
 </dl>
-</div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
-    <span class="cm">&lt;!--Add tree components here---&gt;</span>
-<span class="nt">&lt;/RateController&gt;</span>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;AssistedTeleop</span> <span class="na">is_recovery=</span><span class="s">&quot;false&quot;</span> <span class="na">server_name=</span><span class="s">&quot;assisted_teleop_server&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -403,6 +403,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/Spin.html">Spin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/BackUp.html">BackUp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/DriveOnHeading.html">DriveOnHeading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/AssistedTeleop.html">AssistedTeleop</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathToPose.html">ComputePathToPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/FollowPath.html">FollowPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateToPose.html">NavigateToPose</a></li>
@@ -423,6 +424,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelSpin.html">CancelSpin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelWait.html">CancelWait</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelDriveOnHeading.html">CancelDriveOnHeading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelAssistedTeleop.html">CancelAssistedTeleop</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/Smooth.html">SmoothPath</a></li>
 </ul>
 </li>
@@ -567,6 +569,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#spin-behavior-parameters">Spin Behavior Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#backup-behavior-parameters">BackUp Behavior Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#driveonheading-behavior-parameters">DriveOnHeading Behavior Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#assistedteleop-behavior-parameters">AssistedTeleop Behavior Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-behavior-server.html#example">Example</a></li>
 </ul>
 </li>
@@ -735,6 +738,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#respawn-support-in-launch-and-lifecycle-manager">Respawn Support in Launch and Lifecycle Manager</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-nav2-velocity-smoother">New Nav2 Velocity Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#goal-checker-api-changed">Goal Checker API Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#added-assisted-teleop">Added Assisted Teleop</a></li>
 </ul>
 </li>
 </ul>
@@ -1103,6 +1107,10 @@ In nav2_params.yaml recovery_plugins -&gt; behavior_plugins and nav2_recoveries 
 <h2>Goal Checker API Changed<a class="headerlink" href="#goal-checker-api-changed" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2965">PR 2965</a> adds an extra argument in the initialize function of the <cite>nav2_core::GoalChecker</cite> class.
 The extra argument is a costmap_ros pointer. This is used to check if the goal is in collision, so that we can avoid moving towards the goal and replanning can be initiates using some BT plugin.</p>
+</div>
+<div class="section" id="added-assisted-teleop">
+<h2>Added Assisted Teleop<a class="headerlink" href="#added-assisted-teleop" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2904">PR 2965</a> adds a new behavior for assisted teleop along with two new BT nodes AssistedTeleop and CancelAssistedTeleop.</p>
 </div>
 </div>
 

@@ -198,12 +198,17 @@ Behaviors
 |  `Drive On Heading`_ | Joshua Wallace         | Drive on heading behavior with   |
 |                      |                        | configurable distance to drive   |
 +----------------------+------------------------+----------------------------------+
+|  `Assisted Teleop`_  | Joshua Wallace         | AssistedTeleop behavior that     |
+|                      |                        | scales teleop commands to        |
+|                      |                        | prevent collisions.              |
++----------------------+------------------------+----------------------------------+
 
 .. _Back Up: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
 .. _Spin: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
 .. _Wait: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
 .. _Drive On Heading: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
 .. _Clear Costmap: https://github.com/ros-planning/navigation2/blob/main/nav2_costmap_2d/src/clear_costmap_service.cpp
+.. _Assisted Teleop: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
 
 Waypoint Task Executors
 =======================
@@ -275,6 +280,8 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Drive On Heading Action`_                 | Joshua Wallace      | Calls drive on heading behavior action   |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Assisted Teleop Action`_                  | Joshua Wallace      | Calls assisted teleop behavior action    |
++--------------------------------------------+---------------------+------------------------------------------+
 | `Clear Entire Costmap Service`_            | Carl Delsey         | Calls clear entire costmap service       |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Clear Costmap Except Region Service`_     | Guillaume Doisy     | Calls clear costmap except region service|
@@ -333,11 +340,14 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Wait Action`_                      |Pradheep Padmanabhan | Cancels wait behavior action             |
 +--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Drive on Heading Action`_          |Jousha Wallace       | Cancels drive on heading behavior action |
+| `Cancel Drive on Heading Action`_          | Joshua Wallace      | Cancels drive on heading behavior action |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Assisted Teleop Action`_           | Joshua Wallace      | Cancels assisted teleop behavior action  |
 +--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Drive On Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
+.. _Assisted Teleop Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_action.cpp
 .. _Clear Entire Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
 .. _Clear Costmap Except Region Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
 .. _Clear Costmap Around Robot Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
@@ -361,6 +371,7 @@ Behavior Tree Nodes
 .. _Cancel Spin Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
 .. _Cancel Wait Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
 .. _Cancel Drive on Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp
+.. _Cancel Assisted Teleop Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
 
 
 +------------------------------------+--------------------+------------------------+
