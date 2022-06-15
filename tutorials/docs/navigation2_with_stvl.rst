@@ -77,9 +77,8 @@ For example, the following will load the static and obstacle layer plugins into 
       global_costmap:
         ros__parameters:
           use_sim_time: True
-          plugin_names: ["static_layer", "obstacle_layer"] # For Eloquent and earlier
-          plugins: ["static_layer", "obstacle_layer"] # For Foxy and later
-          plugin_types: ["nav2_costmap_2d::StaticLayer", "nav2_costmap_2d::ObstacleLayer"] # For Eloquent and earlier
+          plugins: ["static_layer", "obstacle_layer"]
+
 
 .. note::
 
@@ -94,9 +93,7 @@ For example, if the application required an STVL layer and no obstacle layer, ou
       global_costmap:
         ros__parameters:
           use_sim_time: True
-          plugin_names: ["static_layer", "stvl_layer"] # For Eloquent and earlier
-          plugins: ["static_layer", "stvl_layer"] # For Foxy and later
-          plugin_types: ["nav2_costmap_2d::StaticLayer", "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"] # For Eloquent and earlier
+          plugins: ["static_layer", "stvl_layer"]
 
 Similar to the Voxel Layer, after registering the plugin, we can add the configuration of the STVL layer under the namespace ``stvl_layer``.
 An example fully-described parameterization of an STVL configuration is:
@@ -104,7 +101,7 @@ An example fully-described parameterization of an STVL configuration is:
 .. code-block:: yaml
 
     stvl_layer:
-      plugin: "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer" # For Foxy and later
+      plugin: "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"
       enabled: true
       voxel_decay: 15.
       decay_model: 0

@@ -101,12 +101,25 @@ This functionality has been discussed in `the ticket #816 <https://github.com/ro
   - Remove ``node_`` in ``class LifecycleManagerClient`` : `PR2469 <https://github.com/ros-planning/navigation2/pull/2469>`_
   - Remove ``rclcpp_node_`` in ``class ControllerServer`` : `PR2459 <https://github.com/ros-planning/navigation2/pull/2459>`_, `PR2479 <https://github.com/ros-planning/navigation2/pull/2479>`_
   - Remove ``rclcpp_node_`` in ``class PlannerServer`` : `PR2459 <https://github.com/ros-planning/navigation2/pull/2459>`_, `PR2480 <https://github.com/ros-planning/navigation2/pull/2480>`_
+  - Remove ``rclcpp_node_`` in ``class AmclNode`` : `PR2483 <https://github.com/ros-planning/navigation2/pull/2483>`_
+  - Remove ``rclcpp_node_`` and ``clinet_node_`` in ``class Costmap2DROS`` : `PR2489 <https://github.com/ros-planning/navigation2/pull/2489>`_
+  - Remove ``rclcpp_node_`` in ``class LifecycleNode`` : `PR2993 <https://github.com/ros-planning/navigation2/pull/2993>`_
+
+some APIs are changed in these PRs:
+  - `PR2489 <https://github.com/ros-planning/navigation2/pull/2489>`_ removes arguments ``client_node``, ``rclcpp_node`` and adds argument ``callback_group`` in the initialize function of class ``nav2_costmap_2d::Layer``. ``callback_group`` is used to replace ``rclcpp_node``.
+  - `PR2993 <https://github.com/ros-planning/navigation2/pull/2993>`_ removes argument ``use_rclcpp_node `` in the constructor of class ``nav2_util::LifecycleNode``.
+
+API Change for nav2_core
+************************
+
+`PR 2976 <https://github.com/ros-planning/navigation2/pull/2976>`_ changes the API for ``nav2_core::Controller`` and ``nav2_core::Smoother`` by replacing the use of shared pointer references ``(const shared_ptr<> &)`` to shared pointers ``(shared_ptr<>)``.
+Use of shared pointer references meant that the shared pointer counter was never incremented.
 
 
 Extending the BtServiceNode to process Service-Results
 ******************************************************
 
-`This PR 2481 <https://github.com/ros-planning/navigation2/pull/2481>`_ addresses `this Ticket <https://github.com/ros-planning/navigation2/issues/2467>`_ and adds a virtual ``on_completion()`` function to the ``BtServiceNode`` class (`can be found here <https://github.com/ros-planning/navigation2/blob/c417e2fd267e1dfa880b7ff9d37aaaa7b5eab9ca/nav2_behavior_tree/include/nav2_behavior_tree/bt_service_node.hpp>`_).
+`This PR 2481 <https://github.com/ros-planning/navigation2/pull/2481>`_ and `PR 2992 <https://github.com/ros-planning/navigation2/pull/2992>`_  address `the ticket <https://github.com/ros-planning/navigation2/issues/2467>`_ and `this ticket <https://github.com/ros-planning/navigation2/issues/2968>`_ and adds a virtual ``on_completion()`` function to the ``BtServiceNode`` class (`can be found here <https://github.com/ros-planning/navigation2/blob/c417e2fd267e1dfa880b7ff9d37aaaa7b5eab9ca/nav2_behavior_tree/include/nav2_behavior_tree/bt_service_node.hpp>`_).
 Similar to the already existing virtual ``on_wait_for_result()`` function, it can be overwritten in the child class to react to a respective event with some user-defined operation.
 The added ``on_completion()`` function will be called after the service interaction of the ``BtServiceNode`` has been successfully completed.
 
@@ -115,9 +128,10 @@ The added ``on_completion()`` function will be called after the service interact
     /**
     * @brief Function to perform some user-defined operation upon successful
     * completion of the service. Could put a value on the blackboard.
+    * @param response can be used to get the result of the service call in the BT Node.
     * @return BT::NodeStatus Returns SUCCESS by default, user may override to return another value
     */
-    virtual BT::NodeStatus on_completion()
+    virtual BT::NodeStatus on_completion(std::shared_ptr<typename ServiceT::Response>/*response*/)
     {
       return BT::NodeStatus::SUCCESS;
     }
@@ -314,3 +328,8 @@ New Nav2 Velocity Smoother
 **************************
 
 `PR 2964 <https://github.com/ros-planning/navigation2/pull/2964>`_ introduces the ``nav2_velocity_smoother`` for smoothing velocity commands from Nav2 to a robot controller by velocity, acceleration, and deadband constraints. See :ref:`configuring_velocity_smoother` for more details. It is not included in the default bringup batteries included from ``nav2_bringup``.
+
+Goal Checker API Changed
+************************
+`PR 2965 <https://github.com/ros-planning/navigation2/pull/2965>`_ adds an extra argument in the initialize function of the `nav2_core::GoalChecker` class.
+The extra argument is a costmap_ros pointer. This is used to check if the goal is in collision, so that we can avoid moving towards the goal and replanning can be initiates using some BT plugin.

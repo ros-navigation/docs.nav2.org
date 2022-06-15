@@ -13,6 +13,7 @@ Nav2 Behavior Trees
    trees/nav_to_pose_and_pause_near_goal_obstacle.rst
    trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.rst
    trees/follow_point.rst
+   trees/odometry_calibration.rst
 
 Nav2 is an incredibly reconfigurable project. It allows users to set many different plugin types, across behavior trees, core algorithms, status checkers, and more!
 This section highlights some of the example behavior tree xml files provided by default in the project to do interesting tasks.
