@@ -73,8 +73,8 @@ Running the Example
    .. image:: /images/gazebo/gazebo_turtlebot1.png
       :width: 46%
 
-4. Click the "Startup" button in the bottom left corner of RViz. This will
-   cause |PN| to change to the Active state. It should
+4. If not autostarting, click the "Startup" button in the bottom left corner of RViz.
+   This will cause |PN| to change to the Active state. It should
    change appearance to show the map.
 
    .. image:: /images/rviz/rviz_initial.png
