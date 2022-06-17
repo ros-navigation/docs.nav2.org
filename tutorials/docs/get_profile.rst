@@ -24,7 +24,7 @@ This tutorial makes use of two tools, callgrind from the ``Valgrind`` set of too
 
 Thus, we must install them.
 
-.. code: bash
+.. code-block: bash
 	
 	sudo apt install valgrind kcachegrind
 
