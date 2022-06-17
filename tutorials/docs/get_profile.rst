@@ -108,7 +108,7 @@ Interpreting Results
 
 Once you have your ``callgrind`` results, regardless of if you did it through a node, launch file, Nav2, or elsewhere, now we can analyze the results from the profiler to identify bottlenecks or potential areas of improvement. Using ``kcachegrind``:
 
-.. code-block: bash
+.. code-block:: bash
 
 	kcachegrind callgrind.out.XXX
 
