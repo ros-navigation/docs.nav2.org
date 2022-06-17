@@ -226,6 +226,10 @@ Added Smoother Task Server
 
 A new task server was added which loads smoother plugins and executes them to improve quality of an existing planned path. Smoothing action can be called from a behavior tree using SmoothPath action node. `PR 2569 <https://github.com/ros-planning/navigation2/pull/2569>`_ implements and `PR 2875 <https://github.com/ros-planning/navigation2/pull/2875>`_ adds in the first of the plugins using it with a simple smoother. Other smoothers are in development and will be added in the future.
 
+Added GPS Waypoint Follower Server
+**********************************
+
+`This PR 2627 <https://github.com/ros-planning/navigation2/pull/2814>`_  adds the `follow_gps_waypoints` action server in `nav2_waypoint_follower`. This server accepts a set of GPS goals instead of cartesian goals and provides all the other functionalities available on `nav2_waypoint_follower`. A new tutorial demonstrating its functionality was also added on `PR 47 on navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/pull/47>`
 
 Removed Use Approach Velocity Scaling Param in RPP
 **************************************************
@@ -233,7 +237,7 @@ Removed Use Approach Velocity Scaling Param in RPP
 The parameter ``use_approach_linear_velocity_scaling`` is removed in favor of always on to help in smooth transitions to the goal. `This PR 2701 <https://github.com/ros-planning/navigation2/pull/2701>`_ implements.
 
 Refactored AMCL motion models as plugins
-****************************************
+****************************************nav2_waypoint_follower
 
 `This PR 2642 <https://github.com/ros-planning/navigation2/pull/2642>`_ creates plugins for the different motion models currently used in AMCL. This functionality enables users to use any custom motion model by creating it as a plugin and changing the robot_model_type parameter to the name of the plugin in nav2_params.yaml file. This helps to use custom motion models without the need to modify the AMCL source code.
 
