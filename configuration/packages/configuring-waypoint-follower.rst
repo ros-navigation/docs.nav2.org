@@ -48,6 +48,17 @@ Parameters
   Description
     A plugin to define tasks to be executed when robot arrives to a waypoint.
 
+:global_frame_id:
+
+  ============== ========================
+  Type           Default
+  -------------- ------------------------
+  string         'map'
+  ============== ========================
+
+  Description
+    The name of the coordinate frame published by robot_localization. Only used by the gps_waypoint_follower.
+
   Note
     The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
 
