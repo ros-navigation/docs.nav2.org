@@ -840,7 +840,7 @@ sudo apt install ros-&lt;ros2-distro&gt;-nav2-bringup
 </div>
 </li>
 <li><p>In the same terminal, run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py headless:<span class="o">=</span>False
 </pre></div>
 </div>
 <div class="admonition note">
@@ -849,6 +849,7 @@ sudo apt install ros-&lt;ros2-distro&gt;-nav2-bringup
 <code class="docutils literal notranslate"><span class="pre">nav2_simulation_launch.py</span></code>.
 However, it is recommended to use the most recent <a class="reference external" href="https://ros.org/reps/rep-2000.html">ROS 2 LTS distribution</a>  for improved stablity and feature
 completeness.</p>
+<p>headless defaults to true, if not set to false, gzclient (the 3d view) is not started</p>
 </div>
 <p>This launch file will launch Nav2 with the AMCL localizer in the
 <code class="docutils literal notranslate"><span class="pre">turtlebot3_world</span></code> world.
