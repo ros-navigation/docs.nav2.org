@@ -6,8 +6,8 @@ Profiling in ROS 2 / Nav2
 
 - `Overview`_
 - `Preliminaries`_
-- `From a Node`_
-- `From a Launch File`_
+- `Profile from a Node`_
+- `Profile from a Launch File`_
 - `From Nav2 Bringup`_
 
 Overview
