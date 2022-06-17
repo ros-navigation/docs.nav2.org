@@ -24,7 +24,7 @@ This tutorial makes use of two tools, callgrind from the ``Valgrind`` set of too
 
 Thus, we must install them.
 
-.. code-block: bash
+.. code-block:: bash
 	
 	sudo apt install valgrind kcachegrind
 
@@ -45,7 +45,7 @@ Generally speaking, to use valgrind we need to compile with ``-g`` to get debugg
 Profile from a Node
 ===================
 
-As in our generic example, for a given node, we need to compile with debugger flags to capture the information for profiling with Valgrind. Add the following lines to the ``CMakeLists.txt`` of the package you're looking to profile. Note that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin's run-time profile.
+As in our generic example, for a given node, we need to compile with debugger flags to capture the information for profiling with Valgrind. Add the following lines to the ``CMakeLists.txt`` of the package you're looking to profile, **after** ``nav2_package()`` which sets other compiler flags this may need to override. Note that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin's run-time profile.
 
 .. code-block:: cmake
 
@@ -72,7 +72,7 @@ Just as in the Node example, we must also compile with debug flags when profilin
 
 As our example before, this is how we'd launch the ``controller_server`` node from inside a launch file.
 
-.. code-block: python
+.. code-block:: python
 
 	start_controller_server_node = Node(
 	    parameters=[
