@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>(SLAM) Navigating While Mapping &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Profiling in ROS 2 / Nav2 &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
@@ -16,8 +16,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="(STVL) Using an External Costmap Plugin" href="navigation2_with_stvl.html" />
-    <link rel="prev" title="Navigating with a Physical Turtlebot 3" href="navigation2_on_real_turtlebot3.html" />
+    <link rel="next" title="Navigating with a Physical Turtlebot 3" href="navigation2_on_real_turtlebot3.html" />
+    <link rel="prev" title="Get Backtrace in ROS 2 / Nav2" href="get_backtrace.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -214,13 +214,13 @@
 <li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="get_profile.html">Profiling in ROS 2 / Nav2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#profile-from-a-node">Profile from a Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#profile-from-a-launch-file">Profile from a Launch File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#from-nav2-bringup">From Nav2 Bringup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#interpreting-results">Interpreting Results</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Profiling in ROS 2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#profile-from-a-node">Profile from a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#profile-from-a-launch-file">Profile from a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interpreting-results">Interpreting Results</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
@@ -237,15 +237,15 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">(SLAM) Navigating While Mapping</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-navigation2">1- Launch Navigation2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-slam">2- Launch SLAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#working-with-slam">3- Working with SLAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#getting-started-simplification">4- Getting Started Simplification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation2_with_slam.html">(SLAM) Navigating While Mapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_slam.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_slam.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_slam.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#launch-navigation2">1- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#launch-slam">2- Launch SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#working-with-slam">3- Working with SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#getting-started-simplification">4- Getting Started Simplification</a></li>
 </ul>
 </li>
 </ul>
@@ -797,7 +797,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">General Tutorials</a> &raquo;</li>
-      <li>(SLAM) Navigating While Mapping</li>
+      <li>Profiling in ROS 2 / Nav2</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -806,90 +806,99 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="slam-navigating-while-mapping">
-<span id="navigation2-with-slam"></span><h1>(SLAM) Navigating While Mapping<a class="headerlink" href="#slam-navigating-while-mapping" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="profiling-in-ros-2-nav2">
+<span id="get-profile"></span><h1>Profiling in ROS 2 / Nav2<a class="headerlink" href="#profiling-in-ros-2-nav2" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
-<li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
-<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
+<li><p><a class="reference internal" href="#preliminaries">Preliminaries</a></p></li>
+<li><p><a class="reference internal" href="#profile-from-a-node">Profile from a Node</a></p></li>
+<li><p><a class="reference internal" href="#profile-from-a-launch-file">Profile from a Launch File</a></p></li>
+<li><p><a class="reference internal" href="#from-nav2-bringup">From Nav2 Bringup</a></p></li>
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This document explains how to use Nav2 with SLAM.
-The following steps show ROS 2 users how to generate occupancy grid maps and use Nav2 to move their robot around.
-This tutorial applies to both simulated and physical robots, but will be completed here on physical robot.</p>
-<p>Before completing this tutorial, completing the <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. is highly recommended especially if you are new to ROS and Navigation2.</p>
-<p>In this tutorial we’ll be using SLAM Toolbox. More information can be found in the <a class="reference external" href="https://vimeo.com/378682207">ROSCon talk for SLAM Toolbox</a></p>
+<p>This document explains one method for profiling applications in ROS 2 / Nav2. The aim of profiling is to generate files that can be analyzed to see where compute time and resources are spent during the execution of a program. This can be useful to determine where the bottlenecks in your program exist and where things might be able to be improved.</p>
+<p>The following steps show ROS 2 users how to modify the Nav2 stack to get profiling information about a particular server / algorithm when they encounter a situation they’d like to understand better. This tutorial applies to both simulated and physical robots.</p>
 </div>
-<div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>You must install Navigation2, Turtlebot3, and SLAM Toolbox.
-If you don’t have them installed, please follow <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.</p>
-<p>SLAM Toolbox can be installed via:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;ros2-distro&gt;-slam-toolbox</span></code></p>
-</div></blockquote>
-<p>or from built from source in your workspace with:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">-b</span> <span class="pre">&lt;ros2-distro&gt;-devel</span> <span class="pre">git&#64;github.com:stevemacenski/slam_toolbox.git</span></code></p>
-</div></blockquote>
+<div class="section" id="preliminaries">
+<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial makes use of two tools, callgrind from the <code class="docutils literal notranslate"><span class="pre">Valgrind</span></code> set of tools and <code class="docutils literal notranslate"><span class="pre">kcachegrind</span></code>. Valgrind is used to get the profiling information about the program and kcachegrind is the visualization engine used to interprete this information to do useful work.</p>
+<p>Thus, we must install them.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install valgrind kcachegrind
+</pre></div>
 </div>
-<div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="launch-robot-interfaces">
-<h3>0- Launch Robot Interfaces<a class="headerlink" href="#launch-robot-interfaces" title="Permalink to this headline">¶</a></h3>
-<p>For this tutorial, we will use the turtlebot3.
-If you have another robot, replace with your robot specific interfaces.
-Typically, this includes the robot state publisher of the URDF, simulated or physical robot interfaces, controllers, safety nodes, and the like.</p>
-<p>Run the following commands first whenever you open a new terminal during this tutorial.</p>
+<p>More information can be found in the <a class="reference external" href="https://valgrind.org/docs/manual/cl-manual.html">Valgrind manual</a> including additional valgrind arguments that can be used to specify more information.</p>
+<p>Generally speaking, to use valgrind we need to compile with <code class="docutils literal notranslate"><span class="pre">-g</span></code> to get debugging information. Then, we run our program using valgrind to capture the run-time statistics for later analysis. These are stored in <code class="docutils literal notranslate"><span class="pre">callgrind.out.XXX</span></code> files, where the suffix is the PID of the process. kcachegrind is used to visualize and analyze the results of the program execution.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-g</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>valgrind --tool<span class="o">=</span>callgrind <span class="o">[</span>your-program<span class="o">]</span> <span class="o">[</span>program options<span class="o">]</span>
+
+kcachegrind callgrind.out.XXX
+</pre></div>
+</div>
+</div>
+<div class="section" id="profile-from-a-node">
+<h2>Profile from a Node<a class="headerlink" href="#profile-from-a-node" title="Permalink to this headline">¶</a></h2>
+<p>As in our generic example, for a given node, we need to compile with debugger flags to capture the information for profiling with Valgrind. Add the following lines to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> of the package you’re looking to profile, <strong>after</strong> <code class="docutils literal notranslate"><span class="pre">nav2_package()</span></code> which sets other compiler flags this may need to override. Note that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin’s run-time profile.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-pg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After compiling, this node should be run in its own terminal to isolate it from the rest of your system. Thus, this should not be composed in the same process as other nodes. To run a ROS 2 node with valgrind, this can be done from the commandline via:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run --prefix <span class="s1">&#39;valgrind --tool=callgrind&#39;</span> &lt;pkg&gt; &lt;node&gt; --all-other-launch arguments
+</pre></div>
+</div>
+<p>An example of this might be used for profiling the controller server with a particular controller plugin loaded. Both <code class="docutils literal notranslate"><span class="pre">nav2_controller</span></code> and the plugin package of interest are compiled with debug flags. In the example below, we are running a ROS 2 node with remapped topics and a path to its parameter file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run --prefix <span class="s1">&#39;valgrind --tool=callgrind&#39;</span> nav2_controller controller_server --ros-args -r __node:<span class="o">=</span>controller_server -r cmd_vel:<span class="o">=</span>cmd_vel_nav --params-file /path/to/nav2_bringup/params/nav2_params.yaml
+</pre></div>
+</div>
+<p>Once sufficient data has been collected, cleanly exit the process with Control+C.</p>
+</div>
+<div class="section" id="profile-from-a-launch-file">
+<h2>Profile from a Launch File<a class="headerlink" href="#profile-from-a-launch-file" title="Permalink to this headline">¶</a></h2>
+<p>Just as in the Node example, we must also compile with debug flags when profiling a node from launch. We can complete the same valgrind call as from the commandline as within a launch file using launch prefixes.</p>
+<p>As our example before, this is how we’d launch the <code class="docutils literal notranslate"><span class="pre">controller_server</span></code> node from inside a launch file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start_controller_server_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s2">&quot;nav2_bringup&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/params/nav2_params.yaml&#39;</span><span class="p">,</span>
+      <span class="p">{</span><span class="s1">&#39;use_sim_time&#39;</span><span class="p">:</span> <span class="n">use_sim_time</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_controller&#39;</span><span class="p">,</span>
+    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;controller_server&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;controller_server&#39;</span><span class="p">,</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;xterm -e valgrind --tools=callgrind&#39;</span><span class="p">],</span>
+    <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that just like before, we should isolate this process from others. So this should not be run with any other nodes in this launch file nor use node composition when profiling a particular node.</p>
+<p>Once sufficient data has been collected, cleanly exit the process with Control+C.</p>
+</div>
+<div class="section" id="from-nav2-bringup">
+<h2>From Nav2 Bringup<a class="headerlink" href="#from-nav2-bringup" title="Permalink to this headline">¶</a></h2>
+<p>Because Nav2 bringup has more than one node per launch file (and in the case <code class="docutils literal notranslate"><span class="pre">use_composition=true</span></code>, more than one per process), it is necessary to separate out a particular node that you’re interested in profiling from the rest of the system. As previously described, once they’re isolated in either a launch file or as a node to be launched on the commandline, they can easily be run to collect the callgrind information.</p>
+<p>The steps within Nav2 are as follows:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/opt/ros/&lt;ros2-distro&gt;/setup.bash</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">TURTLEBOT3_MODEL=waffle</span></code></p></li>
+<li><p>Remove server node from the <code class="docutils literal notranslate"><span class="pre">navigation_launch.py</span></code>, ensuring to remove from both composed and non-composed options within the file</p></li>
+<li><p>In a separate launch file or using <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> CLI, start up the node you’d like to profile using the instructions above</p></li>
+<li><p>Launch Nav2 as usual with the missing node</p></li>
+<li><p>Once your data has been collected, control+C and cleanly finish the profiled process and the rest of the navigation</p></li>
 </ul>
-<p>Launch your robot’s interface and robot state publisher,</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">turtlebot3_bringup</span> <span class="pre">robot.launch.py</span></code></p>
-</div></blockquote>
+<p>It is important that the profiler node is launched before Nav2 so that it can take the signals from the lifecycle manager to transition up.</p>
 </div>
-<div class="section" id="launch-navigation2">
-<h3>1- Launch Navigation2<a class="headerlink" href="#launch-navigation2" title="Permalink to this headline">¶</a></h3>
-<p>Launch Navigation without nav2_amcl and nav2_map_server.
-It is assumed that the SLAM node(s) will publish to /map topic and provide the map-&gt;odom transform.</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">nav2_bringup</span> <span class="pre">navigation_launch.py</span></code></p>
-</div></blockquote>
-</div>
-<div class="section" id="launch-slam">
-<h3>2- Launch SLAM<a class="headerlink" href="#launch-slam" title="Permalink to this headline">¶</a></h3>
-<p>Bring up your choice of SLAM implementation.
-Make sure it provides the map-&gt;odom transform and /map topic.
-Run Rviz and add the topics you want to visualize such as /map, /tf, /laserscan etc.
-For this tutorial, we will use <a class="reference external" href="https://github.com/SteveMacenski/slam_toolbox">SLAM Toolbox</a>.</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">slam_toolbox</span> <span class="pre">online_async_launch.py</span></code></p>
-</div></blockquote>
-</div>
-<div class="section" id="working-with-slam">
-<h3>3- Working with SLAM<a class="headerlink" href="#working-with-slam" title="Permalink to this headline">¶</a></h3>
-<p>Move your robot by requesting a goal through RViz or the ROS 2 CLI, ie:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic pub /goal_pose geometry_msgs/PoseStamped <span class="s2">&quot;{header: {stamp: {sec: 0}, frame_id: &#39;map&#39;}, pose: {position: {x: 0.2, y: 0.0, z: 0.0}, orientation: {w: 1.0}}}&quot;</span>
+<div class="section" id="interpreting-results">
+<h2>Interpreting Results<a class="headerlink" href="#interpreting-results" title="Permalink to this headline">¶</a></h2>
+<p>Once you have your <code class="docutils literal notranslate"><span class="pre">callgrind</span></code> results, regardless of if you did it through a node, launch file, Nav2, or elsewhere, now we can analyze the results from the profiler to identify bottlenecks or potential areas of improvement. Using <code class="docutils literal notranslate"><span class="pre">kcachegrind</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kcachegrind callgrind.out.XXX
 </pre></div>
 </div>
-<p>You should see the map update live! To save this map to file:</p>
+<p>This should open a window looking like below. The left side shows all of the calls and their relative percentages of compute time they and their children functions utilized.</p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">nav2_map_server</span> <span class="pre">map_saver_cli</span> <span class="pre">-f</span> <span class="pre">~/map</span></code></p>
+<div><a class="reference internal image-reference" href="../../_images/kcachegrind.png"><img alt="../../_images/kcachegrind.png" class="align-center" src="../../_images/kcachegrind.png" style="width: 600px; height: 450px;" /></a>
 </div></blockquote>
-<a class="reference internal image-reference" href="../../_images/navigation2_with_slam.gif"><img alt="Navigation2 with SLAM" class="align-center" src="../../_images/navigation2_with_slam.gif" style="width: 700px;" /></a>
-</div>
-<div class="section" id="getting-started-simplification">
-<h3>4- Getting Started Simplification<a class="headerlink" href="#getting-started-simplification" title="Permalink to this headline">¶</a></h3>
-<p>If you’re only interested in running SLAM in the turtlebot3 getting started sandbox world, we also provide a simple way to enable SLAM as a launch configuration.
-Rather than individually launching the interfaces, navigation, and SLAM, you can continue to use the <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code> with <code class="docutils literal notranslate"><span class="pre">slam</span></code> config set to true.
-We provide the instructions above with the assumption that you’d like to run SLAM on your own robot which would have separated simulation / robot interfaces and navigation launch files that are combined in <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code> for the purposes of easy testing.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py slam:<span class="o">=</span>True
-</pre></div>
-</div>
-</div>
+<p>If you select the top level entry on the left sidebar, then select “Call Graph” at the bottom of the right workspace, it should show you a call graph of where the compute time was spent as a graph of method calls. This can be exceptionally helpful to find the methods where the most time is spent.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/call_graph.png"><img alt="../../_images/call_graph.png" class="align-center" src="../../_images/call_graph.png" style="width: 600px; height: 450px;" /></a>
+</div></blockquote>
 </div>
 </div>
 
