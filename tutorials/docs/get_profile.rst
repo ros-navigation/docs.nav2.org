@@ -97,9 +97,11 @@ Because Nav2 bringup has more than one node per launch file (and in the case ``u
 The steps within Nav2 are as follows:
 
 - Remove server node from the ``navigation_launch.py``, ensuring to remove from both composed and non-composed options within the file
-- Launch Nav2 as usual with the missing node
 - In a separate launch file or using ``ros2 run`` CLI, start up the node you'd like to profile using the instructions above
+- Launch Nav2 as usual with the missing node
 - Once your data has been collected, control+C and cleanly finish the profiled process and the rest of the navigation
+
+It is important that the profiler node is launched before Nav2 so that it can take the signals from the lifecycle manager to transition up.
 
 Interpreting Results
 ====================
