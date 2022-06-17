@@ -115,13 +115,13 @@ Once you have your ``callgrind`` results, regardless of if you did it through a 
 This should open a window looking like below. The left side shows all of the calls and their relative percentages of compute time they and their children functions utilized.
 
  .. image:: images/kcachegrind.png
-    :height: 300px
-    :width: 400px
+    :height: 450px
+    :width: 600px
     :align: center
  
 If you select the top level entry on the left sidebar, then select "Call Graph" at the bottom of the right workspace, it should show you a call graph of where the compute time was spent as a graph of method calls. This can be exceptionally helpful to find the methods where the most time is spent.
 
  .. image:: images/call_graph.png
-    :height: 300px
-    :width: 400px
+    :height: 450px
+    :width: 600px
     :align: center
