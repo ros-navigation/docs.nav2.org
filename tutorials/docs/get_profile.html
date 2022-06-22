@@ -828,8 +828,12 @@
 </pre></div>
 </div>
 <p>More information can be found in the <a class="reference external" href="https://valgrind.org/docs/manual/cl-manual.html">Valgrind manual</a> including additional valgrind arguments that can be used to specify more information.</p>
-<p>Generally speaking, to use valgrind we need to compile with <code class="docutils literal notranslate"><span class="pre">-g</span></code> to get debugging information. Then, we run our program using valgrind to capture the run-time statistics for later analysis. These are stored in <code class="docutils literal notranslate"><span class="pre">callgrind.out.XXX</span></code> files, where the suffix is the PID of the process. kcachegrind is used to visualize and analyze the results of the program execution.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-g</span><span class="p">)</span>
+<p>Generally speaking, to use valgrind we need to compile with debugging information. This can be done by passing <code class="docutils literal notranslate"><span class="pre">-g</span></code> as a compiling option or compile <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> as <code class="docutils literal notranslate"><span class="pre">Debug</span></code> or <code class="docutils literal notranslate"><span class="pre">RelWithDebInfo</span></code>. Then, we run our program using valgrind to capture the run-time statistics for later analysis. These are stored in <code class="docutils literal notranslate"><span class="pre">callgrind.out.XXX</span></code> files, where the suffix is the PID of the process. kcachegrind is used to visualize and analyze the results of the program execution.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="c"># CMakeLists.txt</span>
+<span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-g</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>valgrind --tool<span class="o">=</span>callgrind <span class="o">[</span>your-program<span class="o">]</span> <span class="o">[</span>program options<span class="o">]</span>
@@ -840,11 +844,16 @@ kcachegrind callgrind.out.XXX
 </div>
 <div class="section" id="profile-from-a-node">
 <h2>Profile from a Node<a class="headerlink" href="#profile-from-a-node" title="Permalink to this headline">¶</a></h2>
-<p>As in our generic example, for a given node, we need to compile with debugger flags to capture the information for profiling with Valgrind. Add the following lines to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> of the package you’re looking to profile, <strong>after</strong> <code class="docutils literal notranslate"><span class="pre">nav2_package()</span></code> which sets other compiler flags this may need to override. Note that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin’s run-time profile.</p>
+<p>As in our generic example, for a given node, we need to compile with debug flags to capture the information for profiling with Valgrind. This can be done easily from the commandline. Note that we use <code class="docutils literal notranslate"><span class="pre">--packages-select</span></code> to only compile with this flag for the packages we want to profile nodes within.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --packages-select &lt;packages of interest&gt; --cmake-args -DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
+</pre></div>
+</div>
+<p>Optionally, you may add the following line to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> of the package you’re looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> invokation.</p>
+<p>It is important that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin’s run-time profile.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-pg</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>After compiling, this node should be run in its own terminal to isolate it from the rest of your system. Thus, this should not be composed in the same process as other nodes. To run a ROS 2 node with valgrind, this can be done from the commandline via:</p>
+<p>After either compiling method, this node should be run in its own terminal to isolate it from the rest of your system. Thus, this should not be composed in the same process as other nodes. To run a ROS 2 node with valgrind, this can be done from the commandline via:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run --prefix <span class="s1">&#39;valgrind --tool=callgrind&#39;</span> &lt;pkg&gt; &lt;node&gt; --all-other-launch arguments
 </pre></div>
 </div>
