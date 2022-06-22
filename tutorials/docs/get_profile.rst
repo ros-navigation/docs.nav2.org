@@ -30,11 +30,16 @@ Thus, we must install them.
 
 More information can be found in the `Valgrind manual <https://valgrind.org/docs/manual/cl-manual.html>`_ including additional valgrind arguments that can be used to specify more information.
 
-Generally speaking, to use valgrind we need to compile with ``-g`` to get debugging information. Then, we run our program using valgrind to capture the run-time statistics for later analysis. These are stored in ``callgrind.out.XXX`` files, where the suffix is the PID of the process. kcachegrind is used to visualize and analyze the results of the program execution.
+Generally speaking, to use valgrind we need to compile with debugging information. This can be done by passing ``-g`` as a compiling option or compile ``CMAKE_BUILD_TYPE`` as ``Debug`` or ``RelWithDebInfo``. Then, we run our program using valgrind to capture the run-time statistics for later analysis. These are stored in ``callgrind.out.XXX`` files, where the suffix is the PID of the process. kcachegrind is used to visualize and analyze the results of the program execution.
 
 .. code-block:: cmake
 
+	# CMakeLists.txt
   add_compile_options(-g)
+
+.. code-block:: bash
+
+  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo
 
 .. code-block:: bash
 
@@ -45,13 +50,20 @@ Generally speaking, to use valgrind we need to compile with ``-g`` to get debugg
 Profile from a Node
 ===================
 
-As in our generic example, for a given node, we need to compile with debugger flags to capture the information for profiling with Valgrind. Add the following lines to the ``CMakeLists.txt`` of the package you're looking to profile, **after** ``nav2_package()`` which sets other compiler flags this may need to override. Note that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin's run-time profile.
+As in our generic example, for a given node, we need to compile with debug flags to capture the information for profiling with Valgrind. This can be done easily from the commandline. Note that we use ``--packages-select`` to only compile with this flag for the packages we want to profile nodes within.
+
+.. code-block:: bash
+	colcon build --packages-select <packages of interest> --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+Optionally, you may add the following line to the ``CMakeLists.txt`` of the package you're looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single ``colcon build`` invokation. 
+
+It is important that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin's run-time profile.
 
 .. code-block:: cmake
 
   add_compile_options(-pg)
 
-After compiling, this node should be run in its own terminal to isolate it from the rest of your system. Thus, this should not be composed in the same process as other nodes. To run a ROS 2 node with valgrind, this can be done from the commandline via:
+After either compiling method, this node should be run in its own terminal to isolate it from the rest of your system. Thus, this should not be composed in the same process as other nodes. To run a ROS 2 node with valgrind, this can be done from the commandline via:
 
 .. code-block:: bash
 
