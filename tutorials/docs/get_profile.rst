@@ -53,6 +53,7 @@ Profile from a Node
 As in our generic example, for a given node, we need to compile with debug flags to capture the information for profiling with Valgrind. This can be done easily from the commandline. Note that we use ``--packages-select`` to only compile with this flag for the packages we want to profile nodes within.
 
 .. code-block:: bash
+
 	colcon build --packages-select <packages of interest> --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
 
 Optionally, you may add the following line to the ``CMakeLists.txt`` of the package you're looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single ``colcon build`` invokation. 
