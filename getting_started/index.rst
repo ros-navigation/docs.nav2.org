@@ -50,7 +50,7 @@ Running the Example
 
    .. code-block:: bash
 
-      ros2 launch nav2_bringup tb3_simulation_launch.py
+      ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
    
    .. note::
 
@@ -59,6 +59,8 @@ Running the Example
       However, it is recommended to use the most recent `ROS 2 LTS distribution
       <https://ros.org/reps/rep-2000.html>`_  for improved stablity and feature
       completeness.
+      
+      headless defaults to true, if not set to false, gzclient (the 3d view) is not started
 
    This launch file will launch Nav2 with the AMCL localizer in the
    ``turtlebot3_world`` world.
@@ -73,8 +75,8 @@ Running the Example
    .. image:: /images/gazebo/gazebo_turtlebot1.png
       :width: 46%
 
-4. Click the "Startup" button in the bottom left corner of RViz. This will
-   cause |PN| to change to the Active state. It should
+4. If not autostarting, click the "Startup" button in the bottom left corner of RViz.
+   This will cause |PN| to change to the Active state. It should
    change appearance to show the map.
 
    .. image:: /images/rviz/rviz_initial.png
