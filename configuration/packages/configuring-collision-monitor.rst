@@ -25,7 +25,7 @@ The safety area around the robot can take the following shapes:
 
 NOTE: Although safety behavior models are not intended to be used simultaneously (e.g. stop model should not be crossed with approach one), it is not prohibited to. Collision Monitor allows setting simultaneously multiple shapes with different behavior models.
 
-All shapes (``Polygon`` and ``Circle``) are derived from base ``Polygon`` class, so without loss of generality they would be called as "polygons". Subscribed footprint is also having the same properties as other polygons, but it is being obtained from ``nav2_costmap_2d::FootprintSubscriber``. 
+All shapes (``Polygon`` and ``Circle``) are derived from base ``Polygon`` class, so without loss of generality they would be called as "polygons". Subscribed footprint is also having the same properties as other polygons, but it is being obtained from ``nav2_costmap_2d::FootprintSubscriber``.
 
 The obstacle points are being obtained from different data sources. Collision Monitor is subscribed to:
 
@@ -248,7 +248,7 @@ Polygons parameters
   string         <polygon_name>
   ============== =============================
 
-  Description: 
+  Description:
     Topic name to publish a polygon to. Used only if ``visualize`` is true.
 
 :``<polygon_name>``.footprint_topic:
@@ -307,7 +307,7 @@ Observation sources parameters
   -------------- -----------------------------
   double         0.5
   ============== =============================
-  
+
   Description:
     Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
 
