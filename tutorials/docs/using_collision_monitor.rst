@@ -26,7 +26,7 @@ Please make sure that Nav2 project is also built locally as it was made in :ref:
 Configuring Collision Monitor
 =============================
 
-The Collision Monitor node has its own ``collision_monitor_node.launch.py`` launch-file and preset parameters in the ``collision_monitor_params.yaml`` file.
+The Collision Monitor node has its own ``collision_monitor_node.launch.py`` launch-file and preset parameters in the ``collision_monitor_params.yaml`` file for demonstration, though its trivial to add this to Nav2's main launch file if being used in practice.
 For the demonstration, two shapes will be created - an inner circle stop area around the robot and a larger slowdown bounding box:
 
 .. image:: images/Collision_Monitor/polygons.png
