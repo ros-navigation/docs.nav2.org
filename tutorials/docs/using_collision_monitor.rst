@@ -32,7 +32,7 @@ For the demonstration, two shapes will be created - an inner circle stop area ar
 .. image:: images/Collision_Monitor/polygons.png
   :width: 800px
 
-If more than 3 points will appear inside a slowdown box, the robot will decrease its speed to ``30%`` from its value, allowing more room to avoid obstacles.
+If more than 3 points will appear inside a slowdown box, the robot will decrease its speed to ``30%`` from its value.
 For the cases when obstacles are dangerously close to the robot, inner stop circle will work.
 For this setup, the following lines should be added into ``collision_monitor_params.yaml`` parameters file. Stop circle is named as ``CircleStop`` and slowdown bounding box - as ``PolygonSlow``:
 
