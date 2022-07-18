@@ -56,7 +56,7 @@ For this setup, the following lines should be added into ``collision_monitor_par
         polygon_pub_topic: "polygon_slowdown"
 
 For the working configuration, at least one data source should be added.
-In current demonstration, it is used laser scanner, which is described by the following lines for Collision Monitor node:
+In current demonstration, it is used laser scanner (though ``PointCloud2`` is also possible), which is described by the following lines for Collision Monitor node:
 
 .. code-block:: yaml
 
