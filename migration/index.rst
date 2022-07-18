@@ -21,3 +21,4 @@ Navigation2 guides for migration between distributions.
    Eloquent.rst
    Foxy.rst
    Galactic.rst
+   Humble.rst
