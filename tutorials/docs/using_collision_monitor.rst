@@ -27,33 +27,36 @@ Configuring Collision Monitor
 =============================
 
 The Collision Monitor node has its own ``collision_monitor_node.launch.py`` launch-file and preset parameters in the ``collision_monitor_params.yaml`` file for demonstration, though its trivial to add this to Nav2's main launch file if being used in practice.
-For the demonstration, two shapes will be created - an inner circle stop area around the robot and a larger slowdown bounding box:
+For the demonstration, two shapes will be created - an inner stop and a larger slowdown bounding boxes placed in the front of the robot:
 
 .. image:: images/Collision_Monitor/polygons.png
   :width: 800px
 
 If more than 3 points will appear inside a slowdown box, the robot will decrease its speed to ``30%`` from its value.
-For the cases when obstacles are dangerously close to the robot, inner stop circle will work.
-For this setup, the following lines should be added into ``collision_monitor_params.yaml`` parameters file. Stop circle is named as ``CircleStop`` and slowdown bounding box - as ``PolygonSlow``:
+For the cases when obstacles are dangerously close to the robot, inner stop zone will work.
+For this setup, the following lines should be added into ``collision_monitor_params.yaml`` parameters file. Stop box is named as ``PolygonStop`` and slowdown bounding box - as ``PolygonSlow``:
 
 .. code-block:: yaml
 
-    polygons: ["CircleStop", "PolygonSlow"]
-      CircleStop:
-        type: "circle"
-        radius: 0.3
-        aaction_type: "stop"
-        max_points: 3
-        visualize: True
-        polygon_pub_topic: "polygon_stop"
-      PolygonSlow:
-        type: "polygon"
-        points: [0.4, 0.4, 0.4, -0.4, -0.4, -0.4, -0.4, 0.4]
-        action_type: "slowdown"
-        max_points: 3
-        slowdown_ratio: 0.3
-        visualize: True
-        polygon_pub_topic: "polygon_slowdown"
+    polygons: ["PolygonStop", "PolygonSlow"]
+    PolygonStop:
+      type: "polygon"
+      points: [0.4, 0.3, 0.4, -0.3, 0.0, -0.3, 0.0, 0.3]
+      action_type: "stop"
+      max_points: 3
+      visualize: True
+      polygon_pub_topic: "polygon_stop"
+    PolygonSlow:
+      type: "polygon"
+      points: [0.6, 0.4, 0.6, -0.4, 0.0, -0.4, 0.0, 0.4]
+      action_type: "slowdown"
+      max_points: 3
+      slowdown_ratio: 0.3
+      visualize: True
+      polygon_pub_topic: "polygon_slowdown"
+
+.. note::
+  The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let's focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the :ref:`configuring_collision_monitor` configuration guide.
 
 For the working configuration, at least one data source should be added.
 In current demonstration, it is used laser scanner (though ``PointCloud2`` is also possible), which is described by the following lines for Collision Monitor node:
@@ -61,9 +64,9 @@ In current demonstration, it is used laser scanner (though ``PointCloud2`` is al
 .. code-block:: yaml
 
     observation_sources: ["scan"]
-      scan:
-        type: "scan"
-        topic: "/scan"
+    scan:
+      type: "scan"
+      topic: "scan"
 
 Set topic names, frame ID-s and timeouts to work correctly with a default Nav2 setup.
 The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file in this case will look as follows:
@@ -80,17 +83,17 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
         transform_tolerance: 0.5
         source_timeout: 5.0
         stop_pub_timeout: 2.0
-        polygons: ["CircleStop", "PolygonSlow"]
-        CircleStop:
-          type: "circle"
-          radius: 0.3
+        polygons: ["PolygonStop", "PolygonSlow"]
+        PolygonStop:
+          type: "polygon"
+          points: [0.4, 0.3, 0.4, -0.3, 0.0, -0.3, 0.0, 0.3]
           action_type: "stop"
           max_points: 3
           visualize: True
           polygon_pub_topic: "polygon_stop"
         PolygonSlow:
           type: "polygon"
-          points: [0.4, 0.4, 0.4, -0.4, -0.4, -0.4, -0.4, 0.4]
+          points: [0.6, 0.4, 0.6, -0.4, 0.0, -0.4, 0.0, 0.4]
           action_type: "slowdown"
           max_points: 3
           slowdown_ratio: 0.3
@@ -99,53 +102,41 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
         observation_sources: ["scan"]
         scan:
           type: "scan"
-          topic: "/scan"
+          topic: "scan"
 
 Preparing Nav2 stack
 ====================
 
-Since Collision Monitor is designed to operate as an independent safety node, Nav2 stack has no knowledge about it.
-It is laying under the stack and operating after all necessary decisions were made by Nav2.
-This is achieved through remapped ``cmd_vel`` topic, going out from a Controller.
-This is being made by means of adding the remapping as written below to the ``navigation_launch.py`` bringup script.
-Please note, that remapped ``cmd_vel_raw`` topic should match to the ``cmd_vel_in_topic`` parameter value of Collision Monitor node, and ``cmd_vel_out_topic`` parameter value should be equal to initial ``cmd_vel`` to fit the replacement:
+The Collision Monitor is designed to operate below Nav2 as an independent safety node.
+This acts as a filter on the ``cmd_vel`` topic coming out of the Controller Server.
+If no such zone is triggered, then the Controller's ``cmd_vel`` is used.
+Else, it is scaled or set to stop as appropriate.
+For correct operation of the Collision Monitor with the Controller, it is required to add the ``cmd_vel -> cmd_vel_raw`` remapping to the ``navigation_launch.py`` bringup script as presented below:
 
 .. code-block:: python
 
-         remappings = [('/tf', 'tf'),
-    -                  ('/tf_static', 'tf_static')]
-    +                  ('/tf_static', 'tf_static'),
-    +                  ('/cmd_vel', '/cmd_vel_raw')]
-
-Since Collision Monitor performs effectively to avoid collisions, we need to increase the probability of it, e.g. by allowing the robot to get closer to the obstacles.
-For that, let's almost remove the inflation radius around obstacles from ``0.55`` to ``0.02`` meters in a ``nav2_params.yaml`` Nav2 bringup parameters for both local and global costmaps:
-
-.. code-block:: yaml
-
-    local_costmap:
-      local_costmap:
-        ros__parameters:
-          ...
-          inflation_layer:
-            plugin: "nav2_costmap_2d::InflationLayer"
-            cost_scaling_factor: 3.0
-    -       inflation_radius: 0.55
-    +       inflation_radius: 0.02
+    Node(
+        package='nav2_controller',
+        executable='controller_server',
+        output='screen',
+        respawn=use_respawn,
+        respawn_delay=2.0,
+        parameters=[configured_params],
+    +   remappings=remappings + [('cmd_vel', 'cmd_vel_raw')]),
     ...
-    global_costmap:
-      global_costmap:
-        ros__parameters:
-          ...
-          inflation_layer:
-            plugin: "nav2_costmap_2d::InflationLayer"
-            cost_scaling_factor: 3.0
-    -       inflation_radius: 0.55
-    +       inflation_radius: 0.02
+    ComposableNode(
+        package='nav2_controller',
+        plugin='nav2_controller::ControllerServer',
+        name='controller_server',
+        parameters=[configured_params],
+    +   remappings=remappings + [('cmd_vel', 'cmd_vel_raw')]),
+
+Please note, that the remapped ``cmd_vel_raw`` topic should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement.
 
 Demo Execution
 ==============
 
-Once Collision Monitor node has been tuned, ``cmd_vel`` topics remapped and obstacle avoidance decreased, Collision Monitor node is ready to run.
+Once Collision Monitor node has been tuned and ``cmd_vel`` topics remapped, Collision Monitor node is ready to run.
 For that, run Nav2 stack as written in :ref:`getting_started`:
 
 .. code-block:: bash
@@ -158,7 +149,7 @@ In parallel console, launch Collision Monitor node by using its launch-file:
 
   ros2 launch nav2_collision_monitor collision_monitor_node.launch.py
 
-Since both ``CircleStop`` and ``PolygonSlow`` polygons will have their own publishers, they could be added to visualization as shown at the picture below:
+Since both ``PolygonStop`` and ``PolygonSlow`` polygons will have their own publishers, they could be added to visualization as shown at the picture below:
 
 .. image:: images/Collision_Monitor/polygons_visualization.png
   :width: 800px

@@ -3,31 +3,42 @@
 Collision Monitor
 #################
 
-Collision Monitor - is an independent layer in Nav2 providing an additional level of robot safety assurance.
-It allows performing robot collision avoidance by monitoring the obstacles in surrounding environments laying in collision proximity to the robot.
+The Collision Monitor is a node providing an additional level of robot safety.
+It performs several collision avoidance related tasks using incoming data from the sensors, bypassing the costmap and trajectory planners, to monitor for and prevent potential collisions at the emergency-stop level.
+
+This is analogous to safety sensor and hardware features; take in laser scans from a real-time certified safety scanner, detect if there is to be an imminent collision in a configurable bounding box, and either emergency-stop the certified robot controller or slow the robot to avoid such collision.
+However, this node is done at the CPU level with any form of sensor.
+As such, this does not provide hard real-time safety certifications, but uses the same types of techniques with the same types of data for users that do not have safety-rated laser sensors, safety-rated controllers, or wish to use any type of data input (e.g. pointclouds from depth or stereo or range sensors).
+
+This is a useful and integral part of large heavy industrial robots, or robots moving with high velocities, around people or other dynamic agents (e.g. other robots) as a safety mechanism for high-response emergency stopping.
+The costmaps / trajectory planners will handle most situations, but this is to handle obstacles that virtually appear out of no where (from the robot's perspective) or approach the robot at such high speed it needs to immediately stop to prevent collision.
 
 See the package's ``README`` for more complete information.
 
 Features
 ********
 
+The Collision Monitor uses polygons relative the robot's base frame origin to define "zones".
+Data that fall into these zones trigger an operation depending on the model being used.
+A given instance of the Collision Monitor can have many zones with different models at the same time.
+When multiple zones trigger at once, the most aggressive one is used (e.g. stop > slow 50% > slow 10%).
+
 The following models of safety behaviors are employed by Collision Monitor:
 
-- **Stop model**: Define a safety area surrounding the robot and a point threshold. If more that ``max_points`` appear inside this area, stop the robot until the obstacles will disappear.
-- **Slowdown model**: Define a safety area around the robot and slow the maximum speed by a ``slowdown_ratio``, if more than ``max_points`` points will appear inside the area.
-- **Approach model**: With the current robot speed, estimate the time to collision to points obtained from sensors. If the time is less than ``time_before_collision`` seconds, slow the robot until it will be equal to that time. The effect here would be to keep the robot always ``time_before_collision`` seconds from a collision and continuously scale down its speeds.
+- **Stop model**: Define a zone and a point threshold. If more that ``max_points`` obstacle points appear inside this area, stop the robot until the obstacles will disappear.
+- **Slowdown model**: Define a zone around the robot and slow the maximum speed for a ``slowdown_ratio``, if more than ``max_points`` points will appear inside the area.
+- **Approach model**: Using the current robot speed, estimate the time to collision to sensor data. If the time is less than ``time_before_collision`` seconds (0.5, 2, 5, etc...), the robot will slow such that it is now at least ``time_before_collision`` seconds to collision. The effect here would be to keep the robot always ``time_before_collision`` seconds from any collision.
 
-The safety area around the robot can take the following shapes:
+The zones around the robot can take the following shapes:
 
-- Arbitrary user-defined polygon around the robot for usage in stop and slowdown models.
-- Robot footprint polygon, which is used in the approach behavior model only.
-- Circle, used in all models: for stop and slowdown models as a safety area, for approach model as a robot footprint. Circle is made for the best performance and could be used in the cases where the safety area or robot could be approximated by round shape.
+- Arbitrary user-defined polygon relative to the robot base frame.
+- Circle: is made for the best performance and could be used in the cases where the zone or robot could be approximated by round shape.
+- Robot footprint polygon, which is used in the approach behavior model only. Will use the footprint topic to allow it to be dynamically adjusted over time.
 
-NOTE: Although safety behavior models are not intended to be used simultaneously (e.g. stop model should not be crossed with approach one), it is not prohibited to. Collision Monitor allows setting simultaneously multiple shapes with different behavior models.
+All shapes (``Polygon`` and ``Circle``) are derived from base ``Polygon`` class, so without loss of generality they would be called as "polygons".
+Subscribed footprint is also having the same properties as other polygons, but it is being obtained a footprint topic for the Approach Model.
 
-All shapes (``Polygon`` and ``Circle``) are derived from base ``Polygon`` class, so without loss of generality they would be called as "polygons". Subscribed footprint is also having the same properties as other polygons, but it is being obtained from ``nav2_costmap_2d::FootprintSubscriber``.
-
-The obstacle points are being obtained from different data sources. Collision Monitor is subscribed to:
+The data may be obtained from different data sources:
 
 - Laser scanners (``sensor_msgs::msg::LaserScan`` messages)
 - PointClouds (``sensor_msgs::msg::PointCloud2`` messages)
@@ -122,7 +133,7 @@ Parameters
   ============== =============================
 
   Description:
-    List of safety area shapes (stop/slowdown bounding boxes, footprint, approach circle, etc...). Causes an error, if not specialized.
+    List of zones (stop/slowdown bounding boxes, footprint, approach circle, etc...). Causes an error, if not specialized.
 
 
 :observation_sources:
@@ -161,7 +172,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format. Used for ``polygon`` type. Minimum 3 points for a triangle polygon. Causes an error, if not specialized.
+    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.25, 0.5, -0.25, 0.0, -0.25, 0.0, 0.25}`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. Causes an error, if not specialized.
 
 :``<polygon_name>``.radius:
 
@@ -183,7 +194,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Safety behavior model. Available values are ``stop``, ``slowdown``, ``approach``. Causes an error, if not specialized.
+    Zone behavior model. Available values are ``stop``, ``slowdown``, ``approach``. Causes an error, if not specialized.
 
 :``<polygon_name>``.max_points:
 
@@ -194,7 +205,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Maximum number of points to enter inside polygon to be ignored (w/o causing an action).
+    Maximum number of data readings within a zone to not trigger the action.
 
 :``<polygon_name>``.slowdown_ratio:
 
@@ -253,11 +264,11 @@ Polygons parameters
 
 :``<polygon_name>``.footprint_topic:
 
-  ============== =============================
+  ============== ===================================
   Type           Default
-  -------------- -----------------------------
-  string         "footprint"
-  ============== =============================
+  -------------- -----------------------------------
+  string         "local_costmap/published_footprint"
+  ============== ===================================
 
   Description:
     Topic to listen the robot footprint from. Applicable only for ``polygon`` type and ``approach`` action type.

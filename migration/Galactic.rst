@@ -337,7 +337,3 @@ The extra argument is a costmap_ros pointer. This is used to check if the goal i
 Added Assisted Teleop
 *********************
 `PR 2904 <https://github.com/ros-planning/navigation2/pull/2904>`_ adds a new behavior for assisted teleop along with two new BT nodes AssistedTeleop and CancelAssistedTeleop.
-
-Added Collision Monitor
-***********************
-`PR 2982 <https://github.com/ros-planning/navigation2/pull/2982>`_ adds new safety layer operating independently of Nav2 stack which ensures the robot to control the collisions with near obstacles, obtained from different sensors (LaserScan, PointCloud, IR, Sonars, etc...). See :ref:`configuring_collision_monitor` for more details. It is not included in the default bringup batteries included from ``nav2_bringup``.
