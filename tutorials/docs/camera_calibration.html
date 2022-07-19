@@ -861,7 +861,7 @@
 </div>
 <p>5- Start the camera calibration node</p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">camera_calibration</span> <span class="pre">cameracalibrator</span> <span class="pre">--size</span> <span class="pre">7x9</span> <span class="pre">--square</span> <span class="pre">0.20</span> <span class="pre">image:=/my_camera/image_raw</span> <span class="pre">camera:=/my_camera</span></code></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">camera_calibration</span> <span class="pre">cameracalibrator</span> <span class="pre">--size</span> <span class="pre">7x9</span> <span class="pre">--square</span> <span class="pre">0.02</span> <span class="pre">--ros-args</span> <span class="pre">-r</span> <span class="pre">image:=/my_camera/image_raw</span> <span class="pre">-p</span> <span class="pre">camera:=/my_camera</span></code></p>
 </div></blockquote>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Camera</span> <span class="n">Name</span><span class="p">:</span>
 
