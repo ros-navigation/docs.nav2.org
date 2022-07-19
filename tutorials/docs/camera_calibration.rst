@@ -64,7 +64,7 @@ Tutorial Steps
 
 5- Start the camera calibration node
 
-           ``ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.02 --ros-args -p image:=/my_camera/image_raw -p camera:=/my_camera``
+           ``ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.02 --ros-args -r image:=/my_camera/image_raw -p camera:=/my_camera``
 
 
 
