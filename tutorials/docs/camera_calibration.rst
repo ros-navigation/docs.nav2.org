@@ -33,7 +33,7 @@ Requirements
 **Also, make sure you have the following:**
 
  • A large checkerboard with known dimensions. This tutorial uses a 7x9 checkerboard with 20mm squares. **Calibration uses the interior vertex points of the checkerboard, so an "8x10" board uses the interior vertex parameter "7x9" as in the example below.** The checkerboard with set dimensions can be downloaded from `here <https://calib.io/pages/camera-calibration-pattern-generator>`_.
- • A well lit 5m x 5m area clear of obstructions and check board patterns
+ • A well-lit area clear of obstructions and other check board patterns
 
  • A monocular camera publishing images over ROS
 
