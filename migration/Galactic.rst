@@ -336,4 +336,4 @@ The extra argument is a costmap_ros pointer. This is used to check if the goal i
 
 Added Assisted Teleop
 *********************
-`PR 2965 <https://github.com/ros-planning/navigation2/pull/2904>`_ adds a new behavior for assisted teleop along with two new BT nodes AssistedTeleop and CancelAssistedTeleop.
+`PR 2904 <https://github.com/ros-planning/navigation2/pull/2904>`_ adds a new behavior for assisted teleop along with two new BT nodes AssistedTeleop and CancelAssistedTeleop.

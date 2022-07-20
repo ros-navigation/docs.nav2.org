@@ -20,3 +20,4 @@ Navigation2 Tutorials
    docs/using_groot.rst
    docs/using_shim_controller.rst
    docs/adding_smoother.rst
+   docs/using_collision_monitor.rst
