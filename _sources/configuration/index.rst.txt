@@ -29,3 +29,4 @@ the best navigation performance.
    packages/configuring-rotation-shim-controller.rst
    packages/configuring-constrained-smoother.rst
    packages/configuring-velocity-smoother.rst
+   packages/configuring-collision-monitor.rst
