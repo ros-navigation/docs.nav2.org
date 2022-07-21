@@ -117,7 +117,17 @@ Regulated Pure Pursuit Parameters
 
   Description
     The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be ``> 0.01``. 
-    
+
+:approach_velocity_scaling_dist:
+
+  ============== =============================
+  Type           Default                                               
+  -------------- -----------------------------
+  double         0.6            
+  ============== =============================
+
+  Description
+    The distance (m) left on the path at which to start slowing down. Should be less than the half the costmap width. 
 
 :max_allowed_time_to_collision_up_to_carrot:
 
@@ -279,6 +289,7 @@ Example
         transform_tolerance: 0.1
         use_velocity_scaled_lookahead_dist: false
         min_approach_linear_velocity: 0.05
+        approach_velocity_scaling_dist: 0.6
         max_allowed_time_to_collision_up_to_carrot: 1.0
         use_regulated_linear_velocity_scaling: true
         use_cost_regulated_linear_velocity_scaling: false
