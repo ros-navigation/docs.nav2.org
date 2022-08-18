@@ -52,7 +52,7 @@ As such, its configuration looks very similar to that of any other plugin. In th
         min_y_velocity_threshold: 0.5
         min_theta_velocity_threshold: 0.001
         progress_checker_plugin: "progress_checker"
-        goal_checker_plugins: "goal_checker"
+        goal_checker_plugins: ["goal_checker"]
         controller_plugins: ["FollowPath"]
         progress_checker:
           plugin: "nav2_controller::SimpleProgressChecker"
