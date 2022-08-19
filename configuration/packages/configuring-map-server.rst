@@ -58,7 +58,7 @@ Map Server Parameters
   ============== =============================
 
   Description
-    Path to map yaml file.
+    Path to map yaml file. Note: This parameter **must** appear in a yaml file when launched with Nav2's default launch files. It is overridable as a launch configuration ``map``, which is only possible if the ``yaml_filename`` key already exists in the yaml file. If you would like the specify your map file in yaml rather than in launch defaults or launch configurations, remove the launch default so it is not overridden in Nav2's default launch files. This is an odd quirk that exists to be able to provide users with the option to change maps at run-time on the commandline.  
 
 :topic_name:
 
