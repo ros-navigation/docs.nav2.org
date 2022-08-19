@@ -300,5 +300,5 @@ Example
           max_iterations: 1000
           w_smooth: 0.3
           w_data: 0.2
-          tolerance: 1e-10
+          tolerance: 1.0e-10
           do_refinement: true
