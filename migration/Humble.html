@@ -770,6 +770,7 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Humble to Iron</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#added-collision-monitor">Added Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 </ul>
 </li>
 </ul>
@@ -834,6 +835,10 @@
 <div class="section" id="added-collision-monitor">
 <h2>Added Collision Monitor<a class="headerlink" href="#added-collision-monitor" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2982">PR 2982</a> adds new safety layer operating independently of Nav2 stack which ensures the robot to control the collisions with near obstacles, obtained from different sensors (LaserScan, PointCloud, IR, Sonars, etc…). See <a class="reference internal" href="../configuration/packages/configuring-collision-monitor.html#configuring-collision-monitor"><span class="std std-ref">Collision Monitor</span></a> for more details. It is not included in the default bringup batteries included from <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>.</p>
+</div>
+<div class="section" id="removed-use-sim-time-from-yaml">
+<h2>Removed use_sim_time from yaml<a class="headerlink" href="#removed-use-sim-time-from-yaml" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3131">PR #3131</a> makes it possible to set the use_sim_time parameter from the launch file for multiple nodes instead of individually via the yaml files. If using the Nav2 launch files, you can optionally remove the use_sim_time parameter from your yaml files and set it via a launch argument.</p>
 </div>
 </div>
 
