@@ -287,7 +287,7 @@ Observation sources parameters
   ============== =============================
 
   Description:
-    Type of polygon shape. Could be ``scan`` or ``pointcloud``.
+    Type of polygon shape. Could be ``scan``, ``pointcloud`` or ``range``.
 
 :``<source name>``.topic:
 
@@ -321,6 +321,18 @@ Observation sources parameters
 
   Description:
     Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
+
+:``<source name>``.obstacles_angle:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         PI / 180 (1 degree)
+  ============== =============================
+
+  Description:
+    Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
+
 
 Example
 *******

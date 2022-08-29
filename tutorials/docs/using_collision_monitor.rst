@@ -59,7 +59,7 @@ For this setup, the following lines should be added into ``collision_monitor_par
   The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let's focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the :ref:`configuring_collision_monitor` configuration guide.
 
 For the working configuration, at least one data source should be added.
-In current demonstration, it is used laser scanner (though ``PointCloud2`` is also possible), which is described by the following lines for Collision Monitor node:
+In current demonstration, it is used laser scanner (though ``PointCloud2`` and Range/Sonar/IR sensors are also possible), which is described by the following lines for Collision Monitor node:
 
 .. code-block:: yaml
 
