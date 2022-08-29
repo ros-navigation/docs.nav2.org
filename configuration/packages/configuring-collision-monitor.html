@@ -1296,7 +1296,7 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Type of polygon shape. Could be <code class="docutils literal notranslate"><span class="pre">scan</span></code> or <code class="docutils literal notranslate"><span class="pre">pointcloud</span></code>.</p>
+<dt>Description:</dt><dd><p>Type of polygon shape. Could be <code class="docutils literal notranslate"><span class="pre">scan</span></code>, <code class="docutils literal notranslate"><span class="pre">pointcloud</span></code> or <code class="docutils literal notranslate"><span class="pre">range</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1357,6 +1357,26 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </table>
 <dl class="simple">
 <dt>Description:</dt><dd><p>Maximum height the PointCloud projection to 2D space ended with. Applicable for <code class="docutils literal notranslate"><span class="pre">pointcloud</span></code> type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.obstacles_angle</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>PI / 180 (1 degree)</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for <code class="docutils literal notranslate"><span class="pre">range</span></code> type.</p>
 </dd>
 </dl>
 </dd>
