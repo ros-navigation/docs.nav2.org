@@ -778,6 +778,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Simple Commander API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">Commander API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#costmap-api">Costmap API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples-and-demos">Examples and Demos</a></li>
 </ul>
 </li>
@@ -977,6 +978,50 @@ program to control Nav2’s lifecycle.</p></td>
 </tr>
 <tr class="row-odd"><td><p>destroyNode()</p></td>
 <td><p>Releases the resources used by the object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="costmap-api">
+<h2>Costmap API<a class="headerlink" href="#costmap-api" title="Permalink to this headline">¶</a></h2>
+<p>This is a Python3 API for costmap 2d messages from the stack. It provides the basic conversion, get/set, and handling semantics found in the costmap 2d C++ API.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Costmap Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>getSizeInCellsX()</p></td>
+<td><p>Get map width in cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p>getSizeInCellsY()</p></td>
+<td><p>Get map height in cells.</p></td>
+</tr>
+<tr class="row-even"><td><p>getSizeInMetersX()</p></td>
+<td><p>Get x axis map size in meters.</p></td>
+</tr>
+<tr class="row-odd"><td><p>getSizeInMetersY()</p></td>
+<td><p>Get y axis map size in meters.</p></td>
+</tr>
+<tr class="row-even"><td><p>getOriginX()</p></td>
+<td><p>Get the origin x axis of the map [m].</p></td>
+</tr>
+<tr class="row-odd"><td><p>getOriginY()</p></td>
+<td><p>Get the origin y axis of the map [m].</p></td>
+</tr>
+<tr class="row-even"><td><p>getResolution()</p></td>
+<td><p>Get map resolution [m/cell].</p></td>
+</tr>
+<tr class="row-odd"><td><p>getGlobalFrameID()</p></td>
+<td><p>Get global frame_id.</p></td>
+</tr>
+<tr class="row-even"><td><p>getCostmapTimestamp()</p></td>
+<td><p>Get costmap timestamp.</p></td>
 </tr>
 </tbody>
 </table>
