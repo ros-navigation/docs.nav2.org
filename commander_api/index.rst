@@ -19,7 +19,7 @@ You may use this simple commander preempt commands of the same type (e.g. you ca
 
   rclpy.init()
   nav = BasicNavigator()
-
+  
   # ...
 
   nav.setInitialPose(init_pose)
