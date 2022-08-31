@@ -64,7 +64,7 @@ Running the Example
 
    This launch file will launch Nav2 with the AMCL localizer in the
    ``turtlebot3_world`` world.
-   It will also launch a the robot state publisher to provide transforms,
+   It will also launch the robot state publisher to provide transforms,
    a Gazebo instance with the Turtlebot3 URDF, and RVIZ.
 
    If everything has started correctly, you will see the RViz and Gazebo GUIs like
