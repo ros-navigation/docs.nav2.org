@@ -1439,6 +1439,15 @@ sudo apt install ros-&lt;ros2-distro&gt;-nav2-bringup
 </div>
 <p>Note that the parameters of the <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> that we discussed in the previous subsection are included in the default parameters of <code class="docutils literal notranslate"><span class="pre">navigation_launch.py</span></code>. Aside from the <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> parameters, it also contains parameters for the other nodes that are included in Nav2 implementation.</p>
 <p>After we have properly set up and launched Nav2, the <code class="docutils literal notranslate"><span class="pre">/global_costmap</span></code> and <code class="docutils literal notranslate"><span class="pre">/local_costmap</span></code> topics should now be active.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To make the costmaps show up, run the 3 commands in this order</p>
+<ol class="arabic simple">
+<li><p>Launching Description Nodes, RViz and Gazebo - in logs wait for “Connected to gazebo master”</p></li>
+<li><p>Launching slam_toolbox - in logs wait for “Registering sensor”</p></li>
+<li><p>Launching Nav2 - in logs wait for “Creating bond timer”</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="visualizing-costmaps-in-rviz">
 <h4>Visualizing Costmaps in RViz<a class="headerlink" href="#visualizing-costmaps-in-rviz" title="Permalink to this headline">¶</a></h4>
