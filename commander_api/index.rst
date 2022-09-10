@@ -155,14 +155,14 @@ This is a Python3 API for costmap 2d messages from the stack. It provides the ba
 | setCost(mx, my, cost)                 | Set the cost (``np.uint8``) of a cell in the costmap using mx (``int``)    |
 |                                       | , my (``int``) of Map Coordinate.                                          |
 +---------------------------------------+----------------------------------------------------------------------------+
-| mapToWorld(mx, my)                    | Get the wx (``float``) [m], wy (``float``) [m] of world coodinate XY using |
+| mapToWorld(mx, my)                    | Get the wx (``float``) [m], wy (``float``) [m] of world coordinate XY using|
 |                                       | mx (``int``), my (``int``) of map coordinate XY                            |
 +---------------------------------------+----------------------------------------------------------------------------+
-| worldToMap(wx, wy)                    | Get the mx (``int``), my (``int``) of map coodinate XY using               |
+| worldToMap(wx, wy)                    | Get the mx (``int``), my (``int``) of map coordinate XY using              |
 |                                       | wx (``float``) [m], wy (``float``) [m] of world coordinate XY              |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getIndex(mx, my)                      | Get the index (``int``) of the cell using mx (``int``), my (``int``) of    |
-|                                       | map coodinate XY                                                           |
+|                                       | map coordinate XY                                                          |
 +---------------------------------------+----------------------------------------------------------------------------+
 
 Examples and Demos
