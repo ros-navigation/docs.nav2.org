@@ -1023,6 +1023,29 @@ program to control Nav2’s lifecycle.</p></td>
 <tr class="row-even"><td><p>getCostmapTimestamp()</p></td>
 <td><p>Get costmap timestamp.</p></td>
 </tr>
+<tr class="row-odd"><td><p>getCostXY(mx, my)</p></td>
+<td><p>Get the cost (<code class="docutils literal notranslate"><span class="pre">np.uint8</span></code>) of a cell in the costmap using mx (<code class="docutils literal notranslate"><span class="pre">int</span></code>)
+, my (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of Map Coordinate.</p></td>
+</tr>
+<tr class="row-even"><td><p>getCostIdx(index)</p></td>
+<td><p>Get the cost (<code class="docutils literal notranslate"><span class="pre">np.uint8</span></code>) of a cell in the costmap using index (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>setCost(mx, my, cost)</p></td>
+<td><p>Set the cost (<code class="docutils literal notranslate"><span class="pre">np.uint8</span></code>) of a cell in the costmap using mx (<code class="docutils literal notranslate"><span class="pre">int</span></code>)
+, my (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of Map Coordinate.</p></td>
+</tr>
+<tr class="row-even"><td><p>mapToWorld(mx, my)</p></td>
+<td><p>Get the wx (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m], wy (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m] of world coordinate XY using
+mx (<code class="docutils literal notranslate"><span class="pre">int</span></code>), my (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of map coordinate XY</p></td>
+</tr>
+<tr class="row-odd"><td><p>worldToMap(wx, wy)</p></td>
+<td><p>Get the mx (<code class="docutils literal notranslate"><span class="pre">int</span></code>), my (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of map coordinate XY using
+wx (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m], wy (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m] of world coordinate XY</p></td>
+</tr>
+<tr class="row-even"><td><p>getIndex(mx, my)</p></td>
+<td><p>Get the index (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of the cell using mx (<code class="docutils literal notranslate"><span class="pre">int</span></code>), my (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of
+map coordinate XY</p></td>
+</tr>
 </tbody>
 </table>
 </div>
