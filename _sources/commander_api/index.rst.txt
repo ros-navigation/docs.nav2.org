@@ -77,6 +77,8 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | backup(backup_dist=0.15,              | Requests the robot to back up by a given distance.                         |
 | backup_speed=0.025, time_allowance=10)|                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
+| assistedTeleop(time_allowance=10)     | Requests the robot to run the assisted teleop action.                      |
++---------------------------------------+----------------------------------------------------------------------------+
 | cancelTask()                          | Cancel an ongoing task.                                                    |
 +---------------------------------------+----------------------------------------------------------------------------+
 | isTaskComplete()                      | Checks if task is complete yet, times out at ``100ms``. Returns            |
@@ -181,6 +183,7 @@ The ``nav2_simple_commander`` has a few examples to highlight the API functions 
 - ``example_nav_through_poses.py`` - Demonstrates the navigate through poses capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.
+- ``example_assisted_teleop.py`` - Demonstrates the assisted teleop capabilities of the navigator.  
 
 The ``nav2_simple_commander`` has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:
 
