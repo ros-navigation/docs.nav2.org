@@ -771,6 +771,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Humble to Iron</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
 </ul>
 </li>
 </ul>
@@ -840,6 +841,10 @@
 <div class="section" id="removed-use-sim-time-from-yaml">
 <h2>Removed use_sim_time from yaml<a class="headerlink" href="#removed-use-sim-time-from-yaml" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3131">PR #3131</a> makes it possible to set the use_sim_time parameter from the launch file for multiple nodes instead of individually via the yaml files. If using the Nav2 launch files, you can optionally remove the use_sim_time parameter from your yaml files and set it via a launch argument.</p>
+</div>
+<div class="section" id="run-time-speed-up-of-smac-planner">
+<h2>Run-time Speed up of Smac Planner<a class="headerlink" href="#run-time-speed-up-of-smac-planner" title="Permalink to this headline">¶</a></h2>
+<p>The core data structure of the graph implementation in the Smac Planner framework was swapped out in <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3201">PR 3201</a> to using a specialized unordered map implementation. This speeds up the planner by 10% on trivial requests and reports up to 30% on complex plans that involve numerous rehashings.</p>
 </div>
 </div>
 
