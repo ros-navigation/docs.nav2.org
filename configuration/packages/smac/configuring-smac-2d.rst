@@ -90,17 +90,6 @@ Parameters
   Description
     Maximum planning time in seconds.
 
-:``<name>``.motion_model_for_search:
-
-  ====== =======
-  Type   Default                                                   
-  ------ -------
-  string "MOORE"            
-  ====== =======
-
-  Description
-    Motion model enum string to search with. Default for 2D it is "MOORE". Options for 2D is MOORE and VON_NEUMANN.
-
 :``<name>``.cost_travel_multiplier:
 
   ====== =======
@@ -185,7 +174,6 @@ Example
         max_iterations: 1000000               # maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
         max_on_approach_iterations: 1000      # maximum number of iterations to attempt to reach goal once in tolerance
         max_planning_time: 2.0                # max time in s for planner to plan, smooth
-        motion_model_for_search: "MOORE"      # 2D Moore, Von Neumann
         cost_travel_multiplier: 2.0           # Cost multiplier to apply to search to steer away from high cost areas. Larger values will place in the center of aisles more exactly (if non-`FREE` cost potential field exists) but take slightly longer to compute. To optimize for speed, a value of 1.0 is reasonable. A reasonable tradeoff value is 2.0. A value of 0.0 effective disables steering away from obstacles and acts like a naive binary search A*.
         use_final_approach_orientation: false # Whether to set the final path pose at the goal's orientation to the requested orientation (false) or in line with the approach angle so the robot doesn't rotate to heading (true)
         smoother:
