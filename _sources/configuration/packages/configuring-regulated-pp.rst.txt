@@ -129,6 +129,17 @@ Regulated Pure Pursuit Parameters
   Description
     The distance (m) left on the path at which to start slowing down. Should be less than the half the costmap width. 
 
+:use_collision_detection:
+
+  ============== =============================
+  Type           Default                                               
+  -------------- -----------------------------
+  bool           true           
+  ============== =============================
+
+  Description
+    Whether to enable collision detection.
+
 :max_allowed_time_to_collision_up_to_carrot:
 
   ============== =============================
@@ -138,7 +149,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    The time (s) to project a velocity command forward to check for collisions. Pre-``Humble``, this was ``max_allowed_time_to_collision``.
+    The time (s) to project a velocity command forward to check for collisions when ``use_collision_detection`` is ``true``. Pre-``Humble``, this was ``max_allowed_time_to_collision``.
 
 :use_regulated_linear_velocity_scaling:
 
@@ -290,6 +301,7 @@ Example
         use_velocity_scaled_lookahead_dist: false
         min_approach_linear_velocity: 0.05
         approach_velocity_scaling_dist: 0.6
+        use_collision_detection: true
         max_allowed_time_to_collision_up_to_carrot: 1.0
         use_regulated_linear_velocity_scaling: true
         use_cost_regulated_linear_velocity_scaling: false

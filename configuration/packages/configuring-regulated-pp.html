@@ -1043,8 +1043,28 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">max_allowed_time_to_collision_up_to_carrot</dt>
+<dt class="field-odd">use_collision_detection</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to enable collision detection.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">max_allowed_time_to_collision_up_to_carrot</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1059,12 +1079,12 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The time (s) to project a velocity command forward to check for collisions. Pre-<code class="docutils literal notranslate"><span class="pre">Humble</span></code>, this was <code class="docutils literal notranslate"><span class="pre">max_allowed_time_to_collision</span></code>.</p>
+<dt>Description</dt><dd><p>The time (s) to project a velocity command forward to check for collisions when <code class="docutils literal notranslate"><span class="pre">use_collision_detection</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Pre-<code class="docutils literal notranslate"><span class="pre">Humble</span></code>, this was <code class="docutils literal notranslate"><span class="pre">max_allowed_time_to_collision</span></code>.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">use_regulated_linear_velocity_scaling</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">use_regulated_linear_velocity_scaling</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1083,8 +1103,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">use_cost_regulated_linear_velocity_scaling</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">use_cost_regulated_linear_velocity_scaling</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1103,8 +1123,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-even">regulated_linear_scaling_min_radius</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">regulated_linear_scaling_min_radius</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1123,8 +1143,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">regulated_linear_scaling_min_speed</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">regulated_linear_scaling_min_speed</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1143,8 +1163,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-even">use_rotate_to_heading</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">use_rotate_to_heading</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1164,8 +1184,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">allow_reversing</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">allow_reversing</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1185,8 +1205,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-even">rotate_to_heading_min_angle</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">rotate_to_heading_min_angle</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1205,8 +1225,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">max_angular_accel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">max_angular_accel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1225,8 +1245,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-even">max_robot_pose_search_dist</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">max_robot_pose_search_dist</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 78%" />
@@ -1245,8 +1265,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">use_interpolation</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">use_interpolation</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1301,6 +1321,7 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <span class="w">      </span><span class="nt">use_velocity_scaled_lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 <span class="w">      </span><span class="nt">min_approach_linear_velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
 <span class="w">      </span><span class="nt">approach_velocity_scaling_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span><span class="w"></span>
+<span class="w">      </span><span class="nt">use_collision_detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 <span class="w">      </span><span class="nt">max_allowed_time_to_collision_up_to_carrot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
 <span class="w">      </span><span class="nt">use_regulated_linear_velocity_scaling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 <span class="w">      </span><span class="nt">use_cost_regulated_linear_velocity_scaling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
