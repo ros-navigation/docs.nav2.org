@@ -28,6 +28,17 @@ Parameters
   Description
     Whether to allow traversing/search in unknown space.
 
+:``<name>``.tolerance:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  double 0.25            
+  ====== =======
+
+  Description
+    If an exact path cannot be found, the tolerance (as measured by the heuristic cost-to-goal) that would be acceptable to diverge from the requested pose in distance-to-goal.
+
 :``<name>``.max_iterations:
 
   ==== =======
@@ -38,6 +49,17 @@ Parameters
 
   Description
     Maximum number of search iterations before failing to limit compute time, disabled by -1.
+    
+:``<name>``.max_on_approach_iterations:
+
+  ==== =======
+  Type Default                                                   
+  ---- -------
+  int  1000            
+  ==== =======
+
+  Description
+    Maximum number of iterations once a visited node is within the goal tolerances to continue to try to find an exact match before returning the best path solution within tolerances.
 
 :``<name>``.max_planning_time:
 
@@ -59,7 +81,7 @@ Parameters
   ====== =======
 
   Description
-    SE2 node will attempt to complete an analytic expansion with frequency proportional to this value and the minimum heuristic.
+    SE2 node will attempt to complete an analytic expansion with frequency proportional to this value and the minimum heuristic. Negative values convert to infinite.
 
 :``<name>``.analytic_expansion_max_length:
 
@@ -260,7 +282,9 @@ Example
       GridBased:
         plugin: "nav2_smac_planner/SmacPlannerLattice"
         allow_unknown: true                 # Allow traveling in unknown space
+        tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.
         max_iterations: 1000000             # Maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
+        max_on_approach_iterations: 1000    # Maximum number of iterations after within tolerances to continue to try to find exact solution
         max_planning_time: 5.0              # Max time in s for planner to plan, smooth
         analytic_expansion_ratio: 3.5       # The ratio to attempt analytic expansions during search for final approach.
         analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes: The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting

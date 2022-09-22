@@ -861,8 +861,28 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_iterations</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.tolerance</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.25</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>If an exact path cannot be found, the tolerance (as measured by the heuristic cost-to-goal) that would be acceptable to diverge from the requested pose in distance-to-goal.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_iterations</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -878,6 +898,26 @@
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Maximum number of search iterations before failing to limit compute time, disabled by -1.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_on_approach_iterations</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1000</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum number of iterations once a visited node is within the goal tolerances to continue to try to find an exact match before returning the best path solution within tolerances.</p>
 </dd>
 </dl>
 </dd>
@@ -917,7 +957,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>SE2 node will attempt to complete an analytic expansion with frequency proportional to this value and the minimum heuristic.</p>
+<dt>Description</dt><dd><p>SE2 node will attempt to complete an analytic expansion with frequency proportional to this value and the minimum heuristic. Negative values convert to infinite.</p>
 </dd>
 </dl>
 </dd>
@@ -1273,7 +1313,9 @@
 <span class="w">    </span><span class="nt">GridBased</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_smac_planner/SmacPlannerLattice&quot;</span><span class="w"></span>
 <span class="w">      </span><span class="nt">allow_unknown</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                 </span><span class="c1"># Allow traveling in unknown space</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w">                     </span><span class="c1"># dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.</span><span class="w"></span>
 <span class="w">      </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000000</span><span class="w">             </span><span class="c1"># Maximum total iterations to search for before failing (in case unreachable), set to -1 to disable</span><span class="w"></span>
+<span class="w">      </span><span class="nt">max_on_approach_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w">    </span><span class="c1"># Maximum number of iterations after within tolerances to continue to try to find exact solution</span><span class="w"></span>
 <span class="w">      </span><span class="nt">max_planning_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w">              </span><span class="c1"># Max time in s for planner to plan, smooth</span><span class="w"></span>
 <span class="w">      </span><span class="nt">analytic_expansion_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.5</span><span class="w">       </span><span class="c1"># The ratio to attempt analytic expansions during search for final approach.</span><span class="w"></span>
 <span class="w">      </span><span class="nt">analytic_expansion_max_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w">  </span><span class="c1"># For Hybrid/Lattice nodes: The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting</span><span class="w"></span>
