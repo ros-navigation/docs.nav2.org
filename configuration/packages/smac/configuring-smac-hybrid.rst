@@ -45,6 +45,17 @@ Parameters
 
   Description
     Whether to allow traversing/search in unknown space.
+    
+:``<name>``.tolerance:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  double 0.25            
+  ====== =======
+
+  Description
+    If an exact path cannot be found, the tolerance (as measured by the heuristic cost-to-goal) that would be acceptable to diverge from the requested pose.
 
 :``<name>``.max_iterations:
 
@@ -56,6 +67,17 @@ Parameters
 
   Description
     Maximum number of search iterations before failing to limit compute time, disabled by -1.
+
+:``<name>``.max_on_approach_iterations:
+
+  ==== =======
+  Type Default                                                   
+  ---- -------
+  int  1000            
+  ==== =======
+
+  Description
+    Maximum number of iterations once a visited node is within the goal tolerances to continue to try to find an exact match before returning the best path solution within tolerances. Negative values convert to infinite.
 
 :``<name>``.max_planning_time:
 
@@ -279,8 +301,10 @@ Example
         plugin: "nav2_smac_planner/SmacPlannerHybrid"
         downsample_costmap: false           # whether or not to downsample the map
         downsampling_factor: 1              # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
+        tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.
         allow_unknown: true                 # allow traveling in unknown space
         max_iterations: 1000000             # maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
+        max_on_approach_iterations: 1000    # Maximum number of iterations after within tolerances to continue to try to find exact solution
         max_planning_time: 5.0              # max time in s for planner to plan, smooth
         motion_model_for_search: "DUBIN"    # Hybrid-A* Dubin, Redds-Shepp
         angle_quantization_bins: 72         # Number of angle bins for search
