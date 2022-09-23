@@ -16,3 +16,27 @@ Removed use_sim_time from yaml
 Run-time Speed up of Smac Planner
 *********************************
 The core data structure of the graph implementation in the Smac Planner framework was swapped out in `PR 3201 <https://github.com/ros-planning/navigation2/pull/3201>`_ to using a specialized unordered map implementation. This speeds up the planner by 10% on trivial requests and reports up to 30% on complex plans that involve numerous rehashings. 
+
+Simple Commander Python API
+***************************
+`PR 3159 <https://github.com/ros-planning/navigation2/pull/3159>`_ and follow-up PRs add in Costmap API in Python3 simple commander to receive ``OccupancyGrid`` messages from Nav2 and be able to work with them natively in Python3, analog to the C++ Costmap API. It also includes a line iterator and collision checking object to perform footprint or other collision checking in Python3. See the Simple Commander API for more details.
+
+Smac Planner Start Pose Included in Path
+****************************************
+
+`PR 3168 <https://github.com/ros-planning/navigation2/pull/3168>`_ adds the starting pose to the Smac Planners that was previously excluded during backtracing.
+
+Parameterizable Collision Checking in RPP
+*****************************************
+
+`PR 3204 <https://github.com/ros-planning/navigation2/pull/3204>`_ adds makes collision checking for RPP optional (default on). 
+
+Expaned Planner Benchmark Tests
+*******************************
+
+`PR 3218 <https://github.com/ros-planning/navigation2/pull/3218>`_ adds launch files and updated scripts for performing objective random planning tests across the planners in Nav2 for benchmarking and metric computation.
+
+Smac Planner Path Tolerances
+****************************
+
+`PR 3219 <https://github.com/ros-planning/navigation2/pull/3219>`_ adds path tolerances to Hybrid-A* and State Lattice planners to return approximate paths if exact paths cannot be found, within a configurable tolerance aroun the goal pose.
