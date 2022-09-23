@@ -772,6 +772,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-commander-python-api">Simple Commander Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smac-planner-start-pose-included-in-path">Smac Planner Start Pose Included in Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameterizable-collision-checking-in-rpp">Parameterizable Collision Checking in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expaned-planner-benchmark-tests">Expaned Planner Benchmark Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smac-planner-path-tolerances">Smac Planner Path Tolerances</a></li>
 </ul>
 </li>
 </ul>
@@ -845,6 +850,26 @@
 <div class="section" id="run-time-speed-up-of-smac-planner">
 <h2>Run-time Speed up of Smac Planner<a class="headerlink" href="#run-time-speed-up-of-smac-planner" title="Permalink to this headline">¶</a></h2>
 <p>The core data structure of the graph implementation in the Smac Planner framework was swapped out in <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3201">PR 3201</a> to using a specialized unordered map implementation. This speeds up the planner by 10% on trivial requests and reports up to 30% on complex plans that involve numerous rehashings.</p>
+</div>
+<div class="section" id="simple-commander-python-api">
+<h2>Simple Commander Python API<a class="headerlink" href="#simple-commander-python-api" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3159">PR 3159</a> and follow-up PRs add in Costmap API in Python3 simple commander to receive <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> messages from Nav2 and be able to work with them natively in Python3, analog to the C++ Costmap API. It also includes a line iterator and collision checking object to perform footprint or other collision checking in Python3. See the Simple Commander API for more details.</p>
+</div>
+<div class="section" id="smac-planner-start-pose-included-in-path">
+<h2>Smac Planner Start Pose Included in Path<a class="headerlink" href="#smac-planner-start-pose-included-in-path" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3168">PR 3168</a> adds the starting pose to the Smac Planners that was previously excluded during backtracing.</p>
+</div>
+<div class="section" id="parameterizable-collision-checking-in-rpp">
+<h2>Parameterizable Collision Checking in RPP<a class="headerlink" href="#parameterizable-collision-checking-in-rpp" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3204">PR 3204</a> adds makes collision checking for RPP optional (default on).</p>
+</div>
+<div class="section" id="expaned-planner-benchmark-tests">
+<h2>Expaned Planner Benchmark Tests<a class="headerlink" href="#expaned-planner-benchmark-tests" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3218">PR 3218</a> adds launch files and updated scripts for performing objective random planning tests across the planners in Nav2 for benchmarking and metric computation.</p>
+</div>
+<div class="section" id="smac-planner-path-tolerances">
+<h2>Smac Planner Path Tolerances<a class="headerlink" href="#smac-planner-path-tolerances" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3219">PR 3219</a> adds path tolerances to Hybrid-A* and State Lattice planners to return approximate paths if exact paths cannot be found, within a configurable tolerance aroun the goal pose.</p>
 </div>
 </div>
 
