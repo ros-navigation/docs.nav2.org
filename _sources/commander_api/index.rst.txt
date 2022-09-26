@@ -77,7 +77,7 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | backup(backup_dist=0.15,              | Requests the robot to back up by a given distance.                         |
 | backup_speed=0.025, time_allowance=10)|                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
-| assistedTeleop(time_allowance=10)     | Requests the robot to run the assisted teleop action.                      |
+| assistedTeleop(time_allowance=30)     | Requests the robot to run the assisted teleop action.                      |
 +---------------------------------------+----------------------------------------------------------------------------+
 | cancelTask()                          | Cancel an ongoing task.                                                    |
 +---------------------------------------+----------------------------------------------------------------------------+
