@@ -777,6 +777,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#parameterizable-collision-checking-in-rpp">Parameterizable Collision Checking in RPP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#expaned-planner-benchmark-tests">Expaned Planner Benchmark Tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smac-planner-path-tolerances">Smac Planner Path Tolerances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#costmap-2d-node-default-constructor">costmap_2d_node default constructor</a></li>
 </ul>
 </li>
 </ul>
@@ -870,6 +871,10 @@
 <div class="section" id="smac-planner-path-tolerances">
 <h2>Smac Planner Path Tolerances<a class="headerlink" href="#smac-planner-path-tolerances" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3219">PR 3219</a> adds path tolerances to Hybrid-A* and State Lattice planners to return approximate paths if exact paths cannot be found, within a configurable tolerance aroun the goal pose.</p>
+</div>
+<div class="section" id="costmap-2d-node-default-constructor">
+<h2>costmap_2d_node default constructor<a class="headerlink" href="#costmap-2d-node-default-constructor" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3222">PR #3222</a> changes the constructor used by the standalone costmap node. The new constructor does not set a name and namespace internally so it can be set via the launch file.</p>
 </div>
 </div>
 

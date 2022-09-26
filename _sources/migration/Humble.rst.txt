@@ -40,3 +40,8 @@ Smac Planner Path Tolerances
 ****************************
 
 `PR 3219 <https://github.com/ros-planning/navigation2/pull/3219>`_ adds path tolerances to Hybrid-A* and State Lattice planners to return approximate paths if exact paths cannot be found, within a configurable tolerance aroun the goal pose.
+
+costmap_2d_node default constructor
+***********************************
+
+`PR #3222 <https://github.com/ros-planning/navigation2/pull/3222>`_ changes the constructor used by the standalone costmap node. The new constructor does not set a name and namespace internally so it can be set via the launch file.
