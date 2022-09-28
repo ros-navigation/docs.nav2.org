@@ -778,6 +778,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#expaned-planner-benchmark-tests">Expaned Planner Benchmark Tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smac-planner-path-tolerances">Smac Planner Path Tolerances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap-2d-node-default-constructor">costmap_2d_node default constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#feedback-for-navigation-failures">Feedback for Navigation Failures</a></li>
 </ul>
 </li>
 </ul>
@@ -875,6 +876,11 @@
 <div class="section" id="costmap-2d-node-default-constructor">
 <h2>costmap_2d_node default constructor<a class="headerlink" href="#costmap-2d-node-default-constructor" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3222">PR #3222</a> changes the constructor used by the standalone costmap node. The new constructor does not set a name and namespace internally so it can be set via the launch file.</p>
+</div>
+<div class="section" id="feedback-for-navigation-failures">
+<h2>Feedback for Navigation Failures<a class="headerlink" href="#feedback-for-navigation-failures" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3146">PR #3146</a> updates the global planners to throw exceptions on planning failures. These exceptions get reported back to the planner server which in turn places a error code on the Behavior Tree Navigator’s blackboard for use in contextual error handling in the autonomy application.</p>
+<p>The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, or No Valid Path Found.</p>
 </div>
 </div>
 
