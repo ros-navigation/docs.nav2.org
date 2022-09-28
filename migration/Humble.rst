@@ -49,4 +49,6 @@ costmap_2d_node default constructor
 Feedback for Navigation Failures
 ********************************
 
-`PR #3146 <https://github.com/ros-planning/navigation2/pull/3146>`_ updates the global planners to throw exceptions on planning failures. These exceptions get reported back to the planner server which in turn places a error code on the blackboard. 
+`PR #3146 <https://github.com/ros-planning/navigation2/pull/3146>`_ updates the global planners to throw exceptions on planning failures. These exceptions get reported back to the planner server which in turn places a error code on the Behavior Tree Navigator's blackboard for use in contextual error handling in the autonomy application.
+
+The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, or No Valid Path Found.
