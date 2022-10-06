@@ -169,7 +169,7 @@ Parameters
   ====== =======
 
   Description
-    The filepath to the state lattice minimum control set graph, this will default to a 16 bin, 0.4m turning radius control set located in ``test/`` for basic testing and evaluation.
+    The filepath to the state lattice minimum control set graph, this will default to a 16 bin, 0.5m turning radius control set located in ``test/`` for basic testing and evaluation (opposed to Hybrid-A*'s default of 0.5m).
 
 :``<name>``.lookup_table_size:
 
