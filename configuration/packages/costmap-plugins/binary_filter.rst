@@ -3,7 +3,9 @@
 Binary Filter Parameters
 ========================
 
-Binary Filter - is a Costmap Filter that flipping its binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold, and flipping back when lower or equal. Filter space value is being calculated as: ``Fv = base + multiplier * mask_value``, where ``base`` and ``multipluier`` are being published in a filter info by Costmap Filter Info Server. The example of usage are include: camera operating on/off, LED switch on/off, smart house light triggering, etc...
+Binary Filter - is a Costmap Filter that publishes a boolean topic, flipping binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold. It then flips back when lower or equal.
+
+Filter space value is being calculated as: ``Fv = base + multiplier * mask_value``, where ``base`` and ``multiplier`` are being published in a filter info by Costmap Filter Info Server. The example of usage are include: camera operating on/off to turn off cameras in sensitive areas, headlights switch on/off for moving indoors to outdoors, smart house light triggering, etc.
 
 .. image:: ../images/binary_filter/binary_filter.png
     :align: center
