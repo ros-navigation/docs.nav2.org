@@ -491,6 +491,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/speed_filter.html">Speed Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/binary_filter.html">Binary Filter Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#example">Example</a></li>
@@ -886,6 +887,7 @@
 <div class="section" id="costmap-filters">
 <h2>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this headline">¶</a></h2>
 <p>Costmap Filters now are have an ability to be enabled/disabled in run-time by calling <code class="docutils literal notranslate"><span class="pre">toggle_filter</span></code> service for appropriate filter (<a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3229">PR #3229</a>).</p>
+<p>Added new binary flip filter, allowing e.g. to turn off camera in sensitive areas, turn on headlights/leds/other safety things or switch operating mode when robot is inside marked on mask areas (<a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3228">PR #3228</a>).</p>
 </div>
 </div>
 

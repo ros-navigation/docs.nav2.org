@@ -57,3 +57,5 @@ Costmap Filters
 ***************
 
 Costmap Filters now are have an ability to be enabled/disabled in run-time by calling ``toggle_filter`` service for appropriate filter (`PR #3229 <https://github.com/ros-planning/navigation2/pull/3229>`_).
+
+Added new binary flip filter, allowing e.g. to turn off camera in sensitive areas, turn on headlights/leds/other safety things or switch operating mode when robot is inside marked on mask areas (`PR #3228 <https://github.com/ros-planning/navigation2/pull/3228>`_).

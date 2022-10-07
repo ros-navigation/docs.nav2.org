@@ -346,6 +346,7 @@ Costmap Filters Parameters
 
   costmap-plugins/keepout_filter.rst
   costmap-plugins/speed_filter.rst
+  costmap-plugins/binary_filter.rst
 
 Example
 *******

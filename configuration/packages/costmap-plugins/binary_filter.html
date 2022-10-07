@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ObstacleFootprintCritic &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <title>Binary Filter Parameters &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
@@ -16,8 +16,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="OscillationCritic" href="oscillation.html" />
-    <link rel="prev" title="GoalDistCritic" href="goal_dist.html" />
+    <link rel="next" title="Lifecycle Manager" href="../configuring-lifecycle.html" />
+    <link rel="prev" title="Speed Filter Parameters" href="speed_filter.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -477,21 +477,21 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-bt-xml.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/static.html">Static Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/range.html">Range Sensor Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="static.html">Static Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="inflation.html">Inflation Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="obstacle.html">Obstacle Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxel.html">Voxel Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="range.html">Range Sensor Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/speed_filter.html">Speed Filter Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/binary_filter.html">Binary Filter Parameters</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="keepout_filter.html">Keepout Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="speed_filter.html">Speed Filter Parameters</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Binary Filter Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#example">Example</a></li>
@@ -540,7 +540,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/controller.html">DWB Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/iterator.html">XYTheta Iterator</a></li>
@@ -553,17 +553,17 @@
 <li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="base_obstacle.html">BaseObstacleCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="goal_align.html">GoalAlignCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="goal_dist.html">GoalDistCritic</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ObstacleFootprintCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="oscillation.html">OscillationCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="path_align.html">PathAlignCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="path_dist.html">PathDistCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="prefer_forward.html">PreferForwardCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="rotate_to_goal.html">RotateToGoalCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="twirling.html">TwirlingCritic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/obstacle_footprint.html">ObstacleFootprintCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/oscillation.html">OscillationCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/path_align.html">PathAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/path_dist.html">PathDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/prefer_forward.html">PreferForwardCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/rotate_to_goal.html">RotateToGoalCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/twirling.html">TwirlingCritic</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#example">Example</a></li>
@@ -831,8 +831,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">Configuration Guide</a> &raquo;</li>
-          <li><a href="../configuring-dwb-controller.html">DWB Controller</a> &raquo;</li>
-      <li>ObstacleFootprintCritic</li>
+          <li><a href="../configuring-costmaps.html">Costmap 2D</a> &raquo;</li>
+      <li>Binary Filter Parameters</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -841,16 +841,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="obstaclefootprintcritic">
-<span id="configuring-dwb-obstacle-footprint"></span><h1>ObstacleFootprintCritic<a class="headerlink" href="#obstaclefootprintcritic" title="Permalink to this headline">¶</a></h1>
-<p>Scores a trajectory based on verifying all points along the robot’s footprint don’t touch an obstacle marked in the costmap.</p>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>: ObstacleFootprintCritic critic name defined in the <strong>&lt;dwb plugin&gt;.critics</strong> parameter defined in <a class="reference internal" href="../dwb-params/controller.html#dwb-controller"><span class="std std-ref">DWB Controller</span></a>.</p>
+  <div class="section" id="binary-filter-parameters">
+<span id="binary-filter"></span><h1>Binary Filter Parameters<a class="headerlink" href="#binary-filter-parameters" title="Permalink to this headline">¶</a></h1>
+<p>Binary Filter - is a Costmap Filter that publishes a boolean topic, flipping binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold. It then flips back when lower or equal.</p>
+<p>Filter space value is being calculated as: <code class="docutils literal notranslate"><span class="pre">Fv</span> <span class="pre">=</span> <span class="pre">base</span> <span class="pre">+</span> <span class="pre">multiplier</span> <span class="pre">*</span> <span class="pre">mask_value</span></code>, where <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> are being published in a filter info by Costmap Filter Info Server. The example of usage are include: camera operating on/off to turn off cameras in sensitive areas, headlights switch on/off for moving indoors to outdoors, smart house light triggering, etc.</p>
+<img alt="../../../_images/binary_filter.png" class="align-center" src="../../../_images/binary_filter.png" />
+<p><cite>&lt;filter name&gt;</cite>: is the corresponding plugin name selected for this type.</p>
 <dl class="field-list">
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.sum_scores</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.enabled</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether it is enabled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.filter_info_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Name of the incoming <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg">CostmapFilterInfo</a> topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the <a class="reference internal" href="../configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> configuration page.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. Used when filter mask and current costmap layer are in different frames.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.default_state</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -864,14 +923,32 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><dl class="simple">
-<dt>Description</dt><dd><p>Whether to allow for scores to be summed up.</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Default state of binary filter.</p>
 </dd>
 </dl>
-</div></blockquote>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.scale</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.binary_state_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“binary_state”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic of <code class="docutils literal notranslate"><span class="pre">std_msgs::msg::Bool</span></code> type to publish binary filter state to.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;filter</span> <span class="pre">name&gt;</span></code>.flip_threshold</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
@@ -882,18 +959,35 @@
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>double</p></td>
-<td><p>1.0</p></td>
+<td><p>50.0</p></td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><dl class="simple">
-<dt>Description</dt><dd><p>Weighed scale for critic.</p>
+<dl class="simple">
+<dt>Descrioption</dt><dd><p>Threshold for binary state flipping. Filter values higher than this threshold, will set binary state to non-default.</p>
 </dd>
 </dl>
-</div></blockquote>
 </dd>
 </dl>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">filters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;binary_filter&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">binary_filter</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::BinaryFilter&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">filter_info_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/costmap_filter_info&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">default_state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
+<span class="w">      </span><span class="nt">binary_state_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/binary_state&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">flip_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50.0</span><span class="w"></span>
+</pre></div>
+</div>
 </div>
 </div>
 
