@@ -65,6 +65,10 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+
+Output Ports
+------------
+
 :follow_path_error_code:
 
   ============== =======
