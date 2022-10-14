@@ -89,7 +89,7 @@ Output Ports
   ============== =======
 
   Description
-    	Compute path to pose error code.
+    	Compute path to pose error code. See ``ComputePathToPose`` action message for the enumerated set of error codes.
 
 Example
 -------
