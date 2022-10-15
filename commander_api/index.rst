@@ -19,7 +19,7 @@ You may use this simple commander preempt commands of the same type (e.g. you ca
 
   rclpy.init()
   nav = BasicNavigator()
-  
+
   # ...
 
   nav.setInitialPose(init_pose)
@@ -76,6 +76,8 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 +---------------------------------------+----------------------------------------------------------------------------+
 | backup(backup_dist=0.15,              | Requests the robot to back up by a given distance.                         |
 | backup_speed=0.025, time_allowance=10)|                                                                            |
++---------------------------------------+----------------------------------------------------------------------------+
+| assistedTeleop(time_allowance=30)     | Requests the robot to run the assisted teleop action.                      |
 +---------------------------------------+----------------------------------------------------------------------------+
 | cancelTask()                          | Cancel an ongoing task.                                                    |
 +---------------------------------------+----------------------------------------------------------------------------+
@@ -147,6 +149,23 @@ This is a Python3 API for costmap 2d messages from the stack. It provides the ba
 +---------------------------------------+----------------------------------------------------------------------------+
 | getCostmapTimestamp()                 | Get costmap timestamp.                                                     |
 +---------------------------------------+----------------------------------------------------------------------------+
+| getCostXY(mx, my)                     | Get the cost (``np.uint8``) of a cell in the costmap using mx (``int``)    |
+|                                       | , my (``int``) of Map Coordinate.                                          |
++---------------------------------------+----------------------------------------------------------------------------+
+| getCostIdx(index)                     | Get the cost (``np.uint8``) of a cell in the costmap using index (``int``) |
++---------------------------------------+----------------------------------------------------------------------------+
+| setCost(mx, my, cost)                 | Set the cost (``np.uint8``) of a cell in the costmap using mx (``int``)    |
+|                                       | , my (``int``) of Map Coordinate.                                          |
++---------------------------------------+----------------------------------------------------------------------------+
+| mapToWorld(mx, my)                    | Get the wx (``float``) [m], wy (``float``) [m] of world coordinate XY using|
+|                                       | mx (``int``), my (``int``) of map coordinate XY                            |
++---------------------------------------+----------------------------------------------------------------------------+
+| worldToMap(wx, wy)                    | Get the mx (``int``), my (``int``) of map coordinate XY using              |
+|                                       | wx (``float``) [m], wy (``float``) [m] of world coordinate XY              |
++---------------------------------------+----------------------------------------------------------------------------+
+| getIndex(mx, my)                      | Get the index (``int``) of the cell using mx (``int``), my (``int``) of    |
+|                                       | map coordinate XY                                                          |
++---------------------------------------+----------------------------------------------------------------------------+
 
 Examples and Demos
 ******************
@@ -164,6 +183,7 @@ The ``nav2_simple_commander`` has a few examples to highlight the API functions 
 - ``example_nav_through_poses.py`` - Demonstrates the navigate through poses capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.
+- ``example_assisted_teleop.py`` - Demonstrates the assisted teleop capabilities of the navigator.
 
 The ``nav2_simple_commander`` has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:
 

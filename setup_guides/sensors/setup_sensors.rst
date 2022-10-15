@@ -505,6 +505,13 @@ Note that the parameters of the ``nav2_costmap_2d`` that we discussed in the pre
 
 After we have properly set up and launched Nav2, the ``/global_costmap`` and ``/local_costmap`` topics should now be active.
 
+.. note::  
+  To make the costmaps show up, run the 3 commands in this order
+
+  #. Launching Description Nodes, RViz and Gazebo - in logs wait for "Connected to gazebo master"
+  #. Launching slam_toolbox - in logs wait for "Registering sensor"
+  #. Launching Nav2 - in logs wait for "Creating bond timer"
+
 Visualizing Costmaps in RViz
 ----------------------------
 
