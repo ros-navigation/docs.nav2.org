@@ -18,7 +18,7 @@ Map Saver Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            2.0   
+  int            2.0
   ============== =======
 
   Description
@@ -27,9 +27,9 @@ Map Saver Parameters
 :free_thresh_default:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.25            
+  double         0.25
   ============== ==============
 
   Description
@@ -38,9 +38,9 @@ Map Saver Parameters
 :occupied_thresh_default:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.65 
+  double         0.65
   ============== =============================
 
   Description
@@ -52,20 +52,21 @@ Map Server Parameters
 :yaml_filename:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         N/A            
+  string         N/A
   ============== =============================
 
   Description
-    Path to map yaml file. Note: This parameter **must** appear in a yaml file when launched with Nav2's default launch files. It is overridable as a launch configuration ``map``, which is only possible if the ``yaml_filename`` key already exists in the yaml file. If you would like the specify your map file in yaml rather than in launch defaults or launch configurations, remove the launch default so it is not overridden in Nav2's default launch files. This is an odd quirk that exists to be able to provide users with the option to change maps at run-time on the commandline.  
+    Path to map yaml file. Note: This parameter can set either from the yaml file or using the launch configuration parameter ``map``. If we set it on launch commandline / launch configuration, we do override the yaml default. If not set on launch commandline or by a launch configuration default, we don't override a yaml default. If you would like the specify your map file in yaml rather than in launch defaults or launch configurations, remove the launch default so it is not overridden in Nav2's default launch files.
+
 
 :topic_name:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "map"            
+  string         "map"
   ============== =============================
 
   Description
@@ -74,9 +75,9 @@ Map Server Parameters
 :frame_id:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "map"            
+  string         "map"
   ============== =============================
 
   Description
