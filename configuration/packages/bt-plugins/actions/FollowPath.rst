@@ -78,7 +78,7 @@ Output Ports
   ============== =======
 
   Description
-    	Follow path error code.
+    	Follow path error code. See ``FollowPath`` action for the enumerated set of error code definitions.
 
 Example
 -------
