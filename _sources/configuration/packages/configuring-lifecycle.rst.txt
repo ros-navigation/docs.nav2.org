@@ -39,11 +39,11 @@ Parameters
 
 :bond_timeout:
 
-  ==== =======
-  Type Default
-  ---- -------
-  int  4.0
-  ==== =======
+  ====== =======
+  Type   Default
+  ------ -------
+  double 4.0
+  ====== =======
 
   Description
     Timeout to transition down all lifecycle nodes of this manager if a server is non-responsive, in seconds. Set to ``0`` to deactivate. Recommended to be always larger than 0.3s for all-local node discovery. Note: if a server cleanly exits the manager will immediately be notified.
