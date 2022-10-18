@@ -70,7 +70,7 @@ Composition is another new concept in ROS 2 that was introduced to reduce the me
    More information on Composition can be found `here <https://docs.ros.org/en/rolling/Tutorials/Intermediate/Composition.html>`_.
 
 In the following section, we give an example on how to add a new Nav2 server, which we notionally call the ``route_server``, to our system. This can be done either through manual composition or dynamic composition. 
-However, the nav2 stack does not currently have implement of manual composition but an example can be found '`here <https://github.com/ros2/demos/blob/rolling/composition/src/manual_composition.cpp>`_.
+Currently, the nav2 stack does not have an implementation of manual composition but an example can be found '`here <https://github.com/ros2/demos/blob/rolling/composition/src/manual_composition.cpp>`_.
 
 
 Dynamic Composition
