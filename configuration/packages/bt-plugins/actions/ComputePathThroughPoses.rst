@@ -80,6 +80,17 @@ Output Ports
   Description
     	Path created by action server. Takes in a blackboard variable, e.g. "{path}".
 
+:compute_path_through_poses_error_code:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  int16          N/A  
+  ============== =======
+
+  Description
+    	Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+
 Example
 -------
 
