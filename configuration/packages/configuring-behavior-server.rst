@@ -16,7 +16,7 @@ Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Laun
 Behavior Server Parameters
 **************************
 
-:costmap_topic:
+:local_costmap_topic:
 
   ============== ===========================
   Type           Default
@@ -25,9 +25,20 @@ Behavior Server Parameters
   ============== ===========================
 
   Description
-    Raw costmap topic for collision checking.
+    Raw costmap topic for collision checking on the local costmap.
 
-:footprint_topic:
+:global_costmap_topic:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  string         "global_costmap/costmap_raw"
+  ============== ===========================
+
+  Description
+    Raw costmap topic for collision checking on the global costmap.
+
+:local_footprint_topic:
 
   ============== ===================================
   Type           Default
@@ -36,7 +47,18 @@ Behavior Server Parameters
   ============== ===================================
 
   Description
-    Topic for footprint in the costmap frame.
+    Topic for footprint in the local costmap frame.
+
+:global_footprint_topic:
+
+  ============== ===================================
+  Type           Default
+  -------------- -----------------------------------
+  string         "global_costmap/published_footprint"
+  ============== ===================================
+
+  Description
+    Topic for footprint in the global costmap frame.
 
 :cycle_frequency:
 
@@ -255,8 +277,10 @@ Example
 
     recoveries_server:
       ros__parameters:
-        costmap_topic: local_costmap/costmap_raw
-        footprint_topic: local_costmap/published_footprint
+        local_costmap_topic: local_costmap/costmap_raw
+        local_footprint_topic: local_costmap/published_footprint
+        global_costmap_topic: global_costmap/costmap_raw
+        global_footprint_topic: global_costmap/published_footprint
         cycle_frequency: 10.0
         behavior_plugins: ["spin", "backup", "drive_on_heading", "wait", "assisted_teleop"]
         spin:

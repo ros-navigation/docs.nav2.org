@@ -223,13 +223,15 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below t
 
 with
 
-.. code-block:: text
+.. code-block:: yaml
 
   behavior_server: (Humble and newer)
   recoveries_server: (Galactic and earlier)
     ros__parameters:
-      costmap_topic: local_costmap/costmap_raw
-      footprint_topic: local_costmap/published_footprint
+      local_costmap_topic: local_costmap/costmap_raw
+      local_footprint_topic: local_costmap/published_footprint
+      global_costmap_topic: global_costmap/costmap_raw
+      global_footprint_topic: global_costmap/published_footprint
       cycle_frequency: 10.0
       behavior_plugins: ["spin", "backup", "wait","send_sms"] (Humble and newer)
       recovery_plugins: ["spin", "backup", "wait","send_sms"] (Galactic and earlier)
