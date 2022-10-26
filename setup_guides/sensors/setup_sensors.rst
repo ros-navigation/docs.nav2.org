@@ -373,7 +373,7 @@ In this subsection, we will show an example configuration of ``nav2_costmap_2d``
         height: 3
         resolution: 0.05
         robot_radius: 0.22
-        plugins: ["voxel_layer", "inflation_layer"]
+        plugins: ["voxel_layer", "inflation_layer", "static_layer"]
         voxel_layer:
           plugin: "nav2_costmap_2d::VoxelLayer"
           enabled: True
