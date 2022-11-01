@@ -170,11 +170,12 @@ Then you can deduce why it crashed.
 When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
 It may ask you if you want to kill some threads at the end, say yes.
 
-From Nav2 Bringup
-=================
+From Large Project
+==================
 
 Working with launch files with multiple nodes is a little different so you can interact with your GDB session without being bogged down by other logging in the same terminal.
 For this reason, when working with larger launch files, its good to pull out the specific server you're interested in and launching it seperately.
+These instructions are targeting Nav2, but are applicable to any large project with many nodes of any type in a series of launch file(s).
 
 As such, for this case, when you see a crash you'd like to investigate, its beneficial to separate this server from the others.
 
@@ -204,6 +205,35 @@ Alternatively, if you server of interest is being launched in these files direct
   We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be ``--ros-args -r __node:=<node_name> --params-file /absolute/path/to/params.yaml`` (as a template).
 
 Once your server crashes, you'll see a prompt like below in the specific server's terminal. At this point you can now get a backtrace.
+
+.. code-block:: bash
+
+  (gdb)
+
+In this session, type ``backtrace`` and it will provide you with a backtrace.
+Copy this for your needs.
+See the example trace in the section above for an example.
+
+These traces take some time to get used to reading, but in general, start at the bottom and follow it up the stack until you see the line it crashed on.
+Then you can deduce why it crashed.
+When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
+It may ask you if you want to kill some threads at the end, say yes.
+
+From Nav2 Bringup
+=================
+
+To debug directly from the nav2 bringup launch files you may want to do the following:
+
+- Add ``prefix=['xterm -e gdb -ex run --args']`` to the non-composed node in the appropriate launch file. 
+
+- Recompile the package of interest with ``-g`` flag for debug symbols.
+
+- Launch normally with ``ros2 launch nav2_bringup tb3_simulation_launch.py use_composition:=False``. A seperate xterm window will open with the proccess of intrest running in gdb.
+
+.. note::
+  Turning off composition has serious performance impacts. If this is important to you please follow "From Large Project". 
+
+Once your server crashes, you'll see a prompt like below in the xterm window. At this point you can now get a backtrace.
 
 .. code-block:: bash
 

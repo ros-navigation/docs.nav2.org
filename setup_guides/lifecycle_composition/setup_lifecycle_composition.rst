@@ -3,7 +3,7 @@
 Setting Up Lifecycle and Composition Nodes
 ##########################################
 
-In this guide, we will discuss two new concepts in ROS 2, namely Lifecycle and Composition. In the first section of this guide, we discuss the concept of Lifecyle in Nav2 and how to add a lifecycle nodes to make use of it. In the second section, we discuss the purpose of Composition and how to implement it manually and dynamically in Nav2.
+In this guide, we will discuss two new concepts in ROS 2, namely Lifecycle and Composition. In the first section of this guide, we discuss the concept of Lifecyle in Nav2 and how to add a lifecycle nodes to make use of it. In the second section, we discuss the purpose of Composition and how to implement it in Nav2.
 
 
 Lifecycle
@@ -67,51 +67,10 @@ Composition
 Composition is another new concept in ROS 2 that was introduced to reduce the memory and CPU resources by putting multiple nodes in a single process. In Nav2, Composition can be used to compose all Nav2 nodes in a single process instead of launching them separately. This is useful for deployment on embedded systems where developers need to optimize resource usage.
 
 .. seealso::
-   More information on Composition can be found `here <https://docs.ros.org/en/galactic/Tutorials/Composition.html>`_.
+   More information on Composition can be found `here <https://docs.ros.org/en/rolling/Tutorials/Intermediate/Composition.html>`_.
 
-In the following subsections, we give an example on how to add a new Nav2 server, which we notionally call the ``route_server``, to our system. This can be done either through manual composition or dynamic composition.
+In the following section, we give an example on how to add a new Nav2 server, which we notionally call the ``route_server``, to our system.
 
-Manual Composition
-==================
-For manual composition, there is an existing manually composed bringup file, `composed_bringup.cpp <https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/src/composed_bringup.cpp>`_, in ``nav2_bringup``. You can add ``route_server`` to this existing manual composition by doing the following steps:
-
-
-1. Add the following to `composed_bringup.cpp <https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/src/composed_bringup.cpp>`_:
-
-    Add the the header file of ``route_server``.
-
-    .. code-block:: cpp
-
-        #include "nav2_route_server/route_server.hpp"
-
-    Create shared pointer ``route_node`` and add it to ``navigation_node_names`` to transition up with the lifecycle manager, if a lifecycle node.
-
-
-    .. code-block:: cpp
-
-         auto route_node = std::make_shared<nav2_route_server::RouteServer>();
-         navigation_node_names.push_back(route_node->get_name());
-
-
-    Add ``route_node`` to ``threads`` to create single thread executor for ``route_node``.
-
-    .. code-block:: cpp
-
-         threads.push_back(create_spin_thread(route_node));
-
-
-2. Add the package containing the server as a dependency to your ``package.xml`` file.
-
-    .. code-block:: xml
-
-        <exec_depend>nav2_route_server</exec_depend>
-
-3. Include the package in the ``CMakeLists.txt`` file.
-
-    .. code-block:: xml
-
-        find_package(nav2_route_server REQUIRED)
-        set(dependencies nav2_route_server)
 
 Dynamic Composition
 ===================
