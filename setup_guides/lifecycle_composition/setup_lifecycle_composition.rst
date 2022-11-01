@@ -3,7 +3,7 @@
 Setting Up Lifecycle and Composition Nodes
 ##########################################
 
-In this guide, we will discuss two new concepts in ROS 2, namely Lifecycle and Composition. In the first section of this guide, we discuss the concept of Lifecyle in Nav2 and how to add a lifecycle nodes to make use of it. In the second section, we discuss the purpose of Composition and how to implement it manually and dynamically in Nav2.
+In this guide, we will discuss two new concepts in ROS 2, namely Lifecycle and Composition. In the first section of this guide, we discuss the concept of Lifecyle in Nav2 and how to add a lifecycle nodes to make use of it. In the second section, we discuss the purpose of Composition and how to implement it in Nav2.
 
 
 Lifecycle
@@ -69,8 +69,7 @@ Composition is another new concept in ROS 2 that was introduced to reduce the me
 .. seealso::
    More information on Composition can be found `here <https://docs.ros.org/en/rolling/Tutorials/Intermediate/Composition.html>`_.
 
-In the following section, we give an example on how to add a new Nav2 server, which we notionally call the ``route_server``, to our system. This can be done either through manual composition or dynamic composition. 
-Currently, the nav2 stack does not have an implementation of manual composition but an example can be found '`here <https://github.com/ros2/demos/blob/rolling/composition/src/manual_composition.cpp>`_.
+In the following section, we give an example on how to add a new Nav2 server, which we notionally call the ``route_server``, to our system.
 
 
 Dynamic Composition
