@@ -223,7 +223,7 @@ From Nav2 Bringup
 
 To debug directly from the nav2 bringup launch files you may want to do the following:
 
-- Add ``prefix=['xterm -e gdb -ex run --args']`` to the non-composed node. 
+- Add ``prefix=['xterm -e gdb -ex run --args']`` to the non-composed node in the appropriate launch file. 
 
 - Recompile the package of interest with ``-g`` flag for debug symbols.
 
