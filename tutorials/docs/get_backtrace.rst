@@ -232,7 +232,20 @@ To debug directly from the nav2 bringup launch files you may want to do the foll
 .. note::
   Turning off composition has serious performance impacts. If this is important to you please follow "From Large Project". 
 
+Once your server crashes, you'll see a prompt like below in the xterm window. At this point you can now get a backtrace.
+
 .. code-block:: bash
+
+  (gdb)
+
+In this session, type ``backtrace`` and it will provide you with a backtrace.
+Copy this for your needs.
+See the example trace in the section above for an example.
+
+These traces take some time to get used to reading, but in general, start at the bottom and follow it up the stack until you see the line it crashed on.
+Then you can deduce why it crashed.
+When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
+It may ask you if you want to kill some threads at the end, say yes.
 
 Automatic backtrace on crash
 ============================
