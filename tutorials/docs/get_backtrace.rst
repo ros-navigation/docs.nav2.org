@@ -230,7 +230,7 @@ To debug directly from the nav2 bringup launch files you may want to do the foll
 - Launch normally with ``ros2 launch nav2_bringup tb3_simulation_launch.py use_composition:=False``. A seperate xterm window will open with the proccess of intrest running in gdb.
 
 .. note::
-  Turning off compositio has serious performance impacts. If this is important to you please follow "From Large Project". 
+  Turning off composition has serious performance impacts. If this is important to you please follow "From Large Project". 
 
 .. code-block:: bash
 
