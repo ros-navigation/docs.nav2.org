@@ -57,6 +57,10 @@ The following errors codes are supported (with more to come as necessary): Unkno
 
 The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, No Valid Path Found and No Waypoints given.
 
+`PR #3227 <https://github.com/ros-planning/navigation2/pull/3227>`_ updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior's blackboard for use in contextual error handling in the autonomy application. 
+
+The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control. 
+
 Costmap Filters
 ***************
 

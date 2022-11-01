@@ -885,6 +885,8 @@
 <p>The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, or No Valid Path Found.</p>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3248">PR #3248</a> updates the compute path through poses action to report planning failures. These exceptions get reported back to the planner server which in turn places a error code on the Behavior Tree Navigator’s blackboard for use in contextual error handling in the autonomy application.</p>
 <p>The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, No Valid Path Found and No Waypoints given.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3227">PR #3227</a> updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior’s blackboard for use in contextual error handling in the autonomy application.</p>
+<p>The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control.</p>
 </div>
 <div class="section" id="costmap-filters">
 <h2>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this headline">¶</a></h2>

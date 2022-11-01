@@ -65,6 +65,21 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+
+Output Ports
+------------
+
+:follow_path_error_code:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  int16          N/A  
+  ============== =======
+
+  Description
+    	Follow path error code. See ``FollowPath`` action for the enumerated set of error code definitions.
+
 Example
 -------
 
