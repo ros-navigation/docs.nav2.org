@@ -170,7 +170,7 @@ Then you can deduce why it crashed.
 When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
 It may ask you if you want to kill some threads at the end, say yes.
 
-From Nav2 Bringup
+From Large Project
 =================
 
 Working with launch files with multiple nodes is a little different so you can interact with your GDB session without being bogged down by other logging in the same terminal.
@@ -217,6 +217,22 @@ These traces take some time to get used to reading, but in general, start at the
 Then you can deduce why it crashed.
 When you are done with GDB, type ``quit`` and it will exit the session and kill any processes still up.
 It may ask you if you want to kill some threads at the end, say yes.
+
+From Nav2 Bringup
+=================
+
+To debug directly from the nav2 bringup launch files you may want to do the following:
+
+- Add ``prefix=['xterm -e gdb -ex run --args']`` to the non-composed node. 
+
+- Recompile the package of interest with ``-g`` flag for debug symbols.
+
+- Launch normally with ``ros2 launch nav2_bringup tb3_simulation_launch.py use_composition:=False``. A seperate xterm window will open with the proccess of intrest running in gdb.
+
+.. note::
+  Turning off compositio has serious performance impacts. If this is important to you please follow "From Large Project". 
+
+.. code-block:: bash
 
 Automatic backtrace on crash
 ============================
