@@ -209,6 +209,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#preliminaries">Preliminaries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#from-a-node">From a Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#from-a-launch-file">From a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-large-project">From Large Project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#from-nav2-bringup">From Nav2 Bringup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
 </ul>
@@ -978,8 +979,8 @@ Then you can deduce why it crashed.
 When you are done with GDB, type <code class="docutils literal notranslate"><span class="pre">quit</span></code> and it will exit the session and kill any processes still up.
 It may ask you if you want to kill some threads at the end, say yes.</p>
 </div>
-<div class="section" id="from-nav2-bringup">
-<h2>From Nav2 Bringup<a class="headerlink" href="#from-nav2-bringup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="from-large-project">
+<h2>From Large Project<a class="headerlink" href="#from-large-project" title="Permalink to this headline">¶</a></h2>
 <p>Working with launch files with multiple nodes is a little different so you can interact with your GDB session without being bogged down by other logging in the same terminal.
 For this reason, when working with larger launch files, its good to pull out the specific server you’re interested in and launching it seperately.
 These instructions are targeting Nav2, but are applicable to any large project with many nodes of any type in a series of launch file(s).</p>
@@ -1004,6 +1005,30 @@ These instructions are targeting Nav2, but are applicable to any large project w
 <p>We understand this can be a pain, so it might encourage you to rather have each node possible as a separately included launch file to make debugging easier. An example set of arguments might be <code class="docutils literal notranslate"><span class="pre">--ros-args</span> <span class="pre">-r</span> <span class="pre">__node:=&lt;node_name&gt;</span> <span class="pre">--params-file</span> <span class="pre">/absolute/path/to/params.yaml</span></code> (as a template).</p>
 </div>
 <p>Once your server crashes, you’ll see a prompt like below in the specific server’s terminal. At this point you can now get a backtrace.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span>
+</pre></div>
+</div>
+<p>In this session, type <code class="docutils literal notranslate"><span class="pre">backtrace</span></code> and it will provide you with a backtrace.
+Copy this for your needs.
+See the example trace in the section above for an example.</p>
+<p>These traces take some time to get used to reading, but in general, start at the bottom and follow it up the stack until you see the line it crashed on.
+Then you can deduce why it crashed.
+When you are done with GDB, type <code class="docutils literal notranslate"><span class="pre">quit</span></code> and it will exit the session and kill any processes still up.
+It may ask you if you want to kill some threads at the end, say yes.</p>
+</div>
+<div class="section" id="from-nav2-bringup">
+<h2>From Nav2 Bringup<a class="headerlink" href="#from-nav2-bringup" title="Permalink to this headline">¶</a></h2>
+<p>To debug directly from the nav2 bringup launch files you may want to do the following:</p>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">prefix=['xterm</span> <span class="pre">-e</span> <span class="pre">gdb</span> <span class="pre">-ex</span> <span class="pre">run</span> <span class="pre">--args']</span></code> to the non-composed node in the appropriate launch file.</p></li>
+<li><p>Recompile the package of interest with <code class="docutils literal notranslate"><span class="pre">-g</span></code> flag for debug symbols.</p></li>
+<li><p>Launch normally with <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">nav2_bringup</span> <span class="pre">tb3_simulation_launch.py</span> <span class="pre">use_composition:=False</span></code>. A seperate xterm window will open with the proccess of intrest running in gdb.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Turning off composition has serious performance impacts. If this is important to you please follow “From Large Project”.</p>
+</div>
+<p>Once your server crashes, you’ll see a prompt like below in the xterm window. At this point you can now get a backtrace.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span>
 </pre></div>
 </div>
