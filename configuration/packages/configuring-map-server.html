@@ -929,7 +929,7 @@ It also implements a map saver server which will run in the background and save 
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Path to map yaml file. Note: This parameter <strong>must</strong> appear in a yaml file when launched with Nav2’s default launch files. It is overridable as a launch configuration <code class="docutils literal notranslate"><span class="pre">map</span></code>, which is only possible if the <code class="docutils literal notranslate"><span class="pre">yaml_filename</span></code> key already exists in the yaml file. If you would like the specify your map file in yaml rather than in launch defaults or launch configurations, remove the launch default so it is not overridden in Nav2’s default launch files. This is an odd quirk that exists to be able to provide users with the option to change maps at run-time on the commandline.</p>
+<dt>Description</dt><dd><p>Path to map yaml file. Note: This parameter can set either from the yaml file or using the launch configuration parameter <code class="docutils literal notranslate"><span class="pre">map</span></code>. If we set it on launch commandline / launch configuration default, we override the yaml default. If you would like the specify your map file in yaml, remove the launch default so it is not overridden in Nav2’s default launch files.</p>
 </dd>
 </dl>
 </dd>
