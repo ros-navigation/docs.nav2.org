@@ -9,9 +9,14 @@ Source code on Github_.
 
 The Savitzky-Golay Smoother is a Smoother Server plugin that will take in an input path and smooth it using a simple and fast smoothing technique based on `Savitzky Golay Filters <https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter>`_. It uses a digital signal processing technique designed to reduce noise distorting a reference signal, in this case, a path.
 
-It is useful for all types of planners, but particularly in NavFn to remove tiny artifacts that can occur near the end of paths or Theta* to slightly soften the transition between Line of Sight line segments **without** modifying the primary path. It is very fast (<< 1ms) so is a recommended default for planners that may result in slight discontinuities. It also provides estimated orientation vectors of the path points after smoothing.
+It is useful for all types of planners, but particularly in NavFn to remove tiny artifacts that can occur near the end of paths or Theta* to slightly soften the transition between Line of Sight line segments **without** modifying the primary path. It is very fast (<< 1ms) so is a recommended default for planners that may result in slight discontinuities. However, it will not smooth out larger scale discontinuities, oscillations, or improve smoothness. For those, use one of the other provided smoother plugins. It also provides estimated orientation vectors of the path points after smoothing.
 
-This algorithm is deterministic and low-parameter.
+This algorithm is deterministic and low-parameter. In the below image, some odd points from NavFn's gradient descent are smoothed out by the smoother in the middle and end of a given path, while otherwise retaining the exact character of the path.
+
+.. image:: images/savitzky-golay-example.png
+    :height: 593px
+    :width: 698px
+    :align: center
 
 Savitzky-Golay Smoother Parameters
 **********************************
