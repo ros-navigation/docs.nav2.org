@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planner Server &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Savitzky-Golay Smoother &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
@@ -16,8 +16,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="NavFn Planner" href="configuring-navfn.html" />
-    <link rel="prev" title="Lifecycle Manager" href="configuring-lifecycle.html" />
+    <link rel="next" title="Constrained smoother" href="configuring-constrained-smoother.html" />
+    <link rel="prev" title="Simple Smoother" href="configuring-simple-smoother.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -490,10 +490,10 @@
 <li class="toctree-l3"><a class="reference internal" href="configuring-lifecycle.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Planner Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#default-plugins">Default Plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-planner-server.html">Planner Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#default-plugins">Default Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-planner-server.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-navfn.html">NavFn Planner</a><ul>
@@ -599,9 +599,9 @@
 <li class="toctree-l3"><a class="reference internal" href="configuring-simple-smoother.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuring-savitzky-golay-smoother.html">Savitzky-Golay Smoother</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuring-savitzky-golay-smoother.html#savitzky-golay-smoother-parameters">Savitzky-Golay Smoother Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuring-savitzky-golay-smoother.html#example">Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Savitzky-Golay Smoother</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#savitzky-golay-smoother-parameters">Savitzky-Golay Smoother Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-constrained-smoother.html">Constrained smoother</a><ul>
@@ -837,7 +837,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Configuration Guide</a></li>
-      <li class="breadcrumb-item active">Planner Server</li>
+      <li class="breadcrumb-item active">Savitzky-Golay Smoother</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -846,94 +846,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="planner-server">
-<span id="configuring-planner-server"></span><h1>Planner Server<a class="headerlink" href="#planner-server" title="Permalink to this headline">¶</a></h1>
-<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_planner">Github</a>.</p>
-<p>The Planner Server implements the server for handling the planner requests for the stack and host a map of plugin implementations.
-It will take in a goal and a planner plugin name to use and call the appropriate plugin to compute a path to the goal.</p>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="savitzky-golay-smoother">
+<span id="configuring-savitzky-golay-filter-smoother"></span><h1>Savitzky-Golay Smoother<a class="headerlink" href="#savitzky-golay-smoother" title="Permalink to this headline">¶</a></h1>
+<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_smoother">Github</a>.</p>
+<p>The Savitzky-Golay Smoother is a Smoother Server plugin that will take in an input path and smooth it using a simple and fast smoothing technique based on <a class="reference external" href="https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter">Savitzky Golay Filters</a>. It uses a digital signal processing technique designed to reduce noise distorting a reference signal, in this case, a path.</p>
+<p>It is useful for all types of planners, but particularly in NavFn to remove tiny artifacts that can occur near the end of paths or Theta* to slightly soften the transition between Line of Sight line segments <strong>without</strong> modifying the primary path. It is very fast (&lt;&lt; 1ms) so is a recommended default for planners that may result in slight discontinuities. However, it will not smooth out larger scale discontinuities, oscillations, or improve smoothness. For those, use one of the other provided smoother plugins. It also provides estimated orientation vectors of the path points after smoothing.</p>
+<p>This algorithm is deterministic and low-parameter. In the below image, some odd points from NavFn’s gradient descent are smoothed out by the smoother in the middle and end of a given path, while otherwise retaining the exact character of the path.</p>
+<img alt="../../_images/savitzky-golay-example.png" class="align-center" src="../../_images/savitzky-golay-example.png" />
+<div class="section" id="savitzky-golay-smoother-parameters">
+<h2>Savitzky-Golay Smoother Parameters<a class="headerlink" href="#savitzky-golay-smoother-parameters" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list">
-<dt class="field-odd">planner_plugins</dt>
+<dt class="field-odd">do_refinement</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
-<td><p>[‘GridBased’]</p></td>
-</tr>
-</tbody>
-</table>
-<dl>
-<dt>Description</dt><dd><p>List of Mapped plugin names for parameters and processing requests.</p>
-</dd>
-<dt>Note</dt><dd><p>Each plugin namespace defined in this list needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
-<p>Example:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">planner_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;GridBased&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">    </span><span class="nt">GridBased</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_navfn_planner/NavfnPlanner&quot;</span><span class="w"></span>
-</pre></div>
-</div>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">expected_planner_frequency</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 64%" />
-<col style="width: 36%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>[20.0]</p></td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Expected planner frequency. If the current frequency is less than the expected frequency, display the warning message.</p>
+<dt>Description</dt><dd><p>Whether to smooth the smoothed results <code class="docutils literal notranslate"><span class="pre">refinement_num</span></code> times to get an improved result.</p>
 </dd>
 </dl>
 </dd>
-</dl>
-</div>
-<div class="section" id="default-plugins">
-<h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
-<p>When the <code class="code docutils literal notranslate"><span class="pre">planner_plugins</span></code> parameter is not overridden, the following default plugins are loaded:</p>
-<blockquote>
-<div><table class="docutils align-default">
+<dt class="field-even">refinement_num</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col style="width: 24%" />
-<col style="width: 76%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>Namespace</p></td>
-<td><p>Plugin</p></td>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>“GridBased”</p></td>
-<td><p>“nav2_navfn_planner/NavfnPlanner”</p></td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>2</p></td>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
+<dl class="simple">
+<dt>Description</dt><dd><p>Number of times to recursively smooth a segment</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">smoother_server</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">expected_planner_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">planner_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;GridBased&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">    </span><span class="nt">GridBased</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nav2_navfn_planner/NavfnPlanner&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_costmap/costmap_raw</span><span class="w"></span>
+<span class="w">    </span><span class="nt">footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_costmap/published_footprint</span><span class="w"></span>
+<span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w"></span>
+<span class="w">    </span><span class="nt">transform_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">smoother_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;savitzky_golay_smoother&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">savitzky_golay_smoother</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_smoother::SavitzkyGolaySmoother&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">do_refinement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">refinement_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
