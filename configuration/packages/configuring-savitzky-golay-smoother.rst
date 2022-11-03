@@ -14,8 +14,6 @@ It is useful for all types of planners, but particularly in NavFn to remove tiny
 This algorithm is deterministic and low-parameter. In the below image, some odd points from NavFn's gradient descent are smoothed out by the smoother in the middle and end of a given path, while otherwise retaining the exact character of the path.
 
 .. image:: images/savitzky-golay-example.png
-    :height: 593px
-    :width: 698px
     :align: center
 
 Savitzky-Golay Smoother Parameters
