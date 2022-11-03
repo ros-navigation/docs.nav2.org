@@ -66,8 +66,8 @@ Costmap Filters
 | `Speed Filter`_    | Alexey Merzlyakov  | Limits maximum velocity of robot  |
 |                    |                    | in speed restriction areas        |
 +--------------------+--------------------+-----------------------------------+
-| `Binary Filter`_   | Alexey Merzlyakov  | Enables binary  (boolean) mask    |
-|                    |                    |  behavior to trigger actions.     |
+| `Binary Filter`_   | Alexey Merzlyakov  | Enables binary (boolean) mask     |
+|                    |                    | behavior to trigger actions.      |
 +--------------------+--------------------+-----------------------------------+
 
 .. _Keepout Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
