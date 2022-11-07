@@ -55,6 +55,32 @@ You may wish to integrate your own nodes into the Nav2 framework or add new life
 
 In the snippet above, the nodes to be handled by the Lifecycle Manager are set using the ``node_names`` parameter. The ``node_names`` parameter takes in an ordered list of nodes to bringup through the Lifecycle transition. As shown in the snippet, the ``node_names`` parameter takes in ``lifecycle_nodes`` which contains the list of nodes to be added to the Lifecycle Manager. The Lifecycle Manager implements bringup transitions (``Configuring`` and ``Activating``) to the nodes one-by-one and in order, while the nodes are processed in reverse order for shutdown transitions. Hence, the ``sensor_driver`` is listed first before the other navigation servers so that the sensor data is available before the navigation servers are activated.
 
+Your nav2 server may also wish to return a error code. It is important to note that error codes from 0-99999 are reserved for internal nav2 servers. All servers are offest by 1000. The table below shows the current servers along with the expected structure. 
+
+
++-------------------------------------+------------------------+
+| Server Name                         | Error Code Range       |
++=====================================+========================+
+| `Controller Server`_                | 0-999                  |
++-------------------------------------+------------------------+
+| `Planner Server`_                   | 1000-1999              |
++-------------------------------------+------------------------+
+| `Planner Server`_                   | 2000-2999              |
++-------------------------------------+------------------------+
+| ...                                 | ...                    |
++-------------------------------------+------------------------+
+| Last Nav2 Server                    | 99000-99999            |
++-------------------------------------+------------------------+
+| First External Server               | 100000-100999          |
++-------------------------------------+------------------------+
+| ...                                 | ...                    |
++-------------------------------------+------------------------+
+
+.. _Controller Server: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/src/controller_server.cpp
+.. _Planner Server: https://github.com/ros-planning/navigation2/blob/main/nav2_planner/src/planner_server.cpp
+
+
+
 Two other parameters of the Lifecycle Manager are ``autostart`` and ``bond_timeout``. Set ``autostart`` to ``true`` if you want to set the transition nodes to the ``Active`` state on startup. Otherwise, you will need to manually trigger Lifecycle Manager to transition up the system. The ``bond_timeout`` sets the waiting time to decide when to transition down all of the nodes if a node is not responding.
 
 .. note::
