@@ -73,6 +73,6 @@ Savitzky-Golay Smoother
 
 Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother server plugin list. See the configuration guide :ref:`configuring_savitzky_golay_filter_smoother` for more details.
 
-Set Map yaml file path for mapserver node
-*****************************************
-`PR #3174 <https://github.com/ros-planning/navigation2/pull/3174>`_ adds a way to set the path to map yaml file for the mapserver node either from the yaml file or using the launch configuration parameter ``map`` giving priority to the launch configuration parameter.
+Changes to Map yaml file path for map_server node in Launch
+***********************************************************
+`PR #3174 <https://github.com/ros-planning/navigation2/pull/3174>`_ adds a way to set the path to map yaml file for the map_server node either from the yaml file or using the launch configuration parameter ``map`` giving priority to the launch configuration parameter.
