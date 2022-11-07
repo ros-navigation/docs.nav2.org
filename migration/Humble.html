@@ -787,6 +787,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#feedback-for-navigation-failures">Feedback for Navigation Failures</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#savitzky-golay-smoother">Savitzky-Golay Smoother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changes-to-map-yaml-file-path-for-map-server-node-in-launch">Changes to Map yaml file path for map_server node in Launch</a></li>
 </ul>
 </li>
 </ul>
@@ -902,6 +903,10 @@
 <div class="section" id="savitzky-golay-smoother">
 <h2>Savitzky-Golay Smoother<a class="headerlink" href="#savitzky-golay-smoother" title="Permalink to this headline">¶</a></h2>
 <p>Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother server plugin list. See the configuration guide <a class="reference internal" href="../configuration/packages/configuring-savitzky-golay-smoother.html#configuring-savitzky-golay-filter-smoother"><span class="std std-ref">Savitzky-Golay Smoother</span></a> for more details.</p>
+</div>
+<div class="section" id="changes-to-map-yaml-file-path-for-map-server-node-in-launch">
+<h2>Changes to Map yaml file path for map_server node in Launch<a class="headerlink" href="#changes-to-map-yaml-file-path-for-map-server-node-in-launch" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3174">PR #3174</a> adds a way to set the path to map yaml file for the map_server node either from the yaml file or using the launch configuration parameter <code class="docutils literal notranslate"><span class="pre">map</span></code> giving priority to the launch configuration parameter. <code class="docutils literal notranslate"><span class="pre">yaml_filename</span></code> is no longer strictly required to be present in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>.</p>
 </div>
 </div>
 
