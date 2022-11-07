@@ -59,7 +59,7 @@ The following errors codes are supported (with more to come as necessary): Unkno
 
 `PR #3227 <https://github.com/ros-planning/navigation2/pull/3227>`_ updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior's blackboard for use in contextual error handling in the autonomy application.
 
-The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control. 
+The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control.
 
 Costmap Filters
 ***************
@@ -74,5 +74,5 @@ Savitzky-Golay Smoother
 Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother server plugin list. See the configuration guide :ref:`configuring_savitzky_golay_filter_smoother` for more details.
 
 Set Map yaml file path for mapserver node
-***********************
+*****************************************
 `PR #3174 <https://github.com/ros-planning/navigation2/pull/3174>`_ adds a way to set the path to map yaml file for the mapserver node either from the yaml file or using the launch configuration parameter ``map`` giving priority to the launch configuration parameter.
