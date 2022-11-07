@@ -15,7 +15,7 @@ Removed use_sim_time from yaml
 
 Run-time Speed up of Smac Planner
 *********************************
-The core data structure of the graph implementation in the Smac Planner framework was swapped out in `PR 3201 <https://github.com/ros-planning/navigation2/pull/3201>`_ to using a specialized unordered map implementation. This speeds up the planner by 10% on trivial requests and reports up to 30% on complex plans that involve numerous rehashings. 
+The core data structure of the graph implementation in the Smac Planner framework was swapped out in `PR 3201 <https://github.com/ros-planning/navigation2/pull/3201>`_ to using a specialized unordered map implementation. This speeds up the planner by 10% on trivial requests and reports up to 30% on complex plans that involve numerous rehashings.
 
 Simple Commander Python API
 ***************************
@@ -29,7 +29,7 @@ Smac Planner Start Pose Included in Path
 Parameterizable Collision Checking in RPP
 *****************************************
 
-`PR 3204 <https://github.com/ros-planning/navigation2/pull/3204>`_ adds makes collision checking for RPP optional (default on). 
+`PR 3204 <https://github.com/ros-planning/navigation2/pull/3204>`_ adds makes collision checking for RPP optional (default on).
 
 Expaned Planner Benchmark Tests
 *******************************
@@ -57,9 +57,9 @@ The following errors codes are supported (with more to come as necessary): Unkno
 
 The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, No Valid Path Found and No Waypoints given.
 
-`PR #3227 <https://github.com/ros-planning/navigation2/pull/3227>`_ updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior's blackboard for use in contextual error handling in the autonomy application. 
+`PR #3227 <https://github.com/ros-planning/navigation2/pull/3227>`_ updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior's blackboard for use in contextual error handling in the autonomy application.
 
-The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control. 
+The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control.
 
 Costmap Filters
 ***************
@@ -72,3 +72,7 @@ Savitzky-Golay Smoother
 ***********************
 
 Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother server plugin list. See the configuration guide :ref:`configuring_savitzky_golay_filter_smoother` for more details.
+
+Changed way to set Map yaml file path for mapserver node
+***********************
+`PR #3174 <https://github.com/ros-planning/navigation2/pull/3174>`_ adds a way to set the Path to map yaml file for the mapserver node either from the yaml file or using the launch configuration parameter ``map`` giving priority to the launch configuration parameter.
