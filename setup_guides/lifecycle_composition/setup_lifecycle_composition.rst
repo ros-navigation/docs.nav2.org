@@ -1,15 +1,16 @@
 .. _lifecycle_composition:
 
-Setting Up Lifecycle and Composition Nodes
-##########################################
+Add New Nav2 Task Server 
+##########################
 
-In this guide, we will discuss two new concepts in ROS 2, namely Lifecycle and Composition. In the first section of this guide, we discuss the concept of Lifecyle in Nav2 and how to add a lifecycle nodes to make use of it. In the second section, we discuss the purpose of Composition and how to implement it in Nav2.
+A nav2 task server consists of server side logic to complete different types of requests. In this guide, we will discuss the core components needed to add a nav2 task server.
 
 
-Lifecycle
-**********
 
-Lifecycle is introduced in ROS 2 to systematically manage the bringup and shutdown of the different nodes involved in the robot's operation. The use of Lifecycle nodes ensures that all nodes are successfully instantiated before they begin their execution and Nav2 shuts down all nodes if there is any unresponsive node.
+Lifecycle Nodes
+***************
+
+The Lifecycle node is the first key component of a nav2 task server. Lifecycle nodes were introduced in ROS 2 to systematically manage the bringup and shutdown of the different nodes involved in the robot's operation. The use of Lifecycle nodes ensures that all nodes are successfully instantiated before they begin their execution and Nav2 shuts down all nodes if there is any unresponsive node.
 
 
 Lifecycle nodes contain state machine transitions that enable deterministic behavior in ROS 2 servers. The Lifecycle node transitions in Nav2 are handled by the ``Lifecycle Manager``. The Lifecycle Manager transitions the states of the Lifecycle nodes and provides greater control over the state of a system.
@@ -19,8 +20,6 @@ The primary states of a Lifecycle node are ``Unconfigured``, ``Inactive``, ``Act
 
 .. seealso::
     For more information on Lifecycle management, see the article on `Managed Nodes <https://design.ros2.org/articles/node_lifecycle.html>`_.
-
-The Lifecycle node framework is heavily used by the Nav2 servers, such as the planner and controller servers which were discussed in the previous tutorial.
 
 You may wish to integrate your own nodes into the Nav2 framework or add new lifecycle nodes to your system. As an example, we will add a new notional lifecycle node ``sensor_driver``, and have it be controlled via the Nav2 Lifecycle Manager to ensure sensor feeds are available before activating navigation. You can do so by adding a ``sensor_driver`` node in your launch file and adding it to the list of nodes to be activated by the ``lifecycle_manager`` before navigation, as shown in the example below.
 
@@ -55,30 +54,6 @@ You may wish to integrate your own nodes into the Nav2 framework or add new life
 
 In the snippet above, the nodes to be handled by the Lifecycle Manager are set using the ``node_names`` parameter. The ``node_names`` parameter takes in an ordered list of nodes to bringup through the Lifecycle transition. As shown in the snippet, the ``node_names`` parameter takes in ``lifecycle_nodes`` which contains the list of nodes to be added to the Lifecycle Manager. The Lifecycle Manager implements bringup transitions (``Configuring`` and ``Activating``) to the nodes one-by-one and in order, while the nodes are processed in reverse order for shutdown transitions. Hence, the ``sensor_driver`` is listed first before the other navigation servers so that the sensor data is available before the navigation servers are activated.
 
-Your nav2 server may also wish to return a error code. It is important to note that error codes from 0-99999 are reserved for internal nav2 servers. All servers are offest by 1000. The table below shows the current servers along with the expected structure. 
-
-
-+-------------------------------------+------------------------+
-| Server Name                         | Error Code Range       |
-+=====================================+========================+
-| `Controller Server`_                | 0-999                  |
-+-------------------------------------+------------------------+
-| `Planner Server`_                   | 1000-1999              |
-+-------------------------------------+------------------------+
-| `Planner Server`_                   | 2000-2999              |
-+-------------------------------------+------------------------+
-| ...                                 | ...                    |
-+-------------------------------------+------------------------+
-| Last Nav2 Server                    | 99000-99999            |
-+-------------------------------------+------------------------+
-| First External Server               | 100000-100999          |
-+-------------------------------------+------------------------+
-| ...                                 | ...                    |
-+-------------------------------------+------------------------+
-
-.. _Controller Server: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/src/controller_server.cpp
-.. _Planner Server: https://github.com/ros-planning/navigation2/blob/main/nav2_planner/src/planner_server.cpp
-
 
 
 Two other parameters of the Lifecycle Manager are ``autostart`` and ``bond_timeout``. Set ``autostart`` to ``true`` if you want to set the transition nodes to the ``Active`` state on startup. Otherwise, you will need to manually trigger Lifecycle Manager to transition up the system. The ``bond_timeout`` sets the waiting time to decide when to transition down all of the nodes if a node is not responding.
@@ -90,7 +65,7 @@ Two other parameters of the Lifecycle Manager are ``autostart`` and ``bond_timeo
 Composition
 ***********
 
-Composition is another new concept in ROS 2 that was introduced to reduce the memory and CPU resources by putting multiple nodes in a single process. In Nav2, Composition can be used to compose all Nav2 nodes in a single process instead of launching them separately. This is useful for deployment on embedded systems where developers need to optimize resource usage.
+Composition is the second key component nav2 task servers that was introduced to reduce the memory and CPU resources by putting multiple nodes in a single process. In Nav2, Composition can be used to compose all Nav2 nodes in a single process instead of launching them separately. This is useful for deployment on embedded systems where developers need to optimize resource usage.
 
 .. seealso::
    More information on Composition can be found `here <https://docs.ros.org/en/rolling/Tutorials/Intermediate/Composition.html>`_.
@@ -98,9 +73,7 @@ Composition is another new concept in ROS 2 that was introduced to reduce the me
 In the following section, we give an example on how to add a new Nav2 server, which we notionally call the ``route_server``, to our system.
 
 
-Dynamic Composition
-===================
-In dynamic composition, we make use of the launch files to compose different servers into a single process. The process is established by the ``ComposableNodeContainer`` container that is populated with composition nodes via ``ComposableNode``. This container can then be launched and used the same as any other Nav2 node.
+We make use of the launch files to compose different servers into a single process. The process is established by the ``ComposableNodeContainer`` container that is populated with composition nodes via ``ComposableNode``. This container can then be launched and used the same as any other Nav2 node.
 
 1. Add a new ``ComposableNode()`` instance in your launch file pointing to the component container of your choice.
 
@@ -129,7 +102,64 @@ In dynamic composition, we make use of the launch files to compose different ser
 
         <exec_depend>nav2_route_server</exec_depend>
 
+
+Error codes 
+***********
+Your nav2 task server may also wish to return a error code. It is important to note that error codes from 0-99999 are reserved for internal nav2 servers with each server offset by 1000. The table below shows the current servers along with the expected error code structure.
+
+
++-------------------------------------+------------------------+
+| Server Name                         | Error Code Range       |
++=====================================+========================+
+| ...                                 | 0-999                  |
++-------------------------------------+------------------------+
+| `Controller Server`_                | 1000-1999              |
++-------------------------------------+------------------------+
+| `Planner Server`_                   | 2000-2999              |
++-------------------------------------+------------------------+
+| `Planner Server`_                   | 3000-3999              |
++-------------------------------------+------------------------+
+| ...                                 | ...                    |
++-------------------------------------+------------------------+
+| Last Nav2 task server               | 99000-99999            |
++-------------------------------------+------------------------+
+| First External Server               | 100000-100999          |
++-------------------------------------+------------------------+
+| ...                                 | ...                    |
++-------------------------------------+------------------------+
+
+.. _Controller Server: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/src/controller_server.cpp
+.. _Planner Server: https://github.com/ros-planning/navigation2/blob/main/nav2_planner/src/planner_server.cpp
+
+Error codes are attached to the action message that the server provides. A example can be seen below for the route server
+
+
+.. code-block:: bash
+
+    # Error codes
+    # Note: The expected priority order of the errors should match the message order
+    int16 NONE=0 # Reserved for NONE
+    int16 UNKNOWN=100000 # Reserved for UNKNOWN
+
+    # User Error codes below
+    int16 INVILAD_START=100001
+    int16 NO_VALID_ROUTE=100002
+
+    #goal definition
+    route_msgs/PoseStamped goal
+    route_msgs/PoseStamped start
+    string route_id
+    ---
+    #result definition
+    nav_msgs/Route route
+    builtin_interfaces/Duration route_time
+    int16 error_code
+    ---
+
+As stated in the message, the priority order of the errors should match the message order, 0 is reserved for NONE and the first error code is reserved for UNKNOWN.
+Since the the route server is a external server, the errors codes start at 100000 and go up to 100999. 
+
 Conclusion
 **********
 
-In this section of the guide, we have discussed Lifecycle and Composition nodes which are new and important concepts in ROS 2. We also showed how to implement Lifecycle and Composition to your newly created nodes/servers with Nav2. These two concepts are helpful to efficiently run your system and therefore are encouraged to be used throughout Nav2.
+In this section of the guide, we have discussed Lifecycle Nodes, Composition and error codes which are new and important concepts in ROS 2. We also showed how to implement Lifecycle Nodes, Composition and error codes to your newly created nodes/servers with Nav2. These three concepts are helpful to efficiently run your system and therefore are encouraged to be used throughout Nav2.
