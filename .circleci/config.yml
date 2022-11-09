@@ -17,7 +17,7 @@ references:
         apt install openjdk-8-jre -y
         apt install bash git openssh-server -y
         apt install python3-pip python3 -y
-        pip3 install sphinx==3.5.0 docutils==0.14 sphinx_rtd_theme breathe==4.28.0 sphinxcontrib-plantuml jinja2==3.0.3
+        pip3 install sphinx==4.2.0 breathe sphinx_rtd_theme sphinxcontrib-plantuml jinja2==3.0.3 make html
   make_docs: &make_docs
     run:
       command: |
