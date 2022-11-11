@@ -61,8 +61,19 @@ The following errors codes are supported (with more to come as necessary): Unkno
 
 The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control. 
 
-`PR #3043 <https://github.com/ros-planning/navigation2/pull/3251>`_ pipes the highest priority error code through the bt_navigator. The lower the error code, the higher the priority. Error codes from 0 to 99999 are reserved for nav2 servers that may be added over time. Any new servers should offset error codes by 1000. 
-For example: controller_server: 0-999, planner_server (compute_path_to_pose): 1000-1999 and planner_server (compute_path_through_poses): 2000-2999. 
+`PR #3251 <https://github.com/ros-planning/navigation2/pull/3251>`_ pipes the highest priority error code through the bt_navigator and defines the error code structure. 
+
+A new parameter called "error_code_id_names" was added to the nav2_params.yaml to define the error codes to compare. 
+The lowest error in the "error_code_id_names" is then returned in the action request(navigate to pose or navigate through poses).
+
+The error codes produced from the servers follow the guidelines stated below. 
+Error codes from 0 to 99999 are reserved for nav2 while error codes form 100000 and on are reserved for external servers. 
+Each server has two "reserved" error codes. 0 is reserved for NONE and the first error code in the range is reserved for UNKNOWN.
+
+The current implemented servers with error codes are: 
+Controller Server: NONE:0, UNKNOWN:1000, server error codes: 1001-1999
+Planner Server(compute_path_to_pose): NONE:0, UNKNOWN:2001, server error codes: 2001-2999
+Planner Server(compute_path_through_poses): NONE:0, UNKNOWN:3001, server error codes: 3001-3999
 
 Costmap Filters
 ***************

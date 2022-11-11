@@ -1,7 +1,7 @@
 .. _lifecycle_composition:
 
-Add New Nav2 Task Server 
-##########################
+Adding a New Nav2 Task Server 
+#############################
 
 A nav2 task server consists of server side logic to complete different types of requests, usually called by the autonomy system or through the Behavior Tree Navigator. In this guide, we will discuss the core components needed to add a new task server to Nav2 (ex. Controller, Behavior, Smoother, Planner Servers). Namely, how to set up your new Lifecycle-Component Node for launch and state management and the communication of semantically meaningful error codes (if necessary). 
 
