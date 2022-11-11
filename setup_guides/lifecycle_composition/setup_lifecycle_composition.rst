@@ -109,7 +109,10 @@ We make use of the launch files to compose different servers into a single proce
 
 Error codes 
 ***********
-Your nav2 task server may also wish to return a error code. It is important to note that error codes from 0-99999 are reserved for internal nav2 servers with each server offset by 1000. The table below shows the current servers along with the expected error code structure.
+Your nav2 task server may also wish to return a error code in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
+
+It is important to note that error codes from 0-99999 are reserved for internal nav2 servers with each server offset by 1000. The table below shows the current servers along with the expected error code structure.
+
 
 
 +-------------------------------------+------------------------+
