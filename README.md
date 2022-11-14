@@ -6,7 +6,7 @@ This folder holds the source and configuration files used to generate the
 
 Dependencies for Build: 
 * `sudo apt install python3-pip`
-* `pip3 install sphinx==4.2.0 breathe sphinx_rtd_theme sphinxcontrib-plantuml jinja2==3.0.3`
+* `pip3 install sphinx==4.2.0 docutils==0.17.1 breathe==4.34.0 sphinx_rtd_theme sphinxcontrib-plantuml jinja2==3.0.3`
 
 Build the docs locally with `make html` and you'll find the built docs entry point in `_build/html/index.html`.
 
