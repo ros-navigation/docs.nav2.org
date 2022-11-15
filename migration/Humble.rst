@@ -34,7 +34,7 @@ Smac Planner Start Pose Included in Path
 Parameterizable Collision Checking in RPP
 *****************************************
 
-`PR 3204 <https://github.com/ros-planning/navigation2/pull/3204>`_ adds makes collision checking for RPP optional (default on). 
+`PR 3204 <https://github.com/ros-planning/navigation2/pull/3204>`_ adds makes collision checking for RPP optional (default on).
 
 Expaned Planner Benchmark Tests
 *******************************
@@ -62,9 +62,9 @@ The following errors codes are supported (with more to come as necessary): Unkno
 
 The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, No Valid Path Found and No Waypoints given.
 
-`PR #3227 <https://github.com/ros-planning/navigation2/pull/3227>`_ updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior's blackboard for use in contextual error handling in the autonomy application. 
+`PR #3227 <https://github.com/ros-planning/navigation2/pull/3227>`_ updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior's blackboard for use in contextual error handling in the autonomy application.
 
-The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control. 
+The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control.
 
 Costmap Filters
 ***************
@@ -72,3 +72,12 @@ Costmap Filters
 Costmap Filters now are have an ability to be enabled/disabled in run-time by calling ``toggle_filter`` service for appropriate filter (`PR #3229 <https://github.com/ros-planning/navigation2/pull/3229>`_).
 
 Added new binary flip filter, allowing e.g. to turn off camera in sensitive areas, turn on headlights/leds/other safety things or switch operating mode when robot is inside marked on mask areas (`PR #3228 <https://github.com/ros-planning/navigation2/pull/3228>`_).
+
+Savitzky-Golay Smoother
+***********************
+
+Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother server plugin list. See the configuration guide :ref:`configuring_savitzky_golay_filter_smoother` for more details.
+
+Changes to Map yaml file path for map_server node in Launch
+***********************************************************
+`PR #3174 <https://github.com/ros-planning/navigation2/pull/3174>`_ adds a way to set the path to map yaml file for the map_server node either from the yaml file or using the launch configuration parameter ``map`` giving priority to the launch configuration parameter. ``yaml_filename`` is no longer strictly required to be present in ``nav2_params.yaml``.

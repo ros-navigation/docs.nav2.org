@@ -36,20 +36,23 @@ If you or your organization are interested in sponsoring Navigation or any work 
 
 Our current leadership team includes:
 
-+----------------+-------------------+-----------------+------------------+
-| Name           | Organization      | GitHub ID       | Current Role     |
-+================+===================+=================+==================+
-| Steve Macenski | Samsung Research  | SteveMacenski_  | Project Lead     |
-+----------------+-------------------+-----------------+------------------+
-| Ruffin White   | UC San Diego      | ruffsl_         | CI Wizard        |
-+----------------+-------------------+-----------------+------------------+
-| Joshua Wallace | Locus Robotics    | JoshuaWallace_  | Main Contributor |
-+----------------+-------------------+-----------------+------------------+
++-------------------+-------------------+-------------------+------------------+
+| Name              | Organization      | GitHub ID         | Current Role     |
++===================+===================+===================+==================+
+| Steve Macenski    | Samsung Research  | SteveMacenski_    | Project Lead     |
++-------------------+-------------------+-------------------+------------------+
+| Ruffin White      | UC San Diego      | ruffsl_           | CI Wizard        |
++-------------------+-------------------+-------------------+------------------+
+| Joshua Wallace    | Locus Robotics    | JoshuaWallace_    | Main Contributor |
++-------------------+-------------------+-------------------+------------------+
+| Alexey Merzlyakov | Samsung Research  | AlexeyMerzlyakov_ | Maintainer       |
++-------------------+-------------------+-------------------+------------------+
 
 
 .. _SteveMacenski: https://github.com/SteveMacenski
 .. _ruffsl: https://github.com/ruffsl
 .. _JoshuaWallace: https://github.com/jwallace42
+.. _AlexeyMerzlyakov: https://github.com/AlexeyMerzlyakov
 
 Our former leadership team includes:
 
