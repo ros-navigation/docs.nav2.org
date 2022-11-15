@@ -36,6 +36,17 @@ Simple Smoother Parameters
   Description
     Whether to smooth the smoothed path recursively to refine the quality further
 
+:refinement_num:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  int            2   
+  ============== ===========================
+
+  Description
+    Number of times to recursively attempt to smooth, must be ``>= 1``.
+
 :max_its:
 
   ============== ===========================
@@ -84,6 +95,7 @@ Example
           plugin: "nav2_smoother::SimpleSmoother"
           tolerance: 1.0e-10
           do_refinement: True
+          refinement_num: 2
           max_its: 1000
           w_data: 0.2
           w_smooth: 0.3
