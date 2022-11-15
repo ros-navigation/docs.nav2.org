@@ -169,7 +169,8 @@ As stated in the message, the priority order of the errors should match the mess
 Since the the route server is a external server, the errors codes start at 10000 and go up to 10099.
 
 In order to propigate your server's error code to the rest of the system it must be added to the nav2_params.yaml file. 
-The `error_code_id_names` define what error codes to compare. The lowest error code of the sequence is then returned. 
+The `error_code_id_names` define what error codes to compare. The lowest error code of the sequence is then returned - whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
+
 
 .. code-block:: yaml
 
