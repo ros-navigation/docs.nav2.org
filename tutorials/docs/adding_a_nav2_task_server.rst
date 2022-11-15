@@ -109,6 +109,7 @@ We make use of the launch files to compose different servers into a single proce
 
 Error codes 
 ***********
+
 Your nav2 task server may also wish to return a 'error_code' in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
 
 It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535. 
@@ -129,9 +130,9 @@ The table below shows the current servers along with the expected error code str
 +---------------------------------------------------+-----------------------+----------------------+
 | ...                                               | ...                   |                      |
 +---------------------------------------------------+-----------------------+----------------------+
-| Last Nav2 server                                  | NONE=0, UNKNOWN=9900  | 9901-9999            |
+| Last Nav2 Server                                  | NONE=0, UNKNOWN=9900  | 9901-9999            |
 +---------------------------------------------------+-----------------------+----------------------+
-| Last Nav2 server                                  | NONE=0, UNKNOWN=10000 | 10001-10099          |
+| First External Server                             | NONE=0, UNKNOWN=10000 | 10001-10099          |
 +---------------------------------------------------+-----------------------+----------------------+
 | ...                                               | ...                   |                      |
 +---------------------------------------------------+-----------------------+----------------------+
