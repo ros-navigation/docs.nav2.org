@@ -146,8 +146,8 @@ Error codes are attached to the response of the action message. An example can b
 
     # Error codes
     # Note: The expected priority order of the errors should match the message order
-    int16 NONE=0 # 0 is reserved for NONE
-    int16 UNKNOWN=10000 # first error code in the sequence is reserved for UNKNOWN
+    uint16 NONE=0 # 0 is reserved for NONE
+    uint16 UNKNOWN=10000 # first error code in the sequence is reserved for UNKNOWN
 
     # User Error codes below
     int16 INVILAD_START=10001
