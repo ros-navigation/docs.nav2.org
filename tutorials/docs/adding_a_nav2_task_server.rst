@@ -139,7 +139,8 @@ The table below shows the current servers along with the expected error code str
 .. _Controller Server: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/src/controller_server.cpp
 .. _Planner Server: https://github.com/ros-planning/navigation2/blob/main/nav2_planner/src/planner_server.cpp
 
-Error codes are attached to the response of the action message. An example can be seen below for the route server
+Error codes are attached to the response of the action message. An example can be seen below for the route server. Note that by convention we set the error code field within the message definition to ``error_code``.
+
 
 
 .. code-block:: bash
