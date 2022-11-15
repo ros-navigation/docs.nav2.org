@@ -270,6 +270,17 @@ Parameters
   Description
     Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A* planner but can be helpful on the state lattice planner to reduce the "blocky" movements in State Lattice caused by the limited number of headings.
 
+:``<name>``.smoother.refinement_num:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  int            2   
+  ============== ===========================
+
+  Description
+    Number of times to recursively attempt to smooth, must be ``>= 1``.
+
 Example
 *******
 .. code-block:: yaml
@@ -305,3 +316,4 @@ Example
           w_data: 0.2
           tolerance: 1.0e-10
           do_refinement: true
+          refinement_num: 2

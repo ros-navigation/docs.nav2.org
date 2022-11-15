@@ -778,6 +778,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#recursive-refinement-of-smac-and-simple-smoothers">Recursive Refinement of Smac and Simple Smoothers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#simple-commander-python-api">Simple Commander Python API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#smac-planner-start-pose-included-in-path">Smac Planner Start Pose Included in Path</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#parameterizable-collision-checking-in-rpp">Parameterizable Collision Checking in RPP</a></li>
@@ -895,8 +896,28 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">max_its</dt>
+<dt class="field-odd">refinement_num</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Number of times to recursively attempt to smooth, must be <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">1</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">max_its</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -915,8 +936,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">w_data</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">w_data</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -935,8 +956,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">w_smooth</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">w_smooth</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -970,6 +991,7 @@
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_smoother::SimpleSmoother&quot;</span><span class="w"></span>
 <span class="w">      </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-10</span><span class="w"></span>
 <span class="w">      </span><span class="nt">do_refinement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">      </span><span class="nt">refinement_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
 <span class="w">      </span><span class="nt">max_its</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w"></span>
 <span class="w">      </span><span class="nt">w_data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w"></span>
 <span class="w">      </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span><span class="w"></span>

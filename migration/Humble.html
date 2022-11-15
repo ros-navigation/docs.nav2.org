@@ -778,6 +778,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recursive-refinement-of-smac-and-simple-smoothers">Recursive Refinement of Smac and Simple Smoothers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simple-commander-python-api">Simple Commander Python API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smac-planner-start-pose-included-in-path">Smac Planner Start Pose Included in Path</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#parameterizable-collision-checking-in-rpp">Parameterizable Collision Checking in RPP</a></li>
@@ -861,6 +862,10 @@
 <div class="section" id="run-time-speed-up-of-smac-planner">
 <h2>Run-time Speed up of Smac Planner<a class="headerlink" href="#run-time-speed-up-of-smac-planner" title="Permalink to this headline">¶</a></h2>
 <p>The core data structure of the graph implementation in the Smac Planner framework was swapped out in <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3201">PR 3201</a> to using a specialized unordered map implementation. This speeds up the planner by 10% on trivial requests and reports up to 30% on complex plans that involve numerous rehashings.</p>
+</div>
+<div class="section" id="recursive-refinement-of-smac-and-simple-smoothers">
+<h2>Recursive Refinement of Smac and Simple Smoothers<a class="headerlink" href="#recursive-refinement-of-smac-and-simple-smoothers" title="Permalink to this headline">¶</a></h2>
+<p>The number of recursive refinements for the Simple and Smac Planner Smoothers have been exposed under the <code class="docutils literal notranslate"><span class="pre">refinement_num</span></code> parameter. Previous behavior had this hardcoded if <code class="docutils literal notranslate"><span class="pre">do_refinement</span> <span class="pre">=</span> <span class="pre">True</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code>. Now, default is <code class="docutils literal notranslate"><span class="pre">2</span></code> to help decrease out-of-the-box over smoothing reducing in paths closer to collision than probably ideal, but old behavior can be achieved by changing this to <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p>
 </div>
 <div class="section" id="simple-commander-python-api">
 <h2>Simple Commander Python API<a class="headerlink" href="#simple-commander-python-api" title="Permalink to this headline">¶</a></h2>
