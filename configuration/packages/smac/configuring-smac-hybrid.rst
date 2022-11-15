@@ -288,6 +288,17 @@ Parameters
   Description
     Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A* planner due to the extra "wobbling" it can have due to the very small primitive lengths but may cause the path to get slightly closer to some obstacles.
 
+:``<name>``.smoother.refinement_num:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  int            2   
+  ============== ===========================
+
+  Description
+    Number of times to recursively attempt to smooth, must be ``>= 1``.
+
 Example
 *******
 .. code-block:: yaml
@@ -326,3 +337,4 @@ Example
           w_data: 0.2
           tolerance: 1.0e-10
           do_refinement: true
+          refinement_num: 2

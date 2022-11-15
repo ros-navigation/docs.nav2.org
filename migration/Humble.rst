@@ -15,7 +15,12 @@ Removed use_sim_time from yaml
 
 Run-time Speed up of Smac Planner
 *********************************
-The core data structure of the graph implementation in the Smac Planner framework was swapped out in `PR 3201 <https://github.com/ros-planning/navigation2/pull/3201>`_ to using a specialized unordered map implementation. This speeds up the planner by 10% on trivial requests and reports up to 30% on complex plans that involve numerous rehashings. 
+The core data structure of the graph implementation in the Smac Planner framework was swapped out in `PR 3201 <https://github.com/ros-planning/navigation2/pull/3201>`_ to using a specialized unordered map implementation. This speeds up the planner by 10% on trivial requests and reports up to 30% on complex plans that involve numerous rehashings.
+
+Recursive Refinement of Smac and Simple Smoothers
+*************************************************
+
+The number of recursive refinements for the Simple and Smac Planner Smoothers have been exposed under the ``refinement_num`` parameter. Previous behavior had this hardcoded if ``do_refinement = True`` to ``4``. Now, default is ``2`` to help decrease out-of-the-box over smoothing reducing in paths closer to collision than probably ideal, but old behavior can be achieved by changing this to ``4``.
 
 Simple Commander Python API
 ***************************
