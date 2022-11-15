@@ -109,48 +109,49 @@ We make use of the launch files to compose different servers into a single proce
 
 Error codes 
 ***********
-Your nav2 task server may also wish to return a error code in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
+Your nav2 task server may also wish to return a 'error_code' in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
 
-It is important to note that error codes from 0-99999 are reserved for internal nav2 servers with each server offset by 1000. The table below shows the current servers along with the expected error code structure.
+It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535. 
+The table below shows the current servers along with the expected error code structure.
 
 
 
-+-------------------------------------+------------------------+
-| Server Name                         | Error Code Range       |
-+=====================================+========================+
-| ...                                 | 0-999                  |
-+-------------------------------------+------------------------+
-| `Controller Server`_                | 1000-1999              |
-+-------------------------------------+------------------------+
-| `Planner Server`_                   | 2000-2999              |
-+-------------------------------------+------------------------+
-| `Planner Server`_                   | 3000-3999              |
-+-------------------------------------+------------------------+
-| ...                                 | ...                    |
-+-------------------------------------+------------------------+
-| Last Nav2 task server               | 99000-99999            |
-+-------------------------------------+------------------------+
-| First External Server               | 100000-100999          |
-+-------------------------------------+------------------------+
-| ...                                 | ...                    |
-+-------------------------------------+------------------------+
++---------------------------------------------------+-----------------------+----------------------+
+| Server Name                                       | Reserved              | RANGE                |
++===================================================+=======================+======================+
+| ...                                               | NONE=0, UNKNOWN=1     | 2-99                 |
++---------------------------------------------------+-----------------------+----------------------+
+| `Controller Server`_                              | NONE=0, UNKNOWN=100   | 101-199              |
++---------------------------------------------------+-----------------------+----------------------+
+| `Planner Server`_ (compute_path_to_pose)          | NONE=0, UNKNOWN=200   | 201-299              |
++---------------------------------------------------+-----------------------+----------------------+
+| `Planner Server`_ (compute_path_through_poses)    | NONE=0, UNKNOWN=300   | 301-399              |
++---------------------------------------------------+-----------------------+----------------------+
+| ...                                               | ...                   |                      |
++---------------------------------------------------+-----------------------+----------------------+
+| Last Nav2 server                                  | NONE=0, UNKNOWN=9900  | 9901-9999            |
++---------------------------------------------------+-----------------------+----------------------+
+| Last Nav2 server                                  | NONE=0, UNKNOWN=10000 | 10001-10099          |
++---------------------------------------------------+-----------------------+----------------------+
+| ...                                               | ...                   |                      |
++---------------------------------------------------+-----------------------+----------------------+
 
 .. _Controller Server: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/src/controller_server.cpp
 .. _Planner Server: https://github.com/ros-planning/navigation2/blob/main/nav2_planner/src/planner_server.cpp
 
-Error codes are attached to the action message that the server provides. A example can be seen below for the route server
+Error codes are attached to the response of the action message. An example can be seen below for the route server
 
 
 .. code-block:: bash
 
     # Error codes
     # Note: The expected priority order of the errors should match the message order
-    int16 NONE=0 # Reserved for NONE
-    int16 UNKNOWN=100000 # Reserved for UNKNOWN
+    int16 NONE=0 # 0 is reserved for NONE
+    int16 UNKNOWN=10000 # first error code in the sequence is reserved for UNKNOWN
 
     # User Error codes below
-    int16 INVILAD_START=100001
-    int16 NO_VALID_ROUTE=100002
+    int16 INVILAD_START=10001
+    int16 NO_VALID_ROUTE=10002
 
     #goal definition
     route_msgs/PoseStamped goal
@@ -160,13 +161,23 @@ Error codes are attached to the action message that the server provides. A examp
     #result definition
     nav_msgs/Route route
     builtin_interfaces/Duration route_time
-    int16 error_code
+    uint16 error_code
     ---
 
-As stated in the message, the priority order of the errors should match the message order, 0 is reserved for NONE and the first error code is reserved for UNKNOWN.
-Since the the route server is a external server, the errors codes start at 100000 and go up to 100999. 
+As stated in the message, the priority order of the errors should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
+Since the the route server is a external server, the errors codes start at 10000 and go up to 10099.
+
+In order to propigate your server's error code to the rest of the system it must be added to the nav2_params.yaml file. 
+The `error_code_id_names` define what error codes to compare. The lowest error code of the sequence is then returned. 
+
+.. code-block:: yaml
+
+    error_code_id_names:
+        - compute_path_error_code_id
+        - follow_path_error_code_id
+        - route_error_code_id
 
 Conclusion
 **********
 
-In this section of the guide, we have discussed Lifecycle Nodes, Composition and error codes which are new and important concepts in ROS 2. We also showed how to implement Lifecycle Nodes, Composition and error codes to your newly created nodes/servers with Nav2. These three concepts are helpful to efficiently run your system and therefore are encouraged to be used throughout Nav2.
+In this section of the guide, we have discussed Lifecycle Nodes, Composition and Error Codes which are new and important concepts in ROS 2. We also showed how to implement Lifecycle Nodes, Composition and Error Codes to your newly created nodes/servers with Nav2. These three concepts are helpful to efficiently run your system and therefore are encouraged to be used throughout Nav2.
