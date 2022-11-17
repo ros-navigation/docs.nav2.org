@@ -69,12 +69,12 @@ Input Ports
 Output Ports
 ------------
 
-:follow_path_error_code:
+:error_code_id:
 
   ============== =======
   Type           Default
   -------------- -------
-  int16          N/A  
+  uint16          N/A  
   ============== =======
 
   Description
@@ -85,4 +85,4 @@ Example
 
 .. code-block:: xml
 
-    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10"/>
+    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10" error_code_id="{follow_path_error_code}"/>

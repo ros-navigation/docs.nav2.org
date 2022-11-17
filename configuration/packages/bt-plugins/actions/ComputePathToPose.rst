@@ -80,12 +80,12 @@ Output Ports
   Description
     	Path created by action server. Takes in a blackboard variable, e.g. "{path}".
 
-:compute_path_to_pose_error_code:
+:error_code_id:
 
   ============== =======
   Type           Default
   -------------- -------
-  int16          N/A  
+  uint16          N/A  
   ============== =======
 
   Description
@@ -96,4 +96,4 @@ Example
 
 .. code-block:: xml
 
-  <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" server_name="ComputePathToPose" server_timeout="10"/>
+  <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" server_name="ComputePathToPose" server_timeout="10" error_code_id="{compute_path_error_code}"/>
