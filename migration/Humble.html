@@ -420,6 +420,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePathLocal.html">TruncatePathLocal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/PlannerSelector.html">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/SmootherSelector.html">SmootherSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
@@ -789,6 +790,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#savitzky-golay-smoother">Savitzky-Golay Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-map-yaml-file-path-for-map-server-node-in-launch">Changes to Map yaml file path for map_server node in Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smootherselector-bt-node">SmootherSelector BT Node</a></li>
 </ul>
 </li>
 </ul>
@@ -912,6 +914,10 @@
 <div class="section" id="changes-to-map-yaml-file-path-for-map-server-node-in-launch">
 <h2>Changes to Map yaml file path for map_server node in Launch<a class="headerlink" href="#changes-to-map-yaml-file-path-for-map-server-node-in-launch" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3174">PR #3174</a> adds a way to set the path to map yaml file for the map_server node either from the yaml file or using the launch configuration parameter <code class="docutils literal notranslate"><span class="pre">map</span></code> giving priority to the launch configuration parameter. <code class="docutils literal notranslate"><span class="pre">yaml_filename</span></code> is no longer strictly required to be present in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>.</p>
+</div>
+<div class="section" id="smootherselector-bt-node">
+<h2>SmootherSelector BT Node<a class="headerlink" href="#smootherselector-bt-node" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3283">PR #3283</a> adds a BT node to set the smoother based on a topic or a default. See the configuration guide <span class="xref std std-ref">SimpleSmoother</span> for more details.</p>
 </div>
 </div>
 

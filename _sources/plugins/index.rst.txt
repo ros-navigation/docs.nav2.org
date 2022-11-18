@@ -332,6 +332,10 @@ Behavior Tree Nodes
 |                                            |                     | topic input, otherwises uses a default   |
 |                                            |                     | goal checker id                          |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Smoother Selector`_                       | Owen Hooper         | Selects the smoother based on a          |
+|                                            |                     | topic input, otherwises uses a default   |
+|                                            |                     | smoother id                              |
++--------------------------------------------+---------------------+------------------------------------------+
 | `Navigate Through Poses`_                  | Steve Macenski      | BT Node for other BehaviorTree.CPP BTs   |
 |                                            |                     | to call Nav2's NavThroughPoses action    |
 |                                            |                     |                                          |

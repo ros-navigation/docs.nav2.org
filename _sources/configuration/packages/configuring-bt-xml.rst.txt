@@ -35,6 +35,7 @@ Action Plugins
   bt-plugins/actions/TruncatePathLocal.rst
   bt-plugins/actions/PlannerSelector.rst
   bt-plugins/actions/ControllerSelector.rst
+  bt-plugins/actions/SmootherSelector.rst
   bt-plugins/actions/GoalCheckerSelector.rst
   bt-plugins/actions/NavigateThroughPoses.rst
   bt-plugins/actions/ComputePathThroughPoses.rst

@@ -420,6 +420,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePathLocal.html">TruncatePathLocal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/PlannerSelector.html">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/SmootherSelector.html">SmootherSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
@@ -789,6 +790,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#savitzky-golay-smoother">Savitzky-Golay Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#changes-to-map-yaml-file-path-for-map-server-node-in-launch">Changes to Map yaml file path for map_server node in Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smootherselector-bt-node">SmootherSelector BT Node</a></li>
 </ul>
 </li>
 </ul>
@@ -1375,44 +1377,50 @@ controller id</p></td>
 topic input, otherwises uses a default
 goal checker id</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp">Navigate Through Poses</a></p></td>
+<tr class="row-even"><td><p><a href="#id1"><span class="problematic" id="id2">`Smoother Selector`_</span></a></p></td>
+<td><p>Owen Hooper</p></td>
+<td><p>Selects the smoother based on a
+topic input, otherwises uses a default
+smoother id</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp">Navigate Through Poses</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>BT Node for other BehaviorTree.CPP BTs
 to call Nav2’s NavThroughPoses action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp">Remove Passed Goals</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp">Remove Passed Goals</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Removes goal poses passed or within a
 tolerance for culling old viapoints from
 path re-planning</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp">Compute Path Through Poses</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp">Compute Path Through Poses</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Computes a path through a set of poses
 rather than a single end goal pose
 using the planner plugin specified</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp">Cancel Control Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp">Cancel Control Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels Nav2 controller server</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp">Cancel BackUp Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp">Cancel BackUp Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels backup behavior action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp">Cancel Spin Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp">Cancel Spin Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels spin behavior action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp">Cancel Wait Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp">Cancel Wait Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels wait behavior action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp">Cancel Drive on Heading Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp">Cancel Drive on Heading Action</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Cancels drive on heading behavior action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp">Cancel Assisted Teleop Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp">Cancel Assisted Teleop Action</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Cancels assisted teleop behavior action</p></td>
 </tr>
