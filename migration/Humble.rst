@@ -81,3 +81,7 @@ Adding a new smoother algorithm, the Savitzky-Golay smoother to the smoother ser
 Changes to Map yaml file path for map_server node in Launch
 ***********************************************************
 `PR #3174 <https://github.com/ros-planning/navigation2/pull/3174>`_ adds a way to set the path to map yaml file for the map_server node either from the yaml file or using the launch configuration parameter ``map`` giving priority to the launch configuration parameter. ``yaml_filename`` is no longer strictly required to be present in ``nav2_params.yaml``.
+
+SmootherSelector BT Node
+************************
+`PR #3283 <https://github.com/ros-planning/navigation2/pull/3283>`_ adds a BT node to set the smoother based on a topic or a default. See the configuration guide :ref:`SimpleSmoother` for more details. 
