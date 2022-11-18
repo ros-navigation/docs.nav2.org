@@ -897,6 +897,10 @@ For this setup, the following lines should be added into <code class="docutils l
 <p class="admonition-title">Note</p>
 <p>The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let’s focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the <a class="reference internal" href="../../configuration/packages/configuring-collision-monitor.html#configuring-collision-monitor"><span class="std std-ref">Collision Monitor</span></a> configuration guide.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both polygon shapes in the tutorial were set statically. However, there is an ability to dynamically adjust them over time using topic messages containing vertices points for polygons or footprints. For more information, please refer to the configuration guide.</p>
+</div>
 <p>For the working configuration, at least one data source should be added.
 In current demonstration, it is used laser scanner (though <code class="docutils literal notranslate"><span class="pre">PointCloud2</span></code> and Range/Sonar/IR sensors are also possible), which is described by the following lines for Collision Monitor node:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;scan&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
