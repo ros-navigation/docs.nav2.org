@@ -64,7 +64,7 @@ The following error codes are supported (with more to come as necessary): Unknow
 `PR #3251 <https://github.com/ros-planning/navigation2/pull/3251>`_ pipes the highest priority error code through the bt_navigator and defines the error code structure. 
 
 A new parameter called "error_code_id_names" was added to the nav2_params.yaml to define the error codes to compare. 
-The lowest error in the "error_code_id_names" is then returned in the action request (navigate to pose, navigate through poses waypoint follower), whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
+The lowest error in the "error_code_id_names" is then returned in the action request (navigate to pose, navigate through poses, waypoint follower), whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
 
 The error codes produced from the servers follow the guidelines stated below. 
 Error codes from 0 to 9999 are reserved for nav2 while error codes from 10000-65535 are reserved for external servers. 
