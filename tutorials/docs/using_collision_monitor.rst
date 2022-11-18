@@ -141,7 +141,7 @@ For that, run Nav2 stack as written in :ref:`getting_started`:
 
 .. code-block:: bash
 
-  ros2 launch nav2_bringup tb3_simulation_launch.py
+  ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
 
 In parallel console, launch Collision Monitor node by using its launch-file:
 
