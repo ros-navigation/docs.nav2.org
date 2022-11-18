@@ -183,7 +183,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Topic to listen the polygon points from. Applicable only for ``polygon`` type and ``stop``/``slowdown`` action types. Causes an error, if not specialized.
+    Topic to listen the polygon points from. Applicable only for ``polygon`` type and ``stop``/``slowdown`` action types. Causes an error, if not specified **and** points are also not specified. If both ``points`` and ``polygon_sub_topic`` are specified, the static ``points`` takes priority.
 
 :``<polygon_name>``.footprint_topic:
 
