@@ -872,9 +872,9 @@ When multiple zones trigger at once, the most aggressive one is used (e.g. stop 
 </ul>
 <p>The zones around the robot can take the following shapes:</p>
 <ul class="simple">
-<li><p>Arbitrary user-defined polygon relative to the robot base frame.</p></li>
-<li><p>Circle: is made for the best performance and could be used in the cases where the zone or robot could be approximated by round shape.</p></li>
-<li><p>Robot footprint polygon, which is used in the approach behavior model only. Will use the footprint topic to allow it to be dynamically adjusted over time.</p></li>
+<li><p>Arbitrary user-defined polygon relative to the robot base frame, which can be static in a configuration file or dynamically changing via a topic interface.</p></li>
+<li><p>Robot footprint polygon, which is used in the approach behavior model only. Will use the static user-defined polygon or the footprint topic to allow it to be dynamically adjusted over time.</p></li>
+<li><p>Circle: is made for the best performance and could be used in the cases where the zone or robot footprint could be approximated by round shape.</p></li>
 </ul>
 <p>All shapes (<code class="docutils literal notranslate"><span class="pre">Polygon</span></code> and <code class="docutils literal notranslate"><span class="pre">Circle</span></code>) are derived from base <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> class, so without loss of generality they would be called as “polygons”.
 Subscribed footprint is also having the same properties as other polygons, but it is being obtained a footprint topic for the Approach Model.</p>
@@ -1109,7 +1109,47 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Polygon vertexes, listed in <code class="docutils literal notranslate"><span class="pre">{p1.x,</span> <span class="pre">p1.y,</span> <span class="pre">p2.x,</span> <span class="pre">p2.y,</span> <span class="pre">p3.x,</span> <span class="pre">p3.y,</span> <span class="pre">...}</span></code> format (e.g. <code class="docutils literal notranslate"><span class="pre">{0.5,</span> <span class="pre">0.25,</span> <span class="pre">0.5,</span> <span class="pre">-0.25,</span> <span class="pre">0.0,</span> <span class="pre">-0.25,</span> <span class="pre">0.0,</span> <span class="pre">0.25}</span></code> for the square in the front). Used for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type. Minimum 3 points for a triangle polygon. Causes an error, if not specialized.</p>
+<dt>Description:</dt><dd><p>Polygon vertexes, listed in <code class="docutils literal notranslate"><span class="pre">{p1.x,</span> <span class="pre">p1.y,</span> <span class="pre">p2.x,</span> <span class="pre">p2.y,</span> <span class="pre">p3.x,</span> <span class="pre">p3.y,</span> <span class="pre">...}</span></code> format (e.g. <code class="docutils literal notranslate"><span class="pre">{0.5,</span> <span class="pre">0.25,</span> <span class="pre">0.5,</span> <span class="pre">-0.25,</span> <span class="pre">0.0,</span> <span class="pre">-0.25,</span> <span class="pre">0.0,</span> <span class="pre">0.25}</span></code> for the square in the front). Used for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to <code class="docutils literal notranslate"><span class="pre">polygon_sub_topic</span></code> for points in the <code class="docutils literal notranslate"><span class="pre">stop</span></code>/<code class="docutils literal notranslate"><span class="pre">slowdown</span></code> action types, or footprint subscriber to <code class="docutils literal notranslate"><span class="pre">footprint_topic</span></code> for <code class="docutils literal notranslate"><span class="pre">approach</span></code> action type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.polygon_sub_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Topic to listen the polygon points from. Applicable only for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type and <code class="docutils literal notranslate"><span class="pre">stop</span></code>/<code class="docutils literal notranslate"><span class="pre">slowdown</span></code> action types. Causes an error, if not specified <strong>and</strong> points are also not specified. If both <code class="docutils literal notranslate"><span class="pre">points</span></code> and <code class="docutils literal notranslate"><span class="pre">polygon_sub_topic</span></code> are specified, the static <code class="docutils literal notranslate"><span class="pre">points</span></code> takes priority.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.footprint_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“local_costmap/published_footprint”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Topic to listen the robot footprint from. Applicable only for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type and <code class="docutils literal notranslate"><span class="pre">approach</span></code> action type. If both <code class="docutils literal notranslate"><span class="pre">points</span></code> and <code class="docutils literal notranslate"><span class="pre">footprint_topic</span></code> are specified, the static <code class="docutils literal notranslate"><span class="pre">points</span></code> takes priority.</p>
 </dd>
 </dl>
 </dd>
@@ -1270,26 +1310,6 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </table>
 <dl class="simple">
 <dt>Description:</dt><dd><p>Topic name to publish a polygon to. Used only if <code class="docutils literal notranslate"><span class="pre">visualize</span></code> is true.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.footprint_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 71%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“local_costmap/published_footprint”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description:</dt><dd><p>Topic to listen the robot footprint from. Applicable only for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type and <code class="docutils literal notranslate"><span class="pre">approach</span></code> action type.</p>
 </dd>
 </dl>
 </dd>

@@ -970,7 +970,7 @@ For correct operation of the Collision Monitor with the Controller, it is requir
 <h2>Demo Execution<a class="headerlink" href="#demo-execution" title="Permalink to this headline">¶</a></h2>
 <p>Once Collision Monitor node has been tuned and <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topics remapped, Collision Monitor node is ready to run.
 For that, run Nav2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py headless:<span class="o">=</span>False
 </pre></div>
 </div>
 <p>In parallel console, launch Collision Monitor node by using its launch-file:</p>

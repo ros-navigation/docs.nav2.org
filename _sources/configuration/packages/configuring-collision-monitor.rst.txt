@@ -31,9 +31,9 @@ The following models of safety behaviors are employed by Collision Monitor:
 
 The zones around the robot can take the following shapes:
 
-- Arbitrary user-defined polygon relative to the robot base frame.
-- Circle: is made for the best performance and could be used in the cases where the zone or robot could be approximated by round shape.
-- Robot footprint polygon, which is used in the approach behavior model only. Will use the footprint topic to allow it to be dynamically adjusted over time.
+- Arbitrary user-defined polygon relative to the robot base frame, which can be static in a configuration file or dynamically changing via a topic interface.
+- Robot footprint polygon, which is used in the approach behavior model only. Will use the static user-defined polygon or the footprint topic to allow it to be dynamically adjusted over time.
+- Circle: is made for the best performance and could be used in the cases where the zone or robot footprint could be approximated by round shape.
 
 All shapes (``Polygon`` and ``Circle``) are derived from base ``Polygon`` class, so without loss of generality they would be called as "polygons".
 Subscribed footprint is also having the same properties as other polygons, but it is being obtained a footprint topic for the Approach Model.
@@ -172,7 +172,29 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.25, 0.5, -0.25, 0.0, -0.25, 0.0, 0.25}`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. Causes an error, if not specialized.
+    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.25, 0.5, -0.25, 0.0, -0.25, 0.0, 0.25}`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to ``polygon_sub_topic`` for points in the ``stop``/``slowdown`` action types, or footprint subscriber to ``footprint_topic`` for ``approach`` action type.
+
+:``<polygon_name>``.polygon_sub_topic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         N/A
+  ============== =============================
+
+  Description:
+    Topic to listen the polygon points from. Applicable only for ``polygon`` type and ``stop``/``slowdown`` action types. Causes an error, if not specified **and** points are also not specified. If both ``points`` and ``polygon_sub_topic`` are specified, the static ``points`` takes priority.
+
+:``<polygon_name>``.footprint_topic:
+
+  ============== ===================================
+  Type           Default
+  -------------- -----------------------------------
+  string         "local_costmap/published_footprint"
+  ============== ===================================
+
+  Description:
+    Topic to listen the robot footprint from. Applicable only for ``polygon`` type and ``approach`` action type. If both ``points`` and ``footprint_topic`` are specified, the static ``points`` takes priority.
 
 :``<polygon_name>``.radius:
 
@@ -262,16 +284,7 @@ Polygons parameters
   Description:
     Topic name to publish a polygon to. Used only if ``visualize`` is true.
 
-:``<polygon_name>``.footprint_topic:
 
-  ============== ===================================
-  Type           Default
-  -------------- -----------------------------------
-  string         "local_costmap/published_footprint"
-  ============== ===================================
-
-  Description:
-    Topic to listen the robot footprint from. Applicable only for ``polygon`` type and ``approach`` action type.
 
 Observation sources parameters
 ==============================
