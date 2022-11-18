@@ -194,7 +194,7 @@ Polygons parameters
   ============== ===================================
 
   Description:
-    Topic to listen the robot footprint from. Applicable only for ``polygon`` type and ``approach`` action type.
+    Topic to listen the robot footprint from. Applicable only for ``polygon`` type and ``approach`` action type. If both ``points`` and ``footprint_topic`` are specified, the static ``points`` takes priority.
 
 :``<polygon_name>``.radius:
 
