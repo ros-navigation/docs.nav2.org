@@ -244,6 +244,17 @@ Costmap2D ROS Parameters
   Description
     Costmap update frequency.
 
+:update_on_request:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           False   
+  ============== =======
+
+  Description
+    Updates costmap only upon request. This disables the map update loop.
+
 :use_maximum:
 
   ============== =======
@@ -357,6 +368,7 @@ Example
         ros__parameters:
           footprint_padding: 0.03
           update_frequency: 1.0
+          update_on_request: False
           publish_frequency: 1.0
           global_frame: map
           robot_base_frame: base_link
