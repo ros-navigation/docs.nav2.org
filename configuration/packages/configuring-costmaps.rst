@@ -253,7 +253,7 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Updates costmap only upon request. This disables the map update loop.
+    Updates costmap only upon request by an algorithm server. This disables the regular map update loop.
 
 :use_maximum:
 
