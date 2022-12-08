@@ -76,6 +76,10 @@ The current implemented servers with error codes are:
 - Planner Server(compute_path_to_pose): NONE:0, UNKNOWN:201, server error codes: 201-299
 - Planner Server(compute_path_through_poses): NONE:0, UNKNOWN:301, server error codes: 301-399
 - Smoother Server: NONE: 0, UNKNOWN: 501, server error codes: 501-599
+- Waypoint Follower Server: NONE: 0, UNKNOWN: 601, server error codes: 601-699
+
+This pr also updates the waypoint follower server to throw exceptions on failures. These exceptions get reported back to the server which in turn places a error code on the Behavior Tree Navigator's blackboard for use in contextual error handling in the autonomy application.
+The following errors codes are supported (with more to come as necessary): Unknown and Task Executor Failed. 
 
 Costmap Filters
 ***************
