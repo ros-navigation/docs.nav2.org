@@ -235,4 +235,4 @@ Example
         error_code_names:
           - compute_path_error_code
           - follow_path_error_code
-          - smoother_error_code
+          # - smoother_error_code, navigate_to_pose_error_code, navigate_through_poses_error_code, etc
