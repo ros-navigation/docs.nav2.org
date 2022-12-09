@@ -79,7 +79,8 @@ The current implemented servers with error codes are:
 - Waypoint Follower Server: NONE: 0, UNKNOWN: 601, server error codes: 601-699
 
 This pr also updates the waypoint follower server to throw exceptions on failures. These exceptions get reported back to the server which in turn places a error code on the Behavior Tree Navigator's blackboard for use in contextual error handling in the autonomy application.
-The following errors codes are supported (with more to come as necessary): Unknown and Task Executor Failed. 
+The following errors codes are supported (with more to come as necessary): Unknown and Task Executor Failed.
+See :ref:`adding_a_nav2_task_server` and the PR for additional information.
 
 Costmap Filters
 ***************
