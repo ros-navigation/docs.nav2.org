@@ -54,10 +54,24 @@ Input Ports
   Description
     	Behavior tree absolute path. If none is specified, NavigateThroughPoses action server uses a default behavior tree.
 
+Output Ports
+------------
+
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A  
+  ============== =======
+
+  Description
+    	The lowest error code in the list of the `error_code_names` parameter. 
+
 Example
 -------
 
 .. code-block:: xml
 
-  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10" 
+  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10" error_code_id="{navigate_through_poses_error_code}"
                         behavior_tree="<some-path>/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml"/>

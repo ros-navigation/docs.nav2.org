@@ -183,6 +183,18 @@ Parameters
   Description
     Use time provided by simulation.
 
+:error_code_names:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  vector<string> ["compute_path_error_code", 
+                 "follow_path_error_code"]
+  ============== ===========================
+
+  Description
+    List of of error codes to compare.
+
 Example
 *******
 .. code-block:: yaml
@@ -199,24 +211,28 @@ Example
         goals_blackboard_id: goals
         path_blackboard_id: path
         plugin_lib_names: 
-        - nav2_compute_path_to_pose_action_bt_node
-        - nav2_follow_path_action_bt_node
-        - nav2_back_up_action_bt_node
-        - nav2_spin_action_bt_node
-        - nav2_wait_action_bt_node
-        - nav2_clear_costmap_service_bt_node
-        - nav2_is_stuck_condition_bt_node
-        - nav2_goal_reached_condition_bt_node
-        - nav2_initial_pose_received_condition_bt_node
-        - nav2_goal_updated_condition_bt_node
-        - nav2_reinitialize_global_localization_service_bt_node
-        - nav2_rate_controller_bt_node
-        - nav2_distance_controller_bt_node
-        - nav2_speed_controller_bt_node
-        - nav2_recovery_node_bt_node
-        - nav2_pipeline_sequence_bt_node
-        - nav2_round_robin_node_bt_node
-        - nav2_transform_available_condition_bt_node
-        - nav2_time_expired_condition_bt_node
-        - nav2_distance_traveled_condition_bt_node
-        - nav2_single_trigger_bt_node
+          - nav2_compute_path_to_pose_action_bt_node
+          - nav2_follow_path_action_bt_node
+          - nav2_back_up_action_bt_node
+          - nav2_spin_action_bt_node
+          - nav2_wait_action_bt_node
+          - nav2_clear_costmap_service_bt_node
+          - nav2_is_stuck_condition_bt_node
+          - nav2_goal_reached_condition_bt_node
+          - nav2_initial_pose_received_condition_bt_node
+          - nav2_goal_updated_condition_bt_node
+          - nav2_reinitialize_global_localization_service_bt_node
+          - nav2_rate_controller_bt_node
+          - nav2_distance_controller_bt_node
+          - nav2_speed_controller_bt_node
+          - nav2_recovery_node_bt_node
+          - nav2_pipeline_sequence_bt_node
+          - nav2_round_robin_node_bt_node
+          - nav2_transform_available_condition_bt_node
+          - nav2_time_expired_condition_bt_node
+          - nav2_distance_traveled_condition_bt_node
+          - nav2_single_trigger_bt_node
+        error_code_names:
+          - compute_path_error_code
+          - follow_path_error_code
+          # - smoother_error_code, navigate_to_pose_error_code, navigate_through_poses_error_code, etc
