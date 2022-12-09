@@ -85,3 +85,7 @@ Changes to Map yaml file path for map_server node in Launch
 SmootherSelector BT Node
 ************************
 `PR #3283 <https://github.com/ros-planning/navigation2/pull/3283>`_ adds a BT node to set the smoother based on a topic or a default. See the configuration guide :ref:`SimpleSmoother` for more details. 
+
+Publish Costmap Layers 
+**********************
+`PR #3320 <https://github.com/ros-planning/navigation2/pull/3320>`_ adds the ability for the nav2_costmap_2d package to publish out costmap data associated with each layer.
