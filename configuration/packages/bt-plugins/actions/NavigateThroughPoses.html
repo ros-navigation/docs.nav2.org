@@ -186,15 +186,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../setup_guides/algorithm/select_algorithm.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html">Setting Up Lifecycle and Composition Nodes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#lifecycle">Lifecycle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#composition">Composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#dynamic-composition">Dynamic Composition</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#conclusion">Conclusion</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/index.html">General Tutorials</a><ul>
@@ -329,6 +320,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor">Configuring Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/using_collision_monitor.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/using_collision_monitor.html#demo-execution">Demo Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html">Adding a New Nav2 Task Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html#lifecycle-nodes">Lifecycle Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html#composition">Composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html#error-codes">Error codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
 </ul>
@@ -940,9 +938,34 @@
 </dd>
 </dl>
 </div>
+<div class="section" id="output-ports">
+<h2>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h2>
+<dl class="field-list">
+<dt class="field-odd">error_code_id</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>uint16</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The lowest error code in the list of the <cite>error_code_names</cite> parameter.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NavigateThroughPoses</span> <span class="na">goals=</span><span class="s">&quot;{goals}&quot;</span> <span class="na">server_name=</span><span class="s">&quot;NavigateThroughPoses&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NavigateThroughPoses</span> <span class="na">goals=</span><span class="s">&quot;{goals}&quot;</span> <span class="na">server_name=</span><span class="s">&quot;NavigateThroughPoses&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span> <span class="na">error_code_id=</span><span class="s">&quot;{navigate_through_poses_error_code}&quot;</span>
                       <span class="na">behavior_tree=</span><span class="s">&quot;&lt;some-path&gt;/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>

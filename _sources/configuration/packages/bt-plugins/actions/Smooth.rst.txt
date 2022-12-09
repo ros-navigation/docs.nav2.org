@@ -88,10 +88,20 @@ Output Ports
   Description
       Indicates if the smoothing process was completed. Will return ``false`` if ``check_for_collisions`` is set to ``true`` and a collision is detected.
 
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A  
+  ============== =======
+
+  Description
+    	Follow smoother error code. See ``SmoothPath`` action for the enumerated set of error code definitions.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" max_smoothing_duration="3.0" smoother_id="simple_smoother" check_for_collisions="false" smoothing_duration="{smoothing_duration_used}" was_completed="{smoothing_completed}"/>
+  <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" max_smoothing_duration="3.0" smoother_id="simple_smoother" check_for_collisions="false" smoothing_duration="{smoothing_duration_used}" was_completed="{smoothing_completed}" error_code_id="{smoothing_path_error_code}"/>

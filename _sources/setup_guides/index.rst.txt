@@ -33,4 +33,3 @@ To guide you through the first-time setup of your robot, we will be tackling the
    sensors/setup_sensors.rst
    footprint/setup_footprint.rst
    algorithm/select_algorithm.rst
-   lifecycle_composition/setup_lifecycle_composition.rst

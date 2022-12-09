@@ -186,15 +186,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../setup_guides/algorithm/select_algorithm.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../setup_guides/lifecycle_composition/setup_lifecycle_composition.html">Setting Up Lifecycle and Composition Nodes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#lifecycle">Lifecycle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#composition">Composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#dynamic-composition">Dynamic Composition</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#conclusion">Conclusion</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">General Tutorials</a><ul>
@@ -329,6 +320,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor">Configuring Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#demo-execution">Demo Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html">Adding a New Nav2 Task Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#lifecycle-nodes">Lifecycle Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#composition">Composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#error-codes">Error codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
 </ul>
@@ -902,6 +900,23 @@
 <p>The following errors codes are supported (with more to come as necessary): Unknown, TF Error, Start or Goal Outside of Map, Start or Goal Occupied, Timeout, No Valid Path Found and No Waypoints given.</p>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3227">PR #3227</a> updates the controllers to throw exceptions on failures. These exceptions get reported back to the controller server which in turn places a error code on the Behavior Tree Navigatior’s blackboard for use in contextual error handling in the autonomy application.</p>
 <p>The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3251">PR #3251</a> pipes the highest priority error code through the bt_navigator and defines the error code structure.</p>
+<p>A new parameter for the the BT Navigator called “error_code_id_names” was added to the nav2_params.yaml to define the error codes to compare.
+The lowest error in the “error_code_id_names” is then returned in the action request (navigate to pose, navigate through poses waypoint follower), whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.</p>
+<p>The error codes produced from the servers follow the guidelines stated below.
+Error codes from 0 to 9999 are reserved for nav2 while error codes from 10000-65535 are reserved for external servers.
+Each server has two “reserved” error codes. 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.</p>
+<p>The current implemented servers with error codes are:</p>
+<ul class="simple">
+<li><p>Controller Server: NONE:0, UNKNOWN:100, server error codes: 101-199</p></li>
+<li><p>Planner Server(compute_path_to_pose): NONE:0, UNKNOWN:201, server error codes: 201-299</p></li>
+<li><p>Planner Server(compute_path_through_poses): NONE:0, UNKNOWN:301, server error codes: 301-399</p></li>
+<li><p>Smoother Server: NONE: 0, UNKNOWN: 501, server error codes: 501-599</p></li>
+<li><p>Waypoint Follower Server: NONE: 0, UNKNOWN: 601, server error codes: 601-699</p></li>
+</ul>
+<p>This pr also updates the waypoint follower server to throw exceptions on failures. These exceptions get reported back to the server which in turn places a error code on the Behavior Tree Navigator’s blackboard for use in contextual error handling in the autonomy application.
+The following errors codes are supported (with more to come as necessary): Unknown and Task Executor Failed.
+See <a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#adding-a-nav2-task-server"><span class="std std-ref">Adding a New Nav2 Task Server</span></a> and the PR for additional information.</p>
 </div>
 <div class="section" id="costmap-filters">
 <h2>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this headline">¶</a></h2>

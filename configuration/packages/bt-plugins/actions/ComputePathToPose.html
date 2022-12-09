@@ -186,15 +186,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../setup_guides/algorithm/select_algorithm.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html">Setting Up Lifecycle and Composition Nodes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#lifecycle">Lifecycle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#composition">Composition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#dynamic-composition">Dynamic Composition</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../setup_guides/lifecycle_composition/setup_lifecycle_composition.html#conclusion">Conclusion</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/index.html">General Tutorials</a><ul>
@@ -329,6 +320,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor">Configuring Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/using_collision_monitor.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/using_collision_monitor.html#demo-execution">Demo Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html">Adding a New Nav2 Task Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html#lifecycle-nodes">Lifecycle Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html#composition">Composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html#error-codes">Error codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/docs/adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
 </ul>
@@ -984,7 +982,7 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-even">compute_path_to_pose_error_code</dt>
+<dt class="field-even">error_code_id</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
@@ -994,7 +992,7 @@ The server address can be remapped using the <code class="docutils literal notra
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>int16</p></td>
+<tr class="row-even"><td><p>uint16</p></td>
 <td><p>N/A</p></td>
 </tr>
 </tbody>
@@ -1008,7 +1006,7 @@ The server address can be remapped using the <code class="docutils literal notra
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span> <span class="na">server_name=</span><span class="s">&quot;ComputePathToPose&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ComputePathToPose</span> <span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span> <span class="na">server_name=</span><span class="s">&quot;ComputePathToPose&quot;</span> <span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span> <span class="na">error_code_id=</span><span class="s">&quot;{compute_path_error_code}&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
