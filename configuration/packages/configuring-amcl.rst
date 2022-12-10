@@ -285,7 +285,7 @@ Parameters
   ============== =============================
 
   Description
-    Exponential decay rate for the fast average weight filter, used in deciding when to recover by adding random poses. A good value might be 0.001.
+    Exponential decay rate for the fast average weight filter, used in deciding when to recover by adding random poses. A good value might be 0.1.
 
 :recovery_alpha_slow:
 

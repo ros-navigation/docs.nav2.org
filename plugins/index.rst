@@ -66,9 +66,13 @@ Costmap Filters
 | `Speed Filter`_    | Alexey Merzlyakov  | Limits maximum velocity of robot  |
 |                    |                    | in speed restriction areas        |
 +--------------------+--------------------+-----------------------------------+
+| `Binary Filter`_   | Alexey Merzlyakov  | Enables binary (boolean) mask     |
+|                    |                    | behavior to trigger actions.      |
++--------------------+--------------------+-----------------------------------+
 
 .. _Keepout Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
 .. _Speed Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/speed_filter.cpp
+.. _Binary Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/binary_filter.cpp
 
 Controllers
 ===========
@@ -166,9 +170,17 @@ Smoothers
 |                           |                                       | maintaining minimum turning  |
 |                           |                                       | radius                       |
 +---------------------------+---------------------------------------+------------------------------+
+|`Savitzky-Golay Smoother`_ |  Steve Macenski                       | A path smoother using a      |
+|                           |                                       | Savitzky-Golay filter        |
+|                           |                                       | to smooth the path via       |
+|                           |                                       | digital signal processing    |
+|                           |                                       | to remove noise from the     |
+|                           |                                       | path.                        |
++---------------------------+---------------------------------------+------------------------------+
 
 .. _Simple Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
 .. _Constrained Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_constrained_smoother
+.. _Savitzky-Golay Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
 
 Behaviors
 =========
@@ -319,6 +331,10 @@ Behavior Tree Nodes
 | `Goal Checker Selector`_                   | Pablo Iñigo Blasco  | Selects the goal checker based on a      |
 |                                            |                     | topic input, otherwises uses a default   |
 |                                            |                     | goal checker id                          |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Smoother Selector`_                       | Owen Hooper         | Selects the smoother based on a          |
+|                                            |                     | topic input, otherwises uses a default   |
+|                                            |                     | smoother id                              |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Navigate Through Poses`_                  | Steve Macenski      | BT Node for other BehaviorTree.CPP BTs   |
 |                                            |                     | to call Nav2's NavThroughPoses action    |

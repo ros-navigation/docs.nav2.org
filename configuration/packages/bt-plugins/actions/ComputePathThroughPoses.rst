@@ -80,9 +80,20 @@ Output Ports
   Description
     	Path created by action server. Takes in a blackboard variable, e.g. "{path}".
 
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A  
+  ============== =======
+
+  Description
+    	Compute path through poses error code. See ``ComputePathThroughPoses`` action message for the enumerated set of error codes.
+
 Example
 -------
 
 .. code-block:: xml
 
-  <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased" server_name="ComputePathThroughPoses" server_timeout="10"/>
+  <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased" server_name="ComputePathThroughPoses" server_timeout="10" error_code_id="{compute_path_error_code}"/>

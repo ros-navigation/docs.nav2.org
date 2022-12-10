@@ -58,6 +58,9 @@ For this setup, the following lines should be added into ``collision_monitor_par
 .. note::
   The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let's focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the :ref:`configuring_collision_monitor` configuration guide.
 
+.. note::
+  Both polygon shapes in the tutorial were set statically. However, there is an ability to dynamically adjust them over time using topic messages containing vertices points for polygons or footprints. For more information, please refer to the configuration guide.
+
 For the working configuration, at least one data source should be added.
 In current demonstration, it is used laser scanner (though ``PointCloud2`` and Range/Sonar/IR sensors are also possible), which is described by the following lines for Collision Monitor node:
 
@@ -141,7 +144,7 @@ For that, run Nav2 stack as written in :ref:`getting_started`:
 
 .. code-block:: bash
 
-  ros2 launch nav2_bringup tb3_simulation_launch.py
+  ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
 
 In parallel console, launch Collision Monitor node by using its launch-file:
 
