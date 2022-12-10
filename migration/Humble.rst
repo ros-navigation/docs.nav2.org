@@ -88,8 +88,8 @@ SmootherSelector BT Node
 
 Give Behavior Server Access to Both Costmaps
 ********************************************
-`PR #3255 <https://github.com/ros-planning/navigation2/pull/3255>`_ addes the ability for a behavior to access both the local and global costmap. 
+`PR #3255 <https://github.com/ros-planning/navigation2/pull/3255>`_ addes the ability for a behavior to access the local and global costmap. 
 
 To update behaviors, any reference to the global_frame must be updated to the local_frame parameter
-along with the `configuration` method which now takes in the local and global collision checker.
-Lastly, `getResourceInfo` must be overriden to return `CostmapInfoType::LOCAL`.  
+along with the ``configuration`` method which now takes in the local and global collision checkers.
+Lastly, ``getResourceInfo`` must be overriden to return ``CostmapInfoType::LOCAL``.  
