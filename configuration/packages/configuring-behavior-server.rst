@@ -82,7 +82,7 @@ Behavior Server Parameters
   Description
     TF transform tolerance.
 
-:global_frame:
+:local_frame:
 
   ============== =============================
   Type           Default
@@ -91,7 +91,18 @@ Behavior Server Parameters
   ============== =============================
 
   Description
-    Reference frame.
+    Local reference frame.
+
+:global_frame:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "map"
+  ============== =============================
+
+  Description
+    Global reference frame.
 
 :robot_base_frame:
 
@@ -122,7 +133,7 @@ Behavior Server Parameters
 
     .. code-block:: yaml
 
-        recoveries_server:
+        behavior_server:
           ros__parameters:
             behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
             spin:
@@ -275,7 +286,7 @@ Example
 *******
 .. code-block:: yaml
 
-    recoveries_server:
+    behavior_server:
       ros__parameters:
         local_costmap_topic: local_costmap/costmap_raw
         local_footprint_topic: local_costmap/published_footprint
@@ -293,7 +304,8 @@ Example
           plugin: "nav2_behaviors/Wait"
         assisted_teleop:
           plugin: "nav2_behaviors/AssistedTeleop"
-        global_frame: odom
+        local_frame: odom
+        global_frame: map
         robot_base_frame: base_link
         transform_timeout: 0.1
         simulate_ahead_time: 2.0
