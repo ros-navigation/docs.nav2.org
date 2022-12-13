@@ -66,6 +66,27 @@ The following errors codes are supported (with more to come as necessary): Unkno
 
 The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control.
 
+`PR #3251 <https://github.com/ros-planning/navigation2/pull/3251>`_ pipes the highest priority error code through the bt_navigator and defines the error code structure. 
+
+A new parameter for the the BT Navigator called "error_code_id_names" was added to the nav2_params.yaml to define the error codes to compare. 
+The lowest error in the "error_code_id_names" is then returned in the action request (navigate to pose, navigate through poses waypoint follower), whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
+
+The error codes produced from the servers follow the guidelines stated below. 
+Error codes from 0 to 9999 are reserved for nav2 while error codes from 10000-65535 are reserved for external servers. 
+Each server has two "reserved" error codes. 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
+
+The current implemented servers with error codes are:
+
+- Controller Server: NONE:0, UNKNOWN:100, server error codes: 101-199
+- Planner Server(compute_path_to_pose): NONE:0, UNKNOWN:201, server error codes: 201-299
+- Planner Server(compute_path_through_poses): NONE:0, UNKNOWN:301, server error codes: 301-399
+- Smoother Server: NONE: 0, UNKNOWN: 501, server error codes: 501-599
+- Waypoint Follower Server: NONE: 0, UNKNOWN: 601, server error codes: 601-699
+
+This pr also updates the waypoint follower server to throw exceptions on failures. These exceptions get reported back to the server which in turn places a error code on the Behavior Tree Navigator's blackboard for use in contextual error handling in the autonomy application.
+The following errors codes are supported (with more to come as necessary): Unknown and Task Executor Failed.
+See :ref:`adding_a_nav2_task_server` and the PR for additional information.
+
 Costmap Filters
 ***************
 
@@ -85,6 +106,11 @@ Changes to Map yaml file path for map_server node in Launch
 SmootherSelector BT Node
 ************************
 `PR #3283 <https://github.com/ros-planning/navigation2/pull/3283>`_ adds a BT node to set the smoother based on a topic or a default. See the configuration guide :ref:`SimpleSmoother` for more details. 
+
+
+Publish Costmap Layers 
+**********************
+`PR #3320 <https://github.com/ros-planning/navigation2/pull/3320>`_ adds the ability for the nav2_costmap_2d package to publish out costmap data associated with each layer.
 
 Give Behavior Server Access to Both Costmaps
 ********************************************
