@@ -107,6 +107,16 @@ SmootherSelector BT Node
 ************************
 `PR #3283 <https://github.com/ros-planning/navigation2/pull/3283>`_ adds a BT node to set the smoother based on a topic or a default. See the configuration guide :ref:`SimpleSmoother` for more details. 
 
+
 Publish Costmap Layers 
 **********************
 `PR #3320 <https://github.com/ros-planning/navigation2/pull/3320>`_ adds the ability for the nav2_costmap_2d package to publish out costmap data associated with each layer.
+
+Give Behavior Server Access to Both Costmaps
+********************************************
+`PR #3255 <https://github.com/ros-planning/navigation2/pull/3255>`_ addes the ability for a behavior to access the local and global costmap. 
+
+To update behaviors, any reference to the global_frame must be updated to the local_frame parameter
+along with the ``configuration`` method which now takes in the local and global collision checkers.
+Lastly, ``getResourceInfo`` must be overriden to return ``CostmapInfoType::LOCAL``. Other options include ``GLOBAL`` if the behavior useses global costmap and/or footprint)
+or ``BOTH`` if both are required. This allows us to only create and maintain the minimum amount of expensive resources.   
