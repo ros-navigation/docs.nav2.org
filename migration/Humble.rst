@@ -118,4 +118,5 @@ Give Behavior Server Access to Both Costmaps
 
 To update behaviors, any reference to the global_frame must be updated to the local_frame parameter
 along with the ``configuration`` method which now takes in the local and global collision checkers.
-Lastly, ``getResourceInfo`` must be overriden to return ``CostmapInfoType::LOCAL``.  
+Lastly, ``getResourceInfo`` must be overriden to return ``CostmapInfoType::LOCAL``. Other options include ``GLOBAL``if the behavior useses global costmap and/or footprint)
+or ``BOTH`` if both are required. This allows us to only create and maintain the minimum amount of expensive resources.   
