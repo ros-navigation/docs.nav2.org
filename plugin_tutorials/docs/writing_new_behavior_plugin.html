@@ -790,6 +790,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#changes-to-map-yaml-file-path-for-map-server-node-in-launch">Changes to Map yaml file path for map_server node in Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#smootherselector-bt-node">SmootherSelector BT Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#publish-costmap-layers">Publish Costmap Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#give-behavior-server-access-to-both-costmaps">Give Behavior Server Access to Both Costmaps</a></li>
 </ul>
 </li>
 </ul>
@@ -1097,34 +1098,36 @@ rotational_acc_lim: 3.2</p>
 </div></blockquote>
 </div></blockquote>
 <p>with</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>behavior_server: (Humble and newer)
-recoveries_server: (Galactic and earlier)
-  ros__parameters:
-    costmap_topic: local_costmap/costmap_raw
-    footprint_topic: local_costmap/published_footprint
-    cycle_frequency: 10.0
-    behavior_plugins: [&quot;spin&quot;, &quot;backup&quot;, &quot;wait&quot;,&quot;send_sms&quot;] (Humble and newer)
-    recovery_plugins: [&quot;spin&quot;, &quot;backup&quot;, &quot;wait&quot;,&quot;send_sms&quot;] (Galactic and earlier)
-    spin:
-      plugin: &quot;nav2_behaviors/Spin&quot;
-    backup:
-      plugin: &quot;nav2_behaviors/BackUp&quot;
-    wait:
-      plugin: &quot;nav2_behaviors/Wait&quot;
-    send_sms:
-      plugin: &quot;nav2_sms_behavior/SendSms&quot;
-    account_sid: ... # your sid
-    auth_token: ... # your token
-    from_number: ... # your number
-    to_number: ... # the operations center number
-    global_frame: odom
-    robot_base_frame: base_link
-    transform_timeout: 0.1
-    use_sim_time: true
-    simulate_ahead_time: 2.0
-    max_rotational_vel: 1.0
-    min_rotational_vel: 0.4
-    rotational_acc_lim: 3.2
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">behavior_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Humble and newer)</span><span class="w"></span>
+<span class="nt">recoveries_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Galactic and earlier)</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ros__parameters</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">local_costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/costmap_raw</span><span class="w"></span>
+<span class="w">    </span><span class="nt">local_footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/published_footprint</span><span class="w"></span>
+<span class="w">    </span><span class="nt">global_costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_costmap/costmap_raw</span><span class="w"></span>
+<span class="w">    </span><span class="nt">global_footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_costmap/published_footprint</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cycle_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;send_sms&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Humble and newer)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">recovery_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;send_sms&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Galactic and earlier)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">spin</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">backup</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/BackUp&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wait</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">send_sms</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_sms_behavior/SendSms&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">account_sid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your sid</span><span class="w"></span>
+<span class="w">    </span><span class="nt">auth_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your token</span><span class="w"></span>
+<span class="w">    </span><span class="nt">from_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your number</span><span class="w"></span>
+<span class="w">    </span><span class="nt">to_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># the operations center number</span><span class="w"></span>
+<span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w"></span>
+<span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w"></span>
+<span class="w">    </span><span class="nt">transform_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">max_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">min_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rotational_acc_lim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In the above snippet, you can observe that we add the SMS behavior under the <code class="docutils literal notranslate"><span class="pre">send_sms</span></code> ROS 2 action server name.
