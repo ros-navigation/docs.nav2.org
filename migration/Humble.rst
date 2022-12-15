@@ -87,5 +87,5 @@ SmootherSelector BT Node
 `PR #3283 <https://github.com/ros-planning/navigation2/pull/3283>`_ adds a BT node to set the smoother based on a topic or a default. See the configuration guide :ref:`SimpleSmoother` for more details. 
 
 Added update_on_request parameter
-************************
+*********************************
 `PR #3300 <https://github.com/ros-planning/navigation2/pull/3300>` adds the `update_on_request` parameter that enables updating the costmap only upon request by an algorithm server. The use case would be for benchmarking or test cases -- or to update costmaps only when required instead of on a regular cycle in a separate thread.
