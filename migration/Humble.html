@@ -561,6 +561,31 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-mppic.html">Model Predictive Path Integral Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#mppi-parameters">MPPI Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#trajectory-visualization">Trajectory Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-handler">Path Handler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#ackermann-motion-model">Ackermann Motion Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#constraint-critic">Constraint Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#goal-angle-critic">Goal Angle Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#goal-critic">Goal Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#obstacles-critic">Obstacles Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-align-critic">Path Align Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-angle-critic">Path Angle Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-follow-critic">Path Follow Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#prefer-forward-critic">Prefer Forward Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#twirling-critic">Twirling Critic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#notes-to-users">Notes to Users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#general-words-of-wisdom">General Words of Wisdom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#prediction-horizon-costmap-sizing-and-offsets">Prediction Horizon, Costmap Sizing, and Offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#obstacle-inflation-layer-and-path-following">Obstacle, Inflation Layer, and Path Following</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html">Rotation Shim Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#rotation-shim-controller-parameters">Rotation Shim Controller Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#example">Example</a></li>
@@ -781,7 +806,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#simple-commander-python-api">Simple Commander Python API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smac-planner-start-pose-included-in-path">Smac Planner Start Pose Included in Path</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#parameterizable-collision-checking-in-rpp">Parameterizable Collision Checking in RPP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#expaned-planner-benchmark-tests">Expaned Planner Benchmark Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expanded-planner-benchmark-tests">Expanded Planner Benchmark Tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smac-planner-path-tolerances">Smac Planner Path Tolerances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#costmap-2d-node-default-constructor">costmap_2d_node default constructor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#feedback-for-navigation-failures">Feedback for Navigation Failures</a></li>
@@ -791,6 +816,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#smootherselector-bt-node">SmootherSelector BT Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#publish-costmap-layers">Publish Costmap Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#give-behavior-server-access-to-both-costmaps">Give Behavior Server Access to Both Costmaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-model-predictive-path-integral-controller">New Model Predictive Path Integral Controller</a></li>
 </ul>
 </li>
 </ul>
@@ -881,8 +907,8 @@
 <h2>Parameterizable Collision Checking in RPP<a class="headerlink" href="#parameterizable-collision-checking-in-rpp" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3204">PR 3204</a> adds makes collision checking for RPP optional (default on).</p>
 </div>
-<div class="section" id="expaned-planner-benchmark-tests">
-<h2>Expaned Planner Benchmark Tests<a class="headerlink" href="#expaned-planner-benchmark-tests" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="expanded-planner-benchmark-tests">
+<h2>Expanded Planner Benchmark Tests<a class="headerlink" href="#expanded-planner-benchmark-tests" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3218">PR 3218</a> adds launch files and updated scripts for performing objective random planning tests across the planners in Nav2 for benchmarking and metric computation.</p>
 </div>
 <div class="section" id="smac-planner-path-tolerances">
@@ -947,6 +973,11 @@ See <a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_ser
 along with the <code class="docutils literal notranslate"><span class="pre">configuration</span></code> method which now takes in the local and global collision checkers.
 Lastly, <code class="docutils literal notranslate"><span class="pre">getResourceInfo</span></code> must be overriden to return <code class="docutils literal notranslate"><span class="pre">CostmapInfoType::LOCAL</span></code>. Other options include <code class="docutils literal notranslate"><span class="pre">GLOBAL</span></code> if the behavior useses global costmap and/or footprint)
 or <code class="docutils literal notranslate"><span class="pre">BOTH</span></code> if both are required. This allows us to only create and maintain the minimum amount of expensive resources.</p>
+</div>
+<div class="section" id="new-model-predictive-path-integral-controller">
+<h2>New Model Predictive Path Integral Controller<a class="headerlink" href="#new-model-predictive-path-integral-controller" title="Permalink to this headline">¶</a></h2>
+<p>The new Nav2 MPPI Controller is a predictive controller - a successor to TEB and pure path tracking MPC controllers - with Nav2. It uses a sampling based approach to select optimal trajectories, optimizing between successive iterations. It contains plugin-based objective functions for customization and extension for various behaviors and behavioral attributes.</p>
+<p>See the README.md and <a class="reference internal" href="../configuration/packages/configuring-mppic.html#configuring-mppic"><span class="std std-ref">Model Predictive Path Integral Controller</span></a> page for more detail.</p>
 </div>
 </div>
 

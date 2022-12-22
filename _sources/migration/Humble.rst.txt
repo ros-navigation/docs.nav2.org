@@ -36,8 +36,8 @@ Parameterizable Collision Checking in RPP
 
 `PR 3204 <https://github.com/ros-planning/navigation2/pull/3204>`_ adds makes collision checking for RPP optional (default on).
 
-Expaned Planner Benchmark Tests
-*******************************
+Expanded Planner Benchmark Tests
+********************************
 
 `PR 3218 <https://github.com/ros-planning/navigation2/pull/3218>`_ adds launch files and updated scripts for performing objective random planning tests across the planners in Nav2 for benchmarking and metric computation.
 
@@ -120,3 +120,10 @@ To update behaviors, any reference to the global_frame must be updated to the lo
 along with the ``configuration`` method which now takes in the local and global collision checkers.
 Lastly, ``getResourceInfo`` must be overriden to return ``CostmapInfoType::LOCAL``. Other options include ``GLOBAL`` if the behavior useses global costmap and/or footprint)
 or ``BOTH`` if both are required. This allows us to only create and maintain the minimum amount of expensive resources.   
+
+New Model Predictive Path Integral Controller
+*********************************************
+
+The new Nav2 MPPI Controller is a predictive controller - a successor to TEB and pure path tracking MPC controllers - with Nav2. It uses a sampling based approach to select optimal trajectories, optimizing between successive iterations. It contains plugin-based objective functions for customization and extension for various behaviors and behavioral attributes.
+
+See the README.md and :ref:`configuring_mppic` page for more detail.

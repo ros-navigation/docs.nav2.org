@@ -20,6 +20,7 @@ the best navigation performance.
    packages/configuring-controller-server.rst
    packages/configuring-dwb-controller.rst
    packages/configuring-regulated-pp.rst
+   packages/configuring-mppic.rst
    packages/configuring-rotation-shim-controller.rst
    packages/configuring-map-server.rst
    packages/configuring-amcl.rst

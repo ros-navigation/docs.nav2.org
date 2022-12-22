@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DWB Controller &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Model Predictive Path Integral Controller &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
@@ -16,8 +16,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DWB Controller" href="dwb-params/controller.html" />
-    <link rel="prev" title="StoppedGoalChecker" href="nav2_controller-plugins/stopped_goal_checker.html" />
+    <link rel="next" title="Rotation Shim Controller" href="configuring-rotation-shim-controller.html" />
+    <link rel="prev" title="Regulated Pure Pursuit" href="configuring-regulated-pp.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -527,20 +527,20 @@
 <li class="toctree-l3"><a class="reference internal" href="configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">DWB Controller</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#controller">Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuring-dwb-controller.html">DWB Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/controller.html">DWB Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/iterator.html">XYTheta Iterator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/kinematic.html">Kinematic Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-params/visualization.html">Publisher</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#plugins">Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#plugins">Plugins</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#trajectory-critics">Trajectory Critics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
@@ -553,7 +553,7 @@
 <li class="toctree-l4"><a class="reference internal" href="trajectory_critics/twirling.html">TwirlingCritic</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuring-dwb-controller.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuring-regulated-pp.html">Regulated Pure Pursuit</a><ul>
@@ -561,27 +561,27 @@
 <li class="toctree-l3"><a class="reference internal" href="configuring-regulated-pp.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuring-mppic.html">Model Predictive Path Integral Controller</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuring-mppic.html#mppi-parameters">MPPI Parameters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#trajectory-visualization">Trajectory Visualization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#path-handler">Path Handler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#ackermann-motion-model">Ackermann Motion Model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#constraint-critic">Constraint Critic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#goal-angle-critic">Goal Angle Critic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#goal-critic">Goal Critic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#obstacles-critic">Obstacles Critic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#path-align-critic">Path Align Critic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#path-angle-critic">Path Angle Critic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#path-follow-critic">Path Follow Critic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#prefer-forward-critic">Prefer Forward Critic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#twirling-critic">Twirling Critic</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Model Predictive Path Integral Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mppi-parameters">MPPI Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#trajectory-visualization">Trajectory Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#path-handler">Path Handler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ackermann-motion-model">Ackermann Motion Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constraint-critic">Constraint Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goal-angle-critic">Goal Angle Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#goal-critic">Goal Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#obstacles-critic">Obstacles Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#path-align-critic">Path Align Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#path-angle-critic">Path Angle Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#path-follow-critic">Path Follow Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prefer-forward-critic">Prefer Forward Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#twirling-critic">Twirling Critic</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="configuring-mppic.html#example">Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuring-mppic.html#notes-to-users">Notes to Users</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#general-words-of-wisdom">General Words of Wisdom</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#prediction-horizon-costmap-sizing-and-offsets">Prediction Horizon, Costmap Sizing, and Offsets</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-mppic.html#obstacle-inflation-layer-and-path-following">Obstacle, Inflation Layer, and Path Following</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes-to-users">Notes to Users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-words-of-wisdom">General Words of Wisdom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prediction-horizon-costmap-sizing-and-offsets">Prediction Horizon, Costmap Sizing, and Offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#obstacle-inflation-layer-and-path-following">Obstacle, Inflation Layer, and Path Following</a></li>
 </ul>
 </li>
 </ul>
@@ -867,7 +867,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Configuration Guide</a></li>
-      <li class="breadcrumb-item active">DWB Controller</li>
+      <li class="breadcrumb-item active">Model Predictive Path Integral Controller</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -876,114 +876,1330 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="dwb-controller">
-<span id="configuring-dwb-controller"></span><h1>DWB Controller<a class="headerlink" href="#dwb-controller" title="Permalink to this headline">¶</a></h1>
-<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller">Github</a>.</p>
-<p>The DWB controller is the default controller. It is a fork of <a class="reference external" href="https://github.com/locusrobotics/robot_navigation/tree/master/dwb_local_planner">David Lu’s
-controller</a>
-modified for ROS 2.</p>
-<div class="section" id="controller">
-<h2>Controller<a class="headerlink" href="#controller" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dwb-params/controller.html">DWB Controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dwb-params/iterator.html">XYTheta Iterator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dwb-params/kinematic.html">Kinematic Parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dwb-params/visualization.html">Publisher</a></li>
-</ul>
+  <div class="section" id="model-predictive-path-integral-controller">
+<span id="configuring-mppic"></span><h1>Model Predictive Path Integral Controller<a class="headerlink" href="#model-predictive-path-integral-controller" title="Permalink to this headline">¶</a></h1>
+<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller">Github</a>.</p>
+<p>The MPPI Controller implements a <a class="reference external" href="https://ieeexplore.ieee.org/document/7487277">Model Predictive Path Integral Controller</a>.
+The new Nav2 MPPI Controller is a predictive controller - a successor to TEB and pure path tracking MPC controllers. It uses a sampling based approach to select optimal trajectories, optimizing between successive iterations. It contains plugin-based objective functions for customization and extension for various behaviors and behavioral attributes.</p>
+<p>It works currently with Differential, Omnidirectional, and Ackermann robots.
+This controller is measured to run at 50+ Hz on a modest Intel processor (4th gen i5).</p>
+<p>The MPPI algorithm is an MPC variant that finds a control velocity for the robot using an iterative approach. Using the previous time step’s best control solution and the robot’s current state, a set of randomly sampled perturbations from a Gaussian distribution are applied. These noised controls are forward simulated to generate a set of trajectories within the robot’s motion model.
+Next, these trajectories are scored using a set of plugin-based critic functions to find the best trajectory in the batch. The output scores are used to set the best control with a soft max function.
+This process is then repeated a number of times and returns a converged solution. This solution is then used as the basis of the next time step’s initial control.</p>
+<p>A powerful result of this work is the ability to utilize objective functions which are not require to be convex nor differentiable, providing greater designer flexibility in behavior.</p>
+<p>See the package’s <code class="docutils literal notranslate"><span class="pre">README</span></code> for more complete information.</p>
+<div class="section" id="mppi-parameters">
+<h2>MPPI Parameters<a class="headerlink" href="#mppi-parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="field-list">
+<dt class="field-odd">motion_model</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“DiffDrive”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The desired motion model to use for trajectory planning. Options are <code class="docutils literal notranslate"><span class="pre">DiffDrive</span></code>, <code class="docutils literal notranslate"><span class="pre">Omni</span></code>, or <code class="docutils literal notranslate"><span class="pre">Ackermann</span></code>. Differential drive robots may use forward/reverse and angular velocities; Omni add in lateral motion; and Ackermann adds minimum curvature constraints.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">critics</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string vector</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>A vector of critic plugin functions to use, without <code class="docutils literal notranslate"><span class="pre">mppi::critic::</span></code> namespace which will be automatically added on loading.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">iteration_count</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Iteration count in the MPPI algorithm. Recommended to remain as 1 and instead prefer larger batch sizes.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">batch_size</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1000</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Count of randomly sampled candidate trajectories from current optimal control sequence in a given iteration. 1000 &#64; 50 Hz or 2000 &#64; 30 Hz seems to produce good results.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">time_steps</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>56</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Number of time steps (points) in candidate trajectories</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">model_dt</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.05</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Length of each time step’s <code class="docutils literal notranslate"><span class="pre">dt</span></code> timestep, in seconds. <code class="docutils literal notranslate"><span class="pre">time_steps</span> <span class="pre">*</span> <span class="pre">model_dt</span></code> is the prediction horizon.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">vx_std</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Sampling standard deviation for Vx</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">vy_std</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Sampling standard deviation for Vy</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">wz_std</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Sampling standard deviation for Wz (angular velocity)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">vx_max</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Target maximum forward velocity (m/s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">vy_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Target maximum lateral velocity, if using <code class="docutils literal notranslate"><span class="pre">Omni</span></code> motion model (m/s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">vx_min</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>-0.35</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum reverse velocity (m/s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">wz_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.9</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum rotational velocity (rad/s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">temperature</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Selectiveness of trajectories by their costs (The closer this value to 0, the “more” we take in consideration controls with less cost), 0 mean use control with best cost, huge value will lead to just taking mean of all trajectories without cost consideration.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">gamma</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.015</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won’t need to be changed from the default. See Section 3D-2 in “Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving” for detailed information.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">visualize</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to publish debuggin trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is alot of data).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">retry_attempt_limit</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Number of attempts to find feasible trajectory on failure for soft-resets before reporting total failure.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="section" id="trajectory-visualization">
+<h3>Trajectory Visualization<a class="headerlink" href="#trajectory-visualization" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">trajectory_step</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The step between trajectories to visualize to downsample candidate trajectory pool.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">time_step</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The step between points on trajectories to visualize to downsample trajectory density.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
+<div class="section" id="path-handler">
+<h3>Path Handler<a class="headerlink" href="#path-handler" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time tolerance for data transformations with TF (s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">prune_distance</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance ahead of nearest point on path to robot to prune path to (m).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">max_robot_pose_search_dist</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>Costmap size / 2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Max integrated distance ahead of robot pose to search for nearest path point in case of path looping.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
-<div class="section" id="plugins">
-<h2>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h2>
-<p>The plugins listed below are inside the <code class="docutils literal notranslate"><span class="pre">dwb_plugins</span></code> namespace.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dwb-plugins/limited_accel_generator.html">LimitedAccelGenerator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
-</ul>
+<div class="section" id="ackermann-motion-model">
+<h3>Ackermann Motion Model<a class="headerlink" href="#ackermann-motion-model" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">min_turning_r</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The minimum turning radius possible for the vehicle platform (m).</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
+<div class="section" id="constraint-critic">
+<h3>Constraint Critic<a class="headerlink" href="#constraint-critic" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">cost_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>4.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_power</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
-<div class="section" id="trajectory-critics">
-<h2>Trajectory Critics<a class="headerlink" href="#trajectory-critics" title="Permalink to this headline">¶</a></h2>
-<p>The trajectory critics listed below are inside the <code class="docutils literal notranslate"><span class="pre">dwb_critics</span></code> namespace.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/obstacle_footprint.html">ObstacleFootprintCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/oscillation.html">OscillationCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/path_align.html">PathAlignCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/path_dist.html">PathDistCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/prefer_forward.html">PreferForwardCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/rotate_to_goal.html">RotateToGoalCritic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectory_critics/twirling.html">TwirlingCritic</a></li>
-</ul>
+<div class="section" id="goal-angle-critic">
+<h3>Goal Angle Critic<a class="headerlink" href="#goal-angle-critic" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">cost_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_power</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">threshold_to_consider</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.4</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimal distance (m) between robot and goal above which angle goal cost considered.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="goal-critic">
+<h3>Goal Critic<a class="headerlink" href="#goal-critic" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">cost_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>5.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_power</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">threshold_to_consider</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimal distance (m) between robot and goal above which goal distance cost considered.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="obstacles-critic">
+<h3>Obstacles Critic<a class="headerlink" href="#obstacles-critic" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">critical_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>20.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic for near collisions closer than <code class="docutils literal notranslate"><span class="pre">collision_margin_distance</span></code> to prevent near collisions <strong>only</strong> as a method of virtually inflating the footprint. This should not be used to generally influence obstacle avoidance away from criticial collisions.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">repulsion_weight</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic for generally preferring routes in lower cost space. This is separated from the critical term to allow for fine tuning of obstacle behaviors with path alignment for dynamic scenes without impacting actions which may directly lead to near-collisions. This is applied within the <code class="docutils literal notranslate"><span class="pre">inflation_radius</span></code> distance from obstacles.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">cost_power</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">consider_footprint</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use point cost (if robot is circular or low compute power) or compute SE2 footprint cost.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">collision_cost</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>10000.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Cost to apply to a true collision in a trajectory.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">collision_margin_distance</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.10</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Margin distance (m) from collision to apply severe penalty, similar to footprint inflation. Between 0.05-0.2 is reasonable. Note that it will highly influence the controller not to enter spaces more confined than this, so ensure this parameter is set lower than the narrowest you expect the robot to need to traverse through.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">near_goal_distance</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.50</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="path-align-critic">
+<h3>Path Align Critic<a class="headerlink" href="#path-align-critic" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">cost_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>10.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_power</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">threshold_to_consider</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.4</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance (m) between robot and goal to <strong>stop</strong> considering path alignment and allow goal critics to take over.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">offset_from_furthest</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>20</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Checks that the candidate trajectories are sufficiently far along their way tracking the path to apply the alignment critic. This ensures that path alignment is only considered when actually tracking the path, preventing awkward initialization motions preventing the robot from leaving the path to achieve the appropriate heading.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">max_path_occupancy_ratio</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.07</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum proportion of the path that can be occupied before this critic is not considered to allow the obstacle and path follow critics to avoid obstacles while following the path’s intent in presense of dynamic objects in the scene. Between 0-1 for 0-100%.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="path-angle-critic">
+<h3>Path Angle Critic<a class="headerlink" href="#path-angle-critic" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">cost_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_power</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">threshold_to_consider</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.4</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance (m) between robot and goal to <strong>stop</strong> considering path angles and allow goal critics to take over.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">offset_from_furthest</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>20</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Number of path points after furthest one any trajectory achieves to compute path angle relative to.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">max_angle_to_furthest</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Angular distance (rad) between robot and goal above which path angle cost starts being considered</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="path-follow-critic">
+<h3>Path Follow Critic<a class="headerlink" href="#path-follow-critic" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">cost_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>5.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_power</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">threshold_to_consider</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.4</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance (m) between robot and goal to <strong>stop</strong> considering path following and allow goal critics to take over.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">offset_from_furthest</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>6</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Number of path points after furthest one any trajectory achieves to drive path tracking relative to.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="prefer-forward-critic">
+<h3>Prefer Forward Critic<a class="headerlink" href="#prefer-forward-critic" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">cost_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>5.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_power</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">threshold_to_consider</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.4</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance (m) between robot and goal to <strong>stop</strong> considering preferring forward and allow goal critics to take over.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="twirling-critic">
+<h3>Twirling Critic<a class="headerlink" href="#twirling-critic" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">cost_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>10.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_power</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="c1"># controller server parameters (see Controller Server for more info)</span><span class="w"></span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
-<span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">min_x_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span><span class="w"></span>
-<span class="w">    </span><span class="nt">min_y_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
-<span class="w">    </span><span class="nt">min_theta_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span><span class="w"></span>
-<span class="w">    </span><span class="nt">progress_checker_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;progress_checker&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">goal_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;goal_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">    </span><span class="nt">progress_checker</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">required_movement_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
-<span class="w">      </span><span class="nt">movement_time_allowance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">goal_checker</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleGoalChecker&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
-<span class="w">      </span><span class="nt">yaw_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
-<span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
-<span class="w">    </span><span class="c1"># DWB controller parameters</span><span class="w"></span>
+<span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span><span class="w"></span>
 <span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dwb_core::DWBLocalPlanner&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">debug_trajectory_details</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
-<span class="w">      </span><span class="nt">min_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">min_vel_y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">max_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.26</span><span class="w"></span>
-<span class="w">      </span><span class="nt">max_vel_y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">max_vel_theta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">min_speed_xy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">max_speed_xy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.26</span><span class="w"></span>
-<span class="w">      </span><span class="nt">min_speed_theta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">acc_lim_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.5</span><span class="w"></span>
-<span class="w">      </span><span class="nt">acc_lim_y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">acc_lim_theta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span><span class="w"></span>
-<span class="w">      </span><span class="nt">decel_lim_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-2.5</span><span class="w"></span>
-<span class="w">      </span><span class="nt">decel_lim_y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">decel_lim_theta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-3.2</span><span class="w"></span>
-<span class="w">      </span><span class="nt">vx_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
-<span class="w">      </span><span class="nt">vy_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
-<span class="w">      </span><span class="nt">vtheta_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
-<span class="w">      </span><span class="nt">sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.7</span><span class="w"></span>
-<span class="w">      </span><span class="nt">linear_granularity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
-<span class="w">      </span><span class="nt">angular_granularity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.025</span><span class="w"></span>
-<span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w"></span>
-<span class="w">      </span><span class="nt">xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
-<span class="w">      </span><span class="nt">trans_stopped_velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
-<span class="w">      </span><span class="nt">short_circuit_trajectory_evaluation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
-<span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
-<span class="w">      </span><span class="nt">critics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;RotateToGoal&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Oscillation&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;BaseObstacle&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalAlign&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAlign&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathDist&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalDist&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">      </span><span class="nt">BaseObstacle.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.02</span><span class="w"></span>
-<span class="w">      </span><span class="nt">PathAlign.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">GoalAlign.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">PathAlign.forward_point_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
-<span class="w">      </span><span class="nt">GoalAlign.forward_point_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
-<span class="w">      </span><span class="nt">PathDist.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">GoalDist.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">RotateToGoal.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">RotateToGoal.slowing_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w"></span>
-<span class="w">      </span><span class="nt">RotateToGoal.lookahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mppi::MPPIController&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">time_steps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">56</span><span class="w"></span>
+<span class="w">      </span><span class="nt">model_dt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
+<span class="w">      </span><span class="nt">batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span><span class="w"></span>
+<span class="w">      </span><span class="nt">vx_std</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w"></span>
+<span class="w">      </span><span class="nt">vy_std</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w"></span>
+<span class="w">      </span><span class="nt">wz_std</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span><span class="w"></span>
+<span class="w">      </span><span class="nt">vx_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">vx_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.35</span><span class="w"></span>
+<span class="w">      </span><span class="nt">vy_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">wz_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.9</span><span class="w"></span>
+<span class="w">      </span><span class="nt">iteration_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">prune_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.7</span><span class="w"></span>
+<span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">temperature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span><span class="w"></span>
+<span class="w">      </span><span class="nt">gamma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span><span class="w"></span>
+<span class="w">      </span><span class="nt">motion_model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DiffDrive&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">      </span><span class="nt">TrajectoryVisualizer</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">trajectory_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">        </span><span class="nt">time_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">      </span><span class="nt">AckermannConstrains</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">min_turning_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w"></span>
+<span class="w">      </span><span class="nt">critics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ConstraintCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ObstaclesCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAlignCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathFollowCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PreferForwardCritic&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">ConstraintCritic</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">GoalCritic</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">GoalAngleCritic</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span><span class="w"></span>
+<span class="w">      </span><span class="nt">PreferForwardCritic</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span><span class="w"></span>
+<span class="w">      </span><span class="nt">ObstaclesCritic</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">repulsion_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.5</span><span class="w"></span>
+<span class="w">        </span><span class="nt">critical_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">consider_footprint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">        </span><span class="nt">collision_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">collision_margin_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">near_goal_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">PathAlignCritic</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">max_path_occupancy_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
+<span class="w">        </span><span class="nt">trajectory_point_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.40</span><span class="w"></span>
+<span class="w">        </span><span class="nt">offset_from_furthest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
+<span class="w">      </span><span class="nt">PathFollowCritic</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">offset_from_furthest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span><span class="w"></span>
+<span class="w">      </span><span class="nt">PathAngleCritic</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">offset_from_furthest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"></span>
+<span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.40</span><span class="w"></span>
+<span class="w">        </span><span class="nt">max_angle_to_furthest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># TwirlingCritic:</span><span class="w"></span>
+<span class="w">      </span><span class="c1">#   enabled: true</span><span class="w"></span>
+<span class="w">      </span><span class="c1">#   twirling_cost_power: 1</span><span class="w"></span>
+<span class="w">      </span><span class="c1">#   twirling_cost_weight: 10.0</span><span class="w"></span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="notes-to-users">
+<h2>Notes to Users<a class="headerlink" href="#notes-to-users" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-words-of-wisdom">
+<h3>General Words of Wisdom<a class="headerlink" href="#general-words-of-wisdom" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">model_dt</span></code> parameter generally should be set to the duration of your control frequency. So if your control frequency is 20hz, this should be <code class="docutils literal notranslate"><span class="pre">0.05</span></code>. However, you may also set it lower <strong>but not larger</strong>.</p>
+<p>Visualization of the trajectories using <code class="docutils literal notranslate"><span class="pre">visualize</span></code> uses compute resources to back out trajectories for visualization and therefore slows compute time. It is not suggested that this parameter is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> during a deployed use, but is a useful debug instrument while tuning the system, but use sparingly. Visualizating 2000 batches &#64; 56 points at 30 hz is <em>alot</em>.</p>
+<p>The most common parameters you might want to start off changing are the velocity profiles (<code class="docutils literal notranslate"><span class="pre">vx_max</span></code>, <code class="docutils literal notranslate"><span class="pre">vx_min</span></code>, <code class="docutils literal notranslate"><span class="pre">wz_max</span></code>, and <code class="docutils literal notranslate"><span class="pre">vy_max</span></code> if holonomic) and the <code class="docutils literal notranslate"><span class="pre">motion_model</span></code> to correspond to your vehicle. Its wise to consider the <code class="docutils literal notranslate"><span class="pre">prune_distance</span></code> of the path plan in proportion to your maximum velocity and prediction horizon. The only deeper parameter that will likely need to be adjusted for your particular settings is the Obstacle critics’ <code class="docutils literal notranslate"><span class="pre">repulsion_weight</span></code> since the tuning of this is proprtional to your inflation layer’s radius. Higher radii should correspond to reduced <code class="docutils literal notranslate"><span class="pre">repulsion_weight</span></code> due to the penalty formation (e.g. <code class="docutils literal notranslate"><span class="pre">inflation_radius</span> <span class="pre">-</span> <span class="pre">min_dist_to_obstacle</span></code>). If this penalty is too high, the robot will slow significantly when entering cost-space from non-cost space or jitter in narrow corridors. It is noteworthy, but likely not necessary to be changed, that the Obstacle critic may use the full footprint information if <code class="docutils literal notranslate"><span class="pre">consider_footprint</span> <span class="pre">=</span> <span class="pre">true</span></code>, though comes at an increased compute cost.</p>
+<p>Otherwise, the parameters have been closely pre-tuned by your friendly neighborhood navigator to give you a decent starting point that hopefully you only need to retune for your specific desired behavior lightly (if at all). Varying costmap parameters or maximum speeds are the actions which require the most attention, as described below:</p>
+</div>
+<div class="section" id="prediction-horizon-costmap-sizing-and-offsets">
+<h3>Prediction Horizon, Costmap Sizing, and Offsets<a class="headerlink" href="#prediction-horizon-costmap-sizing-and-offsets" title="Permalink to this headline">¶</a></h3>
+<p>As this is a predictive planner, there is some relationship between maximum speed, prediction times, and costmap size that users should keep in mind while tuning for their application. If a controller server costmap is set to 3.0m in size, that means that with the robot in the center, there is 1.5m of information on either side of the robot. When your prediction horizon (<code class="docutils literal notranslate"><span class="pre">time_steps</span> <span class="pre">*</span> <span class="pre">model_dt</span></code>) at maximum speed (<code class="docutils literal notranslate"><span class="pre">vx_max</span></code>) is larger than this, then your robot will be artifically limited in its maximum speeds and behavior by the costmap limitation. For example, if you predict forward 3 seconds (60 steps &#64; 0.05s per step) at 0.5m/s maximum speed, the <strong>minimum</strong> required costmap radius is 1.5m - or 3m total width.</p>
+<p>The same applies to the Path Follow and Align offsets from furthest. In the same example if the furthest point we can consider is already at the edge of the costmap, then further offsets are thresholded because they’re unusable. So its important while selecting these parameters to make sure that the theoretical offsets can exist on the costmap settings selected with the maximum prediction horizon and velocities desired.</p>
+<p>The Path Follow critic cannot drive velocities greater than the projectable distance of that velocity on the available path on the rolling costmap. The Path Align critic <cite>offset_from_furthest</cite> represents the number of path points a trajectory passes through while tracking the path. If this is set either absurdly low (e.g. 5) it can trigger when a robot is simply trying to start path tracking causing some suboptimal behaviors and local minima while starting a task. If it is set absurdly high (e.g. 50) relative to the path resolution and costmap size, then the critic may never trigger or only do so when at full-speed. A balance here is wise. A selection of this value to be ~30% of the maximum velocity distance projected is good (e.g. if a planner produces points every 2.5cm, 60 can fit on the 1.5m local costmap radius. If the max speed is 0.5m/s with a 3s prediction time, then 20 points represents 33% of the maximum speed projected over the prediction horizon onto the path). When in doubt, <code class="docutils literal notranslate"><span class="pre">prediction_horizon_s</span> <span class="pre">*</span> <span class="pre">max_speed</span> <span class="pre">/</span> <span class="pre">path_resolution</span> <span class="pre">/</span> <span class="pre">3.0</span></code> is a good baseline.</p>
+</div>
+<div class="section" id="obstacle-inflation-layer-and-path-following">
+<h3>Obstacle, Inflation Layer, and Path Following<a class="headerlink" href="#obstacle-inflation-layer-and-path-following" title="Permalink to this headline">¶</a></h3>
+<p>There also exists a relationship between the costmap configurations and the Obstacle critic configurations. If the Obstacle critic is not well tuned with the costmap parameters (inflation radius, scale) it can cause the robot to wobble significantly as it attempts to take finitely lower-cost trajectories with a slightly lower cost in exchange for jerky motion. It may also perform awkward maneuvors when in free-space to try to maximize time in a small pocket of 0-cost over a more natural motion which involves moving into some low-costed region. Finally, it may generally refuse to go into costed space at all when starting in a free 0-cost space if the gain is set disproportionately higher than the Path Follow scoring to encourage the robot to move along the path. This is due to the critic cost of staying in free space becoming more attractive than entering even lightly costed space in exchange for progression along the task.</p>
+<p>Thus, care should be taken to select weights of the obstacle critic in conjunction with the costmap inflation radius and scale so that a robot does not have such issues. How I (Steve, your friendly neighborhood navigator) tuned this was to first create the appropriate obstacle critic behavior desirable in conjunction with the inflation layer parameters. Its worth noting that the Obstacle critic converts the cost into a distance from obstacles, so the nature of the distribution of costs in the inflation isn’t overly significant. However, the inflation radius and the scale will define the cost at the end of the distribution where free-space meets the lowest cost value within the radius. So testing for quality behavior when going over that threshold should be considered.</p>
+<p>As you increase or decrease your weights on the Obstacle, you may notice the aforementioned behaviors (e.g. won’t overcome free to non-free threshold). To overcome them, increase the FollowPath critic cost to increase the desire for the trajectory planner to continue moving towards the goal. Make sure to not overshoot this though, keep them balanced. A desirable outcome is smooth motion roughly in the center of spaces without significant close interactions with obstacles. It shouldn’t be perfectly following a path yet nor should the output velocity be wobbling jaggedly.</p>
+<p>Once you have your obstacle avoidance behavior tuned and matched with an appropriate path following penalty, tune the Path Align critic to align with the path. If you design exact-path-alignment behavior, its possible to skip the obstacle critic step as highly tuning the system to follow the path will give it less ability to deviate to avoid obstacles (though it’ll slow and stop). Tuning the critic weight for the Obstacle critic high will do the job to avoid near-collisions but the repulsion weight is largely unnecessary to you. For others wanting more dynamic behavior, it <em>can</em> be beneficial to slowly lower the weight on the obstacle critic to give the path alignment critic some more room to work. If your path was generated with a cost-aware planner (like all provided by Nav2) and providing paths sufficiently far from obstacles for your satesfaction, the impact of a slightly reduced Obstacle critic with a Path Alignment critic will do you well. Not over-weighting the path align critic will allow the robot to  deviate from the path to get around dynamic obstacles in the scene or other obstacles not previous considered duing path planning. It is subjective as to the best behavior for your application, but it has been shown that MPPI can be an exact path tracker and/or avoid dynamic obstacles very fluidly and everywhere in between. The defaults provided are in the generally right regime for a balanced initial trade-off.</p>
 </div>
 </div>
 </div>

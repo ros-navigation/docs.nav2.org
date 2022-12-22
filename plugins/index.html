@@ -561,6 +561,31 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-regulated-pp.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-mppic.html">Model Predictive Path Integral Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#mppi-parameters">MPPI Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#trajectory-visualization">Trajectory Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-handler">Path Handler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#ackermann-motion-model">Ackermann Motion Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#constraint-critic">Constraint Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#goal-angle-critic">Goal Angle Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#goal-critic">Goal Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#obstacles-critic">Obstacles Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-align-critic">Path Align Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-angle-critic">Path Angle Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-follow-critic">Path Follow Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#prefer-forward-critic">Prefer Forward Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#twirling-critic">Twirling Critic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#notes-to-users">Notes to Users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#general-words-of-wisdom">General Words of Wisdom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#prediction-horizon-costmap-sizing-and-offsets">Prediction Horizon, Costmap Sizing, and Offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#obstacle-inflation-layer-and-path-following">Obstacle, Inflation Layer, and Path Following</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html">Rotation Shim Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#rotation-shim-controller-parameters">Rotation Shim Controller Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#example">Example</a></li>
@@ -781,7 +806,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#simple-commander-python-api">Simple Commander Python API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smac-planner-start-pose-included-in-path">Smac Planner Start Pose Included in Path</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#parameterizable-collision-checking-in-rpp">Parameterizable Collision Checking in RPP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#expaned-planner-benchmark-tests">Expaned Planner Benchmark Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#expanded-planner-benchmark-tests">Expanded Planner Benchmark Tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smac-planner-path-tolerances">Smac Planner Path Tolerances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#costmap-2d-node-default-constructor">costmap_2d_node default constructor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#feedback-for-navigation-failures">Feedback for Navigation Failures</a></li>
@@ -791,6 +816,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smootherselector-bt-node">SmootherSelector BT Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#publish-costmap-layers">Publish Costmap Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#give-behavior-server-access-to-both-costmaps">Give Behavior Server Access to Both Costmaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-model-predictive-path-integral-controller">New Model Predictive Path Integral Controller</a></li>
 </ul>
 </li>
 </ul>
@@ -993,7 +1019,16 @@ algorithm with adaptive features.</p></td>
 <td><p><strong>Ackermann</strong>, Legged,
 Differential</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller">Rotation Shim Controller</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller">MPPI Controller</a></p></td>
+<td><p>Steve Macenski
+Aleksei Budyakov</p></td>
+<td><p>A predictive MPC controller with
+modular &amp; custom cost functions
+that can accomplish many tasks.</p></td>
+<td><p>Differential, Omni,
+<strong>Ackermann</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller">Rotation Shim Controller</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>A “shim” controller to rotate
 to path heading before passing
