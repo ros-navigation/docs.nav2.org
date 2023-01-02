@@ -127,3 +127,14 @@ New Model Predictive Path Integral Controller
 The new Nav2 MPPI Controller is a predictive controller - a successor to TEB and pure path tracking MPC controllers - with Nav2. It uses a sampling based approach to select optimal trajectories, optimizing between successive iterations. It contains plugin-based objective functions for customization and extension for various behaviors and behavioral attributes.
 
 See the README.md and :ref:`configuring_mppic` page for more detail.
+
+Behavior Tree Uses Error Codes
+******************************
+`PR #3324 <https:https://github.com/ros-planning/navigation2/pull/3324>`_ adds three new condition nodes to check for error codes. 
+
+The ``AreErrorCodesPresent`` condition node allows the user to spesify the error code from the server along with the error codes to match against. 
+The ``WouldAControllerRecoveryHelp`` checks if a recovery would help clear the controller server error code. 
+The ``WouldAPlannerRecoveryHelp`` checks if a recovery would help clear the planner server error code. 
+
+If the error codes match the node returns ``SUCCESS``. 
+

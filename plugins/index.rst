@@ -445,6 +445,20 @@ Behavior Tree Nodes
 |                                    |                    | reset if the path gets |
 |                                    |                    | updated.               |
 +------------------------------------+--------------------+------------------------+
+| `Are Error Codes Present`_         |  Joshua Wallace    | Checks if the spesified|
+|                                    |                    | error codes are        |
+|                                    |                    | present.               |
++------------------------------------+--------------------+------------------------+
+| `Would A Controller Recovery Help`_|  Joshua Wallace    | Checks if a controller |
+|                                    |                    | recovery could help    |
+|                                    |                    | clear the controller   |
+|                                    |                    | server error code.     |
++------------------------------------+--------------------+------------------------+
+| `Would A Planner Recovery Help`_   |  Joshua Wallace    | Checks if a planner    |
+|                                    |                    | recovery could help    |
+|                                    |                    | clear the planner      |
+|                                    |                    | server error code.     |
++------------------------------------+--------------------+------------------------+
 
 
 .. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
@@ -458,6 +472,9 @@ Behavior Tree Nodes
 .. _Is Battery Low Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
 .. _Is Path Valid Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
 .. _Path Expiring Timer: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
+.. _Are Error Codes Present: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
+.. _Would A Controller Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help.cpp
+.. _Would A Planner Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |
