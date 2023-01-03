@@ -9,7 +9,24 @@ A list of all known plugins are listed here below for ROS 2 Navigation.
 If you know of a plugin, or you have created a new plugin, please consider submitting a pull request with that information.
 
 This file can be found and editted under ``sphinx_docs/plugins/index.rst``.
-For tutorials on creating your own plugins, please see :ref:`writing_new_costmap2d_plugin`, :ref:`writing_new_nbt_plugin`, :ref:`writing_new_nav2controller_plugin`, :ref:`writing_new_nav2planner_plugin`, or :ref:`writing_new_recovery_plugin`.
+For tutorials on creating your own plugins, please see :ref:`writing_new_costmap2d_plugin`, :ref:`writing_new_nbt_plugin`, :ref:`writing_new_nav2controller_plugin`, :ref:`writing_new_nav2planner_plugin`, :ref:`writing_new_recovery_plugin`, or :ref:`writing_new_nav2navigator_plugin`.
+
+Behavior-Tree Navigators
+========================
+
++----------------------------------+--------------------+-----------------------------------+
+|    Plugin Name                   |      Creator       |       Description                 |
++==================================+====================+===================================+
+| `NavigateToPoseNavigator`_       | Steve Macenski     | Point-to-point navigation via a   |
+|                                  |                    | behavior tree action server       |
++----------------------------------+--------------------+-----------------------------------+
+| `NavigateThroughPosesNavigator`_ | Steve Macenski     | Point-through-points navigation   |
+|                                  |                    | via a behavior tree action server |
++----------------------------------+--------------------+-----------------------------------+
+
+.. _NavigateToPoseNavigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator/src/navigators
+.. _NavigateThroughPosesNavigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator/src/navigators
+
 
 Costmap Layers
 ==============
