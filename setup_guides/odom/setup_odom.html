@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -894,16 +908,16 @@
 <span class="c1"># The twist in this message should be specified in the coordinate frame given by the child_frame_id</span>
 
 <span class="c1"># Includes the frame id of the pose parent.</span>
-std_msgs/Header header
+std_msgs/Header<span class="w"> </span>header
 
 <span class="c1"># Frame id the pose is pointing at. The twist is in this coordinate frame.</span>
-string child_frame_id
+string<span class="w"> </span>child_frame_id
 
 <span class="c1"># Estimated pose that is typically relative to a fixed world frame.</span>
-geometry_msgs/PoseWithCovariance pose
+geometry_msgs/PoseWithCovariance<span class="w"> </span>pose
 
 <span class="c1"># Estimated linear and angular velocity relative to child_frame_id.</span>
-geometry_msgs/TwistWithCovariance twist
+geometry_msgs/TwistWithCovariance<span class="w"> </span>twist
 </pre></div>
 </div>
 <p>This message tells us the estimates for the pose and velocity of the robot. The <code class="docutils literal notranslate"><span class="pre">header</span></code> message provides the timestamped data in a given coordinate frame. The <code class="docutils literal notranslate"><span class="pre">pose</span></code> message provides the position and orientation of the robot relative to the frame specified in <code class="docutils literal notranslate"><span class="pre">header.frame_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">twist</span></code> message gives the linear and angular velocity relative to the frame defined in <code class="docutils literal notranslate"><span class="pre">child_frame_id</span></code>.</p>
@@ -912,8 +926,8 @@ geometry_msgs/TwistWithCovariance twist
 <h2>Setting Up Odometry on your Robot<a class="headerlink" href="#setting-up-odometry-on-your-robot" title="Permalink to this headline">¶</a></h2>
 <p>Setting up the odometry system for Nav2 for your physical robot depends a lot on which odometry sensors are available with your robot. Due to the large number of configurations your robot may have, specific setup instructions will not be within the scope of this tutorial. Instead, we will provide some basic examples and useful resources to help you configure your robot for Nav2.</p>
 <p>To start, we will use an example of a robot with wheel encoders as its odometry source. Note that wheel encoders are not required for Nav2 but it is common in most setups. The goal in setting up the odometry is to compute the odometry information and publish the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message and <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform over ROS 2. To calculate this information, you will need to setup some code that will translate wheel encoder information into odometry information, similar to the snippet below:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">linear</span> <span class="o">=</span> <span class="o">(</span>right_wheel_est_vel + left_wheel_est_vel<span class="o">)</span> / <span class="m">2</span>
-<span class="nv">angular</span> <span class="o">=</span> <span class="o">(</span>right_wheel_est_vel - left_wheel_est_vel<span class="o">)</span> / wheel_separation<span class="p">;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">linear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>right_wheel_est_vel<span class="w"> </span>+<span class="w"> </span>left_wheel_est_vel<span class="o">)</span><span class="w"> </span>/<span class="w"> </span><span class="m">2</span>
+<span class="nv">angular</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>right_wheel_est_vel<span class="w"> </span>-<span class="w"> </span>left_wheel_est_vel<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>wheel_separation<span class="p">;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> are the estimated velocities of the right and left wheels respectively, and the <code class="docutils literal notranslate"><span class="pre">wheel</span> <span class="pre">separation</span></code> is the distance between the wheels. The values of <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> can be obtained by simply getting the changes in the positions of the wheel joints over time. This information can then be used to publish the Nav2 requirements. A basic example on how to do this can be found in the Navigation documentation on odometry <a class="reference external" href="http://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom/">located here</a></p>
@@ -936,7 +950,7 @@ geometry_msgs/TwistWithCovariance twist
 <h3>Setup and Prerequisites<a class="headerlink" href="#setup-and-prerequisites" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://gazebosim.org/">Gazebo</a> is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the <a class="reference external" href="http://gazebosim.org/tutorials?cat=install">Gazebo Installation Documentation</a>.</p>
 <p>We also need to install the <code class="docutils literal notranslate"><span class="pre">gazebo_ros_pkgs</span></code> package to simulate odometry and control the robot with ROS 2 in Gazebo:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-&lt;ros2-distro&gt;-gazebo-ros-pkgs
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-gazebo-ros-pkgs
 </pre></div>
 </div>
 <p>You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros2_installing&amp;cat=connect_ros#TestingGazeboandROS2integration">given here</a>.</p>
@@ -1040,95 +1054,95 @@ geometry_msgs/TwistWithCovariance twist
 <span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
-<span class="normal">221</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;visual&gt;</span>
-    <span class="nt">&lt;geometry&gt;</span>
-      <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.1 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/geometry&gt;</span>
-  <span class="nt">&lt;/visual&gt;</span>
+<span class="normal">221</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.1 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/visual&gt;</span>
 
-  <span class="nt">&lt;collision&gt;</span>
-    <span class="nt">&lt;geometry&gt;</span>
-      <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.1 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/geometry&gt;</span>
-  <span class="nt">&lt;/collision&gt;</span>
+<span class="w">  </span><span class="nt">&lt;collision&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.1 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/collision&gt;</span>
 
-  <span class="nt">&lt;xacro:box_inertia</span> <span class="na">m=</span><span class="s">&quot;0.1&quot;</span> <span class="na">w=</span><span class="s">&quot;0.1&quot;</span> <span class="na">d=</span><span class="s">&quot;0.1&quot;</span> <span class="na">h=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:box_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">w=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">h=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/link&gt;</span>
 
-<span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;imu_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0.01&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;imu_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0.01&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/joint&gt;</span>
 
- <span class="nt">&lt;gazebo</span> <span class="na">reference=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;sensor</span> <span class="na">name=</span><span class="s">&quot;imu_sensor&quot;</span> <span class="na">type=</span><span class="s">&quot;imu&quot;</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;plugin</span> <span class="na">filename=</span><span class="s">&quot;libgazebo_ros_imu_sensor.so&quot;</span> <span class="na">name=</span><span class="s">&quot;imu_plugin&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;ros&gt;</span>
-        <span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
-        <span class="nt">&lt;remapping&gt;</span>~/out:=imu<span class="nt">&lt;/remapping&gt;</span>
-      <span class="nt">&lt;/ros&gt;</span>
-      <span class="nt">&lt;initial_orientation_as_reference&gt;</span>false<span class="nt">&lt;/initial_orientation_as_reference&gt;</span>
-    <span class="nt">&lt;/plugin&gt;</span>
-    <span class="nt">&lt;always_on&gt;</span>true<span class="nt">&lt;/always_on&gt;</span>
-    <span class="nt">&lt;update_rate&gt;</span>100<span class="nt">&lt;/update_rate&gt;</span>
-    <span class="nt">&lt;visualize&gt;</span>true<span class="nt">&lt;/visualize&gt;</span>
-    <span class="nt">&lt;imu&gt;</span>
-      <span class="nt">&lt;angular_velocity&gt;</span>
-        <span class="nt">&lt;x&gt;</span>
-          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-            <span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
-            <span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
-            <span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
-          <span class="nt">&lt;/noise&gt;</span>
-        <span class="nt">&lt;/x&gt;</span>
-        <span class="nt">&lt;y&gt;</span>
-          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-            <span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
-            <span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
-            <span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
-          <span class="nt">&lt;/noise&gt;</span>
-        <span class="nt">&lt;/y&gt;</span>
-        <span class="nt">&lt;z&gt;</span>
-          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-            <span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
-            <span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
-            <span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
-          <span class="nt">&lt;/noise&gt;</span>
-        <span class="nt">&lt;/z&gt;</span>
-      <span class="nt">&lt;/angular_velocity&gt;</span>
-      <span class="nt">&lt;linear_acceleration&gt;</span>
-        <span class="nt">&lt;x&gt;</span>
-          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-            <span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
-            <span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
-            <span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
-          <span class="nt">&lt;/noise&gt;</span>
-        <span class="nt">&lt;/x&gt;</span>
-        <span class="nt">&lt;y&gt;</span>
-          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-            <span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
-            <span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
-            <span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
-          <span class="nt">&lt;/noise&gt;</span>
-        <span class="nt">&lt;/y&gt;</span>
-        <span class="nt">&lt;z&gt;</span>
-          <span class="nt">&lt;noise</span> <span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-            <span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
-            <span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
-            <span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
-          <span class="nt">&lt;/noise&gt;</span>
-        <span class="nt">&lt;/z&gt;</span>
-      <span class="nt">&lt;/linear_acceleration&gt;</span>
-    <span class="nt">&lt;/imu&gt;</span>
-  <span class="nt">&lt;/sensor&gt;</span>
+<span class="w"> </span><span class="nt">&lt;gazebo</span><span class="w"> </span><span class="na">reference=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;sensor</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;imu_sensor&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;imu&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">filename=</span><span class="s">&quot;libgazebo_ros_imu_sensor.so&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;imu_plugin&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ros&gt;</span>
+<span class="w">        </span><span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
+<span class="w">        </span><span class="nt">&lt;remapping&gt;</span>~/out:=imu<span class="nt">&lt;/remapping&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/ros&gt;</span>
+<span class="w">      </span><span class="nt">&lt;initial_orientation_as_reference&gt;</span>false<span class="nt">&lt;/initial_orientation_as_reference&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/plugin&gt;</span>
+<span class="w">    </span><span class="nt">&lt;always_on&gt;</span>true<span class="nt">&lt;/always_on&gt;</span>
+<span class="w">    </span><span class="nt">&lt;update_rate&gt;</span>100<span class="nt">&lt;/update_rate&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visualize&gt;</span>true<span class="nt">&lt;/visualize&gt;</span>
+<span class="w">    </span><span class="nt">&lt;imu&gt;</span>
+<span class="w">      </span><span class="nt">&lt;angular_velocity&gt;</span>
+<span class="w">        </span><span class="nt">&lt;x&gt;</span>
+<span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/x&gt;</span>
+<span class="w">        </span><span class="nt">&lt;y&gt;</span>
+<span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/y&gt;</span>
+<span class="w">        </span><span class="nt">&lt;z&gt;</span>
+<span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/z&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/angular_velocity&gt;</span>
+<span class="w">      </span><span class="nt">&lt;linear_acceleration&gt;</span>
+<span class="w">        </span><span class="nt">&lt;x&gt;</span>
+<span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/x&gt;</span>
+<span class="w">        </span><span class="nt">&lt;y&gt;</span>
+<span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/y&gt;</span>
+<span class="w">        </span><span class="nt">&lt;z&gt;</span>
+<span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/z&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/linear_acceleration&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/imu&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/sensor&gt;</span>
 <span class="nt">&lt;/gazebo&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
@@ -1161,31 +1175,31 @@ geometry_msgs/TwistWithCovariance twist
 <span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">&lt;gazebo&gt;</span>
-  <span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&#39;diff_drive&#39;</span> <span class="na">filename=</span><span class="s">&#39;libgazebo_ros_diff_drive.so&#39;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ros&gt;</span>
-      <span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
-    <span class="nt">&lt;/ros&gt;</span>
+<span class="w">  </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">name=</span><span class="s">&#39;diff_drive&#39;</span><span class="w"> </span><span class="na">filename=</span><span class="s">&#39;libgazebo_ros_diff_drive.so&#39;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ros&gt;</span>
+<span class="w">      </span><span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ros&gt;</span>
 
-    <span class="cm">&lt;!-- wheels --&gt;</span>
-    <span class="nt">&lt;left_joint&gt;</span>drivewhl_l_joint<span class="nt">&lt;/left_joint&gt;</span>
-    <span class="nt">&lt;right_joint&gt;</span>drivewhl_r_joint<span class="nt">&lt;/right_joint&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- wheels --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;left_joint&gt;</span>drivewhl_l_joint<span class="nt">&lt;/left_joint&gt;</span>
+<span class="w">    </span><span class="nt">&lt;right_joint&gt;</span>drivewhl_r_joint<span class="nt">&lt;/right_joint&gt;</span>
 
-    <span class="cm">&lt;!-- kinematics --&gt;</span>
-    <span class="nt">&lt;wheel_separation&gt;</span>0.4<span class="nt">&lt;/wheel_separation&gt;</span>
-    <span class="nt">&lt;wheel_diameter&gt;</span>0.2<span class="nt">&lt;/wheel_diameter&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- kinematics --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;wheel_separation&gt;</span>0.4<span class="nt">&lt;/wheel_separation&gt;</span>
+<span class="w">    </span><span class="nt">&lt;wheel_diameter&gt;</span>0.2<span class="nt">&lt;/wheel_diameter&gt;</span>
 
-    <span class="cm">&lt;!-- limits --&gt;</span>
-    <span class="nt">&lt;max_wheel_torque&gt;</span>20<span class="nt">&lt;/max_wheel_torque&gt;</span>
-    <span class="nt">&lt;max_wheel_acceleration&gt;</span>1.0<span class="nt">&lt;/max_wheel_acceleration&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- limits --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;max_wheel_torque&gt;</span>20<span class="nt">&lt;/max_wheel_torque&gt;</span>
+<span class="w">    </span><span class="nt">&lt;max_wheel_acceleration&gt;</span>1.0<span class="nt">&lt;/max_wheel_acceleration&gt;</span>
 
-    <span class="cm">&lt;!-- output --&gt;</span>
-    <span class="nt">&lt;publish_odom&gt;</span>true<span class="nt">&lt;/publish_odom&gt;</span>
-    <span class="nt">&lt;publish_odom_tf&gt;</span>false<span class="nt">&lt;/publish_odom_tf&gt;</span>
-    <span class="nt">&lt;publish_wheel_tf&gt;</span>true<span class="nt">&lt;/publish_wheel_tf&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- output --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;publish_odom&gt;</span>true<span class="nt">&lt;/publish_odom&gt;</span>
+<span class="w">    </span><span class="nt">&lt;publish_odom_tf&gt;</span>false<span class="nt">&lt;/publish_odom_tf&gt;</span>
+<span class="w">    </span><span class="nt">&lt;publish_wheel_tf&gt;</span>true<span class="nt">&lt;/publish_wheel_tf&gt;</span>
 
-    <span class="nt">&lt;odometry_frame&gt;</span>odom<span class="nt">&lt;/odometry_frame&gt;</span>
-    <span class="nt">&lt;robot_base_frame&gt;</span>base_link<span class="nt">&lt;/robot_base_frame&gt;</span>
-  <span class="nt">&lt;/plugin&gt;</span>
+<span class="w">    </span><span class="nt">&lt;odometry_frame&gt;</span>odom<span class="nt">&lt;/odometry_frame&gt;</span>
+<span class="w">    </span><span class="nt">&lt;robot_base_frame&gt;</span>base_link<span class="nt">&lt;/robot_base_frame&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/plugin&gt;</span>
 <span class="nt">&lt;/gazebo&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
@@ -1193,25 +1207,25 @@ geometry_msgs/TwistWithCovariance twist
 <div class="section" id="launch-and-build-files">
 <h3>Launch and Build Files<a class="headerlink" href="#launch-and-build-files" title="Permalink to this headline">¶</a></h3>
 <p>We will now edit our launch file, <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py">launch/display.launch.py</a>, to spawn <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in Gazebo. Since we will be simulating our robot, we can remove the GUI for the joint state publisher by deleting the following lines inside the <code class="docutils literal notranslate"><span class="pre">generate_launch_description()</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">joint_state_publisher_gui_node</span> <span class="o">=</span> launch_ros.actions.Node<span class="o">(</span>
-  <span class="nv">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
-  <span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
-  <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
-  <span class="nv">condition</span><span class="o">=</span>launch.conditions.IfCondition<span class="o">(</span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;gui&#39;</span><span class="o">))</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">joint_state_publisher_gui_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>launch_ros.actions.Node<span class="o">(</span>
+<span class="w">  </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
+<span class="w">  </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
+<span class="w">  </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
+<span class="w">  </span><span class="nv">condition</span><span class="o">=</span>launch.conditions.IfCondition<span class="o">(</span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;gui&#39;</span><span class="o">))</span>
 <span class="o">)</span>
 </pre></div>
 </div>
 <p>Remove the following <cite>gui</cite> param:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>DeclareLaunchArgument<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;gui&#39;</span>, <span class="nv">default_value</span><span class="o">=</span><span class="s1">&#39;True&#39;</span>,
-                      <span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable joint_state_publisher_gui&#39;</span><span class="o">)</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>DeclareLaunchArgument<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;gui&#39;</span>,<span class="w"> </span><span class="nv">default_value</span><span class="o">=</span><span class="s1">&#39;True&#39;</span>,
+<span class="w">                      </span><span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable joint_state_publisher_gui&#39;</span><span class="o">)</span>
 </pre></div>
 </div>
 <p>Remove the condition from the <cite>joint_state_publisher_node</cite>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">joint_state_publisher_node</span> <span class="o">=</span> launch_ros.actions.Node<span class="o">(</span>
-  <span class="nv">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
-  <span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
-  <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
-  <span class="nv">condition</span><span class="o">=</span>launch.conditions.UnlessCondition<span class="o">(</span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;gui&#39;</span><span class="o">))</span> <span class="c1"># Remove this line</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">joint_state_publisher_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>launch_ros.actions.Node<span class="o">(</span>
+<span class="w">  </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
+<span class="w">  </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
+<span class="w">  </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
+<span class="w">  </span><span class="nv">condition</span><span class="o">=</span>launch.conditions.UnlessCondition<span class="o">(</span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;gui&#39;</span><span class="o">))</span><span class="w"> </span><span class="c1"># Remove this line</span>
 <span class="o">)</span>
 </pre></div>
 </div>
@@ -1220,22 +1234,22 @@ geometry_msgs/TwistWithCovariance twist
 </pre></div>
 </div>
 <p>To launch Gazebo, add the following before the <code class="docutils literal notranslate"><span class="pre">joint_state_publisher_node,</span></code> line</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>launch.actions.ExecuteProcess<span class="o">(</span><span class="nv">cmd</span><span class="o">=[</span><span class="s1">&#39;gazebo&#39;</span>, <span class="s1">&#39;--verbose&#39;</span>, <span class="s1">&#39;-s&#39;</span>, <span class="s1">&#39;libgazebo_ros_init.so&#39;</span>, <span class="s1">&#39;-s&#39;</span>, <span class="s1">&#39;libgazebo_ros_factory.so&#39;</span><span class="o">]</span>, <span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="o">)</span>,
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>launch.actions.ExecuteProcess<span class="o">(</span><span class="nv">cmd</span><span class="o">=[</span><span class="s1">&#39;gazebo&#39;</span>,<span class="w"> </span><span class="s1">&#39;--verbose&#39;</span>,<span class="w"> </span><span class="s1">&#39;-s&#39;</span>,<span class="w"> </span><span class="s1">&#39;libgazebo_ros_init.so&#39;</span>,<span class="w"> </span><span class="s1">&#39;-s&#39;</span>,<span class="w"> </span><span class="s1">&#39;libgazebo_ros_factory.so&#39;</span><span class="o">]</span>,<span class="w"> </span><span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="o">)</span>,
 </pre></div>
 </div>
 <p>We will now add a node that spawns <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in Gazebo. Open <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py">launch/display.launch.py</a> again and paste the following lines before the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> line.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">spawn_entity</span> <span class="o">=</span> launch_ros.actions.Node<span class="o">(</span>
-  <span class="nv">package</span><span class="o">=</span><span class="s1">&#39;gazebo_ros&#39;</span>,
-  <span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;spawn_entity.py&#39;</span>,
-  <span class="nv">arguments</span><span class="o">=[</span><span class="s1">&#39;-entity&#39;</span>, <span class="s1">&#39;sam_bot&#39;</span>, <span class="s1">&#39;-topic&#39;</span>, <span class="s1">&#39;robot_description&#39;</span><span class="o">]</span>,
-  <span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">spawn_entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>launch_ros.actions.Node<span class="o">(</span>
+<span class="w">  </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;gazebo_ros&#39;</span>,
+<span class="w">  </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;spawn_entity.py&#39;</span>,
+<span class="w">  </span><span class="nv">arguments</span><span class="o">=[</span><span class="s1">&#39;-entity&#39;</span>,<span class="w"> </span><span class="s1">&#39;sam_bot&#39;</span>,<span class="w"> </span><span class="s1">&#39;-topic&#39;</span>,<span class="w"> </span><span class="s1">&#39;robot_description&#39;</span><span class="o">]</span>,
+<span class="w">  </span><span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>
 <span class="o">)</span>
 </pre></div>
 </div>
 <p>Then add the line <code class="docutils literal notranslate"><span class="pre">spawn_entity,</span></code> before the <code class="docutils literal notranslate"><span class="pre">rviz_node</span></code> line, as shown below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>      robot_state_publisher_node,
-      spawn_entity,
-      rviz_node
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w">      </span>robot_state_publisher_node,
+<span class="w">      </span>spawn_entity,
+<span class="w">      </span>rviz_node
 <span class="o">])</span>
 </pre></div>
 </div>
@@ -1244,32 +1258,32 @@ geometry_msgs/TwistWithCovariance twist
 <h3>Build, Run and Verification<a class="headerlink" href="#build-run-and-verification" title="Permalink to this headline">¶</a></h3>
 <p>Let us run our package to check if the <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> topics are active in the system.</p>
 <p>Navigate to the root of the project and execute the following lines:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
-. install/setup.bash
-ros2 launch sam_bot_description display.launch.py
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build
+.<span class="w"> </span>install/setup.bash
+ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<span class="w"> </span>display.launch.py
 </pre></div>
 </div>
 <p>Gazebo should launch and you should see a 3D model of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>:</p>
 <a class="reference internal image-reference" href="../../_images/gazebo_sam_bot.png"><img alt="../../_images/gazebo_sam_bot.png" class="align-center" src="../../_images/gazebo_sam_bot.png" style="width: 50%;" /></a>
 <p>To see the active topics in the system, open a new terminal and execute:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 topic list
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>list
 </pre></div>
 </div>
 <p>You should see <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> in the list of topics.</p>
 <p>To see more information about the topics, execute:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 topic info /demo/imu
-ros2 topic info /demo/odom
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/demo/imu
+ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/demo/odom
 </pre></div>
 </div>
 <p>You should see an output similar to below:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Type: sensor_msgs/msg/Imu
-Publisher count: <span class="m">1</span>
-Subscription count: <span class="m">0</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Type:<span class="w"> </span>sensor_msgs/msg/Imu
+Publisher<span class="w"> </span>count:<span class="w"> </span><span class="m">1</span>
+Subscription<span class="w"> </span>count:<span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Type: nav_msgs/msg/Odometry
-Publisher count: <span class="m">1</span>
-Subscription count: <span class="m">0</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Type:<span class="w"> </span>nav_msgs/msg/Odometry
+Publisher<span class="w"> </span>count:<span class="w"> </span><span class="m">1</span>
+Subscription<span class="w"> </span>count:<span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
 <p>Observe that the <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> topic publishes <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> type messages while the <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> topic publishes <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> type messages. The information being published on these topics come from the gazebo simulation of the IMU sensor and the differential drive respectively. Also note that both topics currently have no subscribers. In the next section, we will create a <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> node that will subscribe to these two topics. It will then use the messages published on both topics to provide a fused, locally accurate and smooth odometry information for Nav2.</p>
@@ -1294,57 +1308,57 @@ Subscription count: <span class="m">0</span>
 <h3>Configuring Robot Localization<a class="headerlink" href="#configuring-robot-localization" title="Permalink to this headline">¶</a></h3>
 <p>Let us now configure the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package to use an Extended Kalman Filter (<code class="docutils literal notranslate"><span class="pre">ekf_node</span></code>) to fuse odometry information and publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform.</p>
 <p>First, install the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package using your machines package manager or by executing the following command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-&lt;ros2-distro&gt;-robot-localization
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-robot-localization
 </pre></div>
 </div>
 <p>Next, we specify the parameters of the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> using a YAML file. Create a directory named <code class="docutils literal notranslate"><span class="pre">config</span></code> at the root of your project and create a file named <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code>. Copy the following lines of code into your <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code> file.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">### ekf config file ###</span><span class="w"></span>
-<span class="nt">ekf_filter_node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="c1"># The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin</span><span class="w"></span>
-<span class="c1"># computation until it receives at least one message from one of theinputs. It will then run continuously at the</span><span class="w"></span>
-<span class="c1"># frequency specified here, regardless of whether it receives more measurements. Defaults to 30 if unspecified.</span><span class="w"></span>
-<span class="w">        </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">### ekf config file ###</span>
+<span class="nt">ekf_filter_node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="c1"># The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin</span>
+<span class="c1"># computation until it receives at least one message from one of theinputs. It will then run continuously at the</span>
+<span class="c1"># frequency specified here, regardless of whether it receives more measurements. Defaults to 30 if unspecified.</span>
+<span class="w">        </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span>
 
-<span class="c1"># ekf_localization_node and ukf_localization_node both use a 3D omnidirectional motion model. If this parameter is</span><span class="w"></span>
-<span class="c1"># set to true, no 3D information will be used in your state estimate. Use this if you are operating in a planar</span><span class="w"></span>
-<span class="c1"># environment and want to ignore the effect of small variations in the ground plane that might otherwise be detected</span><span class="w"></span>
-<span class="c1"># by, for example, an IMU. Defaults to false if unspecified.</span><span class="w"></span>
-<span class="w">        </span><span class="nt">two_d_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="c1"># ekf_localization_node and ukf_localization_node both use a 3D omnidirectional motion model. If this parameter is</span>
+<span class="c1"># set to true, no 3D information will be used in your state estimate. Use this if you are operating in a planar</span>
+<span class="c1"># environment and want to ignore the effect of small variations in the ground plane that might otherwise be detected</span>
+<span class="c1"># by, for example, an IMU. Defaults to false if unspecified.</span>
+<span class="w">        </span><span class="nt">two_d_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 
-<span class="c1"># Whether to publish the acceleration state. Defaults to false if unspecified.</span><span class="w"></span>
-<span class="w">        </span><span class="nt">publish_acceleration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="c1"># Whether to publish the acceleration state. Defaults to false if unspecified.</span>
+<span class="w">        </span><span class="nt">publish_acceleration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="c1"># Whether to broadcast the transformation over the /tf topic. Defaultsto true if unspecified.</span><span class="w"></span>
-<span class="w">        </span><span class="nt">publish_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="c1"># Whether to broadcast the transformation over the /tf topic. Defaultsto true if unspecified.</span>
+<span class="w">        </span><span class="nt">publish_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="c1"># 1. Set the map_frame, odom_frame, and base_link frames to the appropriate frame names for your system.</span><span class="w"></span>
-<span class="c1">#     1a. If your system does not have a map_frame, just remove it, and make sure &quot;world_frame&quot; is set to the value of odom_frame.</span><span class="w"></span>
-<span class="c1"># 2. If you are fusing continuous position data such as wheel encoder odometry, visual odometry, or IMU data, set &quot;world_frame&quot;</span><span class="w"></span>
-<span class="c1">#    to your odom_frame value. This is the default behavior for robot_localization&#39;s state estimation nodes.</span><span class="w"></span>
-<span class="c1"># 3. If you are fusing global absolute position data that is subject to discrete jumps (e.g., GPS or position updates from landmark</span><span class="w"></span>
-<span class="c1">#    observations) then:</span><span class="w"></span>
-<span class="c1">#     3a. Set your &quot;world_frame&quot; to your map_frame value</span><span class="w"></span>
-<span class="c1">#     3b. MAKE SURE something else is generating the odom-&gt;base_link transform. Note that this can even be another state estimation node</span><span class="w"></span>
-<span class="c1">#         from robot_localization! However, that instance should *not* fuse the global data.</span><span class="w"></span>
-<span class="w">        </span><span class="nt">map_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span><span class="w">              </span><span class="c1"># Defaults to &quot;map&quot; if unspecified</span><span class="w"></span>
-<span class="w">        </span><span class="nt">odom_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w">            </span><span class="c1"># Defaults to &quot;odom&quot; if unspecified</span><span class="w"></span>
-<span class="w">        </span><span class="nt">base_link_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w">  </span><span class="c1"># Defaults to &quot;base_link&quot; ifunspecified</span><span class="w"></span>
-<span class="w">        </span><span class="nt">world_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w">           </span><span class="c1"># Defaults to the value ofodom_frame if unspecified</span><span class="w"></span>
+<span class="c1"># 1. Set the map_frame, odom_frame, and base_link frames to the appropriate frame names for your system.</span>
+<span class="c1">#     1a. If your system does not have a map_frame, just remove it, and make sure &quot;world_frame&quot; is set to the value of odom_frame.</span>
+<span class="c1"># 2. If you are fusing continuous position data such as wheel encoder odometry, visual odometry, or IMU data, set &quot;world_frame&quot;</span>
+<span class="c1">#    to your odom_frame value. This is the default behavior for robot_localization&#39;s state estimation nodes.</span>
+<span class="c1"># 3. If you are fusing global absolute position data that is subject to discrete jumps (e.g., GPS or position updates from landmark</span>
+<span class="c1">#    observations) then:</span>
+<span class="c1">#     3a. Set your &quot;world_frame&quot; to your map_frame value</span>
+<span class="c1">#     3b. MAKE SURE something else is generating the odom-&gt;base_link transform. Note that this can even be another state estimation node</span>
+<span class="c1">#         from robot_localization! However, that instance should *not* fuse the global data.</span>
+<span class="w">        </span><span class="nt">map_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span><span class="w">              </span><span class="c1"># Defaults to &quot;map&quot; if unspecified</span>
+<span class="w">        </span><span class="nt">odom_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w">            </span><span class="c1"># Defaults to &quot;odom&quot; if unspecified</span>
+<span class="w">        </span><span class="nt">base_link_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w">  </span><span class="c1"># Defaults to &quot;base_link&quot; ifunspecified</span>
+<span class="w">        </span><span class="nt">world_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w">           </span><span class="c1"># Defaults to the value ofodom_frame if unspecified</span>
 
-<span class="w">        </span><span class="nt">odom0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo/odom</span><span class="w"></span>
-<span class="w">        </span><span class="nt">odom0_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w"></span>
-<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
-<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
-<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w"></span>
-<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">        </span><span class="nt">odom0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo/odom</span>
+<span class="w">        </span><span class="nt">odom0_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">]</span>
 
-<span class="w">        </span><span class="nt">imu0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo/imu</span><span class="w"></span>
-<span class="w">        </span><span class="nt">imu0_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
-<span class="w">                      </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w"></span>
-<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
-<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"></span>
-<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">        </span><span class="nt">imu0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo/imu</span>
+<span class="w">        </span><span class="nt">imu0_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">                      </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
 <p>In this configuration, we defined the parameter values of <code class="docutils literal notranslate"><span class="pre">frequency</span></code>, <code class="docutils literal notranslate"><span class="pre">two_d_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_acceleration</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_tf</span></code>, <code class="docutils literal notranslate"><span class="pre">map_frame</span></code>, <code class="docutils literal notranslate"><span class="pre">odom_frame</span></code>, <code class="docutils literal notranslate"><span class="pre">base_link_frame</span></code>, and <code class="docutils literal notranslate"><span class="pre">world_frame</span></code>. For more information on the other parameters you can modify, see <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/state_estimation_nodes.html#parameters">Parameters of state estimation nodes</a>, and a sample <code class="docutils literal notranslate"><span class="pre">efk.yaml</span></code> can be found <a class="reference external" href="https://github.com/cra-ros-pkg/robot_localization/blob/foxy-devel/params/ekf.yaml">here</a>.</p>
@@ -1359,25 +1373,25 @@ Subscription count: <span class="m">0</span>
 <div class="section" id="id3">
 <h3>Launch and Build Files<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Now, let us add the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> into the launch file. Open <code class="docutils literal notranslate"><span class="pre">launch/display.launch.py</span></code> and paste the following lines before the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> line.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">robot_localization_node</span> <span class="o">=</span> launch_ros.actions.Node<span class="o">(</span>
-       <span class="nv">package</span><span class="o">=</span><span class="s1">&#39;robot_localization&#39;</span>,
-       <span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;ekf_node&#39;</span>,
-       <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;ekf_filter_node&#39;</span>,
-       <span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>,
-       <span class="nv">parameters</span><span class="o">=[</span>os.path.join<span class="o">(</span>pkg_share, <span class="s1">&#39;config/ekf.yaml&#39;</span><span class="o">)</span>, <span class="o">{</span><span class="s1">&#39;use_sim_time&#39;</span>: LaunchConfiguration<span class="o">(</span><span class="s1">&#39;use_sim_time&#39;</span><span class="o">)}]</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">robot_localization_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>launch_ros.actions.Node<span class="o">(</span>
+<span class="w">       </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;robot_localization&#39;</span>,
+<span class="w">       </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;ekf_node&#39;</span>,
+<span class="w">       </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;ekf_filter_node&#39;</span>,
+<span class="w">       </span><span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>,
+<span class="w">       </span><span class="nv">parameters</span><span class="o">=[</span>os.path.join<span class="o">(</span>pkg_share,<span class="w"> </span><span class="s1">&#39;config/ekf.yaml&#39;</span><span class="o">)</span>,<span class="w"> </span><span class="o">{</span><span class="s1">&#39;use_sim_time&#39;</span>:<span class="w"> </span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;use_sim_time&#39;</span><span class="o">)}]</span>
 <span class="o">)</span>
 </pre></div>
 </div>
 <p>Next, add the following launch arguments within the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> block.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>launch.actions.DeclareLaunchArgument<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;use_sim_time&#39;</span>, <span class="nv">default_value</span><span class="o">=</span><span class="s1">&#39;True&#39;</span>,
-                                            <span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable use_sim_time&#39;</span><span class="o">)</span>,
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>launch.actions.DeclareLaunchArgument<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;use_sim_time&#39;</span>,<span class="w"> </span><span class="nv">default_value</span><span class="o">=</span><span class="s1">&#39;True&#39;</span>,
+<span class="w">                                            </span><span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable use_sim_time&#39;</span><span class="o">)</span>,
 </pre></div>
 </div>
 <p>Lastly, add <code class="docutils literal notranslate"><span class="pre">robot_localization_node,</span></code> above the <code class="docutils literal notranslate"><span class="pre">rviz_node</span></code> line to launch the robot localization node.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>      robot_state_publisher_node,
-      spawn_entity,
-      robot_localization_node,
-      rviz_node
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w">      </span>robot_state_publisher_node,
+<span class="w">      </span>spawn_entity,
+<span class="w">      </span>robot_localization_node,
+<span class="w">      </span>rviz_node
 <span class="o">])</span>
 </pre></div>
 </div>
@@ -1387,8 +1401,8 @@ Subscription count: <span class="m">0</span>
 </div>
 <p>Lastly, open <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and append the <code class="docutils literal notranslate"><span class="pre">config</span></code> directory inside the <code class="docutils literal notranslate"><span class="pre">install(DIRECTORY...)</span></code>, as shown in the snippet below.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>install<span class="o">(</span>
-  DIRECTORY src launch rviz config
-  DESTINATION share/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span>
+<span class="w">  </span>DIRECTORY<span class="w"> </span>src<span class="w"> </span>launch<span class="w"> </span>rviz<span class="w"> </span>config
+<span class="w">  </span>DESTINATION<span class="w"> </span>share/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span>
 <span class="o">)</span>
 </pre></div>
 </div>
@@ -1396,58 +1410,58 @@ Subscription count: <span class="m">0</span>
 <div class="section" id="id4">
 <h3>Build, Run and Verification<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>Let us now build and run our package. Navigate to the root of the project and execute the following lines:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
-. install/setup.bash
-ros2 launch sam_bot_description display.launch.py
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build
+.<span class="w"> </span>install/setup.bash
+ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<span class="w"> </span>display.launch.py
 </pre></div>
 </div>
 <p>Gazebo and RVIZ should launch. In the RVIZ window, you should see the model and TF frames of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>:</p>
 <a class="reference internal image-reference" href="../../_images/rviz.png"><img alt="../../_images/rviz.png" class="align-center" src="../../_images/rviz.png" style="width: 100%;" /></a>
 <p>Next, let us verify that the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>,  <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics are active in the system. Open a new terminal and execute:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 topic list
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>list
 </pre></div>
 </div>
 <p>You should see <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>, <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> in the list of the topics.</p>
 <p>You can also check the subscriber count of these topics again by executing:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 topic info /demo/imu
-ros2 topic info /demo/odom
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/demo/imu
+ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/demo/odom
 </pre></div>
 </div>
 <p>You should see that <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> now both have 1 subscriber each.</p>
 <p>To verify that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> are the subscribers of these topics, execute:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 node info /ekf_filter_node
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/ekf_filter_node
 </pre></div>
 </div>
 <p>You should see an output as shown below.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/ekf_filter_node
 Subscribers:
-  /demo/imu: sensor_msgs/msg/Imu
-  /demo/odom: nav_msgs/msg/Odometry
-  /parameter_events: rcl_interfaces/msg/ParameterEvent
-  /set_pose: geometry_msgs/msg/PoseWithCovarianceStamped
+<span class="w">  </span>/demo/imu:<span class="w"> </span>sensor_msgs/msg/Imu
+<span class="w">  </span>/demo/odom:<span class="w"> </span>nav_msgs/msg/Odometry
+<span class="w">  </span>/parameter_events:<span class="w"> </span>rcl_interfaces/msg/ParameterEvent
+<span class="w">  </span>/set_pose:<span class="w"> </span>geometry_msgs/msg/PoseWithCovarianceStamped
 Publishers:
-  /accel/filtered: geometry_msgs/msg/AccelWithCovarianceStamped
-  /diagnostics: diagnostic_msgs/msg/DiagnosticArray
-  /odometry/filtered: nav_msgs/msg/Odometry
-  /parameter_events: rcl_interfaces/msg/ParameterEvent
-  /rosout: rcl_interfaces/msg/Log
-  /tf: tf2_msgs/msg/TFMessage
-Service Servers:
-   ...
+<span class="w">  </span>/accel/filtered:<span class="w"> </span>geometry_msgs/msg/AccelWithCovarianceStamped
+<span class="w">  </span>/diagnostics:<span class="w"> </span>diagnostic_msgs/msg/DiagnosticArray
+<span class="w">  </span>/odometry/filtered:<span class="w"> </span>nav_msgs/msg/Odometry
+<span class="w">  </span>/parameter_events:<span class="w"> </span>rcl_interfaces/msg/ParameterEvent
+<span class="w">  </span>/rosout:<span class="w"> </span>rcl_interfaces/msg/Log
+<span class="w">  </span>/tf:<span class="w"> </span>tf2_msgs/msg/TFMessage
+Service<span class="w"> </span>Servers:
+<span class="w">   </span>...
 </pre></div>
 </div>
 <p>From the output above, we can see that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> is subscribed to <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code>. We can also see that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> publishes on the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>, <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics.</p>
 <p>You may also verify that <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> is publishing the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform by using the tf2_echo utility. Run the folllowing command in a separate command line terminal:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 run tf2_ros tf2_echo odom base_link
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>odom<span class="w"> </span>base_link
 </pre></div>
 </div>
 <p>You should see a continuous output similar to what is shown below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>At <span class="nb">time</span> <span class="m">8</span>.842000000
-- Translation: <span class="o">[</span><span class="m">0</span>.003, -0.000, <span class="m">0</span>.127<span class="o">]</span>
-- Rotation: <span class="k">in</span> Quaternion <span class="o">[</span>-0.000, <span class="m">0</span>.092, <span class="m">0</span>.003, <span class="m">0</span>.996<span class="o">]</span>
-At <span class="nb">time</span> <span class="m">9</span>.842000000
-- Translation: <span class="o">[</span><span class="m">0</span>.002, -0.000, <span class="m">0</span>.127<span class="o">]</span>
-- Rotation: <span class="k">in</span> Quaternion <span class="o">[</span>-0.000, <span class="m">0</span>.092, <span class="m">0</span>.003, <span class="m">0</span>.996<span class="o">]</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>At<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">8</span>.842000000
+-<span class="w"> </span>Translation:<span class="w"> </span><span class="o">[</span><span class="m">0</span>.003,<span class="w"> </span>-0.000,<span class="w"> </span><span class="m">0</span>.127<span class="o">]</span>
+-<span class="w"> </span>Rotation:<span class="w"> </span><span class="k">in</span><span class="w"> </span>Quaternion<span class="w"> </span><span class="o">[</span>-0.000,<span class="w"> </span><span class="m">0</span>.092,<span class="w"> </span><span class="m">0</span>.003,<span class="w"> </span><span class="m">0</span>.996<span class="o">]</span>
+At<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">9</span>.842000000
+-<span class="w"> </span>Translation:<span class="w"> </span><span class="o">[</span><span class="m">0</span>.002,<span class="w"> </span>-0.000,<span class="w"> </span><span class="m">0</span>.127<span class="o">]</span>
+-<span class="w"> </span>Rotation:<span class="w"> </span><span class="k">in</span><span class="w"> </span>Quaternion<span class="w"> </span><span class="o">[</span>-0.000,<span class="w"> </span><span class="m">0</span>.092,<span class="w"> </span><span class="m">0</span>.003,<span class="w"> </span><span class="m">0</span>.996<span class="o">]</span>
 </pre></div>
 </div>
 </div>

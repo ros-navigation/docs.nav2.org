@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -905,17 +919,17 @@
 <p>Below is the code snippet from <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> defining the local costmap footprint. In this configuration file, the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> parameter of the local costmap has already been set with a rectangular-shaped footprint. This box is centered at the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">188</span>
 <span class="normal">189</span>
-<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
-<span class="nt">footprint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[</span><span class="nv"> </span><span class="s">[0.21,</span><span class="nv"> </span><span class="s">0.195],</span><span class="nv"> </span><span class="s">[0.21,</span><span class="nv"> </span><span class="s">-0.195],</span><span class="nv"> </span><span class="s">[-0.21,</span><span class="nv"> </span><span class="s">-0.195],</span><span class="nv"> </span><span class="s">[-0.21,</span><span class="nv"> </span><span class="s">0.195]</span><span class="nv"> </span><span class="s">]&quot;</span><span class="w"></span>
-<span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="nt">footprint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[</span><span class="nv"> </span><span class="s">[0.21,</span><span class="nv"> </span><span class="s">0.195],</span><span class="nv"> </span><span class="s">[0.21,</span><span class="nv"> </span><span class="s">-0.195],</span><span class="nv"> </span><span class="s">[-0.21,</span><span class="nv"> </span><span class="s">-0.195],</span><span class="nv"> </span><span class="s">[-0.21,</span><span class="nv"> </span><span class="s">0.195]</span><span class="nv"> </span><span class="s">]&quot;</span>
+<span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;voxel_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
 </pre></div></td></tr></table></div>
 </div>
 <p>For the global costmap, we have already set the <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> parameter to create a circular footprint that matches <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>’s size and centered at <code class="docutils literal notranslate"><span class="pre">base_link</span></code>. The parameter that was modified is shown in the code snippet below.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">232</span>
 <span class="normal">233</span>
-<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
-<span class="nt">robot_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span><span class="w"></span>
-<span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"></span>
+<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="nt">robot_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+<span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
 </pre></div></td></tr></table></div>
 </div>
 </div>
@@ -923,19 +937,19 @@
 <h2>Build, Run and Verification<a class="headerlink" href="#build-run-and-verification" title="Permalink to this headline">¶</a></h2>
 <p>We will now confirm that we have properly set up <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>’s footprint.</p>
 <p>First, we launch <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py">launch/display.launch.py</a> to launch the robot state publisher, spawn <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in Gazebo, and visualize <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> and its footprint in Rviz. The robot state publisher publishes the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">sensors</span></code> transforms defined in <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>’s URDF while Gazebo’s differential drive plugin publishes the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform. Open a new terminal and execute the lines below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
-. install/setup.bash
-ros2 launch sam_bot_description display.launch.py
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build
+.<span class="w"> </span>install/setup.bash
+ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<span class="w"> </span>display.launch.py
 </pre></div>
 </div>
 <p>After launching <code class="docutils literal notranslate"><span class="pre">display.launch.py</span></code>, RViz and Gazebo should open. RViz should show <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, the frames of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>’s parts, and the <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame without errors. Gazebo should show <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> with a sphere and a cube detectable by <code class="docutils literal notranslate"><span class="pre">sambot</span></code>’s lidar sensor.</p>
 <p>Next, we will publish the <code class="docutils literal notranslate"><span class="pre">map</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code> transform using the <code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code>. We publish the <code class="docutils literal notranslate"><span class="pre">map</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code> transform as static in this guide as a simple way to publish the transform and visualize the footprint. Open a new terminal and execute the lines below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 run tf2_ros static_transform_publisher <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> map odom
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>static_transform_publisher<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>map<span class="w"> </span>odom
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">map</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code> transform should now be being published and the <code class="docutils literal notranslate"><span class="pre">map</span></code> frame should be added in RViz without errors.</p>
 <p>Lastly, we will launch Nav2 using the <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> configuration file we just made and <code class="docutils literal notranslate"><span class="pre">navigation_launch.py</span></code>, the built-in launch file of <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>. Open a new terminal and execute the following:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup navigation_launch.py params_file:<span class="o">=</span>&lt;full/path/to/config/nav2_params.yaml&gt;
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>navigation_launch.py<span class="w"> </span>params_file:<span class="o">=</span>&lt;full/path/to/config/nav2_params.yaml&gt;
 </pre></div>
 </div>
 <p>We should now be able to visualize the footprints in RViz, which will be discussed in the next section.</p>

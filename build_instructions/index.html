@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -905,12 +919,12 @@ For Galactic and newer, it is simply <code class="docutils literal notranslate">
 <h4>Build Nav2<a class="headerlink" href="#build-nav2" title="Permalink to this headline">¶</a></h4>
 <p>We’re going to create a new workspace, <code class="docutils literal notranslate"><span class="pre">nav2_ws</span></code>, clone our Nav2 branch into it, and build.
 <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> will be used to get the dependency binaries for Nav2 in your specific distribution.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/nav2_ws/src
-<span class="nb">cd</span> ~/nav2_ws/src
-git clone https://github.com/ros-planning/navigation2.git --branch &lt;ros2-distro&gt;-devel
-<span class="nb">cd</span> ~/nav2_ws
-rosdep install -y -r -q --from-paths src --ignore-src --rosdistro &lt;ros2-distro&gt;
-colcon build --symlink-install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/nav2_ws/src
+<span class="nb">cd</span><span class="w"> </span>~/nav2_ws/src
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>&lt;ros2-distro&gt;-devel
+<span class="nb">cd</span><span class="w"> </span>~/nav2_ws
+rosdep<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-r<span class="w"> </span>-q<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>--rosdistro<span class="w"> </span>&lt;ros2-distro&gt;
+colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
 </pre></div>
 </div>
 <p>Note: You need to change <code class="docutils literal notranslate"><span class="pre">--rosdistro</span></code> to the selected ROS 2 distribution name (e.g <code class="docutils literal notranslate"><span class="pre">foxy</span></code>, <code class="docutils literal notranslate"><span class="pre">galactic</span></code>).</p>
@@ -929,13 +943,13 @@ All development is done using the <code class="docutils literal notranslate"><sp
 We’ll create a new workspace, <code class="docutils literal notranslate"><span class="pre">nav2_ws</span></code> and clone the Nav2 project into it.
 Afterwards, we’ll use <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> to automatically find and install our dependencies that were not included in the core ROS 2 install itself (<code class="docutils literal notranslate"><span class="pre">behaviortree.CPP</span></code>, <code class="docutils literal notranslate"><span class="pre">ompl</span></code>, etc).
 If you would like to use a custom version of any of these dependencies, simply overlay them in your <code class="docutils literal notranslate"><span class="pre">nav2_ws</span></code> and it will use those rather than the binary installed versions.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/nav2_ws/src
-<span class="nb">cd</span> ~/nav2_ws/src
-git clone https://github.com/ros-planning/navigation2.git --branch main
-<span class="nb">cd</span> ~/nav2_ws
-rosdep install -y -r -q --from-paths src --ignore-src --rosdistro rolling
-colcon build --symlink-install
-<span class="nb">source</span> install/setup.bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/nav2_ws/src
+<span class="nb">cd</span><span class="w"> </span>~/nav2_ws/src
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main
+<span class="nb">cd</span><span class="w"> </span>~/nav2_ws
+rosdep<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-r<span class="w"> </span>-q<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>--rosdistro<span class="w"> </span>rolling
+colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
+<span class="nb">source</span><span class="w"> </span>install/setup.bash
 </pre></div>
 </div>
 <p>You are now ready for the demonstrations!</p>
@@ -950,17 +964,17 @@ colcon build --symlink-install
 <h3>Building Docker Container<a class="headerlink" href="#building-docker-container" title="Permalink to this headline">¶</a></h3>
 <p>To build an image from the Dockerfile in the Nav2 folder:
 First, clone the repo to your local system (or see Building the source above)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker build -t nav2/latest .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>nav2/latest<span class="w"> </span>.
 </pre></div>
 </div>
 <p>If proxies are needed:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker build -t nav2/latest --build-arg <span class="nv">http_proxy</span><span class="o">=</span>http://proxy.my.com:### --build-arg <span class="nv">https_proxy</span><span class="o">=</span>http://proxy.my.com:### .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>nav2/latest<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">http_proxy</span><span class="o">=</span>http://proxy.my.com:###<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">https_proxy</span><span class="o">=</span>http://proxy.my.com:###<span class="w"> </span>.
 </pre></div>
 </div>
 <p>Note: You may also need to configure your docker for DNS to work. See article here for details: <a class="reference external" href="https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/">https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/</a></p>
 <p>If you would like to build from dockerhub cache to speed up the build</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker pull rosplanning/navigation2:main
-sudo docker build -t nav2/latest --cache-from rosplanning/navigation2:main .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </span>rosplanning/navigation2:main
+sudo<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>nav2/latest<span class="w"> </span>--cache-from<span class="w"> </span>rosplanning/navigation2:main<span class="w"> </span>.
 </pre></div>
 </div>
 </div>
@@ -968,7 +982,7 @@ sudo docker build -t nav2/latest --cache-from rosplanning/navigation2:main .
 <h3>Using DockerHub Container<a class="headerlink" href="#using-dockerhub-container" title="Permalink to this headline">¶</a></h3>
 <p>We allow for you to pull the latest docker image from the main branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
 This docker image will not contain a built overlay, and you must build the overlay Nav2 workspace yourself (see Build Nav2 Main up above).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker pull rosplanning/navigation2:main
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </span>rosplanning/navigation2:main
 </pre></div>
 </div>
 </div>

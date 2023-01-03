@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -1047,20 +1061,20 @@ image: keepout_mask.pgm
 </pre></div>
 </div>
 <p>where the <code class="docutils literal notranslate"><span class="pre">params_file</span></code> variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at <a class="reference internal" href="../../configuration/packages/configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> page. Please, refer to it for more information. The example of <code class="docutils literal notranslate"><span class="pre">params_file</span></code> could be found below:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">costmap_filter_info_server</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">filter_info_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/costmap_filter_info&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mask_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/keepout_filter_mask&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">multiplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
-<span class="nt">filter_mask_server</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/keepout_filter_mask&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">yaml_filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keepout_mask.yaml&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">costmap_filter_info_server</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">filter_info_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/costmap_filter_info&quot;</span>
+<span class="w">    </span><span class="nt">mask_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/keepout_filter_mask&quot;</span>
+<span class="w">    </span><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">    </span><span class="nt">multiplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="nt">filter_mask_server</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
+<span class="w">    </span><span class="nt">topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/keepout_filter_mask&quot;</span>
+<span class="w">    </span><span class="nt">yaml_filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keepout_mask.yaml&quot;</span>
 </pre></div>
 </div>
 <p>Note, that:</p>
@@ -1072,13 +1086,13 @@ image: keepout_mask.pgm
 </ul>
 </div></blockquote>
 <p>Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in a <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_costmap_filters_demo">nav2_costmap_filters_demo</a> directory of <code class="docutils literal notranslate"><span class="pre">navigation2_tutorials</span></code> repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>, build the demo and launch <code class="docutils literal notranslate"><span class="pre">costmap_filter_info.launch.py</span></code> as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir -p ~/tutorials_ws/src
-$ <span class="nb">cd</span> ~/tutorials_ws/src
-$ git clone https://github.com/ros-planning/navigation2_tutorials.git
-$ <span class="nb">cd</span> ~/tutorials_ws
-$ colcon build --symlink-install --packages-select nav2_costmap_filters_demo
-$ <span class="nb">source</span> ~/tutorials_ws/install/setup.bash
-$ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_file:<span class="o">=</span>src/navigation2_tutorials/nav2_costmap_filters_demo/params/keepout_params.yaml mask:<span class="o">=</span>src/navigation2_tutorials/nav2_costmap_filters_demo/maps/keepout_mask.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/tutorials_ws/src
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/tutorials_ws/src
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2_tutorials.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/tutorials_ws
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install<span class="w"> </span>--packages-select<span class="w"> </span>nav2_costmap_filters_demo
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/tutorials_ws/install/setup.bash
+$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_costmap_filters_demo<span class="w"> </span>costmap_filter_info.launch.py<span class="w"> </span>params_file:<span class="o">=</span>src/navigation2_tutorials/nav2_costmap_filters_demo/params/keepout_params.yaml<span class="w"> </span>mask:<span class="o">=</span>src/navigation2_tutorials/nav2_costmap_filters_demo/maps/keepout_mask.yaml
 </pre></div>
 </div>
 </div>
@@ -1125,7 +1139,7 @@ local_costmap:
 <div class="section" id="run-nav2-stack">
 <h3>4. Run Nav2 stack<a class="headerlink" href="#run-nav2-stack" title="Permalink to this headline">¶</a></h3>
 <p>After Costmap Filter Info Publisher Server and Map Server were launched and Keepout Filter was enabled for global/local costmaps, run Nav2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch nav2_bringup tb3_simulation_launch.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py
 </pre></div>
 </div>
 <p>And check that filter is working properly as in the pictures below (first picture shows keepout filter enabled for the global costmap, second - differently-sized <code class="docutils literal notranslate"><span class="pre">keepout_mask.pgm</span></code> filter mask):</p>

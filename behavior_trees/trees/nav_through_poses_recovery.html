@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -903,44 +917,44 @@ Next, the recovery subtree will tick the costmap clearing operations, spinning, 
 After each of the recoveries in the subtree, the main navigation subtree will be reattempted.
 If it continues to fail, the next recovery in the recovery subtree is ticked.</p>
 <p>While this behavior tree does not make use of it, the <code class="docutils literal notranslate"><span class="pre">PlannerSelector</span></code>, <code class="docutils literal notranslate"><span class="pre">ControllerSelector</span></code>, and <code class="docutils literal notranslate"><span class="pre">GoalCheckerSelector</span></code> behavior tree nodes can also be helpful. Rather than hardcoding the algorithm to use (<code class="docutils literal notranslate"><span class="pre">GridBased</span></code> and <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>), these behavior tree nodes will allow a user to dynamically change the algorithm used in the navigation system via a ROS topic. It may be instead advisable to create different subtree contexts using condition nodes with specified algorithms in their most useful and unique situations. However, the selector nodes can be a useful way to change algorithms from an external application rather than via internal behavior tree control flow logic. It is better to implement changes through behavior tree methods, but we understand that many professional users have external applications to dynamically change settings of their navigators.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;BehaviorTree</span> <span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;6&quot;</span> <span class="na">name=</span><span class="s">&quot;NavigateRecovery&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;PipelineSequence</span> <span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;RateController</span> <span class="na">hz=</span><span class="s">&quot;0.333&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;ComputePathThroughPoses&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ReactiveSequence&gt;</span>
-              <span class="nt">&lt;RemovePassedGoals</span> <span class="na">input_goals=</span><span class="s">&quot;{goals}&quot;</span> <span class="na">output_goals=</span><span class="s">&quot;{goals}&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.5&quot;</span><span class="nt">/&gt;</span>
-              <span class="nt">&lt;ComputePathThroughPoses</span> <span class="na">goals=</span><span class="s">&quot;{goals}&quot;</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;/ReactiveSequence&gt;</span>
-            <span class="nt">&lt;ReactiveFallback</span> <span class="na">name=</span><span class="s">&quot;ComputePathThroughPosesRecoveryFallback&quot;</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;GoalUpdated/&gt;</span>
-              <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;/ReactiveFallback&gt;</span>
-          <span class="nt">&lt;/RecoveryNode&gt;</span>
-        <span class="nt">&lt;/RateController&gt;</span>
-        <span class="nt">&lt;RecoveryNode</span> <span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;FollowPath</span> <span class="na">path=</span><span class="s">&quot;{path}&quot;</span> <span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;ReactiveFallback</span> <span class="na">name=</span><span class="s">&quot;FollowPathRecoveryFallback&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;GoalUpdated/&gt;</span>
-            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Context&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;/ReactiveFallback&gt;</span>
-        <span class="nt">&lt;/RecoveryNode&gt;</span>
-      <span class="nt">&lt;/PipelineSequence&gt;</span>
-      <span class="nt">&lt;ReactiveFallback</span> <span class="na">name=</span><span class="s">&quot;RecoveryFallback&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;GoalUpdated/&gt;</span>
-        <span class="nt">&lt;RoundRobin</span> <span class="na">name=</span><span class="s">&quot;RecoveryActions&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Sequence</span> <span class="na">name=</span><span class="s">&quot;ClearingActions&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;ClearEntireCostmap</span> <span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Subtree&quot;</span> <span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;/Sequence&gt;</span>
-          <span class="nt">&lt;Spin</span> <span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;Wait</span> <span class="na">wait_duration=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;BackUp</span> <span class="na">backup_dist=</span><span class="s">&quot;0.15&quot;</span> <span class="na">backup_speed=</span><span class="s">&quot;0.025&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/RoundRobin&gt;</span>
-      <span class="nt">&lt;/ReactiveFallback&gt;</span>
-    <span class="nt">&lt;/RecoveryNode&gt;</span>
-  <span class="nt">&lt;/BehaviorTree&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;BehaviorTree</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;RecoveryNode</span><span class="w"> </span><span class="na">number_of_retries=</span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;NavigateRecovery&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;PipelineSequence</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;NavigateWithReplanning&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;RateController</span><span class="w"> </span><span class="na">hz=</span><span class="s">&quot;0.333&quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;RecoveryNode</span><span class="w"> </span><span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ComputePathThroughPoses&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ReactiveSequence&gt;</span>
+<span class="w">              </span><span class="nt">&lt;RemovePassedGoals</span><span class="w"> </span><span class="na">input_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">output_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.5&quot;</span><span class="nt">/&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ComputePathThroughPoses</span><span class="w"> </span><span class="na">goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ReactiveSequence&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ReactiveFallback</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ComputePathThroughPosesRecoveryFallback&quot;</span><span class="nt">&gt;</span>
+<span class="w">              </span><span class="nt">&lt;GoalUpdated/&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ClearEntireCostmap</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Context&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ReactiveFallback&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/RecoveryNode&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/RateController&gt;</span>
+<span class="w">        </span><span class="nt">&lt;RecoveryNode</span><span class="w"> </span><span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;FollowPath</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">controller_id=</span><span class="s">&quot;FollowPath&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ReactiveFallback</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;FollowPathRecoveryFallback&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;GoalUpdated/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ClearEntireCostmap</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Context&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ReactiveFallback&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/RecoveryNode&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/PipelineSequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ReactiveFallback</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;RecoveryFallback&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;GoalUpdated/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;RoundRobin</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;RecoveryActions&quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Sequence</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ClearingActions&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ClearEntireCostmap</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Subtree&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ClearEntireCostmap</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Subtree&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Sequence&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Spin</span><span class="w"> </span><span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Wait</span><span class="w"> </span><span class="na">wait_duration=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;BackUp</span><span class="w"> </span><span class="na">backup_dist=</span><span class="s">&quot;0.15&quot;</span><span class="w"> </span><span class="na">backup_speed=</span><span class="s">&quot;0.025&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/RoundRobin&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/ReactiveFallback&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/RecoveryNode&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/BehaviorTree&gt;</span>
 <span class="nt">&lt;/root&gt;</span>
 </pre></div>
 </div>

@@ -16,7 +16,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Configuration Guide" href="../../configuration/index.html" />
+    <link rel="next" title="Writing a New Navigator Plugin" href="writing_new_navigator_plugin.html" />
     <link rel="prev" title="Writing a New Behavior Tree Plugin" href="writing_new_bt_plugin.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -995,25 +1009,25 @@ this method should clean up resoures which are created for the behavior.</p></td
 <code class="docutils literal notranslate"><span class="pre">onConfigure()</span></code> will be skipped for brevity, but only includes declaring of parameters.</p>
 <p>In recoveries, <code class="docutils literal notranslate"><span class="pre">onRun()</span></code> method must set any initial state and kick off the behavior behavior.
 For the case of our call for help behavior behavior, we can trivially compute all of our needs in this method.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="w"> </span><span class="nf">SendSms::onRun</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Action</span><span class="o">::</span><span class="n">Goal</span><span class="o">&gt;</span><span class="w"> </span><span class="n">command</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">response</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">message_success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_twilio</span><span class="o">-&gt;</span><span class="n">send_message</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">_to_number</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">_from_number</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">command</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">response</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="w"> </span><span class="nf">SendSms::onRun</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Action</span><span class="o">::</span><span class="n">Goal</span><span class="o">&gt;</span><span class="w"> </span><span class="n">command</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">response</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">message_success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_twilio</span><span class="o">-&gt;</span><span class="n">send_message</span><span class="p">(</span>
+<span class="w">    </span><span class="n">_to_number</span><span class="p">,</span>
+<span class="w">    </span><span class="n">_from_number</span><span class="p">,</span>
+<span class="w">    </span><span class="n">command</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">,</span>
+<span class="w">    </span><span class="n">response</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nb">false</span><span class="p">);</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">message_success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;SMS send failed.&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">FAILED</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">message_success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;SMS send failed.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">FAILED</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;SMS sent successfully!&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">SUCCEEDED</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;SMS sent successfully!&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">SUCCEEDED</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>We receive a action goal, <code class="docutils literal notranslate"><span class="pre">command</span></code>, in which we want to process.
@@ -1028,10 +1042,10 @@ We return a <code class="docutils literal notranslate"><span class="pre">FAILED<
 <p><code class="docutils literal notranslate"><span class="pre">onCycleUpdate()</span></code> is trivially simple as a result of our short-running behavior behavior.
 If the behavior was instead longer running like spinning, navigating to a safe area, or getting out of a bad spot and waiting for help, then this function would be checking for timeouts or computing control values.
 For our example, we simply return success because we already completed our mission in <code class="docutils literal notranslate"><span class="pre">onRun()</span></code>.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="w"> </span><span class="nf">SendSms::onCycleUpdate</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">SUCCEEDED</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="w"> </span><span class="nf">SendSms::onCycleUpdate</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">SUCCEEDED</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The remaining methods are not used and not mandatory to override them.</p>
@@ -1043,8 +1057,8 @@ For our example, we simply return success because we already completed our missi
 <ol class="arabic simple">
 <li><p>To export the behavior, we need to provide two lines</p></li>
 </ol>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pluginlib/class_list_macros.hpp&quot;</span><span class="cp"></span>
-<span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_sms_bahavior</span><span class="o">::</span><span class="n">SendSms</span><span class="p">,</span><span class="w"> </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">Behavior</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pluginlib/class_list_macros.hpp&quot;</span>
+<span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_sms_bahavior</span><span class="o">::</span><span class="n">SendSms</span><span class="p">,</span><span class="w"> </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">Behavior</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Note that it requires pluginlib to export out plugin’s class. Pluginlib would provide as macro <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code> which does all the work of exporting.</p>
@@ -1061,10 +1075,10 @@ For our example, we simply return success because we already completed our missi
 <li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Description of the plugin.</p></li>
 </ul>
 </div></blockquote>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span> <span class="na">path=</span><span class="s">&quot;nav2_sms_behavior_plugin&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">&quot;nav2_sms_behavior/SendSms&quot;</span> <span class="na">type=</span><span class="s">&quot;nav2_sms_behavior::SendSms&quot;</span> <span class="na">base_class_type=</span><span class="s">&quot;nav2_core::Behavior&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;description&gt;</span>This is an example plugin which produces an SMS text message recovery.<span class="nt">&lt;/description&gt;</span>
-  <span class="nt">&lt;/class&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;nav2_sms_behavior_plugin&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nav2_sms_behavior/SendSms&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_sms_behavior::SendSms&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_core::Behavior&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>This<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>example<span class="w"> </span>plugin<span class="w"> </span>which<span class="w"> </span>produces<span class="w"> </span>an<span class="w"> </span>SMS<span class="w"> </span>text<span class="w"> </span>message<span class="w"> </span>recovery.<span class="nt">&lt;/description&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/class&gt;</span>
 <span class="nt">&lt;/library&gt;</span>
 </pre></div>
 </div>
@@ -1078,8 +1092,8 @@ For our example, we simply return success because we already completed our missi
 <li><p>Plugin description file should also be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code></p></li>
 </ol>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;export&gt;</span>
-  <span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
-  <span class="nt">&lt;nav2_core</span> <span class="na">plugin=</span><span class="s">&quot;${prefix}/behavior_plugin.xml&quot;</span> <span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nav2_core</span><span class="w"> </span><span class="na">plugin=</span><span class="s">&quot;${prefix}/behavior_plugin.xml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/export&gt;</span>
 </pre></div>
 </div>
@@ -1124,36 +1138,36 @@ rotational_acc_lim: 3.2</p>
 </div></blockquote>
 </div></blockquote>
 <p>with</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">behavior_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Humble and newer)</span><span class="w"></span>
-<span class="nt">recoveries_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Galactic and earlier)</span><span class="w"></span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ros__parameters</span><span class="p p-Indicator">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">local_costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/costmap_raw</span><span class="w"></span>
-<span class="w">    </span><span class="nt">local_footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/published_footprint</span><span class="w"></span>
-<span class="w">    </span><span class="nt">global_costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_costmap/costmap_raw</span><span class="w"></span>
-<span class="w">    </span><span class="nt">global_footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_costmap/published_footprint</span><span class="w"></span>
-<span class="w">    </span><span class="nt">cycle_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;send_sms&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Humble and newer)</span><span class="w"></span>
-<span class="w">    </span><span class="nt">recovery_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;send_sms&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Galactic and earlier)</span><span class="w"></span>
-<span class="w">    </span><span class="nt">spin</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">backup</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/BackUp&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">wait</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">send_sms</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_sms_behavior/SendSms&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">account_sid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your sid</span><span class="w"></span>
-<span class="w">    </span><span class="nt">auth_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your token</span><span class="w"></span>
-<span class="w">    </span><span class="nt">from_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your number</span><span class="w"></span>
-<span class="w">    </span><span class="nt">to_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># the operations center number</span><span class="w"></span>
-<span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w"></span>
-<span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w"></span>
-<span class="w">    </span><span class="nt">transform_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">max_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">min_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span><span class="w"></span>
-<span class="w">    </span><span class="nt">rotational_acc_lim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">behavior_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Humble and newer)</span>
+<span class="nt">recoveries_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Galactic and earlier)</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ros__parameters</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">local_costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/costmap_raw</span>
+<span class="w">    </span><span class="nt">local_footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/published_footprint</span>
+<span class="w">    </span><span class="nt">global_costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_costmap/costmap_raw</span>
+<span class="w">    </span><span class="nt">global_footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_costmap/published_footprint</span>
+<span class="w">    </span><span class="nt">cycle_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;send_sms&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Humble and newer)</span>
+<span class="w">    </span><span class="nt">recovery_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;send_sms&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Galactic and earlier)</span>
+<span class="w">    </span><span class="nt">spin</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span>
+<span class="w">    </span><span class="nt">backup</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/BackUp&quot;</span>
+<span class="w">    </span><span class="nt">wait</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span>
+<span class="w">    </span><span class="nt">send_sms</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_sms_behavior/SendSms&quot;</span>
+<span class="w">    </span><span class="nt">account_sid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your sid</span>
+<span class="w">    </span><span class="nt">auth_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your token</span>
+<span class="w">    </span><span class="nt">from_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your number</span>
+<span class="w">    </span><span class="nt">to_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># the operations center number</span>
+<span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span>
+<span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>
+<span class="w">    </span><span class="nt">transform_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">    </span><span class="nt">max_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">    </span><span class="nt">min_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
+<span class="w">    </span><span class="nt">rotational_acc_lim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
 </pre></div>
 </div>
 <p>In the above snippet, you can observe that we add the SMS behavior under the <code class="docutils literal notranslate"><span class="pre">send_sms</span></code> ROS 2 action server name.
@@ -1162,11 +1176,11 @@ We also tell the behavior server that the <code class="docutils literal notransl
 <div class="section" id="run-behavior-plugin">
 <h3>4- Run Behavior Plugin<a class="headerlink" href="#run-behavior-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Run Turtlebot3 simulation with enabled Nav2. Detailed instruction how to make it are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is shortcut command for that:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:<span class="o">=</span>/path/to/your_params_file.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>params_file:<span class="o">=</span>/path/to/your_params_file.yaml
 </pre></div>
 </div>
 <p>In a new terminal run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 action send_goal <span class="s2">&quot;send_sms&quot;</span> nav2_sms_behavior/action/SendSms <span class="s2">&quot;{message : Hello!! Navigation2 World }&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>action<span class="w"> </span>send_goal<span class="w"> </span><span class="s2">&quot;send_sms&quot;</span><span class="w"> </span>nav2_sms_behavior/action/SendSms<span class="w"> </span><span class="s2">&quot;{message : Hello!! Navigation2 World }&quot;</span>
 </pre></div>
 </div>
 </div>

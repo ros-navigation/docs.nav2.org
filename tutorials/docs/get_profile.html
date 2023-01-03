@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -894,7 +908,7 @@
 <h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial makes use of two tools, callgrind from the <code class="docutils literal notranslate"><span class="pre">Valgrind</span></code> set of tools and <code class="docutils literal notranslate"><span class="pre">kcachegrind</span></code>. Valgrind is used to get the profiling information about the program and kcachegrind is the visualization engine used to interprete this information to do useful work.</p>
 <p>Thus, we must install them.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install valgrind kcachegrind
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>valgrind<span class="w"> </span>kcachegrind
 </pre></div>
 </div>
 <p>More information can be found in the <a class="reference external" href="https://valgrind.org/docs/manual/cl-manual.html">Valgrind manual</a> including additional valgrind arguments that can be used to specify more information.</p>
@@ -903,19 +917,19 @@
 <span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-g</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>valgrind --tool<span class="o">=</span>callgrind <span class="o">[</span>your-program<span class="o">]</span> <span class="o">[</span>program options<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>valgrind<span class="w"> </span>--tool<span class="o">=</span>callgrind<span class="w"> </span><span class="o">[</span>your-program<span class="o">]</span><span class="w"> </span><span class="o">[</span>program<span class="w"> </span>options<span class="o">]</span>
 
-kcachegrind callgrind.out.XXX
+kcachegrind<span class="w"> </span>callgrind.out.XXX
 </pre></div>
 </div>
 </div>
 <div class="section" id="profile-from-a-node">
 <h2>Profile from a Node<a class="headerlink" href="#profile-from-a-node" title="Permalink to this headline">¶</a></h2>
 <p>As in our generic example, for a given node, we need to compile with debug flags to capture the information for profiling with Valgrind. This can be done easily from the commandline. Note that we use <code class="docutils literal notranslate"><span class="pre">--packages-select</span></code> to only compile with this flag for the packages we want to profile nodes within.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --packages-select &lt;packages of interest&gt; --cmake-args -DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>&lt;packages<span class="w"> </span>of<span class="w"> </span>interest&gt;<span class="w"> </span>--cmake-args<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
 </pre></div>
 </div>
 <p>Optionally, you may add the following line to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> of the package you’re looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> invokation.</p>
@@ -924,11 +938,11 @@ kcachegrind callgrind.out.XXX
 </pre></div>
 </div>
 <p>After either compiling method, this node should be run in its own terminal to isolate it from the rest of your system. Thus, this should not be composed in the same process as other nodes. To run a ROS 2 node with valgrind, this can be done from the commandline via:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run --prefix <span class="s1">&#39;valgrind --tool=callgrind&#39;</span> &lt;pkg&gt; &lt;node&gt; --all-other-launch arguments
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>--prefix<span class="w"> </span><span class="s1">&#39;valgrind --tool=callgrind&#39;</span><span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;node&gt;<span class="w"> </span>--all-other-launch<span class="w"> </span>arguments
 </pre></div>
 </div>
 <p>An example of this might be used for profiling the controller server with a particular controller plugin loaded. Both <code class="docutils literal notranslate"><span class="pre">nav2_controller</span></code> and the plugin package of interest are compiled with debug flags. In the example below, we are running a ROS 2 node with remapped topics and a path to its parameter file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run --prefix <span class="s1">&#39;valgrind --tool=callgrind&#39;</span> nav2_controller controller_server --ros-args -r __node:<span class="o">=</span>controller_server -r cmd_vel:<span class="o">=</span>cmd_vel_nav --params-file /path/to/nav2_bringup/params/nav2_params.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>--prefix<span class="w"> </span><span class="s1">&#39;valgrind --tool=callgrind&#39;</span><span class="w"> </span>nav2_controller<span class="w"> </span>controller_server<span class="w"> </span>--ros-args<span class="w"> </span>-r<span class="w"> </span>__node:<span class="o">=</span>controller_server<span class="w"> </span>-r<span class="w"> </span>cmd_vel:<span class="o">=</span>cmd_vel_nav<span class="w"> </span>--params-file<span class="w"> </span>/path/to/nav2_bringup/params/nav2_params.yaml
 </pre></div>
 </div>
 <p>Once sufficient data has been collected, cleanly exit the process with Control+C.</p>
@@ -967,7 +981,7 @@ kcachegrind callgrind.out.XXX
 <div class="section" id="interpreting-results">
 <h2>Interpreting Results<a class="headerlink" href="#interpreting-results" title="Permalink to this headline">¶</a></h2>
 <p>Once you have your <code class="docutils literal notranslate"><span class="pre">callgrind</span></code> results, regardless of if you did it through a node, launch file, Nav2, or elsewhere, now we can analyze the results from the profiler to identify bottlenecks or potential areas of improvement. Using <code class="docutils literal notranslate"><span class="pre">kcachegrind</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kcachegrind callgrind.out.XXX
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kcachegrind<span class="w"> </span>callgrind.out.XXX
 </pre></div>
 </div>
 <p>This should open a window looking like below. The left side shows all of the calls and their relative percentages of compute time they and their children functions utilized.</p>

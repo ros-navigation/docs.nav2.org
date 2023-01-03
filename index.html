@@ -391,6 +391,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="configuration/index.html">Configuration Guide</a><ul>
@@ -699,6 +711,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/index.html#controllers">Controllers</a></li>
@@ -798,6 +811,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -944,10 +958,10 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020
     <iframe width="708" height="400" src="https://www.youtube.com/embed/QB7lOKp3ZDQ?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@InProceedings<span class="o">{</span>macenski2020marathon2,
-<span class="nv">author</span> <span class="o">=</span> <span class="o">{</span>Macenski, Steven and Martin, Francisco and White, Ruffin and Ginés Clavero, Jonatan<span class="o">}</span>,
-<span class="nv">title</span> <span class="o">=</span> <span class="o">{</span>The Marathon <span class="m">2</span>: A Navigation System<span class="o">}</span>,
-<span class="nv">booktitle</span> <span class="o">=</span> <span class="o">{</span><span class="m">2020</span> IEEE/RSJ International Conference on Intelligent Robots and Systems <span class="o">(</span>IROS<span class="o">)}</span>,
-<span class="nv">year</span> <span class="o">=</span> <span class="o">{</span><span class="m">2020</span><span class="o">}</span>
+<span class="nv">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>Macenski,<span class="w"> </span>Steven<span class="w"> </span>and<span class="w"> </span>Martin,<span class="w"> </span>Francisco<span class="w"> </span>and<span class="w"> </span>White,<span class="w"> </span>Ruffin<span class="w"> </span>and<span class="w"> </span>Ginés<span class="w"> </span>Clavero,<span class="w"> </span>Jonatan<span class="o">}</span>,
+<span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>The<span class="w"> </span>Marathon<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>A<span class="w"> </span>Navigation<span class="w"> </span>System<span class="o">}</span>,
+<span class="nv">booktitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span><span class="m">2020</span><span class="w"> </span>IEEE/RSJ<span class="w"> </span>International<span class="w"> </span>Conference<span class="w"> </span>on<span class="w"> </span>Intelligent<span class="w"> </span>Robots<span class="w"> </span>and<span class="w"> </span>Systems<span class="w"> </span><span class="o">(</span>IROS<span class="o">)}</span>,
+<span class="nv">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span><span class="m">2020</span><span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 </div>
@@ -956,10 +970,10 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020
 <a class="reference external" href="https://arxiv.org/abs/2107.07589">A Comparison of Modern General-Purpose Visual SLAM Approaches</a>.
 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@InProceedings<span class="o">{</span>vslamComparison2021,
-<span class="nv">author</span> <span class="o">=</span> <span class="o">{</span>Merzlyakov, Alexey and Macenski, Steven<span class="o">}</span>,
-<span class="nv">title</span> <span class="o">=</span> <span class="o">{</span>A Comparison of Modern General-Purpose Visual SLAM Approaches<span class="o">}</span>,
-<span class="nv">booktitle</span> <span class="o">=</span> <span class="o">{</span><span class="m">2021</span> IEEE/RSJ International Conference on Intelligent Robots and Systems <span class="o">(</span>IROS<span class="o">)}</span>,
-<span class="nv">year</span> <span class="o">=</span> <span class="o">{</span><span class="m">2021</span><span class="o">}</span>
+<span class="nv">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>Merzlyakov,<span class="w"> </span>Alexey<span class="w"> </span>and<span class="w"> </span>Macenski,<span class="w"> </span>Steven<span class="o">}</span>,
+<span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>A<span class="w"> </span>Comparison<span class="w"> </span>of<span class="w"> </span>Modern<span class="w"> </span>General-Purpose<span class="w"> </span>Visual<span class="w"> </span>SLAM<span class="w"> </span>Approaches<span class="o">}</span>,
+<span class="nv">booktitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span><span class="m">2021</span><span class="w"> </span>IEEE/RSJ<span class="w"> </span>International<span class="w"> </span>Conference<span class="w"> </span>on<span class="w"> </span>Intelligent<span class="w"> </span>Robots<span class="w"> </span>and<span class="w"> </span>Systems<span class="w"> </span><span class="o">(</span>IROS<span class="o">)}</span>,
+<span class="nv">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span><span class="m">2021</span><span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 </div>

@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -882,7 +896,35 @@ Namely, the costmap layer, planner, controller, behavior tree, and behavior plug
 A list of all known plugins are listed here below for ROS 2 Navigation.
 If you know of a plugin, or you have created a new plugin, please consider submitting a pull request with that information.</p>
 <p>This file can be found and editted under <code class="docutils literal notranslate"><span class="pre">sphinx_docs/plugins/index.rst</span></code>.
-For tutorials on creating your own plugins, please see <a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#writing-new-costmap2d-plugin"><span class="std std-ref">Writing a New Costmap2D Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#writing-new-nbt-plugin"><span class="std std-ref">Writing a New Behavior Tree Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#writing-new-nav2controller-plugin"><span class="std std-ref">Writing a New Controller Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#writing-new-nav2planner-plugin"><span class="std std-ref">Writing a New Planner Plugin</span></a>, or <span class="xref std std-ref">writing_new_recovery_plugin</span>.</p>
+For tutorials on creating your own plugins, please see <a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#writing-new-costmap2d-plugin"><span class="std std-ref">Writing a New Costmap2D Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#writing-new-nbt-plugin"><span class="std std-ref">Writing a New Behavior Tree Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#writing-new-nav2controller-plugin"><span class="std std-ref">Writing a New Controller Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#writing-new-nav2planner-plugin"><span class="std std-ref">Writing a New Planner Plugin</span></a>, <span class="xref std std-ref">writing_new_recovery_plugin</span>, or <a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#writing-new-nav2navigator-plugin"><span class="std std-ref">Writing a New Navigator Plugin</span></a>.</p>
+<div class="section" id="behavior-tree-navigators">
+<h2>Behavior-Tree Navigators<a class="headerlink" href="#behavior-tree-navigators" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 22%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
+<th class="head"><p>Creator</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator/src/navigators">NavigateToPoseNavigator</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Point-to-point navigation via a
+behavior tree action server</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator/src/navigators">NavigateThroughPosesNavigator</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Point-through-points navigation
+via a behavior tree action server</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="costmap-layers">
 <h2>Costmap Layers<a class="headerlink" href="#costmap-layers" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">

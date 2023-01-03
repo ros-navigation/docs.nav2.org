@@ -5,6 +5,13 @@ Humble to Iron
 
 Moving from ROS 2 Humble to Iron, a number of stability improvements were added that we will not specifically address here.
 
+New Behavior-Tree Navigator Plugins
+***********************************
+
+New in `PR 3345 <https://github.com/ros-planning/navigation2/pull/3345>`_, the navigator types are exposed to users as plugins that can be replaced or new navigator types added. The default behaviors of navigate to pose and navigate through poses continue to be default behavior but are now customizable with new action interface definitions. These plugins implement the ``nav2_core::BehaviorTreeNavigator`` base class, which must process the action request, feedback, and completion messages. The behavior tree is handled by this base class with as much general logic as possible abstracted away from users to minimize repetition.
+
+See :ref:`writing_new_nav2navigator_plugin` for a tutorial about writing new navigator plugins.
+
 Added Collision Monitor
 ***********************
 `PR 2982 <https://github.com/ros-planning/navigation2/pull/2982>`_ adds new safety layer operating independently of Nav2 stack which ensures the robot to control the collisions with near obstacles, obtained from different sensors (LaserScan, PointCloud, IR, Sonars, etc...). See :ref:`configuring_collision_monitor` for more details. It is not included in the default bringup batteries included from ``nav2_bringup``.

@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -1034,22 +1048,22 @@ The table below shows the current servers along with the expected error code str
 <p>Error codes are attached to the response of the action message. An example can be seen below for the route server. Note that by convention we set the error code field within the message definition to <code class="docutils literal notranslate"><span class="pre">error_code</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error codes</span>
 <span class="c1"># Note: The expected priority order of the errors should match the message order</span>
-uint16 <span class="nv">NONE</span><span class="o">=</span><span class="m">0</span> <span class="c1"># 0 is reserved for NONE</span>
-uint16 <span class="nv">UNKNOWN</span><span class="o">=</span><span class="m">10000</span> <span class="c1"># first error code in the sequence is reserved for UNKNOWN</span>
+uint16<span class="w"> </span><span class="nv">NONE</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="c1"># 0 is reserved for NONE</span>
+uint16<span class="w"> </span><span class="nv">UNKNOWN</span><span class="o">=</span><span class="m">10000</span><span class="w"> </span><span class="c1"># first error code in the sequence is reserved for UNKNOWN</span>
 
 <span class="c1"># User Error codes below</span>
-int16 <span class="nv">INVILAD_START</span><span class="o">=</span><span class="m">10001</span>
-int16 <span class="nv">NO_VALID_ROUTE</span><span class="o">=</span><span class="m">10002</span>
+int16<span class="w"> </span><span class="nv">INVILAD_START</span><span class="o">=</span><span class="m">10001</span>
+int16<span class="w"> </span><span class="nv">NO_VALID_ROUTE</span><span class="o">=</span><span class="m">10002</span>
 
 <span class="c1">#goal definition</span>
-route_msgs/PoseStamped goal
-route_msgs/PoseStamped start
-string route_id
+route_msgs/PoseStamped<span class="w"> </span>goal
+route_msgs/PoseStamped<span class="w"> </span>start
+string<span class="w"> </span>route_id
 ---
 <span class="c1">#result definition</span>
-nav_msgs/Route route
-builtin_interfaces/Duration route_time
-uint16 error_code
+nav_msgs/Route<span class="w"> </span>route
+builtin_interfaces/Duration<span class="w"> </span>route_time
+uint16<span class="w"> </span>error_code
 ---
 </pre></div>
 </div>
@@ -1057,10 +1071,10 @@ uint16 error_code
 Since the the route server is a external server, the errors codes start at 10000 and go up to 10099.</p>
 <p>In order to propigate your server’s error code to the rest of the system it must be added to the nav2_params.yaml file.
 The <cite>error_code_id_names</cite> inside of the BT Navigator define what error codes to look for on the blackboard by the server. The lowest error code of the sequence is then returned - whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">error_code_id_names</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute_path_error_code_id</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">follow_path_error_code_id</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">route_error_code_id</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">error_code_id_names</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute_path_error_code_id</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">follow_path_error_code_id</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">route_error_code_id</span>
 </pre></div>
 </div>
 </div>

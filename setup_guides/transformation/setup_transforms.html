@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -908,17 +922,17 @@
 </div>
 <p>Now let’s try publishing a very simple transform using the static_transform_publisher tool provided by TF2. We will be publishing a transformation from the link <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to the link <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> with a translation of (x: 0.1m, y: 0.0m, z: 0.2m). Note that we will be building the transform from the diagram earlier in this tutorial.</p>
 <p>Open up your command line and execute the following command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 run tf2_ros static_transform_publisher <span class="m">0</span>.1 <span class="m">0</span> <span class="m">0</span>.2 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> base_link base_laser
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>static_transform_publisher<span class="w"> </span><span class="m">0</span>.1<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.2<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>base_link<span class="w"> </span>base_laser
 </pre></div>
 </div>
 <p>With this, we are now sucessfully publishing our <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> transform in TF2. Let us now check if it is working properly through <code class="docutils literal notranslate"><span class="pre">tf2_echo</span></code>. Open up a separate command line window and execute the following:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 run tf2_ros tf2_echo base_link base_laser
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>base_link<span class="w"> </span>base_laser
 </pre></div>
 </div>
 <p>You should be able to observe a repeated output simiar to the one below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>At <span class="nb">time</span> <span class="m">0</span>.0
-- Translation: <span class="o">[</span><span class="m">0</span>.100, <span class="m">0</span>.000, <span class="m">0</span>.200<span class="o">]</span>
-- Rotation: <span class="k">in</span> Quaternion <span class="o">[</span><span class="m">0</span>.000, <span class="m">0</span>.000, <span class="m">0</span>.000, <span class="m">1</span>.000<span class="o">]</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>At<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">0</span>.0
+-<span class="w"> </span>Translation:<span class="w"> </span><span class="o">[</span><span class="m">0</span>.100,<span class="w"> </span><span class="m">0</span>.000,<span class="w"> </span><span class="m">0</span>.200<span class="o">]</span>
+-<span class="w"> </span>Rotation:<span class="w"> </span><span class="k">in</span><span class="w"> </span>Quaternion<span class="w"> </span><span class="o">[</span><span class="m">0</span>.000,<span class="w"> </span><span class="m">0</span>.000,<span class="w"> </span><span class="m">0</span>.000,<span class="w"> </span><span class="m">1</span>.000<span class="o">]</span>
 </pre></div>
 </div>
 <p>And that’s it for this short demo - we were able to successfully publish a transform from <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> using the TF2 library. Note that we do not recommend using the above demo in publishing transforms for your actual robotics projects, it is just a quick demo to see TF2 in action. For a real robot system, we would create a URDF file which embeds this information and more about your robot for use of the robot_state_publisher rather than the static_transform_publisher. There are more suitable and practical ways to go about this which will be discussed in the <a class="reference internal" href="../urdf/setup_urdf.html#urdf-handson"><span class="std std-ref">Setting Up The URDF</span></a> tutorial.</p>

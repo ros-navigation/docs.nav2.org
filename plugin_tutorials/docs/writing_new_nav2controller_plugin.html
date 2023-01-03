@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -963,40 +977,40 @@ pose and its current velocity.</p></td>
 <p>In this tutorial, we will have used the methods <code class="docutils literal notranslate"><span class="pre">PurePursuitController::configure</span></code>, <code class="docutils literal notranslate"><span class="pre">PurePursuitController::setPlan</span></code> and
 <code class="docutils literal notranslate"><span class="pre">PurePursuitController::computeVelocityCommands</span></code>.</p>
 <p>In controllers, <code class="docutils literal notranslate"><span class="pre">configure()</span></code> method must set member variables from ROS parameters and perform any initialization required,</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PurePursuitController::configure</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="o">::</span><span class="n">WeakPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tf</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">nav2_costmap_2d</span><span class="o">::</span><span class="n">Costmap2DROS</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">costmap_ros</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">node_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node_</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PurePursuitController::configure</span><span class="p">(</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="o">::</span><span class="n">WeakPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tf</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">nav2_costmap_2d</span><span class="o">::</span><span class="n">Costmap2DROS</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">costmap_ros</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">node_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node_</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span>
 
-<span class="w">  </span><span class="n">costmap_ros_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">costmap_ros</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">tf_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">logger_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="n">clock_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">costmap_ros_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">costmap_ros</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tf_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf</span><span class="p">;</span>
+<span class="w">  </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="n">logger_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">();</span>
+<span class="w">  </span><span class="n">clock_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">();</span>
 
-<span class="w">  </span><span class="n">declare_parameter_if_not_declared</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.desired_linear_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="mf">0.2</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">declare_parameter_if_not_declared</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.lookahead_dist&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="mf">0.4</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">declare_parameter_if_not_declared</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.max_angular_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="mf">1.0</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">declare_parameter_if_not_declared</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.transform_tolerance&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="mf">0.1</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">declare_parameter_if_not_declared</span><span class="p">(</span>
+<span class="w">    </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.desired_linear_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span>
+<span class="w">      </span><span class="mf">0.2</span><span class="p">));</span>
+<span class="w">  </span><span class="n">declare_parameter_if_not_declared</span><span class="p">(</span>
+<span class="w">    </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.lookahead_dist&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="mf">0.4</span><span class="p">));</span>
+<span class="w">  </span><span class="n">declare_parameter_if_not_declared</span><span class="p">(</span>
+<span class="w">    </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.max_angular_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span>
+<span class="w">      </span><span class="mf">1.0</span><span class="p">));</span>
+<span class="w">  </span><span class="n">declare_parameter_if_not_declared</span><span class="p">(</span>
+<span class="w">    </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.transform_tolerance&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span>
+<span class="w">      </span><span class="mf">0.1</span><span class="p">));</span>
 
-<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.desired_linear_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">desired_linear_vel_</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.lookahead_dist&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lookahead_dist_</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.max_angular_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">max_angular_vel_</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">transform_tolerance</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.transform_tolerance&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">transform_tolerance</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">transform_tolerance_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Duration</span><span class="o">::</span><span class="n">from_seconds</span><span class="p">(</span><span class="n">transform_tolerance</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.desired_linear_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">desired_linear_vel_</span><span class="p">);</span>
+<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.lookahead_dist&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lookahead_dist_</span><span class="p">);</span>
+<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.max_angular_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">max_angular_vel_</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">transform_tolerance</span><span class="p">;</span>
+<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">plugin_name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.transform_tolerance&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">transform_tolerance</span><span class="p">);</span>
+<span class="w">  </span><span class="n">transform_tolerance_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Duration</span><span class="o">::</span><span class="n">from_seconds</span><span class="p">(</span><span class="n">transform_tolerance</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Here, <code class="docutils literal notranslate"><span class="pre">plugin_name_</span> <span class="pre">+</span> <span class="pre">&quot;.desired_linear_vel&quot;</span></code> is fetching the ROS parameters <code class="docutils literal notranslate"><span class="pre">desired_linear_vel</span></code> which is specific to our controller.
@@ -1008,56 +1022,56 @@ We will see more on this when we discuss the parameters file (or params file).</
 <p>The passed in arguments are stored in member variables so that they can be used at a later stage if needed.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">setPlan()</span></code> method, we receive the updated global path for the robot to follow. In our example, we transform the received global path into
 the frame of the robot and then store this transformed global path for later use.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PurePursuitController::setPlan</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PurePursuitController::setPlan</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">  </span><span class="c1">// Transform global path into the robot&#39;s frame</span>
-<span class="w">  </span><span class="n">global_plan_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transformGlobalPlan</span><span class="p">(</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">global_plan_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transformGlobalPlan</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The computation for the desired velocity happens in the <code class="docutils literal notranslate"><span class="pre">computeVelocityCommands()</span></code> method. It is used to calculate the desired velocity command given the
 current velocity and pose. In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
 This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span><span class="w"> </span><span class="nf">PurePursuitController::computeVelocityCommands</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pose</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span><span class="w"> </span><span class="nf">PurePursuitController::computeVelocityCommands</span><span class="p">(</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pose</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">  </span><span class="c1">// Find the first pose which is at a distance greater than the specified lookahed distance</span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">goal_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"></span>
-<span class="w">    </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">global_plan_pose</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">hypot</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">global_plan_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">global_plan_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">lookahead_dist_</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="o">-&gt;</span><span class="n">pose</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">goal_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span>
+<span class="w">    </span><span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">global_plan_pose</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">hypot</span><span class="p">(</span>
+<span class="w">        </span><span class="n">global_plan_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+<span class="w">        </span><span class="n">global_plan_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">lookahead_dist_</span><span class="p">;</span>
+<span class="w">    </span><span class="p">})</span><span class="o">-&gt;</span><span class="n">pose</span><span class="p">;</span>
 
-<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">linear_vel</span><span class="p">,</span><span class="w"> </span><span class="n">angular_vel</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">linear_vel</span><span class="p">,</span><span class="w"> </span><span class="n">angular_vel</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// If the goal pose is in front of the robot then compute the velocity using the pure pursuit algorithm</span>
 <span class="w">  </span><span class="c1">// else rotate with the max angular velocity until the goal pose is in front of the robot</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">curvature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"></span>
-<span class="w">      </span><span class="p">(</span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">linear_vel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired_linear_vel_</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">angular_vel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired_linear_vel_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">curvature</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">linear_vel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">angular_vel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_angular_vel_</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">curvature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">/</span>
+<span class="w">      </span><span class="p">(</span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="n">linear_vel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired_linear_vel_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">angular_vel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired_linear_vel_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">curvature</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">linear_vel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">angular_vel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_angular_vel_</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="c1">// Create and publish a TwistStamped message with the desired velocity</span>
-<span class="w">  </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span><span class="w"> </span><span class="n">cmd_vel</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">cmd_vel</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pose</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">cmd_vel</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock_</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="n">cmd_vel</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">linear_vel</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">cmd_vel</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="mf">-1.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">max_angular_vel_</span><span class="p">),</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">angular_vel</span><span class="p">,</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">max_angular_vel_</span><span class="p">)));</span><span class="w"></span>
+<span class="w">  </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span><span class="w"> </span><span class="n">cmd_vel</span><span class="p">;</span>
+<span class="w">  </span><span class="n">cmd_vel</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pose</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="p">;</span>
+<span class="w">  </span><span class="n">cmd_vel</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock_</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span>
+<span class="w">  </span><span class="n">cmd_vel</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">linear_vel</span><span class="p">;</span>
+<span class="w">  </span><span class="n">cmd_vel</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span>
+<span class="w">    </span><span class="mf">-1.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">max_angular_vel_</span><span class="p">),</span><span class="w"> </span><span class="n">min</span><span class="p">(</span>
+<span class="w">      </span><span class="n">angular_vel</span><span class="p">,</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span>
+<span class="w">        </span><span class="n">max_angular_vel_</span><span class="p">)));</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">cmd_vel</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">cmd_vel</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The remaining methods are not used, but it’s mandatory to override them. As per the rules, we did override all but left them empty.</p>
@@ -1071,8 +1085,8 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
 <ol class="arabic simple">
 <li><p>To export the controller, we need to provide two lines</p></li>
 </ol>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pluginlib/class_list_macros.hpp&quot;</span><span class="cp"></span>
-<span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_pure_pursuit_controller</span><span class="o">::</span><span class="n">PurePursuitController</span><span class="p">,</span><span class="w"> </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">Controller</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pluginlib/class_list_macros.hpp&quot;</span>
+<span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_pure_pursuit_controller</span><span class="o">::</span><span class="n">PurePursuitController</span><span class="p">,</span><span class="w"> </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">Controller</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Note that it requires pluginlib to export out the plugin’s class. Pluginlib would provide as macro <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code>, which does all the work of exporting.</p>
@@ -1087,12 +1101,12 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
 <li><p><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">class</span></code>: Name of the base class.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Description of the plugin.</p></li>
 </ul>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span> <span class="na">path=</span><span class="s">&quot;nav2_pure_pursuit_controller&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;class</span> <span class="na">type=</span><span class="s">&quot;nav2_pure_pursuit_controller::PurePursuitController&quot;</span> <span class="na">base_class_type=</span><span class="s">&quot;nav2_core::Controller&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;description&gt;</span>
-      This is pure pursuit controller
-    <span class="nt">&lt;/description&gt;</span>
-  <span class="nt">&lt;/class&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;nav2_pure_pursuit_controller&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_pure_pursuit_controller::PurePursuitController&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_core::Controller&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>
+<span class="w">      </span>This<span class="w"> </span>is<span class="w"> </span>pure<span class="w"> </span>pursuit<span class="w"> </span>controller
+<span class="w">    </span><span class="nt">&lt;/description&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/class&gt;</span>
 <span class="nt">&lt;/library&gt;</span>
 </pre></div>
 </div>
@@ -1106,8 +1120,8 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
 <li><p>The plugin description file should also be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code></p></li>
 </ol>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;export&gt;</span>
-  <span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
-  <span class="nt">&lt;nav2_core</span> <span class="na">plugin=</span><span class="s">&quot;${prefix}/pure_pursuit_controller_plugin.xml&quot;</span> <span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nav2_core</span><span class="w"> </span><span class="na">plugin=</span><span class="s">&quot;${prefix}/pure_pursuit_controller_plugin.xml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/export&gt;</span>
 </pre></div>
 </div>
@@ -1137,7 +1151,7 @@ To pass plugin-specific parameters we have used <code class="docutils literal no
 <div class="section" id="run-pure-pursuit-controller-plugin">
 <h3>4- Run Pure Pursuit Controller plugin<a class="headerlink" href="#run-pure-pursuit-controller-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is a shortcut command for that:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:<span class="o">=</span>/path/to/your_params_file.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>params_file:<span class="o">=</span>/path/to/your_params_file.yaml
 </pre></div>
 </div>
 <p>Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on the map as it was described in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.

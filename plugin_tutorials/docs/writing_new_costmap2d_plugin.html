@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -901,10 +915,10 @@
 The annotated code for this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials">navigation2_tutorials</a> repository as the <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin</span></code> ROS 2-package.
 Please refer to it when making your own layer plugin for Costmap2D.</p>
 <p>The plugin class <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin::GradientLayer</span></code> is inherited from basic class <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::Layer</span></code>:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">namespace</span><span class="w"> </span><span class="n">nav2_gradient_costmap_plugin</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">namespace</span><span class="w"> </span><span class="n">nav2_gradient_costmap_plugin</span>
+<span class="p">{</span>
 
-<span class="n">class</span><span class="w"> </span><span class="n">GradientLayer</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="n">nav2_costmap_2d</span><span class="o">::</span><span class="n">Layer</span><span class="w"></span>
+<span class="n">class</span><span class="w"> </span><span class="n">GradientLayer</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="n">nav2_costmap_2d</span><span class="o">::</span><span class="n">Layer</span>
 </pre></div>
 </div>
 <p>The basic class provides the set of virtual methods API for working with costmap layers in a plugin. These methods are calling in runtime by <code class="docutils literal notranslate"><span class="pre">LayeredCostmap</span></code>. The list of methods, their description and necessity to have these methods in plugin’s code is presented in the table below:</p>
@@ -964,35 +978,35 @@ using one of the following update methods: <code class="docutils literal notrans
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::onInitialize()</span></code> contains declaration of ROS parameter with its default value:</p></li>
 </ol>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">declareParameter</span><span class="p">(</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="nb">true</span><span class="p">));</span><span class="w"></span>
-<span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">enabled_</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">declareParameter</span><span class="p">(</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="nb">true</span><span class="p">));</span>
+<span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">enabled_</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>and sets <code class="docutils literal notranslate"><span class="pre">need_recalculation_</span></code> bounds recalculation indicator:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">need_recalculation_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">need_recalculation_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::updateBounds()</span></code> re-calculates window bounds if <code class="docutils literal notranslate"><span class="pre">need_recalculation_</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> and updates them regardless of <code class="docutils literal notranslate"><span class="pre">need_recalculation_</span></code> value.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::updateCosts()</span></code> - in this method the gradient is writing directly to the resulting costmap <code class="docutils literal notranslate"><span class="pre">master_grid</span></code> without merging with previous layers. This is equal to working with internal <code class="docutils literal notranslate"><span class="pre">costmap_</span></code> and then calling <code class="docutils literal notranslate"><span class="pre">updateWithTrueOverwrite()</span></code> method. Here is the gradient making algorithm for master costmap:</p></li>
 </ol>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">gradient_index</span><span class="p">;</span><span class="w"></span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min_j</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">max_j</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">gradient_index</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min_j</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">max_j</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Reset gradient_index each time when reaching the end of re-calculated window</span>
 <span class="w">  </span><span class="c1">// by OY axis.</span>
-<span class="w">  </span><span class="n">gradient_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min_i</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">max_i</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">master_grid</span><span class="p">.</span><span class="n">getIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">gradient_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min_i</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">max_i</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">master_grid</span><span class="p">.</span><span class="n">getIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// setting the gradient cost</span>
-<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">LETHAL_OBSTACLE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gradient_index</span><span class="o">*</span><span class="n">GRADIENT_FACTOR</span><span class="p">)</span><span class="o">%</span><span class="mi">255</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gradient_index</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">GRADIENT_SIZE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">gradient_index</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">gradient_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">master_array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cost</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">LETHAL_OBSTACLE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gradient_index</span><span class="o">*</span><span class="n">GRADIENT_FACTOR</span><span class="p">)</span><span class="o">%</span><span class="mi">255</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gradient_index</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">GRADIENT_SIZE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">gradient_index</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">gradient_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">master_array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cost</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>where the <code class="docutils literal notranslate"><span class="pre">GRADIENT_SIZE</span></code> is the size of each gradient period in map cells, <code class="docutils literal notranslate"><span class="pre">GRADIENT_FACTOR</span></code> - decrement of costmap’s value per each step:</p>
@@ -1027,10 +1041,10 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 <li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Plugin description in a text form.</p></li>
 </ul>
 </div></blockquote>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span> <span class="na">path=</span><span class="s">&quot;nav2_gradient_costmap_plugin_core&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">&quot;nav2_gradient_costmap_plugin/GradientLayer&quot;</span> <span class="na">type=</span><span class="s">&quot;nav2_gradient_costmap_plugin::GradientLayer&quot;</span> <span class="na">base_class_type=</span><span class="s">&quot;nav2_costmap_2d::Layer&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;description&gt;</span>This is an example plugin which puts repeating costs gradients to costmap<span class="nt">&lt;/description&gt;</span>
-  <span class="nt">&lt;/class&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;nav2_gradient_costmap_plugin_core&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nav2_gradient_costmap_plugin/GradientLayer&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_gradient_costmap_plugin::GradientLayer&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_costmap_2d::Layer&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>This<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>example<span class="w"> </span>plugin<span class="w"> </span>which<span class="w"> </span>puts<span class="w"> </span>repeating<span class="w"> </span>costs<span class="w"> </span>gradients<span class="w"> </span>to<span class="w"> </span>costmap<span class="nt">&lt;/description&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/class&gt;</span>
 <span class="nt">&lt;/library&gt;</span>
 </pre></div>
 </div>
@@ -1056,26 +1070,26 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 <p>For Galactic or later, <code class="docutils literal notranslate"><span class="pre">plugin_names</span></code> and <code class="docutils literal notranslate"><span class="pre">plugin_types</span></code> have been replaced with a single <code class="docutils literal notranslate"><span class="pre">plugins</span></code> string vector for plugin names. The types are now defined in the <code class="docutils literal notranslate"><span class="pre">plugin_name</span></code> namespace in the <code class="docutils literal notranslate"><span class="pre">plugin:</span></code> field (e.g. <code class="docutils literal notranslate"><span class="pre">plugin:</span> <span class="pre">MyPlugin::Plugin</span></code>). Inline comments in the code blocks will help guide you through this.</p>
 </div>
 <p>For example:</p>
-<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">--- a/nav2_bringup/bringup/params/nav2_params.yaml</span><span class="w"></span>
-<span class="gi">+++ b/nav2_bringup/bringup/params/nav2_params.yaml</span><span class="w"></span>
-<span class="gu">@@ -124,8 +124,8 @@ local_costmap:</span><span class="w"></span>
-<span class="w"> </span>      width: 3<span class="w"></span>
-<span class="w"> </span>      height: 3<span class="w"></span>
-<span class="w"> </span>      resolution: 0.05<span class="w"></span>
-<span class="gd">-      plugins: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;]</span><span class="w"></span>
-<span class="gi">+      plugins: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;]</span><span class="w"></span>
-<span class="w"> </span>      robot_radius: 0.22<span class="w"></span>
-<span class="w"> </span>      inflation_layer:<span class="w"></span>
-<span class="w"> </span>        cost_scaling_factor: 3.0<span class="w"></span>
-<span class="gu">@@ -171,8 +171,8 @@ global_costmap:</span><span class="w"></span>
-<span class="w"> </span>      robot_base_frame: base_link<span class="w"></span>
-<span class="w"> </span>      global_frame: map<span class="w"></span>
-<span class="w"> </span>      use_sim_time: True<span class="w"></span>
-<span class="gd">-      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;]</span><span class="w"></span>
-<span class="gi">+      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;]</span><span class="w"></span>
-<span class="w"> </span>      robot_radius: 0.22<span class="w"></span>
-<span class="w"> </span>      resolution: 0.05<span class="w"></span>
-<span class="w"> </span>      obstacle_layer:<span class="w"></span>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">--- a/nav2_bringup/bringup/params/nav2_params.yaml</span>
+<span class="gi">+++ b/nav2_bringup/bringup/params/nav2_params.yaml</span>
+<span class="gu">@@ -124,8 +124,8 @@ local_costmap:</span>
+<span class="w"> </span>      width: 3
+<span class="w"> </span>      height: 3
+<span class="w"> </span>      resolution: 0.05
+<span class="gd">-      plugins: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;]</span>
+<span class="gi">+      plugins: [&quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;]</span>
+<span class="w"> </span>      robot_radius: 0.22
+<span class="w"> </span>      inflation_layer:
+<span class="w"> </span>        cost_scaling_factor: 3.0
+<span class="gu">@@ -171,8 +171,8 @@ global_costmap:</span>
+<span class="w"> </span>      robot_base_frame: base_link
+<span class="w"> </span>      global_frame: map
+<span class="w"> </span>      use_sim_time: True
+<span class="gd">-      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;inflation_layer&quot;]</span>
+<span class="gi">+      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;voxel_layer&quot;, &quot;gradient_layer&quot;]</span>
+<span class="w"> </span>      robot_radius: 0.22
+<span class="w"> </span>      resolution: 0.05
+<span class="w"> </span>      obstacle_layer:
 </pre></div>
 </div>
 <p>YAML-file may also contain the list of parameters (if any) for each plugin, identified by plugins object name.</p>
@@ -1098,7 +1112,7 @@ gradient_layer_2:
 <div class="section" id="run-gradientlayer-plugin">
 <h3>4- Run GradientLayer plugin<a class="headerlink" href="#run-gradientlayer-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Run Turtlebot3 simulation with enabled Nav2. Detailed instructuction how to make it are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is shortcut command for that:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 launch nav2_bringup tb3_simulation_launch.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py
 </pre></div>
 </div>
 <p>Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on map as it was described in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Robot will be localized on map and the result should be as presented at picture below. There is could be seen the gradient costmap. There are also 2 noticeable things: dynamically updated by <code class="docutils literal notranslate"><span class="pre">GradientLayer::updateCosts()</span></code> costmap within its bounds and global path curved by gradient:</p>

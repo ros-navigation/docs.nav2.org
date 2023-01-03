@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -1010,13 +1024,13 @@ This can be performed with the icon highlighted in green from <a class="referenc
 The resulting XML output from the node created in <a class="reference internal" href="#groot-interactive-node-creation"><span class="std std-numref">Figure 5</span></a> can be seen below.
 You can see more examples in <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml">Nav2’s BT Node Pallet XML</a>.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root&gt;</span>
-    <span class="nt">&lt;TreeNodesModel&gt;</span>
-        <span class="nt">&lt;Action</span> <span class="na">ID=</span><span class="s">&quot;MyAwesomeNewNode&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;input_port</span> <span class="na">name=</span><span class="s">&quot;key_name&quot;</span> <span class="na">default=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>coffee<span class="nt">&lt;/input_port&gt;</span>
-            <span class="nt">&lt;output_port</span> <span class="na">name=</span><span class="s">&quot;key_name2&quot;</span> <span class="na">default=</span><span class="s">&quot;42&quot;</span><span class="nt">&gt;</span>Sense of life<span class="nt">&lt;/output_port&gt;</span>
-            <span class="nt">&lt;inout_port</span> <span class="na">name=</span><span class="s">&quot;next_target&quot;</span> <span class="na">default=</span><span class="s">&quot;pancakes&quot;</span><span class="nt">&gt;</span>rolling target<span class="nt">&lt;/inout_port&gt;</span>
-        <span class="nt">&lt;/Action&gt;</span>
-    <span class="nt">&lt;/TreeNodesModel&gt;</span>
+<span class="w">    </span><span class="nt">&lt;TreeNodesModel&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Action</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;MyAwesomeNewNode&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;input_port</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;key_name&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>coffee<span class="nt">&lt;/input_port&gt;</span>
+<span class="w">            </span><span class="nt">&lt;output_port</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;key_name2&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;42&quot;</span><span class="nt">&gt;</span>Sense<span class="w"> </span>of<span class="w"> </span>life<span class="nt">&lt;/output_port&gt;</span>
+<span class="w">            </span><span class="nt">&lt;inout_port</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;next_target&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;pancakes&quot;</span><span class="nt">&gt;</span>rolling<span class="w"> </span>target<span class="nt">&lt;/inout_port&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Action&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/TreeNodesModel&gt;</span>
 <span class="nt">&lt;/root&gt;</span>
 </pre></div>
 </div>

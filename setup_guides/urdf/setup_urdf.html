@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -898,12 +912,12 @@
 <h2>Setting Up the Environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this headline">¶</a></h2>
 <p>In this guide, we are assuming that you are already familiar with ROS 2 and how to setup your development environment, so we’ll breeze through the steps in this section.</p>
 <p>Let’s begin by installing some additional ROS 2 packages that we will be using during this tutorial.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-&lt;ros2-distro&gt;-joint-state-publisher-gui
-sudo apt install ros-&lt;ros2-distro&gt;-xacro
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-joint-state-publisher-gui
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-xacro
 </pre></div>
 </div>
 <p>Next, create a directory for your project, initialize a ROS 2 workspace and give your robot a name. For ours, we’ll be calling it <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 pkg create --build-type ament_cmake sam_bot_description
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>--build-type<span class="w"> </span>ament_cmake<span class="w"> </span>sam_bot_description
 </pre></div>
 </div>
 </div>
@@ -928,7 +942,7 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;robot</span> <span class="na">name=</span><span class="s">&quot;sam_bot&quot;</span> <span class="na">xmlns:xacro=</span><span class="s">&quot;http://ros.org/wiki/xacro&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;robot</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sam_bot&quot;</span><span class="w"> </span><span class="na">xmlns:xacro=</span><span class="s">&quot;http://ros.org/wiki/xacro&quot;</span><span class="nt">&gt;</span>
 
 
 
@@ -951,18 +965,18 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span>  <span class="cm">&lt;!-- Define robot constants --&gt;</span>
-  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;base_width&quot;</span> <span class="na">value=</span><span class="s">&quot;0.31&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;base_length&quot;</span> <span class="na">value=</span><span class="s">&quot;0.42&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;base_height&quot;</span> <span class="na">value=</span><span class="s">&quot;0.18&quot;</span><span class="nt">/&gt;</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="w">  </span><span class="cm">&lt;!-- Define robot constants --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_width&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.31&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_length&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.42&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_height&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.18&quot;</span><span class="nt">/&gt;</span>
 
-  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_radius&quot;</span> <span class="na">value=</span><span class="s">&quot;0.10&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_width&quot;</span> <span class="na">value=</span><span class="s">&quot;0.04&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_ygap&quot;</span> <span class="na">value=</span><span class="s">&quot;0.025&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_zoff&quot;</span> <span class="na">value=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;wheel_xoff&quot;</span> <span class="na">value=</span><span class="s">&quot;0.12&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;wheel_radius&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.10&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;wheel_width&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.04&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;wheel_ygap&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.025&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;wheel_zoff&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;wheel_xoff&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.12&quot;</span><span class="nt">/&gt;</span>
 
-  <span class="nt">&lt;xacro:property</span> <span class="na">name=</span><span class="s">&quot;caster_xoff&quot;</span> <span class="na">value=</span><span class="s">&quot;0.14&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;caster_xoff&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.14&quot;</span><span class="nt">/&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
 <p>Here is a brief discussion on what these properties will represent in our urdf. The <code class="docutils literal notranslate"><span class="pre">base_*</span></code> properties all define the size of the robot’s main chassis. The <code class="docutils literal notranslate"><span class="pre">wheel_radius</span></code> and <code class="docutils literal notranslate"><span class="pre">wheel_width</span></code> define the shape of the robot’s two back wheels. The <code class="docutils literal notranslate"><span class="pre">wheel_ygap</span></code> adjusts the gap between the wheel and the chassis along the y-axis whilst <code class="docutils literal notranslate"><span class="pre">wheel_zoff</span></code> and <code class="docutils literal notranslate"><span class="pre">wheel_xoff</span></code> position the back wheels along the z-axis and x-axis appropriately. Lastly, the <code class="docutils literal notranslate"><span class="pre">caster_xoff</span></code> positions the front caster wheel along the x-axis.</p>
@@ -979,17 +993,17 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span>  <span class="cm">&lt;!-- Robot Base --&gt;</span>
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;${base_length} ${base_width} ${base_height}&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;Cyan&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;0 1.0 1.0 1.0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/material&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><span class="w">  </span><span class="cm">&lt;!-- Robot Base --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;${base_length} ${base_width} ${base_height}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Cyan&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;color</span><span class="w"> </span><span class="na">rgba=</span><span class="s">&quot;0 1.0 1.0 1.0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/material&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
 <p>Next, let us define a <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> link. The <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> link is a virtual (non-physical) link which has no dimensions or collision areas. Its primary purpose is to enable various packages determine the center of a robot projected to the ground. For example, Navigation2 uses this link to determine the center of a circular footprint used in its obstacle avoidance algorithms. Again, we set this link with no dimensions and to which position the robot’s center is in when it is projected to the ground plane.</p>
@@ -1001,14 +1015,14 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span>  <span class="cm">&lt;!-- Robot Footprint --&gt;</span>
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_footprint&quot;</span><span class="nt">/&gt;</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><span class="w">  </span><span class="cm">&lt;!-- Robot Footprint --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_footprint&quot;</span><span class="nt">/&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;base_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;base_footprint&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0.0 0.0 ${-(wheel_radius+wheel_zoff)}&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_footprint&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.0 0.0 ${-(wheel_radius+wheel_zoff)}&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
 <p>Now, we will be adding two large drive wheels to our robot. To make our code cleaner and avoid repetition, we will make use of macros to define a block of code that will be repeated with differing parameters. Our macro will have 3 params: <code class="docutils literal notranslate"><span class="pre">prefix</span></code> which simply adds a prefix to our link and joint names, and <code class="docutils literal notranslate"><span class="pre">x_reflect</span></code> and <code class="docutils literal notranslate"><span class="pre">y_reflect</span></code> which allows us to flip the positions of our wheels with respect to the x and y axis respectively. Within this macro, we can also define the visual properties of a single wheel. Lastly, we will also define a <code class="docutils literal notranslate"><span class="pre">continuous</span></code> joint to allow our wheels to freely rotate about an axis. This joint also connects our wheel to the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> at the appropriate location.</p>
@@ -1036,30 +1050,30 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span>  <span class="cm">&lt;!-- Wheels --&gt;</span>
-  <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;wheel&quot;</span> <span class="na">params=</span><span class="s">&quot;prefix x_reflect y_reflect&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;${prefix}_link&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;visual&gt;</span>
-        <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 0&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;geometry&gt;</span>
-            <span class="nt">&lt;cylinder</span> <span class="na">radius=</span><span class="s">&quot;${wheel_radius}&quot;</span> <span class="na">length=</span><span class="s">&quot;${wheel_width}&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/geometry&gt;</span>
-        <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;Gray&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;0.5 0.5 0.5 1.0&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/material&gt;</span>
-      <span class="nt">&lt;/visual&gt;</span>
-    <span class="nt">&lt;/link&gt;</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><span class="w">  </span><span class="cm">&lt;!-- Wheels --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:macro</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;wheel&quot;</span><span class="w"> </span><span class="na">params=</span><span class="s">&quot;prefix x_reflect y_reflect&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;${prefix}_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">        </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;${wheel_radius}&quot;</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;${wheel_width}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Gray&quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;color</span><span class="w"> </span><span class="na">rgba=</span><span class="s">&quot;0.5 0.5 0.5 1.0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/material&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/link&gt;</span>
 
-    <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;${prefix}_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;continuous&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;${prefix}_link&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;${x_reflect*wheel_xoff} ${y_reflect*(base_width/2+wheel_ygap)} ${-wheel_zoff}&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;axis</span> <span class="na">xyz=</span><span class="s">&quot;0 1 0&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/joint&gt;</span>
-  <span class="nt">&lt;/xacro:macro&gt;</span>
+<span class="w">    </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;${prefix}_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;continuous&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;${prefix}_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;${x_reflect*wheel_xoff} ${y_reflect*(base_width/2+wheel_ygap)} ${-wheel_zoff}&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;axis</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 1 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xacro:macro&gt;</span>
 
-  <span class="nt">&lt;xacro:wheel</span> <span class="na">prefix=</span><span class="s">&quot;drivewhl_l&quot;</span> <span class="na">x_reflect=</span><span class="s">&quot;-1&quot;</span> <span class="na">y_reflect=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;xacro:wheel</span> <span class="na">prefix=</span><span class="s">&quot;drivewhl_r&quot;</span> <span class="na">x_reflect=</span><span class="s">&quot;-1&quot;</span> <span class="na">y_reflect=</span><span class="s">&quot;-1&quot;</span> <span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:wheel</span><span class="w"> </span><span class="na">prefix=</span><span class="s">&quot;drivewhl_l&quot;</span><span class="w"> </span><span class="na">x_reflect=</span><span class="s">&quot;-1&quot;</span><span class="w"> </span><span class="na">y_reflect=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:wheel</span><span class="w"> </span><span class="na">prefix=</span><span class="s">&quot;drivewhl_r&quot;</span><span class="w"> </span><span class="na">x_reflect=</span><span class="s">&quot;-1&quot;</span><span class="w"> </span><span class="na">y_reflect=</span><span class="s">&quot;-1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
 <p>Next, we will be adding a caster wheel at the front of our robot. We will be modelling this wheel as a sphere to keep things simple. Again, we define the wheel’s geometry, material and the joint to connect it to <code class="docutils literal notranslate"><span class="pre">base_link</span></code> at the appropriate location.</p>
@@ -1079,23 +1093,23 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span>  <span class="cm">&lt;!-- Caster Wheel --&gt;</span>
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;front_caster&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;sphere</span> <span class="na">radius=</span><span class="s">&quot;${(wheel_radius+wheel_zoff-(base_height/2))}&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;Cyan&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;0 1.0 1.0 1.0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/material&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><span class="w">  </span><span class="cm">&lt;!-- Caster Wheel --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;front_caster&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;sphere</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;${(wheel_radius+wheel_zoff-(base_height/2))}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Cyan&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;color</span><span class="w"> </span><span class="na">rgba=</span><span class="s">&quot;0 1.0 1.0 1.0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/material&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;caster_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;front_caster&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;${caster_xoff} 0.0 ${-(base_height/2)}&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;caster_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;front_caster&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;${caster_xoff} 0.0 ${-(base_height/2)}&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
 <p>And that’s it! We have built a URDF for a simple differential drive robot. In the next section, we will focus on building the ROS Package containing our URDF, launching the robot state publisher, and visualizing the robot in RVIz.</p>
@@ -1170,85 +1184,85 @@ sudo apt install ros-&lt;ros2-distro&gt;-xacro
 </div>
 <p>To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named <code class="docutils literal notranslate"><span class="pre">rviz</span></code> in the root of your project and a file named <code class="docutils literal notranslate"><span class="pre">urdf_config.rviz</span></code> under it. Place the following as the contents of <code class="docutils literal notranslate"><span class="pre">urdf_config.rviz</span></code></p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Panels:
-  - Class: rviz_common/Displays
-    Help Height: <span class="m">78</span>
-    Name: Displays
-    Property Tree Widget:
-      Expanded:
-        - /Global Options1
-        - /Status1
-        - /RobotModel1/Links1
-        - /TF1
-      Splitter Ratio: <span class="m">0</span>.5
-    Tree Height: <span class="m">557</span>
-Visualization Manager:
-  Class: <span class="s2">&quot;&quot;</span>
-  Displays:
-    - Alpha: <span class="m">0</span>.5
-      Cell Size: <span class="m">1</span>
-      Class: rviz_default_plugins/Grid
-      Color: <span class="m">160</span><span class="p">;</span> <span class="m">160</span><span class="p">;</span> <span class="m">164</span>
-      Enabled: <span class="nb">true</span>
-      Name: Grid
-    - Alpha: <span class="m">0</span>.6
-      Class: rviz_default_plugins/RobotModel
-      Description Topic:
-        Depth: <span class="m">5</span>
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot_description
-      Enabled: <span class="nb">true</span>
-      Name: RobotModel
-      Visual Enabled: <span class="nb">true</span>
-    - Class: rviz_default_plugins/TF
-      Enabled: <span class="nb">true</span>
-      Name: TF
-      Marker Scale: <span class="m">0</span>.3
-      Show Arrows: <span class="nb">true</span>
-      Show Axes: <span class="nb">true</span>
-      Show Names: <span class="nb">true</span>
-  Enabled: <span class="nb">true</span>
-  Global Options:
-    Background Color: <span class="m">48</span><span class="p">;</span> <span class="m">48</span><span class="p">;</span> <span class="m">48</span>
-    Fixed Frame: base_link
-    Frame Rate: <span class="m">30</span>
-  Name: root
-  Tools:
-    - Class: rviz_default_plugins/Interact
-      Hide Inactive Objects: <span class="nb">true</span>
-    - Class: rviz_default_plugins/MoveCamera
-    - Class: rviz_default_plugins/Select
-    - Class: rviz_default_plugins/FocusCamera
-    - Class: rviz_default_plugins/Measure
-      Line color: <span class="m">128</span><span class="p">;</span> <span class="m">128</span><span class="p">;</span> <span class="m">0</span>
-  Transformation:
-    Current:
-      Class: rviz_default_plugins/TF
-  Value: <span class="nb">true</span>
-  Views:
-    Current:
-      Class: rviz_default_plugins/Orbit
-      Name: Current View
-      Target Frame: &lt;Fixed Frame&gt;
-      Value: Orbit <span class="o">(</span>rviz<span class="o">)</span>
-    Saved: ~
+<span class="w">  </span>-<span class="w"> </span>Class:<span class="w"> </span>rviz_common/Displays
+<span class="w">    </span>Help<span class="w"> </span>Height:<span class="w"> </span><span class="m">78</span>
+<span class="w">    </span>Name:<span class="w"> </span>Displays
+<span class="w">    </span>Property<span class="w"> </span>Tree<span class="w"> </span>Widget:
+<span class="w">      </span>Expanded:
+<span class="w">        </span>-<span class="w"> </span>/Global<span class="w"> </span>Options1
+<span class="w">        </span>-<span class="w"> </span>/Status1
+<span class="w">        </span>-<span class="w"> </span>/RobotModel1/Links1
+<span class="w">        </span>-<span class="w"> </span>/TF1
+<span class="w">      </span>Splitter<span class="w"> </span>Ratio:<span class="w"> </span><span class="m">0</span>.5
+<span class="w">    </span>Tree<span class="w"> </span>Height:<span class="w"> </span><span class="m">557</span>
+Visualization<span class="w"> </span>Manager:
+<span class="w">  </span>Class:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span>Displays:
+<span class="w">    </span>-<span class="w"> </span>Alpha:<span class="w"> </span><span class="m">0</span>.5
+<span class="w">      </span>Cell<span class="w"> </span>Size:<span class="w"> </span><span class="m">1</span>
+<span class="w">      </span>Class:<span class="w"> </span>rviz_default_plugins/Grid
+<span class="w">      </span>Color:<span class="w"> </span><span class="m">160</span><span class="p">;</span><span class="w"> </span><span class="m">160</span><span class="p">;</span><span class="w"> </span><span class="m">164</span>
+<span class="w">      </span>Enabled:<span class="w"> </span><span class="nb">true</span>
+<span class="w">      </span>Name:<span class="w"> </span>Grid
+<span class="w">    </span>-<span class="w"> </span>Alpha:<span class="w"> </span><span class="m">0</span>.6
+<span class="w">      </span>Class:<span class="w"> </span>rviz_default_plugins/RobotModel
+<span class="w">      </span>Description<span class="w"> </span>Topic:
+<span class="w">        </span>Depth:<span class="w"> </span><span class="m">5</span>
+<span class="w">        </span>Durability<span class="w"> </span>Policy:<span class="w"> </span>Volatile
+<span class="w">        </span>History<span class="w"> </span>Policy:<span class="w"> </span>Keep<span class="w"> </span>Last
+<span class="w">        </span>Reliability<span class="w"> </span>Policy:<span class="w"> </span>Reliable
+<span class="w">        </span>Value:<span class="w"> </span>/robot_description
+<span class="w">      </span>Enabled:<span class="w"> </span><span class="nb">true</span>
+<span class="w">      </span>Name:<span class="w"> </span>RobotModel
+<span class="w">      </span>Visual<span class="w"> </span>Enabled:<span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span>-<span class="w"> </span>Class:<span class="w"> </span>rviz_default_plugins/TF
+<span class="w">      </span>Enabled:<span class="w"> </span><span class="nb">true</span>
+<span class="w">      </span>Name:<span class="w"> </span>TF
+<span class="w">      </span>Marker<span class="w"> </span>Scale:<span class="w"> </span><span class="m">0</span>.3
+<span class="w">      </span>Show<span class="w"> </span>Arrows:<span class="w"> </span><span class="nb">true</span>
+<span class="w">      </span>Show<span class="w"> </span>Axes:<span class="w"> </span><span class="nb">true</span>
+<span class="w">      </span>Show<span class="w"> </span>Names:<span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span>Enabled:<span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span>Global<span class="w"> </span>Options:
+<span class="w">    </span>Background<span class="w"> </span>Color:<span class="w"> </span><span class="m">48</span><span class="p">;</span><span class="w"> </span><span class="m">48</span><span class="p">;</span><span class="w"> </span><span class="m">48</span>
+<span class="w">    </span>Fixed<span class="w"> </span>Frame:<span class="w"> </span>base_link
+<span class="w">    </span>Frame<span class="w"> </span>Rate:<span class="w"> </span><span class="m">30</span>
+<span class="w">  </span>Name:<span class="w"> </span>root
+<span class="w">  </span>Tools:
+<span class="w">    </span>-<span class="w"> </span>Class:<span class="w"> </span>rviz_default_plugins/Interact
+<span class="w">      </span>Hide<span class="w"> </span>Inactive<span class="w"> </span>Objects:<span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span>-<span class="w"> </span>Class:<span class="w"> </span>rviz_default_plugins/MoveCamera
+<span class="w">    </span>-<span class="w"> </span>Class:<span class="w"> </span>rviz_default_plugins/Select
+<span class="w">    </span>-<span class="w"> </span>Class:<span class="w"> </span>rviz_default_plugins/FocusCamera
+<span class="w">    </span>-<span class="w"> </span>Class:<span class="w"> </span>rviz_default_plugins/Measure
+<span class="w">      </span>Line<span class="w"> </span>color:<span class="w"> </span><span class="m">128</span><span class="p">;</span><span class="w"> </span><span class="m">128</span><span class="p">;</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span>Transformation:
+<span class="w">    </span>Current:
+<span class="w">      </span>Class:<span class="w"> </span>rviz_default_plugins/TF
+<span class="w">  </span>Value:<span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span>Views:
+<span class="w">    </span>Current:
+<span class="w">      </span>Class:<span class="w"> </span>rviz_default_plugins/Orbit
+<span class="w">      </span>Name:<span class="w"> </span>Current<span class="w"> </span>View
+<span class="w">      </span>Target<span class="w"> </span>Frame:<span class="w"> </span>&lt;Fixed<span class="w"> </span>Frame&gt;
+<span class="w">      </span>Value:<span class="w"> </span>Orbit<span class="w"> </span><span class="o">(</span>rviz<span class="o">)</span>
+<span class="w">    </span>Saved:<span class="w"> </span>~
 </pre></div>
 </div>
 <p>Lastly, let us modify the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file in the project root directory to include the files we just created during the package installation process. Add the following snippet to <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file preferrably above the <code class="docutils literal notranslate"><span class="pre">if(BUILD_TESTING)</span></code> line:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>install<span class="o">(</span>
-  DIRECTORY src launch rviz
-  DESTINATION share/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span>
+<span class="w">  </span>DIRECTORY<span class="w"> </span>src<span class="w"> </span>launch<span class="w"> </span>rviz
+<span class="w">  </span>DESTINATION<span class="w"> </span>share/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span>
 <span class="o">)</span>
 </pre></div>
 </div>
 <p>We are now ready to build our project using colcon. Navigate to the project root and execute the following commands.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
-. install/setup.bash
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build
+.<span class="w"> </span>install/setup.bash
 </pre></div>
 </div>
 <p>After a successful build, execute the following commands to install the ROS 2 package and launch our project.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2 launch sam_bot_description display.launch.py
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<span class="w"> </span>display.launch.py
 </pre></div>
 </div>
 <p>ROS 2 should now launch a robot publisher node and start up RVIZ using our URDF. We’ll be taking a look at our robot using RVIZ in the next section.</p>
@@ -1292,29 +1306,29 @@ Visualization Manager:
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span>  <span class="cm">&lt;!-- Define intertial property macros  --&gt;</span>
-  <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;box_inertia&quot;</span> <span class="na">params=</span><span class="s">&quot;m w h d&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;inertial&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 ${pi/2}&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;mass</span> <span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;inertia</span> <span class="na">ixx=</span><span class="s">&quot;${(m/12) * (h*h + d*d)}&quot;</span> <span class="na">ixy=</span><span class="s">&quot;0.0&quot;</span> <span class="na">ixz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">iyy=</span><span class="s">&quot;${(m/12) * (w*w + d*d)}&quot;</span> <span class="na">iyz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">izz=</span><span class="s">&quot;${(m/12) * (w*w + h*h)}&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/inertial&gt;</span>
-  <span class="nt">&lt;/xacro:macro&gt;</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><span class="w">  </span><span class="cm">&lt;!-- Define intertial property macros  --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:macro</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;box_inertia&quot;</span><span class="w"> </span><span class="na">params=</span><span class="s">&quot;m w h d&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;inertial&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 ${pi/2}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mass</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;inertia</span><span class="w"> </span><span class="na">ixx=</span><span class="s">&quot;${(m/12) * (h*h + d*d)}&quot;</span><span class="w"> </span><span class="na">ixy=</span><span class="s">&quot;0.0&quot;</span><span class="w"> </span><span class="na">ixz=</span><span class="s">&quot;0.0&quot;</span><span class="w"> </span><span class="na">iyy=</span><span class="s">&quot;${(m/12) * (w*w + d*d)}&quot;</span><span class="w"> </span><span class="na">iyz=</span><span class="s">&quot;0.0&quot;</span><span class="w"> </span><span class="na">izz=</span><span class="s">&quot;${(m/12) * (w*w + h*h)}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/inertial&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xacro:macro&gt;</span>
 
-  <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;cylinder_inertia&quot;</span> <span class="na">params=</span><span class="s">&quot;m r h&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;inertial&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 0&quot;</span> <span class="nt">/&gt;</span>
-      <span class="nt">&lt;mass</span> <span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;inertia</span> <span class="na">ixx=</span><span class="s">&quot;${(m/12) * (3*r*r + h*h)}&quot;</span> <span class="na">ixy =</span> <span class="s">&quot;0&quot;</span> <span class="na">ixz =</span> <span class="s">&quot;0&quot;</span> <span class="na">iyy=</span><span class="s">&quot;${(m/12) * (3*r*r + h*h)}&quot;</span> <span class="na">iyz =</span> <span class="s">&quot;0&quot;</span> <span class="na">izz=</span><span class="s">&quot;${(m/2) * (r*r)}&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/inertial&gt;</span>
-  <span class="nt">&lt;/xacro:macro&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:macro</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;cylinder_inertia&quot;</span><span class="w"> </span><span class="na">params=</span><span class="s">&quot;m r h&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;inertial&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mass</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;inertia</span><span class="w"> </span><span class="na">ixx=</span><span class="s">&quot;${(m/12) * (3*r*r + h*h)}&quot;</span><span class="w"> </span><span class="na">ixy =</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">ixz =</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">iyy=</span><span class="s">&quot;${(m/12) * (3*r*r + h*h)}&quot;</span><span class="w"> </span><span class="na">iyz =</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">izz=</span><span class="s">&quot;${(m/2) * (r*r)}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/inertial&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xacro:macro&gt;</span>
 
-  <span class="nt">&lt;xacro:macro</span> <span class="na">name=</span><span class="s">&quot;sphere_inertia&quot;</span> <span class="na">params=</span><span class="s">&quot;m r&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;inertial&gt;</span>
-      <span class="nt">&lt;mass</span> <span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;inertia</span> <span class="na">ixx=</span><span class="s">&quot;${(2/5) * m * (r*r)}&quot;</span> <span class="na">ixy=</span><span class="s">&quot;0.0&quot;</span> <span class="na">ixz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">iyy=</span><span class="s">&quot;${(2/5) * m * (r*r)}&quot;</span> <span class="na">iyz=</span><span class="s">&quot;0.0&quot;</span> <span class="na">izz=</span><span class="s">&quot;${(2/5) * m * (r*r)}&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/inertial&gt;</span>
-  <span class="nt">&lt;/xacro:macro&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xacro:macro</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sphere_inertia&quot;</span><span class="w"> </span><span class="na">params=</span><span class="s">&quot;m r&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;inertial&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mass</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;${m}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;inertia</span><span class="w"> </span><span class="na">ixx=</span><span class="s">&quot;${(2/5) * m * (r*r)}&quot;</span><span class="w"> </span><span class="na">ixy=</span><span class="s">&quot;0.0&quot;</span><span class="w"> </span><span class="na">ixz=</span><span class="s">&quot;0.0&quot;</span><span class="w"> </span><span class="na">iyy=</span><span class="s">&quot;${(2/5) * m * (r*r)}&quot;</span><span class="w"> </span><span class="na">iyz=</span><span class="s">&quot;0.0&quot;</span><span class="w"> </span><span class="na">izz=</span><span class="s">&quot;${(2/5) * m * (r*r)}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/inertial&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xacro:macro&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
 <p>Let us start by adding collision areas to our <code class="docutils literal notranslate"><span class="pre">base_link</span></code> using the <code class="docutils literal notranslate"><span class="pre">&lt;collision&gt;</span></code> tag. We will also be using the box_inertia macro we defined before to add some inertial properties to our <code class="docutils literal notranslate"><span class="pre">base_link</span></code>. Include the following code snippet within <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">name=&quot;base_link&quot;&gt;</span></code> tag of base_link in our URDF.</p>
@@ -1324,13 +1338,13 @@ Visualization Manager:
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
-<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span>    <span class="nt">&lt;collision&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;${base_length} ${base_width} ${base_height}&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/collision&gt;</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><span class="w">    </span><span class="nt">&lt;collision&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;${base_length} ${base_width} ${base_height}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/collision&gt;</span>
 
-    <span class="nt">&lt;xacro:box_inertia</span> <span class="na">m=</span><span class="s">&quot;15&quot;</span> <span class="na">w=</span><span class="s">&quot;${base_width}&quot;</span> <span class="na">d=</span><span class="s">&quot;${base_length}&quot;</span> <span class="na">h=</span><span class="s">&quot;${base_height}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xacro:box_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;15&quot;</span><span class="w"> </span><span class="na">w=</span><span class="s">&quot;${base_width}&quot;</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;${base_length}&quot;</span><span class="w"> </span><span class="na">h=</span><span class="s">&quot;${base_height}&quot;</span><span class="nt">/&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
 <p>Next, let us do the same for our wheel macros. Include the following code snippet within the <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">name=&quot;${prefix}_link&quot;&gt;</span></code> tag of our wheel macros in our URDF.</p>
@@ -1341,14 +1355,14 @@ Visualization Manager:
 <span class="normal">87</span>
 <span class="normal">88</span>
 <span class="normal">89</span>
-<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span>      <span class="nt">&lt;collision&gt;</span>
-        <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 0&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;geometry&gt;</span>
-          <span class="nt">&lt;cylinder</span> <span class="na">radius=</span><span class="s">&quot;${wheel_radius}&quot;</span> <span class="na">length=</span><span class="s">&quot;${wheel_width}&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;/collision&gt;</span>
+<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><span class="w">      </span><span class="nt">&lt;collision&gt;</span>
+<span class="w">        </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;${pi/2} 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">          </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;${wheel_radius}&quot;</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;${wheel_width}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/collision&gt;</span>
 
-      <span class="nt">&lt;xacro:cylinder_inertia</span> <span class="na">m=</span><span class="s">&quot;0.5&quot;</span> <span class="na">r=</span><span class="s">&quot;${wheel_radius}&quot;</span> <span class="na">h=</span><span class="s">&quot;${wheel_width}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xacro:cylinder_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;0.5&quot;</span><span class="w"> </span><span class="na">r=</span><span class="s">&quot;${wheel_radius}&quot;</span><span class="w"> </span><span class="na">h=</span><span class="s">&quot;${wheel_width}&quot;</span><span class="nt">/&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
 <p>Lastly, let us add the similar properties to our spherical caster wheels. Include the following in the <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">name=&quot;front_caster&quot;&gt;</span></code> tag of our caster wheel in the URDF.</p>
@@ -1359,14 +1373,14 @@ Visualization Manager:
 <span class="normal">118</span>
 <span class="normal">119</span>
 <span class="normal">120</span>
-<span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span>    <span class="nt">&lt;collision&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;sphere</span> <span class="na">radius=</span><span class="s">&quot;${(wheel_radius+wheel_zoff-(base_height/2))}&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/collision&gt;</span>
+<span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span><span class="w">    </span><span class="nt">&lt;collision&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;sphere</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;${(wheel_radius+wheel_zoff-(base_height/2))}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/collision&gt;</span>
 
-    <span class="nt">&lt;xacro:sphere_inertia</span> <span class="na">m=</span><span class="s">&quot;0.5&quot;</span> <span class="na">r=</span><span class="s">&quot;${(wheel_radius+wheel_zoff-(base_height/2))}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xacro:sphere_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;0.5&quot;</span><span class="w"> </span><span class="na">r=</span><span class="s">&quot;${(wheel_radius+wheel_zoff-(base_height/2))}&quot;</span><span class="nt">/&gt;</span>
 </pre></div></td></tr></table></div>
 </div>
 <div class="admonition note">
@@ -1374,9 +1388,9 @@ Visualization Manager:
 <p>We did not add any inertial or collision properties to our <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> link since this is a virtual and non-physical link.</p>
 </div>
 <p>Build your project and then launch RViz using the same commands in the previous section.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build
-. install/setup.bash
-ros2 launch sam_bot_description display.launch.py
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build
+.<span class="w"> </span>install/setup.bash
+ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<span class="w"> </span>display.launch.py
 </pre></div>
 </div>
 <p>You can verify whether you have properly set up the collision areas by enabling <code class="docutils literal notranslate"><span class="pre">Collision</span> <span class="pre">Enabled</span></code> under <code class="docutils literal notranslate"><span class="pre">RobotModel</span></code> on the left pane (it may be easier to see if you also turn off <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Enabled</span></code>). For this tutorial we defined a collision area which is similar to our visual properties. Note that this may not always be the case since you may opt for simpler collision areas based on how your robot looks.</p>

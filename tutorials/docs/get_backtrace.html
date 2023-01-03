@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -922,7 +936,7 @@ Here we’re launching a GDB session and telling our program to immediately run.
 Once your program crashes, it will return a gdb session prompt denoted by <code class="docutils literal notranslate"><span class="pre">(gdb)</span></code>.
 At this prompt you can access the information you’re interested in.
 However, since this is a ROS project with lots of node configurations and other things going on, this isn’t a great option for beginners or those that don’t like tons of commandline work and understanding the filesystem.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdb ex run --args /path/to/exe/program
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdb<span class="w"> </span>ex<span class="w"> </span>run<span class="w"> </span>--args<span class="w"> </span>/path/to/exe/program
 </pre></div>
 </div>
 <p>Below are sections to describe the 3 major situations you could run into with ROS 2-based systems.
@@ -937,7 +951,7 @@ If you attempted to do <code class="docutils literal notranslate"><span class="p
 If you’re even more clever, you’d find that trying to source your workspace would also fail for similar reasons.</p>
 <p>Rather than having to revert to finding the install path of the executable and typing it all out, we can instead use <code class="docutils literal notranslate"><span class="pre">--prefix</span></code>.
 This allows us to use the same <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> syntax you’re used to without having to worry about some of the GDB details.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run --prefix <span class="s1">&#39;gdb -ex run --args&#39;</span> &lt;pkg&gt; &lt;node&gt; --all-other-launch arguments
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>--prefix<span class="w"> </span><span class="s1">&#39;gdb -ex run --args&#39;</span><span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;node&gt;<span class="w"> </span>--all-other-launch<span class="w"> </span>arguments
 </pre></div>
 </div>
 <p>Just as before, this prefix will launch a GDB session and run the node you requested with all the additional commandline arguments.
@@ -949,7 +963,7 @@ You should now have your node running and should be chugging along with some deb
 <p>In this session, type <code class="docutils literal notranslate"><span class="pre">backtrace</span></code> and it will provide you with a backtrace.
 Copy this for your needs.
 For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> backtrace
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span>backtrace
 <span class="c1">#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:50</span>
 <span class="c1">#1  0x00007ffff79cc859 in __GI_abort () at abort.c:79</span>
 <span class="c1">#2  0x00007ffff7c52951 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6</span>
@@ -958,13 +972,13 @@ For example:</p>
 <span class="c1">#5  0x00007ffff7c5e799 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6</span>
 <span class="c1">#6  0x00007ffff7c553eb in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6</span>
 <span class="c1">#7  0x000055555555936c in std::vector&lt;int, std::allocator&lt;int&gt; &gt;::_M_range_check (</span>
-    <span class="nv">this</span><span class="o">=</span>0x5555555cfdb0, <span class="nv">__n</span><span class="o">=</span><span class="m">100</span><span class="o">)</span> at /usr/include/c++/9/bits/stl_vector.h:1070
+<span class="w">    </span><span class="nv">this</span><span class="o">=</span>0x5555555cfdb0,<span class="w"> </span><span class="nv">__n</span><span class="o">=</span><span class="m">100</span><span class="o">)</span><span class="w"> </span>at<span class="w"> </span>/usr/include/c++/9/bits/stl_vector.h:1070
 <span class="c1">#8  0x0000555555558e1d in std::vector&lt;int, std::allocator&lt;int&gt; &gt;::at (this=0x5555555cfdb0,</span>
-    <span class="nv">__n</span><span class="o">=</span><span class="m">100</span><span class="o">)</span> at /usr/include/c++/9/bits/stl_vector.h:1091
+<span class="w">    </span><span class="nv">__n</span><span class="o">=</span><span class="m">100</span><span class="o">)</span><span class="w"> </span>at<span class="w"> </span>/usr/include/c++/9/bits/stl_vector.h:1091
 <span class="c1">#9  0x000055555555828b in GDBTester::VectorCrash (this=0x5555555cfb40)</span>
-    at /home/steve/Documents/nav2_ws/src/gdb_test_pkg/src/gdb_test_node.cpp:44
+<span class="w">    </span>at<span class="w"> </span>/home/steve/Documents/nav2_ws/src/gdb_test_pkg/src/gdb_test_node.cpp:44
 <span class="c1">#10 0x0000555555559cfc in main (argc=1, argv=0x7fffffffc108)</span>
-    at /home/steve/Documents/nav2_ws/src/gdb_test_pkg/src/main.cpp:25
+<span class="w">    </span>at<span class="w"> </span>/home/steve/Documents/nav2_ws/src/gdb_test_pkg/src/main.cpp:25
 </pre></div>
 </div>
 <p>In this example you should read this in the following way, starting at the bottom:</p>

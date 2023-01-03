@@ -392,6 +392,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration Guide</a><ul class="current">
@@ -700,6 +712,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/index.html">Navigation Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-navigators">Behavior-Tree Navigators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-layers">Costmap Layers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#costmap-filters">Costmap Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#controllers">Controllers</a></li>
@@ -799,6 +812,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
@@ -1278,38 +1292,38 @@ Following image depicts improvement of the path with <code class="docutils liter
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">smoother_server</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
-<span class="w">    </span><span class="nt">smoother_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;SmoothPath&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">smoother_server</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="nt">smoother_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;SmoothPath&quot;</span><span class="p p-Indicator">]</span>
 
-<span class="w">    </span><span class="nt">SmoothPath</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_constrained_smoother/ConstrainedSmoother&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">reversing_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">       </span><span class="c1"># whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned</span><span class="w"></span>
-<span class="w">      </span><span class="nt">path_downsampling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w">   </span><span class="c1"># every n-th node of the path is taken. Useful for speed-up</span><span class="w"></span>
-<span class="w">      </span><span class="nt">path_upsampling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">     </span><span class="c1"># 0 - path remains downsampled, 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling</span><span class="w"></span>
-<span class="w">      </span><span class="nt">keep_start_orientation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># whether to prevent the start orientation from being smoothed</span><span class="w"></span>
-<span class="w">      </span><span class="nt">keep_goal_orientation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">   </span><span class="c1"># whether to prevent the gpal orientation from being smoothed</span><span class="w"></span>
-<span class="w">      </span><span class="nt">minimum_turning_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.40</span><span class="w">  </span><span class="c1"># minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots</span><span class="w"></span>
-<span class="w">      </span><span class="nt">w_curve</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span><span class="w">                 </span><span class="c1"># weight to enforce minimum_turning_radius</span><span class="w"></span>
-<span class="w">      </span><span class="nt">w_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w">                   </span><span class="c1"># weight to bind path to original as optional replacement for cost weight</span><span class="w"></span>
-<span class="w">      </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15000.0</span><span class="w">             </span><span class="c1"># weight to maximize smoothness of path</span><span class="w"></span>
-<span class="w">      </span><span class="nt">w_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span><span class="w">                 </span><span class="c1"># weight to steer robot away from collision and cost</span><span class="w"></span>
+<span class="w">    </span><span class="nt">SmoothPath</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_constrained_smoother/ConstrainedSmoother&quot;</span>
+<span class="w">      </span><span class="nt">reversing_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">       </span><span class="c1"># whether to detect forward/reverse direction and cusps. Should be set to false for paths without orientations assigned</span>
+<span class="w">      </span><span class="nt">path_downsampling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w">   </span><span class="c1"># every n-th node of the path is taken. Useful for speed-up</span>
+<span class="w">      </span><span class="nt">path_upsampling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">     </span><span class="c1"># 0 - path remains downsampled, 1 - path is upsampled back to original granularity using cubic bezier, 2... - more upsampling</span>
+<span class="w">      </span><span class="nt">keep_start_orientation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># whether to prevent the start orientation from being smoothed</span>
+<span class="w">      </span><span class="nt">keep_goal_orientation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">   </span><span class="c1"># whether to prevent the gpal orientation from being smoothed</span>
+<span class="w">      </span><span class="nt">minimum_turning_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.40</span><span class="w">  </span><span class="c1"># minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots</span>
+<span class="w">      </span><span class="nt">w_curve</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span><span class="w">                 </span><span class="c1"># weight to enforce minimum_turning_radius</span>
+<span class="w">      </span><span class="nt">w_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w">                   </span><span class="c1"># weight to bind path to original as optional replacement for cost weight</span>
+<span class="w">      </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15000.0</span><span class="w">             </span><span class="c1"># weight to maximize smoothness of path</span>
+<span class="w">      </span><span class="nt">w_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span><span class="w">                 </span><span class="c1"># weight to steer robot away from collision and cost</span>
 
-<span class="w">      </span><span class="c1"># Parameters used to improve obstacle avoidance near cusps (forward/reverse movement changes)</span><span class="w"></span>
-<span class="w">      </span><span class="nt">w_cost_cusp_multiplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w">   </span><span class="c1"># option to use higher weight during forward/reverse direction change which is often accompanied with dangerous rotations</span><span class="w"></span>
-<span class="w">      </span><span class="nt">cusp_zone_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.5</span><span class="w">         </span><span class="c1"># length of the section around cusp in which nodes use w_cost_cusp_multiplier (w_cost rises gradually inside the zone towards the cusp point, whose costmap weight eqals w_cost*w_cost_cusp_multiplier)</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Parameters used to improve obstacle avoidance near cusps (forward/reverse movement changes)</span>
+<span class="w">      </span><span class="nt">w_cost_cusp_multiplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w">   </span><span class="c1"># option to use higher weight during forward/reverse direction change which is often accompanied with dangerous rotations</span>
+<span class="w">      </span><span class="nt">cusp_zone_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.5</span><span class="w">         </span><span class="c1"># length of the section around cusp in which nodes use w_cost_cusp_multiplier (w_cost rises gradually inside the zone towards the cusp point, whose costmap weight eqals w_cost*w_cost_cusp_multiplier)</span>
 
-<span class="w">      </span><span class="c1"># Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, ...]</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># IMPORTANT: Requires much higher number of iterations to actually improve the path. Uncomment only if you really need it (highly elongated/asymmetric robots)</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># cost_check_points: [-0.185, 0.0, 1.0]</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Points in robot frame to grab costmap values from. Format: [x1, y1, weight1, x2, y2, weight2, ...]</span>
+<span class="w">      </span><span class="c1"># IMPORTANT: Requires much higher number of iterations to actually improve the path. Uncomment only if you really need it (highly elongated/asymmetric robots)</span>
+<span class="w">      </span><span class="c1"># cost_check_points: [-0.185, 0.0, 1.0]</span>
 
-<span class="w">      </span><span class="nt">optimizer</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span><span class="w">            </span><span class="c1"># max iterations of smoother</span><span class="w"></span>
-<span class="w">        </span><span class="nt">debug_optimizer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">        </span><span class="c1"># print debug info</span><span class="w"></span>
-<span class="w">        </span><span class="nt">gradient_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5e3</span><span class="w"></span>
-<span class="w">        </span><span class="nt">fn_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-15</span><span class="w"></span>
-<span class="w">        </span><span class="nt">param_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-20</span><span class="w"></span>
+<span class="w">      </span><span class="nt">optimizer</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span><span class="w">            </span><span class="c1"># max iterations of smoother</span>
+<span class="w">        </span><span class="nt">debug_optimizer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">        </span><span class="c1"># print debug info</span>
+<span class="w">        </span><span class="nt">gradient_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5e3</span>
+<span class="w">        </span><span class="nt">fn_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-15</span>
+<span class="w">        </span><span class="nt">param_tol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-20</span>
 </pre></div>
 </div>
 </div>

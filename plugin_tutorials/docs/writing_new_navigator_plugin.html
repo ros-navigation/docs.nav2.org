@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using Collision Monitor &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Writing a New Navigator Plugin &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
@@ -16,8 +16,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Adding a New Nav2 Task Server" href="adding_a_nav2_task_server.html" />
-    <link rel="prev" title="Adding a Smoother to a BT" href="adding_smoother.html" />
+    <link rel="next" title="Configuration Guide" href="../../configuration/index.html" />
+    <link rel="prev" title="Writing a New Behavior Plugin" href="writing_new_behavior_plugin.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -188,218 +188,218 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">General Tutorials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="camera_calibration.html">Camera Calibration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">General Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html">Camera Calibration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-a-node">From a Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-large-project">From Large Project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-nav2-bringup">From Nav2 Bringup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-large-project">From Large Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="get_profile.html">Profiling in ROS 2 / Nav2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#profile-from-a-node">Profile from a Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#profile-from-a-launch-file">Profile from a Launch File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#from-nav2-bringup">From Nav2 Bringup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="get_profile.html#interpreting-results">Interpreting Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_profile.html">Profiling in ROS 2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#profile-from-a-node">Profile from a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#profile-from-a-launch-file">Profile from a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#interpreting-results">Interpreting Results</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#initialize-the-location-of-turtlebot-3">4- Initialize the Location of Turtlebot 3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#send-a-goal-pose">5-  Send a Goal Pose</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_with_slam.html">(SLAM) Navigating While Mapping</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_slam.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_slam.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_slam.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#launch-navigation2">1- Launch Navigation2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#launch-slam">2- Launch SLAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#working-with-slam">3- Working with SLAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#getting-started-simplification">4- Getting Started Simplification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#initialize-the-location-of-turtlebot-3">4- Initialize the Location of Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#send-a-goal-pose">5-  Send a Goal Pose</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_with_stvl.html">(STVL) Using an External Costmap Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_stvl.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_stvl.html#costmap2d-and-stvl">Costmap2D and STVL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_stvl.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#setup">0- Setup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#install-stvl">1- Install STVL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#modify-navigation2-parameter">1- Modify Navigation2 Parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#launch-navigation2">2- Launch Navigation2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#rviz">3-  RVIZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html">(SLAM) Navigating While Mapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-navigation2">1- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-slam">2- Launch SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#working-with-slam">3- Working with SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#getting-started-simplification">4- Getting Started Simplification</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_dynamic_point_following.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html">(STVL) Using an External Costmap Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#costmap2d-and-stvl">Costmap2D and STVL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#setup">0- Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#install-stvl">1- Install STVL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#modify-navigation2-parameter">1- Modify Navigation2 Parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#launch-navigation2">2- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#rviz">3-  RVIZ</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="using_groot.html">Groot - Interacting with Behavior Trees</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="using_groot.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using_groot.html#visualize-behavior-trees">Visualize Behavior Trees</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using_groot.html#edit-behavior-trees">Edit Behavior Trees</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using_groot.html#adding-a-custom-node">Adding A Custom Node</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="using_shim_controller.html">Using Rotation Shim Controller</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#what-is-the-rotation-shim-controller">What is the Rotation Shim Controller?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#configuring-rotation-shim-controller">Configuring Rotation Shim Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#configuring-primary-controller">Configuring Primary Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#demo-execution">Demo Execution</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="adding_smoother.html">Adding a Smoother to a BT</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="adding_smoother.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="adding_smoother.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="adding_smoother.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="adding_smoother.html#familiarization-with-the-smoother-bt-node">0- Familiarization with the Smoother BT Node</a></li>
-<li class="toctree-l4"><a class="reference internal" href="adding_smoother.html#specifying-a-smoother-plugin">1- Specifying a Smoother Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="adding_smoother.html#modifying-your-bt-xml">2- Modifying your BT XML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using Collision Monitor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/using_groot.html">Groot - Interacting with Behavior Trees</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_groot.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_groot.html#visualize-behavior-trees">Visualize Behavior Trees</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_groot.html#edit-behavior-trees">Edit Behavior Trees</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_groot.html#adding-a-custom-node">Adding A Custom Node</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html">Using Rotation Shim Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#what-is-the-rotation-shim-controller">What is the Rotation Shim Controller?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#configuring-rotation-shim-controller">Configuring Rotation Shim Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#configuring-primary-controller">Configuring Primary Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#demo-execution">Demo Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html">Adding a Smoother to a BT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#familiarization-with-the-smoother-bt-node">0- Familiarization with the Smoother BT Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#specifying-a-smoother-plugin">1- Specifying a Smoother Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#modifying-your-bt-xml">2- Modifying your BT XML</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html">Using Collision Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor">Configuring Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#demo-execution">Demo Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html">Adding a New Nav2 Task Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html#lifecycle-nodes">Lifecycle Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html#composition">Composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html#error-codes">Error codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Plugin Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="writing_new_costmap2d_plugin.html">Writing a New Costmap2D Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_costmap2d_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_costmap2d_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_costmap2d_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_costmap2d_plugin.html#write-a-new-costmap2d-plugin">1- Write a new Costmap2D plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_costmap2d_plugin.html#export-and-make-gradientlayer-plugin">2- Export and make GradientLayer plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_costmap2d_plugin.html#enable-the-plugin-in-costmap2d">3- Enable the plugin in Costmap2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_costmap2d_plugin.html#run-gradientlayer-plugin">4- Run GradientLayer plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="writing_new_nav2planner_plugin.html">Writing a New Planner Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_nav2planner_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_nav2planner_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_nav2planner_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2planner_plugin.html#creating-a-new-planner-plugin">1- Creating a new Planner Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2planner_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2planner_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2planner_plugin.html#run-straightline-plugin">4- Run StraightLine plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="writing_new_nav2controller_plugin.html">Writing a New Controller Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_nav2controller_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_nav2controller_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_nav2controller_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2controller_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2controller_plugin.html#exporting-the-controller-plugin">2- Exporting the controller plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2controller_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_nav2controller_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="writing_new_bt_plugin.html">Writing a New Behavior Tree Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_bt_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_bt_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_bt_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#creating-a-new-bt-plugin">1- Creating a new BT Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#add-plugin-library-name-to-config">3- Add plugin library name to config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_bt_plugin.html#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="writing_new_behavior_plugin.html">Writing a New Behavior Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_behavior_plugin.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_behavior_plugin.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writing_new_behavior_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_behavior_plugin.html#creating-a-new-behavior-plugin">1- Creating a new Behavior Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_behavior_plugin.html#exporting-the-behavior-plugin">2- Exporting the Behavior Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_behavior_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="writing_new_behavior_plugin.html#run-behavior-plugin">4- Run Behavior Plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing a New Navigator Plugin</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-collision-monitor">Configuring Collision Monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#preparing-nav2-stack">Preparing Nav2 stack</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#demo-execution">Demo Execution</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="adding_a_nav2_task_server.html">Adding a New Nav2 Task Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#lifecycle-nodes">Lifecycle Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#composition">Composition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#error-codes">Error codes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../plugin_tutorials/index.html">Plugin Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html">Writing a New Costmap2D Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#write-a-new-costmap2d-plugin">1- Write a new Costmap2D plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#export-and-make-gradientlayer-plugin">2- Export and make GradientLayer plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#enable-the-plugin-in-costmap2d">3- Enable the plugin in Costmap2D</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#run-gradientlayer-plugin">4- Run GradientLayer plugin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html">Writing a New Planner Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#creating-a-new-planner-plugin">1- Creating a new Planner Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#run-straightline-plugin">4- Run StraightLine plugin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html">Writing a New Controller Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#exporting-the-controller-plugin">2- Exporting the controller plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html">Writing a New Behavior Tree Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#creating-a-new-bt-plugin">1- Creating a new BT Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#exporting-the-planner-plugin">2- Exporting the planner plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#add-plugin-library-name-to-config">3- Add plugin library name to config</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_behavior_plugin.html">Writing a New Behavior Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_behavior_plugin.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_behavior_plugin.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_behavior_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_behavior_plugin.html#creating-a-new-behavior-plugin">1- Creating a new Behavior Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_behavior_plugin.html#exporting-the-behavior-plugin">2- Exporting the Behavior Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_behavior_plugin.html#pass-the-plugin-name-through-params-file">3- Pass the plugin name through params file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_behavior_plugin.html#run-behavior-plugin">4- Run Behavior Plugin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html">Writing a New Navigator Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_navigator_plugin.html#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
 </ul>
 </li>
 </ul>
@@ -880,8 +880,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a></li>
-          <li class="breadcrumb-item"><a href="../index.html">General Tutorials</a></li>
-      <li class="breadcrumb-item active">Using Collision Monitor</li>
+          <li class="breadcrumb-item"><a href="../index.html">Plugin Tutorials</a></li>
+      <li class="breadcrumb-item active">Writing a New Navigator Plugin</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -890,144 +890,355 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="using-collision-monitor">
-<span id="collision-monitor-tutorial"></span><h1>Using Collision Monitor<a class="headerlink" href="#using-collision-monitor" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="writing-a-new-navigator-plugin">
+<span id="writing-new-nav2navigator-plugin"></span><h1>Writing a New Navigator Plugin<a class="headerlink" href="#writing-a-new-navigator-plugin" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
-<li><p><a class="reference internal" href="#preparing-nav2-stack">Preparing Nav2 stack</a></p></li>
-<li><p><a class="reference internal" href="#configuring-collision-monitor">Configuring Collision Monitor</a></p></li>
-<li><p><a class="reference internal" href="#demo-execution">Demo Execution</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/collision_monitor.gif"><img alt="../../_images/collision_monitor.gif" src="../../_images/collision_monitor.gif" style="width: 800px;" /></a>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial shows how to use a Collision Monitor with Nav2 stack. Based on this tutorial, you can setup it for your environment and needs.</p>
+<p>This tutorial shows how to create your own behavior-tree navigator <a class="reference external" href="https://index.ros.org/p/pluginlib/">plugin</a> based on the <code class="docutils literal notranslate"><span class="pre">nav2_core::BehaviorTreeNavigator</span></code> base class.</p>
+<p>In this tutorial, we will be reviewing the <code class="docutils literal notranslate"><span class="pre">Navigate</span> <span class="pre">to</span> <span class="pre">Pose</span></code> behavior-tree navigator plugin, which is the foundational navigator of Nav2 and complimentary behavior to ROS 1 Navigation. This completes point-to-point navigation. This tutorial will be reviewing the code and structure as of ROS 2 Iron. While small variations may be made over time, this should be sufficient to get started writing your own navigator if you choose as we do not expect major API changes on this system.</p>
+<p>It may be beneficial to write your own Navigator if you have a custom action message definition you’d like to use with Navigation rather than the provided <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> or <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> interfaces (e.g. doing complete coverage or containing additional constraint information).</p>
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>It is assumed ROS2 and Nav2 dependent packages are installed or built locally.
-Please make sure that Nav2 project is also built locally as it was made in <a class="reference internal" href="../../build_instructions/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
+<ul class="simple">
+<li><p>ROS 2 (binary or build-from-source)</p></li>
+<li><p>Nav2 (Including dependencies)</p></li>
+<li><p>Gazebo</p></li>
+<li><p>Turtlebot3</p></li>
+</ul>
 </div>
-<div class="section" id="configuring-collision-monitor">
-<h2>Configuring Collision Monitor<a class="headerlink" href="#configuring-collision-monitor" title="Permalink to this headline">¶</a></h2>
-<p>The Collision Monitor node has its own <code class="docutils literal notranslate"><span class="pre">collision_monitor_node.launch.py</span></code> launch-file and preset parameters in the <code class="docutils literal notranslate"><span class="pre">collision_monitor_params.yaml</span></code> file for demonstration, though its trivial to add this to Nav2’s main launch file if being used in practice.
-For the demonstration, two shapes will be created - an inner stop and a larger slowdown bounding boxes placed in the front of the robot:</p>
-<a class="reference internal image-reference" href="../../_images/polygons.png"><img alt="../../_images/polygons.png" src="../../_images/polygons.png" style="width: 800px;" /></a>
-<p>If more than 3 points will appear inside a slowdown box, the robot will decrease its speed to <code class="docutils literal notranslate"><span class="pre">30%</span></code> from its value.
-For the cases when obstacles are dangerously close to the robot, inner stop zone will work.
-For this setup, the following lines should be added into <code class="docutils literal notranslate"><span class="pre">collision_monitor_params.yaml</span></code> parameters file. Stop box is named as <code class="docutils literal notranslate"><span class="pre">PolygonStop</span></code> and slowdown bounding box - as <code class="docutils literal notranslate"><span class="pre">PolygonSlow</span></code>:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;PolygonStop&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PolygonSlow&quot;</span><span class="p p-Indicator">]</span>
-<span class="nt">PolygonStop</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
-<span class="w">  </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.3</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stop&quot;</span>
-<span class="w">  </span><span class="nt">max_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="w">  </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_stop&quot;</span>
-<span class="nt">PolygonSlow</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
-<span class="w">  </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.6</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.6</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.4</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;slowdown&quot;</span>
-<span class="w">  </span><span class="nt">max_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="nt">slowdown_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
-<span class="w">  </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="w">  </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_slowdown&quot;</span>
+<div class="section" id="tutorial-steps">
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-new-controller-plugin">
+<h3>1- Create a new Controller Plugin<a class="headerlink" href="#create-a-new-controller-plugin" title="Permalink to this headline">¶</a></h3>
+<p>We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2/nav2_bt_navigator">Nav2s BT Navigator package</a> as the <code class="docutils literal notranslate"><span class="pre">NavigateToPoseNavigator</span></code>. This package can be considered as a reference for writing your own plugin.</p>
+<p>Our example plugin class <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator::NavigateToPoseNavigator</span></code> inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_core::BehaviorTreeNavigator</span></code>. The base class provides a set of virtual methods to implement a navigator plugin. These methods are called at runtime by the BT Navigator server or as a response to ROS 2 actions to process a navigation request.</p>
+<p>Note that this class has itself a base class of <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code>) are implemented for you in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> and marked as <code class="docutils literal notranslate"><span class="pre">final</span></code> so they are not possible to be overrided by the user. The API that you will be implementing for your navigator are the virtual methods within <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code>, not <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. These <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code> APIs are implemented in necessary functions in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. <code class="docutils literal notranslate"><span class="pre">on_configure</span></code> will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined <code class="docutils literal notranslate"><span class="pre">configure</span></code> function for any additional user-specific needs).</p>
+<p>The list of methods, and their descriptions, and necessity are presented in the table below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 63%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Virtual method</strong></p></td>
+<td><p><strong>Method description</strong></p></td>
+<td><p><strong>Requires override?</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>getDefaultBTFilepath()</p></td>
+<td><p>Method is called on initialization to retrieve the default BT filepath to use for
+navigation. This may be done via parameters, hardcoded logic, sentinal files, etc.</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>configure()</p></td>
+<td><p>Method is called when BT navigator server enters on_configure state. This method
+should implement operations which are neccessary before navigator goes to an active
+state, such as getting parameters, setting up the blackboard, etc.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>activate()</p></td>
+<td><p>Method is called when BT navigator server enters on_activate state. This method
+should implement operations which are neccessary before navigator goes to an active
+state, such as create clients and subscriptions.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>deactivate()</p></td>
+<td><p>Method is called when BT navigator server enters on_deactivate state.  This
+method should implement operations which are neccessary before navigator goes to an
+inactive state.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>cleanup()</p></td>
+<td><p>Method is called when BT navigator server goes to on_cleanup state. This method
+should clean up resources which are created for the navigator.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>goalReceived()</p></td>
+<td><p>Method is called when a new goal is received by the action server to process. It may
+accept or deny this goal with its return signature. If accepted, it may need to load
+the appropriate parameters from the request (e.g. which BT to use), add request
+parameters to the blackboard for your applications use, or reset internal state.</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>onLoop()</p></td>
+<td><p>Method is called periodically while the behavior tree is looping to check statuses
+or more commonly to publish action feedback statuses to the client.</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>onPreempt()</p></td>
+<td><p>Method is called when a new goal is requesting preemption over the existing
+goal currently being processed. If the new goal is viable, it should make all
+appropriate updates to the BT and blackboard such that this new request may
+immediately start being processed without hard cancelation of the initial task
+(e.g. preemption).</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>goalCompleted()</p></td>
+<td><p>Method is called when a goal is completed to populate the action result object or
+do any additional checks required at the end of a task.</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>getName()</p></td>
+<td><p>Method is called to get the name of this navigator type</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+<p>In the Navigate to Pose Navigator, <code class="docutils literal notranslate"><span class="pre">configure()</span></code> method must determine the blackboard parameter names where the goal and paths are being stored, as these are key values for processing feedback in <code class="docutils literal notranslate"><span class="pre">onLoop</span></code> and for the different behavior tree nodes to communicate this information between themselves. Additionally and uniquely to this navigator type, we also create a client to itself and a subscription to the <code class="docutils literal notranslate"><span class="pre">goal_pose</span></code> topic such that requests from the default configurations of Rviz2 using the <em>Goal Pose</em> tool will be processed.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">NavigateToPoseNavigator::configure</span><span class="p">(</span>
+<span class="w">  </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="o">::</span><span class="n">WeakPtr</span><span class="w"> </span><span class="n">parent_node</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">nav2_util</span><span class="o">::</span><span class="n">OdomSmoother</span><span class="o">&gt;</span><span class="w"> </span><span class="n">odom_smoother</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">start_time_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent_node</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">has_parameter</span><span class="p">(</span><span class="s">&quot;goal_blackboard_id&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s">&quot;goal_blackboard_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;goal&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">goal_blackboard_id_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="s">&quot;goal_blackboard_id&quot;</span><span class="p">).</span><span class="n">as_string</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">has_parameter</span><span class="p">(</span><span class="s">&quot;path_blackboard_id&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s">&quot;path_blackboard_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">path_blackboard_id_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="s">&quot;path_blackboard_id&quot;</span><span class="p">).</span><span class="n">as_string</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Odometry smoother object for getting current speed</span>
+<span class="w">  </span><span class="n">odom_smoother_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_smoother</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">self_client_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp_action</span><span class="o">::</span><span class="n">create_client</span><span class="o">&lt;</span><span class="n">ActionT</span><span class="o">&gt;</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">getName</span><span class="p">());</span>
+
+<span class="w">  </span><span class="n">goal_sub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;goal_pose&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">SystemDefaultsQoS</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">NavigateToPoseNavigator</span><span class="o">::</span><span class="n">onGoalPoseReceived</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The circle shape could be used instead of polygon, e.g. for the case of omni-directional robots where the collision can occur from any direction. However, for the tutorial needs, let’s focus our view on polygons. For the same reason, we leave out of scope the Approach model. Both of these cases could be easily enabled by referencing to the <a class="reference internal" href="../../configuration/packages/configuring-collision-monitor.html#configuring-collision-monitor"><span class="std std-ref">Collision Monitor</span></a> configuration guide.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Both polygon shapes in the tutorial were set statically. However, there is an ability to dynamically adjust them over time using topic messages containing vertices points for polygons or footprints. For more information, please refer to the configuration guide.</p>
-</div>
-<p>For the working configuration, at least one data source should be added.
-In current demonstration, it is used laser scanner (though <code class="docutils literal notranslate"><span class="pre">PointCloud2</span></code> and Range/Sonar/IR sensors are also possible), which is described by the following lines for Collision Monitor node:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;scan&quot;</span><span class="p p-Indicator">]</span>
-<span class="nt">scan</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scan&quot;</span>
-<span class="w">  </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scan&quot;</span>
+<p>The values of the blackboard IDs are stored alongside the odometry smoother the BT Navigator provides for populating meaningful feedback later. Complimentary to this, the <code class="docutils literal notranslate"><span class="pre">cleanup</span></code> method will reset these resources. The activate and deactivate methods are not used in this particular navigator.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">NavigateToPoseNavigator::cleanup</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">goal_sub_</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">  </span><span class="n">self_client_</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Set topic names, frame ID-s and timeouts to work correctly with a default Nav2 setup.
-The whole <code class="docutils literal notranslate"><span class="pre">nav2_collision_monitor/params/collision_monitor_params.yaml</span></code> file in this case will look as follows:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">collision_monitor</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="w">    </span><span class="nt">base_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_footprint&quot;</span>
-<span class="w">    </span><span class="nt">odom_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
-<span class="w">    </span><span class="nt">cmd_vel_in_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel_raw&quot;</span>
-<span class="w">    </span><span class="nt">cmd_vel_out_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel&quot;</span>
-<span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-<span class="w">    </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
-<span class="w">    </span><span class="nt">stop_pub_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
-<span class="w">    </span><span class="nt">polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;PolygonStop&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PolygonSlow&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">PolygonStop</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
-<span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.3</span><span class="p p-Indicator">]</span>
-<span class="w">      </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stop&quot;</span>
-<span class="w">      </span><span class="nt">max_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_stop&quot;</span>
-<span class="w">    </span><span class="nt">PolygonSlow</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
-<span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.6</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.6</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.4</span><span class="p p-Indicator">]</span>
-<span class="w">      </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;slowdown&quot;</span>
-<span class="w">      </span><span class="nt">max_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">      </span><span class="nt">slowdown_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
-<span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_slowdown&quot;</span>
-<span class="w">    </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;scan&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">scan</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scan&quot;</span>
-<span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scan&quot;</span>
+<p>In the <code class="docutils literal notranslate"><span class="pre">getDefaultBTFilepath()</span></code>, we use a parameter <code class="docutils literal notranslate"><span class="pre">default_nav_to_pose_bt_xml</span></code> to get the default behavior tree XML file to use if none is provided by the navigation request and to initialize the BT Navigator with a behavior tree hot-loaded. If one is not provided in the parameter files, then we grab a known and reasonable default XML file in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> package:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">NavigateToPoseNavigator::getDefaultBTFilepath</span><span class="p">(</span>
+<span class="w">  </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="o">::</span><span class="n">WeakPtr</span><span class="w"> </span><span class="n">parent_node</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">default_bt_xml_filename</span><span class="p">;</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent_node</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">has_parameter</span><span class="p">(</span><span class="s">&quot;default_nav_to_pose_bt_xml&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pkg_share_dir</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="n">ament_index_cpp</span><span class="o">::</span><span class="n">get_package_share_directory</span><span class="p">(</span><span class="s">&quot;nav2_bt_navigator&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">      </span><span class="s">&quot;default_nav_to_pose_bt_xml&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">pkg_share_dir</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="s">&quot;/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="s">&quot;default_nav_to_pose_bt_xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">default_bt_xml_filename</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">default_bt_xml_filename</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When a goal is received, we need to determine if this goal is valid and should be processed.
+The <code class="docutils literal notranslate"><span class="pre">goalReceived</span></code> method provides you the <code class="docutils literal notranslate"><span class="pre">goal</span></code> and a return value if it is being processed or not. This information is sent back to the action server to notify the client. In this case, we want to make sure that the goal’s behavior tree is valid or else we cannot proceed. If it is valid, then we can initialize the goal pose onto the blackboard and reset some state in order to cleanly process this new request.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">NavigateToPoseNavigator::goalReceived</span><span class="p">(</span><span class="n">ActionT</span><span class="o">::</span><span class="n">Goal</span><span class="o">::</span><span class="n">ConstSharedPtr</span><span class="w"> </span><span class="n">goal</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">bt_xml_filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">goal</span><span class="o">-&gt;</span><span class="n">behavior_tree</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">bt_action_server_</span><span class="o">-&gt;</span><span class="n">loadBehaviorTree</span><span class="p">(</span><span class="n">bt_xml_filename</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCLCPP_ERROR</span><span class="p">(</span>
+<span class="w">      </span><span class="n">logger_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BT file not found: %s. Navigation canceled.&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">bt_xml_filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">initializeGoalPose</span><span class="p">(</span><span class="n">goal</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Once this goal is completed, we need to populate the Action’s result, if required and meaningful. In this navigator’s case, it contains no result information when the navigation request was completed successfully, so this method is empty. For other navigator types, you may populate the <code class="docutils literal notranslate"><span class="pre">result</span></code> object provided.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">NavigateToPoseNavigator::goalCompleted</span><span class="p">(</span>
+<span class="w">  </span><span class="k">typename</span><span class="w"> </span><span class="nc">ActionT</span><span class="o">::</span><span class="n">Result</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="cm">/*result*/</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">nav2_behavior_tree</span><span class="o">::</span><span class="n">BtStatus</span><span class="w"> </span><span class="cm">/*final_bt_status*/</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If however a goal is preempted (e.g. a new action request comes in while an existing request is being processed), the <code class="docutils literal notranslate"><span class="pre">onPreempt()</span></code> method is called to determine if the new request is genuine and appropriate to preempt the currently processing goal. For example, it might not be wise to accept a preeemption request if that request is fundamentally different in nature from an existing behavior tree task or when your existing task is of a higher priority.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">NavigateToPoseNavigator::onPreempt</span><span class="p">(</span><span class="n">ActionT</span><span class="o">::</span><span class="n">Goal</span><span class="o">::</span><span class="n">ConstSharedPtr</span><span class="w"> </span><span class="n">goal</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">logger_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Received goal preemption request&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">goal</span><span class="o">-&gt;</span><span class="n">behavior_tree</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bt_action_server_</span><span class="o">-&gt;</span><span class="n">getCurrentBTFilename</span><span class="p">()</span><span class="w"> </span><span class="o">||</span>
+<span class="w">    </span><span class="p">(</span><span class="n">goal</span><span class="o">-&gt;</span><span class="n">behavior_tree</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">    </span><span class="n">bt_action_server_</span><span class="o">-&gt;</span><span class="n">getCurrentBTFilename</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bt_action_server_</span><span class="o">-&gt;</span><span class="n">getDefaultBTFilename</span><span class="p">()))</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// if pending goal requests the same BT as the current goal, accept the pending goal</span>
+<span class="w">    </span><span class="c1">// if pending goal has an empty behavior_tree field, it requests the default BT file</span>
+<span class="w">    </span><span class="c1">// accept the pending goal if the current goal is running the default BT file</span>
+<span class="w">    </span><span class="n">initializeGoalPose</span><span class="p">(</span><span class="n">bt_action_server_</span><span class="o">-&gt;</span><span class="n">acceptPendingGoal</span><span class="p">());</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCLCPP_WARN</span><span class="p">(</span>
+<span class="w">      </span><span class="n">logger_</span><span class="p">,</span>
+<span class="w">      </span><span class="s">&quot;Preemption request was rejected since the requested BT XML file is not the same &quot;</span>
+<span class="w">      </span><span class="s">&quot;as the one that the current goal is executing. Preemption with a new BT is invalid &quot;</span>
+<span class="w">      </span><span class="s">&quot;since it would require cancellation of the previous goal instead of true preemption.&quot;</span>
+<span class="w">      </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Cancel the current goal and send a new action request if you want to use a &quot;</span>
+<span class="w">      </span><span class="s">&quot;different BT XML file. For now, continuing to track the last goal until completion.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bt_action_server_</span><span class="o">-&gt;</span><span class="n">terminatePendingGoal</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that here you can also see the <code class="docutils literal notranslate"><span class="pre">initializeGoalPose</span></code> method called. This method will set the goal parameters for this navigator onto the blackboard and reset important state information to cleanly re-use a behavior tree without old state information, as shown below:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span>
+<span class="nf">NavigateToPoseNavigator::initializeGoalPose</span><span class="p">(</span><span class="n">ActionT</span><span class="o">::</span><span class="n">Goal</span><span class="o">::</span><span class="n">ConstSharedPtr</span><span class="w"> </span><span class="n">goal</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">RCLCPP_INFO</span><span class="p">(</span>
+<span class="w">    </span><span class="n">logger_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Begin navigating from current location to (%.2f, %.2f)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">goal</span><span class="o">-&gt;</span><span class="n">pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">goal</span><span class="o">-&gt;</span><span class="n">pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Reset state for new action feedback</span>
+<span class="w">  </span><span class="n">start_time_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock_</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">blackboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bt_action_server_</span><span class="o">-&gt;</span><span class="n">getBlackboard</span><span class="p">();</span>
+<span class="w">  </span><span class="n">blackboard</span><span class="o">-&gt;</span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;number_recoveries&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// NOLINT</span>
+
+<span class="w">  </span><span class="c1">// Update the goal pose on the blackboard</span>
+<span class="w">  </span><span class="n">blackboard</span><span class="o">-&gt;</span><span class="n">set</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="o">&gt;</span><span class="p">(</span><span class="n">goal_blackboard_id_</span><span class="p">,</span><span class="w"> </span><span class="n">goal</span><span class="o">-&gt;</span><span class="n">pose</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The recovery counter and start time are both important feedback terms for a client to understand the state of the current task (e.g. if its failing, having problems, or taking exceptionally long). The setting of the goal on the blackboard is taken by the <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> BT Action node to plan a new route to the goal (and then who’s path is communicated to the <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> BT node via the blackboard ID previously set).</p>
+<p>The final function implemented is <code class="docutils literal notranslate"><span class="pre">onLoop</span></code>, which is simplified below for tutorial purposes. While anything can be done in this method, which is called as the BT is looping through the tree, it is common to use this as an opportunity to populate any necessary feedback about the state of the navigation request, robot, or metadata that a client might be interested in.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">NavigateToPoseNavigator::onLoop</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">feedback_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">ActionT</span><span class="o">::</span><span class="n">Feedback</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="n">current_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">blackboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bt_action_server_</span><span class="o">-&gt;</span><span class="n">getBlackboard</span><span class="p">();</span>
+<span class="w">  </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="n">current_path</span><span class="p">;</span>
+<span class="w">  </span><span class="n">blackboard</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="o">&gt;</span><span class="p">(</span><span class="n">path_blackboard_id_</span><span class="p">,</span><span class="w"> </span><span class="n">current_path</span><span class="p">);</span>
+
+<span class="w">  </span><span class="p">...</span>
+
+<span class="w">  </span><span class="n">feedback_msg</span><span class="o">-&gt;</span><span class="n">distance_remaining</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">distance_remaining</span><span class="p">;</span>
+<span class="w">  </span><span class="n">feedback_msg</span><span class="o">-&gt;</span><span class="n">estimated_time_remaining</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estimated_time_remaining</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">recovery_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">blackboard</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;number_recoveries&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">recovery_count</span><span class="p">);</span>
+<span class="w">  </span><span class="n">feedback_msg</span><span class="o">-&gt;</span><span class="n">number_of_recoveries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recovery_count</span><span class="p">;</span>
+<span class="w">  </span><span class="n">feedback_msg</span><span class="o">-&gt;</span><span class="n">current_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_pose</span><span class="p">;</span>
+<span class="w">  </span><span class="n">feedback_msg</span><span class="o">-&gt;</span><span class="n">navigation_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock_</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time_</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">bt_action_server_</span><span class="o">-&gt;</span><span class="n">publishFeedback</span><span class="p">(</span><span class="n">feedback_msg</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="preparing-nav2-stack">
-<h2>Preparing Nav2 stack<a class="headerlink" href="#preparing-nav2-stack" title="Permalink to this headline">¶</a></h2>
-<p>The Collision Monitor is designed to operate below Nav2 as an independent safety node.
-This acts as a filter on the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic coming out of the Controller Server.
-If no such zone is triggered, then the Controller’s <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> is used.
-Else, it is scaled or set to stop as appropriate.
-For correct operation of the Collision Monitor with the Controller, it is required to add the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span> <span class="pre">-&gt;</span> <span class="pre">cmd_vel_raw</span></code> remapping to the <code class="docutils literal notranslate"><span class="pre">navigation_launch.py</span></code> bringup script as presented below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Node</span><span class="p">(</span>
-    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_controller&#39;</span><span class="p">,</span>
-    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;controller_server&#39;</span><span class="p">,</span>
-    <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">,</span>
-    <span class="n">respawn</span><span class="o">=</span><span class="n">use_respawn</span><span class="p">,</span>
-    <span class="n">respawn_delay</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
-<span class="o">+</span>   <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span> <span class="o">+</span> <span class="p">[(</span><span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel_raw&#39;</span><span class="p">)]),</span>
-<span class="o">...</span>
-<span class="n">ComposableNode</span><span class="p">(</span>
-    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_controller&#39;</span><span class="p">,</span>
-    <span class="n">plugin</span><span class="o">=</span><span class="s1">&#39;nav2_controller::ControllerServer&#39;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;controller_server&#39;</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
-<span class="o">+</span>   <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span> <span class="o">+</span> <span class="p">[(</span><span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel_raw&#39;</span><span class="p">)]),</span>
+<div class="section" id="exporting-the-navigator-plugin">
+<h3>2- Exporting the navigator plugin<a class="headerlink" href="#exporting-the-navigator-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have created our custom navigator, we need to export our plugin so that it would be visible to the BT Navigator server.
+Plugins are loaded at runtime, and if they are not visible, then our server won’t be able to load it. In ROS 2, exporting and loading
+plugins is handled by <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
+<p>Coming to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator::NavigateToPoseNavigator</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::NavigatorBase</span></code> which is our base class due to the subtleties previously described.</p>
+<ol class="arabic simple">
+<li><p>To export the controller, we need to provide two lines</p></li>
+</ol>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pluginlib/class_list_macros.hpp&quot;</span>
+<span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_bt_navigator</span><span class="o">::</span><span class="n">NavigateToPoseNavigator</span><span class="p">,</span><span class="w"> </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">NavigatorBase</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Please note, that the remapped <code class="docutils literal notranslate"><span class="pre">cmd_vel_raw</span></code> topic should match to the input velocity <code class="docutils literal notranslate"><span class="pre">cmd_vel_in_topic</span></code> parameter value of the Collision Monitor node, and the output velocity <code class="docutils literal notranslate"><span class="pre">cmd_vel_out_topic</span></code> parameter value should be actual <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> to fit the replacement.</p>
-</div>
-<div class="section" id="demo-execution">
-<h2>Demo Execution<a class="headerlink" href="#demo-execution" title="Permalink to this headline">¶</a></h2>
-<p>Once Collision Monitor node has been tuned and <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topics remapped, Collision Monitor node is ready to run.
-For that, run Nav2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>headless:<span class="o">=</span>False
+<p>Note that it requires pluginlib to export out the plugin’s class. Pluginlib would provide as macro <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code>, which does all the work of exporting.</p>
+<p>It is good practice to place these lines at the end of the file, but technically, you can also write at the top.</p>
+<ol class="arabic simple" start="2">
+<li><p>The next step would be to create the plugin’s description file in the root directory of the package. For example, <code class="docutils literal notranslate"><span class="pre">navigator_plugin.xml</span></code> file in our tutorial package. This file contains the following information</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">library</span> <span class="pre">path</span></code>: Plugin’s library name and it’s location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">name</span></code>: Name of the class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">type</span></code>: Type of class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">class</span></code>: Name of the base class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Description of the plugin.</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;nav2_bt_navigator&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_bt_navigator::NavigateToPoseNavigator&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_core::NavigatorBase&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>
+<span class="w">      </span>This<span class="w"> </span>is<span class="w"> </span>pure<span class="w"> </span>point-to-point<span class="w"> </span>navigation
+<span class="w">    </span><span class="nt">&lt;/description&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/class&gt;</span>
+<span class="nt">&lt;/library&gt;</span>
 </pre></div>
 </div>
-<p>In parallel console, launch Collision Monitor node by using its launch-file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_collision_monitor<span class="w"> </span>collision_monitor_node.launch.py
+<ol class="arabic simple" start="3">
+<li><p>Next step would be to export plugin using <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> by using CMake function <code class="docutils literal notranslate"><span class="pre">pluginlib_export_plugin_description_file()</span></code>. This function installs the plugin description file to <code class="docutils literal notranslate"><span class="pre">share</span></code> directory and sets ament indexes to make it discoverable.</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pluginlib_export_plugin_description_file(nav2_core navigator_plugin.xml)
 </pre></div>
 </div>
-<p>Since both <code class="docutils literal notranslate"><span class="pre">PolygonStop</span></code> and <code class="docutils literal notranslate"><span class="pre">PolygonSlow</span></code> polygons will have their own publishers, they could be added to visualization as shown at the picture below:</p>
-<a class="reference internal image-reference" href="../../_images/polygons_visualization.png"><img alt="../../_images/polygons_visualization.png" src="../../_images/polygons_visualization.png" style="width: 800px;" /></a>
-<p>Set the initial pose and then put Nav2 goal on map.
-The robot will start its movement, slowing down while running near the obstacles, and stopping in close proximity to them:</p>
-<a class="reference internal image-reference" href="../../_images/collision.png"><img alt="../../_images/collision.png" src="../../_images/collision.png" style="width: 800px;" /></a>
+<ol class="arabic simple" start="4">
+<li><p>The plugin description file should also be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code></p></li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;export&gt;</span>
+<span class="w">  </span><span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nav2_core</span><span class="w"> </span><span class="na">plugin=</span><span class="s">&quot;${prefix}/navigator_plugin.xml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/export&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Compile, and it should be registered. Next, we’ll use this plugin.</p></li>
+</ol>
+</div>
+<div class="section" id="pass-the-plugin-name-through-the-params-file">
+<h3>3- Pass the plugin name through the params file<a class="headerlink" href="#pass-the-plugin-name-through-the-params-file" title="Permalink to this headline">¶</a></h3>
+<p>To enable the plugin, we need to modify the <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> file as below</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>bt_navigator:
+  ros__parameters:
+    use_sim_time: true
+    global_frame: map
+    robot_base_frame: base_link
+    transform_tolerance: 0.1
+    default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml
+    default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml
+    goal_blackboard_id: goal
+    goals_blackboard_id: goals
+    path_blackboard_id: path
+    navigators: [&#39;navigate_to_pose&#39;, &#39;navigate_through_poses&#39;]
+    navigate_to_pose:
+      plugin: &quot;nav2_bt_navigator/NavigateToPoseNavigator&quot;
+    navigate_through_poses:
+      plugin: &quot;nav2_bt_navigator/NavigateThroughPosesNavigator&quot;
+</pre></div>
+</div>
+<p>In the above snippet, you can observe the mapping of our <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator/NavigateToPoseNavigator</span></code> plugin to its id <code class="docutils literal notranslate"><span class="pre">navigate_to_pose</span></code>.
+To pass plugin-specific parameters we have used <code class="docutils literal notranslate"><span class="pre">&lt;plugin_id&gt;.&lt;plugin_specific_parameter&gt;</span></code>.</p>
+</div>
+<div class="section" id="run-pure-pursuit-controller-plugin">
+<h3>4- Run Pure Pursuit Controller plugin<a class="headerlink" href="#run-pure-pursuit-controller-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is a shortcut command for that:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>params_file:<span class="o">=</span>/path/to/your_params_file.yaml
+</pre></div>
+</div>
+<p>Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on the map as it was described in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.
+The robot will localize on the map and then click on the “Nav2 goal” and click on the pose where you want your robot to navigate to.
+After that navigator will take over with the behavior tree XML file behavior definition provided to it.</p>
+</div>
 </div>
 </div>
 
