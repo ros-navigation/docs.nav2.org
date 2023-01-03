@@ -16,6 +16,18 @@ Consider checking out the :ref:`groot_introduction` tutorial for using Groot to 
 Parameters
 **********
 
+:navigators:
+
+  ============== ============================================================
+  Type           Default
+  -------------- ------------------------------------------------------------
+  vector<string> {'navigate_to_pose', 'navigate_through_poses'} 
+  ============== ============================================================
+
+  Description
+    New to Iron: Plugins for navigator types implementing the ``nav2_core::BehaviorTreeNavigator`` interface.
+    They implement custom action servers with custom interface definitions and use that data to populate and process behavior tree navigation requests. Plugin classes are defined under the same namespace, see examples below. Defaults correspond to the ``NavigateToPoseNavigator`` and ``NavigateThroughPosesNavigator`` navigators.
+
 :default_nav_to_pose_bt_xml:
 
   ====== =======
@@ -210,6 +222,11 @@ Example
         goal_blackboard_id: goal
         goals_blackboard_id: goals
         path_blackboard_id: path
+        navigators: ['navigate_to_pose', 'navigate_through_poses']
+        navigate_to_pose:
+          plugin: "nav2_bt_navigator/NavigateToPoseNavigator"
+        navigate_through_poses:
+          plugin: "nav2_bt_navigator/NavigateThroughPosesNavigator"
         plugin_lib_names: 
           - nav2_compute_path_to_pose_action_bt_node
           - nav2_follow_path_action_bt_node
