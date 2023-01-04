@@ -130,7 +130,7 @@ See the README.md and :ref:`configuring_mppic` page for more detail.
 
 Behavior Tree Uses Error Codes
 ******************************
-`PR #3324 <https:https://github.com/ros-planning/navigation2/pull/3324>`_ adds three new condition nodes to check for error codes. 
+`PR #3324 <https:https://github.com/ros-planning/navigation2/pull/3324>`_ adds three new condition nodes to check for error codes on the blackboard set by action BT nodes which contain them. 
 
 The ``AreErrorCodesPresent`` condition node allows the user to spesify the error code from the server along with the error codes to match against. 
 The ``WouldAControllerRecoveryHelp`` checks if a recovery would help clear the controller server error code. 
