@@ -14,7 +14,7 @@ This tutorial shows how to create your own behavior-tree navigator `plugin <http
 
 In this tutorial, we will be reviewing the ``Navigate to Pose`` behavior-tree navigator plugin, which is the foundational navigator of Nav2 and complimentary behavior to ROS 1 Navigation. This completes point-to-point navigation. This tutorial will be reviewing the code and structure as of ROS 2 Iron. While small variations may be made over time, this should be sufficient to get started writing your own navigator if you choose as we do not expect major API changes on this system.
 
-It may be beneficial to write your own Navigator if you have a custom action message definition you'd like to use with Navigation rather than the provided ``NavigateToPose`` or ``NavigateThroughPoses`` interfaces (e.g. doing complete coverage or containing additional constraint information).
+It may be beneficial to write your own Navigator if you have a custom action message definition you'd like to use with Navigation rather than the provided ``NavigateToPose`` or ``NavigateThroughPoses`` interfaces (e.g. doing complete coverage or containing additional constraint information). The role of the Navigators are to extract information from requests to pass to the behavior tree / blackboard, populate feedback and responses, and maintain the state of the behavior tree if relevant. The behavior tree XML will define the actual navigation logic used. 
 
 Requirements
 ============
