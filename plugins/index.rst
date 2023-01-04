@@ -445,7 +445,7 @@ Behavior Tree Nodes
 |                                    |                    | reset if the path gets |
 |                                    |                    | updated.               |
 +------------------------------------+--------------------+------------------------+
-| `Are Error Codes Present`_         |  Joshua Wallace    | Checks if the spesified|
+| `Are Error Codes Present`_         |  Joshua Wallace    | Checks if the specified|
 |                                    |                    | error codes are        |
 |                                    |                    | present.               |
 +------------------------------------+--------------------+------------------------+

@@ -133,8 +133,10 @@ Behavior Tree Uses Error Codes
 `PR #3324 <https:https://github.com/ros-planning/navigation2/pull/3324>`_ adds three new condition nodes to check for error codes on the blackboard set by action BT nodes which contain them. 
 
 The ``AreErrorCodesPresent`` condition node allows the user to specify the error code from the server along with the error codes to match against. 
-The ``WouldAControllerRecoveryHelp`` checks if a recovery would help clear the controller server error code. 
-The ``WouldAPlannerRecoveryHelp`` checks if a recovery would help clear the planner server error code. 
+The ``WouldAControllerRecoveryHelp`` checks if the active error code is UNKNOWN, PATIENCE_EXCEEDED, FAILED_TO_MAKE_PROGRESS or NO_VALID_CONTROL. 
+If the error code is a match, the condition returns ``SUCCESS``.
+These error code are potentially able to be cleared by a controller recovery. 
 
-If the error codes match the node returns ``SUCCESS``. 
-
+The ``WouldAPlannerRecoveryHelp`` hecks if the active error code is UNKNOWN, NO_VALID_CONTROL, or TIMEOUT.
+If the error code is a match, the condition returns ``SUCCESS``.
+These error code are potentially able to be cleared by a planner recovery. 
