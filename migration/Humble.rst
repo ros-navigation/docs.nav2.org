@@ -147,3 +147,14 @@ These error code are potentially able to be cleared by a controller recovery.
 The ``WouldAPlannerRecoveryHelp`` hecks if the active error code is UNKNOWN, NO_VALID_CONTROL, or TIMEOUT.
 If the error code is a match, the condition returns ``SUCCESS``.
 These error code are potentially able to be cleared by a planner recovery. 
+
+Load, Save and Loop Waypoints from the Nav2 Panel in RViz
+*********************************************************
+
+`PR #3165 <https:https://github.com/ros-planning/navigation2/pull/3165>`_ provides three new functionalities for the nav2 panel in RViz, they are:
+
+- load and save waypoints in a yaml file for waypoint following (initial pose can also be stored if required)
+- loop functionality to revisit the waypoints
+- pause and resume button for stopping and continuing through the waypoints
+
+Looping functionality is not specific to the nav2 panel in RViz. Users utilizing nav2_waypoint_follower can take advantage of the changes made to the FollowWaypoint action, by specifying the desired number of loops in the action request that will be eventually sent to the nav2_waypoint_follower server.
