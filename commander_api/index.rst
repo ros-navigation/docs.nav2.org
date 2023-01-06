@@ -168,38 +168,8 @@ This is a Python3 API for costmap 2d messages from the stack. It provides the ba
 |                                       | map coordinate XY                                                          |
 +---------------------------------------+----------------------------------------------------------------------------+
 
-Line Iterator API
-*******************
-This is a Python3 API for a line iterator.
-It provides the ability to iterate
-through the points of a line, get coordinates, and check line length/validity.
-
-+---------------------------------------+----------------------------------------------------------------------------+
-| Line Iterator Method                  | Description                                                                |
-+=======================================+============================================================================+
-| isValid()                             | Check if line is valid.                                                    |
-+---------------------------------------+----------------------------------------------------------------------------+
-| advance()                             | Advance to the next point in the line.                                     |
-+---------------------------------------+----------------------------------------------------------------------------+
-| getX()                                | Get the abscissa of the current point.                                     |
-+---------------------------------------+----------------------------------------------------------------------------+
-| getY()                                | Get the ordinate of the current point.                                     |
-+---------------------------------------+----------------------------------------------------------------------------+
-| getX0()                               | Get the abscissa of the initial point.                                     |
-+---------------------------------------+----------------------------------------------------------------------------+
-| getY0()                               | Get the ordinate of the intial point.                                      |
-+---------------------------------------+----------------------------------------------------------------------------+
-| getX1()                               | Get the abscissa of the final point.                                       |
-+---------------------------------------+----------------------------------------------------------------------------+
-| getY1()                               | Get the ordinate of the final point.                                       |
-+---------------------------------------+----------------------------------------------------------------------------+
-| get_line_length()                     | Get the length of the line.                                                |
-+---------------------------------------+----------------------------------------------------------------------------+
-| clamp(n, min_n, max_n)                | Clamp n to be between min_n and max_n. (``float``)                         |
-+---------------------------------------+----------------------------------------------------------------------------+
-
 Footprint Collision Checker API
-*********************************
+*******************************
 This is a Python3 API for a Footprint Collision Checker.
 It provides the needed methods to manipulate the coordinates
 and calculate the cost of a Footprint in a given map.
@@ -207,7 +177,7 @@ and calculate the cost of a Footprint in a given map.
 +----------------------------------------------+--------------------------------------------------------------------------------------------+
 | Footprint Collision Checker Method           | Description                                                                                |
 +==============================================+============================================================================================+
-| footprintCost(footprint)                     | Iterate over all the points in a footprint (``Polygon``) and check for collision.          |
+| footprintCost(footprint)                     | Checks the footprint (``Polygon``) for collision at its implicit provided coordinate pose. |
 +----------------------------------------------+--------------------------------------------------------------------------------------------+
 | lineCost(x0, x1, y0, y1, step_size=0.1)      | Iterate over all the points along a line and check for collision.                          |
 |                                              | The line is defined by x0, y0, x1, y1, step_size. (``int``) or (``float``)                 |
