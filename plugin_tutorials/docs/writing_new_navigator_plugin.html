@@ -396,10 +396,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#create-a-new-controller-plugin">1- Create a new Controller Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-navigator-plugin">1- Create a new Navigator Plugin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#exporting-the-navigator-plugin">2- Exporting the navigator plugin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pass-the-plugin-name-through-the-params-file">3- Pass the plugin name through the params file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#run-pure-pursuit-controller-plugin">4- Run Pure Pursuit Controller plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-plugin">4- Run plugin</a></li>
 </ul>
 </li>
 </ul>
@@ -916,8 +916,8 @@
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="create-a-new-controller-plugin">
-<h3>1- Create a new Controller Plugin<a class="headerlink" href="#create-a-new-controller-plugin" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="create-a-new-navigator-plugin">
+<h3>1- Create a new Navigator Plugin<a class="headerlink" href="#create-a-new-navigator-plugin" title="Permalink to this headline">¶</a></h3>
 <p>We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2/nav2_bt_navigator">Nav2s BT Navigator package</a> as the <code class="docutils literal notranslate"><span class="pre">NavigateToPoseNavigator</span></code>. This package can be considered as a reference for writing your own plugin.</p>
 <p>Our example plugin class <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator::NavigateToPoseNavigator</span></code> inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_core::BehaviorTreeNavigator</span></code>. The base class provides a set of virtual methods to implement a navigator plugin. These methods are called at runtime by the BT Navigator server or as a response to ROS 2 actions to process a navigation request.</p>
 <p>Note that this class has itself a base class of <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code>) are implemented for you in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> and marked as <code class="docutils literal notranslate"><span class="pre">final</span></code> so they are not possible to be overrided by the user. The API that you will be implementing for your navigator are the virtual methods within <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code>, not <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. These <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code> APIs are implemented in necessary functions in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. <code class="docutils literal notranslate"><span class="pre">on_configure</span></code> will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined <code class="docutils literal notranslate"><span class="pre">configure</span></code> function for any additional user-specific needs).</p>
@@ -1231,8 +1231,8 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
 <p>In the above snippet, you can observe the mapping of our <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator/NavigateToPoseNavigator</span></code> plugin to its id <code class="docutils literal notranslate"><span class="pre">navigate_to_pose</span></code>.
 To pass plugin-specific parameters we have used <code class="docutils literal notranslate"><span class="pre">&lt;plugin_id&gt;.&lt;plugin_specific_parameter&gt;</span></code>.</p>
 </div>
-<div class="section" id="run-pure-pursuit-controller-plugin">
-<h3>4- Run Pure Pursuit Controller plugin<a class="headerlink" href="#run-pure-pursuit-controller-plugin" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="run-plugin">
+<h3>4- Run plugin<a class="headerlink" href="#run-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is a shortcut command for that:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>params_file:<span class="o">=</span>/path/to/your_params_file.yaml
 </pre></div>
