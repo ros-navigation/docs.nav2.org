@@ -27,8 +27,8 @@ Requirements
 Tutorial Steps
 ==============
 
-1- Create a new Controller Plugin
----------------------------------
+1- Create a new Navigator Plugin
+--------------------------------
 
 We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in `Nav2s BT Navigator package <https://github.com/ros-planning/navigation2/nav2_bt_navigator>`_ as the ``NavigateToPoseNavigator``. This package can be considered as a reference for writing your own plugin.
 
@@ -340,8 +340,8 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
 In the above snippet, you can observe the mapping of our ``nav2_bt_navigator/NavigateToPoseNavigator`` plugin to its id ``navigate_to_pose``. 
 To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
-4- Run Pure Pursuit Controller plugin
--------------------------------------
+4- Run plugin
+-------------
 
 Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at :ref:`getting_started`. Below is a shortcut command for that:
 
