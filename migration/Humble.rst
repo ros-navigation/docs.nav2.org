@@ -144,9 +144,13 @@ The ``WouldAControllerRecoveryHelp`` checks if the active error code is UNKNOWN,
 If the error code is a match, the condition returns ``SUCCESS``.
 These error code are potentially able to be cleared by a controller recovery. 
 
-The ``WouldAPlannerRecoveryHelp`` hecks if the active error code is UNKNOWN, NO_VALID_CONTROL, or TIMEOUT.
+The ``WouldAPlannerRecoveryHelp`` checks if the active error code is UNKNOWN, NO_VALID_CONTROL, or TIMEOUT.
 If the error code is a match, the condition returns ``SUCCESS``.
 These error code are potentially able to be cleared by a planner recovery. 
+
+The ``WouldASmootherRecoveryHelp`` checks if the active error code is UNKNOWN, TIMEOUT, or FAILED_TO_SMOOTH_PATH.
+If the error code is a match, the condition returns ``SUCCESS``.
+These error code are potentially able to be cleared by a smoother recovery. 
 
 Load, Save and Loop Waypoints from the Nav2 Panel in RViz
 *********************************************************

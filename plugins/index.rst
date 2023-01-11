@@ -476,6 +476,11 @@ Behavior Tree Nodes
 |                                    |                    | clear the planner      |
 |                                    |                    | server error code.     |
 +------------------------------------+--------------------+------------------------+
+| `Would A Smoother Recovery Help`_  |  Joshua Wallace    | Checks if a Smoother   |
+|                                    |                    | recovery could help    |
+|                                    |                    | clear the smoother     |
+|                                    |                    | server error code.     |
++------------------------------------+--------------------+------------------------+
 
 
 .. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
@@ -492,6 +497,7 @@ Behavior Tree Nodes
 .. _Are Error Codes Present: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
 .. _Would A Controller Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help.cpp
 .. _Would A Planner Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help.cpp
+.. _Would A Smoother Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |
