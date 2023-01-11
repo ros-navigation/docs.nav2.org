@@ -148,7 +148,7 @@ The ``WouldAPlannerRecoveryHelp`` checks if the active error code is UNKNOWN, NO
 If the error code is a match, the condition returns ``SUCCESS``.
 These error code are potentially able to be cleared by a planner recovery. 
 
-The ``WouldASmootherRecoveryHelp`` checks if the active error code is UNKNOWN, TIMEOUT, FAILED_TO_SMOOTH_PATH, SMOOTHED_PATH_IN_COLLISION.
+The ``WouldASmootherRecoveryHelp`` checks if the active error code is UNKNOWN, TIMEOUT, FAILED_TO_SMOOTH_PATH, or SMOOTHED_PATH_IN_COLLISION.
 If the error code is a match, the condition returns ``SUCCESS``.
 These error code are potentially able to be cleared by a smoother recovery. 
 
