@@ -80,7 +80,7 @@ This line calls the planner server and return a path to the ``path`` blackboard 
 
     <Sequence name="ComputeAndSmoothPath">
       <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" error_code_id="{compute_path_error_code}"/>
-      <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id={smoother_error_code}"/>
+      <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id="{smoother_error_code}"/>
     </Sequence>
 
 If you wish to have recoveries for the smoother error codes, such as triggering the system recoveries branch of a behavior tree:
@@ -88,7 +88,7 @@ If you wish to have recoveries for the smoother error codes, such as triggering 
 .. code-block:: xml 
 
     <Sequence name= "TryToResolveSmootherErrorCodes">
-      <WouldASmootherRecoveryHelp error_code="{would_a_smoother_recovery_help}">
+      <WouldASmootherRecoveryHelp error_code="{smoother_error_code}">
       <!-- recovery to resolve smoother error code goes here -->
     <Sequence/>
 
