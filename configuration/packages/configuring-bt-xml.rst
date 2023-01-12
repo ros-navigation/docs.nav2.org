@@ -65,6 +65,10 @@ Condition Plugins
   bt-plugins/conditions/IsBatteryLow.rst
   bt-plugins/conditions/IsPathValid.rst
   bt-plugins/conditions/PathExpiringTimer.rst
+  bt-plugins/conditions/AreErrorCodesPresent.rst
+  bt-plugins/conditions/WouldAControllerRecoveryHelp.rst
+  bt-plugins/conditions/WouldAPlannerRecoveryHelp.rst
+  bt-plugins/conditions/WouldASmootherRecoveryHelp.rst
 
 Control Plugins
 ***************
