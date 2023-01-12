@@ -1076,7 +1076,7 @@ increasing its smoothness and distance from obstacles. Resulting path is marked 
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>double</p></td>
-<td><p>15000.0</p></td>
+<td><p>2000000.0</p></td>
 </tr>
 </tbody>
 </table>
@@ -1309,7 +1309,7 @@ Following image depicts improvement of the path with <code class="docutils liter
 <span class="w">      </span><span class="nt">minimum_turning_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.40</span><span class="w">  </span><span class="c1"># minimum turning radius the robot can perform. Can be set to 0.0 (or w_curve can be set to 0.0 with the same effect) for diff-drive/holonomic robots</span>
 <span class="w">      </span><span class="nt">w_curve</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span><span class="w">                 </span><span class="c1"># weight to enforce minimum_turning_radius</span>
 <span class="w">      </span><span class="nt">w_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w">                   </span><span class="c1"># weight to bind path to original as optional replacement for cost weight</span>
-<span class="w">      </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15000.0</span><span class="w">             </span><span class="c1"># weight to maximize smoothness of path</span>
+<span class="w">      </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000000.0</span><span class="w">           </span><span class="c1"># weight to maximize smoothness of path</span>
 <span class="w">      </span><span class="nt">w_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span><span class="w">                 </span><span class="c1"># weight to steer robot away from collision and cost</span>
 
 <span class="w">      </span><span class="c1"># Parameters used to improve obstacle avoidance near cusps (forward/reverse movement changes)</span>
