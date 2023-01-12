@@ -83,7 +83,7 @@ This line calls the planner server and return a path to the ``path`` blackboard 
       <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id={smoother_error_code}"/>
     </Sequence>
 
-If you wish to have recoveries for the smoother error codes:
+If you wish to have recoveries for the smoother error codes, such as triggering the system recoveries branch of a behavior tree:
 
 .. code-block:: xml 
 
