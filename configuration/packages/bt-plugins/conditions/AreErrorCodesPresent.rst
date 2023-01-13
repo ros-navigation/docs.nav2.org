@@ -35,6 +35,14 @@ Input Ports
 Example
 -------
 
+Error codes to check are defined in another port. 
+
 .. code-block:: xml
 
     <AreErrorCodesPresent error_code="{error_code}" error_codes_to_check="{error_codes_to_check}"/>
+
+Error codes to check are defined to be 101, 107 and 119. 
+
+.. code-block:: xml
+
+    <AreErrorCodesPresent error_code="{error_code}" error_codes_to_check="101,107,119"/>
