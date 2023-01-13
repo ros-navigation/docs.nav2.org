@@ -456,6 +456,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsBatteryLow.html">IsBatteryLow</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsPathValid.html">IsPathValid</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/PathExpiringTimer.html">PathExpiringTimer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/AreErrorCodesPresent.html">AreErrorCodesPresent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/WouldAControllerRecoveryHelp.html">WouldAControllerRecoveryHelp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/WouldAPlannerRecoveryHelp.html">WouldAPlannerRecoveryHelp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/WouldASmootherRecoveryHelp.html">WouldASmootherRecoveryHelp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -945,14 +949,21 @@ You should also have a copy of the <code class="docutils literal notranslate"><s
 <p>Now that you have selected and configured the smoother server for your given plugin(s), it is time to use those smoother(s) in your behavior tree for navigation behavior. While there are many places / ways to use this in a BT, what is shown below is probably the most likely situation you would want to use the smoother in (to smooth a path returned by the path planner and then using that smoothed path for path tracking).</p>
 <p>Note: If you use only a single type of smoothing algorithm, there is no need to specify the <code class="docutils literal notranslate"><span class="pre">smoother_id</span></code> in the BT XML entry. Since there is only a single option, that will be used for any request that does not specifically request a smoother plugin. However, if you leverage multiple smoother plugins, you <strong>must</strong> populate the <code class="docutils literal notranslate"><span class="pre">smoother_id</span></code> XML port.</p>
 <p>A given behavior tree will have a line:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ComputePathToPose</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ComputePathToPose</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{compute_path_error_code}&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 <p>This line calls the planner server and return a path to the <code class="docutils literal notranslate"><span class="pre">path</span></code> blackboard variable in the behavior tree. We are  going to replace that line with the following to compute the path, smooth the path, and finally replace the <code class="docutils literal notranslate"><span class="pre">path</span></code> blackboard variable with the new smoothed path that the system will now interact with:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Sequence</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ComputeAndSmoothPath&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;ComputePathToPose</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;SmoothPath</span><span class="w"> </span><span class="na">unsmoothed_path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">smoothed_path=</span><span class="s">&quot;{path}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;ComputePathToPose</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{compute_path_error_code}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;SmoothPath</span><span class="w"> </span><span class="na">unsmoothed_path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">smoothed_path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{smoother_error_code}&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/Sequence&gt;</span>
+</pre></div>
+</div>
+<p>If you wish to have recoveries for the smoother error codes, such as triggering the system recoveries branch of a behavior tree:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Sequence</span><span class="w"> </span><span class="na">name=</span><span class="w"> </span><span class="s">&quot;TryToResolveSmootherErrorCodes&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;WouldASmootherRecoveryHelp</span><span class="w"> </span><span class="na">error_code=</span><span class="s">&quot;{smoother_error_code}&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- recovery to resolve smoother error code goes here --&gt;</span>
+<span class="nt">&lt;Sequence/&gt;</span>
 </pre></div>
 </div>
 <p>And its as simple as that! You can now compile or use this behavior tree in your system and see that the plans are now smoothed and the controllers are now tracking this smoothed path. The image at the top of the tutorial shows the unsmoothed path from NavFn (red) and the smoothed path (black). Note the smoother approach to goal, turns, and transitions in the straight-line segments.</p>
