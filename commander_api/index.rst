@@ -179,8 +179,8 @@ and calculate the cost of a Footprint in a given map.
 +==============================================+============================================================================================+
 | footprintCost(footprint)                     | Checks the footprint (``Polygon``) for collision at its implicit provided coordinate pose. |
 +----------------------------------------------+--------------------------------------------------------------------------------------------+
-| lineCost(x0, x1, y0, y1, step_size=0.1)      | Iterate over all the points along a line and check for collision.                          |
-|                                              | The line is defined by x0, y0, x1, y1, step_size. (``int``) or (``float``)                 |
+| lineCost(x0, x1, y0, y1, step_size=0.5)      | Iterate over all the points along a line and check for collision.                          |
+|                                              | The line is defined by x0, y0, x1, y1, step_size (``int``) or (``float``).                 |
 +----------------------------------------------+--------------------------------------------------------------------------------------------+
 | worldToMapValidated(wx, wy)                  | Get the mx (``int``), my (``int``) of map coordinate XY using                              |
 |                                              | wx (``float``) [m], wy (``float``) [m] of world coordinate XY.                             |
@@ -192,7 +192,7 @@ and calculate the cost of a Footprint in a given map.
 | setCostmap(costmap)                          | Specify which costmap to use with the footprint collision checker. (``PyCostmap2D``)       |
 +----------------------------------------------+--------------------------------------------------------------------------------------------+
 | footprintCostAtPose(x, y, theta, footprint)  | Get the cost of a footprint at a specific Pose in map coordinates.                         |
-|                                              | x, y, theta (``float``) footprint (``Polygon``)                                            |
+|                                              | x, y, theta (``float``) footprint (``Polygon``).                                           |
 +----------------------------------------------+--------------------------------------------------------------------------------------------+
 
 Examples and Demos
