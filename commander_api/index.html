@@ -845,6 +845,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">Commander API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#costmap-api">Costmap API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#footprint-collision-checker-api">Footprint Collision Checker API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples-and-demos">Examples and Demos</a></li>
 </ul>
 </li>
@@ -1107,13 +1108,56 @@ program to control Nav2’s lifecycle.</p></td>
 <td><p>Get the wx (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m], wy (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m] of world coordinate XY using
 mx (<code class="docutils literal notranslate"><span class="pre">int</span></code>), my (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of map coordinate XY</p></td>
 </tr>
-<tr class="row-odd"><td><p>worldToMap(wx, wy)</p></td>
+<tr class="row-odd"><td><p>worldToMapValidated(wx, wy)</p></td>
 <td><p>Get the mx (<code class="docutils literal notranslate"><span class="pre">int</span></code>), my (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of map coordinate XY using
-wx (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m], wy (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m] of world coordinate XY</p></td>
+wx (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m], wy (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m] of world coordinate XY.
+If wx wy coordinates are invalid, (None,None) is returned.</p></td>
 </tr>
 <tr class="row-even"><td><p>getIndex(mx, my)</p></td>
 <td><p>Get the index (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of the cell using mx (<code class="docutils literal notranslate"><span class="pre">int</span></code>), my (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of
 map coordinate XY</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="footprint-collision-checker-api">
+<h2>Footprint Collision Checker API<a class="headerlink" href="#footprint-collision-checker-api" title="Permalink to this headline">¶</a></h2>
+<p>This is a Python3 API for a Footprint Collision Checker.
+It provides the needed methods to manipulate the coordinates
+and calculate the cost of a Footprint in a given map.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Footprint Collision Checker Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>footprintCost(footprint)</p></td>
+<td><p>Checks the footprint (<code class="docutils literal notranslate"><span class="pre">Polygon</span></code>) for collision at its implicit provided coordinate pose.</p></td>
+</tr>
+<tr class="row-odd"><td><p>lineCost(x0, x1, y0, y1, step_size=0.5)</p></td>
+<td><p>Iterate over all the points along a line and check for collision.
+The line is defined by x0, y0, x1, y1, step_size (<code class="docutils literal notranslate"><span class="pre">int</span></code>) or (<code class="docutils literal notranslate"><span class="pre">float</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p>worldToMapValidated(wx, wy)</p></td>
+<td><p>Get the mx (<code class="docutils literal notranslate"><span class="pre">int</span></code>), my (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of map coordinate XY using
+wx (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m], wy (<code class="docutils literal notranslate"><span class="pre">float</span></code>) [m] of world coordinate XY.
+If wx wy coordinates are invalid, (None,None) is returned.
+Returns None if costmap is not defined yet through  (<code class="docutils literal notranslate"><span class="pre">setCostmap(costmap)</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>pointCost(x, y)</p></td>
+<td><p>Get the cost of a point in the costmap using map coordinates XY. (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>setCostmap(costmap)</p></td>
+<td><p>Specify which costmap to use with the footprint collision checker. (<code class="docutils literal notranslate"><span class="pre">PyCostmap2D</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>footprintCostAtPose(x, y, theta, footprint)</p></td>
+<td><p>Get the cost of a footprint at a specific Pose in map coordinates.
+x, y, theta (<code class="docutils literal notranslate"><span class="pre">float</span></code>) footprint (<code class="docutils literal notranslate"><span class="pre">Polygon</span></code>).</p></td>
 </tr>
 </tbody>
 </table>
