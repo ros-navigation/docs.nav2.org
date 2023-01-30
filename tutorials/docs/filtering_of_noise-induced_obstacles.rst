@@ -88,7 +88,7 @@ After Denoise Layer was enabled for global/local costmaps, run Nav2 stack as wri
 
 .. code-block:: bash
 
-  ros2 launch nav2_bringup tb3_simulation_launch.py
+  ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
 
 And check that filter is working properly: with the default parameters,
 no standalone obstacles should remain on the cost map. This can be checked, for example, in RViz main window displaying local and global costmaps after removing unnecessary particles (illustrated at the top of this tutorial).
