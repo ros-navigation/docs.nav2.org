@@ -50,18 +50,6 @@ Example
 *******
 .. code-block:: yaml
 
-    global_costmap:
-      global_costmap:
-        ros__parameters:
-          ...
-          plugins: ["static_layer", "obstacle_layer", "voxel_layer", "denoise_layer", "inflation_layer"]
-          ...
-          denoise_layer:
-            plugin: "nav2_costmap_2d::DenoiseLayer"
-            enabled: true
-            minimal_group_size: 2
-            group_connectivity_type: 8
-    ...
     local_costmap:
       local_costmap:
         ros__parameters:
