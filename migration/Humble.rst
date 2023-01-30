@@ -191,3 +191,11 @@ Velocity smoother applies deceleration when timeout
 PoseProgressChecker plugin
 **************************
 `PR #3530 <https://github.com/ros-planning/navigation2/pull/3530>`_ adds a new ``nav2_controller::PoseProgressChecker`` plugin. It builds on the behavior of the ``SimpleProgressChecker`` by adding a new parameter ``required_movement_angle``, allowing the plugin to considers that there is still progress when there is no translation movement, from the moment there is a rotation movement superior to ``required_movement_angle`` within the ``movement_time_allowance``.
+
+New Denoise Costmap Layer Plugin
+********************************
+`PR #2567 <https://github.com/ros-planning/navigation2/pull/2567>`_ adds the new plugin for filtering noise on the costmap.
+
+Due to errors in ``Voxel Layer`` or ``Obstacle Layer`` measurements, salt and pepper noise may appear on the :ref:`costmap <configuring_cosmaps>`. This noise creates false obstacles that prevent the robot from finding the best path on the map.
+The new ``Denoise Layer`` plugin is designed to filter out noise-induced standalone obstacles or small obstacles groups. This plugin allows you to add layer that will filter local or global costmap.
+More information about ``Denoise Layer`` plugin and how it works could be found :ref:`here <filtering_of_noise-induced_obstacles>`.

@@ -337,10 +337,3 @@ The extra argument is a costmap_ros pointer. This is used to check if the goal i
 Added Assisted Teleop
 *********************
 `PR 2904 <https://github.com/ros-planning/navigation2/pull/2904>`_ adds a new behavior for assisted teleop along with two new BT nodes AssistedTeleop and CancelAssistedTeleop.
-
-New Denoise Costmap Layer Plugin
-********************************
-
-Due to errors in ``Voxel Layer`` or ``Obstacle Layer`` measurements, salt and pepper noise may appear on the :ref:`costmap <configuring_cosmaps>`. This noise creates false obstacles that prevent the robot from finding the best path on the map.
-The new ``Denoise Layer`` plugin is designed to filter out noise-induced standalone obstacles or small obstacles groups. This plugin allows you to add layer that will filter local or global costmap.
-More information about ``Denoise Layer`` plugin and how it works could be found :ref:`here <filtering_of_noise-induced_obstacles>`.
