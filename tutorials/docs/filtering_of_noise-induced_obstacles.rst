@@ -36,8 +36,10 @@ Full list of parameters supported by ``DenoiseLayer`` are listed at :ref:`denois
 
 It is important to note that ``DenoiseLayer`` typically should be placed before inflation_layer.
 This is required to prevent inflation from noise-induced obstacles.
-Moreover, ``DenoiseLayer`` expects a binary costmap with values ``0`` (free cell) or ``255`` (obstacle cell).
-Values less than 255 will be interpreted as free cells when processed (but will not be distorted in the cost map).
+Moreover, ``DenoiseLayer`` treated costmap as a binary map.
+Values ``INSCRIBED_INFLATED_OBSTACLE``, ``LETHAL_OBSTACLE`` and optionally ``NO_INFORMATION``
+will be interpreted as obstacle cell. Cells with any other values will be interpreted as ``FREE_SPACE`` when processed.
+If a cell with an obstacle is recognized as noise, it will be replaced by ``FREE_SPACE`` after processing.
 
 To enable ``DenoiseLayer`` for both global and local costmaps, use the following configuration:
 
