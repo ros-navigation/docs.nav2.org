@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Collision Monitor &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" /><link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -29,14 +30,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> Navigation 2<img src="../../_static/nav2_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Navigation 2
+              <img src="../../_static/nav2_logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 latest
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -886,7 +892,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Configuration Guide</a></li>
       <li class="breadcrumb-item active">Collision Monitor</li>
       <li class="wy-breadcrumbs-aside">
@@ -1057,8 +1063,28 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">stop_pub_timeout</dt>
+<dt class="field-odd">base_shift_correction</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Whether to correct source data towards to base frame movement, considering the difference between current time and latest source time. If enabled, produces more accurate sources positioning in the robot base frame, at the cost of slower performance. This will cause average delays for <code class="docutils literal notranslate"><span class="pre">~1/(2*odom_rate)</span></code> per each <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> calculation cycle. However, disabling this option for better performance is not recommended for the fast moving robots, where during the typical rate of data sources, robot could move unacceptably far. Thus reasonable odometry rates are recommended (~100 hz).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">stop_pub_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1077,8 +1103,8 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </dd>
 </dl>
 </dd>
-<dt class="field-even">polygons</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">polygons</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1097,8 +1123,8 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">observation_sources</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">observation_sources</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1483,6 +1509,7 @@ For more information how to bring-up your own Collision Monitor node, please ref
 <span class="w">    </span><span class="nt">cmd_vel_out_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel&quot;</span>
 <span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">    </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="w">    </span><span class="nt">base_shift_correction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">stop_pub_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
 <span class="w">    </span><span class="nt">polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;PolygonStop&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PolygonSlow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;FootprintApproach&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">PolygonStop</span><span class="p">:</span>
