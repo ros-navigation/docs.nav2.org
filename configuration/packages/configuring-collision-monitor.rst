@@ -113,6 +113,17 @@ Parameters
   Description:
     Maximum time interval in which source data is considered as valid.
 
+:base_shift_correction:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           True
+  ============== =============================
+
+  Description:
+    Whether to correct source data towards to base frame movement, considering the difference between current time and latest source time. If enabled, produces more accurate sources positioning in the robot base frame, at the cost of slower performance. This will cause average delays for ``~1/(2*odom_rate)`` per each ``cmd_vel`` calculation cycle. However, disabling of this option for better performance is highly not recommended for the fast moving robots, where during the typical for data sources update time, robot could move unacceptably far.
+
 :stop_pub_timeout:
 
   ============== =============================
@@ -363,6 +374,7 @@ For more information how to bring-up your own Collision Monitor node, please ref
         cmd_vel_out_topic: "cmd_vel"
         transform_tolerance: 0.5
         source_timeout: 5.0
+        base_shift_correction: True
         stop_pub_timeout: 2.0
         polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
         PolygonStop:
