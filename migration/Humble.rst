@@ -163,6 +163,7 @@ Load, Save and Loop Waypoints from the Nav2 Panel in RViz
 
 Looping functionality is not specific to the nav2 panel in RViz. Users utilizing nav2_waypoint_follower can take advantage of the changes made to the FollowWaypoint action, by specifying the desired number of loops in the action request that will be eventually sent to the nav2_waypoint_follower server.
 
-*********************************************************
+DWB Forward vs Reverse Pruning
+******************************
 
 `PR #3374 <https://github.com/ros-planning/navigation2/pull/3374>`_ adds a new ``forward_prune_distance`` parameter in the DWB controller. It replaces the ``prune_distance`` for forward path shortening, enabled through the ``shorten_transformed_plan`` boolean parameter. This change allows to use different values for forward and backward path shortening.
