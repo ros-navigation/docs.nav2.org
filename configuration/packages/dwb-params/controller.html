@@ -843,6 +843,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Humble.html#new-model-predictive-path-integral-controller">New Model Predictive Path Integral Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Humble.html#behavior-tree-uses-error-codes">Behavior Tree Uses Error Codes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Humble.html#load-save-and-loop-waypoints-from-the-nav2-panel-in-rviz">Load, Save and Loop Waypoints from the Nav2 Panel in RViz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Humble.html#dwb-forward-vs-reverse-pruning">DWB Forward vs Reverse Pruning</a></li>
 </ul>
 </li>
 </ul>
@@ -1010,8 +1011,28 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.debug_trajectory_details</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.forward_prune_distance</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance (m) to prune forward until.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.debug_trajectory_details</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1030,8 +1051,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.trajectory_generator_name</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.trajectory_generator_name</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 88%" />
@@ -1050,8 +1071,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.goal_checker_name</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.goal_checker_name</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 70%" />
@@ -1070,8 +1091,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.transform_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.transform_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1090,8 +1111,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.short_circuit_trajectory_evaluation</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.short_circuit_trajectory_evaluation</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1110,8 +1131,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.path_distance_bias (Legacy)</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.path_distance_bias (Legacy)</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1130,8 +1151,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.goal_distance_bias (Legacy)</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.goal_distance_bias (Legacy)</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1150,8 +1171,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.occdist_scale (Legacy)</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.occdist_scale (Legacy)</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1170,8 +1191,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.max_scaling_factor (Legacy)</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.max_scaling_factor (Legacy)</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1190,8 +1211,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.scaling_speed (Legacy)</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.scaling_speed (Legacy)</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1210,8 +1231,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.PathAlign.scale</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.PathAlign.scale</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1230,8 +1251,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.GoalAlign.scale</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.GoalAlign.scale</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1250,8 +1271,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.PathDist.scale</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.PathDist.scale</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1270,8 +1291,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.GoalDist.scale</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.GoalDist.scale</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />

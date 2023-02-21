@@ -843,6 +843,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-model-predictive-path-integral-controller">New Model Predictive Path Integral Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#behavior-tree-uses-error-codes">Behavior Tree Uses Error Codes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#load-save-and-loop-waypoints-from-the-nav2-panel-in-rviz">Load, Save and Loop Waypoints from the Nav2 Panel in RViz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dwb-forward-vs-reverse-pruning">DWB Forward vs Reverse Pruning</a></li>
 </ul>
 </li>
 </ul>
@@ -1034,6 +1035,10 @@ These error code are potentially able to be cleared by a smoother recovery.</p>
 <li><p>pause and resume button for stopping and continuing through the waypoints</p></li>
 </ul>
 <p>Looping functionality is not specific to the nav2 panel in RViz. Users utilizing nav2_waypoint_follower can take advantage of the changes made to the FollowWaypoint action, by specifying the desired number of loops in the action request that will be eventually sent to the nav2_waypoint_follower server.</p>
+</div>
+<div class="section" id="dwb-forward-vs-reverse-pruning">
+<h2>DWB Forward vs Reverse Pruning<a class="headerlink" href="#dwb-forward-vs-reverse-pruning" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3374">PR #3374</a> adds a new <code class="docutils literal notranslate"><span class="pre">forward_prune_distance</span></code> parameter in the DWB controller. It replaces the <code class="docutils literal notranslate"><span class="pre">prune_distance</span></code> for forward path shortening, enabled through the <code class="docutils literal notranslate"><span class="pre">shorten_transformed_plan</span></code> boolean parameter. This change allows to use different values for forward and backward path shortening.</p>
 </div>
 </div>
 
