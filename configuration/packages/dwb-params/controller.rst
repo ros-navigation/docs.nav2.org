@@ -63,6 +63,17 @@ Parameters
   Description
     Distance (m) to prune backward until.
 
+:``<dwb plugin>``.forward_prune_distance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 2.0
+  ====== =======
+
+  Description
+    Distance (m) to prune forward until.
+
 :``<dwb plugin>``.debug_trajectory_details:
 
   ==== =======
