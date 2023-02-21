@@ -195,6 +195,28 @@ Regulated Pure Pursuit Parameters
   Description
     The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be ``> 0.1``. 
 
+:use_fixed_curvature_lookahead:
+
+  ============== =============================
+  Type           Default                      
+  -------------- -----------------------------
+  bool           false                        
+  ============== =============================
+
+  Description
+    Don't base detecting curvature on the lookahead distance, which varies with velocity, introducing a reference cycle that can be problematic for widely varying lookahead distances.
+
+:curvature_lookahead_dist:
+
+  ============== =============================
+  Type           Default                                               
+  -------------- -----------------------------
+  double         0.6            
+  ============== =============================
+
+  Description
+    Distance to look ahead on the path to detect curvature.
+
 :use_rotate_to_heading:
 
   ============== =============================
