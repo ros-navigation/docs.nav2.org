@@ -81,7 +81,7 @@ Click on the images below for a link to the drivers or navigation configurations
     :target: https://en.yunjichina.com.cn/a/53.html
 
 .. |RB1| image:: images/rb1.png
-    :width: 100%
+    :width: 350px
     :align: middle
     :alt: Robotnik Rb1 base
     :target: https://github.com/IntelligentRoboticsLabs/marathon_ros2
