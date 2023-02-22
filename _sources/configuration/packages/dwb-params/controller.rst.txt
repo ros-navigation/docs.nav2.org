@@ -72,7 +72,7 @@ Parameters
   ====== =======
 
   Description
-    Distance (m) to prune forward until.
+    Distance (m) to prune forward until. If set to ``-1``, it will search the full path for the closest point, in the case of no replanning.
 
 :``<dwb plugin>``.debug_trajectory_details:
 
