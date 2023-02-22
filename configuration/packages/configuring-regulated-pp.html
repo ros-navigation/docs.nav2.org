@@ -1334,7 +1334,7 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting.</p>
+<dt>Description</dt><dd><p>Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting. If set to <code class="docutils literal notranslate"><span class="pre">-1</span></code>, it will use the maximum distance possible to search every point on the path for the nearest path point.</p>
 </dd>
 </dl>
 </dd>
