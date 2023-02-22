@@ -1,17 +1,64 @@
 .. _roadmap:
 
-Humble Roadmap
-##############
+Roadmaps
+########
 
-This is the list of major issues and features the Nav2 maintainers are commiting for completion for the ROS 2 Humble Release in 2022.
+This is the list of major issues and features the Nav2 maintainers are commiting for completion for various ROS 2 releases.
 This is *not* an exhaustive list of planned features or what changes may be found in the new distribution.
 It represents only the items of direct commitment to give insight into commitments for REP-2005 repositories in the `ROS 2 Roadmap <https://docs.ros.org/en/rolling/Roadmap.html>`_.
-For a full list of important completed changes in the project, see the Migration Guide :ref:`galactic_migration`.
+For a full list of important completed changes in the project, see the Migration Guides :ref:`migration`.
+
+Iron Roadmap
+************
 
 +--------------------------------+------------------------+
 |            Plugin Name         |         Size           |
 +================================+========================+
-| `Nav2 1 Node Per Server`_      | Medium  (in progress)  |
+| `Pluginize Navigators`_        | Medium  (DONE)         |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `MPPI Controller`_             | Very Large (progress)  |
+|                                |                        |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `Route Graph Planner`_         | Large (in progress)    |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| 90% unit test coverage         | Small  (DONE)          |
+|                                |                        |
++--------------------------------+------------------------+
+|   `Velocity Smoother`_         |  Medium (DONE)         |
++--------------------------------+------------------------+
+| ROS Time Respect Across Stack  |  Medium (in progress)  |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `Fuse Migration`_              |  Medium                |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `Ignition Migration`_          |  Large                 |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+
+.. _Pluginize Navigators: https://github.com/ros-planning/navigation2/issues/3335
+.. _MPPI Controller: https://github.com/ros-planning/navigation2/pull/3350
+.. _Route Graph Planner: https://github.com/ros-planning/navigation2/issues/2229
+.. _Velocity Smoother: https://github.com/ros-planning/navigation2/pull/2964
+.. _Fuse Migration: https://github.com/ros-planning/navigation2/issues/2598
+.. _Ignition Migration: https://github.com/ros-planning/navigation2/issues/2997
+
+Humble Roadmap
+**************
+
++--------------------------------+------------------------+
+|            Plugin Name         |         Size           |
++================================+========================+
+| `Nav2 1 Node Per Server`_      | Medium  (DONE)         |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
@@ -20,7 +67,7 @@ For a full list of important completed changes in the project, see the Migration
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Safety Collision Nodes`_      | Medium (in progress)   |
+| `Safety Collision Nodes`_      | Medium (DONE)          |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
