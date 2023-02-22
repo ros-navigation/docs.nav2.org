@@ -9,13 +9,15 @@ Below is a very early list of robots we have encountered using our software as e
 Click on the images below for a link to the drivers or navigation configurations.
 
 +------------------------+------------------------+------------------------+
-|          |tri|         +          |Tiago|       +          |rover|       |
+|          |pxl|         +          |ang|         +          |ses|         |
 +------------------------+------------------------+------------------------+
-|           |yunji|      +         |RB1|          +        |elroy|         |
+|          |tri|         +          |Tiago|       +          |mpo_700|     |
 +------------------------+------------------------+------------------------+
-|         |ubr1|         +         |tb2|          +           |tb3|        |
+|           |yunji|      +         |brisa|        +        |elroy|         |
 +------------------------+------------------------+------------------------+
-|         |mpo_700|      +                        +                        |
+|         |ubr1|         +         |tb2|          +       |rover|          |
++------------------------+------------------------+------------------------+
+|         |tb3|          +         |RB1|          +           |soon|       |
 +------------------------+------------------------+------------------------+
 
 .. |tri| image:: images/tri.png
@@ -29,6 +31,30 @@ Click on the images below for a link to the drivers or navigation configurations
     :align: middle
     :alt: ElroyAir
     :target: https://elroyair.com/
+
+.. |ang| image:: images/angsa.jpg
+    :width: 100%
+    :align: middle
+    :alt: Angsa
+    :target: https://angsa-robotics.com/en-de/roboter/
+
+.. |ses| image:: images/seasony.png
+    :width: 100%
+    :align: middle
+    :alt: Seasony
+    :target: https://www.seasony.io/
+
+.. |pxl| image:: images/pixel.jpeg
+    :width: 100%
+    :align: middle
+    :alt: Pixel
+    :target: https://pixel-robotics.eu/
+
+.. |brisa| image:: images/brisa.png
+    :width: 100%
+    :align: middle
+    :alt: Brisa
+    :target: https://www.brisa.tech/
 
 .. |tb2| image:: images/tb2.png
     :width: 100%
@@ -55,7 +81,7 @@ Click on the images below for a link to the drivers or navigation configurations
     :target: https://en.yunjichina.com.cn/a/53.html
 
 .. |RB1| image:: images/rb1.png
-    :width: 100%
+    :width: 350px
     :align: middle
     :alt: Robotnik Rb1 base
     :target: https://github.com/IntelligentRoboticsLabs/marathon_ros2
