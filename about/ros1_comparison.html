@@ -856,7 +856,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#examples-and-demos">Examples and Demos</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../roadmap/roadmap.html">Humble Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/roadmap.html">Roadmaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#iron-roadmap">Iron Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#humble-roadmap">Humble Roadmap</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Getting Involved</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contribute/index.html#id1">Getting Involved</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contribute/index.html#process">Process</a></li>
@@ -914,10 +918,8 @@ in a behavior tree xml file.</p>
 <p>The <em>nav2_bt_navigator</em> replaces <code class="docutils literal notranslate"><span class="pre">move_base</span></code> at the top level, with an <em>Action</em> interface to complete a navigation task with a tree-based action model.
 It uses <em>Behavior Trees</em> to make it possible to have more complex state machines and to add in behaviors as additional <em>Action Servers</em>.
 These behavior trees are configurable XMLs and we provide several starting examples.</p>
-<p>The planning, behaviors, and controller servers are also action servers that the BT navigator can call to compute.
-All 3 servers can host many plugins of many algorithms each and individually called from the navigation behavior tree for specific behaviors.
-The default plugins provided are ported from ROS 1, namely: DWB, NavFn, and similar behaviors such as spinning and clearing costmaps.
-A new behavior for waiting a fixed duration was also added.
+<p>The planning, behaviors, smoother, and controller servers are also action servers that the BT navigator can call to compute.
+All 4 servers can host many plugins of many algorithms each and individually called from the navigation behavior tree for specific behaviors.
 These servers are called from the BT navigator through their action servers to compute a result or complete a task.
 The state is maintained by the BT navigator behavior tree.</p>
 <p>All these changes make it possible to replace any of these nodes at launch/run time with any other algorithm that implements that same interface.
@@ -946,10 +948,10 @@ See each package README.md for more details.</p>
 <li><p>nav2_waypoint_follower: Can take in many waypoints to execute a complex task through</p></li>
 <li><p>nav2_system_tests: A set of integration tests for CI and basic tutorials in simulation</p></li>
 <li><p>nav2_rviz_plugins: An rviz plugin to control the Navigation2 servers, command, cancel, and navigation with</p></li>
-<li><p>nav2_experimental: Experimental (and incomplete) work for deep reinforement learning controllers</p></li>
 <li><p>navigation2_behavior_trees: wrappers for the behavior tree library to call ROS action servers</p></li>
 </ul>
 </div></blockquote>
+<p>among many others.</p>
 </div>
 
 

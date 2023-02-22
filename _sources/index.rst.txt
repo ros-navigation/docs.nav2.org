@@ -18,18 +18,24 @@
 Overview
 ########
 
-The Nav2 project is the spiritual successor of the ROS Navigation Stack.
-This project seeks to find a safe way to have a mobile robot move from point A to
-point B. It can also be applied in other applications that involve robot navigation, like following dynamic points. 
-This will complete dynamic path planning, compute velocities for motors,
-avoid obstacles, and structure recovery behaviors.
-To learn more about this project, such as related projects, robots using, ROS1 comparison, and maintainers, see :ref:`about`.
+Nav2 is the professionally supported spiritual successor of the ROS Navigation Stack.
+This project seeks to find a safe way to have a mobile robot move to complete complex tasks through many types of environments and classes of robot kinematics.
+Not only can it move from Point A to Point B, but it can have intermediary poses, and represent other types of tasks like object following and more.
+Nav2 is a production-grade and high-quality navigation framework trusted by 50+ companies worldwide.
 
-Nav2 uses behavior trees to call modular servers to complete an action.
-An action can be to compute a path, control effort, recovery, or any other navigation
-related action. These are each separate nodes that communicate with the behavior tree (BT)
-over a ROS action server. The diagram below will give you a good first-look at the structure
-of Nav2. Note: It is possible to have multiple plugins for controllers, planners,
+It provides perception, planning, control, localization, visualization, and much more to build highly reliable autonomous systems.
+This will complete environmental modeling from sensor data, dynamic path planning, compute velocities for motors, avoid obstacles, represent semantic regions and objects, and structure higher-level robot behaviors.
+To learn more about this project, such as related projects, robots using, ROS1 comparison, and maintainers, see :ref:`about`.
+To learn more about navigation and ROS concepts, see :ref:`concepts`.
+
+Nav2 uses behavior trees to create customized and intelligent navigation behavior via orchestrating many independent modular servers.
+A task server can be used to compute a path, control effort, recovery, or any other navigation
+related task. These separate servers communicate with the behavior tree (BT)
+over a ROS interface such as an action server or service.
+A robot may utilize potentially many different behavior trees to allow a robot to perform many types of unique tasks.
+
+The diagram below will give you a good first-look at the structure of Nav2.
+Note: It is possible to have multiple plugins for controllers, planners,
 and recoveries in each of their servers with matching BT plugins. This can be used to
 create contextual navigation behaviors.
 If you would like to see a comparison between this project and ROS (1) Navigation, see :ref:`ros1_comparison`.
@@ -44,34 +50,28 @@ them uniquely with both circular and arbitrarily-shaped robots for SE2 collision
 
 It has tools to:
 
-- load, serve, and store maps (Map Server)
-- localize the robot on the map (AMCL)
-- plan a path from A to B around obstacles (Nav2 Planner)
-- control the robot as it follows the path (Nav2 Controller)
+- Load, serve, and store maps (Map Server)
+- Localize the robot on the map (AMCL)
+- Plan a path from A to B around obstacles (Nav2 Planner)
+- Control the robot as it follows the path (Nav2 Controller)
 - Smooth path plans to be more continuous and feasible (Nav2 Smoother)
-- convert sensor data into a costmap representation of the world (Nav2 Costmap 2D)
-- build complicated robot behaviors using behavior trees (Nav2 Behavior Trees and BT Navigator)
+- Convert sensor data into a costmap representation of the world (Nav2 Costmap 2D)
+- Build complicated robot behaviors using behavior trees (Nav2 Behavior Trees and BT Navigator)
 - Compute recovery behaviors in case of failure (Nav2 Recoveries)
 - Follow sequential waypoints (Nav2 Waypoint Follower)
 - Manage the lifecycle and watchdog for the servers (Nav2 Lifecycle Manager)
 - Plugins to enable your own custom algorithms and behaviors (Nav2 Core)
+- Monitor raw sensor data for imminent collision or dangerous situation (Collision Monitor)
+- Python3 API to interact with Nav2 in a pythonic manner (Simple Commander)
+- A smoother on output velocities to guarantee dynamic feasibility of commands (Velocity Smoother)
 
 .. image:: images/nav2_architecture.png
     :width: 700px
     :align: center
     :alt: Navigation2 Block Diagram
 
-We also provide a set of starting plugins to get you going. NavFn computes the shortest path
-from a pose to a goal pose using A* or Dijkstra's algorithm. DWB will use the DWA algorithm
-to compute a control effort to follow a path, with several plugins of its own for trajectory
-critics. There are recovery behaviors included: waiting, spinning, clearing costmaps, and
-backing up. There are a set of BT plugins for calling these servers and computing conditions.
-Finally, there are a set of Rviz plugins for interacting with the stack and controlling the
-lifecycle. A list of all user-reported plugins can be found on :ref:`plugins`.
-
-Here is the documentation on how to install and use |PN| with an example robot, Turtlebot
-3 (TB3), as well as how to customize it for other robots, tune the behavior for better
-performance, as well as customize the internals for advanced results. 
+We also provide a set of starting plugins to get you going. 
+A list of all plugins can be found on :ref:`plugins` - but they include algorithms for the spanning cross section of common behaviors and robot platform types.
 
 Citations
 #########

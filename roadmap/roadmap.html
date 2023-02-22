@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Humble Roadmap &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Roadmaps &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
@@ -856,7 +856,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#examples-and-demos">Examples and Demos</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Humble Roadmap</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Roadmaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#iron-roadmap">Iron Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#humble-roadmap">Humble Roadmap</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Getting Involved</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contribute/index.html#id1">Getting Involved</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contribute/index.html#process">Process</a></li>
@@ -894,7 +898,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Humble Roadmap</li>
+      <li class="breadcrumb-item active">Roadmaps</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -903,12 +907,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="humble-roadmap">
-<span id="roadmap"></span><h1>Humble Roadmap<a class="headerlink" href="#humble-roadmap" title="Permalink to this headline">¶</a></h1>
-<p>This is the list of major issues and features the Nav2 maintainers are commiting for completion for the ROS 2 Humble Release in 2022.
+  <div class="section" id="roadmaps">
+<span id="roadmap"></span><h1>Roadmaps<a class="headerlink" href="#roadmaps" title="Permalink to this headline">¶</a></h1>
+<p>This is the list of major issues and features the Nav2 maintainers are commiting for completion for various ROS 2 releases.
 This is <em>not</em> an exhaustive list of planned features or what changes may be found in the new distribution.
 It represents only the items of direct commitment to give insight into commitments for REP-2005 repositories in the <a class="reference external" href="https://docs.ros.org/en/rolling/Roadmap.html">ROS 2 Roadmap</a>.
-For a full list of important completed changes in the project, see the Migration Guide <a class="reference internal" href="../migration/Galactic.html#galactic-migration"><span class="std std-ref">Galactic to Humble</span></a>.</p>
+For a full list of important completed changes in the project, see the Migration Guides <a class="reference internal" href="../migration/index.html#migration"><span class="std std-ref">Migration Guides</span></a>.</p>
+<div class="section" id="iron-roadmap">
+<h2>Iron Roadmap<a class="headerlink" href="#iron-roadmap" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
+<th class="head"><p>Size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/3335">Pluginize Navigators</a></p></td>
+<td><p>Medium  (DONE)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3350">MPPI Controller</a></p></td>
+<td><p>Very Large (progress)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2229">Route Graph Planner</a></p></td>
+<td><p>Large (in progress)</p></td>
+</tr>
+<tr class="row-odd"><td><p>90% unit test coverage</p></td>
+<td><p>Small  (DONE)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2964">Velocity Smoother</a></p></td>
+<td><p>Medium (DONE)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ROS Time Respect Across Stack</p></td>
+<td><p>Medium (in progress)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2598">Fuse Migration</a></p></td>
+<td><p>Medium</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/2997">Ignition Migration</a></p></td>
+<td><p>Large</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="humble-roadmap">
+<h2>Humble Roadmap<a class="headerlink" href="#humble-roadmap" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 57%" />
@@ -921,13 +967,13 @@ For a full list of important completed changes in the project, see the Migration
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/816">Nav2 1 Node Per Server</a></p></td>
-<td><p>Medium  (in progress)</p></td>
+<td><p>Medium  (DONE)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1710">Smac Lattice Planner</a></p></td>
 <td><p>Large (DONE)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1899">Safety Collision Nodes</a></p></td>
-<td><p>Medium (in progress)</p></td>
+<td><p>Medium (DONE)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2460">Fix Min Range Bug</a></p></td>
 <td><p>Small  (DONE)</p></td>
@@ -950,6 +996,7 @@ from Master to Rolling</a></p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 
 

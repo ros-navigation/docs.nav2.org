@@ -13,10 +13,8 @@ The *nav2_bt_navigator* replaces ``move_base`` at the top level, with an *Action
 It uses *Behavior Trees* to make it possible to have more complex state machines and to add in behaviors as additional *Action Servers*.
 These behavior trees are configurable XMLs and we provide several starting examples.
 
-The planning, behaviors, and controller servers are also action servers that the BT navigator can call to compute.
-All 3 servers can host many plugins of many algorithms each and individually called from the navigation behavior tree for specific behaviors.
-The default plugins provided are ported from ROS 1, namely: DWB, NavFn, and similar behaviors such as spinning and clearing costmaps.
-A new behavior for waiting a fixed duration was also added.
+The planning, behaviors, smoother, and controller servers are also action servers that the BT navigator can call to compute.
+All 4 servers can host many plugins of many algorithms each and individually called from the navigation behavior tree for specific behaviors.
 These servers are called from the BT navigator through their action servers to compute a result or complete a task.
 The state is maintained by the BT navigator behavior tree.
 
@@ -50,5 +48,6 @@ New packages:
   * nav2_waypoint_follower: Can take in many waypoints to execute a complex task through
   * nav2_system_tests: A set of integration tests for CI and basic tutorials in simulation
   * nav2_rviz_plugins: An rviz plugin to control the Navigation2 servers, command, cancel, and navigation with
-  * nav2_experimental: Experimental (and incomplete) work for deep reinforement learning controllers
   * navigation2_behavior_trees: wrappers for the behavior tree library to call ROS action servers
+
+among many others.
