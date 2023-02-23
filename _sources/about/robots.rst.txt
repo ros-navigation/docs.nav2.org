@@ -11,14 +11,20 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |          |pxl|         +          |ang|         +          |ses|         |
 +------------------------+------------------------+------------------------+
-|          |tri|         +          |Tiago|       +          |mpo_700|     |
+|          |tri|         +          |dex|         +          |mpo_700|     |
 +------------------------+------------------------+------------------------+
 |           |yunji|      +         |brisa|        +        |elroy|         |
 +------------------------+------------------------+------------------------+
-|         |ubr1|         +         |tb2|          +       |rover|          |
+|         |ubr1|         +         |Tiago|        +       |RB1|            |
 +------------------------+------------------------+------------------------+
-|         |tb3|          +         |RB1|          +           |soon|       |
+|         |tb3|          +         |rover|        +           |tb2|        |
 +------------------------+------------------------+------------------------+
+
+.. |dex| image:: images/dexory.jpg
+    :width: 350px
+    :align: middle
+    :alt: Dexory
+    :target: https://www.dexory.com/
 
 .. |tri| image:: images/tri.png
     :width: 100%
@@ -51,7 +57,7 @@ Click on the images below for a link to the drivers or navigation configurations
     :target: https://pixel-robotics.eu/
 
 .. |brisa| image:: images/brisa.png
-    :width: 100%
+    :width: 350px
     :align: middle
     :alt: Brisa
     :target: https://www.brisa.tech/
