@@ -167,3 +167,8 @@ DWB Forward vs Reverse Pruning
 ******************************
 
 `PR #3374 <https://github.com/ros-planning/navigation2/pull/3374>`_ adds a new ``forward_prune_distance`` parameter in the DWB controller. It replaces the ``prune_distance`` for forward path shortening, enabled through the ``shorten_transformed_plan`` boolean parameter. This change allows to use different values for forward and backward path shortening.
+
+More stable regulation on curves for long lookahead distances
+*************************************************************
+
+`PR #3414 <https://github.com/ros-planning/navigation2/pull/3414>`_ adds a new ``use_fixed_curvature_lookahead`` parameter to the RPP controller. This makes slowing down on curve not dependent on the instantaneous lookahead point, but instead on a fixed distance set by the parameter ``curvature_lookahead_dist``.
