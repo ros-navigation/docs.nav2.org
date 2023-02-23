@@ -844,6 +844,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#behavior-tree-uses-error-codes">Behavior Tree Uses Error Codes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#load-save-and-loop-waypoints-from-the-nav2-panel-in-rviz">Load, Save and Loop Waypoints from the Nav2 Panel in RViz</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#dwb-forward-vs-reverse-pruning">DWB Forward vs Reverse Pruning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#more-stable-regulation-on-curves-for-long-lookahead-distances">More stable regulation on curves for long lookahead distances</a></li>
 </ul>
 </li>
 </ul>
@@ -1240,6 +1241,46 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">use_fixed_curvature_lookahead</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use a fixed lookahead distance to compute curvature from. Since a lookahead distance may be set to vary on velocity, it can introduce a reference cycle that can be problematic for large lookahead distances.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">curvature_lookahead_dist</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.6</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance to look ahead on the path to detect curvature.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-odd">use_rotate_to_heading</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
@@ -1401,6 +1442,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <span class="w">      </span><span class="nt">use_collision_detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">max_allowed_time_to_collision_up_to_carrot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">use_regulated_linear_velocity_scaling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">use_fixed_curvature_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">curvature_lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">use_cost_regulated_linear_velocity_scaling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">regulated_linear_scaling_min_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
 <span class="w">      </span><span class="nt">regulated_linear_scaling_min_speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
