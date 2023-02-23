@@ -204,7 +204,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    Don't base detecting curvature on the lookahead distance, which varies with velocity, introducing a reference cycle that can be problematic for widely varying lookahead distances.
+    Whether to use a fixed lookahead distance to compute curvature from. Since a lookahead distance may be set to vary on velocity, it can introduce a reference cycle that can be problematic for large lookahead distances.
 
 :curvature_lookahead_dist:
 
