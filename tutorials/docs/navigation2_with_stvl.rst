@@ -129,6 +129,7 @@ An example fully-described parameterization of an STVL configuration is:
         observation_persistence: 0.0
         inf_is_valid: false
         filter: "voxel"
+        voxel_min_points: 0
         clear_after_reading: true
         max_z: 7.0
         min_z: 0.1
