@@ -1020,6 +1020,16 @@ planner_id=’‘, use_start=False)</p></td>
 <td><p>Gets a path through a starting to a set of goals, a list
 of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
 </tr>
+<tr class="row-even"><td><p>getRoute(start, goal,
+use_start=False)</p></td>
+<td><p>Gets a sparse route and dense path from start to goal, where start and
+goal may be of type <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> or <code class="docutils literal notranslate"><span class="pre">int</span></code> for known NodeIDs.</p></td>
+</tr>
+<tr class="row-odd"><td><p>getandTrackRoute(start, goal,
+use_start=False)</p></td>
+<td><p>Gets and tracks a sparse route and dense path from start to goal, where
+start &amp; goal may be of type <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> or <code class="docutils literal notranslate"><span class="pre">int</span></code> for known NodeIDs.</p></td>
+</tr>
 <tr class="row-even"><td><p>smoothPath(path, smoother_id=’‘,
 max_duration=2.0,
 check_for_collision=False)</p></td>
@@ -1185,6 +1195,7 @@ x, y, theta (<code class="docutils literal notranslate"><span class="pre">float<
 <li><p><code class="docutils literal notranslate"><span class="pre">example_waypoint_follower.py</span></code> - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">example_follow_path.py</span></code> - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">example_assisted_teleop.py</span></code> - Demonstrates the assisted teleop capabilities of the navigator.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">example_route.py</span></code> - Demonstrates the Route server capabilities of the navigator.</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code> has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:</p>
 <ul class="simple">
