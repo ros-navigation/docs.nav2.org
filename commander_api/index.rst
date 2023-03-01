@@ -95,6 +95,12 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | getPathThroughPoses(start, goals,     | Gets a path through a starting to a set of goals, a list                   |
 | planner_id='', use_start=False)       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
 +---------------------------------------+----------------------------------------------------------------------------+
+| getRoute(start, goal,                 | Gets a sparse route and dense path from start to goal, where start and     |
+| use_start=False)                      | goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.          |
++---------------------------------------+----------------------------------------------------------------------------+
+| getandTrackRoute(start, goal,         | Gets and tracks a sparse route and dense path from start to goal, where    |
+| use_start=False)                      | start & goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.  |
++---------------------------------------+----------------------------------------------------------------------------+
 | smoothPath(path, smoother_id='',      | Smooths a given path of type ``nav_msgs/Path``.                            |
 | max_duration=2.0,                     |                                                                            |
 | check_for_collision=False)            |                                                                            |
@@ -212,6 +218,7 @@ The ``nav2_simple_commander`` has a few examples to highlight the API functions 
 - ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.
 - ``example_assisted_teleop.py`` - Demonstrates the assisted teleop capabilities of the navigator.  
+- ``example_route.py`` - Demonstrates the Route server capabilities of the navigator.  
 
 The ``nav2_simple_commander`` has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:
 
