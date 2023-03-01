@@ -96,10 +96,10 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 | planner_id='', use_start=False)       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getRoute(start, goal,                 | Gets a sparse route and dense path from start to goal, where start and     |
-|  use_start=False)                     | goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.          |
+| use_start=False)                      | goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.          |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getandTrackRoute(start, goal,         | Gets and tracks a sparse route and dense path from start to goal, where    |
-|  use_start=False)                     | start & goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.  |
+| use_start=False)                      | start & goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.  |
 +---------------------------------------+----------------------------------------------------------------------------+
 | smoothPath(path, smoother_id='',      | Smooths a given path of type ``nav_msgs/Path``.                            |
 | max_duration=2.0,                     |                                                                            |
