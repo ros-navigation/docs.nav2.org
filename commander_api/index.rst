@@ -83,7 +83,7 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 +---------------------------------------+----------------------------------------------------------------------------+
 | isTaskComplete(trackingRoute=False)   | Checks if task is complete yet, times out at ``100ms``. Returns            |
 |                                       | ``True`` if completed and ``False`` if still going. If checking a route    |
-|                                       | tracking task, set default argument to ``True``.                       |
+|                                       | tracking task, set default argument to ``True``.                           |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getFeedback(trackingRoute=False)      | Gets feedback from task, returns action server feedback msg.               |
 |                                       | If getting feedback on a tracking task, set default argument to ``True``.  |
