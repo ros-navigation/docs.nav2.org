@@ -998,14 +998,16 @@ backup_speed=0.025, time_allowance=10)</p></td>
 <td><p>Requests the robot to run the assisted teleop action.</p></td>
 </tr>
 <tr class="row-even"><td><p>cancelTask()</p></td>
-<td><p>Cancel an ongoing task.</p></td>
+<td><p>Cancel an ongoing task, including route tasks.</p></td>
 </tr>
-<tr class="row-odd"><td><p>isTaskComplete()</p></td>
+<tr class="row-odd"><td><p>isTaskComplete(trackingRoute=False)</p></td>
 <td><p>Checks if task is complete yet, times out at <code class="docutils literal notranslate"><span class="pre">100ms</span></code>. Returns
-<code class="docutils literal notranslate"><span class="pre">True</span></code> if completed and <code class="docutils literal notranslate"><span class="pre">False</span></code> if still going.</p></td>
+<code class="docutils literal notranslate"><span class="pre">True</span></code> if completed and <code class="docutils literal notranslate"><span class="pre">False</span></code> if still going. If checking a route
+tracking task, set default argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>getFeedback()</p></td>
-<td><p>Gets feedback from task, returns action server feedback msg.</p></td>
+<tr class="row-even"><td><p>getFeedback(trackingRoute=False)</p></td>
+<td><p>Gets feedback from task, returns action server feedback msg.
+If getting feedback on a tracking task, set default argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>getResult()</p></td>
 <td><p>Gets final result of task, to be called after <code class="docutils literal notranslate"><span class="pre">isTaskComplete</span></code>
