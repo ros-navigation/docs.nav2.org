@@ -79,12 +79,14 @@ If a server fails, it may throw an exception or return a `None` object, so pleas
 +---------------------------------------+----------------------------------------------------------------------------+
 | assistedTeleop(time_allowance=30)     | Requests the robot to run the assisted teleop action.                      |
 +---------------------------------------+----------------------------------------------------------------------------+
-| cancelTask()                          | Cancel an ongoing task.                                                    |
+| cancelTask()                          | Cancel an ongoing task, including route tasks.                             |
 +---------------------------------------+----------------------------------------------------------------------------+
-| isTaskComplete()                      | Checks if task is complete yet, times out at ``100ms``. Returns            |
-|                                       | ``True`` if completed and ``False`` if still going.                        |
+| isTaskComplete(trackingRoute=False)   | Checks if task is complete yet, times out at ``100ms``. Returns            |
+|                                       | ``True`` if completed and ``False`` if still going. If checking a route    |
+|                                       | tracking task, set default argument to ``True``.                           |
 +---------------------------------------+----------------------------------------------------------------------------+
-| getFeedback()                         | Gets feedback from task, returns action server feedback msg.               |
+| getFeedback(trackingRoute=False)      | Gets feedback from task, returns action server feedback msg.               |
+|                                       | If getting feedback on a tracking task, set default argument to ``True``.  |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getResult()                           | Gets final result of task, to be called after ``isTaskComplete``           |
 |                                       | returns ``True``. Returns action server result msg.                        |
