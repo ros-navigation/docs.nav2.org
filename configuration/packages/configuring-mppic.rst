@@ -217,6 +217,16 @@ MPPI Parameters
   Description
     Number of attempts to find feasible trajectory on failure for soft-resets before reporting total failure.
 
+:reset_period:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double            1.0
+  ============== ===========================
+
+  Description
+    Required time of inactivity to reset optimizer  (only in Humble due to backport ABI policies).
 
 Trajectory Visualization
 ------------------------
@@ -472,6 +482,28 @@ Obstacles Critic
   Description
     Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
 
+:cost_scaling_factor:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         10.0
+  ============== ===========================
+
+  Description
+    Exponential decay factor across inflation radius. This should be the same as for your inflation layer (Humble only)
+
+:inflation_radius:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         0.55
+  ============== ===========================
+
+  Description
+    Radius to inflate costmap around lethal obstacles. This should be the same as for your inflation layer (Humble only)
+
 Path Align Critic
 -----------------
 
@@ -722,6 +754,7 @@ Example
           gamma: 0.015
           motion_model: "DiffDrive"
           visualize: false
+          reset_period: 10.0 (only in Humble)
           TrajectoryVisualizer:
             trajectory_step: 5
             time_step: 3
@@ -756,6 +789,8 @@ Example
             collision_cost: 10000.0
             collision_margin_distance: 0.1
             near_goal_distance: 0.5
+            inflation_radius: 0.55 (only in Humble)
+            cost_scaling_factor: 10.0 (only in Humble)
           PathAlignCritic:
             enabled: true
             cost_power: 1
