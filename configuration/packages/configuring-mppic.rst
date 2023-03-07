@@ -754,7 +754,7 @@ Example
           gamma: 0.015
           motion_model: "DiffDrive"
           visualize: false
-          reset_period: 10.0 (only in Humble)
+          reset_period: 10.0 # (only in Humble)
           TrajectoryVisualizer:
             trajectory_step: 5
             time_step: 3
@@ -789,8 +789,8 @@ Example
             collision_cost: 10000.0
             collision_margin_distance: 0.1
             near_goal_distance: 0.5
-            inflation_radius: 0.55 (only in Humble)
-            cost_scaling_factor: 10.0 (only in Humble)
+            inflation_radius: 0.55 # (only in Humble)
+            cost_scaling_factor: 10.0 # (only in Humble)
           PathAlignCritic:
             enabled: true
             cost_power: 1
