@@ -753,7 +753,7 @@ Example
           gamma: 0.015
           motion_model: "DiffDrive"
           visualize: false
-          reset_period: 10.0 # (only in Humble)
+          reset_period: 1.0 # (only in Humble)
           TrajectoryVisualizer:
             trajectory_step: 5
             time_step: 3
