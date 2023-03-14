@@ -19,6 +19,8 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb3|          +         |rover|        +           |tb2|        |
 +------------------------+------------------------+------------------------+
+|         |rosie|        +         |soon|         +           |soon|       |
++------------------------+------------------------+------------------------+
 
 .. |dex| image:: images/dexory.jpg
     :width: 350px
@@ -103,7 +105,7 @@ Click on the images below for a link to the drivers or navigation configurations
     :height: 350px
     :alt: UBR-1
     :target: https://www.robotandchisel.com/2020/09/01/navigation2
-    
+
 .. |mpo_700| image:: images/mpo_700.png
     :width: 100%
     :align: middle
@@ -115,3 +117,9 @@ Click on the images below for a link to the drivers or navigation configurations
     :align: middle
     :alt: Coming Soon
     :target: https://www.youtube.com/watch?v=oHg5SJYRHA0
+
+.. |rosie| image:: images/rosie.jpg
+    :width: 100%
+    :align: middle
+    :alt: Rosie
+    :target: https://tailos.com/
