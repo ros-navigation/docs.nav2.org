@@ -19,7 +19,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb3|          +         |rover|        +           |tb2|        |
 +------------------------+------------------------+------------------------+
-|         |rosie|        +         |soon|        +           |soon|        |
+|         |rosie|        +         |soon|         +           |soon|       |
 +------------------------+------------------------+------------------------+
 
 .. |dex| image:: images/dexory.jpg
