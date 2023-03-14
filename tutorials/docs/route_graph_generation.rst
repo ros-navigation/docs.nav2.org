@@ -1,7 +1,7 @@
-.. _graph_generation: 
+.. _route_graph_generation: 
 
-Graph Generation
-****************
+Route Graph Generation
+**********************
 
 - `Overview`_
 - `Requirements`_
@@ -9,7 +9,7 @@ Graph Generation
 
 Overview
 ========
-This tutorial walks a user through generating a graph for the nav2 router.
+This tutorial walks a user through generating a graph for the nav2 route server.
 
 Requirements
 ============
@@ -18,13 +18,15 @@ Follow https://www.qgis.org/en/site/forusers/download.html to install QGIS.
 Tutorial Steps
 ==============
 
-1- Open QGIS and create a new project. Set the project coordinate reference system to `WGS 84/ Pseudo-Mercator`.
+1- Open QGIS and create a new project. Set the project coordinate reference system by selecting
+`project->properties->CRS`. Set the coordinate system to `WGS 84/ Pseudo-Mercator` which will work well for
+small and large scale maps.
 
 |
 
- .. image:: images/graph_generation/coordinate_reference_system.png
-    :height: 400px
-    :width: 600px
+ .. image:: images/route_graph_generation/coordinate_reference_system.png
+    :height: 1097px
+    :width: 1064px
     :align: center
 
 |
@@ -38,9 +40,9 @@ type`, `WGS 84/ Pseudo-Mercator` for `Traget SRS` and set your desired path for 
 
 |
 
- .. image:: images/graph_generation/transformation_settings.png
-    :height: 500px
-    :width: 300px
+ .. image:: images/route_graph_generation/transformation_settings.png
+    :height: 757px
+    :width: 458px
     :align: center
 
 |
@@ -50,9 +52,9 @@ transformation.
 
 |
 
- .. image:: images/graph_generation/georeferencer.png
-    :height: 400px
-    :width: 600px
+ .. image:: images/route_graph_generation/georeferencer.png
+    :height: 807px
+    :width: 1460ppx
     :align: center
 
 |
@@ -61,9 +63,9 @@ Drag and drop the raster file output into the layers window.
 
 |
 
- .. image:: images/graph_generation/raster_layer.png
-    :height: 400px
-    :width: 600px
+ .. image:: images/route_graph_generation/raster_layer.png
+    :height: 1055px
+    :width: 1922px
     :align: center
 
 |
@@ -76,9 +78,9 @@ Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer s
 
 |
 
- .. image:: images/graph_generation/node_layer.png
-    :height: 600px
-    :width: 400px
+ .. image:: images/route_graph_generation/node_layer.png
+    :height: 1041px
+    :width: 887px
     :align: center
 
 |
@@ -87,9 +89,9 @@ Click on the node layer and use the tool bar to start adding nodes. The IDs fiel
 
 |
 
- .. image:: images/graph_generation/nodes.png
-    :height: 600px
-    :width: 400px
+ .. image:: images/route_graph_generation/nodes.png
+    :height: 1922px
+    :width: 1082px
     :align: center
 
 |
@@ -100,9 +102,9 @@ Click on the node layer and use the tool bar to start adding nodes. The IDs fiel
 
 |
 
- .. image:: images/graph_generation/edge_layer.png
-    :height: 400px
-    :width: 600px
+ .. image:: images/route_graph_generation/edge_layer.png
+    :height: 1041px
+    :width: 887px
     :align: center
 
 |
@@ -112,9 +114,9 @@ the start and end points of the edge to nodes.
 
 |
 
- .. image:: images/graph_generation/edges.png
-    :height: 600px
-    :width: 400px
+ .. image:: images/route_graph_generation/edges.png
+    :height: 1922px
+    :width: 1082x
     :align: center
 
 |
@@ -122,12 +124,13 @@ the start and end points of the edge to nodes.
 6- Now we will add ids for all nodes and edges. 
 Select the node layer and then click on the `Field calculator` tool. Check the `Update existing
 field` box and select `id` in the dropdown menu. Add `@row_number` to the `expression field`` and click `Ok`.
+This will set the node id to the current row number.  
 
 |
 
- .. image:: images/graph_generation/field_calculator.png
-    :height: 400px
-    :width: 600px
+ .. image:: images/route_graph_generation/field_calculator.png
+    :height: 916px
+    :width: 1699px
     :align: center
 
 |
@@ -141,15 +144,15 @@ Follow the same process for the edges but swap the `@row_number` for `@row_numbe
 7- Now that we have our node and edge layers with IDs, we can associate node IDs with edge IDs. 
 
 Select `Database -> DB manager`. Expand `Virtual layers` and expand `Project layers`. Open up
-the SQL window. In the SQL window load in the association script by selecting `Load File`. 
-Execute the script. Load the new layer by checking the `Load as new layer` box and clicking `Load`. 
+the SQL window by clicking on the script icon in the top left corner. In the SQL window load in the association script by selecting `Load File`. 
+Execute the script. Load the new layer by checking the `Load as new layer` box and clicking `Load`.
 This layer will be refered to as connected edges. 
 
 |
 
- .. image:: images/graph_generation/sql_script.png
-    :height: 400px
-    :width: 600px
+ .. image:: images/route_graph_generation/db_manager.png
+    :height: 1055px
+    :width: 1922px
     :align: center
 
 |
@@ -159,9 +162,9 @@ This layer will be refered to as connected edges.
 
 |
 
- .. image:: images/graph_generation/export_to_geojson.png
-    :height: 300px
-    :width: 400px
+ .. image:: images/route_graph_generation/export_to_geojson.png
+    :height: 680px
+    :width: 611px
     :align: center
 
 |
@@ -173,9 +176,9 @@ from the connected edges geojson file into the features tag in the graph file.
 
 |
 
- .. image:: images/graph_generation/geojson_graph.png
-    :height: 600px
-    :width: 400px
+ .. image:: images/route_graph_generation/geojson_graph.png
+    :height: 1922px
+    :width: 1080px
     :align: center
 
 |
