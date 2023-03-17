@@ -182,7 +182,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
 
   Description
-    The turning radius (m) for which the regulation features are triggered when ``use_regulated_linear_velocity_scaling`` is ``tru``. Remember, sharper turns have smaller radii.
+    The turning radius (m) for which the regulation features are triggered when ``use_regulated_linear_velocity_scaling`` is ``true``. Remember, sharper turns have smaller radii.
 
 :regulated_linear_scaling_min_speed:
 
