@@ -18,9 +18,13 @@ Follow https://www.qgis.org/en/site/forusers/download.html to install QGIS.
 Tutorial Steps
 ==============
 
-1- Open QGIS and create a new project. Set the project coordinate reference system by selecting
-`project->properties->CRS`. Set the coordinate system to `WGS 84/ Pseudo-Mercator` which will work well for
-small and large scale maps.
+1- Open QGIS and create a new project by selecting `Project->New`. Save your project by selecting, `Project -> Save As`. 
+Set the project coordinate reference system by selecting `Project->Properties->CRS`. Set the coordinate system to `WGS 84/ Pseudo-Mercator` and click `OK`. 
+
+
+.. note:: 
+    The `WGS 84/ Pseudo-Mercator` is one of few coordinate systems that could be used. 
+    For more information about coordinate reference systems please review https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/coordinate_reference_systems.html. 
 
 |
 
@@ -31,11 +35,20 @@ small and large scale maps.
 
 |
 
-2- If you don't need to adjust your raster image to the map frame, click
-`Layer -> Add Layer -> Add Raster Layer`. Select your raster image and click `Add`.
+2- By default, the imported raster image origin will be at the top left corner, with x pointing to the right, and y pointing up.
+The size of the image in meters is equal to the equal to the size in pixels.
+To correctly set the orgin and the resolution we will georeference the raster image. 
+To georeference the image, three control points will choosen. Each control point maps a pixel location to the spatial reference. 
 
-3- If you need to adjust your raster image to the map frame, open the georeferencer tool
-by clicking `Raster -> Georefencer`. Set the trasformation settings to `Linear` for `Transformation 
+For example, let's say you have a 100 by 200 raster image with a resolution of 0.05 and a origin in the bottom left corner.
+The first control point we could select is (0, -200) -> (0,0). (0, -200) is the bottom left corner in the pixel frame and (0, 0) is coordinates in the spatial frame. 
+For the second control point we will select the top left corner of the image (0,0). The associated coordinates in the spatial frame can be calculated by using the resolution 
+to convert the pixels to meters. In this case, (0, 0) -> (0, 10). Where 10 m is 200 * 0.05. The last control will be the bottom right corner. (200,-200) -> (5, 0). 
+
+.. note:: 
+    Georeferencing is type of coordinate transformation that relates a digital raster image to a spatial reference. 
+
+To georeference image select `Raster -> Georefencer`. Set the `Trasformation Settings` to `Linear` for `Transformation 
 type`, `WGS 84/ Pseudo-Mercator` for `Traget SRS` and set your desired path for the `Output Raster`. 
 
 |
@@ -47,8 +60,9 @@ type`, `WGS 84/ Pseudo-Mercator` for `Traget SRS` and set your desired path for 
 
 |
 
-Select the raster image you wish to georeference and place at least three georeferencer control points. Apply the
-transformation.
+Select the raster image you wish to georeference and place control point by selecting the icon next to the `Transformation Settings` and clicking on the raster image. 
+The control points can be modified by clicking on the control point table and typing in new values. Once you are satified with your control points, apply the transformation
+by selecting `Start Transformation`. 
 
 |
 
@@ -59,7 +73,7 @@ transformation.
 
 |
 
-Drag and drop the raster file output into the layers window.
+Drag and drop the georeferenced raster file into the layers window.
 
 |
 
@@ -70,11 +84,13 @@ Drag and drop the raster file output into the layers window.
 
 |
 
-4- Now that we have the raster layer in the correct coordinate system we can start placing nodes.
+To verify the transformation worked, move the mouse around the raster image and look at the coordinates being displayed at the bottom of the window. 
+
+3- Now that we have georeferenced the raster layer we can start placing nodes.
 
 
 Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer setting to be 
-`nodes` for the `File name`, `points` for the `Geometry type` and `WGS 84/ Pseudo-Mercator` for the coordinate system. Press `OK`. 
+`nodes` for the `File name`, `Point` for the `Geometry type` and `WGS 84/ Pseudo-Mercator` for the coordinate system. Press `OK`. 
 
 |
 
@@ -85,8 +101,8 @@ Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer s
 
 |
 
-In order to have the `id` field auto increment, right click on the layer and select the `Attribute Form`. 
-Expand the `Fields` drop down menu and select `id`. Select the `Expression Dialog` that is next to the `Default value`. 
+In order to have the `id` field auto increment, right click on the layer and select the `Properties -> Attribute Form`. 
+Expand the `Fields` drop down menu and select `id`. Select the `Expression Dialog` icon which is next to the `Default value` field. 
 
 |
 
@@ -98,7 +114,7 @@ Expand the `Fields` drop down menu and select `id`. Select the `Expression Dialo
 |
 
 
-Within the `Expression Dialog` select `Import user expressions` and import `increment_node_id.json`. Expand `User expressions` and double click on `increment_node_id`. 
+Within the `Expression Dialog` select `Import user expressions` and import `increment_node_id.json` which exists in the scripts file with the nav2 route module. Expand `User expressions` and double click on `increment_node_id`. 
 The expression should show up in the left window. Click `OK` to save the expression and exit the `Expression Dialog`. Then click `Apply` and `OK` and save and exit the `Attributes Form`.
 This will increment the node `id` by one every time a new node is added. The first node `id` will be zero. 
 
@@ -112,7 +128,8 @@ This will increment the node `id` by one every time a new node is added. The fir
 |
 
 
-Click on the node layer and then on the pencil icon to start editing the layer. To add points, click on `Add points feature`. Start adding nodes by clicking in the main window. 
+Click on the node layer and then on the pencil icon to start editing the layer. To add points, click on `Add points feature`. Start adding nodes by clicking in the main window.
+Each time a node is added, a window will pop up with the auto incremented id. Press `OK` to continue placing points.
 
 |
 
@@ -123,8 +140,14 @@ Click on the node layer and then on the pencil icon to start editing the layer. 
 
 |
 
+.. note:: 
+    By default, if a node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual
+    or multiple nodes are deleted. Any node that is added will contiune to increment based on the highest id. This value can be overwriten by the user 
+    though the pop window after node placement or though the `Attribute Table`. To delete features in a layer right click on the layer and select `Open Attribute Table`. 
+    Click on `Target Multi Edit Mode`, select the features to delete, and click on the trash can icon.     
 
-5- Now an edge layer can be created. Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer setting to be 
+
+4- Now an edge layer can be created. Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer setting to be 
 `edges` for the `File name`, `LineString` for the `Geometry type` and `WGS 84/ Pseudo-Mercator` for the coordinate system. Press `OK`.
 To auto incrment the `id` field follow the same steps as above except replace `increment_node_id.json` with `increment_edge_id.json`. 
 This will increment the edge `id` by one every time a new edge is added. The first edge `id` will be `10000`. 
@@ -138,7 +161,7 @@ This will increment the edge `id` by one every time a new edge is added. The fir
 
 |
 
-Click on the edge layer and then on the pencil icon to start editing the layer. To add edges, click on `Add Line feature`. Start addig edges by clicking twice in the main window. 
+Click on the edge layer and then on the pencil icon to start editing the layer. To add edges, click on `Add Line feature`. Start adding edges by clicking twice in the main window. 
 (First point is start, second point is end). Press `Esc` when you have finished adding the two points.  
 
 |
@@ -150,13 +173,18 @@ Click on the edge layer and then on the pencil icon to start editing the layer. 
 
 |
 
+.. note:: 
+    To see the directionality of the edges, right click on the edge layer and select `Properties`. Click `Symbology -> Simple Line` and change the `Symbol layer type` to `Arrow`.
+    Click `Ok`. You should now be able to see arrows for each line string.  
 
-7- Now that we have our node and edge layers, we can associate node IDs with edge IDs. 
 
+5- Now that we have our node and edge layers, we can associate node IDs with edge IDs. 
 Select `Database -> DB manager`. Expand `Virtual layers` and expand `Project layers`. Open up
-the SQL window by clicking on the script icon in the top left corner. In the SQL window load in the association script by selecting `Load File`. 
-Execute the script. Load the new layer by checking the `Load as new layer` box and clicking `Load`. The script associates the start and end of a line by matching the node 
-point to the line string end or start point. We will refer to this new layer as `connected_edges`. 
+the SQL window by clicking on the script icon in the top left corner. In the SQL window load in `generate_start_and_end_id.sql` by selecting `Load File`. 
+The script can found within the scripts directory in the nav2_route module.  
+Execute the script. Load the new layer by checking the `Load as new layer` box and clicking `Load`. The script associates the start and end of a line string by matching the node 
+point. Then export the layer as a ShapeFile by right clicking on the layer selecting `Export -> Save Feature As`. Change the format to type to `ESRI Shapefile`, name the file, and verify that the 
+coordinate reference system is `WGS 84 /Pseudo-Mercator`. Press `OK`. 
 
 |
 
@@ -167,12 +195,12 @@ point to the line string end or start point. We will refer to this new layer as 
 
 |
 
-8- We are now ready to export the node and edge layer as geojson files. Execute `export_shapefiles.py <prefix_of_file> <path_to_connected_edges_shapefile> <path_to_nodes_shapefile>`. 
-This script converts the nodes and edges shape file into a geojson file. 
+6- We are now ready to export the node and edge layer as geojson files. Execute `export_shapefiles.py <prefix_of_file> <path_to_edges_shapefile> <path_to_nodes_shapefile>`
+within the scripts directory located in the nav2_route module. This script converts the nodes and edges shape file into a geojson file. 
 
-9- Congratulations! Your graph is ready to be consumed by the nav2 route! If you wish to add nodes or edges to your graph, 
-edit the layers and repeat the proccess from step 6. If you wish to adjust the graph, make sure `Editing` is toggled on for the 
-node and edge layer. Then select `Vertex Tool(all Layers)` and toggle on `Topological Editing`. Repeat the proccess from step 7. 
+7- Congratulations! Your graph is ready to be consumed by the nav2 route! If you wish to add nodes or edges to your graph, 
+edit the layers and repeat the proccess from step 5 to regenerate the graph. If you wish to adjust the graph, make sure `Editing` is toggled on for the 
+node and edge layer. Then select `Vertex Tool(all Layers)` and toggle on `Topological Editing`. Repeat the proccess from step 5 to regenerate the graph. 
 
 
 Happy Routing!
