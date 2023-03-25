@@ -91,6 +91,17 @@ Parameters
   Description:
     Output ``cmd_vel`` topic with output produced by Collision Monitor velocities.
 
+:state_topic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         ""
+  ============== =============================
+
+  Description:
+    Output the currently activated polygon action type and name. Optional parameter. No publisher will be created if it is unspecified.
+
 :transform_tolerance:
 
   ============== =============================
