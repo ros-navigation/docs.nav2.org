@@ -91,6 +91,17 @@ Parameters
   Description:
     Output ``cmd_vel`` topic with output produced by Collision Monitor velocities.
 
+:state_topic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         ""
+  ============== =============================
+
+  Description:
+    Output the currently activated polygon action type and name. Optional parameter. No publisher will be created if it is unspecified.
+
 :transform_tolerance:
 
   ============== =============================
@@ -372,6 +383,7 @@ For more information how to bring-up your own Collision Monitor node, please ref
         odom_frame_id: "odom"
         cmd_vel_in_topic: "cmd_vel_raw"
         cmd_vel_out_topic: "cmd_vel"
+        state_topic: "collision_monitor_state"
         transform_tolerance: 0.5
         source_timeout: 5.0
         base_shift_correction: True

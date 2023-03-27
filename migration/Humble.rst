@@ -172,3 +172,8 @@ More stable regulation on curves for long lookahead distances
 *************************************************************
 
 `PR #3414 <https://github.com/ros-planning/navigation2/pull/3414>`_ adds a new ``use_fixed_curvature_lookahead`` parameter to the RPP controller. This makes slowing down on curve not dependent on the instantaneous lookahead point, but instead on a fixed distance set by the parameter ``curvature_lookahead_dist``.
+
+Publish Collision Monitor State
+*******************************
+
+`PR #3504 <https://github.com/ros-planning/navigation2/pull/3504>`_ adds a new ``state_topic`` parameter to the CollisionMonitor. If specified, this optional parameter enables the state topic publisher. The topic reports the currently activated polygon action type and name.
