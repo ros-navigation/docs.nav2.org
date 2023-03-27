@@ -99,6 +99,7 @@ Costmap Filter Info Server Parameters
     - 0: keepout zones / preferred lanes filter
     - 1: speed filter, speed limit is specified in % of maximum speed
     - 2: speed filter, speed limit is specified in absolute value (m/s)
+    - 3: binary filter
 
 :filter_info_topic:
 
