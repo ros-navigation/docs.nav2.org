@@ -94,7 +94,18 @@ While the colcon workspace is being built, VS Code will simultaneously install a
 
 Finally, the `postCreateCommand` is executed, which also reruns whenever the container is started or restarted. Specifically, for this project, this command makes a last few tweaks to the user's environment to improve the development experience.
 
-To speed up subsequent startups, volumes are mounted to store the ccache directory, while the environment is set to enable ccache via colcon mixins.
+To speed up subsequent startups, volumes are mounted to the container store a persistent ccache directory, while the environment is set to enable [ccache](https://ccache.dev/) via [colcon mixins](https://github.com/colcon/colcon-mixin-repository). Additionally, the container is granted [privileged](https://docs.docker.com/engine/reference/commandline/run/#privileged) capabilities and connected using the [host](https://docs.docker.com/network/host/) network mode. This is especially useful for:
+
+- Hybrid development
+  - Enables connecting ROS nodes external to the container
+  - Applicable for debugging or visualizing distributed systems
+  - Necessary for DDS discovery and shared memory transport
+- Device connectivity
+  - Enables hardware forwarding from host machine to container
+  - Applicable for ROS package using sensors and actuators
+  - Necessary for some GPU drivers and USB devices
+
+Note that these `runArgs` in the `devcontainer.json` config can be further customized, either expanded or or narrowed in scope, to better suit your desired development environment. The current configuration is merely the project default in order to be the most flexible and useful for the widest range of development use cases.
 
 ## Using Dev Containers
 
