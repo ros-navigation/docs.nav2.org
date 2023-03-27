@@ -123,6 +123,13 @@ If you prefer using alternate terminal emulators, rather than the built-in VS Co
 ](https://docs.docker.com/engine/reference/commandline/exec/)
   - `docker exec -it <container-id> bash`
 
+### Lifecycle
+
+While using the dev container, try and keep in mind the lifecycle of the container itself. Specifically, containers are ephemeral, meaning they are normally destroyed and recreated whenever the dev environment is rebuilt or updated. Subsequently, a best practice is to avoid storing any persistent data within the container, and instead utilize the project's source directory, or a separate mounted volume. When altering the development environment inside the container, try to remember to codify your changes into the Dockerfile, or the `devcontainer.json` config file, so that they can be easily reproduced and shared with others. This is particularly important when the host machine is inherently ephemeral as well, as the case may be when using cloud based environments such as Codespaces:
+
+- [The codespace lifecycle](https://docs.github.com/en/codespaces/getting-started/the-codespace-lifecycle)
+  - Maintain your data throughout the entire codespace lifecycle
+
 ## Security
 
 A word of caution when using dev containers: they are powerful tools, but can be a security concern, as the capability of arbitrary code execution facilitated by IDE extensions to enable such automation and convenience remains inherently dual use. Before launching a dev container, ensure you trust the workspaces and authors. For example, when reviewing a pull request, verify patches remain benign and do not introduce any malicious code. Although such vigilance is merited whenever compiling and running patched code, using containers with either elevated privileges or filesystem access renders this diligence even more prudent. More info on trusting workspaces and extensions in general can be found here:
