@@ -64,7 +64,7 @@ While you wait, feel free to stretch your legs, grab a coffee, or continue to re
 
 When first creating Dev Containers, any supporting tool or service used will download and build the docker images needed to run the container. This includes pulling any parent images the project's Dockerfile builds `FROM`, as well as any tags or layers declared via `cacheFrom`, as specified in the chosen `devcontainer.json` config file. This can take a while, but only needs to be done once, or at least not again until such layers are updated and pushed to the image registry.
 
-Specifically, for this project, the default `devcontainer.json` file targets the `dever` stage within the project's root Dockerfile, the stage that also includes handy tools for developing the project, such as bash auto completion. This stage is in turn built `FROM` the `builder` stage, the stage that only includes the dependencies needed for building the project, as reused by the project's CI.
+Specifically, for this project, the default `devcontainer.json` file targets the `dever` stage within the project's root Dockerfile, the stage that also includes handy tools for developing the project, such as bash auto completion. This stage is in turn built `FROM` the `builder` stage, the stage that only includes the dependencies needed for building the project, as reused by the project's CI. For example, the `dever` stage modifies `/etc/bash.bashrc` to automatically source `install/setup.bash` from the underlay workspace, ensuring all VS Code extensions are loaded with the correct environment, while avoiding any race conditions during installation and startup.
 
 To speed up the initial build, images layers from this `builder` stage are cached by pulling the same image tag used by the project's CI, hosted from the image registry. This ensures your local dev container replicates our CI environment as close as possible, while benefiting from any cached work preemptively performed by the CI. Yet, this still allows you to customize the project's Dockerfile and rebuild the container, without needing to update CI images to reflect your local modifications.
 
@@ -113,8 +113,15 @@ Once the dev container has been created and setup completed, VS Code will open a
 
 So to build or test the project, simply open a terminal, cd to the root of the colcon workspace, and run the usual colcon commands. You may also want to incorporate the same colcon verbs used by the setup commands from the `devcontainer.json` config file to further automate your local development workflow.
 
-##
+### Terminals
 
+If you prefer using alternate terminal emulators, rather than the built-in VS Code terminal, you can also open a separate shell session directly using devcontainer CLI, or simply via docker exec. Note that new shell sessions started via `exec` will not automatically inherit the same environment setup by the `postCreateCommand` from the `devcontainer.json` config file. So you may need to manually source any necessary scripts, such as `install/setup.bash` from the underlay workspace.
+
+- [Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli)
+  - `devcontainer exec --workspace-folder <path-to-workspace> bash`
+- [docker exec
+](https://docs.docker.com/engine/reference/commandline/exec/)
+  - `docker exec -it <container-id> bash`
 
 ## Security
 
