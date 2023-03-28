@@ -130,6 +130,28 @@ While using the dev container, try and keep in mind the lifecycle of the contain
 - [The codespace lifecycle](https://docs.github.com/en/codespaces/getting-started/the-codespace-lifecycle)
   - Maintain your data throughout the entire codespace lifecycle
 
+### Rebuilding
+
+From time to time, you may need to rebuild the dev container, either because the base image, or `.devcontainer/` config was updated, or simply out of wanting a new fresh development environment. To do so, simply open the Command Palette (Ctrl+Shift+P) and select the `Remote-Containers: Rebuild Container` command. For example, you may need to rebuild the dev container when:
+
+- Pulling newer images from a container registry
+  - specifically, image tags built `FROM` in the Dockerfile
+  - or tags listed under `cacheFrom` in `devcontainer.json`
+  - periodically done manually to ensure local environment reflects CI
+- Updating the dev container configuration
+  - specifically when modifying dependent stages in the `Dockerfile`
+  - or when modifying `./devcontainer` files and commands
+  - where build cache reuse correlates with severity of changes made
+
+If necessary, you can also rebuild the container from scratch, e.i. without caching from docker, by selecting the `Remote-Containers: Rebuild Container Without Cache` command instead. Rebuilding without caching may be necessary when:
+
+- Needing to update the base image
+  - specifically if dev container configurations remain unmodified
+  - to forcefully rerun a `RUN` directive in the Dockerfile
+  - such as unchanged `apt upgrade` or `rosdep update` commands
+
+Specifically, for this project, volumes remain unaffected by this rebuilding process: i.e. those used to mount the ccache directory. The management of these volumes is left for the developers discretion, and can be done via the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/), or the [VS Code Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker). However, other projects may of course handle this differently, so be sure to check the `./devcontainer` configuration to inspect how various container resources may be managed.
+
 ## Security
 
 A word of caution when using dev containers: they are powerful tools, but can be a security concern, as the capability of arbitrary code execution facilitated by IDE extensions to enable such automation and convenience remains inherently dual use. Before launching a dev container, ensure you trust the workspaces and authors. For example, when reviewing a pull request, verify patches remain benign and do not introduce any malicious code. Although such vigilance is merited whenever compiling and running patched code, using containers with either elevated privileges or filesystem access renders this diligence even more prudent. More info on trusting workspaces and extensions in general can be found here:
