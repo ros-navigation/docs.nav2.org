@@ -249,7 +249,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Minimum number of data readings within a zone to trigger the action.
+    Minimum number of data readings within a zone to trigger the action. Formerly ``max_points`` parameter for Humble, that meant the maximum number of data readings within a zone to not trigger the action). ``min_points`` is equal to ``max_points + 1`` value.
 
 :``<polygon_name>``.slowdown_ratio:
 
@@ -393,14 +393,14 @@ For more information how to bring-up your own Collision Monitor node, please ref
           type: "circle"
           radius: 0.3
           action_type: "stop"
-          min_points: 4
+          min_points: 4  # max_points: 3 for Humble
           visualize: True
           polygon_pub_topic: "polygon_stop"
         PolygonSlow:
           type: "polygon"
           points: [1.0, 1.0, 1.0, -1.0, -0.5, -1.0, -0.5, 1.0]
           action_type: "slowdown"
-          min_points: 4
+          min_points: 4  # max_points: 3 for Humble
           slowdown_ratio: 0.3
           visualize: True
           polygon_pub_topic: "polygon_slowdown"
@@ -410,7 +410,7 @@ For more information how to bring-up your own Collision Monitor node, please ref
           footprint_topic: "/local_costmap/published_footprint"
           time_before_collision: 2.0
           simulation_time_step: 0.02
-          min_points: 6
+          min_points: 6  # max_points: 5 for Humble
           visualize: False
         observation_sources: ["scan", "pointcloud"]
         scan:
