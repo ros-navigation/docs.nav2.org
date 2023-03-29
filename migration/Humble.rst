@@ -177,3 +177,9 @@ Publish Collision Monitor State
 *******************************
 
 `PR #3504 <https://github.com/ros-planning/navigation2/pull/3504>`_ adds a new ``state_topic`` parameter to the CollisionMonitor. If specified, this optional parameter enables the state topic publisher. The topic reports the currently activated polygon action type and name.
+
+
+Velocity smoother applies deceleration when timeout
+***************************************************
+
+`PR #3512 <https://github.com/ros-planning/navigation2/pull/3512>`_ makes the VelocitySmoother apply the deceleration when the input command timeout.
