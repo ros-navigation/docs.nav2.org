@@ -25,8 +25,8 @@ When multiple zones trigger at once, the most aggressive one is used (e.g. stop 
 
 The following models of safety behaviors are employed by Collision Monitor:
 
-- **Stop model**: Define a zone and a point threshold. If more that ``max_points`` obstacle points appear inside this area, stop the robot until the obstacles will disappear.
-- **Slowdown model**: Define a zone around the robot and slow the maximum speed for a ``slowdown_ratio``, if more than ``max_points`` points will appear inside the area.
+- **Stop model**: Define a zone and a point threshold. If ``min_points`` or more obstacle points appear inside this area, stop the robot until the obstacles will disappear.
+- **Slowdown model**: Define a zone around the robot and slow the maximum speed for a ``slowdown_ratio``, if ``min_points`` or more points will appear inside the area.
 - **Approach model**: Using the current robot speed, estimate the time to collision to sensor data. If the time is less than ``time_before_collision`` seconds (0.5, 2, 5, etc...), the robot will slow such that it is now at least ``time_before_collision`` seconds to collision. The effect here would be to keep the robot always ``time_before_collision`` seconds from any collision.
 
 The zones around the robot can take the following shapes:
@@ -240,16 +240,16 @@ Polygons parameters
   Description:
     Zone behavior model. Available values are ``stop``, ``slowdown``, ``approach``. Causes an error, if not specialized.
 
-:``<polygon_name>``.max_points:
+:``<polygon_name>``.min_points:
 
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  int            3
+  int            4
   ============== =============================
 
   Description:
-    Maximum number of data readings within a zone to not trigger the action.
+    Minimum number of data readings within a zone to trigger the action. Former ``max_points`` parameter for Humble, that meant the maximum number of data readings within a zone to not trigger the action). ``min_points`` is equal to ``max_points + 1`` value.
 
 :``<polygon_name>``.slowdown_ratio:
 
@@ -393,14 +393,14 @@ For more information how to bring-up your own Collision Monitor node, please ref
           type: "circle"
           radius: 0.3
           action_type: "stop"
-          max_points: 3
+          min_points: 4  # max_points: 3 for Humble
           visualize: True
           polygon_pub_topic: "polygon_stop"
         PolygonSlow:
           type: "polygon"
           points: [1.0, 1.0, 1.0, -1.0, -0.5, -1.0, -0.5, 1.0]
           action_type: "slowdown"
-          max_points: 3
+          min_points: 4  # max_points: 3 for Humble
           slowdown_ratio: 0.3
           visualize: True
           polygon_pub_topic: "polygon_slowdown"
@@ -410,7 +410,7 @@ For more information how to bring-up your own Collision Monitor node, please ref
           footprint_topic: "/local_costmap/published_footprint"
           time_before_collision: 2.0
           simulation_time_step: 0.02
-          max_points: 5
+          min_points: 6  # max_points: 5 for Humble
           visualize: False
         observation_sources: ["scan", "pointcloud"]
         scan:

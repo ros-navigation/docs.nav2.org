@@ -846,6 +846,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#dwb-forward-vs-reverse-pruning">DWB Forward vs Reverse Pruning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#more-stable-regulation-on-curves-for-long-lookahead-distances">More stable regulation on curves for long lookahead distances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#publish-collision-monitor-state">Publish Collision Monitor State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#renamed-ros-parameter-in-collision-monitor">Renamed ROS-parameter in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#velocity-smoother-applies-deceleration-when-timeout">Velocity smoother applies deceleration when timeout</a></li>
 </ul>
 </li>
@@ -929,8 +930,8 @@ A given instance of the Collision Monitor can have many zones with different mod
 When multiple zones trigger at once, the most aggressive one is used (e.g. stop &gt; slow 50% &gt; slow 10%).</p>
 <p>The following models of safety behaviors are employed by Collision Monitor:</p>
 <ul class="simple">
-<li><p><strong>Stop model</strong>: Define a zone and a point threshold. If more that <code class="docutils literal notranslate"><span class="pre">max_points</span></code> obstacle points appear inside this area, stop the robot until the obstacles will disappear.</p></li>
-<li><p><strong>Slowdown model</strong>: Define a zone around the robot and slow the maximum speed for a <code class="docutils literal notranslate"><span class="pre">slowdown_ratio</span></code>, if more than <code class="docutils literal notranslate"><span class="pre">max_points</span></code> points will appear inside the area.</p></li>
+<li><p><strong>Stop model</strong>: Define a zone and a point threshold. If <code class="docutils literal notranslate"><span class="pre">min_points</span></code> or more obstacle points appear inside this area, stop the robot until the obstacles will disappear.</p></li>
+<li><p><strong>Slowdown model</strong>: Define a zone around the robot and slow the maximum speed for a <code class="docutils literal notranslate"><span class="pre">slowdown_ratio</span></code>, if <code class="docutils literal notranslate"><span class="pre">min_points</span></code> or more points will appear inside the area.</p></li>
 <li><p><strong>Approach model</strong>: Using the current robot speed, estimate the time to collision to sensor data. If the time is less than <code class="docutils literal notranslate"><span class="pre">time_before_collision</span></code> seconds (0.5, 2, 5, etc…), the robot will slow such that it is now at least <code class="docutils literal notranslate"><span class="pre">time_before_collision</span></code> seconds to collision. The effect here would be to keep the robot always <code class="docutils literal notranslate"><span class="pre">time_before_collision</span></code> seconds from any collision.</p></li>
 </ul>
 <p>The zones around the robot can take the following shapes:</p>
@@ -1296,7 +1297,7 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.max_points</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.min_points</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1307,12 +1308,12 @@ Subscribed footprint is also having the same properties as other polygons, but i
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>int</p></td>
-<td><p>3</p></td>
+<td><p>4</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Maximum number of data readings within a zone to not trigger the action.</p>
+<dt>Description:</dt><dd><p>Minimum number of data readings within a zone to trigger the action. Former <code class="docutils literal notranslate"><span class="pre">max_points</span></code> parameter for Humble, that meant the maximum number of data readings within a zone to not trigger the action). <code class="docutils literal notranslate"><span class="pre">min_points</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">max_points</span> <span class="pre">+</span> <span class="pre">1</span></code> value.</p>
 </dd>
 </dl>
 </dd>
@@ -1545,14 +1546,14 @@ For more information how to bring-up your own Collision Monitor node, please ref
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;circle&quot;</span>
 <span class="w">      </span><span class="nt">radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">      </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stop&quot;</span>
-<span class="w">      </span><span class="nt">max_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">  </span><span class="c1"># max_points: 3 for Humble</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_stop&quot;</span>
 <span class="w">    </span><span class="nt">PolygonSlow</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
 <span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;slowdown&quot;</span>
-<span class="w">      </span><span class="nt">max_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">  </span><span class="c1"># max_points: 3 for Humble</span>
 <span class="w">      </span><span class="nt">slowdown_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_slowdown&quot;</span>
@@ -1562,7 +1563,7 @@ For more information how to bring-up your own Collision Monitor node, please ref
 <span class="w">      </span><span class="nt">footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/local_costmap/published_footprint&quot;</span>
 <span class="w">      </span><span class="nt">time_before_collision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
 <span class="w">      </span><span class="nt">simulation_time_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.02</span>
-<span class="w">      </span><span class="nt">max_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">      </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span><span class="w">  </span><span class="c1"># max_points: 5 for Humble</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 <span class="w">    </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;scan&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;pointcloud&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">scan</span><span class="p">:</span>
