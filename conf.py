@@ -111,7 +111,7 @@ else:
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
     html_theme_options = {
         'canonical_url': '',
-        'analytics_id': '',
+        'analytics_id': 'G-EVD5Z6G6NH',
         'logo_only': False,
         'display_version': True,
         'prev_next_buttons_location': 'None',
