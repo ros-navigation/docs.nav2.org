@@ -185,7 +185,7 @@ Renamed ROS-parameter in Collision Monitor
 
 New polygon "limit" in Collision Monitor
 ******************************************
-`PR #3519 <https://github.com/ros-planning/navigation2/pull/3519>`_ addes a new polygon type ``limit`` that limits the linear and angular speed to specific values if enough points are in the polygon.
+`PR #3519 <https://github.com/ros-planning/navigation2/pull/3519>`_ addes a new polygon type ``limit`` that limits the linear and angular speed to specific values (`linear_limit` and `angular_limit`) if enough points are in the polygon.
 
 Velocity smoother applies deceleration when timeout
 ***************************************************
