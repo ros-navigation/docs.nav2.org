@@ -9,6 +9,13 @@ Alternatively you can use dev containers to build the project if you prefer a st
 - [GitHub Codespaces overview](https://docs.github.com/en/codespaces/overview)
   - A development environment hosted in the cloud
 
+```{toctree}
+:hidden:
+
+dev_containers_docs/development_guide.md
+dev_containers_docs/visualization_guide.md
+```
+
 ## What, why, how?
 
 Lets briefly explain what dev containers are, why you should use them, and how they work. Here, we'll assume the use of VS Code, but the same concepts apply to other supporting tools and services, including alternative CLIs, IDEs, etc. such as:
@@ -58,7 +65,12 @@ Alternatively, you could use GitHub Codespaces directly from the project repo:
 
 Creating a dev container is as simple as opening the project in VS Code by either: following the prompts to reopen the project in a container, or explicitly opening the command palette and selecting `Remote-Containers: Reopen in Container`. This will create a new container, install any extensions specified in the project's default `.devcontainer/devcontainer.json` config file, and mount the project's root directory within the container. Once the container is created, VS Code will connect to it and you can start developing.
 
-While you wait, feel free to stretch your legs, grab a coffee, or continue to read the following subsections to learn more about how dev containers are constructed. Note: opening the output log in VS Code allows you to watch how this sausage is made.
+While you wait, feel free to stretch your legs, grab a coffee, or continue to read the following guides to learn more about how dev containers are constructed. Note: opening the output log in VS Code allows you to watch how this sausage is made.
+
+- [](dev_containers_docs/development_guide.md)
+  - How to develop Nav2 using dev containers and supporting tools
+- [](dev_containers_docs/visualization_guide.md)
+  - How to visualize Nav2 using local or remote headless containers
 
 ## Security
 
