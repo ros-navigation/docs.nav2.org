@@ -16,7 +16,7 @@ dev_containers_docs/development_guide.md
 dev_containers_docs/visualization_guide.md
 ```
 
-## What, why, how?
+## What, Why, How?
 
 Lets briefly explain what dev containers are, why you should use them, and how they work.
 
