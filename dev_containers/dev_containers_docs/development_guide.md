@@ -66,7 +66,18 @@ More documentation about these additional colcon verb extensions can be found he
 
 Finally, the `postCreateCommand` is executed, which also reruns whenever the container is started or restarted. Specifically, for this project, this command makes a last few tweaks to the user's environment to improve the development experience.
 
-To speed up subsequent startups, volumes are mounted to the container store a persistent ccache directory, while the environment is set to enable [ccache](https://ccache.dev/) via [colcon mixins](https://github.com/colcon/colcon-mixin-repository). Additionally, the container is granted [privileged](https://docs.docker.com/engine/reference/commandline/run/#privileged) capabilities and connected using the [host](https://docs.docker.com/network/host/) network mode. This is especially useful for:
+To speed up subsequent startups, volumes are mounted to the container store a persistent ccache and colcon workspace, while the environment is set to enable [ccache](https://ccache.dev/) via [colcon mixins](https://github.com/colcon/colcon-mixin-repository). These volumes are labeled using the [`devcontainerId`](https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson) variable, which uniquely identify the dev container on a Docker host, allowing us refer to an common identifier that is unique to the dev container, while remaining stable across rebuilds. This is especially useful for:
+
+- Caching
+  - Enables colcon workspaces and ccache to persist between container rebuilds
+  - Applicable for avoiding re-compilation when modifying dev container config files
+  - Necessary for quickly customizing image or features without rebuilding from scratch
+
+:::{tip}
+While these volumes are uniquely named, you may like renaming them locally to further organize or segment works-in-progress. E.g. appending branch names to the volume name to quickly switch between pull requests and cached colcon workspaces.
+:::
+
+Additionally, the container is granted [privileged](https://docs.docker.com/engine/reference/commandline/run/#privileged) capabilities and connected using the [host](https://docs.docker.com/network/host/) network mode. This is especially useful for:
 
 - Hybrid development
   - Enables connecting ROS nodes external to the container
