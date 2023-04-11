@@ -66,7 +66,7 @@ Alternatively, you could use GitHub Codespaces directly from the project repo, o
 - [Creating a codespace for a repository](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository?tool=webui)
   - How to create a codespace for repository via GitHub CLI, VS Code, or Web browser
 - [Develop on a remote Docker host](https://code.visualstudio.com/remote/advancedcontainers/develop-remote-host)
-  - How to connect VS Code to a remote Docker host using SSH or TCP sockets
+  - How to connect VS Code to a remote Docker host using SSH tunnels or TCP sockets
 :::
 
 ## Getting started
