@@ -1,6 +1,20 @@
 # Development Guide
 
+In this guide, we'll walk through the process of creating and using dev containers for the project. While included subsections will provide greater detail on the various aspects of the process, complete comprehension of the entire guide is not required to get started, but is recommended for those interested in how dev containers work, or how to customize or optimize them for their own personal workflows.
+
 ## Creating Dev Containers
+
+Before creating a dev container, you'll want to choose the exact configuration to use. By default the `.devcontainer/devcontainer.json` configuration is selected, however you can also choose any other `devcontainer.json` file in the `.devcontainer/` directory, where such configurations can be nested to provide greater customization: either by targeting different stages within different Dockerfiles, overriding any merged metadata or default properties, or inclusion of additional extensions and alternate commands.
+
+:::{seealso}
+The specification, reference, and schema for the `devcontainer.json` config file format can be found here:
+- [Specification](https://containers.dev/implementors/spec)
+  - Development Container Specification
+- [Reference](https://containers.dev/implementors/json_reference)
+  - Metadata and properties reference
+- [Schema](https://containers.dev/implementors/json_schema)
+  - JSON schema for `devcontainer.json`
+:::
 
 ### Building the image
 
