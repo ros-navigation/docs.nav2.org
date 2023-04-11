@@ -77,7 +77,9 @@ To speed up subsequent startups, volumes are mounted to the container store a pe
   - Applicable for ROS package using sensors and actuators
   - Necessary for some GPU drivers and USB devices
 
-Note that these `runArgs` in the `devcontainer.json` config can be further customized, either expanded or or narrowed in scope, to better suit your desired development environment. The current configuration is merely the project default in order to be the most flexible and useful for the widest range of development use cases.
+:::{attention}
+These `runArgs` in the `devcontainer.json` config can be further customized, either expanded or or narrowed in scope, to better suit your desired development environment. The current configuration is merely the project default in order to be the most flexible and useful for the widest range of development use cases.
+:::
 
 ## Using Dev Containers
 
