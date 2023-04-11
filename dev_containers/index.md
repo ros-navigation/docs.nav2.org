@@ -56,10 +56,12 @@ To use dev containers, you'll need the following:
 - [Visual Studio Code](https://code.visualstudio.com/) installed on any remote machine
 - [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed in VS Code
 
-Alternatively, you could use GitHub Codespaces directly from the project repo:
+Alternatively, you could use GitHub Codespaces directly from the project repo, or any other remote host machine:
 
 - [Creating a codespace for a repository](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository?tool=webui)
   - How to create a codespace for repository via GitHub CLI, VS Code, or Web browser
+- [Develop on a remote Docker host](https://code.visualstudio.com/remote/advancedcontainers/develop-remote-host)
+  - How to connect VS Code to a remote Docker host using SSH or TCP sockets
 
 ## Creating Dev Containers
 
