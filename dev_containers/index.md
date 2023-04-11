@@ -63,11 +63,11 @@ Alternatively, you could use GitHub Codespaces directly from the project repo, o
 - [Develop on a remote Docker host](https://code.visualstudio.com/remote/advancedcontainers/develop-remote-host)
   - How to connect VS Code to a remote Docker host using SSH or TCP sockets
 
-## Creating Dev Containers
+## Getting started
 
-Creating a dev container is as simple as opening the project in VS Code by either: following the prompts to reopen the project in a container, or explicitly opening the command palette and selecting `Remote-Containers: Reopen in Container`. This will create a new container, install any extensions specified in the project's default `.devcontainer/devcontainer.json` config file, and mount the project's root directory within the container. Once the container is created, VS Code will connect to it and you can start developing.
+Getting started using dev containers is as simple as opening the project in VS Code by either: following the notification prompt to reopen the project in a container, or explicitly opening the command palette (Crtl+Shift+P) and selecting `Remote-Containers: Reopen in Container`. This will create a new container, install any extensions specified in the project's default `.devcontainer/devcontainer.json` config file, and mount the project's root directory as the workspace folder. Once the container is created, VS Code will connect to it and you can start developing.
 
-While you wait, feel free to stretch your legs, grab a coffee, or continue to read the following guides to learn more about how dev containers are constructed. Note: opening the output log in VS Code allows you to watch how this sausage is made.
+While waiting for the initial setup, feel free to stretch your legs, grab a coffee, or continue to read the following guides to learn more about how dev containers are constructed. Note: clicking the `Starting Dev Container (show log)` notification in VS Code allows you to observe how the sausage is made.
 
 - [](dev_containers_docs/development_guide.md)
   - How to develop Nav2 using dev containers and supporting tools
