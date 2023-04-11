@@ -27,7 +27,7 @@ The following models of safety behaviors are employed by Collision Monitor:
 
 - **Stop model**: Define a zone and a point threshold. If ``min_points`` or more obstacle points appear inside this area, stop the robot until the obstacles will disappear.
 - **Slowdown model**: Define a zone around the robot and slow the maximum speed for a ``slowdown_ratio``, if ``min_points`` or more points will appear inside the area.
-- **Limit model**: Define a zone around the robot and restricts the maximum speed to ``linear_limit`` and ``angular_limit``, if ``min_points`` or more points will appear inside the area.
+- **Limit model**: Define a zone around the robot and restricts the maximum linear and angular velocities to ``linear_limit`` and ``angular_limit`` values accordingly, if ``min_points`` or more points will appear inside the area.
 - **Approach model**: Using the current robot speed, estimate the time to collision to sensor data. If the time is less than ``time_before_collision`` seconds (0.5, 2, 5, etc...), the robot will slow such that it is now at least ``time_before_collision`` seconds to collision. The effect here would be to keep the robot always ``time_before_collision`` seconds from any collision.
 
 The zones around the robot can take the following shapes:
@@ -436,7 +436,6 @@ For more information how to bring-up your own Collision Monitor node, please ref
           angular_limit: 0.5
           visualize: True
           polygon_pub_topic: "polygon_limit"
-      polygon_pub_topic: "polygon_limit"
         FootprintApproach:
           type: "polygon"
           action_type: "approach"
