@@ -32,6 +32,8 @@ sys.path.insert(0, os.path.abspath('.'))
 # ones.
 extensions = ['breathe', 'myst_parser', 'sphinx.ext.graphviz', 'sphinxcontrib.plantuml', 'sphinx.ext.extlinks']
 
+myst_enable_extensions = ['colon_fence']
+
 graphviz_output_format='png'
 graphviz_dot_args=[
    '-Nfontname="verdana"',
