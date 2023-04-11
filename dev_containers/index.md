@@ -18,7 +18,10 @@ dev_containers_docs/visualization_guide.md
 
 ## What, why, how?
 
-Lets briefly explain what dev containers are, why you should use them, and how they work. Here, we'll assume the use of VS Code, but the same concepts apply to other supporting tools and services, including alternative CLIs, IDEs, etc. such as:
+Lets briefly explain what dev containers are, why you should use them, and how they work.
+
+:::{hint}
+Here we'll assume the use of VS Code, but still applies to alternative tools and services, including  other CLIs, IDEs, etc. such as:
 
 - [Dev Container CLI](https://github.com/devcontainers/cli)
   - A reference implementation for the open specification
@@ -26,6 +29,7 @@ Lets briefly explain what dev containers are, why you should use them, and how t
   - Using Dev Containers with JetBrain based products
 - [Supporting tools](https://containers.dev/supporting)
   - List of tools and services supporting the development container specification
+:::
 
 ### What is a Dev Container?
 
