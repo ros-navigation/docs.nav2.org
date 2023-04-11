@@ -89,7 +89,7 @@ While waiting for the initial setup, feel free to stretch your legs, grab a coff
 A word of caution when using dev containers: they are powerful tools, but can be a security concern, as the capability of arbitrary code execution facilitated by IDE extensions to enable such automation and convenience remains inherently dual use. Before launching a dev container, ensure you trust the workspaces and authors. For example, when reviewing a pull request, verify patches remain benign and do not introduce any malicious code. Although such vigilance is merited whenever compiling and running patched code, using containers with either elevated privileges or filesystem access renders this diligence even more prudent.
 
 :::{caution}
-Ensure you trust the authors and contents of a workspaces before launching any dev containers.
+Ensure you trust the authors and contents of a workspaces before launching related dev containers.
 :::
 
 More info on trusting workspaces and extensions in general can be found here:
