@@ -24,6 +24,13 @@ Specifically, for this project, the default `devcontainer.json` file targets the
 
 To speed up the initial build, images layers from this `builder` stage are cached by pulling the same image tag used by the project's CI, hosted from the image registry. This ensures your local dev container replicates our CI environment as close as possible, while benefiting from any cached work preemptively performed by the CI. Yet, this still allows you to customize the project's Dockerfile and rebuild the container, without needing to update CI images to reflect your local modifications.
 
+:::{seealso}
+More details on the project's CI and related docker image registry can be found here:
+
+- [Chronicles of Caching and Containerising CI for Nav2](https://vimeo.com/649647161/5b0c278e6c)
+  - Video presentation from ROS World 2021 - Ruffin White
+:::
+
 Once the base image from the target stage is built, the supporting tool or service may then add additional layers to the image, such as installing additional [features](https://containers.dev/features) or customizations. For VS Code, this also includes some fancy file caching for any extensions to install later. Once this custom image is built, it is then used to start the dev container.
 
 ### Starting the container
