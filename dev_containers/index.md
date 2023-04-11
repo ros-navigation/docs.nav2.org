@@ -17,7 +17,7 @@ Lets briefly explain what dev containers are, why you should use them, and how t
   - A reference implementation for the open specification
 - [JetBrains Space | Develop in Dev Environment](https://www.jetbrains.com/help/space/develop-in-a-dev-environment.html)
   - Using Dev Containers with JetBrain based products
-- [Supporting tools]()
+- [Supporting tools](https://containers.dev/supporting)
   - List of tools and services supporting the development container specification
 
 ### What is a Dev Container?
