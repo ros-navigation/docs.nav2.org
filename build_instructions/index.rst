@@ -24,6 +24,7 @@ There are a few ways to build Nav2:
 
 * Using Released Distribution Binaries
 * Using Rolling Development Source
+* Using Docker Container Images
 
 .. tip::
   For a *repeatable*, *reproducible* and *streamlined* development experience, check the Nav2 documentation on using :ref:`dev-containers`!
@@ -98,51 +99,35 @@ You can then ``source $NAV2_WS/install/setup.bash`` to get ready for demonstrati
 .. hint::
   For more examples on building Nav2 from rolling development source, checkout `source.Dockerfile <https://github.com/ros-planning/navigation2/blob/main/tools/source.Dockerfile>`_.
 
-Docker
-******
-
-The official Dockerhub entries are primarily for use in the Nav2 CI, but they may also be used for development. It is useful to have a docker image that tracks Nav2 ``main`` branch. The ``Dockerfile`` in the root of the repository is recommended for production use, set to your distribution of choice.
-
-It is though generally recomended to install Nav2 releases from the apt repository inside a container if you'd like to use our released binaries.
-
 .. rst-class:: content-collapse
 
-Building Docker Container
-=========================
+Using Docker Container Images
+=============================
 
-To build an image from the Dockerfile in the Nav2 folder:
-First, clone the repo to your local system (or see Building the source above)
+Building Nav2 using Docker container images provides a repeatable and reproducible environment to automate and self document the entire setup process. Instead of manually invoking the development tools as documented above, you can leverage the project's Dockerfiles to build and install Nav2 for various distributions.
 
+.. seealso::
+  For more information on installing Docker or leaning about Dockerfiles, see the official documentation:
 
-.. code:: bash
+  * `Docker Engine <https://docs.docker.com/engine/install>`_
+  * `Dockerfile reference <https://docs.docker.com/engine/reference/builder>`_
 
-  sudo docker build -t nav2/latest .
-
-If proxies are needed:
-
-.. code:: bash
-
-  sudo docker build -t nav2/latest --build-arg http_proxy=http://proxy.my.com:### --build-arg https_proxy=http://proxy.my.com:### .
-
-Note: You may also need to configure your docker for DNS to work. See article here for details: https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/
-
-If you would like to build from dockerhub cache to speed up the build
+Once your system is setup, you can build the Nav2 Dockerfile from the root of the repo:
 
 .. code:: bash
 
-  sudo docker pull rosplanning/navigation2:main
-  sudo docker build -t nav2/latest --cache-from rosplanning/navigation2:main .
+  export ROS_DISTRO=rolling
+  git clone https://github.com/ros-planning/navigation2.git --branch $ROS_DISTRO
+  docker build --tag navigation2:$ROS_DISTRO \
+    --build-arg FROM_IMAGE=ros:$ROS_DISTRO \
+    --build-arg OVERLAY_MIXINS="release ccache lld" \
+    --cache-from ghcr.io/ros-planning/navigation2:$ROS_DISTRO \
+    ./navigation2
 
-.. rst-class:: content-collapse
+The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command above creates a tagged image using the `Dockerfile` from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of `colcon mixins <https://github.com/colcon/colcon-mixin-repository>`_ to configure the workspace build. Check the ``ARG`` directives in the `Dockerfile` to discover other build-time variables available. 
 
-Using DockerHub Container
-=========================
-We allow for you to pull the latest docker image from the main branch at any time. As new releases and tags are made, docker containers on docker hub will be versioned as well to chose from.
-This docker image will not contain a built overlay, and you must build the overlay Nav2 workspace yourself (see Build Nav2 Main up above).
-
-.. code:: bash
-
-  sudo docker pull rosplanning/navigation2:main
+.. tip::
+  The images cached from are used for Nav2 CI, but can also be used with Nav2 :ref:`dev-containers`!
 
 !!!!
 
