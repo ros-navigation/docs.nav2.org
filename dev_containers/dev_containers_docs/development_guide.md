@@ -77,7 +77,7 @@ To speed up subsequent startups, volumes that are mounted to the container store
 While these volumes are uniquely named, you could rename them locally to further organize or segment works-in-progress. E.g. appending branch names to the volume name to quickly switch between pull requests and cached colcon workspaces.
 :::
 
-Additionally, the container is granted [privileged](https://docs.docker.com/engine/reference/commandline/run/#privileged) capabilities and connected using the [host](https://docs.docker.com/network/host/) network mode. This is especially useful for:
+Additionally, the container is granted [privileged](https://docs.docker.com/engine/reference/commandline/run/#privileged) and non-default [Linux capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities), connected using the [host](https://docs.docker.com/network/host/) network mode and [IPC](https://docs.docker.com/engine/reference/run/#ipc-settings---ipc) and [PID](https://docs.docker.com/engine/reference/run/#pid-settings---pid) spaces, with a relaxed [security configuration](https://docs.docker.com/engine/reference/run/#security-configuration) and seccomp confinement for native debugging and external connectivity. This is especially useful for:
 
 - Hybrid development
   - Enables connecting ROS nodes external to the container
