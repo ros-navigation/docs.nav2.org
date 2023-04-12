@@ -20,70 +20,83 @@ You may install it via the following to get the latest stable released version:
 Build
 *****
 
-There are 3 ways to build Nav2.
-Building for a specific released distribution (e.g. ``foxy``, ``galactic``), build Nav2 on main branch using a quickstart setup script, or building main branch manually.
+There are a few ways to build Nav2:
+
+* Using Released Distribution Binaries
+* Using Rolling Development Source
+
+.. tip::
+  For a *repeatable*, *reproducible* and *streamlined* development experience, check the Nav2 documentation on using :ref:`dev-containers`!
 
 .. rst-class:: content-collapse
 
-For Released Distributions
-==========================
+Released Distribution Binaries
+==============================
 
-Install ROS
------------
+To build Nav2, you'll first need to build or install ROS 2 and related development tools, including: ``colcon``, ``rosdep`` and ``vcstool``.
 
-Please install ROS 2 via the usual `install instructions <https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Binary.html>`_ for your desired distribution.
-Note: ``<ros2-distro>-devel`` was the branch naming schema pre-``galactic``.
-For Galactic and newer, it is simply ``<ros2-distro>``.
+.. seealso::
+  For more information on building or installing ROS 2 distros, see the official documentation:
 
-Build Nav2
-----------
+  * `ROS 2 Installation <https://docs.ros.org/en/rolling/Installation.html>`_
+  * `Install development tools and ROS tools <https://docs.ros.org/en/rolling/Installation/Alternatives/Ubuntu-Development-Setup.html#install-development-tools-and-ros-tools>`_
 
-We're going to create a new workspace, ``nav2_ws``, clone our Nav2 branch into it, and build.
-``rosdep`` will be used to get the dependency binaries for Nav2 in your specific distribution.
+Once your environment is setup, clone the repo, install all dependencies, and build the workspace:
+
+.. attention::
+   For ROS 2 distros prior to ``galactic``, the branch naming schema was ``<distro>-devel``.
 
 .. code:: bash
 
-  mkdir -p ~/nav2_ws/src
-  cd ~/nav2_ws/src
-  git clone https://github.com/ros-planning/navigation2.git --branch <ros2-distro>-devel
-  cd ~/nav2_ws
-  rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>
-  colcon build --symlink-install
+  source /opt/ros/<distro>/setup.bash
+  export NAV2_WS=~/nav2_ws
+  mkdir -p $NAV2_WS/src && cd $NAV2_WS
+  git clone https://github.com/ros-planning/navigation2.git --branch $ROS_DISTRO ./src/navigation2
+  rosdep install -y \
+    --from-paths ./src \
+    --ignore-src
+  colcon build \
+    --symlink-install
 
-Note: You need to change ``--rosdistro`` to the selected ROS 2 distribution name (e.g ``foxy``, ``galactic``).
+You can then ``source $NAV2_WS/install/setup.bash`` to get ready for demonstrations!
 
-
+.. hint::
+  For more examples on building Nav2 from released distribution binaries, checkout `distro.Dockerfile <https://github.com/ros-planning/navigation2/blob/main/tools/distro.Dockerfile>`_.
 
 .. rst-class:: content-collapse
 
+Using Rolling Development Source
+================================
 
-For Main Branch Development
-===========================
+Building Nav2 using rolling development source is similar to building Nav2 from released distribution binaries, where instead you build dependencies from source using the main development branches for all ROS based packages.
 
-Build ROS 2 Main
-----------------
-Build or install ROS 2 ``rolling`` using the `build instructions <https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html>`_ provided in the ROS 2 documentation.
-All development is done using the ``rolling`` distribution on Nav2's ``main`` branch and cherry-picked over to released distributions during syncs (if ABI compatible).
+.. seealso::
+  For more information on building ROS 2 from source, see the official documentation:
 
-Build Nav2 Main
----------------
+  * `ROS 2 Building from source <https://docs.ros.org/en/rolling/Installation.html#building-from-source>`_
 
-Now that ROS 2 ``rolling`` is installed, we have to install our dependencies and build Nav2 itself.
-We'll create a new workspace, ``nav2_ws`` and clone the Nav2 project into it.
-Afterwards, we'll use ``rosdep`` to automatically find and install our dependencies that were not included in the core ROS 2 install itself (``behaviortree.CPP``, ``ompl``, etc).
-If you would like to use a custom version of any of these dependencies, simply overlay them in your ``nav2_ws`` and it will use those rather than the binary installed versions.
+Once your environment is setup, clone the repo, import all dependencies, and build the workspace:
+
+.. attention::
+   Be sure to check that all dependencies you need are included and uncommented in the ``.repos`` file.
 
 .. code:: bash
 
-  mkdir -p ~/nav2_ws/src
-  cd ~/nav2_ws/src
-  git clone https://github.com/ros-planning/navigation2.git --branch main
-  cd ~/nav2_ws
-  rosdep install -y -r -q --from-paths src --ignore-src --rosdistro rolling
-  colcon build --symlink-install
-  source install/setup.bash
+  source <ros_ws>/install/setup.bash
+  export NAV2_WS=~/nav2_ws
+  mkdir -p $NAV2_WS/src && cd $NAV2_WS
+  git clone https://github.com/ros-planning/navigation2.git --branch $ROS_DISTRO ./src/navigation2
+  vcs import ./src < ./src/navigation2/tools/underlay.repos
+  rosdep install -y \
+    --from-paths ./src \
+    --ignore-src
+  colcon build \
+    --symlink-install
 
-You are now ready for the demonstrations!
+You can then ``source $NAV2_WS/install/setup.bash`` to get ready for demonstrations!
+
+.. hint::
+  For more examples on building Nav2 from rolling development source, checkout `source.Dockerfile <https://github.com/ros-planning/navigation2/blob/main/tools/source.Dockerfile>`_.
 
 Docker
 ******
