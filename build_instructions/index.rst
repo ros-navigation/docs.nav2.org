@@ -9,7 +9,13 @@ Install
 Nav2 and its dependencies are released as binaries.
 You may install it via the following to get the latest stable released version:
 
-  ``sudo apt install ros-<distro>-navigation2 ros-<distro>-nav2-bringup ros-<distro>-turtlebot3*``
+.. code:: bash
+
+  source /opt/ros/<distro>/setup.bash
+  sudo apt install \
+    ros-$ROS_DISTRO-navigation2 \
+    ros-$ROS_DISTRO-nav2-bringup \
+    ros-$ROS_DISTRO-turtlebot3*
 
 Build
 *****
@@ -62,7 +68,7 @@ All development is done using the ``rolling`` distribution on Nav2's ``main`` br
 Build Nav2 Main
 ---------------
 
-Now that ROS 2 ``rolling`` is installed, we have to install our dependencies and build Nav2 itself. 
+Now that ROS 2 ``rolling`` is installed, we have to install our dependencies and build Nav2 itself.
 We'll create a new workspace, ``nav2_ws`` and clone the Nav2 project into it.
 Afterwards, we'll use ``rosdep`` to automatically find and install our dependencies that were not included in the core ROS 2 install itself (``behaviortree.CPP``, ``ompl``, etc).
 If you would like to use a custom version of any of these dependencies, simply overlay them in your ``nav2_ws`` and it will use those rather than the binary installed versions.
