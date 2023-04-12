@@ -177,6 +177,7 @@ Provided Plugins
   :maxdepth: 1
 
   nav2_controller-plugins/simple_progress_checker.rst
+  nav2_controller-plugins/pose_progress_checker.rst
   nav2_controller-plugins/simple_goal_checker.rst
   nav2_controller-plugins/stopped_goal_checker.rst
 
