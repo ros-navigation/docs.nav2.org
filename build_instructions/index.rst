@@ -117,11 +117,11 @@ Once your system is setup, you can build the Nav2 Dockerfile from the root of th
 .. code:: bash
 
   export ROS_DISTRO=rolling
-  git clone https://github.com/ros-planning/navigation2.git --branch $ROS_DISTRO
+  git clone https://github.com/ros-planning/navigation2.git --branch main
   docker build --tag navigation2:$ROS_DISTRO \
     --build-arg FROM_IMAGE=ros:$ROS_DISTRO \
     --build-arg OVERLAY_MIXINS="release ccache lld" \
-    --cache-from ghcr.io/ros-planning/navigation2:$ROS_DISTRO \
+    --cache-from ghcr.io/ros-planning/navigation2:main \
     ./navigation2
 
 The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command above creates a tagged image using the `Dockerfile` from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of `colcon mixins <https://github.com/colcon/colcon-mixin-repository>`_ to configure the workspace build. Check the ``ARG`` directives in the `Dockerfile` to discover other build-time variables available. 
