@@ -300,8 +300,14 @@ Progress Checkers
 |                                 |                        | distance in a given time to      |
 |                                 |                        | make progress towards a goal     |
 +---------------------------------+------------------------+----------------------------------+
+| `PoseProgressChecker`_          | Guillaume Doisy        | A plugin to check whether the    |
+|                                 |                        | robot was able to move a minimum |
+|                                 |                        | distance or angle in a given time|
+|                                 |                        | to make progress towards a goal  |
++---------------------------------+------------------------+----------------------------------+
 
 .. _SimpleProgressChecker: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/simple_progress_checker.cpp
+.. _PoseProgressChecker: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/pose_progress_checker.cpp
 
 
 Behavior Tree Nodes

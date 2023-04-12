@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SimpleProgressChecker &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <title>PoseProgressChecker &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
     <link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
@@ -17,8 +17,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="PoseProgressChecker" href="pose_progress_checker.html" />
-    <link rel="prev" title="Controller Server" href="../configuring-controller-server.html" />
+    <link rel="next" title="SimpleGoalChecker" href="simple_goal_checker.html" />
+    <link rel="prev" title="SimpleProgressChecker" href="simple_progress_checker.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -540,8 +540,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../configuring-controller-server.html">Controller Server</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#parameters">Parameters</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../configuring-controller-server.html#provided-plugins">Provided Plugins</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">SimpleProgressChecker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pose_progress_checker.html">PoseProgressChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simple_progress_checker.html">SimpleProgressChecker</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">PoseProgressChecker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="simple_goal_checker.html">SimpleGoalChecker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stopped_goal_checker.html">StoppedGoalChecker</a></li>
 </ul>
@@ -906,7 +906,7 @@
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../configuring-controller-server.html">Controller Server</a></li>
-      <li class="breadcrumb-item active">SimpleProgressChecker</li>
+      <li class="breadcrumb-item active">PoseProgressChecker</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -915,9 +915,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="simpleprogresschecker">
-<span id="configuring-nav2-controller-simple-progress-checker-plugin"></span><h1>SimpleProgressChecker<a class="headerlink" href="#simpleprogresschecker" title="Permalink to this headline">¶</a></h1>
-<p>Checks whether the robot has made progress.</p>
+  <div class="section" id="poseprogresschecker">
+<span id="configuring-nav2-controller-pose-progress-checker-plugin"></span><h1>PoseProgressChecker<a class="headerlink" href="#poseprogresschecker" title="Permalink to this headline">¶</a></h1>
+<p>Checks whether the robot has made progress based on translation and rotation.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>: nav2_controller plugin name defined in the <strong>progress_checker_plugin_id</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
@@ -942,8 +942,28 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.movement_time_allowance</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.required_movement_angle</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimum amount a robot must rotate to be progressing to goal (rad).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.movement_time_allowance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -958,7 +978,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Maximum amount of time a robot has to move the minimum radius (s).</p>
+<dt>Description</dt><dd><p>Maximum amount of time a robot has to move the minimum radius or the mnimum angle (s).</p>
 </dd>
 </dl>
 </dd>

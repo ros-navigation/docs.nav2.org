@@ -187,3 +187,7 @@ Velocity smoother applies deceleration when timeout
 ***************************************************
 
 `PR #3512 <https://github.com/ros-planning/navigation2/pull/3512>`_ makes the VelocitySmoother apply the deceleration when the input command timeout.
+
+PoseProgressChecker plugin
+**************************
+`PR #3530 <https://github.com/ros-planning/navigation2/pull/3530>`_ adds a new ``nav2_controller::PoseProgressChecker`` plugin. It builds on the behavior of the ``SimpleProgressChecker`` by adding a new parameter ``required_movement_angle``, allowing the plugin to considers that there is still progress when there is no translation movement, from the moment there is a rotation movement superior to ``required_movement_angle`` within the ``movement_time_allowance``.
