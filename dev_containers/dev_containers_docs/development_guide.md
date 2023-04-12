@@ -92,6 +92,17 @@ Additionally, the container is granted [privileged](https://docs.docker.com/engi
 These `runArgs` in the `devcontainer.json` config can be further customized, either expanded or or narrowed in scope, to better suit your desired development environment. The current configuration is merely the project default in order to be the most flexible and useful for the widest range of development use cases.
 :::
 
+:::{seealso}
+More details on using DDS, debuggers, or devices with Docker containers can be found here:
+
+- [How to Communicate Across Docker Containers Using the Host Driver](https://community.rti.com/kb/how-use-rti-connext-dds-communicate-across-docker-containers-using-host-driver)
+  - Using the `host` network driver to access all network interfaces of the host machine from the Docker container
+- [Communicate between two Docker containers using DDS and shared memory](https://community.rti.com/kb/communicate-between-two-docker-containers-using-rti-connext-dds-and-shared-memory)
+  - Enabling containers to communicate with one another and with the host machine using interprocess communication (IPC)
+- [Debugging programs running inside Docker containers, in production](https://nvartolomei.com/debugging-programs-running-inside-docker-containers--in-production/)
+  - Using tools like strace, perf, gdb when debugging programs running inside containers
+:::
+
 ## Using Dev Containers
 
 Once the dev container has been created and setup completed, VS Code will open a new workspace directly from the project's root directory, which itself is mounted within the source directory in the overlay colcon workspace. From here you can build, test, and debug the project as you normally would, with the added benefit of having the project's dependencies, intellisense, linters, and other extensions pre-configured and ready to use.
