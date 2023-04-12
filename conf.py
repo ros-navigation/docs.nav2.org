@@ -33,9 +33,9 @@ sys.path.insert(0, os.path.abspath('.'))
 extensions = [
     'breathe',
     'myst_parser',
+    'sphinx.ext.extlinks',
     'sphinx.ext.graphviz',
     'sphinxcontrib.plantuml',
-    'sphinx.ext.extlinks',
 ]
 
 myst_enable_extensions = ['colon_fence']
