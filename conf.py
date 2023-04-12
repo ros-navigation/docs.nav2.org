@@ -33,6 +33,7 @@ sys.path.insert(0, os.path.abspath('.'))
 extensions = [
     'breathe',
     'myst_parser',
+    'sphinx_copybutton',
     'sphinx.ext.extlinks',
     'sphinx.ext.graphviz',
     'sphinxcontrib.plantuml',
