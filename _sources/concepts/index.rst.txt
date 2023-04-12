@@ -71,7 +71,7 @@ Behavior Trees
 Behavior trees (BT) are becoming increasingly common in complex robotics tasks.
 They are a tree structure of tasks to be completed.
 It creates a more scalable and human-understandable framework for defining multi-step or many state applications.
-This is opposed to a finite state machine (FSM) which may then have dozens or states and hundreds of transitions.
+This is opposed to a finite state machine (FSM) which may have dozens of states and hundreds of transitions.
 An example would be a soccer playing robot.
 Embedding the logic of soccer game play into a FSM would be challenging and error prone with many possible states and rules.
 Additionally, modeling choices like to shoot at the goal from the left, right, or center, is particularly unclear.
