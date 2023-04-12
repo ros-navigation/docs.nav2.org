@@ -1,7 +1,7 @@
 .. _configuring_nav2_controller_pose_progress_checker_plugin:
 
 PoseProgressChecker
-=====================
+===================
 
 Checks whether the robot has made progress based on translation and rotation.
 
