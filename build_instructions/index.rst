@@ -20,17 +20,17 @@ You may install it via the following to get the latest stable released version:
 Build
 *****
 
-There are a few ways to build Nav2:
+There are a few ways to build Nav2 using:
 
-* Using Released Distribution Binaries 
+* Released Distribution Binaries 
 
   * Simply build Nav2 using installable binary dependencies 
 
-* Using Rolling Development Source
+* Rolling Development Source
 
   * Intricately build Nav2 using from latest source dependencies
 
-* Using Docker Container Images
+* Docker Container Images
 
   * Quickly build Nav2 using cached images and templated Dockerfiles
 
@@ -74,8 +74,8 @@ You can then ``source $NAV2_WS/install/setup.bash`` to get ready for demonstrati
 
 .. rst-class:: content-collapse
 
-Using Rolling Development Source
-================================
+Rolling Development Source
+==========================
 
 Building Nav2 using rolling development source is similar to building Nav2 from released distribution binaries, where instead you build dependencies from source using the main development branches for all ROS based packages.
 
@@ -109,8 +109,8 @@ You can then ``source $NAV2_WS/install/setup.bash`` to get ready for demonstrati
 
 .. rst-class:: content-collapse
 
-Using Docker Container Images
-=============================
+Docker Container Images
+=======================
 
 Building Nav2 using Docker container images provides a repeatable and reproducible environment to automate and self document the entire setup process. Instead of manually invoking the development tools as documented above, you can leverage the project's Dockerfiles to build and install Nav2 for various distributions.
 
