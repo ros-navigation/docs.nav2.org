@@ -132,10 +132,10 @@ Once your system is setup, you can build the Nav2 Dockerfile from the root of th
     --cache-from ghcr.io/ros-planning/navigation2:main \
     ./navigation2
 
-The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command above creates a tagged image using the `Dockerfile` from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of `colcon mixins <https://github.com/colcon/colcon-mixin-repository>`_ to configure the workspace build. Check the ``ARG`` directives in the `Dockerfile` to discover other build-time variables available. 
+The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command above creates a tagged image using the `Dockerfile` from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of `colcon mixins <https://github.com/colcon/colcon-mixin-repository>`_ to configure the workspace build. Check the ``ARG`` directives in the `Dockerfile` to discover all build-time variables available. The command also specifies an `external cache source <https://docs.docker.com/engine/reference/commandline/build/#cache-from>`_ to pull the latest cached image from Nav2's `Container Registry <https://github.com/ros-planning/navigation2/pkgs/container/navigation2>`_ to speed up the build process.
 
 .. tip::
-  The images cached from are used for Nav2 CI, but can also be used with Nav2 :ref:`dev-containers`!
+  The images cached from above are used for Nav2 CI, but can also be used with Nav2 :ref:`dev-containers`!
 
 !!!!
 
