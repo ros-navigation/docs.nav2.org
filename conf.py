@@ -30,7 +30,13 @@ sys.path.insert(0, os.path.abspath('.'))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['breathe', 'myst_parser', 'sphinx.ext.graphviz', 'sphinxcontrib.plantuml', 'sphinx.ext.extlinks']
+extensions = [
+    'breathe',
+    'myst_parser',
+    'sphinx.ext.graphviz',
+    'sphinxcontrib.plantuml',
+    'sphinx.ext.extlinks',
+]
 
 myst_enable_extensions = ['colon_fence']
 
