@@ -1,6 +1,6 @@
 # Dev Containers
 
-Alternatively you can use dev containers to build the project if you prefer a streamlined setup experience. This means you can use the same tools and dependencies as the rest of the team, including our Continuous Integration (CI) workflows, without worrying about installing dependencies on your host machine. Additionally, using Dev Containers makes it simple to switch between local or remote development environments, such as GitHub Codespaces. More info on Dev Containers can be found here:
+You can use dev containers to build the project if you prefer a streamlined setup experience. This means you can use the same tools and dependencies as the rest of the team, including our Continuous Integration (CI) workflows, without worrying about installing dependencies on your host machine. Additionally, using Dev Containers makes it simple to switch between local or remote development environments, such as GitHub Codespaces. More info on Dev Containers can be found here:
 
 - [Development Containers](https://containers.dev/)
   - An open specification for enriching containers with development specific content and settings
