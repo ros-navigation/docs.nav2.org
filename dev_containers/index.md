@@ -82,8 +82,6 @@ While waiting for the initial setup, feel free to stretch your legs, grab a coff
 
 - **[](dev_containers_docs/development_guide.md)**
   - How to develop Nav2 using dev containers and supporting tools
-- **[](dev_containers_docs/visualization_guide.md)**
-  - How to visualize Nav2 using local or remote headless containers
 
 ## Security
 
