@@ -125,6 +125,17 @@ If you prefer using an alternate terminal emulator, rather than the built-in VS 
 Shell sessions spawned directly via `docker exec` do not set the same environment that `devcontainer exec` does using `userEnvProbe`. Additional environment variables include `REMOTE_CONTAINERS_IPC`, `REMOTE_CONTAINERS_SOCKETS` and are used by vscode, ssh and X11.
 :::
 
+:::{hint}
+:class: dropdown
+The environment provided by `userEnvProbe` can be sourced manually. E.g. for the default `loginInteractiveShell` probe:
+
+``` bash
+find /tmp -type f -path "*/devcontainers-*/env-loginInteractiveShell.json" -exec \
+  jq -r 'to_entries | .[] | "\(.key)=\(.value | @sh)"' {} \; > .env
+source .env
+```
+:::
+
 ### Lifecycle
 
 While using the dev container, try and keep in mind the lifecycle of the container itself. Specifically, containers are ephemeral, meaning they are normally destroyed and recreated whenever the dev environment is rebuilt or updated. Subsequently, a best practice is to avoid storing any persistent data within the container, and instead utilize the project's source directory, or a separate mounted volume. When altering the development environment inside the container, try to remember to codify your changes into the Dockerfile, or the `devcontainer.json` config file, so that they can be easily reproduced and shared with others. This is particularly important when the host machine is inherently ephemeral as well, as the case may be when using cloud based environments such as Codespaces, so be sure to commit and push local changes to a remote repository:
