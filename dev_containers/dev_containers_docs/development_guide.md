@@ -105,9 +105,11 @@ More details on using DDS, debuggers, or devices with Docker containers can be f
 
 ## Using Dev Containers
 
-Once the dev container has been created and setup completed, VS Code will open a new workspace directly from the project's root directory, which itself is mounted within the source directory in the overlay colcon workspace. From here you can build, test, and debug the project as you normally would, with the added benefit of having the project's dependencies, intellisense, linters, and other extensions pre-configured and ready to use.
+Once the dev container has been created and setup completed, VS Code will open a new workspace directly from the project's root directory, which itself is mounted within the source directory in the overlay colcon workspace. From here you can build, test, and debug the project as you normally would, with the added benefit of having the project's dependencies, intellisense, linters, and other extensions pre-configured and ready to use. Simply open a new terminal (Crtl+Shift+`), cd to the root of the colcon workspace, and run the usual colcon commands.
 
-So to build or test the project, simply open a terminal, cd to the root of the colcon workspace, and run the usual colcon commands. You may also want to incorporate the same colcon verbs used by the setup commands from the `devcontainer.json` config file to further automate your local development workflow.
+:::{tip}
+You can incorporate the same scripts used by the `devcontainer.json` config file to further automate your local development workflow.
+:::
 
 ### Terminals
 
