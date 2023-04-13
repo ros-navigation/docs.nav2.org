@@ -166,7 +166,9 @@ For example, you may need to rebuild the dev container when:
   - or when modifying `./devcontainer` files and commands
   - where build cache reuse correlates with severity of changes made
 
-If necessary, you can also rebuild the container from scratch, e.i. without caching from docker, by selecting the `Remote-Containers: Rebuild Container Without Cache` command instead. Rebuilding without caching may be necessary when:
+When necessary, you can also rebuild the container from scratch, e.i. without caching from docker, by selecting the `Remote-Containers: Rebuild Container Without Cache` command. This instead omits the `--cache-from` flag from the `docker buildx` command, while also adding the `--no-cache` and `--pull` flags to prevent caching from any existing image layers, using only the latest images from a container registry.
+
+Rebuilding without caching may be necessary when:
 
 - Needing to update the base image
   - specifically if dev container configurations remain unmodified
