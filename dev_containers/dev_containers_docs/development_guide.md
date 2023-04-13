@@ -149,7 +149,13 @@ This is particularly important when the host machine is inherently ephemeral as 
 
 ### Rebuilding
 
-From time to time, you may need to rebuild the dev container, either because the base image, or `.devcontainer/` config was updated, or simply out of wanting a new fresh development environment. To do so, simply open the Command Palette (Ctrl+Shift+P) and select the `Remote-Containers: Rebuild Container` command. For example, you may need to rebuild the dev container when:
+From time to time, you may need to rebuild the dev container, either because the base image, or `.devcontainer/` config was updated, or simply out of wanting a new fresh development environment. To do so, simply open the Command Palette (Ctrl+Shift+P) and select the `Remote-Containers: Rebuild Container` command.
+
+:::{caution}
+Rebuilding the container will destroy any changes made to the container itself, such as installing additional packages, or modifying the environment. However, the project's source directory, and any mounted volumes, will remain unaffected.
+:::
+
+For example, you may need to rebuild the dev container when:
 
 - Pulling newer images from a container registry
   - specifically, image tags built `FROM` in the Dockerfile
