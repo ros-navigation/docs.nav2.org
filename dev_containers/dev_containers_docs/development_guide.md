@@ -113,13 +113,17 @@ You can incorporate the same scripts used by the `devcontainer.json` config file
 
 ### Terminals
 
-If you prefer using alternate terminal emulators, rather than the built-in VS Code terminal, you can also open a separate shell session directly using devcontainer CLI, or simply via docker exec. Note that new shell sessions started via `exec` will not automatically inherit the same environment setup by the `postCreateCommand` from the `devcontainer.json` config file. So you may need to manually source any necessary scripts, such as `install/setup.bash` from the underlay workspace.
+If you prefer using an alternate terminal emulator, rather than the built-in VS Code terminal, you can open a separate shell session by simply using the Dev Container CLI or directly using the Docker CLI via the `exec` subcommands.
 
 - [Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli)
-  - `devcontainer exec --workspace-folder <path-to-workspace> bash`
+  - `devcontainer exec --workspace-folder $NAV2_WS/src/navigation2 bash`
 - [docker exec
 ](https://docs.docker.com/engine/reference/commandline/exec/)
   - `docker exec -it <container-id> bash`
+
+:::{attention}
+Shell sessions spawned directly via `docker exec` do not set the same environment that `devcontainer exec` does using `userEnvProbe`. Additional environment variables include `REMOTE_CONTAINERS_IPC`, `REMOTE_CONTAINERS_SOCKETS` and are used by vscode, ssh and X11.
+:::
 
 ### Lifecycle
 
