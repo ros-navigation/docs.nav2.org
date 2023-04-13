@@ -22,9 +22,9 @@ Build
 
 There are a few ways to build Nav2 using:
 
-* Released Distribution Binaries 
+* Released Distribution Binaries
 
-  * Simply build Nav2 using installable binary dependencies 
+  * Simply build Nav2 using installable binary dependencies
 
 * Rolling Development Source
 
