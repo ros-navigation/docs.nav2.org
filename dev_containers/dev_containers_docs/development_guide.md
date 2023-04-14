@@ -179,7 +179,7 @@ Rebuilding without caching may be necessary when:
   - to forcefully rerun a `RUN` directive in the Dockerfile
   - such as unchanged `apt upgrade` or `rosdep update` commands
 
-Specifically, for this project, volumes remain unaffected by this rebuilding process: i.e. those used to mount the ccache directory or colcon workspace. While the management of these volumes is left up the developers discretion, other projects may of course handle this differently, so be sure to check the `./devcontainer` configuration to inspect how various container resources may be managed.
+Specifically, for this project, volumes remain unaffected by this rebuilding process: i.e. those used to mount the ccache directory or colcon workspace. While volume management is left to the user's discretion, other projects may of course handle this differently, so be sure to check the `./devcontainer` configuration to inspect how various container resources may be managed.
 
 :::{tip}
 Docker volume management can be done via the Docker CLI, or the VS Code Docker extension:
