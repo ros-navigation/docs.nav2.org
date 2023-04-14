@@ -75,7 +75,7 @@ Alternatively, you could use GitHub Codespaces directly from the project repo, o
 Getting started using dev containers is as simple as opening the project in VS Code by either: following the notification prompt to reopen the project in a container, or explicitly opening the command palette (Crtl+Shift+P) and selecting `Remote-Containers: Reopen in Container`. This will create a new container, install any extensions specified in the project's default `.devcontainer/devcontainer.json` config file, and mount the project's root directory as the workspace folder. Once the container is created, VS Code will connect to it and you can start developing.
 
 :::{tip}
-Clicking the `Starting Dev Container (show log)` notification in VS Code allows you to observe how the sausage is made.
+Clicking the `Starting Dev Container (show log)` notification in VS Code allows you to observe in live time how the sausage is made, while typing `Dev Containers: Show Log` into the command palette will list all the available commands to review and revisit these log files later.
 :::
 
 While waiting for the initial setup, feel free to stretch your legs, grab a coffee, or continue to read the following guides to learn more about creating and user dev containers, or how to visualize and leverage graphical user interfaces from a headless development environment.
