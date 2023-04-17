@@ -31,6 +31,17 @@ Checkout the Nav2 Simple Commander [Examples and Demos](/commander_api/index.rst
 - VNC Desktop
   - Simple but not performative
 
+| Approach vs Utility | Web Apps | Native Apps | X11 Forward | VNC Client |
+|---------------------|----------|-------------|-------------|------------|
+| Tooling Flexibility | 🟠       | 🟠          | 🟢          | 🟢         |
+| Robust Integration  | 🟢       | 🔴          | 🟢          | 🟢         |
+| Responsive UI/UX    | 🟢       | 🟢          | 🟠          | 🔴         |
+| HW Acceleration     | 🟢       | 🟢          | 🟠          | 🔴         |
+| Remote Connectivity | 🟢       | 🟠          | 🔴          | 🟢         |
+| Bandwidth Efficient | 🟠       | 🔴          | 🔴          | 🟠         |
+
+> Good: 🟢 | Modest: 🟠 | Poor: 🔴
+
 Summary list and comparison of various visualization options for development containers.
 
 gazebo
