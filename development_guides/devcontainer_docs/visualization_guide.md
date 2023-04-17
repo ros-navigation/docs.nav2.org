@@ -22,14 +22,26 @@ ros2 launch nav2_simple_commander security_demo_launch.py \
 Checkout the Nav2 Simple Commander [Examples and Demos](/commander_api/index.rst#examples-and-demos) for more documentation on the depicted simulation.
 :::
 
-- Web Visualization
-  - Simple and accessible
+There are a few ways to visualize the project from within a dev container, each with their own pros and cons. Listed from simple to advanced:
+
+- [Web Visualization](#web-visualization)
+  - Simple and accessible from any web browser, while providing a responsive and native like interface
+  - Pro: Applicable for developing either locally on a host or remotely, e.g. SSH or Codespaces
+  - Con: Limited to modest message rates and sizes based on network bandwidth and bridge performance
 - Native Desktop
-  - Performative but limited
+  - Performative and flexible when developing locally while providing a responsive and true native interface
+  - Pro: Leverage natively installed desktop applications for rendering, e.g. Rviz, Gzclient, etc.
+  - Con: Fragile when missing or changing interface and resources, e.g. message types or 3D assets
 - X11 Forwarding
   - Performative but complex
+  - 3D hardware acceleration
+  - Con: Difficult to configure, connect to, and enable GPU hardware acceleration
+
 - VNC Desktop
   - Simple but not performative
+  - Pro: Applicable when developing remotely over moderate yet finite network bandwidth
+  - Con: Not performative or responsive, e.g.
+
 
 | Approach vs Utility | Web Apps | Native Apps | X11 Forward | VNC Client |
 |---------------------|----------|-------------|-------------|------------|
@@ -61,6 +73,8 @@ basdwith (large by more finite) vs resource usage
 https://support.google.com/chrome/answer/9658361?hl=en&co=GENIE.Platform%3DDesktop
 
 https://support.google.com/chrome/answer/9658361?hl=en&co=GENIE.Platform%3DAndroid
+
+https://web.dev/learn/pwa/installation
 
 ## Native Desktop
 
