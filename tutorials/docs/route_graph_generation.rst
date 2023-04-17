@@ -142,7 +142,7 @@ Fix this image.
 
 .. note:: 
     By default, if a is node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual
-    or multiple nodes are deleted. Any node that is added will contiune to increment based on the highest id. This value can be overwriten by the user 
+    or multiple nodes are deleted. Any node that is added will continue to increment based on the highest id, to ensure existing node are not automatically renumbered, breaking user implicit knowledge about the structure of the graph. This value can be overwriten by the user 
     though the pop window after node placement or though the `Attribute Table`. To delete features in a layer right click on the layer and select `Open Attribute Table`. 
     Click on `Target Multi Edit Mode`, select the features to delete, and click on the trash can icon.     
 
