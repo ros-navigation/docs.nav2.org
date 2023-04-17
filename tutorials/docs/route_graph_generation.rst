@@ -29,21 +29,20 @@ Set the project coordinate reference system by selecting `Project->Properties->C
 |
 
  .. image:: images/route_graph_generation/coordinate_reference_system.png
-    :height: 1097px
-    :width: 1064px
+    :height: 550px
+    :width: 530px
     :align: center
 
 |
 
 2- By default, the imported raster image origin will be at the top left corner, with x pointing to the right, and y pointing up.
-The size of the image in meters is equal to the equal to the size in pixels.
 To correctly set the orgin and the resolution we will georeference the raster image. 
 To georeference the image, three control points will choosen. Each control point maps a pixel location to the spatial reference. 
 
 For example, let's say you have a 100 by 200 raster image with a resolution of 0.05 and a origin in the bottom left corner.
-The first control point we could select is (0, -200) -> (0,0). (0, -200) is the bottom left corner in the pixel frame and (0, 0) is coordinates in the spatial frame. 
-For the second control point we will select the top left corner of the image (0,0). The associated coordinates in the spatial frame can be calculated by using the resolution 
-to convert the pixels to meters. In this case, (0, 0) -> (0, 10). Where 10 m is 200 * 0.05. The last control will be the bottom right corner. (200,-200) -> (5, 0). 
+The first control point we could select is (0, -200)px -> (0, 0)m. (0, -200)px is the bottom left corner in the pixel frame and (0, 0)m is coordinates in the spatial frame. 
+For the second control point we will select the top left corner of the image as the original (0, 0)px. The associated coordinates in the spatial frame can be calculated by using the resolution 
+to convert the pixels to meters. In this case, (0, 0)px -> (0, 10)m. Where 10 m is 200 px* 0.05 m/px. The last control will be the bottom right corner: (200, -200)px -> (5, 0)m. 
 
 .. note:: 
     Georeferencing is type of coordinate transformation that relates a digital raster image to a spatial reference. 
@@ -67,8 +66,8 @@ by selecting `Start Transformation`.
 |
 
  .. image:: images/route_graph_generation/georeferencer.png
-    :height: 807px
-    :width: 1460px
+    :height: 400px
+    :width: 730px
     :align: center
 
 |
@@ -78,8 +77,8 @@ Drag and drop the georeferenced raster file into the layers window.
 |
 
  .. image:: images/route_graph_generation/raster_layer.png
-    :height: 702px
-    :width: 1051px
+    :height: 350px
+    :width: 520px
     :align: center
 
 |
@@ -95,8 +94,8 @@ Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer s
 |
 
  .. image:: images/route_graph_generation/node_layer.png
-    :height: 1041px
-    :width: 887px
+    :height: 520px
+    :width: 440px
     :align: center
 
 |
@@ -107,8 +106,8 @@ Expand the `Fields` drop down menu and select `id`. Select the `Expression Dialo
 |
 
  .. image:: images/route_graph_generation/attribute_form.png
-    :height: 788px
-    :width: 1107px
+    :height: 390px
+    :width: 550px
     :align: center
 
 |
@@ -121,27 +120,28 @@ This will increment the node `id` by one every time a new node is added. The fir
 |
 
  .. image:: images/route_graph_generation/expression_dialog.png
-    :height: 776px
-    :width: 950px
+    :height: 380px
+    :width: 470px
     :align: center
 
 |
 
 
-Click on the node layer and then on the pencil icon to start editing the layer. To add points, click on `Add points feature`. Start adding nodes by clicking in the main window.
+Click on the node layer and then on the pencil icon to start editing the layer. To add points, click on the icon with the three points. Start adding nodes by clicking in the main window.
 Each time a node is added, a window will pop up with the auto incremented id. Press `OK` to continue placing points.
 
+Fix this image.
 |
 
  .. image:: images/route_graph_generation/nodes.png
-    :height: 1922px
-    :width: 1082px
+    :height: 250px
+    :width: 500px
     :align: center
 
 |
 
 .. note:: 
-    By default, if a node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual
+    By default, if a is node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual
     or multiple nodes are deleted. Any node that is added will contiune to increment based on the highest id. This value can be overwriten by the user 
     though the pop window after node placement or though the `Attribute Table`. To delete features in a layer right click on the layer and select `Open Attribute Table`. 
     Click on `Target Multi Edit Mode`, select the features to delete, and click on the trash can icon.     
@@ -155,27 +155,27 @@ This will increment the edge `id` by one every time a new edge is added. The fir
 |
 
  .. image:: images/route_graph_generation/edge_layer.png
-    :height: 1041px
-    :width: 887px
+    :height: 520px
+    :width: 440px
     :align: center
 
 |
 
-Click on the edge layer and then on the pencil icon to start editing the layer. To add edges, click on `Add Line feature`. Start adding edges by clicking twice in the main window. 
+To see the directionality of the edges, right click on the edge layer and select `Properties`. Click `Symbology -> Simple Line` and change the `Symbol layer type` to `Arrow`.
+Click `Ok`. You should now be able to see arrows for each line string. 
+
+Click on the edge layer and then on the pencil icon to start editing the layer. To add edges, click on icon with the three line strings. Start adding edges by clicking twice in the main window. 
 (First point is start, second point is end). Press `Esc` when you have finished adding the two points.  
 
+Fix this image. 
 |
 
  .. image:: images/route_graph_generation/edges.png
-    :height: 1922px
-    :width: 1082px
+    :height: 250px
+    :width: 500px
     :align: center
 
 |
-
-.. note:: 
-    To see the directionality of the edges, right click on the edge layer and select `Properties`. Click `Symbology -> Simple Line` and change the `Symbol layer type` to `Arrow`.
-    Click `Ok`. You should now be able to see arrows for each line string.  
 
 
 5- Now that we have our node and edge layers, we can associate node IDs with edge IDs. 
@@ -189,8 +189,8 @@ coordinate reference system is `WGS 84 /Pseudo-Mercator`. Press `OK`.
 |
 
  .. image:: images/route_graph_generation/db_manager.png
-    :height: 700px
-    :width: 1060px
+    :height: 350px
+    :width: 530px
     :align: center
 
 |
