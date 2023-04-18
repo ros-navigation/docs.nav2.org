@@ -1,6 +1,6 @@
 .. _filtering_of_noise-induced_obstacles:
 
-Filtering of noise-induced obstacles
+Filtering of Noise-Induced Obstacles
 ************************************
 
 - `Overview`_
