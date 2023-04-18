@@ -16,8 +16,11 @@ references:
           graphviz \
           ttf-dejavu \
           openjdk-8-jre \
-          bash git openssh-server \
-          python3-pip python3
+          bash \
+          git \
+          openssh-server \
+          python3-pip \
+          python3
         pip3 install -r requirements.txt
   make_docs: &make_docs
     run:
