@@ -17,7 +17,7 @@ references:
         apt install openjdk-8-jre -y
         apt install bash git openssh-server -y
         apt install python3-pip python3 -y
-        pip3 install sphinx==3.5.0 docutils==0.14 sphinx_rtd_theme breathe==4.28.0 sphinxcontrib-plantuml jinja2==3.0.3 myst-parser sphinx_copybutton
+        pip3 install -r requirements.txt
   make_docs: &make_docs
     run:
       command: |
@@ -62,8 +62,8 @@ jobs:
   docs_build:
     executor: docs_exec
     steps:
-      - install_doc_dependencies
       - *on_checkout
+      - install_doc_dependencies
       - build_docs
       - persist_to_workspace:
           root: nav2_docs
@@ -72,8 +72,8 @@ jobs:
   docs_publish:
     executor: docs_exec
     steps:
-      - install_doc_dependencies
       - *on_checkout
+      - install_doc_dependencies
       - *install_deployment_key
       - attach_workspace:
           at: nav2_docs
