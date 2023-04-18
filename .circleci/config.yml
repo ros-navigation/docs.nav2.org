@@ -10,13 +10,14 @@ references:
       command: |
         export DEBIAN_FRONTEND=noninteractive
         apt update
-        apt install make -y
-        apt install doxygen -y
-        apt install graphviz -y
-        apt install ttf-dejavu -y
-        apt install openjdk-8-jre -y
-        apt install bash git openssh-server -y
-        apt install python3-pip python3 -y
+        apt install -y \
+          make \
+          doxygen \
+          graphviz \
+          ttf-dejavu \
+          openjdk-8-jre \
+          bash git openssh-server \
+          python3-pip python3
         pip3 install -r requirements.txt
   make_docs: &make_docs
     run:
