@@ -81,7 +81,7 @@ To enable ``DenoiseLayer`` for both global and local costmaps, use the following
   Secondly, if salt and pepper noise is present in the local costmap, it disappears and is not remembered when going back into that region
   since the local costmap doesn't store data in areas after it has left.
   The global costmap does though, so if we leave an area and the salt/pepper noise was being handled by this later, it would still be there when we came back.
-  This feature can’t be considered problem, but is worth be taken into account.
+  It is worth taking this into account as an application designer.
 
 2. Run Nav2 stack
 -----------------
