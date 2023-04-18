@@ -1,14 +1,16 @@
-FROM alpine:latest
+FROM ubuntu:focal
 
-RUN apk --no-cache add \
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt update && \
+    apt install -y \
         doxygen \
+        git \
         graphviz \
         make \
-        openjdk8-jre \
-        python3 \
+        openjdk-8-jre \
+        openssh-server \
+        python3-pip \
         ttf-dejavu
-
-RUN python3 -m ensurepip
 
 COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
