@@ -5,7 +5,8 @@ FROM alpine:latest
 
 RUN apk --no-cache add python3
 RUN python3 -m ensurepip
-RUN pip3 install sphinx==1.7.5 docutils==0.14 sphinx_rtd_theme breathe==4.9.1 sphinxcontrib-plantuml sphinx_copybutton
+COPY requirements.txt ./
+RUN pip3 install -r requirements.txt
 RUN apk --no-cache add make
 RUN apk --no-cache add doxygen
 RUN apk --no-cache add graphviz
