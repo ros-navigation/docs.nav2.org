@@ -24,15 +24,15 @@ There are a few ways to build Nav2 using:
 
 * Released Distribution Binaries
 
-  * Simply build Nav2 using installable binary dependencies
+  * Build Nav2 using readily installable binary dependencies
 
 * Rolling Development Source
 
-  * Intricately build Nav2 using from latest source dependencies
+  * Build Nav2 using custom or latest source dependencies
 
 * Docker Container Images
 
-  * Quickly build Nav2 using cached images and templated Dockerfiles
+  * Build Nav2 using cached images and templated Dockerfiles
 
 .. tip::
   For a *repeatable*, *reproducible* and *streamlined* development experience, check the Nav2 documentation on using :ref:`dev-containers`!
