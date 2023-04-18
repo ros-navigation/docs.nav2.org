@@ -14,7 +14,7 @@ Filtering of Noise-Induced Obstacles
 Overview
 ========
 
-Incorrect definition of the robot position on the map or noisy sensor measurements can cause to errors in ``Voxel Layer`` or ``Obstacle Layer``. As a result, salt and pepper noise may appear on the costmap. This noise creates false obstacles that prevent the robot from finding the best path on the map.
+Noisy sensor measurements can cause to errors in ``Voxel Layer`` or ``Obstacle Layer``. As a result, salt and pepper noise may appear on the costmap. This noise creates false obstacles that prevent the robot from finding the best path on the map. While the images above show both salt and pepper noise as well as error due to mislocalization, this layer will only remove sensor noise, not mislocalized artifacts misaligned with the static map.
 This tutorial shows how to configure filtering of false obstacles caused by noise. This functionality is provided by the ``DenoiseLayer`` costmap layer plugin which will be enabled and used in this document.
 
 Requirements
