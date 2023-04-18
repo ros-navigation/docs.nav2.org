@@ -44,11 +44,9 @@ The first control point we could select is (0, -200)px -> (0, 0)m. (0, -200)px i
 For the second control point we will select the top left corner of the image as the original (0, 0)px. The associated coordinates in the spatial frame can be calculated by using the resolution 
 to convert the pixels to meters. In this case, (0, 0)px -> (0, 10)m. Where 10 m is 200 px* 0.05 m/px. The last control will be the bottom right corner: (200, -200)px -> (5, 0)m. 
 
-.. note:: 
-    Georeferencing is type of coordinate transformation that relates a digital raster image to a spatial reference. 
 
 To georeference image select `Raster -> Georefencer`. Set the `Trasformation Settings` to `Linear` for `Transformation 
-type`, `WGS 84/ Pseudo-Mercator` for `Traget SRS` and set your desired path for the `Output Raster`. 
+type`, `WGS 84/ Pseudo-Mercator` for `Target SRS` and set your desired path for the `Output Raster`. 
 
 |
 
@@ -59,7 +57,7 @@ type`, `WGS 84/ Pseudo-Mercator` for `Traget SRS` and set your desired path for 
 
 |
 
-Select the raster image you wish to georeference and place control point by selecting the icon next to the `Transformation Settings` and clicking on the raster image. 
+Select the raster image you wish to georeference and place control point by selecting `Add Point ` and clicking on the raster image. 
 The control points can be modified by clicking on the control point table and typing in new values. Once you are satified with your control points, apply the transformation
 by selecting `Start Transformation`. 
 
@@ -101,7 +99,7 @@ Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer s
 |
 
 In order to have the `id` field auto increment, right click on the layer and select the `Properties -> Attribute Form`. 
-Expand the `Fields` drop down menu and select `id`. Select the `Expression Dialog` icon which is next to the `Default value` field. 
+Expand the `Fields` drop down menu and select `id`. Select the `Expression Dialog` icon which is across from `Default value` field.
 
 |
 
@@ -127,10 +125,10 @@ This will increment the node `id` by one every time a new node is added. The fir
 |
 
 
-Click on the node layer and then on the pencil icon to start editing the layer. To add points, click on the icon with the three points. Start adding nodes by clicking in the main window.
+Click on the node layer and then select `Toggle Editing` icon represented as a pencil to start editing the layer. 
+To add points, select the `Add Point Feature`. Start adding nodes by clicking in the main window.
 Each time a node is added, a window will pop up with the auto incremented id. Press `OK` to continue placing points.
 
-Fix this image.
 |
 
  .. image:: images/route_graph_generation/nodes.png
@@ -164,10 +162,10 @@ This will increment the edge `id` by one every time a new edge is added. The fir
 To see the directionality of the edges, right click on the edge layer and select `Properties`. Click `Symbology -> Simple Line` and change the `Symbol layer type` to `Arrow`.
 Click `Ok`. You should now be able to see arrows for each line string. 
 
-Click on the edge layer and then on the pencil icon to start editing the layer. To add edges, click on icon with the three line strings. Start adding edges by clicking twice in the main window. 
+Click on the edge layer and then on the `Togge Editing` icon represented as a pencil to start editing the layer. 
+To add edges, click on the `Add Line Feature`. Start adding edges by clicking twice in the main window. 
 (First point is start, second point is end). Press `Esc` when you have finished adding the two points.  
 
-Fix this image. 
 |
 
  .. image:: images/route_graph_generation/edges.png
