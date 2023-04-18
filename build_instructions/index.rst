@@ -58,8 +58,7 @@ Once your environment is setup, clone the repo, install all dependencies, and bu
 .. code:: bash
 
   source /opt/ros/<distro>/setup.bash
-  export NAV2_WS=~/nav2_ws
-  mkdir -p $NAV2_WS/src && cd $NAV2_WS
+  mkdir -p ~/nav2_ws/src && cd ~/nav2_ws
   git clone https://github.com/ros-planning/navigation2.git --branch $ROS_DISTRO ./src/navigation2
   rosdep install -y \
     --from-paths ./src \
@@ -67,7 +66,7 @@ Once your environment is setup, clone the repo, install all dependencies, and bu
   colcon build \
     --symlink-install
 
-You can then ``source $NAV2_WS/install/setup.bash`` to get ready for demonstrations!
+You can then ``source ~/nav2_ws/install/setup.bash`` to get ready for demonstrations!
 
 .. hint::
   For more examples on building Nav2 from released distribution binaries, checkout `distro.Dockerfile <https://github.com/ros-planning/navigation2/blob/main/tools/distro.Dockerfile>`_.
@@ -92,8 +91,7 @@ Once your environment is setup, clone the repo, import all dependencies, and bui
 .. code:: bash
 
   source <ros_ws>/install/setup.bash
-  export NAV2_WS=~/nav2_ws
-  mkdir -p $NAV2_WS/src && cd $NAV2_WS
+  mkdir -p ~/nav2_ws/src && cd ~/nav2_ws
   git clone https://github.com/ros-planning/navigation2.git --branch $ROS_DISTRO ./src/navigation2
   vcs import ./src < ./src/navigation2/tools/underlay.repos
   rosdep install -y \
@@ -102,7 +100,7 @@ Once your environment is setup, clone the repo, import all dependencies, and bui
   colcon build \
     --symlink-install
 
-You can then ``source $NAV2_WS/install/setup.bash`` to get ready for demonstrations!
+You can then ``source ~/nav2_ws/install/setup.bash`` to get ready for demonstrations!
 
 .. hint::
   For more examples on building Nav2 from rolling development source, checkout `source.Dockerfile <https://github.com/ros-planning/navigation2/blob/main/tools/source.Dockerfile>`_.
