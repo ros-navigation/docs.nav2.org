@@ -19,7 +19,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb3|          +         |rover|        +           |tb2|        |
 +------------------------+------------------------+------------------------+
-|         |rosie|        +         |soon|         +           |soon|       |
+|         |rosie|        +         |m220-av|      +           |soon|       |
 +------------------------+------------------------+------------------------+
 
 .. |dex| image:: images/dexory.jpg
@@ -123,3 +123,9 @@ Click on the images below for a link to the drivers or navigation configurations
     :align: middle
     :alt: Rosie
     :target: https://tailos.com/
+
+.. |m220-av| image:: images/m220-av.jpg
+    :width: 100%
+    :align: middle
+    :alt: M220-av
+    :target: https://fireflyautomatix.com/m220/
