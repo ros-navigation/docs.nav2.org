@@ -37,7 +37,7 @@ Once the base image from the target stage is built, the supporting tool or servi
 
 When first creating Dev Containers, any supporting tool or service will invoke a sequence of commands specified in the chosen `devcontainer.json` config file. This can take a while, but only needs to be done once, or at least not again until the container is rebuilt, triggered by either updating the Dockerfile, base image, or `.devcontainer/` config.
 
-Specifically, for this project, the default `devcontainer.json` config executes the `onCreateCommand` to initially colcon cache, clean, and build the overlay workspace for the project. This ensures the workspace is precompiled and ready to use, while also ensuring any changes to the project's source code are reflected in the container. This is especially useful for:
+Specifically, for this project, the default `devcontainer.json` config executes the `onCreateCommand` to initially colcon cache, clean, and build the overlay workspace for the project. This ensures the workspace is precompiled and ready to use, while also ensuring any changes to the project's source code are reflected in the container. This is useful for:
 
 - IntelliSense
   - Enables VS Code extensions to parse auto generated code
@@ -48,7 +48,7 @@ Specifically, for this project, the default `devcontainer.json` config executes 
   - Applicable for reducing startup time when spawning new Codespaces
   - Necessary for limiting costs from CPU and storage usage
 
-While the colcon workspace is being built, VS Code will simultaneously install any specified extensions and settings. Next the `updateContentCommand` is executed, which reruns whenever the container is started or restarted. Specifically, for this project, this command re-cleans and re-builds the same colcon workspace as before, but only for invalidated packages detected by colcon cache using the lockfiles initialized during the `onCreateCommand`. This caching behavior also replicates the project's CI workflow. This is especially useful for:
+While the colcon workspace is being built, VS Code will simultaneously install any specified extensions and settings. Next the `updateContentCommand` is executed, which reruns whenever the container is started or restarted. Specifically, for this project, this command re-cleans and re-builds the same colcon workspace as before, but only for invalidated packages detected by colcon cache using the lockfiles initialized during the `onCreateCommand`. This caching behavior also replicates the project's CI workflow. This is useful for:
 
 - Branching
   - Enables caching of workspace artifacts when switching between branches
@@ -66,7 +66,7 @@ More documentation about these additional colcon verb extensions can be found he
 
 Finally, the `postCreateCommand` is executed, which also reruns whenever the container is started or restarted. Specifically, for this project, this command makes a last few tweaks to the user's environment to improve the development experience.
 
-To speed up subsequent startups, volumes that are mounted to the container store a persistent ccache and colcon workspace, while the environment is set to enable [ccache](https://ccache.dev/) via [colcon mixins](https://github.com/colcon/colcon-mixin-repository). These volumes are labeled using the [`devcontainerId`](https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson) variable, which uniquely identify the dev container on a Docker host, allowing us to refer to a common identifier that is unique to the dev container, while remaining stable across rebuilds. This is especially useful for:
+To speed up subsequent startups, volumes that are mounted to the container store a persistent ccache and colcon workspace, while the environment is set to enable [ccache](https://ccache.dev/) via [colcon mixins](https://github.com/colcon/colcon-mixin-repository). These volumes are labeled using the [`devcontainerId`](https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson) variable, which uniquely identify the dev container on a Docker host, allowing us to refer to a common identifier that is unique to the dev container, while remaining stable across rebuilds. This is useful for:
 
 - Caching
   - Enables colcon workspaces and ccache to persist between container rebuilds
@@ -77,7 +77,7 @@ To speed up subsequent startups, volumes that are mounted to the container store
 While these volumes are uniquely named, you could rename them locally to further organize or segment works-in-progress. E.g. appending branch names to the volume name to quickly switch between pull requests and cached colcon workspaces.
 :::
 
-Additionally, the container can be granted [privileged](https://docs.docker.com/engine/reference/commandline/run/#privileged) and non-default [Linux capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities), connected using the [host](https://docs.docker.com/network/host/) network mode and [IPC](https://docs.docker.com/engine/reference/run/#ipc-settings---ipc) and [PID](https://docs.docker.com/engine/reference/run/#pid-settings---pid) spaces, with a relaxed [security configuration](https://docs.docker.com/engine/reference/run/#security-configuration) and seccomp confinement for native debugging and external connectivity. This is especially useful for:
+Additionally, the container can be granted [privileged](https://docs.docker.com/engine/reference/commandline/run/#privileged) and non-default [Linux capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities), connected using the [host](https://docs.docker.com/network/host/) network mode and [IPC](https://docs.docker.com/engine/reference/run/#ipc-settings---ipc) and [PID](https://docs.docker.com/engine/reference/run/#pid-settings---pid) spaces, with a relaxed [security configuration](https://docs.docker.com/engine/reference/run/#security-configuration) and seccomp confinement for native debugging and external connectivity. This is useful for:
 
 - Hybrid development
   - Enables connecting ROS nodes external to the container
