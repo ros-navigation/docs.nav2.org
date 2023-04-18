@@ -53,7 +53,7 @@ To build Nav2, you'll first need to build or install ROS 2 and related developme
 Once your environment is setup, clone the repo, install all dependencies, and build the workspace:
 
 .. attention::
-   For ROS 2 distros prior to Galactic, the branch naming schema was ``<distro>-devel``, while the default branch for Rolling is ``main``.
+   The branch naming schema for Nav2 is organized by ROS distro, while the default branch for Rolling is ``main``.
 
 .. code:: bash
 
