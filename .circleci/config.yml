@@ -3,7 +3,7 @@ version: 2.1
 references:
   on_checkout: &on_checkout
     checkout:
-      path: nav2_docs
+      path: .
   setup_doc_dependencies: &setup_doc_dependencies
     run:
       name: Install Doc Dependencies
@@ -23,7 +23,6 @@ references:
   make_docs: &make_docs
     run:
       command: |
-        cd nav2_docs
         make html
   store_docs: &store_docs
     store_artifacts:
@@ -32,7 +31,6 @@ references:
   publish_docs: &publish_docs
     run:
       command: |
-        cd nav2_docs
         make publish
   install_deployment_key: &install_deployment_key
     add_ssh_keys:
@@ -58,7 +56,7 @@ executors:
   docs_exec:
     docker:
       - image: ubuntu:focal
-    working_directory: /
+    working_directory: /nav2_docs
 
 jobs:
   docs_build:
@@ -68,7 +66,7 @@ jobs:
       - install_doc_dependencies
       - build_docs
       - persist_to_workspace:
-          root: nav2_docs
+          root: .
           paths:
             - _build 
   docs_publish:
@@ -78,7 +76,7 @@ jobs:
       - install_doc_dependencies
       - *install_deployment_key
       - attach_workspace:
-          at: nav2_docs
+          at: .
       - publish_docs_to_gh_pages_branch
 
 workflows:
