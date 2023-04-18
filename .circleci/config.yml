@@ -11,14 +11,12 @@ references:
         export DEBIAN_FRONTEND=noninteractive
         apt update
         apt install -y \
-          bash \
           doxygen \
           git \
           graphviz \
           make \
           openjdk-8-jre \
           openssh-server \
-          python3 \
           python3-pip \
           ttf-dejavu
         pip3 install -r requirements.txt
