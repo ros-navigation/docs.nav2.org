@@ -34,7 +34,7 @@ Denoise Layer is Costmap2D plugin. You can enable the ``DenoiseLayer`` plugin in
 
 Full list of parameters supported by ``DenoiseLayer`` are listed at :ref:`denoise` page.
 
-It is important to note that ``DenoiseLayer`` typically should be placed before inflation_layer.
+It is important to note that ``DenoiseLayer`` typically should be placed before the inflation layer.
 This is required to prevent inflation from noise-induced obstacles.
 Moreover, ``DenoiseLayer`` treated costmap as a binary map.
 Values ``INSCRIBED_INFLATED_OBSTACLE``, ``LETHAL_OBSTACLE`` and optionally ``NO_INFORMATION``
