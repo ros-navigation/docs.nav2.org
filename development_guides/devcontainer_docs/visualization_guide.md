@@ -22,28 +22,28 @@ ros2 launch nav2_simple_commander security_demo_launch.py \
 Checkout the Nav2 Simple Commander [Examples and Demos](/commander_api/index.rst#examples-and-demos) for more documentation on the depicted simulation.
 :::
 
-There are a few ways to visualize the project from within a dev container, each with their own pros and cons. Listed from simple to advanced:
+There are a few ways to visualize the project within dev containers, each with their own pros and cons. Ordered by increasing complexity:
 
 - [**Web Apps**](#web-apps)
   - Simple and remotely accessible from any web browser, while providing a responsive interface
 - [**Native Apps**](#native-apps)
   - Performative over local networks, while providing a native interface and GPU acceleration
-- [**X11 Socket**](#x11-socket)
-  - Performative and flexible for local development, while providing robust integration
 - [**VNC Desktop**](#vnc-desktop)
   - Flexible and remotely accessible from any client, while providing robust integration
+- [**X11 Socket**](#x11-socket)
+  - Performative and flexible for local development, while providing robust integration
 
 The decision matrix below provides a rough comparison of the various options listed. Check each section for further details.
 
-| Approach vs Utility | Web Apps | Native Apps | X11 Socket | VNC Desktop |
-|---------------------|----------|-------------|------------|-------------|
-| Setup Simplicity    | 🟢       | 🟠          | 🔴         | 🟠          |
-| Tooling Flexibility | 🟠       | 🟠          | 🟢         | 🟢          |
-| Robust Integration  | 🟢       | 🔴          | 🟢         | 🟢          |
-| Responsive UI/UX    | 🟢       | 🟢          | 🟠         | 🔴          |
-| GPU Acceleration    | 🟢       | 🟢          | 🟠         | 🔴          |
-| Remote Connectivity | 🟢       | 🟠          | 🔴         | 🟢          |
-| Bandwidth Efficient | 🟠       | 🔴          | 🔴         | 🟠          |
+| Approach vs Utility | Web Apps | Native Apps | VNC Desktop | X11 Socket |
+|---------------------|----------|-------------|-------------|------------|
+| Setup Simplicity    | 🟢        | 🟠           | 🟠           | 🔴          |
+| Tooling Flexibility | 🟠        | 🟠           | 🟢           | 🟢          |
+| Robust Integration  | 🟢        | 🔴           | 🟢           | 🟢          |
+| Responsive UI/UX    | 🟢        | 🟢           | 🔴           | 🟠          |
+| GPU Acceleration    | 🟢        | 🟢           | 🔴           | 🟠          |
+| Remote Connectivity | 🟢        | 🟠           | 🟢           | 🔴          |
+| Bandwidth Efficient | 🟠        | 🔴           | 🟠           | 🔴          |
 
 > Legend: 🟢 Good | 🟠 Modest | 🔴 Poor
 
@@ -102,6 +102,16 @@ native foxglove
 
 resources and interfaces
 
+(vnc-desktop)=
+## VNC Desktop
+
+  - Pro: Applicable when developing remotely over moderate yet finite network bandwidth
+  - Con: Not performative or responsive, e.g.
+
+basdwith (large by more finite) vs resource usage
+
+https://github.com/devcontainers/features/tree/main/src/desktop-lite
+
 (x11-socket)=
 ## X11 Socket
 
@@ -118,13 +128,3 @@ https://github.com/microsoft/vscode-remote-release/issues/8031
 https://docs.docker.com/config/containers/resource_constraints/#gpu
 
 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
-
-(vnc-desktop)=
-## VNC Desktop
-
-  - Pro: Applicable when developing remotely over moderate yet finite network bandwidth
-  - Con: Not performative or responsive, e.g.
-
-basdwith (large by more finite) vs resource usage
-
-https://github.com/devcontainers/features/tree/main/src/desktop-lite
