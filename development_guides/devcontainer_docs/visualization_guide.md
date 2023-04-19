@@ -56,6 +56,16 @@ foxglove
 
 ## Web Visualization
 
+:::{seealso}
+More details on Foxglove Studio and GzWeb can be found here:
+
+- [Foxglove Studio](https://foxglove.dev/studio)
+  - Robotics visualization and debugging with customizable layouts
+- [Foxglove Bridge](https://github.com/foxglove/ros-foxglove-bridge)
+  - Foxglove WebSocket bridge for ROS 1 and ROS 2
+- [GzWeb](https://gazebosim.org/gzweb)
+  - Web client for Gazebo classic simulation
+:::
 
 basdwith (large by more finite) vs resource usage
 
