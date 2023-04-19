@@ -105,6 +105,15 @@ basdwith (large by more finite) vs resource usage
 
 https://github.com/devcontainers/features/tree/main/src/desktop-lite
 
+:::{seealso}
+This approach is similarly used by other robotic web based services. More examples can be found here:
+
+- [The Construct](https://www.theconstructsim.com)
+  - An educational and training platform for robotics development and simulation
+- [AWS RoboMaker](https://aws.amazon.com/robomaker)
+  - A Continuos Integration and Deployment service for robotic applications and simulations
+:::
+
 (x11-socket)=
 ## X11 Socket
 
