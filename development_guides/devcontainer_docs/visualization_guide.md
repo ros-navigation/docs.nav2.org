@@ -73,9 +73,18 @@ basdwith (large by more finite) vs resource usage
 
 ### PWA progressive web app
 
-https://support.google.com/chrome/answer/9658361?hl=en&co=GENIE.Platform%3DDesktop
+:::{tip}
+You can also install Foxglove Studio and GzWeb as PWAs, allowing you to resize them like native apps separate from the browser. Just remember that PWAs are fixed to the URL they were installed from, so you'll need to reinstall if the URLs or port numbers ever change.
+:::
 
-https://support.google.com/chrome/answer/9658361?hl=en&co=GENIE.Platform%3DAndroid
+:::{seealso}
+More details on Progressive Web Apps installation can be found here:
+
+- [Use Progressive Web Apps](https://support.google.com/chrome/answer/9658361)
+  - with Google Chrome (i.e. on Computer or Android)
+- [PWA Installation](https://web.dev/learn/pwa/installation)
+  - with any browser (i.e. Firefox, or Safari on IOS)
+:::
 
 https://web.dev/learn/pwa/installation
 
