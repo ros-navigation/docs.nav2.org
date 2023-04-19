@@ -24,35 +24,28 @@ Checkout the Nav2 Simple Commander [Examples and Demos](/commander_api/index.rst
 
 There are a few ways to visualize the project from within a dev container, each with their own pros and cons. Listed from simple to advanced:
 
-- [Web Visualization](#web-visualization)
-  - Simple and accessible from any web browser, while providing a responsive and native like interface
-  - Pro: Applicable for developing either locally on a host or remotely, e.g. SSH or Codespaces
-  - Con: Limited to modest message rates and sizes based on network bandwidth and bridge performance
-- Native Desktop
-  - Performative and flexible when developing locally while providing a responsive and true native interface
-  - Pro: Leverage natively installed desktop applications for rendering, e.g. Rviz, Gzclient, etc.
-  - Con: Fragile when missing or changing interface and resources, e.g. message types or 3D assets
-- X11 Forwarding
-  - Performative but complex
-  - 3D hardware acceleration
-  - Con: Difficult to configure, connect to, and enable GPU hardware acceleration
+- [**Web Apps**](#web-apps)
+  - Simple and remotely accessible from any web browser, while providing a responsive interface
+- [**Native Apps**](#native-apps)
+  - Performative over local networks, while providing a native interface and GPU acceleration
+- [**X11 Socket**](#x11-socket)
+  - Performative and flexible for local development, while providing robust integration
+- [**VNC Desktop**](#vnc-desktop)
+  - Flexible and remotely accessible from any client, while providing robust integration
 
-- VNC Desktop
-  - Simple but not performative
-  - Pro: Applicable when developing remotely over moderate yet finite network bandwidth
-  - Con: Not performative or responsive, e.g.
+The decision matrix below provides a rough comparison of the various options listed. Check each section for further details.
 
+| Approach vs Utility | Web Apps | Native Apps | X11 Socket | VNC Desktop |
+|---------------------|----------|-------------|------------|-------------|
+| Setup Simplicity    | 🟢       | 🟠          | 🔴         | 🟠          |
+| Tooling Flexibility | 🟠       | 🟠          | 🟢         | 🟢          |
+| Robust Integration  | 🟢       | 🔴          | 🟢         | 🟢          |
+| Responsive UI/UX    | 🟢       | 🟢          | 🟠         | 🔴          |
+| GPU Acceleration    | 🟢       | 🟢          | 🟠         | 🔴          |
+| Remote Connectivity | 🟢       | 🟠          | 🔴         | 🟢          |
+| Bandwidth Efficient | 🟠       | 🔴          | 🔴         | 🟠          |
 
-| Approach vs Utility | Web Apps | Native Apps | X11 Forward | VNC Client |
-|---------------------|----------|-------------|-------------|------------|
-| Tooling Flexibility | 🟠       | 🟠          | 🟢          | 🟢         |
-| Robust Integration  | 🟢       | 🔴          | 🟢          | 🟢         |
-| Responsive UI/UX    | 🟢       | 🟢          | 🟠          | 🔴         |
-| HW Acceleration     | 🟢       | 🟢          | 🟠          | 🔴         |
-| Remote Connectivity | 🟢       | 🟠          | 🔴          | 🟢         |
-| Bandwidth Efficient | 🟠       | 🔴          | 🔴          | 🟠         |
-
-> Good: 🟢 | Modest: 🟠 | Poor: 🔴
+> Legend: 🟢 Good | 🟠 Modest | 🔴 Poor
 
 Summary list and comparison of various visualization options for development containers.
 
