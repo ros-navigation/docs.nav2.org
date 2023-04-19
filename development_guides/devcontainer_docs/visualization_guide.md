@@ -47,13 +47,6 @@ The decision matrix below provides a rough comparison of the various options lis
 
 > Legend: 🟢 Good | 🟠 Modest | 🔴 Poor
 
-Summary list and comparison of various visualization options for development containers.
-
-gazebo
-rviz
-rqt
-foxglove
-
 (web-apps)=
 ## Web Apps
 
