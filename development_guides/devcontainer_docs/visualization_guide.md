@@ -80,7 +80,7 @@ More details on Progressive Web Apps installation can be found here:
 - [Use Progressive Web Apps](https://support.google.com/chrome/answer/9658361)
   - with Google Chrome (i.e. on Computer or Android)
 - [PWA Installation](https://web.dev/learn/pwa/installation)
-  - with any browser (i.e. Firefox, or Safari on IOS)
+  - with any browser (i.e. Firefox, or Safari on iOS)
 :::
 
 (native-apps)=
