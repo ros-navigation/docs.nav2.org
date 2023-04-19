@@ -50,6 +50,17 @@ The decision matrix below provides a rough comparison of the various options lis
 (web-apps)=
 ## Web Apps
 
+By far one of the easiest ways to quickly visualize the project is by using web client interfaces via Foxglove Studio and GzWeb. These apps are accessible from any web browser, regardless of the host operating system or whether the dev container is running locally or remotely. This is useful for:
+
+- Remote Development
+  - Enables
+  - Applicable
+  - Necessary
+- Education
+  - Enables
+  - Applicable
+  - Necessary
+
 :::{seealso}
 More details on Foxglove Studio and GzWeb can be found here:
 
@@ -61,12 +72,20 @@ More details on Foxglove Studio and GzWeb can be found here:
   - Web client for Gazebo classic simulation
 :::
 
+visualizer stage
+
+bridge
+
+statefull
+gracefull reconect
+
+
   - Pro: Applicable for developing either locally on a host or remotely, e.g. SSH or Codespaces
   - Con: Limited to modest message rates and sizes based on network bandwidth and bridge performance
 
 basdwith (large by more finite) vs resource usage
 
-## VS Code Tasks
+### VS Code Tasks
 
 ### PWA progressive web app
 
