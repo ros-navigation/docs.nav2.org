@@ -54,7 +54,8 @@ rviz
 rqt
 foxglove
 
-## Web Visualization
+(web-apps)=
+## Web Apps
 
 :::{seealso}
 More details on Foxglove Studio and GzWeb can be found here:
@@ -66,6 +67,9 @@ More details on Foxglove Studio and GzWeb can be found here:
 - [GzWeb](https://gazebosim.org/gzweb)
   - Web client for Gazebo classic simulation
 :::
+
+  - Pro: Applicable for developing either locally on a host or remotely, e.g. SSH or Codespaces
+  - Con: Limited to modest message rates and sizes based on network bandwidth and bridge performance
 
 basdwith (large by more finite) vs resource usage
 
@@ -86,9 +90,11 @@ More details on Progressive Web Apps installation can be found here:
   - with any browser (i.e. Firefox, or Safari on IOS)
 :::
 
-https://web.dev/learn/pwa/installation
+(native-apps)=
+## Native Apps
 
-## Native Desktop
+  - Pro: Leverage natively installed desktop applications for rendering, e.g. Rviz, Gzclient, etc.
+  - Con: Fragile when missing or changing interface and resources, e.g. message types or 3D assets
 
 host networking for ROS ports
  gzserver
@@ -96,7 +102,12 @@ native foxglove
 
 resources and interfaces
 
-## X11 Forwarding
+(x11-socket)=
+## X11 Socket
+
+  - 3D hardware acceleration
+  - Con: Difficult to configure, connect to, and enable GPU hardware acceleration
+
 
 ### Local Host
 
@@ -108,8 +119,11 @@ https://docs.docker.com/config/containers/resource_constraints/#gpu
 
 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
 
-
+(vnc-desktop)=
 ## VNC Desktop
+
+  - Pro: Applicable when developing remotely over moderate yet finite network bandwidth
+  - Con: Not performative or responsive, e.g.
 
 basdwith (large by more finite) vs resource usage
 
