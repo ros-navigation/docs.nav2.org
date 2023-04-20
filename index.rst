@@ -136,8 +136,7 @@ Below is an example of the TB3 navigating in a small lounge.
    :hidden:
 
    getting_started/index.rst
-   build_instructions/index.rst
-   dev_containers/index.md
+   development_guides/index.rst
    concepts/index.rst
    setup_guides/index.rst
    tutorials/index.rst

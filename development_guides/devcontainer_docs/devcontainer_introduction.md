@@ -1,5 +1,5 @@
-(dev-containers)=
-# Dev Containers
+(devcontainer-introduction)=
+# Dev Container Introduction
 
 You can use dev containers to build the project if you prefer a streamlined setup experience. This means you can use the same tools and dependencies as the rest of the team, including our Continuous Integration (CI) workflows, without worrying about installing dependencies on your host machine. Additionally, using Dev Containers makes it simple to switch between local or remote development environments, such as GitHub Codespaces. More info on Dev Containers can be found here:
 
@@ -13,8 +13,7 @@ You can use dev containers to build the project if you prefer a streamlined setu
 ```{toctree}
 :hidden:
 
-dev_containers_docs/development_guide.md
-dev_containers_docs/visualization_guide.md
+development_guide.md
 ```
 
 ## What, Why, How?
@@ -80,7 +79,7 @@ Clicking the `Starting Dev Container (show log)` notification in VS Code allows 
 
 While waiting for the initial setup, feel free to stretch your legs, grab a coffee, or continue to read the following guides to learn more about creating and using dev containers, or how to visualize and leverage graphical user interfaces from a headless development environment.
 
-- **[](dev_containers_docs/development_guide.md)**
+- **[](devcontainer_guide.md)**
   - How to develop Nav2 using dev containers and supporting tools
 
 ## Security

@@ -35,7 +35,7 @@ There are a few ways to build Nav2 using:
   * Build Nav2 using cached images and templated Dockerfiles
 
 .. tip::
-  For a *repeatable*, *reproducible* and *streamlined* development experience, check the Nav2 documentation on using :ref:`dev-containers`!
+  For a *repeatable*, *reproducible* and *streamlined* development experience, check the Nav2 documentation on using :ref:`devcontainer-introduction`!
 
 .. rst-class:: content-collapse
 
@@ -133,7 +133,7 @@ Once your system is setup, you can build the Nav2 Dockerfile from the root of th
 The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command above creates a tagged image using the `Dockerfile` from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of `colcon mixins <https://github.com/colcon/colcon-mixin-repository>`_ to configure the workspace build. Check the ``ARG`` directives in the `Dockerfile` to discover all build-time variables available. The command also specifies an `external cache source <https://docs.docker.com/engine/reference/commandline/build/#cache-from>`_ to pull the latest cached image from Nav2's `Container Registry <https://github.com/ros-planning/navigation2/pkgs/container/navigation2>`_ to speed up the build process.
 
 .. tip::
-  The images cached from above are used for Nav2 CI, but can also be used with Nav2 :ref:`dev-containers`!
+  The images cached from above are used for Nav2 CI, but can also be used with Nav2 :ref:`devcontainer-introduction`!
 
 !!!!
 
@@ -155,4 +155,4 @@ Help
 .. toctree::
    :hidden:
 
-   build_docs/build_troubleshooting_guide.rst
+   build_troubleshooting_guide.rst
