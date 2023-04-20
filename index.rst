@@ -148,6 +148,5 @@ Below is an example of the TB3 navigating in a small lounge.
    migration/index.rst
    commander_api/index.rst
    roadmap/roadmap.rst
-   contribute/index.rst
    about/index.rst
    about/robots.rst

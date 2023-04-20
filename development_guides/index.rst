@@ -3,13 +3,10 @@
 Development Guides
 ##################
 
-This section contains various guides for developing the project.
-
-.. note::
-   For more general information about  contributing to the project, see the :ref:`contribute` section.
+This section includes guides for developing Nav2, e.g. how to build from source, how to use dev containers, and how to get involved.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
+   :glob:
 
-   build_docs/index.rst
-   devcontainer_docs/index.md
+   */index
