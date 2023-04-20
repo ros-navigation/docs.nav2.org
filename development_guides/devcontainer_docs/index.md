@@ -1,7 +1,10 @@
 (devcontainers)=
 # Dev Containers
 
-You can use dev containers to build the project if you prefer a streamlined setup experience. This means you can use the same tools and dependencies as the rest of the team, including our Continuous Integration (CI) workflows, without worrying about installing dependencies on your host machine. Additionally, using Dev Containers makes it simple to switch between local or remote development environments, such as GitHub Codespaces. More info on Dev Containers can be found here:
+You can use dev containers to build the project if you prefer a streamlined setup experience. This means you can use the same tools and dependencies as the rest of the team, including our Continuous Integration (CI) workflows, without worrying about installing dependencies on your host machine. Additionally, using Dev Containers makes it simple to switch between local or remote development environments, such as GitHub Codespaces.
+
+:::{seealso}
+More info on Dev Containers can be found here:
 
 - [Development Containers](https://containers.dev/)
   - An open specification for enriching containers with development specific content and settings
@@ -9,6 +12,7 @@ You can use dev containers to build the project if you prefer a streamlined setu
   - Learn how to use Visual Studio Code to develop inside a Docker container
 - [GitHub Codespaces overview](https://docs.github.com/en/codespaces/overview)
   - A development environment hosted in the cloud
+:::
 
 ```{toctree}
 :hidden:
