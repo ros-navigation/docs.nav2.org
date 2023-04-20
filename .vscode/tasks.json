@@ -16,6 +16,20 @@
                 "kind": "build",
                 "isDefault": true
               }
+        },
+        {
+            "label": "Autobuild",
+            "icon": {
+                "id": "debug-start"
+            },
+            "type": "shell",
+            "command": "make autobuild",
+            "isBackground": true,
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+              }
         }
     ]
 }

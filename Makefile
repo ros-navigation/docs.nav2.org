@@ -35,6 +35,11 @@ help:
 html:
 	$(Q)$(SPHINXBUILD) -t $(DOC_TAG) -b html -d $(BUILDDIR)/doctrees $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS) $(O)
 
+# Autobuild the docs on changes
+
+autobuild:
+	sphinx-autobuild -t $(DOC_TAG) -b html -d $(BUILDDIR)/doctrees $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS)
+
 # Remove generated content (Sphinx and doxygen)
 
 clean:
