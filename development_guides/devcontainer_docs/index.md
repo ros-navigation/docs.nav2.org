@@ -18,7 +18,7 @@ More info on Dev Containers can be found here:
 :hidden:
 :glob:
 
-./*
+*
 ```
 
 ## What, Why, How?
@@ -101,12 +101,3 @@ More info on trusting workspaces and extensions in general can be found here:
 - [Workspace Trust](https://code.visualstudio.com/docs/editor/workspace-trust)
   - VS Code user guid on trusting and configure workspaces
 :::
-
-## Guide Index
-
-```{toctree}
-:maxdepth: 3
-:glob:
-
-./*
-```
