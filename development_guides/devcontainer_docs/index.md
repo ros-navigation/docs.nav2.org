@@ -12,8 +12,9 @@ You can use dev containers to build the project if you prefer a streamlined setu
 
 ```{toctree}
 :hidden:
+:glob:
 
-development_guide.md
+./*
 ```
 
 ## What, Why, How?
