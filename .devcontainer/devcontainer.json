@@ -1,0 +1,22 @@
+{
+    "name": "Nav2 Docs",
+    "build": {
+        "dockerfile": "../Dockerfile",
+        "context": ".."
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/docs,type=bind",
+    "workspaceFolder": "/docs",
+    "onCreateCommand": ".devcontainer/on-create-command.sh",
+    "updateContentCommand": ".devcontainer/update-content-command.sh",
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                "eamodio.gitlens",
+                "esbenp.prettier-vscode",
+                "GitHub.copilot",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    }
+}
