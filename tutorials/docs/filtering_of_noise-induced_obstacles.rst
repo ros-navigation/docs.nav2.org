@@ -76,11 +76,8 @@ To enable ``DenoiseLayer`` for both global and local costmaps, use the following
   To configure the ``DenoiseLayer`` to such cases and understand how it works, refer to the section `How it works`_.
 .. warning::
 
-  Use this plugin to filter the global costmap with caution. Firstly, it introduces potential performance issues.
+  Use this plugin to filter the global costmap with caution. It introduces potential performance issues.
   For example in case of typically-high-range lidars (20+ meters) update window can be massive making processing time unacceptably long.
-  Secondly, if salt and pepper noise is present in the local costmap, it disappears and is not remembered when going back into that region
-  since the local costmap doesn't store data in areas after it has left.
-  The global costmap does though, so if we leave an area and the salt/pepper noise was being handled by this later, it would still be there when we came back.
   It is worth taking this into account as an application designer.
 
 2. Run Nav2 stack
