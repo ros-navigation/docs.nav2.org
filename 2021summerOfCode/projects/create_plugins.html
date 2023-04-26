@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2. Create New Planner and Controller Plugins &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
@@ -14,6 +15,8 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -53,33 +56,44 @@
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#navigating">Navigating</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../build_instructions/index.html">Build and Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#install">Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#build">Build</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#for-released-distributions">For Released Distributions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#install-ros">Install ROS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-nav2">Build Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development_guides/index.html">Development Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development_guides/build_docs/index.html">Build and Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#install">Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#build">Build</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#released-distribution-binaries">Released Distribution Binaries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#rolling-development-source">Rolling Development Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#docker-container-images">Docker Container Images</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#for-main-branch-development">For Main Branch Development</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-ros-2-main">Build ROS 2 Main</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/index.html#build-nav2-main">Build Nav2 Main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#generate-doxygen">Generate Doxygen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#help">Help</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#docker">Docker</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#building-docker-container">Building Docker Container</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/index.html#using-dockerhub-container">Using DockerHub Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html">Dev Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/devcontainer_guide.html">Dev Container Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/devcontainer_guide.html#creating-dev-containers">Creating Dev Containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/devcontainer_guide.html#using-dev-containers">Using Dev Containers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#generate-doxygen">Generate Doxygen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../build_instructions/index.html#help">Help</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../build_instructions/build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/build_docs/build_troubleshooting_guide.html#common-nav2-dependencies-build-failures">Common Nav2 Dependencies Build Failures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../build_instructions/build_docs/build_troubleshooting_guide.html#reporting-issue">Reporting Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#what-why-how">What, Why, How?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#what-is-a-dev-container">What is a Dev Container?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#why-use-a-dev-container">Why use a Dev Container?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#how-do-dev-containers-work">How do Dev Containers work?</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#getting-started">Getting started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#security">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../development_guides/involvement_docs/index.html">Getting Involved</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/involvement_docs/index.html#id1">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/involvement_docs/index.html#process">Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/involvement_docs/index.html#licensing">Licensing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/involvement_docs/index.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a></li>
 </ul>
 </li>
 </ul>
@@ -863,13 +877,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../roadmap/roadmap.html">Roadmaps</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../roadmap/roadmap.html#iron-roadmap">Iron Roadmap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../roadmap/roadmap.html#humble-roadmap">Humble Roadmap</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Getting Involved</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#id1">Getting Involved</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#process">Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#licensing">Licensing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About and Contact</a><ul>

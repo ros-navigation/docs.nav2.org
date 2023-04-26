@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Troubleshooting Guide &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Dev Container Guide &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
@@ -14,11 +15,13 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Navigation Concepts" href="../../concepts/index.html" />
-    <link rel="prev" title="Build and Install" href="../index.html" />
+    <link rel="next" title="Getting Involved" href="../involvement_docs/index.html" />
+    <link rel="prev" title="Dev Containers" href="index.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -55,33 +58,44 @@
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#navigating">Navigating</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Build and Install</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../index.html#install">Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#build">Build</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#for-released-distributions">For Released Distributions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../index.html#install-ros">Install ROS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../index.html#build-nav2">Build Nav2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Development Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../build_docs/index.html">Build and Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_docs/index.html#install">Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_docs/index.html#build">Build</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_docs/index.html#released-distribution-binaries">Released Distribution Binaries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_docs/index.html#rolling-development-source">Rolling Development Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_docs/index.html#docker-container-images">Docker Container Images</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#for-main-branch-development">For Main Branch Development</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../index.html#build-ros-2-main">Build ROS 2 Main</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../index.html#build-nav2-main">Build Nav2 Main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_docs/index.html#generate-doxygen">Generate Doxygen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_docs/index.html#help">Help</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#docker">Docker</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#building-docker-container">Building Docker Container</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#using-dockerhub-container">Using DockerHub Container</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Dev Containers</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Dev Container Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-dev-containers">Creating Dev Containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-dev-containers">Using Dev Containers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#generate-doxygen">Generate Doxygen</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#help">Help</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Build Troubleshooting Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#common-nav2-dependencies-build-failures">Common Nav2 Dependencies Build Failures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reporting-issue">Reporting Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#what-why-how">What, Why, How?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index.html#what-is-a-dev-container">What is a Dev Container?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#why-use-a-dev-container">Why use a Dev Container?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#how-do-dev-containers-work">How do Dev Containers work?</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#getting-started">Getting started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#security">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../involvement_docs/index.html">Getting Involved</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../involvement_docs/index.html#id1">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../involvement_docs/index.html#process">Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../involvement_docs/index.html#licensing">Licensing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../involvement_docs/index.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a></li>
 </ul>
 </li>
 </ul>
@@ -867,13 +881,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../roadmap/roadmap.html#humble-roadmap">Humble Roadmap</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Getting Involved</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#id1">Getting Involved</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#process">Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#licensing">Licensing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../contribute/index.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About and Contact</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../about/related_projects.html">Related Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../about/ros1_comparison.html">ROS to ROS 2 Navigation</a></li>
@@ -904,8 +911,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../index.html">Build and Install</a></li>
-      <li class="breadcrumb-item active">Build Troubleshooting Guide</li>
+          <li class="breadcrumb-item"><a href="../index.html">Development Guides</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dev Containers</a></li>
+      <li class="breadcrumb-item active">Dev Container Guide</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -914,29 +922,265 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="build-troubleshooting-guide">
-<span id="id1"></span><h1>Build Troubleshooting Guide<a class="headerlink" href="#build-troubleshooting-guide" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="common-nav2-dependencies-build-failures">
-<h2>Common Nav2 Dependencies Build Failures<a class="headerlink" href="#common-nav2-dependencies-build-failures" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="dev-container-guide">
+<span id="devcontainer-guide"></span><h1>Dev Container Guide<a class="headerlink" href="#dev-container-guide" title="Permalink to this headline">¶</a></h1>
+<p>In this guide, we’ll walk through the process of creating and using dev containers for the project. While included subsections will provide greater detail on the various aspects of the process, complete comprehension of the entire guide is not required to get started, but is recommended for those interested in how dev containers work, or how to customize and optimize them for their own personal workflows.</p>
+<div class="section" id="creating-dev-containers">
+<h2>Creating Dev Containers<a class="headerlink" href="#creating-dev-containers" title="Permalink to this headline">¶</a></h2>
+<p>Before creating a dev container, you’ll want to choose the exact configuration to use. By default the <code class="docutils literal notranslate"><span class="pre">.devcontainer/devcontainer.json</span></code> configuration is selected, however you can also choose any other <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> file in the <code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> directory, where such configurations can be nested to provide greater customization: either by targeting different stages within different Dockerfiles, overriding any merged metadata or default properties, or inclusion of additional extensions and alternate commands.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The specification, reference, and schema for the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file format can be found here:</p>
 <ul class="simple">
-<li><p>Make sure that .bashrc file has no ROS environment variables in it. Open new terminals and try to build the packages again.</p></li>
-<li><p>Make sure to run rosdep for the correct ROS 2 distribution.
-<code class="docutils literal notranslate"><span class="pre">rosdep</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">-r</span> <span class="pre">-q</span> <span class="pre">--from-paths</span> <span class="pre">src</span> <span class="pre">--ignore-src</span> <span class="pre">--rosdistro</span> <span class="pre">&lt;ros2-distro&gt;</span></code></p></li>
-<li><p>Make sure that the <code class="docutils literal notranslate"><span class="pre">setup.bash</span></code> is sourced in the ROS 2 installation or ROS 2 main build workspace, if applicable. Check if you can run talker and listener nodes.</p></li>
-<li><p>Make sure that the <code class="docutils literal notranslate"><span class="pre">setup.bash</span></code> in <code class="docutils literal notranslate"><span class="pre">nav2_depend_ws/install</span></code> is sourced.</p></li>
-<li><p>Check if you have the correct ROS version and distribution. <code class="docutils literal notranslate"><span class="pre">printenv</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">ROS</span></code></p></li>
-<li><p>If you see a bunch of errors on startup about <code class="docutils literal notranslate"><span class="pre">map</span></code> or <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame not existing, remember to activate drivers (or gazebo for simulation) and set an initial pose in <code class="docutils literal notranslate"><span class="pre">map</span></code> frame. Costmap2D will block activation until a full TF tree is available.</p></li>
-<li><p>Make sure you’ve activated the lifecycle nodes if you’re not seeing transforms or servers running.</p></li>
-<li><p>Search <a class="reference external" href="https://github.com/ros-planning/navigation2/issues">GitHub Issues</a></p></li>
-<li><p>Make sure you’re using the correct branch for your distribution. There is no cross support from branch for <code class="docutils literal notranslate"><span class="pre">DistroA</span></code> in <code class="docutils literal notranslate"><span class="pre">DistroB</span></code>. The main development branch uses the rolling distribution.</p></li>
+<li><p><a class="reference external" href="https://containers.dev/implementors/spec">Specification</a></p>
+<ul>
+<li><p>Development Container Specification</p></li>
 </ul>
-<p>Still can’t solve it? Let us know about your issue. <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/new">Open a ticket</a>.</p>
+</li>
+<li><p><a class="reference external" href="https://containers.dev/implementors/json_reference">Reference</a></p>
+<ul>
+<li><p>Metadata and properties reference</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://containers.dev/implementors/json_schema">Schema</a></p>
+<ul>
+<li><p>JSON schema for <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code></p></li>
+</ul>
+</li>
+</ul>
 </div>
-<div class="section" id="reporting-issue">
-<h2>Reporting Issue<a class="headerlink" href="#reporting-issue" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="building-the-image">
+<h3>Building the image<a class="headerlink" href="#building-the-image" title="Permalink to this headline">¶</a></h3>
+<p>When first creating Dev Containers, any supporting tool or service used will download and build the docker images needed to run the container. This includes pulling any parent images the project’s Dockerfile builds <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, as well as any tags or layers declared via <code class="docutils literal notranslate"><span class="pre">cacheFrom</span></code>, as specified in the chosen <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file. This can take a while, but only needs to be done once, or at least not again until such layers are updated and pushed to the image registry.</p>
+<p>Specifically, for this project, the default <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> file targets the <code class="docutils literal notranslate"><span class="pre">dever</span></code> stage within the project’s root Dockerfile, the stage that also includes handy tools for developing the project, such as bash auto completion. This stage is in turn built <code class="docutils literal notranslate"><span class="pre">FROM</span></code> the <code class="docutils literal notranslate"><span class="pre">builder</span></code> stage, the stage that only includes the dependencies needed for building the project, as reused by the project’s CI. For example, the <code class="docutils literal notranslate"><span class="pre">dever</span></code> stage modifies <code class="docutils literal notranslate"><span class="pre">/etc/bash.bashrc</span></code> to automatically source <code class="docutils literal notranslate"><span class="pre">install/setup.bash</span></code> from the underlay workspace, ensuring all VS Code extensions are loaded with the correct environment, while avoiding any race conditions during installation and startup.</p>
+<p>To speed up the initial build, images layers from this <code class="docutils literal notranslate"><span class="pre">builder</span></code> stage are cached by pulling the same image tag used by the project’s CI, hosted from the image registry. This ensures your local dev container replicates our CI environment as close as possible, while benefiting from any cached work preemptively performed by the CI. Yet, this still allows you to customize the project’s Dockerfile and rebuild the container, without needing to update CI images to reflect your local modifications.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More details on the project’s CI and related docker image registry can be found here:</p>
 <ul class="simple">
-<li><p>If you run into any issues when building Navigation2, you can use the search tool in the issues tab on <a class="reference external" href="https://github.com/ros-planning/navigation2/issues">GitHub</a> and always feel free to <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/new">open a ticket</a>.</p></li>
+<li><p><a class="reference external" href="https://vimeo.com/649647161/5b0c278e6c">Chronicles of Caching and Containerising CI for Nav2</a></p>
+<ul>
+<li><p>Video presentation from ROS World 2021 - Ruffin White</p></li>
 </ul>
+</li>
+</ul>
+</div>
+<p>Once the base image from the target stage is built, the supporting tool or service may then add additional layers to the image, such as installing additional <a class="reference external" href="https://containers.dev/features">features</a> or customizations. For VS Code, this also includes some fancy file caching for any extensions to install later. Once this custom image is built, it is then used to start the dev container.</p>
+</div>
+<div class="section" id="starting-the-container">
+<h3>Starting the container<a class="headerlink" href="#starting-the-container" title="Permalink to this headline">¶</a></h3>
+<p>When first creating Dev Containers, any supporting tool or service will invoke a sequence of commands specified in the chosen <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file. This can take a while, but only needs to be done once, or at least not again until the container is rebuilt, triggered by either updating the Dockerfile, base image, or <code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> config.</p>
+<p>Specifically, for this project, the default <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config executes the <code class="docutils literal notranslate"><span class="pre">onCreateCommand</span></code> to initially colcon cache, clean, and build the overlay workspace for the project. This ensures the workspace is precompiled and ready to use, while also ensuring any changes to the project’s source code are reflected in the container. This is useful for:</p>
+<ul class="simple">
+<li><p>IntelliSense</p>
+<ul>
+<li><p>Enables VS Code extensions to parse auto generated code</p></li>
+<li><p>Applicable for ROS package defining messages and services files</p></li>
+<li><p>Necessary for code modeling, navigation, and syntax highlighting</p></li>
+</ul>
+</li>
+<li><p>Caching</p>
+<ul>
+<li><p>Enables Codespace Prebuilds to cache the workspace artifacts</p></li>
+<li><p>Applicable for reducing startup time when spawning new Codespaces</p></li>
+<li><p>Necessary for limiting costs from CPU and storage usage</p></li>
+</ul>
+</li>
+</ul>
+<p>While the colcon workspace is being built, VS Code will simultaneously install any specified extensions and settings. Next the <code class="docutils literal notranslate"><span class="pre">updateContentCommand</span></code> is executed, which reruns whenever the container is started or restarted. Specifically, for this project, this command re-cleans and re-builds the same colcon workspace as before, but only for invalidated packages detected by colcon cache using the lockfiles initialized during the <code class="docutils literal notranslate"><span class="pre">onCreateCommand</span></code>. This caching behavior also replicates the project’s CI workflow. This is useful for:</p>
+<ul class="simple">
+<li><p>Branching</p>
+<ul>
+<li><p>Enables caching of workspace artifacts when switching between branches</p></li>
+<li><p>Applicable for reviewing pull requests without rebuilding entire container</p></li>
+<li><p>Necessary for reducing startup time when spawning new Codespaces</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>More documentation about these additional colcon verb extensions can be found here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ruffsl/colcon-cache">colcon-cache</a></p>
+<ul>
+<li><p>A colcon extension to cache the processing of packages</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/colcon/colcon-clean">colcon-clean</a></p>
+<ul>
+<li><p>A colcon extension to clean package workspaces</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Finally, the <code class="docutils literal notranslate"><span class="pre">postCreateCommand</span></code> is executed, which also reruns whenever the container is started or restarted. Specifically, for this project, this command makes a last few tweaks to the user’s environment to improve the development experience.</p>
+<p>To speed up subsequent startups, volumes that are mounted to the container store a persistent ccache and colcon workspace, while the environment is set to enable <a class="reference external" href="https://ccache.dev/">ccache</a> via <a class="reference external" href="https://github.com/colcon/colcon-mixin-repository">colcon mixins</a>. These volumes are labeled using the <a class="reference external" href="https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson"><code class="docutils literal notranslate"><span class="pre">devcontainerId</span></code></a> variable, which uniquely identify the dev container on a Docker host, allowing us to refer to a common identifier that is unique to the dev container, while remaining stable across rebuilds. This is useful for:</p>
+<ul class="simple">
+<li><p>Caching</p>
+<ul>
+<li><p>Enables colcon workspaces and ccache to persist between container rebuilds</p></li>
+<li><p>Applicable for avoiding re-compilation when modifying dev container config files</p></li>
+<li><p>Necessary for quickly customizing image or features without rebuilding from scratch</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>While these volumes are uniquely named, you could rename them locally to further organize or segment works-in-progress. E.g. appending branch names to the volume name to quickly switch between pull requests and cached colcon workspaces.</p>
+</div>
+<p>Additionally, the container can be granted <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/run/#privileged">privileged</a> and non-default <a class="reference external" href="https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities">Linux capabilities</a>, connected using the <a class="reference external" href="https://docs.docker.com/network/host/">host</a> network mode and <a class="reference external" href="https://docs.docker.com/engine/reference/run/#ipc-settings---ipc">IPC</a> and <a class="reference external" href="https://docs.docker.com/engine/reference/run/#pid-settings---pid">PID</a> spaces, with a relaxed <a class="reference external" href="https://docs.docker.com/engine/reference/run/#security-configuration">security configuration</a> and seccomp confinement for native debugging and external connectivity. This is useful for:</p>
+<ul class="simple">
+<li><p>Hybrid development</p>
+<ul>
+<li><p>Enables connecting ROS nodes external to the container</p></li>
+<li><p>Applicable for debugging or visualizing distributed systems</p></li>
+<li><p>Necessary for DDS discovery and shared memory transport</p></li>
+</ul>
+</li>
+<li><p>Device connectivity</p>
+<ul>
+<li><p>Enables hardware forwarding from host machine to container</p></li>
+<li><p>Applicable for ROS package using sensors and actuators</p></li>
+<li><p>Necessary for some GPU drivers and USB devices</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Such <code class="docutils literal notranslate"><span class="pre">runArgs</span></code> in the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config can be enabled or customized, either expanded or or narrowed in scope, to better suit your desired development environment. The default configuration merely comments out these parameters, to limit unintended side effects or cross talk between containers, but can be uncommented to accommodate the widest range of development use cases.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More details on using DDS, debuggers, or devices with Docker containers can be found here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://community.rti.com/kb/how-use-rti-connext-dds-communicate-across-docker-containers-using-host-driver">How to Communicate Across Docker Containers Using the Host Driver</a></p>
+<ul>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">host</span></code> network driver to access all network interfaces of the host machine from the Docker container</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://community.rti.com/kb/communicate-between-two-docker-containers-using-rti-connext-dds-and-shared-memory">Communicate between two Docker containers using DDS and shared memory</a></p>
+<ul>
+<li><p>Enabling containers to communicate with one another and with the host machine using interprocess communication (IPC)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://nvartolomei.com/debugging-programs-running-inside-docker-containers--in-production/">Debugging programs running inside Docker containers, in production</a></p>
+<ul>
+<li><p>Using tools like strace, perf, gdb when debugging programs running inside containers</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="using-dev-containers">
+<h2>Using Dev Containers<a class="headerlink" href="#using-dev-containers" title="Permalink to this headline">¶</a></h2>
+<p>Once the dev container has been created and setup completed, VS Code will open a new workspace directly from the project’s root directory, which itself is mounted within the source directory in the overlay colcon workspace. From here you can build, test, and debug the project as you normally would, with the added benefit of having the project’s dependencies, intellisense, linters, and other extensions pre-configured and ready to use. Simply open a new terminal (Crtl+Shift+`), cd to the root of the colcon workspace, and run the usual colcon commands.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can incorporate the same scripts used by the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file to further automate your local development workflow.</p>
+</div>
+<div class="section" id="terminals">
+<h3>Terminals<a class="headerlink" href="#terminals" title="Permalink to this headline">¶</a></h3>
+<p>If you prefer using an alternate terminal emulator, rather than the built-in VS Code terminal, you can open a separate shell session by simply using the Dev Container CLI or directly using the Docker CLI via the <code class="docutils literal notranslate"><span class="pre">exec</span></code> subcommands.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/devcontainers/devcontainer-cli">Dev Container CLI</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">devcontainer</span> <span class="pre">exec</span> <span class="pre">--workspace-folder</span> <span class="pre">$NAV2_WS/src/navigation2</span> <span class="pre">bash</span></code></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://docs.docker.com/engine/reference/commandline/exec/">docker exec
+</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">&lt;container-id&gt;</span> <span class="pre">bash</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Shell sessions spawned directly via <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> do not set the same environment that <code class="docutils literal notranslate"><span class="pre">devcontainer</span> <span class="pre">exec</span></code> does using <code class="docutils literal notranslate"><span class="pre">userEnvProbe</span></code>. Additional environment variables include <code class="docutils literal notranslate"><span class="pre">REMOTE_CONTAINERS_IPC</span></code>, <code class="docutils literal notranslate"><span class="pre">REMOTE_CONTAINERS_SOCKETS</span></code> and are used by vscode, ssh and X11.</p>
+</div>
+<div class="dropdown admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The environment provided by <code class="docutils literal notranslate"><span class="pre">userEnvProbe</span></code> can be sourced manually. E.g. for the default <code class="docutils literal notranslate"><span class="pre">loginInteractiveShell</span></code> probe:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>/tmp<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-path<span class="w"> </span><span class="s2">&quot;*/devcontainers-*/env-loginInteractiveShell.json&quot;</span><span class="w"> </span>-exec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;to_entries | .[] | &quot;\(.key)=\(.value | @sh)&quot;&#39;</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span>&gt;<span class="w"> </span>.env
+<span class="nb">source</span><span class="w"> </span>.env
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="lifecycle">
+<h3>Lifecycle<a class="headerlink" href="#lifecycle" title="Permalink to this headline">¶</a></h3>
+<p>While using the dev container, try and keep in mind the lifecycle of the container itself. Specifically, containers are ephemeral, meaning they are normally destroyed and recreated whenever the dev environment is rebuilt or updated. Subsequently, a best practice is to avoid storing any persistent data within the container, and instead utilize the project’s source directory, or a separate mounted volume. When altering the development environment inside the container, try to remember to codify your changes into the Dockerfile, or the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file, so that they can be easily reproduced and shared with others.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This is particularly important when the host machine is inherently ephemeral as well, as the case may be when using cloud based environments such as Codespaces, so be sure to commit and push local changes to a remote repository:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.github.com/en/codespaces/getting-started/the-codespace-lifecycle">The codespace lifecycle</a></p>
+<ul>
+<li><p>Maintain your data throughout the entire codespace lifecycle</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rebuilding">
+<h3>Rebuilding<a class="headerlink" href="#rebuilding" title="Permalink to this headline">¶</a></h3>
+<p>From time to time, you may need to rebuild the dev container, either because the base image, or <code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> config was updated, or simply out of wanting a new fresh development environment. To do so, simply open the Command Palette (Ctrl+Shift+P) and select the <code class="docutils literal notranslate"><span class="pre">Remote-Containers:</span> <span class="pre">Rebuild</span> <span class="pre">Container</span></code> command.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Rebuilding the container will destroy any changes made to the container itself, such as installing additional packages, or modifying the environment. However, the project’s source directory, and any mounted volumes, will remain unaffected.</p>
+</div>
+<p>For example, you may need to rebuild the dev container when:</p>
+<ul class="simple">
+<li><p>Pulling newer images from a container registry</p>
+<ul>
+<li><p>specifically, image tags built <code class="docutils literal notranslate"><span class="pre">FROM</span></code> in the Dockerfile</p></li>
+<li><p>or tags listed under <code class="docutils literal notranslate"><span class="pre">cacheFrom</span></code> in <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code></p></li>
+<li><p>periodically done manually to ensure local environment reflects CI</p></li>
+</ul>
+</li>
+<li><p>Updating the dev container configuration</p>
+<ul>
+<li><p>specifically when modifying dependent stages in the <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code></p></li>
+<li><p>or when modifying <code class="docutils literal notranslate"><span class="pre">./devcontainer</span></code> files and commands</p></li>
+<li><p>where build cache reuse correlates with severity of changes made</p></li>
+</ul>
+</li>
+</ul>
+<p>When necessary, you can also rebuild the container from scratch, e.i. without caching from docker, by selecting the <code class="docutils literal notranslate"><span class="pre">Remote-Containers:</span> <span class="pre">Rebuild</span> <span class="pre">Container</span> <span class="pre">Without</span> <span class="pre">Cache</span></code> command. This instead omits the <code class="docutils literal notranslate"><span class="pre">--cache-from</span></code> flag from the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">buildx</span></code> command, while also adding the <code class="docutils literal notranslate"><span class="pre">--no-cache</span></code> and <code class="docutils literal notranslate"><span class="pre">--pull</span></code> flags to prevent caching from any existing image layers, using only the latest images from a container registry.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Rebuilding the container without cache may likely pull newer images from a container registry or install newer packages, as is common when developing for ROS 2 Rolling. You may then want to clean your overlay volume to avoid ABI incompatibilities or stale artifacts.</p>
+</div>
+<p>Rebuilding without caching may be necessary when:</p>
+<ul class="simple">
+<li><p>Needing to update the base image</p>
+<ul>
+<li><p>specifically if dev container configurations remain unmodified</p></li>
+<li><p>to forcefully rerun a <code class="docutils literal notranslate"><span class="pre">RUN</span></code> directive in the Dockerfile</p></li>
+<li><p>such as unchanged <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">upgrade</span></code> or <code class="docutils literal notranslate"><span class="pre">rosdep</span> <span class="pre">update</span></code> commands</p></li>
+</ul>
+</li>
+</ul>
+<p>Specifically, for this project, volumes remain unaffected by this rebuilding process: i.e. those used to mount the ccache directory or colcon workspace. While volume management is left to the user’s discretion, other projects may of course handle this differently, so be sure to check the <code class="docutils literal notranslate"><span class="pre">./devcontainer</span></code> configuration to inspect how various container resources may be managed.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Docker volume management can be done via the Docker CLI, or the VS Code Docker extension:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.docker.com/engine/reference/commandline/volume">Docker Volume CLI</a></p>
+<ul>
+<li><p>Manage volumes using subcommands to create, inspect, list, remove, or prune volumes</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">VS Code Docker extension</a></p>
+<ul>
+<li><p>Makes it easy to create, manage, and debug containerized applications</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 
