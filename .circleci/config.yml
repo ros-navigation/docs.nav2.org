@@ -26,7 +26,7 @@ references:
         make html
   store_docs: &store_docs
     store_artifacts:
-        path: nav2_docs/_build/html
+        path: _build/html
         destination: html
   publish_docs: &publish_docs
     run:
