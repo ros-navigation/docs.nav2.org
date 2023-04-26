@@ -47,6 +47,9 @@ The decision matrix below provides a rough comparison of the various options lis
 
 > Legend: 🟢 Good | 🟠 Modest | 🔴 Poor
 
+<!-- ```{rst-class} content-collapse
+``` -->
+
 (web-apps)=
 ## Web Apps
 
