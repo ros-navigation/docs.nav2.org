@@ -50,16 +50,7 @@ The decision matrix below provides a rough comparison of the various options lis
 (web-apps)=
 ## Web Apps
 
-By far one of the easiest ways to quickly visualize the project is by using web client interfaces via Foxglove Studio and GzWeb. These apps are accessible from any web browser, regardless of the host operating system or whether the dev container is running locally or remotely. This is useful for:
-
-- Remote Development
-  - Enables
-  - Applicable
-  - Necessary
-- Education
-  - Enables
-  - Applicable
-  - Necessary
+By far one of the easiest ways to quickly visualize the project is by using web client interfaces, e.g. Foxglove Studio and GzWeb. Such apps are accessible from any web browser, regardless of the host operating system or whether the dev container is running locally or remotely.
 
 :::{seealso}
 More details on Foxglove Studio and GzWeb can be found here:
@@ -71,6 +62,17 @@ More details on Foxglove Studio and GzWeb can be found here:
 - [GzWeb](https://gazebosim.org/gzweb)
   - Web client for Gazebo classic simulation
 :::
+
+This is useful for:
+
+- Remote Development
+  - Enables deployment of headless or cloud based development environments
+  - Applicable for onboarding contributors or coordinating across distributed teams
+  - Necessary when local access to computing power or hardware resources are limited
+- Education
+  - Enables robotics curriculums, workshops, tutorials, or MOOCs using ROS
+  - Applicable for sidestepping setup issues across varieties of student hardware
+  - Necessary when class sizes are large or when instructor resources are limited
 
 visualizer stage
 
