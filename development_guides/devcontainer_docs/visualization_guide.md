@@ -74,6 +74,30 @@ This is useful for:
   - Applicable for sidestepping setup issues across varieties of student hardware
   - Necessary when class sizes are large or when instructor resources are limited
 
+The respective utility for this approach can be summarized as follows:
+
+- Setup Simplicity
+  - Little to no client-side setup or prerequisites required, other than a web browser
+  - Suitable for resource constrained devices, e.g. mobile phones or Android or iOS tablets
+- Tooling Flexibility
+  - Sufficient for common use cases, e.g. introspection, debugging, and education
+  - Limited to newer web-based ecosystem, i.e. incompatible with RQt or RViz plugins
+- Robust Integration
+  - Support for most ROS message types and streaming of remote assets
+  - Limited or experimental support for ROS actions and parameters
+- Responsive UI/UX
+  - Native like user interface with fluid control and visual feedback
+  - Suitable for insulating user experience from network latency and bandwidth
+- GPU Acceleration
+  - Client-side rendering for 3D visualizations done in browser via WebGL
+  - Suitable frame rates without fiddling with drivers or display settings
+- Remote Connectivity
+  - Usable via simple port forwarding for straight forward remote access
+  - Suitable for tunneling without software defined networks or virtual interfaces
+- Bandwidth Efficient
+  - Lower minimal bandwidth requirements than streaming server rendered frame buffers
+  - Limited to modest message rates/sizes based on network/bridge bandwidth/performance
+
 visualizer stage
 
 bridge
