@@ -30,12 +30,12 @@ There are a few ways to visualize the project within dev containers, each with t
   - Performative over local networks, while providing a native interface and GPU acceleration
 - [**VNC Desktop**](#vnc-desktop)
   - Flexible and remotely accessible from any client, while providing robust integration
-- [**X11 Socket**](#x11-socket)
+- [**Display Socket**](#display-socket)
   - Performative and flexible for local development, while providing robust integration
 
 The decision matrix below provides a rough comparison of the various options listed. Check each section for further details.
 
-| Approach vs Utility | Web Apps | Native Apps | VNC Desktop | X11 Socket |
+| Approach vs Utility | Web Apps | Native Apps | VNC Desktop | Display Socket |
 |---------------------|----------|-------------|-------------|------------|
 | Setup Simplicity    | 🟢        | 🟠           | 🟠           | 🔴          |
 | Tooling Flexibility | 🟠        | 🟠           | 🟢           | 🟢          |
@@ -133,8 +133,8 @@ This approach is similarly used by other robotic web based services. More exampl
   - A Continuos Integration and Deployment service for robotic applications and simulations
 :::
 
-(x11-socket)=
-## X11 Socket
+(display-socket)=
+## Display Socket
 
   - 3D hardware acceleration
   - Con: Difficult to configure, connect to, and enable GPU hardware acceleration
