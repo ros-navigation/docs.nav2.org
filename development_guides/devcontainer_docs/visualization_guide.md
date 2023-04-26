@@ -101,6 +101,25 @@ The respective utility for this approach can be summarized as follows:
   - Lower minimal bandwidth requirements than streaming server rendered frame buffers
   - Limited to modest message rates/sizes based on network/bridge bandwidth/performance
 
+### Example
+
+After launching the Nav2 Simple Commander demo, as hinted above, you can then start the web app backends. This can be done using the included VS Code tasks via the Command Palette and selecting `Tasks: Run Task` command, then the `Start Visualizations` task.
+
+:::{tip}
+You can inspect how this [VS Code Task](https://code.visualstudio.com/docs/editor/tasks), and others included, work by viewing the `.vscode/tasks.json` file in the project repository.
+:::
+
+This will start the respective bridges and web servers used by Foxglove Studio and GzWeb inside the dev container, where supporting tools, such as VS Code can then be used to automatically forward the ports opened by these backend to the local client. You can then click on the `Open in Browser` icon for the  navigate to `Ports` view in the bottom panel, or by running the command `Ports: Focus on Ports View`.
+
+:::{seealso}
+More details on VS Code Remote Development can be found here:
+
+- [Forwarding ports in your codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/forwarding-ports-in-your-codespace?tool=webui)
+  - via VS Code Remote Development from a web browser
+:::
+
+Remote-Containers: Rebuild Container` command.
+
 visualizer stage
 
 bridge
