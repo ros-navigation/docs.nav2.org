@@ -39,11 +39,11 @@ The decision matrix below provides a rough comparison of the various options lis
 |---------------------|----------|-------------|-------------|------------|
 | Setup Simplicity    | 🟢        | 🟠           | 🟠           | 🔴          |
 | Tooling Flexibility | 🟠        | 🟠           | 🟢           | 🟢          |
-| Robust Integration  | 🟢        | 🔴           | 🟢           | 🟢          |
+| Robust Integration  | 🟠        | 🔴           | 🟢           | 🟢          |
 | Responsive UI/UX    | 🟢        | 🟢           | 🔴           | 🟠          |
 | GPU Acceleration    | 🟢        | 🟢           | 🔴           | 🟠          |
 | Remote Connectivity | 🟢        | 🟠           | 🟢           | 🔴          |
-| Bandwidth Efficient | 🟠        | 🔴           | 🟠           | 🔴          |
+| Bandwidth Efficient | 🟠        | 🟢           | 🟠           | 🔴          |
 
 > Legend: 🟢 Good | 🟠 Modest | 🔴 Poor
 
