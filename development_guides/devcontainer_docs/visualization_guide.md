@@ -19,7 +19,7 @@ ros2 launch nav2_simple_commander security_demo_launch.py \
 :::
 
 :::{seealso}
-Checkout the Nav2 Simple Commander [Examples and Demos](/commander_api/index.rst#examples-and-demos) for more documentation on the depicted simulation.
+Checkout the Nav2 Simple Commander [Examples and Demos](/commander_api/index.rst) for more documentation on the depicted simulation.
 :::
 
 There are a few ways to visualize the project within dev containers, each with their own pros and cons. Ordered by increasing complexity:
