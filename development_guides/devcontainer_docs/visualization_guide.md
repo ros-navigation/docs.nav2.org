@@ -109,33 +109,25 @@ After launching the Nav2 Simple Commander demo, as hinted above, you can then st
 You can inspect how this [VS Code Task](https://code.visualstudio.com/docs/editor/tasks), and others included, work by viewing the `.vscode/tasks.json` file in the project repository.
 :::
 
-This will start the respective bridges and web servers used by Foxglove Studio and GzWeb inside the dev container, where supporting tools, such as VS Code can then be used to automatically forward the ports opened by these backend to the local client. You can then click on the `Open in Browser` icon for the  navigate to `Ports` view in the bottom panel, or by running the command `Ports: Focus on Ports View`.
+This will start the respective bridges and web servers used by Foxglove Studio and GzWeb inside the dev container, where supporting tools, such as VS Code can then be used to automatically forward the ports opened by these backends to the local client. You can then click on the `Open in Browser` icon for the  navigate to `Ports` view in the bottom panel, or by running the command `Ports: Focus on Ports View`.
 
 :::{seealso}
 More details on VS Code Remote Development can be found here:
 
+- [Forwarding a port / creating SSH tunnel](https://code.visualstudio.com/docs/remote/ssh#_forwarding-a-port-creating-ssh-tunnel)
+  - via the Remote Development extension from a local VS Code client
 - [Forwarding ports in your codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/forwarding-ports-in-your-codespace?tool=webui)
-  - via VS Code Remote Development from a web browser
+  - via supported Dev Container tooling from a remote Codespace
 :::
 
 Remote-Containers: Rebuild Container` command.
 
-visualizer stage
+Then click on the `Open in Browser` icon to launch the respective web app from a new browser tab, or click on the `Preview in Editor` icon just to the right of it to launch the web app directly in a new VS Code editor tab instead. Respective ports for each web app are:
 
-bridge
+- Foxglove Studio: `8080`
+- GzWeb: `9090`
 
-statefull
-gracefull reconect
-
-
-  - Pro: Applicable for developing either locally on a host or remotely, e.g. SSH or Codespaces
-  - Con: Limited to modest message rates and sizes based on network bandwidth and bridge performance
-
-basdwith (large by more finite) vs resource usage
-
-### VS Code Tasks
-
-### PWA progressive web app
+You can then resize the browser window to your liking, and even move the tab to a separate window or monitor for a split screen view.
 
 :::{tip}
 You can also install Foxglove Studio and GzWeb as PWAs, allowing you to resize them like native apps separate from the browser. Just remember that PWAs are fixed to the URL they were installed from, so you'll need to reinstall if the URLs or port numbers ever change.
@@ -149,6 +141,11 @@ More details on Progressive Web Apps installation can be found here:
 - [PWA Installation](https://web.dev/learn/pwa/installation)
   - with any browser (i.e. Firefox, or Safari on iOS)
 :::
+
+<!-- # TODO: expand
+bridge
+statefull
+gracefull reconect -->
 
 (native-apps)=
 ## Native Apps
