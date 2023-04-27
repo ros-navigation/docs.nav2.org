@@ -57,7 +57,7 @@ type`, `WGS 84/ Pseudo-Mercator` for `Target SRS` and set your desired path for 
 
 |
 
-Select the raster image you wish to georeference and place control point by selecting `Add Point ` and clicking on the raster image. 
+Select the raster image you wish to georeference and place control point by selecting `Add Point` and clicking on the raster image. 
 The control points can be modified by clicking on the control point table and typing in new values. Once you are satified with your control points, apply the transformation
 by selecting `Start Transformation`. 
 
