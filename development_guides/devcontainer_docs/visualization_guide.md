@@ -120,7 +120,7 @@ More details on VS Code Remote Development can be found here:
   - via supported Dev Container tooling from a remote Codespace
 :::
 
-Remote-Containers: Rebuild Container` command.
+![VS Code Ports View](/images/devcontainers/vscode_ports_view.png)
 
 Then click on the `Open in Browser` icon to launch the respective web app from a new browser tab, or click on the `Preview in Editor` icon just to the right of it to launch the web app directly in a new VS Code editor tab instead. Respective ports for each web app are:
 
