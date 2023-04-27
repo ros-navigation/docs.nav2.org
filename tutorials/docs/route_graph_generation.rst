@@ -208,7 +208,7 @@ coordinate reference system is `WGS 84 /Pseudo-Mercator`. Press `OK`.
 
 |
 
-6- Export to Geosjon 
+6- Export To Geojson 
 --------------------
 
 We are now ready to export the node and edge layer as geojson files. Execute `export_shapefiles.py <prefix_of_file> <path_to_edges_shapefile> <path_to_nodes_shapefile>`
