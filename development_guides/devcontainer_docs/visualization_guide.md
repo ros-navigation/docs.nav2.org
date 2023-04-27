@@ -63,7 +63,7 @@ More details on Foxglove Studio and GzWeb can be found here:
 - [Foxglove Bridge](https://github.com/foxglove/ros-foxglove-bridge)
   - Foxglove WebSocket bridge for ROS 1 and ROS 2
 - [GzWeb](https://gazebosim.org/gzweb)
-  - Web client for Gazebo classic simulation
+  - Web client for Gazebo simulation
 :::
 
 This is useful for:
