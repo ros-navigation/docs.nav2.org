@@ -47,8 +47,8 @@ The decision matrix below provides a rough comparison of the various options lis
 
 > Legend: 🟢 Good | 🟠 Modest | 🔴 Poor
 
-<!-- ```{rst-class} content-collapse
-``` -->
+```{rst-class} content-collapse
+```
 
 (web-apps)=
 ## Web Apps
@@ -147,6 +147,9 @@ bridge
 statefull
 gracefull reconect -->
 
+```{rst-class} content-collapse
+```
+
 (native-apps)=
 ## Native Apps
 
@@ -158,6 +161,9 @@ host networking for ROS ports
 native foxglove
 
 resources and interfaces
+
+```{rst-class} content-collapse
+```
 
 (vnc-desktop)=
 ## VNC Desktop
@@ -177,6 +183,9 @@ This approach is similarly used by other robotic web based services. More exampl
 - [AWS RoboMaker](https://aws.amazon.com/robomaker)
   - A Continuos Integration and Deployment service for robotic applications and simulations
 :::
+
+```{rst-class} content-collapse
+```
 
 (display-socket)=
 ## Display Socket
