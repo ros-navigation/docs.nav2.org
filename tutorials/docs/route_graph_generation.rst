@@ -18,7 +18,11 @@ Follow https://www.qgis.org/en/site/forusers/download.html to install QGIS.
 Tutorial Steps
 ==============
 
-1- Open QGIS and create a new project by selecting `Project->New`. Save your project by selecting, `Project -> Save As`. 
+
+1- Create New QGIS Project 
+--------------------------
+
+Open QGIS and create a new project by selecting `Project->New`. Save your project by selecting, `Project -> Save As`. 
 Set the project coordinate reference system by selecting `Project->Properties->CRS`. Set the coordinate system to `WGS 84/ Pseudo-Mercator` and click `OK`. 
 
 
@@ -35,7 +39,10 @@ Set the project coordinate reference system by selecting `Project->Properties->C
 
 |
 
-2- By default, the imported raster image origin will be at the top left corner, with x pointing to the right, and y pointing up.
+2- Setup Coordinate System 
+--------------------------
+
+By default, the imported raster image origin will be at the top left corner, with x pointing to the right, and y pointing up.
 To correctly set the orgin and the resolution we will georeference the raster image. 
 To georeference the image, three control points will choosen. Each control point maps a pixel location to the spatial reference. 
 
@@ -83,7 +90,10 @@ Drag and drop the georeferenced raster file into the layers window.
 
 To verify the transformation worked, move the mouse around the raster image and look at the coordinates being displayed at the bottom of the window. 
 
-3- Now that we have georeferenced the raster layer we can start placing nodes.
+3- Add Nodes 
+------------
+
+Now that we have georeferenced the raster layer we can start placing nodes.
 
 
 Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer setting to be 
@@ -132,8 +142,8 @@ Each time a node is added, a window will pop up with the auto incremented id. Pr
 |
 
  .. image:: images/route_graph_generation/nodes.png
-    :height: 250px
-    :width: 500px
+    :height: 500px
+    :width: 1000px
     :align: center
 
 |
@@ -145,7 +155,10 @@ Each time a node is added, a window will pop up with the auto incremented id. Pr
     Click on `Target Multi Edit Mode`, select the features to delete, and click on the trash can icon.     
 
 
-4- Now an edge layer can be created. Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer setting to be 
+4- Add Edges 
+------------
+
+Now an edge layer can be created. Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer setting to be 
 `edges` for the `File name`, `LineString` for the `Geometry type` and `WGS 84/ Pseudo-Mercator` for the coordinate system. Press `OK`.
 To auto incrment the `id` field follow the same steps as above except replace `increment_node_id.json` with `increment_edge_id.json`. 
 This will increment the edge `id` by one every time a new edge is added. The first edge `id` will be `10000`. 
@@ -169,14 +182,16 @@ To add edges, click on the `Add Line Feature`. Start adding edges by clicking tw
 |
 
  .. image:: images/route_graph_generation/edges.png
-    :height: 250px
-    :width: 500px
+    :height: 500px
+    :width: 1000px
     :align: center
 
 |
 
+5- Associate Nodes With Edges
+-----------------------------
 
-5- Now that we have our node and edge layers, we can associate node IDs with edge IDs. 
+Now that we have our node and edge layers, we can associate node IDs with edge IDs. 
 Select `Database -> DB manager`. Expand `Virtual layers` and expand `Project layers`. Open up
 the SQL window by clicking on the script icon in the top left corner. In the SQL window load in `generate_start_and_end_id.sql` by selecting `Load File`. 
 The script can found within the scripts directory in the nav2_route module.  
@@ -193,10 +208,15 @@ coordinate reference system is `WGS 84 /Pseudo-Mercator`. Press `OK`.
 
 |
 
-6- We are now ready to export the node and edge layer as geojson files. Execute `export_shapefiles.py <prefix_of_file> <path_to_edges_shapefile> <path_to_nodes_shapefile>`
+6- Export to Geosjon 
+--------------------
+
+We are now ready to export the node and edge layer as geojson files. Execute `export_shapefiles.py <prefix_of_file> <path_to_edges_shapefile> <path_to_nodes_shapefile>`
 within the scripts directory located in the nav2_route module. This script converts the nodes and edges shape file into a geojson file. 
 
-7- Congratulations! Your graph is ready to be consumed by the nav2 route! If you wish to add nodes or edges to your graph, 
+7- Congratulations 
+------------------
+Your graph is ready to be consumed by the nav2 route! If you wish to add nodes or edges to your graph, 
 edit the layers and repeat the proccess from step 5 to regenerate the graph. If you wish to adjust the graph, make sure `Editing` is toggled on for the 
 node and edge layer. Then select `Vertex Tool(all Layers)` and toggle on `Topological Editing`. Repeat the proccess from step 5 to regenerate the graph. 
 
