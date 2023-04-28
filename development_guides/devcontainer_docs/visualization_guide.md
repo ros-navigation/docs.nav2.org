@@ -28,7 +28,7 @@ There are a few ways to visualize the project within dev containers, each with t
   - Simple and remotely accessible from any web browser, while providing a responsive interface
 - [**Native Apps**](#native-apps)
   - Performative over local networks, while providing a native interface and GPU acceleration
-- [**Desktop Stream**](#desktop -stream)
+- [**Desktop Stream**](#desktop-stream)
   - Flexible and remotely accessible from any client, while providing robust integration
 - [**Display Socket**](#display-socket)
   - Performative and flexible for local development, while providing robust integration
@@ -165,7 +165,7 @@ resources and interfaces
 ```{rst-class} content-collapse
 ```
 
-(desktop -stream)=
+(desktop-stream)=
 ## Desktop Stream
 
   - Pro: Applicable when developing remotely over moderate yet finite network bandwidth
