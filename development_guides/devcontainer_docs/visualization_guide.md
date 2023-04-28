@@ -200,6 +200,41 @@ This approach is similarly used by other robotic web based services. More exampl
   - 3D hardware acceleration
   - Con: Difficult to configure, connect to, and enable GPU hardware acceleration
 
+This is useful for:
+
+- Local Development
+  - Enables use of native apps while still isolated from host OS or local environment
+  - Applicable for local host development or over high bandwidth and low latency networks
+  - Necessary for robust and seamless integration of native apps inside dev containers
+- Optimized Performance
+  - Enables high frame rates with GPU acceleration using host machine hardware
+  - Applicable for visualizing large and dynamic sensor data streams or 3D simulations
+  - Necessary for large uncompressed image streams or high frequency signal data
+
+The respective utility for this approach can be summarized as follows:
+
+- Setup Simplicity
+  - Although simple in theory, optimal configuration in practice can be fairly involved
+  - Limited portability due to reliance of host OS configuration and local prerequisites
+- Tooling Flexibility
+  - Compatible with most tools and applications across entire ROS ecosystem
+  - Suitable when using custom extensions to RViz or RQt plugins
+- Robust Integration
+  - Simplifies consistent integration between workspace and development tools
+  - Suitable when using custom message types or interface definitions
+- Responsive UI/UX
+  - Native interface and seamless user experience with local display manager
+  - Suitable when multitasking between multiple tools and native windows
+- GPU Acceleration
+  - Requires additional prerequisites and setup to passthrough GPU devices
+  - Limited as milage may vary with ease of use being devices vendor specific
+- Remote Connectivity
+  - Streaming X11 frame buffers via network rather than unix sockets hampers performance
+  - Limited to local host development or over high bandwidth and low latency networks
+- Bandwidth Efficient
+  - Higher bandwidth usage, but can be contingent on frame rate, content, and resolution
+  - Limited over networks, although negligible over unix sockets for local development
+
 
 ### Local Host
 
