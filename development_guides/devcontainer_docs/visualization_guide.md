@@ -171,7 +171,7 @@ resources and interfaces
   - Pro: Applicable when developing remotely over moderate yet finite network bandwidth
   - Con: Not performative or responsive, e.g.
 
-basdwith (large by more finite) vs resource usage
+bandwidth (large by more finite) vs resource usage
 
 https://github.com/devcontainers/features/tree/main/src/desktop-lite
 
