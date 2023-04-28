@@ -28,14 +28,14 @@ There are a few ways to visualize the project within dev containers, each with t
   - Simple and remotely accessible from any web browser, while providing a responsive interface
 - [**Native Apps**](#native-apps)
   - Performative over local networks, while providing a native interface and GPU acceleration
-- [**VNC Desktop**](#vnc-desktop)
+- [**Desktop Stream**](#desktop -stream)
   - Flexible and remotely accessible from any client, while providing robust integration
 - [**Display Socket**](#display-socket)
   - Performative and flexible for local development, while providing robust integration
 
 The decision matrix below provides a rough comparison of the various options listed. Check each section for further details.
 
-| Approach vs Utility | Web Apps | Native Apps | VNC Desktop | Display Socket |
+| Approach vs Utility | Web Apps | Native Apps | Desktop Stream | Display Socket |
 |---------------------|----------|-------------|-------------|------------|
 | Setup Simplicity    | 🟢        | 🟠           | 🟠           | 🔴          |
 | Tooling Flexibility | 🟠        | 🟠           | 🟢           | 🟢          |
@@ -165,8 +165,8 @@ resources and interfaces
 ```{rst-class} content-collapse
 ```
 
-(vnc-desktop)=
-## VNC Desktop
+(desktop -stream)=
+## Desktop Stream
 
   - Pro: Applicable when developing remotely over moderate yet finite network bandwidth
   - Con: Not performative or responsive, e.g.
