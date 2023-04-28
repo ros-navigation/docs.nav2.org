@@ -184,6 +184,13 @@ This approach is similarly used by other robotic web based services. More exampl
   - A Continuos Integration and Deployment service for robotic applications and simulations
 :::
 
+:::{seealso}
+- [Sunshine](https://github.com/LizardByte/Sunshine)
+  - Self-hosted game stream host for Moonlight
+- [Moonlight](https://moonlight-stream.org)
+  - Open source implementation of NVIDIA's GameStream protocol
+:::
+
 ```{rst-class} content-collapse
 ```
 
