@@ -235,6 +235,10 @@ The respective utility for this approach can be summarized as follows:
   - Higher bandwidth usage, but can be contingent on frame rate, content, and resolution
   - Limited over networks, although negligible over unix sockets for local development
 
+:::{seealso}
+- [x11docker](https://github.com/mviereck/x11docker)
+  - Run GUI applications and desktops in docker and podman containers
+:::
 
 ### Local Host
 
