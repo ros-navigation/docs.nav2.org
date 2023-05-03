@@ -431,7 +431,7 @@ For more information how to bring-up your own Collision Monitor node, please ref
           type: "polygon"
           points: [0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5]
           action_type: "limit"
-          max_points: 3
+          min_points: 4  # max_points: 3 for Humble
           linear_limit: 0.4
           angular_limit: 0.5
           visualize: True
