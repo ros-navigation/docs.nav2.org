@@ -28,11 +28,11 @@ Installation
       sudo apt install ros-<ros2-distro>-navigation2
       sudo apt install ros-<ros2-distro>-nav2-bringup
 
-3. Install the Turtlebot 3 packages:
+3. Install the Turtlebot 3 packages (Humble and older):
 
    .. code-block:: bash
 
-      sudo apt install ros-<ros2-distro>-turtlebot3*
+      sudo apt install ros-<ros2-distro>-turtlebot3-gazebo
 
 Running the Example
 *******************
