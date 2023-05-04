@@ -32,7 +32,7 @@ Installation
 
    .. code-block:: bash
 
-      sudo apt install ros-<ros2-distro>-turtlebot3*
+      sudo apt install ros-<ros2-distro>-turtlebot3-gazebo
 
 Running the Example
 *******************
