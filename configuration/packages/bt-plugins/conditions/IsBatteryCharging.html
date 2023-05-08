@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AreErrorCodesPresent &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>IsBatteryCharging &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="WouldAControllerRecoveryHelp" href="WouldAControllerRecoveryHelp.html" />
-    <link rel="prev" title="PathExpiringTimer" href="PathExpiringTimer.html" />
+    <link rel="next" title="PipelineSequence" href="../controls/PipelineSequence.html" />
+    <link rel="prev" title="WouldASmootherRecoveryHelp" href="WouldASmootherRecoveryHelp.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -476,11 +476,11 @@
 <li class="toctree-l4"><a class="reference internal" href="IsBatteryLow.html">IsBatteryLow</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IsPathValid.html">IsPathValid</a></li>
 <li class="toctree-l4"><a class="reference internal" href="PathExpiringTimer.html">PathExpiringTimer</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">AreErrorCodesPresent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="AreErrorCodesPresent.html">AreErrorCodesPresent</a></li>
 <li class="toctree-l4"><a class="reference internal" href="WouldAControllerRecoveryHelp.html">WouldAControllerRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="WouldAPlannerRecoveryHelp.html">WouldAPlannerRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="WouldASmootherRecoveryHelp.html">WouldASmootherRecoveryHelp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="IsBatteryCharging.html">IsBatteryCharging</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">IsBatteryCharging</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -915,7 +915,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">AreErrorCodesPresent</li>
+      <li class="breadcrumb-item active">IsBatteryCharging</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -924,63 +924,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="areerrorcodespresent">
-<span id="bt-are-error-codes-present-condition"></span><h1>AreErrorCodesPresent<a class="headerlink" href="#areerrorcodespresent" title="Permalink to this headline">¶</a></h1>
-<p>Checks the if the provided error code matches any error code within a set.</p>
-<p>If the active error code is a match, the node returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. Otherwise, it returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>.</p>
-<div class="section" id="input-ports">
-<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
-<dl class="field-list">
-<dt class="field-odd">error_code</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>unsigned short</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>The active error code to compare against.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">error_codes_to_check</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 77%" />
-<col style="width: 23%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>std::set&lt;unsigned short&gt;</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>The set of error codes you wish to compare against the active error code.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div>
+  <div class="section" id="isbatterycharging">
+<span id="bt-is-battery-charging-condition"></span><h1>IsBatteryCharging<a class="headerlink" href="#isbatterycharging" title="Permalink to this headline">¶</a></h1>
+<p>Checks if the battery is charging by subscribing to a <code class="docutils literal notranslate"><span class="pre">sensor_msgs/BatteryState</span></code> topic and checking if the power_supply_status is <code class="docutils literal notranslate"><span class="pre">POWER_SUPPLY_STATUS_CHARGING</span></code>.
+Returns SUCCESS in that case, FAILURE otherwise.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Error codes to check are defined in another port.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;AreErrorCodesPresent</span><span class="w"> </span><span class="na">error_code=</span><span class="s">&quot;{error_code}&quot;</span><span class="w"> </span><span class="na">error_codes_to_check=</span><span class="s">&quot;{error_codes_to_check}&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
-</div>
-<p>Error codes to check are defined to be 101, 107 and 119.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;AreErrorCodesPresent</span><span class="w"> </span><span class="na">error_code=</span><span class="s">&quot;{error_code}&quot;</span><span class="w"> </span><span class="na">error_codes_to_check=</span><span class="s">&quot;101,107,119&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsBatteryCharging</span><span class="w"> </span><span class="na">battery_topic=</span><span class="s">&quot;/battery_status&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
