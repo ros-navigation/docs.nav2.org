@@ -67,10 +67,24 @@ Input Ports
   Description
     	True if the action is being used as a recovery.
 
+Output Ports
+------------
+
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A  
+  ============== =======
+
+  Description
+    	Compute path to pose error code. See ``Spin`` action message for the enumerated set of error codes.
+
 Example
 -------
 
 .. code-block:: xml
 
-  <Spin spin_dist="1.57" server_name="spin" server_timeout="10" is_recovery="true"/>
+  <Spin spin_dist="1.57" server_name="spin" server_timeout="10" is_recovery="true" error_code_id="{spin_error_code}"/>
 

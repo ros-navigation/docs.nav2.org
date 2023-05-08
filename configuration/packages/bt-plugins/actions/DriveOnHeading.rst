@@ -66,6 +66,20 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+Output Ports
+------------
+
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A  
+  ============== =======
+
+  Description
+    	Compute path to pose error code. See ``DriveOnHeading`` action message for the enumerated set of error codes.
+
 Example
 -------
 
