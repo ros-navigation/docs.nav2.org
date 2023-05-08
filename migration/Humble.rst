@@ -194,6 +194,6 @@ PoseProgressChecker plugin
 
 IsBatteryChargingCondition BT Node
 **********************************
-`PR #3553 <https://github.com/ros-planning/navigation2/pull/3553>`_ adds a BT node to check if the battery is charging. See the configuration guide :ref:`IsBatteryCharging` for more details. 
+`PR #3553 <https://github.com/ros-planning/navigation2/pull/3553>`_ adds a BT node to check if the battery is charging. See the configuration guide :ref:`bt_is_battery_charging_condition` for more details. 
 
 
