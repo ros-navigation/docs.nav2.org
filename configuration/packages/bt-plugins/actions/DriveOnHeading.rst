@@ -78,7 +78,7 @@ Output Ports
   ============== =======
 
   Description
-    	Compute path to pose error code. See ``DriveOnHeading`` action message for the enumerated set of error codes.
+    	Drive on heading error code. See ``DriveOnHeading`` action message for the enumerated set of error codes.
 
 Example
 -------

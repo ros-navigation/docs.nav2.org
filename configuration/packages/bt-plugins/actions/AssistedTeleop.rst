@@ -57,6 +57,17 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A  
+  ============== =======
+
+  Description
+    	Assisted teleop error code. See ``AssistedTeleop`` action message for the enumerated set of error codes.
+
 Example
 -------
 

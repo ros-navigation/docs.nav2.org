@@ -79,7 +79,7 @@ Output Ports
   ============== =======
 
   Description
-    	Compute path to pose error code. See ``BackUp`` action message for the enumerated set of error codes.
+    	Backup error code. See ``BackUp`` action message for the enumerated set of error codes.
 
 Example
 -------

@@ -79,7 +79,7 @@ Output Ports
   ============== =======
 
   Description
-    	Compute path to pose error code. See ``Spin`` action message for the enumerated set of error codes.
+    	Spin error code. See ``Spin`` action message for the enumerated set of error codes.
 
 Example
 -------
