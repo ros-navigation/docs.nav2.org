@@ -136,7 +136,7 @@ Below is an example of the TB3 navigating in a small lounge.
    :hidden:
 
    getting_started/index.rst
-   build_instructions/index.rst
+   development_guides/index.rst
    concepts/index.rst
    setup_guides/index.rst
    tutorials/index.rst
@@ -148,6 +148,5 @@ Below is an example of the TB3 navigating in a small lounge.
    migration/index.rst
    commander_api/index.rst
    roadmap/roadmap.rst
-   contribute/index.rst
    about/index.rst
    about/robots.rst

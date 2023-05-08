@@ -69,6 +69,7 @@ Condition Plugins
   bt-plugins/conditions/WouldAControllerRecoveryHelp.rst
   bt-plugins/conditions/WouldAPlannerRecoveryHelp.rst
   bt-plugins/conditions/WouldASmootherRecoveryHelp.rst
+  bt-plugins/conditions/IsBatteryCharging.rst
 
 Control Plugins
 ***************
