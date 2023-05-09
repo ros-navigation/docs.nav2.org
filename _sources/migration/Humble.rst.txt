@@ -197,3 +197,11 @@ IsBatteryChargingCondition BT Node
 `PR #3553 <https://github.com/ros-planning/navigation2/pull/3553>`_ adds a BT node to check if the battery is charging. See the configuration guide :ref:`bt_is_battery_charging_condition` for more details. 
 
 
+Behavior Server Error Codes 
+***************************
+`PR #3569 <https://github.com/ros-planning/navigation2/pull/3539>`_ updates the behavior server plugins to provide error codes on failure. 
+
+- Spin: NONE: 0, UNKNOWN: 701, server error codes: 701-709
+- BackUp: NONE: 0, UNKNOWN: 801, server error codes: 710-719
+- DriveOnHeading: NONE: 0, UNKNOWN: 901, server error codes: 720-729
+- AssistedTeleop: NONE: 0, UNKNOWN: 1001, server error codes: 730-739

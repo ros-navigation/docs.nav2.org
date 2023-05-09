@@ -866,6 +866,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Humble.html#velocity-smoother-applies-deceleration-when-timeout">Velocity smoother applies deceleration when timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Humble.html#poseprogresschecker-plugin">PoseProgressChecker plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Humble.html#isbatterychargingcondition-bt-node">IsBatteryChargingCondition BT Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Humble.html#behavior-server-error-codes">Behavior Server Error Codes</a></li>
 </ul>
 </li>
 </ul>
@@ -1032,9 +1033,34 @@ It performs a linear translation by a given distance. The <a href="#id1"><span c
 </dl>
 </dd>
 </dl>
+<div class="section" id="output-ports">
+<h3>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">error_code_id</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>uint16</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Drive on heading error code. See <code class="docutils literal notranslate"><span class="pre">DriveOnHeading</span></code> action message for the enumerated set of error codes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DriveOnHeading</span><span class="w"> </span><span class="na">dist_to_travel=</span><span class="s">&quot;0.2&quot;</span><span class="w"> </span><span class="na">speed=</span><span class="s">&quot;0.05&quot;</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;backup_server&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DriveOnHeading</span><span class="w"> </span><span class="na">dist_to_travel=</span><span class="s">&quot;0.2&quot;</span><span class="w"> </span><span class="na">speed=</span><span class="s">&quot;0.05&quot;</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;backup_server&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{drive_on_heading_error_code}&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

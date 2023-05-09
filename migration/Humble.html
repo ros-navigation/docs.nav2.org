@@ -866,6 +866,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#velocity-smoother-applies-deceleration-when-timeout">Velocity smoother applies deceleration when timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#poseprogresschecker-plugin">PoseProgressChecker plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#isbatterychargingcondition-bt-node">IsBatteryChargingCondition BT Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#behavior-server-error-codes">Behavior Server Error Codes</a></li>
 </ul>
 </li>
 </ul>
@@ -1082,6 +1083,16 @@ These error code are potentially able to be cleared by a smoother recovery.</p>
 <div class="section" id="isbatterychargingcondition-bt-node">
 <h2>IsBatteryChargingCondition BT Node<a class="headerlink" href="#isbatterychargingcondition-bt-node" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3553">PR #3553</a> adds a BT node to check if the battery is charging. See the configuration guide <a class="reference internal" href="../configuration/packages/bt-plugins/conditions/IsBatteryCharging.html#bt-is-battery-charging-condition"><span class="std std-ref">IsBatteryCharging</span></a> for more details.</p>
+</div>
+<div class="section" id="behavior-server-error-codes">
+<h2>Behavior Server Error Codes<a class="headerlink" href="#behavior-server-error-codes" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3539">PR #3569</a> updates the behavior server plugins to provide error codes on failure.</p>
+<ul class="simple">
+<li><p>Spin: NONE: 0, UNKNOWN: 701, server error codes: 701-709</p></li>
+<li><p>BackUp: NONE: 0, UNKNOWN: 801, server error codes: 710-719</p></li>
+<li><p>DriveOnHeading: NONE: 0, UNKNOWN: 901, server error codes: 720-729</p></li>
+<li><p>AssistedTeleop: NONE: 0, UNKNOWN: 1001, server error codes: 730-739</p></li>
+</ul>
 </div>
 </div>
 
