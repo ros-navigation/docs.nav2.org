@@ -73,4 +73,4 @@ Example
 
 .. code-block:: xml
 
-  <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10"/>
+  <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10" error_code_id="{assisted_teleop_error_code}"/>
