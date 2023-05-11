@@ -192,6 +192,19 @@ PoseProgressChecker plugin
 **************************
 `PR #3530 <https://github.com/ros-planning/navigation2/pull/3530>`_ adds a new ``nav2_controller::PoseProgressChecker`` plugin. It builds on the behavior of the ``SimpleProgressChecker`` by adding a new parameter ``required_movement_angle``, allowing the plugin to considers that there is still progress when there is no translation movement, from the moment there is a rotation movement superior to ``required_movement_angle`` within the ``movement_time_allowance``.
 
+IsBatteryChargingCondition BT Node
+**********************************
+`PR #3553 <https://github.com/ros-planning/navigation2/pull/3553>`_ adds a BT node to check if the battery is charging. See the configuration guide :ref:`bt_is_battery_charging_condition` for more details. 
+
+Behavior Server Error Codes 
+***************************
+`PR #3569 <https://github.com/ros-planning/navigation2/pull/3539>`_ updates the behavior server plugins to provide error codes on failure. 
+
+- Spin: NONE: 0, UNKNOWN: 701, server error codes: 701-709
+- BackUp: NONE: 0, UNKNOWN: 801, server error codes: 710-719
+- DriveOnHeading: NONE: 0, UNKNOWN: 901, server error codes: 720-729
+- AssistedTeleop: NONE: 0, UNKNOWN: 1001, server error codes: 730-739
+
 New Denoise Costmap Layer Plugin
 ********************************
 `PR #2567 <https://github.com/ros-planning/navigation2/pull/2567>`_ adds the new plugin for filtering noise on the costmap.

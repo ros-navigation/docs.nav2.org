@@ -8,7 +8,7 @@ else
 endif
 
 # You can set these variables from the command line.
-SPHINXOPTS    ?= -q
+SPHINXOPTS    ?=
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = "Nav2 Documentation"
 SOURCEDIR     = .
@@ -34,6 +34,11 @@ help:
 
 html:
 	$(Q)$(SPHINXBUILD) -t $(DOC_TAG) -b html -d $(BUILDDIR)/doctrees $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS) $(O)
+
+# Autobuild the docs on changes
+
+autobuild:
+	sphinx-autobuild -t $(DOC_TAG) -b html -d $(BUILDDIR)/doctrees $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS)
 
 # Remove generated content (Sphinx and doxygen)
 

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _create_moveit_analog:
 
 1. Create a Configuration Assistant (Analog to MoveIt)

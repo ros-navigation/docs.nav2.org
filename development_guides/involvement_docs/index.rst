@@ -26,6 +26,8 @@ We encourage everyone interested to come to the meeting to introduce yourself, y
 
 Further, `ROS Discourse <https://discourse.ros.org/>`_ is a good place to follow larger discussions happening in the community and announcements. This is **not** the correct place to post questions or ask for assistance. Please visit `ROS Answers <https://answers.ros.org/>`_ for Q&A.
 
+Lastly, we have a `Community Slack <https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA>`_ where we chat in real-time about topics in public channels or sidebar maintainers on individual projects via PMs. If you're interested in contributing to Nav2, this is a great place to join!
+
 If you're looking to contribute code or bugs, please see the Process section below.
 
 Over time, for developers that have an interest and have shown technical competence in an area of the stack, we elevate developers to a maintainers status.

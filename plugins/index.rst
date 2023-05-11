@@ -492,7 +492,9 @@ Behavior Tree Nodes
 |                                    |                    | clear the smoother     |
 |                                    |                    | server error code.     |
 +------------------------------------+--------------------+------------------------+
-
+| `Is Battery Charging Condition`_   |  Alberto Tudela    | Checks if the battery  |
+|                                    |                    | is charging.           |
++------------------------------------+--------------------+------------------------+
 
 .. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
@@ -509,6 +511,7 @@ Behavior Tree Nodes
 .. _Would A Controller Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help.cpp
 .. _Would A Planner Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help.cpp
 .. _Would A Smoother Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help.cpp
+.. _Is Battery Charging Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |

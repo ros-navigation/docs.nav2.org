@@ -1,3 +1,5 @@
+:orphan:
+
 .. _create_plugins:
 
 

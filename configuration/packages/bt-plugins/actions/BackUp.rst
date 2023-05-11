@@ -67,9 +67,23 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+Output Ports
+------------
+
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A  
+  ============== =======
+
+  Description
+    	Backup error code. See ``BackUp`` action message for the enumerated set of error codes.
+
 Example
 -------
 
 .. code-block:: xml
 
-  <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10"/>
+  <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10" error_code_id="{backup_error_code}"/>

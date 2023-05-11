@@ -57,9 +57,20 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A  
+  ============== =======
+
+  Description
+    	Assisted teleop error code. See ``AssistedTeleop`` action message for the enumerated set of error codes.
+
 Example
 -------
 
 .. code-block:: xml
 
-  <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10"/>
+  <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10" error_code_id="{assisted_teleop_error_code}"/>
