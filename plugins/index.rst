@@ -62,6 +62,10 @@ Costmap Layers
 |                                |                        | consisting only of the most      |
 |                                |                        | sets of measurements             |
 +--------------------------------+------------------------+----------------------------------+
+| `Denoise Layer`_               |  Andrey Ryzhikov       | Filters noise-induced            |
+|                                |                        | standalone obstacles or small    |
+|                                |                        | obstacles groups                 |
++--------------------------------+------------------------+----------------------------------+
 
 .. _Voxel Layer: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
 .. _Static Layer: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
@@ -70,6 +74,7 @@ Costmap Layers
 .. _Obstacle Layer: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer
+.. _Denoise Layer: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
 
 Costmap Filters
 ===============
