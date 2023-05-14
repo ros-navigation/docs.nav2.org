@@ -10,7 +10,7 @@ Source code on Github_.
 The Lifecycle Manager module implements the method for handling the lifecycle transition states for the stack in a deterministic way.
 It will take in a set of ordered nodes to transition one-by-one into the configurating and activate states to run the stack.
 It will then bring down the stack into the finalized state in the opposite order.
-It will also create bond connections with the servrs to ensure they are still up and transition down all nodes if any are non-responsive or crashed.
+It will also create bond connections with the servers to ensure they are still up and transition down all nodes if any are non-responsive or crashed.
 
 Parameters
 **********
