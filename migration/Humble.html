@@ -349,6 +349,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html">Filtering of Noise-Induced Obstacles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#enable-denoise-layer">1. Enable Denoise Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#run-nav2-stack">2. Run Nav2 stack</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#how-it-works">How it works</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin_tutorials/index.html">Plugin Tutorials</a><ul>
@@ -510,6 +521,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/range.html">Range Sensor Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/denoise.html">Denoise Layer Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
@@ -867,6 +879,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#poseprogresschecker-plugin">PoseProgressChecker plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#isbatterychargingcondition-bt-node">IsBatteryChargingCondition BT Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#behavior-server-error-codes">Behavior Server Error Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-denoise-costmap-layer-plugin">New Denoise Costmap Layer Plugin</a></li>
 </ul>
 </li>
 </ul>
@@ -1093,6 +1106,13 @@ These error code are potentially able to be cleared by a smoother recovery.</p>
 <li><p>DriveOnHeading: NONE: 0, UNKNOWN: 901, server error codes: 720-729</p></li>
 <li><p>AssistedTeleop: NONE: 0, UNKNOWN: 1001, server error codes: 730-739</p></li>
 </ul>
+</div>
+<div class="section" id="new-denoise-costmap-layer-plugin">
+<h2>New Denoise Costmap Layer Plugin<a class="headerlink" href="#new-denoise-costmap-layer-plugin" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2567">PR #2567</a> adds the new plugin for filtering noise on the costmap.</p>
+<p>Due to errors in <code class="docutils literal notranslate"><span class="pre">Voxel</span> <span class="pre">Layer</span></code> or <code class="docutils literal notranslate"><span class="pre">Obstacle</span> <span class="pre">Layer</span></code> measurements, salt and pepper noise may appear on the <a class="reference internal" href="../configuration/packages/configuring-costmaps.html#configuring-cosmaps"><span class="std std-ref">costmap</span></a>. This noise creates false obstacles that prevent the robot from finding the best path on the map.
+The new <code class="docutils literal notranslate"><span class="pre">Denoise</span> <span class="pre">Layer</span></code> plugin is designed to filter out noise-induced standalone obstacles or small obstacles groups. This plugin allows you to add layer that will filter local or global costmap.
+More information about <code class="docutils literal notranslate"><span class="pre">Denoise</span> <span class="pre">Layer</span></code> plugin and how it works could be found <a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#filtering-of-noise-induced-obstacles"><span class="std std-ref">here</span></a>.</p>
 </div>
 </div>
 
