@@ -69,7 +69,7 @@ Parameters
 
         controller_server:
           ros__parameters:
-            progress_checker_plugins: ["progress_checker"]
+            progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
             progress_checker:
               plugin: "nav2_controller::SimpleProgressChecker"
     ..
