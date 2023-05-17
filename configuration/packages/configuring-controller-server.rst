@@ -209,7 +209,7 @@ Example
         min_theta_velocity_threshold: 0.001
         failure_tolerance: 0.3
         odom_topic: "odom"
-        progress_checker_plugins: ["progress_checker"]
+        progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
         goal_checker_plugin: "goal_checker"
         controller_plugins: ["FollowPath"]
         progress_checker:
