@@ -192,6 +192,11 @@ PoseProgressChecker plugin
 **************************
 `PR #3530 <https://github.com/ros-planning/navigation2/pull/3530>`_ adds a new ``nav2_controller::PoseProgressChecker`` plugin. It builds on the behavior of the ``SimpleProgressChecker`` by adding a new parameter ``required_movement_angle``, allowing the plugin to considers that there is still progress when there is no translation movement, from the moment there is a rotation movement superior to ``required_movement_angle`` within the ``movement_time_allowance``.
 
+Allow multiple goal checkers and change parameter progress_checker_plugin(s) name and type
+******************************************************************************************
+`PR #3555 <https://github.com/ros-planning/navigation2/pull/3555>`_  initializes the progress checker plugin(s) in the same way as for the goal checker and controller plugins: it is now a list of string and was renamed from ``progress_checker_plugin`` to ``progress_checker_plugins``, and the type changed from ``string`` to ``vector<string>``. This allows the initialization of multiple progress checkers that can be chosen from the added ``progress_checker_id field`` of the ``FollowPath`` action.
+Beware that it is a breaking change and that configuration files will need to be updated.
+
 IsBatteryChargingCondition BT Node
 **********************************
 `PR #3553 <https://github.com/ros-planning/navigation2/pull/3553>`_ adds a BT node to check if the battery is charging. See the configuration guide :ref:`bt_is_battery_charging_condition` for more details. 
