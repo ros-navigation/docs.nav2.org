@@ -18,7 +18,7 @@ Iron Roadmap
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `MPPI Controller`_             | Very Large (progress)  |
+| `MPPI Controller`_             | Very Large (DONE)      |
 |                                |                        |
 |                                |                        |
 |                                |                        |
