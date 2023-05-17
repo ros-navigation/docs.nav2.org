@@ -877,6 +877,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#renamed-ros-parameter-in-collision-monitor">Renamed ROS-parameter in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#velocity-smoother-applies-deceleration-when-timeout">Velocity smoother applies deceleration when timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#poseprogresschecker-plugin">PoseProgressChecker plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#allow-multiple-goal-checkers-and-change-parameter-progress-checker-plugin-s-name-and-type">Allow multiple goal checkers and change parameter progress_checker_plugin(s) name and type</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#isbatterychargingcondition-bt-node">IsBatteryChargingCondition BT Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#behavior-server-error-codes">Behavior Server Error Codes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-denoise-costmap-layer-plugin">New Denoise Costmap Layer Plugin</a></li>
@@ -995,18 +996,18 @@ It will take in path and plugin names for controller, progress checker and goal 
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">progress_checker_plugin</dt>
+<dt class="field-odd">progress_checker_plugins</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 44%" />
-<col style="width: 56%" />
+<col style="width: 41%" />
+<col style="width: 59%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>‘progress_checker’</p></td>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>[“progress_checker”]</p></td>
 </tr>
 </tbody>
 </table>
@@ -1017,7 +1018,7 @@ It will take in path and plugin names for controller, progress checker and goal 
 <p>Example:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">progress_checker_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;progress_checker&quot;</span>
+<span class="w">    </span><span class="nt">progress_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;progress_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># progress_checker_plugin: &quot;progress_checker&quot; For Humble and older</span>
 <span class="w">    </span><span class="nt">progress_checker</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span>
 </pre></div>
@@ -1197,7 +1198,7 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </div>
 <div class="section" id="default-plugins">
 <h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
-<p>When the <code class="code docutils literal notranslate"><span class="pre">progress_checker_plugin</span></code>, <code class="code docutils literal notranslate"><span class="pre">goal_checker_plugin</span></code> or <code class="code docutils literal notranslate"><span class="pre">controller_plugins</span></code> parameters are not overridden, the following default plugins are loaded:</p>
+<p>When the <code class="code docutils literal notranslate"><span class="pre">progress_checker_plugins</span></code>, <code class="code docutils literal notranslate"><span class="pre">goal_checker_plugin</span></code> or <code class="code docutils literal notranslate"><span class="pre">controller_plugins</span></code> parameters are not overridden, the following default plugins are loaded:</p>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
@@ -1232,7 +1233,7 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 <span class="w">    </span><span class="nt">min_theta_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
 <span class="w">    </span><span class="nt">failure_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">    </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
-<span class="w">    </span><span class="nt">progress_checker_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;progress_checker&quot;</span>
+<span class="w">    </span><span class="nt">progress_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;progress_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># progress_checker_plugin: &quot;progress_checker&quot; For Humble and older</span>
 <span class="w">    </span><span class="nt">goal_checker_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;goal_checker&quot;</span>
 <span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">progress_checker</span><span class="p">:</span>

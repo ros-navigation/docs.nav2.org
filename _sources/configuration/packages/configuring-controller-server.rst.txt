@@ -49,12 +49,12 @@ Parameters
               plugin: "dwb_core::DWBLocalPlanner"
     ..
 
-:progress_checker_plugin:
+:progress_checker_plugins:
 
   ============== ==============
   Type           Default
   -------------- --------------
-  string         'progress_checker'
+  vector<string> ["progress_checker"]
   ============== ==============
 
   Description
@@ -69,7 +69,7 @@ Parameters
 
         controller_server:
           ros__parameters:
-            progress_checker_plugin: "progress_checker"
+            progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
             progress_checker:
               plugin: "nav2_controller::SimpleProgressChecker"
     ..
@@ -184,7 +184,7 @@ Provided Plugins
 Default Plugins
 ***************
 
-When the :code:`progress_checker_plugin`, :code:`goal_checker_plugin` or :code:`controller_plugins` parameters are not overridden, the following default plugins are loaded:
+When the :code:`progress_checker_plugins`, :code:`goal_checker_plugin` or :code:`controller_plugins` parameters are not overridden, the following default plugins are loaded:
 
   ================== =====================================================
   Namespace          Plugin
@@ -209,7 +209,7 @@ Example
         min_theta_velocity_threshold: 0.001
         failure_tolerance: 0.3
         odom_topic: "odom"
-        progress_checker_plugin: "progress_checker"
+        progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
         goal_checker_plugin: "goal_checker"
         controller_plugins: ["FollowPath"]
         progress_checker:
