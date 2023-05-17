@@ -196,3 +196,24 @@ Allow multiple goal checkers and change parameter progress_checker_plugin(s) nam
 ******************************************************************************************
 `PR #3555 <https://github.com/ros-planning/navigation2/pull/3555>`_  initializes the progress checker plugin(s) in the same way as for the goal checker and controller plugins: it is now a list of string and was renamed from ``progress_checker_plugin`` to ``progress_checker_plugins``, and the type changed from ``string`` to ``vector<string>``. This allows the initialization of multiple progress checkers that can be chosen from the added ``progress_checker_id field`` of the ``FollowPath`` action.
 Beware that it is a breaking change and that configuration files will need to be updated.
+
+IsBatteryChargingCondition BT Node
+**********************************
+`PR #3553 <https://github.com/ros-planning/navigation2/pull/3553>`_ adds a BT node to check if the battery is charging. See the configuration guide :ref:`bt_is_battery_charging_condition` for more details. 
+
+Behavior Server Error Codes 
+***************************
+`PR #3569 <https://github.com/ros-planning/navigation2/pull/3539>`_ updates the behavior server plugins to provide error codes on failure. 
+
+- Spin: NONE: 0, UNKNOWN: 701, server error codes: 701-709
+- BackUp: NONE: 0, UNKNOWN: 801, server error codes: 710-719
+- DriveOnHeading: NONE: 0, UNKNOWN: 901, server error codes: 720-729
+- AssistedTeleop: NONE: 0, UNKNOWN: 1001, server error codes: 730-739
+
+New Denoise Costmap Layer Plugin
+********************************
+`PR #2567 <https://github.com/ros-planning/navigation2/pull/2567>`_ adds the new plugin for filtering noise on the costmap.
+
+Due to errors in ``Voxel Layer`` or ``Obstacle Layer`` measurements, salt and pepper noise may appear on the :ref:`costmap <configuring_cosmaps>`. This noise creates false obstacles that prevent the robot from finding the best path on the map.
+The new ``Denoise Layer`` plugin is designed to filter out noise-induced standalone obstacles or small obstacles groups. This plugin allows you to add layer that will filter local or global costmap.
+More information about ``Denoise Layer`` plugin and how it works could be found :ref:`here <filtering_of_noise-induced_obstacles>`.

@@ -337,6 +337,7 @@ Plugin Parameters
   costmap-plugins/obstacle.rst
   costmap-plugins/voxel.rst
   costmap-plugins/range.rst
+  costmap-plugins/denoise.rst
 
 Costmap Filters Parameters
 **************************

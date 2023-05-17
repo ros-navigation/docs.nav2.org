@@ -134,6 +134,8 @@ The table below shows the current servers along with the expected error code str
 +---------------------------------------------------+-----------------------+----------------------+
 | `Waypoint Follower Server`_                       | NONE=0, UNKNOWN=600   | 601-699              |
 +---------------------------------------------------+-----------------------+----------------------+
+| `Behavior Server`_                                | NONE=0                | 701-799              |
++---------------------------------------------------+-----------------------+----------------------+
 | ...                                               | ...                   |                      |
 +---------------------------------------------------+-----------------------+----------------------+
 | Last Nav2 Server                                  | NONE=0, UNKNOWN=9900  | 9901-9999            |
@@ -147,6 +149,7 @@ The table below shows the current servers along with the expected error code str
 .. _Planner Server: https://github.com/ros-planning/navigation2/blob/main/nav2_planner/src/planner_server.cpp
 .. _Smoother Server: https://github.com/ros-planning/navigation2/blob/main/nav2_smoother/src/nav2_smoother.cpp
 .. _Waypoint Follower Server: https://github.com/ros-planning/navigation2/blob/main/nav2_waypoint_follower/src/waypoint_follower.cpp
+.. _Behavior Server: https://github.com/ros-planning/navigation2/blob/main/nav2_behaviors/src/behavior_server.cpp
 
 Error codes are attached to the response of the action message. An example can be seen below for the route server. Note that by convention we set the error code field within the message definition to ``error_code``.
 
