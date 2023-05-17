@@ -58,7 +58,7 @@ Parameters
   ============== ==============
 
   Description
-    Mapped name for progress checker plugin for checking progress made by robot.
+    Mapped name for progress checker plugin for checking progress made by robot. Formerly ``progress_checker_plugin`` for Humble and older with a single string plugin.
 
   Note
     The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
