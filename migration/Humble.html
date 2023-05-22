@@ -881,6 +881,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#isbatterychargingcondition-bt-node">IsBatteryChargingCondition BT Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#behavior-server-error-codes">Behavior Server Error Codes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-denoise-costmap-layer-plugin">New Denoise Costmap Layer Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smacplannerhybrid-viz-expansions-parameter">SmacPlannerHybrid viz_expansions parameter</a></li>
 </ul>
 </li>
 </ul>
@@ -1119,6 +1120,10 @@ Beware that it is a breaking change and that configuration files will need to be
 <p>Due to errors in <code class="docutils literal notranslate"><span class="pre">Voxel</span> <span class="pre">Layer</span></code> or <code class="docutils literal notranslate"><span class="pre">Obstacle</span> <span class="pre">Layer</span></code> measurements, salt and pepper noise may appear on the <a class="reference internal" href="../configuration/packages/configuring-costmaps.html#configuring-cosmaps"><span class="std std-ref">costmap</span></a>. This noise creates false obstacles that prevent the robot from finding the best path on the map.
 The new <code class="docutils literal notranslate"><span class="pre">Denoise</span> <span class="pre">Layer</span></code> plugin is designed to filter out noise-induced standalone obstacles or small obstacles groups. This plugin allows you to add layer that will filter local or global costmap.
 More information about <code class="docutils literal notranslate"><span class="pre">Denoise</span> <span class="pre">Layer</span></code> plugin and how it works could be found <a class="reference internal" href="../tutorials/docs/filtering_of_noise-induced_obstacles.html#filtering-of-noise-induced-obstacles"><span class="std std-ref">here</span></a>.</p>
+</div>
+<div class="section" id="smacplannerhybrid-viz-expansions-parameter">
+<h2>SmacPlannerHybrid viz_expansions parameter<a class="headerlink" href="#smacplannerhybrid-viz-expansions-parameter" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3577">PR #3577</a> adds a new paremeter for visualising SmacPlannerHybrid expansions for debug purpose.</p>
 </div>
 </div>
 

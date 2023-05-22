@@ -211,6 +211,17 @@ Parameters
   Description
     Size of the dubin/reeds-sheep distance window to cache, in meters.
 
+:``<name>``.viz_expansions:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   false         
+  ====== =======
+
+  Description
+    Whether to publish expansions on the ``/expansions`` topic as an array of poses (the orientation has no meaning). WARNING: heavy to compute and to display, for debug only as it degrades the performance.
+
 :``<name>``.cache_obstacle_heuristic:
 
   ====== =======
@@ -329,6 +340,7 @@ Example
         retrospective_penalty: 0.015
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
         cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.   
+        viz_expansions: false               # For Hybrid nodes: Whether to publish expansions on the /expansions topic as an array of poses (the orientation has no meaning). WARNING: heavy to compute and to display, for debug only as it degrades the performance.
         smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
 
         smoother:
