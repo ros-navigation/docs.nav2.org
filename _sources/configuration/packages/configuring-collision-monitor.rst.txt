@@ -27,6 +27,7 @@ The following models of safety behaviors are employed by Collision Monitor:
 
 - **Stop model**: Define a zone and a point threshold. If ``min_points`` or more obstacle points appear inside this area, stop the robot until the obstacles will disappear.
 - **Slowdown model**: Define a zone around the robot and slow the maximum speed for a ``slowdown_ratio``, if ``min_points`` or more points will appear inside the area.
+- **Limit model**: Define a zone around the robot and restricts the maximum linear and angular velocities to ``linear_limit`` and ``angular_limit`` values accordingly, if ``min_points`` or more points will appear inside the area.
 - **Approach model**: Using the current robot speed, estimate the time to collision to sensor data. If the time is less than ``time_before_collision`` seconds (0.5, 2, 5, etc...), the robot will slow such that it is now at least ``time_before_collision`` seconds to collision. The effect here would be to keep the robot always ``time_before_collision`` seconds from any collision.
 
 The zones around the robot can take the following shapes:
@@ -155,7 +156,7 @@ Parameters
   ============== =============================
 
   Description:
-    List of zones (stop/slowdown bounding boxes, footprint, approach circle, etc...). Causes an error, if not specialized.
+    List of zones (stop/slowdown/limit bounding boxes, footprint, approach circle, etc...). Causes an error, if not specialized.
 
 
 :observation_sources:
@@ -194,7 +195,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.25, 0.5, -0.25, 0.0, -0.25, 0.0, 0.25}`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to ``polygon_sub_topic`` for points in the ``stop``/``slowdown`` action types, or footprint subscriber to ``footprint_topic`` for ``approach`` action type.
+    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.25, 0.5, -0.25, 0.0, -0.25, 0.0, 0.25}`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to ``polygon_sub_topic`` for points in the ``stop``/``slowdown``/``limit`` action types, or footprint subscriber to ``footprint_topic`` for ``approach`` action type.
 
 :``<polygon_name>``.polygon_sub_topic:
 
@@ -205,7 +206,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Topic to listen the polygon points from. Applicable only for ``polygon`` type and ``stop``/``slowdown`` action types. Causes an error, if not specified **and** points are also not specified. If both ``points`` and ``polygon_sub_topic`` are specified, the static ``points`` takes priority.
+    Topic to listen the polygon points from. Applicable only for ``polygon`` type and ``stop``/``slowdown``/``limit`` action types. Causes an error, if not specified **and** points are also not specified. If both ``points`` and ``polygon_sub_topic`` are specified, the static ``points`` takes priority.
 
 :``<polygon_name>``.footprint_topic:
 
@@ -238,7 +239,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Zone behavior model. Available values are ``stop``, ``slowdown``, ``approach``. Causes an error, if not specialized.
+    Zone behavior model. Available values are ``stop``, ``slowdown``, ``limit``, ``approach``. Causes an error, if not specialized.
 
 :``<polygon_name>``.min_points:
 
@@ -261,6 +262,28 @@ Polygons parameters
 
   Description:
     Robot slowdown (share of its actual speed). Applicable for ``slowdown`` action type.
+
+:``<polygon_name>``.linear_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.5
+  ============== =============================
+
+  Description:
+    Robot linear speed limit. Applicable for ``limit`` action type.
+
+:``<polygon_name>``.angular_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.5
+  ============== =============================
+
+  Description:
+    Robot angular speed limit. Applicable for ``limit`` action type.
 
 :``<polygon_name>``.time_before_collision:
 
@@ -404,6 +427,15 @@ For more information how to bring-up your own Collision Monitor node, please ref
           slowdown_ratio: 0.3
           visualize: True
           polygon_pub_topic: "polygon_slowdown"
+        PolygonLimit:
+          type: "polygon"
+          points: [0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5]
+          action_type: "limit"
+          min_points: 4  # max_points: 3 for Humble
+          linear_limit: 0.4
+          angular_limit: 0.5
+          visualize: True
+          polygon_pub_topic: "polygon_limit"
         FootprintApproach:
           type: "polygon"
           action_type: "approach"

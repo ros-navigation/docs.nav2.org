@@ -875,6 +875,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#more-stable-regulation-on-curves-for-long-lookahead-distances">More stable regulation on curves for long lookahead distances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#publish-collision-monitor-state">Publish Collision Monitor State</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#renamed-ros-parameter-in-collision-monitor">Renamed ROS-parameter in Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#new-safety-behavior-model-limit-in-collision-monitor">New safety behavior model “limit” in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#velocity-smoother-applies-deceleration-when-timeout">Velocity smoother applies deceleration when timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#poseprogresschecker-plugin">PoseProgressChecker plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Humble.html#allow-multiple-goal-checkers-and-change-parameter-progress-checker-plugin-s-name-and-type">Allow multiple goal checkers and change parameter progress_checker_plugin(s) name and type</a></li>
@@ -959,6 +960,7 @@ When multiple zones trigger at once, the most aggressive one is used (e.g. stop 
 <ul class="simple">
 <li><p><strong>Stop model</strong>: Define a zone and a point threshold. If <code class="docutils literal notranslate"><span class="pre">min_points</span></code> or more obstacle points appear inside this area, stop the robot until the obstacles will disappear.</p></li>
 <li><p><strong>Slowdown model</strong>: Define a zone around the robot and slow the maximum speed for a <code class="docutils literal notranslate"><span class="pre">slowdown_ratio</span></code>, if <code class="docutils literal notranslate"><span class="pre">min_points</span></code> or more points will appear inside the area.</p></li>
+<li><p><strong>Limit model</strong>: Define a zone around the robot and restricts the maximum linear and angular velocities to <code class="docutils literal notranslate"><span class="pre">linear_limit</span></code> and <code class="docutils literal notranslate"><span class="pre">angular_limit</span></code> values accordingly, if <code class="docutils literal notranslate"><span class="pre">min_points</span></code> or more points will appear inside the area.</p></li>
 <li><p><strong>Approach model</strong>: Using the current robot speed, estimate the time to collision to sensor data. If the time is less than <code class="docutils literal notranslate"><span class="pre">time_before_collision</span></code> seconds (0.5, 2, 5, etc…), the robot will slow such that it is now at least <code class="docutils literal notranslate"><span class="pre">time_before_collision</span></code> seconds to collision. The effect here would be to keep the robot always <code class="docutils literal notranslate"><span class="pre">time_before_collision</span></code> seconds from any collision.</p></li>
 </ul>
 <p>The zones around the robot can take the following shapes:</p>
@@ -1175,7 +1177,7 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>List of zones (stop/slowdown bounding boxes, footprint, approach circle, etc…). Causes an error, if not specialized.</p>
+<dt>Description:</dt><dd><p>List of zones (stop/slowdown/limit bounding boxes, footprint, approach circle, etc…). Causes an error, if not specialized.</p>
 </dd>
 </dl>
 </dd>
@@ -1240,7 +1242,7 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Polygon vertexes, listed in <code class="docutils literal notranslate"><span class="pre">{p1.x,</span> <span class="pre">p1.y,</span> <span class="pre">p2.x,</span> <span class="pre">p2.y,</span> <span class="pre">p3.x,</span> <span class="pre">p3.y,</span> <span class="pre">...}</span></code> format (e.g. <code class="docutils literal notranslate"><span class="pre">{0.5,</span> <span class="pre">0.25,</span> <span class="pre">0.5,</span> <span class="pre">-0.25,</span> <span class="pre">0.0,</span> <span class="pre">-0.25,</span> <span class="pre">0.0,</span> <span class="pre">0.25}</span></code> for the square in the front). Used for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to <code class="docutils literal notranslate"><span class="pre">polygon_sub_topic</span></code> for points in the <code class="docutils literal notranslate"><span class="pre">stop</span></code>/<code class="docutils literal notranslate"><span class="pre">slowdown</span></code> action types, or footprint subscriber to <code class="docutils literal notranslate"><span class="pre">footprint_topic</span></code> for <code class="docutils literal notranslate"><span class="pre">approach</span></code> action type.</p>
+<dt>Description:</dt><dd><p>Polygon vertexes, listed in <code class="docutils literal notranslate"><span class="pre">{p1.x,</span> <span class="pre">p1.y,</span> <span class="pre">p2.x,</span> <span class="pre">p2.y,</span> <span class="pre">p3.x,</span> <span class="pre">p3.y,</span> <span class="pre">...}</span></code> format (e.g. <code class="docutils literal notranslate"><span class="pre">{0.5,</span> <span class="pre">0.25,</span> <span class="pre">0.5,</span> <span class="pre">-0.25,</span> <span class="pre">0.0,</span> <span class="pre">-0.25,</span> <span class="pre">0.0,</span> <span class="pre">0.25}</span></code> for the square in the front). Used for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to <code class="docutils literal notranslate"><span class="pre">polygon_sub_topic</span></code> for points in the <code class="docutils literal notranslate"><span class="pre">stop</span></code>/<code class="docutils literal notranslate"><span class="pre">slowdown</span></code>/<code class="docutils literal notranslate"><span class="pre">limit</span></code> action types, or footprint subscriber to <code class="docutils literal notranslate"><span class="pre">footprint_topic</span></code> for <code class="docutils literal notranslate"><span class="pre">approach</span></code> action type.</p>
 </dd>
 </dl>
 </dd>
@@ -1260,7 +1262,7 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Topic to listen the polygon points from. Applicable only for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type and <code class="docutils literal notranslate"><span class="pre">stop</span></code>/<code class="docutils literal notranslate"><span class="pre">slowdown</span></code> action types. Causes an error, if not specified <strong>and</strong> points are also not specified. If both <code class="docutils literal notranslate"><span class="pre">points</span></code> and <code class="docutils literal notranslate"><span class="pre">polygon_sub_topic</span></code> are specified, the static <code class="docutils literal notranslate"><span class="pre">points</span></code> takes priority.</p>
+<dt>Description:</dt><dd><p>Topic to listen the polygon points from. Applicable only for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type and <code class="docutils literal notranslate"><span class="pre">stop</span></code>/<code class="docutils literal notranslate"><span class="pre">slowdown</span></code>/<code class="docutils literal notranslate"><span class="pre">limit</span></code> action types. Causes an error, if not specified <strong>and</strong> points are also not specified. If both <code class="docutils literal notranslate"><span class="pre">points</span></code> and <code class="docutils literal notranslate"><span class="pre">polygon_sub_topic</span></code> are specified, the static <code class="docutils literal notranslate"><span class="pre">points</span></code> takes priority.</p>
 </dd>
 </dl>
 </dd>
@@ -1320,7 +1322,7 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Zone behavior model. Available values are <code class="docutils literal notranslate"><span class="pre">stop</span></code>, <code class="docutils literal notranslate"><span class="pre">slowdown</span></code>, <code class="docutils literal notranslate"><span class="pre">approach</span></code>. Causes an error, if not specialized.</p>
+<dt>Description:</dt><dd><p>Zone behavior model. Available values are <code class="docutils literal notranslate"><span class="pre">stop</span></code>, <code class="docutils literal notranslate"><span class="pre">slowdown</span></code>, <code class="docutils literal notranslate"><span class="pre">limit</span></code>, <code class="docutils literal notranslate"><span class="pre">approach</span></code>. Causes an error, if not specialized.</p>
 </dd>
 </dl>
 </dd>
@@ -1361,6 +1363,46 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </table>
 <dl class="simple">
 <dt>Description:</dt><dd><p>Robot slowdown (share of its actual speed). Applicable for <code class="docutils literal notranslate"><span class="pre">slowdown</span></code> action type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.linear_limit</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Robot linear speed limit. Applicable for <code class="docutils literal notranslate"><span class="pre">limit</span></code> action type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.angular_limit</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Robot angular speed limit. Applicable for <code class="docutils literal notranslate"><span class="pre">limit</span></code> action type.</p>
 </dd>
 </dl>
 </dd>
@@ -1584,6 +1626,15 @@ For more information how to bring-up your own Collision Monitor node, please ref
 <span class="w">      </span><span class="nt">slowdown_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_slowdown&quot;</span>
+<span class="w">    </span><span class="nt">PolygonLimit</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
+<span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;limit&quot;</span>
+<span class="w">      </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">  </span><span class="c1"># max_points: 3 for Humble</span>
+<span class="w">      </span><span class="nt">linear_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
+<span class="w">      </span><span class="nt">angular_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_limit&quot;</span>
 <span class="w">    </span><span class="nt">FootprintApproach</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
 <span class="w">      </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;approach&quot;</span>
