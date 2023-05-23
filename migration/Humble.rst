@@ -183,6 +183,10 @@ Renamed ROS-parameter in Collision Monitor
 
 `PR #3513 <https://github.com/ros-planning/navigation2/pull/3513>`_ renames ``max_points`` parameter to ``min_points`` and changes its meaning. Formerly ``max_points`` meant the maximum number of points inside the area still not triggering the action, while ``min_points`` - is a minimal number of points starting from the action to be initiated. In other words ``min_points`` now should be adjusted as ``max_points + 1``.
 
+New safety behavior model "limit" in Collision Monitor
+******************************************
+`PR #3519 <https://github.com/ros-planning/navigation2/pull/3519>`_ adds a new collision monitor behavior model ``limit`` that restricts maximum linear and angular speed to specific values (``linear_limit`` and ``angular_limit``) if enough points are in the given shape.
+
 Velocity smoother applies deceleration when timeout
 ***************************************************
 
