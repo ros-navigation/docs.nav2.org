@@ -8,22 +8,51 @@ Below is a very early list of robots we have encountered using our software as e
 
 Click on the images below for a link to the drivers or navigation configurations.
 
+..
+  To add robot to the table, the dimensions MUST be either 512x340 or 340x512
+
 +------------------------+------------------------+------------------------+
-|          |pxl|         +          |ang|         +          |ses|         |
+|          |dex|         +          |poly|        +          |ses|         |
 +------------------------+------------------------+------------------------+
-|          |tri|         +          |dex|         +          |mpo_700|     |
+|          |ang|         +          |fire|        +          |mpo_700|     |
 +------------------------+------------------------+------------------------+
-|           |yunji|      +         |brisa|        +        |elroy|         |
+|         |rosie|        +         |wyca|         +           |birds|      |
 +------------------------+------------------------+------------------------+
-|         |ubr1|         +         |Tiago|        +       |RB1|            |
+|           |pxl|        +         |brisa|        +        |tri|           |
 +------------------------+------------------------+------------------------+
-|         |tb3|          +         |rover|        +           |tb2|        |
+|         |yunji|        +         |elroy|        +           |rover|      |
 +------------------------+------------------------+------------------------+
-|         |rosie|        +         |soon|         +           |soon|       |
+|         |ubr1|         +         |Tiago|        +       |tb2|            |
++------------------------+------------------------+------------------------+
+|         |tb4|          +         |tb3|          +           |RB1|        |
 +------------------------+------------------------+------------------------+
 
-.. |dex| image:: images/dexory.jpg
-    :width: 350px
+.. |fire| image:: images/firefly.png
+    :width: 100%
+    :align: middle
+    :alt: Firefly Automatix
+    :target: https://fireflyautomatix.com/m220/
+
+.. |poly| image:: images/polymath.png
+    :width: 100%
+    :align: middle
+    :alt: Polymath Robotics
+    :target: https://www.polymathrobotics.com/
+
+.. |birds| image:: images/birdseye.png
+    :width: 100%
+    :align: middle
+    :alt: Birds Eye
+    :target: https://www.birdseyerobotics.com/
+
+.. |wyca| image:: images/wyca.png
+    :width: 100%
+    :align: middle
+    :alt: Wyca Robotics
+    :target: https://www.wyca-robotics.fr/
+
+.. |dex| image:: images/dexory.png
+    :width: 100%
     :align: middle
     :alt: Dexory
     :target: https://www.dexory.com/
@@ -40,7 +69,7 @@ Click on the images below for a link to the drivers or navigation configurations
     :alt: ElroyAir
     :target: https://elroyair.com/
 
-.. |ang| image:: images/angsa.jpg
+.. |ang| image:: images/angsa.png
     :width: 100%
     :align: middle
     :alt: Angsa
@@ -52,14 +81,14 @@ Click on the images below for a link to the drivers or navigation configurations
     :alt: Seasony
     :target: https://www.seasony.io/
 
-.. |pxl| image:: images/pixel.jpeg
+.. |pxl| image:: images/pixel.png
     :width: 100%
     :align: middle
     :alt: Pixel
     :target: https://pixel-robotics.eu/
 
 .. |brisa| image:: images/brisa.png
-    :width: 350px
+    :width: 100%
     :align: middle
     :alt: Brisa
     :target: https://www.brisa.tech/
@@ -76,6 +105,12 @@ Click on the images below for a link to the drivers or navigation configurations
     :alt: Turtlebot3
     :target: https://github.com/ROBOTIS-GIT/turtlebot3
 
+.. |tb4| image:: images/tb4.png
+    :width: 100%
+    :align: middle
+    :alt: Turtlebot4
+    :target: https://clearpathrobotics.com/turtlebot-4/
+
 .. |rover| image:: images/rover.png
     :width: 100%
     :align: middle
@@ -89,20 +124,20 @@ Click on the images below for a link to the drivers or navigation configurations
     :target: https://en.yunjichina.com.cn/a/53.html
 
 .. |RB1| image:: images/rb1.png
-    :width: 350px
+    :width: 100%
     :align: middle
     :alt: Robotnik Rb1 base
     :target: https://github.com/IntelligentRoboticsLabs/marathon_ros2
 
 .. |Tiago| image:: images/tiago.png
     :align: middle
-    :height: 350px
+    :width: 100%
     :alt: Tiago Robot
     :target: https://github.com/IntelligentRoboticsLabs/marathon_ros2
 
-.. |ubr1| image:: images/ubr1.jpeg
+.. |ubr1| image:: images/ubr1.png
     :align: middle
-    :height: 350px
+    :width: 100%
     :alt: UBR-1
     :target: https://www.robotandchisel.com/2020/09/01/navigation2
 
@@ -112,13 +147,13 @@ Click on the images below for a link to the drivers or navigation configurations
     :alt: Neobotix MPO-700
     :target: https://github.com/neobotix/neo_mpo_700-2
 
-.. |soon| image:: images/coming_soon.jpeg
+.. |soon| image:: images/soon.png
     :width: 100%
     :align: middle
     :alt: Coming Soon
     :target: https://www.youtube.com/watch?v=oHg5SJYRHA0
 
-.. |rosie| image:: images/rosie.jpg
+.. |rosie| image:: images/tailos.png
     :width: 100%
     :align: middle
     :alt: Rosie
