@@ -561,6 +561,7 @@ Path Align Critic
 
   Description
     Maximum proportion of the path that can be occupied before this critic is not considered to allow the obstacle and path follow critics to avoid obstacles while following the path's intent in presence of dynamic objects in the scene. Between 0-1 for 0-100%.
+
 Path Angle Critic
 -----------------
 
