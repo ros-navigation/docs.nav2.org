@@ -1022,6 +1022,14 @@ robot to drive.  This method passes 2 parameters: reference to the current robot
 pose and its current velocity.</p></td>
 <td><p>Yes</p></td>
 </tr>
+<tr class="row-even"><td><p>setSpeedLimit()</p></td>
+<td><p>Method is called when it is required to limit the maximum linear speed of the robot.
+Speed limit could be expressed in absolute value (m/s) or in percentage from maximum
+robot speed. Note that typically, maximum rotational speed is being limited
+proportionally to the change of maximum linear speed, in order to keep current robot
+behavior to be untouched.</p></td>
+<td><p>Yes</p></td>
+</tr>
 </tbody>
 </table>
 <p>In this tutorial, we will have used the methods <code class="docutils literal notranslate"><span class="pre">PurePursuitController::configure</span></code>, <code class="docutils literal notranslate"><span class="pre">PurePursuitController::setPlan</span></code> and
@@ -1029,8 +1037,8 @@ pose and its current velocity.</p></td>
 <p>In controllers, <code class="docutils literal notranslate"><span class="pre">configure()</span></code> method must set member variables from ROS parameters and perform any initialization required,</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PurePursuitController::configure</span><span class="p">(</span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="o">::</span><span class="n">WeakPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tf</span><span class="p">,</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">nav2_costmap_2d</span><span class="o">::</span><span class="n">Costmap2DROS</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">costmap_ros</span><span class="p">)</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tf</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">nav2_costmap_2d</span><span class="o">::</span><span class="n">Costmap2DROS</span><span class="o">&gt;</span><span class="w"> </span><span class="n">costmap_ros</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="n">node_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span>
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node_</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span>
@@ -1079,12 +1087,14 @@ the frame of the robot and then store this transformed global path for later use
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The computation for the desired velocity happens in the <code class="docutils literal notranslate"><span class="pre">computeVelocityCommands()</span></code> method. It is used to calculate the desired velocity command given the
-current velocity and pose. In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
+<p>The computation for the desired velocity happens in the <code class="docutils literal notranslate"><span class="pre">computeVelocityCommands()</span></code> method. It is used to calculate the desired velocity command given the current velocity and pose.
+The third argument - is a pointer to the <code class="docutils literal notranslate"><span class="pre">nav2_core::GoalChecker</span></code>, that checks whether a goal has been reached. In our example, this is to be unused.
+In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
 This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span><span class="w"> </span><span class="nf">PurePursuitController::computeVelocityCommands</span><span class="p">(</span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pose</span><span class="p">,</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span>
+<span class="w">  </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">GoalChecker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="cm">/*goal_checker*/</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="c1">// Find the first pose which is at a distance greater than the specified lookahed distance</span>
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">goal_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span>
