@@ -80,7 +80,6 @@ The list of methods, and their descriptions, and necessity are presented in the 
 |                           | behavior to be untouched.                                                             |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 
-
 In this tutorial, we will have used the methods ``PurePursuitController::configure``, ``PurePursuitController::setPlan`` and
 ``PurePursuitController::computeVelocityCommands``.
 
