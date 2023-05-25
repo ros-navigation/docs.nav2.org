@@ -73,6 +73,13 @@ The list of methods, and their descriptions, and necessity are presented in the 
 |                           | robot to drive.  This method passes 2 parameters: reference to the current robot      |                        |
 |                           | pose and its current velocity.                                                        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
+| setSpeedLimit()           | Method is called when it is required to limit the maximum linear speed of the robot.  | Yes                    |
+|                           | Speed limit could be expressed in absolute value (m/s) or in percentage from maximum  |                        |
+|                           | robot speed. Note that typically, maximum rotational speed is being limited           |                        |
+|                           | proportionally to the change of maximum linear speed, in order to keep current robot  |                        |
+|                           | behavior to be untouched.                                                             |                        |
++---------------------------+---------------------------------------------------------------------------------------+------------------------+
+
 
 In this tutorial, we will have used the methods ``PurePursuitController::configure``, ``PurePursuitController::setPlan`` and
 ``PurePursuitController::computeVelocityCommands``.
@@ -83,8 +90,8 @@ In controllers, ``configure()`` method must set member variables from ROS parame
 
   void PurePursuitController::configure(
     const rclcpp_lifecycle::LifecycleNode::WeakPtr & parent,
-    std::string name, const std::shared_ptr<tf2_ros::Buffer> & tf,
-    const std::shared_ptr<nav2_costmap_2d::Costmap2DROS> & costmap_ros)
+    std::string name, std::shared_ptr<tf2_ros::Buffer> tf,
+    std::shared_ptr<nav2_costmap_2d::Costmap2DROS> costmap_ros)
   {
     node_ = parent;
     auto node = node_.lock();
@@ -136,15 +143,17 @@ the frame of the robot and then store this transformed global path for later use
     global_plan_ = transformGlobalPlan(path);
   }
 
-The computation for the desired velocity happens in the ``computeVelocityCommands()`` method. It is used to calculate the desired velocity command given the
-current velocity and pose. In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible. 
+The computation for the desired velocity happens in the ``computeVelocityCommands()`` method. It is used to calculate the desired velocity command given the current velocity and pose.
+The third argument - is a pointer to the ``nav2_core::GoalChecker``, that checks whether a goal has been reached. In our example, this is to be unused.
+In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
 This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.
 
 .. code-block:: c++
 
   geometry_msgs::msg::TwistStamped PurePursuitController::computeVelocityCommands(
     const geometry_msgs::msg::PoseStamped & pose,
-    const geometry_msgs::msg::Twist & velocity)
+    const geometry_msgs::msg::Twist & velocity,
+    nav2_core::GoalChecker * /*goal_checker*/)
   {
     // Find the first pose which is at a distance greater than the specified lookahed distance
     auto goal_pose = std::find_if(
