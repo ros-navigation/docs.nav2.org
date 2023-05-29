@@ -20,11 +20,13 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |           |pxl|        +         |brisa|        +        |tri|           |
 +------------------------+------------------------+------------------------+
-|         |yunji|        +         |elroy|        +           |rover|      |
+|         |yunji|        +         |elroy|        +           |data|       |
 +------------------------+------------------------+------------------------+
 |         |ubr1|         +         |Tiago|        +       |tb2|            |
 +------------------------+------------------------+------------------------+
 |         |tb4|          +         |tb3|          +           |RB1|        |
++------------------------+------------------------+------------------------+
+|         |rover|        +         |soon|         +           |soon|       |
 +------------------------+------------------------+------------------------+
 
 .. |fire| image:: images/firefly.png
@@ -32,6 +34,12 @@ Click on the images below for a link to the drivers or navigation configurations
     :align: middle
     :alt: Firefly Automatix
     :target: https://fireflyautomatix.com/m220/
+
+.. |data| image:: images/datavision.png
+    :width: 100%
+    :align: middle
+    :alt: Datavision Software
+    :target: https://rex.software
 
 .. |poly| image:: images/polymath.png
     :width: 100%
