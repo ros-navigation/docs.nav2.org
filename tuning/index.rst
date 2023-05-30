@@ -127,7 +127,7 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 - ``slam`` : Whether or not to use AMCL or SLAM Toolbox for localization and/or mapping. Default ``false`` to AMCL.
 - ``map`` : The filepath to the map to use for navigation. Defaults to ``map.yaml`` in the package's ``maps/`` directory.
 - ``world`` : The filepath to the world file to use in simulation. Defaults to the ``worlds/`` directory in the package.
-- ``param_file`` : The main navigation configuration file. Defaults to ``nav2_params.yaml`` in the package's ``params/`` directory.
+- ``params_file`` : The main navigation configuration file. Defaults to ``nav2_params.yaml`` in the package's ``params/`` directory.
 - ``autostart`` : Whether to autostart the navigation system's lifecycle management system. Defaults to ``true`` to transition up the Nav2 stack on creation to the activated state, ready for use.
 - ``use_composition`` : Whether to launch each Nav2 server into individual processes or in a single composed node, to leverage savings in CPU and memory. Default ``true`` to use single process Nav2.
 - ``use_respawn`` : Whether to allow server that crash to automatically respawn. When also configured with the lifecycle manager, the manager will transition systems back up if already activated and went down due to a crash. Only works in non-composed bringup since all of the nodes are in the same process / container otherwise.
