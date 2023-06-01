@@ -15,6 +15,14 @@
       </div>
     </h1>
 
+Our Sponsors
+############
+
+.. image:: images/sponsors_may_2023.png
+    :width: 700px
+    :align: center
+    :alt: Our Sponsors
+
 Overview
 ########
 
