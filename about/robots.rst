@@ -16,24 +16,37 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |          |ang|         +          |fire|        +          |mpo_700|     |
 +------------------------+------------------------+------------------------+
-|         |rosie|        +         |wyca|         +           |birds|      |
+|         |rosie|        +         |karl|         +           |birds|      |
 +------------------------+------------------------+------------------------+
 |           |pxl|        +         |brisa|        +        |tri|           |
 +------------------------+------------------------+------------------------+
-|         |yunji|        +         |elroy|        +           |data|       |
+|         |wyca|         +         |elroy|        +           |data|       |
 +------------------------+------------------------+------------------------+
 |         |ubr1|         +         |Tiago|        +       |tb2|            |
 +------------------------+------------------------+------------------------+
+|         |rover|        +         |yunji|        +           |kar2|       |
++------------------------+------------------------+------------------------+
 |         |tb4|          +         |tb3|          +           |RB1|        |
 +------------------------+------------------------+------------------------+
-|         |rover|        +         |soon|         +           |soon|       |
-+------------------------+------------------------+------------------------+
+
 
 .. |fire| image:: images/firefly.png
     :width: 100%
     :align: middle
     :alt: Firefly Automatix
     :target: https://fireflyautomatix.com/m220/
+
+.. |karl| image:: images/karelics2.png
+    :width: 100%
+    :align: middle
+    :alt: Karelics
+    :target: https://karelics.fi/
+
+.. |kar2| image:: images/karelics.png
+    :width: 100%
+    :align: middle
+    :alt: Karelics
+    :target: https://karelics.fi/
 
 .. |data| image:: images/datavision.png
     :width: 100%
