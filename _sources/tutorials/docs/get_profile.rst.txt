@@ -95,7 +95,7 @@ As our example before, this is how we'd launch the ``controller_server`` node fr
 	    package='nav2_controller',
 	    executable='controller_server',
 	    name='controller_server',
-	    prefix=['xterm -e valgrind --tools=callgrind'],
+	    prefix=['xterm -e valgrind --tool=callgrind'],
 	    output='screen')
 
 Note that just like before, we should isolate this process from others. So this should not be run with any other nodes in this launch file nor use node composition when profiling a particular node.
