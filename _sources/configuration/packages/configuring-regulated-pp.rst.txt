@@ -15,6 +15,9 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 
 See the package's ``README`` for more complete information.
 
+If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
+
+- S. Macenski, S. Singh, F. Martin, J. Gines, `Regulated Pure Pursuit for Robot Path Tracking <https://arxiv.org/abs/2305.20026>`_. Autonomous Robots, 2023.
 
 Regulated Pure Pursuit Parameters
 *********************************
