@@ -52,7 +52,7 @@ Build, Run and Verification
 ***************************
 We will now confirm that we have properly set up ``sam_bot``'s footprint.
 
-First, we launch `launch/display.launch.py <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_ to launch the robot state publisher, spawn ``sam_bot`` in Gazebo, and visualize ``sam_bot`` and its footprint in Rviz. The robot state publisher publishes the ``base_link`` => ``sensors`` transforms defined in ``sam_bot``'s URDF while Gazebo's differential drive plugin publishes the ``odom`` => ``base_link`` transform. Open a new terminal and execute the lines below. 
+First, we launch `launch/display.launch.py <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_ to launch the robot state publisher, spawn ``sam_bot`` in Gazebo, and visualize ``sam_bot`` and its footprint in Rviz. The robot state publisher publishes the ``base_link`` => ``sensors`` transforms defined in ``sam_bot``'s URDF, while Gazebo's differential drive plugin publishes the ``odom`` => ``base_link`` transform. Open a new terminal and execute the lines below. 
 
 .. code-block:: shell
 
