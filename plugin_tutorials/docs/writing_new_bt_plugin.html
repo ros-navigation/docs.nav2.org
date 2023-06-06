@@ -949,7 +949,7 @@
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial shows how to create you own behavior tree (BT) plugin.
+<p>This tutorial shows how to create your own behavior tree (BT) plugin.
 The BT plugins are used as nodes in the behavior tree XML processed by the BT Navigator for navigation logic.</p>
 </div>
 <div class="section" id="requirements">
@@ -965,19 +965,19 @@ The BT plugins are used as nodes in the behavior tree XML processed by the BT Na
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="creating-a-new-bt-plugin">
 <h3>1- Creating a new BT Plugin<a class="headerlink" href="#creating-a-new-bt-plugin" title="Permalink to this headline">¶</a></h3>
-<p>We will create a simple BT plugin node to perform an action in another server.
-For this example, we’re going to analyze the simpliest behavior tree action node in the <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> package, the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node.
+<p>We will create a simple BT plugin node to perform an action on another server.
+For this example, we’re going to analyze the simplest behavior tree action node in the <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> package, the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node.
 Beyond this example of an action BT node, you can also create custom decorator, condition, and control nodes.
-Each node type has as unique role in the behavior tree to perform actions like planning, control the flow of the BT, check the status of a condition, or modify the output of other BT nodes.</p>
+Each node type has a unique role in the behavior tree to perform actions like planning, control the flow of the BT, check the status of a condition, or modify the output of other BT nodes.</p>
 <p>The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree">nav2_behavior_tree</a> package as the <code class="docutils literal notranslate"><span class="pre">wait_action</span></code> node.
-This action node can be a considered as a reference for writing other action node plugins.</p>
+This action node can be considered as a reference for writing other action node plugins.</p>
 <p>Our example plugin inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree::BtActionNode</span></code>.
 The base class is a wrapper on the BehaviorTree.CPP <code class="docutils literal notranslate"><span class="pre">BT::ActionNodeBase</span></code> that simplifies BT action nodes that utilize ROS 2 action clients.
 An <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> is both a BT action and uses ROS 2 action network interfaces for calling a remote server to do some work.</p>
 <p>When working with other types of BT nodes (e.g. decorator, control, condition) use the corresponding BT node, <code class="docutils literal notranslate"><span class="pre">BT::DecoratorNode</span></code>, <code class="docutils literal notranslate"><span class="pre">BT::ControlNode</span></code>, or <code class="docutils literal notranslate"><span class="pre">BT::ConditionNode</span></code>.
 For BT action nodes that do <em>not</em> utilize ROS 2 action interfaces, use the <code class="docutils literal notranslate"><span class="pre">BT::ActionNodeBase</span></code> base class itself.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> class provides 5 virtual methods to use, in addition to the information provided in the constructor.
-Lets learn more about the methods needed to write a BT action plugin.</p>
+Let’s learn more about the methods needed to write a BT action plugin.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 18%" />
@@ -998,7 +998,7 @@ and any BehaviorTree.CPP special configurations required.</p></td>
 <tr class="row-odd"><td><p>providedPorts()</p></td>
 <td><p>A function to define the input and output ports a BT node may have.
 These are analogous to parameters that are defined in the BT XML
-by hardcoded values or by the value of other output ports of other nodes.</p></td>
+by hardcoded values or by the value of output ports of other nodes.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-even"><td><p>on_tick()</p></td>
@@ -1053,14 +1053,14 @@ In this example, we need to get the value of the duration to sleep from the inpu
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Here, we give the input of the <code class="docutils literal notranslate"><span class="pre">xml_tag_name</span></code> which tells the BT node plugin the string in the XML that corresponds to this node.
+<p>Here, we give the input of the <code class="docutils literal notranslate"><span class="pre">xml_tag_name</span></code>, which tells the BT node plugin the string in the XML that corresponds to this node.
 This will be seen later when we register this BT node as a plugin.
 It also takes in the string name of the action server that it will call to execute some behavior.
 Finally, a set of configurations that we can safely ignore for the purposes of most node plugins.</p>
-<p>We then call the <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> constructor. As can be seen, its templated by the ROS 2 action type, so we give it the <code class="docutils literal notranslate"><span class="pre">nav2_msgs::action::Wait</span></code> action message type and forward our other inputs.
-The <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> as the <code class="docutils literal notranslate"><span class="pre">tick()</span></code> method which is called directly by the behavior tree when this node is called from the tree.
-<code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> is then called along with the action client goal.</p>
-<p>In the body of the constructor, we get the input port <code class="docutils literal notranslate"><span class="pre">getInput</span></code> of the parameter <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> which can be configured independently for every instance of the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node in the tree.
+<p>We then call the <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> constructor. As can be seen, it’s templated by the ROS 2 action type, so we give it the <code class="docutils literal notranslate"><span class="pre">nav2_msgs::action::Wait</span></code> action message type and forward our other inputs.
+The <code class="docutils literal notranslate"><span class="pre">BTActionNode</span></code> has the <code class="docutils literal notranslate"><span class="pre">tick()</span></code> method, which is called directly by the behavior tree when this node is called from the tree.
+<code class="docutils literal notranslate"><span class="pre">on_tick()</span></code> is then called before sending the action client goal.</p>
+<p>In the body of the constructor, we get the input port <code class="docutils literal notranslate"><span class="pre">getInput</span></code> of the parameter <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code>, which can be configured independently for every instance of the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node in the tree.
 It is set in the <code class="docutils literal notranslate"><span class="pre">duration</span></code> parameter and inserted into the <code class="docutils literal notranslate"><span class="pre">goal_</span></code>.
 The <code class="docutils literal notranslate"><span class="pre">goal_</span></code> class variable is the goal that the ROS 2 action client will send to the action server.
 So in this example, we set the duration to the time we want to wait by so that the action server knows the specifics of our request.</p>
@@ -1087,14 +1087,14 @@ You could also log or update the <code class="docutils literal notranslate"><spa
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The remaining methods are not used and not mandatory to override them.
+<p>The remaining methods are not used and are not mandatory to override them.
 Only some BT node plugins will require overriding <code class="docutils literal notranslate"><span class="pre">on_wait_for_result()</span></code> to check for preemption or check a timeout.
-The success, aborted, and cancelled methods will default to <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>, <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> respectively if not overrided.</p>
+The success, aborted, and cancelled methods will default to <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>, <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> respectively, if not overridden.</p>
 </div>
 <div class="section" id="exporting-the-planner-plugin">
 <h3>2- Exporting the planner plugin<a class="headerlink" href="#exporting-the-planner-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Now that we have created our custom BT node, we need to export our plugin so that it would be visible to the behavior tree when it loads a custom BT XML.
-Plugins are loaded at runtime and if they are not visible, then our BT Navigator server won’t be able to load it or use it.
+Plugins are loaded at runtime, and if they are not visible, then our BT Navigator server won’t be able to load them or use them.
 In BehaviorTree.CPP, exporting and loading plugins is handled by the <code class="docutils literal notranslate"><span class="pre">BT_REGISTER_NODES</span></code> macro.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">BT_REGISTER_NODES</span><span class="p">(</span><span class="n">factory</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1110,8 +1110,8 @@ In BehaviorTree.CPP, exporting and loading plugins is handled by the <code class
 </div>
 <p>In this macro, we must create a <code class="docutils literal notranslate"><span class="pre">NodeBuilder</span></code> so that our custom action node can have a non-default constructor signature (for the action and xml names).
 This lambda will return a unique pointer to the behavior tree node we have created.
-Fill in the constructor with the relavent information, giving it the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">config</span></code> given in the function arguments.
-Then define the ROS 2 action server’s name that this BT node will call, in this case, its the <cite>wWait`</cite> action.</p>
+Fill in the constructor with the relevant information, giving it the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">config</span></code> given in the function arguments.
+Then define the ROS 2 action server’s name that this BT node will call, in this case, it’s the <code class="docutils literal notranslate"><span class="pre">Wait</span></code> action.</p>
 <p>We finally give the builder to a factory to register.
 <code class="docutils literal notranslate"><span class="pre">Wait</span></code> given to the factory is the name in the behavior tree XML file that corresponds to this BT node plugin.
 An example can be seen below, where the <code class="docutils literal notranslate"><span class="pre">Wait</span></code> BT XML node specifies a non-variable input port <code class="docutils literal notranslate"><span class="pre">wait_duration</span></code> of 5 seconds.</p>

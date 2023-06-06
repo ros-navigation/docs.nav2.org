@@ -30,13 +30,13 @@ Tutorial Steps
 1- Create a new Navigator Plugin
 --------------------------------
 
-We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in `Nav2s BT Navigator package <https://github.com/ros-planning/navigation2/nav2_bt_navigator>`_ as the ``NavigateToPoseNavigator``. This package can be considered as a reference for writing your own plugin.
+We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in `Nav2's BT Navigator package <https://github.com/ros-planning/navigation2/nav2_bt_navigator>`_ as the ``NavigateToPoseNavigator``. This package can be considered as a reference for writing your own plugin.
 
 Our example plugin class ``nav2_bt_navigator::NavigateToPoseNavigator`` inherits from the base class ``nav2_core::BehaviorTreeNavigator``. The base class provides a set of virtual methods to implement a navigator plugin. These methods are called at runtime by the BT Navigator server or as a response to ROS 2 actions to process a navigation request.
 
 Note that this class has itself a base class of ``NavigatorBase``. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. ``on_XYZ``) are implemented for you in ``BehaviorTreeNavigator`` and marked as ``final`` so they are not possible to be overrided by the user. The API that you will be implementing for your navigator are the virtual methods within ``BehaviorTreeNavigator``, not ``NavigatorBase``. These ``on_XYZ`` APIs are implemented in necessary functions in ``BehaviorTreeNavigator`` to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. ``on_configure`` will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined ``configure`` function for any additional user-specific needs).
 
-The list of methods, and their descriptions, and necessity are presented in the table below:
+The list of methods, their descriptions, and necessity are presented in the table below:
 
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | **Virtual method**        | **Method description**                                                                | **Requires override?** |

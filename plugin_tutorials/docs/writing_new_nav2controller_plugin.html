@@ -953,7 +953,7 @@
 <p>This tutorial shows how to create your own controller <a class="reference external" href="https://index.ros.org/p/pluginlib/">plugin</a>.</p>
 <p>In this tutorial, we will be implementing the pure pursuit path tracking algorithm based on this <a class="reference external" href="https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf">paper</a>.
 It is recommended you go through it.</p>
-<p>Note: This tutorial is based on a previously existing simplifed version of the Regulated Pure Pursuit controller now in the Nav2 stack.
+<p>Note: This tutorial is based on a previously existing simplified version of the Regulated Pure Pursuit controller now in the Nav2 stack.
 You can find the source code matching this tutorial <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller">here</a>.</p>
 </div>
 <div class="section" id="requirements">
@@ -973,7 +973,7 @@ You can find the source code matching this tutorial <a class="reference external
 as the <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller</span></code>. This package can be considered as a reference for writing your own controller plugin.</p>
 <p>Our example plugin class <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller::PurePursuitController</span></code> inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_core::Controller</span></code>. The base class provides a
 set of virtual methods to implement a controller plugin. These methods are called at runtime by the controller server to compute velocity commands.
-The list of methods, and their descriptions, and necessity are presented in the table below:</p>
+The list of methods, their descriptions, and necessity are presented in the table below:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -1011,7 +1011,7 @@ should clean up resources which are created for the controller.</p></td>
 </tr>
 <tr class="row-even"><td><p>setPlan()</p></td>
 <td><p>Method is called when the global plan is updated. Ideally this method should perform
-operations that transform the global plan and stores it.</p></td>
+operations that transform the global plan and store it.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-odd"><td><p>computeVelocityCommands()</p></td>
@@ -1027,14 +1027,14 @@ pose and its current velocity.</p></td>
 Speed limit could be expressed in absolute value (m/s) or in percentage from maximum
 robot speed. Note that typically, maximum rotational speed is being limited
 proportionally to the change of maximum linear speed, in order to keep current robot
-behavior to be untouched.</p></td>
+behavior untouched.</p></td>
 <td><p>Yes</p></td>
 </tr>
 </tbody>
 </table>
-<p>In this tutorial, we will have used the methods <code class="docutils literal notranslate"><span class="pre">PurePursuitController::configure</span></code>, <code class="docutils literal notranslate"><span class="pre">PurePursuitController::setPlan</span></code> and
+<p>In this tutorial, we will use the methods <code class="docutils literal notranslate"><span class="pre">PurePursuitController::configure</span></code>, <code class="docutils literal notranslate"><span class="pre">PurePursuitController::setPlan</span></code> and
 <code class="docutils literal notranslate"><span class="pre">PurePursuitController::computeVelocityCommands</span></code>.</p>
-<p>In controllers, <code class="docutils literal notranslate"><span class="pre">configure()</span></code> method must set member variables from ROS parameters and perform any initialization required,</p>
+<p>In controllers, <code class="docutils literal notranslate"><span class="pre">configure()</span></code> method must set member variables from ROS parameters and perform any initialization required.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PurePursuitController::configure</span><span class="p">(</span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="o">::</span><span class="n">WeakPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tf</span><span class="p">,</span>
@@ -1071,13 +1071,13 @@ behavior to be untouched.</p></td>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Here, <code class="docutils literal notranslate"><span class="pre">plugin_name_</span> <span class="pre">+</span> <span class="pre">&quot;.desired_linear_vel&quot;</span></code> is fetching the ROS parameters <code class="docutils literal notranslate"><span class="pre">desired_linear_vel</span></code> which is specific to our controller.
+<p>Here, <code class="docutils literal notranslate"><span class="pre">plugin_name_</span> <span class="pre">+</span> <span class="pre">&quot;.desired_linear_vel&quot;</span></code> is fetching the ROS parameter <code class="docutils literal notranslate"><span class="pre">desired_linear_vel</span></code> which is specific to our controller.
 Nav2 allows loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name.
 Now, if we want to retrieve the parameters for that specific plugin, we use <code class="docutils literal notranslate"><span class="pre">&lt;mapped_name_of_plugin&gt;.&lt;name_of_parameter&gt;</span></code> as done in the above snippet.
-For example, our example controller is mapped to the name <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> and to retrieve the <code class="docutils literal notranslate"><span class="pre">desired_linear_vel</span> <span class="pre">parameter</span></code>, which is specific to “FollowPath”,
+For example, our example controller is mapped to the name <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> and to retrieve the <code class="docutils literal notranslate"><span class="pre">desired_linear_vel</span></code> parameter, which is specific to “FollowPath”,
 we used <code class="docutils literal notranslate"><span class="pre">FollowPath.desired_linear_vel</span></code>. In other words, <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> is used as a namespace for plugin-specific parameters.
 We will see more on this when we discuss the parameters file (or params file).</p>
-<p>The passed in arguments are stored in member variables so that they can be used at a later stage if needed.</p>
+<p>The passed-in arguments are stored in member variables so that they can be used at a later stage if needed.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">setPlan()</span></code> method, we receive the updated global path for the robot to follow. In our example, we transform the received global path into
 the frame of the robot and then store this transformed global path for later use.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PurePursuitController::setPlan</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
@@ -1088,7 +1088,7 @@ the frame of the robot and then store this transformed global path for later use
 </pre></div>
 </div>
 <p>The computation for the desired velocity happens in the <code class="docutils literal notranslate"><span class="pre">computeVelocityCommands()</span></code> method. It is used to calculate the desired velocity command given the current velocity and pose.
-The third argument - is a pointer to the <code class="docutils literal notranslate"><span class="pre">nav2_core::GoalChecker</span></code>, that checks whether a goal has been reached. In our example, this is to be unused.
+The third argument - is a pointer to the <code class="docutils literal notranslate"><span class="pre">nav2_core::GoalChecker</span></code>, that checks whether a goal has been reached. In our example, this won’t be used.
 In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
 This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TwistStamped</span><span class="w"> </span><span class="nf">PurePursuitController::computeVelocityCommands</span><span class="p">(</span>
@@ -1096,7 +1096,7 @@ This algorithm assumes a constant linear velocity and computes the angular veloc
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span>
 <span class="w">  </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">GoalChecker</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="cm">/*goal_checker*/</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">  </span><span class="c1">// Find the first pose which is at a distance greater than the specified lookahed distance</span>
+<span class="w">  </span><span class="c1">// Find the first pose which is at a distance greater than the specified lookahead distance</span>
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">goal_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span>
 <span class="w">    </span><span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">global_plan_</span><span class="p">.</span><span class="n">poses</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
 <span class="w">    </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">global_plan_pose</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1138,10 +1138,10 @@ This algorithm assumes a constant linear velocity and computes the angular veloc
 </div>
 <div class="section" id="exporting-the-controller-plugin">
 <h3>2- Exporting the controller plugin<a class="headerlink" href="#exporting-the-controller-plugin" title="Permalink to this headline">¶</a></h3>
-<p>Now that we have created our custom controller, we need to export our controller plugin so that it would be visible to the controller server.
-Plugins are loaded at runtime, and if they are not visible, then our controller server won’t be able to load it. In ROS 2, exporting and loading
+<p>Now that we have created our custom controller, we need to export our controller plugin so that it will be visible to the controller server.
+Plugins are loaded at runtime, and if they are not visible, then our controller server won’t be able to load them. In ROS 2, exporting and loading
 plugins is handled by <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
-<p>Coming to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller::PurePursuitController</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::Controller</span></code> which is our base class.</p>
+<p>Coming back to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller::PurePursuitController</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::Controller</span></code> which is our base class.</p>
 <ol class="arabic simple">
 <li><p>To export the controller, we need to provide two lines</p></li>
 </ol>
@@ -1155,7 +1155,7 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
 <li><p>The next step would be to create the plugin’s description file in the root directory of the package. For example, <code class="docutils literal notranslate"><span class="pre">pure_pursuit_controller_plugin.xml</span></code> file in our tutorial package. This file contains the following information</p></li>
 </ol>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">library</span> <span class="pre">path</span></code>: Plugin’s library name and it’s location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">library</span> <span class="pre">path</span></code>: Plugin’s library name and its location.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">name</span></code>: Name of the class.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">type</span></code>: Type of class.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">class</span></code>: Name of the base class.</p></li>

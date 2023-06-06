@@ -46,7 +46,7 @@ Running the Example
       export TURTLEBOT3_MODEL=waffle
       export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/<ros2-distro>/share/turtlebot3_gazebo/models
 
-3. In the same terminal, run
+3. In the same terminal, run:
 
    .. code-block:: bash
 
@@ -60,7 +60,7 @@ Running the Example
       <https://ros.org/reps/rep-2000.html>`_  for improved stablity and feature
       completeness.
       
-      headless defaults to true, if not set to false, gzclient (the 3d view) is not started
+      ``headless`` defaults to true; if not set to false, gzclient (the 3d view) is not started.
 
    This launch file will launch Nav2 with the AMCL localizer in the
    ``turtlebot3_world`` world.
@@ -106,7 +106,7 @@ the position as it navigates. You can also, click the "2D Pose
 Estimate" button and try again, if you prefer.
 
 Once you've set the initial pose, the transform tree will be complete and
-|PN| is fully active and ready to go. You should see the robot and particle
+|PN| will be fully active and ready to go. You should see the robot and particle
 cloud now.
 
    .. image:: /images/rviz/navstack-ready.png

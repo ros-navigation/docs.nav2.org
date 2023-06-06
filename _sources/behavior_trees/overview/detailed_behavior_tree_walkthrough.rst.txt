@@ -204,8 +204,9 @@ The only differences in the BT subtree of ``ComputePathToPose`` and ``FollowPath
 
 Recovery Subtree
 ================
+
 The ``Recovery`` subtree is the second big "half" of the Nav2 default ``navigate_to_pose_w_replanning_and_recovery.xml`` tree.
-In short, this subtree is triggered when the ``Navigation`` subtree returns ``FAILURE`` controls the recoveries at the system level (in the case the contextual recoveries in the ``Navigation`` subtree were not sufficient).
+In short, this subtree is triggered when the ``Navigation`` subtree returns ``FAILURE`` and controls the recoveries at the system level (in the case the contextual recoveries in the ``Navigation`` subtree were not sufficient).
 
 |
 
@@ -231,7 +232,7 @@ And the XML snippet:
         </RoundRobin>
     </ReactiveFallback>
 
-The top most parent, ``ReactiveFallback`` controls the flow between the rest of the system wide recoveries, and asynchronously checking if a new goal has been received.
+The top most parent, ``ReactiveFallback`` controls the flow between the rest of the system wide recoveries, and asynchronously checks if a new goal has been received.
 If at any point the goal gets updated, this subtree will halt all children and return ``SUCCESS``. This allows for quick reactions to new goals and preempt currently executing recoveries.
 This should look familiar to the contextual recovery portions of the ``Navigation`` subtree. This is a common BT pattern to handle the situation "Unless 'this condition' happens, Do action A".
 

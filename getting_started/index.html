@@ -982,7 +982,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </pre></div>
 </div>
 </li>
-<li><p>In the same terminal, run</p>
+<li><p>In the same terminal, run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>headless:<span class="o">=</span>False
 </pre></div>
 </div>
@@ -992,7 +992,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <code class="docutils literal notranslate"><span class="pre">nav2_simulation_launch.py</span></code>.
 However, it is recommended to use the most recent <a class="reference external" href="https://ros.org/reps/rep-2000.html">ROS 2 LTS distribution</a>  for improved stablity and feature
 completeness.</p>
-<p>headless defaults to true, if not set to false, gzclient (the 3d view) is not started</p>
+<p><code class="docutils literal notranslate"><span class="pre">headless</span></code> defaults to true; if not set to false, gzclient (the 3d view) is not started.</p>
 </div>
 <p>This launch file will launch Nav2 with the AMCL localizer in the
 <code class="docutils literal notranslate"><span class="pre">turtlebot3_world</span></code> world.
@@ -1026,7 +1026,7 @@ forward from the down click.</p>
 the position as it navigates. You can also, click the “2D Pose
 Estimate” button and try again, if you prefer.</p>
 <p>Once you’ve set the initial pose, the transform tree will be complete and
-Nav2 is fully active and ready to go. You should see the robot and particle
+Nav2 will be fully active and ready to go. You should see the robot and particle
 cloud now.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../_images/navstack-ready.png"><img alt="|PN| is ready. Transforms and Costmap show in RViz." class="align-center" src="../_images/navstack-ready.png" style="width: 700px;" /></a>

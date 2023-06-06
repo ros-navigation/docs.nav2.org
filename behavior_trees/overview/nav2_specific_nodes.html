@@ -946,8 +946,8 @@
 <p class="admonition-title">Warning</p>
 <dl class="simple">
 <dt>Vocabulary can be a large point of confusion here when first starting out.</dt><dd><ul class="simple">
-<li><p>A <code class="docutils literal notranslate"><span class="pre">Node</span></code> when discussing BT is entirely different than a <code class="docutils literal notranslate"><span class="pre">Node</span></code> in the ROS2 context</p></li>
-<li><p>An <code class="docutils literal notranslate"><span class="pre">ActionNode</span></code> in the context of BT is not necessarily connected to an Action Server in the ROS2 context (but often it is)</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">Node</span></code> when discussing BTs is entirely different than a <code class="docutils literal notranslate"><span class="pre">Node</span></code> in the ROS 2 context</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">ActionNode</span></code> in the context of BTs is not necessarily connected to an Action Server in the ROS 2 context (but often it is)</p></li>
 </ul>
 </dd>
 </dl>
@@ -974,18 +974,18 @@ the <cite>ClearCostmapService</cite> action node is <em>not</em> an action serve
 <li><p>InitialPoseReceived - Checks to see if a pose on the <code class="docutils literal notranslate"><span class="pre">intial_pose</span></code> topic has been received</p></li>
 <li><p>isBatteryLow - Checks to see if the battery is low by listening on the battery topic</p></li>
 </ul>
-<p>The above list of condition nodes can be used to probe particular aspects of the system. Typically they will return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> is <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> and <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> when <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.
-The key condition that is used in the default Nav2 BT is <code class="docutils literal notranslate"><span class="pre">GoalUpdated</span></code> which is checked asynchronously within particular subtrees. This condition node allows for the behavior described as “If the goal has updated, then we must replan”.
+<p>The above list of condition nodes can be used to probe particular aspects of the system. Typically they will return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> if the condition is true and <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> otherwise.
+The key condition that is used in the default Nav2 BT is <code class="docutils literal notranslate"><span class="pre">GoalUpdated</span></code> which is checked asynchronously within particular subtrees. This condition node allows for the behavior described as “If the goal has been updated, then we must replan”.
 Condition nodes are typically paired with ReactiveFallback nodes.</p>
 </div>
 <div class="section" id="decorator-nodes">
 <h2>Decorator Nodes<a class="headerlink" href="#decorator-nodes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Distance Controller - Will tick children nodes every time the robot has traveled a certain distance</p></li>
-<li><p>Rate Controller - Controls the ticking of it’s child node at a constant frequency. The tick rate is an exposed port</p></li>
+<li><p>Rate Controller - Controls the ticking of its child node at a constant frequency. The tick rate is an exposed port</p></li>
 <li><p>Goal Updater - Will update the goal of children nodes via ports on the BT</p></li>
-<li><p>Single Trigger - Will only tick it’s child node once, and will return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> for all subsequent ticks</p></li>
-<li><p>Speed Controller - Controls the ticking of it’s child node at a rate proportional to the robot’s speed</p></li>
+<li><p>Single Trigger - Will only tick its child node once, and will return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> for all subsequent ticks</p></li>
+<li><p>Speed Controller - Controls the ticking of its child node at a rate proportional to the robot’s speed</p></li>
 </ul>
 </div>
 <div class="section" id="control-pipelinesequence">
@@ -1097,12 +1097,12 @@ and the second action will be something to be done in case of <code class="docut
 </pre></div>
 </div>
 <p>In the above example, let’s assume <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> fails. <code class="docutils literal notranslate"><span class="pre">ClearLocalCostmap</span></code> will be ticked in response, and return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.
-Now that we have cleared the costmap, lets’ say the robot is correctly able to compute the path and <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> now returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. Then, the parent RecoveryNode will also return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> and the BT will be complete.</p>
+Now that we have cleared the costmap, let’s say the robot is correctly able to compute the path and <code class="docutils literal notranslate"><span class="pre">ComputePathToPose</span></code> now returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. Then, the parent RecoveryNode will also return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> and the BT will be complete.</p>
 <p>For additional details regarding the <code class="docutils literal notranslate"><span class="pre">RecoveryNode</span></code> please see the <a class="reference external" href="../../configuration/packages/bt-plugins/controls/RecoveryNode.html">RecoveryNode configuration guide</a>.</p>
 </div>
 <div class="section" id="control-roundrobin">
 <h2>Control: RoundRobin<a class="headerlink" href="#control-roundrobin" title="Permalink to this headline">¶</a></h2>
-<p>The RoundRobin control node ticks it’s children in a round robin fashion until a child returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, in which the parent node will also return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.
+<p>The RoundRobin control node ticks its children in a round robin fashion until a child returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, in which the parent node will also return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.
 If all children return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> so will the parent RoundRobin.</p>
 <p>Here is an example BT we will use to walk through the concept.</p>
 <div class="line-block">
@@ -1160,7 +1160,7 @@ Let’s assume <code class="docutils literal notranslate"><span class="pre">Acti
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>4. Upon this next tick,  let’s assume that <code class="docutils literal notranslate"><span class="pre">Action_B</span></code> returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. The parent RoundRobin will now halt all children and returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.
+<p>4. Upon this next tick,  let’s assume that <code class="docutils literal notranslate"><span class="pre">Action_B</span></code> returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. The parent RoundRobin will now halt all children and return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.
 The parent node retains this state information, and will tick <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> upon the next tick rather than start from <code class="docutils literal notranslate"><span class="pre">Action_A</span></code> like Step 2 did.</p>
 <div class="line-block">
 <div class="line"><br /></div>

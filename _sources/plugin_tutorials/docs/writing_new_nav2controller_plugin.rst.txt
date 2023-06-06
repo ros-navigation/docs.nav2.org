@@ -21,7 +21,7 @@ This tutorial shows how to create your own controller `plugin <https://index.ros
 In this tutorial, we will be implementing the pure pursuit path tracking algorithm based on this `paper <https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf>`_. 
 It is recommended you go through it.
 
-Note: This tutorial is based on a previously existing simplifed version of the Regulated Pure Pursuit controller now in the Nav2 stack.
+Note: This tutorial is based on a previously existing simplified version of the Regulated Pure Pursuit controller now in the Nav2 stack.
 You can find the source code matching this tutorial `here <https://github.com/ros-planning/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller>`_.
 
 Requirements
@@ -43,7 +43,7 @@ as the ``nav2_pure_pursuit_controller``. This package can be considered as a ref
 
 Our example plugin class ``nav2_pure_pursuit_controller::PurePursuitController`` inherits from the base class ``nav2_core::Controller``. The base class provides a
 set of virtual methods to implement a controller plugin. These methods are called at runtime by the controller server to compute velocity commands.
-The list of methods, and their descriptions, and necessity are presented in the table below:
+The list of methods, their descriptions, and necessity are presented in the table below:
 
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | **Virtual method**        | **Method description**                                                                | **Requires override?** |
@@ -65,11 +65,11 @@ The list of methods, and their descriptions, and necessity are presented in the 
 |                           | should clean up resources which are created for the controller.                       |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | setPlan()                 | Method is called when the global plan is updated. Ideally this method should perform  | Yes                    |
-|                           | operations that transform the global plan and stores it.                              |                        |
+|                           | operations that transform the global plan and store it.                               |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | computeVelocityCommands() | Method is called when a new velocity command is demanded by the controller server     | Yes                    |
 |                           | in-order for the robot to follow the global path. This method returns a               |                        |
-|                           | `geometry_msgs::msg::TwistStamped` which represents the velocity command for the      |                        |
+|                           | `geometry_msgs\:\:msg\:\:TwistStamped` which represents the velocity command for the  |                        |
 |                           | robot to drive.  This method passes 2 parameters: reference to the current robot      |                        |
 |                           | pose and its current velocity.                                                        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
@@ -77,13 +77,13 @@ The list of methods, and their descriptions, and necessity are presented in the 
 |                           | Speed limit could be expressed in absolute value (m/s) or in percentage from maximum  |                        |
 |                           | robot speed. Note that typically, maximum rotational speed is being limited           |                        |
 |                           | proportionally to the change of maximum linear speed, in order to keep current robot  |                        |
-|                           | behavior to be untouched.                                                             |                        |
+|                           | behavior untouched.                                                                   |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 
-In this tutorial, we will have used the methods ``PurePursuitController::configure``, ``PurePursuitController::setPlan`` and
+In this tutorial, we will use the methods ``PurePursuitController::configure``, ``PurePursuitController::setPlan`` and
 ``PurePursuitController::computeVelocityCommands``.
 
-In controllers, ``configure()`` method must set member variables from ROS parameters and perform any initialization required,
+In controllers, ``configure()`` method must set member variables from ROS parameters and perform any initialization required.
 
 .. code-block:: c++
 
@@ -122,14 +122,14 @@ In controllers, ``configure()`` method must set member variables from ROS parame
     transform_tolerance_ = rclcpp::Duration::from_seconds(transform_tolerance);
   }
 
-Here, ``plugin_name_ + ".desired_linear_vel"`` is fetching the ROS parameters ``desired_linear_vel`` which is specific to our controller. 
+Here, ``plugin_name_ + ".desired_linear_vel"`` is fetching the ROS parameter ``desired_linear_vel`` which is specific to our controller. 
 Nav2 allows loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name.
 Now, if we want to retrieve the parameters for that specific plugin, we use ``<mapped_name_of_plugin>.<name_of_parameter>`` as done in the above snippet. 
-For example, our example controller is mapped to the name ``FollowPath`` and to retrieve the ``desired_linear_vel parameter``, which is specific to "FollowPath”, 
+For example, our example controller is mapped to the name ``FollowPath`` and to retrieve the ``desired_linear_vel`` parameter, which is specific to "FollowPath”, 
 we used ``FollowPath.desired_linear_vel``. In other words, ``FollowPath`` is used as a namespace for plugin-specific parameters. 
 We will see more on this when we discuss the parameters file (or params file).
 
-The passed in arguments are stored in member variables so that they can be used at a later stage if needed.
+The passed-in arguments are stored in member variables so that they can be used at a later stage if needed.
 
 In ``setPlan()`` method, we receive the updated global path for the robot to follow. In our example, we transform the received global path into 
 the frame of the robot and then store this transformed global path for later use.
@@ -143,7 +143,7 @@ the frame of the robot and then store this transformed global path for later use
   }
 
 The computation for the desired velocity happens in the ``computeVelocityCommands()`` method. It is used to calculate the desired velocity command given the current velocity and pose.
-The third argument - is a pointer to the ``nav2_core::GoalChecker``, that checks whether a goal has been reached. In our example, this is to be unused.
+The third argument - is a pointer to the ``nav2_core::GoalChecker``, that checks whether a goal has been reached. In our example, this won't be used.
 In the case of pure pursuit, the algorithm computes velocity commands such that the robot tries to follow the global path as closely as possible.
 This algorithm assumes a constant linear velocity and computes the angular velocity based on the curvature of the global path.
 
@@ -154,7 +154,7 @@ This algorithm assumes a constant linear velocity and computes the angular veloc
     const geometry_msgs::msg::Twist & velocity,
     nav2_core::GoalChecker * /*goal_checker*/)
   {
-    // Find the first pose which is at a distance greater than the specified lookahed distance
+    // Find the first pose which is at a distance greater than the specified lookahead distance
     auto goal_pose = std::find_if(
       global_plan_.poses.begin(), global_plan_.poses.end(),
       [&](const auto & global_plan_pose) {
@@ -196,11 +196,11 @@ The remaining methods are not used, but it's mandatory to override them. As per 
 2- Exporting the controller plugin
 ----------------------------------
 
-Now that we have created our custom controller, we need to export our controller plugin so that it would be visible to the controller server. 
-Plugins are loaded at runtime, and if they are not visible, then our controller server won't be able to load it. In ROS 2, exporting and loading 
+Now that we have created our custom controller, we need to export our controller plugin so that it will be visible to the controller server. 
+Plugins are loaded at runtime, and if they are not visible, then our controller server won't be able to load them. In ROS 2, exporting and loading 
 plugins is handled by ``pluginlib``.
 
-Coming to our tutorial, class ``nav2_pure_pursuit_controller::PurePursuitController`` is loaded dynamically as ``nav2_core::Controller`` which is our base class.
+Coming back to our tutorial, class ``nav2_pure_pursuit_controller::PurePursuitController`` is loaded dynamically as ``nav2_core::Controller`` which is our base class.
 
 1. To export the controller, we need to provide two lines
 
@@ -215,7 +215,7 @@ It is good practice to place these lines at the end of the file, but technically
 
 2. The next step would be to create the plugin's description file in the root directory of the package. For example, ``pure_pursuit_controller_plugin.xml`` file in our tutorial package. This file contains the following information
 
-- ``library path``: Plugin's library name and it's location.
+- ``library path``: Plugin's library name and its location.
 - ``class name``: Name of the class.
 - ``class type``: Type of class.
 - ``base class``: Name of the base class.

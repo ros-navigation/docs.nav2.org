@@ -250,7 +250,7 @@ Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and f
 3. Enable Speed Filter
 ----------------------
 
-Costmap Filters are Costamp2D plugins. You can enable the ``SpeedFilter`` plugin in Costmap2D by adding ``speed_filter`` to the ``plugins`` parameter in ``nav2_params.yaml``. The Speed Filter plugin should have the following parameters defined:
+Costmap Filters are Costmap2D plugins. You can enable the ``SpeedFilter`` plugin in Costmap2D by adding ``speed_filter`` to the ``plugins`` parameter in ``nav2_params.yaml``. The Speed Filter plugin should have the following parameters defined:
 
 - ``plugin``: type of plugin. In our case ``nav2_costmap_2d::SpeedFilter``.
 - ``filter_info_topic``: filter info topic name. This needs to be equal to ``filter_info_topic`` parameter of Costmap Filter Info Publisher Server from the chapter above.

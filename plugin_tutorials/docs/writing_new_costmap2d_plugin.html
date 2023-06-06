@@ -955,13 +955,13 @@
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in <a class="reference internal" href="../../development_guides/build_docs/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
+<p>It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in <a class="reference internal" href="../../development_guides/build_docs/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="write-a-new-costmap2d-plugin">
 <h3>1- Write a new Costmap2D plugin<a class="headerlink" href="#write-a-new-costmap2d-plugin" title="Permalink to this headline">¶</a></h3>
-<p>For a demonstration, this example will creates a costmap plugin that puts repeating costs gradients in the costmap.
+<p>For a demonstration, this example will create a costmap plugin that puts repeating cost gradients in the costmap.
 The annotated code for this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials">navigation2_tutorials</a> repository as the <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin</span></code> ROS 2-package.
 Please refer to it when making your own layer plugin for Costmap2D.</p>
 <p>The plugin class <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin::GradientLayer</span></code> is inherited from basic class <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::Layer</span></code>:</p>
@@ -971,7 +971,7 @@ Please refer to it when making your own layer plugin for Costmap2D.</p>
 <span class="n">class</span><span class="w"> </span><span class="n">GradientLayer</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="n">nav2_costmap_2d</span><span class="o">::</span><span class="n">Layer</span>
 </pre></div>
 </div>
-<p>The basic class provides the set of virtual methods API for working with costmap layers in a plugin. These methods are calling in runtime by <code class="docutils literal notranslate"><span class="pre">LayeredCostmap</span></code>. The list of methods, their description and necessity to have these methods in plugin’s code is presented in the table below:</p>
+<p>The basic class provides the set of virtual methods API for working with costmap layers in a plugin. These methods are called at runtime by <code class="docutils literal notranslate"><span class="pre">LayeredCostmap</span></code>. The list of methods, their description, and necessity to have these methods in plugin’s code is presented in the table below:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 18%" />
@@ -991,17 +991,17 @@ should occur.</p></td>
 </tr>
 <tr class="row-odd"><td><p>updateBounds()</p></td>
 <td><p>Method is called to ask the plugin: which area of costmap layer it needs
-to update. There are 3 input parameters of method: robot position and
-orientation and 4 output parameters: pointers to window bounds.
+to update. The method has 3 input parameters: robot position and
+orientation, and 4 output parameters: pointers to window bounds.
 These bounds are used for performance reasons: to update the area
-inside the window where is new info available, avoiding updates of whole
-costmap on every iteration.</p></td>
+inside the window where new info is available, avoiding updates of the
+whole costmap on every iteration.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-even"><td><p>updateCosts()</p></td>
 <td><p>Method is called each time when costmap re-calculation is required. It
-updates the costmap layer only within its bounds window. There are 4 input
-parameters of method: calculation window bounds and 1 output parameter:
+updates the costmap layer only within its bounds window. The method has 4
+input parameters: calculation window bounds, and 1 output parameter:
 reference to a resulting costmap <code class="docutils literal notranslate"><span class="pre">master_grid</span></code>. The <code class="docutils literal notranslate"><span class="pre">Layer</span></code> class
 provides the plugin with an internal costmap, <code class="docutils literal notranslate"><span class="pre">costmap_</span></code>, for updates.
 The <code class="docutils literal notranslate"><span class="pre">master_grid</span></code> should be updated with values within the window bounds
@@ -1026,7 +1026,7 @@ using one of the following update methods: <code class="docutils literal notrans
 </table>
 <p>In our example these methods have the following functionality:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::onInitialize()</span></code> contains declaration of ROS parameter with its default value:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::onInitialize()</span></code> contains declaration of a ROS parameter with its default value:</p></li>
 </ol>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">declareParameter</span><span class="p">(</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="p">(</span><span class="nb">true</span><span class="p">));</span>
 <span class="n">node_</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">name_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">enabled_</span><span class="p">);</span>
@@ -1064,12 +1064,12 @@ using one of the following update methods: <code class="docutils literal notrans
 <p>These parameters are defined in plugin’s header file.</p>
 <ol class="arabic simple" start="4">
 <li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::onFootprintChanged()</span></code> just resets <code class="docutils literal notranslate"><span class="pre">need_recalculation_</span></code> value.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::reset()</span></code> method is dummy: it is not used in this example plugin. It remaining there since pure virtual function <code class="docutils literal notranslate"><span class="pre">reset()</span></code> in parent <code class="docutils literal notranslate"><span class="pre">Layer</span></code> class required to be overriden.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GradientLayer::reset()</span></code> method is dummy: it is not used in this example plugin. It remains there since pure virtual function <code class="docutils literal notranslate"><span class="pre">reset()</span></code> in parent <code class="docutils literal notranslate"><span class="pre">Layer</span></code> class required to be overridden.</p></li>
 </ol>
 </div>
 <div class="section" id="export-and-make-gradientlayer-plugin">
 <h3>2- Export and make GradientLayer plugin<a class="headerlink" href="#export-and-make-gradientlayer-plugin" title="Permalink to this headline">¶</a></h3>
-<p>The written plugin will be loaded in runtime as it’s basic parent class and then will be called by plugin handling modules (for costmap2d by <code class="docutils literal notranslate"><span class="pre">LayeredCostmap</span></code>). Pluginlib opens a given plugin in run-time and provides methods from exported classes to be callable. The mechanism of class exporting tells pluginlib which basic class should be used during these calls. This allows to extend an application by plugins without knowing application source code or recompiling it.</p>
+<p>The written plugin will be loaded at runtime as its basic parent class and then will be called by plugin handling modules (for costmap2d by <code class="docutils literal notranslate"><span class="pre">LayeredCostmap</span></code>). Pluginlib opens a given plugin in run-time and provides methods from exported classes to be callable. The mechanism of class exporting tells pluginlib which basic class should be used during these calls. This allows to extend an application by plugins without knowing application source code or recompiling it.</p>
 <p>In our example the <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin::GradientLayer</span></code> plugin’s class should be dynamically loaded as a <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::Layer</span></code> basic class. For this the plugin should be registered as follows:</p>
 <ol class="arabic simple">
 <li><p>Plugin’s class should be registered with a basic type of loaded class. For this there is a special macro <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code> should be added to any source-file composing the plugin library:</p></li>
@@ -1078,7 +1078,7 @@ using one of the following update methods: <code class="docutils literal notrans
 PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap_2d::Layer)
 </pre></div>
 </div>
-<p>This part is usually placed at the end of cpp-file where the plugin class was written (in our example <code class="docutils literal notranslate"><span class="pre">gradient_layer.cpp</span></code>). It is good practice to place these lines at the end of the file but technically, you can also place at the top.</p>
+<p>This part is usually placed at the end of cpp-file where the plugin class was written (in our example <code class="docutils literal notranslate"><span class="pre">gradient_layer.cpp</span></code>). It is good practice to place these lines at the end of the file, but technically, you can also place at the top.</p>
 <ol class="arabic simple" start="2">
 <li><p>Plugin’s inormation should be stored to plugin description file. This is done by using separate XML (in our example <code class="docutils literal notranslate"><span class="pre">gradient_plugins.xml</span></code>) in the plugin’s package. This file contains information about:</p></li>
 </ol>
@@ -1161,11 +1161,11 @@ gradient_layer_2:
 </div>
 <div class="section" id="run-gradientlayer-plugin">
 <h3>4- Run GradientLayer plugin<a class="headerlink" href="#run-gradientlayer-plugin" title="Permalink to this headline">¶</a></h3>
-<p>Run Turtlebot3 simulation with enabled Nav2. Detailed instructuction how to make it are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is shortcut command for that:</p>
+<p>Run Turtlebot3 simulation with enabled Nav2. Detailed instructions how to make it are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is shortcut command for that:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py
 </pre></div>
 </div>
-<p>Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on map as it was described in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Robot will be localized on map and the result should be as presented at picture below. There is could be seen the gradient costmap. There are also 2 noticeable things: dynamically updated by <code class="docutils literal notranslate"><span class="pre">GradientLayer::updateCosts()</span></code> costmap within its bounds and global path curved by gradient:</p>
+<p>Then goto RViz and click on the “2D Pose Estimate” button at the top and point the location on map as it was described in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Robot will be localized on map and the result should be as presented at picture below. There, the gradient costmap can be seen. There are also 2 noticeable things: dynamically updated by <code class="docutils literal notranslate"><span class="pre">GradientLayer::updateCosts()</span></code> costmap within its bounds and global path curved by gradient:</p>
 <a class="reference internal image-reference" href="../../_images/gradient_layer_run.png"><img alt="Image of gradient costmap used" class="align-center" src="../../_images/gradient_layer_run.png" style="width: 700px;" /></a>
 </div>
 </div>

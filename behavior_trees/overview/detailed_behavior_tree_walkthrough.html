@@ -1146,7 +1146,7 @@ calculating the path. There are other decorators that can be used instead of the
 <div class="section" id="recovery-subtree">
 <h2>Recovery Subtree<a class="headerlink" href="#recovery-subtree" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree is the second big “half” of the Nav2 default <code class="docutils literal notranslate"><span class="pre">navigate_to_pose_w_replanning_and_recovery.xml</span></code> tree.
-In short, this subtree is triggered when the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> controls the recoveries at the system level (in the case the contextual recoveries in the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree were not sufficient).</p>
+In short, this subtree is triggered when the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> and controls the recoveries at the system level (in the case the contextual recoveries in the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree were not sufficient).</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1171,7 +1171,7 @@ In short, this subtree is triggered when the <code class="docutils literal notra
 <span class="nt">&lt;/ReactiveFallback&gt;</span>
 </pre></div>
 </div>
-<p>The top most parent, <code class="docutils literal notranslate"><span class="pre">ReactiveFallback</span></code> controls the flow between the rest of the system wide recoveries, and asynchronously checking if a new goal has been received.
+<p>The top most parent, <code class="docutils literal notranslate"><span class="pre">ReactiveFallback</span></code> controls the flow between the rest of the system wide recoveries, and asynchronously checks if a new goal has been received.
 If at any point the goal gets updated, this subtree will halt all children and return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. This allows for quick reactions to new goals and preempt currently executing recoveries.
 This should look familiar to the contextual recovery portions of the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree. This is a common BT pattern to handle the situation “Unless ‘this condition’ happens, Do action A”.</p>
 <p>These condition nodes can be extremely powerful and are typically paired with <code class="docutils literal notranslate"><span class="pre">ReactiveFallback</span></code>. It can be easy to imagine wrapping this whole <code class="docutils literal notranslate"><span class="pre">navigate_to_pose_w_replanning_and_recovery</span></code> tree
