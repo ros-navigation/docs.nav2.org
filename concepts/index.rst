@@ -191,7 +191,7 @@ As criteria for optimality of the path searched by a planner are usually reduced
 Smoothers have been introduced for this purpose, typically responsible for reducing path raggedness and smoothing abrupt rotations,
 but also for increasing distance from obstacles and high-cost areas as the smoothers have access to a global environmental representation.
 
-Use of a separate smoother over one that is included as a part of a planner is advantageous when combining different planners with different smoothers or when a specific control over smoothing is required, e.g. smoothing ony a specific part of the path.
+Use of a separate smoother over one that is included as a part of a planner is advantageous when combining different planners with different smoothers or when a specific control over smoothing is required, e.g. smoothing only a specific part of the path.
 
 The general task in Nav2 for a smoother is to receive a path and return its improved version.
 However, different input paths, criteria of the improvements and methods of acquiring them exist, creating space for multitude of smoothers that can be registered in this server.
