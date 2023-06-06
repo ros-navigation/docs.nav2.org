@@ -3,12 +3,12 @@
 Navigation Concepts
 ###################
 
-This page is to help familiarize new robotists to the concepts of mobile robot navigation, in particular, with the concepts required to appreciating and working with this project.
+This page is to help familiarize new roboticists to the concepts of mobile robot navigation, in particular, with the concepts required to appreciating and working with this project.
 
 ROS 2
 *****
 
-ROS 2 is the core middleware used for Nav2. If you are unfamilar with this, please visit `the ROS 2 documentation <https://docs.ros.org/en/rolling/>`_ before continuing.
+ROS 2 is the core middleware used for Nav2. If you are unfamiliar with this, please visit `the ROS 2 documentation <https://docs.ros.org/en/rolling/>`_ before continuing.
 
 Action Server
 =============
@@ -30,7 +30,7 @@ In the bulldozer example, a request may be an angle, a feedback may be the angle
 In the navigation example, a request may be a position, a feedback may be the time its been navigating for and the distance to the goal, and the result a boolean for success.
 
 Feedback and results can be gathered synchronously by registering callbacks with the action client.
-They may also be gathered by asychronously requesting information from the shared future objects.
+They may also be gathered by asynchronously requesting information from the shared future objects.
 Both require spinning the client node to process callback groups.
 
 Action servers are used in this stack to communicate with the highest level BT navigator through a ``NavigateToPose`` action message.
@@ -43,7 +43,7 @@ Lifecycle Nodes and Bond
 Lifecycle (or Managed, more correctly) nodes are unique to ROS 2.
 More information can be `found here <https://design.ros2.org/articles/node_lifecycle.html>`_.
 They are nodes that contain state machine transitions for bringup and teardown of ROS 2 servers.
-This helps in determinstic behavior of ROS systems in startup and shutdown.
+This helps in deterministic behavior of ROS systems in startup and shutdown.
 It also helps users structure their programs in reasonable ways for commercial uses and debugging.
 
 When a node is started, it is in the unconfigured state, only processing the node's constructor which should **not** contain any ROS networking setup or parameter reading.
@@ -72,10 +72,10 @@ Behavior trees (BT) are becoming increasingly common in complex robotics tasks.
 They are a tree structure of tasks to be completed.
 It creates a more scalable and human-understandable framework for defining multi-step or many state applications.
 This is opposed to a finite state machine (FSM) which may have dozens of states and hundreds of transitions.
-An example would be a soccer playing robot.
+An example would be a soccer-playing robot.
 Embedding the logic of soccer game play into a FSM would be challenging and error prone with many possible states and rules.
 Additionally, modeling choices like to shoot at the goal from the left, right, or center, is particularly unclear.
-With a BT, basic primitives like "kick" "walk" "go to ball" can be created and reused for many behaviors.
+With a BT, basic primitives, like "kick", "walk", "go to ball", can be created and reused for many behaviors.
 More information can be found `in this book <https://arxiv.org/abs/1709.00084>`_.
 I **strongly** recommend reading chapters 1-3 to get a good understanding of the nomenclature and workflow.
 It should only take about 30 minutes.
@@ -115,7 +115,7 @@ These types are the pluginlib names that have been registered and the names are 
 An example would be the DWB controller used with name ``FollowPath``, as it follows a reference path.
 In this case, then all parameters for DWB would be placed in that namespace, e.g. ``FollowPath.<param>``.
 
-These three servers then expose an action interface corresponding to its task.
+These three servers then expose an action interface corresponding to their task.
 When the behavior tree ticks the corresponding BT node, it will call the action server to process its task.
 The action server callback inside the server will call the chosen algorithm by its name (e.g. ``FollowPath``) that maps to a specific algorithm.
 This allows a user to abstract the algorithm used in the behavior tree to classes of algorithms.
@@ -123,7 +123,7 @@ For instance, you can have ``N`` plugin controllers to follow paths, dock with c
 Having all of these plugins in the same server allows the user to make use of a single environmental representation object, which is costly to duplicate.
 
 For the behavior server, each of the behaviors also contains their own name, however, each plugin will also expose its own special action server.
-This is done because of the wide variety of behavior actions that may be created cannot have a single simple interface to share.
+This is done because of the wide variety of behavior actions that may be created which cannot have a single simple interface to share.
 The behavior server also contains a costmap subscriber to the local costmap, receiving real-time updates from the controller server, to compute its tasks.
 We do this to avoid having multiple instances of the local costmap which are computationally expensive to duplicate.
 
@@ -179,10 +179,10 @@ The clear costmap recovery would then be triggered to allow the robot to move.
 Another example would be if the robot was stuck due to dynamic obstacles or poor control.
 Backing up or spinning in place, if permissible, allow the robot to move from a poor location into free space it may navigate successfully.
 
-Finally, in the case of a total failure, a recovery may be implemented to call an operators attention for help.
-This can be done with email, SMS, Slack, Matrix, etc.
+Finally, in the case of a total failure, a recovery may be implemented to call an operator's attention for help.
+This can be done via email, SMS, Slack, Matrix, etc.
 
-It is important to note that the behavior server can hold any behavior to share access to expensive resources like costmaps or TF buffers, not just recovery behaviors. Each may have their own API.
+It is important to note that the behavior server can hold any behavior to share access to expensive resources like costmaps or TF buffers, not just recovery behaviors. Each may have its own API.
 
 Smoothers
 =========
@@ -191,10 +191,10 @@ As criteria for optimality of the path searched by a planner are usually reduced
 Smoothers have been introduced for this purpose, typically responsible for reducing path raggedness and smoothing abrupt rotations,
 but also for increasing distance from obstacles and high-cost areas as the smoothers have access to a global environmental representation.
 
-Use of a separate smoother over one that is included as a part of a planner is advantageous when combining different planners with different smoothers or when a specific control over smoothing is required, e.g. smoothing ony a specific part of the path.
+Use of a separate smoother over one that is included as part of a planner is advantageous when combining different planners with different smoothers or when a specific control over smoothing is required, e.g. smoothing only a specific part of the path.
 
 The general task in Nav2 for a smoother is to receive a path and return its improved version.
-However, different input paths, criteria of the improvements and methods of acquiring them exist, creating space for multitude of smoothers that can be registered in this server.
+However, for different input paths, criteria of the improvements and methods of acquiring them exist, creating space for a multitude of smoothers that can be registered in this server.
 
 Waypoint Following
 ==================
@@ -206,11 +206,12 @@ This is useful if you need to go to a given location and complete a specific tas
 It is a nice demo application for how to use Nav2 in a sample application.
 
 However, it could be used for more than just a sample application.
-There are 2 schools of thoughts for fleet managers / dispatchers.
+There are 2 schools of thoughts for fleet managers / dispatchers:
+
 - Dumb robot; smart centralized dispatcher
 - Smart robot; dumb centralized dispatcher
 
-In the first, the ``nav2_waypoint_follower`` is fully sufficient to create a production-grade on-robot solution. Since the autonomy system / dispatcher is taking into account things like the robot's pose, battery level, current task, and more when assigning tasks, the application on the robot just needs to worry about the task at hand and not the other complexities of the system complete the requested task. In this situation, you should think of a request to the waypoint follower as 1 unit of work (e.g. 1 pick in a warehouse, 1 security patrole loop, 1 aisle, etc) to do a task and then return to the dispatcher for the next task or request to recharge. In this school of thought, the waypoint following application is just one step above navigation and below the system autonomy application.
+In the first, the ``nav2_waypoint_follower`` is fully sufficient to create a production-grade on-robot solution. Since the autonomy system / dispatcher is taking into account things like the robot's pose, battery level, current task, and more when assigning tasks, the application on the robot just needs to worry about the task at hand and not the other complexities of the system to complete the requested task. In this situation, you should think of a request to the waypoint follower as 1 unit of work (e.g. 1 pick in a warehouse, 1 security patrole loop, 1 aisle, etc) to do a task and then return to the dispatcher for the next task or request to recharge. In this school of thought, the waypoint following application is just one step above navigation and below the system autonomy application.
 
 In the second, the ``nav2_waypoint_follower`` is a nice sample application / proof of concept, but you really need your waypoint following / autonomy system on the robot to carry more weight in making a robust solution. In this case, you should use the ``nav2_behavior_tree`` package to create a custom application-level behavior tree using navigation to complete the task. This can include subtrees like checking for the charge status mid-task for returning to dock or handling more than 1 unit of work in a more complex task. Soon, there will be a ``nav2_bt_waypoint_follower`` (name subject to adjustment) that will allow you to create this application more easily. In this school of thought, the waypoint following application is more closely tied to the system autonomy, or in many cases, is the system autonomy.
 
@@ -225,7 +226,7 @@ The ``map`` to ``odom`` transform is provided by a positioning system (localizat
 .. note::
 
   There is **no** requirement on using a LIDAR on your robot to use the navigation system. There is no requirement to use lidar-based collision avoidance,
-  localization, or slam. However, we do provide instructions and support tried and true implementations of these things using lidars.
+  localization, or SLAM. However, we do provide instructions and support tried and true implementations of these things using lidars.
   You can be equally as successful using a vision or depth based positioning system and using other sensors for collision avoidance.
   The only requirement is that you follow the standards below with your choice of implementation.
 
@@ -233,10 +234,10 @@ Standards
 =========
 
 `REP 105 <https://www.ros.org/reps/rep-0105.html>`_ defines the frames and conventions required for navigation and the larger ROS ecosystem.
-These conventions should be followed at all times to make use of the rich positioning, odometry, and slam projects available in the community.
+These conventions should be followed at all times to make use of the rich positioning, odometry, and SLAM projects available in the community.
 
 In a nutshell, REP-105 says that you must, at minimum, build a TF tree that contains a full ``map`` -> ``odom`` -> ``base_link`` -> ``[sensor frames]`` for your robot.
-TF2 are the time-variant transformation library in ROS 2 we use to represent and obtain time synchronized transformations.
+TF2 is the time-variant transformation library in ROS 2 we use to represent and obtain time synchronized transformations.
 It is the job of the global positioning system (GPS, SLAM, Motion Capture) to, at minimum, provide the ``map`` -> ``odom`` transformation.
 It is then the role of the odometry system to provide the ``odom`` -> ``base_link`` transformation.
 The remainder of the transformations relative to ``base_link`` should be static and defined in your `URDF <http://wiki.ros.org/urdf>`_.
@@ -245,7 +246,7 @@ Global Positioning: Localization and SLAM
 =========================================
 
 It is the job of the global positioning system (GPS, SLAM, Motion Capture) to, at minimum, provide the ``map`` -> ``odom`` transformation.
-We provide ``amcl`` which is an Adaptive Monte-Carlo Localization technique based on a particle filter for localization of a static map.
+We provide ``amcl`` which is an Adaptive Monte-Carlo Localization technique based on a particle filter for localization in a static map.
 We also provide SLAM Toolbox as the default SLAM algorithm for use to position and generate a static map.
 
 These methods may also produce other output including position topics, maps, or other metadata, but they must provide that transformation to be valid.
@@ -262,7 +263,7 @@ The global positioning system will update the transformation relative to the glo
 
 `Robot Localization <https://github.com/cra-ros-pkg/robot_localization/>`_ is typically used for this fusion.
 It will take in ``N`` sensors of various types and provide a continuous and smooth odometry to TF and to a topic.
-A typical mobile robotics setup may have odometry from wheel encoders, IMUs, and vision fused in this manor.
+A typical mobile robotics setup may have odometry from wheel encoders, IMUs, and vision fused in this manner.
 
 The smooth output can be used then for dead-reckoning for precise motion and updating the position of the robot accurately between global position updates.
 
@@ -283,7 +284,7 @@ A costmap is a regular 2D grid of cells containing a cost from unknown, free, oc
 This costmap is then searched to compute a global plan or sampled to compute local control efforts.
 
 Various costmap layers are implemented as pluginlib plugins to buffer information into the costmap.
-This includes information from LIDAR, RADAR, sonar, depth, images, etc.
+This includes information from LIDAR, RADAR, sonar, depth images, etc.
 It may be wise to process sensor data before inputting it into the costmap layer, but that is up to the developer.
 
 Costmap layers can be created to detect and track obstacles in the scene for collision avoidance using camera or depth sensors.
@@ -293,9 +294,15 @@ Finally, they may be used to buffer live data into the 2D or 3D world for binary
 Costmap Filters
 ===============
 
-Imagine, you're annotating a map file (or any image file) in order to have a specific action occur based on the location in the annotated map. Examples of marking/annotating might be keep out zones to avoid planning inside, or have pixels belong to maximum speeds in marked areas. This annotated map is called "filter mask". Just like a mask overlaid on a surface, it can or cannot be same size, pose and scale as a main map. The main goal of filter mask - is to provide an ability of marking areas on maps with some additional features or behavioral changes.
+Imagine, you're annotating a map file (or any image file) in order to have a specific action occur based on the location in the annotated map. Examples of marking/annotating might be keep out zones to avoid planning inside, or have pixels belong to maximum speeds in marked areas. This annotated map is called "filter mask". Just like a mask overlaid on a surface, it can or cannot be same size, pose and scale as a main map. The main goal of filter mask - is to provide the ability of marking areas on maps with some additional features or behavioral changes.
 
-Costmap filters - is costmap layer based approach of applying spatial-dependent behavioral changes annotated in filter masks, into Nav2 stack. Costmap filters are implemented as costmap plugins. These plugins are called "filters" as they are filtering a costmap by spatial annotations marked on filter masks. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. This data is being linearly transformed into feature map in a filter space. Having this transformed feature map along with a map/costmap, any sensors data and current robot coordinates filters can update underlying costmap and change behavior of the robot depending on where it is. For example, the following functionality could be made by using of costmap filters:
+Costmap filters are a costmap layer-based approach of applying spatial-dependent behavioral changes, annotated in filter masks, into the Nav2 stack.
+Costmap filters are implemented as costmap plugins.
+These plugins are called "filters" as they are filtering a costmap by spatial annotations marked on filter masks.
+In order to make a filtered costmap and change a robot's behavior in annotated areas, the filter plugin reads the data coming from the filter mask.
+This data is being linearly transformed into a feature map in a filter space.
+Having this transformed feature map along with a map/costmap, any sensor data and current robot coordinate filters can update the underlying costmap and change the behavior of the robot depending on where it is.
+For example, the following functionality could be made by use of costmap filters:
 
 - Keep-out/safety zones where robots will never enter.
 - Speed restriction areas. Maximum speed of robots going inside those areas will be limited.

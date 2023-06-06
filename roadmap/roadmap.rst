@@ -3,7 +3,7 @@
 Roadmaps
 ########
 
-This is the list of major issues and features the Nav2 maintainers are commiting for completion for various ROS 2 releases.
+This is the list of major issues and features the Nav2 maintainers are committing for completion for various ROS 2 releases.
 This is *not* an exhaustive list of planned features or what changes may be found in the new distribution.
 It represents only the items of direct commitment to give insight into commitments for REP-2005 repositories in the `ROS 2 Roadmap <https://docs.ros.org/en/rolling/Roadmap.html>`_.
 For a full list of important completed changes in the project, see the Migration Guides :ref:`migration`.

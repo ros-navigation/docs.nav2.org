@@ -83,7 +83,7 @@ First, let's make this behavior run until there's a failure. For this purpose, w
     </BehaviorTree>
   </root>
 
-We will then use the decorator ``GoalUpdater`` to accept updates of the dynamic object pose we're trying to follow. This node takes as input the current goal and subscribes to the topic ``/goal_update``. It set the new goal as ``updated_goal`` if a new goal on that topic is received.
+We will then use the decorator ``GoalUpdater`` to accept updates of the dynamic object pose we're trying to follow. This node takes as input the current goal and subscribes to the topic ``/goal_update``. It sets the new goal as ``updated_goal`` if a new goal on that topic is received.
 
 .. code-block:: xml
 
