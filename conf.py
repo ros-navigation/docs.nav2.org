@@ -157,7 +157,7 @@ html_context = {
 #
 # html_theme_options = {}
 
-html_logo = 'images/nav2_logo.png'
+html_logo = 'images/nav2_logo_powered.png'
 html_favicon = 'images/nav2_48x48.png'
 
 numfig = True
