@@ -54,7 +54,7 @@ Let's learn more about the methods needed to write a BT action plugin.
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 | providedPorts()      | A function to define the input and output ports a BT node may have.        | Yes                     |
 |                      | These are analogous to parameters that are defined in the BT XML           |                         |
-|                      | by hardcoded values or by the value of output ports of other nodes.  |                         |
+|                      | by hardcoded values or by the value of output ports of other nodes.        |                         |
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 | on_tick()            | Method is called when this BT node is ticked by the behavior tree while    | No                      |
 |                      | executing. This should be used to get dynamic updates like new blackboard  |                         |

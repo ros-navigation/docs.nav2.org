@@ -28,7 +28,7 @@ Overview
 `Groot <https://github.com/BehaviorTree/Groot>`_ is the companion application of the `BehaviorTree.CPP <https://github.com/BehaviorTree/BehaviorTree.CPP>`_ library used to create, edit, and visualize behavior trees.
 Behavior Trees are deeply integrated into Nav2, used as the main method of orchestrating task server logic across a complex navigation and autonomy stack.
 Behavior Trees, in short BTs, consist of many nodes completing different tasks and control the flow of logic, similar to a Hierarchical or Finite State Machine, but organized in a tree structure.
-These nodes are of types: `Action`, `Condition`, `Control`, or `Decorator`, and are described in more detail in `Introduction To Nav2 Specific Nodes <https://navigation.ros.org/behavior_trees/overview/nav2_specific_nodes.html>`_ and `BehaviorTree.CPP <https://www.behaviortree.dev/docs/learn-the-basics/BT_basics#types-of-nodes>`_.
+These nodes are of types: `Action`, `Condition`, `Control`, or `Decorator`, and are described in more detail in :ref:`concepts` and `BehaviorTree.CPP <https://www.behaviortree.dev/docs/learn-the-basics/BT_basics#types-of-nodes>`_.
 
 :ref:`writing_new_nbt_plugin` offers a well written example of creating a simple ``Action`` node if creating new BT nodes is of interest. This tutorial will focus solely on launching Groot, visualizing a Behavior Tree, and modifying that tree for a given customization, assuming a library of BT nodes. Luckily, Nav2 provides a robust number of BT nodes for your use out of the box, enumerated in :ref:`plugins`.
 

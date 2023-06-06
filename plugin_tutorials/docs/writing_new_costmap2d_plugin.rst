@@ -53,15 +53,15 @@ The basic class provides the set of virtual methods API for working with costmap
 |                      | should occur.                                                              |                         |
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 | updateBounds()       | Method is called to ask the plugin: which area of costmap layer it needs   | Yes                     |
-|                      | to update. The method has 3 input parameters: robot position and      |                         |
-|                      | orientation, and 4 output parameters: pointers to window bounds.            |                         |
+|                      | to update. The method has 3 input parameters: robot position and           |                         |
+|                      | orientation, and 4 output parameters: pointers to window bounds.           |                         |
 |                      | These bounds are used for performance reasons: to update the area          |                         |
-|                      | inside the window where new info is available, avoiding updates of the whole   |                         |
-|                      | costmap on every iteration.                                                |                         |
+|                      | inside the window where new info is available, avoiding updates of the     |                         |
+|                      | whole costmap on every iteration.                                          |                         |
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 | updateCosts()        | Method is called each time when costmap re-calculation is required. It     | Yes                     |
-|                      | updates the costmap layer only within its bounds window. The method has 4 input |                         |
-|                      | parameters: calculation window bounds, and 1 output parameter:    |                         |
+|                      | updates the costmap layer only within its bounds window. The method has 4  |                         |
+|                      | input parameters: calculation window bounds, and 1 output parameter:       |                         |
 |                      | reference to a resulting costmap ``master_grid``. The ``Layer`` class      |                         |
 |                      | provides the plugin with an internal costmap, ``costmap_``, for updates.   |                         |
 |                      | The ``master_grid`` should be updated with values within the window bounds |                         |

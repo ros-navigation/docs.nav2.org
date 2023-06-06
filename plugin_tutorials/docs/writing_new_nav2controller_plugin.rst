@@ -65,11 +65,11 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 |                           | should clean up resources which are created for the controller.                       |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | setPlan()                 | Method is called when the global plan is updated. Ideally this method should perform  | Yes                    |
-|                           | operations that transform the global plan and store it.                              |                        |
+|                           | operations that transform the global plan and store it.                               |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | computeVelocityCommands() | Method is called when a new velocity command is demanded by the controller server     | Yes                    |
 |                           | in-order for the robot to follow the global path. This method returns a               |                        |
-|                           | `geometry_msgs::msg::TwistStamped` which represents the velocity command for the      |                        |
+|                           | `geometry_msgs\:\:msg\:\:TwistStamped` which represents the velocity command for the  |                        |
 |                           | robot to drive.  This method passes 2 parameters: reference to the current robot      |                        |
 |                           | pose and its current velocity.                                                        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
@@ -77,7 +77,7 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 |                           | Speed limit could be expressed in absolute value (m/s) or in percentage from maximum  |                        |
 |                           | robot speed. Note that typically, maximum rotational speed is being limited           |                        |
 |                           | proportionally to the change of maximum linear speed, in order to keep current robot  |                        |
-|                           | behavior untouched.                                                             |                        |
+|                           | behavior untouched.                                                                   |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 
 In this tutorial, we will use the methods ``PurePursuitController::configure``, ``PurePursuitController::setPlan`` and

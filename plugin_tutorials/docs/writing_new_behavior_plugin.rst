@@ -44,51 +44,51 @@ The base class from ``nav2_core`` provides 4 pure virtual methods to implement a
 The plugin will be used by the behavior server to host the plugins, but each plugin will provide their own unique action server interface.
 Let's learn more about the methods needed to write a Behavior Plugin **if you did not use the ``nav2_behaviors`` wrapper**.
 
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| **Virtual method**   | **Method description**                                                     | **Requires override?**  |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| configure()          | Method is called at when server enters on_configure state. Ideally         | Yes                     |
-|                      | this method should perform declarations of ROS parameters and             |                         |
-|                      | initialization of behavior's member variables. This method takes 4 input   |                         |
-|                      | parameters: shared pointer to parent node, behavior name, tf buffer pointer    |                         |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| **Virtual method**   | **Method description**                                                      | **Requires override?**  |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| configure()          | Method is called at when server enters on_configure state. Ideally          | Yes                     |
+|                      | this method should perform declarations of ROS parameters and               |                         |
+|                      | initialization of behavior's member variables. This method takes 4 input    |                         |
+|                      | parameters: shared pointer to parent node, behavior name, tf buffer pointer |                         |
 |                      | and shared pointer to a collision checker.                                  |                         |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| activate()           | Method is called when behavior server enters on_activate state. Ideally    | Yes                     |
-|                      | this method should implement operations which are neccessary before the    |                         |
-|                      | behavior goes to an active state.                                               |                         |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| deactivate()         | Method is called when behavior server enters on_deactivate state. Ideally  | Yes                     |
-|                      | this method should implement operations which are neccessary before        |                         |
-|                      | behavior goes to an inactive state.                                        |                         |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| cleanup()            | Method is called when behavior server goes to on_cleanup state. Ideally    | Yes                     |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| activate()           | Method is called when behavior server enters on_activate state. Ideally     | Yes                     |
+|                      | this method should implement operations which are neccessary before the     |                         |
+|                      | behavior goes to an active state.                                           |                         |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| deactivate()         | Method is called when behavior server enters on_deactivate state. Ideally   | Yes                     |
+|                      | this method should implement operations which are neccessary before         |                         |
+|                      | behavior goes to an inactive state.                                         |                         |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| cleanup()            | Method is called when behavior server goes to on_cleanup state. Ideally     | Yes                     |
 |                      | this method should clean up resources which are created for the behavior.   |                         |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
++----------------------+-----------------------------------------------------------------------------+-------------------------+
 
 For the ``nav2_behaviors`` wrapper, which provides the ROS 2 action interface and boilerplate, we have 4 virtual methods to implement.
 This tutorial uses this wrapper so these are the main elements we will address.
 
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| **Virtual method**   | **Method description**                                                     | **Requires override?**  |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| onRun()              | Method is called immediately when a new behavior action request is         | Yes                     |
-|                      | received. Gives the action goal to process and should start behavior       |                         |
-|                      | initialization / process.                                                  |                         |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| onCycleUpdate()      | Method is called at the behavior update rate and should complete any       | Yes                     |
-|                      | necessary updates. An example for spinning is computing the command        |                         |
-|                      | velocity for the current cycle, publishing it and checking for completion. |                         |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| onConfigure()        | Method is called when behavior server enters on_configure state. Ideally   | No                      |
-|                      | this method should implement operations which are neccessary before        |                         |
-|                      | behavior goes to a configured state (get parameters, etc).                |                         |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
-| onCleanup()          | Method is called when behavior server goes to on_cleanup state. Ideally    | No                      |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| **Virtual method**   | **Method description**                                                      | **Requires override?**  |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| onRun()              | Method is called immediately when a new behavior action request is          | Yes                     |
+|                      | received. Gives the action goal to process and should start behavior        |                         |
+|                      | initialization / process.                                                   |                         |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| onCycleUpdate()      | Method is called at the behavior update rate and should complete any        | Yes                     |
+|                      | necessary updates. An example for spinning is computing the command         |                         |
+|                      | velocity for the current cycle, publishing it and checking for completion.  |                         |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| onConfigure()        | Method is called when behavior server enters on_configure state. Ideally    | No                      |
+|                      | this method should implement operations which are neccessary before         |                         |
+|                      | behavior goes to a configured state (get parameters, etc).                  |                         |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
+| onCleanup()          | Method is called when behavior server goes to on_cleanup state. Ideally     | No                      |
 |                      | this method should clean up resources which are created for the behavior.   |                         |
-+----------------------+----------------------------------------------------------------------------+-------------------------+
++----------------------+-----------------------------------------------------------------------------+-------------------------+
 
 For this tutorial, we will be using methods ``onRun()``, ``onCycleUpdate()``, and ``onConfigure()`` to create the SMS behavior.
-``onConfigure()`` will be skipped for brevity, but only declares of parameters.
+``onConfigure()`` will be skipped for brevity, but only declares parameters.
 
 In recoveries, ``onRun()`` method must set any initial state and kick off the behavior.
 For the case of our call for help behavior, we can trivially compute all of our needs in this method.
