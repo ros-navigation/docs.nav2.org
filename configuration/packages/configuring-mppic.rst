@@ -620,6 +620,17 @@ Path Angle Critic
   Description
     Angular distance (rad) between robot and goal above which path angle cost starts being considered
 
+:forward_preference:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  bool           true
+  ============== ===========================
+
+  Description
+    Whether or not your robot has a preference for which way is forward in motion. Different from if reversing is generally allowed, but if you robot contains *no* particular preference one way or another.
+
 Path Follow Critic
 ------------------
 
@@ -812,6 +823,7 @@ Example
             offset_from_furthest: 4
             threshold_to_consider: 0.40
             max_angle_to_furthest: 1.0
+            forward_preference: true
           # TwirlingCritic:
           #   enabled: true
           #   twirling_cost_power: 1
