@@ -33,7 +33,7 @@ Feedback and results can be gathered synchronously by registering callbacks with
 They may also be gathered by asynchronously requesting information from the shared future objects.
 Both require spinning the client node to process callback groups.
 
-Action servers are used in this stack to communicate with the highest level BT navigator through a ``NavigateToPose`` action message.
+Action servers are used in this stack to communicate with the highest level Behavior Tree (BT) navigator through a ``NavigateToPose`` action message.
 They are also used for the BT navigator to communicate with the subsequent smaller action servers to compute plans, control efforts, and recoveries.
 Each will have their own unique ``.action`` type in ``nav2_msgs`` for interacting with the servers.
 

@@ -963,7 +963,7 @@ In the navigation example, a request may be a position, a feedback may be the ti
 <p>Feedback and results can be gathered synchronously by registering callbacks with the action client.
 They may also be gathered by asynchronously requesting information from the shared future objects.
 Both require spinning the client node to process callback groups.</p>
-<p>Action servers are used in this stack to communicate with the highest level BT navigator through a <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action message.
+<p>Action servers are used in this stack to communicate with the highest level Behavior Tree (BT) navigator through a <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action message.
 They are also used for the BT navigator to communicate with the subsequent smaller action servers to compute plans, control efforts, and recoveries.
 Each will have their own unique <code class="docutils literal notranslate"><span class="pre">.action</span></code> type in <code class="docutils literal notranslate"><span class="pre">nav2_msgs</span></code> for interacting with the servers.</p>
 </div>
