@@ -109,7 +109,7 @@ Voxel Layer Parameters
   | 0 - Overwrite: Overwrite master costmap with every valid observation.
 
   | 1 - Max: Sets the new value to the maximum of the master_grid's value and this layer's value. 
-  | If the master value is NO_INFORMATION, it is overwritten. This is the default.
+  | This is the default.
   
   | 2 - MaxWithoutUnknownOverwrite: Sets the new value to the maximum of the master_grid's
   | value and this layer's value. If the master value is NO_INFORMATION, it is NOT overwritten.
