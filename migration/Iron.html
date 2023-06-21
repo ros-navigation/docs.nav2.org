@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eloquent to Foxy &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Iron to Jazzy &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Foxy to Galactic" href="Foxy.html" />
-    <link rel="prev" title="Dashing to Eloquent" href="Dashing.html" />
+    <link rel="next" title="Simple Commander API" href="../commander_api/index.html" />
+    <link rel="prev" title="Humble to Iron" href="Humble.html" />
 
 <link rel="stylesheet" href="../_static/tcs_theme.css" type="text/css" />
 
@@ -770,15 +770,15 @@
 <li class="toctree-l3"><a class="reference internal" href="Dashing.html#navigation2-architectural-changes">Navigation2 Architectural Changes</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Eloquent to Foxy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#server-updates">Server Updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#new-plugins">New Plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#map-server-re-work">Map Server Re-Work</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#new-particle-filter-messages">New Particle Filter Messages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#followpoint-capability">FollowPoint Capability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#new-costmap-layer">New Costmap Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Eloquent.html">Eloquent to Foxy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Eloquent.html#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Eloquent.html#server-updates">Server Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Eloquent.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Eloquent.html#map-server-re-work">Map Server Re-Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Eloquent.html#new-particle-filter-messages">New Particle Filter Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Eloquent.html#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Eloquent.html#followpoint-capability">FollowPoint Capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Eloquent.html#new-costmap-layer">New Costmap Layer</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Foxy.html">Foxy to Galactic</a><ul>
@@ -885,8 +885,8 @@
 <li class="toctree-l3"><a class="reference internal" href="Humble.html#smacplannerhybrid-viz-expansions-parameter">SmacPlannerHybrid viz_expansions parameter</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Iron.html">Iron to Jazzy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 </ul>
 </li>
 </ul>
@@ -935,7 +935,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Migration Guides</a></li>
-      <li class="breadcrumb-item active">Eloquent to Foxy</li>
+      <li class="breadcrumb-item active">Iron to Jazzy</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -944,139 +944,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="eloquent-to-foxy">
-<span id="eloquent-migration"></span><h1>Eloquent to Foxy<a class="headerlink" href="#eloquent-to-foxy" title="Permalink to this headline">¶</a></h1>
-<p>Moving from ROS 2 Eloquent to Foxy, a number of stability improvements were added that we will not specifically address here.
-We will specifically mention, however, the reduction in terminal noise.
-TF2 transformation timeout errors and warnings on startup have been largely removed or throttled to be more tractable.
-Additionally, message filters filling up resulting in messages being dropped were resolved in costmap 2d.</p>
-<div class="section" id="general">
-<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
-<p>The lifecycle manager was split into 2 unique lifecycle managers.
-They are the <code class="docutils literal notranslate"><span class="pre">navigation_lifecycle_manager</span></code> and <code class="docutils literal notranslate"><span class="pre">localization_lifecycle_manager</span></code>.
-This gives each process their own manager to allow users to switch between SLAM and localization without effecting Navigation.
-It also reduces the redundant code in <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>.</p>
-<p>The lifecycle manager also now contains <code class="docutils literal notranslate"><span class="pre">Bond</span></code> connections to each lifecycle server.
-This means that if a server crashes or exits, the lifecycle manager will be constantly checking and transition down its lifecycle nodes for safety.
-This acts as a watchdog during run-time to complement the lifecycle manager’s transitioning up and down from active states. See <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1894">this PR for details</a>.</p>
-<p>A fix to the BT navigator was added to remove a rare issue where it may crash due to asynchronous issues.
-As a result, a behavior tree is created for each navigation request rather than resetting an existing tree.
-The creation of this tree will add a small amount of latency.
-Proposals to reduce this latency will be considered before the next release.</p>
-</div>
-<div class="section" id="server-updates">
-<h2>Server Updates<a class="headerlink" href="#server-updates" title="Permalink to this headline">¶</a></h2>
-<p>All plugin servers (controller, planner, recovery) now supports the use of multiple plugins.
-This can be done by loading a map of plugins, mapping the name of the plugin to its intended use-case.
-Each server defines a parameter where the list of names for the plugins to be loaded can be defined.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 49%" />
-<col style="width: 51%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Server Name</p></th>
-<th class="head"><p>Plugin Parameter</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Controller Server</p></td>
-<td><p>progress_checker_plugin</p></td>
-</tr>
-<tr class="row-odd"><td><p>Controller Server</p></td>
-<td><p>goal_checker_plugin</p></td>
-</tr>
-<tr class="row-even"><td><p>Controller Server</p></td>
-<td><p>controller_plugins</p></td>
-</tr>
-<tr class="row-odd"><td><p>Planner Server</p></td>
-<td><p>planner_plugins</p></td>
-</tr>
-<tr class="row-even"><td><p>Recovery Server</p></td>
-<td><p>recovery_plugins</p></td>
-</tr>
-<tr class="row-odd"><td><p>Costmap Node</p></td>
-<td><p>plugins</p></td>
-</tr>
-</tbody>
-</table>
-<p>The type of plugin to be mapped to a particular name has to be defined using the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter in the plugin namespace for each name defined in the server plugin list.
-Each name in the plugin parameter list is expected to have the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter defined.</p>
-<p>An example: <code class="docutils literal notranslate"><span class="pre">controller_server</span></code> defines the parameter <code class="docutils literal notranslate"><span class="pre">controller_plugins</span></code> where a list of plugin names can be defined:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;DynamicFollowPath&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dwb_core/DWBLocalPlanner&quot;</span>
-<span class="w">      </span><span class="nt">max_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.26</span>
-<span class="w">    </span><span class="nt">DynamicFollowPath</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;teb_local_planner/TEBLocalPlanner&quot;</span>
-<span class="w">      </span><span class="nt">max_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> controller is of type <code class="docutils literal notranslate"><span class="pre">dwb_local_planner/DWBLocalPlanner</span></code> and <code class="docutils literal notranslate"><span class="pre">DynamicFollowPath</span></code> of type <code class="docutils literal notranslate"><span class="pre">teb_local_planner/TEBLocalPlanner</span></code>.
-Each plugin will load the parameters in their namespace, e.g. <code class="docutils literal notranslate"><span class="pre">FollowPath.max_vel_x</span></code>, rather than globally in the server namespace.
-This will allow multiple plugins of the same type with different parameters and reduce conflicting parameter names.</p>
-<p>DWB Contains new parameters as an update relative to the ROS 1 updates, <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1501">see here for more information</a>.
-Additionally, the controller and planner interfaces were updated to include a <code class="docutils literal notranslate"><span class="pre">std::string</span> <span class="pre">name</span></code> parameter on initialization.
-This was added to the interfaces to allow the plugins to know the namespace it should load its parameters in.
-E.g. for a controller to find the parameter <code class="docutils literal notranslate"><span class="pre">FollowPath.max_vel_x</span></code>, it must be given its name, <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> to get this parameter.
-All plugins will be expected to look up parameters in the namespace of its given name.</p>
-</div>
-<div class="section" id="new-plugins">
-<h2>New Plugins<a class="headerlink" href="#new-plugins" title="Permalink to this headline">¶</a></h2>
-<p>Many new behavior tree nodes were added.
-These behavior tree nodes are now BT plugins and dynamically loadable at run-time using behavior tree cpp v3.
-The default behavior trees have been upgraded to stop the recovery behaviours and trigger a replanning when the navigation goal is preempted.
-See <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> for a full listing, or <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for the current list of behavior tree plugins and their descriptions.
-These plugins are set as default in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> but may be overridden by the <code class="docutils literal notranslate"><span class="pre">bt_plugins</span></code> parameter to include your specific plugins.</p>
-<p>Original GitHub tickets:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1699">DistanceController</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1744">SpeedController</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1712">GoalUpdatedCondition</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">DistanceTraveledCondition</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1705">TimeExpiredCondition</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1859">UpdateGoal</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1859">TruncatePath</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1974">IsBatteryLowCondition</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">ProgressChecker</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1857">GoalChecker</a></p></li>
-</ul>
-</div>
-<div class="section" id="map-server-re-work">
-<h2>Map Server Re-Work<a class="headerlink" href="#map-server-re-work" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">map_saver</span></code> was re-worked and divided into 2 parts: CLI and server.
-CLI part is a command-line tool that listens incoming map topic, saves map once into a file and finishes its work. This part is remained to be almost untouched: CLI executable was renamed from <code class="docutils literal notranslate"><span class="pre">map_saver</span></code> to <code class="docutils literal notranslate"><span class="pre">map_saver_cli</span></code> without changing its functionality.
-Server is a new part. It spins in the background and can be used to save map continuously through a <code class="docutils literal notranslate"><span class="pre">save_map</span></code> service. By each service request it tries to listen incoming map topic, receive a message from it and write obtained map into a file.</p>
-<p><code class="docutils literal notranslate"><span class="pre">map_server</span></code> was dramatically simplified and cleaned-up. <code class="docutils literal notranslate"><span class="pre">OccGridLoader</span></code> was merged with <code class="docutils literal notranslate"><span class="pre">MapServer</span></code> class as it is intended to work only with one <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> type of messages in foreseeable future.</p>
-<p>Map Server now has new <code class="docutils literal notranslate"><span class="pre">map_io</span></code> dynamic library. All functions saving/loading <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> messages were moved from <code class="docutils literal notranslate"><span class="pre">map_server</span></code> and <code class="docutils literal notranslate"><span class="pre">map_saver</span></code> here. These functions could be easily called from any part of external ROS 2 code even if Map Server node was not started.</p>
-<p><code class="docutils literal notranslate"><span class="pre">map_loader</span></code> was completely removed from <code class="docutils literal notranslate"><span class="pre">nav2_util</span></code>. All its functionality already present in <code class="docutils literal notranslate"><span class="pre">map_io</span></code>. Please use it in your code instead.</p>
-<p>Please refer to the <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1010">original GitHub ticket</a> and <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_map_server/README.md">Map Server README</a> for more information.</p>
-</div>
-<div class="section" id="new-particle-filter-messages">
-<h2>New Particle Filter Messages<a class="headerlink" href="#new-particle-filter-messages" title="Permalink to this headline">¶</a></h2>
-<p>New particle filter messages for particle clouds were added to include the particle weights along with their poses.
-<code class="docutils literal notranslate"><span class="pre">nav2_msgs/Particle</span></code> defines a single particle with a pose and a weight in a particle cloud.
-<code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> defines a set of particles, each with a pose and a weight.</p>
-<p><code class="docutils literal notranslate"><span class="pre">AMCL</span></code> now publishes its particle cloud as a <code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseArray</span></code>.</p>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1677">See here for more information.</a></p>
-</div>
-<div class="section" id="selection-of-behavior-tree-in-each-navigation-action">
-<h2>Selection of Behavior Tree in each navigation action<a class="headerlink" href="#selection-of-behavior-tree-in-each-navigation-action" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action allows now to select in the action request the behavior tree to be used by <code class="docutils literal notranslate"><span class="pre">bt_navigator</span></code> for carrying out the navigation action through the <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">behavior_tree</span></code> field. This field indicates the absolute path of the xml file that will be used to use to carry out the action. If no file is specified, leaving this field empty, the default behavior tree specified in the <code class="docutils literal notranslate"><span class="pre">default_bt_xml_filename</span> <span class="pre">parameter</span></code> will be used.</p>
-<p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1780">the ticket #1780</a>, and carried out in <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/1784">the pull request #1784</a>.</p>
-</div>
-<div class="section" id="followpoint-capability">
-<h2>FollowPoint Capability<a class="headerlink" href="#followpoint-capability" title="Permalink to this headline">¶</a></h2>
-<p>A new behavior tree <code class="docutils literal notranslate"><span class="pre">followpoint.xml</span></code> has added. This behavior tree makes a robot follow a dynamically generated point, keeping a certain distance from the target. This can be used for moving target following maneuvers.</p>
-<p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1660">the ticket #1660</a>, and carried out in <a class="reference external" href="https://github.com/ros-planning/navigation2/issues/1859">the pull request #1859</a>.</p>
-</div>
-<div class="section" id="new-costmap-layer">
-<h2>New Costmap Layer<a class="headerlink" href="#new-costmap-layer" title="Permalink to this headline">¶</a></h2>
-<p>The range sensor costmap has not been ported to navigation2 as <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::RangeSensorLayer&quot;</span></code>. It uses the same
-probabilistic model as the <a class="reference external" href="http://wiki.ros.org/range_sensor_layer">ROS1</a> layer as well as much of the
-same interface. Documentation on parameters has been added to docs/parameters and the navigation.ros.org under <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Guide</span></code>.</p>
+  <div class="section" id="iron-to-jazzy">
+<span id="iron-migration"></span><h1>Iron to Jazzy<a class="headerlink" href="#iron-to-jazzy" title="Permalink to this headline">¶</a></h1>
+<p>Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="new-option-for-the-voxel-and-obstacle-layers">
+<h2>New option for the Voxel and Obstacle Layers<a class="headerlink" href="#new-option-for-the-voxel-and-obstacle-layers" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3612">PR #3612</a> adds a new MaxWithoutUnknownOverwrite option to combination_method parameter in Voxel and Obstacle Layers. This can be used to make sure that the static map is the dominant source of information, and
+easily prevent the robot to go through places that are not present in the static map.</p>
 </div>
 </div>
 

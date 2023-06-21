@@ -885,6 +885,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Humble.html#smacplannerhybrid-viz-expansions-parameter">SmacPlannerHybrid viz_expansions parameter</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../migration/Iron.html">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../commander_api/index.html">Simple Commander API</a><ul>
@@ -1122,9 +1126,22 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Enum for method to add data to master costmap, default to maximum.</p>
+<dt>Description</dt><dd><p>Enum for method to add data to master costmap. Must be 0, 1 or 2, default to 1 (see below).</p>
 </dd>
 </dl>
+<div class="line-block">
+<div class="line">0 - Overwrite: Overwrite master costmap with every valid observation.</div>
+</div>
+<div class="line-block">
+<div class="line">1 - Max: Sets the new value to the maximum of the master_grid’s value and this layer’s value.</div>
+<div class="line">This is the default.</div>
+</div>
+<div class="line-block">
+<div class="line">2 - MaxWithoutUnknownOverwrite: Sets the new value to the maximum of the master_grid’s</div>
+<div class="line">value and this layer’s value. If the master value is NO_INFORMATION, it is NOT overwritten.</div>
+<div class="line">It can be used to make sure that the static map is the dominant source of information, and</div>
+<div class="line">prevent the robot to go through places that are not present in the static map.</div>
+</div>
 </dd>
 <dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;voxel</span> <span class="pre">layer&gt;</span></code>.publish_voxel_map</dt>
 <dd class="field-even"><table class="docutils align-default">
