@@ -887,6 +887,7 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Iron to Jazzy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
 </ul>
 </li>
 </ul>
@@ -951,6 +952,10 @@
 <h2>New option for the Voxel and Obstacle Layers<a class="headerlink" href="#new-option-for-the-voxel-and-obstacle-layers" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3612">PR #3612</a> adds a new MaxWithoutUnknownOverwrite option to combination_method parameter in Voxel and Obstacle Layers. This can be used to make sure that the static map is the dominant source of information, and
 easily prevent the robot to go through places that are not present in the static map.</p>
+</div>
+<div class="section" id="changes-to-mppi-goal-critic">
+<h2>Changes to MPPI Goal Critic<a class="headerlink" href="#changes-to-mppi-goal-critic" title="Permalink to this headline">¶</a></h2>
+<p>The MPPI Goal critic’s formulation is changed to better keep up with speed on approach to goal instead of preemptively slowing too significantly. It also allows you to better use the weight to adjust the degree at which it slows more naturally. This change involves adjusting the <code class="docutils literal notranslate"><span class="pre">threshold_to_consider</span></code> to be the same as your prediction horizon (e.g. samples * dt * max speed) for both the goal critic and path follower critic to have a good hand-off between them without deceleration.</p>
 </div>
 </div>
 
