@@ -360,7 +360,7 @@ Goal Angle Critic
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         0.4
+  double         0.5
   ============== ===========================
 
   Description
@@ -396,11 +396,11 @@ Goal Critic
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         1.0
+  double         1.4
   ============== ===========================
 
   Description
-    Minimal distance (m) between robot and goal above which goal distance cost considered.
+    Minimal distance (m) between robot and goal above which goal distance cost considered. It is wise to start with this as being the same as your prediction horizon to have a clean hand-off with the path follower critic.
 
 Obstacles Critic
 ----------------
@@ -534,7 +534,7 @@ Path Align Critic
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         0.4
+  double         0.5
   ============== ===========================
 
   Description
@@ -592,7 +592,7 @@ Path Angle Critic
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         0.4
+  double         0.5
   ============== ===========================
 
   Description
@@ -650,11 +650,11 @@ Path Follow Critic
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         0.4
+  double         1.4
   ============== ===========================
 
   Description
-    Distance (m) between robot and goal to **stop** considering path following and allow goal critics to take over.
+    Distance (m) between robot and goal to **stop** considering path following and allow goal critics to take over. It is wise to start with this as being the same as your prediction horizon to have a clean hand-off with the goal critic.
 
 :offset_from_furthest:
 
@@ -697,7 +697,7 @@ Prefer Forward Critic
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         0.4
+  double         0.5
   ============== ===========================
 
   Description
@@ -769,17 +769,17 @@ Example
             enabled: true
             cost_power: 1
             cost_weight: 5.0
-            threshold_to_consider: 1.0
+            threshold_to_consider: 1.4
           GoalAngleCritic:
             enabled: true
             cost_power: 1
             cost_weight: 3.0
-            threshold_to_consider: 0.4
+            threshold_to_consider: 0.5
           PreferForwardCritic:
             enabled: true
             cost_power: 1
             cost_weight: 5.0
-            threshold_to_consider: 0.4
+            threshold_to_consider: 0.5
           ObstaclesCritic:
             enabled: true
             cost_power: 1
@@ -797,20 +797,20 @@ Example
             cost_weight: 14.0
             max_path_occupancy_ratio: 0.05
             trajectory_point_step: 3
-            threshold_to_consider: 0.40
+            threshold_to_consider: 0.5
             offset_from_furthest: 20
           PathFollowCritic:
             enabled: true
             cost_power: 1
             cost_weight: 5.0
             offset_from_furthest: 5
-            threshold_to_consider: 0.6
+            threshold_to_consider: 1.4
           PathAngleCritic:
             enabled: true
             cost_power: 1
             cost_weight: 2.0
             offset_from_furthest: 4
-            threshold_to_consider: 0.40
+            threshold_to_consider: 0.5
             max_angle_to_furthest: 1.0
           # TwirlingCritic:
           #   enabled: true
@@ -837,7 +837,7 @@ Prediction Horizon, Costmap Sizing, and Offsets
 
 As this is a predictive planner, there is some relationship between maximum speed, prediction times, and costmap size that users should keep in mind while tuning for their application. If a controller server costmap is set to 3.0m in size, that means that with the robot in the center, there is 1.5m of information on either side of the robot. When your prediction horizon (``time_steps * model_dt``) at maximum speed (``vx_max``) is larger than this, then your robot will be artificially limited in its maximum speeds and behavior by the costmap limitation. For example, if you predict forward 3 seconds (60 steps @ 0.05s per step) at 0.5m/s maximum speed, the **minimum** required costmap radius is 1.5m - or 3m total width.
 
-The same applies to the Path Follow and Align offsets from furthest. In the same example if the furthest point we can consider is already at the edge of the costmap, then further offsets are thresholded because they're unusable. So its important while selecting these parameters to make sure that the theoretical offsets can exist on the costmap settings selected with the maximum prediction horizon and velocities desired.
+The same applies to the Path Follow and Align offsets from furthest. In the same example if the furthest point we can consider is already at the edge of the costmap, then further offsets are thresholded because they're unusable. So its important while selecting these parameters to make sure that the theoretical offsets can exist on the costmap settings selected with the maximum prediction horizon and velocities desired. Setting the threshold for consideration in the path follower + goal critics as the same as your prediction horizon can make sure you have clean hand-offs between them, as the path follower will otherwise attempt to slow slightly once it reaches the final goal pose as its marker.
 
 The Path Follow critic cannot drive velocities greater than the projectable distance of that velocity on the available path on the rolling costmap. The Path Align critic `offset_from_furthest` represents the number of path points a trajectory passes through while tracking the path. If this is set either absurdly low (e.g. 5) it can trigger when a robot is simply trying to start path tracking causing some suboptimal behaviors and local minima while starting a task. If it is set absurdly high (e.g. 50) relative to the path resolution and costmap size, then the critic may never trigger or only do so when at full-speed. A balance here is wise. A selection of this value to be ~30% of the maximum velocity distance projected is good (e.g. if a planner produces points every 2.5cm, 60 can fit on the 1.5m local costmap radius. If the max speed is 0.5m/s with a 3s prediction time, then 20 points represents 33% of the maximum speed projected over the prediction horizon onto the path). When in doubt, ``prediction_horizon_s * max_speed / path_resolution / 3.0`` is a good baseline.
 
