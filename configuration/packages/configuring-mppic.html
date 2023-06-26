@@ -888,6 +888,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Iron.html">Iron to Jazzy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
 </ul>
 </li>
 </ul>
@@ -2025,6 +2026,26 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
+<dt class="field-even">mode</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Enum type for mode of operations for the path angle critic depending on path input types and behavioral desires. 0: Forward Preference, penalizes high path angles relative to the robot’s orientation to incentivize turning towards the path. 1: No directional preference, penalizes high path angles relative to the robot’s orientation or mirrored orientation (e.g. reverse), which ever is less, when a particular direction of travel is not preferable. 2: Consider feasible path orientation, when using a feasible path whereas the path points have orientation information (e.g. Smac Planners), consider the path’s requested direction of travel to penalize path angles such that the robot will follow the path in the requested direction.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="path-follow-critic">
@@ -2305,6 +2326,7 @@ This process is then repeated a number of times and returns a converged solution
 <span class="w">        </span><span class="nt">offset_from_furthest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">        </span><span class="nt">max_angle_to_furthest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="w">      </span><span class="c1"># TwirlingCritic:</span>
 <span class="w">      </span><span class="c1">#   enabled: true</span>
 <span class="w">      </span><span class="c1">#   twirling_cost_power: 1</span>

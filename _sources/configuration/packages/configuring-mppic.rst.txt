@@ -620,6 +620,18 @@ Path Angle Critic
   Description
     Angular distance (rad) between robot and goal above which path angle cost starts being considered
 
+:mode:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  int            0
+  ============== ===========================
+
+  Description
+    Enum type for mode of operations for the path angle critic depending on path input types and behavioral desires. 0: Forward Preference, penalizes high path angles relative to the robot's orientation to incentivize turning towards the path. 1: No directional preference, penalizes high path angles relative to the robot's orientation or mirrored orientation (e.g. reverse), which ever is less, when a particular direction of travel is not preferable. 2: Consider feasible path orientation, when using a feasible path whereas the path points have orientation information (e.g. Smac Planners), consider the path's requested direction of travel to penalize path angles such that the robot will follow the path in the requested direction.
+
+
 Path Follow Critic
 ------------------
 
@@ -812,6 +824,7 @@ Example
             offset_from_furthest: 4
             threshold_to_consider: 0.5
             max_angle_to_furthest: 1.0
+            mode: 0
           # TwirlingCritic:
           #   enabled: true
           #   twirling_cost_power: 1
