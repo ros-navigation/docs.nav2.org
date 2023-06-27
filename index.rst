@@ -111,6 +111,21 @@ IROS 2020 talk on Nav2 Marathon Experiments:
    year = {2020}
    }
 
+If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers!
+
+S. Macenski, S. Singh, F. Martin, J. Gines, 
+`Regulated Pure Pursuit for Robot Path Tracking <https://arxiv.org/abs/2305.20026>`_,
+Autonomous Robots, 2023.
+
+.. code-block:: bash
+
+  @article{macenski2023regulated,
+        title={Regulated Pure Pursuit for Robot Path Tracking}, 
+        author={Steve Macenski and Shrijit Singh and Francisco Martin and Jonatan Gines},
+        year={2023},
+        journal = {Autonomous Robots}
+  }
+
 If you use our work on VSLAM and formal comparisons for service robot needs, please cite the paper:
 
 A. Merzlyakov, S. Macenski.
