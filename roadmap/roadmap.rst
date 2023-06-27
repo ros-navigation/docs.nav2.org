@@ -8,6 +8,39 @@ This is *not* an exhaustive list of planned features or what changes may be foun
 It represents only the items of direct commitment to give insight into commitments for REP-2005 repositories in the `ROS 2 Roadmap <https://docs.ros.org/en/rolling/Roadmap.html>`_.
 For a full list of important completed changes in the project, see the Migration Guides :ref:`migration`.
 
+Jazzy Roadmap
+*************
+
++--------------------------------+------------------------+
+| `Smac Planner Improvements`_   |  Large                 |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| Get CI Green Again             |  Small (in progress)   |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+|  Various MPPI Improvements     |  Medium (DONE)         |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `Fuse Migration`_              |  Medium                |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `Ignition Migration`_          |  Medium (in progress)  |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| `Route Graph Planner`_         | Large (in progress)    |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| Provide Advanced Capabilities  | Medium                 |
+| Tutorials                      |                        |
+|                                |                        |
++--------------------------------+------------------------+
+
 Iron Roadmap
 ************
 
@@ -23,7 +56,7 @@ Iron Roadmap
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Route Graph Planner`_         | Large (in progress)    |
+| `Route Graph Planner`_         | Large (incomplete)     |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
@@ -32,19 +65,12 @@ Iron Roadmap
 +--------------------------------+------------------------+
 |   `Velocity Smoother`_         |  Medium (DONE)         |
 +--------------------------------+------------------------+
-| ROS Time Respect Across Stack  |  Medium (in progress)  |
-|                                |                        |
-|                                |                        |
-+--------------------------------+------------------------+
-| `Fuse Migration`_              |  Medium                |
-|                                |                        |
-|                                |                        |
-+--------------------------------+------------------------+
-| `Ignition Migration`_          |  Large                 |
+| ROS Time Respect Across Stack  |  Medium (incomplete)   |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
 
+.. _Smac Planner Improvements: https://github.com/ros-planning/navigation2/issues/3172
 .. _Pluginize Navigators: https://github.com/ros-planning/navigation2/issues/3335
 .. _MPPI Controller: https://github.com/ros-planning/navigation2/pull/3350
 .. _Route Graph Planner: https://github.com/ros-planning/navigation2/issues/2229
