@@ -889,6 +889,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-path-handling-for-directionality">Changes to MPPI Path Handling For Directionality</a></li>
 </ul>
 </li>
 </ul>
@@ -963,6 +964,11 @@ easily prevent the robot to go through places that are not present in the static
 <p>MPPI’s Path Angle critic now has a <code class="docutils literal notranslate"><span class="pre">mode</span></code> setting to adjust behavior depending on robot’s desired behavioral traits. Previously, it penalized path orientations that deviated far the the robot’s forward orientation to turn the robot towards sharp changes in the path. This is still default (<code class="docutils literal notranslate"><span class="pre">mode:</span> <span class="pre">0</span></code>), but other modes now exist too.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mode:</span> <span class="pre">1</span></code> sets the penalization of path’s relative directions by either forward orientation or the opposite for reversing to allow for true bidirectional motion when one way or another is not preferable for a symmetric robot. This uses only the path’s relative points to the robot to decide which direction to incentivize.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mode:</span> <span class="pre">2</span></code> instead uses the path’s orientations when a feasible path is given from the Smac Planners or the Smoother server’s algorithms. This way, the globally planned orientations are followed rather than the based solely on the path’s relative points. This is useful for non-circular robots in highly confined settings where there may be restricted opportunities to change directions so following the global path’s orientation are required to end in the orientation you require.</p>
+</div>
+<div class="section" id="changes-to-mppi-path-handling-for-directionality">
+<h2>Changes to MPPI Path Handling For Directionality<a class="headerlink" href="#changes-to-mppi-path-handling-for-directionality" title="Permalink to this headline">¶</a></h2>
+<p>MPPI’s Path Align Critic and Path Handler object now have options to utilize the path’s orientation information to force the controller to change directions when and only when requested by a feasible planner. When <code class="docutils literal notranslate"><span class="pre">enforce_path_inversion</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the path handler will prune the path to the first time the directions change to force the controller to plan to the inversion point and then be set the rest of the path, once in tolerance. The Path Align critic also contains a parameter <code class="docutils literal notranslate"><span class="pre">use_path_orientations</span></code>  which can be paired with it to incentivize aligning the path containing orientation information to better attempt to achieve path inversions where requested <strong>and</strong> not do them when not requested.</p>
+<p>See MPPI’s configuration guide for complete information.</p>
 </div>
 </div>
 
