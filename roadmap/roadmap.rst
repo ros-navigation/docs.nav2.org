@@ -40,6 +40,10 @@ Jazzy Roadmap
 | Tutorials                      |                        |
 |                                |                        |
 +--------------------------------+------------------------+
+| ROS Time Respect Across Stack  |  Medium (in progress)  |
+|                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
 
 Iron Roadmap
 ************
