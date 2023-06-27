@@ -289,6 +289,38 @@ Path Handler
   Description
     Max integrated distance ahead of robot pose to search for nearest path point in case of path looping.
 
+:enforce_path_inversion:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  bool           false
+  ============== ===========================
+
+  Description
+    If true, it will prune paths containing cusping points for segments changing directions (e.g. path inversions) such that the controller will be forced to change directions at or very near the planner's requested inversion point. This is targeting Smac Planner users with feasible paths who need their robots to switch directions where specifically requested.
+
+:inversion_xy_tolerance:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         0.2
+  ============== ===========================
+
+  Description
+    Cartesian proximity (m) to path inversion point to be considered "achieved" to pass on the rest of the path after path inversion.
+
+:inversion_yaw_tolerance:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         0.4
+  ============== ===========================
+
+  Description
+    Angular proximity (radians) to path inversion point to be considered "achieved" to pass on the rest of the path after path inversion. 0.4 rad = 23 deg.
 
 Ackermann Motion Model
 ----------------------
@@ -562,6 +594,17 @@ Path Align Critic
   Description
     Maximum proportion of the path that can be occupied before this critic is not considered to allow the obstacle and path follow critics to avoid obstacles while following the path's intent in presence of dynamic objects in the scene. Between 0-1 for 0-100%.
 
+:use_path_orientations:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  bool           false
+  ============== ===========================
+
+  Description
+    Whether to consider path's orientations in path alignment, which can be useful when paired with feasible smac planners to incentivize directional changes only where/when the smac planner requests them. If you want the robot to deviate and invert directions where the controller sees fit, keep as false. If your plans do not contain orientation information (e.g. navfn), keep as false.
+
 Path Angle Critic
 -----------------
 
@@ -811,6 +854,7 @@ Example
             trajectory_point_step: 3
             threshold_to_consider: 0.5
             offset_from_furthest: 20
+            use_path_orientations: false
           PathFollowCritic:
             enabled: true
             cost_power: 1
