@@ -305,7 +305,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Time iteration step for robot movement simulation during collision prediction. Lower values mean lower prediction accuracy but better performance. Applicable for ``approach`` action type.
+    Time iteration step for robot movement simulation during collision prediction. Higher values mean lower prediction accuracy but better performance. Applicable for ``approach`` action type.
 
 :``<polygon_name>``.visualize:
 
