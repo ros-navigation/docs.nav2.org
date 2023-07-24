@@ -891,6 +891,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#changes-to-mppi-path-handling-for-directionality">Changes to MPPI Path Handling For Directionality</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#move-error-code-enumerations">Move Error Code Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#substitution-in-parameter-file">Substitution in parameter file</a></li>
 </ul>
 </li>
 </ul>
@@ -1273,8 +1274,8 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
     global_frame: map
     robot_base_frame: base_link
     transform_tolerance: 0.1
-    default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml
-    default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml
+    default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
+    default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
     goal_blackboard_id: goal
     goals_blackboard_id: goals
     path_blackboard_id: path
