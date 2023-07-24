@@ -325,8 +325,8 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
         global_frame: map
         robot_base_frame: base_link
         transform_tolerance: 0.1
-        default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml
-        default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml
+        default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
+        default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
         goal_blackboard_id: goal
         goals_blackboard_id: goals
         path_blackboard_id: path
