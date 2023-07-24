@@ -36,3 +36,16 @@ Move Error Code Enumerations
 ****************************
 
 `PR #3693 <https://github.com/ros-planning/navigation2/pull/3693>`_ moves the enumeration codes from the goal to the result section. 
+
+Substitution in parameter file
+******************************
+
+Enabled substitution in parameter file. For example, you can write the following
+
+.. code-block:: yaml
+
+    bt_navigator:
+      ros__parameters:
+        default_nav_to_pose_bt_xml: $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
+
+For more information about substitutions syntax, see `here <https://docs.ros.org/en/rolling/How-To-Guides/Launch-files-migration-guide.html#substitutions>`_
