@@ -111,7 +111,7 @@ For the case of our call for help behavior, we can trivially compute all of our 
 
     if (!message_success) {
       RCLCPP_INFO(node_->get_logger(), "SMS send failed.");
-      return ResultStatus{Status::SUCCEEDED};
+      return ResultStatus{Status::FAILED};
     }
 
     RCLCPP_INFO(node_->get_logger(), "SMS sent successfully!");
