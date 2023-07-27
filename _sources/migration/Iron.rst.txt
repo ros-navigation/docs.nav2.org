@@ -49,3 +49,8 @@ Enabled substitution in parameter file. For example, you can write the following
         default_nav_to_pose_bt_xml: $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
 
 For more information about substitutions syntax, see `here <https://docs.ros.org/en/rolling/How-To-Guides/Launch-files-migration-guide.html#substitutions>`_
+
+Allow Behavior Server Plugins to Access The Action Result
+*********************************************************
+
+`PR #3704 <https://github.com/ros-planning/navigation2/pull/3704>`_ allows behavior servers plugins to access and modify the action result.
