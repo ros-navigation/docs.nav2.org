@@ -53,4 +53,4 @@ For more information about substitutions syntax, see `here <https://docs.ros.org
 Allow Behavior Server Plugins to Access The Action Result
 *********************************************************
 
-`PR #3704 <https://github.com/ros-planning/navigation2/pull/3704>`_ allows behavior servers plugins to access the action result.
+`PR #3704 <https://github.com/ros-planning/navigation2/pull/3704>`_ allows behavior servers plugins to access and modify the action result.
