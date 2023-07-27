@@ -86,6 +86,9 @@ This tutorial uses this wrapper so these are the main elements we will address.
 | onCleanup()          | Method is called when behavior server goes to on_cleanup state. Ideally     | No                      |
 |                      | this method should clean up resources which are created for the behavior.   |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
+| onActionCompletion() | Method is called when the action has completed. Ideally, this method should | No                      |
+|                      | populate the action result.                                                 |                         |
++----------------------+-----------------------------------------------------------------------------+-------------------------+
 
 For this tutorial, we will be using methods ``onRun()``, ``onCycleUpdate()``, and ``onConfigure()`` to create the SMS behavior.
 ``onConfigure()`` will be skipped for brevity, but only declares parameters.
@@ -108,11 +111,11 @@ For the case of our call for help behavior, we can trivially compute all of our 
 
     if (!message_success) {
       RCLCPP_INFO(node_->get_logger(), "SMS send failed.");
-      return Status::FAILED;
+      return ResultStatus{Status::SUCCEEDED};
     }
 
     RCLCPP_INFO(node_->get_logger(), "SMS sent successfully!");
-    return Status::SUCCEEDED;
+    return ResultStatus{Status::SUCCEEDED};
   }
 
 We receive an action goal, ``command``, which we want to process.
