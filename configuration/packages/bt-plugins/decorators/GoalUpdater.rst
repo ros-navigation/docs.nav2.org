@@ -8,7 +8,7 @@ A custom control node, which updates the goal pose. It subscribes to a topic in 
 Parameters
 ----------
 
-:change_goal_topic:
+:goal_updater_topic:
 
   ====== ==============
   Type   Default
@@ -49,6 +49,6 @@ Example
 
 .. code-block:: xml
 
-  <ChangeGoal input_goal="{goal}" output_goal="{updated_goal}">
+  <GoalUpdater input_goal="{goal}" output_goal="{updated_goal}">
     <!--Add tree components here--->
-  </ChangeGoal>
+  </GoalUpdater>
