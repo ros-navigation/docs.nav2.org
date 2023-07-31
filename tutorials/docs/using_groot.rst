@@ -32,7 +32,7 @@ These nodes are of types: `Action`, `Condition`, `Control`, or `Decorator`, and 
 
 :ref:`writing_new_nbt_plugin` offers a well written example of creating a simple ``Action`` node if creating new BT nodes is of interest. This tutorial will focus solely on launching Groot, visualizing a Behavior Tree, and modifying that tree for a given customization, assuming a library of BT nodes. Luckily, Nav2 provides a robust number of BT nodes for your use out of the box, enumerated in :ref:`plugins`.
 
-A BT configuration file in BehaviorTree.CPP is an XML file. This is used to dynamically load the BT node plugins at run-time from the appropriate libraries mapped to their names. The XML format is defined `in detail here <https://www.behaviortree.dev/docs/learn-the-basics/xml_format/>`_. Therefore, Groot needs to have a list of nodes it has access to and important metadata about them like their type and ports (or parameters). We refer to this as the "pallet" of nodes later in the tutorial. 
+A BT configuration file in BehaviorTree.CPP is an XML file. This is used to dynamically load the BT node plugins at run-time from the appropriate libraries mapped to their names. The XML format is defined `in detail here <https://www.behaviortree.dev/docs/learn-the-basics/xml_format/>`_. Therefore, Groot needs to have a list of nodes it has access to and important metadata about them like their type and ports (or parameters). We refer to this as the "palette" of nodes later in the tutorial.
 
 In the video above you can see Groot side-by-side with RVIz and a test platform 100% equipped with ROS-enabled hardware from SIEMENS.
 Groot not only displays the current Behavior Tree while the robot is operating. Note: Before ROS 2 Humble, live Groot behavior tree monitoring during execution was supported in Nav2. This was removed due to buggy support in BT.CPP / Groot for changing behavior trees on the fly, see :ref:`galactic_migration` for more details.
@@ -42,11 +42,11 @@ Visualize Behavior Trees
 
 To display a Behavior Tree like that in :numref:`groot_nav2_default_bt`, we will first start the Groot executable.
 Out of the box, Groot can only display Behavior Trees and nodes that are from the defaults in BT.CPP, since it does not know anything about Nav2 or your other projects.
-Therefore, we must point Groot to our pallet, or index, of Nav2 / custom behavior tree nodes:
+Therefore, we must point Groot to our palette, or index, of Nav2 / custom behavior tree nodes:
 
 1. Open Groot in editor mode. Now, Groot should look like in :numref:`groot_bt_editor`.
 2. Select the `Load palette from file` option either via the context menu or the import icon in the top middle of the menu bar. 
-3. Open the file `/path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml` to import all the custom behavior tree nodes used for navigation. This is the pallet of Nav2 custom behavior tree nodes. Now, Groot should look like in :numref:`groot_bt_editor_with_nodes`.
+3. Open the file `/path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml` to import all the custom behavior tree nodes used for navigation. This is the palette of Nav2 custom behavior tree nodes. Now, Groot should look like in :numref:`groot_bt_editor_with_nodes`.
 4. Select `Load tree` option near the top left corner
 5. Browse the tree you want to visualize, then select `OK`. The Nav2 BTs exist in `/path/to/navigation2/nav2_bt_navigator/behavior_trees/`
 
@@ -67,7 +67,7 @@ If you select the default tree `navigate_w_replanning_and_recovery.xml`, then a 
 +-----------------------------------------------------------+
 
 .. note::
-  If a tree cannot be visualized because some nodes are missing in the pallet, you might need to add it to your pallet. While we try to keep Nav2's BT nodes and pallets in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.
+  If a tree cannot be visualized because some nodes are missing in the palette, you might need to add it to your palette. While we try to keep Nav2's BT nodes and palettes in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.
 
 
 Edit Behavior Trees
@@ -83,9 +83,9 @@ Adding A Custom Node
 ====================
 
 Each node in the behavior tree holds a specialized function.
-Sometimes, its useful to create new nodes and add them to your pallet during the design process - perhaps before the implementations themselves exist. 
+Sometimes, its useful to create new nodes and add them to your palette during the design process - perhaps before the implementations themselves exist.
 This helps designers abstract away the implementation specifics of the nodes from the higher level logic of the tree itself and how they'd like to interact with a given node (e.g. type, ports, etc).
-Within Groot, you may create new custom nodes to add to your tree and export these new nodes back to your pallet.
+Within Groot, you may create new custom nodes to add to your tree and export these new nodes back to your palette.
 Implementing the node itself needs to be done separately from Groot, which is described in :ref:`writing_new_nbt_plugin`.
 
 +-----------------------------------------------------------+
@@ -113,7 +113,7 @@ After completing, select `OK` in :numref:`groot_interactive_node_creation`, the 
 Before starting to create a new BT based on the new custom nodes, it is recommend to export the newly created nodes to save in case of Groot crashing.
 This can be performed with the icon highlighted in green from :numref:`groot_export_new_node`.
 The resulting XML output from the node created in :numref:`groot_interactive_node_creation` can be seen below.
-You can see more examples in `Nav2's BT Node Pallet XML <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml>`_.
+You can see more examples in `Nav2's BT Node Palette XML <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml>`_.
 
 
 .. code-block:: xml
