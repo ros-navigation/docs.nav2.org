@@ -975,7 +975,7 @@ Behavior Trees are deeply integrated into Nav2, used as the main method of orche
 Behavior Trees, in short BTs, consist of many nodes completing different tasks and control the flow of logic, similar to a Hierarchical or Finite State Machine, but organized in a tree structure.
 These nodes are of types: <cite>Action</cite>, <cite>Condition</cite>, <cite>Control</cite>, or <cite>Decorator</cite>, and are described in more detail in <a class="reference internal" href="../../concepts/index.html#concepts"><span class="std std-ref">Navigation Concepts</span></a> and <a class="reference external" href="https://www.behaviortree.dev/docs/learn-the-basics/BT_basics#types-of-nodes">BehaviorTree.CPP</a>.</p>
 <p><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#writing-new-nbt-plugin"><span class="std std-ref">Writing a New Behavior Tree Plugin</span></a> offers a well written example of creating a simple <code class="docutils literal notranslate"><span class="pre">Action</span></code> node if creating new BT nodes is of interest. This tutorial will focus solely on launching Groot, visualizing a Behavior Tree, and modifying that tree for a given customization, assuming a library of BT nodes. Luckily, Nav2 provides a robust number of BT nodes for your use out of the box, enumerated in <a class="reference internal" href="../../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a>.</p>
-<p>A BT configuration file in BehaviorTree.CPP is an XML file. This is used to dynamically load the BT node plugins at run-time from the appropriate libraries mapped to their names. The XML format is defined <a class="reference external" href="https://www.behaviortree.dev/docs/learn-the-basics/xml_format/">in detail here</a>. Therefore, Groot needs to have a list of nodes it has access to and important metadata about them like their type and ports (or parameters). We refer to this as the “pallet” of nodes later in the tutorial.</p>
+<p>A BT configuration file in BehaviorTree.CPP is an XML file. This is used to dynamically load the BT node plugins at run-time from the appropriate libraries mapped to their names. The XML format is defined <a class="reference external" href="https://www.behaviortree.dev/docs/learn-the-basics/xml_format/">in detail here</a>. Therefore, Groot needs to have a list of nodes it has access to and important metadata about them like their type and ports (or parameters). We refer to this as the “palette” of nodes later in the tutorial.</p>
 <p>In the video above you can see Groot side-by-side with RVIz and a test platform 100% equipped with ROS-enabled hardware from SIEMENS.
 Groot not only displays the current Behavior Tree while the robot is operating. Note: Before ROS 2 Humble, live Groot behavior tree monitoring during execution was supported in Nav2. This was removed due to buggy support in BT.CPP / Groot for changing behavior trees on the fly, see <a class="reference internal" href="../../migration/Galactic.html#galactic-migration"><span class="std std-ref">Galactic to Humble</span></a> for more details.</p>
 </div>
@@ -983,11 +983,11 @@ Groot not only displays the current Behavior Tree while the robot is operating. 
 <h2>Visualize Behavior Trees<a class="headerlink" href="#visualize-behavior-trees" title="Permalink to this headline">¶</a></h2>
 <p>To display a Behavior Tree like that in <a class="reference internal" href="#groot-nav2-default-bt"><span class="std std-numref">Figure 3</span></a>, we will first start the Groot executable.
 Out of the box, Groot can only display Behavior Trees and nodes that are from the defaults in BT.CPP, since it does not know anything about Nav2 or your other projects.
-Therefore, we must point Groot to our pallet, or index, of Nav2 / custom behavior tree nodes:</p>
+Therefore, we must point Groot to our palette, or index, of Nav2 / custom behavior tree nodes:</p>
 <ol class="arabic simple">
 <li><p>Open Groot in editor mode. Now, Groot should look like in <a class="reference internal" href="#groot-bt-editor"><span class="std std-numref">Figure 1</span></a>.</p></li>
 <li><p>Select the <cite>Load palette from file</cite> option either via the context menu or the import icon in the top middle of the menu bar.</p></li>
-<li><p>Open the file <cite>/path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml</cite> to import all the custom behavior tree nodes used for navigation. This is the pallet of Nav2 custom behavior tree nodes. Now, Groot should look like in <a class="reference internal" href="#groot-bt-editor-with-nodes"><span class="std std-numref">Figure 2</span></a>.</p></li>
+<li><p>Open the file <cite>/path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml</cite> to import all the custom behavior tree nodes used for navigation. This is the palette of Nav2 custom behavior tree nodes. Now, Groot should look like in <a class="reference internal" href="#groot-bt-editor-with-nodes"><span class="std std-numref">Figure 2</span></a>.</p></li>
 <li><p>Select <cite>Load tree</cite> option near the top left corner</p></li>
 <li><p>Browse the tree you want to visualize, then select <cite>OK</cite>. The Nav2 BTs exist in <cite>/path/to/navigation2/nav2_bt_navigator/behavior_trees/</cite></p></li>
 </ol>
@@ -1026,7 +1026,7 @@ Therefore, we must point Groot to our pallet, or index, of Nav2 / custom behavio
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If a tree cannot be visualized because some nodes are missing in the pallet, you might need to add it to your pallet. While we try to keep Nav2’s BT nodes and pallets in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.</p>
+<p>If a tree cannot be visualized because some nodes are missing in the palette, you might need to add it to your palette. While we try to keep Nav2’s BT nodes and palettes in sync, if you notice one is missing, please file a ticket or pull request and we should have that updated quickly.</p>
 </div>
 </div>
 <div class="section" id="edit-behavior-trees">
@@ -1039,9 +1039,9 @@ You may then connect the nodes using a “drag and drop” motion between the no
 <div class="section" id="adding-a-custom-node">
 <h2>Adding A Custom Node<a class="headerlink" href="#adding-a-custom-node" title="Permalink to this headline">¶</a></h2>
 <p>Each node in the behavior tree holds a specialized function.
-Sometimes, its useful to create new nodes and add them to your pallet during the design process - perhaps before the implementations themselves exist.
+Sometimes, its useful to create new nodes and add them to your palette during the design process - perhaps before the implementations themselves exist.
 This helps designers abstract away the implementation specifics of the nodes from the higher level logic of the tree itself and how they’d like to interact with a given node (e.g. type, ports, etc).
-Within Groot, you may create new custom nodes to add to your tree and export these new nodes back to your pallet.
+Within Groot, you may create new custom nodes to add to your tree and export these new nodes back to your palette.
 Implementing the node itself needs to be done separately from Groot, which is described in <a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#writing-new-nbt-plugin"><span class="std std-ref">Writing a New Behavior Tree Plugin</span></a>.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1083,7 +1083,7 @@ It will ask you for standard information such as name (green box), type of node 
 <p>Before starting to create a new BT based on the new custom nodes, it is recommend to export the newly created nodes to save in case of Groot crashing.
 This can be performed with the icon highlighted in green from <a class="reference internal" href="#groot-export-new-node"><span class="std std-numref">Figure 6</span></a>.
 The resulting XML output from the node created in <a class="reference internal" href="#groot-interactive-node-creation"><span class="std std-numref">Figure 5</span></a> can be seen below.
-You can see more examples in <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml">Nav2’s BT Node Pallet XML</a>.</p>
+You can see more examples in <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml">Nav2’s BT Node Palette XML</a>.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root&gt;</span>
 <span class="w">    </span><span class="nt">&lt;TreeNodesModel&gt;</span>
 <span class="w">        </span><span class="nt">&lt;Action</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;MyAwesomeNewNode&quot;</span><span class="nt">&gt;</span>
