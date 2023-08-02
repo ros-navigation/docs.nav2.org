@@ -54,3 +54,8 @@ Allow Behavior Server Plugins to Access The Action Result
 *********************************************************
 
 `PR #3704 <https://github.com/ros-planning/navigation2/pull/3704>`_ allows behavior servers plugins to access and modify the action result.
+
+Smac Planner Debug Param Name Change
+************************************
+
+``debug_visualizations`` replaces ``viz_expansions`` parameter in Hybrid-A* to reflect the new inclusion of footprint debug information being published as well.
