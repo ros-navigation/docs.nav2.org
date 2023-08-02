@@ -12,11 +12,11 @@ Jazzy Roadmap
 *************
 
 +--------------------------------+------------------------+
-| `Smac Planner Improvements`_   |  Large                 |
+| `Smac Planner Improvements`_   |  Large (in progress)   |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| Get CI Green Again             |  Small (in progress)   |
+| Get CI Green Again             |  Small (DONE)          |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
