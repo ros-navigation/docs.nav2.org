@@ -5,7 +5,7 @@ Collision Detector
 
 The Collision Detector is a node similar to the Collision Monitor, so it is recommended to read the :ref:`collision_monitor_tutorial` tutorial first.
 
-In some cases, the user may want to be informed about the detected obstacles without affecting the robot's velocity and instead take a different action within an external node. For example, the user may want to blink LEDs or sound an alarm when the robot is close to an obstacle.\
+In some cases, the user may want to be informed about the detected obstacles without affecting the robot's velocity and instead take a different action within an external node. For example, the user may want to blink LEDs or sound an alarm when the robot is close to an obstacle.
 Another use case could be to detect data points in particular regions (e.g extremely close to the sensor) and warn of malfunctioning sensors. For this purpose, the Collision Detector node was introduced.
 It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the `collision_detector_state` topic.
 
