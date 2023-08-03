@@ -111,6 +111,21 @@ IROS 2020 talk on Nav2 Marathon Experiments:
    year = {2020}
    }
 
+If you use **any** of the algorithms in Nav2 or the analysis of the algorithms in your work, please cite this work in your papers!
+
+S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson,
+`From the desks of ROS maintainers: A survey of modern & capable mobile robotics algorithms in the robot operating system 2 <https://arxiv.org/pdf/2307.15236.pdf>`_,
+Robotics and Autonomous Systems, 2023
+
+.. code-block:: bash
+
+  @article{macenski2023regulated,
+        title={From the desks of ROS maintainers: A survey of modern & capable mobile robotics algorithms in the robot operating system 2}, 
+        author={S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson},
+        year={2023},
+        journal = {Robotics and Autonomous Systems}
+  }
+
 If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers!
 
 S. Macenski, S. Singh, F. Martin, J. Gines, 
