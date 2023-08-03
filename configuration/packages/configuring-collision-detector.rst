@@ -1,4 +1,4 @@
-.. _configuring_collision_monitor:
+.. _configuring_collision_detector:
 
 Collision Detector
 #################
@@ -6,7 +6,7 @@ Collision Detector
 The Collision Detector is a node similar to the Collision Monitor, so it is recommended to read the :ref:`collision_monitor_tutorial` tutorial first.
 
 In some cases, the user may want to be informed about the detected obstacles without affecting the robot's velocity and instead take a different action within an external node. For example, the user may want to blink LEDs or sound an alarm when the robot is close to an obstacle.\
-Another use case could be to detect data points in particular regions (e.g within the robot's footprint or extremely close to the sensor) and warn of malfunctioning sensors. For this purpose, the Collision Detector node was introduced.
+Another use case could be to detect data points in particular regions (e.g extremely close to the sensor) and warn of malfunctioning sensors. For this purpose, the Collision Detector node was introduced.
 It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the `collision_detector_state` topic.
 
 See the package's ``README`` for more information.
@@ -21,6 +21,17 @@ The zones around the robot and the data sources are the same as for the Collisio
 
 Parameters
 **********
+
+:frequency:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         10.0
+  ============== =============================
+
+  Description:
+    Frequency of the main loop that checks for detections.
 
 :base_frame_id:
 
@@ -86,7 +97,7 @@ Parameters
   ============== =============================
 
   Description:
-    List of zones (stop/slowdown/limit bounding boxes, footprint, approach circle, etc...). Causes an error, if not specialized.
+    List of zones to check for data points. Causes an error, if not specialized.
 
 
 :observation_sources:
@@ -125,7 +136,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.25, 0.5, -0.25, 0.0, -0.25, 0.0, 0.25}`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to ``polygon_sub_topic`` for points in the ``stop``/``slowdown``/``limit`` action types, or footprint subscriber to ``footprint_topic`` for ``approach`` action type.
+    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.25, 0.5, -0.25, 0.0, -0.25, 0.0, 0.25}`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision detector will use dynamic polygon subscription to ``polygon_sub_topic``
 
 :``<polygon_name>``.polygon_sub_topic:
 
@@ -136,7 +147,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Topic to listen the polygon points from. Applicable only for ``polygon`` type and ``stop``/``slowdown``/``limit`` action types. Causes an error, if not specified **and** points are also not specified. If both ``points`` and ``polygon_sub_topic`` are specified, the static ``points`` takes priority.
+    Topic to listen the polygon points from. Causes an error, if not specified **and** points are also not specified. If both ``points`` and ``polygon_sub_topic`` are specified, the static ``points`` takes priority.
 
 :``<polygon_name>``.radius:
 
@@ -170,28 +181,6 @@ Polygons parameters
 
   Description:
     Minimum number of data readings within a zone to trigger the action. Former ``max_points`` parameter for Humble, that meant the maximum number of data readings within a zone to not trigger the action). ``min_points`` is equal to ``max_points + 1`` value.
-
-:``<polygon_name>``.time_before_collision:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         2.0
-  ============== =============================
-
-  Description:
-    Time before collision in seconds. Maximum simulation time used in collision prediction. Higher values mean lower performance. Applicable for ``approach`` action type.
-
-:``<polygon_name>``.simulation_time_step:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  double         0.1
-  ============== =============================
-
-  Description:
-    Time iteration step for robot movement simulation during collision prediction. Higher values mean lower prediction accuracy but better performance. Applicable for ``approach`` action type.
 
 :``<polygon_name>``.visualize:
 
