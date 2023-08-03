@@ -1,7 +1,7 @@
 .. _configuring_collision_detector:
 
 Collision Detector
-#################
+##################
 
 The Collision Detector is a node similar to the Collision Monitor, so it is recommended to read the :ref:`collision_monitor_tutorial` tutorial first.
 
