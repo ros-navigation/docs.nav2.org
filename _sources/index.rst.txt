@@ -119,7 +119,7 @@ Robotics and Autonomous Systems, 2023
 
 .. code-block:: bash
 
-  @article{macenski2023regulated,
+  @article{macenski2023survey,
         title={From the desks of ROS maintainers: A survey of modern & capable mobile robotics algorithms in the robot operating system 2}, 
         author={S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson},
         year={2023},
