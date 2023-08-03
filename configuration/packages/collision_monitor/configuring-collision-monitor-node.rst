@@ -1,4 +1,4 @@
-.. _configuring_collision_monitor:
+.. _configuring_collision_monitor_node:
 
 Collision Monitor
 #################

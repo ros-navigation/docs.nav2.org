@@ -1,4 +1,4 @@
-.. _configuring_collision_detector:
+.. _configuring_collision_detector_node:
 
 Collision Detector
 ##################
