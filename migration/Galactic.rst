@@ -240,7 +240,7 @@ Refactored AMCL motion models as plugins
 Dropping Support for Live Groot Monitoring of Nav2
 **************************************************
 
-- https://github.com/ros-planning/navigation2/pull/2642
+- https://github.com/ros-planning/navigation2/pull/2696
 
 It was a great feature idea but never quite panned out, especially after we introduced multiple navigator types in the BT Navigator server. The issue we run into primarily is that Zero-MQ prevents users from producing multiple logger types in the same process. Since BT nav has multiple servers, the swapping between them for viewing has never had a clean hand off causing folks to file tickets or have nasty logs appear or ZMQ crashes in the background. The BT.CPP client for this doesn't allow us to have a clean shutdown process so we're left with hoping that ZMQ properly handles the situation, which it rarely does. Further, Groot only supports visualizing one type of tree at a time so for applications often switching between navigator types, its not possible to use a single groot client, causing great frustration.
 
