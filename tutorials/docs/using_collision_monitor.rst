@@ -82,7 +82,7 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
         base_frame_id: "base_footprint"
         odom_frame_id: "odom"
         cmd_vel_in_topic: "cmd_vel_raw"
-        cmd_vel_out_topic: "cmd_vel"
+        cmd_vel_out_topic: "cmd_vel_nav"
         transform_tolerance: 0.5
         source_timeout: 5.0
         stop_pub_timeout: 2.0
