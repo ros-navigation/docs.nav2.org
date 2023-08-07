@@ -86,7 +86,7 @@ Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  string         "cmd_vel"
+  string         "cmd_vel_nav"
   ============== =============================
 
   Description:
@@ -405,7 +405,7 @@ For more information how to bring-up your own Collision Monitor node, please ref
         base_frame_id: "base_footprint"
         odom_frame_id: "odom"
         cmd_vel_in_topic: "cmd_vel_raw"
-        cmd_vel_out_topic: "cmd_vel"
+        cmd_vel_out_topic: "cmd_vel_nav"
         state_topic: "collision_monitor_state"
         transform_tolerance: 0.5
         source_timeout: 5.0
