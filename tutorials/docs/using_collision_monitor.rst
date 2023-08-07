@@ -114,7 +114,7 @@ The Collision Monitor is designed to operate below Nav2 as an independent safety
 This acts as a filter on the ``cmd_vel`` topic coming out of the Controller Server.
 If no such zone is triggered, then the Controller's ``cmd_vel`` is used.
 Else, it is scaled or set to stop as appropriate.
-For correct operation of the Collision Monitor with the Controller, it is required to add the ``cmd_vel -> cmd_vel_raw`` remapping to the ``navigation_launch.py`` bringup script as presented below:
+For correct operation of the Collision Monitor with the Controller, it is required to change the ``cmd_vel -> cmd_vel_nav`` remapping in the ``navigation_launch.py`` bringup script as presented below:
 
 .. code-block:: python
 
@@ -125,6 +125,7 @@ For correct operation of the Collision Monitor with the Controller, it is requir
         respawn=use_respawn,
         respawn_delay=2.0,
         parameters=[configured_params],
+    -   remappings=remappings + [('cmd_vel', 'cmd_vel_nav')]),
     +   remappings=remappings + [('cmd_vel', 'cmd_vel_raw')]),
     ...
     ComposableNode(
@@ -132,6 +133,7 @@ For correct operation of the Collision Monitor with the Controller, it is requir
         plugin='nav2_controller::ControllerServer',
         name='controller_server',
         parameters=[configured_params],
+    -   remappings=remappings + [('cmd_vel', 'cmd_vel_nav')]),
     +   remappings=remappings + [('cmd_vel', 'cmd_vel_raw')]),
 
 Please note, that the remapped ``cmd_vel_raw`` topic should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement.
