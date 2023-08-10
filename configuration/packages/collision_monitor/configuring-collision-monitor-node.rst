@@ -13,7 +13,7 @@ As such, this does not provide hard real-time safety certifications, but uses th
 This is a useful and integral part of large heavy industrial robots, or robots moving with high velocities, around people or other dynamic agents (e.g. other robots) as a safety mechanism for high-response emergency stopping.
 The costmaps / trajectory planners will handle most situations, but this is to handle obstacles that virtually appear out of no where (from the robot's perspective) or approach the robot at such high speed it needs to immediately stop to prevent collision.
 
-See the package's ``README`` for more complete information.
+See the package's ``README`` for more complete information. For more information how to bring-up your own Collision Monitor node, please refer to the :ref:`collision_monitor_tutorial` tutorial.
 
 Features
 ********
@@ -396,7 +396,6 @@ Example
 *******
 
 Here is an example of configuration YAML for the Collision Monitor.
-For more information how to bring-up your own Collision Monitor node, please refer to the :ref:`collision_monitor_tutorial` tutorial.
 
 .. code-block:: yaml
 
