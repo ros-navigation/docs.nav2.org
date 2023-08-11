@@ -1,6 +1,6 @@
 .. _configuring_collision_monitor:
 
-Nav2 collision monitor
+Collision monitor
 ######################
 
 Source code and ``README`` with design, explanations, and metrics can be found on Github_.
@@ -8,7 +8,7 @@ Source code and ``README`` with design, explanations, and metrics can be found o
 .. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_collision_monitor
 
 The ``nav2_collision_monitor`` package contains nodes providing an additional level of robot safety, namely the Collision Detector and the Collision Monitor.
-The Collision Detector is responsible for detecting obstacles in a certain static region or in the robot's path and reporting them/ 
+The Collision Detector is responsible for detecting obstacles in a certain static region or in the robot's path and reporting them.
 The Collision Monitor also detects obstacles and additionally limits the robot's velocity to avoid collisions with these obstacles.
 
 Provided Nodes
