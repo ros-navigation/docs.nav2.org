@@ -81,8 +81,8 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
         use_sim_time: True
         base_frame_id: "base_footprint"
         odom_frame_id: "odom"
-        cmd_vel_in_topic: "cmd_vel_raw"
-        cmd_vel_out_topic: "cmd_vel_nav"
+        cmd_vel_in_topic: "cmd_vel_smoothed"
+        cmd_vel_out_topic: "cmd_vel"
         transform_tolerance: 0.5
         source_timeout: 5.0
         stop_pub_timeout: 2.0
@@ -111,37 +111,41 @@ Preparing Nav2 stack
 ====================
 
 The Collision Monitor is designed to operate below Nav2 as an independent safety node.
-This acts as a filter on the ``cmd_vel`` topic coming out of the Controller Server.
-If no such zone is triggered, then the Controller's ``cmd_vel`` is used.
+This acts as a filter on the ``cmd_vel`` topic coming out of the Velocity Smoother Server.
+If no such zone is triggered, then the Velocity Smoother's ``cmd_vel`` message is used.
 Else, it is scaled or set to stop as appropriate.
-For correct operation of the Collision Monitor with the Controller, it is required to change the ``cmd_vel -> cmd_vel_nav`` remapping in the ``navigation_launch.py`` bringup script as presented below:
+For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother's `cmd_vel_smoothed` remapping in the ``navigation_launch.py`` bringup script as presented below:
 
 .. code-block:: python
 
     Node(
-        package='nav2_controller',
-        executable='controller_server',
+        package='nav2_velocity_smoother',
+        executable='velocity_smoother',
+        name='velocity_smoother',
         output='screen',
         respawn=use_respawn,
         respawn_delay=2.0,
         parameters=[configured_params],
-    -   remappings=remappings + [('cmd_vel', 'cmd_vel_nav')]),
-    +   remappings=remappings + [('cmd_vel', 'cmd_vel_raw')]),
+        arguments=['--ros-args', '--log-level', log_level],
+        remappings=remappings +
+    -           [('cmd_vel', 'cmd_vel_nav'), ('cmd_vel_smoothed', 'cmd_vel')]),
+    +           [('cmd_vel', 'cmd_vel_nav')]),
     ...
     ComposableNode(
-        package='nav2_controller',
-        plugin='nav2_controller::ControllerServer',
-        name='controller_server',
+        package='nav2_velocity_smoother',
+        plugin='nav2_velocity_smoother::VelocitySmoother',
+        name='velocity_smoother',
         parameters=[configured_params],
-    -   remappings=remappings + [('cmd_vel', 'cmd_vel_nav')]),
-    +   remappings=remappings + [('cmd_vel', 'cmd_vel_raw')]),
+        remappings=remappings +
+    -              [('cmd_vel', 'cmd_vel_nav'), ('cmd_vel_smoothed', 'cmd_vel')]),
+    +              [('cmd_vel', 'cmd_vel_nav')]),
 
-Please note, that the remapped ``cmd_vel_raw`` topic should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement.
+In case you have changed Collision Monitor's default ``cmd_vel_in_topic`` and ``cmd_vel_out_topic`` configuration, make sure Velocity Smoother's default output topic ``cmd_vel_smoothed`` should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement. 
 
 Demo Execution
 ==============
 
-Once Collision Monitor node has been tuned and ``cmd_vel`` topics remapped, Collision Monitor node is ready to run.
+Once Collision Monitor node has been tuned and ``cmd_vel`` topics adjusted, Collision Monitor node is ready to run.
 For that, run Nav2 stack as written in :ref:`getting_started`:
 
 .. code-block:: bash
