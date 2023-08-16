@@ -886,6 +886,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
@@ -955,6 +956,11 @@
   <div class="section" id="iron-to-jazzy">
 <span id="iron-migration"></span><h1>Iron to Jazzy<a class="headerlink" href="#iron-to-jazzy" title="Permalink to this headline">¶</a></h1>
 <p>Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="introduce-a-new-multi-robot-bringup-launch">
+<h2>Introduce a new Multi-Robot Bringup Launch<a class="headerlink" href="#introduce-a-new-multi-robot-bringup-launch" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3572">PR #3572</a> introduces a new way of bringup tb3 multi-robot that names as <code class="docutils literal notranslate"><span class="pre">cloned_tb3_simulation_launch.py</span></code> for simulation. <code class="docutils literal notranslate"><span class="pre">cloned_tb3_simulation_launch.py</span></code> enables to bring up multiple robots with same parameter that described in <code class="docutils literal notranslate"><span class="pre">nav2_multirobot_param_all.yaml</span></code>. And multiple robots are separeted by namespaces which are given as a Launch Arguments.
+Existing <code class="docutils literal notranslate"><span class="pre">multi_tb3_simulation_launch.py</span></code> which was utilized in previous is replaced with <code class="docutils literal notranslate"><span class="pre">unique_tb3_simulation_launch.py</span></code>, allowing for multiple unique robot instances utilizing <code class="docutils literal notranslate"><span class="pre">nav2_multirobot_params_&lt;N&gt;.yaml</span></code> configuration files.</p>
+</div>
 <div class="section" id="new-option-for-the-voxel-and-obstacle-layers">
 <h2>New option for the Voxel and Obstacle Layers<a class="headerlink" href="#new-option-for-the-voxel-and-obstacle-layers" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3612">PR #3612</a> adds a new MaxWithoutUnknownOverwrite option to combination_method parameter in Voxel and Obstacle Layers. This can be used to make sure that the static map is the dominant source of information, and
