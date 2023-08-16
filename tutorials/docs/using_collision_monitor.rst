@@ -140,7 +140,7 @@ For correct operation of the Collision Monitor with the Velocity Smoother, it is
     -              [('cmd_vel', 'cmd_vel_nav'), ('cmd_vel_smoothed', 'cmd_vel')]),
     +              [('cmd_vel', 'cmd_vel_nav')]),
 
-In case you have changed Collision Monitor's default ``cmd_vel_in_topic`` and ``cmd_vel_out_topic`` configuration, make sure Velocity Smoother's default output topic ``cmd_vel_smoothed`` should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement. 
+If you have changed Collision Monitor's default ``cmd_vel_in_topic`` and ``cmd_vel_out_topic`` configuration, make sure Velocity Smoother's default output topic ``cmd_vel_smoothed`` should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement. 
 
 Demo Execution
 ==============
