@@ -111,10 +111,10 @@ Preparing Nav2 stack
 ====================
 
 The Collision Monitor is designed to operate below Nav2 as an independent safety node.
-This acts as a filter on the ``cmd_vel`` topic coming out of the Velocity Smoother Server.
+It acts as a filter for the `cmd_vel` messages from the controller to avoid potential collisions.
 If no such zone is triggered, then the Velocity Smoother's ``cmd_vel`` message is used.
 Else, it is scaled or set to stop as appropriate.
-For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother's `cmd_vel_smoothed` remapping in the ``navigation_launch.py`` bringup script as presented below:
+For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother's `cmd_vel_smoothed` remapping in the ``navigation_launch.py`` bringup script as presented below to make the output topic of the server ``cmd_vel_smoothed``, which will be the input to the newly added collision monitor:
 
 .. code-block:: python
 
