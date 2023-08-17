@@ -225,3 +225,9 @@ More information about ``Denoise Layer`` plugin and how it works could be found 
 SmacPlannerHybrid viz_expansions parameter
 ******************************************
 `PR #3577 <https://github.com/ros-planning/navigation2/pull/3577>`_ adds a new paremeter for visualising SmacPlannerHybrid expansions for debug purpose.
+
+New node in nav2_collision_monitor: Collision Detector
+******************************************************
+
+In this `PR #3693 <https://github.com/ros-planning/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector. 
+It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the `collision_detector_state` topic.
