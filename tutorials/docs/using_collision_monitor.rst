@@ -111,10 +111,13 @@ Preparing Nav2 stack
 ====================
 
 The Collision Monitor is designed to operate below Nav2 as an independent safety node.
-It acts as a filter for the `cmd_vel` messages from the controller to avoid potential collisions.
-If no such zone is triggered, then the Velocity Smoother's ``cmd_vel`` message is used.
-Else, it is scaled or set to stop as appropriate.
-For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother's `cmd_vel_smoothed` remapping in the ``navigation_launch.py`` bringup script as presented below to make the output topic of the server ``cmd_vel_smoothed``, which will be the input to the newly added collision monitor:
+It acts as a filter for the ``cmd_vel`` messages from the controller to avoid potential collisions.
+If no such zone is triggered, then the ``cmd_vel`` message is used.
+Else, it is scaled or set to stop as appropriate. 
+
+Using with NAV2 Bringup
+-----------------------
+By default, the Collision Monitor is configured for usage with the NAV2 bringup package, using the ``navigation_launch.py`` launch file. For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother's ``cmd_vel_smoothed`` remapping in the ``navigation_launch.py`` bringup script as presented below to make the output topic of the server equal ``cmd_vel_smoothed``, which will be the input to the newly added collision monitor:
 
 .. code-block:: python
 
@@ -140,7 +143,11 @@ For correct operation of the Collision Monitor with the Velocity Smoother, it is
     -              [('cmd_vel', 'cmd_vel_nav'), ('cmd_vel_smoothed', 'cmd_vel')]),
     +              [('cmd_vel', 'cmd_vel_nav')]),
 
-If you have changed Collision Monitor's default ``cmd_vel_in_topic`` and ``cmd_vel_out_topic`` configuration, make sure Velocity Smoother's default output topic ``cmd_vel_smoothed`` should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement. 
+If you have changed Collision Monitor's default ``cmd_vel_in_topic`` and ``cmd_vel_out_topic`` configuration, make sure Velocity Smoother's default output topic ``cmd_vel_smoothed`` should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement.
+
+Using with a custom launch file
+-------------------------------
+As the Collision Monitor acts as a safety node, it must be the last link in the velocity message chain, making it the node that publishs to the ``cmd_vel`` topic. Therefore, in any custom NAV2 launch configuration, the current node publishing to the ``cmd_vel`` topic, should be remapped to publish to the topic configured in Collision Montior's ``cmd_vel_in_topic`` configuration (``cmd_vel_smoothed`` by default). 
 
 Demo Execution
 ==============
