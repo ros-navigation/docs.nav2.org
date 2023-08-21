@@ -37,6 +37,18 @@ Parameters
   Description
     Rate to check for results from current navigation task.
 
+:global_frame_id:
+
+  ============== ========================
+  Type           Default
+  -------------- ------------------------
+  string         'map'
+  ============== ========================
+
+  Description
+    The name of the coordinate frame published by robot_localization. Only used by the gps_waypoint_follower.
+
+
 :waypoint_task_executor_plugin:
 
   ============== ========================
