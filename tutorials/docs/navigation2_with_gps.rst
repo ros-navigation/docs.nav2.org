@@ -54,6 +54,19 @@ To cope with this, geodesy allows for the definition of  `Local tangent planes <
     :align: center
     :alt: Local tangent plane
 
+
+In this tutorial we assume the robot's GPS produces a really accurate and smooth estimation of the robot's position, however for standalone GPSs that's often not the case: you should expect accuracies of 1-2 meters under excellent conditions and up to 10 meters, and frequent jumps in the position as the GPS sensor picks up less or more satellites.
+
+Several positioning augmentation technologies exists to bring down the error of GPS measurements, one of the most common ones is called `RTK <https://en.wikipedia.org/wiki/Real-time_kinematic_positioning>`_ (Real Time Kinematic Positioning), which can bring the accuracy of receivers down to 1cm. If Accuracy matters in your application this technology is highly recommended, though this requires the deployment of a second fixed GPS called Base, most of the US and Europe are already covered with public free to use Bases that you can connect to. You can read more about RTK and how to get started on `this tutorial <https://learn.sparkfun.com/tutorials/setting-up-a-rover-base-rtk-system>`_.
+
+Additionally, to fully describe a robot's localization using the ENU convention we need to know its heading as well, however GPS sensors do not provide orientation measurements, only position measurements. Though there are other alternatives for measuring orientation, in this tutorial we assume the robot is equipped with an IMU capable of providing absolute heading measurements, meaning it will output zero yaw when facing east and +90 degrees when facing north. 
+
+Despite the above assumption, in the real world commercial grade IMU's mounted in actual robots will often not produce accurate measurements of absolute heading because: 
+1. They are hard to calibrate: outdoors robots are often big and heavy: imagine doing an eight figure in the air with an autonomous tractor.
+2. They rely on magnetometers to measure earth's magnetic field but robots are often a huge source of electromagnetic noise: Motors are full of permanent magnets and can draw several amps producing significant disturbances to the sensor.
+
+Through the development of the tutorial we will see how to leverage robot_localization's Kalman Filters to mitigate this problem.
+
 Tutorial Steps
 ==============
 
