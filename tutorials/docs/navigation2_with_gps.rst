@@ -176,7 +176,7 @@ You can now click on the mapviz map the pose you want the robot to go. The gif b
   :width: 600px
   :align: center
 
-3-  Logged GPS Waypoint Follower
+4-  Logged GPS Waypoint Follower
 --------------------------------
 
 Finally let's make a robot go through a set of predefined GPS waypoints stored in a yaml file. For this purpose we provide the `logged_waypoint_follower <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/TODO>`_ node and a `waypoints <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/TODO>`_ file. To test this node source your workspace and with the rest of the system running type:
