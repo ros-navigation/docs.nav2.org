@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iron to Jazzy &mdash; Navigation 2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Iron to Jazzy &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -37,7 +37,7 @@
           
           
           <a href="../index.html" class="icon icon-home">
-            Navigation 2
+            Nav2
               <img src="../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
@@ -928,7 +928,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Navigation 2</a>
+          <a href="../index.html">Nav2</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -1005,7 +1005,7 @@ easily prevent the robot to go through places that are not present in the static
 <div class="section" id="new-node-in-nav2-collision-monitor-collision-detector">
 <h2>New node in nav2_collision_monitor: Collision Detector<a class="headerlink" href="#new-node-in-nav2-collision-monitor-collision-detector" title="Permalink to this headline">¶</a></h2>
 <p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3500">PR #3693</a> A new node was introduced in the nav2_collision_monitor: Collision Detector.
-It works similarly to the Collision Monitor, but does not affect the robot’s velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the <code class="docutils literal notranslate"><span class="pre">collision_detector_state</span></code> topic.</p>
+It works similarly to the Collision Monitor, but does not affect the robot’s velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the <code class="docutils literal notranslate"><span class="pre">collision_detector_state</span></code> topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).</p>
 </div>
 </div>
 
