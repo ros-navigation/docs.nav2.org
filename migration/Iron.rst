@@ -72,3 +72,10 @@ Added GPS Waypoint Follower Server
 **********************************
 
 `This PR 2627 <https://github.com/ros-planning/navigation2/pull/2814>`_  adds the ``follow_gps_waypoints`` action server in ``nav2_waypoint_follower``. This server accepts a set of GPS goals instead of cartesian goals and provides all the other functionalities available on ``nav2_waypoint_follower``. A new tutorial demonstrating its functionality was also added on `PR 47 on navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/pull/47>`_
+
+
+New node in nav2_collision_monitor: Collision Detector
+******************************************************
+
+In this `PR #3693 <https://github.com/ros-planning/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector. 
+It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the ``collision_detector_state`` topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).

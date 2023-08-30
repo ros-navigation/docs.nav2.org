@@ -63,7 +63,7 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 # General information about the project.
-project = u'Navigation 2'
+project = u'Nav2'
 copyright = u'2020'
 author = u'Various'
 
