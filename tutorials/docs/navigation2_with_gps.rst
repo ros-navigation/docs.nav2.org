@@ -15,7 +15,7 @@ Navigating with a GPS Based Localization System
 Overview
 ========
 
-This tutorial shows how to set up a localization system using a GPS sensor as source of global positioning and robot_localization (RL) for sensor fusion,s and how to use Nav2 to follow GPS waypoints. It was written by Pedro Gonzalez at `Kiwibot <https://www.kiwibot.com/>`_
+This tutorial shows how to set up a localization system using a GPS sensor as source of global positioning and robot_localization (RL) for sensor fusion, and how to use Nav2 to follow GPS waypoints. It was written by Pedro Gonzalez at `Kiwibot <https://www.kiwibot.com/>`_
 
 Requirements
 ============
@@ -79,7 +79,7 @@ Tutorial Steps
 
 To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor. For this tutorial we will be using the `sonoma raceway <https://docs.px4.io/main/en/sim_gazebo_classic/gazebo_worlds.html#sonoma-raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world.
 
-To get actual gps readings we need to create a robot model with a GPS sensor. An updated turtle model is provided in the `tutorial repo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/models/turtlebot_with_gps>`_, which uses gazebo_ros's gps sensor plugin to output ``NavSatFix`` messages on the topic ``/gps/fix``.
+To get actual gps readings we need to create a robot model with a GPS sensor. An updated turtle model is provided in the `tutorial repo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/models/turtlebot_waffle_gps>`_, which uses gazebo_ros's gps sensor plugin to output ``NavSatFix`` messages on the topic ``/gps/fix``.
 
 Build the nav2_gps_waypoint_follower_demo package, source your workspace and test your gazebo world is properly set up by launching: 
 
@@ -111,7 +111,7 @@ As a sanity check that everything is working correctly, launch RL's launch file 
 
   ``ros2 launch nav2_gps_waypoint_follower_demo dual_ekf_navsat.launch.py``
 
-On a different terminal launch mapviz using the pre-built `config file <TODO>`_ in the repo. `Get a bing maps API key <https://www.microsoft.com/en-us/maps/create-a-bing-maps-key>`_ and use it to display satellite pictures.
+On a different terminal launch mapviz using the pre-built `config file <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/gps_wpf_demo.mvc>`_ in the repo. `Get a bing maps API key <https://www.microsoft.com/en-us/maps/create-a-bing-maps-key>`_ and use it to display satellite pictures.
 
   ``ros2 launch nav2_gps_waypoint_follower_demo mapviz.launch.py``
 
@@ -162,7 +162,7 @@ The gif below shows what you should see
 
 Now that we have performed our complete system setup, lets leverage nav2 GPS waypoint follower capabilities to navigate to goals that are expressed directly in GPS coordinates. For this demo we want to build an interactive interface similar to rviz's that allows us to click over a map to make the robot navigate to the clicked location. For that we will use mapviz's point click publisher on the ``wgs84`` reference frame, which will publish a ``PointStamped`` message with the GPS coordinates of the point clicked over the satellite image.
 
-For this purpose we provide the `interactive_waypoint_follower <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/TODO>`_ python node, which subscribes to mapviz's topic and calls the ``/follow_gps_waypoints`` action server with the clicked point as goal using the ``BasicNavigator`` in ``nav2_simple_commander``. To run it source your workspace and with the rest of the system running type:
+For this purpose we provide the `interactive_waypoint_follower <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/interactive_waypoint_follower.py>`_ python node, which subscribes to mapviz's topic and calls the ``/follow_gps_waypoints`` action server with the clicked point as goal using the ``BasicNavigator`` in ``nav2_simple_commander``. To run it source your workspace and with the rest of the system running type:
 
   ``ros2 run nav2_gps_waypoint_follower_demo interactive_waypoint_follower``
 
@@ -179,6 +179,6 @@ You can now click on the mapviz map the pose you want the robot to go. The gif b
 4-  Logged GPS Waypoint Follower
 --------------------------------
 
-Finally let's make a robot go through a set of predefined GPS waypoints stored in a yaml file. For this purpose we provide the `logged_waypoint_follower <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/TODO>`_ node and a `waypoints <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/TODO>`_ file. To test this node source your workspace and with the rest of the system running type:
+Finally let's make a robot go through a set of predefined GPS waypoints stored in a yaml file. For this purpose we provide the `logged_waypoint_follower <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py>`_ node and a `waypoints <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/demo_waypoints.yaml>`_ file. To test this node source your workspace and with the rest of the system running type:
 
   ``ros2 run nav2_gps_waypoint_follower_demo logged_waypoint_follower``
