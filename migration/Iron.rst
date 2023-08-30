@@ -67,6 +67,11 @@ Smac Planner Debug Param Name Change
 
 ``debug_visualizations`` replaces ``viz_expansions`` parameter in Hybrid-A* to reflect the new inclusion of footprint debug information being published as well.
 
+Smac Planner Hybrid-A* New Features
+***********************************
+
+New features ``allow_primitive_interpolation`` which allows for more primitives in the search set, ``use_quadratic_cost_penalty``  to impact the cost penalty order in the traversal and heuristic functions, and ``downsample_obstacle_heuristic`` to optionally not downsample the obstacle heuristic's costmap were added. The default behavior will remain the same. If you would like to use these new features, please check out the Smac Planner Hybrid-A* configuration guide. 
+
 New node in nav2_collision_monitor: Collision Detector
 ******************************************************
 

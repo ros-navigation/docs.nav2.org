@@ -231,7 +231,40 @@ Parameters
   ====== =======
 
   Description
-    Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
+    Advanced feature: Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
+
+:``<name>``.allow_primitive_interpolation:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   false         
+  ====== =======
+
+  Description
+    Advanced feature: Allows a user to add additional primitives to the exploration set to interpolate between the angular quantization jumps between the normal primitive set (e.g. left, right, straight). This generates additional primitives such that every angular bin between the furthest-left and furthest-right are represented in the primitive set for exploration. That way, if the settings (e.x. 0.4 turning rad, 5cm costmap, 72 bins) jump by 3 quantizations, you can explore not simply 0,3,6,9,... but the full 1,2,3,4,5,6,7,8,9,... set. This typically comes at an increased computation time, but can remove "zig-zag"-like behavior when your base primitive set is significantly not representative. It may come at less compute times when used in more confined settings like hallways whereas it can follow a narrow heuristic channel better. When this is enabled, users should take care to re-tune ``angle_quantization_bins``, since such a large number is not required. To continue with the previous example, when enabled, it is the same as ``angle_quantization_bins`` set to 24 (e.g. ``24 * 3 = 72``), so 32 might be a good selection to start with to get higher quality without substantial changes in compute time.
+
+:``<name>``.downsample_obstacle_heuristic:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   true         
+  ====== =======
+
+  Description
+    Advanced feature: This allows a user to disable downsampling of the obstacle heuristic's costmap representation to search at the costmap's full-resolution. This will come at increased up-front costs while searching for the 2D approximate route to the goal in exchange for less search iterations and a slightly more smooth path. With ``smooth_path`` on, this increased smoothness is noticable but not massively different. When combined with all of the advanced features however, it can contribute to a better overall plan in exchange for some compute time. This scales with map size and complexity of the path plan requested. For simpler maps / paths, this may actually improve performance due to low up-front search times and lower iterations.
+
+:``<name>``.use_quadratic_cost_penalty:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   false         
+  ====== =======
+
+  Description
+    Advanced feature: This allows a user to specify a quadratic traversal and heuristic cost computation (e.g. ``cost * cost``) rather than linear. This will speed up the planner since the optimal channel for feasible search is deeper and prunes search branches more aggressively. This will also create overall much smoother paths since search will not attempt to refine itself to stay in the center of wide aisleways or open spaces to reduce low finite costs. However, the smoothness and less sensitivity to cost also makes it come somewhat closer to obstacles. Broadly speaking the change and non-straight penalties can be disabled when this feature is in use. The cost penalty and inflation layer parameters may need to be adjusted when enabling this parameter to create optimal performance.
 
 :``<name>``.smooth_path:
 
@@ -341,6 +374,9 @@ Example
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
         cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.   
         debug_visualizations: false         # For Hybrid nodes: Whether to publish expansions on the /expansions topic as an array of poses (the orientation has no meaning) and the path's footprints on the /planned_footprints topic. WARNING: heavy to compute and to display, for debug only as it degrades the performance.
+        use_quadratic_cost_penalty: False
+        downsample_obstacle_heuristic: True
+        allow_primitive_interpolation: False
         smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
 
         smoother:
