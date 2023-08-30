@@ -95,7 +95,7 @@ A turtlebot waffle should appear in the sonoma raceway world. You may also echo 
 1- Setup GPS Localization system
 --------------------------------
 
-Once you have your simulation (or real robot) up and running, it's time to set up your localization system. Remember that nav2 needs a ``tf`` chain with the structure ``map`` -> ``odom`` -> ``base_link`` -> ``[sensor frames]``; global localization (``map`` -> ``base_link``) is usually provided by ``amcl``, while local odometry (``odom`` -> ``base_link``) is usually provided by the user's odometry system (wheel odometry, visual odometry, etc).
+Once you have your simulation (or real robot) up and running, it's time to set up your localization system. Remember that nav2 needs a ``tf`` chain with the structure ``map`` -> ``odom`` -> ``base_link`` -> ``[sensor frames]``; global localization (``map`` -> ``odom``) is usually provided by ``amcl``, while ``odom`` -> ``base_link`` is usually provided by the user's odometry system (wheel odometry, visual odometry, etc).
 
 In this tutorial, the GPS sensor on the robot will replace ``amcl`` in providing global localization. Though you may build a custom module that takes in the ``NavSatFix`` and ``Imu`` messages of your GPS and imu, and outputs a ``tf`` between your ``map`` and ``base_link`` frames using a local tangent plane, nav2's gps waypoint follower needs robot_localization to be used for this purpose. This package already has a node that performs the GPS -> local cartesian conversions called the `navsat_transform_node <http://docs.ros.org/en/jade/api/robot_localization/html/navsat_transform_node.html>`_, and features state estimation nodes that use Kalman Filters to fuse multiple sources of data.
 
