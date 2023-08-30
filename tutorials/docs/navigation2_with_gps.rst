@@ -141,7 +141,7 @@ Sensors in a real robot may be less accurate than gazebo's, specially GPSs and a
 2- Setup Navigation system
 --------------------------
 
-Once you have your localization system up and running it's time to setup nav2. since RL is already providing the ``tf`` tree we don't need to launch ``amcl``, thus we can remove its parameters from the params file.
+Once you have your localization system up and running it's time to setup nav2. since RL is already providing the ``tf`` tree we don't need to launch ``amcl``, thus we can remove its parameters from the params file and node from Nav2 launch files.
 
 Outdoors environments can get quite big, to a degree that they may not me practically represented on a single costmap. For that reason in this tutorial we use a rolling global costmap that is big enough for fitting successive pairs of waypoints, however depending on your application you may still choose to use a fixed global costmap, just remember to make it fit all the potential locations the robot may visit.
 
