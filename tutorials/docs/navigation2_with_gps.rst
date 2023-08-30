@@ -49,7 +49,7 @@ However, this reference system is impractical for describing the motion of objec
   
 It would make much more sense to create a local reference system where you could tell your robot "go 100 meters forward", right?
 
-To cope with this, geodesy allows for the definition of  `Local tangent planes <https://en.wikipedia.org/wiki/Local_tangent_plane_coordinates>`_. According to `REP 103 <https://www.ros.org/reps/rep-0103.html>`_ the coordinate systems of these planes should follow the ENU convention, which means their +x axis should face East, +y axis should face North and the +z axis should point Up, as the image below shows. In the context of this tutorial the GPS coordinates of the origin of the local cartesian plane will be called **datum** as it is in `robot_localization <http://docs.ros.org/en/noetic/api/robot_localization/html/index.html>`_
+To cope with this, geodesy allows for the definition of  `Local tangent planes <https://en.wikipedia.org/wiki/Local_tangent_plane_coordinates>`_. According to `REP 103 <https://www.ros.org/reps/rep-0103.html>`_ the coordinate systems of these planes should follow the ENU convention, which means their +x axis should face East, +y axis should face North and the +z axis should point Up, as the image below shows. In the context of this tutorial the GPS coordinates of the origin of the local cartesian plane will be called **datum** as it is in `robot_localization <http://docs.ros.org/en/noetic/api/robot_localization/html/index.html>`_.
 
 .. image:: images/Gps_Navigation/ECEF_ENU_Longitude_Latitude_relationships.svg
     :width: 520px
