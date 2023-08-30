@@ -151,7 +151,7 @@ We provide a `nav2 params file <https://github.com/ros-planning/navigation2_tuto
 
   ``ros2 launch nav2_gps_waypoint_follower_demo gps_waypoint_follower.launch.py``
 
-The gif below shows what you should see
+The gif below shows what you should see Nav2 navigating the robot autonomously!
 
 .. image:: images/Gps_Navigation/navigation_check.gif
   :width: 600px
