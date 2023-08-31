@@ -12,7 +12,7 @@ Jazzy Roadmap
 *************
 
 +--------------------------------+------------------------+
-| `Smac Planner Improvements`_   |  Large (in progress)   |
+| `Smac Planner Improvements`_   |  Large (DONE)          |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
@@ -36,8 +36,8 @@ Jazzy Roadmap
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| Provide Advanced Capabilities  | Medium                 |
-| Tutorials                      |                        |
+| Provide Advanced Capabilities  | Medium (in progress)   |
+| Tutorials (e.g. gps, vio)      |                        |
 |                                |                        |
 +--------------------------------+------------------------+
 | ROS Time Respect Across Stack  |  Medium (in progress)  |
