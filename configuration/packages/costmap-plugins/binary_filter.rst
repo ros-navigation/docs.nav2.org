@@ -3,7 +3,7 @@
 Binary Filter Parameters
 ========================
 
-Binary Filter - is a Costmap Filter that publishes a boolean topic, flipping binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold. It then flips back when lower or equal.
+Binary Filter - is a Costmap Filter that publishes a boolean topic, flipping binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold. It then flips back when lower or equal. Along with publishing the state, the filter can change boolean ros parameters of other ros nodes. The parameters to be changed can be configured as ros paramters themselves. 
 
 Filter space value is being calculated as: ``Fv = base + multiplier * mask_value``, where ``base`` and ``multiplier`` are being published in a filter info by Costmap Filter Info Server. The example of usage are include: camera operating on/off to turn off cameras in sensitive areas, headlights switch on/off for moving indoors to outdoors, smart house light triggering, etc.
 
@@ -75,8 +75,63 @@ Filter space value is being calculated as: ``Fv = base + multiplier * mask_value
   double 50.0
   ====== =======
 
-  Descrioption
+  Description
     Threshold for binary state flipping. Filter values higher than this threshold, will set binary state to non-default.
+
+:``<filter name>``.change_parameter_timeout:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  int    10
+  ====== =======
+
+  Description
+    Timeout for waiting `set_parameters` service in ms. Target ros parameter is not changed in case of timeout.
+
+:``<filter name>``.binary_parameters:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  vector<string> {“”} 
+  ============== =======
+
+  Description
+    Threshold for binary state flipping. Filter values higher than this threshold, will set binary state to non-default.
+
+:``<filter name>``.``binary_parameter``.node_name:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string ""
+  ====== =======
+
+  Description
+    Name of the node to which the ros parameter to be changed belong.
+
+:``<filter name>``.``binary_parameter``.param_name:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string ""
+  ====== =======
+
+  Description
+    Name of the parameter to be changed. This name should include also parameter namespace.
+
+:``<filter name>``.``binary_parameter``.default_state:
+
+  ====== =======================================
+  Type   Default
+  ------ ---------------------------------------
+  bool   Same as ``<filter name>``.default_state
+  ====== =======================================
+
+  Description
+    Parameter default state. If not specified, filter default state is used.
 
 Example
 *******
@@ -97,3 +152,13 @@ Example
           default_state: False
           binary_state_topic: "/binary_state"
           flip_threshold: 50.0
+          change_parameter_timeout: 10.0
+          binary_parameters: ["param1", "param2"]
+          param1:
+            node_name: "node0"
+            param_name: "name.of.param1"
+            default_state: True 
+          param2:
+            node_name: "node1"
+            param_name: "param2"
+            
