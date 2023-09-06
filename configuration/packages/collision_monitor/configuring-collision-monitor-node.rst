@@ -80,7 +80,7 @@ Parameters
 
   Description:
     Input ``cmd_vel`` topic with desired robot velocity.
-    Please note, pre-`Jazzy` this was set to `cmd_vel_raw` by default.
+    Please note, pre-`Jazzy` this was set to ``cmd_vel_raw`` by default.
 
 :cmd_vel_out_topic:
 
