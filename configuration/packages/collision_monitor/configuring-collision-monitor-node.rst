@@ -75,11 +75,12 @@ Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  string         "cmd_vel_raw"
+  string         "cmd_vel_smoothed"
   ============== =============================
 
   Description:
     Input ``cmd_vel`` topic with desired robot velocity.
+    Please note, pre-``Jazzy`` this was set to ``cmd_vel_raw`` by default.
 
 :cmd_vel_out_topic:
 
@@ -403,7 +404,7 @@ Here is an example of configuration YAML for the Collision Monitor.
       ros__parameters:
         base_frame_id: "base_footprint"
         odom_frame_id: "odom"
-        cmd_vel_in_topic: "cmd_vel_raw"
+        cmd_vel_in_topic: "cmd_vel_smoothed"
         cmd_vel_out_topic: "cmd_vel"
         state_topic: "collision_monitor_state"
         transform_tolerance: 0.5
