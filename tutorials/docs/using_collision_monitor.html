@@ -893,6 +893,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#substitution-in-parameter-file">Substitution in parameter file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#smac-planner-debug-param-name-change">Smac Planner Debug Param Name Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
 </ul>
 </li>
@@ -1020,7 +1021,7 @@ The whole <code class="docutils literal notranslate"><span class="pre">nav2_coll
 <span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">base_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_footprint&quot;</span>
 <span class="w">    </span><span class="nt">odom_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
-<span class="w">    </span><span class="nt">cmd_vel_in_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel_raw&quot;</span>
+<span class="w">    </span><span class="nt">cmd_vel_in_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel_smoothed&quot;</span>
 <span class="w">    </span><span class="nt">cmd_vel_out_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel&quot;</span>
 <span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">    </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
@@ -1051,32 +1052,42 @@ The whole <code class="docutils literal notranslate"><span class="pre">nav2_coll
 <div class="section" id="preparing-nav2-stack">
 <h2>Preparing Nav2 stack<a class="headerlink" href="#preparing-nav2-stack" title="Permalink to this headline">¶</a></h2>
 <p>The Collision Monitor is designed to operate below Nav2 as an independent safety node.
-This acts as a filter on the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic coming out of the Controller Server.
-If no such zone is triggered, then the Controller’s <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> is used.
-Else, it is scaled or set to stop as appropriate.
-For correct operation of the Collision Monitor with the Controller, it is required to add the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span> <span class="pre">-&gt;</span> <span class="pre">cmd_vel_raw</span></code> remapping to the <code class="docutils literal notranslate"><span class="pre">navigation_launch.py</span></code> bringup script as presented below:</p>
+It acts as a filter for the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> messages from the controller to avoid potential collisions.
+If no such zone is triggered, then the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> message is used.
+Else, it is scaled or set to stop as appropriate.</p>
+<p>By default, the Collision Monitor is configured for usage with the Nav2 bringup package, running in parallel with the <code class="docutils literal notranslate"><span class="pre">navigation_launch.py</span></code> launch file. For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother’s <code class="docutils literal notranslate"><span class="pre">cmd_vel_smoothed</span></code> remapping in the <code class="docutils literal notranslate"><span class="pre">navigation_launch.py</span></code> bringup script as presented below. This will make the output topic of the Velocity Smoother to be untouched, which will be the input to the newly added Collision Monitor:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Node</span><span class="p">(</span>
-    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_controller&#39;</span><span class="p">,</span>
-    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;controller_server&#39;</span><span class="p">,</span>
+    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_velocity_smoother&#39;</span><span class="p">,</span>
+    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;velocity_smoother&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;velocity_smoother&#39;</span><span class="p">,</span>
     <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">,</span>
     <span class="n">respawn</span><span class="o">=</span><span class="n">use_respawn</span><span class="p">,</span>
     <span class="n">respawn_delay</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
-<span class="o">+</span>   <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span> <span class="o">+</span> <span class="p">[(</span><span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel_raw&#39;</span><span class="p">)]),</span>
+    <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;--ros-args&#39;</span><span class="p">,</span> <span class="s1">&#39;--log-level&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="p">],</span>
+    <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span> <span class="o">+</span>
+<span class="o">-</span>           <span class="p">[(</span><span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel_nav&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;cmd_vel_smoothed&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel&#39;</span><span class="p">)]),</span>
+<span class="o">+</span>           <span class="p">[(</span><span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel_nav&#39;</span><span class="p">)]),</span>
 <span class="o">...</span>
 <span class="n">ComposableNode</span><span class="p">(</span>
-    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_controller&#39;</span><span class="p">,</span>
-    <span class="n">plugin</span><span class="o">=</span><span class="s1">&#39;nav2_controller::ControllerServer&#39;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;controller_server&#39;</span><span class="p">,</span>
+    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_velocity_smoother&#39;</span><span class="p">,</span>
+    <span class="n">plugin</span><span class="o">=</span><span class="s1">&#39;nav2_velocity_smoother::VelocitySmoother&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;velocity_smoother&#39;</span><span class="p">,</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>
-<span class="o">+</span>   <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span> <span class="o">+</span> <span class="p">[(</span><span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel_raw&#39;</span><span class="p">)]),</span>
+    <span class="n">remappings</span><span class="o">=</span><span class="n">remappings</span> <span class="o">+</span>
+<span class="o">-</span>              <span class="p">[(</span><span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel_nav&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;cmd_vel_smoothed&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel&#39;</span><span class="p">)]),</span>
+<span class="o">+</span>              <span class="p">[(</span><span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd_vel_nav&#39;</span><span class="p">)]),</span>
 </pre></div>
 </div>
-<p>Please note, that the remapped <code class="docutils literal notranslate"><span class="pre">cmd_vel_raw</span></code> topic should match to the input velocity <code class="docutils literal notranslate"><span class="pre">cmd_vel_in_topic</span></code> parameter value of the Collision Monitor node, and the output velocity <code class="docutils literal notranslate"><span class="pre">cmd_vel_out_topic</span></code> parameter value should be actual <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> to fit the replacement.</p>
+<p>If you have changed Collision Monitor’s default <code class="docutils literal notranslate"><span class="pre">cmd_vel_in_topic</span></code> and <code class="docutils literal notranslate"><span class="pre">cmd_vel_out_topic</span></code> configuration, make sure Velocity Smoother’s default output topic <code class="docutils literal notranslate"><span class="pre">cmd_vel_smoothed</span></code> should match to the input velocity <code class="docutils literal notranslate"><span class="pre">cmd_vel_in_topic</span></code> parameter value of the Collision Monitor node, and the output velocity <code class="docutils literal notranslate"><span class="pre">cmd_vel_out_topic</span></code> parameter value should be actual <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> to fit the replacement.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As the Collision Monitor acts as a safety node, it must be the last link in the velocity message post-processing chain, making it the node that publishes to the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic. It could be placed after smoothed velocity, as in our demonstration, or after non-smoothed velocity from Controller Server, e.g. if Velocity Smoother was not enabled in the system, or going after any other module in custom configuration producing the end-velocity. Therefore, in any custom Nav2 launch configuration, the last node publishing to the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic, should be remapped to publish to the Collision Monitor input topic configured by <code class="docutils literal notranslate"><span class="pre">cmd_vel_in_topic</span></code> ROS-parameter (<code class="docutils literal notranslate"><span class="pre">cmd_vel_smoothed</span></code> by default).</p>
+</div>
 </div>
 <div class="section" id="demo-execution">
 <h2>Demo Execution<a class="headerlink" href="#demo-execution" title="Permalink to this headline">¶</a></h2>
-<p>Once Collision Monitor node has been tuned and <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topics remapped, Collision Monitor node is ready to run.
+<p>Once Collision Monitor node has been tuned and <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topics adjusted, Collision Monitor node is ready to run.
 For that, run Nav2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>headless:<span class="o">=</span>False
 </pre></div>

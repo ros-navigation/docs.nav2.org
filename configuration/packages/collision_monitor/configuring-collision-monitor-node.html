@@ -893,6 +893,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#substitution-in-parameter-file">Substitution in parameter file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#smac-planner-debug-param-name-change">Smac Planner Debug Param Name Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
 </ul>
 </li>
@@ -1045,12 +1046,13 @@ Subscribed footprint is also having the same properties as other polygons, but i
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>string</p></td>
-<td><p>“cmd_vel_raw”</p></td>
+<td><p>“cmd_vel_smoothed”</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Input <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic with desired robot velocity.</p>
+<dt>Description:</dt><dd><p>Input <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic with desired robot velocity.
+Please note, pre-<code class="docutils literal notranslate"><span class="pre">Jazzy</span></code> this was set to <code class="docutils literal notranslate"><span class="pre">cmd_vel_raw</span></code> by default.</p>
 </dd>
 </dl>
 </dd>
@@ -1615,7 +1617,7 @@ Subscribed footprint is also having the same properties as other polygons, but i
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">base_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_footprint&quot;</span>
 <span class="w">    </span><span class="nt">odom_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
-<span class="w">    </span><span class="nt">cmd_vel_in_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel_raw&quot;</span>
+<span class="w">    </span><span class="nt">cmd_vel_in_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel_smoothed&quot;</span>
 <span class="w">    </span><span class="nt">cmd_vel_out_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cmd_vel&quot;</span>
 <span class="w">    </span><span class="nt">state_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;collision_monitor_state&quot;</span>
 <span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
