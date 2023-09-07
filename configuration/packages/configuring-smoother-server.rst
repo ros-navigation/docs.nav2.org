@@ -46,6 +46,20 @@ Smoother Server Parameters
   Description
     TF transform tolerance.
 
+:action_server_result_timeout:
+
+  ====== ======= ======= 
+  Type   Default Unit
+  ------ ------- -------
+  double 20.0   seconds
+  ====== ======= =======
+
+  Description
+    The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
+    15 minutes in rclc but was changed to 10 seconds in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_, which may be less than
+    some actions in Nav2 take to run.
+
+
 :robot_base_frame:
 
   ============== =============================
