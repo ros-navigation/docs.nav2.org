@@ -51,7 +51,7 @@ Smoother Server Parameters
   ====== ======= ======= 
   Type   Default Unit
   ------ ------- -------
-  double 20.0   seconds
+  double 10.0    seconds
   ====== ======= =======
 
   Description

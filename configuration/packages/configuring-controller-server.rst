@@ -29,7 +29,7 @@ Parameters
   ====== ======= ======= 
   Type   Default Unit
   ------ ------- -------
-  double 10.0   seconds
+  double 10.0    seconds
   ====== ======= =======
 
   Description
