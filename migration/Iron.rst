@@ -79,9 +79,9 @@ In this `PR #3693 <https://github.com/ros-planning/navigation2/pull/3500>`_ A ne
 It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the ``collision_detector_state`` topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).
 
 Expose action server's result timeout
-******************************************************
+*************************************
 
 In this `PR #3787 <https://github.com/ros-planning/navigation2/pull/3787>`_ the timeout for action server's result was exposed in all nodes having action servers. 
-This is because in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_ in rclc a change was introduced which makes action servers discard a goal handle if the result
+This is because in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_ in rcl a change was introduced which makes action servers discard a goal handle if the result
 is not produced within 10 seconds, when the default was set to 15 minutes before. Since actions in Nav2 may take more than 10 seconds to complete, the user has now the ability
 to set this value through the ``action_server_result_timeout`` parameter, which defaults to 15 minutes in the ``bt_navigators`` and ``waypoint_follower`` and to 10 seconds in all other nodes.
