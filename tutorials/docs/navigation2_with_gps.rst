@@ -128,6 +128,28 @@ To get GPS readings from Gazebo we need to create a robot model with a GPS senso
     </plugin>
   </sensor>
 
+Addionally we need to perform some changes in the ``urdf`` to get proper static transforms:
+
+1. Since we added a new GPS sensor in the ``gps_link`` we need to add a joint for this link that publishes a static transform w.r.t. ``base_link``:
+
+.. code-block:: xml
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint" />
+    <origin xyz="0 0 -0.010" rpy="0 0 0"/>
+  </joint>
+
+2. Since robot_localization will use ``base_link`` as base frame but Gazebo publishes odometry on ``base_footprint`` we need to make ``base_footprint`` a child of ``base_link``
+
+.. code-block:: xml
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint" />
+    <origin xyz="0 0 -0.010" rpy="0 0 0"/>
+  </joint>
+
 Build the nav2_gps_waypoint_follower_demo package, source your workspace and test your gazebo world is properly set up by launching: 
 
 .. code-block:: bash
@@ -255,7 +277,7 @@ You should see the window below after properly setting the API key:
     :align: center
     :alt: Turtlebot in the sonoma raceway
 
-Finally run the turtle teleop key node to teleoperate the simulated Turtlebot: 
+Finally run the teleop twist keyboard node to teleoperate the simulated Turtlebot: 
 
 .. code-block:: bash
 
@@ -354,8 +376,42 @@ You can now click on the mapviz map the pose you want the robot to go. The gif b
 4-  Logged GPS Waypoint Follower & Waypoint Logging
 ---------------------------------------------------
 
-Finally let's make a robot go through a set of predefined GPS waypoints stored in a yaml file. For this purpose we provide the `logged_waypoint_follower <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py>`_ node and a `waypoints <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/demo_waypoints.yaml>`_ file. To test this node source your workspace and with the rest of the system running type:
+Finally let's make a robot go through a set of predefined GPS waypoints. We provide a `waypoint logging tool <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/gps_waypoint_logger.py>`_ that subscribes to the robot's GPS and IMU and offers a simple GUI to save the robot coordinates and heading on demand to a ``yaml`` file with the format:
+
+.. code-block:: yaml
+
+  waypoints:
+  - latitude: 38.161491054181276
+    longitude: -122.45464431092836
+    yaw: 0.0
+  - latitude: 38.161587576524845
+    longitude: -122.4547994038464
+    yaw: 1.57
+
+Let's log some waypoints for the robot to follow. Source your workspace and with the rest of the system running type:
 
 .. code-block:: bash
 
-  ros2 run nav2_gps_waypoint_follower_demo logged_waypoint_follower
+  ros2 run nav2_gps_waypoint_follower_demo gps_waypoint_logger </path/to/yaml/file.yaml>
+
+If you don't provide a path to save your waypoints, they will be saved in your ``home`` folder by default with the name ``gps_waypoints.yaml``. Once the node launches you should see a small GUI with a button to log waypoints, you may now move the robot around and click that button to record its position as the gif below shows:
+
+.. image:: images/Gps_Navigation/waypoint_logging.gif
+  :width: 800px
+  :align: center
+
+After that you should get a ``yaml`` file in the location you specified with the format shown above; let's now make the robot follow the logged waypoints. For this purpose we provide the `logged_waypoint_follower <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py>`_ node, which takes in the path to the waypoints file as an argument and uses the ``BasicNavigator`` in ``nav2_simple_commander`` to send the logged goals to the ``/follow_gps_waypoints`` action server. If not provided, the node uses the `default waypoints <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/demo_waypoints.yaml>`_ in the ``nav2_gps_waypoint_follower_demo`` package.
+
+To run this node source your workspace and with the rest of the system running type:
+
+.. code-block:: bash
+
+  ros2 run nav2_gps_waypoint_follower_demo logged_waypoint_follower </path/to/yaml/file.yaml>
+
+You should now see the robot following the waypoints you previously logged: 
+
+.. image:: images/Gps_Navigation/logged_waypoint_follower.gif
+  :width: 800px
+  :align: center
+
+
