@@ -210,7 +210,7 @@ Since per `REP 105 <https://www.ros.org/reps/rep-0105.html>`_ the position of th
 Global Odometry
 ^^^^^^^^^^^^^^^
 
-The global odometry is provided by the ``ekf_filter_node_map``, which publishes the transform between ``map`` and ``base_link``. This EKF is set to work in 2D mode as well. In addition to the IMU and wheel odometry data, this filter takes in the odometry output of the gps, published by the ``navsat_transform`` node on ``/odometry/gps``:
+The global odometry is provided by the ``ekf_filter_node_map``, which publishes the transform between ``map`` and ``base_link``. This EKF is set to work in 2D mode as well. In addition to the IMU and wheel odometry data, this filter takes in the odometry output of the gps, published by the ``navsat_transform`` node on ``/odometry/gps``, as an odometry message:
 
 .. code-block:: yaml
 
