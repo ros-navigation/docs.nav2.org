@@ -63,7 +63,7 @@ Several positioning augmentation technologies exists to reduce the error of GPS 
 
 Additionally, to fully describe a robot's localization we need to know its heading as well, however standalone GPS sensors do not provide orientation measurements, only position measurements. In this tutorial we will refer as 'absolute heading' to a yaw measurement which is given w.r.t. a cardinal direction (e.g, the east), in contrast to relative heading, which is given w.r.t. the angle the robot is turned on or any other reference that cannot be directly mapped  to a cardinal direction.
 
-When using robot_localization with GPS, measuring absolute orientation is mandatory. There are several alternatives for getting absolute orientation data, like IMUs with magnetometers, dual GPS systems or matching techniques over a known map; in this tutorial we assume the robot is equipped with an IMU that can accurately measure absolute orientation following the ENU convention, meaning it will output zero yaw when facing east and +90 degrees when facing north. 
+When using robot_localization with GPS, measuring absolute orientation is mandatory. There are several strategies for getting absolute orientation data, like IMUs with magnetometers, dual GPS systems or matching techniques over a known map; in this tutorial we assume the robot is equipped with an IMU that can accurately measure absolute orientation following the ENU convention, meaning it will output zero yaw when facing east and +90 degrees when facing north. 
 
 Despite the above assumption, in the real world commercial grade IMU's mounted in actual robots will often not produce accurate absolute heading measurements because: 
 
