@@ -73,7 +73,9 @@ Despite the above assumption, in the real world commercial grade IMU's mounted i
 
 3. Robots can be a huge source of electromagnetic noise for magnetometers: Electric motors are full of permanent magnets and can draw several amps, producing significant disturbances to the sensor.
 
-Through the development of the tutorial we will see how to leverage robot_localization's Kalman Filters to mitigate this problem.
+Thus, for a particular application you should consider the behavior and localization quality you require when making decisions about how to estimate your absolute heading. When using IMU's without relative headings to a cardinal direction, the robot may need to move around for a bit in an 'initialization dance' to converge to the right heading using the filter. Using dual-GPS or 3D mapping system overlay, the initial heading is quite good. 
+
+For the purposes of this tutorial, we model a well-built system using an IMU that has absolute orientation already, but that may be augmented or replaced on a practical system using one of the techniques above (or others).
 
 Tutorial Steps
 ==============
