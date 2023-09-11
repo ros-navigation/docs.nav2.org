@@ -150,7 +150,7 @@ Addionally we need to perform some changes in the ``urdf`` to get proper static 
     <origin xyz="0 0 -0.010" rpy="0 0 0"/>
   </joint>
 
-Build the nav2_gps_waypoint_follower_demo package, source your workspace and test your gazebo world is properly set up by launching: 
+Build the ``nav2_gps_waypoint_follower_demo`` package, source your workspace and test your gazebo world is properly set up by launching: 
 
 .. code-block:: bash
 
