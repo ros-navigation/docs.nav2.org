@@ -331,7 +331,7 @@ There are three main possible setups for the global costmap:
         ...
         plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
 
-3. **Static position and size**: Finally, depending on your application you may still choose to use a fixed global costmap, just remember to make it fit all the potential locations the robot may visit. In this case you need to set the size and origin position in the parameters:
+3. **Static position and size**: Finally, depending on your application you may still choose to use a fixed global costmap if you have a restricted operating environment you know beforehand, just remember to make it fit all the potential locations the robot may visit. In this case you need to set the size and origin position in the parameters:
 
 .. code-block:: yaml
 
