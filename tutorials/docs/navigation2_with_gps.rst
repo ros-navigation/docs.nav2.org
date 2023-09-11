@@ -15,7 +15,7 @@ Navigating Using GPS Localization
 Overview
 ========
 
-This tutorial shows how to set up a localization system using a GPS sensor as source of global positioning and robot_localization (RL) for sensor fusion, and how to use Nav2 to follow GPS waypoints. It was written by Pedro Gonzalez at `Kiwibot <https://www.kiwibot.com/>`_
+This tutorial shows how to set up a localization system using a GPS sensor(s) as the source of global positioning, robot_localization (RL) for sensor fusion, and how to use Nav2 to follow GPS waypoints. It was written by Pedro Gonzalez at `Kiwibot <https://www.kiwibot.com/>`_.
 
 Requirements
 ============
