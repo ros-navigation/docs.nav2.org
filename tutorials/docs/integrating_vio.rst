@@ -33,10 +33,15 @@ Setting Up the ZED X Camera
 We're using the ZED X for the purposes of this tutorial due to its:
 
 - Smaller size similar to other AMR depth sensors
+
 - High quality depth information at relevent ranges for mobile robotics and manipulation
+
 - Hardware synchronized IMU
+
 - Wide field of view requiring only one camera in most situations
+
 - Use of GMSL2 connectors over USB (yay!) 
+
 - Global shutter cameras for improved quality and removed motion blur 
 
 Though, any other ZED camera with an IMU in it will work as well (ZED2, ZED2i, ZED mini, etc).  If you are using the ZED X in particular, checkout `this playlist on YouTube showing step by step how to setup the Nvidia Jetson and ZED X for ROS 2 <https://www.youtube.com/watch?v=sEH07WwB8X0&list=PLekRVIRfsmj-P74wmB5qXLYujbelQsW5O>`_ or `ZED X Getting Started page <https://www.stereolabs.com/docs/get-started-with-zed-x/>`_ to install the SDK, ZED X drivers, and ROS 2 drivers needed to proceed.
