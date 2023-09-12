@@ -31,6 +31,7 @@ Setting Up the ZED X Camera
 ===========================
 
 We're using the ZED X for the purposes of this tutorial due to its:
+
 - Smaller size similar to other AMR depth sensors
 - High quality depth information at relevent ranges for mobile robotics and manipulation
 - Hardware synchronized IMU
