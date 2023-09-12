@@ -23,6 +23,15 @@ Thus, this tutorial walks through the integration of VIO into a robot system to 
 
 Throughout this tutorial, we will be using the `Stereolabs <https://www.stereolabs.com>`_ SDK's `Position Tracking <https://www.stereolabs.com/docs/positional-tracking/>`_ capability as our VIO solution of choice paired with the new `ZED X <https://www.stereolabs.com/zed-x/>`_ camera. This VIO solution is easy to use and provides production-quality performance for *free* when using a ZED camera module. 
 
+.. raw:: html
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; height: 0; overflow: hidden; max-width: 100%; height: 100%;">
+          <iframe src="https://cdn2.stereolabs.com/docs/positional-tracking/images/zed-positional-tracking.mp4" frameborder="0" allowfullscreen width="550" height="400"></iframe>
+      </div>
+    </h1>
+
+
 .. note::
   While we use the Stereolabs SDK and ZED X camera, this tutorial may be broadly used with other solutions. However, we recommend this option as an optimized solution that is tightly-coupling to the camera hardware and Jetson compute architecture for high performance and fast out-of-the-box results. It is Open Navigation's experience that it can take months of testing of open-source VIO solutions and attempting to fix time synchronization issues with Stereo camera ROS drivers to achieve results of practical quality. This is very conveniently a one stop shop integrated solution. 
 
