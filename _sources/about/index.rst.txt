@@ -39,7 +39,7 @@ Our current leadership team includes:
 +-------------------+-------------------+-------------------+------------------+
 | Name              | Organization      | GitHub ID         | Current Role     |
 +===================+===================+===================+==================+
-| Steve Macenski    | Samsung Research  | SteveMacenski_    | Project Lead     |
+| Steve Macenski    | Open Navigation   | SteveMacenski_    | Project Lead     |
 +-------------------+-------------------+-------------------+------------------+
 | Ruffin White      | UC San Diego      | ruffsl_           | CI Wizard        |
 +-------------------+-------------------+-------------------+------------------+
