@@ -967,7 +967,14 @@ As such, this does not provide hard real-time safety certifications, but uses th
 <p>This is a useful and integral part of large heavy industrial robots, or robots moving with high velocities, around people or other dynamic agents (e.g. other robots) as a safety mechanism for high-response emergency stopping.
 The costmaps / trajectory planners will handle most situations, but this is to handle obstacles that virtually appear out of no where (from the robot’s perspective) or approach the robot at such high speed it needs to immediately stop to prevent collision.</p>
 <p>See the package’s <code class="docutils literal notranslate"><span class="pre">README</span></code> for more complete information. For more information how to bring-up your own Collision Monitor node, please refer to the <a class="reference internal" href="../../../tutorials/docs/using_collision_monitor.html#collision-monitor-tutorial"><span class="std std-ref">Using Collision Monitor</span></a> tutorial.</p>
-<div class="section" id="features">
+<p>Also, the practical demonstration of Collision Monitor abilities presented at 6th ROS Developers Day 2023, could be found below:</p>
+<h1 align="center">
+  <div>
+    <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+      <iframe width="700" height="394" src="https://www.youtube.com/embed/bWliK0PC5Ms?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+    </div>
+  </div>
+</h1><div class="section" id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
 <p>The Collision Monitor uses polygons relative the robot’s base frame origin to define “zones”.
 Data that fall into these zones trigger an operation depending on the model being used.
