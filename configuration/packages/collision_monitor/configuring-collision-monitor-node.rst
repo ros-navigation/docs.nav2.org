@@ -15,6 +15,18 @@ The costmaps / trajectory planners will handle most situations, but this is to h
 
 See the package's ``README`` for more complete information. For more information how to bring-up your own Collision Monitor node, please refer to the :ref:`collision_monitor_tutorial` tutorial.
 
+Also, the practical demonstration of Collision Monitor abilities presented at 6th ROS Developers Day 2023, could be found below:
+
+.. raw:: html
+
+    <h1 align="center">
+      <div>
+        <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+          <iframe width="700" height="394" src="https://www.youtube.com/embed/bWliK0PC5Ms?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+        </div>
+      </div>
+    </h1>
+
 Features
 ********
 
