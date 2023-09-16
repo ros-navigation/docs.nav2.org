@@ -46,7 +46,8 @@ Parameters
   ============== ========================
 
   Description
-    The name of the coordinate frame published by robot_localization. Only used by the gps_waypoint_follower.
+    The name of the global coordinate frame published by robot_localization. Only used by the gps_waypoint_follower to
+    convert GPS waypoints to this frame.
 
 :action_server_result_timeout:
 

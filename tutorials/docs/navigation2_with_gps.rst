@@ -7,6 +7,7 @@ Navigating Using GPS Localization
 - `Requirements`_
 - `GPS Localization Overview`_
 - `Tutorial Steps`_
+- `Conclusion`_
 
 .. image:: images/Gps_Navigation/interactive_wpf.gif
   :width: 600px
@@ -58,8 +59,7 @@ To cope with this, geodesy proposes several planar projection systems for locali
 
 `robot_localization <http://docs.ros.org/en/noetic/api/robot_localization/html/index.html>`_ uses this projection system to transform GPS measurements in the WGS84 reference system to a cartesian system, which centered on the origin of the grid zone where the GPS is at. This is achieved through the `navsat_transform node <http://docs.ros.org/en/jade/api/robot_localization/html/navsat_transform_node.html>`_. This node complies with the ENU convention in `REP 103 <https://www.ros.org/reps/rep-0103.html>`_, meaning that the ``+x`` axis of the ``utm`` coordinate system faces east, the ``+y`` faces north and the ``+z`` axis points up.
 
-In this tutorial we assume the robot's GPS produces a really accurate and smooth estimation of the robot's position, however in the real world for standalone GPSs that's often not the case: you should expect accuracies of 1-2 meters under excellent conditions and up to 10 meters, and frequent jumps in the position as the GPS sensor picks up less or more satellites.
-Several positioning augmentation technologies exists to reduce the error of GPS measurements, one of the most common ones is called `RTK <https://en.wikipedia.org/wiki/Real-time_kinematic_positioning>`_ (Real Time Kinematic Positioning), which can bring the accuracy of receivers down to 1cm. If accuracy matters in your application this technology is highly recommended; though this requires the deployment of a second fixed GPS called base, most of the US and Europe are already covered with public free to use bases that you can connect to. You can read more about RTK and how to get started on `this tutorial <https://learn.sparkfun.com/tutorials/setting-up-a-rover-base-rtk-system>`_.
+In the real world GPS sensors can be noisy: With standalone GPSs you should expect accuracies of 1-2 meters under excellent conditions and up to 10 meters, and frequent jumps in the position as the GPS sensor picks up less or more satellites, which can degrade the quality of navigation significantly. Several positioning augmentation technologies exists to reduce the error of GPS measurements, one of the most common ones is called `RTK <https://en.wikipedia.org/wiki/Real-time_kinematic_positioning>`_ (Real Time Kinematic Positioning), which can bring the accuracy of receivers down to 1cm. If accuracy matters in your application this technology is highly recommended; though this requires the deployment of a second fixed GPS called base, most of the US and Europe are already covered with public free to use bases that you can connect to. You can read more about RTK and how to get started `here <https://learn.sparkfun.com/tutorials/setting-up-a-rover-base-rtk-system>`_. In this tutorial we assume the robot's GPS produces a really accurate and smooth estimation of the robot's position.
 
 Additionally, to fully describe a robot's localization we need to know its heading as well, however standalone GPS sensors do not provide orientation measurements, only position measurements. In this tutorial we will refer as absolute heading to a yaw measurement which is given w.r.t. a cardinal direction (e.g, the east), in contrast to relative heading, which is given w.r.t. the angle the robot is turned on or any other reference that cannot be directly mapped  to a cardinal direction.
 
@@ -128,19 +128,7 @@ To get GPS readings from Gazebo we need to create a robot model with a GPS senso
     </plugin>
   </sensor>
 
-Addionally we need to perform some changes in the ``urdf`` to get proper static transforms:
-
-1. Since we added a new GPS sensor in the ``gps_link`` we need to add a joint for this link that publishes a static transform w.r.t. ``base_link``:
-
-.. code-block:: xml
-
-  <joint name="base_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="base_footprint" />
-    <origin xyz="0 0 -0.010" rpy="0 0 0"/>
-  </joint>
-
-2. Since robot_localization will use ``base_link`` as base frame but Gazebo publishes odometry on ``base_footprint`` we need to make ``base_footprint`` a child of ``base_link``
+Additionally, since we added a new GPS sensor in the ``gps_link`` we need to add a joint for this link that publishes a static transform w.r.t. ``base_link``
 
 .. code-block:: xml
 
@@ -168,16 +156,16 @@ A Turtlebot waffle should appear in the Sonoma Raceway world. You may also echo 
 
 Once you have your simulation (or real robot) up and running, it's time to set up your localization system. Remember that Nav2 uses a ``tf`` chain with the structure ``map`` -> ``odom`` -> ``base_link`` -> ``[sensor frames]``; global localization (``map`` -> ``odom``) is usually provided by ``amcl``, while ``odom`` -> ``base_link`` is usually provided by the user's odometry system (wheel odometry, visual odometry, etc).
 
-In this tutorial, the GPS sensor on the robot will replace ``amcl`` in providing global localization. Though you may build a custom module that takes in the ``NavSatFix`` and ``Imu`` messages of your GPS and imu, and outputs a ``tf`` between your ``map`` and ``base_link`` frames using a planar projection, Nav2's GPS waypoint follower needs robot_localization to be used. As mentioned above, This package already has the `navsat_transform_node <http://docs.ros.org/en/jade/api/robot_localization/html/navsat_transform_node.html>`_ for this purpose, and features state estimation nodes that use Kalman Filters to fuse multiple sources of data.
+In this tutorial, the GPS sensor on the robot will replace ``amcl`` in providing global localization. Though you may build a custom module that takes in the ``NavSatFix`` and ``Imu`` messages of your GPS and imu, and outputs a ``tf`` between your ``map`` and ``odom`` frames using a planar projection, Nav2's GPS waypoint follower currently uses robot_localization for converting GPS goals to cartesian goals, and thus at a `navsat_transform_node <http://docs.ros.org/en/jade/api/robot_localization/html/navsat_transform_node.html>`_ shoud be active. Additionally, ``robot_localization`` features reconfigurable state estimation nodes that use Kalman Filters to fuse multiple sources of data, which is yet another reason to use it.
 
-We will setup one extended kalman filter for local odometry, fusing wheel odometry and IMU data; a second one for global localization, fusing the local cartesian converted GPS coordinates, the wheel odometry and the IMU data; and a navsat_transform node to output cartesian odometry messages from GPS data. This is a common setup on robot_localization when using GPS data and more details around its configuration can be found in `RL's docs <http://docs.ros.org/en/jade/api/robot_localization/html/integrating_gps.html>`_. 
+We will setup one Extended Kalman Filter for local odometry, fusing wheel odometry and IMU data; a second one for global localization, fusing the local cartesian converted GPS coordinates, the wheel odometry and the IMU data; and a navsat_transform node to output cartesian odometry messages from GPS data. This is a common setup on robot_localization when using GPS data and more details around its configuration can be found in `RL's docs <http://docs.ros.org/en/jade/api/robot_localization/html/integrating_gps.html>`_. 
 
 A `configuration file <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/dual_ekf_navsat_params.yaml>`_ and a `launch file <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/launch/dual_ekf_navsat.launch.py>`_ are provided for this purpose. You may take a while before continuing to understand these two files and what they configure. Let's walk through the most relevant setting of each node.
 
 Local Odometry
 ^^^^^^^^^^^^^^
 
-The local odometry is provided by the ``ekf_filter_node_odom``, which publishes the transform between ``odom`` and ``base_link``. Note that the EKFs are set to work in 2D mode, this is because nav2's costmap environment representation is 2-Dimensional, and several layers rely on the ``base_link`` frame being on the same plane as their global frame for the height related parameters to make sense. This is encoded in the following parameters:
+The local odometry is provided by the ``ekf_filter_node_odom``, which publishes the transform between ``odom`` and ``base_footprint``, the base frame of the turtlebot's diff drive plugin in gazebo. The robot state publisher provides a static transform between ``base_footprint`` and ``base_link``, however make sure to set the base frame properly in RL according to your configuration. Note that the EKFs are set to work in 2D mode, this is because nav2's costmap environment representation is 2-Dimensional, and several layers rely on the ``base_link`` frame being on the same plane as their global frame for the height related parameters to make sense. This is encoded in the following parameters:
 
 .. code-block:: yaml
 
@@ -186,7 +174,7 @@ The local odometry is provided by the ``ekf_filter_node_odom``, which publishes 
       two_d_mode: true
       publish_tf: true
 
-      base_link_frame: base_link
+      base_link_frame: base_footprint
       world_frame: odom
 
 Since per `REP 105 <https://www.ros.org/reps/rep-0105.html>`_ the position of the robot in the ``odom`` frame has to be continuous over time, in this filter we just want to fuse the robot's speed measured by its wheels published ``/odom``, and the imu heading published on ``/imu``:
@@ -210,7 +198,7 @@ Since per `REP 105 <https://www.ros.org/reps/rep-0105.html>`_ the position of th
 Global Odometry
 ^^^^^^^^^^^^^^^
 
-The global odometry is provided by the ``ekf_filter_node_map``, which publishes the transform between ``map`` and ``base_link``. This EKF is set to work in 2D mode as well. In addition to the IMU and wheel odometry data, this filter takes in the odometry output of the gps, published by the ``navsat_transform`` node on ``/odometry/gps``:
+The global odometry is provided by the ``ekf_filter_node_map``, which publishes the transform between ``map`` and ``base_footprint``. This EKF is set to work in 2D mode as well. In addition to the IMU and wheel odometry data, this filter takes in the odometry output of the gps, published by the ``navsat_transform`` node on ``/odometry/gps``:
 
 .. code-block:: yaml
 
@@ -219,7 +207,7 @@ The global odometry is provided by the ``ekf_filter_node_map``, which publishes 
       two_d_mode: true
       publish_tf: true
 
-      base_link_frame: base_link
+      base_link_frame: base_footprint
       world_frame: map
 
       odom1: odometry/gps
@@ -414,4 +402,11 @@ You should now see the robot following the waypoints you previously logged:
   :width: 800px
   :align: center
 
+Conclusion
+==========
 
+This tutorial discussed the usage of a GPS sensor for global localization using RL and the ``navsat_transform`` node, covering the setup of a gazebo simulation with a GPS equipped robot as well. It also went through the configuration changes in Nav2 for navigating with GPS localization, emphasizing on some different possibilities for setting up the global costmap. Finally it showcased the capabilities of Nav2's GPS waypoint follower as a demonstration on how to use the stack in outdoors environments.
+
+The tutorial should be a good starting point for setting up autonomous navigation using Nav2 on an outdoors robot, however users should keep in mind that GPS is just a means for providing global localization to the stack, and that all cartesian tools in Nav2 are still available for going past the GPS waypoint follower and building custom autonomy applications according to each use case.
+
+Happy outdoors navigating!
