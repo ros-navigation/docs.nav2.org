@@ -16,7 +16,7 @@ Navigating Using GPS Localization
 Overview
 ========
 
-This tutorial shows how to set up a localization system using a GPS sensor as source of global positioning and robot_localization (RL) for sensor fusion, and how to use Nav2 to follow GPS waypoints. It was written by Pedro Gonzalez at `Kiwibot <https://www.kiwibot.com/>`_
+This tutorial shows how to set up a localization system using a GPS sensor(s) as the source of global positioning, robot_localization (RL) for sensor fusion, and how to use Nav2 to follow GPS waypoints. It was written by Pedro Gonzalez at `Kiwibot <https://www.kiwibot.com/>`_.
 
 Requirements
 ============
@@ -61,9 +61,9 @@ To cope with this, geodesy proposes several planar projection systems for locali
 
 In the real world GPS sensors can be noisy: With standalone GPSs you should expect accuracies of 1-2 meters under excellent conditions and up to 10 meters, and frequent jumps in the position as the GPS sensor picks up less or more satellites, which can degrade the quality of navigation significantly. Several positioning augmentation technologies exists to reduce the error of GPS measurements, one of the most common ones is called `RTK <https://en.wikipedia.org/wiki/Real-time_kinematic_positioning>`_ (Real Time Kinematic Positioning), which can bring the accuracy of receivers down to 1cm. If accuracy matters in your application this technology is highly recommended; though this requires the deployment of a second fixed GPS called base, most of the US and Europe are already covered with public free to use bases that you can connect to. You can read more about RTK and how to get started `here <https://learn.sparkfun.com/tutorials/setting-up-a-rover-base-rtk-system>`_. In this tutorial we assume the robot's GPS produces a really accurate and smooth estimation of the robot's position.
 
-Additionally, to fully describe a robot's localization we need to know its heading as well, however standalone GPS sensors do not provide orientation measurements, only position measurements. In this tutorial we will refer as absolute heading to a yaw measurement which is given w.r.t. a cardinal direction (e.g, the east), in contrast to relative heading, which is given w.r.t. the angle the robot is turned on or any other reference that cannot be directly mapped  to a cardinal direction.
+Additionally, to fully describe a robot's localization we need to know its heading as well, however standalone GPS sensors do not provide orientation measurements, only position measurements. In this tutorial we will refer as 'absolute heading' to a yaw measurement which is given w.r.t. a cardinal direction (e.g, the east), in contrast to relative heading, which is given w.r.t. the angle the robot is turned on or any other reference that cannot be directly mapped  to a cardinal direction.
 
-When using robot_localization with GPS, measuring absolute orientation is mandatory. There are several alternatives for getting absolute orientation data, like IMUs with magnetometers, dual GPS systems or matching techniques over a known map; in this tutorial we assume the robot is equipped with an IMU that can accurately measure absolute orientation following the ENU convention, meaning it will output zero yaw when facing east and +90 degrees when facing north. 
+When using robot_localization with GPS, measuring absolute orientation is mandatory. There are several strategies for getting absolute orientation data, like IMUs with magnetometers, dual GPS systems or matching techniques over a known map; in this tutorial we assume the robot is equipped with an IMU that can accurately measure absolute orientation following the ENU convention, meaning it will output zero yaw when facing east and +90 degrees when facing north. 
 
 Despite the above assumption, in the real world commercial grade IMU's mounted in actual robots will often not produce accurate absolute heading measurements because: 
 
@@ -73,7 +73,9 @@ Despite the above assumption, in the real world commercial grade IMU's mounted i
 
 3. Robots can be a huge source of electromagnetic noise for magnetometers: Electric motors are full of permanent magnets and can draw several amps, producing significant disturbances to the sensor.
 
-Through the development of the tutorial we will see how to leverage robot_localization's Kalman Filters to mitigate this problem.
+Thus, for a particular application you should consider the behavior and localization quality you require when making decisions about how to estimate your absolute heading. When using IMU's without relative headings to a cardinal direction, the robot may need to move around for a bit in an 'initialization dance' to converge to the right heading using the filter. Using dual-GPS or 3D mapping system overlay, the initial heading is quite good. 
+
+For the purposes of this tutorial, we model a well-built system using an IMU that has absolute orientation already, but that may be augmented or replaced on a practical system using one of the techniques above (or others).
 
 Tutorial Steps
 ==============
@@ -138,7 +140,7 @@ Additionally, since we added a new GPS sensor in the ``gps_link`` we need to add
     <origin xyz="0 0 -0.010" rpy="0 0 0"/>
   </joint>
 
-Build the nav2_gps_waypoint_follower_demo package, source your workspace and test your gazebo world is properly set up by launching: 
+Build the ``nav2_gps_waypoint_follower_demo`` package, source your workspace and test your gazebo world is properly set up by launching: 
 
 .. code-block:: bash
 
@@ -198,7 +200,7 @@ Since per `REP 105 <https://www.ros.org/reps/rep-0105.html>`_ the position of th
 Global Odometry
 ^^^^^^^^^^^^^^^
 
-The global odometry is provided by the ``ekf_filter_node_map``, which publishes the transform between ``map`` and ``base_footprint``. This EKF is set to work in 2D mode as well. In addition to the IMU and wheel odometry data, this filter takes in the odometry output of the gps, published by the ``navsat_transform`` node on ``/odometry/gps``:
+The global odometry is provided by the ``ekf_filter_node_map``, which publishes the transform between ``map`` and ``base_footprint``. This EKF is set to work in 2D mode as well. In addition to the IMU and wheel odometry data, this filter takes in the odometry output of the gps, published by the ``navsat_transform`` node on ``/odometry/gps`` as an odometry message:
 
 .. code-block:: yaml
 
@@ -319,7 +321,7 @@ There are three main possible setups for the global costmap:
         ...
         plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
 
-3. **Static position and size**: Finally, depending on your application you may still choose to use a fixed global costmap, just remember to make it fit all the potential locations the robot may visit. In this case you need to set the size and origin position in the parameters:
+3. **Static position and size**: Finally, depending on your application you may still choose to use a fixed global costmap if you have a restricted operating environment you know beforehand, just remember to make it fit all the potential locations the robot may visit. In this case you need to set the size and origin position in the parameters:
 
 .. code-block:: yaml
 
