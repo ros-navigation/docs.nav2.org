@@ -102,6 +102,14 @@ Thus, make the following parameter updates to the ``zed_wrapper``'s default para
             path_max_count: 30
             qos_depth: 5
 
+Optionally, remap the zed ``odom`` topic to a topic that isn't reserved or commonly used by other systems. In your ZED launch file add to the node / launch file:
+
+.. code-block:: python
+
+    remappings=[('odom', 'camera_odom')]
+
+.. note::
+  The ZED driver will publish two pose tracking topics, ``pose`` and ``odom``. Pose is the full V-SLAM pose with loop closures (or not, if ``area_memory: false``). The odom topic contains the actual VIO that we'd like to use, which publishes at frame capture rate. The Pose topic may publish at irregular frequencies depending on loop-closures. Thus, we'd like to use ``odom`` for this local fusion.
 
 Fusing VIO Into Local State Estimate
 ====================================
@@ -114,7 +122,7 @@ Most users at this point already have a ``robot_localization`` configuration fil
 
 .. code-block:: yaml
 
-    odom1: pose # Adjust if namespacing ZED camera (e.g. /zed/pose)
+    odom1: camera_odom # Adjust if namespacing ZED camera (e.g. /zed/odom)
     odom1_config: [true,  true,  true,  # X, Y, Z
                    true,  true,  true,  # Roll, Pitch, Yaw
                    false, false, false, # Vx, Vy, Vz
