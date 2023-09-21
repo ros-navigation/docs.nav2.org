@@ -143,7 +143,7 @@ Fusing VSLAM Into Global State Estimate
 
 While out of the scope of this tutorial, it is possible to continue to produce VSLAM results for global localization with loop closure (both in general and using the Stereolabs Position Tracking SDK). The steps for integration are similar to the last sections, except:
 
-- Continue to disable the TF tree for ``map->odom``, but publish the global pose topic similar to the VIO topic
+- Continue to disable the TF tree for ``map->odom``, but the global pose topic will continue to publish under ``pose`` for fusion
 
 - Fuse that topic into a global localization EKF in ``world_frame: map`` along with other sources of information (e.g. external IMU, AMCL, GPS, etc). 
 
