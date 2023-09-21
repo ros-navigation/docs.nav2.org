@@ -73,17 +73,35 @@ Setting Up ZED ROS
 
 In order to run VIO alone, we need to do the following:
 
-1. Stop computing VSLAM's ``map->odom``, both to save compute power and remove this part of the TF tree provided by our global localization solution (e.g. AMCL, GPS, fused global state estimate).
+1. Stop computing VSLAM's ``map->odom``, TF transform. This part of the TF tree is provided by our global localization solution (e.g. AMCL, GPS, fused global state estimate).
 
-TODO stop computing (wasting resources), stop publishing TF map->odom.
-
-2. Disable VIO's publication of ``odom->camera`` and instead publish ``nav_msgs/Odometry`` of the VIO's pose solution for fusion.
-
-TODO stop publishing TF odom->base_link->camera_link, publish to topic only. Or only TF publish camera_link->odom_camera for visualization purposes
+2. Disable VIO's publication of ``odom->camera`` and instead publish ``nav_msgs/Odometry`` of the VIO's pose solution for fusion. By default the ``zed_wrapper`` publishes this under the ``odom`` topic, but it is recommended to remap this to a non-reserved topic name (for example, ``camera_odom``).
 
 3. Re-configure the ZED Wrapper's parameters to obtain the best VIO as possible.
 
-TODO pos_tracking_enabled, two_d_mode, grab_frame_rate, note that there are other parameters worth considering
+- ``two_d_mode`` will force the pose tracking to be in 2D dimensions (e.g. X, Y, Yaw) for indoor or 2D applications.
+
+- ``pos_tracking_enabled`` will disable or enable pose tracking, if you desire it (and we do here!).
+
+- ``path_max_count`` will set the maximum size of the visualization of the pose over time. By default it is infinite. We should make this finite.
+
+- ``qos_depth`` will set the QoS depth throughout the driver. Set this to 3-5 for all options. 1 may result in dropping of messages in very temporary blibs in compute. 3-5 allows us to buffer a small handful of measurements to process for very short term blibs, but clears them all the same in CPU thrashing situations.
+
+Thus, make the following parameter updates to the ``zed_wrapper``'s default parameters:
+
+.. code-block:: yaml
+
+        pos_tracking:
+            publish_tf: false # Disables odom -> base_link TF transformation
+            publish_map_tf: true # Disables map -> odom TF transformation       
+            area_memory: false # Disables loop closure computation, but Pose topic for global VSLAM still published (but now pure VIO)
+
+            # Optional optimizations
+            two_d_mode: false # Or true, up to you!
+            pos_tracking_enabled: true # of course!
+            path_max_count: 30
+            qos_depth: 5
+
 
 Fusing VIO Into Local State Estimate
 ====================================
@@ -96,7 +114,7 @@ Most users at this point already have a ``robot_localization`` configuration fil
 
 .. code-block:: yaml
 
-    odom1: zed/pose TODO topic name
+    odom1: pose # Adjust if namespacing ZED camera (e.g. /zed/pose)
     odom1_config: [true,  true,  true,  # X, Y, Z
                    true,  true,  true,  # Roll, Pitch, Yaw
                    false, false, false, # Vx, Vy, Vz
