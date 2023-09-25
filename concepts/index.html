@@ -249,6 +249,21 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html">Navigating Using GPS Localization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#gps-localization-overview">GPS Localization Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#setup-gazebo-world">0- Setup Gazebo World</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#setup-gps-localization-system">1- Setup GPS Localization system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#setup-navigation-system">2- Setup Navigation system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#interactive-gps-waypoint-follower">3-  Interactive GPS Waypoint Follower</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#logged-gps-waypoint-follower-waypoint-logging">4-  Logged GPS Waypoint Follower &amp; Waypoint Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_groot.html">Groot - Interacting with Behavior Trees</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#visualize-behavior-trees">Visualize Behavior Trees</a></li>
@@ -893,6 +908,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#substitution-in-parameter-file">Substitution in parameter file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#smac-planner-debug-param-name-change">Smac Planner Debug Param Name Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#added-gps-waypoint-follower-server">Added GPS Waypoint Follower Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#expose-action-server-s-result-timeout">Expose action server’s result timeout</a></li>
@@ -1130,6 +1146,8 @@ There are 2 schools of thoughts for fleet managers / dispatchers:</p>
 <p>In the first, the <code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> is fully sufficient to create a production-grade on-robot solution. Since the autonomy system / dispatcher is taking into account things like the robot’s pose, battery level, current task, and more when assigning tasks, the application on the robot just needs to worry about the task at hand and not the other complexities of the system to complete the requested task. In this situation, you should think of a request to the waypoint follower as 1 unit of work (e.g. 1 pick in a warehouse, 1 security patrole loop, 1 aisle, etc) to do a task and then return to the dispatcher for the next task or request to recharge. In this school of thought, the waypoint following application is just one step above navigation and below the system autonomy application.</p>
 <p>In the second, the <code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> is a nice sample application / proof of concept, but you really need your waypoint following / autonomy system on the robot to carry more weight in making a robust solution. In this case, you should use the <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> package to create a custom application-level behavior tree using navigation to complete the task. This can include subtrees like checking for the charge status mid-task for returning to dock or handling more than 1 unit of work in a more complex task. Soon, there will be a <code class="docutils literal notranslate"><span class="pre">nav2_bt_waypoint_follower</span></code> (name subject to adjustment) that will allow you to create this application more easily. In this school of thought, the waypoint following application is more closely tied to the system autonomy, or in many cases, is the system autonomy.</p>
 <p>Neither is better than the other, it highly depends on the tasks your robot(s) are completing, in what type of environment, and with what cloud resources available. Often this distinction is very clear for a given business case.</p>
+<p><code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> also supports GPS waypoint following when global localization is provided by <a class="reference external" href="https://github.com/cra-ros-pkg/robot_localization/">robot_localization</a>  using the <code class="docutils literal notranslate"><span class="pre">navsat_transform</span></code> node - but also may be provided by Fuse or any number of other sources.
+There is an action server named <code class="docutils literal notranslate"><span class="pre">/follow_gps_waypoints</span></code> within <code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code> thah can directly take in goals expressed in GPS coordinates, convert them to cartesian goals in the global frame, and execute them as cartesian waypoints.</p>
 </div>
 </div>
 <div class="section" id="state-estimation">
