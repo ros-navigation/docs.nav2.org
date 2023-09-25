@@ -9,9 +9,14 @@ Navigating Using GPS Localization
 - `Tutorial Steps`_
 - `Conclusion`_
 
-.. image:: images/Gps_Navigation/interactive_wpf.gif
-  :width: 600px
-  :align: center
+
+.. raw:: html
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="708" height="400" src="https://www.youtube.com/embed/R_5HW1TUDQk?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+      </div>
+    </h1>
 
 Overview
 ========
