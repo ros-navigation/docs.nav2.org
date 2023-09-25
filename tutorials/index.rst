@@ -11,6 +11,7 @@ Navigation2 Tutorials
    docs/navigation2_on_real_turtlebot3.rst
    docs/navigation2_with_slam.rst
    docs/navigation2_with_stvl.rst
+   docs/navigation2_with_gps.rst
    docs/using_groot.rst
    docs/camera_calibration.rst
    docs/get_backtrace.rst
