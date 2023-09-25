@@ -126,14 +126,14 @@ Most users at this point already have a ``robot_localization`` configuration fil
     odom1_config: [true,  true,  true,  # X, Y, Z
                    true,  true,  true,  # Roll, Pitch, Yaw
                    false, false, false, # Vx, Vy, Vz
-                   false, false, true,  # Vroll, Vpitch, Vyaw
+                   false, false, false,  # Vroll, Vpitch, Vyaw
                    false, false, false] # Ax, Ay, Az
     odom1_differential: false
     odom1_relative: true
     odom1_queue_size: 2
 
 .. note::
-  We're fusing in Roll, Pitch, and Yaw. If operating your EKF or ZED in 2D modes, then set the Roll and Pitch fields to ``false``.
+  We're fusing in Roll, Pitch, and Yaw. If operating your EKF or ZED in 2D modes, then set the Roll and Pitch fields to ``false``. If you believe jumps in your VIO may occur, consider using ``odom1_pose_rejection_threshold`` which sets a threshold to reject updates if sufficiently outlandish relative to recent updates. In this case, setting differential to true may also be helpful so that single bogus updates don't move the entire coordinate system. 
 
 Make sure to evaluate your EKF's ``frequency``, ``two_d_mode``, ``publish_tf``, and key frames to be appropriate for your application. We generally want to publish TF and have 2D mode on when navigating in flat indoor environments only. 
 
