@@ -342,7 +342,16 @@ Polygons parameters
   Description:
     Topic name to publish a polygon to. Used only if ``visualize`` is true.
 
+:``<polygon_name name>``.enabled:
 
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           True
+  ============== =============================
+
+  Description:
+    Whether to use this polygon for collision monitoring. (Can be dynamically set)
 
 Observation sources parameters
 ==============================
@@ -404,6 +413,17 @@ Observation sources parameters
   Description:
     Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
 
+:``<source name>``.enabled:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           True
+  ============== =============================
+
+  Description:
+    Whether to use this source for collision monitoring. (Can be dynamically set)
+
 
 Example
 *******
@@ -431,6 +451,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           min_points: 4  # max_points: 3 for Humble
           visualize: True
           polygon_pub_topic: "polygon_stop"
+          enabled: True
         PolygonSlow:
           type: "polygon"
           points: [1.0, 1.0, 1.0, -1.0, -0.5, -1.0, -0.5, 1.0]
@@ -439,6 +460,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           slowdown_ratio: 0.3
           visualize: True
           polygon_pub_topic: "polygon_slowdown"
+          enabled: True
         PolygonLimit:
           type: "polygon"
           points: [0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5]
@@ -448,6 +470,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           angular_limit: 0.5
           visualize: True
           polygon_pub_topic: "polygon_limit"
+          enabled: True
         FootprintApproach:
           type: "polygon"
           action_type: "approach"
@@ -456,12 +479,15 @@ Here is an example of configuration YAML for the Collision Monitor.
           simulation_time_step: 0.02
           min_points: 6  # max_points: 5 for Humble
           visualize: False
+          enabled: True
         observation_sources: ["scan", "pointcloud"]
         scan:
           type: "scan"
           topic: "/scan"
+          enabled: True
         pointcloud:
           type: "pointcloud"
           topic: "/intel_realsense_r200_depth/points"
           min_height: 0.1
           max_height: 0.5
+          enabled: True

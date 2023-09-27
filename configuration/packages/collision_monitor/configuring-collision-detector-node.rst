@@ -204,7 +204,16 @@ Polygons parameters
   Description:
     Topic name to publish a polygon to. Used only if ``visualize`` is true.
 
+:``<source name>``.enabled:
 
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           True
+  ============== =============================
+
+  Description:
+    Whether to use this source for collision detection. (Can be dynamically set)
 
 Observation sources parameters
 ==============================
@@ -266,6 +275,16 @@ Observation sources parameters
   Description:
     Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
 
+:``<source name>``.enabled:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           True
+  ============== =============================
+
+  Description:
+    Whether to use this source for collision detection. (Can be dynamically set)
 
 Example
 *******
@@ -293,9 +312,11 @@ Here is an example of configuration YAML for the Collision Detector.
         scan:
           type: "scan"
           topic: "scan"
+          enabled: True
         pointcloud:
           type: "pointcloud"
           topic: "/intel_realsense_r200_depth/points"
           min_height: 0.1
           max_height: 0.5
+          enabled: True
 
