@@ -84,6 +84,11 @@ New node in nav2_collision_monitor: Collision Detector
 In this `PR #3693 <https://github.com/ros-planning/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector. 
 It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the ``collision_detector_state`` topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).
 
+Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector
+****************************************************************************
+
+In this `PR #3825 <https://github.com/ros-planning/navigation2/pull/3825>`_ we added the ability to dynamically enable/disable sources and polygons in the Collision Monitor/Detector.
+
 Expose action server's result timeout
 *************************************
 

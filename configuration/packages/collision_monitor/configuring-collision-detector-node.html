@@ -911,6 +911,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#added-gps-waypoint-follower-server">Added GPS Waypoint Follower Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector">Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#expose-action-server-s-result-timeout">Expose action server’s result timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#rewrittenyaml-could-add-new-parameters-to-yamls">RewrittenYaml could add new parameters to YAMLs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#simple-commander-api-allows-multi-robot-namespacing">Simple Commander API Allows Multi-Robot Namespacing</a></li>
@@ -1314,6 +1315,26 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.enabled</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Whether to use this source for collision detection. (Can be dynamically set)</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="observation-sources-parameters">
@@ -1420,6 +1441,26 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.enabled</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Whether to use this source for collision detection. (Can be dynamically set)</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 </div>
@@ -1445,11 +1486,13 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 <span class="w">    </span><span class="nt">scan</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scan&quot;</span>
 <span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scan&quot;</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">pointcloud</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pointcloud&quot;</span>
 <span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/intel_realsense_r200_depth/points&quot;</span>
 <span class="w">      </span><span class="nt">min_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 </pre></div>
 </div>
 </div>

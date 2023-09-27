@@ -911,6 +911,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#added-gps-waypoint-follower-server">Added GPS Waypoint Follower Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector">Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#expose-action-server-s-result-timeout">Expose action server’s result timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#rewrittenyaml-could-add-new-parameters-to-yamls">RewrittenYaml could add new parameters to YAMLs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#simple-commander-api-allows-multi-robot-namespacing">Simple Commander API Allows Multi-Robot Namespacing</a></li>
@@ -1527,6 +1528,26 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name</span> <span class="pre">name&gt;</span></code>.enabled</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Whether to use this polygon for collision monitoring. (Can be dynamically set)</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="observation-sources-parameters">
@@ -1633,6 +1654,26 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.enabled</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Whether to use this source for collision monitoring. (Can be dynamically set)</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 </div>
@@ -1658,6 +1699,7 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 <span class="w">      </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">  </span><span class="c1"># max_points: 3 for Humble</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_stop&quot;</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">PolygonSlow</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
 <span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">]</span>
@@ -1666,6 +1708,7 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 <span class="w">      </span><span class="nt">slowdown_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_slowdown&quot;</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">PolygonLimit</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
 <span class="w">      </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-0.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.5</span><span class="p p-Indicator">]</span>
@@ -1675,6 +1718,7 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 <span class="w">      </span><span class="nt">angular_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_limit&quot;</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">FootprintApproach</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
 <span class="w">      </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;approach&quot;</span>
@@ -1683,15 +1727,18 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 <span class="w">      </span><span class="nt">simulation_time_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.02</span>
 <span class="w">      </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span><span class="w">  </span><span class="c1"># max_points: 5 for Humble</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;scan&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;pointcloud&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">scan</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scan&quot;</span>
 <span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/scan&quot;</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">pointcloud</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pointcloud&quot;</span>
 <span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/intel_realsense_r200_depth/points&quot;</span>
 <span class="w">      </span><span class="nt">min_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 </pre></div>
 </div>
 </div>

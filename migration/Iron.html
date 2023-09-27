@@ -911,6 +911,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#added-gps-waypoint-follower-server">Added GPS Waypoint Follower Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector">Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#expose-action-server-s-result-timeout">Expose action server’s result timeout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rewrittenyaml-could-add-new-parameters-to-yamls">RewrittenYaml could add new parameters to YAMLs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simple-commander-api-allows-multi-robot-namespacing">Simple Commander API Allows Multi-Robot Namespacing</a></li>
@@ -1034,6 +1035,10 @@ easily prevent the robot to go through places that are not present in the static
 <h2>New node in nav2_collision_monitor: Collision Detector<a class="headerlink" href="#new-node-in-nav2-collision-monitor-collision-detector" title="Permalink to this headline">¶</a></h2>
 <p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3500">PR #3693</a> A new node was introduced in the nav2_collision_monitor: Collision Detector.
 It works similarly to the Collision Monitor, but does not affect the robot’s velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the <code class="docutils literal notranslate"><span class="pre">collision_detector_state</span></code> topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).</p>
+</div>
+<div class="section" id="dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector">
+<h2>Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector<a class="headerlink" href="#dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector" title="Permalink to this headline">¶</a></h2>
+<p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3825">PR #3825</a> we added the ability to dynamically enable/disable sources and polygons in the Collision Monitor/Detector.</p>
 </div>
 <div class="section" id="expose-action-server-s-result-timeout">
 <h2>Expose action server’s result timeout<a class="headerlink" href="#expose-action-server-s-result-timeout" title="Permalink to this headline">¶</a></h2>
