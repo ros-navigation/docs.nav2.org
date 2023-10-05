@@ -155,6 +155,6 @@ Testing it Out!
 
 In the below examples, we're fusing the Stereolabs SDK's Pose Tracking VIO solution with a robot's external IMU and odometry (e.g. ``robot_localization`` has ``odom0`` ``odom1`` and ``imu0``) to improve performance while navigating on a legged robot platform in outdoor environments. The robot's internal odometry based on leg motion is quite poor and causes the robot to have generally poor autonomous navigation performance. 
 
-With Visual-Inertial Odometry fusion, the robot is now within TODO % odometric error over this dataset.  
+The Visual-Inertial Odometry's error over these datasets is 4.1% over the 70m path. Typically for 'good' odometry from wheel encoders + IMU, I would like to see 2-3% fully tuned (or less than 1% for 'great' odometry), so this is a great source! Fused in with the legged robot odometry, it improves overall performance to approximately 3% error! 
 
 TODO video(s)
