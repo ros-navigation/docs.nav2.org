@@ -64,8 +64,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Nav2'
-copyright = u'2020'
-author = u'Various'
+copyright = u'2023'
+author = u'Open Navigation LLC'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

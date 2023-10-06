@@ -16,6 +16,7 @@ Navigation2 Tutorials
    docs/camera_calibration.rst
    docs/get_backtrace.rst
    docs/get_profile.rst
+   docs/integrating_vio.rst
    docs/navigation2_dynamic_point_following.rst
    docs/navigation2_with_keepout_filter.rst
    docs/navigation2_with_speed_filter.rst
