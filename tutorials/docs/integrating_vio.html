@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Filtering of Noise-Induced Obstacles &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Using VIO to Augment Robot Odometry &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Plugin Tutorials" href="../../plugin_tutorials/index.html" />
-    <link rel="prev" title="Adding a New Nav2 Task Server" href="adding_a_nav2_task_server.html" />
+    <link rel="next" title="Dynamic Object Following" href="navigation2_dynamic_point_following.html" />
+    <link rel="prev" title="Profiling in ROS 2 / Nav2" href="get_profile.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -296,15 +296,15 @@
 <li class="toctree-l3"><a class="reference internal" href="get_profile.html#interpreting-results">Interpreting Results</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="integrating_vio.html">Using VIO to Augment Robot Odometry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#setting-up-the-zed-x-camera">Setting Up the ZED X Camera</a></li>
-<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#setting-up-zed-ros">Setting Up ZED ROS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#fusing-vio-into-local-state-estimate">Fusing VIO Into Local State Estimate</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="integrating_vio.html#fusing-vslam-into-global-state-estimate">Fusing VSLAM Into Global State Estimate</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using VIO to Augment Robot Odometry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-zed-x-camera">Setting Up the ZED X Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-zed-ros">Setting Up ZED ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fusing-vio-into-local-state-estimate">Fusing VIO Into Local State Estimate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fusing-vslam-into-global-state-estimate">Fusing VSLAM Into Global State Estimate</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#testing-it-out">Testing it Out!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-it-out">Testing it Out!</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
@@ -375,15 +375,15 @@
 <li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Filtering of Noise-Induced Obstacles</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#enable-denoise-layer">1. Enable Denoise Layer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#run-nav2-stack">2. Run Nav2 stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html">Filtering of Noise-Induced Obstacles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#enable-denoise-layer">1. Enable Denoise Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#run-nav2-stack">2. Run Nav2 stack</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#how-it-works">How it works</a></li>
 </ul>
 </li>
 </ul>
@@ -975,7 +975,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">General Tutorials</a></li>
-      <li class="breadcrumb-item active">Filtering of Noise-Induced Obstacles</li>
+      <li class="breadcrumb-item active">Using VIO to Augment Robot Odometry</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -984,112 +984,138 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="filtering-of-noise-induced-obstacles">
-<span id="id1"></span><h1>Filtering of Noise-Induced Obstacles<a class="headerlink" href="#filtering-of-noise-induced-obstacles" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="using-vio-to-augment-robot-odometry">
+<span id="integrating-vio"></span><h1>Using VIO to Augment Robot Odometry<a class="headerlink" href="#using-vio-to-augment-robot-odometry" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
-<li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
-<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
-<li><p><a class="reference internal" href="#how-it-works">How it works</a></p></li>
+<li><p><a class="reference internal" href="#setting-up-the-zed-x-camera">Setting Up the ZED X Camera</a></p></li>
+<li><p><a class="reference internal" href="#setting-up-zed-ros">Setting Up ZED ROS</a></p></li>
+<li><p><a class="reference internal" href="#fusing-vio-into-local-state-estimate">Fusing VIO Into Local State Estimate</a></p></li>
+<li><p><a class="reference internal" href="#fusing-vslam-into-global-state-estimate">Fusing VSLAM Into Global State Estimate</a></p></li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/title.png"><img alt="../../_images/title.png" src="../../_images/title.png" style="width: 1000px;" /></a>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Noisy sensor measurements can cause to errors in <code class="docutils literal notranslate"><span class="pre">Voxel</span> <span class="pre">Layer</span></code> or <code class="docutils literal notranslate"><span class="pre">Obstacle</span> <span class="pre">Layer</span></code>. As a result, salt and pepper noise may appear on the costmap. This noise creates false obstacles that prevent the robot from finding the best path on the map. While the images above show both salt and pepper noise as well as error due to mislocalization, this layer will only remove sensor noise, not mislocalized artifacts misaligned with the static map.
-This tutorial shows how to configure filtering of false obstacles caused by noise. This functionality is provided by the <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> costmap layer plugin which will be enabled and used in this document.</p>
+<p>This tutorial highlights how to setup Visual-Inerial Odometry (VIO) into a Nav2 and ROS 2 based robotics system to augment robot odometry.</p>
+<p>Many modern robotics platforms have unideal configurations for high quality wheel odometry. For example, skid-steer, tracked, omnidirectional robots using mecanum wheels, and legged robots are notorious for producing suboptimal odometry. These types of platforms are becoming increasingly common in the robotics landscape and require augmentations or replacement sources of odometry. Further, some applications of robotics technologies involve retrofitting existing equipment which may not have odometry altogether.</p>
+<p>A subfield of computer vision and robotics focuses on how to use Visual (e.g. camera) and Inertial (e.g. IMU) data in order to compute high-speed relative motion independent of robot mechanics. This is an especially useful technology for UAVs without accurate intrinsic odometric sensing capabilities – or mobile robots with poor interinsic odometry measurements.</p>
+<p>Thus, this tutorial walks through the integration of VIO into a robot system to replace or augment wheel odometry so that your robot can autonomously navigate with quality state estimation required for a well-engineered system that is able to accurately and predictably complete its tasks.</p>
+<p>Throughout this tutorial, we will be using the <a class="reference external" href="https://www.stereolabs.com">Stereolabs</a> SDK’s <a class="reference external" href="https://www.stereolabs.com/docs/positional-tracking/">Position Tracking</a> capability as our VIO solution of choice paired with the new <a class="reference external" href="https://www.stereolabs.com/zed-x/">ZED X</a> camera. This VIO solution is easy to use and provides production-quality performance for <em>free</em> when using a ZED camera module.</p>
+<h1 align="center">
+  <div style="position: relative; padding-bottom: 0%; height: 0; overflow: hidden; max-width: 100%; height: 100%;">
+      <iframe src="https://cdn2.stereolabs.com/docs/positional-tracking/images/zed-positional-tracking.mp4" frameborder="0" allowfullscreen width="550" height="400"></iframe>
+  </div>
+</h1><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While we use the Stereolabs SDK and ZED X camera, this tutorial may be broadly used with other solutions. However, we recommend this option as an optimized solution that is tightly-coupling to the camera hardware and Jetson compute architecture for high performance and fast out-of-the-box results. It is Open Navigation’s experience that it can take months of testing of open-source VIO solutions and attempting to fix time synchronization issues with Stereo camera ROS drivers to achieve results of practical quality. This is very conveniently a one stop shop integrated solution.</p>
 </div>
-<div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in <a class="reference internal" href="../../development_guides/build_docs/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
 </div>
-<div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="enable-denoise-layer">
-<h3>1. Enable Denoise Layer<a class="headerlink" href="#enable-denoise-layer" title="Permalink to this headline">¶</a></h3>
-<p>Denoise Layer is Costmap2D plugin. You can enable the <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> plugin in Costmap2D by adding <code class="docutils literal notranslate"><span class="pre">denoise_layer</span></code> to the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>. You can place it in the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> and (or) <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> to filter noise on a global or local map. The DenoiseLayer plugin should have the following parameter defined:</p>
+<div class="section" id="setting-up-the-zed-x-camera">
+<h2>Setting Up the ZED X Camera<a class="headerlink" href="#setting-up-the-zed-x-camera" title="Permalink to this headline">¶</a></h2>
+<p>We’re using the ZED X for the purposes of this tutorial due to its:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">plugin</span></code>: type of plugin. In our case <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::DenoiseLayer</span></code>.</p></li>
+<li><p>Smaller size similar to other AMR depth sensors</p></li>
+<li><p>High quality depth information at relevent ranges for mobile robotics and manipulation</p></li>
+<li><p>Hardware synchronized IMU</p></li>
+<li><p>Wide field of view requiring only one camera in most situations</p></li>
+<li><p>Use of GMSL2 connectors over USB (yay!)</p></li>
+<li><p>Global shutter cameras for improved quality and removed motion blur</p></li>
 </ul>
-<p>Full list of parameters supported by <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> are listed at <a class="reference internal" href="../../configuration/packages/costmap-plugins/denoise.html#denoise"><span class="std std-ref">Denoise Layer Parameters</span></a> page.</p>
-<p>It is important to note that <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> typically should be placed before the inflation layer.
-This is required to prevent inflation from noise-induced obstacles.
-Moreover, <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> processes only obstacle information in the costmap.
-Values <code class="docutils literal notranslate"><span class="pre">INSCRIBED_INFLATED_OBSTACLE</span></code>, <code class="docutils literal notranslate"><span class="pre">LETHAL_OBSTACLE</span></code> and optionally <code class="docutils literal notranslate"><span class="pre">NO_INFORMATION</span></code>
-will be interpreted as obstacle cell. Cells with any other values will be interpreted as <code class="docutils literal notranslate"><span class="pre">FREE_SPACE</span></code> when processed (won’t be distorted in the cost map).
-If a cell with an obstacle is recognized as noise, it will be replaced by <code class="docutils literal notranslate"><span class="pre">FREE_SPACE</span></code> after processing.</p>
-<p>To enable <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> for both global and local costmaps, use the following configuration:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>global_costmap:
-  global_costmap:
-    ros__parameters:
-      ...
-      plugins: [&quot;static_layer&quot;, &quot;obstacle_layer&quot;, &quot;denoise_layer&quot;, &quot;inflation_layer&quot;]
-      ...
-      denoise_layer:
-        plugin: &quot;nav2_costmap_2d::DenoiseLayer&quot;
-        enabled: True
-...
-local_costmap:
-  local_costmap:
-    ros__parameters:
-      ...
-      plugins: [&quot;voxel_layer&quot;, &quot;denoise_layer&quot;, inflation_layer&quot;]
-      ...
-      keepout_filter:
-        plugin: &quot;nav2_costmap_2d::DenoiseLayer&quot;
-        enabled: True
+<p>Though, any other ZED camera with an IMU in it will work as well (ZED2, ZED2i, ZED mini, etc).  If you are using the ZED X in particular, checkout <a class="reference external" href="https://www.youtube.com/watch?v=sEH07WwB8X0&amp;list=PLekRVIRfsmj-P74wmB5qXLYujbelQsW5O">this playlist on YouTube showing step by step how to setup the Nvidia Jetson and ZED X for ROS 2</a> or <a class="reference external" href="https://www.stereolabs.com/docs/get-started-with-zed-x/">ZED X Getting Started page</a> to install the SDK, ZED X drivers, and ROS 2 drivers needed to proceed.</p>
+<p>At this point, you should be able to run one of the following commands to launch the driver and visualize the sensor data in Rviz. Note that these are ROS 2 component nodes that also may be loaded into your system’s component manager to minimize latency due to serialization.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>zed_wrapper<span class="w"> </span>zedx.launch.py
+$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>zed_wrapper<span class="w"> </span>zedxm.launch.py
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/vio.png"><img alt="../../_images/vio.png" src="../../_images/vio.png" style="width: 1000px;" /></a>
+<p>As of September 2023, the driver out of the box produces the full <code class="docutils literal notranslate"><span class="pre">map-&gt;odom-&gt;base_link-&gt;camera</span></code> tree on its own. This is since the Pose SDK can produce not only VIO, but loop-closure VSLAM representing the full state estimation TF tree.</p>
+<p>We want to be able to fuse in other information such as an external IMU, wheel odometry, GPS, or other sensors into our local or global state estimates, so we need to disable TF publication of <code class="docutils literal notranslate"><span class="pre">map-&gt;odom</span></code> and <code class="docutils literal notranslate"><span class="pre">odom-&gt;base_link</span></code> to be provided by our fused outputs. Especially considering the ZED X camera knows nothing about the nature of the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame. However, if you would like to use the ZED’s state estimate for your entire system without further sensor fusion, you certainly can!</p>
+</div>
+<div class="section" id="setting-up-zed-ros">
+<h2>Setting Up ZED ROS<a class="headerlink" href="#setting-up-zed-ros" title="Permalink to this headline">¶</a></h2>
+<p>In order to run VIO alone, we need to do the following:</p>
+<ol class="arabic simple">
+<li><p>Stop computing VSLAM’s <code class="docutils literal notranslate"><span class="pre">map-&gt;odom</span></code>, TF transform. This part of the TF tree is provided by our global localization solution (e.g. AMCL, GPS, fused global state estimate).</p></li>
+<li><p>Disable VIO’s publication of <code class="docutils literal notranslate"><span class="pre">odom-&gt;camera</span></code> and instead publish <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> of the VIO’s pose solution for fusion. By default the <code class="docutils literal notranslate"><span class="pre">zed_wrapper</span></code> publishes this under the <code class="docutils literal notranslate"><span class="pre">odom</span></code> topic, but it is recommended to remap this to a non-reserved topic name (for example, <code class="docutils literal notranslate"><span class="pre">camera_odom</span></code>).</p></li>
+<li><p>Re-configure the ZED Wrapper’s parameters to obtain the best VIO as possible.</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">two_d_mode</span></code> will force the pose tracking to be in 2D dimensions (e.g. X, Y, Yaw) for indoor or 2D applications.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pos_tracking_enabled</span></code> will disable or enable pose tracking, if you desire it (and we do here!).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path_max_count</span></code> will set the maximum size of the visualization of the pose over time. By default it is infinite. We should make this finite.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qos_depth</span></code> will set the QoS depth throughout the driver. Set this to 3-5 for all options. 1 may result in dropping of messages in very temporary blibs in compute. 3-5 allows us to buffer a small handful of measurements to process for very short term blibs, but clears them all the same in CPU thrashing situations.</p></li>
+</ul>
+<p>Thus, make the following parameter updates to the <code class="docutils literal notranslate"><span class="pre">zed_wrapper</span></code>’s default parameters:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pos_tracking</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">publish_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># Disables odom -&gt; base_link TF transformation</span>
+<span class="w">    </span><span class="nt">publish_map_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># Disables map -&gt; odom TF transformation</span>
+<span class="w">    </span><span class="nt">area_memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># Disables loop closure computation, but Pose topic for global VSLAM still published (but now pure VIO)</span>
+
+<span class="w">    </span><span class="c1"># Optional optimizations</span>
+<span class="w">    </span><span class="nt">two_d_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># Or true, up to you!</span>
+<span class="w">    </span><span class="nt">pos_tracking_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># of course!</span>
+<span class="w">    </span><span class="nt">path_max_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">    </span><span class="nt">qos_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</pre></div>
+</div>
+<p>Optionally, remap the zed <code class="docutils literal notranslate"><span class="pre">odom</span></code> topic to a topic that isn’t reserved or commonly used by other systems. In your ZED launch file add to the node / launch file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">remappings</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;odom&#39;</span><span class="p">,</span> <span class="s1">&#39;camera_odom&#39;</span><span class="p">)]</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The key to success in filtering noise is to understand its type and choose the right <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> parameters.
-The default parameters are focused on fast removal of standalone obstacles.
-More formally, an obstacle is discarded if there are no obstacles among the adjacent eight cells.
-This should be sufficient in typical cases.</p>
-<p>If some sensor generates intercorrelated noise-induced obstacles and small obstacles in the world are unlikely, small groups of obstacles can be removed.
-To configure the <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> to such cases and understand how it works, refer to the section <a class="reference internal" href="#how-it-works">How it works</a>.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Use this plugin to filter the global costmap with caution. It introduces potential performance issues.
-For example in case of typically-high-range lidars (20+ meters) update window can be massive making processing time unacceptably long.
-It is worth taking this into account as an application designer.</p>
+<p>The ZED driver will publish two pose tracking topics, <code class="docutils literal notranslate"><span class="pre">pose</span></code> and <code class="docutils literal notranslate"><span class="pre">odom</span></code>. Pose is the full V-SLAM pose with loop closures (or not, if <code class="docutils literal notranslate"><span class="pre">area_memory:</span> <span class="pre">false</span></code>). The odom topic contains the actual VIO that we’d like to use, which publishes at frame capture rate. The Pose topic may publish at irregular frequencies depending on loop-closures. Thus, we’d like to use <code class="docutils literal notranslate"><span class="pre">odom</span></code> for this local fusion.</p>
 </div>
 </div>
-<div class="section" id="run-nav2-stack">
-<h3>2. Run Nav2 stack<a class="headerlink" href="#run-nav2-stack" title="Permalink to this headline">¶</a></h3>
-<p>After Denoise Layer was enabled for global/local costmaps, run Nav2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>headless:<span class="o">=</span>False
+<div class="section" id="fusing-vio-into-local-state-estimate">
+<h2>Fusing VIO Into Local State Estimate<a class="headerlink" href="#fusing-vio-into-local-state-estimate" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have the ZED ROS 2 drivers set up to publish our VIO to a topic and leave our TF tree to the fusion algorithm and Robot State Publisher (e.g. URDF), we’re finally ready to fuse in VIO into our broader state estimate using the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package.</p>
+<p>This package is a generalized EKF and UKF solution to state estimation of potentially many different topics, publishing at different rates, of different types. If you’re unfamiliar with <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> checkout our <a class="reference internal" href="../../setup_guides/index.html#setup-guides"><span class="std std-ref">First-Time Robot Setup Guide</span></a>’s Odometry page for basic information and the <a class="reference external" href="http://docs.ros.org/en/noetic/api/robot_localization/html/index.html">package’s extensive documentation</a>.</p>
+<p>Most users at this point already have a <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> configuration file in their robot systems to fuse existing sensors together, such as wheel odometry (even poor) and robot IMUs. We’ll be adding a new odom field, <code class="docutils literal notranslate"><span class="pre">odom1</span></code>, to our configuration to fuse in VIO’s position and orientation into our filter. If this is your first odometry field, use <code class="docutils literal notranslate"><span class="pre">odom0</span></code> and you can base your file on <a class="reference external" href="https://github.com/cra-ros-pkg/robot_localization/blob/ros2/params/ekf.yaml">ekf.yaml</a>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">odom1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">camera_odom</span><span class="w"> </span><span class="c1"># Adjust if namespacing ZED camera (e.g. /zed/odom)</span>
+<span class="nt">odom1_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="c1"># X, Y, Z</span>
+<span class="w">               </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="c1"># Roll, Pitch, Yaw</span>
+<span class="w">               </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># Vx, Vy, Vz</span>
+<span class="w">               </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="c1"># Vroll, Vpitch, Vyaw</span>
+<span class="w">               </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># Ax, Ay, Az</span>
+<span class="nt">odom1_differential</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">odom1_relative</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">odom1_queue_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </pre></div>
 </div>
-<p>And check that filter is working properly: with the default parameters,
-no standalone obstacles should remain on the cost map. This can be checked, for example, in RViz main window displaying local and global costmaps after removing unnecessary particles (illustrated at the top of this tutorial).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We’re fusing in Roll, Pitch, and Yaw. If operating your EKF or ZED in 2D modes, then set the Roll and Pitch fields to <code class="docutils literal notranslate"><span class="pre">false</span></code>. If you believe jumps in your VIO may occur, consider using <code class="docutils literal notranslate"><span class="pre">odom1_pose_rejection_threshold</span></code> which sets a threshold to reject updates if sufficiently outlandish relative to recent updates. In this case, setting differential to true may also be helpful so that single bogus updates don’t move the entire coordinate system.</p>
+</div>
+<p>Make sure to evaluate your EKF’s <code class="docutils literal notranslate"><span class="pre">frequency</span></code>, <code class="docutils literal notranslate"><span class="pre">two_d_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_tf</span></code>, and key frames to be appropriate for your application. We generally want to publish TF and have 2D mode on when navigating in flat indoor environments only.</p>
+<div class="section" id="fusing-vslam-into-global-state-estimate">
+<h3>Fusing VSLAM Into Global State Estimate<a class="headerlink" href="#fusing-vslam-into-global-state-estimate" title="Permalink to this headline">¶</a></h3>
+<p>While out of the scope of this tutorial, it is possible to continue to produce VSLAM results for global localization with loop closure (both in general and using the Stereolabs Position Tracking SDK). The steps for integration are similar to the last sections, except:</p>
+<ul class="simple">
+<li><p>Continue to disable the TF tree for <code class="docutils literal notranslate"><span class="pre">map-&gt;odom</span></code>, but the global pose topic will continue to publish under <code class="docutils literal notranslate"><span class="pre">pose</span></code> for fusion</p></li>
+<li><p>Fuse that topic into a global localization EKF in <code class="docutils literal notranslate"><span class="pre">world_frame:</span> <span class="pre">map</span></code> along with other sources of information (e.g. external IMU, AMCL, GPS, etc).</p></li>
+<li><p>The fusion of multiple global localization techniques should be done carefully. The most trusted source should be set <code class="docutils literal notranslate"><span class="pre">_differential:</span> <span class="pre">false</span></code> to use the actual pose information. All other subsiquent systems should use <code class="docutils literal notranslate"><span class="pre">_differential:</span> <span class="pre">true</span></code> so that diverging coordinate systems do not create bouncing solutions. Instead, this will fuse one as absolute poses and the other as the changes of poses between iterations.</p></li>
+</ul>
 </div>
 </div>
-<div class="section" id="how-it-works">
-<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
-<p>The plugin is based on two algorithms.</p>
-<p>When parameter <code class="docutils literal notranslate"><span class="pre">minimal_group_size</span></code> = 2, the first algorithm turns on.
-It apply <a class="reference external" href="https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html">erosion</a> function with kernel from image below (left if <code class="docutils literal notranslate"><span class="pre">group_connectivity_type</span></code> = 4 or right if <code class="docutils literal notranslate"><span class="pre">group_connectivity_type</span></code> = 8) to the costmap.
-White color of the kernel pixel means to use the value, black means to ignore it.</p>
-<a class="reference internal image-reference" href="../../_images/3x3_kernels.png"><img alt="../../_images/3x3_kernels.png" src="../../_images/3x3_kernels.png" style="width: 222px;" /></a>
-<p>As a result of erosion function the neighbors image is created. Each possible position of the kernel on the costmap corresponds to one pixel of the neighbors image. The pixel value of this image is equal to the maximum of 4/8 costmap pixels corresponding to the white pixels of the mask.
-In other words, the pixel of the neighbors image is equal to the obstacle code if there is an obstacle nearby, the free space code in other case.
-After that, obstacles corresponding to free space code on neighbors image are removed.</p>
-<p>This process is illustrated below. On the left side of the image is a costmap, on the right is a neighbors image. White pixels are free space, black pixels are obstacles, <code class="docutils literal notranslate"><span class="pre">group_connectivity_type</span></code> = 4.
-Obstacles marked at the end of the animation will be removed.</p>
-<a class="reference internal image-reference" href="../../_images/dilate.gif"><img alt="../../_images/dilate.gif" src="../../_images/dilate.gif" style="width: 600px;" /></a>
-<p>When parameter <code class="docutils literal notranslate"><span class="pre">minimal_group_size</span></code> &gt; 2, the second algorithm is executed.
-This is a generalized solution that allows you to remove groups of adjacent obstacles if their total number is less than <code class="docutils literal notranslate"><span class="pre">minimal_group_size</span></code>.
-To select groups of adjacent obstacles, the algorithm performs their segmentation.
-The type of cell connectivity in one segment is determined by the parameter <code class="docutils literal notranslate"><span class="pre">group_connectivity_type</span></code>.
-Next, the size of each segment is calculated.
-Obstacles segments with size less than the <code class="docutils literal notranslate"><span class="pre">minimal_group_size</span></code> are replaced with empty cells.
-This algorithm is about 10 times slower than first, so use it with caution and only when necessary.
-Its execution time depends on the size of the processed map fragment (and not depend on the value of <code class="docutils literal notranslate"><span class="pre">minimal_group_size</span></code>).</p>
-<p>This algorithm is illustrated in the animation below (<code class="docutils literal notranslate"><span class="pre">group_connectivity_type</span></code> = 8).
-Obstacles marked at the end of the animation will be removed (groups that size less 3).</p>
-<a class="reference internal image-reference" href="../../_images/connected_components.gif"><img alt="../../_images/connected_components.gif" src="../../_images/connected_components.gif" style="width: 600px;" /></a>
+<div class="section" id="testing-it-out">
+<h2>Testing it Out!<a class="headerlink" href="#testing-it-out" title="Permalink to this headline">¶</a></h2>
+<p>In the below example, we’re fusing the Stereolabs SDK’s Pose Tracking VIO solution with a robot’s external IMU and odometry (e.g. <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> has <code class="docutils literal notranslate"><span class="pre">odom0</span></code> <code class="docutils literal notranslate"><span class="pre">odom1</span></code> and <code class="docutils literal notranslate"><span class="pre">imu0</span></code>) to improve performance while navigating on a legged robot platform in outdoor environments. The robot’s internal odometry based on leg motion is quite poor and causes the robot to have generally poor autonomous navigation performance.</p>
+<p>The Visual-Inertial Odometry’s error over these datasets is 4.1% over the 70m path. Typically for ‘good’ odometry from wheel encoders + IMU, I would like to see 2-3% fully tuned (or less than 1% for ‘great’ odometry), so this is a great source! Fused in with the legged robot odometry, it improves overall performance to an acceptable level!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve’s a bad robot driver (he doesn’t play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has alot of additional assymmetric weight on it. It is not representative of Nav2 and should be mocked. <em>Its meant to test the accuracy of the VIO solution in more harsh conditions… yeah… lets go with that</em>.</p>
 </div>
+<h1 align="center">
+  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/VWfzeZJdtpc?autoplay=1&mute=1&t=143" frameborder="1" allowfullscreen></iframe>
+  </div>
+</h1>
+
+<h1 align="center">
+  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/Flf6fyeyzIw?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+  </div>
+</h1></div>
 </div>
 
 
