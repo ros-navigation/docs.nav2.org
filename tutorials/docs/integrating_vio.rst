@@ -62,7 +62,8 @@ At this point, you should be able to run one of the following commands to launch
     $ ros2 launch zed_wrapper zedx.launch.py
     $ ros2 launch zed_wrapper zedxm.launch.py
 
-TODO video 
+.. image:: images/vio.png
+    :width: 1000px
 
 As of September 2023, the driver out of the box produces the full ``map->odom->base_link->camera`` tree on its own. This is since the Pose SDK can produce not only VIO, but loop-closure VSLAM representing the full state estimation TF tree. 
 
@@ -153,8 +154,24 @@ While out of the scope of this tutorial, it is possible to continue to produce V
 Testing it Out!
 ===============
 
-In the below examples, we're fusing the Stereolabs SDK's Pose Tracking VIO solution with a robot's external IMU and odometry (e.g. ``robot_localization`` has ``odom0`` ``odom1`` and ``imu0``) to improve performance while navigating on a legged robot platform in outdoor environments. The robot's internal odometry based on leg motion is quite poor and causes the robot to have generally poor autonomous navigation performance. 
+In the below example, we're fusing the Stereolabs SDK's Pose Tracking VIO solution with a robot's external IMU and odometry (e.g. ``robot_localization`` has ``odom0`` ``odom1`` and ``imu0``) to improve performance while navigating on a legged robot platform in outdoor environments. The robot's internal odometry based on leg motion is quite poor and causes the robot to have generally poor autonomous navigation performance. 
 
-The Visual-Inertial Odometry's error over these datasets is 4.1% over the 70m path. Typically for 'good' odometry from wheel encoders + IMU, I would like to see 2-3% fully tuned (or less than 1% for 'great' odometry), so this is a great source! Fused in with the legged robot odometry, it improves overall performance to approximately 3% error! 
+The Visual-Inertial Odometry's error over these datasets is 4.1% over the 70m path. Typically for 'good' odometry from wheel encoders + IMU, I would like to see 2-3% fully tuned (or less than 1% for 'great' odometry), so this is a great source! Fused in with the legged robot odometry, it improves overall performance to an acceptable level! 
 
-TODO video(s)
+.. note::
+    
+    Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve's a bad robot driver (he doesn't play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has alot of additional assymmetric weight on it. It is not representative of Nav2 and should be mocked. *Its meant to test the accuracy of the VIO solution in more harsh conditions... yeah... lets go with that*. 
+
+.. raw:: html
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="708" height="400" src="https://www.youtube.com/embed/VWfzeZJdtpc?autoplay=1&mute=1&t=143" frameborder="1" allowfullscreen></iframe>
+      </div>
+    </h1>
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="708" height="400" src="https://www.youtube.com/embed/Flf6fyeyzIw?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+      </div>
+    </h1>
