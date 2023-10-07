@@ -31,3 +31,36 @@ Parameters
     
     Description
         Velocity below is considered to be stopped at tolerance met (rad/s).
+
+:``<nav2_controller plugin>``.xy_goal_tolerance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.25
+  ====== =======
+    
+    Description
+        Tolerance to meet goal completion criteria (m).
+
+:``<nav2_controller plugin>``.yaw_goal_tolerance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.25
+  ====== =======
+    
+    Description
+        Tolerance to meet goal completion criteria (rad).
+
+:``<nav2_controller plugin>``.stateful:
+
+  ==== =======
+  Type Default
+  ---- -------
+  bool true 
+  ==== =======
+    
+    Description
+        Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.
