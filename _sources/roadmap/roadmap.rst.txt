@@ -36,7 +36,7 @@ Jazzy Roadmap
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| Provide Advanced Capabilities  | Medium (in progress)   |
+| Provide Advanced Capabilities  | Medium (DONE)          |
 | Tutorials (e.g. gps, vio)      |                        |
 |                                |                        |
 +--------------------------------+------------------------+
