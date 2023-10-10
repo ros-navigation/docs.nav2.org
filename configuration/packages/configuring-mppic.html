@@ -1360,6 +1360,26 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">regenerate_noises</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 <div class="section" id="trajectory-visualization">
 <h3>Trajectory Visualization<a class="headerlink" href="#trajectory-visualization" title="Permalink to this headline">¶</a></h3>
@@ -2387,6 +2407,7 @@ This process is then repeated a number of times and returns a converged solution
 <span class="w">      </span><span class="nt">motion_model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DiffDrive&quot;</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">reset_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"> </span><span class="c1"># (only in Humble)</span>
+<span class="w">      </span><span class="nt">regenerate_noises</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">TrajectoryVisualizer</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">trajectory_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 <span class="w">        </span><span class="nt">time_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
