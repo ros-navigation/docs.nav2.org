@@ -228,6 +228,17 @@ MPPI Parameters
   Description
     Required time of inactivity to reset optimizer  (only in Humble due to backport ABI policies).
 
+:regenerate_noises:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  bool           false 
+  ============== ===========================
+
+  Description
+    Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
+
 Trajectory Visualization
 ------------------------
 
@@ -810,6 +821,7 @@ Example
           motion_model: "DiffDrive"
           visualize: false
           reset_period: 1.0 # (only in Humble)
+          regenerate_noises: false
           TrajectoryVisualizer:
             trajectory_step: 5
             time_step: 3
