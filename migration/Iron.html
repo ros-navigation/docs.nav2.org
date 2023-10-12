@@ -927,6 +927,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#rewrittenyaml-could-add-new-parameters-to-yamls">RewrittenYaml could add new parameters to YAMLs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simple-commander-api-allows-multi-robot-namespacing">Simple Commander API Allows Multi-Robot Namespacing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#change-duration-type-in-wait-action-node">Change duration type in wait_action node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-costmap-activation-fails-when-required-transforms-are-not-available">The costmap activation fails when required transforms are not available</a></li>
 </ul>
 </li>
 </ul>
@@ -1071,6 +1072,11 @@ The change was intoroduced in the scope of <a class="reference external" href="h
 <div class="section" id="change-duration-type-in-wait-action-node">
 <h2>Change duration type in wait_action node<a class="headerlink" href="#change-duration-type-in-wait-action-node" title="Permalink to this headline">¶</a></h2>
 <p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3871">PR #3871</a> the type of duration variable in wait_action node is changed from int to double, which allows you to use floating values for wait_action.</p>
+</div>
+<div class="section" id="the-costmap-activation-fails-when-required-transforms-are-not-available">
+<h2>The costmap activation fails when required transforms are not available<a class="headerlink" href="#the-costmap-activation-fails-when-required-transforms-are-not-available" title="Permalink to this headline">¶</a></h2>
+<p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3866">PR #3866</a> the parameter <code class="docutils literal notranslate"><span class="pre">initial_transform_timeout</span></code> is added to the costmap. The activation of the costmap now fails,
+if the transformation from the robot base frame to the global frame does not become available during this timeout.</p>
 </div>
 </div>
 
