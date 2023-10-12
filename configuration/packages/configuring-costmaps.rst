@@ -211,6 +211,17 @@ Costmap2D ROS Parameters
   Description
     TF transform tolerance.
 
+:initial_transform_timeout:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  double         60.0   
+  ============== =======
+
+  Description
+    Time to wait for the transform from robot base frame to global frame to become available.
+
 :trinary_costmap:
 
   ============== =======
