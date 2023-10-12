@@ -220,7 +220,7 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Time to wait for the transform from robot base frame to global frame to become available.
+    Time to wait for the transform from robot base frame to global frame to become available. If exceeded, the  configuration stage is aborted.
 
 :trinary_costmap:
 
