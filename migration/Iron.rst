@@ -122,4 +122,4 @@ if the transformation from the robot base frame to the global frame does not bec
 New collision monitor/dector param for debugging purposes
 *********************************************************
 
-In this `PR #3879 <https://github.com/ros-planning/navigation2/pull/3879>`_ The parameter ``visualize_collision_points`` to enable the publishing of the collision points that will be considered by the configured polygons
+In this `PR #3879 <https://github.com/ros-planning/navigation2/pull/3879>`_ The parameter ``visualize_collision_points`` was added to collision monitor/detector to enable the publishing of the collision points that will be considered by the configured polygons
