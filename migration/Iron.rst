@@ -107,3 +107,14 @@ Simple Commander API Allows Multi-Robot Namespacing
 ***************************************************
 
 The Simple Navigator API now allows multi-robot namespacing by exposing a ``namespace`` field in the constructor to allow you to specify the Nav2 stacks' namespace for a robot or system. See `this PR for details <https://github.com/ros-planning/navigation2/pull/3803/files>`_.
+
+Change duration type in wait_action node
+****************************************
+
+In this `PR #3871 <https://github.com/ros-planning/navigation2/pull/3871>`_ the type of duration variable in wait_action node is changed from int to double, which allows you to use floating values for wait_action.
+
+The costmap activation fails when required transforms are not available
+***********************************************************************
+
+In this `PR #3866 <https://github.com/ros-planning/navigation2/pull/3866>`_ the parameter ``initial_transform_timeout`` is added to the costmap. The activation of the costmap now fails,
+if the transformation from the robot base frame to the global frame does not become available during this timeout.

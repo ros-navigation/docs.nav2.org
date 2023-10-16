@@ -28,7 +28,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |rover|        +         |tb4|          +           |kar2|       |
 +------------------------+------------------------+------------------------+
-|         |soon|         +         |tb3|          +           |soon|       |
+|         |tb3|          +      |rosbot_xl|       +          |soon|        |
 +------------------------+------------------------+------------------------+
 
 .. |kiwi| image:: images/kiwibot.png
@@ -186,3 +186,9 @@ Click on the images below for a link to the drivers or navigation configurations
     :align: middle
     :alt: Rosie
     :target: https://tailos.com/
+
+.. |rosbot_xl| image:: images/rosbot_xl.png
+    :width: 100%
+    :align: middle
+    :alt: Husarion ROSbot XL
+    :target: https://github.com/husarion/rosbot-xl-autonomy
