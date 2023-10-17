@@ -88,17 +88,6 @@ Parameters
   Description:
     Whether to correct source data towards to base frame movement, considering the difference between current time and latest source time. If enabled, produces more accurate sources positioning in the robot base frame, at the cost of slower performance. This will cause average delays for ``~1/(2*odom_rate)`` per each ``cmd_vel`` calculation cycle. However, disabling this option for better performance is not recommended for the fast moving robots, where during the typical rate of data sources, robot could move unacceptably far. Thus reasonable odometry rates are recommended (~100 hz).
 
-:visualize_collision_points:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           False
-  ============== =============================
-
-  Description:
-    Whether to publish the collision points that will be considered by the polygons.
-
 :polygons:
 
   ============== =============================

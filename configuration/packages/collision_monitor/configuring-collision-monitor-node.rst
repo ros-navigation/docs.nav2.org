@@ -160,17 +160,6 @@ Parameters
   Description:
     Timeout, after which zero-velocity ceases to be published. It could be used for other overrode systems outside Nav2 are trying to bring the robot out of a state close to a collision, or to allow a standing robot to go into sleep mode.
 
-:visualize_collision_points:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  bool           False
-  ============== =============================
-
-  Description:
-    Whether to publish the collision points that will be considered by the polygons. 
-
 :polygons:
 
   ============== =============================
