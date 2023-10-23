@@ -3,7 +3,7 @@
 Binary Filter Parameters
 ========================
 
-Binary Filter - is a Costmap Filter that publishes a boolean topic, flipping binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold. It then flips back when lower or equal. Along with publishing the state, the filter can change boolean ros parameters of other ros nodes. The parameters to be changed can be configured as ros paramters themselves. 
+Binary Filter - is a Costmap Filter that publishes a boolean topic, flipping binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold. It then flips back when lower or equal. Along with publishing the state, the filter can change boolean ros parameters of other ros nodes. The parameters to be changed can be configured as ros parameters themselves. 
 
 Filter space value is being calculated as: ``Fv = base + multiplier * mask_value``, where ``base`` and ``multiplier`` are being published in a filter info by Costmap Filter Info Server. The example of usage are include: camera operating on/off to turn off cameras in sensitive areas, headlights switch on/off for moving indoors to outdoors, smart house light triggering, etc.
 
