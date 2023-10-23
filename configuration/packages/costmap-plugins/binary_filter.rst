@@ -98,7 +98,7 @@ Filter space value is being calculated as: ``Fv = base + multiplier * mask_value
   ============== =======
 
   Description
-    Threshold for binary state flipping. Filter values higher than this threshold, will set binary state to non-default.
+    Namespaces of parameters to be changed.
 
 :``<filter name>``.``binary_parameter``.node_name:
 
