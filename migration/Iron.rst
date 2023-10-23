@@ -72,3 +72,8 @@ New node in nav2_collision_monitor: Collision Detector
 
 In this `PR #3693 <https://github.com/ros-planning/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector. 
 It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the ``collision_detector_state`` topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).
+
+Binary Filter able to change boolean ros parameters
+****************************************************
+
+`PR #3796 <https://github.com/ros-planning/navigation2/pull/3796>`_ modifies the binary filter to make it able to change boolean ros parameters. 
