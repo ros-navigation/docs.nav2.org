@@ -910,6 +910,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
@@ -928,6 +929,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#simple-commander-api-allows-multi-robot-namespacing">Simple Commander API Allows Multi-Robot Namespacing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#change-duration-type-in-wait-action-node">Change duration type in wait_action node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-costmap-activation-fails-when-required-transforms-are-not-available">The costmap activation fails when required transforms are not available</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subtrees-obtain-shared-resources">Subtrees Obtain Shared Resources</a></li>
 </ul>
 </li>
 </ul>
@@ -989,6 +991,14 @@
   <div class="section" id="iron-to-jazzy">
 <span id="iron-migration"></span><h1>Iron to Jazzy<a class="headerlink" href="#iron-to-jazzy" title="Permalink to this headline">¶</a></h1>
 <p>Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="introduction-of-soft-real-time-action-servers">
+<h2>Introduction of Soft-Real Time Action Servers<a class="headerlink" href="#introduction-of-soft-real-time-action-servers" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3914">PR #3914</a> adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. The Simple Action Server now has a <code class="docutils literal notranslate"><span class="pre">realtime</span></code> input field exposed in the Controller Server via the parameter <code class="docutils literal notranslate"><span class="pre">use_realtime_priority</span></code> which will set the controller’s execution thread to a higher priority than the rest of the system to meet scheduling deadlines. To use this feature, you use set the following inside of <code class="docutils literal notranslate"><span class="pre">/etc/security/limits.conf</span></code> to give userspace access to elevated prioritization permissions. This is currently only enabled in the Controller Server, who’s execution thread is sensitive to scheduling priorities, but could be set with other threads in the future if found necessary.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;username&gt; soft rtprio 99
+&lt;username&gt; hard rtprio 99
+</pre></div>
+</div>
+</div>
 <div class="section" id="introduce-a-new-multi-robot-bringup-launch">
 <h2>Introduce a new Multi-Robot Bringup Launch<a class="headerlink" href="#introduce-a-new-multi-robot-bringup-launch" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3572">PR #3572</a> introduces a new way of bringup tb3 multi-robot that names as <code class="docutils literal notranslate"><span class="pre">cloned_tb3_simulation_launch.py</span></code> for simulation. <code class="docutils literal notranslate"><span class="pre">cloned_tb3_simulation_launch.py</span></code> enables to bring up multiple robots with same parameter that described in <code class="docutils literal notranslate"><span class="pre">nav2_multirobot_param_all.yaml</span></code>. And multiple robots are separeted by namespaces which are given as a Launch Arguments.
@@ -1077,6 +1087,10 @@ The change was intoroduced in the scope of <a class="reference external" href="h
 <h2>The costmap activation fails when required transforms are not available<a class="headerlink" href="#the-costmap-activation-fails-when-required-transforms-are-not-available" title="Permalink to this headline">¶</a></h2>
 <p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3866">PR #3866</a> the parameter <code class="docutils literal notranslate"><span class="pre">initial_transform_timeout</span></code> is added to the costmap. The activation of the costmap now fails,
 if the transformation from the robot base frame to the global frame does not become available during this timeout.</p>
+</div>
+<div class="section" id="subtrees-obtain-shared-resources">
+<h2>Subtrees Obtain Shared Resources<a class="headerlink" href="#subtrees-obtain-shared-resources" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3911">PR #3911</a> gives all sub-trees in BT.CPP the same shared resources as the main tree (node, shared timeouts, etc).</p>
 </div>
 </div>
 

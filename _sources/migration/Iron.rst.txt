@@ -5,6 +5,17 @@ Iron to Jazzy
 
 Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.
 
+Introduction of Soft-Real Time Action Servers
+*********************************************
+
+`PR #3914 <https://github.com/ros-planning/navigation2/pull/3914>`_ adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. The Simple Action Server now has a ``realtime`` input field exposed in the Controller Server via the parameter ``use_realtime_priority`` which will set the controller's execution thread to a higher priority than the rest of the system to meet scheduling deadlines. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions. This is currently only enabled in the Controller Server, who's execution thread is sensitive to scheduling priorities, but could be set with other threads in the future if found necessary.
+
+.. code-block:: text
+
+    <username> soft rtprio 99
+    <username> hard rtprio 99
+
+
 Introduce a new Multi-Robot Bringup Launch
 ******************************************
 
@@ -118,3 +129,8 @@ The costmap activation fails when required transforms are not available
 
 In this `PR #3866 <https://github.com/ros-planning/navigation2/pull/3866>`_ the parameter ``initial_transform_timeout`` is added to the costmap. The activation of the costmap now fails,
 if the transformation from the robot base frame to the global frame does not become available during this timeout.
+
+Subtrees Obtain Shared Resources
+********************************
+
+`PR #3911 <https://github.com/ros-planning/navigation2/pull/3911>`_ gives all sub-trees in BT.CPP the same shared resources as the main tree (node, shared timeouts, etc).

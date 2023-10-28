@@ -910,6 +910,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Iron.html">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
@@ -928,6 +929,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#simple-commander-api-allows-multi-robot-namespacing">Simple Commander API Allows Multi-Robot Namespacing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#change-duration-type-in-wait-action-node">Change duration type in wait_action node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#the-costmap-activation-fails-when-required-transforms-are-not-available">The costmap activation fails when required transforms are not available</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#subtrees-obtain-shared-resources">Subtrees Obtain Shared Resources</a></li>
 </ul>
 </li>
 </ul>
@@ -1014,8 +1016,28 @@ It will take in path and plugin names for controller, progress checker and goal 
 </dd>
 </dl>
 </dd>
-<dt class="field-even">action_server_result_timeout</dt>
+<dt class="field-even">use_realtime_priority</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller’s execution thread to a higher priority than the rest of the system (<code class="docutils literal notranslate"><span class="pre">90</span></code>) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of <code class="docutils literal notranslate"><span class="pre">/etc/security/limits.conf</span></code> to give userspace access to elevated prioritization permissions: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span> <span class="pre">soft</span> <span class="pre">rtprio</span> <span class="pre">99</span> <span class="pre">&lt;username&gt;</span> <span class="pre">hard</span> <span class="pre">rtprio</span> <span class="pre">99</span></code></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">action_server_result_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 35%" />
@@ -1040,8 +1062,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller_plugins</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller_plugins</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1070,8 +1092,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">progress_checker_plugins</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">progress_checker_plugins</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 41%" />
 <col style="width: 59%" />
@@ -1100,8 +1122,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">goal_checker_plugins</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">goal_checker_plugins</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1130,8 +1152,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">min_x_velocity_threshold</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">min_x_velocity_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1151,8 +1173,8 @@ Odometry values below this threshold (in m/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_y_velocity_threshold</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_y_velocity_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1172,8 +1194,8 @@ Odometry values below this threshold (in m/s) will be set to 0.0. For non-holono
 </dd>
 </dl>
 </dd>
-<dt class="field-even">min_theta_velocity_threshold</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">min_theta_velocity_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1193,8 +1215,8 @@ Odometry values below this threshold (in rad/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">failure_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">failure_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1214,8 +1236,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-even">speed_limit_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">speed_limit_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1234,8 +1256,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">odom_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">odom_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
