@@ -28,8 +28,14 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |rover|        +         |tb4|          +           |kar2|       |
 +------------------------+------------------------+------------------------+
-|         |tb3|          +      |rosbot_xl|       +          |soon|        |
+|         |tb3|          +      |rosbot_xl|       +          |torch|       |
 +------------------------+------------------------+------------------------+
+
+.. |torch| image:: images/torch.png
+    :width: 100%
+    :align: middle
+    :alt: Torch Technologies
+    :target: https://torchtechnologies.com/
 
 .. |kiwi| image:: images/kiwibot.png
     :width: 100%
