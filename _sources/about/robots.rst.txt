@@ -30,6 +30,14 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb3|          +      |rosbot_xl|       +          |rover|       |
 +------------------------+------------------------+------------------------+
+|         |soon|         +      |torch|           +          |soon|        |
++------------------------+------------------------+------------------------+
+
+.. |torch| image:: images/torch.png
+    :width: 100%
+    :align: middle
+    :alt: Torch Technologies
+    :target: https://torchtechnologies.com/
 
 .. |nova| image:: images/novacarter.png
     :width: 100%
