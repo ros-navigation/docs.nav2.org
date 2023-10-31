@@ -134,3 +134,12 @@ Subtrees Obtain Shared Resources
 ********************************
 
 `PR #3911 <https://github.com/ros-planning/navigation2/pull/3911>`_ gives all sub-trees in BT.CPP the same shared resources as the main tree (node, shared timeouts, etc).
+
+Collision Monitor: added watchdog mechanism based on ``source_timeout`` parameter with default blocking behavior
+****************************************************************************************************************
+
+`PR #3880 <https://github.com/ros-planning/navigation2/pull/3880>`_ adds a watchdog mechanism that stops the robot if a source data is not published yet, or if no new data is received within the `source_timeout`` parameter, or if impossible to transform data to base frame. ``source_timeout`` parameter can now be set per source: if ``source_timeout`` is not set for a source, the value of the node ``source_timeout`` parameter is used.
+
+Additionaly, this watchdog mechanism can be disabled by setting ``source_timeout: 0.0``.
+
+
