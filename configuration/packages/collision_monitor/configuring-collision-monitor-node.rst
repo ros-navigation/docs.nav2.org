@@ -136,7 +136,7 @@ Parameters
   ============== =============================
 
   Description:
-    Maximum time interval in which source data is considered as valid.
+    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. This parameter can be overriden per observation source.
 
 :base_shift_correction:
 
@@ -423,6 +423,17 @@ Observation sources parameters
 
   Description:
     Whether to use this source for collision monitoring. (Can be dynamically set)
+    
+:``<source name>``.source_timeout:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         (node parameter ``source_timeout`` value)
+  ============== =============================
+
+  Description:
+    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. Overrides node parameter.
 
 
 Example
@@ -482,6 +493,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           enabled: True
         observation_sources: ["scan", "pointcloud"]
         scan:
+          source_timeout: 0.2
           type: "scan"
           topic: "/scan"
           enabled: True

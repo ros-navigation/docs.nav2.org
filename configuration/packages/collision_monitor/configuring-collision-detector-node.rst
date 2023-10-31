@@ -75,7 +75,7 @@ Parameters
   ============== =============================
 
   Description:
-    Maximum time interval in which source data is considered as valid.
+    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting ``source_timeout: 0.0`` disables it. This parameter can be overriden per observation source.
 
 :base_shift_correction:
 
@@ -285,6 +285,17 @@ Observation sources parameters
 
   Description:
     Whether to use this source for collision detection. (Can be dynamically set)
+    
+:``<source name>``.source_timeout:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         (node parameter ``source_timeout`` value)
+  ============== =============================
+
+  Description:
+    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting ``source_timeout: 0.0`` disables it. Overrides node parameter.
 
 Example
 *******
@@ -310,6 +321,7 @@ Here is an example of configuration YAML for the Collision Detector.
           polygon_pub_topic: "polygon_front"
         observation_sources: ["scan"]
         scan:
+          source_timeout: 0.2
           type: "scan"
           topic: "scan"
           enabled: True
