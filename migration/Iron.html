@@ -930,6 +930,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#change-duration-type-in-wait-action-node">Change duration type in wait_action node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-costmap-activation-fails-when-required-transforms-are-not-available">The costmap activation fails when required transforms are not available</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#subtrees-obtain-shared-resources">Subtrees Obtain Shared Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior">Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior</a></li>
 </ul>
 </li>
 </ul>
@@ -1091,6 +1092,11 @@ if the transformation from the robot base frame to the global frame does not bec
 <div class="section" id="subtrees-obtain-shared-resources">
 <h2>Subtrees Obtain Shared Resources<a class="headerlink" href="#subtrees-obtain-shared-resources" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3911">PR #3911</a> gives all sub-trees in BT.CPP the same shared resources as the main tree (node, shared timeouts, etc).</p>
+</div>
+<div class="section" id="collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior">
+<h2>Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior<a class="headerlink" href="#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3880">PR #3880</a> adds a watchdog mechanism that stops the robot if a source data is not published yet, or if no new data is received within the <cite>source_timeout`</cite> parameter, or if impossible to transform data to base frame. <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter can now be set per source: if <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> is not set for a source, the value of the node <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter is used.</p>
+<p>Additionally, this watchdog mechanism can be disabled by setting <code class="docutils literal notranslate"><span class="pre">source_timeout:</span> <span class="pre">0.0</span></code>.</p>
 </div>
 </div>
 
