@@ -19,6 +19,8 @@ For the global costmap footprint, the decision to choose between the ``robot_rad
 
 For the local costmap footprint, it is typical for non-circular robots to be set up with ``footprint`` (polygon). Some situations where this is not recommended is when you do not have enough computing resources to implement collision avoidance algorithms on a polygon-shaped footprint. Another possible reason to use ``robot_radius`` (circular) for the local costmap is when the robot is very small relative to its environment such that precise collision avoidance is not necessary. However, generally the local trajectory planner should use the actual footprint polygon of the robot. 
 
+Note that this can also be adjusted over time using the costmap's ``~/footprint`` topic, which will update the polygon over time as needed due to changes in the robot's state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot's shape. That polygon will then automatically be used by the planners and controllers.
+
 Configuring the Robot's Footprint
 *********************************
 In this section, we will configure the footprint of ``sam_bot`` such that ``footprint`` (polygon) is used for the local costmap and ``robot_radius`` (circular) is used for the global costmap. We will utilize the default configuration file of Nav2 with a modified footprint parameter for the global and local costmaps.
