@@ -113,6 +113,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#controllers">Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#behaviors">Behaviors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smoothers">Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#robot-footprints">Robot Footprints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#waypoint-following">Waypoint Following</a></li>
 </ul>
 </li>
@@ -1147,6 +1148,10 @@ but also for increasing distance from obstacles and high-cost areas as the smoot
 <p>Use of a separate smoother over one that is included as part of a planner is advantageous when combining different planners with different smoothers or when a specific control over smoothing is required, e.g. smoothing only a specific part of the path.</p>
 <p>The general task in Nav2 for a smoother is to receive a path and return its improved version.
 However, for different input paths, criteria of the improvements and methods of acquiring them exist, creating space for a multitude of smoothers that can be registered in this server.</p>
+</div>
+<div class="section" id="robot-footprints">
+<h3>Robot Footprints<a class="headerlink" href="#robot-footprints" title="Permalink to this headline">¶</a></h3>
+<p>It is worth remarking that in the cost maps, we set a robot’s footprint either as a circle of radius <code class="docutils literal notranslate"><span class="pre">robot_radius</span></code> or as a vector of points <code class="docutils literal notranslate"><span class="pre">footprint</span></code> representing an arbitrary polygon if the robot is non-circular. This can also be adjusted over time using the costmap’s <code class="docutils literal notranslate"><span class="pre">~/footprint</span></code> topic, which will update the polygon over time as needed due to changes in the robot’s state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot’s shape. That polygon will then automatically be used by the planners and controllers.</p>
 </div>
 <div class="section" id="waypoint-following">
 <h3>Waypoint Following<a class="headerlink" href="#waypoint-following" title="Permalink to this headline">¶</a></h3>

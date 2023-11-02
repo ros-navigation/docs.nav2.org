@@ -196,6 +196,11 @@ Use of a separate smoother over one that is included as part of a planner is adv
 The general task in Nav2 for a smoother is to receive a path and return its improved version.
 However, for different input paths, criteria of the improvements and methods of acquiring them exist, creating space for a multitude of smoothers that can be registered in this server.
 
+Robot Footprints
+================
+
+It is worth remarking that in the cost maps, we set a robot's footprint either as a circle of radius ``robot_radius`` or as a vector of points ``footprint`` representing an arbitrary polygon if the robot is non-circular. This can also be adjusted over time using the costmap's ``~/footprint`` topic, which will update the polygon over time as needed due to changes in the robot's state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot's shape. That polygon will then automatically be used by the planners and controllers.
+
 Waypoint Following
 ==================
 
