@@ -914,6 +914,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-interpolation-rpp-parameter-depreciated">use_interpolation RPP Parameter Depreciated</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-path-handling-for-directionality">Changes to MPPI Path Handling For Directionality</a></li>
@@ -1010,6 +1011,10 @@ Existing <code class="docutils literal notranslate"><span class="pre">multi_tb3_
 <h2>New option for the Voxel and Obstacle Layers<a class="headerlink" href="#new-option-for-the-voxel-and-obstacle-layers" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3612">PR #3612</a> adds a new MaxWithoutUnknownOverwrite option to combination_method parameter in Voxel and Obstacle Layers. This can be used to make sure that the static map is the dominant source of information, and
 easily prevent the robot to go through places that are not present in the static map.</p>
+</div>
+<div class="section" id="use-interpolation-rpp-parameter-depreciated">
+<h2>use_interpolation RPP Parameter Depreciated<a class="headerlink" href="#use-interpolation-rpp-parameter-depreciated" title="Permalink to this headline">¶</a></h2>
+<p>After a distribution of testing by many users, we have depreciated the use_interpolation parameter and it is now default on at all times without the ability to disable. It improves velocity smoothness and overall quality of tracking positively in all cases.</p>
 </div>
 <div class="section" id="changes-to-mppi-goal-critic">
 <h2>Changes to MPPI Goal Critic<a class="headerlink" href="#changes-to-mppi-goal-critic" title="Permalink to this headline">¶</a></h2>

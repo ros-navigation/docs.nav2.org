@@ -28,6 +28,10 @@ New option for the Voxel and Obstacle Layers
 `PR #3612 <https://github.com/ros-planning/navigation2/pull/3612>`_ adds a new MaxWithoutUnknownOverwrite option to combination_method parameter in Voxel and Obstacle Layers. This can be used to make sure that the static map is the dominant source of information, and
 easily prevent the robot to go through places that are not present in the static map.
 
+use_interpolation RPP Parameter Depreciated 
+*******************************************
+After a distribution of testing by many users, we have depreciated the use_interpolation parameter and it is now default on at all times without the ability to disable. It improves velocity smoothness and overall quality of tracking positively in all cases.
+
 Changes to MPPI Goal Critic
 ***************************
 
