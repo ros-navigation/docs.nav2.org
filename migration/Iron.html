@@ -933,6 +933,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#the-costmap-activation-fails-when-required-transforms-are-not-available">The costmap activation fails when required transforms are not available</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#subtrees-obtain-shared-resources">Subtrees Obtain Shared Resources</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior">Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#btactionserver-use-native-library-halttree">BtActionServer: use native library haltTree()</a></li>
 </ul>
 </li>
 </ul>
@@ -1103,6 +1104,12 @@ if the transformation from the robot base frame to the global frame does not bec
 <h2>Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior<a class="headerlink" href="#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3880">PR #3880</a> adds a watchdog mechanism that stops the robot if a source data is not published yet, or if no new data is received within the <cite>source_timeout`</cite> parameter, or if impossible to transform data to base frame. <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter can now be set per source: if <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> is not set for a source, the value of the node <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter is used.</p>
 <p>Additionally, this watchdog mechanism can be disabled by setting <code class="docutils literal notranslate"><span class="pre">source_timeout:</span> <span class="pre">0.0</span></code>.</p>
+</div>
+<div class="section" id="btactionserver-use-native-library-halttree">
+<h2>BtActionServer: use native library haltTree()<a class="headerlink" href="#btactionserver-use-native-library-halttree" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3950">PR #3950</a> changes the method used by <cite>BehaviorTreeEngine::haltAllActions</cite> to halt the BT nodes to the bt.cpp native method <cite>haltTree()</cite>.</p>
+<p>Before this change, only the active BT node was halted when finishing the action. After this change, all BT nodes halt() methods are called. This is very convenient to handle cleaning operation (switch off your lights when leaving) in halt().</p>
+<p>Also updated nav2_behavior_tree::BtActionServer::haltTree() to use the same. It is used nowhere in nav2 but is useful for external users (like me) that want for instance to halt the tree on preemption.</p>
 </div>
 </div>
 
