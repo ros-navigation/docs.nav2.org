@@ -146,4 +146,13 @@ Collision Monitor: added watchdog mechanism based on ``source_timeout`` paramete
 
 Additionally, this watchdog mechanism can be disabled by setting ``source_timeout: 0.0``.
 
+BtActionServer: use native library haltTree()
+*********************************************
+
+`PR #3950 <https://github.com/ros-planning/navigation2/pull/3950>`_ changes the method used by `BehaviorTreeEngine::haltAllActions` to halt the BT nodes to the bt.cpp native method `haltTree()`.
+
+Before this change, only the active BT node was halted when finishing the action. After this change, all BT nodes halt() methods are called. This is very convenient to handle cleaning operation (switch off your lights when leaving) in halt().
+
+Also updated nav2_behavior_tree::BtActionServer::haltTree() to use the same. It is used nowhere in nav2 but is useful for external users (like me) that want for instance to halt the tree on preemption.
+
 
