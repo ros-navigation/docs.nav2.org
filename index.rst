@@ -28,7 +28,7 @@ Overview
 
 Nav2 is the professionally supported spiritual successor of the ROS Navigation Stack deploying the same kinds of technology powering Autonomous Vehicles brought down, optimized, and reworked for mobile and surface robotics.
 This project seeks to find a safe way to have a mobile robot move to complete complex tasks through many types of environments and classes of robot kinematics.
-Not only can it move from Point A to Point B, but it can have intermediary poses, and represent other types of tasks like object following and more.
+Not only can it move from Point A to Point B, but it can have intermediary poses, and represent other types of tasks like object following, do complete coverage navigation, and more.
 Nav2 is a production-grade and high-quality navigation framework trusted by 50+ companies worldwide.
 
 It provides perception, planning, control, localization, visualization, and much more to build highly reliable autonomous systems.
