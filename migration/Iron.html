@@ -492,6 +492,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputeCoveragePath.html">ComputeCoveragePath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelCoverage.html">CancelCoverage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelControl.html">CancelControl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelBackUp.html">CancelBackUp</a></li>
@@ -569,6 +571,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html">Coverage Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-navfn.html">NavFn Planner</a><ul>
@@ -912,6 +919,7 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Iron to Jazzy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-interpolation-rpp-parameter-depreciated">use_interpolation RPP Parameter Depreciated</a></li>
@@ -1002,6 +1010,11 @@
 &lt;username&gt; hard rtprio 99
 </pre></div>
 </div>
+</div>
+<div class="section" id="opennav-coverage-project">
+<h2><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project<a class="headerlink" href="#opennav-coverage-project" title="Permalink to this headline">¶</a></h2>
+<p>A new metapackage exists in: <a class="reference external" href="https://github.com/open-navigation/opennav_coverage">https://github.com/open-navigation/opennav_coverage</a> which contains complete coverage navigator plugins, BT nodes, behavior tree demos, and coverage planning server based on <code class="docutils literal notranslate"><span class="pre">Fields2Cover</span></code>. See that project for more information. It is on long-term trajectory for inclusion into <code class="docutils literal notranslate"><span class="pre">Nav2</span></code>, but there are still yet a few missing features from Fields2Cover before we can integrate that into the main project to be up to snuff in terms of all the major features and capabilities users would expect from a coverage planning system.</p>
+<p>If you’d like to see coverage planning in Nav2 directly, please consider contributing <a class="reference external" href="https://github.com/Fields2Cover/Fields2Cover/issues/73">to the as-of-yet needed features described here</a>.</p>
 </div>
 <div class="section" id="introduce-a-new-multi-robot-bringup-launch">
 <h2>Introduce a new Multi-Robot Bringup Launch<a class="headerlink" href="#introduce-a-new-multi-robot-bringup-launch" title="Permalink to this headline">¶</a></h2>

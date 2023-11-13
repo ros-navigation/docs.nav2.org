@@ -39,6 +39,8 @@ Action Plugins
   bt-plugins/actions/GoalCheckerSelector.rst
   bt-plugins/actions/NavigateThroughPoses.rst
   bt-plugins/actions/ComputePathThroughPoses.rst
+  bt-plugins/actions/ComputeCoveragePath.rst
+  bt-plugins/actions/CancelCoverage.rst
   bt-plugins/actions/RemovePassedGoals.rst
   bt-plugins/actions/CancelControl.rst
   bt-plugins/actions/CancelBackUp.rst

@@ -15,6 +15,12 @@ Introduction of Soft-Real Time Action Servers
     <username> soft rtprio 99
     <username> hard rtprio 99
 
+``opennav_coverage`` Project
+****************************
+
+A new metapackage exists in: https://github.com/open-navigation/opennav_coverage which contains complete coverage navigator plugins, BT nodes, behavior tree demos, and coverage planning server based on ``Fields2Cover``. See that project for more information. It is on long-term trajectory for inclusion into ``Nav2``, but there are still yet a few missing features from Fields2Cover before we can integrate that into the main project to be up to snuff in terms of all the major features and capabilities users would expect from a coverage planning system.
+
+If you'd like to see coverage planning in Nav2 directly, please consider contributing `to the as-of-yet needed features described here <https://github.com/Fields2Cover/Fields2Cover/issues/73>`_.
 
 Introduce a new Multi-Robot Bringup Launch
 ******************************************

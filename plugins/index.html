@@ -492,6 +492,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputeCoveragePath.html">ComputeCoveragePath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelCoverage.html">CancelCoverage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelControl.html">CancelControl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelBackUp.html">CancelBackUp</a></li>
@@ -569,6 +571,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html">Coverage Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-navfn.html">NavFn Planner</a><ul>
@@ -912,6 +919,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/Iron.html">Iron to Jazzy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#use-interpolation-rpp-parameter-depreciated">use_interpolation RPP Parameter Depreciated</a></li>
@@ -1023,6 +1031,11 @@ behavior tree action server</p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Point-through-points navigation
 via a behavior tree action server</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/tree/main/opennav_coverage_navigator">CoverageNavigator</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Complete coverage navigation
+(Cartesian or GPS) via a BTs</p></td>
 </tr>
 </tbody>
 </table>
@@ -1615,6 +1628,14 @@ using the planner plugin specified</p></td>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp">Cancel Assisted Teleop Action</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Cancels assisted teleop behavior action</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp">Cancel Complete Coverage Action</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Cancels compute complete coverage</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp">Compute Complete Coverage Path Action</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Calls coverage planner server</p></td>
 </tr>
 </tbody>
 </table>

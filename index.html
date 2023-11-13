@@ -491,6 +491,8 @@
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/ComputeCoveragePath.html">ComputeCoveragePath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/CancelCoverage.html">CancelCoverage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/CancelControl.html">CancelControl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration/packages/bt-plugins/actions/CancelBackUp.html">CancelBackUp</a></li>
@@ -568,6 +570,11 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-planner-server.html#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-planner-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-planner-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/packages/configuring-coverage-server.html">Coverage Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-coverage-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration/packages/configuring-coverage-server.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuration/packages/configuring-navfn.html">NavFn Planner</a><ul>
@@ -911,6 +918,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration/Iron.html">Iron to Jazzy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="migration/Iron.html#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration/Iron.html#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Iron.html#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Iron.html#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/Iron.html#use-interpolation-rpp-parameter-depreciated">use_interpolation RPP Parameter Depreciated</a></li>
@@ -1007,7 +1015,7 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Nav2 is the professionally supported spiritual successor of the ROS Navigation Stack deploying the same kinds of technology powering Autonomous Vehicles brought down, optimized, and reworked for mobile and surface robotics.
 This project seeks to find a safe way to have a mobile robot move to complete complex tasks through many types of environments and classes of robot kinematics.
-Not only can it move from Point A to Point B, but it can have intermediary poses, and represent other types of tasks like object following and more.
+Not only can it move from Point A to Point B, but it can have intermediary poses, and represent other types of tasks like object following, do complete coverage navigation, and more.
 Nav2 is a production-grade and high-quality navigation framework trusted by 50+ companies worldwide.</p>
 <p>It provides perception, planning, control, localization, visualization, and much more to build highly reliable autonomous systems.
 This will complete environmental modeling from sensor data, dynamic path planning, compute velocities for motors, avoid obstacles, represent semantic regions and objects, and structure higher-level robot behaviors.

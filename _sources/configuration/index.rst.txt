@@ -14,6 +14,7 @@ the best navigation performance.
    packages/configuring-costmaps.rst
    packages/configuring-lifecycle.rst
    packages/configuring-planner-server.rst
+   packages/configuring-coverage-server.rst
    packages/configuring-navfn.rst
    packages/configuring-smac-planner.rst
    packages/configuring-thetastar.rst
