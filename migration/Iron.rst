@@ -161,4 +161,7 @@ Before this change, only the active BT node was halted when finishing the action
 
 Also updated nav2_behavior_tree::BtActionServer::haltTree() to use the same. It is used nowhere in nav2 but is useful for external users (like me) that want for instance to halt the tree on preemption.
 
+Global Frame Removed from 2 BT Nodes
+************************************
 
+The Global Frame was removed from ``RemovePassedGoals`` and ``GoalReached`` BT nodes and instead using the ``frame_id`` of the goal's headers for transformation.
