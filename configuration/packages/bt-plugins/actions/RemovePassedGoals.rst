@@ -20,17 +20,6 @@ Input Ports
   Description
     The radius (m) in proximity to the viapoint for the BT node to remove from the list as having passed. 
 
-:global_frame:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  string "map"
-  ====== =======
-
-  Description
-    Reference frame.
-
 :robot_base_frame:
 
   ====== ===========

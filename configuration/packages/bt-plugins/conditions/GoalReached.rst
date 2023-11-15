@@ -48,17 +48,7 @@ Input Ports
 
   Description
     	Destination to check. Takes in a blackboard variable, e.g. "{goal}".
-
-:global_frame:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  string "map"
-  ====== =======
-
-  Description
-    	Reference frame.
+    	The global reference frame is taken from the goal's header `frame_id` field.
 
 :robot_base_frame:
 
@@ -76,4 +66,4 @@ Example
 
 .. code-block:: xml
 
-  <GoalReached goal="{goal}" global_frame="map" robot_base_frame="base_link"/>
+  <GoalReached goal="{goal}" robot_base_frame="base_link"/>
