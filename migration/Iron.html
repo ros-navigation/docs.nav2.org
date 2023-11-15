@@ -942,6 +942,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#subtrees-obtain-shared-resources">Subtrees Obtain Shared Resources</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior">Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#btactionserver-use-native-library-halttree">BtActionServer: use native library haltTree()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-frame-removed-from-2-bt-nodes">Global Frame Removed from 2 BT Nodes</a></li>
 </ul>
 </li>
 </ul>
@@ -1123,6 +1124,10 @@ if the transformation from the robot base frame to the global frame does not bec
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3950">PR #3950</a> changes the method used by <cite>BehaviorTreeEngine::haltAllActions</cite> to halt the BT nodes to the bt.cpp native method <cite>haltTree()</cite>.</p>
 <p>Before this change, only the active BT node was halted when finishing the action. After this change, all BT nodes halt() methods are called. This is very convenient to handle cleaning operation (switch off your lights when leaving) in halt().</p>
 <p>Also updated nav2_behavior_tree::BtActionServer::haltTree() to use the same. It is used nowhere in nav2 but is useful for external users (like me) that want for instance to halt the tree on preemption.</p>
+</div>
+<div class="section" id="global-frame-removed-from-2-bt-nodes">
+<h2>Global Frame Removed from 2 BT Nodes<a class="headerlink" href="#global-frame-removed-from-2-bt-nodes" title="Permalink to this headline">¶</a></h2>
+<p>The Global Frame was removed from <code class="docutils literal notranslate"><span class="pre">RemovePassedGoals</span></code> and <code class="docutils literal notranslate"><span class="pre">GoalReached</span></code> BT nodes and instead using the <code class="docutils literal notranslate"><span class="pre">frame_id</span></code> of the goal’s headers for transformation.</p>
 </div>
 </div>
 
