@@ -1061,32 +1061,13 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Destination to check. Takes in a blackboard variable, e.g. “{goal}”.</p>
+<dt>Description</dt><dd><p>Destination to check. Takes in a blackboard variable, e.g. “{goal}”.
+The global reference frame is taken from the goal’s header <cite>frame_id</cite> field.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">global_frame</dt>
+<dt class="field-even">robot_base_frame</dt>
 <dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“map”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Reference frame.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">robot_base_frame</dt>
-<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 35%" />
 <col style="width: 65%" />
@@ -1108,7 +1089,7 @@
 </dl>
 <div class="section" id="id1">
 <h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalReached</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">global_frame=</span><span class="s">&quot;map&quot;</span><span class="w"> </span><span class="na">robot_base_frame=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalReached</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">robot_base_frame=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
