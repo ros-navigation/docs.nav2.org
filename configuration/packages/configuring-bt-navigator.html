@@ -1157,8 +1157,29 @@ This value will be overwritten for a BT node if the input port “server_timeout
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">action_server_result_timeout</dt>
+<dt class="field-odd">wait_for_service_timeout</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1000</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Default timeout value (in milliseconds) while Action or Service BT nodes will waiting for acknowledgement from an service or action server on BT initialization (e.g. <code class="docutils literal notranslate"><span class="pre">wait_for_action_server(timeout)</span></code>).
+This value will be overwritten for a BT node if the input port “wait_for_service_timeout” is provided.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">action_server_result_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 35%" />
@@ -1183,8 +1204,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">transform_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 35%" />
@@ -1206,8 +1227,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">global_frame</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">global_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 43%" />
 <col style="width: 57%" />
@@ -1226,8 +1247,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">robot_base_frame</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">robot_base_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -1246,8 +1267,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">odom_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">odom_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -1266,8 +1287,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">goal_blackboard_id</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">goal_blackboard_id</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1286,8 +1307,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">path_blackboard_id</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">path_blackboard_id</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1306,8 +1327,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">goals_blackboard_id</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">goals_blackboard_id</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1326,8 +1347,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">use_sim_time</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">use_sim_time</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1346,8 +1367,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">error_code_names</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">error_code_names</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
