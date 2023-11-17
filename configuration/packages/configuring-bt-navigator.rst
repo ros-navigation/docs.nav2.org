@@ -120,7 +120,7 @@ Parameters
   ==== =======
 
   Description
-    Default timeout value (in milliseconds) while a BT nodes are waiting for acknowledgement from an service server.
+    Default timeout value (in milliseconds) while Action or Service BT nodes will waiting for acknowledgement from an service or action server on BT initialization (e.g. ``wait_for_action_server(timeout)``).
     This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
     
 :action_server_result_timeout:
