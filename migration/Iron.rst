@@ -165,3 +165,12 @@ Global Frame Removed from 2 BT Nodes
 ************************************
 
 The Global Frame was removed from ``RemovePassedGoals`` and ``GoalReached`` BT nodes and instead using the ``frame_id`` of the goal's headers for transformation.
+
+Introduction of ``CostmapUpdate.msg``
+************************************
+
+`PR #3965 <https://github.com/ros-planning/navigation2/pull/3965>`_ introduces a new type of message - ``CostmapUpdate.msg``. It is the update message related to the ``Costmap.msg``. Now instead of sending the whole costmap in every message, such as with ``Costmap.msg``, the ``CostmapUpdate.msg`` includes only the area of the costmap that has changed since the previous update message. The ``Costmap.msg`` is sent only once at the beginning, followed by the messages of the ``CostmapUpdate.msg`` type. The idea is to mimic the ``OccupancyGrid.msg`` and ``OccupancyGridUpdate.msg`` behavior.
+
+To activate this feature, the Costmap2D ROS parameter ``always_send_full_costmap`` has to be set to ``false``. 
+
+To subscribe to ``Costmap.msg`` and ``CostmapUpdate.msg`` it is recommended to use the ``CostmapSubscriber`` class.
