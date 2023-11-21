@@ -1006,7 +1006,8 @@
 <span id="configuring-velocity-smoother"></span><h1>Velocity Smoother<a class="headerlink" href="#velocity-smoother" title="Permalink to this headline">¶</a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_velocity_smoother">Github</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_velocity_smoother</span></code> is a package containing a lifecycle-component node for smoothing velocities sent by Nav2 to robot controllers.
-The aim of this package is to implement velocity, acceleration, and deadband smoothing from Nav2 to reduce wear-and-tear on robot motors and hardware controllers by smoothing out the accelerations/jerky movements that might be present with some local trajectory planners’ control efforts.</p>
+The aim of this package is to implement velocity, acceleration, and deadband smoothing from Nav2 to reduce wear-and-tear on robot motors and hardware controllers by smoothing out the accelerations/jerky movements that might be present with some local trajectory planners’ control efforts.
+It can also interpolate velocity commands at higher rates than the controller server publishes.</p>
 <p>See the package’s README for more information.</p>
 <div class="section" id="velocity-smoother-parameters">
 <h2>Velocity Smoother Parameters<a class="headerlink" href="#velocity-smoother-parameters" title="Permalink to this headline">¶</a></h2>

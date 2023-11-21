@@ -1005,6 +1005,7 @@
              
   <div class="section" id="inflation-layer-parameters">
 <h1>Inflation Layer Parameters<a class="headerlink" href="#inflation-layer-parameters" title="Permalink to this headline">¶</a></h1>
+<p>This layer places an exponential decay functions around obstacles to increase cost to traverse near collision. It also places a lethal cost around obstacles within the robot’s fully inscribed radius - even if a robot is non-circular for optimized first-order collision checking.</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code> is the corresponding plugin name selected for this type.</p>
 <dl class="field-list">
 <dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;inflation</span> <span class="pre">layer&gt;</span></code>.enabled</dt>

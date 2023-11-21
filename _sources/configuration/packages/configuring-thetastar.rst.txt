@@ -7,7 +7,7 @@ Theta Star Planner
 
 .. .. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
 
-Theta Star Planner implements the Theta* path planner meant to plan any-angled paths using A*.
+Theta Star Planner implements the Theta* path planner meant to plan any-angled line-segment focused paths using A*.
 
 For the below example the planner took ~46ms (averaged value) to compute the path of 87.5m - 
 

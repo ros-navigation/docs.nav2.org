@@ -1596,6 +1596,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 <div class="section" id="constraint-critic">
 <h3>Constraint Critic<a class="headerlink" href="#constraint-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic penalizes trajectories that have components outside of the set dynamic or kinematic constraints</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1641,6 +1642,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 <div class="section" id="goal-angle-critic">
 <h3>Goal Angle Critic<a class="headerlink" href="#goal-angle-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic incentivizes navigating to achieve the angle of the goal posewhen in reasonable proximity to goal</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1706,6 +1708,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 <div class="section" id="goal-critic">
 <h3>Goal Critic<a class="headerlink" href="#goal-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic incentivizes navigating spatially towards the goal when in reasonable proximity to goal</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1771,6 +1774,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 <div class="section" id="obstacles-critic">
 <h3>Obstacles Critic<a class="headerlink" href="#obstacles-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check.</p>
 <dl class="field-list">
 <dt class="field-odd">critical_weight</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1956,6 +1960,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 <div class="section" id="path-align-critic">
 <h3>Path Align Critic<a class="headerlink" href="#path-align-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic incentivizes aligning with the global path, if relevant. It does not implement path following behavior.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -2081,6 +2086,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 <div class="section" id="path-angle-critic">
 <h3>Path Angle Critic<a class="headerlink" href="#path-angle-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic penalizes trajectories at a high relative angle to the path. This helps the robot make sharp turns when necessary due to large accumulated angular errors.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -2206,6 +2212,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 <div class="section" id="path-follow-critic">
 <h3>Path Follow Critic<a class="headerlink" href="#path-follow-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic incentivizes making progress along the path. This is what drives the robot forward along the path.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -2291,6 +2298,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 <div class="section" id="prefer-forward-critic">
 <h3>Prefer Forward Critic<a class="headerlink" href="#prefer-forward-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic incentivizes moving in the forward direction, rather than reversing.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -2356,6 +2364,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 <div class="section" id="twirling-critic">
 <h3>Twirling Critic<a class="headerlink" href="#twirling-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic penalizes unnecessary ‘twisting’ with holonomic vehicles. It adds a constraint on the rotation angle to keep it consistent.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
 <dd class="field-odd"><table class="docutils align-default">

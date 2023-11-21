@@ -1006,7 +1006,8 @@
 <span id="configuring-controller-server"></span><h1>Controller Server<a class="headerlink" href="#controller-server" title="Permalink to this headline">¶</a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_controller">Github</a>.</p>
 <p>The Controller Server implements the server for handling the controller requests for the stack and host a map of plugin implementations.
-It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.</p>
+It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.
+It also hosts the local costmap.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list">
