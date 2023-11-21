@@ -351,6 +351,8 @@ Ackermann Motion Model
 Constraint Critic
 -----------------
 
+This critic penalizes trajectories that have components outside of the set dynamic or kinematic constraints
+
 :cost_weight:
 
   ============== ===========================
@@ -375,6 +377,8 @@ Constraint Critic
 
 Goal Angle Critic
 -----------------
+
+This critic incentivizes navigating to achieve the angle of the goal posewhen in reasonable proximity to goal
 
 :cost_weight:
 
@@ -412,6 +416,8 @@ Goal Angle Critic
 Goal Critic
 -----------
 
+This critic incentivizes navigating spatially towards the goal when in reasonable proximity to goal
+
 :cost_weight:
 
   ============== ===========================
@@ -447,6 +453,8 @@ Goal Critic
 
 Obstacles Critic
 ----------------
+
+This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check.
 
 :critical_weight:
 
@@ -550,6 +558,8 @@ Obstacles Critic
 Path Align Critic
 -----------------
 
+This critic incentivizes aligning with the global path, if relevant. It does not implement path following behavior.
+
 :cost_weight:
 
   ============== ===========================
@@ -618,6 +628,8 @@ Path Align Critic
 
 Path Angle Critic
 -----------------
+
+This critic penalizes trajectories at a high relative angle to the path. This helps the robot make sharp turns when necessary due to large accumulated angular errors.
 
 :cost_weight:
 
@@ -689,6 +701,8 @@ Path Angle Critic
 Path Follow Critic
 ------------------
 
+This critic incentivizes making progress along the path. This is what drives the robot forward along the path.
+
 :cost_weight:
 
   ============== ===========================
@@ -736,6 +750,8 @@ Path Follow Critic
 Prefer Forward Critic
 ---------------------
 
+This critic incentivizes moving in the forward direction, rather than reversing.
+
 :cost_weight:
 
   ============== ===========================
@@ -771,6 +787,8 @@ Prefer Forward Critic
 
 Twirling Critic
 ---------------
+
+This critic penalizes unnecessary 'twisting' with holonomic vehicles. It adds a constraint on the rotation angle to keep it consistent.
 
 :cost_weight:
 

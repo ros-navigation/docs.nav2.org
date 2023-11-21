@@ -3,6 +3,8 @@
 Obstacle Layer Parameters
 =========================
 
+This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, depth, or other sensors. It contains a 2D costmap model within it that manages the planning space by the parameters specified below.
+
 ``<obstacle layer>`` is the corresponding plugin name selected for this type.
 
 ``<data source>`` is the corresponding observation source name for that sources parameters.
