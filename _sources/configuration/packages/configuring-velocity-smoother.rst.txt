@@ -15,6 +15,17 @@ See the package's README for more information.
 Velocity Smoother Parameters
 ****************************
 
+:use_realtime_priority:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           false   
+  ============== =======
+
+  Description
+    Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
+
 :smoothing_frequency:
 
   ============== ===========================
@@ -153,3 +164,4 @@ Example
       max_decel: [-2.5, 0.0, -3.2]
       odom_topic: "odom"
       odom_duration: 0.1
+      use_realtime_priority: false

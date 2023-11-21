@@ -1011,8 +1011,28 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 <div class="section" id="velocity-smoother-parameters">
 <h2>Velocity Smoother Parameters<a class="headerlink" href="#velocity-smoother-parameters" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list">
-<dt class="field-odd">smoothing_frequency</dt>
+<dt class="field-odd">use_realtime_priority</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller’s execution thread to a higher priority than the rest of the system (<code class="docutils literal notranslate"><span class="pre">90</span></code>) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of <code class="docutils literal notranslate"><span class="pre">/etc/security/limits.conf</span></code> to give userspace access to elevated prioritization permissions: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span> <span class="pre">soft</span> <span class="pre">rtprio</span> <span class="pre">99</span> <span class="pre">&lt;username&gt;</span> <span class="pre">hard</span> <span class="pre">rtprio</span> <span class="pre">99</span></code></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">smoothing_frequency</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1031,8 +1051,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-even">scale_velocities</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">scale_velocities</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1051,8 +1071,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">feedback</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">feedback</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1071,8 +1091,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-even">max_velocity</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">max_velocity</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1091,8 +1111,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_velocity</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_velocity</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1111,8 +1131,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-even">deadband_velocity</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">deadband_velocity</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1131,8 +1151,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">velocity_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">velocity_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1151,8 +1171,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-even">max_accel</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">max_accel</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1171,8 +1191,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">max_decel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">max_decel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1191,8 +1211,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-even">odom_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">odom_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1211,8 +1231,8 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">odom_duration</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">odom_duration</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1248,6 +1268,7 @@ The aim of this package is to implement velocity, acceleration, and deadband smo
 <span class="w">    </span><span class="nt">max_decel</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-2.5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-3.2</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
 <span class="w">    </span><span class="nt">odom_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">    </span><span class="nt">use_realtime_priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
 </div>

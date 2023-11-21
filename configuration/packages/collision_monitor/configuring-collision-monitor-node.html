@@ -1272,6 +1272,26 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
+<dt class="field-even">use_realtime_priority</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller’s execution thread to a higher priority than the rest of the system (<code class="docutils literal notranslate"><span class="pre">90</span></code>) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of <code class="docutils literal notranslate"><span class="pre">/etc/security/limits.conf</span></code> to give userspace access to elevated prioritization permissions: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span> <span class="pre">soft</span> <span class="pre">rtprio</span> <span class="pre">99</span> <span class="pre">&lt;username&gt;</span> <span class="pre">hard</span> <span class="pre">rtprio</span> <span class="pre">99</span></code></p>
+</dd>
+</dl>
+</dd>
 </dl>
 <div class="section" id="polygons-parameters">
 <h3>Polygons parameters<a class="headerlink" href="#polygons-parameters" title="Permalink to this headline">¶</a></h3>
@@ -1740,6 +1760,7 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 <span class="w">    </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
 <span class="w">    </span><span class="nt">base_shift_correction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">stop_pub_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">    </span><span class="nt">use_realtime_priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;PolygonStop&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PolygonSlow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;FootprintApproach&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">PolygonStop</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;circle&quot;</span>
