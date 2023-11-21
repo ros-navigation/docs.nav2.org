@@ -3,6 +3,8 @@
 Voxel Layer Parameters
 ======================
 
+This costmap layer implements a plugin that uses 3D raycasting for depth, 3D, or other sensors. It contains a 3D environmental model within it that manages the planning space and squashes down to 2D for planning and control by the parameters specified below.
+
 ``<voxel layer>`` is the corresponding plugin name selected for this type.
 
 ``<data source>`` is the corresponding observation source name for that sources parameters.

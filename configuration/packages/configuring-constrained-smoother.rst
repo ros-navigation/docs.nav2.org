@@ -10,7 +10,7 @@ Source code on Github_.
 .. _`RoboTech Vision`: https://robotechvision.com/
 
 A smoother plugin for nav2_smoother based on the original deprecated smoother in nav2_smac_planner and put into operational state by `RoboTech Vision`_.
-Suitable for applications which need planned global path to be pushed away from obstacles and/or for Reeds-Shepp motion models.
+Suitable for applications which need planned global path to be pushed away from obstacles and/or for Reeds-Shepp motion models. It optimizes for path length, smoothness, distance from obstacles, and curvature in a large Ceres-based optimization program.
 
 .. _`TruncatePathLocal BT Node`: bt-plugins/actions/TruncatePathLocal.html
 

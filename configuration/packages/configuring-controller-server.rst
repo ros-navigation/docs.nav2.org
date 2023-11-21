@@ -9,6 +9,7 @@ Source code on Github_.
 
 The Controller Server implements the server for handling the controller requests for the stack and host a map of plugin implementations.
 It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.
+It also hosts the local costmap.
 
 Parameters
 **********

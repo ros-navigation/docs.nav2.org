@@ -3,6 +3,8 @@
 Range Sensor Parameters
 =======================
 
+This costmap layer implements a plugin that processes sonar, IR, or other 1-D sensors for collision avoidance.
+
 ``<range layer>`` is the corresponding plugin name selected for this type.
 
 :``<range layer>``.enabled:
