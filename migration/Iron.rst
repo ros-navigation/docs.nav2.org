@@ -15,6 +15,8 @@ Introduction of Soft-Real Time Action Servers
     <username> soft rtprio 99
     <username> hard rtprio 99
 
+The Collision Monitor and Velocity Smoothers also had ``use_realtime_priority`` added as well!
+
 ``opennav_coverage`` Project
 ****************************
 

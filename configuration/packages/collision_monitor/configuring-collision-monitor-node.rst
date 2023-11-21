@@ -183,6 +183,17 @@ Parameters
   Description:
     List of data sources (laser scanners, pointclouds, etc...). Causes an error, if not specialized.
 
+:use_realtime_priority:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           false   
+  ============== =======
+
+  Description
+    Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
+
 Polygons parameters
 ===================
 
@@ -454,6 +465,7 @@ Here is an example of configuration YAML for the Collision Monitor.
         source_timeout: 5.0
         base_shift_correction: True
         stop_pub_timeout: 2.0
+        use_realtime_priority: false
         polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
         PolygonStop:
           type: "circle"
