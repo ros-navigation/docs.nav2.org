@@ -9,6 +9,7 @@ Source code on Github_.
 
 The Controller Server implements the server for handling the controller requests for the stack and host a map of plugin implementations.
 It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.
+It also hosts the local costmap.
 
 Parameters
 **********
@@ -23,6 +24,17 @@ Parameters
 
   Description
     Frequency to run controller (Hz).
+
+:use_realtime_priority:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           false   
+  ============== =======
+
+  Description
+    Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
 
 :action_server_result_timeout:
 

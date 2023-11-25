@@ -9,6 +9,7 @@ Source code on Github_.
 
 The Planner Server implements the server for handling the planner requests for the stack and host a map of plugin implementations.
 It will take in a goal and a planner plugin name to use and call the appropriate plugin to compute a path to the goal.
+It also hosts the global costmap.
 
 Parameters
 **********

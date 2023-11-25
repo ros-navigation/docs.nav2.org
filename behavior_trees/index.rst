@@ -48,5 +48,6 @@ This tree contains:
 - No integration with automatic door, elevator, or other APIs
 - No user provided custom BT nodes
 - No subtrees for other behaviors like docking, following, etc.
+- No use of other types of planners, like complete coverage (where useful)
 
 All of this, and more, can be set and configured for your customized navigation logic in Nav2.

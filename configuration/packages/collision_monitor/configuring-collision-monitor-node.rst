@@ -136,7 +136,7 @@ Parameters
   ============== =============================
 
   Description:
-    Maximum time interval in which source data is considered as valid.
+    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. This parameter can be overriden per observation source.
 
 :base_shift_correction:
 
@@ -182,6 +182,17 @@ Parameters
 
   Description:
     List of data sources (laser scanners, pointclouds, etc...). Causes an error, if not specialized.
+
+:use_realtime_priority:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           false   
+  ============== =======
+
+  Description
+    Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
 
 Polygons parameters
 ===================
@@ -423,6 +434,17 @@ Observation sources parameters
 
   Description:
     Whether to use this source for collision monitoring. (Can be dynamically set)
+    
+:``<source name>``.source_timeout:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         (node parameter ``source_timeout`` value)
+  ============== =============================
+
+  Description:
+    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. Overrides node parameter for each source individually, if desired.
 
 
 Example
@@ -443,6 +465,7 @@ Here is an example of configuration YAML for the Collision Monitor.
         source_timeout: 5.0
         base_shift_correction: True
         stop_pub_timeout: 2.0
+        use_realtime_priority: false
         polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
         PolygonStop:
           type: "circle"
@@ -482,6 +505,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           enabled: True
         observation_sources: ["scan", "pointcloud"]
         scan:
+          source_timeout: 0.2
           type: "scan"
           topic: "/scan"
           enabled: True

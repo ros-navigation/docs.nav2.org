@@ -23,9 +23,13 @@ Behavior-Tree Navigators
 | `NavigateThroughPosesNavigator`_ | Steve Macenski     | Point-through-points navigation   |
 |                                  |                    | via a behavior tree action server |
 +----------------------------------+--------------------+-----------------------------------+
+| `CoverageNavigator`_             | Steve Macenski     | Complete coverage navigation      |
+|                                  |                    | (Cartesian or GPS) via a BTs      |
++----------------------------------+--------------------+-----------------------------------+
 
 .. _NavigateToPoseNavigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator/src/navigators
 .. _NavigateThroughPosesNavigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator/src/navigators
+.. _CoverageNavigator: https://github.com/open-navigation/opennav_coverage/tree/main/opennav_coverage_navigator
 
 
 Costmap Layers
@@ -393,6 +397,10 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Assisted Teleop Action`_           | Joshua Wallace      | Cancels assisted teleop behavior action  |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Complete Coverage Action`_         | Steve Macenski      | Cancels compute complete coverage        |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Compute Complete Coverage Path Action`_   | Steve Macenski      | Calls coverage planner server            |
++--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Drive On Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
@@ -422,6 +430,9 @@ Behavior Tree Nodes
 .. _Cancel Wait Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
 .. _Cancel Drive on Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp
 .. _Cancel Assisted Teleop Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
+.. _Cancel Complete Coverage Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp
+.. _Compute Complete Coverage Path Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp
+
 
 
 +------------------------------------+--------------------+------------------------+

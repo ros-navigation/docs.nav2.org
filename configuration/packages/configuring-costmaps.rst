@@ -7,7 +7,7 @@ Source code on Github_.
 
 .. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d
 
-The Costmap 2D package implements a 2D grid-based costmap for environmental representations and a number of sensor processing plugins.
+The Costmap 2D package implements a 2D grid-based costmap for environmental representations and a number of sensor processing plugins (AI outputs, depth sensor obstacle buffering, semantic information, etc).
 It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around. 
 
 Costmap2D ROS Parameters
@@ -44,7 +44,7 @@ Costmap2D ROS Parameters
   ============== =======
 
   Description
-    Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters `footprint: "[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]"`.
+    Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters `footprint: "[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]"`. Note that this can also be adjusted over time using the costmap's ``~/footprint`` topic, which will update the polygon over time as needed due to changes in the robot's state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot's shape.
 
 :global_frame:
 

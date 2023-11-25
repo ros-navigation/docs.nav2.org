@@ -3,6 +3,8 @@
 Static Layer Parameters
 =======================
 
+This implements a costmap layer taking in a map from either SLAM or ``map_server`` (or other) to place into the costmap. It resizes the costmap to its size and places the static obstacles on the planning space. 
+
 ``<static layer>`` is the corresponding plugin name selected for this type.
 
 :``<static layer>``.enabled:

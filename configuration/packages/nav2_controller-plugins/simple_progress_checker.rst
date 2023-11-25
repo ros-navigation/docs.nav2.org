@@ -3,7 +3,7 @@
 SimpleProgressChecker
 =====================
 
-Checks whether the robot has made progress.
+Checks whether the robot has made positional progress.
 
 Parameters
 **********
