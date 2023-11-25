@@ -91,13 +91,13 @@ Example
 .. code-block:: yaml
   
   planner_server:
-  ros__parameters:
-    expected_planner_frequency: 20.0
-    use_sim_time: True
-    planner_plugins: ["GridBased"]
-    GridBased:
-      plugin: "nav2_theta_star_planner/ThetaStarPlanner"
-      how_many_corners: 8
-      w_euc_cost: 1.0
-      w_traversal_cost: 2.0
-      w_heuristic_cost: 1.0
+    ros__parameters:
+      expected_planner_frequency: 20.0
+      use_sim_time: True
+      planner_plugins: ["GridBased"]
+      GridBased:
+        plugin: "nav2_theta_star_planner/ThetaStarPlanner"
+        how_many_corners: 8
+        w_euc_cost: 1.0
+        w_traversal_cost: 2.0
+        w_heuristic_cost: 1.0
