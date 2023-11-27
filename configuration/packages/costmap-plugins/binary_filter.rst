@@ -152,7 +152,7 @@ Example
           default_state: False
           binary_state_topic: "/binary_state"
           flip_threshold: 50.0
-          change_parameter_timeout: 10.0
+          change_parameter_timeout: 10
           binary_parameters: ["param1", "param2"]
           param1:
             node_name: "node0"
