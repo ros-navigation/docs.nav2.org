@@ -946,6 +946,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#btactionserver-use-native-library-halttree">BtActionServer: use native library haltTree()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#global-frame-removed-from-2-bt-nodes">Global Frame Removed from 2 BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-costmapupdate-msg">Introduction of <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#full-stack-uses-node-clocks">Full Stack Uses Node Clocks</a></li>
 </ul>
 </li>
 </ul>
@@ -1138,6 +1139,10 @@ if the transformation from the robot base frame to the global frame does not bec
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3965">PR #3965</a> introduces a new type of message - <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code>. It is the update message related to the <code class="docutils literal notranslate"><span class="pre">Costmap.msg</span></code>. Now instead of sending the whole costmap in every message, such as with <code class="docutils literal notranslate"><span class="pre">Costmap.msg</span></code>, the <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code> includes only the area of the costmap that has changed since the previous update message. The <code class="docutils literal notranslate"><span class="pre">Costmap.msg</span></code> is sent only once at the beginning, followed by the messages of the <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code> type. The idea is to mimic the <code class="docutils literal notranslate"><span class="pre">OccupancyGrid.msg</span></code> and <code class="docutils literal notranslate"><span class="pre">OccupancyGridUpdate.msg</span></code> behavior.</p>
 <p>To activate this feature, the Costmap2D ROS parameter <code class="docutils literal notranslate"><span class="pre">always_send_full_costmap</span></code> has to be set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 <p>To subscribe to <code class="docutils literal notranslate"><span class="pre">Costmap.msg</span></code> and <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code> it is recommended to use the <code class="docutils literal notranslate"><span class="pre">CostmapSubscriber</span></code> class.</p>
+</div>
+<div class="section" id="full-stack-uses-node-clocks">
+<h2>Full Stack Uses Node Clocks<a class="headerlink" href="#full-stack-uses-node-clocks" title="Permalink to this headline">¶</a></h2>
+<p>The stack no longer contains wall timers or wall rates. It will now use the node clocks. This will be ROS Time for simulation when <code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> is true. Else, it uses a steady clock.</p>
 </div>
 </div>
 
