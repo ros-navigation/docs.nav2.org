@@ -176,3 +176,8 @@ Introduction of ``CostmapUpdate.msg``
 To activate this feature, the Costmap2D ROS parameter ``always_send_full_costmap`` has to be set to ``false``. 
 
 To subscribe to ``Costmap.msg`` and ``CostmapUpdate.msg`` it is recommended to use the ``CostmapSubscriber`` class.
+
+Full Stack Uses Node Clocks
+***************************
+
+The stack no longer contains wall timers or wall rates. It will now use the node clocks. This will be ROS Time for simulation when ``use_sim_time`` is true. Else, it uses a steady clock.
