@@ -141,7 +141,7 @@ In our example the ``nav2_gradient_costmap_plugin::GradientLayer`` plugin's clas
 
 This part is usually placed at the end of cpp-file where the plugin class was written (in our example ``gradient_layer.cpp``). It is good practice to place these lines at the end of the file, but technically, you can also place at the top.
 
-2. Plugin's inormation should be stored to plugin description file. This is done by using separate XML (in our example ``gradient_plugins.xml``) in the plugin's package. This file contains information about:
+2. Plugin's information should be stored to the plugin's description file. This is done by using separate XML (in our example ``gradient_plugins.xml``) in the plugin's package. This file contains information about:
 
  - ``path``: Path and name of library where plugin is placed.
  - ``name``: Plugin type referenced in ``plugin_types`` parameter (see next section for more details). It could be whatever you want.

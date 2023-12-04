@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Writing a New Costmap2D Plugin &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+
+  
     <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -1142,7 +1144,7 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 </div>
 <p>This part is usually placed at the end of cpp-file where the plugin class was written (in our example <code class="docutils literal notranslate"><span class="pre">gradient_layer.cpp</span></code>). It is good practice to place these lines at the end of the file, but technically, you can also place at the top.</p>
 <ol class="arabic simple" start="2">
-<li><p>Plugin’s inormation should be stored to plugin description file. This is done by using separate XML (in our example <code class="docutils literal notranslate"><span class="pre">gradient_plugins.xml</span></code>) in the plugin’s package. This file contains information about:</p></li>
+<li><p>Plugin’s information should be stored to the plugin’s description file. This is done by using separate XML (in our example <code class="docutils literal notranslate"><span class="pre">gradient_plugins.xml</span></code>) in the plugin’s package. This file contains information about:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
