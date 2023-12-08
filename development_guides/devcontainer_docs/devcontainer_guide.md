@@ -90,7 +90,7 @@ Additionally, the container can be granted [privileged](https://docs.docker.com/
   - Necessary for some GPU drivers and USB devices
 
 :::{attention}
-Such `runArgs` in the `devcontainer.json` config can be enabled or customized, either expanded or or narrowed in scope, to better suit your desired development environment. The default configuration merely comments out these parameters, to limit unintended side effects or cross talk between containers, but can be uncommented to accommodate the widest range of development use cases.
+Such `runArgs` in the `devcontainer.json` config can be enabled or customized, either expanded or narrowed in scope, to better suit your desired development environment. The default configuration merely comments out these parameters, to limit unintended side effects or cross talk between containers, but can be uncommented to accommodate the widest range of development use cases.
 :::
 
 :::{seealso}
