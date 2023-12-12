@@ -505,7 +505,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         10000.0
+  double         100000.0
   ============== ===========================
 
   Description
@@ -636,7 +636,7 @@ This critic penalizes trajectories at a high relative angle to the path. This he
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         2.0
+  double         2.2
   ============== ===========================
 
   Description
@@ -680,7 +680,7 @@ This critic penalizes trajectories at a high relative angle to the path. This he
   ============== ===========================
   Type           Default                    
   -------------- ---------------------------
-  double         1.2
+  double         0.785398
   ============== ===========================
 
   Description
