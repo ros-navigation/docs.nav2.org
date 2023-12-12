@@ -28,6 +28,17 @@ Parameters
   Description
     Whether to allow traversing/search in unknown space.
 
+:``<name>``.debug_visualizations:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   false         
+  ====== =======
+
+  Description
+    Whether to publish expansions on the ``/expansions`` topic as an array of poses (the orientation has no meaning) and the path's footprints on the ``/planned_footprints`` topic. WARNING: heavy to compute and to display, for debug only as it degrades the performance.
+
 :``<name>``.tolerance:
 
   ====== =======
