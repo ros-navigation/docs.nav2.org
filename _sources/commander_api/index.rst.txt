@@ -76,6 +76,9 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 | spin(spin_dist=1.57,                  | Requests the robot to performs an in-place rotation by a given angle.      |
 | time_allowance=10)                    |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
+| driveOnHeading(dist=0.15,             | Requests the robot to drive on heading by a given distance.                |
+| speed=0.025, time_allowance=10)       |                                                                            |
++---------------------------------------+----------------------------------------------------------------------------+
 | backup(backup_dist=0.15,              | Requests the robot to back up by a given distance.                         |
 | backup_speed=0.025, time_allowance=10)|                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+

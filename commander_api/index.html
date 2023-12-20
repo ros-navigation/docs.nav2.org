@@ -1087,87 +1087,91 @@ goal_checker_id=’‘)</p></td>
 time_allowance=10)</p></td>
 <td><p>Requests the robot to performs an in-place rotation by a given angle.</p></td>
 </tr>
-<tr class="row-even"><td><p>backup(backup_dist=0.15,
+<tr class="row-even"><td><p>driveOnHeading(dist=0.15,
+speed=0.025, time_allowance=10)</p></td>
+<td><p>Requests the robot to drive on heading by a given distance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>backup(backup_dist=0.15,
 backup_speed=0.025, time_allowance=10)</p></td>
 <td><p>Requests the robot to back up by a given distance.</p></td>
 </tr>
-<tr class="row-odd"><td><p>assistedTeleop(time_allowance=30)</p></td>
+<tr class="row-even"><td><p>assistedTeleop(time_allowance=30)</p></td>
 <td><p>Requests the robot to run the assisted teleop action.</p></td>
 </tr>
-<tr class="row-even"><td><p>cancelTask()</p></td>
+<tr class="row-odd"><td><p>cancelTask()</p></td>
 <td><p>Cancel an ongoing task, including route tasks.</p></td>
 </tr>
-<tr class="row-odd"><td><p>isTaskComplete(trackingRoute=False)</p></td>
+<tr class="row-even"><td><p>isTaskComplete(trackingRoute=False)</p></td>
 <td><p>Checks if task is complete yet, times out at <code class="docutils literal notranslate"><span class="pre">100ms</span></code>. Returns
 <code class="docutils literal notranslate"><span class="pre">True</span></code> if completed and <code class="docutils literal notranslate"><span class="pre">False</span></code> if still going. If checking a route
 tracking task, set default argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>getFeedback(trackingRoute=False)</p></td>
+<tr class="row-odd"><td><p>getFeedback(trackingRoute=False)</p></td>
 <td><p>Gets feedback from task, returns action server feedback msg.
 If getting feedback on a tracking task, set default argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>getResult()</p></td>
+<tr class="row-even"><td><p>getResult()</p></td>
 <td><p>Gets final result of task, to be called after <code class="docutils literal notranslate"><span class="pre">isTaskComplete</span></code>
 returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. Returns action server result msg.</p></td>
 </tr>
-<tr class="row-even"><td><p>getPath(start, goal,
+<tr class="row-odd"><td><p>getPath(start, goal,
 planner_id=’‘, use_start=False)</p></td>
 <td><p>Gets a path from a starting to a goal <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>getPathThroughPoses(start, goals,
+<tr class="row-even"><td><p>getPathThroughPoses(start, goals,
 planner_id=’‘, use_start=False)</p></td>
 <td><p>Gets a path through a starting to a set of goals, a list
 of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>getRoute(start, goal,
+<tr class="row-odd"><td><p>getRoute(start, goal,
 use_start=False)</p></td>
 <td><p>Gets a sparse route and dense path from start to goal, where start and
 goal may be of type <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> or <code class="docutils literal notranslate"><span class="pre">int</span></code> for known NodeIDs.</p></td>
 </tr>
-<tr class="row-odd"><td><p>getandTrackRoute(start, goal,
+<tr class="row-even"><td><p>getandTrackRoute(start, goal,
 use_start=False)</p></td>
 <td><p>Gets and tracks a sparse route and dense path from start to goal, where
 start &amp; goal may be of type <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> or <code class="docutils literal notranslate"><span class="pre">int</span></code> for known NodeIDs.</p></td>
 </tr>
-<tr class="row-even"><td><p>smoothPath(path, smoother_id=’‘,
+<tr class="row-odd"><td><p>smoothPath(path, smoother_id=’‘,
 max_duration=2.0,
 check_for_collision=False)</p></td>
 <td><p>Smooths a given path of type <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>changeMap(map_filepath)</p></td>
+<tr class="row-even"><td><p>changeMap(map_filepath)</p></td>
 <td><p>Requests a change from the current map to <cite>map_filepath</cite>’s yaml.</p></td>
 </tr>
-<tr class="row-even"><td><p>clearAllCostmaps()</p></td>
+<tr class="row-odd"><td><p>clearAllCostmaps()</p></td>
 <td><p>Clears both the global and local costmaps.</p></td>
 </tr>
-<tr class="row-odd"><td><p>clearLocalCostmap()</p></td>
+<tr class="row-even"><td><p>clearLocalCostmap()</p></td>
 <td><p>Clears the local costmap.</p></td>
 </tr>
-<tr class="row-even"><td><p>clearGlobalCostmap()</p></td>
+<tr class="row-odd"><td><p>clearGlobalCostmap()</p></td>
 <td><p>Clears the global costmap.</p></td>
 </tr>
-<tr class="row-odd"><td><p>getGlobalCostmap()</p></td>
+<tr class="row-even"><td><p>getGlobalCostmap()</p></td>
 <td><p>Returns the global costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>getLocalCostmap()</p></td>
+<tr class="row-odd"><td><p>getLocalCostmap()</p></td>
 <td><p>Returns the local costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>waitUntilNav2Active(
+<tr class="row-even"><td><p>waitUntilNav2Active(
 navigator=’bt_navigator’,
 localizer=’amcl’)</p></td>
 <td><p>Blocks until Nav2 is completely online and lifecycle nodes are in the
 active state. To be used in conjunction with autostart or external
 lifecycle bringup. Custom navigator and localizer nodes can be specified</p></td>
 </tr>
-<tr class="row-even"><td><p>lifecycleStartup()</p></td>
+<tr class="row-odd"><td><p>lifecycleStartup()</p></td>
 <td><p>Sends a request to all lifecycle management servers to bring them into
 the active state, to be used if autostart is <code class="docutils literal notranslate"><span class="pre">False</span></code> and you want this
 program to control Nav2’s lifecycle.</p></td>
 </tr>
-<tr class="row-odd"><td><p>lifecycleShutdown()</p></td>
+<tr class="row-even"><td><p>lifecycleShutdown()</p></td>
 <td><p>Sends a request to all lifecycle management servers to shut them down.</p></td>
 </tr>
-<tr class="row-even"><td><p>destroyNode()</p></td>
+<tr class="row-odd"><td><p>destroyNode()</p></td>
 <td><p>Releases the resources used by the object.</p></td>
 </tr>
 </tbody>
