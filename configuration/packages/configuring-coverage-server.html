@@ -1008,7 +1008,9 @@
   <div class="section" id="coverage-server">
 <span id="configuring-coverage-server"></span><h1>Coverage Server<a class="headerlink" href="#coverage-server" title="Permalink to this headline">¶</a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/open-navigation/opennav_coverage">Github</a>.</p>
-<p>The Coverage Server implements the server for handling the complete-coverage planning requests of a given field or zone set in cartesian or GPS coordiantes using the Fields2Cover library. It is within the <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> project, not within Nav2 directly, but is planned for a longer-term integration once a few key features are available in Fields2Cover. If you wish to contribute to this effort, please let a maintainer know!</p>
+<p>The Coverage Server in <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> implements the server for handling the complete-coverage planning requests of a given field or zone set in cartesian or GPS coordinates using the Fields2Cover library.
+It can also compute coverage route and plans using a precomputed set of rows using the <code class="docutils literal notranslate"><span class="pre">opennav_row_coverage</span></code> server.
+It is within the <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> project, not within Nav2 directly, but is planned for a longer-term integration once a few key features are available in Fields2Cover. If you wish to contribute to this effort, please let a maintainer know!</p>
 <p>Note: All <code class="docutils literal notranslate"><span class="pre">default_</span></code> prefixed parameters can be overwritten in the action request field. When modes are not set in the Action goal, the defaults are utilized.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -1149,7 +1151,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Whether, by default, to allow overlapping of the last row in the coverage plan to obtain coverage at the far edge.</p>
+<dt>Description</dt><dd><p>Whether, by default, to allow overlapping of the last row in the coverage plan to obtain coverage at the far edge. Only for <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1169,7 +1171,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The default headland generation method. Constant is the only valid method currently.</p>
+<dt>Description</dt><dd><p>The default headland generation method. Constant is the only valid method currently. Only for <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1189,7 +1191,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The default headland width to remove from the field or zone from coverage planning.</p>
+<dt>Description</dt><dd><p>The default headland width to remove from the field or zone from coverage planning. Only for <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1209,7 +1211,8 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Objective to use to score swath generation candidates at different angles when using <code class="docutils literal notranslate"><span class="pre">BRUTE_FORCE</span></code> swath angle type. Options: <code class="docutils literal notranslate"><span class="pre">LENGTH</span></code>, <code class="docutils literal notranslate"><span class="pre">COVERAGE</span></code>, <code class="docutils literal notranslate"><span class="pre">NUMBER</span></code>. Note that Coverage takes 10x longer than others.</p>
+<dt>Description</dt><dd><p>Objective to use to score swath generation candidates at different angles when using <code class="docutils literal notranslate"><span class="pre">BRUTE_FORCE</span></code> swath angle type. Options: <code class="docutils literal notranslate"><span class="pre">LENGTH</span></code>, <code class="docutils literal notranslate"><span class="pre">COVERAGE</span></code>, <code class="docutils literal notranslate"><span class="pre">NUMBER</span></code> for <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code>. Option: <code class="docutils literal notranslate"><span class="pre">OFFSET</span></code>, <code class="docutils literal notranslate"><span class="pre">CENTER</span></code>, <code class="docutils literal notranslate"><span class="pre">ROWSARESWATHS</span></code> for <code class="docutils literal notranslate"><span class="pre">opennav_row_coverage</span></code>.
+Note that <code class="docutils literal notranslate"><span class="pre">Coverage</span></code> takes 10x longer than others.</p>
 </dd>
 </dl>
 </dd>
@@ -1229,7 +1232,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Mode to use for generating swaths. Need to find optimal angle by the swath generator objectives, if not given. Options: <code class="docutils literal notranslate"><span class="pre">BRUTE_FORCE</span></code>, <code class="docutils literal notranslate"><span class="pre">SET_ANGLE</span></code></p>
+<dt>Description</dt><dd><p>Mode to use for generating swaths. Need to find optimal angle by the swath generator objectives, if not given. Options: <code class="docutils literal notranslate"><span class="pre">BRUTE_FORCE</span></code>, <code class="docutils literal notranslate"><span class="pre">SET_ANGLE</span></code>. Only for <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1249,7 +1252,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The angular step size to try to find the optimal angle for route objective, when using <code class="docutils literal notranslate"><span class="pre">BRUTE_FORCE</span></code> swath angle type. Default is 1 deg in rad units.</p>
+<dt>Description</dt><dd><p>The angular step size to try to find the optimal angle for route objective, when using <code class="docutils literal notranslate"><span class="pre">BRUTE_FORCE</span></code> swath angle type. Default is 1 deg in rad units. Only for <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1269,7 +1272,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The optimal angle for route objective, when using <code class="docutils literal notranslate"><span class="pre">SET_ANGLE</span></code> swath angle type. Default is 1 deg in rad units.</p>
+<dt>Description</dt><dd><p>The optimal angle for route objective, when using <code class="docutils literal notranslate"><span class="pre">SET_ANGLE</span></code> swath angle type. Default is 1 deg in rad units. Only for <code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1390,6 +1393,32 @@
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Distance between points on the plan and route for sending back in paths (e.g. 0.1m). This impacts the density of the output turn paths and the overall nav paths.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">default_offset</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Offset to use for computing swaths from annotated rows. Only for <code class="docutils literal notranslate"><span class="pre">opennav_row_coverage</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">order_ids</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Description</dt><dd><p>For <code class="docutils literal notranslate"><span class="pre">opennav_row_coverage</span></code>, whether to reorder the parsed rows in the order of their <a href="#id1"><span class="problematic" id="id2">``</span></a>id``s.</p>
 </dd>
 </dl>
 </dd>

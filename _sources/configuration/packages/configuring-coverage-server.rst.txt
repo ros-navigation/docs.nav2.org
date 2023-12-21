@@ -7,7 +7,9 @@ Source code on Github_.
 
 .. _Github: https://github.com/open-navigation/opennav_coverage
 
-The Coverage Server implements the server for handling the complete-coverage planning requests of a given field or zone set in cartesian or GPS coordiantes using the Fields2Cover library. It is within the ``opennav_coverage`` project, not within Nav2 directly, but is planned for a longer-term integration once a few key features are available in Fields2Cover. If you wish to contribute to this effort, please let a maintainer know!
+The Coverage Server in ``opennav_coverage`` implements the server for handling the complete-coverage planning requests of a given field or zone set in cartesian or GPS coordinates using the Fields2Cover library.
+It can also compute coverage route and plans using a precomputed set of rows using the ``opennav_row_coverage`` server.
+It is within the ``opennav_coverage`` project, not within Nav2 directly, but is planned for a longer-term integration once a few key features are available in Fields2Cover. If you wish to contribute to this effort, please let a maintainer know!
 
 Note: All ``default_`` prefixed parameters can be overwritten in the action request field. When modes are not set in the Action goal, the defaults are utilized.
 
@@ -89,7 +91,7 @@ Parameters
   ============== ========
 
   Description
-    Whether, by default, to allow overlapping of the last row in the coverage plan to obtain coverage at the far edge.
+    Whether, by default, to allow overlapping of the last row in the coverage plan to obtain coverage at the far edge. Only for ``opennav_coverage``.
 
 :default_headland_type:
 
@@ -100,7 +102,7 @@ Parameters
   ============== ==========
 
   Description
-    The default headland generation method. Constant is the only valid method currently.
+    The default headland generation method. Constant is the only valid method currently. Only for ``opennav_coverage``.
 
 :default_headland_width:
 
@@ -111,7 +113,7 @@ Parameters
   ============== ==========
 
   Description
-    The default headland width to remove from the field or zone from coverage planning.
+    The default headland width to remove from the field or zone from coverage planning. Only for ``opennav_coverage``.
 
 :default_swath_type:
 
@@ -122,7 +124,8 @@ Parameters
   ============== ===============
 
   Description
-    Objective to use to score swath generation candidates at different angles when using ``BRUTE_FORCE`` swath angle type. Options: ``LENGTH``, ``COVERAGE``, ``NUMBER``. Note that Coverage takes 10x longer than others.
+    Objective to use to score swath generation candidates at different angles when using ``BRUTE_FORCE`` swath angle type. Options: ``LENGTH``, ``COVERAGE``, ``NUMBER`` for ``opennav_coverage``. Option: ``OFFSET``, ``CENTER``, ``ROWSARESWATHS`` for ``opennav_row_coverage``.
+    Note that ``Coverage`` takes 10x longer than others.
 
 :default_swath_angle_type:
 
@@ -133,7 +136,7 @@ Parameters
   ============== ===============
 
   Description
-    Mode to use for generating swaths. Need to find optimal angle by the swath generator objectives, if not given. Options: ``BRUTE_FORCE``, ``SET_ANGLE``
+    Mode to use for generating swaths. Need to find optimal angle by the swath generator objectives, if not given. Options: ``BRUTE_FORCE``, ``SET_ANGLE``. Only for ``opennav_coverage``.
 
 :default_step_angle:
 
@@ -144,7 +147,7 @@ Parameters
   ============== ===============
 
   Description
-    The angular step size to try to find the optimal angle for route objective, when using ``BRUTE_FORCE`` swath angle type. Default is 1 deg in rad units.
+    The angular step size to try to find the optimal angle for route objective, when using ``BRUTE_FORCE`` swath angle type. Default is 1 deg in rad units. Only for ``opennav_coverage``.
 
 :default_swath_angle:
 
@@ -155,7 +158,7 @@ Parameters
   ============== ===============
 
   Description
-    The optimal angle for route objective, when using ``SET_ANGLE`` swath angle type. Default is 1 deg in rad units.
+    The optimal angle for route objective, when using ``SET_ANGLE`` swath angle type. Default is 1 deg in rad units. Only for ``opennav_coverage``.
 
 :default_route_type:
 
@@ -223,6 +226,29 @@ Parameters
 
   Description
     Distance between points on the plan and route for sending back in paths (e.g. 0.1m). This impacts the density of the output turn paths and the overall nav paths. 
+
+:default_offset:
+
+  ============== ============
+  Type           Default   
+  -------------- ------------
+  double         0.0
+  ============== ============
+
+  Description
+    Offset to use for computing swaths from annotated rows. Only for ``opennav_row_coverage``.
+
+:order_ids:
+
+  ============== ============
+  Type           Default   
+  -------------- ------------
+  bool         0.0
+  ============== ============
+
+  Description
+    For ``opennav_row_coverage``, whether to reorder the parsed rows in the order of their ``id``s.
+
 
 Example
 *******
