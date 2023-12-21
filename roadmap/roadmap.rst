@@ -40,7 +40,7 @@ Jazzy Roadmap
 | Tutorials (e.g. gps, vio)      |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| ROS Time Respect Across Stack  |  Medium (in progress)  |
+| ROS Time Respect Across Stack  |  Medium (DONE)         |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
