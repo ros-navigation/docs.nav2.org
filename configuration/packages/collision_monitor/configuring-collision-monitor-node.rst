@@ -215,11 +215,11 @@ Polygons parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  vector<double> N/A
+  string         N/A
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.25, 0.5, -0.25, 0.0, -0.25, 0.0, 0.25}`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to ``polygon_sub_topic`` for points in the ``stop``/``slowdown``/``limit`` action types, or footprint subscriber to ``footprint_topic`` for ``approach`` action type.
+    Polygon vertexes, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to ``polygon_sub_topic`` for points in the ``stop``/``slowdown``/``limit`` action types, or footprint subscriber to ``footprint_topic`` for ``approach`` action type.
 
 :``<polygon_name>``.polygon_sub_topic:
 
@@ -477,7 +477,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           enabled: True
         PolygonSlow:
           type: "polygon"
-          points: [1.0, 1.0, 1.0, -1.0, -0.5, -1.0, -0.5, 1.0]
+          points: "[[1.0, 1.0], [1.0, -1.0], [-0.5, -1.0], [-0.5, 1.0]]"
           action_type: "slowdown"
           min_points: 4  # max_points: 3 for Humble
           slowdown_ratio: 0.3
@@ -486,7 +486,7 @@ Here is an example of configuration YAML for the Collision Monitor.
           enabled: True
         PolygonLimit:
           type: "polygon"
-          points: [0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5]
+          points: "[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]"
           action_type: "limit"
           min_points: 4  # max_points: 3 for Humble
           linear_limit: 0.4

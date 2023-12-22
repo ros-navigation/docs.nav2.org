@@ -41,14 +41,14 @@ For this setup, the following lines should be added into ``collision_monitor_par
     polygons: ["PolygonStop", "PolygonSlow"]
     PolygonStop:
       type: "polygon"
-      points: [0.4, 0.3, 0.4, -0.3, 0.0, -0.3, 0.0, 0.3]
+      points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
       action_type: "stop"
       min_points: 4  # max_points: 3 for Humble
       visualize: True
       polygon_pub_topic: "polygon_stop"
     PolygonSlow:
       type: "polygon"
-      points: [0.6, 0.4, 0.6, -0.4, 0.0, -0.4, 0.0, 0.4]
+      points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
       action_type: "slowdown"
       min_points: 4  # max_points: 3 for Humble
       slowdown_ratio: 0.3
@@ -89,14 +89,14 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
         polygons: ["PolygonStop", "PolygonSlow"]
         PolygonStop:
           type: "polygon"
-          points: [0.4, 0.3, 0.4, -0.3, 0.0, -0.3, 0.0, 0.3]
+          points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
           action_type: "stop"
           min_points: 4  # max_points: 3 for Humble
           visualize: True
           polygon_pub_topic: "polygon_stop"
         PolygonSlow:
           type: "polygon"
-          points: [0.6, 0.4, 0.6, -0.4, 0.0, -0.4, 0.0, 0.4]
+          points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
           action_type: "slowdown"
           min_points: 4  # max_points: 3 for Humble
           slowdown_ratio: 0.3
