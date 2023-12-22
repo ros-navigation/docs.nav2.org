@@ -13,13 +13,14 @@ Now we can define a polygon's points in string that has a ``vector<vector<double
 
 
 .. code-block:: yaml
-        PolygonFront:
-          type: "polygon"
-          points: "[[0.3, 0.3], [0.3, -0.3], [0.0, -0.3], [0.0, 0.3]]"
-          action_type: "none"
-          min_points: 4
-          visualize: True
-          polygon_pub_topic: "polygon_front"
+
+    PolygonFront:
+      type: "polygon"
+      points: "[[0.3, 0.3], [0.3, -0.3], [0.0, -0.3], [0.0, 0.3]]"
+      action_type: "none"
+      min_points: 4
+      visualize: True
+      polygon_pub_topic: "polygon_front"
 
 
 Introduction of Soft-Real Time Action Servers
