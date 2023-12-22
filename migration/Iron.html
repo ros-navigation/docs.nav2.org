@@ -920,6 +920,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
@@ -1008,6 +1009,20 @@
   <div class="section" id="iron-to-jazzy">
 <span id="iron-migration"></span><h1>Iron to Jazzy<a class="headerlink" href="#iron-to-jazzy" title="Permalink to this headline">¶</a></h1>
 <p>Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="change-polygon-points-parameter-format-in-collision-monitor">
+<h2>Change polygon points parameter format in Collision Monitor<a class="headerlink" href="#change-polygon-points-parameter-format-in-collision-monitor" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4020">PR #4020</a> changes the format of the Polygon points parameter from <code class="docutils literal notranslate"><span class="pre">vector&lt;double&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">string</span></code>. This makes the polygon description more uniform accross the Collision Monitor and Costmap_2D.
+Now we can define a polygon’s points in string that has a <code class="docutils literal notranslate"><span class="pre">vector&lt;vector&lt;double&gt;&gt;</span></code> structure like this <code class="docutils literal notranslate"><span class="pre">&quot;[[p1.x,</span> <span class="pre">p1.y],</span> <span class="pre">[p2.x,</span> <span class="pre">p2.y],</span> <span class="pre">[p3.x,</span> <span class="pre">p3.y],...]&quot;</span></code> with a minimum of 4 points described. An example of a Square polygon will be written as follows.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">PolygonFront</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
+<span class="w">  </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.3,</span><span class="nv"> </span><span class="s">0.3],</span><span class="nv"> </span><span class="s">[0.3,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[0.0,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[0.0,</span><span class="nv"> </span><span class="s">0.3]]&quot;</span>
+<span class="w">  </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">  </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">  </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;polygon_front&quot;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="introduction-of-soft-real-time-action-servers">
 <h2>Introduction of Soft-Real Time Action Servers<a class="headerlink" href="#introduction-of-soft-real-time-action-servers" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3914">PR #3914</a> adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. The Simple Action Server now has a <code class="docutils literal notranslate"><span class="pre">realtime</span></code> input field exposed in the Controller Server via the parameter <code class="docutils literal notranslate"><span class="pre">use_realtime_priority</span></code> which will set the controller’s execution thread to a higher priority than the rest of the system to meet scheduling deadlines. To use this feature, you use set the following inside of <code class="docutils literal notranslate"><span class="pre">/etc/security/limits.conf</span></code> to give userspace access to elevated prioritization permissions. This is currently only enabled in the Controller Server, who’s execution thread is sensitive to scheduling priorities, but could be set with other threads in the future if found necessary.</p>

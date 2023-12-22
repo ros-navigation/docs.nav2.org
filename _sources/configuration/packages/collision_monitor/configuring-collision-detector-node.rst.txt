@@ -132,11 +132,11 @@ Polygons parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  vector<double> N/A
+  string         N/A
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.25, 0.5, -0.25, 0.0, -0.25, 0.0, 0.25}`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision detector will use dynamic polygon subscription to ``polygon_sub_topic``
+    Polygon vertexes, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision detector will use dynamic polygon subscription to ``polygon_sub_topic``
 
 :``<polygon_name>``.polygon_sub_topic:
 
@@ -314,7 +314,7 @@ Here is an example of configuration YAML for the Collision Detector.
         polygons: ["PolygonFront"]
         PolygonFront:
           type: "polygon"
-          points: [0.3, 0.3, 0.3, -0.3, 0.0, -0.3, 0.0, 0.3]
+          points: "[[0.3, 0.3], [0.3, -0.3], [0.0, -0.3], [0.0, 0.3]]"
           action_type: "none"
           min_points: 4
           visualize: True
