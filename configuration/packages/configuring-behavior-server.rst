@@ -226,6 +226,19 @@ Spin distance is given from the action request
   Description
     maximum rotational acceleration (rad/s^2).
 
+:enable_stamped_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+    True uses TwistStamped, false uses Twist.
+
+
 BackUp Behavior Parameters
 **************************
 
@@ -257,6 +270,19 @@ DriveOnHeading distance, speed and time_allowance is given from the action reque
 
   Description
     Time to look ahead for collisions (s).
+
+:enable_stamped_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+    True uses TwistStamped, false uses Twist.
+
 
 AssistedTeleop Behavior Parameters
 **********************************
@@ -296,6 +322,18 @@ AssistedTeleop time_allowance is given in the action request
   Description
     Topic to listen for teleop messages.
 
+:enable_stamped_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+    True uses TwistStamped, false uses Twist.
+
 Example
 *******
 .. code-block:: yaml
@@ -326,3 +364,4 @@ Example
         max_rotational_vel: 1.0
         min_rotational_vel: 0.4
         rotational_acc_lim: 3.2
+        enable_stamped_cmd_vel: false

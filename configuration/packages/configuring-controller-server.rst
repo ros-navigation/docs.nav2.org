@@ -194,6 +194,17 @@ Parameters
   Description
     Topic to get instantaneous measurement of speed from.
 
+:enable_stamped_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+    True uses TwistStamped, false uses Twist.
 
 Provided Plugins
 ****************
