@@ -1070,7 +1070,7 @@ It is used in the planner and controller servers for creating the space to check
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters <cite>footprint: “[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]”</cite>. Note that this can also be adjusted over time using the costmap’s <code class="docutils literal notranslate"><span class="pre">~/footprint</span></code> topic, which will update the polygon over time as needed due to changes in the robot’s state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot’s shape.</p>
+<dt>Description</dt><dd><p>Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters <cite>footprint: “[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]”</cite>. Note that this can also be adjusted over time using the costmap’s <code class="docutils literal notranslate"><span class="pre">~/footprint</span></code> topic, which will update the polygon over time as needed due to changes in the robot’s state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot’s shape. If this parameter is set, <code class="docutils literal notranslate"><span class="pre">isPathValid</span></code> will do full collision checking.</p>
 </dd>
 </dl>
 </dd>
@@ -1310,7 +1310,7 @@ It is used in the planner and controller servers for creating the space to check
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Robot radius to use, if footprint coordinates not provided.</p>
+<dt>Description</dt><dd><p>Robot radius to use, if footprint coordinates not provided. If this parameter is set, <code class="docutils literal notranslate"><span class="pre">isPathValid</span></code> will do circular collision checking.</p>
 </dd>
 </dl>
 </dd>
