@@ -222,7 +222,7 @@ Parameters
   ====== =======
 
   Description
-    Whether to publish expansions on the ``/expansions`` topic as an array of poses (the orientation has no meaning) and the path's footprints on the ``/planned_footprints`` topic. WARNING: heavy to compute and to display, for debug only as it degrades the performance.
+    Whether to publish expansions on the ``/expansions`` topic as an array of poses and the path's footprints on the ``/planned_footprints`` topic. WARNING: heavy to compute and to display, for debug only as it degrades the performance.
 
 :``<name>``.cache_obstacle_heuristic:
 
