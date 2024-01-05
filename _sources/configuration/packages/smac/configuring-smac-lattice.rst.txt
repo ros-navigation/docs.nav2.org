@@ -206,6 +206,18 @@ Parameters
   Description
     If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
 
+
+:``<name>``.debug_visualizations:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   false         
+  ====== =======
+
+  Description
+    Whether to publish expansions on the ``/expansions`` topic as an array of poses and the path's footprints on the ``/planned_footprints`` topic. WARNING: heavy to compute and to display, for debug only as it degrades the performance. Lattice expansions show end-points of primitives, not intermediary steps as seen in dense path outputs.
+
 :``<name>``.smooth_path:
 
   ====== =======
