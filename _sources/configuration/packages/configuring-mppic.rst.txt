@@ -555,17 +555,6 @@ This critic incentivizes navigating away from obstacles and critical collisions 
   Description
     Radius to inflate costmap around lethal obstacles. This should be the same as for your inflation layer (Humble only)
 
-:inflation_layer_name:
-
-  ============== ===========================
-  Type           Default
-  -------------- ---------------------------
-  string         ""
-  ============== ===========================
-
-  Description
-    Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
-
 Path Align Critic
 -----------------
 
