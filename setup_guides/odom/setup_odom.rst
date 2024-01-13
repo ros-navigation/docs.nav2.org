@@ -254,6 +254,7 @@ Remove the condition from the `joint_state_publisher_node`:
     package='joint_state_publisher',
     executable='joint_state_publisher',
     name='joint_state_publisher',
+    arguments=[default_model_path],
     condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui')) # Remove this line
   )
 

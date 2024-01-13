@@ -220,6 +220,7 @@ Next, let us create our launch file. Launch files are used by ROS 2 to bring up 
           package='joint_state_publisher',
           executable='joint_state_publisher',
           name='joint_state_publisher',
+          arguments=[default_model_path],
           condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui'))
       )
       joint_state_publisher_gui_node = launch_ros.actions.Node(
