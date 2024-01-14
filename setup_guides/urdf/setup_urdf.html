@@ -1264,6 +1264,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
         <span class="n">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span><span class="p">,</span>
         <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="n">default_model_path</span><span class="p">],</span>
         <span class="n">condition</span><span class="o">=</span><span class="n">launch</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">UnlessCondition</span><span class="p">(</span><span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;gui&#39;</span><span class="p">))</span>
     <span class="p">)</span>
     <span class="n">joint_state_publisher_gui_node</span> <span class="o">=</span> <span class="n">launch_ros</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span>
