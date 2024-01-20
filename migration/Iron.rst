@@ -5,6 +5,12 @@ Iron to Jazzy
 
 Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.
 
+Add VelocityPolygon in Collision Monitor
+****************************************
+
+`PR #3708 <https://github.com/ros-planning/navigation2/pull/3708>`_ adds ``VelocityPolgon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the approriate polygon to be used for collision checking.
+
+
 Change polygon points parameter format in Collision Monitor
 ***********************************************************
 

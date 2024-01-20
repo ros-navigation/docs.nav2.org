@@ -7,6 +7,7 @@ Using Collision Monitor
 - `Requirements`_
 - `Preparing Nav2 stack`_
 - `Configuring Collision Monitor`_
+- `Configuring Collision Monitor with VelocityPolygon`_
 - `Demo Execution`_
 
 .. image:: images/Collision_Monitor/collision_monitor.gif
@@ -106,6 +107,81 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
         scan:
           type: "scan"
           topic: "scan"
+
+Configuring Collision Monitor with VelocityPolygon
+==================================================
+
+.. image:: images/Collision_Monitor/dexory_velocity_polygon.gif
+  :width: 800px
+
+For this part of tutorial, we will set up the Collision Monitor with ``VelocityPolygon`` type for a ``stop`` action. ``VelocityPolygon`` allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the approriate polygon to be used for collision checking.
+
+In general, here are the steps to configure the Collision Monitor with ``VelocityPolygon`` type:
+
+#. Add a ``VelocityPolygon`` to the ``polygons`` param list
+#. Configure the ``VelocityPolygon``
+#. Specify the ``holonomic`` property of the polygon (default is ``false``)
+#. Start by adding a ``stopped`` sub polygon to cover the full range of the robot's velocity limits in ``velocity_polygons`` list
+#. Add additional sub polygons to the front of the ``velocity_polygons`` list to cover the range of the robot's velocity limits for each type of motion (e.g. rotation, moving forward, moving backward)
+
+In this example, we will consider a **non-holonomic** robot with linear velocity limits of ``-1.0`` to ``1.0`` m/s and angular velocity limits of ``-1.0`` to ``1.0`` rad/s. The ``linear_min`` and ``linear_max`` parameters of the sub polygons should be set to the robot's linear velocity limits, while the ``theta_min`` and ``theta_max`` parameters should be set to the robot's angular velocity limits.
+
+Below is the example configuration using 4 sub-polygons to cover the full range of the robot's velocity limits:
+
+.. code-block:: yaml
+
+    polygons: ["VelocityPolygonStop"]
+    VelocityPolygonStop:
+      type: "velocity_polygon"
+      action_type: "stop"
+      min_points: 6
+      visualize: True
+      enabled: True
+      polygon_pub_topic: "velocity_polygon_stop"
+      velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+      holonomic: false
+      rotation:
+        points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+        linear_min: 0.0
+        linear_max: 0.05
+        theta_min: -1.0
+        theta_max: 1.0
+      translation_forward:
+        points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+        linear_min: 0.0
+        linear_max: 1.0
+        theta_min: -1.0
+        theta_max: 1.0
+      translation_backward:
+        points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+        linear_min: -1.0
+        linear_max: 0.0
+        theta_min: -1.0
+        theta_max: 1.0
+      # This is the last polygon to be checked, it should cover the entire range of robot's velocities
+      # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
+      # is not covered by any of the other sub-polygons 
+      stopped:
+        points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+        linear_min: -1.0
+        linear_max: 1.0
+        theta_min: -1.0
+        theta_max: 1.0
+
+.. note::
+  It is recommended to include a ``stopped`` sub polygon as the last entry in the ``velocity_polygons`` list to cover the entire range of the robot's velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.
+
+**For holomic robots:**
+
+For holomic robots, the ``holonomic`` property should be set to ``true``. In this scenario, the ``linear_min`` and ``linear_max`` parameters should cover the robot's resultant velocity limits, while the ``theta_min`` and ``theta_max`` parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, ``direction_start_angle`` and ``direction_end_angle``, to specify the resultant velocity direction. The covered direction will always span from ``direction_start_angle`` to ``direction_end_angle`` in the **counter-clockwise** direction. 
+
+.. image:: images/Collision_Monitor/holonomic_direction.png
+  :width: 365px
+
+Below shows some common configurations for holonomic robots that cover multiple directions of the resultant velocity:
+
+.. image:: images/Collision_Monitor/holonomic_examples.png
+  :height: 2880px
 
 Preparing Nav2 stack
 ====================
