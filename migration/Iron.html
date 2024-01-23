@@ -933,6 +933,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#substitution-in-parameter-file">Substitution in parameter file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smac-planner-debug-param-name-change">Smac Planner Debug Param Name Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smac-planner-on-approach-to-goal-shortcutting-solutions">Smac Planner On Approach to Goal Shortcutting Solutions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#added-gps-waypoint-follower-server">Added GPS Waypoint Follower Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
@@ -1087,6 +1088,12 @@ easily prevent the robot to go through places that are not present in the static
 <div class="section" id="smac-planner-debug-param-name-change">
 <h2>Smac Planner Debug Param Name Change<a class="headerlink" href="#smac-planner-debug-param-name-change" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">debug_visualizations</span></code> replaces <code class="docutils literal notranslate"><span class="pre">viz_expansions</span></code> parameter in Hybrid-A* to reflect the new inclusion of footprint debug information being published as well.</p>
+</div>
+<div class="section" id="smac-planner-on-approach-to-goal-shortcutting-solutions">
+<h2>Smac Planner On Approach to Goal Shortcutting Solutions<a class="headerlink" href="#smac-planner-on-approach-to-goal-shortcutting-solutions" title="Permalink to this headline">¶</a></h2>
+<p>PR #3962 adds new params <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_cost</span></code> and <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_cost_override</span></code> in extension of <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_length</span></code> in Humble to further limit potential shortcutting of paths near obstacles in close proximity to the goal.
+It uses a maximum cost parameter (default <code class="docutils literal notranslate"><span class="pre">200</span></code>) to tell if an expansion is closer to an obstacle than a user would like. If the expansion is critically close to the goal, then it may override this constraint if <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_cost_override</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code> - allowing the constraint to be overridden to find a successful path solution, as it may be required.
+This PR also introduces additional analytic expansion scoring logic and edge case handling to improve path qualities by an analog heuristic function.</p>
 </div>
 <div class="section" id="added-gps-waypoint-follower-server">
 <h2>Added GPS Waypoint Follower Server<a class="headerlink" href="#added-gps-waypoint-follower-server" title="Permalink to this headline">¶</a></h2>
