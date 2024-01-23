@@ -96,6 +96,28 @@ Parameters
   Description
     If the length is too far, reject this expansion. This prevents shortcutting of search with its penalty functions far out from the goal itself (e.g. so we don't reverse half-way across open maps or cut through high cost zones). This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.
 
+:``<name>``.analytic_expansion_max_cost:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  double 200.0        
+  ====== =======
+
+  Description
+    For Hybrid/Lattice nodes: The maximum single cost for any part of an analytic expansion to contain and be considered valid (except when necessary on approach to goal). This allows for removing of potential shortcutting into higher cost spaces than you might otherwise desire
+
+:``<name>``.analytic_expansion_max_cost_override:
+
+  ====== =======
+  Type   Default                                                   
+  ------ -------
+  bool   false           
+  ====== =======
+
+  Description
+    For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within 2*pi*min_r of the goal, then it will override the max cost if ``false``. 
+
 :``<name>``.reverse_penalty:
 
   ====== =======
@@ -300,7 +322,9 @@ Example
         max_on_approach_iterations: 1000    # Maximum number of iterations after within tolerances to continue to try to find exact solution
         max_planning_time: 5.0              # Max time in s for planner to plan, smooth
         analytic_expansion_ratio: 3.5       # The ratio to attempt analytic expansions during search for final approach.
-        analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes: The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
+        analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
+        analytic_expansion_max_cost: true   # The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal
+        analytic_expansion_max_cost_override: false  #  Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required)
         reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
         change_penalty: 0.05                # Penalty to apply if motion is changing directions (L to R), must be >= 0
         non_straight_penalty: 1.05          # Penalty to apply if motion is non-straight, must be => 1

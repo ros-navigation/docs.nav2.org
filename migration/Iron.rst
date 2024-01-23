@@ -90,6 +90,12 @@ Smac Planner Debug Param Name Change
 
 ``debug_visualizations`` replaces ``viz_expansions`` parameter in Hybrid-A* to reflect the new inclusion of footprint debug information being published as well.
 
+Smac Planner On Approach to Goal Shortcutting Solutions
+*******************************************************
+
+PR #3962 adds new params ``analytic_expansion_max_cost`` and ``analytic_expansion_max_cost_override`` in extension of ``analytic_expansion_max_length`` in Humble to further limit potential shortcutting of paths near obstacles in close proximity to the goal.
+It uses a maximum cost parameter (default ``200``) to tell if an expansion is closer to an obstacle than a user would like. If the expansion is critically close to the goal, then it may override this constraint if ``analytic_expansion_max_cost_override`` is ``false`` - allowing the constraint to be overridden to find a successful path solution, as it may be required.
+This PR also introduces additional analytic expansion scoring logic and edge case handling to improve path qualities by an analog heuristic function.
 
 Added GPS Waypoint Follower Server
 **********************************
