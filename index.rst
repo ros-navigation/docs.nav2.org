@@ -132,6 +132,23 @@ Robotics and Autonomous Systems, 2023
         journal = {Robotics and Autonomous Systems}
   }
 
+
+
+
+If you use the Smac Planner (Hybrid A*, State Lattice, 2D), please cite this work in your papers!
+
+S. Macenski, M. Booker, J. Wallace,
+`Open-Source, Cost-Aware Kinematically Feasible Planning for Mobile and Surface Robotics <https://arxiv.org/abs/2401.13078>`_,
+
+.. code-block:: bash
+
+  @article{macenski2024smac,
+        title={Open-Source, Cost-Aware Kinematically Feasible Planning for Mobile and Surface Robotics}, 
+        author={Steve Macenski and Matthew Booker and Josh Wallace},
+        year={2024},
+        journal = {Arxiv}
+  }
+
 If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers!
 
 S. Macenski, S. Singh, F. Martin, J. Gines, 
