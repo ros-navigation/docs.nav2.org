@@ -335,7 +335,7 @@ Example
         max_planning_time: 5.0              # Max time in s for planner to plan, smooth
         analytic_expansion_ratio: 3.5       # The ratio to attempt analytic expansions during search for final approach.
         analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
-        analytic_expansion_max_cost: true   # The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal
+        analytic_expansion_max_cost: 200.0  # The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal
         analytic_expansion_max_cost_override: false  #  Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required)
         reverse_penalty: 2.0                # Penalty to apply if motion is reversing, must be => 1
         change_penalty: 0.05                # Penalty to apply if motion is changing directions (L to R), must be >= 0
