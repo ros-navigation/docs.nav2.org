@@ -171,6 +171,9 @@ Below is the example configuration using 4 sub-polygons to cover the full range 
 .. note::
   It is recommended to include a ``stopped`` sub polygon as the last entry in the ``velocity_polygons`` list to cover the entire range of the robot's velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.
 
+.. note::
+  When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used.
+
 **For holomic robots:**
 
 For holomic robots, the ``holonomic`` property should be set to ``true``. In this scenario, the ``linear_min`` and ``linear_max`` parameters should cover the robot's resultant velocity limits, while the ``theta_min`` and ``theta_max`` parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, ``direction_start_angle`` and ``direction_end_angle``, to specify the resultant velocity direction. The covered direction will always span from ``direction_start_angle`` to ``direction_end_angle`` in the **counter-clockwise** direction. 

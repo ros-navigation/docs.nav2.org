@@ -365,7 +365,10 @@ Polygons parameters
   Description:
     Whether to use this polygon for collision monitoring. (Can be dynamically set)
 
-:``<polygon_name>``.holonomic:
+VelocityPolygon parameters
+==========================
+
+:``<velocity_polygon_name>``.holonomic:
 
   ============== =============================
   Type           Default
@@ -374,20 +377,9 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Whether to use holonomic or non-holonomic robot model for collision prediction. Applicable for `velocity_polygon` type only.
+    Whether to use holonomic or non-holonomic robot model for collision prediction. For holonomic robot model, the resultant velocity will be used to compare the linear velocity range. Additionally, there will be 2 more parameters, ``direction_start_angle`` and ``direction_end_angle``, to specify the resultant velocity direction.
 
-:``<polygon_name>``.velocity_polygons:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  vector<string> N/A
-  ============== =============================
-
-  Description:
-    List of sub polygons for switching based on the robot's current velocity. Causes an error, if not specified. Applicable for `velocity_polygon` type only.
-
-:``<polygon_name>.<sub_polygon_name>``.points:
+:``<velocity_polygon_name>``.velocity_polygons:
 
   ============== =============================
   Type           Default
@@ -396,9 +388,20 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. Causes an error, if not specified. Applicable for the sub polygon in `velocity_polygon` type only.
+    List of sub polygons for switching based on the robot's current velocity. When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used. Causes an error, if not specified.
 
-:``<polygon_name>.<sub_polygon_name>``.linear_min:
+:``<velocity_polygon_name>.<sub_polygon_name>``.points:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  vector<string> N/A
+  ============== =============================
+
+  Description:
+    Polygon vertexes, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. Causes an error, if not specified.
+
+:``<velocity_polygon_name>.<sub_polygon_name>``.linear_min:
 
     ============== =============================
     Type           Default
@@ -407,9 +410,9 @@ Polygons parameters
     ============== =============================
 
     Description:
-      Minimum linear velocity for the sub polygon. In holonomic mode, this is the minimum resultant velocity. Causes an error, if not specified. Applicable for the sub polygon in `velocity_polygon` type only.
+      Minimum linear velocity for the sub polygon. In holonomic mode, this is the minimum resultant velocity. Causes an error, if not specified.
 
-:``<polygon_name>.<sub_polygon_name>``.linear_max:
+:``<velocity_polygon_name>.<sub_polygon_name>``.linear_max:
 
     ============== =============================
     Type           Default
@@ -418,9 +421,9 @@ Polygons parameters
     ============== =============================
 
     Description:
-      Maximum linear velocity for the sub polygon. In holonomic mode, this is the maximum resultant velocity. Causes an error, if not specified. Applicable for the sub polygon in `velocity_polygon` type only.
+      Maximum linear velocity for the sub polygon. In holonomic mode, this is the maximum resultant velocity. Causes an error, if not specified.
 
-:``<polygon_name>.<sub_polygon_name>``.theta_min:
+:``<velocity_polygon_name>.<sub_polygon_name>``.theta_min:
   
     ============== =============================
     Type           Default
@@ -429,9 +432,9 @@ Polygons parameters
     ============== =============================
 
     Description:
-      Minimum angular velocity for the sub polygon. Causes an error, if not specified. Applicable for the sub polygon in `velocity_polygon` type only.
+      Minimum angular velocity for the sub polygon. Causes an error, if not specified.
 
-:``<polygon_name>.<sub_polygon_name>``.theta_max:
+:``<velocity_polygon_name>.<sub_polygon_name>``.theta_max:
 
     ============== =============================
     Type           Default
@@ -440,9 +443,9 @@ Polygons parameters
     ============== =============================
   
     Description:
-      Maximum angular velocity for the sub polygon. Causes an error, if not specified. Applicable for the sub polygon in `velocity_polygon` type only.
+      Maximum angular velocity for the sub polygon. Causes an error, if not specified.
 
-:``<polygon_name>.<sub_polygon_name>``.direction_start_angle:
+:``<velocity_polygon_name>.<sub_polygon_name>``.direction_start_angle:
 
     ============== =============================
     Type           Default
@@ -451,9 +454,9 @@ Polygons parameters
     ============== =============================
 
     Description:
-      Start angle of the movement direction(for holomic robot only). Applicable for the sub polygon in `velocity_polygon` type only.
+      Start angle of the movement direction(for holomic robot only). Refer to the `Example`_ section for the common configurations. Applicable for `holonomic` mode only.
 
-:``<polygon_name>.<sub_polygon_name>``.direction_end_angle:
+:``<velocity_polygon_name>.<sub_polygon_name>``.direction_end_angle:
 
     ============== =============================
     Type           Default
@@ -462,7 +465,7 @@ Polygons parameters
     ============== =============================
 
     Description:
-      End angle of the movement direction(for holomic robot only). Applicable for the sub polygon in `velocity_polygon` type only.
+      End angle of the movement direction(for holomic robot only). Refer to the `Example`_ section for the common configurations. Applicable for `holonomic` mode only.
 
 Observation sources parameters
 ==============================
@@ -549,6 +552,11 @@ Observation sources parameters
 
 Example
 *******
+
+Here is an example illustrating the common configurations for holonomic robots that cover multiple directions of the resultant velocity:
+
+.. image:: ../images/holonomic_examples.png
+  :height: 2880px
 
 Here is an example of configuration YAML for the Collision Monitor.
 
