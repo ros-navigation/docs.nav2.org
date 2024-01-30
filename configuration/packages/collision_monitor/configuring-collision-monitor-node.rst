@@ -368,6 +368,8 @@ Polygons parameters
 VelocityPolygon parameters
 ==========================
 
+All previous Polygon parameters apply, in addition to the following unique parameters for VelocityPolygon.
+
 :``<velocity_polygon_name>``.holonomic:
 
   ============== =============================

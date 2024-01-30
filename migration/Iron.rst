@@ -8,7 +8,7 @@ Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added t
 Add VelocityPolygon in Collision Monitor
 ****************************************
 
-`PR #3708 <https://github.com/ros-planning/navigation2/pull/3708>`_ adds ``VelocityPolgon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the approriate polygon to be used for collision checking.
+`PR #3708 <https://github.com/ros-planning/navigation2/pull/3708>`_ adds ``VelocityPolgon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the approriate polygon to be used for collision checking. The tutorial is available in the :ref:`Configuring Collision Monitor with VelocityPolygon <collision_monitor_tutorial>` section.
 
 
 Change polygon points parameter format in Collision Monitor
@@ -44,7 +44,7 @@ The Collision Monitor and Velocity Smoothers also had ``use_realtime_priority`` 
 ``opennav_coverage`` Project
 ****************************
 
-A new metapackage exists in: https://github.com/open-navigation/opennav_coverage which contains complete coverage navigator plugins, BT nodes, behavior tree demos, and coverage planning server based on ``Fields2Cover``. See that project for more information. It is on long-term trajectory for inclusion into ``Nav2``, but there are still yet a few missing features from Fields2Cover before we can integrate that into the main project to be up to snuff in terms of all the major features and capabilities users would expect from a coverage planning system.
+A new metapackage exists in: https://github.com/open-navigation/opennav_coverage which contains complete coverage navigator plugins, BT nodes, behavior tree demos, and coverage planning server based on ``Fields2Cover``. See that project for more information. It is on long-term trajectory for inclusion into ``Nav2``, but there are still yet a few missing features from Fields2Cover before we can integrate that into the main project to be up to snuff in terms of all the major features and capabilities users would expect from a coverage planning system. 
 
 If you'd like to see coverage planning in Nav2 directly, please consider contributing `to the as-of-yet needed features described here <https://github.com/Fields2Cover/Fields2Cover/issues/73>`_.
 
