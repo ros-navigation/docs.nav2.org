@@ -370,7 +370,7 @@ VelocityPolygon parameters
 
 All previous Polygon parameters apply, in addition to the following unique parameters for VelocityPolygon.
 
-:``<velocity_polygon_name>``.holonomic:
+:``<vel_poly>``.holonomic:
 
   ============== =============================
   Type           Default
@@ -381,7 +381,7 @@ All previous Polygon parameters apply, in addition to the following unique param
   Description:
     Whether to use holonomic or non-holonomic robot model for collision prediction. For holonomic robot model, the resultant velocity will be used to compare the linear velocity range. Additionally, there will be 2 more parameters, ``direction_start_angle`` and ``direction_end_angle``, to specify the resultant velocity direction.
 
-:``<velocity_polygon_name>``.velocity_polygons:
+:``<vel_poly>``.velocity_polygons:
 
   ============== =============================
   Type           Default
@@ -392,7 +392,7 @@ All previous Polygon parameters apply, in addition to the following unique param
   Description:
     List of sub polygons for switching based on the robot's current velocity. When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used. Causes an error, if not specified.
 
-:``<velocity_polygon_name>.<sub_polygon_name>``.points:
+:``<vel_poly>.<subpoly>``.points:
 
   ============== =============================
   Type           Default
@@ -403,7 +403,7 @@ All previous Polygon parameters apply, in addition to the following unique param
   Description:
     Polygon vertexes, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. Causes an error, if not specified.
 
-:``<velocity_polygon_name>.<sub_polygon_name>``.linear_min:
+:``<vel_poly>.<subpoly>``.linear_min:
 
     ============== =============================
     Type           Default
@@ -414,7 +414,7 @@ All previous Polygon parameters apply, in addition to the following unique param
     Description:
       Minimum linear velocity for the sub polygon. In holonomic mode, this is the minimum resultant velocity. Causes an error, if not specified.
 
-:``<velocity_polygon_name>.<sub_polygon_name>``.linear_max:
+:``<vel_poly>.<subpoly>``.linear_max:
 
     ============== =============================
     Type           Default
@@ -425,7 +425,7 @@ All previous Polygon parameters apply, in addition to the following unique param
     Description:
       Maximum linear velocity for the sub polygon. In holonomic mode, this is the maximum resultant velocity. Causes an error, if not specified.
 
-:``<velocity_polygon_name>.<sub_polygon_name>``.theta_min:
+:``<vel_poly>.<subpoly>``.theta_min:
   
     ============== =============================
     Type           Default
@@ -436,7 +436,7 @@ All previous Polygon parameters apply, in addition to the following unique param
     Description:
       Minimum angular velocity for the sub polygon. Causes an error, if not specified.
 
-:``<velocity_polygon_name>.<sub_polygon_name>``.theta_max:
+:``<vel_poly>.<subpoly>``.theta_max:
 
     ============== =============================
     Type           Default
@@ -447,7 +447,7 @@ All previous Polygon parameters apply, in addition to the following unique param
     Description:
       Maximum angular velocity for the sub polygon. Causes an error, if not specified.
 
-:``<velocity_polygon_name>.<sub_polygon_name>``.direction_start_angle:
+:``<vel_poly>.<subpoly>``.direction_start_angle:
 
     ============== =============================
     Type           Default
@@ -458,7 +458,7 @@ All previous Polygon parameters apply, in addition to the following unique param
     Description:
       Start angle of the movement direction(for holomic robot only). Refer to the `Example`_ section for the common configurations. Applicable for `holonomic` mode only.
 
-:``<velocity_polygon_name>.<sub_polygon_name>``.direction_end_angle:
+:``<vel_poly>.<subpoly>``.direction_end_angle:
 
     ============== =============================
     Type           Default
