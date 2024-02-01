@@ -77,30 +77,28 @@ Rolling Development Source
 ==========================
 
 Building Nav2 using rolling development source is similar to building Nav2 from released distribution binaries, where instead you build dependencies from source using the main development branches for all ROS based packages.
+Nav2 does not currently release binaries on rolling, so it must be build from source.
 
 .. seealso::
   For more information on building ROS 2 from source, see the official documentation:
 
   * `ROS 2 Building from source <https://docs.ros.org/en/rolling/Installation.html#building-from-source>`_
 
-Once your environment is setup, clone the repo, import all dependencies, and build the workspace:
-
-.. attention::
-   Be sure to check that all dependencies you need are included and uncommented in the ``.repos`` file.
+Once your environment is setup, clone the repo and build the workspace:
 
 .. code:: bash
 
   source <ros_ws>/install/setup.bash
   mkdir -p ~/nav2_ws/src && cd ~/nav2_ws
-  git clone https://github.com/ros-planning/navigation2.git --branch $ROS_DISTRO ./src/navigation2
-  vcs import ./src < ./src/navigation2/tools/underlay.repos
-  rosdep install -y \
+  git clone https://github.com/ros-planning/navigation2.git --branch main ./src/navigation2
+  rosdep install -r -y \
     --from-paths ./src \
     --ignore-src
   colcon build \
     --symlink-install
 
-You can then ``source ~/nav2_ws/install/setup.bash`` to get ready for demonstrations!
+You can then ``source ~/nav2_ws/install/setup.bash`` to get ready for demonstrations! It is safe
+to ignore the rosdep error of from the missing ``slam_toolbox`` key.
 
 .. hint::
   For more examples on building Nav2 from rolling development source, checkout `source.Dockerfile <https://github.com/ros-planning/navigation2/blob/main/tools/source.Dockerfile>`_.
