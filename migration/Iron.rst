@@ -80,6 +80,13 @@ MPPI's Path Align Critic and Path Handler object now have options to utilize the
 
 See MPPI's configuration guide for complete information.
 
+Addition of new MPPI Cost Critic
+********************************
+
+Analog to the ``ObstacleCritic``, the ``CostCritic`` is another obstacle avoiding critic alternative if the ``ObstacleCritic`` is not working well for you.
+This critic uses the inflated costs in the costmap to score rather than distance to obstacles as the ``ObstaclesCritic`` does.
+See the configuration guide for more information.
+
 Move Error Code Enumerations
 ****************************
 
