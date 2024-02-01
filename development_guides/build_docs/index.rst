@@ -77,6 +77,7 @@ Rolling Development Source
 ==========================
 
 Building Nav2 using rolling development source is similar to building Nav2 from released distribution binaries, where instead you build dependencies from source using the main development branches for all ROS based packages.
+Nav2 does not currently release binaries on rolling, so it must be build from source.
 
 .. seealso::
   For more information on building ROS 2 from source, see the official documentation:
