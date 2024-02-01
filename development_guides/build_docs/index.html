@@ -1079,7 +1079,8 @@ colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</s
 </div>
 <div class="content-collapse section" id="rolling-development-source">
 <h3>Rolling Development Source<a class="headerlink" href="#rolling-development-source" title="Permalink to this headline">¶</a></h3>
-<p>Building Nav2 using rolling development source is similar to building Nav2 from released distribution binaries, where instead you build dependencies from source using the main development branches for all ROS based packages.</p>
+<p>Building Nav2 using rolling development source is similar to building Nav2 from released distribution binaries, where instead you build dependencies from source using the main development branches for all ROS based packages.
+Nav2 does not currently release binaries on rolling, so it must be build from source.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>For more information on building ROS 2 from source, see the official documentation:</p>
@@ -1087,23 +1088,19 @@ colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</s
 <li><p><a class="reference external" href="https://docs.ros.org/en/rolling/Installation.html#building-from-source">ROS 2 Building from source</a></p></li>
 </ul>
 </div>
-<p>Once your environment is setup, clone the repo, import all dependencies, and build the workspace:</p>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>Be sure to check that all dependencies you need are included and uncommented in the <code class="docutils literal notranslate"><span class="pre">.repos</span></code> file.</p>
-</div>
+<p>Once your environment is setup, clone the repo and build the workspace:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>&lt;ros_ws&gt;/install/setup.bash
 mkdir<span class="w"> </span>-p<span class="w"> </span>~/nav2_ws/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/nav2_ws
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2.git<span class="w"> </span>--branch<span class="w"> </span><span class="nv">$ROS_DISTRO</span><span class="w"> </span>./src/navigation2
-vcs<span class="w"> </span>import<span class="w"> </span>./src<span class="w"> </span>&lt;<span class="w"> </span>./src/navigation2/tools/underlay.repos
-rosdep<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>./src/navigation2
+rosdep<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--from-paths<span class="w"> </span>./src<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--ignore-src
 colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--symlink-install
 </pre></div>
 </div>
-<p>You can then <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/nav2_ws/install/setup.bash</span></code> to get ready for demonstrations!</p>
+<p>You can then <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/nav2_ws/install/setup.bash</span></code> to get ready for demonstrations! It is safe
+to ignore the rosdep error of from the missing <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> key.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>For more examples on building Nav2 from rolling development source, checkout <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/tools/source.Dockerfile">source.Dockerfile</a>.</p>
