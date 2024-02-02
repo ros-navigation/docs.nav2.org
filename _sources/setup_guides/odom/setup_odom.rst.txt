@@ -264,7 +264,7 @@ Next, open `package.xml <https://github.com/ros-planning/navigation2_tutorials/b
 
   <exec_depend>joint_state_publisher_gui</exec_depend>
 
-To launch Gazebo, add the following before the ``joint_state_publisher_node,`` line
+To launch Gazebo, add the following before the ``joint_state_publisher_node,`` line in ``display.launch.py``
 
 .. code-block:: shell
   

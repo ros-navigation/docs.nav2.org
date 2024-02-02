@@ -1,7 +1,7 @@
 .. _configuring_coverage_server:
 
 Coverage Server
-##############
+###############
 
 Source code on Github_.
 
@@ -243,12 +243,11 @@ Parameters
   ============== ============
   Type           Default   
   -------------- ------------
-  bool         0.0
+  bool           0.0
   ============== ============
 
   Description
     For ``opennav_row_coverage``, whether to reorder the parsed rows in the order of their ``id``s.
-
 
 Example
 *******

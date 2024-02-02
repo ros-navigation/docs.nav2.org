@@ -117,6 +117,27 @@ This is useful to speed up performance to achieve better replanning speeds. Howe
 
 Therefore, it is the recommendation of the maintainers to enable this only when working in largely static (e.g. not many moving things or changes, not using live sensor updates in the global costmap, etc) environments when planning across large spaces to singular goals. Between goal changes to Nav2, this heuristic will be updated with the most current set of information, so it is not very helpful if you change goals very frequently. 
 
+Costmap2D Plugins
+=================
+
+Costmap2D has a number of plugins that you can use (including the availability for you to create your own!). 
+
+- ``StaticLayer``: Used to set the map from SLAM (either pre-built or currently being built live) for sizing the environment and setting key features like walls and rooms for global planning.
+- ``InflationLayer``: Inflates with an exponential function the lethal costs to help steer navigation algorithms away from walls and quickly detect collisions
+- ``ObstacleLayer``: 2D costmap layer used for 2D planar lidars or when on low-compute devices where 3D layer cannot be used on 3D sensors. If you have enough compute, use the ``VoxelLayer`` for 3D data which provides more accurate results.
+- ``VoxelLayer``: 3D costmap layer for non-planar 2D lidars or depth camera processing based on raycast clearing. Not suitable for 3D lidars due to sparseness of data collected.
+- ``SpatioTemporalVoxelLayer``: 3D costmap layer for 3D lidars, non-planar 2D lidars, or depth camera processing based on temporal decay. Useful for robots with high sensor coverage like 3D lidars or many depth cameras at a reduced computational overhead due to lack of raycasting.
+- ``RangeLayer``: Models sonars, IR sensors, or other range sensors for costmap inclusion
+- ``DenoiseLayer``: Removes salt and pepper noise from final costmap in order to remove unfiltered noise. Also has the option to remove clusters of configurable size to remove effects of dynamic obstacles without temporal decay.
+
+In addition, costmap filters:
+- ``KeepoutFilter``: Marks keepout, higher weighted, or lower weighted zones in the costmap
+- ``SpeedFilter``: Reduces or increases robot speeds based on position
+- ``BinaryFilter``: Enables or disables a binary topic when in particular zones
+
+Note: When the costmap filters can be paired with the ``VectorObject`` server to use vectorized zones rather than map rastered zones sharing the same software.
+
+
 Nav2 Launch Options
 ===================
 

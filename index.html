@@ -210,6 +210,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="about/robots.html">Robots Using</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">General Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
@@ -753,6 +754,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tuning/index.html#planner-plugin-selection">Planner Plugin Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tuning/index.html#controller-plugin-selection">Controller Plugin Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tuning/index.html#caching-obstacle-heuristic-in-smac-planners">Caching Obstacle Heuristic in Smac Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuning/index.html#costmap2d-plugins">Costmap2D Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tuning/index.html#nav2-launch-options">Nav2 Launch Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tuning/index.html#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
 </ul>
@@ -970,12 +972,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="about/index.html">About and Contact</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="about/related_projects.html">Related Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about/ros1_comparison.html">ROS to ROS 2 Navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about/index.html#id1">About</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about/index.html#contact">Contact</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="about/robots.html">Robots Using</a></li>
 </ul>
 
         </div>
@@ -1013,7 +1013,7 @@
   <div>
     <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
       <iframe width="450" height="300" src="https://www.youtube.com/embed/OklxMhdDfe0?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-      <iframe width="450" height="300" src="https://www.youtube.com/embed/dVwgfoLC6eA?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+      <iframe width="450" height="300" src="https://www.youtube.com/embed/CYaN43TJANc?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
     </div>
   </div>
 </h1><div class="section" id="our-sponsors">
@@ -1022,46 +1022,46 @@
 </div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Nav2 is the professionally supported spiritual successor of the ROS Navigation Stack deploying the same kinds of technology powering Autonomous Vehicles brought down, optimized, and reworked for mobile and surface robotics.
-This project seeks to find a safe way to have a mobile robot move to complete complex tasks through many types of environments and classes of robot kinematics.
-Not only can it move from Point A to Point B, but it can have intermediary poses, and represent other types of tasks like object following, do complete coverage navigation, and more.
-Nav2 is a production-grade and high-quality navigation framework trusted by 50+ companies worldwide.</p>
+<p>Nav2 is the professionally-supported successor of the ROS Navigation Stack deploying the same kinds of technology powering Autonomous Vehicles brought down, optimized, and reworked for mobile and surface robotics.
+This project allows for mobile robots to navigate through complex environments to complete user-defined application tasks with nearly any class of robot kinematics.
+Not only can it move from Point A to Point B, but it can have intermediary poses, and represent other types of tasks like object following, complete coverage navigation, and more.
+Nav2 is a production-grade and high-quality navigation framework trusted by 100+ companies worldwide.</p>
 <p>It provides perception, planning, control, localization, visualization, and much more to build highly reliable autonomous systems.
-This will complete environmental modeling from sensor data, dynamic path planning, compute velocities for motors, avoid obstacles, represent semantic regions and objects, and structure higher-level robot behaviors.
+This will compute an environmental model from sensor and semantic data, dynamically path plan, compute velocities for motors, avoid obstacles, and structure higher-level robot behaviors.
 To learn more about this project, such as related projects, robots using, ROS1 comparison, and maintainers, see <a class="reference internal" href="about/index.html#about"><span class="std std-ref">About and Contact</span></a>.
 To learn more about navigation and ROS concepts, see <a class="reference internal" href="concepts/index.html#concepts"><span class="std std-ref">Navigation Concepts</span></a>.</p>
 <p>Nav2 uses behavior trees to create customized and intelligent navigation behavior via orchestrating many independent modular servers.
-A task server can be used to compute a path, control effort, recovery, or any other navigation
+A task server can be used to compute a path, control effort, behavior, or any other navigation
 related task. These separate servers communicate with the behavior tree (BT)
 over a ROS interface such as an action server or service.
-A robot may utilize potentially many different behavior trees to allow a robot to perform many types of unique tasks.</p>
+A robot may utilize potentially many different behavior trees to allow a robot to perform many types of unique and complex tasks.</p>
 <p>The diagram below will give you a good first-look at the structure of Nav2.
-Note: It is possible to have multiple plugins for controllers, planners,
-and recoveries in each of their servers with matching BT plugins. This can be used to
-create contextual navigation behaviors.
-If you would like to see a comparison between this project and ROS (1) Navigation, see <a class="reference internal" href="about/ros1_comparison.html#ros1-comparison"><span class="std std-ref">ROS to ROS 2 Navigation</span></a>.</p>
+Note that it is possible to have multiple plugins for controllers, planners,
+and recoveries in each of their servers. This can be used to create contextual navigation behaviors.
+Each of the servers also returns status indicators back to the BT Navigator in order to enact contextual behaviors based on their results.</p>
 <p>The expected inputs to Nav2 are TF transformations conforming to REP-105, a
 map source if utilizing the Static Costmap Layer, a BT XML file, and any relevant sensor data
 sources. It will then provide valid velocity commands for the motors of a holonomic or
-non-holonomic robot to follow. We currently support all of the major robot types:
+non-holonomic robot to follow when properly configured. We currently support all of the major robot types:
 holonomic, differential-drive, legged, and ackermann (car-like) base types! We support
 them uniquely with both circular and arbitrarily-shaped robots for SE2 collision checking.</p>
 <p>It has tools to:</p>
 <ul class="simple">
-<li><p>Load, serve, and store maps (Map Server)</p></li>
-<li><p>Localize the robot on the map (AMCL)</p></li>
-<li><p>Plan a path from A to B around obstacles (Nav2 Planner)</p></li>
-<li><p>Control the robot as it follows the path (Nav2 Controller)</p></li>
-<li><p>Smooth path plans to be more continuous and feasible (Nav2 Smoother)</p></li>
-<li><p>Convert sensor data into a costmap representation of the world (Nav2 Costmap 2D)</p></li>
-<li><p>Build complicated robot behaviors using behavior trees (Nav2 Behavior Trees and BT Navigator)</p></li>
-<li><p>Compute recovery behaviors in case of failure (Nav2 Recoveries)</p></li>
-<li><p>Follow sequential waypoints (Nav2 Waypoint Follower)</p></li>
-<li><p>Manage the lifecycle and watchdog for the servers (Nav2 Lifecycle Manager)</p></li>
-<li><p>Plugins to enable your own custom algorithms and behaviors (Nav2 Core)</p></li>
-<li><p>Monitor raw sensor data for imminent collision or dangerous situation (Collision Monitor)</p></li>
-<li><p>Python3 API to interact with Nav2 in a pythonic manner (Simple Commander)</p></li>
-<li><p>A smoother on output velocities to guarantee dynamic feasibility of commands (Velocity Smoother)</p></li>
+<li><p>Load, serve, and store maps</p></li>
+<li><p>Localize the robot on a provided map (SLAM provides the initial map)</p></li>
+<li><p>Plan a complete path through the environment, even kinematically feasibly for large robots</p></li>
+<li><p>Control the robot to follows the path and dynamically adjust to avoid collision</p></li>
+<li><p>Smooth plans to be more continuous, smooth, and/or feasible</p></li>
+<li><p>Convert sensor data into an environmental model of the world</p></li>
+<li><p>Build complicated and highly-customizable robot behaviors using behavior trees</p></li>
+<li><p>Conduct pre-defined behaviors in case of failure, human intervention, or other</p></li>
+<li><p>Follow sequential waypoints comprising a mission</p></li>
+<li><p>Manage the system’s program lifecycle and watchdog for the servers</p></li>
+<li><p>Easy dynamically loaded plugins for creating customized algorithms, behaviors and so on</p></li>
+<li><p>Monitor raw sensor data for imminent collision or dangerous situation</p></li>
+<li><p>Python3 API to interact with Nav2 and its internal task servers in a pythonic manner</p></li>
+<li><p>A smoother on output velocities to guarantee dynamic feasibility of commands</p></li>
+<li><p>And More!</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/nav2_architecture.png"><img alt="Navigation2 Block Diagram" class="align-center" src="_images/nav2_architecture.png" style="width: 700px;" /></a>
 <p>We also provide a set of starting plugins to get you going.
@@ -1070,6 +1070,16 @@ A list of all plugins can be found on <a class="reference internal" href="plugin
 <div class="section" id="services">
 <h2>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h2>
 <p>If you need professional services related to Nav2, please contact Open Navigation at <a class="reference external" href="mailto:info&#37;&#52;&#48;opennav&#46;org">info<span>&#64;</span>opennav<span>&#46;</span>org</a>.</p>
+</div>
+<div class="section" id="related-projects">
+<h2>Related Projects<a class="headerlink" href="#related-projects" title="Permalink to this headline">¶</a></h2>
+<p>Check out related projects to Nav2:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.behaviortree.dev/">BehaviorTree.CPP</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cra-ros-pkg/robot_localization">Robot Localization</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SteveMacenski/slam_toolbox">SLAM Toolbox</a></p></li>
+<li><p><a class="reference external" href="https://github.com/locusrobotics/fuse">Fuse</a></p></li>
+</ul>
 </div>
 <div class="section" id="citations">
 <h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">¶</a></h2>
@@ -1091,7 +1101,7 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020
 <span class="o">}</span>
 </pre></div>
 </div>
-<p>If you use <strong>any</strong> of the algorithms in Nav2 or the analysis of the algorithms in your work, please cite this work in your papers!</p>
+<p>If you use any of the algorithms in Nav2 or the analysis of the algorithms in your work, please cite this work in your papers!</p>
 <p>S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson,
 <a class="reference external" href="https://arxiv.org/pdf/2307.15236.pdf">From the desks of ROS maintainers: A survey of modern &amp; capable mobile robotics algorithms in the robot operating system 2</a>,
 Robotics and Autonomous Systems, 2023</p>
@@ -1103,7 +1113,7 @@ Robotics and Autonomous Systems, 2023</p>
 <span class="o">}</span>
 </pre></div>
 </div>
-<p>If you use the Smac Planner (Hybrid A*, State Lattice, 2D), please cite this work in your papers!</p>
+<p>Smac Planner (Hybrid A*, State Lattice, 2D):</p>
 <p>S. Macenski, M. Booker, J. Wallace,
 <a class="reference external" href="https://arxiv.org/abs/2401.13078">Open-Source, Cost-Aware Kinematically Feasible Planning for Mobile and Surface Robotics</a>,</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@article<span class="o">{</span>macenski2024smac,
@@ -1114,7 +1124,7 @@ Robotics and Autonomous Systems, 2023</p>
 <span class="o">}</span>
 </pre></div>
 </div>
-<p>If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers!</p>
+<p>Regulated Pure Pursuit Controller:</p>
 <p>S. Macenski, S. Singh, F. Martin, J. Gines,
 <a class="reference external" href="https://arxiv.org/abs/2305.20026">Regulated Pure Pursuit for Robot Path Tracking</a>,
 Autonomous Robots, 2023.</p>
@@ -1126,7 +1136,7 @@ Autonomous Robots, 2023.</p>
 <span class="o">}</span>
 </pre></div>
 </div>
-<p>If you use our work on VSLAM and formal comparisons for service robot needs, please cite the paper:</p>
+<p>VSLAM and formal comparisons for service robot needs:</p>
 <p>A. Merzlyakov, S. Macenski.
 <a class="reference external" href="https://arxiv.org/abs/2107.07589">A Comparison of Modern General-Purpose Visual SLAM Approaches</a>.
 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021.</p>
@@ -1138,15 +1148,7 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
 <span class="o">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Below is an example of the TB3 navigating in a small lounge.</p>
-<h1 align="center">
-  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-    <iframe width="708" height="400" src="https://www.youtube.com/embed/ZeCds7Sv-5Q?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-  </div>
-</h1><div class="toctree-wrapper compound">
+<div class="toctree-wrapper compound">
 </div>
 </div>
 </div>

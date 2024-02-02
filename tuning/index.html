@@ -211,6 +211,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../about/robots.html">Robots Using</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">General Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
@@ -754,6 +755,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#planner-plugin-selection">Planner Plugin Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#controller-plugin-selection">Controller Plugin Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#caching-obstacle-heuristic-in-smac-planners">Caching Obstacle Heuristic in Smac Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#costmap2d-plugins">Costmap2D Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nav2-launch-options">Nav2 Launch Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#other-pages-we-d-love-to-offer">Other Pages We’d Love To Offer</a></li>
 </ul>
@@ -971,12 +973,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../about/index.html">About and Contact</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../about/related_projects.html">Related Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/ros1_comparison.html">ROS to ROS 2 Navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../about/index.html#id1">About</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../about/index.html#contact">Contact</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../about/robots.html">Robots Using</a></li>
 </ul>
 
         </div>
@@ -1130,6 +1130,24 @@
 <p>Smac’s Hybrid-A* and State Lattice Planners provide an option, <code class="docutils literal notranslate"><span class="pre">cache_obstacle_heuristic</span></code>. This can be used to cache the heuristic to use between replannings to the same goal pose, which can increase the speed of the planner <strong>significantly</strong> (40-300% depending on many factors). The obstacle heuristic is used to steer the robot into the middle of spaces, respecting costs, and drives the kinematically feasible search down the corridors towards a valid solution. Think of it like a 2D cost-aware search to “prime” the planner about where it should go when it needs to expend more effort in the fully feasible search / SE2 collision checking.</p>
 <p>This is useful to speed up performance to achieve better replanning speeds. However, if you cache this heuristic, it will not be updated with the most current information in the costmap to steer search. During planning, the planner will still make use of the newest cost information for collision checking, <em>thusly this will not impact the safety of the path</em>. However, it may steer the search down newly blocked corridors or guide search towards areas that may have new dynamic obstacles in them, which can slow things down significantly if entire solution spaces are blocked.</p>
 <p>Therefore, it is the recommendation of the maintainers to enable this only when working in largely static (e.g. not many moving things or changes, not using live sensor updates in the global costmap, etc) environments when planning across large spaces to singular goals. Between goal changes to Nav2, this heuristic will be updated with the most current set of information, so it is not very helpful if you change goals very frequently.</p>
+</div>
+<div class="section" id="costmap2d-plugins">
+<h2>Costmap2D Plugins<a class="headerlink" href="#costmap2d-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Costmap2D has a number of plugins that you can use (including the availability for you to create your own!).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">StaticLayer</span></code>: Used to set the map from SLAM (either pre-built or currently being built live) for sizing the environment and setting key features like walls and rooms for global planning.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">InflationLayer</span></code>: Inflates with an exponential function the lethal costs to help steer navigation algorithms away from walls and quickly detect collisions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ObstacleLayer</span></code>: 2D costmap layer used for 2D planar lidars or when on low-compute devices where 3D layer cannot be used on 3D sensors. If you have enough compute, use the <code class="docutils literal notranslate"><span class="pre">VoxelLayer</span></code> for 3D data which provides more accurate results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VoxelLayer</span></code>: 3D costmap layer for non-planar 2D lidars or depth camera processing based on raycast clearing. Not suitable for 3D lidars due to sparseness of data collected.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SpatioTemporalVoxelLayer</span></code>: 3D costmap layer for 3D lidars, non-planar 2D lidars, or depth camera processing based on temporal decay. Useful for robots with high sensor coverage like 3D lidars or many depth cameras at a reduced computational overhead due to lack of raycasting.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeLayer</span></code>: Models sonars, IR sensors, or other range sensors for costmap inclusion</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code>: Removes salt and pepper noise from final costmap in order to remove unfiltered noise. Also has the option to remove clusters of configurable size to remove effects of dynamic obstacles without temporal decay.</p></li>
+</ul>
+<p>In addition, costmap filters:
+- <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code>: Marks keepout, higher weighted, or lower weighted zones in the costmap
+- <code class="docutils literal notranslate"><span class="pre">SpeedFilter</span></code>: Reduces or increases robot speeds based on position
+- <code class="docutils literal notranslate"><span class="pre">BinaryFilter</span></code>: Enables or disables a binary topic when in particular zones</p>
+<p>Note: When the costmap filters can be paired with the <code class="docutils literal notranslate"><span class="pre">VectorObject</span></code> server to use vectorized zones rather than map rastered zones sharing the same software.</p>
 </div>
 <div class="section" id="nav2-launch-options">
 <h2>Nav2 Launch Options<a class="headerlink" href="#nav2-launch-options" title="Permalink to this headline">¶</a></h2>
