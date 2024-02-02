@@ -656,6 +656,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#goal-angle-critic">Goal Angle Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#goal-critic">Goal Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#obstacles-critic">Obstacles Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#cost-critic">Cost Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-align-critic">Path Align Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-angle-critic">Path Angle Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-follow-critic">Path Follow Critic</a></li>
@@ -929,6 +930,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-path-handling-for-directionality">Changes to MPPI Path Handling For Directionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#addition-of-new-mppi-cost-critic">Addition of new MPPI Cost Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#move-error-code-enumerations">Move Error Code Enumerations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#substitution-in-parameter-file">Substitution in parameter file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
@@ -1066,6 +1068,12 @@ easily prevent the robot to go through places that are not present in the static
 <h2>Changes to MPPI Path Handling For Directionality<a class="headerlink" href="#changes-to-mppi-path-handling-for-directionality" title="Permalink to this headline">¶</a></h2>
 <p>MPPI’s Path Align Critic and Path Handler object now have options to utilize the path’s orientation information to force the controller to change directions when and only when requested by a feasible planner. When <code class="docutils literal notranslate"><span class="pre">enforce_path_inversion</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the path handler will prune the path to the first time the directions change to force the controller to plan to the inversion point and then be set the rest of the path, once in tolerance. The Path Align critic also contains a parameter <code class="docutils literal notranslate"><span class="pre">use_path_orientations</span></code>  which can be paired with it to incentivize aligning the path containing orientation information to better attempt to achieve path inversions where requested <strong>and</strong> not do them when not requested.</p>
 <p>See MPPI’s configuration guide for complete information.</p>
+</div>
+<div class="section" id="addition-of-new-mppi-cost-critic">
+<h2>Addition of new MPPI Cost Critic<a class="headerlink" href="#addition-of-new-mppi-cost-critic" title="Permalink to this headline">¶</a></h2>
+<p>Analog to the <code class="docutils literal notranslate"><span class="pre">ObstacleCritic</span></code>, the <code class="docutils literal notranslate"><span class="pre">CostCritic</span></code> is another obstacle avoiding critic alternative if the <code class="docutils literal notranslate"><span class="pre">ObstacleCritic</span></code> is not working well for you.
+This critic uses the inflated costs in the costmap to score rather than distance to obstacles as the <code class="docutils literal notranslate"><span class="pre">ObstaclesCritic</span></code> does.
+See the configuration guide for more information.</p>
 </div>
 <div class="section" id="move-error-code-enumerations">
 <h2>Move Error Code Enumerations<a class="headerlink" href="#move-error-code-enumerations" title="Permalink to this headline">¶</a></h2>
