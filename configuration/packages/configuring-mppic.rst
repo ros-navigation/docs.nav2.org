@@ -454,7 +454,7 @@ This critic incentivizes navigating spatially towards the goal when in reasonabl
 Obstacles Critic
 ----------------
 
-This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check.
+This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check using distances from obstacles.
 
 :critical_weight:
 
@@ -565,6 +565,91 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 
   Description
     Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
+
+
+Cost Critic
+-----------
+
+This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check using the costmap values.
+
+:cost_weight:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         3.81
+  ============== ===========================
+
+  Description
+    Weight to apply to critic.
+
+:cost_power:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  int            1
+  ============== ===========================
+
+  Description
+    Power order to apply to term.
+
+:consider_footprint:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  bool           false
+  ============== ===========================
+
+  Description
+    Whether to use point cost (if robot is circular or low compute power) or compute SE2 footprint cost.
+
+:collision_cost:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         1000000.0
+  ============== ===========================
+
+  Description
+    Cost to apply to a true collision in a trajectory.
+
+:critical_cost:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         300.0
+  ============== ===========================
+
+  Description
+    Cost to apply to a pose with any point in in inflated space to prefer distance from obstacles.
+
+
+:near_goal_distance:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         0.50
+  ============== ===========================
+
+  Description
+    Distance (m) near goal to stop applying preferential obstacle term to allow robot to smoothly converge to goal pose in close proximity to obstacles.
+
+:inflation_layer_name:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  string         ""
+  ============== ===========================
+
+  Description
+    Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
+
 
 Path Align Critic
 -----------------
@@ -887,6 +972,14 @@ Example
             near_goal_distance: 0.5
             inflation_radius: 0.55 # (only in Humble)
             cost_scaling_factor: 10.0 # (only in Humble)
+          # CostCritic:
+          #   enabled: true
+          #   cost_power: 1
+          #   cost_weight: 3.81
+          #   critical_cost: 300.0
+          #   consider_footprint: true
+          #   collision_cost: 1000000.0
+          #   near_goal_distance: 1.0
           PathAlignCritic:
             enabled: true
             cost_power: 1
