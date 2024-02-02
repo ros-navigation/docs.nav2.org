@@ -1,7 +1,7 @@
 .. _bt_cancel_coverage:
 
 CancelCoverage
-=============
+==============
 
 Used to cancel the goals given to the complete coverage action server. The server address can be remapped using the ``server_name`` input port.
 

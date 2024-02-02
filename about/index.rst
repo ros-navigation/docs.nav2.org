@@ -7,7 +7,6 @@ About and Contact
    :hidden:
 
    related_projects.rst
-   ros1_comparison.rst
 
 About
 *****
@@ -19,7 +18,6 @@ This project has been used by researchers, educators, and industry for over 10 y
 There are very few projects that have lasted as long or were as successful as ROS (1) Navigation.
 We would like to thank David Lu!! and Mike Ferguson for their tireless over the span of a decade to keep the Nav Stack alive and well.
 Without their hard work, this project would not have been able to happen.
-If you're interested in a comparison between ROS 1 Navigation and ROS 2 Navigation, see :ref:`ros1_comparison`.
 For a list of robots using Navigation2, see :ref:`robots`.
 
 Aslas, as time moves on, so must we.

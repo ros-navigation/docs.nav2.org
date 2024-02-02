@@ -1,4 +1,4 @@
-.. _bt_compute_path_through_poses_action:
+.. _bt_compute_coverage_path_action:
 
 ComputeCoveragePath
 ===================
