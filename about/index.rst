@@ -45,35 +45,34 @@ Our current leadership team includes:
 +-------------------+-------------------+-------------------+------------------+
 | Joshua Wallace    | Locus Robotics    | JoshuaWallace_    | Main Contributor |
 +-------------------+-------------------+-------------------+------------------+
-| Alexey Merzlyakov | Samsung Research  | AlexeyMerzlyakov_ | Maintainer       |
-+-------------------+-------------------+-------------------+------------------+
-
 
 .. _SteveMacenski: https://github.com/SteveMacenski
 .. _ruffsl: https://github.com/ruffsl
 .. _JoshuaWallace: https://github.com/jwallace42
-.. _AlexeyMerzlyakov: https://github.com/AlexeyMerzlyakov
 
 Our former leadership team includes:
 
-+----------------+-------------------+-----------------+---------------------+
-| Name           | Organization      | GitHub ID       | Role                |
-+================+===================+=================+=====================+
-| Matt Hansen    | Intel Corporation | mkhansen_       | Former Project Lead |
-+----------------+-------------------+-----------------+---------------------+
-| Brian Wilcox   | Intel Corporation | bpwilcox_       | Former Maintainer   |
-+----------------+-------------------+-----------------+---------------------+
-| Carl Delsey    | Intel Corporation | crdelsey_       | Maintainer          |
-+----------------+-------------------+-----------------+---------------------+
++-------------------+-------------------+---------------------+---------------------+
+| Name              | Organization      | GitHub ID           | Role                |
++===================+===================+=====================+=====================+
+| Matt Hansen       | Intel Corporation | mkhansen_           | Former Project Lead |
++-------------------+-------------------+---------------------+---------------------+
+| Brian Wilcox      | Intel Corporation | bpwilcox_           | Former Maintainer   |
++-------------------+-------------------+---------------------+---------------------+
+| Carl Delsey       | Intel Corporation | crdelsey_           | Maintainer          |
++-------------------+-------------------+---------------------+---------------------+
+| Alexey Merzlyakov | Samsung Research  | AlexeyMerzlyakov_   | Maintainer          |
++-------------------+-------------------+---------------------+---------------------+
 
 .. _mkhansen: https://github.com/mkhansen-intel
 .. _bpwilcox: https://github.com/bpwilcox
 .. _crdelsey: https://github.com/crdelsey
+.. _AlexeyMerzlyakov: https://github.com/AlexeyMerzlyakov
 
 Contact
 *******
 
-If you are interested in contacting someone about Navigation, ROS 2, or related projects, please email the project leader.
+If you are interested in contacting someone about Navigation, ROS 2, or related projects, please email the project leader or email info@opennav.org.
 We intentionally make our emails easy to find.
 If your inquiry relates to bugs or open-source feature requests, consider posting a ticket on our GitHub project.
 If your inquiry relates to configuration support or private feature development, reach out and we may be able to connect you with

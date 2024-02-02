@@ -65,6 +65,8 @@ This wrapper wraps much of the complexities of LifecycleNodes for typical applic
 It also includes a ``bond`` connection for the lifecycle manager to ensure that after a server transitions up, it also remains active.
 If a server crashes, it lets the lifecycle manager know and transition down the system to prevent a critical failure. See :ref:`eloquent_migration` for details.
 
+------------
+
 Behavior Trees
 **************
 
@@ -94,6 +96,8 @@ Additionally, we supply a ``NavigateToPoseAction`` plugin (among others) for BT 
 Other systems could be used to design complex autonomous behavior, namely Hierarchical FSMs (HFSM).
 Behavior Trees were selected due to popularity across the robotics and related industries and by largely user demand.
 However, due to the independent task server nature of Nav2, it is not difficult to offer a ``nav2_hfsm_navigator`` package in the future, pending interest and contribution.
+
+------------
 
 Navigation Servers
 ******************
@@ -225,6 +229,8 @@ Neither is better than the other, it highly depends on the tasks your robot(s) a
 ``nav2_waypoint_follower`` also supports GPS waypoint following when global localization is provided by `robot_localization <https://github.com/cra-ros-pkg/robot_localization/>`_  using the ``navsat_transform`` node - but also may be provided by Fuse or any number of other sources.
 There is an action server named ``/follow_gps_waypoints`` within ``nav2_waypoint_follower`` that can directly take in goals expressed in GPS coordinates, convert them to cartesian goals in the global frame, and execute them as cartesian waypoints.
 
+------------
+
 State Estimation
 ****************
 
@@ -275,7 +281,7 @@ A typical mobile robotics setup may have odometry from wheel encoders, IMUs, and
 
 The smooth output can be used then for dead-reckoning for precise motion and updating the position of the robot accurately between global position updates.
 
-
+------------
 
 Environmental Representation
 ****************************
@@ -326,6 +332,8 @@ These include:
 - 3D costmaps, which represent the space in 3D, but then also requires 3D planning and collision checking
 - Mesh maps, which are similar to gradient maps but with surface meshes at many angles
 - "Vector space", taking in sensor information and using machine learning to detect individual items and locations to track rather than buffering discrete points.
+
+------------
 
 Nav2 Academic Overview
 **********************

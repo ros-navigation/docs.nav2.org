@@ -20,8 +20,6 @@ To guide you through the first-time setup of your robot, we will be tackling the
 - Select and set up planner and controller navigation plugins for your robot's navigation tasks  
 - Lifecycle node management for easy bringup of other related sensors or nodes
 
-.. note:: These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the :ref:`configuration` section.
-
 **Table of Contents:**
 
 .. toctree::
@@ -33,3 +31,5 @@ To guide you through the first-time setup of your robot, we will be tackling the
    sensors/setup_sensors.rst
    footprint/setup_footprint.rst
    algorithm/select_algorithm.rst
+
+.. note:: These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the :ref:`configuration` section.
