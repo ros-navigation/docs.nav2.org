@@ -1378,6 +1378,27 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">enable_stamped_cmd_vel</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+True uses TwistStamped, false uses Twist.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="backup-behavior-parameters">
@@ -1404,6 +1425,27 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
+<dt class="field-even">enable_stamped_cmd_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+True uses TwistStamped, false uses Twist.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="driveonheading-behavior-parameters">
@@ -1427,6 +1469,27 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Time to look ahead for collisions (s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">enable_stamped_cmd_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+True uses TwistStamped, false uses Twist.</p>
 </dd>
 </dl>
 </dd>
@@ -1496,6 +1559,27 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
+<dt class="field-even">enable_stamped_cmd_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+True uses TwistStamped, false uses Twist.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -1526,6 +1610,7 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <span class="w">    </span><span class="nt">max_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">    </span><span class="nt">min_rotational_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
 <span class="w">    </span><span class="nt">rotational_acc_lim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
+<span class="w">    </span><span class="nt">enable_stamped_cmd_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
 </div>

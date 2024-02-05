@@ -1302,6 +1302,27 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">enable_stamped_cmd_vel</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+True uses TwistStamped, false uses Twist.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 <div class="section" id="polygons-parameters">
 <h3>Polygons parameters<a class="headerlink" href="#polygons-parameters" title="Permalink to this headline">¶</a></h3>
@@ -1958,6 +1979,7 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 <span class="w">    </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
 <span class="w">    </span><span class="nt">base_shift_correction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">stop_pub_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">    </span><span class="nt">enable_stamped_cmd_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 <span class="w">    </span><span class="nt">use_realtime_priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;PolygonStop&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PolygonSlow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;FootprintApproach&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">PolygonStop</span><span class="p">:</span>

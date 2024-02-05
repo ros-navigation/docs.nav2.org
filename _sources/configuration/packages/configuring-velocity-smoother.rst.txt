@@ -148,6 +148,19 @@ Velocity Smoother Parameters
   Description
     Time (s) to buffer odometry commands to estimate the robot speed, if in ``CLOSED_LOOP`` operational mode.
 
+:enable_stamped_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+    True uses TwistStamped, false uses Twist.
+
+
 Example
 *******
 .. code-block:: yaml
@@ -166,3 +179,4 @@ Example
       odom_topic: "odom"
       odom_duration: 0.1
       use_realtime_priority: false
+      enable_stamped_cmd_vel: false
