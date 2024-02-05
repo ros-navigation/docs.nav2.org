@@ -255,6 +255,18 @@ Backup distance, speed and time_allowance is given from the action request.
   Description
     Time to look ahead for collisions (s).
 
+:enable_stamped_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+    True uses TwistStamped, false uses Twist.
+
 DriveOnHeading Behavior Parameters
 **********************************
 
