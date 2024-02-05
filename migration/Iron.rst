@@ -5,6 +5,11 @@ Iron to Jazzy
 
 Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.
 
+Added TwistStamped Option for Commands
+**************************************
+
+A new parameter ``enable_stamped_cmd_vel`` has been added to all of the publishers and subscribers of ``cmd_vel`` and related topics. This allows you to set the publication and subscription of TwistStamped messages over Twist messages to have frame and timestamp information of the set command. For now, this is default to ``false`` to not change current behavior, but it is planned to make ``TwistStamped`` the default behavior alongside Gazebo, ROS 2 Control, and related projects.
+
 Add VelocityPolygon in Collision Monitor
 ****************************************
 
