@@ -368,6 +368,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor">Configuring Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor-with-velocitypolygon">Configuring Collision Monitor with VelocityPolygon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#demo-execution">Demo Execution</a></li>
 </ul>
@@ -923,6 +924,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-velocitypolygon-in-collision-monitor">Add VelocityPolygon in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
@@ -1012,6 +1014,10 @@
   <div class="section" id="iron-to-jazzy">
 <span id="iron-migration"></span><h1>Iron to Jazzy<a class="headerlink" href="#iron-to-jazzy" title="Permalink to this headline">¶</a></h1>
 <p>Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="add-velocitypolygon-in-collision-monitor">
+<h2>Add VelocityPolygon in Collision Monitor<a class="headerlink" href="#add-velocitypolygon-in-collision-monitor" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3708">PR #3708</a> adds <code class="docutils literal notranslate"><span class="pre">VelocityPolgon</span></code> type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the approriate polygon to be used for collision checking. The tutorial is available in the <a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#collision-monitor-tutorial"><span class="std std-ref">Configuring Collision Monitor with VelocityPolygon</span></a> section.</p>
+</div>
 <div class="section" id="change-polygon-points-parameter-format-in-collision-monitor">
 <h2>Change polygon points parameter format in Collision Monitor<a class="headerlink" href="#change-polygon-points-parameter-format-in-collision-monitor" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4020">PR #4020</a> changes the format of the Polygon points parameter from <code class="docutils literal notranslate"><span class="pre">vector&lt;double&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">string</span></code>. This makes the polygon description more uniform accross the Collision Monitor and Costmap_2D.

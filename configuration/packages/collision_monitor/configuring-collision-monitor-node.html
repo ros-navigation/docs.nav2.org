@@ -368,6 +368,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../tutorials/docs/using_collision_monitor.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../tutorials/docs/using_collision_monitor.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor">Configuring Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor-with-velocitypolygon">Configuring Collision Monitor with VelocityPolygon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../tutorials/docs/using_collision_monitor.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../tutorials/docs/using_collision_monitor.html#demo-execution">Demo Execution</a></li>
 </ul>
@@ -923,6 +924,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../migration/Iron.html">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#add-velocitypolygon-in-collision-monitor">Add VelocityPolygon in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
@@ -1045,8 +1047,9 @@ When multiple zones trigger at once, the most aggressive one is used (e.g. stop 
 <li><p>Arbitrary user-defined polygon relative to the robot base frame, which can be static in a configuration file or dynamically changing via a topic interface.</p></li>
 <li><p>Robot footprint polygon, which is used in the approach behavior model only. Will use the static user-defined polygon or the footprint topic to allow it to be dynamically adjusted over time.</p></li>
 <li><p>Circle: is made for the best performance and could be used in the cases where the zone or robot footprint could be approximated by round shape.</p></li>
+<li><p>VelocityPolygon: allow switching of polygons based on the command velocity. This is useful for robots to set different safety zones based on their velocity (e.g. a robot that has a larger safety zone when moving at 1.0 m/s than when moving at 0.5 m/s).</p></li>
 </ul>
-<p>All shapes (<code class="docutils literal notranslate"><span class="pre">Polygon</span></code> and <code class="docutils literal notranslate"><span class="pre">Circle</span></code>) are derived from base <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> class, so without loss of generality they would be called as “polygons”.
+<p>All shapes (<code class="docutils literal notranslate"><span class="pre">Polygon</span></code>, <code class="docutils literal notranslate"><span class="pre">Circle</span></code> and <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code>) are derived from base <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> class, so without loss of generality they would be called as “polygons”.
 Subscribed footprint is also having the same properties as other polygons, but it is being obtained a footprint topic for the Approach Model.</p>
 <p>The data may be obtained from different data sources:</p>
 <ul class="simple">
@@ -1606,6 +1609,192 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </dd>
 </dl>
 </div>
+<div class="section" id="velocitypolygon-parameters">
+<h3>VelocityPolygon parameters<a class="headerlink" href="#velocitypolygon-parameters" title="Permalink to this headline">¶</a></h3>
+<p>All previous Polygon parameters apply, in addition to the following unique parameters for VelocityPolygon.</p>
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;</span></code>.holonomic</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Whether to use holonomic or non-holonomic robot model for collision prediction. For holonomic robot model, the resultant velocity will be used to compare the linear velocity range. Additionally, there will be 2 more parameters, <code class="docutils literal notranslate"><span class="pre">direction_start_angle</span></code> and <code class="docutils literal notranslate"><span class="pre">direction_end_angle</span></code>, to specify the resultant velocity direction.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;</span></code>.velocity_polygons</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>List of sub polygons for switching based on the robot’s current velocity. When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used. Causes an error, if not specified.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;.&lt;subpoly&gt;</span></code>.points</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Polygon vertexes, listed in <code class="docutils literal notranslate"><span class="pre">&quot;[[p1.x,</span> <span class="pre">p1.y],</span> <span class="pre">[p2.x,</span> <span class="pre">p2.y],</span> <span class="pre">[p3.x,</span> <span class="pre">p3.y],</span> <span class="pre">...]&quot;</span></code> format (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;[[0.5,</span> <span class="pre">0.25],</span> <span class="pre">[0.5,</span> <span class="pre">-0.25],</span> <span class="pre">[0.0,</span> <span class="pre">-0.25],</span> <span class="pre">[0.0,</span> <span class="pre">0.25]]&quot;</span></code> for the square in the front). Used for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type. Minimum 3 points for a triangle polygon. Causes an error, if not specified.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;.&lt;subpoly&gt;</span></code>.linear_min</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Minimum linear velocity for the sub polygon. In holonomic mode, this is the minimum resultant velocity. Causes an error, if not specified.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;.&lt;subpoly&gt;</span></code>.linear_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Maximum linear velocity for the sub polygon. In holonomic mode, this is the maximum resultant velocity. Causes an error, if not specified.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;.&lt;subpoly&gt;</span></code>.theta_min</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Minimum angular velocity for the sub polygon. Causes an error, if not specified.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;.&lt;subpoly&gt;</span></code>.theta_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Maximum angular velocity for the sub polygon. Causes an error, if not specified.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;.&lt;subpoly&gt;</span></code>.direction_start_angle</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>-PI</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Start angle of the movement direction(for holomic robot only). Refer to the <a class="reference internal" href="#example">Example</a> section for the common configurations. Applicable for <cite>holonomic</cite> mode only.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;.&lt;subpoly&gt;</span></code>.direction_end_angle</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>PI</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>End angle of the movement direction(for holomic robot only). Refer to the <a class="reference internal" href="#example">Example</a> section for the common configurations. Applicable for <cite>holonomic</cite> mode only.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="observation-sources-parameters">
 <h3>Observation sources parameters<a class="headerlink" href="#observation-sources-parameters" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code> is the corresponding data source name ID selected for this type.</p>
@@ -1755,6 +1944,8 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Here is an example illustrating the common configurations for holonomic robots that cover multiple directions of the resultant velocity:</p>
+<a class="reference internal image-reference" href="../../../_images/holonomic_examples.png"><img alt="../../../_images/holonomic_examples.png" src="../../../_images/holonomic_examples.png" style="height: 2880px;" /></a>
 <p>Here is an example of configuration YAML for the Collision Monitor.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">collision_monitor</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
@@ -1805,6 +1996,42 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 <span class="w">      </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span><span class="w">  </span><span class="c1"># max_points: 5 for Humble</span>
 <span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="nt">VelocityPolygonStop</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;velocity_polygon&quot;</span>
+<span class="w">      </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stop&quot;</span>
+<span class="w">      </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<span class="w">      </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;velocity_polygon_stop&quot;</span>
+<span class="w">      </span><span class="nt">velocity_polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;rotation&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;translation_forward&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;translation_backward&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;stopped&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">holonomic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">rotation</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.3,</span><span class="nv"> </span><span class="s">0.3],</span><span class="nv"> </span><span class="s">[0.3,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">0.3]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">translation_forward</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.35,</span><span class="nv"> </span><span class="s">0.3],</span><span class="nv"> </span><span class="s">[0.35,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.2,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.2,</span><span class="nv"> </span><span class="s">0.3]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">translation_backward</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.2,</span><span class="nv"> </span><span class="s">0.3],</span><span class="nv"> </span><span class="s">[0.2,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.35,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.35,</span><span class="nv"> </span><span class="s">0.3]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="c1"># This is the last polygon to be checked, it should cover the entire range of robot&#39;s velocities</span>
+<span class="w">      </span><span class="c1"># It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity</span>
+<span class="w">      </span><span class="c1"># is not covered by any of the other sub-polygons</span>
+<span class="w">      </span><span class="nt">stopped</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.25,</span><span class="nv"> </span><span class="s">0.25],</span><span class="nv"> </span><span class="s">[0.25,</span><span class="nv"> </span><span class="s">-0.25],</span><span class="nv"> </span><span class="s">[-0.25,</span><span class="nv"> </span><span class="s">-0.25],</span><span class="nv"> </span><span class="s">[-0.25,</span><span class="nv"> </span><span class="s">0.25]]&quot;</span>
+<span class="w">        </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">        </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">    </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;scan&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;pointcloud&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">scan</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>

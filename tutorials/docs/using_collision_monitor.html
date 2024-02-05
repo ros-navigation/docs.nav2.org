@@ -368,6 +368,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuring-collision-monitor">Configuring Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-collision-monitor-with-velocitypolygon">Configuring Collision Monitor with VelocityPolygon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preparing-nav2-stack">Preparing Nav2 stack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#demo-execution">Demo Execution</a></li>
 </ul>
@@ -923,6 +924,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Iron.html">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#add-velocitypolygon-in-collision-monitor">Add VelocityPolygon in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
@@ -1016,6 +1018,7 @@
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
 <li><p><a class="reference internal" href="#preparing-nav2-stack">Preparing Nav2 stack</a></p></li>
 <li><p><a class="reference internal" href="#configuring-collision-monitor">Configuring Collision Monitor</a></p></li>
+<li><p><a class="reference internal" href="#configuring-collision-monitor-with-velocitypolygon">Configuring Collision Monitor with VelocityPolygon</a></p></li>
 <li><p><a class="reference internal" href="#demo-execution">Demo Execution</a></p></li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/collision_monitor.gif"><img alt="../../_images/collision_monitor.gif" src="../../_images/collision_monitor.gif" style="width: 800px;" /></a>
@@ -1104,6 +1107,73 @@ The whole <code class="docutils literal notranslate"><span class="pre">nav2_coll
 <span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scan&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="configuring-collision-monitor-with-velocitypolygon">
+<h2>Configuring Collision Monitor with VelocityPolygon<a class="headerlink" href="#configuring-collision-monitor-with-velocitypolygon" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/dexory_velocity_polygon.gif"><img alt="../../_images/dexory_velocity_polygon.gif" src="../../_images/dexory_velocity_polygon.gif" style="width: 800px;" /></a>
+<p>For this part of tutorial, we will set up the Collision Monitor with <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> type for a <code class="docutils literal notranslate"><span class="pre">stop</span></code> action. <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the approriate polygon to be used for collision checking.</p>
+<p>In general, here are the steps to configure the Collision Monitor with <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> type:</p>
+<ol class="arabic simple">
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> to the <code class="docutils literal notranslate"><span class="pre">polygons</span></code> param list</p></li>
+<li><p>Configure the <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code></p></li>
+<li><p>Specify the <code class="docutils literal notranslate"><span class="pre">holonomic</span></code> property of the polygon (default is <code class="docutils literal notranslate"><span class="pre">false</span></code>)</p></li>
+<li><p>Start by adding a <code class="docutils literal notranslate"><span class="pre">stopped</span></code> sub polygon to cover the full range of the robot’s velocity limits in <code class="docutils literal notranslate"><span class="pre">velocity_polygons</span></code> list</p></li>
+<li><p>Add additional sub polygons to the front of the <code class="docutils literal notranslate"><span class="pre">velocity_polygons</span></code> list to cover the range of the robot’s velocity limits for each type of motion (e.g. rotation, moving forward, moving backward)</p></li>
+</ol>
+<p>In this example, we will consider a <strong>non-holonomic</strong> robot with linear velocity limits of <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code> m/s and angular velocity limits of <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code> rad/s. The <code class="docutils literal notranslate"><span class="pre">linear_min</span></code> and <code class="docutils literal notranslate"><span class="pre">linear_max</span></code> parameters of the sub polygons should be set to the robot’s linear velocity limits, while the <code class="docutils literal notranslate"><span class="pre">theta_min</span></code> and <code class="docutils literal notranslate"><span class="pre">theta_max</span></code> parameters should be set to the robot’s angular velocity limits.</p>
+<p>Below is the example configuration using 4 sub-polygons to cover the full range of the robot’s velocity limits:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;VelocityPolygonStop&quot;</span><span class="p p-Indicator">]</span>
+<span class="nt">VelocityPolygonStop</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;velocity_polygon&quot;</span>
+<span class="w">  </span><span class="nt">action_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stop&quot;</span>
+<span class="w">  </span><span class="nt">min_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<span class="w">  </span><span class="nt">visualize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">  </span><span class="nt">polygon_pub_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;velocity_polygon_stop&quot;</span>
+<span class="w">  </span><span class="nt">velocity_polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;rotation&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;translation_forward&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;translation_backward&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;stopped&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">holonomic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">rotation</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.3,</span><span class="nv"> </span><span class="s">0.3],</span><span class="nv"> </span><span class="s">[0.3,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.3,</span><span class="nv"> </span><span class="s">0.3]]&quot;</span>
+<span class="w">    </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">    </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">    </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">    </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">  </span><span class="nt">translation_forward</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.35,</span><span class="nv"> </span><span class="s">0.3],</span><span class="nv"> </span><span class="s">[0.35,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.2,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.2,</span><span class="nv"> </span><span class="s">0.3]]&quot;</span>
+<span class="w">    </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">    </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">    </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">    </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">  </span><span class="nt">translation_backward</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.2,</span><span class="nv"> </span><span class="s">0.3],</span><span class="nv"> </span><span class="s">[0.2,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.35,</span><span class="nv"> </span><span class="s">-0.3],</span><span class="nv"> </span><span class="s">[-0.35,</span><span class="nv"> </span><span class="s">0.3]]&quot;</span>
+<span class="w">    </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">    </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">    </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">    </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">  </span><span class="c1"># This is the last polygon to be checked, it should cover the entire range of robot&#39;s velocities</span>
+<span class="w">  </span><span class="c1"># It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity</span>
+<span class="w">  </span><span class="c1"># is not covered by any of the other sub-polygons</span>
+<span class="w">  </span><span class="nt">stopped</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[0.25,</span><span class="nv"> </span><span class="s">0.25],</span><span class="nv"> </span><span class="s">[0.25,</span><span class="nv"> </span><span class="s">-0.25],</span><span class="nv"> </span><span class="s">[-0.25,</span><span class="nv"> </span><span class="s">-0.25],</span><span class="nv"> </span><span class="s">[-0.25,</span><span class="nv"> </span><span class="s">0.25]]&quot;</span>
+<span class="w">    </span><span class="nt">linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">    </span><span class="nt">linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">    </span><span class="nt">theta_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+<span class="w">    </span><span class="nt">theta_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to include a <code class="docutils literal notranslate"><span class="pre">stopped</span></code> sub polygon as the last entry in the <code class="docutils literal notranslate"><span class="pre">velocity_polygons</span></code> list to cover the entire range of the robot’s velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used.</p>
+</div>
+<p><strong>For holomic robots:</strong></p>
+<p>For holomic robots, the <code class="docutils literal notranslate"><span class="pre">holonomic</span></code> property should be set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. In this scenario, the <code class="docutils literal notranslate"><span class="pre">linear_min</span></code> and <code class="docutils literal notranslate"><span class="pre">linear_max</span></code> parameters should cover the robot’s resultant velocity limits, while the <code class="docutils literal notranslate"><span class="pre">theta_min</span></code> and <code class="docutils literal notranslate"><span class="pre">theta_max</span></code> parameters should cover the robot’s angular velocity limits. Additionally, there will be 2 more parameters, <code class="docutils literal notranslate"><span class="pre">direction_start_angle</span></code> and <code class="docutils literal notranslate"><span class="pre">direction_end_angle</span></code>, to specify the resultant velocity direction. The covered direction will always span from <code class="docutils literal notranslate"><span class="pre">direction_start_angle</span></code> to <code class="docutils literal notranslate"><span class="pre">direction_end_angle</span></code> in the <strong>counter-clockwise</strong> direction.</p>
+<a class="reference internal image-reference" href="../../_images/holonomic_direction.png"><img alt="../../_images/holonomic_direction.png" src="../../_images/holonomic_direction.png" style="width: 365px;" /></a>
+<p>Below shows some common configurations for holonomic robots that cover multiple directions of the resultant velocity:</p>
+<a class="reference internal image-reference" href="../../_images/holonomic_examples1.png"><img alt="../../_images/holonomic_examples1.png" src="../../_images/holonomic_examples1.png" style="height: 2880px;" /></a>
 </div>
 <div class="section" id="preparing-nav2-stack">
 <h2>Preparing Nav2 stack<a class="headerlink" href="#preparing-nav2-stack" title="Permalink to this headline">¶</a></h2>
