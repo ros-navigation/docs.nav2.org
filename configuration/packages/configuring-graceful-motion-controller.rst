@@ -157,7 +157,7 @@ Graceful Motion Controller Parameters
   Description
     The difference in the path orientation and the starting robot orientation to trigger a rotate in place, if ``initial_rotation`` is enabled.
 
-:initial_rotation:
+:final_rotation:
 
   ============== =============================
   Type           Default                      
