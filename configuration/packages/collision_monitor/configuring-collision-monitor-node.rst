@@ -47,8 +47,9 @@ The zones around the robot can take the following shapes:
 - Arbitrary user-defined polygon relative to the robot base frame, which can be static in a configuration file or dynamically changing via a topic interface.
 - Robot footprint polygon, which is used in the approach behavior model only. Will use the static user-defined polygon or the footprint topic to allow it to be dynamically adjusted over time.
 - Circle: is made for the best performance and could be used in the cases where the zone or robot footprint could be approximated by round shape.
+- VelocityPolygon: allow switching of polygons based on the command velocity. This is useful for robots to set different safety zones based on their velocity (e.g. a robot that has a larger safety zone when moving at 1.0 m/s than when moving at 0.5 m/s). 
 
-All shapes (``Polygon`` and ``Circle``) are derived from base ``Polygon`` class, so without loss of generality they would be called as "polygons".
+All shapes (``Polygon``, ``Circle`` and ``VelocityPolygon``) are derived from base ``Polygon`` class, so without loss of generality they would be called as "polygons".
 Subscribed footprint is also having the same properties as other polygons, but it is being obtained a footprint topic for the Approach Model.
 
 The data may be obtained from different data sources:
@@ -364,6 +365,110 @@ Polygons parameters
   Description:
     Whether to use this polygon for collision monitoring. (Can be dynamically set)
 
+VelocityPolygon parameters
+==========================
+
+All previous Polygon parameters apply, in addition to the following unique parameters for VelocityPolygon.
+
+:``<vel_poly>``.holonomic:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           False
+  ============== =============================
+
+  Description:
+    Whether to use holonomic or non-holonomic robot model for collision prediction. For holonomic robot model, the resultant velocity will be used to compare the linear velocity range. Additionally, there will be 2 more parameters, ``direction_start_angle`` and ``direction_end_angle``, to specify the resultant velocity direction.
+
+:``<vel_poly>``.velocity_polygons:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  vector<string> N/A
+  ============== =============================
+
+  Description:
+    List of sub polygons for switching based on the robot's current velocity. When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used. Causes an error, if not specified.
+
+:``<vel_poly>.<subpoly>``.points:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  vector<string> N/A
+  ============== =============================
+
+  Description:
+    Polygon vertexes, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. Causes an error, if not specified.
+
+:``<vel_poly>.<subpoly>``.linear_min:
+
+    ============== =============================
+    Type           Default
+    -------------- -----------------------------
+    double         N/A
+    ============== =============================
+
+    Description:
+      Minimum linear velocity for the sub polygon. In holonomic mode, this is the minimum resultant velocity. Causes an error, if not specified.
+
+:``<vel_poly>.<subpoly>``.linear_max:
+
+    ============== =============================
+    Type           Default
+    -------------- -----------------------------
+    double         N/A
+    ============== =============================
+
+    Description:
+      Maximum linear velocity for the sub polygon. In holonomic mode, this is the maximum resultant velocity. Causes an error, if not specified.
+
+:``<vel_poly>.<subpoly>``.theta_min:
+  
+    ============== =============================
+    Type           Default
+    -------------- -----------------------------
+    double         N/A
+    ============== =============================
+
+    Description:
+      Minimum angular velocity for the sub polygon. Causes an error, if not specified.
+
+:``<vel_poly>.<subpoly>``.theta_max:
+
+    ============== =============================
+    Type           Default
+    -------------- -----------------------------
+    double         N/A
+    ============== =============================
+  
+    Description:
+      Maximum angular velocity for the sub polygon. Causes an error, if not specified.
+
+:``<vel_poly>.<subpoly>``.direction_start_angle:
+
+    ============== =============================
+    Type           Default
+    -------------- -----------------------------
+    double         -PI
+    ============== =============================
+
+    Description:
+      Start angle of the movement direction(for holomic robot only). Refer to the `Example`_ section for the common configurations. Applicable for `holonomic` mode only.
+
+:``<vel_poly>.<subpoly>``.direction_end_angle:
+
+    ============== =============================
+    Type           Default
+    -------------- -----------------------------
+    double         PI
+    ============== =============================
+
+    Description:
+      End angle of the movement direction(for holomic robot only). Refer to the `Example`_ section for the common configurations. Applicable for `holonomic` mode only.
+
 Observation sources parameters
 ==============================
 
@@ -450,6 +555,11 @@ Observation sources parameters
 Example
 *******
 
+Here is an example illustrating the common configurations for holonomic robots that cover multiple directions of the resultant velocity:
+
+.. image:: ../images/holonomic_examples.png
+  :height: 2880px
+
 Here is an example of configuration YAML for the Collision Monitor.
 
 .. code-block:: yaml
@@ -503,6 +613,42 @@ Here is an example of configuration YAML for the Collision Monitor.
           min_points: 6  # max_points: 5 for Humble
           visualize: False
           enabled: True
+        VelocityPolygonStop:
+          type: "velocity_polygon"
+          action_type: "stop"
+          min_points: 6
+          visualize: True
+          enabled: True
+          polygon_pub_topic: "velocity_polygon_stop"
+          velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+          holonomic: false
+          rotation:
+            points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+            linear_min: 0.0
+            linear_max: 0.05
+            theta_min: -1.0
+            theta_max: 1.0
+          translation_forward:
+            points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+            linear_min: 0.0
+            linear_max: 1.0
+            theta_min: -1.0
+            theta_max: 1.0
+          translation_backward:
+            points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+            linear_min: -1.0
+            linear_max: 0.0
+            theta_min: -1.0
+            theta_max: 1.0
+          # This is the last polygon to be checked, it should cover the entire range of robot's velocities
+          # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
+          # is not covered by any of the other sub-polygons 
+          stopped:
+            points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+            linear_min: -1.0
+            linear_max: 1.0
+            theta_min: -1.0
+            theta_max: 1.0
         observation_sources: ["scan", "pointcloud"]
         scan:
           source_timeout: 0.2
