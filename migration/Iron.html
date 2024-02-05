@@ -924,6 +924,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#added-twiststamped-option-for-commands">Added TwistStamped Option for Commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#add-velocitypolygon-in-collision-monitor">Add VelocityPolygon in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
@@ -1014,6 +1015,10 @@
   <div class="section" id="iron-to-jazzy">
 <span id="iron-migration"></span><h1>Iron to Jazzy<a class="headerlink" href="#iron-to-jazzy" title="Permalink to this headline">¶</a></h1>
 <p>Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="added-twiststamped-option-for-commands">
+<h2>Added TwistStamped Option for Commands<a class="headerlink" href="#added-twiststamped-option-for-commands" title="Permalink to this headline">¶</a></h2>
+<p>A new parameter <code class="docutils literal notranslate"><span class="pre">enable_stamped_cmd_vel</span></code> has been added to all of the publishers and subscribers of <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> and related topics. This allows you to set the publication and subscription of TwistStamped messages over Twist messages to have frame and timestamp information of the set command. For now, this is default to <code class="docutils literal notranslate"><span class="pre">false</span></code> to not change current behavior, but it is planned to make <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> the default behavior alongside Gazebo, ROS 2 Control, and related projects.</p>
+</div>
 <div class="section" id="add-velocitypolygon-in-collision-monitor">
 <h2>Add VelocityPolygon in Collision Monitor<a class="headerlink" href="#add-velocitypolygon-in-collision-monitor" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3708">PR #3708</a> adds <code class="docutils literal notranslate"><span class="pre">VelocityPolgon</span></code> type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the approriate polygon to be used for collision checking. The tutorial is available in the <a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#collision-monitor-tutorial"><span class="std std-ref">Configuring Collision Monitor with VelocityPolygon</span></a> section.</p>
