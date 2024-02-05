@@ -680,6 +680,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html">Graceful Motion Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html#graceful-motion-controller-parameters">Graceful Motion Controller Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html#example">Example</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-map-server.html">Map Server / Saver</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-saver-parameters">Map Saver Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-server-parameters">Map Server Parameters</a></li>
@@ -956,6 +961,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#global-frame-removed-from-2-bt-nodes">Global Frame Removed from 2 BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-costmapupdate-msg">Introduction of <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#full-stack-uses-node-clocks">Full Stack Uses Node Clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-graceful-motion-controller">New Graceful Motion Controller</a></li>
 </ul>
 </li>
 </ul>
@@ -1184,6 +1190,11 @@ if the transformation from the robot base frame to the global frame does not bec
 <div class="section" id="full-stack-uses-node-clocks">
 <h2>Full Stack Uses Node Clocks<a class="headerlink" href="#full-stack-uses-node-clocks" title="Permalink to this headline">¶</a></h2>
 <p>The stack no longer contains wall timers or wall rates. It will now use the node clocks. This will be ROS Time for simulation when <code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> is true. Else, it uses a steady clock.</p>
+</div>
+<div class="section" id="new-graceful-motion-controller">
+<h2>New Graceful Motion Controller<a class="headerlink" href="#new-graceful-motion-controller" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4021">PR #4021</a> introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and confortable trajectory.</p>
+<p>See <a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html#configuring-graceful-motion-controller"><span class="std std-ref">Graceful Motion Controller</span></a> for more information.</p>
 </div>
 </div>
 

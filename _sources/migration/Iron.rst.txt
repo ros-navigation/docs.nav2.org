@@ -223,3 +223,10 @@ Full Stack Uses Node Clocks
 ***************************
 
 The stack no longer contains wall timers or wall rates. It will now use the node clocks. This will be ROS Time for simulation when ``use_sim_time`` is true. Else, it uses a steady clock.
+
+New Graceful Motion Controller
+******************************
+
+`PR #4021 <https://github.com/ros-planning/navigation2/pull/4021>`_ introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and confortable trajectory.
+
+See :ref:`configuring_graceful_motion_controller` for more information.
