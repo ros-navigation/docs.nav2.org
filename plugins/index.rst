@@ -103,35 +103,40 @@ Costmap Filters
 Controllers
 ===========
 
-+----------------------------+--------------------+----------------------------------+-----------------------+
-|      Plugin Name           |       Creator      |       Description                | Drivetrain support    |
-+============================+====================+==================================+=======================+
-|  `DWB Controller`_         | David Lu!!         | A highly configurable  DWA       | Differential,         |
-|                            |                    | implementation with plugin       | Omnidirectional,      |
-|                            |                    | interfaces                       | Legged                |
-+----------------------------+--------------------+----------------------------------+-----------------------+
-|  `TEB Controller`_         | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
-|                            |                    | for ackermann, differential, and | Omnidirectional,      |
-|                            |                    | holonomic robots.                | Differential          |
-+----------------------------+--------------------+----------------------------------+-----------------------+
-| `Regulated Pure Pursuit`_  | Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
-|                            |                    | variation on the pure pursuit    | Differential          |
-|                            |                    | algorithm with adaptive features.|                       |
-+----------------------------+--------------------+----------------------------------+-----------------------+
-| `MPPI Controller`_         | Steve Macenski     | A predictive MPC controller with | Differential, Omni,   |
-|                            | Aleksei Budyakov   | modular & custom cost functions  | **Ackermann**         |
-|                            |                    | that can accomplish many tasks.  |                       |
-+----------------------------+--------------------+----------------------------------+-----------------------+
-| `Rotation Shim Controller`_| Steve Macenski     | A "shim" controller to rotate    | Differential, Omni,   |
-|                            |                    | to path heading before passing   | model rotate in place |
-|                            |                    | to main controller for  tracking.|                       |
-+----------------------------+--------------------+----------------------------------+-----------------------+
++--------------------------------+--------------------+----------------------------------+-----------------------+
+|      Plugin Name               |       Creator      |       Description                | Drivetrain support    |
++================================+====================+==================================+=======================+
+|  `DWB Controller`_             | David Lu!!         | A highly configurable  DWA       | Differential,         |
+|                                |                    | implementation with plugin       | Omnidirectional,      |
+|                                |                    | interfaces                       | Legged                |
++--------------------------------+--------------------+----------------------------------+-----------------------+
+|  `TEB Controller`_             | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
+|                                |                    | for ackermann, differential, and | Omnidirectional,      |
+|                                |                    | holonomic robots.                | Differential          |
++--------------------------------+--------------------+----------------------------------+-----------------------+
+| `Regulated Pure Pursuit`_      | Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
+|                                |                    | variation on the pure pursuit    | Differential          |
+|                                |                    | algorithm with adaptive features.|                       |
++--------------------------------+--------------------+----------------------------------+-----------------------+
+| `MPPI Controller`_             | Steve Macenski     | A predictive MPC controller with | Differential, Omni,   |
+|                                | Aleksei Budyakov   | modular & custom cost functions  | **Ackermann**         |
+|                                |                    | that can accomplish many tasks.  |                       |
++--------------------------------+--------------------+----------------------------------+-----------------------+
+| `Rotation Shim Controller`_    | Steve Macenski     | A "shim" controller to rotate    | Differential, Omni,   |
+|                                |                    | to path heading before passing   | model rotate in place |
+|                                |                    | to main controller for  tracking.|                       |
++--------------------------------+--------------------+----------------------------------+-----------------------+
+| `Graceful Motion Controller`_  | Alberto Tudela     | A controller based on a          | Differential          |
+|                                |                    | pose-following control law to    |                       |
+|                                |                    | generate smooth trajectories.    |                       |
++--------------------------------+--------------------+----------------------------------+-----------------------+
 
 .. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
 .. _TEB Controller: https://github.com/rst-tu-dortmund/teb_local_planner
 .. _Regulated Pure Pursuit: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
 .. _Rotation Shim Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller
 .. _MPPI Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller
+.. _Graceful Motion Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_graceful_motion_controller
 
 Planners
 ========
