@@ -195,6 +195,18 @@ Parameters
   Description
     Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
 
+:enable_stamped_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+    True uses TwistStamped, false uses Twist.
+
 Polygons parameters
 ===================
 
@@ -575,6 +587,7 @@ Here is an example of configuration YAML for the Collision Monitor.
         source_timeout: 5.0
         base_shift_correction: True
         stop_pub_timeout: 2.0
+        enable_stamped_cmd_vel: False
         use_realtime_priority: false
         polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
         PolygonStop:
