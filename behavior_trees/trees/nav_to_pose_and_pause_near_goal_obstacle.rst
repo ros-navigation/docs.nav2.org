@@ -38,48 +38,48 @@ In conclusion, this particular BT would serve, both as an example and ready-to-u
 
 .. code-block:: xml
 
-    <root main_tree_to_execute="MainTree">
-      <BehaviorTree ID="MainTree">
-        <RecoveryNode number_of_retries="6" name="NavigateRecovery">
-          <PipelineSequence name="NavigateWithReplanning">
-            <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
-            <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
-            <RateController hz="1.0">
-              <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-                <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
-                <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
-              </RecoveryNode>
-            </RateController>
-            <ReactiveSequence name="MonitorAndFollowPath">
-              <PathLongerOnApproach path="{path}" prox_len="3.0" length_factor="2.0">
-                <RetryUntilSuccessful num_attempts="1">
-                  <SequenceStar name="CancelingControlAndWait">
-                    <CancelControl name="ControlCancel"/>
-                    <Wait wait_duration="5.0"/>
-                  </SequenceStar>
-                </RetryUntilSuccessful>
-              </PathLongerOnApproach>
-              <RecoveryNode number_of_retries="1" name="FollowPath">
-                <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}"/>
-                <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
-              </RecoveryNode>
-            </ReactiveSequence>
-          </PipelineSequence>
-          <ReactiveFallback name="RecoveryFallback">
-            <GoalUpdated/>
-            <RoundRobin name="RecoveryActions">
-              <Sequence name="ClearingActions">
-                <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
-                <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
-              </Sequence>
-              <Spin spin_dist="1.57"/>
-              <Wait wait_duration="5.0"/>
-              <BackUp backup_dist="0.30" backup_speed="0.05"/>
-            </RoundRobin>
-          </ReactiveFallback>
-        </RecoveryNode>
-      </BehaviorTree>
-    </root>
+  <root main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+      <RecoveryNode number_of_retries="6" name="NavigateRecovery">
+        <PipelineSequence name="NavigateWithReplanning">
+          <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
+          <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
+          <RateController hz="1.0">
+            <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+              <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}"/>
+              <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+            </RecoveryNode>
+          </RateController>
+          <ReactiveSequence name="MonitorAndFollowPath">
+            <PathLongerOnApproach path="{path}" prox_len="3.0" length_factor="2.0">
+              <RetryUntilSuccessful num_attempts="1">
+                <SequenceStar name="CancelingControlAndWait">
+                  <CancelControl name="ControlCancel"/>
+                  <Wait wait_duration="5.0"/>
+                </SequenceStar>
+              </RetryUntilSuccessful>
+            </PathLongerOnApproach>
+            <RecoveryNode number_of_retries="1" name="FollowPath">
+              <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}"/>
+              <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+            </RecoveryNode>
+          </ReactiveSequence>
+        </PipelineSequence>
+        <ReactiveFallback name="RecoveryFallback">
+          <GoalUpdated/>
+          <RoundRobin name="RecoveryActions">
+            <Sequence name="ClearingActions">
+              <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+              <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+            </Sequence>
+            <Spin spin_dist="1.57"/>
+            <Wait wait_duration="5.0"/>
+            <BackUp backup_dist="0.30" backup_speed="0.05"/>
+          </RoundRobin>
+        </ReactiveFallback>
+      </RecoveryNode>
+    </BehaviorTree>
+  </root>
 
 A complete demo of this BT can be seen in the video below:
 
