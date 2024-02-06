@@ -236,7 +236,7 @@ New RViz Plugin for selecting Planners, Controllers, Goal Checkers, and Smoother
 
 `In PR #4091 <https://github.com/ros-planning/navigation2/pull/4091>`_ a new RViz plugin was added to select the planner, controller, goal checker, and smoother on the fly.
 
-The primarly goal of this plugin is to facilitate the developers and integrators to easily test their configuration before deploying the robot in the intended application.
+The primary goal of this plugin is to facilitate the developers and easy integration testing of their configuration before deploying the robot in the intended application.
 
 In order to facilitate the dynamic selection of the specified components, the BT selector nodes for all these components were utilized and were updated to all the relevant BT nodes. 
 
