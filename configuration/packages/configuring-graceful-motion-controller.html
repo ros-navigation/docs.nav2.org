@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Graceful Motion Controller &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Graceful Controller &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -680,8 +680,8 @@
 <li class="toctree-l3"><a class="reference internal" href="configuring-rotation-shim-controller.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Graceful Motion Controller</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#graceful-motion-controller-parameters">Graceful Motion Controller Parameters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Graceful Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#graceful-controller-parameters">Graceful Controller Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -1009,7 +1009,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Configuration Guide</a></li>
-      <li class="breadcrumb-item active">Graceful Motion Controller</li>
+      <li class="breadcrumb-item active">Graceful Controller</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1018,13 +1018,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="graceful-motion-controller">
-<span id="configuring-graceful-motion-controller"></span><h1>Graceful Motion Controller<a class="headerlink" href="#graceful-motion-controller" title="Permalink to this headline">¶</a></h1>
-<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_graceful_motion_controller">Github</a>.</p>
-<p>The graceful motion controller implements a controller based on the works of Jong Jin Park and Benjamin Kuipers in “A Smooth Control Law for Graceful Motion of Differential Wheeled Mobile Robots in 2D Environment” (ICRA 2011). In this implementation, a <cite>motion_target</cite> is set at a distance away from the robot that is exponentially stable to generate a smooth trajectory for the robot to follow.</p>
+  <div class="section" id="graceful-controller">
+<span id="configuring-graceful-motion-controller"></span><h1>Graceful Controller<a class="headerlink" href="#graceful-controller" title="Permalink to this headline">¶</a></h1>
+<p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_graceful_controller">Github</a>.</p>
+<p>The graceful controller implements a controller based on the works of Jong Jin Park and Benjamin Kuipers in “A Smooth Control Law for Graceful Motion of Differential Wheeled Mobile Robots in 2D Environment” (ICRA 2011). In this implementation, a <cite>motion_target</cite> is set at a distance away from the robot that is exponentially stable to generate a smooth trajectory for the robot to follow.</p>
 <p>See the package’s <code class="docutils literal notranslate"><span class="pre">README</span></code> for more complete information.</p>
-<div class="section" id="graceful-motion-controller-parameters">
-<h2>Graceful Motion Controller Parameters<a class="headerlink" href="#graceful-motion-controller-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="graceful-controller-parameters">
+<h2>Graceful Controller Parameters<a class="headerlink" href="#graceful-controller-parameters" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list">
 <dt class="field-odd">transform_tolerance</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1371,7 +1371,7 @@
 <span class="w">      </span><span class="nt">yaw_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav2_graceful_motion_controller::GracefulMotionController</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav2_graceful_controller::GracefulController</span>
 <span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">      </span><span class="nt">motion_target_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span>
 <span class="w">      </span><span class="nt">initial_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
