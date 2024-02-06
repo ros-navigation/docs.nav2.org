@@ -1,5 +1,5 @@
 breathe
-docutils==0.16
+docutils
 jinja2==3.0.3
 myst-parser
 sphinx_copybutton==0.5.2
