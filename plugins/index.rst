@@ -126,7 +126,7 @@ Controllers
 |                                |                    | to path heading before passing   | model rotate in place |
 |                                |                    | to main controller for  tracking.|                       |
 +--------------------------------+--------------------+----------------------------------+-----------------------+
-| `Graceful Motion Controller`_  | Alberto Tudela     | A controller based on a          | Differential          |
+| `Graceful Controller`_         | Alberto Tudela     | A controller based on a          | Differential          |
 |                                |                    | pose-following control law to    |                       |
 |                                |                    | generate smooth trajectories.    |                       |
 +--------------------------------+--------------------+----------------------------------+-----------------------+
@@ -136,7 +136,7 @@ Controllers
 .. _Regulated Pure Pursuit: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
 .. _Rotation Shim Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller
 .. _MPPI Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller
-.. _Graceful Motion Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_graceful_motion_controller
+.. _Graceful Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_graceful_controller
 
 Planners
 ========
