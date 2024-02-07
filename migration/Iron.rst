@@ -244,8 +244,8 @@ Here we can see the working demo of the plugin:
 
 .. image:: images/selector_plugin_demo.gif
 
-In the GIF, it can be seen that there are two controller_ids namely, `FollowPath` and `FollowPath2`. By default, the one defined in the Behavior tree is utilized.
+In the GIF, it can be seen that there are two controller_ids namely, `FollowPath` and `HighSpeedFollowPath`. By default, the one defined in the Behavior tree is utilized.
 
-In this case, the `FollowPath` is the default controller_id. The difference between the two controller_ids is that FollowPath2 has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.
+In this case, the `FollowPath` is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.
 
 .. attention:: If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.
