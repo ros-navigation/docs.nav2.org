@@ -102,14 +102,14 @@ Parameters
 
 :goal_checker_plugins:
 
-  ============== ==============
+  ============== ================
   Type           Default
-  -------------- --------------
-  string         'goal_checker'
-  ============== ==============
+  -------------- ----------------
+  vector<string> ["goal_checker"]
+  ============== ================
 
   Description
-    Mapped name for goal checker plugin for checking goal is reached.
+    Mapped name for goal checker plugin for checking goal is reached. When the number of the plugins is more than 2, each :code:`FollowPath` action needs to specify the goal checker plugin name with its :code:`goal_checker_id` field.
 
   Note
     The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
@@ -247,7 +247,7 @@ Example
         failure_tolerance: 0.3
         odom_topic: "odom"
         progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
-        goal_checker_plugin: "goal_checker"
+        goal_checker_plugins: ["goal_checker"] # goal_checker_plugin: "goal_checker" For Galactic and older
         controller_plugins: ["FollowPath"]
         progress_checker:
           plugin: "nav2_controller::SimpleProgressChecker"
