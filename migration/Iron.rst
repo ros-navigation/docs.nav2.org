@@ -231,10 +231,10 @@ New Graceful Motion Controller
 
 See :ref:`configuring_graceful_motion_controller` for more information.
 
-New RViz Plugin for selecting Planners, Controllers, Goal Checkers, and Smoothers
-*********************************************************************************
+New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers
+***************************************************************************************************
 
-`In PR #4091 <https://github.com/ros-planning/navigation2/pull/4091>`_ a new RViz plugin was added to select the planner, controller, goal checker, and smoother on the fly.
+`In PR #4091 <https://github.com/ros-planning/navigation2/pull/4091>`_ a new RViz plugin was added to select the planner, controller, goal checker, progress checker, and smoother on the fly.
 
 The primary goal of this plugin is to facilitate the developers and easy integration testing of their configuration before deploying the robot in the intended application.
 
