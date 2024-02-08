@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PlannerSelector &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>ProgressCheckerSelector &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
@@ -22,8 +22,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="ControllerSelector" href="ControllerSelector.html" />
-    <link rel="prev" title="TruncatePathLocal" href="TruncatePathLocal.html" />
+    <link rel="next" title="NavigateThroughPoses" href="NavigateThroughPoses.html" />
+    <link rel="prev" title="GoalCheckerSelector" href="GoalCheckerSelector.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -490,11 +490,11 @@
 <li class="toctree-l4"><a class="reference internal" href="ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TruncatePath.html">TruncatePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TruncatePathLocal.html">TruncatePathLocal</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">PlannerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PlannerSelector.html">PlannerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ControllerSelector.html">ControllerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="SmootherSelector.html">SmootherSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="GoalCheckerSelector.html">GoalCheckerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ProgressCheckerSelector.html">ProgressCheckerSelector</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ProgressCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputeCoveragePath.html">ComputeCoveragePath</a></li>
@@ -1011,7 +1011,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">PlannerSelector</li>
+      <li class="breadcrumb-item active">ProgressCheckerSelector</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1020,9 +1020,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="plannerselector">
-<span id="bt-planner-selector-node"></span><h1>PlannerSelector<a class="headerlink" href="#plannerselector" title="Permalink to this headline">¶</a></h1>
-<p>It is used to select the planner that will be used by the planner server. It subscribes to the <code class="docutils literal notranslate"><span class="pre">planner_selector</span></code> topic to receive command messages with the name of the planner to be used. It is commonly used before of the ComputePathToPoseAction. The <code class="docutils literal notranslate"><span class="pre">selected_planner</span></code> output port is passed to <code class="docutils literal notranslate"><span class="pre">planner_id</span></code> input port of the ComputePathToPoseAction. If none is provided on the topic, the <code class="docutils literal notranslate"><span class="pre">default_planner</span></code> is used.</p>
+  <div class="section" id="progresscheckerselector">
+<span id="bt-progress-checker-selector-node"></span><h1>ProgressCheckerSelector<a class="headerlink" href="#progresscheckerselector" title="Permalink to this headline">¶</a></h1>
+<p>It is used to select the ProgressChecker that will be used by the progress_checker server. It subscribes to the <code class="docutils literal notranslate"><span class="pre">progress_checker_selector</span></code> topic to receive command messages with the name of the ProgressChecker to be used. It is commonly used before of the FollowPathAction. The <code class="docutils literal notranslate"><span class="pre">selected_progess_checker</span></code> output port is passed to <code class="docutils literal notranslate"><span class="pre">progress_checker_id</span></code> input port of the FollowPathAction. If none is provided on the topic, the <code class="docutils literal notranslate"><span class="pre">default_progress_checker</span></code> is used.</p>
 <p>Any publisher to this topic needs to be configured with some QoS defined as <code class="docutils literal notranslate"><span class="pre">reliable</span></code> and <code class="docutils literal notranslate"><span class="pre">transient</span> <span class="pre">local</span></code>.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
@@ -1030,24 +1030,24 @@
 <dt class="field-odd">topic_name</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 27%" />
-<col style="width: 73%" />
+<col style="width: 19%" />
+<col style="width: 81%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>string</p></td>
-<td><p>planner_selector</p></td>
+<td><p>progress_checker_selector</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The name of the topic used to received select command messages. This is used to support multiple PlannerSelector nodes.</p>
+<dt>Description</dt><dd><p>The name of the topic used to received select command messages. This is used to support multiple ProgressCheckerSelector nodes.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">default_planner</dt>
+<dt class="field-even">default_progress_checker</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
@@ -1063,7 +1063,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The default value for the selected planner if no message is received from the input topic.</p>
+<dt>Description</dt><dd><p>The default value for the selected ProgressChecker if no message is received from the input topic.</p>
 </dd>
 </dl>
 </dd>
@@ -1072,7 +1072,7 @@
 <div class="section" id="output-ports">
 <h2>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list">
-<dt class="field-odd">selected_planner</dt>
+<dt class="field-odd">selected_progress_checker</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
@@ -1088,7 +1088,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The output selected planner id. This selected_planner string is usually passed to the ComputePathToPose behavior via the planner_id input port.</p>
+<dt>Description</dt><dd><p>The output selected ProgressChecker id. This selected_progress_checker string is usually passed to the FollowPath behavior via the progress_checker_id input port.</p>
 </dd>
 </dl>
 </dd>
@@ -1096,7 +1096,7 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;PlannerSelector</span><span class="w"> </span><span class="na">selected_planner=</span><span class="s">&quot;{selected_planner}&quot;</span><span class="w"> </span><span class="na">default_planner=</span><span class="s">&quot;GridBased&quot;</span><span class="w"> </span><span class="na">topic_name=</span><span class="s">&quot;planner_selector&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ProgressCheckerSelector</span><span class="w"> </span><span class="na">selected_progress_checker=</span><span class="s">&quot;{selected_progress_checker}&quot;</span><span class="w"> </span><span class="na">default_progress_checker=</span><span class="s">&quot;precise_progress_checker&quot;</span><span class="w"> </span><span class="na">topic_name=</span><span class="s">&quot;progress_checker_selector&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
