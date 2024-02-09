@@ -1157,20 +1157,20 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <dt class="field-even">goal_checker_plugins</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 47%" />
+<col style="width: 53%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>‘goal_checker’</p></td>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>[“goal_checker”]</p></td>
 </tr>
 </tbody>
 </table>
 <dl>
-<dt>Description</dt><dd><p>Mapped name for goal checker plugin for checking goal is reached.</p>
+<dt>Description</dt><dd><p>Mapped name for goal checker plugin for checking goal is reached. When the number of the plugins is more than 2, each <code class="code docutils literal notranslate"><span class="pre">FollowPath</span></code> action needs to specify the goal checker plugin name with its <code class="code docutils literal notranslate"><span class="pre">goal_checker_id</span></code> field.</p>
 </dd>
 <dt>Note</dt><dd><p>The plugin namespace defined needs to have a <code class="code docutils literal notranslate"><span class="pre">plugin</span></code> parameter defining the type of plugin to be loaded in the namespace.</p>
 <p>Example:</p>
@@ -1383,7 +1383,7 @@ True uses TwistStamped, false uses Twist.</p>
 <span class="w">    </span><span class="nt">failure_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">    </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
 <span class="w">    </span><span class="nt">progress_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;progress_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># progress_checker_plugin: &quot;progress_checker&quot; For Humble and older</span>
-<span class="w">    </span><span class="nt">goal_checker_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;goal_checker&quot;</span>
+<span class="w">    </span><span class="nt">goal_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;goal_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># goal_checker_plugin: &quot;goal_checker&quot; For Galactic and older</span>
 <span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">progress_checker</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span>
