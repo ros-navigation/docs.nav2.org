@@ -223,7 +223,7 @@ In this session, if we run the talker ``ros2 run demo_nodes_py talker``, now we 
 
 ------------
 
-Finally, lets talk about how to keep a container running for longer than than your interactive terminal session.
+Lets talk about how to keep a container running for longer than than your interactive terminal session.
 There are many reasons you want a container to outlive you or run in the background, so that's what the ``-d`` flag is for, or detached.
 Lets start off by showing that there are no containers running with ``sudo docker ps``. Next start a new container with the flag.
 
@@ -246,6 +246,19 @@ If you left it running and now wish to stop it externally, you can do so with th
 .. code-block:: bash
 
 	sudo docker stop e1d7e035a824  # <-- use your ID
+
+------------
+
+Finally, ``docker images`` is a command used to tell you what docker images you have built or pulled which are available for use. This list will expand over time and is a useful resource to see what you have to work with.
+
+.. code-block:: bash
+
+	sudo docker images
+
+  steve@reese:~$ sudo docker images
+  REPOSITORY   TAG                    IMAGE ID       CREATED        SIZE
+  osrf/ros     rolling-desktop-full   7cd0c5068235   6 days ago     3.86GB
+
 
 Understanding ROS Docker Images
 ===============================
@@ -282,7 +295,27 @@ Conclusion
 
 Video? what graphics / images?
 
+So now at the end of this --> You can:
+-  pull the ROS 2 docker images and run the demos
+- Understand how the ROS 2 docker images are formatted
+- Understand Docker's filesystem and network isolation -- and how to bypass it for development and running nodes across your system
+- Detach your docker containers for long-running processes 
+- Mount your development workspace to the container to work in but persist between container instances
+- Build your own docker image off of ROS' for your development dependencies
+- Use visualization and simulation with GUI in docker
+- and how to deploy software
+
+I hope that's enough to get you started :-) We didn't cover all the options in all the detail, but I think this is functionally enough for almost everyone. 
+
+Steps forward:
+- use a config file to hide all those arguments for development. For example setting them all in docker_run.conf, you can do `docker run $(cat docker_run.conf) osrf/ros:rolling-desktop-full
+- Use a bash script to set multiple sets of flags for different situations & include the `docker run` bits in it with the container as the argument `db osrf/ros:rolling-desktop-full`
+- Learn bout all the other options and features of Docker like compose, dockerhub, and version controlling deployment images
+- Adding docker to sudoers group so you dont need to call that every time (sudo usermod -aG docker $USER)
+- limit resource utilization
+
 --privledged is a hammer, you can reduce this to more specificity. make sure to take care for hardware inputs
+
 
 Appendix
 ========
