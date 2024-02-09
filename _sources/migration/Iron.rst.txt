@@ -230,3 +230,22 @@ New Graceful Motion Controller
 `PR #4021 <https://github.com/ros-planning/navigation2/pull/4021>`_ introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and confortable trajectory.
 
 See :ref:`configuring_graceful_motion_controller` for more information.
+
+New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers
+***************************************************************************************************
+
+`In PR #4091 <https://github.com/ros-planning/navigation2/pull/4091>`_ a new RViz plugin was added to select the planner, controller, goal checker, progress checker, and smoother on the fly.
+
+The primary goal of this plugin is to facilitate the developers and easy integration testing of their configuration before deploying the robot in the intended application.
+
+In order to facilitate the dynamic selection of the specified components, the BT selector nodes for all these components were utilized and were updated to all the relevant BT nodes. 
+
+Here we can see the working demo of the plugin:
+
+.. image:: images/selector_plugin_demo.gif
+
+In the GIF, it can be seen that there are two controller_ids namely, `FollowPath` and `HighSpeedFollowPath`. By default, the one defined in the Behavior tree is utilized.
+
+In this case, the `FollowPath` is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.
+
+.. attention:: If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.

@@ -963,6 +963,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-costmapupdate-msg">Introduction of <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#full-stack-uses-node-clocks">Full Stack Uses Node Clocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-graceful-motion-controller">New Graceful Motion Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
 </ul>
 </li>
 </ul>
@@ -1196,6 +1197,20 @@ if the transformation from the robot base frame to the global frame does not bec
 <h2>New Graceful Motion Controller<a class="headerlink" href="#new-graceful-motion-controller" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4021">PR #4021</a> introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and confortable trajectory.</p>
 <p>See <a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html#configuring-graceful-motion-controller"><span class="std std-ref">Graceful Controller</span></a> for more information.</p>
+</div>
+<div class="section" id="new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">
+<h2>New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers<a class="headerlink" href="#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4091">In PR #4091</a> a new RViz plugin was added to select the planner, controller, goal checker, progress checker, and smoother on the fly.</p>
+<p>The primary goal of this plugin is to facilitate the developers and easy integration testing of their configuration before deploying the robot in the intended application.</p>
+<p>In order to facilitate the dynamic selection of the specified components, the BT selector nodes for all these components were utilized and were updated to all the relevant BT nodes.</p>
+<p>Here we can see the working demo of the plugin:</p>
+<img alt="../_images/selector_plugin_demo.gif" src="../_images/selector_plugin_demo.gif" />
+<p>In the GIF, it can be seen that there are two controller_ids namely, <cite>FollowPath</cite> and <cite>HighSpeedFollowPath</cite>. By default, the one defined in the Behavior tree is utilized.</p>
+<p>In this case, the <cite>FollowPath</cite> is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.</p>
+</div>
 </div>
 </div>
 
