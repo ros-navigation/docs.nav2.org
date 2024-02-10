@@ -173,7 +173,7 @@ Instead, we need to open a new session in the container. Looking at the terminal
 
   sudo docker exec -it bce2ad161bf7 bash  # <-- use your ID
 
-This opens a new interactive session to the container and ``exec``utes the command ``bash`` to give us a shell to work with (``CMD`` in our Dockerfile does this for us for the spin up terminal).
+This opens a new interactive session to the container and ``exec`` -utes the command ``bash`` to give us a shell to work with (``CMD`` in our Dockerfile does this for us for the spin up terminal).
 Since this isn't a newly spun up container, the ``ENTRYPOINT`` script wasn't run. If you try to run the talker demo again, it won't find the ``ros2`` command.
 Fear not, simply source your ``/opt/ros/rolling/setup.bash`` install and you're good to go.
 
