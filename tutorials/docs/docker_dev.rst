@@ -285,6 +285,8 @@ You can pull and use them the same way as before, for example:
   sudo docker pull ros:rolling-ros-base
   sudo docker pull osrf/ros:humble-desktop
 
+Note that some containers may require ``osrf/`` and others may not. The ``osrf/`` images are released by osrf while the non-prefixed are a part of the official docker libraries.
+In general, the desktop installs are with ``osrf/``` and the ros core and base are without.
 
 For Docker-Based Development
 ============================
