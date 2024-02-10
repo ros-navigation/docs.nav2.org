@@ -375,7 +375,7 @@ You can run instances of your image on robots, cloud servers, etc as self-contai
 
 Typically speaking, you would set your ``ENTRYPOINT`` to launch a script which brings up and runs your server(s) for your application.
 For example, you could use the deployment image in the ``Appendix`` with an ``ENTRYPOINT`` to launch your root robot navigation launch file ``tb3_simulation_gazebo_launch.py``, or similar.
-These containers are also useful in debugging production system problems by having an image to pull down and reproduce issues on your own machine, of potentially a different Linux version.
+You could even have the container launch on bringup using ``systemd`` in order to have your application automatically launch, containerized, on system startup.
 
 Conclusion
 ==========
