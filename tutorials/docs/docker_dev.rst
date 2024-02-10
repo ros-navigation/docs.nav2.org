@@ -35,7 +35,7 @@ Docker is a tool used to build, deploy, test, and otherwise work with software i
 This diffs from a VM in that it shares the same linux kernal as your host operating system, making it faster to spin up and share host resources.
 By building or deploying software in this isolated environment, you can ensure many users, robots, or servers are running the same software with the same software versions across many instances.
 It gives you a controlled environment to work in that is reproducable on other developer's machines and even work in a different (linux-based) operating system than your computer currently runs.
-For example, you can run a 22.04 Docker container on Nvidia Jetson's Jetpack 5.1 (which is a flavor of 20.04) to run ROS 2 Humble and deploy that container to a fleet of robots.
+For example, you can run a 22.04 Docker container that contains ROS 2 Humble on Nvidia Jetson's Jetpack 5.1 (which is a flavor of 20.04) and deploy that container to a fleet of robots.
 
 In common Docker language, an *image* is the built ``Dockerfile`` which can be used to create *containers*.
 Thus, *containers* are self-contained, runnable instances of the docker *image*. 
