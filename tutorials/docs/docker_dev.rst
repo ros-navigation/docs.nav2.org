@@ -51,7 +51,7 @@ The Dockerfile instruct sets have a number of options such as:
 
 Most of these are self explanatory, but you can reference the Docker documentation to learn more and see the full set.
 
-Two special commands worth highlighting are ``CMD`` and ``ENTRYPOINT`` which you will see at the bottom of many ``Dockerfile``s.
+Two special commands worth highlighting are ``CMD`` and ``ENTRYPOINT`` which you will see at the bottom of many ``Dockerfile`` s.
 
 - ``ENTRYPOINT``: A command to execute when the container is spun up which cannot be overrided
 - ``CMD``: A command to execute when a container is spun up which can be overrided
@@ -324,7 +324,7 @@ That way, you can simply jump into the container and immediately start building.
 Building a Development Image
 ----------------------------
 
-Building a new container is easy. The organization instructions of Docker images are ourlined in ``Dockerfile``s.
+Building a new container is easy. The organization instructions of Docker images are outlined in ``Dockerfile`` s.
 Typically, they start with an import ``FROM`` to set the starting container to build off of. In our case, a ROS 2 Rolling image.
 Then, we run a series of ``RUN`` commands to perform actions to setup our dependencies so we can have them ready for use when we launch a container.
 In the ``Appendix``, you'll find an example development image that you can use to develop on Nav2. It starts with Rolling ``ros-base``, downloads Nav2, and runs rosdep over its packages to install all dependencies.
@@ -382,6 +382,7 @@ Conclusion
 ==========
 
 At the end of this, you should be able to now:
+
 - Pull the official ROS 2 docker images of any ROS distribution and choose the right type of image for your needs
 - Understand how ROS 2 docker containers are formatted and the core part of ``Dockerfile`` image descriptions
 - Understand Docker's filesystem and network isolation -- and how to bypass it for important use-cases in development
@@ -396,6 +397,7 @@ Also note that ``--privileged`` also makes it easier to run hardware interfaces 
 If in production, you cannot use a hammer, you may need to dig into your system a bit to allow through only the interfaces required for your hardware.
 
 As for potential steps forward: 
+
 - Setup a config file to hide all those docker run arguments for development
 - Setup a bash script to enable several different configurations of docker run and execute the run itself
 - Learn more about Docker's options and features such as compose, pushing your own containers to DockerHub, and version controlling images
