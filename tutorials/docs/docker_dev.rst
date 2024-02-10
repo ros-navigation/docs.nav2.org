@@ -72,7 +72,7 @@ Over the tutorial, build up some important option flags for each, but for now le
 - ``docker pull / push``: Pulls a docker image from another location or pushes a built image to another location
 - ``docker stop / kill``: Stops or kills a running docker container 
 - ``docker ps``: Lists a set of docker images that are currently running
-- ``docker attach``: Attach to a background running docker container
+- ``docker attach``: Attach a terminal to a background running docker container
 - ``docker exec``: Execute a command in a provided container
 - ``docker images``: Lists a set of containers pulled or built on your computer
 
