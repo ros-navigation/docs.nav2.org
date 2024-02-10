@@ -13,9 +13,6 @@ Navigation2 Tutorials
    docs/navigation2_with_stvl.rst
    docs/navigation2_with_gps.rst
    docs/using_groot.rst
-   docs/camera_calibration.rst
-   docs/get_backtrace.rst
-   docs/get_profile.rst
    docs/integrating_vio.rst
    docs/navigation2_dynamic_point_following.rst
    docs/navigation2_with_keepout_filter.rst
@@ -25,3 +22,7 @@ Navigation2 Tutorials
    docs/using_collision_monitor.rst
    docs/adding_a_nav2_task_server.rst
    docs/filtering_of_noise-induced_obstacles.rst
+   docs/camera_calibration.rst
+   docs/get_backtrace.rst
+   docs/get_profile.rst
+   docs/docker_dev.rst
