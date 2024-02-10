@@ -462,7 +462,7 @@ From here, you can go to the :ref:`getting_started` to test it out!
   RUN apt update && apt upgrade -y \
       && rosdep update \
       && rosdep install -y --ignore-src --from-paths src -r
-  RUN colcon build --symlink-install
+  RUN . /opt/ros/rolling/setup.sh && colcon build --symlink-install
 
   # For all else, uncomment the above Rolling lines and replace with below
   # RUN rosdep init
