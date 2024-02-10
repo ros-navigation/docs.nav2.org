@@ -38,7 +38,7 @@ It gives you a controlled environment to work in that is reproducable on other d
 For example, you can run a 22.04 Docker container on Nvidia Jetson's Jetpack 5.1 (which is a flavor of 20.04) to run ROS 2 Humble and deploy that container to a fleet of robots.
 
 In common Docker language, an *image* is the built ``Dockerfile`` which can be used to create *containers*.
-Thus, *containers* are instances of the docker *image*. 
+Thus, *containers* are self-contained, runnable instances of the docker *image*. 
 The ``Dockerfile`` is a set of instructions for how to build an image to create some kind of environment to work in - and often contain applications to deploy in that environment.
 The Dockerfile instruct sets have a number of options such as:
 
