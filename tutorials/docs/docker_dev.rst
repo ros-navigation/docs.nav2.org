@@ -124,6 +124,8 @@ This is easy to do with the ``-it`` flag:
 
 You should now see a terminal session open with a command prompt of ``root@<some hash>:/#``.
 This is your docker container. 
+Take a look around, it should look like any other linux OS.
+If you go into ``/opt/ros/rolling``, it should look familiar to you!
 
 ------------
 
@@ -263,59 +265,145 @@ Finally, ``docker images`` is a command used to tell you what docker images you 
 Understanding ROS Docker Images
 ===============================
 
-structure, source, etc
+Now that we know a bit about Docker's basic features and explored the Rolling Desktop Full container, lets look at the Docker images you have to work with in ROS in more detail.
+OSRF hosts a DockerHub server containing images of all ROS distributions which you can pull and use.
+For each distribution, there are a couple of variants: 
 
+- ``ros-core``: Contains only the ROS core communication protocols and utilities
+- ``ros-base``: Contains ``ros-core`` and other core utilities like pluginlib, bond, actions, etc
+- ``perception``: Contains ``ros-base`` and image common, pipeline, laser filters, laser geomtry, vision opencv, etc
+- ``desktop``: Contains ``ros-base`` and tutorials, lifecycle, rviz2, teleop, and rqt
+- ``desktop-full``: Contains ``desktop``, ``perception`` and simulation
 
-Exploring ROS Docker and Docker Options
-=======================================
+These are the same as if you were to use `apt install ros-rolling-desktop-full`, but in container form.
+Each of those containers build off of the previous one using ``FROM`` and then install the binaries described to serve to the container user.
+Which you use depends on your application and needs, but ``osrf/ros:<distro>-ros-base`` is a good default for development and deployment.
+We're using desktop-full in the context of this tutorial for ease of having rviz2 and such built-in batteries-included.
+
+You can pull and use them the same way as before, for example:
+
+.. code-block:: bash
+
+  sudo docker pull ros:rolling-ros-base
+  sudo docker pull osrf/ros:humble-desktop
 
 
 For Docker-Based Development
 ============================
 
+As mentioned previously, if we create and modify files in the Docker container, these do not persist after the container is exited.
+If we want to do some development work that will persist between images, it is wise to *mount* a *volume* to the docker container when we run it.
+That is just fancy talk for linking a given set of directories from your host company to the container so that they can be read, modified, and deleted within the container and reflected on the outside.
+That way, your work will persist even if you close a container in your local filesystem as if it were developed without the use of a container.
+
+We accomplish this using the ``-v`` flag (for volume). There are other options to do this as well, but this is the most straight forward.
+It takes in the argument in the form ``-v what/local/dir:/absolute/path/in/container``.
+If we start a container in our workspace's root, the following will launch the docker container, sharing the host's network, and putting your workspace (``.``) into the container under the directory ``/my_ws_docker``:
+
+.. code-block:: bash
+
+  sudo docker run -it --net=host -v .:/my_ws_docker  osrf/ros:rolling-desktop-full
+
+  ls
+  cd my_ws_docker
+  touch navigator_activator.txt
+
+If you go to your workspace in another terminal, you should now see that file reflected on your computer! If we run rosdep to install our dependencies in the docker container, we should now be able to build your workspace.
+
+.. code-block:: bash
+
+  rosdep install -r -y --from-paths . --ignore-src
+  colcon build
+
+Now, you can make any changes to your code using VSCode or your favorite code editor and have it reflected in the container for building and testing! 
+This is especially powerful if you're working with multiple ROS distributions or with a ROS distribution which your host OS doesn't natively support (such as Humble on Jetpack 5.1 on Nvidia Jetsons).
+However, it does get annoying over time to have to wait for all of your dependencies to install manually when you spin up a new container.
+Thus, it is useful to build atop one of the provided ROS Docker images to create your own custom development image containing the packages and environment you need to build your application.
+That way, you can simply jump into the container and immediately start building.
 
 Building a Development Image
 ----------------------------
 
+Building a new container is easy. The organization instructions of Docker images are ourlined in ``Dockerfile``s.
+Typically, they start with an import ``FROM`` to set the starting container to build off of. In our case, a ROS 2 Rolling image.
+Then, we run a series of ``RUN`` commands to perform actions to setup our dependencies so we can have them ready for use when we launch a container.
+In the ``Appendix``, you'll find an example development image that you can use to develop on Nav2. It starts with Rolling ``ros-base``, downloads Nav2, and runs rosdep over its packages to install all dependencies.
+Once these steps conclude, the image is all setup for any later Nav2 build.
+
+You can build this image using ``docker build``
+
+.. code-block:: bash
+
+  sudo docker build -t nav2deps:rolling .
+
+Where ``-t`` sets the tagged name of the container for later use.
+Its important to note that even though your install and build spaces will be reflected in your host workspace, they cannot be run locally when compiled inside of a docker container.
+This example development image also upgrades packages which breaks strict version controlling of system and ``ros-base`` installed packages.
+For a deployment situation, you want to ensure you have the same version of all packages -- however for ROS 2 Rolling where ABI and API are not promised to be stable due to live development, 
+it is useful to update so that your source code can build against the latest and greatest.
 
 Visualizations from Docker
 --------------------------
 
+Some that skip ahead at this point might notice that when launching their applications which involve a GUI (RQT, Rviz2, Gazebo), it crashes and never appears.
+Docker's isolation isn't just for networking, but also in visualization and other assets.
+Thus, we must specifically enable carve outs for GUIs to appear on our screens.
+
+- ``--priviledged``: Bypasses many of the checks to field the container from the host system. A hammer smashing isolation.
+- ``--env="DISPLAY=$DISPLAY``: Sets display to use for GUI
+- ``--volume="${XAUTHORITY}:/root/.Xauthority"``: Gets important info from the XServer for graphics display
+
+Putting it altogether, you should now be able to open rviz2 inside of the docker container!
+
+.. code-block:: bash
+	sudo docker run -it --net=host --privileged \
+	    --env="DISPLAY=$DISPLAY" \
+	    --volume="${XAUTHORITY}:/root/.Xauthority" \
+	    osrf/ros:rolling-desktop-full
+
+  rviz2
+
+At this point, if you have an error remaining, please check docs for the right flags to use.
+(Even if you copy+paste around, it shouldn't take you more than 10 minutes to find a combo that works.)
+If you're on Nvidia Jetson hardware, reference their documentation for the correct set of flags for your Jetpack version.
 
 For Docker-Based Deployment
 ===========================
 
-Won't belabor with details...
+We won't belabor the details, but Docker is not just for development, but for application deployment as well.
+You can run instances of your image on robots, cloud servers, etc as self-containing micro-services or robot application systems.
 
-
-
+Typically speaking, you would set your ``ENTRYPOINT`` to launch a script which brings up and runs your server(s) for your application.
+For example, you could use the deployment image in the ``Appendix`` with an ``ENTRYPOINT`` to launch your root robot navigation launch file ``tb3_simulation_gazebo_launch.py``, or similar.
+These containers are also useful in debugging production system problems by having an image to pull down and reproduce issues on your own machine, of potentially a different Linux version.
 
 Conclusion
 ==========
 
-Video? what graphics / images?
-
-So now at the end of this --> You can:
--  pull the ROS 2 docker images and run the demos
-- Understand how the ROS 2 docker images are formatted
-- Understand Docker's filesystem and network isolation -- and how to bypass it for development and running nodes across your system
+At the end of this, you should be able to now:
+- Pull the official ROS 2 docker images of any ROS distribution and choose the right type of image for your needs
+- Understand how ROS 2 docker containers are formatted and the core part of ``Dockerfile`` image descriptions
+- Understand Docker's filesystem and network isolation -- and how to bypass it for important use-cases in development
+- Be able to detach your docker containers for long-running processes 
 - Detach your docker containers for long-running processes 
-- Mount your development workspace to the container to work in but persist between container instances
-- Build your own docker image off of ROS' for your development dependencies
-- Use visualization and simulation with GUI in docker
-- and how to deploy software
+- Mount your development workspace to the container to work in
+- Build your own docker image off of ROS' for your development dependencies and setup needs
+- Visualization and simulation with GUI in docker
 
-I hope that's enough to get you started :-) We didn't cover all the options in all the detail, but I think this is functionally enough for almost everyone. 
+Its useful to note at this point that the ``--privileged`` flag is a real hammer. If you want to avoid running this, you can find all the individual areas you need to enable for visualization to work.
+Also note that ``--privileged`` also makes it easier to run hardware interfaces like joysticks and sensors by enabling inputs from the host operating system that are processing those inputs.
+If in production, you cannot use a hammer, you may need to dig into your system a bit to allow through only the interfaces required for your hardware.
 
-Steps forward:
-- use a config file to hide all those arguments for development. For example setting them all in docker_run.conf, you can do `docker run $(cat docker_run.conf) osrf/ros:rolling-desktop-full
-- Use a bash script to set multiple sets of flags for different situations & include the `docker run` bits in it with the container as the argument `db osrf/ros:rolling-desktop-full`
-- Learn bout all the other options and features of Docker like compose, dockerhub, and version controlling deployment images
-- Adding docker to sudoers group so you dont need to call that every time (sudo usermod -aG docker $USER)
-- limit resource utilization
+As for potential steps forward: 
+- Setup a config file to hide all those docker run arguments for development
+- Setup a bash script to enable several different configurations of docker run and execute the run itself
+- Learn more about Docker's options and features such as compose, pushing your own containers to DockerHub, and version controlling images
+- Limit and regulate host resource utilization
+- Configure computer to avoid use of ``sudo`` for each docker CLI command.
 
---privledged is a hammer, you can reduce this to more specificity. make sure to take care for hardware inputs
+We hope that's enough to get you started! 
 
+-- Your Friendly Neighborhood Navigators
 
 Appendix
 ========
