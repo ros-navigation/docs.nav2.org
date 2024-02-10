@@ -255,8 +255,6 @@ Finally, ``docker images`` is a command used to tell you what docker images you 
 
 .. code-block:: bash
 
-	sudo docker images
-
   steve@reese:~$ sudo docker images
   REPOSITORY   TAG                    IMAGE ID       CREATED        SIZE
   osrf/ros     rolling-desktop-full   7cd0c5068235   6 days ago     3.86GB
@@ -362,6 +360,8 @@ Putting it altogether, you should now be able to open rviz2 inside of the docker
 	    --volume="${XAUTHORITY}:/root/.Xauthority" \
 	    osrf/ros:rolling-desktop-full
 
+.. code-block:: bash
+
   rviz2
 
 At this point, if you have an error remaining, please check docs for the right flags to use.
@@ -387,7 +387,6 @@ At the end of this, you should be able to now:
 - Understand how ROS 2 docker containers are formatted and the core part of ``Dockerfile`` image descriptions
 - Understand Docker's filesystem and network isolation -- and how to bypass it for important use-cases in development
 - Be able to detach your docker containers for long-running processes 
-- Detach your docker containers for long-running processes 
 - Mount your development workspace to the container to work in
 - Build your own docker image off of ROS' for your development dependencies and setup needs
 - Visualization and simulation with GUI in docker
