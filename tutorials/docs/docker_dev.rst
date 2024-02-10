@@ -53,7 +53,7 @@ Most of these are self explanatory, but you can reference the Docker documentati
 
 Two special commands worth highlighting are ``CMD`` and ``ENTRYPOINT`` which you will see at the bottom of many ``Dockerfile`` s.
 
-- ``ENTRYPOINT``: A command to execute when the container is spun up which cannot be overrided
+- ``ENTRYPOINT``: A command to execute when the container is spun up which cannot be overridden
 - ``CMD``: A command to execute when a container is spun up which can be overrided
 
 In the context of ROS Docker containers, you'll see that these create a bash session and execute a ``ros_entrypoint.sh`` script.
