@@ -293,6 +293,7 @@ As mentioned previously, if we create and modify files in the Docker container, 
 If we want to do some development work that will persist between images, it is wise to *mount* a *volume* to the docker container when we run it.
 That is just fancy talk for linking a given set of directories from your host company to the container so that they can be read, modified, and deleted within the container and reflected on the outside.
 That way, your work will persist even if you close a container in your local filesystem as if it were developed without the use of a container.
+An awesome feature of this is that you can actually build your workspace in one container, destroy that container, and then continue development and rebuild in a new container instance later provided that (1) the same image is used both times and (2) the mounted location within the container is the same each time.
 
 We accomplish this using the ``-v`` flag (for volume). There are other options to do this as well, but this is the most straight forward.
 It takes in the argument in the form ``-v what/local/dir:/absolute/path/in/container``.
