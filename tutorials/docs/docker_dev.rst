@@ -406,6 +406,7 @@ As for potential steps forward:
 - Learn more about Docker's options and features such as `compose<https://docs.docker.com/compose/>`_, pushing your own containers to DockerHub, and version controlling images
 - Limit and regulate host resource utilization
 - `Configure computer<https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user>`_ to avoid use of ``sudo`` for each docker CLI command.
+- Consider production considerations like build cache management, security, multi-stage builds, and such to get the most out of Docker
 
 We hope that's enough to get you started! 
 
