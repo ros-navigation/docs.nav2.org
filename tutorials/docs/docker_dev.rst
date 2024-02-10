@@ -115,7 +115,7 @@ If you then attempt to run this image as a container (the instance of the image)
 You should see that it runs for a second then exits the terminal. Yay! It works! But... that's not very useful, now is it? 
 Our ``ENTRYPOINT`` for the ROS 2 Docker images only sources the ROS 2 installation and so the program returns as completed.
 If we want to get into the container to do something useful for ourselves in that environment, we need to open an interactive terminal session with the container.
-This is easy to do with the ``-it`` flag:
+This is easy to do with the ``-it`` flags:
 
 .. code-block:: bash
 
