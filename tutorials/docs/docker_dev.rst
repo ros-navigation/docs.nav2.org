@@ -311,6 +311,9 @@ If you go to your workspace in another terminal, you should now see that file re
 
 .. code-block:: bash
 
+  apt update
+  rosdep init
+  rosdep update
   rosdep install -r -y --from-paths . --ignore-src
   colcon build
 
@@ -339,7 +342,7 @@ Where ``-t`` sets the tagged name of the container for later use.
 Its important to note that even though your install and build spaces will be reflected in your host workspace, they cannot be run locally when compiled inside of a docker container.
 This example development image also upgrades packages which breaks strict version controlling of system and ``ros-base`` installed packages.
 For a deployment situation, you want to ensure you have the same version of all packages -- however for ROS 2 Rolling where ABI and API are not promised to be stable due to live development, 
-it is useful to update so that your source code can build against the latest and greatest.
+it is useful to upgrade so that your source code can build against the latest and greatest.
 
 Visualizations from Docker
 --------------------------
@@ -422,8 +425,8 @@ Instead, it pulls the dependencies so that when you run this container, you obta
   ARG ROS_DISTRO=rolling
   FROM ros:${ROS_DISTRO}-ros-core
 
-  RUN apt-get update \
-      && apt-get install -y \
+  RUN apt update \
+      && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends --no-install-suggests \
     ros-dev-tools \
     wget
     
@@ -446,8 +449,8 @@ From here, you can go to the :ref:`getting_started` to test it out!
   ARG ROS_DISTRO=rolling
   FROM ros:${ROS_DISTRO}-ros-core
 
-  RUN apt-get update \
-      && apt-get install -y \
+  RUN apt update \
+      && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends --no-install-suggests \
     ros-dev-tools \
     wget
 
