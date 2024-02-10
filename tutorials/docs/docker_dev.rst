@@ -356,6 +356,7 @@ Thus, we must specifically enable carve outs for GUIs to appear on our screens.
 Putting it altogether, you should now be able to open rviz2 inside of the docker container!
 
 .. code-block:: bash
+
 	sudo docker run -it --net=host --privileged \
 	    --env="DISPLAY=$DISPLAY" \
 	    --volume="${XAUTHORITY}:/root/.Xauthority" \
