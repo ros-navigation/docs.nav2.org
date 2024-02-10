@@ -35,10 +35,10 @@ Docker is a tool used to build, deploy, test, and otherwise work with software i
 This diffs from a VM in that it shares the same linux kernal as your host operating system, making it faster to spin up and share host resources.
 By building or deploying software in this isolated environment, you can ensure many users, robots, or servers are running the same software with the same software versions across many instances.
 It gives you a controlled environment to work in that is reproducable on other developer's machines and even work in a different (linux-based) operating system than your computer currently runs.
-For example, you can run a 22.04 Docker container on Nvidia Jetson's Jetpack 5.1 (which is a flavor of 20.04) to run ROS 2 Humble and deploy that container to a fleet of robots.
+For example, you can run a 22.04 Docker container that contains ROS 2 Humble on Nvidia Jetson's Jetpack 5.1 (which is a flavor of 20.04) and deploy that container to a fleet of robots.
 
 In common Docker language, an *image* is the built ``Dockerfile`` which can be used to create *containers*.
-Thus, *containers* are instances of the docker *image*. 
+Thus, *containers* are self-contained, runnable instances of the docker *image*. 
 The ``Dockerfile`` is a set of instructions for how to build an image to create some kind of environment to work in - and often contain applications to deploy in that environment.
 The Dockerfile instruct sets have a number of options such as:
 
@@ -53,8 +53,8 @@ Most of these are self explanatory, but you can reference the Docker documentati
 
 Two special commands worth highlighting are ``CMD`` and ``ENTRYPOINT`` which you will see at the bottom of many ``Dockerfile`` s.
 
-- ``ENTRYPOINT``: A command to execute when the container is spun up which cannot be overrided
-- ``CMD``: A command to execute when a container is spun up which can be overrided
+- ``ENTRYPOINT``: A command to execute when the container is spun up which cannot be overridden
+- ``CMD``: A command to execute when a container is spun up which can be overridden
 
 In the context of ROS Docker containers, you'll see that these create a bash session and execute a ``ros_entrypoint.sh`` script.
 This script simply sources the ROS environment ``/opt/ros/.../setup.bash`` for your distribution so when you open the container, you're ready to go.
@@ -72,7 +72,7 @@ Over the tutorial, build up some important option flags for each, but for now le
 - ``docker pull / push``: Pulls a docker image from another location or pushes a built image to another location
 - ``docker stop / kill``: Stops or kills a running docker container 
 - ``docker ps``: Lists a set of docker images that are currently running
-- ``docker attach``: Attach to a background running docker container
+- ``docker attach``: Attach a terminal to a background running docker container
 - ``docker exec``: Execute a command in a provided container
 - ``docker images``: Lists a set of containers pulled or built on your computer
 
@@ -115,7 +115,7 @@ If you then attempt to run this image as a container (the instance of the image)
 You should see that it runs for a second then exits the terminal. Yay! It works! But... that's not very useful, now is it? 
 Our ``ENTRYPOINT`` for the ROS 2 Docker images only sources the ROS 2 installation and so the program returns as completed.
 If we want to get into the container to do something useful for ourselves in that environment, we need to open an interactive terminal session with the container.
-This is easy to do with the ``-it`` flag:
+This is easy to do with the ``-it`` flags:
 
 .. code-block:: bash
 
