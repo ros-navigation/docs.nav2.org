@@ -1428,13 +1428,17 @@ RUN<span class="w"> </span>rosdep<span class="w"> </span>init
 RUN<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rosdep<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rosdep<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--ignore-src<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>-r
-RUN<span class="w"> </span>.<span class="w"> </span>/opt/ros/rolling/setup.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
+RUN<span class="w"> </span>.<span class="w"> </span>/opt/ros/<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>/setup.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
 
 <span class="c1"># For all else, uncomment the above Rolling lines and replace with below</span>
 <span class="c1"># RUN rosdep init</span>
 <span class="c1"># RUN apt update &amp;&amp; apt upgrade -y \</span>
 <span class="c1">#     &amp;&amp; rosdep update \</span>
-<span class="c1">#     &amp;&amp; apt install ros-rolling-nav2-bringup ros-rolling-navigation2 ros-rolling-turtlebot3-gazebo</span>
+<span class="c1">#     &amp;&amp; apt install \</span>
+<span class="c1">#         ros-${NAV2_BRANCH}-nav2-bringup \</span>
+<span class="c1">#         ros-${NAV2_BRANCH}-navigation2 \</span>
+<span class="c1">#         ros-${NAV2_BRANCH}-turtlebot3-gazebo</span>
 </pre></div>
 </div>
 </div>
