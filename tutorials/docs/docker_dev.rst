@@ -8,7 +8,6 @@ Docker for Development and Deployment: Zero to Hero
 - `Important Docker Commands`_
 - `Exploring Your First Container`_
 - `Understanding ROS Docker Images`_
-- `Exploring ROS Docker and Docker Options`_
 - `For Docker-Based Development`_
 - `For Docker-Based Deployment`_
 - `Conclusions`_
@@ -134,6 +133,7 @@ The ID of this container should match the hash in your command prompt.
 We mentioned before that the container on spin up will automatically source the ROS installation, so we should be able to immediately play around:
 
 .. code-block:: bash
+
   echo $ROS_DISTRO  # --> rolling
   ros2 run demo_nodes_cpp talker # --> [INFO] [1707513434.798456374] [talker]: Publishing: 'Hello World: 1'
   touch navigator_dockerlayer.txt
