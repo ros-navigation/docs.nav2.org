@@ -353,7 +353,7 @@ Some that skip ahead at this point might notice that when launching their applic
 Docker's isolation isn't just for networking, but also in visualization and other assets.
 Thus, we must specifically enable carve outs for GUIs to appear on our screens.
 
-- ``--priviledged``: Bypasses many of the checks to field the container from the host system. A hammer smashing isolation.
+- ``--privileged``: Bypasses many of the checks to field the container from the host system. A hammer smashing isolation.
 - ``--env="DISPLAY=$DISPLAY``: Sets display to use for GUI
 - ``--volume="${XAUTHORITY}:/root/.Xauthority"``: Gets important info from the XServer for graphics display
 

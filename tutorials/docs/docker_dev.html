@@ -1330,7 +1330,7 @@ it is useful to upgrade so that your source code can build against the latest an
 Docker’s isolation isn’t just for networking, but also in visualization and other assets.
 Thus, we must specifically enable carve outs for GUIs to appear on our screens.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--priviledged</span></code>: Bypasses many of the checks to field the container from the host system. A hammer smashing isolation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--privileged</span></code>: Bypasses many of the checks to field the container from the host system. A hammer smashing isolation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--env=&quot;DISPLAY=$DISPLAY</span></code>: Sets display to use for GUI</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--volume=&quot;${XAUTHORITY}:/root/.Xauthority&quot;</span></code>: Gets important info from the XServer for graphics display</p></li>
 </ul>
