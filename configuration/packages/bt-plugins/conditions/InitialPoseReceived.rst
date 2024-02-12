@@ -10,7 +10,7 @@ Input Ports
 
 :initial_pose_received:
 
-  =====  =========================
+  =====  ========================
   Type   Default
   ----- -------------------------
   bool  "{initial_pose_received}"
