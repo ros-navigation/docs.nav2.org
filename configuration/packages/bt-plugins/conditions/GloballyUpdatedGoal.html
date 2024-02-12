@@ -1047,6 +1047,51 @@
 Returns failure if the goal is the same, if it changes, it returns success.</p>
 <p>This node differs from the GoalUpdated by retaining the state of the current goal/goals throughout each tick of the BehaviorTree
 such that it will update on any “global” change to the goal.</p>
+<div class="section" id="input-ports">
+<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
+<dl class="field-list">
+<dt class="field-odd">goal</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 79%" />
+<col style="width: 21%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>geometry_msgs::msg::PoseStamped</p></td>
+<td><p>“{goal}”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Destination to check. Takes in a blackboard variable, “{goal}” if not specified.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">goals</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 83%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>std::vector&lt;geometry_msgs::msg::PoseStamped&gt;</p></td>
+<td><p>“{goals}”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Vector of goals to check. Takes in a blackboard variable, “{goals}” if not specified.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GlobalUpdatedGoal/&gt;</span>
