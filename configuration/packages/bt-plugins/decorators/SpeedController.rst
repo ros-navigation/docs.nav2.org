@@ -66,6 +66,28 @@ Input Ports
   Description
       Duration (secs) over which robot velocity should be smoothed.
 
+:goal:
+
+  =============================== ========
+  Type                            Default
+  ------------------------------- --------
+  geometry_msgs::msg::PoseStamped "{goal}"
+  =============================== ========
+
+  Description
+    	Destination to check. Takes in a blackboard variable, "{goal}" if not specified.
+
+:goals:
+
+  ============================================ =========
+  Type                                         Default
+  -------------------------------------------- ---------
+  std::vector<geometry_msgs::msg::PoseStamped> "{goals}"
+  ============================================ =========
+
+  Description
+    	Vector of goals to check. Takes in a blackboard variable, "{goals}" if not specified.
+
 Example
 -------
 
