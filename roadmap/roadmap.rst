@@ -44,8 +44,12 @@ Jazzy Roadmap
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| TwiStamped Migration           |  Medium (DONE)         |
+| TwistStamped Migration         |  Medium (DONE)         |
 |                                |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| Velocity-Scheduled Collision   |  Medium (DONE)         |
+| Monitor Polygons               |                        |
 |                                |                        |
 +--------------------------------+------------------------+
 
