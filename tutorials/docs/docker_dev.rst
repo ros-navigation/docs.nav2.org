@@ -1,7 +1,7 @@
 .. _docker_development:
 
-Docker for Development and Deployment: Zero to Hero
-***************************************************
+Docker for Development: Zero to Hero
+************************************
 
 - `Overview`_
 - `Preliminaries`_
@@ -16,7 +16,7 @@ Docker for Development and Deployment: Zero to Hero
 Overview
 ========
 
-This tutorial is a hands on walkthrough from your first Docker usage to commands and processes you can use for development and deployment of ROS 2 applications using Docker.
+This tutorial is a hands on walkthrough from your first Docker usage to commands and processes you can use for development of ROS 2 applications using Docker.
 This is not an exhausive introduction by any stretch, but should help you go from nothing to a functional process you can use on a daily basis for development and testing.
 If you know some basics about Docker already, you can skip to later sections about development and deployment. 
 You'll also find a set of Docker images in the Appendix to this tutorial which are useful for developing with Nav2 or a containerized deployment of it.
