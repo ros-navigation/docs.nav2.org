@@ -983,6 +983,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-costmapupdate-msg">Introduction of <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#full-stack-uses-node-clocks">Full Stack Uses Node Clocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-graceful-motion-controller">New Graceful Motion Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plugin-libraries-in-bt-navigator-only-includes-custom-nodes">Plugin Libraries in BT Navigator Only Includes Custom Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
 </ul>
 </li>
@@ -1217,6 +1218,10 @@ if the transformation from the robot base frame to the global frame does not bec
 <h2>New Graceful Motion Controller<a class="headerlink" href="#new-graceful-motion-controller" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4021">PR #4021</a> introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and confortable trajectory.</p>
 <p>See <a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html#configuring-graceful-motion-controller"><span class="std std-ref">Graceful Controller</span></a> for more information.</p>
+</div>
+<div class="section" id="plugin-libraries-in-bt-navigator-only-includes-custom-nodes">
+<h2>Plugin Libraries in BT Navigator Only Includes Custom Nodes<a class="headerlink" href="#plugin-libraries-in-bt-navigator-only-includes-custom-nodes" title="Permalink to this headline">¶</a></h2>
+<p>New to Jazzy, the <code class="docutils literal notranslate"><span class="pre">plugin_lib_names</span></code> parameter implicitly includes all Nav2 BT nodes automatically. It is only required now to specify additional user-generated BT plugins to load.</p>
 </div>
 <div class="section" id="new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">
 <h2>New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers<a class="headerlink" href="#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers" title="Permalink to this headline">¶</a></h2>

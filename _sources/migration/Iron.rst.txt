@@ -231,6 +231,11 @@ New Graceful Motion Controller
 
 See :ref:`configuring_graceful_motion_controller` for more information.
 
+Plugin Libraries in BT Navigator Only Includes Custom Nodes
+***********************************************************
+
+New to Jazzy, the ``plugin_lib_names`` parameter implicitly includes all Nav2 BT nodes automatically. It is only required now to specify additional user-generated BT plugins to load.
+
 New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers
 ***************************************************************************************************
 
