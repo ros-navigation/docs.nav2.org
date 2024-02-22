@@ -36,3 +36,4 @@ the best navigation performance.
    packages/configuring-waypoint-follower.rst
    packages/configuring-loopback-sim.rst
    packages/configuring-docking-server.rst
+   packages/configuring-vector-object-server.rst
