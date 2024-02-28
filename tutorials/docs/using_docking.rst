@@ -33,6 +33,7 @@ The docking procedure is as follows:
 Thanks to Nvidia for sponsoring this Docking Server package and this tutorial!
 
 TODO: docking in action video compliation
+TODO: link to nova_carter_docking when I mention it + its files
 
 Requirements
 ============
@@ -62,7 +63,7 @@ The ``SimpleChargingDock`` provides an implementation with common options for th
 
 - ``getStagingPose`` - Finds a relative offset pose with translation and rotation from the dock's pose
 - ``getRefinedPose`` - Filters a detected pose topic of type ``PoseStamped`` into the fixed frame *or* is a pass through function returning the dock's database location if detection is not enabled
-- ``isDocked`` - Returns as dock if a pose tolerance is met relative to the dock **or** if the ``JointStates`` of the motors detect a clear spike due to stalling by driving into the dock's surface, if enabled
+- ``isDocked`` - Returns as dock if a pose tolerance is met relative to the dock *or* if the ``JointStates`` of the motors detect a clear spike due to stalling by driving into the dock's surface, if enabled
 - ``isCharging`` - Returns charging if ``isDocked`` *or* if ``BatteryState``'s current is above a threshold, if enabled
 - ``disableCharging`` - Always ``true``, considers disable of charging as automatic when robot leaves dock
 - ``hasStoppedCharging`` - The inverse of ``isCharging``
@@ -70,13 +71,13 @@ The ``SimpleChargingDock`` provides an implementation with common options for th
 Thus, for testing (no detection, no battery information, no joint state information) and realistic application (dock detection, battery status information, joint state information), this dock plugin can be used.
 It can also be used when only some of the information if available as well. 
 If your robot or dock does not fall into these implementations (i.e. using custom battery or detection messages that cannot be converted into ROS standard types), then you may be required to build your own plugin to meet your particular needs.
-However, you can use the ``SimpleChargingDock`` to get started assuming you turn off these settings and dock essentially blind.
+However, you can use the ``SimpleChargingDock`` assuming you turn off these settings and dock blind to get started.
 
 If you do not currently have a way to detect your dock, dock detection can be done easily using the `isaac_ros_apriltag <https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag>`_ or `ROS image_proc <https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp>`_ nodes to get started.
-The defaults support this out of the box, see ``nova_carter_docking`` for an example of this in action.
+The defaults support this out of the box, see ``nova_carter_docking`` for an example.
 
 .. note::
-  It is important to note that you should provide detected dock poses, battery status information for charging, and motor controller efforts for the highest quality and reliable docking.
+  It is important to note that you should provide detected dock poses, battery status information for charging, and motor controller efforts for the highest quality and reliable docking for production use.
 
 Dock Database
 =============
@@ -236,7 +237,7 @@ The API for docking and undocking is comparatively simpler than Nav2 due to its 
 
 The ``DockRobot`` action consists of two main modalities: using the dock database or specifying a dock to use in the action.
 If using the database, set ``use_dock_id = True`` (default) and you only need to specify the ``dock_id`` you wish to use, such as ``home_dock``, ``flex_dock1``, or whatever dock instance you like.
-If bypassing the databse, ``use_dock_id`` must be set to false and ``dock_pose``, ``dock_type`` must be fully specified to make up for the lack of entry metadata in the database.
+If bypassing the database, ``use_dock_id`` must be set to false and ``dock_pose``, ``dock_type`` must be fully specified to make up for the lack of entry metadata in the database.
 
 Optionally, you can disable using Nav2 to navigate to the staging pose if outside of the pre-staging tolerance using ``navigate_to_staging_pose = False`` or set the maximum time for staging navigation ``max_staging_time``.
 
@@ -289,7 +290,7 @@ It contains no feedback and returns the ``success`` state and the ``error_code``
 Putting It All Together
 =======================
 
-TODO update with simple commander API
+TODO update with simple commander API for here and in demo.py. Possibly have a new demo script for the map localized demo?
 
 At this point, if you haven't already, create your dock plugin (or use ``SimpleChargingDock``), configuration file, and launch file - along with any other nodes required like apriltags or other detectors.
 You can see an example package used in this tutorial in the ``nova_carter_docking`` package, which contains a configuration file and launch file containing the apriltags detector and ``PoseStamped`` pose publisher.
