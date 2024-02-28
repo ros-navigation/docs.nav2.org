@@ -271,6 +271,7 @@ The ``UndockRobot`` action is even simpler. There are no required goal fields ex
 It contains no feedback and returns the ``success`` state and the ``error_code`` if a problem occurs. 
 
 .. code-block:: bash
+
   #goal definition
   string dock_type
   float32 max_undocking_time 30.0 # Maximum time to undock
