@@ -1,7 +1,7 @@
 .. _docking_tutorial:
 
-Using Opennav Docking
-*********************
+Using Docking Server
+********************
 
 - `Overview`_
 - `Requirements`_
@@ -16,7 +16,7 @@ Overview
 
 This tutorial shows how to use the Docking Server with Nav2 robot systems.
 The Docking Server is a general framework which can be used with arbitrary types of robots and charging docks in order to auto-dock them.
-This is accomplished via plugin ``ChargingDock``s which implement the dock specifics like detecting the pose of the dock using sensor data, how to detect when the robot is in contact with the dock, and when charging has successfully started.
+This is accomplished via plugin ``ChargingDock`` s which implement the dock specifics like detecting the pose of the dock using sensor data, how to detect when the robot is in contact with the dock, and when charging has successfully started.
 A configuration of the docking server can contain a database of many docks of different plugin ``ChargingDock`` types to handle a broad range of docking locations and hardware dock revisions.
 Included with the package is an example ``SimpleChargingDock`` plugin which contains features and methods very common for robot docking.
 It is likely that you may be able to use this as well rather than developing your own charging dock plugin to get started. 
@@ -29,7 +29,7 @@ The docking procedure is as follows:
 5. Exit the vision-control loop once contact has been detected or charging has started 
 6. Wait until charging starts and return success.
 
-Thanks to Nvidia for sponsoring this Docking Server package and this tutorial.
+Thanks to Nvidia for sponsoring this Docking Server package and this tutorial!
 
 TODO: docking in action video compliation
 
@@ -72,7 +72,7 @@ If your robot or dock does not fall into these implementations (i.e. using custo
 However, you can use the ``SimpleChargingDock`` to get started assuming you turn off these settings and dock essentially blind.
 
 If you do not currently have a way to detect your dock, dock detection can be done easily using the `isaac_ros_apriltag <https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag>`_ or `ROS image_proc <https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp>`_ nodes to get started.
-The defaults actually support this out of the box, see ``nova_carter_docking`` for an example of this in action.
+The defaults support this out of the box, see ``nova_carter_docking`` for an example of this in action.
 
 .. note::
   It is important to note that you should provide detected dock poses, battery status information for charging, and motor controller efforts for the highest quality and reliable docking.
