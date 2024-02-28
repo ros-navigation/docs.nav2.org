@@ -38,9 +38,9 @@ Requirements
 ============
 
 It is assumed ROS2 and Nav2 dependent packages are installed or built locally - including ``opennav_docking``.
-Please make sure that Nav2 project is also built locally as it was made in :ref:`build-instructions`.
+Please make sure that Nav2 project is also built locally, see :ref:`build-instructions` for reference.
 
-See ``opennav_docking`` README for complete concept explanations before proceeding.
+See ``opennav_docking`` README for complete concept explanations, parameters, and APIs.
 
 ChargingDock Plugins
 ====================
