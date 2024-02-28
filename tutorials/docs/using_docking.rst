@@ -22,6 +22,7 @@ Included with the package is an example ``SimpleChargingDock`` plugin which cont
 It is likely that you may be able to use this as well rather than developing your own charging dock plugin to get started. 
 
 The docking procedure is as follows:
+
 1. Take action request and obtain the dock's plugin and its pose
 2. If the robot is not within the prestaging tolerance of the dock's staging pose, navigate to the staging pose
 3. Use the dock's plugin to initially detect the dock and return the docking pose
