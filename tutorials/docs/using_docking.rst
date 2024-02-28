@@ -32,7 +32,7 @@ The docking procedure is as follows:
 
 Thanks to Nvidia for sponsoring this Docking Server package and this tutorial!
 
-TODO: docking in action video compliation
+TODO: docking in action video compliation in lab
 TODO: link to nova_carter_docking when I mention it + its files
 
 Requirements
@@ -49,6 +49,7 @@ ChargingDock Plugins
 ``opennav_docking_core::ChargingDock`` plugins are established to abstract out robot- and dock-specifics from the generalized framework.
 This allows a system to leverage this framework and provide its own methods for detecting the dock's current pose, when the robot is charging, and when contact is made.
 Luckily, there are several common ROS APIs that allow us to create a semi-generalized ``SimpleChargingDock`` plugin that allows out-of-the-box docking as long as users provide ``JointState``, ``BatteryState``, and detected dock pose ``PoseStamped`` topics.
+However, one way or another, your system requires an applicable ``ChargingDock`` plugin for each type of dock you wish to use.
 
 The ``ChargingDock`` plugin has a few key APIs:
 
@@ -73,7 +74,8 @@ It can also be used when only some of the information if available as well.
 If your robot or dock does not fall into these implementations (i.e. using custom battery or detection messages that cannot be converted into ROS standard types), then you may be required to build your own plugin to meet your particular needs.
 However, you can use the ``SimpleChargingDock`` assuming you turn off these settings and dock blind to get started.
 
-If you do not currently have a way to detect your dock, dock detection can be done easily using the `isaac_ros_apriltag <https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag>`_ or `ROS image_proc <https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp>`_ nodes to get started.
+If you do not currently have a way to detect your dock, dock detection can be done easily using Apriltagss and the `isaac_ros_apriltag <https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag>`_ or `ROS image_proc <https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp>`_ nodes to get started.
+Use the Isaac ROS if using a Jetson platform to obtain a GPU optimized pipeline with your camera feeds.
 The defaults support this out of the box, see ``nova_carter_docking`` for an example.
 
 .. note::
@@ -90,6 +92,7 @@ The docks plugins must be provided in your docking server's configuration file.
 However, the dock instance may be provided either in the configuration file *or* within a provided filepath to decouple the server's configuration from a particular application environment.
 The example below shows an inline configuration of the docking plugins and dock instances where one dock type (``nova_carter_dock``) is specified with 3 individual instances: a home dock, and 2 general shared fallback docks.
 The docks can be specified as ``[x, y, theta]`` in any reference frame you like, as long as TF is aware of them.
+Please update these with your own docking plugin and dock locations in your map.
 
 .. code-block:: yaml
 
@@ -137,7 +140,7 @@ The analog of this is shown below as an independent ``dock_database.yaml`` which
       frame: "map"
       pose: [20.0, 20.0, 0.0]
 
-Note that you are required to provide at least 1 dock plugin and 1 dock instance for the docking server to properly be setup and initialized.
+Note that you are required to provide at least 1 dock plugin and 1 dock instance.
 The Docking Server's Action API can take in a dock's instance information separately to bypass the database, but its plugin must exist in the database.
 If you plan to only use this API, you can set a ``dummy_dock``.
 Generally speaking, its wise to set your docks in the database and use the Docking Server's API to dock at an instance's Dock ID to decouple the semantic information about docks from the action request (requiring your application instead to have all of the docks' locations), but bypassing the database can be useful for testing.
@@ -209,11 +212,10 @@ The maximum speed is 15 cm/s to slowly and carefully back into the dock and we'l
           v_linear_min: 0.15
           v_linear_max: 0.15
 
-
 Adding Docking Server to Launch
 ===============================
 
-This server can now be added to your launch file with the path to this parameter file for use (Or added to your main shared configuration file).
+This server can now be added to your launch file with the path to this parameter file for use (or added to your main shared configuration file).
 
 .. code-block:: python
 
@@ -229,15 +231,18 @@ This server can now be added to your launch file with the path to this parameter
         parameters=[params_file],
     )
 
+.. Note::
+  The Docking Server is also a composible node like others in Nav2, so you may also launch it within the Nav2 process using ``LoadComposableNodes/ComposableNode``.
 
 Docking Action API
 ==================
 
-The API for docking and undocking is comparatively simpler than Nav2 due to its limited scope.
+The API for docking and undocking is comparatively simple.
 
 The ``DockRobot`` action consists of two main modalities: using the dock database or specifying a dock to use in the action.
 If using the database, set ``use_dock_id = True`` (default) and you only need to specify the ``dock_id`` you wish to use, such as ``home_dock``, ``flex_dock1``, or whatever dock instance you like.
 If bypassing the database, ``use_dock_id`` must be set to false and ``dock_pose``, ``dock_type`` must be fully specified to make up for the lack of entry metadata in the database.
+This requires the action caller to know about all of the docks, rather than pushing that into the Docking Server's database, which is not recommended.
 
 Optionally, you can disable using Nav2 to navigate to the staging pose if outside of the pre-staging tolerance using ``navigate_to_staging_pose = False`` or set the maximum time for staging navigation ``max_staging_time``.
 
@@ -354,5 +359,9 @@ After you launch Nav2 and localize your robot in your map, we can adjust ``dockR
 Depending on your robot's relative pose to the dock and your pre-staging tolerance settings, Nav2 may attempt to navigate to the staging pose before docking.
 If you wish to disable that, set ``goal_msg.navigate_to_staging_pose = False`` and then Docking will trigger immediately.
 
-TODO video 
+Don't want to call Docking Server from a script Python or C++ script and want to use it in your Autonomous Behavior Tree? See ``opennav_docking_bt`` for ``DockRobot``, ``UndockRobot`` Behavior Tree nodes to call the Docking Server from your application behavior tree -- with a provided ``XML`` example.
+Note that if using ``navigate_to_staging_pose = True``, you cannot call ``DockRobot`` from inside a Nav2 Behavior Tree, only from your higher level autonomy tree since it recursively calls Nav2.
+If you wish to call ``DockRobot`` from inside your Nav2 BT, you must roughly pre-stage the robot near the dock first (which should be easy as a navigation goal).
+However, you can always call ``UndockRobot`` from any behavior tree!
 
+TODO video navigation
