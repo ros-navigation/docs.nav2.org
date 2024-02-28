@@ -60,6 +60,8 @@ A new metapackage exists in: https://github.com/open-navigation/opennav_docking 
 This allows for docking of any type of robot with any type of charging dock in a repeatable and generalized way.
 It will be integrated into Nav2 directly soon.
 
+See :ref:`docking_tutorial` for a tutorial on using this new capability!
+
 Introduce a new Multi-Robot Bringup Launch
 ******************************************
 
