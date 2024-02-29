@@ -81,6 +81,17 @@ Parameters
   Description
     Maximum number of iterations after the search is within ``tolerance`` before returning approximate path with best heuristic if exact path is not found.
 
+:``<name>``.terminal_checking_interval:
+
+  ==== =======
+  Type Default                                                   
+  ---- -------
+  int  5000            
+  ==== =======
+
+  Description
+    Number of iterations between checking if the goal has been cancelled or planner timed out
+
 :``<name>``.max_planning_time:
 
   ====== =======
