@@ -254,3 +254,19 @@ In the GIF, it can be seen that there are two controller_ids namely, `FollowPath
 In this case, the `FollowPath` is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.
 
 .. attention:: If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.
+
+Cancel Checker Interface For GlobalPlanner
+*******************************************
+`PR #4148 <https://github.com/ros-planning/navigation2/pull/4148>`_ introduces a new interface for the ``GlobalPlanner`` to allow for the cancellation of the current planning task.
+Before the planners would continue to plan even if the goal was cancelled, now they can check it and stop planning if the goal is cancelled.
+New interface for ``GlobalPlanner::createPlan``:
+
+.. code-block:: cpp
+
+    virtual nav_msgs::msg::Path createPlan(
+      const geometry_msgs::msg::PoseStamped & start,  
+      const geometry_msgs::msg::PoseStamped & goal,  
+      std::function<bool()> cancel_checker)
+
+This is implemented for all the planners in the stack, you can check them for the example use of ``cancel_checker`` function (simply check ``cancel_checker()``).
+Smac and Theta* planners have a new parameter ``terminal_checking_interval`` which is the frequency of the cancel or timeout checking in terms of number of iterations.

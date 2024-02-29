@@ -985,6 +985,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-graceful-motion-controller">New Graceful Motion Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plugin-libraries-in-bt-navigator-only-includes-custom-nodes">Plugin Libraries in BT Navigator Only Includes Custom Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
 </ul>
 </li>
 </ul>
@@ -1236,6 +1237,20 @@ if the transformation from the robot base frame to the global frame does not bec
 <p class="admonition-title">Attention</p>
 <p>If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.</p>
 </div>
+</div>
+<div class="section" id="cancel-checker-interface-for-globalplanner">
+<h2>Cancel Checker Interface For GlobalPlanner<a class="headerlink" href="#cancel-checker-interface-for-globalplanner" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4148">PR #4148</a> introduces a new interface for the <code class="docutils literal notranslate"><span class="pre">GlobalPlanner</span></code> to allow for the cancellation of the current planning task.
+Before the planners would continue to plan even if the goal was cancelled, now they can check it and stop planning if the goal is cancelled.
+New interface for <code class="docutils literal notranslate"><span class="pre">GlobalPlanner::createPlan</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="n">createPlan</span><span class="p">(</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">goal</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cancel_checker</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is implemented for all the planners in the stack, you can check them for the example use of <code class="docutils literal notranslate"><span class="pre">cancel_checker</span></code> function (simply check <code class="docutils literal notranslate"><span class="pre">cancel_checker()</span></code>).
+Smac and Theta* planners have a new parameter <code class="docutils literal notranslate"><span class="pre">terminal_checking_interval</span></code> which is the frequency of the cancel or timeout checking in terms of number of iterations.</p>
 </div>
 </div>
 

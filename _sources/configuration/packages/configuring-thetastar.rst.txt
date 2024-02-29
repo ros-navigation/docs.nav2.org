@@ -81,6 +81,17 @@ The parameters of the planner are:
   Description
     Whether to allow planning in unknown space.
 
+:``<name>``.terminal_checking_interval:
+
+  ==== =======
+  Type Default                                                   
+  ---- -------
+  int  5000            
+  ==== =======
+
+  Description
+    Number of iterations between checking if the goal has been cancelled or planner timed out
+
 .. Note::
   Do go through the README file available on this repo's link to develop a better understanding of how you could tune this planner.
   This planner requires you to tune the `cost_scaling_factor` parameter of your costmap too, to get good results.   
