@@ -256,5 +256,5 @@ Interpolation is based on the orientation of the vector formed by the last 2 pos
 .. image:: images/rpp_goal_lookahead_interpolate.gif
   :width: 45%
 
-Additionaly, the conflict between ``use_rotate_to_heading` and ``allow_reversing`` was fixed so ``use_rotate_to_heading`` can now be used backward.
+Additionally, the conflict between ``use_rotate_to_heading` and ``allow_reversing`` was fixed so ``use_rotate_to_heading`` can now be used backward.
 
