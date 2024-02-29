@@ -295,7 +295,7 @@ It contains no feedback and returns the ``success`` state and the ``error_code``
 Putting It All Together
 =======================
 
-TODO update with simple commander API for here and in demo.py. Possibly have a new demo script for the map localized demo?
+TODO update with simple commander API for here and in demo.py.
 
 At this point, if you haven't already, create your dock plugin (or use ``SimpleChargingDock``), configuration file, and launch file - along with any other nodes required like apriltags or other detectors.
 You can see an example package used in this tutorial in the ``nova_carter_docking`` package, which contains a configuration file and launch file containing the apriltags detector and ``PoseStamped`` pose publisher.
@@ -325,6 +325,7 @@ Note that the robot is able to overcome:
 This script demonstrates the essential use of the Docking Server.
 However, it does not use the dock database of pre-mapped dock locations that you setup. 
 After you launch Nav2 and localize your robot in your map, we can adjust ``dockRobot()`` to take in your desired ``dock_id`` and perform docking instead:
+Then, we can see the full docking system in action in a non-trivial environment!
 
 .. code-block:: python
 
@@ -356,12 +357,19 @@ After you launch Nav2 and localize your robot in your map, we can adjust ``dockR
     dock_id = 'home_dock'
     tester.dockRobot(dock_id)
 
+.. raw:: html
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="708" height="400" src="https://www.youtube.com/embed/uHT5TeHJqZg?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+      </div>
+    </h1>
+
 Depending on your robot's relative pose to the dock and your pre-staging tolerance settings, Nav2 may attempt to navigate to the staging pose before docking.
 If you wish to disable that, set ``goal_msg.navigate_to_staging_pose = False`` and then Docking will trigger immediately.
+You can see both of these in action in the video above.
 
 Don't want to call Docking Server from a script Python or C++ script and want to use it in your Autonomous Behavior Tree? See ``opennav_docking_bt`` for ``DockRobot``, ``UndockRobot`` Behavior Tree nodes to call the Docking Server from your application behavior tree -- with a provided ``XML`` example.
 Note that if using ``navigate_to_staging_pose = True``, you cannot call ``DockRobot`` from inside a Nav2 Behavior Tree, only from your higher level autonomy tree since it recursively calls Nav2.
 If you wish to call ``DockRobot`` from inside your Nav2 BT, you must roughly pre-stage the robot near the dock first (which should be easy as a navigation goal).
 However, you can always call ``UndockRobot`` from any behavior tree!
-
-TODO video navigation
