@@ -985,6 +985,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-graceful-motion-controller">New Graceful Motion Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plugin-libraries-in-bt-navigator-only-includes-custom-nodes">Plugin Libraries in BT Navigator Only Includes Custom Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing">RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
 </ul>
 </li>
@@ -1237,6 +1238,13 @@ if the transformation from the robot base frame to the global frame does not bec
 <p class="admonition-title">Attention</p>
 <p>If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.</p>
 </div>
+</div>
+<div class="section" id="rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing">
+<h2>RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code><a class="headerlink" href="#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4140">In PR #4140</a> a new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> parameter (default <code class="docutils literal notranslate"><span class="pre">false</span></code>) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same.</p>
+<p>Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. It can be used only when <code class="docutils literal notranslate"><span class="pre">use_fixed_curvature_lookahead:</span> <span class="pre">true</span></code>.</p>
+<a class="reference internal image-reference" href="../_images/rpp_goal_lookahead_interpolate.gif"><img alt="../_images/rpp_goal_lookahead_interpolate.gif" src="../_images/rpp_goal_lookahead_interpolate.gif" style="width: 45%;" /></a>
+<p>Additionally, the conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading`</span> <span class="pre">and</span> <span class="pre">``allow_reversing</span></code> was fixed so <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> can now be used backward.</p>
 </div>
 <div class="section" id="cancel-checker-interface-for-globalplanner">
 <h2>Cancel Checker Interface For GlobalPlanner<a class="headerlink" href="#cancel-checker-interface-for-globalplanner" title="Permalink to this headline">¶</a></h2>

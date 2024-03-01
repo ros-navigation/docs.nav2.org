@@ -985,6 +985,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-motion-controller">New Graceful Motion Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#plugin-libraries-in-bt-navigator-only-includes-custom-nodes">Plugin Libraries in BT Navigator Only Includes Custom Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing">RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
 </ul>
 </li>
@@ -1457,9 +1458,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </tr>
 </tbody>
 </table>
-<dl>
+<dl class="simple">
 <dt>Description</dt><dd><p>Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the <a class="reference internal" href="configuring-smac-planner.html#configuring-smac-planner"><span class="std std-ref">Smac Planner</span></a> to know more.</p>
-<p>Note: both <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code> cannot be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> at the same time as it would result in ambiguous situations.</p>
 </dd>
 </dl>
 </dd>
@@ -1520,6 +1520,27 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting. If set to <code class="docutils literal notranslate"><span class="pre">-1</span></code>, it will use the maximum distance possible to search every point on the path for the nearest path point.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">interpolate_curvature_after_goal</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt>Description</dt><dd><p>Interpolate a carrot after the goal dedicated to the curvate calculation (to avoid oscilaltions at the end of the path). For visualization, it will be published on the <code class="docutils literal notranslate"><span class="pre">/curvature_lookahead_point</span></code> topic similarly to <code class="docutils literal notranslate"><span class="pre">/lookahead_point</span></code></p>
+<p>Note: Needs <code class="docutils literal notranslate"><span class="pre">use_fixed_curvature_lookahead</span></code> to be <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
 </dd>
 </dl>
 </dd>

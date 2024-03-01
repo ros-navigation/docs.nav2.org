@@ -255,6 +255,18 @@ In this case, the `FollowPath` is the default controller_id. The difference betw
 
 .. attention:: If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.
 
+RPP new optional ``interpolate_curvature_after_goal`` behavior and fix conflict between ``use_rotate_to_heading`` and ``allow_reversing``
+*****************************************************************************************************************************************
+
+`In PR #4140 <https://github.com/ros-planning/navigation2/pull/4140>`_ a new optional ``interpolate_curvature_after_goal`` parameter (default ``false``) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same. 
+
+Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when ``interpolate_curvature_after_goal`` is ``true``. It can be used only when ``use_fixed_curvature_lookahead: true``.
+
+.. image:: images/rpp_goal_lookahead_interpolate.gif
+  :width: 45%
+
+Additionally, the conflict between ``use_rotate_to_heading` and ``allow_reversing`` was fixed so ``use_rotate_to_heading`` can now be used backward.
+
 Cancel Checker Interface For GlobalPlanner
 *******************************************
 `PR #4148 <https://github.com/ros-planning/navigation2/pull/4148>`_ introduces a new interface for the ``GlobalPlanner`` to allow for the cancellation of the current planning task.

@@ -244,8 +244,6 @@ Regulated Pure Pursuit Parameters
   Description
     Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the :ref:`configuring_smac_planner` to know more.
 
-    Note: both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time as it would result in ambiguous situations.
-
 :rotate_to_heading_min_angle:
 
   ============== =============================
@@ -278,6 +276,19 @@ Regulated Pure Pursuit Parameters
 
   Description
     Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting. If set to ``-1``, it will use the maximum distance possible to search every point on the path for the nearest path point.
+
+:interpolate_curvature_after_goal:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Interpolate a carrot after the goal dedicated to the curvate calculation (to avoid oscilaltions at the end of the path). For visualization, it will be published on the ``/curvature_lookahead_point`` topic similarly to ``/lookahead_point``
+
+    Note: Needs ``use_fixed_curvature_lookahead`` to be ``true``
 
 Example
 *******
