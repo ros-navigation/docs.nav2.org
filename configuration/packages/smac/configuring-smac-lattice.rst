@@ -63,6 +63,17 @@ Parameters
   Description
     Maximum number of iterations once a visited node is within the goal tolerances to continue to try to find an exact match before returning the best path solution within tolerances.
 
+:``<name>``.terminal_checking_interval:
+
+  ==== =======
+  Type Default                                                   
+  ---- -------
+  int  5000            
+  ==== =======
+
+  Description
+    Number of iterations between checking if the goal has been cancelled or planner timed out
+
 :``<name>``.max_planning_time:
 
   ====== =======
