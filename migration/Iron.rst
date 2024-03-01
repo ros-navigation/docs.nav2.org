@@ -245,6 +245,15 @@ The primary goal of this plugin is to facilitate the developers and easy integra
 
 In order to facilitate the dynamic selection of the specified components, the BT selector nodes for all these components were utilized and were updated to all the relevant BT nodes. 
 
+Here we can see the working demo of the plugin:
+
+.. image:: images/selector_plugin_demo.gif
+
+In the GIF, it can be seen that there are two controller_ids namely, `FollowPath` and `HighSpeedFollowPath`. By default, the one defined in the Behavior tree is utilized.
+
+In this case, the `FollowPath` is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.
+
+.. attention:: If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.
 
 RPP new optional ``interpolate_curvature_after_goal`` behavior and fix conflict between ``use_rotate_to_heading`` and ``allow_reversing``
 *****************************************************************************************************************************************
