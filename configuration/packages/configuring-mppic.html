@@ -2647,7 +2647,7 @@ This process is then repeated a number of times and returns a converged solution
 <span class="w">        </span><span class="nt">time_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">      </span><span class="nt">AckermannConstraints</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">min_turning_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
-<span class="w">      </span><span class="nt">critics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ConstraintCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ObstaclesCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAlignCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathFollowCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PreferForwardCritic&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">critics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ConstraintCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;CostCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAlignCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathFollowCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PreferForwardCritic&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">ConstraintCritic</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -2667,25 +2667,25 @@ This process is then repeated a number of times and returns a converged solution
 <span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
 <span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-<span class="w">      </span><span class="nt">ObstaclesCritic</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">        </span><span class="nt">repulsion_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.5</span>
-<span class="w">        </span><span class="nt">critical_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
-<span class="w">        </span><span class="nt">consider_footprint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">        </span><span class="nt">collision_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000.0</span>
-<span class="w">        </span><span class="nt">collision_margin_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
-<span class="w">        </span><span class="nt">near_goal_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-<span class="w">        </span><span class="nt">inflation_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.55</span><span class="w"> </span><span class="c1"># (only in Humble)</span>
-<span class="w">        </span><span class="nt">cost_scaling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"> </span><span class="c1"># (only in Humble)</span>
-<span class="w">      </span><span class="c1"># CostCritic:</span>
+<span class="w">      </span><span class="c1"># ObstaclesCritic:</span>
 <span class="w">      </span><span class="c1">#   enabled: true</span>
 <span class="w">      </span><span class="c1">#   cost_power: 1</span>
-<span class="w">      </span><span class="c1">#   cost_weight: 3.81</span>
-<span class="w">      </span><span class="c1">#   critical_cost: 300.0</span>
-<span class="w">      </span><span class="c1">#   consider_footprint: true</span>
-<span class="w">      </span><span class="c1">#   collision_cost: 1000000.0</span>
-<span class="w">      </span><span class="c1">#   near_goal_distance: 1.0</span>
+<span class="w">      </span><span class="c1">#   repulsion_weight: 1.5</span>
+<span class="w">      </span><span class="c1">#   critical_weight: 20.0</span>
+<span class="w">      </span><span class="c1">#   consider_footprint: false</span>
+<span class="w">      </span><span class="c1">#   collision_cost: 10000.0</span>
+<span class="w">      </span><span class="c1">#   collision_margin_distance: 0.1</span>
+<span class="w">      </span><span class="c1">#   near_goal_distance: 0.5</span>
+<span class="w">      </span><span class="c1">#   inflation_radius: 0.55 # (only in Humble)</span>
+<span class="w">      </span><span class="c1">#   cost_scaling_factor: 10.0 # (only in Humble)</span>
+<span class="w">      </span><span class="nt">CostCritic</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.81</span>
+<span class="w">        </span><span class="nt">critical_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300.0</span>
+<span class="w">        </span><span class="nt">consider_footprint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">collision_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000000.0</span>
+<span class="w">        </span><span class="nt">near_goal_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">PathAlignCritic</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
