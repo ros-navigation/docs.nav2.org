@@ -650,6 +650,16 @@ This critic incentivizes navigating away from obstacles and critical collisions 
   Description
     Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
 
+:trajectory_point_step:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  int            2
+  ============== ===========================
+
+  Description
+    The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
 
 Path Align Critic
 -----------------
@@ -721,6 +731,18 @@ This critic incentivizes aligning with the global path, if relevant. It does not
 
   Description
     Whether to consider path's orientations in path alignment, which can be useful when paired with feasible smac planners to incentivize directional changes only where/when the smac planner requests them. If you want the robot to deviate and invert directions where the controller sees fit, keep as false. If your plans do not contain orientation information (e.g. navfn), keep as false.
+
+:trajectory_point_step:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  int            4
+  ============== ===========================
+
+  Description
+    The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
+
 
 Path Angle Critic
 -----------------
@@ -980,12 +1002,13 @@ Example
             consider_footprint: true
             collision_cost: 1000000.0
             near_goal_distance: 1.0
+            trajectory_point_step: 2
           PathAlignCritic:
             enabled: true
             cost_power: 1
             cost_weight: 14.0
             max_path_occupancy_ratio: 0.05
-            trajectory_point_step: 3
+            trajectory_point_step: 4
             threshold_to_consider: 0.5
             offset_from_furthest: 20
             use_path_orientations: false
