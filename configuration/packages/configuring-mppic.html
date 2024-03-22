@@ -962,6 +962,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#changes-to-mppi-path-handling-for-directionality">Changes to MPPI Path Handling For Directionality</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#addition-of-new-mppi-cost-critic">Addition of new MPPI Cost Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#mppi-acceleration">MPPI Acceleration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#move-error-code-enumerations">Move Error Code Enumerations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#substitution-in-parameter-file">Substitution in parameter file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
@@ -2163,6 +2164,26 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
+<dt class="field-even">trajectory_point_step</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="path-align-critic">
@@ -2286,6 +2307,26 @@ This process is then repeated a number of times and returns a converged solution
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Whether to consider path’s orientations in path alignment, which can be useful when paired with feasible smac planners to incentivize directional changes only where/when the smac planner requests them. If you want the robot to deviate and invert directions where the controller sees fit, keep as false. If your plans do not contain orientation information (e.g. navfn), keep as false.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">trajectory_point_step</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>4</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.</p>
 </dd>
 </dl>
 </dd>
@@ -2686,12 +2727,13 @@ This process is then repeated a number of times and returns a converged solution
 <span class="w">        </span><span class="nt">consider_footprint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">        </span><span class="nt">collision_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000000.0</span>
 <span class="w">        </span><span class="nt">near_goal_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">trajectory_point_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="w">      </span><span class="nt">PathAlignCritic</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">        </span><span class="nt">cost_power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">        </span><span class="nt">cost_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14.0</span>
 <span class="w">        </span><span class="nt">max_path_occupancy_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
-<span class="w">        </span><span class="nt">trajectory_point_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="nt">trajectory_point_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">        </span><span class="nt">offset_from_furthest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 <span class="w">        </span><span class="nt">use_path_orientations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>

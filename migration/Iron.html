@@ -962,6 +962,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-mppi-path-handling-for-directionality">Changes to MPPI Path Handling For Directionality</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#addition-of-new-mppi-cost-critic">Addition of new MPPI Cost Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mppi-acceleration">MPPI Acceleration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#move-error-code-enumerations">Move Error Code Enumerations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#substitution-in-parameter-file">Substitution in parameter file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
@@ -1116,6 +1117,10 @@ easily prevent the robot to go through places that are not present in the static
 <p>Analog to the <code class="docutils literal notranslate"><span class="pre">ObstacleCritic</span></code>, the <code class="docutils literal notranslate"><span class="pre">CostCritic</span></code> is another obstacle avoiding critic alternative if the <code class="docutils literal notranslate"><span class="pre">ObstacleCritic</span></code> is not working well for you.
 This critic uses the inflated costs in the costmap to score rather than distance to obstacles as the <code class="docutils literal notranslate"><span class="pre">ObstaclesCritic</span></code> does.
 See the configuration guide for more information.</p>
+</div>
+<div class="section" id="mppi-acceleration">
+<h2>MPPI Acceleration<a class="headerlink" href="#mppi-acceleration" title="Permalink to this headline">¶</a></h2>
+<p>New to Jazzy, MPPI is 45% faster due to a weeks long optimization campaign. Enjoy!</p>
 </div>
 <div class="section" id="move-error-code-enumerations">
 <h2>Move Error Code Enumerations<a class="headerlink" href="#move-error-code-enumerations" title="Permalink to this headline">¶</a></h2>

@@ -98,6 +98,11 @@ Analog to the ``ObstacleCritic``, the ``CostCritic`` is another obstacle avoidin
 This critic uses the inflated costs in the costmap to score rather than distance to obstacles as the ``ObstaclesCritic`` does.
 See the configuration guide for more information.
 
+MPPI Acceleration
+*****************
+
+New to Jazzy, MPPI is 45% faster due to a weeks long optimization campaign. Enjoy!
+
 Move Error Code Enumerations
 ****************************
 
