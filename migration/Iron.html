@@ -988,6 +988,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing">RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 </ul>
 </li>
 </ul>
@@ -1249,7 +1250,7 @@ if the transformation from the robot base frame to the global frame does not bec
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4140">In PR #4140</a> a new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> parameter (default <code class="docutils literal notranslate"><span class="pre">false</span></code>) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same.</p>
 <p>Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. It can be used only when <code class="docutils literal notranslate"><span class="pre">use_fixed_curvature_lookahead:</span> <span class="pre">true</span></code>.</p>
 <a class="reference internal image-reference" href="../_images/rpp_goal_lookahead_interpolate.gif"><img alt="../_images/rpp_goal_lookahead_interpolate.gif" src="../_images/rpp_goal_lookahead_interpolate.gif" style="width: 45%;" /></a>
-<p>Additionally, the conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading`</span> <span class="pre">and</span> <span class="pre">``allow_reversing</span></code> was fixed so <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> can now be used backward.</p>
+<p>Additionally, the conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code> was fixed so <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> can now be used backward.</p>
 </div>
 <div class="section" id="cancel-checker-interface-for-globalplanner">
 <h2>Cancel Checker Interface For GlobalPlanner<a class="headerlink" href="#cancel-checker-interface-for-globalplanner" title="Permalink to this headline">¶</a></h2>
@@ -1264,6 +1265,10 @@ New interface for <code class="docutils literal notranslate"><span class="pre">G
 </div>
 <p>This is implemented for all the planners in the stack, you can check them for the example use of <code class="docutils literal notranslate"><span class="pre">cancel_checker</span></code> function (simply check <code class="docutils literal notranslate"><span class="pre">cancel_checker()</span></code>).
 Smac and Theta* planners have a new parameter <code class="docutils literal notranslate"><span class="pre">terminal_checking_interval</span></code> which is the frequency of the cancel or timeout checking in terms of number of iterations.</p>
+</div>
+<div class="section" id="new-btactionserver-btnavigator-parameter">
+<h2>New BtActionServer/BtNavigator parameter<a class="headerlink" href="#new-btactionserver-btnavigator-parameter" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4209">PR #4209</a> introduces a new boolean parameter <code class="docutils literal notranslate"><span class="pre">always_reload_bt_xml</span></code>, which enables the possibility to always reload a requested behavior tree XML description, regardless of the currently active XML. This allows keeping the action server running while changing/developing the XML description.</p>
 </div>
 </div>
 

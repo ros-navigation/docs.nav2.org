@@ -270,7 +270,7 @@ Interpolation is based on the orientation of the vector formed by the last 2 pos
 .. image:: images/rpp_goal_lookahead_interpolate.gif
   :width: 45%
 
-Additionally, the conflict between ``use_rotate_to_heading` and ``allow_reversing`` was fixed so ``use_rotate_to_heading`` can now be used backward.
+Additionally, the conflict between ``use_rotate_to_heading`` and ``allow_reversing`` was fixed so ``use_rotate_to_heading`` can now be used backward.
 
 Cancel Checker Interface For GlobalPlanner
 *******************************************
@@ -287,3 +287,10 @@ New interface for ``GlobalPlanner::createPlan``:
 
 This is implemented for all the planners in the stack, you can check them for the example use of ``cancel_checker`` function (simply check ``cancel_checker()``).
 Smac and Theta* planners have a new parameter ``terminal_checking_interval`` which is the frequency of the cancel or timeout checking in terms of number of iterations.
+
+
+New BtActionServer/BtNavigator parameter
+****************************************
+
+`PR #4209 <https://github.com/ros-planning/navigation2/pull/4209>`_ introduces a new boolean parameter ``always_reload_bt_xml``, which enables the possibility to always reload a requested behavior tree XML description, regardless of the currently active XML. This allows keeping the action server running while changing/developing the XML description.
+

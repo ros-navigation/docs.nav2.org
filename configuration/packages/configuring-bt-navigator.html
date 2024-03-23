@@ -988,6 +988,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing">RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 </ul>
 </li>
 </ul>
@@ -1119,8 +1120,28 @@ You can use substitution to specify file path like <code class="docutils literal
 </dd>
 </dl>
 </dd>
-<dt class="field-even">plugin_lib_names</dt>
+<dt class="field-even">always_reload_bt_xml</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Always load the requested behavior tree XML description, regardless of the name of the currently active XML.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">plugin_lib_names</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 81%" />
@@ -1139,8 +1160,8 @@ You can use substitution to specify file path like <code class="docutils literal
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">bt_loop_duration</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">bt_loop_duration</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1159,8 +1180,8 @@ You can use substitution to specify file path like <code class="docutils literal
 </dd>
 </dl>
 </dd>
-<dt class="field-even">default_server_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">default_server_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1180,8 +1201,8 @@ This value will be overwritten for a BT node if the input port “server_timeout
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">wait_for_service_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">wait_for_service_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1201,8 +1222,8 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">action_server_result_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">action_server_result_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 35%" />
@@ -1227,8 +1248,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">transform_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">transform_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 35%" />
@@ -1250,8 +1271,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">global_frame</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">global_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 43%" />
 <col style="width: 57%" />
@@ -1270,8 +1291,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">robot_base_frame</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">robot_base_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -1290,8 +1311,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">odom_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">odom_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -1310,8 +1331,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">goal_blackboard_id</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">goal_blackboard_id</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1330,8 +1351,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">path_blackboard_id</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">path_blackboard_id</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1350,8 +1371,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">goals_blackboard_id</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">goals_blackboard_id</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1370,8 +1391,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">use_sim_time</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">use_sim_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1390,8 +1411,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">error_code_names</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">error_code_names</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1423,6 +1444,7 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">    </span><span class="nt">default_nav_to_pose_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span><span class="w"> </span><span class="c1"># or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml</span>
 <span class="w">    </span><span class="nt">default_nav_through_poses_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span><span class="w"> </span><span class="c1"># or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml</span>
+<span class="w">    </span><span class="nt">always_reload_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">goal_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">goal</span>
 <span class="w">    </span><span class="nt">goals_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">goals</span>
 <span class="w">    </span><span class="nt">path_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span>
