@@ -57,6 +57,17 @@ Parameters
     You can use substitution to specify file path like ``$(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml``.
 
 
+:always_reload_bt_xml:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false 
+  ====== =======
+
+  Description
+    Always load the requested behavior tree XML description, regardless of the name of the currently active XML.
+
 :plugin_lib_names:
 
   ============== ==========================================================
