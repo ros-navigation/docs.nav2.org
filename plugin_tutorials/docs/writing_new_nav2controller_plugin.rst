@@ -73,6 +73,11 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 |                           | robot to drive.  This method passes 2 parameters: reference to the current robot      |                        |
 |                           | pose and its current velocity.                                                        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
+| cancel()                  | Method is called when the controller server receives a cancel request. If this method | No                     |
+|                           | is uninplemented, the controller will immediately stop when receiving a cancel        |                        |
+|                           | request. If this method is implemented, the controller can perform a more graceful    |                        |
+|                           | stop and signal the controller server when it is done.                                |                        |
++---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | setSpeedLimit()           | Method is called when it is required to limit the maximum linear speed of the robot.  | Yes                    |
 |                           | Speed limit could be expressed in absolute value (m/s) or in percentage from maximum  |                        |
 |                           | robot speed. Note that typically, maximum rotational speed is being limited           |                        |
