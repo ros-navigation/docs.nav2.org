@@ -74,7 +74,7 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 |                           | pose and its current velocity.                                                        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | cancel()                  | Method is called when the controller server receives a cancel request. If this method | No                     |
-|                           | is uninplemented, the controller will immediately stop when receiving a cancel        |                        |
+|                           | is unimplemented, the controller will immediately stop when receiving a cancel        |                        |
 |                           | request. If this method is implemented, the controller can perform a more graceful    |                        |
 |                           | stop and signal the controller server when it is done.                                |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
