@@ -265,7 +265,7 @@ Polygons parameters
   ============== ===================================
 
   Description:
-    QoS durability setting for polygon topic or for footprint topic subscription.
+    QoS durability setting for the incoming polygon or footprint topic subscription.
 
 :``<polygon_name>``.radius:
 
