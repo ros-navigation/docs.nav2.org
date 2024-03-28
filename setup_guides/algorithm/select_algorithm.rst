@@ -66,7 +66,7 @@ Example Configuration
       ros__parameters:
         planner_plugins: ['GridBased']
         GridBased:
-          plugin: 'nav2_navfn_planner/NavfnPlanner'
+          plugin: 'nav2_navfn_planner::NavfnPlanner'
 
 An example configuration of the planner server is shown above. The ``planner_plugins`` parameter accepts a list of mapped planner plugin names. For each plugin namespace defined in ``planner_plugins`` (``GridBased`` in our example), we specify the type of plugin to be loaded in the ``plugin`` parameter. Additional configurations must then be specified in this namespace based on the algorithm to be used. Please see the `Configuration Guide <https://navigation.ros.org/configuration/index.html>`_ for more details.
 

@@ -66,7 +66,7 @@ Example
       ros__parameters:
         planner_plugins: ['GridBased']
         GridBased:
-          plugin: 'nav2_navfn_planner/NavfnPlanner'
+          plugin: 'nav2_navfn_planner::NavfnPlanner'
           use_astar: True
           allow_unknown: True
           tolerance: 1.0
