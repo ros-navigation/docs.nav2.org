@@ -266,6 +266,17 @@ Regulated Pure Pursuit Parameters
   Description
     Maximum allowable angular acceleration (rad/s/s) while rotating to heading, if ``use_rotate_to_heading`` is ``true``.
 
+:cancel_deceleration:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         3.2
+  ============== =============================
+
+  Description
+    Linear deceleration (m/s/s) to apply when the goal is canceled.
+
 :max_robot_pose_search_dist:
 
   ============== =================================================

@@ -990,6 +990,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-collision-monitor-parameter">New collision monitor parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
 </ul>
 </li>
 </ul>
@@ -1274,6 +1275,10 @@ Smac and Theta* planners have a new parameter <code class="docutils literal notr
 <div class="section" id="new-collision-monitor-parameter">
 <h2>New collision monitor parameter<a class="headerlink" href="#new-collision-monitor-parameter" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4207">PR #4207</a> introduces a new boolean parameter <code class="docutils literal notranslate"><span class="pre">polygon_subscribe_transient_local</span></code> (value is false by default), which set the QoS durability for polygon topic or footprint topic subscription.</p>
+</div>
+<div class="section" id="new-graceful-cancellation-api-for-controllers">
+<h2>New graceful cancellation API for Controllers<a class="headerlink" href="#new-graceful-cancellation-api-for-controllers" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4136">PR #4136</a> introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the <code class="docutils literal notranslate"><span class="pre">RegulatedPurePursuitController</span></code> by adding a new parameter <code class="docutils literal notranslate"><span class="pre">cancel_deceleration</span></code>. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.</p>
 </div>
 </div>
 

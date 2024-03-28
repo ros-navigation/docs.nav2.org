@@ -990,6 +990,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
 </ul>
 </li>
 </ul>
@@ -1506,8 +1507,28 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">max_robot_pose_search_dist</dt>
+<dt class="field-odd">cancel_deceleration</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Linear deceleration (m/s/s) to apply when the goal is canceled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">max_robot_pose_search_dist</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 78%" />
@@ -1526,8 +1547,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-even">interpolate_curvature_after_goal</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">interpolate_curvature_after_goal</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />

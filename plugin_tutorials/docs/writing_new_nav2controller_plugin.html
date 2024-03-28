@@ -990,6 +990,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
 </ul>
 </li>
 </ul>
@@ -1128,7 +1129,14 @@ robot to drive.  This method passes 2 parameters: reference to the current robot
 pose and its current velocity.</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>setSpeedLimit()</p></td>
+<tr class="row-even"><td><p>cancel()</p></td>
+<td><p>Method is called when the controller server receives a cancel request. If this method
+is unimplemented, the controller will immediately stop when receiving a cancel
+request. If this method is implemented, the controller can perform a more graceful
+stop and signal the controller server when it is done.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>setSpeedLimit()</p></td>
 <td><p>Method is called when it is required to limit the maximum linear speed of the robot.
 Speed limit could be expressed in absolute value (m/s) or in percentage from maximum
 robot speed. Note that typically, maximum rotational speed is being limited

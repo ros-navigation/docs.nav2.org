@@ -299,3 +299,8 @@ New collision monitor parameter
 *******************************
 
 `PR #4207 <https://github.com/ros-planning/navigation2/pull/4207>`_ introduces a new boolean parameter ``polygon_subscribe_transient_local`` (value is false by default), which set the QoS durability for polygon topic or footprint topic subscription.
+
+New graceful cancellation API for Controllers
+*********************************************
+
+`PR #4136 <https://github.com/ros-planning/navigation2/pull/4136>`_ introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the ``RegulatedPurePursuitController`` by adding a new parameter ``cancel_deceleration``. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.
