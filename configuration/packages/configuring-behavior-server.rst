@@ -151,13 +151,13 @@ Behavior Server Parameters
           ros__parameters:
             behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
             spin:
-              plugin: "nav2_behaviors/Spin"
+              plugin: "nav2_behaviors::Spin"
             backup:
-              plugin: "nav2_behaviors/BackUp"
+              plugin: "nav2_behaviors::BackUp"
             drive_on_heading:
-              plugin: "nav2_behaviors/DriveOnHeading"
+              plugin: "nav2_behaviors::DriveOnHeading"
             wait:
-              plugin: "nav2_behaviors/Wait"
+              plugin: "nav2_behaviors::Wait"
     ..
 
 Default Plugins
@@ -168,13 +168,13 @@ When the :code:`behavior_plugins` parameter is not overridden, the following def
   ================== =====================================================
   Namespace          Plugin
   ------------------ -----------------------------------------------------
-  "spin"             "nav2_behaviors/Spin"
+  "spin"             "nav2_behaviors::Spin"
   ------------------ -----------------------------------------------------
-  "backup"           "nav2_behaviors/BackUp"
+  "backup"           "nav2_behaviors::BackUp"
   ------------------ -----------------------------------------------------
-  "drive_on_heading" "nav2_behaviors/DriveOnHeading"
+  "drive_on_heading" "nav2_behaviors::DriveOnHeading"
   ------------------ -----------------------------------------------------
-  "wait"             "nav2_behaviors/Wait"
+  "wait"             "nav2_behaviors::Wait"
   ================== =====================================================
 
 Spin Behavior Parameters
@@ -359,15 +359,15 @@ Example
         cycle_frequency: 10.0
         behavior_plugins: ["spin", "backup", "drive_on_heading", "wait", "assisted_teleop"]
         spin:
-          plugin: "nav2_behaviors/Spin"
+          plugin: "nav2_behaviors::Spin"
         backup:
-          plugin: "nav2_behaviors/BackUp"
+          plugin: "nav2_behaviors::BackUp"
         drive_on_heading:
-          plugin: "nav2_behaviors/DriveOnHeading"
+          plugin: "nav2_behaviors::DriveOnHeading"
         wait:
-          plugin: "nav2_behaviors/Wait"
+          plugin: "nav2_behaviors::Wait"
         assisted_teleop:
-          plugin: "nav2_behaviors/AssistedTeleop"
+          plugin: "nav2_behaviors::AssistedTeleop"
         local_frame: odom
         global_frame: map
         robot_base_frame: base_link
