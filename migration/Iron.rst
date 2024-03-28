@@ -304,3 +304,7 @@ New graceful cancellation API for Controllers
 *********************************************
 
 `PR #4136 <https://github.com/ros-planning/navigation2/pull/4136>`_ introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the ``RegulatedPurePursuitController`` by adding a new parameter ``cancel_deceleration``. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.
+
+Standardization of Plugin Naming with Double Colons (::)
+********************************************************
+`PR #4220 <https://github.com/ros-planning/navigation2/pull/4220>`_ standardizes plugin naming to use double colons (::), replacing the previous mixed use of slashes (/) and double colons.
