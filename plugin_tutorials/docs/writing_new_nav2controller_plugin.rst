@@ -272,7 +272,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
         max_angular_vel: 1.0
         transform_tolerance: 1.0
 
-In the above snippet, you can observe the mapping of our ``nav2_pure_pursuit_controller/PurePursuitController`` controller to its id ``FollowPath``. 
+In the above snippet, you can observe the mapping of our ``nav2_pure_pursuit_controller::PurePursuitController`` controller to its id ``FollowPath``. 
 To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
 4- Run Pure Pursuit Controller plugin

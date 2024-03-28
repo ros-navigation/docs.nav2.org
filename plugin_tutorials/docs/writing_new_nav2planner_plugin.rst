@@ -162,7 +162,7 @@ It is good practice to place these lines at the end of the file, but technically
 .. code-block:: xml
 
   <library path="nav2_straightline_planner_plugin">
-    <class name="nav2_straightline_planner/StraightLine" type="nav2_straightline_planner::StraightLine" base_class_type="nav2_core::GlobalPlanner">
+    <class type="nav2_straightline_planner::StraightLine" base_class_type="nav2_core::GlobalPlanner">
       <description>This is an example plugin which produces straight path.</description>
     </class>
   </library>
@@ -214,10 +214,10 @@ with
       plugins: ["GridBased"]
       use_sim_time: True
       GridBased:
-        plugin: "nav2_straightline_planner/StraightLine"
+        plugin: "nav2_straightline_planner::StraightLine"
         interpolation_resolution: 0.1
 
-In the above snippet, you can observe the mapping of our ``nav2_straightline_planner/StraightLine`` planner to its id ``GridBased``. To pass plugin-specific parameters, we have used ``<plugin_id>.<plugin_specific_parameter>``.
+In the above snippet, you can observe the mapping of our ``nav2_straightline_planner::StraightLine`` planner to its id ``GridBased``. To pass plugin-specific parameters, we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
 4- Run StraightLine plugin
 ---------------------------
