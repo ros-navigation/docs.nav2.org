@@ -151,17 +151,19 @@ Behavior Server Parameters
           ros__parameters:
             behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
             spin:
-              plugin: "nav2_behaviors::Spin"
+              plugin: "nav2_behaviors::Spin" # In Iron and older versions, "/" was used instead of "::"
             backup:
-              plugin: "nav2_behaviors::BackUp"
+              plugin: "nav2_behaviors::BackUp" # In Iron and older versions, "/" was used instead of "::"
             drive_on_heading:
-              plugin: "nav2_behaviors::DriveOnHeading"
+              plugin: "nav2_behaviors::DriveOnHeading" # In Iron and older versions, "/" was used instead of "::"
             wait:
-              plugin: "nav2_behaviors::Wait"
+              plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
     ..
 
 Default Plugins
 ***************
+.. note::
+    In Iron and older versions, "/" was used instead of "::".
 
 When the :code:`behavior_plugins` parameter is not overridden, the following default plugins are loaded:
 
@@ -359,15 +361,15 @@ Example
         cycle_frequency: 10.0
         behavior_plugins: ["spin", "backup", "drive_on_heading", "wait", "assisted_teleop"]
         spin:
-          plugin: "nav2_behaviors::Spin"
+          plugin: "nav2_behaviors::Spin" # In Iron and older versions, "/" was used instead of "::"
         backup:
-          plugin: "nav2_behaviors::BackUp"
+          plugin: "nav2_behaviors::BackUp" # In Iron and older versions, "/" was used instead of "::"
         drive_on_heading:
-          plugin: "nav2_behaviors::DriveOnHeading"
+          plugin: "nav2_behaviors::DriveOnHeading" # In Iron and older versions, "/" was used instead of "::"
         wait:
-          plugin: "nav2_behaviors::Wait"
+          plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
         assisted_teleop:
-          plugin: "nav2_behaviors::AssistedTeleop"
+          plugin: "nav2_behaviors::AssistedTeleop" # In Iron and older versions, "/" was used instead of "::"
         local_frame: odom
         global_frame: map
         robot_base_frame: base_link

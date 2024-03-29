@@ -338,7 +338,7 @@ Example
       use_sim_time: True
 
       GridBased:
-        plugin: "nav2_smac_planner::SmacPlannerLattice"
+        plugin: "nav2_smac_planner::SmacPlannerLattice" # In Iron and older versions, "/" was used instead of "::"
         allow_unknown: true                 # Allow traveling in unknown space
         tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.
         max_iterations: 1000000             # Maximum total iterations to search for before failing (in case unreachable), set to -1 to disable

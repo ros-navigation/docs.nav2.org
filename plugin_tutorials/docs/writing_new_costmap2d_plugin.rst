@@ -223,11 +223,11 @@ In this case each plugin object will be handled by its own parameters tree in a 
 .. code-block:: text
 
   gradient_layer_1:
-    plugin: nav2_gradient_costmap_plugin::GradientLayer
+    plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, "/" was used instead of "::"
     enabled: True
     ...
   gradient_layer_2:
-    plugin: nav2_gradient_costmap_plugin::GradientLayer
+    plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, "/" was used instead of "::"
     enabled: False
     ...
 

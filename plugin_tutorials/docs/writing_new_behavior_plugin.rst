@@ -211,11 +211,11 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below t
       behavior_plugins: ["spin", "backup", "wait"]  # Humble and later
       recovery_plugins: ["spin", "backup", "wait"]  # Galactic and earlier
       spin:
-        plugin: "nav2_behaviors::Spin"
+        plugin: "nav2_behaviors::Spin" # In Iron and older versions, "/" was used instead of "::"
       backup:
-        plugin: "nav2_behaviors::BackUp"
+        plugin: "nav2_behaviors::BackUp" # In Iron and older versions, "/" was used instead of "::"
       wait:
-        plugin: "nav2_behaviors::Wait"
+        plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
       global_frame: odom
       robot_base_frame: base_link
       transform_timeout: 0.1
@@ -240,13 +240,13 @@ with
       behavior_plugins: ["spin", "backup", "wait","send_sms"]  # Humble and newer
       recovery_plugins: ["spin", "backup", "wait","send_sms"]  # Galactic and earlier
       spin:
-        plugin: "nav2_behaviors::Spin"
+        plugin: "nav2_behaviors::Spin" # In Iron and older versions, "/" was used instead of "::"
       backup:
-        plugin: "nav2_behaviors::BackUp"
+        plugin: "nav2_behaviors::BackUp" # In Iron and older versions, "/" was used instead of "::"
       wait:
-        plugin: "nav2_behaviors::Wait"
+        plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
       send_sms:
-        plugin: "nav2_sms_behavior::SendSms"
+        plugin: "nav2_sms_behavior::SendSms" # In Iron and older versions, "/" was used instead of "::"
       account_sid: ... # your sid
       auth_token: ... # your token
       from_number: ... # your number
