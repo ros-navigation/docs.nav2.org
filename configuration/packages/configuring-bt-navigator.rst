@@ -246,9 +246,9 @@ Example
         path_blackboard_id: path
         navigators: ['navigate_to_pose', 'navigate_through_poses']
         navigate_to_pose:
-          plugin: "nav2_bt_navigator/NavigateToPoseNavigator"
+          plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
         navigate_through_poses:
-          plugin: "nav2_bt_navigator/NavigateThroughPosesNavigator"
+          plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
         plugin_lib_names: 
           - nav2_compute_path_to_pose_action_bt_node
           - nav2_follow_path_action_bt_node

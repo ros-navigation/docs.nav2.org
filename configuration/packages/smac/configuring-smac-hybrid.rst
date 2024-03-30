@@ -388,7 +388,7 @@ Example
       use_sim_time: True
 
       GridBased:
-        plugin: "nav2_smac_planner/SmacPlannerHybrid"
+        plugin: "nav2_smac_planner::SmacPlannerHybrid" # In Iron and older versions, "/" was used instead of "::"
         downsample_costmap: false           # whether or not to downsample the map
         downsampling_factor: 1              # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
         tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.

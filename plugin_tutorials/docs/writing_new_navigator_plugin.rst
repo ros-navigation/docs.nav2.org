@@ -332,12 +332,12 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
         path_blackboard_id: path
         navigators: ['navigate_to_pose', 'navigate_through_poses']
         navigate_to_pose:
-          plugin: "nav2_bt_navigator/NavigateToPoseNavigator"
+          plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
         navigate_through_poses:
-          plugin: "nav2_bt_navigator/NavigateThroughPosesNavigator"
+          plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
 
 
-In the above snippet, you can observe the mapping of our ``nav2_bt_navigator/NavigateToPoseNavigator`` plugin to its id ``navigate_to_pose``. 
+In the above snippet, you can observe the mapping of our ``nav2_bt_navigator::NavigateToPoseNavigator`` plugin to its id ``navigate_to_pose``. 
 To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
 4- Run plugin

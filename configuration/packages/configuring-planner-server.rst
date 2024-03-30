@@ -36,7 +36,7 @@ Parameters
           ros__parameters:
             planner_plugins: ["GridBased"]
             GridBased:
-              plugin: "nav2_navfn_planner/NavfnPlanner"
+              plugin: "nav2_navfn_planner::NavfnPlanner" # In Iron and older versions, "/" was used instead of "::"
     ..
 
 :expected_planner_frequency:
@@ -72,7 +72,7 @@ When the :code:`planner_plugins` parameter is not overridden, the following defa
   ================= =====================================================
   Namespace         Plugin
   ----------------- -----------------------------------------------------
-  "GridBased"       "nav2_navfn_planner/NavfnPlanner"
+  "GridBased"       "nav2_navfn_planner::NavfnPlanner"
   ================= =====================================================
 
 Example
@@ -84,4 +84,4 @@ Example
         expected_planner_frequency: 20.0
         planner_plugins: ['GridBased']
         GridBased:
-          plugin: 'nav2_navfn_planner/NavfnPlanner'
+          plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"

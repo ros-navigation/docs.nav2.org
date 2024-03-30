@@ -107,7 +107,7 @@ Example
       use_sim_time: True
       planner_plugins: ["GridBased"]
       GridBased:
-        plugin: "nav2_theta_star_planner/ThetaStarPlanner"
+        plugin: "nav2_theta_star_planner::ThetaStarPlanner" # In Iron and older versions, "/" was used instead of "::"
         how_many_corners: 8
         w_euc_cost: 1.0
         w_traversal_cost: 2.0

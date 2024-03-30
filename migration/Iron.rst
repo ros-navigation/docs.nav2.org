@@ -304,3 +304,14 @@ New graceful cancellation API for Controllers
 *********************************************
 
 `PR #4136 <https://github.com/ros-planning/navigation2/pull/4136>`_ introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the ``RegulatedPurePursuitController`` by adding a new parameter ``cancel_deceleration``. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.
+
+Standardization of Plugin Naming with Double Colons (::)
+********************************************************
+
+`PR #4220`_ standardizes plugin naming across the Navigation2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:
+
+- Behavior Server: ``nav2_behaviors::Spin``, ``nav2_behaviors::BackUp``, ``nav2_behaviors::DriveOnHeading``, ``nav2_behaviors::Wait``, ``nav2_behaviors::AssistedTeleop``
+- Planner Server: ``nav2_navfn_planner::NavfnPlanner``, ``nav2_smac_planner::SmacPlanner2D``, ``nav2_smac_planner::SmacPlannerHybrid``, ``nav2_theta_star_planner::ThetaStarPlanner``
+- Controller Server: ``nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController``, ``nav2_dwb_controller::DWBLocalPlanner``
+- BT Navigator: ``nav2_bt_navigator::NavigateToPoseNavigator``, ``nav2_bt_navigator::NavigateThroughPosesNavigator``
+
