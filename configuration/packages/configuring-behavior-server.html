@@ -991,6 +991,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 </ul>
 </li>
 </ul>
@@ -1287,13 +1288,13 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;drive_on_heading&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">spin</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::Spin&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">backup</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/BackUp&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::BackUp&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">drive_on_heading</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/DriveOnHeading&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::DriveOnHeading&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">wait</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::Wait&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 </pre></div>
 </div>
 </dd>
@@ -1303,6 +1304,10 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </div>
 <div class="section" id="default-plugins">
 <h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Iron and older versions, “/” was used instead of “::”.</p>
+</div>
 <p>When the <code class="code docutils literal notranslate"><span class="pre">behavior_plugins</span></code> parameter is not overridden, the following default plugins are loaded:</p>
 <blockquote>
 <div><table class="docutils align-default">
@@ -1315,16 +1320,16 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <td><p>Plugin</p></td>
 </tr>
 <tr class="row-even"><td><p>“spin”</p></td>
-<td><p>“nav2_behaviors/Spin”</p></td>
+<td><p>“nav2_behaviors::Spin”</p></td>
 </tr>
 <tr class="row-odd"><td><p>“backup”</p></td>
-<td><p>“nav2_behaviors/BackUp”</p></td>
+<td><p>“nav2_behaviors::BackUp”</p></td>
 </tr>
 <tr class="row-even"><td><p>“drive_on_heading”</p></td>
-<td><p>“nav2_behaviors/DriveOnHeading”</p></td>
+<td><p>“nav2_behaviors::DriveOnHeading”</p></td>
 </tr>
 <tr class="row-odd"><td><p>“wait”</p></td>
-<td><p>“nav2_behaviors/Wait”</p></td>
+<td><p>“nav2_behaviors::Wait”</p></td>
 </tr>
 </tbody>
 </table>
@@ -1629,15 +1634,15 @@ True uses TwistStamped, false uses Twist.</p>
 <span class="w">    </span><span class="nt">cycle_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
 <span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;drive_on_heading&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;assisted_teleop&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">spin</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::Spin&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">backup</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/BackUp&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::BackUp&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">drive_on_heading</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/DriveOnHeading&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::DriveOnHeading&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">wait</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::Wait&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">assisted_teleop</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/AssistedTeleop&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::AssistedTeleop&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">local_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span>
 <span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
 <span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>

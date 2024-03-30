@@ -991,6 +991,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 </ul>
 </li>
 </ul>
@@ -1199,7 +1200,7 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 </ul>
 </div></blockquote>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;nav2_gradient_costmap_plugin_core&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nav2_gradient_costmap_plugin/GradientLayer&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_gradient_costmap_plugin::GradientLayer&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_costmap_2d::Layer&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_gradient_costmap_plugin::GradientLayer&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_costmap_2d::Layer&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;description&gt;</span>This<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>example<span class="w"> </span>plugin<span class="w"> </span>which<span class="w"> </span>puts<span class="w"> </span>repeating<span class="w"> </span>costs<span class="w"> </span>gradients<span class="w"> </span>to<span class="w"> </span>costmap<span class="nt">&lt;/description&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/class&gt;</span>
 <span class="nt">&lt;/library&gt;</span>
@@ -1256,11 +1257,11 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 </div>
 <p>In this case each plugin object will be handled by its own parameters tree in a YAML-file, like:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>gradient_layer_1:
-  plugin: nav2_gradient_costmap_plugin/GradientLayer
+  plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;
   enabled: True
   ...
 gradient_layer_2:
-  plugin: nav2_gradient_costmap_plugin/GradientLayer
+  plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;
   enabled: False
   ...
 </pre></div>

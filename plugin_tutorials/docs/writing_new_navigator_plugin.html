@@ -991,6 +991,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 </ul>
 </li>
 </ul>
@@ -1378,12 +1379,12 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
     path_blackboard_id: path
     navigators: [&#39;navigate_to_pose&#39;, &#39;navigate_through_poses&#39;]
     navigate_to_pose:
-      plugin: &quot;nav2_bt_navigator/NavigateToPoseNavigator&quot;
+      plugin: &quot;nav2_bt_navigator::NavigateToPoseNavigator&quot; # In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;
     navigate_through_poses:
-      plugin: &quot;nav2_bt_navigator/NavigateThroughPosesNavigator&quot;
+      plugin: &quot;nav2_bt_navigator::NavigateThroughPosesNavigator&quot; # In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;
 </pre></div>
 </div>
-<p>In the above snippet, you can observe the mapping of our <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator/NavigateToPoseNavigator</span></code> plugin to its id <code class="docutils literal notranslate"><span class="pre">navigate_to_pose</span></code>.
+<p>In the above snippet, you can observe the mapping of our <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator::NavigateToPoseNavigator</span></code> plugin to its id <code class="docutils literal notranslate"><span class="pre">navigate_to_pose</span></code>.
 To pass plugin-specific parameters we have used <code class="docutils literal notranslate"><span class="pre">&lt;plugin_id&gt;.&lt;plugin_specific_parameter&gt;</span></code>.</p>
 </div>
 <div class="section" id="run-plugin">

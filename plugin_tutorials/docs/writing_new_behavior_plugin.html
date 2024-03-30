@@ -991,6 +991,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 </ul>
 </li>
 </ul>
@@ -1238,7 +1239,7 @@ For our example, we simply return success because we already completed our missi
 </ul>
 </div></blockquote>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;nav2_sms_behavior_plugin&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nav2_sms_behavior/SendSms&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_sms_behavior::SendSms&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_core::Behavior&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_sms_behavior::SendSms&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_core::Behavior&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;description&gt;</span>This<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>example<span class="w"> </span>plugin<span class="w"> </span>which<span class="w"> </span>produces<span class="w"> </span>an<span class="w"> </span>SMS<span class="w"> </span>text<span class="w"> </span>message<span class="w"> </span>recovery.<span class="nt">&lt;/description&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/class&gt;</span>
 <span class="nt">&lt;/library&gt;</span>
@@ -1275,11 +1276,11 @@ For our example, we simply return success because we already completed our missi
 <span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Humble and later</span>
 <span class="w">    </span><span class="nt">recovery_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Galactic and earlier</span>
 <span class="w">    </span><span class="nt">spin</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::Spin&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">backup</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/BackUp&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::BackUp&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">wait</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::Wait&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span>
 <span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>
 <span class="w">    </span><span class="nt">transform_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
@@ -1302,13 +1303,13 @@ For our example, we simply return success because we already completed our missi
 <span class="w">    </span><span class="nt">behavior_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;send_sms&quot;</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Humble and newer</span>
 <span class="w">    </span><span class="nt">recovery_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;wait&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;send_sms&quot;</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Galactic and earlier</span>
 <span class="w">    </span><span class="nt">spin</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Spin&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::Spin&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">backup</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/BackUp&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::BackUp&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">wait</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors/Wait&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_behaviors::Wait&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">send_sms</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_sms_behavior/SendSms&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_sms_behavior::SendSms&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 <span class="w">    </span><span class="nt">account_sid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your sid</span>
 <span class="w">    </span><span class="nt">auth_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your token</span>
 <span class="w">    </span><span class="nt">from_number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># your number</span>

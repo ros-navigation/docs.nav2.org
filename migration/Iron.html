@@ -991,6 +991,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 </ul>
 </li>
 </ul>
@@ -1279,6 +1280,16 @@ Smac and Theta* planners have a new parameter <code class="docutils literal notr
 <div class="section" id="new-graceful-cancellation-api-for-controllers">
 <h2>New graceful cancellation API for Controllers<a class="headerlink" href="#new-graceful-cancellation-api-for-controllers" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4136">PR #4136</a> introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the <code class="docutils literal notranslate"><span class="pre">RegulatedPurePursuitController</span></code> by adding a new parameter <code class="docutils literal notranslate"><span class="pre">cancel_deceleration</span></code>. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.</p>
+</div>
+<div class="section" id="standardization-of-plugin-naming-with-double-colons">
+<h2>Standardization of Plugin Naming with Double Colons (::)<a class="headerlink" href="#standardization-of-plugin-naming-with-double-colons" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id2"><span class="problematic" id="id3">`PR #4220`_</span></a> standardizes plugin naming across the Navigation2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:</p>
+<ul class="simple">
+<li><p>Behavior Server: <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::Spin</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::BackUp</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::DriveOnHeading</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::Wait</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::AssistedTeleop</span></code></p></li>
+<li><p>Planner Server: <code class="docutils literal notranslate"><span class="pre">nav2_navfn_planner::NavfnPlanner</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_smac_planner::SmacPlanner2D</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_smac_planner::SmacPlannerHybrid</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_theta_star_planner::ThetaStarPlanner</span></code></p></li>
+<li><p>Controller Server: <code class="docutils literal notranslate"><span class="pre">nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_dwb_controller::DWBLocalPlanner</span></code></p></li>
+<li><p>BT Navigator: <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator::NavigateToPoseNavigator</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator::NavigateThroughPosesNavigator</span></code></p></li>
+</ul>
 </div>
 </div>
 

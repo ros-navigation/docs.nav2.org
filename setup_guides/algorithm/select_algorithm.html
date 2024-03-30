@@ -991,6 +991,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 </ul>
 </li>
 </ul>
@@ -1110,7 +1111,7 @@
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">planner_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;GridBased&#39;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">GridBased</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nav2_navfn_planner/NavfnPlanner&#39;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nav2_navfn_planner::NavfnPlanner&#39;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 </pre></div>
 </div>
 <p>An example configuration of the planner server is shown above. The <code class="docutils literal notranslate"><span class="pre">planner_plugins</span></code> parameter accepts a list of mapped planner plugin names. For each plugin namespace defined in <code class="docutils literal notranslate"><span class="pre">planner_plugins</span></code> (<code class="docutils literal notranslate"><span class="pre">GridBased</span></code> in our example), we specify the type of plugin to be loaded in the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter. Additional configurations must then be specified in this namespace based on the algorithm to be used. Please see the <a class="reference external" href="https://navigation.ros.org/configuration/index.html">Configuration Guide</a> for more details.</p>

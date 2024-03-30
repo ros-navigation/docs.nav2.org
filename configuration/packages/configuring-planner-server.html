@@ -991,6 +991,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 </ul>
 </li>
 </ul>
@@ -1080,7 +1081,7 @@ It also hosts the global costmap.</p>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">planner_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;GridBased&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">GridBased</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_navfn_planner/NavfnPlanner&quot;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_navfn_planner::NavfnPlanner&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 </pre></div>
 </div>
 </dd>
@@ -1148,7 +1149,7 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <td><p>Plugin</p></td>
 </tr>
 <tr class="row-even"><td><p>“GridBased”</p></td>
-<td><p>“nav2_navfn_planner/NavfnPlanner”</p></td>
+<td><p>“nav2_navfn_planner::NavfnPlanner”</p></td>
 </tr>
 </tbody>
 </table>
@@ -1161,7 +1162,7 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <span class="w">    </span><span class="nt">expected_planner_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
 <span class="w">    </span><span class="nt">planner_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;GridBased&#39;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">GridBased</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nav2_navfn_planner/NavfnPlanner&#39;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nav2_navfn_planner::NavfnPlanner&#39;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
 </pre></div>
 </div>
 </div>

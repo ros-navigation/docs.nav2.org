@@ -991,6 +991,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 </ul>
 </li>
 </ul>
@@ -1211,7 +1212,7 @@ global plan. This method takes 2 input parmas: start pose and goal pose.</p></td
 </ul>
 </div></blockquote>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;library</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;nav2_straightline_planner_plugin&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nav2_straightline_planner/StraightLine&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_straightline_planner::StraightLine&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_core::GlobalPlanner&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;class</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;nav2_straightline_planner::StraightLine&quot;</span><span class="w"> </span><span class="na">base_class_type=</span><span class="s">&quot;nav2_core::GlobalPlanner&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;description&gt;</span>This<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>example<span class="w"> </span>plugin<span class="w"> </span>which<span class="w"> </span>produces<span class="w"> </span>straight<span class="w"> </span>path.<span class="nt">&lt;/description&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/class&gt;</span>
 <span class="nt">&lt;/library&gt;</span>
@@ -1248,7 +1249,7 @@ global plan. This method takes 2 input parmas: start pose and goal pose.</p></td
     plugins: [&quot;GridBased&quot;]
     use_sim_time: True
     GridBased:
-      plugin: &quot;nav2_navfn_planner/NavfnPlanner&quot; # For Foxy and later
+      plugin: &quot;nav2_navfn_planner::NavfnPlanner&quot; # For Foxy and later. In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;
       tolerance: 2.0
       use_astar: false
       allow_unknown: true
@@ -1260,11 +1261,11 @@ global plan. This method takes 2 input parmas: start pose and goal pose.</p></td
     plugins: [&quot;GridBased&quot;]
     use_sim_time: True
     GridBased:
-      plugin: &quot;nav2_straightline_planner/StraightLine&quot;
+      plugin: &quot;nav2_straightline_planner::StraightLine&quot;
       interpolation_resolution: 0.1
 </pre></div>
 </div>
-<p>In the above snippet, you can observe the mapping of our <code class="docutils literal notranslate"><span class="pre">nav2_straightline_planner/StraightLine</span></code> planner to its id <code class="docutils literal notranslate"><span class="pre">GridBased</span></code>. To pass plugin-specific parameters, we have used <code class="docutils literal notranslate"><span class="pre">&lt;plugin_id&gt;.&lt;plugin_specific_parameter&gt;</span></code>.</p>
+<p>In the above snippet, you can observe the mapping of our <code class="docutils literal notranslate"><span class="pre">nav2_straightline_planner::StraightLine</span></code> planner to its id <code class="docutils literal notranslate"><span class="pre">GridBased</span></code>. To pass plugin-specific parameters, we have used <code class="docutils literal notranslate"><span class="pre">&lt;plugin_id&gt;.&lt;plugin_specific_parameter&gt;</span></code>.</p>
 </div>
 <div class="section" id="run-straightline-plugin">
 <h3>4- Run StraightLine plugin<a class="headerlink" href="#run-straightline-plugin" title="Permalink to this headline">¶</a></h3>

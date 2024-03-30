@@ -991,6 +991,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 </ul>
 </li>
 </ul>
@@ -1311,7 +1312,7 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
     controller_plugins: [&quot;FollowPath&quot;]
 
     FollowPath:
-      plugin: &quot;nav2_pure_pursuit_controller::PurePursuitController&quot;
+      plugin: &quot;nav2_pure_pursuit_controller::PurePursuitController&quot; # In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;
       debug_trajectory_details: True
       desired_linear_vel: 0.2
       lookahead_dist: 0.4
@@ -1319,7 +1320,7 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
       transform_tolerance: 1.0
 </pre></div>
 </div>
-<p>In the above snippet, you can observe the mapping of our <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller/PurePursuitController</span></code> controller to its id <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>.
+<p>In the above snippet, you can observe the mapping of our <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller::PurePursuitController</span></code> controller to its id <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code>.
 To pass plugin-specific parameters we have used <code class="docutils literal notranslate"><span class="pre">&lt;plugin_id&gt;.&lt;plugin_specific_parameter&gt;</span></code>.</p>
 </div>
 <div class="section" id="run-pure-pursuit-controller-plugin">
