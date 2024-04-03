@@ -81,6 +81,17 @@ The parameters of the planner are:
   Description
     Whether to allow planning in unknown space.
 
+:``<name>``.terminal_checking_interval:
+
+  ==== =======
+  Type Default                                                   
+  ---- -------
+  int  5000            
+  ==== =======
+
+  Description
+    Number of iterations between checking if the goal has been cancelled or planner timed out
+
 .. Note::
   Do go through the README file available on this repo's link to develop a better understanding of how you could tune this planner.
   This planner requires you to tune the `cost_scaling_factor` parameter of your costmap too, to get good results.   
@@ -96,7 +107,7 @@ Example
       use_sim_time: True
       planner_plugins: ["GridBased"]
       GridBased:
-        plugin: "nav2_theta_star_planner/ThetaStarPlanner"
+        plugin: "nav2_theta_star_planner::ThetaStarPlanner" # In Iron and older versions, "/" was used instead of "::"
         how_many_corners: 8
         w_euc_cost: 1.0
         w_traversal_cost: 2.0

@@ -81,6 +81,17 @@ Parameters
   Description
     Maximum number of iterations once a visited node is within the goal tolerances to continue to try to find an exact match before returning the best path solution within tolerances. Negative values convert to infinite.
 
+:``<name>``.terminal_checking_interval:
+
+  ==== =======
+  Type Default                                                   
+  ---- -------
+  int  5000            
+  ==== =======
+
+  Description
+    Number of iterations between checking if the goal has been cancelled or planner timed out
+
 :``<name>``.max_planning_time:
 
   ====== =======
@@ -377,7 +388,7 @@ Example
       use_sim_time: True
 
       GridBased:
-        plugin: "nav2_smac_planner/SmacPlannerHybrid"
+        plugin: "nav2_smac_planner::SmacPlannerHybrid" # In Iron and older versions, "/" was used instead of "::"
         downsample_costmap: false           # whether or not to downsample the map
         downsampling_factor: 1              # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
         tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.

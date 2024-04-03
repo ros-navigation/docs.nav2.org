@@ -650,6 +650,16 @@ This critic incentivizes navigating away from obstacles and critical collisions 
   Description
     Name of the inflation layer. If empty, it uses the last inflation layer in the costmap. If you have multiple inflation layers, you may want to specify the name of the layer to use.
 
+:trajectory_point_step:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  int            2
+  ============== ===========================
+
+  Description
+    The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
 
 Path Align Critic
 -----------------
@@ -721,6 +731,18 @@ This critic incentivizes aligning with the global path, if relevant. It does not
 
   Description
     Whether to consider path's orientations in path alignment, which can be useful when paired with feasible smac planners to incentivize directional changes only where/when the smac planner requests them. If you want the robot to deviate and invert directions where the controller sees fit, keep as false. If your plans do not contain orientation information (e.g. navfn), keep as false.
+
+:trajectory_point_step:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  int            4
+  ============== ===========================
+
+  Description
+    The step to take in trajectories for evaluating them in the critic. Since trajectories are extremely dense, its unnecessary to evaluate each point and computationally expensive.
+
 
 Path Angle Critic
 -----------------
@@ -941,7 +963,7 @@ Example
             time_step: 3
           AckermannConstraints:
             min_turning_r: 0.2
-          critics: ["ConstraintCritic", "ObstaclesCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
+          critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
           ConstraintCritic:
             enabled: true
             cost_power: 1
@@ -961,31 +983,32 @@ Example
             cost_power: 1
             cost_weight: 5.0
             threshold_to_consider: 0.5
-          ObstaclesCritic:
-            enabled: true
-            cost_power: 1
-            repulsion_weight: 1.5
-            critical_weight: 20.0
-            consider_footprint: false
-            collision_cost: 10000.0
-            collision_margin_distance: 0.1
-            near_goal_distance: 0.5
-            inflation_radius: 0.55 # (only in Humble)
-            cost_scaling_factor: 10.0 # (only in Humble)
-          # CostCritic:
+          # ObstaclesCritic:
           #   enabled: true
           #   cost_power: 1
-          #   cost_weight: 3.81
-          #   critical_cost: 300.0
-          #   consider_footprint: true
-          #   collision_cost: 1000000.0
-          #   near_goal_distance: 1.0
+          #   repulsion_weight: 1.5
+          #   critical_weight: 20.0
+          #   consider_footprint: false
+          #   collision_cost: 10000.0
+          #   collision_margin_distance: 0.1
+          #   near_goal_distance: 0.5
+          #   inflation_radius: 0.55 # (only in Humble)
+          #   cost_scaling_factor: 10.0 # (only in Humble)
+          CostCritic:
+            enabled: true
+            cost_power: 1
+            cost_weight: 3.81
+            critical_cost: 300.0
+            consider_footprint: true
+            collision_cost: 1000000.0
+            near_goal_distance: 1.0
+            trajectory_point_step: 2
           PathAlignCritic:
             enabled: true
             cost_power: 1
             cost_weight: 14.0
             max_path_occupancy_ratio: 0.05
-            trajectory_point_step: 3
+            trajectory_point_step: 4
             threshold_to_consider: 0.5
             offset_from_furthest: 20
             use_path_orientations: false

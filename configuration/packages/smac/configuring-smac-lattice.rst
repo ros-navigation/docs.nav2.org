@@ -63,6 +63,17 @@ Parameters
   Description
     Maximum number of iterations once a visited node is within the goal tolerances to continue to try to find an exact match before returning the best path solution within tolerances.
 
+:``<name>``.terminal_checking_interval:
+
+  ==== =======
+  Type Default                                                   
+  ---- -------
+  int  5000            
+  ==== =======
+
+  Description
+    Number of iterations between checking if the goal has been cancelled or planner timed out
+
 :``<name>``.max_planning_time:
 
   ====== =======
@@ -327,7 +338,7 @@ Example
       use_sim_time: True
 
       GridBased:
-        plugin: "nav2_smac_planner/SmacPlannerLattice"
+        plugin: "nav2_smac_planner::SmacPlannerLattice" # In Iron and older versions, "/" was used instead of "::"
         allow_unknown: true                 # Allow traveling in unknown space
         tolerance: 0.25                     # dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.
         max_iterations: 1000000             # Maximum total iterations to search for before failing (in case unreachable), set to -1 to disable

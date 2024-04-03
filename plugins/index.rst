@@ -378,6 +378,10 @@ Behavior Tree Nodes
 |                                            |                     | topic input, otherwises uses a default   |
 |                                            |                     | smoother id                              |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Progress Checker Selector`_               | Steve Macenski      | Selects the progress checker based on a  |
+|                                            |                     | topic input, otherwises uses a default   |
+|                                            |                     | progress checker id                      |
++--------------------------------------------+---------------------+------------------------------------------+
 | `Navigate Through Poses`_                  | Steve Macenski      | BT Node for other BehaviorTree.CPP BTs   |
 |                                            |                     | to call Nav2's NavThroughPoses action    |
 |                                            |                     |                                          |
@@ -426,6 +430,7 @@ Behavior Tree Nodes
 .. _Controller Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector_node.cpp
 .. _Goal Checker Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
 .. _Smoother Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/smoother_selector_node.cpp
+.. _Progress Checker Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/progress_checker_selector_node.cpp
 .. _Navigate Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
 .. _Remove Passed Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
 .. _Compute Path Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
@@ -437,7 +442,6 @@ Behavior Tree Nodes
 .. _Cancel Assisted Teleop Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
 .. _Cancel Complete Coverage Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp
 .. _Compute Complete Coverage Path Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp
-
 
 
 +------------------------------------+--------------------+------------------------+

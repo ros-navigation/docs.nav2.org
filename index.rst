@@ -18,7 +18,7 @@
 Our Sponsors
 ############
 
-.. image:: images/sponsors_may_2023.png
+.. image:: images/sponsors_feb_2024.png
     :width: 700px
     :align: center
     :alt: Our Sponsors

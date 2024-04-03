@@ -98,6 +98,11 @@ Analog to the ``ObstacleCritic``, the ``CostCritic`` is another obstacle avoidin
 This critic uses the inflated costs in the costmap to score rather than distance to obstacles as the ``ObstaclesCritic`` does.
 See the configuration guide for more information.
 
+MPPI Acceleration
+*****************
+
+New to Jazzy, MPPI is 45% faster due to a weeks long optimization campaign. Enjoy!
+
 Move Error Code Enumerations
 ****************************
 
@@ -230,3 +235,83 @@ New Graceful Motion Controller
 `PR #4021 <https://github.com/ros-planning/navigation2/pull/4021>`_ introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and confortable trajectory.
 
 See :ref:`configuring_graceful_motion_controller` for more information.
+
+Plugin Libraries in BT Navigator Only Includes Custom Nodes
+***********************************************************
+
+New to Jazzy, the ``plugin_lib_names`` parameter implicitly includes all Nav2 BT nodes automatically. It is only required now to specify additional user-generated BT plugins to load.
+
+New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers
+***************************************************************************************************
+
+`In PR #4091 <https://github.com/ros-planning/navigation2/pull/4091>`_ a new RViz plugin was added to select the planner, controller, goal checker, progress checker, and smoother on the fly.
+
+The primary goal of this plugin is to facilitate the developers and easy integration testing of their configuration before deploying the robot in the intended application.
+
+In order to facilitate the dynamic selection of the specified components, the BT selector nodes for all these components were utilized and were updated to all the relevant BT nodes. 
+
+Here we can see the working demo of the plugin:
+
+.. image:: images/selector_plugin_demo.gif
+
+In the GIF, it can be seen that there are two controller_ids namely, `FollowPath` and `HighSpeedFollowPath`. By default, the one defined in the Behavior tree is utilized.
+
+In this case, the `FollowPath` is the default controller_id. The difference between the two controller_ids is that HighSpeedFollowPath has a higher max velocity compared to the FollowPath. This difference can be well noted in the GIF.
+
+.. attention:: If a server is unavailable, then the combo box or the drop down list of the particular component will be empty.
+
+RPP new optional ``interpolate_curvature_after_goal`` behavior and fix conflict between ``use_rotate_to_heading`` and ``allow_reversing``
+*****************************************************************************************************************************************
+
+`In PR #4140 <https://github.com/ros-planning/navigation2/pull/4140>`_ a new optional ``interpolate_curvature_after_goal`` parameter (default ``false``) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same. 
+
+Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when ``interpolate_curvature_after_goal`` is ``true``. It can be used only when ``use_fixed_curvature_lookahead: true``.
+
+.. image:: images/rpp_goal_lookahead_interpolate.gif
+  :width: 45%
+
+Additionally, the conflict between ``use_rotate_to_heading`` and ``allow_reversing`` was fixed so ``use_rotate_to_heading`` can now be used backward.
+
+Cancel Checker Interface For GlobalPlanner
+*******************************************
+`PR #4148 <https://github.com/ros-planning/navigation2/pull/4148>`_ introduces a new interface for the ``GlobalPlanner`` to allow for the cancellation of the current planning task.
+Before the planners would continue to plan even if the goal was cancelled, now they can check it and stop planning if the goal is cancelled.
+New interface for ``GlobalPlanner::createPlan``:
+
+.. code-block:: cpp
+
+    virtual nav_msgs::msg::Path createPlan(
+      const geometry_msgs::msg::PoseStamped & start,  
+      const geometry_msgs::msg::PoseStamped & goal,  
+      std::function<bool()> cancel_checker)
+
+This is implemented for all the planners in the stack, you can check them for the example use of ``cancel_checker`` function (simply check ``cancel_checker()``).
+Smac and Theta* planners have a new parameter ``terminal_checking_interval`` which is the frequency of the cancel or timeout checking in terms of number of iterations.
+
+
+New BtActionServer/BtNavigator parameter
+****************************************
+
+`PR #4209 <https://github.com/ros-planning/navigation2/pull/4209>`_ introduces a new boolean parameter ``always_reload_bt_xml``, which enables the possibility to always reload a requested behavior tree XML description, regardless of the currently active XML. This allows keeping the action server running while changing/developing the XML description.
+
+
+New collision monitor parameter
+*******************************
+
+`PR #4207 <https://github.com/ros-planning/navigation2/pull/4207>`_ introduces a new boolean parameter ``polygon_subscribe_transient_local`` (value is false by default), which set the QoS durability for polygon topic or footprint topic subscription.
+
+New graceful cancellation API for Controllers
+*********************************************
+
+`PR #4136 <https://github.com/ros-planning/navigation2/pull/4136>`_ introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the ``RegulatedPurePursuitController`` by adding a new parameter ``cancel_deceleration``. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.
+
+Standardization of Plugin Naming with Double Colons (::)
+********************************************************
+
+`PR #4220`_ standardizes plugin naming across the Navigation2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:
+
+- Behavior Server: ``nav2_behaviors::Spin``, ``nav2_behaviors::BackUp``, ``nav2_behaviors::DriveOnHeading``, ``nav2_behaviors::Wait``, ``nav2_behaviors::AssistedTeleop``
+- Planner Server: ``nav2_navfn_planner::NavfnPlanner``, ``nav2_smac_planner::SmacPlanner2D``, ``nav2_smac_planner::SmacPlannerHybrid``, ``nav2_theta_star_planner::ThetaStarPlanner``
+- Controller Server: ``nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController``, ``nav2_dwb_controller::DWBLocalPlanner``
+- BT Navigator: ``nav2_bt_navigator::NavigateToPoseNavigator``, ``nav2_bt_navigator::NavigateThroughPosesNavigator``
+

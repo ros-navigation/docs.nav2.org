@@ -152,7 +152,7 @@ This part is usually placed at the end of cpp-file where the plugin class was wr
 .. code-block:: xml
 
   <library path="nav2_gradient_costmap_plugin_core">
-    <class name="nav2_gradient_costmap_plugin/GradientLayer" type="nav2_gradient_costmap_plugin::GradientLayer" base_class_type="nav2_costmap_2d::Layer">
+    <class type="nav2_gradient_costmap_plugin::GradientLayer" base_class_type="nav2_costmap_2d::Layer">
       <description>This is an example plugin which puts repeating costs gradients to costmap</description>
     </class>
   </library>
@@ -223,11 +223,11 @@ In this case each plugin object will be handled by its own parameters tree in a 
 .. code-block:: text
 
   gradient_layer_1:
-    plugin: nav2_gradient_costmap_plugin/GradientLayer
+    plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, "/" was used instead of "::"
     enabled: True
     ...
   gradient_layer_2:
-    plugin: nav2_gradient_costmap_plugin/GradientLayer
+    plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, "/" was used instead of "::"
     enabled: False
     ...
 

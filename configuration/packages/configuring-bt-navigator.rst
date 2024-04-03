@@ -57,36 +57,27 @@ Parameters
     You can use substitution to specify file path like ``$(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml``.
 
 
+:always_reload_bt_xml:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false 
+  ====== =======
+
+  Description
+    Always load the requested behavior tree XML description, regardless of the name of the currently active XML.
+
 :plugin_lib_names:
 
   ============== ==========================================================
   Type           Default                                                   
   -------------- ----------------------------------------------------------
-  vector<string> ["nav2_compute_path_to_pose_action_bt_node", 
-                 "nav2_follow_path_action_bt_node",
-                 "nav2_back_up_action_bt_node",
-                 "nav2_spin_action_bt_node",
-                 "nav2_wait_action_bt_node",
-                 "nav2_clear_costmap_service_bt_node",
-                 "nav2_is_stuck_condition_bt_node",
-                 "nav2_goal_reached_condition_bt_node",
-                 "nav2_initial_pose_received_condition_bt_node",
-                 "nav2_goal_updated_condition_bt_node",
-                 "nav2_reinitialize_global_localization_service_bt_node",
-                 "nav2_rate_controller_bt_node",
-                 "nav2_distance_controller_bt_node",
-                 "nav2_speed_controller_bt_node",
-                 "nav2_recovery_node_bt_node",
-                 "nav2_pipeline_sequence_bt_node",
-                 "nav2_round_robin_node_bt_node",
-                 "nav2_transform_available_condition_bt_node",
-                 "nav2_time_expired_condition_bt_node",
-                 "nav2_distance_traveled_condition_bt_node",
-                 "nav2_single_trigger_bt_node"]             
+  vector<string> [""]             
   ============== ==========================================================
 
   Description
-    List of behavior tree node shared libraries.
+    List of behavior tree node shared libraries. All Nav2 BT libraries are automatically included for you, so this only needs to include your new custom plugins (new to Jazzy).
 
 :bt_loop_duration:
 
@@ -249,14 +240,15 @@ Example
         transform_tolerance: 0.1
         default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
         default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
+        always_reload_bt_xml: false
         goal_blackboard_id: goal
         goals_blackboard_id: goals
         path_blackboard_id: path
         navigators: ['navigate_to_pose', 'navigate_through_poses']
         navigate_to_pose:
-          plugin: "nav2_bt_navigator/NavigateToPoseNavigator"
+          plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
         navigate_through_poses:
-          plugin: "nav2_bt_navigator/NavigateThroughPosesNavigator"
+          plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
         plugin_lib_names: 
           - nav2_compute_path_to_pose_action_bt_node
           - nav2_follow_path_action_bt_node
