@@ -1097,8 +1097,8 @@ They implement custom action servers with custom interface definitions and use t
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Path to the default behavior tree XML description for <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code>, see <a class="reference internal" href="configuring-bt-xml.html#configuring-behavior-tree-xml"><span class="std std-ref">Behavior Tree XML Nodes</span></a> for details on this file.
-Used to be <code class="docutils literal notranslate"><span class="pre">default_bt_xml_filename</span></code> pre-Galactic.
-You can use substitution to specify file path like <code class="docutils literal notranslate"><span class="pre">$(find-pkg-share</span> <span class="pre">my_package)/behavior_tree/my_nav_to_pose_bt.xml</span></code>.</p>
+This parameter used to be <code class="docutils literal notranslate"><span class="pre">default_bt_xml_filename</span></code> pre-Galactic.
+You can use substitution to specify file path like <code class="docutils literal notranslate"><span class="pre">$(find-pkg-share</span> <span class="pre">my_package)/behavior_tree/my_nav_to_pose_bt.xml</span></code>. However, if left empty, the default behavior tree XML will be loaded from the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> package.</p>
 </dd>
 </dl>
 </dd>
@@ -1119,7 +1119,7 @@ You can use substitution to specify file path like <code class="docutils literal
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Path to the default behavior tree XML description for <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code>, see <a class="reference internal" href="configuring-bt-xml.html#configuring-behavior-tree-xml"><span class="std std-ref">Behavior Tree XML Nodes</span></a> for details on this file. New to Galactic after <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> was added.
-You can use substitution to specify file path like <code class="docutils literal notranslate"><span class="pre">$(find-pkg-share</span> <span class="pre">my_package)/behavior_tree/my_nav_through_poses_bt.xml</span></code>.</p>
+You can use substitution to specify file path like <code class="docutils literal notranslate"><span class="pre">$(find-pkg-share</span> <span class="pre">my_package)/behavior_tree/my_nav_through_poses_bt.xml</span></code>. However, if left empty, the default behavior tree XML will be loaded from the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> package.</p>
 </dd>
 </dl>
 </dd>

@@ -40,8 +40,8 @@ Parameters
 
   Description
     Path to the default behavior tree XML description for ``NavigateToPose``, see :ref:`configuring_behavior_tree_xml` for details on this file.
-    Used to be ``default_bt_xml_filename`` pre-Galactic.
-    You can use substitution to specify file path like ``$(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml``.
+    This parameter used to be ``default_bt_xml_filename`` pre-Galactic.
+    You can use substitution to specify file path like ``$(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml``. However, if left empty, the default behavior tree XML will be loaded from the ``nav2_bt_navigator`` package.
 
 
 :default_nav_through_poses_bt_xml:
@@ -54,7 +54,7 @@ Parameters
 
   Description
     Path to the default behavior tree XML description for ``NavigateThroughPoses``, see :ref:`configuring_behavior_tree_xml` for details on this file. New to Galactic after ``NavigateThroughPoses`` was added. 
-    You can use substitution to specify file path like ``$(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml``.
+    You can use substitution to specify file path like ``$(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml``. However, if left empty, the default behavior tree XML will be loaded from the ``nav2_bt_navigator`` package.
 
 
 :always_reload_bt_xml:
