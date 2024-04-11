@@ -930,6 +930,44 @@ This critic penalizes unnecessary 'twisting' with holonomic vehicles. It adds a 
   Description
     Power order to apply to term.
 
+Velocity Deadband Critic
+------------------------
+
+This critic penalizes velocities that fall below the deadband threshold, helping to mitigate hardware limitations on certain platforms.
+
+:cost_weight:
+
+  =============== ===========================
+  Type            Default                    
+  --------------- ---------------------------
+  double          100.0
+  =============== ===========================
+
+  Description
+    Weight to apply to critic term.
+
+:cost_power:
+
+  ===============  ===========================
+  Type             Default                    
+  ---------------  ---------------------------
+  int              1
+  ===============  ===========================
+
+  Description
+    Power order to apply to term.
+
+:deadband_velocities:
+
+  ===============  ===========================
+  Type             Default                    
+  ---------------  ---------------------------
+  array of double  [0.0, 0.0, 0.0]
+  ===============  ===========================
+
+  Description
+    The array of deadband velocities [vx, vz, wz]. A zero array indicates that the critic will take no action.
+
 Example
 *******
 .. code-block:: yaml
@@ -963,7 +1001,7 @@ Example
             time_step: 3
           AckermannConstraints:
             min_turning_r: 0.2
-          critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
+          critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic", "VelocityDeadbandCritic"]
           ConstraintCritic:
             enabled: true
             cost_power: 1
@@ -1026,6 +1064,11 @@ Example
             threshold_to_consider: 0.5
             max_angle_to_furthest: 1.0
             mode: 0
+          VelocityDeadbandCritic:
+            enabled: false
+            cost_power: 1
+            cost_weight: 100.0
+            deadband_velocities: [0.08, 0.08, 0.08]
           # TwirlingCritic:
           #   enabled: true
           #   twirling_cost_power: 1
