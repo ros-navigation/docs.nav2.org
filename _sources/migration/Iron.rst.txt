@@ -300,10 +300,12 @@ New collision monitor parameter
 
 `PR #4207 <https://github.com/ros-planning/navigation2/pull/4207>`_ introduces a new boolean parameter ``polygon_subscribe_transient_local`` (value is false by default), which set the QoS durability for polygon topic or footprint topic subscription.
 
+
 New graceful cancellation API for Controllers
 *********************************************
 
 `PR #4136 <https://github.com/ros-planning/navigation2/pull/4136>`_ introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the ``RegulatedPurePursuitController`` by adding a new parameter ``cancel_deceleration``. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.
+
 
 Standardization of Plugin Naming with Double Colons (::)
 ********************************************************
@@ -315,3 +317,7 @@ Standardization of Plugin Naming with Double Colons (::)
 - Controller Server: ``nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController``, ``nav2_dwb_controller::DWBLocalPlanner``
 - BT Navigator: ``nav2_bt_navigator::NavigateToPoseNavigator``, ``nav2_bt_navigator::NavigateThroughPosesNavigator``
 
+
+Collision monitor: dynamic radius for circle type polygons
+**********************************************************
+`PR #4226 <https://github.com/ros-planning/navigation2/pull/4226>`_ introduces usage of parameter ``<polygon_name>.polygon_sub_topic`` for circle type polygons. If parameter ``<polygon_name>.radius`` is not set, collision monitor node subscribes to topic ``<polygon_name>.polygon_sub_topic`` (subscription type is ``std_msgs/msg/Float32``), and the current circle polygon radius will be updating accordingly to received messages on topic.

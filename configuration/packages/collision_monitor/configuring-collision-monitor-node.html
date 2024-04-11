@@ -992,6 +992,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Iron.html#collision-monitor-dynamic-radius-for-circle-type-polygons">Collision monitor: dynamic radius for circle type polygons</a></li>
 </ul>
 </li>
 </ul>
@@ -1421,7 +1422,7 @@ True uses TwistStamped, false uses Twist.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Topic to listen the polygon points from. Applicable only for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type and <code class="docutils literal notranslate"><span class="pre">stop</span></code>/<code class="docutils literal notranslate"><span class="pre">slowdown</span></code>/<code class="docutils literal notranslate"><span class="pre">limit</span></code> action types. Causes an error, if not specified <strong>and</strong> points are also not specified. If both <code class="docutils literal notranslate"><span class="pre">points</span></code> and <code class="docutils literal notranslate"><span class="pre">polygon_sub_topic</span></code> are specified, the static <code class="docutils literal notranslate"><span class="pre">points</span></code> takes priority.</p>
+<dt>Description:</dt><dd><p>For <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type, topic to listen the polygon points from. For <code class="docutils literal notranslate"><span class="pre">circle</span></code> type, topic to listen the circle radius from. Applicable for <code class="docutils literal notranslate"><span class="pre">stop</span></code>/<code class="docutils literal notranslate"><span class="pre">slowdown</span></code>/<code class="docutils literal notranslate"><span class="pre">limit</span></code> action types. Causes an error if not specified <strong>and</strong> static polygon geometry (using parameter <code class="docutils literal notranslate"><span class="pre">points</span></code> for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> type or <code class="docutils literal notranslate"><span class="pre">radius</span></code> for <code class="docutils literal notranslate"><span class="pre">circle</span></code> type) is also not specified. If both static polygon geometry and <code class="docutils literal notranslate"><span class="pre">polygon_sub_topic</span></code> are specified, the static parameter takes priority.</p>
 </dd>
 </dl>
 </dd>
@@ -1481,7 +1482,7 @@ True uses TwistStamped, false uses Twist.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Circle radius. Used for <code class="docutils literal notranslate"><span class="pre">circle</span></code> type. Causes an error, if not specialized.</p>
+<dt>Description:</dt><dd><p>Circle radius. Used for <code class="docutils literal notranslate"><span class="pre">circle</span></code> type. If not specified, the collision monitor will use dynamic polygon subscription to <code class="docutils literal notranslate"><span class="pre">polygon_sub_topic</span></code> for circle radius in the <code class="docutils literal notranslate"><span class="pre">stop</span></code>/<code class="docutils literal notranslate"><span class="pre">slowdown</span></code>/<code class="docutils literal notranslate"><span class="pre">limit</span></code> action types.</p>
 </dd>
 </dl>
 </dd>
