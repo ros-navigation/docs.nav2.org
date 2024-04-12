@@ -685,6 +685,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#path-follow-critic">Path Follow Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#prefer-forward-critic">Prefer Forward Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#twirling-critic">Twirling Critic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#velocity-deadband-critic">Velocity Deadband Critic</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
@@ -2661,6 +2662,72 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </div>
+<div class="section" id="velocity-deadband-critic">
+<h3>Velocity Deadband Critic<a class="headerlink" href="#velocity-deadband-critic" title="Permalink to this headline">¶</a></h3>
+<p>This critic penalizes velocities that fall below the deadband threshold, helping to mitigate hardware limitations on certain platforms.</p>
+<dl class="field-list">
+<dt class="field-odd">cost_weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>35.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Weight to apply to critic term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_power</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Power order to apply to term.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">deadband_velocities</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>array of double</p></td>
+<td><p>[0.05, 0.05, 0.05]</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The array of deadband velocities [vx, vz, wz]. A zero array indicates that the critic will take no action.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
@@ -2756,6 +2823,11 @@ This process is then repeated a number of times and returns a converged solution
 <span class="w">        </span><span class="nt">threshold_to_consider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">        </span><span class="nt">max_angle_to_furthest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="c1"># VelocityDeadbandCritic:</span>
+<span class="w">      </span><span class="c1">#   enabled: true</span>
+<span class="w">      </span><span class="c1">#   cost_power: 1</span>
+<span class="w">      </span><span class="c1">#   cost_weight: 35.0</span>
+<span class="w">      </span><span class="c1">#   deadband_velocities: [0.05, 0.05, 0.05]</span>
 <span class="w">      </span><span class="c1"># TwirlingCritic:</span>
 <span class="w">      </span><span class="c1">#   enabled: true</span>
 <span class="w">      </span><span class="c1">#   twirling_cost_power: 1</span>
