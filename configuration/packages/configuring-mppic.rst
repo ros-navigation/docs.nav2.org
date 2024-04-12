@@ -940,7 +940,7 @@ This critic penalizes velocities that fall below the deadband threshold, helping
   =============== ===========================
   Type            Default                    
   --------------- ---------------------------
-  double          100.0
+  double          35.0
   =============== ===========================
 
   Description
@@ -962,7 +962,7 @@ This critic penalizes velocities that fall below the deadband threshold, helping
   ===============  ===========================
   Type             Default                    
   ---------------  ---------------------------
-  array of double  [0.0, 0.0, 0.0]
+  array of double  [0.05, 0.05, 0.05]
   ===============  ===========================
 
   Description
@@ -1001,7 +1001,7 @@ Example
             time_step: 3
           AckermannConstraints:
             min_turning_r: 0.2
-          critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic", "VelocityDeadbandCritic"]
+          critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
           ConstraintCritic:
             enabled: true
             cost_power: 1
@@ -1064,11 +1064,11 @@ Example
             threshold_to_consider: 0.5
             max_angle_to_furthest: 1.0
             mode: 0
-          VelocityDeadbandCritic:
-            enabled: false
-            cost_power: 1
-            cost_weight: 100.0
-            deadband_velocities: [0.08, 0.08, 0.08]
+          # VelocityDeadbandCritic:
+          #   enabled: true
+          #   cost_power: 1
+          #   cost_weight: 35.0
+          #   deadband_velocities: [0.05, 0.05, 0.05]
           # TwirlingCritic:
           #   enabled: true
           #   twirling_cost_power: 1
