@@ -6,7 +6,7 @@ Iron to Jazzy
 Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.
 
 BehaviorTree.CPP upgraded to version 4.5+
-**************************************************
+*****************************************
 
 Since we migrated from version 3.8 to 4.5, users must upgrade their XML and source code accordingly.
 
