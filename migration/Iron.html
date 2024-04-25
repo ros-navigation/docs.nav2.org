@@ -951,6 +951,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#behaviortree-cpp-upgraded-to-version-4-5">BehaviorTree.CPP upgraded to version 4.5+</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#added-twiststamped-option-for-commands">Added TwistStamped Option for Commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#add-velocitypolygon-in-collision-monitor">Add VelocityPolygon in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
@@ -1053,6 +1054,16 @@
   <div class="section" id="iron-to-jazzy">
 <span id="iron-migration"></span><h1>Iron to Jazzy<a class="headerlink" href="#iron-to-jazzy" title="Permalink to this headline">¶</a></h1>
 <p>Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="behaviortree-cpp-upgraded-to-version-4-5">
+<h2>BehaviorTree.CPP upgraded to version 4.5+<a class="headerlink" href="#behaviortree-cpp-upgraded-to-version-4-5" title="Permalink to this headline">¶</a></h2>
+<p>Since we migrated from version 3.8 to 4.5, users must upgrade their XML and source code accordingly.</p>
+<p>You can refer to [this page](<a class="reference external" href="https://www.behaviortree.dev/docs/migration">https://www.behaviortree.dev/docs/migration</a>) for more details, but the main changes are:</p>
+<ul class="simple">
+<li><p>XML must be changed. This [python script can help](<a class="reference external" href="https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/convert_v3_to_v4.py">https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/convert_v3_to_v4.py</a>).</p></li>
+<li><p>The syntax of <cite>SubTrees</cite> has changed; the one of <cite>SubTreePlus</cite> was adopted, instead.</p></li>
+<li><p>If you created a custom <strong>ControlNode</strong> or <strong>DecoratorNode</strong>, you must handle the case when a child returns <cite>BT::NodeStatus::SKIPPED</cite>.</p></li>
+</ul>
+</div>
 <div class="section" id="added-twiststamped-option-for-commands">
 <h2>Added TwistStamped Option for Commands<a class="headerlink" href="#added-twiststamped-option-for-commands" title="Permalink to this headline">¶</a></h2>
 <p>A new parameter <code class="docutils literal notranslate"><span class="pre">enable_stamped_cmd_vel</span></code> has been added to all of the publishers and subscribers of <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> and related topics. This allows you to set the publication and subscription of TwistStamped messages over Twist messages to have frame and timestamp information of the set command. For now, this is default to <code class="docutils literal notranslate"><span class="pre">false</span></code> to not change current behavior, but it is planned to make <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> the default behavior alongside Gazebo, ROS 2 Control, and related projects.</p>
