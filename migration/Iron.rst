@@ -333,3 +333,8 @@ Standardization of Plugin Naming with Double Colons (::)
 Collision monitor: dynamic radius for circle type polygons
 **********************************************************
 `PR #4226 <https://github.com/ros-planning/navigation2/pull/4226>`_ introduces usage of parameter ``<polygon_name>.polygon_sub_topic`` for circle type polygons. If parameter ``<polygon_name>.radius`` is not set, collision monitor node subscribes to topic ``<polygon_name>.polygon_sub_topic`` (subscription type is ``std_msgs/msg/Float32``), and the current circle polygon radius will be updating accordingly to received messages on topic.
+
+
+Static Layer: new parameter ``footprint_clearing_enabled``
+**********************************************************
+`PR #4282 <https://github.com/ros-planning/navigation2/pull/4282>`_ introduces usage of parameter ``footprint_clearing_enabled`` for the static layer. It works similarly to the ``footprint_clearing_enabled`` parameter in the obstacle and voxel layer. If set to ``true``, the static layer will clear the costmap cells that are within the robot's footprint. It is ``false`` by default to keep the previous behavior.
