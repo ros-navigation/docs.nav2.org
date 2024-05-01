@@ -49,7 +49,7 @@ clean:
 # along with a README
 
 publish:
-	git clone --reference . git@github.com:ros-planning/navigation.ros.org.git $(PUBLISHDIR)
+	git clone --reference . git@github.com:open-navigation/docs.nav2.org.git $(PUBLISHDIR)
 	cd $(PUBLISHDIR) && \
 	git checkout gh-pages && \
 	git config user.email "navigation2-ci@circleci.com" && \
