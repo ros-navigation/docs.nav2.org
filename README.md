@@ -1,8 +1,8 @@
-# navigation.ros.org
-https://navigation.ros.org/
+# docs.nav2.org
+https://docs.nav2.org/
 
 This folder holds the source and configuration files used to generate the
-[Navigation2 documentation](https://navigation.ros.org) web site.
+[Navigation2 documentation](https://docs.nav2.org) web site.
 
 Dependencies for Build:
 
