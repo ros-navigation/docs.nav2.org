@@ -995,6 +995,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-dynamic-radius-for-circle-type-polygons">Collision monitor: dynamic radius for circle type polygons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#static-layer-new-parameter-footprint-clearing-enabled">Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1307,6 +1308,10 @@ Smac and Theta* planners have a new parameter <code class="docutils literal notr
 <div class="section" id="collision-monitor-dynamic-radius-for-circle-type-polygons">
 <h2>Collision monitor: dynamic radius for circle type polygons<a class="headerlink" href="#collision-monitor-dynamic-radius-for-circle-type-polygons" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4226">PR #4226</a> introduces usage of parameter <code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;.polygon_sub_topic</span></code> for circle type polygons. If parameter <code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;.radius</span></code> is not set, collision monitor node subscribes to topic <code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;.polygon_sub_topic</span></code> (subscription type is <code class="docutils literal notranslate"><span class="pre">std_msgs/msg/Float32</span></code>), and the current circle polygon radius will be updating accordingly to received messages on topic.</p>
+</div>
+<div class="section" id="static-layer-new-parameter-footprint-clearing-enabled">
+<h2>Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code><a class="headerlink" href="#static-layer-new-parameter-footprint-clearing-enabled" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4282">PR #4282</a> introduces usage of parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code> for the static layer. It works similarly to the <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code> parameter in the obstacle and voxel layer. If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the static layer will clear the costmap cells that are within the robot’s footprint. It is <code class="docutils literal notranslate"><span class="pre">false</span></code> by default to keep the previous behavior.</p>
 </div>
 </div>
 
