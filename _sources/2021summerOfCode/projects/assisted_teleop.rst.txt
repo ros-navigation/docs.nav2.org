@@ -36,7 +36,7 @@ This will be an excellent chance to make a substantial new feature in the Nav2 s
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
 - `Github ticket <https://github.com/ros-planning/navigation2/issues/2226>`_
-- `Navigation2 <https://navigation.ros.org/>`_
+- `Navigation2 <https://docs.nav2.org/>`_
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.

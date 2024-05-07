@@ -44,7 +44,7 @@ This will be an excellent chance to apply (or obtain) C++ parallel computing ski
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
 - `Github ticket <https://github.com/ros-planning/navigation2/issues/2042>`_
-- `Navigation2 <https://navigation.ros.org/>`_
+- `Navigation2 <https://docs.nav2.org/>`_
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.

@@ -59,7 +59,7 @@ Simulating Sensors using Gazebo
 *******************************
 To give you a better grasp of how to set up sensors on a simulated robot, we will build up on our previous tutorials and attach sensors to our simulated robot ``sam_bot``. Similar to the previous tutorial where we used Gazebo plugins to add odometry sensors to ``sam_bot``, we will be using the Gazebo plugins to simulate a lidar sensor and a depth camera on ``sam_bot``. If you are working with a real robot, most of these steps are still required for setting up your URDF frames and it will not hurt to also add in the gazebo plugins for later use. 
 
-To be able to follow the rest of this section, make sure that you have properly installed Gazebo. You can follow the instructions at the `Setup and Prerequisites <https://navigation.ros.org/setup_guides/odom/setup_odom.html#setup-and-prerequisites>`_ of the previous tutorial to setup Gazebo. 
+To be able to follow the rest of this section, make sure that you have properly installed Gazebo. You can follow the instructions at the `Setup and Prerequisites <https://docs.nav2.org/setup_guides/odom/setup_odom.html#setup-and-prerequisites>`_ of the previous tutorial to setup Gazebo. 
 
 
 Adding Gazebo Plugins to a URDF
@@ -301,10 +301,10 @@ In-depth discussions on the complete configuration parameters will not be a scop
 
 .. seealso::
   | For the complete list of configuration parameters of ``slam_toolbox``, see the `Github repository of slam_toolbox <https://github.com/SteveMacenski/slam_toolbox#readme>`_.
-  | For the complete list of configuration parameters and example configuration of ``nav2_amcl``, see the `AMCL Configuration Guide <https://navigation.ros.org/configuration/packages/configuring-amcl.html>`_.
+  | For the complete list of configuration parameters and example configuration of ``nav2_amcl``, see the `AMCL Configuration Guide <https://docs.nav2.org/configuration/packages/configuring-amcl.html>`_.
 
  
-You can also refer to the `(SLAM) Navigating While Mapping guide <https://navigation.ros.org/tutorials/docs/navigation2_with_slam.html>`_ for the tutorial on how to use Nav2 with SLAM. You can verify that ``slam_toolbox`` and ``nav2_amcl`` have been correctly setup by visualizing the map and the robot's pose in RViz, similar to what was shown in the previous section.
+You can also refer to the `(SLAM) Navigating While Mapping guide <https://docs.nav2.org/tutorials/docs/navigation2_with_slam.html>`_ for the tutorial on how to use Nav2 with SLAM. You can verify that ``slam_toolbox`` and ``nav2_amcl`` have been correctly setup by visualizing the map and the robot's pose in RViz, similar to what was shown in the previous section.
 
 
 Costmap 2D
@@ -428,12 +428,12 @@ For the voxel layer (lines 51-66), we set the ``publish_voxel_map`` parameter to
 Note that the we are not using a range layer for our configuration but it may be useful for your own robot setup. For the range layer, its basic parameters are the ``topics``, ``input_sensor_type``, and ``clear_on_max_reading`` parameters. The range topics to subscribe to are defined in the ``topics`` parameter. The ``input_sensor_type`` is set to either ``ALL``, ``VARIABLE``, or ``FIXED``. The ``clear_on_max_reading`` is a boolean parameter that sets whether to clear the sensor readings on max range.  Have a look at the configuration guide in the link below in case you need to set it up. 
 
 .. seealso::
-  For more information on ``nav2_costmap_2d`` and the complete list of layer plugin parameters, see the `Costmap 2D Configuration Guide <https://navigation.ros.org/configuration/packages/configuring-costmaps.html>`_.
+  For more information on ``nav2_costmap_2d`` and the complete list of layer plugin parameters, see the `Costmap 2D Configuration Guide <https://docs.nav2.org/configuration/packages/configuring-costmaps.html>`_.
 
 
 Build, Run and Verification
 ===========================
-We will first launch ``display.launch.py`` which launches the robot state publisher that provides the ``base_link`` => ``sensors`` transformations in our URDF. It also launches Gazebo that acts as our physics simulator and also provides the ``odom`` => ``base_link`` from the differential drive plugin, which we added to ``sam_bot`` in the previous guide, `Simulating an Odometry System Using Gazebo <https://navigation.ros.org/setup_guides/odom/setup_odom.html#simulating-an-odometry-system-using-gazebo>`_. It also launches RViz which we can use to visualize the robot and sensor information. 
+We will first launch ``display.launch.py`` which launches the robot state publisher that provides the ``base_link`` => ``sensors`` transformations in our URDF. It also launches Gazebo that acts as our physics simulator and also provides the ``odom`` => ``base_link`` from the differential drive plugin, which we added to ``sam_bot`` in the previous guide, `Simulating an Odometry System Using Gazebo <https://docs.nav2.org/setup_guides/odom/setup_odom.html#simulating-an-odometry-system-using-gazebo>`_. It also launches RViz which we can use to visualize the robot and sensor information. 
 
 Then we will launch ``slam_toolbox`` to publish to ``/map`` topic and provide the ``map`` => ``odom`` transform. Recall that the ``map`` => ``odom`` transform is one of the primary requirements of the Nav2 system. The messages published on the ``/map`` topic will then be used by the static layer of the ``global_costmap``. 
 
