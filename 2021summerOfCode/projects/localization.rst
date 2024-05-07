@@ -43,7 +43,7 @@ An optional but recommended feature of this work would be to also accept the inp
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
 - `Original Github Issue <https://github.com/ros-planning/navigation2/issues/1391>`_
-- `Navigation2 <https://navigation.ros.org/>`_
+- `Navigation2 <https://docs.nav2.org/>`_
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.

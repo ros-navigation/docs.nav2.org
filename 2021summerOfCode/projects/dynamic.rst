@@ -39,7 +39,7 @@ If time permits, you may also work to also integrate this dynamic information in
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
 - `Github ticket <https://github.com/ros-planning/navigation2/issues/1617>`_
-- `Navigation2 <https://navigation.ros.org/>`_
+- `Navigation2 <https://docs.nav2.org/>`_
 - `Some related works <https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf>`_
 
 **Licensing**
