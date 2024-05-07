@@ -10,7 +10,7 @@ This is a community maintained list of related repositories and projects to Navi
 +================================+========================+==================================+
 | `Navigation2`_                 | Steve Macenski         | Main ROS 2 Navigation Stack      |
 +--------------------------------+------------------------+----------------------------------+
-| `docs.nav2.org`_          | Steve Macenski         | Official documentation website   |
+| `docs.nav2.org`_               | Steve Macenski         | Official documentation website   |
 |                                |                        | source code                      |
 +--------------------------------+------------------------+----------------------------------+
 | `navigation2_tutorials`_       | Steve Macenski         | Source code and examples used    |
