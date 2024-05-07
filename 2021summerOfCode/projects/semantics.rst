@@ -35,7 +35,7 @@ After creating the generic representation, your project will be to create demons
 - `Gazebo Simulator <http://gazebosim.org/>`_
 - `Github ticket <https://github.com/ros-planning/navigation2/issues/1595>`_
 - `Github ticket2 <https://github.com/ros-planning/navigation2/issues/2229>`_
-- `Navigation2 <https://navigation.ros.org/>`_
+- `Navigation2 <https://docs.nav2.org/>`_
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.

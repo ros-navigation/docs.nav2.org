@@ -63,7 +63,7 @@ In the snippet above, the nodes to be handled by the Lifecycle Manager are set u
 Two other parameters of the Lifecycle Manager are ``autostart`` and ``bond_timeout``. Set ``autostart`` to ``true`` if you want to set the transition nodes to the ``Active`` state on startup. Otherwise, you will need to manually trigger Lifecycle Manager to transition up the system. The ``bond_timeout`` sets the waiting time to decide when to transition down all of the nodes if a node is not responding.
 
 .. note::
-   More information on Lifecycle Manager parameters can be found in the `Configuration Guide of Lifecycle Manager <https://navigation.ros.org/configuration/packages/configuring-lifecycle.html>`_
+   More information on Lifecycle Manager parameters can be found in the `Configuration Guide of Lifecycle Manager <https://docs.nav2.org/configuration/packages/configuring-lifecycle.html>`_
 
 
 Composition
