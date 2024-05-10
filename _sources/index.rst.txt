@@ -71,7 +71,7 @@ It has tools to:
 - Monitor raw sensor data for imminent collision or dangerous situation
 - Python3 API to interact with Nav2 and its internal task servers in a pythonic manner
 - A smoother on output velocities to guarantee dynamic feasibility of commands
-- And more!
+- ... and more!
 
 .. image:: images/nav2_architecture.png
     :width: 700px
