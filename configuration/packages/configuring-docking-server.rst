@@ -12,6 +12,8 @@ It uses plugin `dock` implementations for a particular platform to enable the fr
 It can also handle a database of many different docking locations and dock models to handle a heterogeneous environment.
 This task server is designed be called by an application BT or autonomy application to dock once completed with tasks or battery is low -- _not_ within the navigate-to-pose action itself (though `undock` may be called from inside navigate actions!).
 
+Thanks to NVIDIA for sponsoring this Docking Server package!
+
 Parameters
 **********
 
@@ -190,7 +192,7 @@ Parameters
   ============== ==============
 
   Description
-    TODO.
+    Ratio of the rate of change of angle relative to distance from the target. Much be > 0.
 
 :controller.k_delta:
 
@@ -201,7 +203,7 @@ Parameters
   ============== ==============
 
   Description
-    TODO.
+    Higher values result in converging to the target more quickly.
 
 :controller.beta:
 
@@ -212,7 +214,7 @@ Parameters
   ============== ==============
 
   Description
-    TODO.
+    Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (v(t) = v_max / (1 + beta * |curv|^lambda)).
 
 :controller.lambda:
 
@@ -223,7 +225,7 @@ Parameters
   ============== ==============
 
   Description
-    TODO.
+    Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (v(t) = v_max / (1 + beta * |curv|^lambda)).
 
 :controller.v_linear_min:
 

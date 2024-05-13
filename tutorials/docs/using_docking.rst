@@ -30,7 +30,7 @@ The docking procedure is as follows:
 5. Exit the vision-control loop once contact has been detected or charging has started 
 6. Wait until charging starts and return success.
 
-Thanks to Nvidia for sponsoring this Docking Server package and this tutorial!
+Thanks to NVIDIA for sponsoring this Docking Server package and this tutorial!
 
 TODO: docking in action video compliation in lab
 TODO: link to nova_carter_docking when I mention it + its files
