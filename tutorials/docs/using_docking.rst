@@ -63,7 +63,7 @@ The ``ChargingDock`` plugin has a few key APIs:
 - ``PoseStamped getStagingPose(const Pose & pose, const string & frame)`` which must provide the pre-docking staging pose given a dock's location and frame.
 - ``bool getRefinedPose(PoseStamped & pose)`` which must provide the detected (or pass through) pose of the dock 
 - ``bool isDocked()`` which provides if we've made contact with the dock
-- ``bool isCharging()`` which provies if we've started charging while docked
+- ``bool isCharging()`` which provides if we've started charging while docked
 - ``bool disableCharging()`` which should disable charging, if under the robot's control for undocking
 - ``bool hasStoppedCharging()`` which indicates if we've successfully stopped charging on undocking
 
@@ -81,7 +81,7 @@ It can also be used when only some of the information if available as well.
 If your robot or dock does not fall into these implementations (i.e. using custom battery or detection messages that cannot be converted into ROS standard types), then you may be required to build your own plugin to meet your particular needs.
 However, you can use the ``SimpleChargingDock`` assuming you turn off these settings and dock blind to get started.
 
-If you do not currently have a way to detect your dock, dock detection can be done easily using Apriltagss and the `isaac_ros_apriltag <https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag>`_ or `ROS image_proc <https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp>`_ nodes to get started.
+If you do not currently have a way to detect your dock, dock detection can be done easily using Apriltags and the `isaac_ros_apriltag <https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag>`_ or `ROS image_proc <https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp>`_ nodes to get started.
 Use the Isaac ROS if using a Jetson platform to obtain a GPU optimized pipeline with your camera feeds.
 The defaults support this out of the box, see ``nova_carter_docking`` for an example.
 
@@ -148,7 +148,7 @@ The analog of this is shown below as an independent ``dock_database.yaml`` which
       pose: [20.0, 20.0, 0.0]
 
 Note that you are required to provide at least 1 dock plugin and 1 dock instance.
-The Docking Server's Action API can take in a dock's instance information separately to bypass the database, but its plugin must exist in the database.
+The Docking Server's Action API can take in a dock's instance information separately to bypass the database, but its plugin must exist in the server's configuration.
 If you plan to only use this API, you can set a ``dummy_dock``.
 Generally speaking, its wise to set your docks in the database and use the Docking Server's API to dock at an instance's Dock ID to decouple the semantic information about docks from the action request (requiring your application instead to have all of the docks' locations), but bypassing the database can be useful for testing.
 
@@ -302,8 +302,6 @@ It contains no feedback and returns the ``success`` state and the ``error_code``
 Putting It All Together
 =======================
 
-TODO update with simple commander API for here and in demo.py.
-
 At this point, if you haven't already, create your dock plugin (or use ``SimpleChargingDock``), configuration file, and launch file - along with any other nodes required like apriltags or other detectors.
 You can see an example package used in this tutorial in the ``nova_carter_docking`` package, which contains a configuration file and launch file containing the apriltags detector and ``PoseStamped`` pose publisher.
 
@@ -380,3 +378,5 @@ Don't want to call Docking Server from a script Python or C++ script and want to
 Note that if using ``navigate_to_staging_pose = True``, you cannot call ``DockRobot`` from inside a Nav2 Behavior Tree, only from your higher level autonomy tree since it recursively calls Nav2.
 If you wish to call ``DockRobot`` from inside your Nav2 BT, you must roughly pre-stage the robot near the dock first (which should be easy as a navigation goal).
 However, you can always call ``UndockRobot`` from any behavior tree!
+
+Happy docking!
