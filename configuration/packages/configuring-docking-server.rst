@@ -10,7 +10,7 @@ Source code on Github_.
 The Docking Server in ``opennav_docking`` implements a server for docking and undocking a robot. 
 It uses plugin `dock` implementations for a particular platform to enable the framework to generalize to robots of many different kinematic models, charging methods, sensor modalities, and so on.
 It can also handle a database of many different docking locations and dock models to handle a heterogeneous environment.
-This task server is designed be called by an application BT or autonomy application to dock once completed with tasks or battery is low -- _not_ within the navigate-to-pose action itself (though `undock` may be called from inside navigate actions!).
+This task server is designed be called by an application BT or autonomy application to dock once completed with tasks or battery is low -- not within the navigate-to-pose action itself (though `undock` may be called from inside navigate actions!).
 
 Thanks to NVIDIA for sponsoring this Docking Server package!
 

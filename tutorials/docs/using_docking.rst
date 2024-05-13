@@ -31,9 +31,16 @@ The docking procedure is as follows:
 6. Wait until charging starts and return success.
 
 Thanks to NVIDIA for sponsoring this Docking Server package and this tutorial!
+You can find how to dock your Nova Carter robot using Nav2 and this work in the `nova_carter_docking package <https://github.com/open-navigation/opennav_docking/tree/main/nova_carter_docking>`_!
 
-TODO: docking in action video compliation in lab
-TODO: link to nova_carter_docking when I mention it + its files
+.. raw:: html
+
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="708" height="400" src="https://www.youtube.com/embed/leiGkSVnQak?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+      </div>
+    </h1>
+
 
 Requirements
 ============
