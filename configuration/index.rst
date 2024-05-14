@@ -14,7 +14,6 @@ the best navigation performance.
    packages/configuring-costmaps.rst
    packages/configuring-lifecycle.rst
    packages/configuring-planner-server.rst
-   packages/configuring-docking-server.rst
    packages/configuring-coverage-server.rst
    packages/configuring-navfn.rst
    packages/configuring-smac-planner.rst
@@ -35,3 +34,4 @@ the best navigation performance.
    packages/configuring-velocity-smoother.rst
    packages/configuring-collision-monitor.rst
    packages/configuring-waypoint-follower.rst
+   .. packages/configuring-docking-server.rst
