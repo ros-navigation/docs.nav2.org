@@ -347,3 +347,7 @@ Collision monitor: dynamic radius for circle type polygons
 Static Layer: new parameter ``footprint_clearing_enabled``
 **********************************************************
 `PR #4282 <https://github.com/ros-planning/navigation2/pull/4282>`_ introduces usage of parameter ``footprint_clearing_enabled`` for the static layer. It works similarly to the ``footprint_clearing_enabled`` parameter in the obstacle and voxel layer. If set to ``true``, the static layer will clear the costmap cells that are within the robot's footprint. It is ``false`` by default to keep the previous behavior.
+
+Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)
+**********************************************************************************************
+`PR #4342 <https://github.com/ros-planning/navigation2/pull/4342>`_ adds the parameter ``bond_heartbeat_period`` to the lifecycle nodes to customize the bond mechanism publishing period (on the ``/bond`` topic). Default value unchanged to 0.1s. Disabled if inferior or equal to 0.0.
