@@ -14,6 +14,7 @@ Navigation2 Tutorials
    docs/navigation2_with_gps.rst
    docs/using_groot.rst
    docs/integrating_vio.rst
+   docs/using_docking.rst
    docs/navigation2_dynamic_point_following.rst
    docs/navigation2_with_keepout_filter.rst
    docs/navigation2_with_speed_filter.rst
