@@ -350,4 +350,5 @@ Static Layer: new parameter ``footprint_clearing_enabled``
 
 Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)
 **********************************************************************************************
+
 `PR #4342 <https://github.com/ros-planning/navigation2/pull/4342>`_ adds the parameter ``bond_heartbeat_period`` to the lifecycle nodes to customize the bond mechanism publishing period (on the ``/bond`` topic). Default value unchanged to 0.1s. Disabled if inferior or equal to 0.0.
