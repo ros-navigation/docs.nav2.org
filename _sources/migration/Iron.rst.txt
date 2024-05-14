@@ -65,6 +65,15 @@ A new metapackage exists in: https://github.com/open-navigation/opennav_coverage
 
 If you'd like to see coverage planning in Nav2 directly, please consider contributing `to the as-of-yet needed features described here <https://github.com/Fields2Cover/Fields2Cover/issues/73>`_.
 
+``opennav_docking`` Project
+****************************
+
+A new metapackage exists in: https://github.com/open-navigation/opennav_docking which contains complete automatic charging dock framework, BT nodes, plugins, and demos. 
+This allows for docking of any type of robot with any type of charging dock in a repeatable and generalized way.
+It will be integrated into Nav2 directly soon.
+
+See :ref:`docking_tutorial` for a tutorial on using this new capability! Thanks to NVIDIA for sponsoring this package!
+
 Introduce a new Multi-Robot Bringup Launch
 ******************************************
 

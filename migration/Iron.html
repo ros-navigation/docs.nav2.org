@@ -286,6 +286,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/integrating_vio.html#testing-it-out">Testing it Out!</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_docking.html">Using Docking Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#chargingdock-plugins">ChargingDock Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#dock-database">Dock Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#configuring-docking-server">Configuring Docking Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#adding-docking-server-to-launch">Adding Docking Server to Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#docking-action-api">Docking Action API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_docking.html#putting-it-all-together">Putting It All Together</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
@@ -596,6 +607,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#default-plugins">Default Plugins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-planner-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html">Docking Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html#simplechargingdock-parameters">SimpleChargingDock Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-coverage-server.html">Coverage Server</a><ul>
@@ -957,6 +974,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opennav-docking-project"><code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> Project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-interpolation-rpp-parameter-depreciated">use_interpolation RPP Parameter Depreciated</a></li>
@@ -1100,6 +1118,13 @@ Now we can define a polygon’s points in string that has a <code class="docutil
 <h2><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project<a class="headerlink" href="#opennav-coverage-project" title="Permalink to this headline">¶</a></h2>
 <p>A new metapackage exists in: <a class="reference external" href="https://github.com/open-navigation/opennav_coverage">https://github.com/open-navigation/opennav_coverage</a> which contains complete coverage navigator plugins, BT nodes, behavior tree demos, and coverage planning server based on <code class="docutils literal notranslate"><span class="pre">Fields2Cover</span></code>. See that project for more information. It is on long-term trajectory for inclusion into <code class="docutils literal notranslate"><span class="pre">Nav2</span></code>, but there are still yet a few missing features from Fields2Cover before we can integrate that into the main project to be up to snuff in terms of all the major features and capabilities users would expect from a coverage planning system.</p>
 <p>If you’d like to see coverage planning in Nav2 directly, please consider contributing <a class="reference external" href="https://github.com/Fields2Cover/Fields2Cover/issues/73">to the as-of-yet needed features described here</a>.</p>
+</div>
+<div class="section" id="opennav-docking-project">
+<h2><code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> Project<a class="headerlink" href="#opennav-docking-project" title="Permalink to this headline">¶</a></h2>
+<p>A new metapackage exists in: <a class="reference external" href="https://github.com/open-navigation/opennav_docking">https://github.com/open-navigation/opennav_docking</a> which contains complete automatic charging dock framework, BT nodes, plugins, and demos.
+This allows for docking of any type of robot with any type of charging dock in a repeatable and generalized way.
+It will be integrated into Nav2 directly soon.</p>
+<p>See <a class="reference internal" href="../tutorials/docs/using_docking.html#docking-tutorial"><span class="std std-ref">Using Docking Server</span></a> for a tutorial on using this new capability! Thanks to NVIDIA for sponsoring this package!</p>
 </div>
 <div class="section" id="introduce-a-new-multi-robot-bringup-launch">
 <h2>Introduce a new Multi-Robot Bringup Launch<a class="headerlink" href="#introduce-a-new-multi-robot-bringup-launch" title="Permalink to this headline">¶</a></h2>

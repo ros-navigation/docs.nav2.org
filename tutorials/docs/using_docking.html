@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dev Container Guide &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Using Docking Server &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -22,8 +22,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Getting Involved" href="../involvement_docs/index.html" />
-    <link rel="prev" title="Dev Containers" href="index.html" />
+    <link rel="next" title="Dynamic Object Following" href="navigation2_dynamic_point_following.html" />
+    <link rel="prev" title="Using VIO to Augment Robot Odometry" href="integrating_vio.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -60,44 +60,44 @@
 <li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html#navigating">Navigating</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Development Guides</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../build_docs/index.html">Build and Install</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../build_docs/index.html#install">Install</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../build_docs/index.html#build">Build</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../build_docs/index.html#released-distribution-binaries">Released Distribution Binaries</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../build_docs/index.html#rolling-development-source">Rolling Development Source</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../build_docs/index.html#docker-container-images">Docker Container Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development_guides/index.html">Development Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development_guides/build_docs/index.html">Build and Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#install">Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#build">Build</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#released-distribution-binaries">Released Distribution Binaries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#rolling-development-source">Rolling Development Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#docker-container-images">Docker Container Images</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../build_docs/index.html#generate-doxygen">Generate Doxygen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../build_docs/index.html#help">Help</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#generate-doxygen">Generate Doxygen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#help">Help</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/build_troubleshooting_guide.html">Build Troubleshooting Guide</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Dev Containers</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Dev Container Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-dev-containers">Creating Dev Containers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-dev-containers">Using Dev Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html">Dev Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/devcontainer_guide.html">Dev Container Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/devcontainer_guide.html#creating-dev-containers">Creating Dev Containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/devcontainer_guide.html#using-dev-containers">Using Dev Containers</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#what-why-how">What, Why, How?</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="index.html#what-is-a-dev-container">What is a Dev Container?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="index.html#why-use-a-dev-container">Why use a Dev Container?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="index.html#how-do-dev-containers-work">How do Dev Containers work?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#what-why-how">What, Why, How?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#what-is-a-dev-container">What is a Dev Container?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#why-use-a-dev-container">Why use a Dev Container?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#how-do-dev-containers-work">How do Dev Containers work?</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#getting-started">Getting started</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#security">Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#getting-started">Getting started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/devcontainer_docs/index.html#security">Security</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../involvement_docs/index.html">Getting Involved</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../involvement_docs/index.html#id1">Getting Involved</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../involvement_docs/index.html#process">Process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../involvement_docs/index.html#licensing">Licensing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../involvement_docs/index.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development_guides/involvement_docs/index.html">Getting Involved</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/involvement_docs/index.html#id1">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/involvement_docs/index.html#process">Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/involvement_docs/index.html#licensing">Licensing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/involvement_docs/index.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a></li>
 </ul>
 </li>
 </ul>
@@ -212,212 +212,212 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">General Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#initialize-the-location-of-turtlebot-3">4- Initialize the Location of Turtlebot 3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#send-a-goal-pose">5-  Send a Goal Pose</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">General Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#initialize-the-location-of-turtlebot-3">4- Initialize the Location of Turtlebot 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#send-a-goal-pose">5-  Send a Goal Pose</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html">(SLAM) Navigating While Mapping</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-navigation2">1- Launch Navigation2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#launch-slam">2- Launch SLAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#working-with-slam">3- Working with SLAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_slam.html#getting-started-simplification">4- Getting Started Simplification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation2_with_slam.html">(SLAM) Navigating While Mapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_slam.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_slam.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_slam.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#launch-robot-interfaces">0- Launch Robot Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#launch-navigation2">1- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#launch-slam">2- Launch SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#working-with-slam">3- Working with SLAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_slam.html#getting-started-simplification">4- Getting Started Simplification</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html">(STVL) Using an External Costmap Plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#costmap2d-and-stvl">Costmap2D and STVL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#setup">0- Setup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#install-stvl">1- Install STVL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#modify-navigation2-parameter">1- Modify Navigation2 Parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#launch-navigation2">2- Launch Navigation2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_stvl.html#rviz">3-  RVIZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation2_with_stvl.html">(STVL) Using an External Costmap Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_stvl.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_stvl.html#costmap2d-and-stvl">Costmap2D and STVL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_stvl.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#setup">0- Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#install-stvl">1- Install STVL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#modify-navigation2-parameter">1- Modify Navigation2 Parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#launch-navigation2">2- Launch Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_stvl.html#rviz">3-  RVIZ</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html">Navigating Using GPS Localization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#gps-localization-overview">GPS Localization Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#setup-gazebo-world">0- Setup Gazebo World</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#setup-gps-localization-system">1- Setup GPS Localization system</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#setup-navigation-system">2- Setup Navigation system</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#interactive-gps-waypoint-follower">3-  Interactive GPS Waypoint Follower</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#logged-gps-waypoint-follower-waypoint-logging">4-  Logged GPS Waypoint Follower &amp; Waypoint Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation2_with_gps.html">Navigating Using GPS Localization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_gps.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_gps.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_gps.html#gps-localization-overview">GPS Localization Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_gps.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_gps.html#setup-gazebo-world">0- Setup Gazebo World</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_gps.html#setup-gps-localization-system">1- Setup GPS Localization system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_gps.html#setup-navigation-system">2- Setup Navigation system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_gps.html#interactive-gps-waypoint-follower">3-  Interactive GPS Waypoint Follower</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_gps.html#logged-gps-waypoint-follower-waypoint-logging">4-  Logged GPS Waypoint Follower &amp; Waypoint Logging</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_gps.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_gps.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/using_groot.html">Groot - Interacting with Behavior Trees</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_groot.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_groot.html#visualize-behavior-trees">Visualize Behavior Trees</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_groot.html#edit-behavior-trees">Edit Behavior Trees</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_groot.html#adding-a-custom-node">Adding A Custom Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_groot.html">Groot - Interacting with Behavior Trees</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="using_groot.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_groot.html#visualize-behavior-trees">Visualize Behavior Trees</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_groot.html#edit-behavior-trees">Edit Behavior Trees</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_groot.html#adding-a-custom-node">Adding A Custom Node</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/integrating_vio.html">Using VIO to Augment Robot Odometry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/integrating_vio.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/integrating_vio.html#setting-up-the-zed-x-camera">Setting Up the ZED X Camera</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/integrating_vio.html#setting-up-zed-ros">Setting Up ZED ROS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/integrating_vio.html#fusing-vio-into-local-state-estimate">Fusing VIO Into Local State Estimate</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/integrating_vio.html#fusing-vslam-into-global-state-estimate">Fusing VSLAM Into Global State Estimate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrating_vio.html">Using VIO to Augment Robot Odometry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#setting-up-the-zed-x-camera">Setting Up the ZED X Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#setting-up-zed-ros">Setting Up ZED ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#fusing-vio-into-local-state-estimate">Fusing VIO Into Local State Estimate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="integrating_vio.html#fusing-vslam-into-global-state-estimate">Fusing VSLAM Into Global State Estimate</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/integrating_vio.html#testing-it-out">Testing it Out!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrating_vio.html#testing-it-out">Testing it Out!</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/using_docking.html">Using Docking Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_docking.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_docking.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_docking.html#chargingdock-plugins">ChargingDock Plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_docking.html#dock-database">Dock Database</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_docking.html#configuring-docking-server">Configuring Docking Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_docking.html#adding-docking-server-to-launch">Adding Docking Server to Launch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_docking.html#docking-action-api">Docking Action API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_docking.html#putting-it-all-together">Putting It All Together</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using Docking Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chargingdock-plugins">ChargingDock Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dock-database">Dock Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-docking-server">Configuring Docking Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-docking-server-to-launch">Adding Docking Server to Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docking-action-api">Docking Action API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#putting-it-all-together">Putting It All Together</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_dynamic_point_following.html#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_keepout_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation2_dynamic_point_following.html">Dynamic Object Following</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_dynamic_point_following.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_dynamic_point_following.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#create-the-behavior-tree">0- Create the Behavior Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#setup-rviz-clicked-point">1- Setup Rviz clicked point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_dynamic_point_following.html#run-dynamic-object-following-in-nav2-simulation">2- Run Dynamic Object Following in Nav2 Simulation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#enable-keepout-filter">3. Enable Keepout Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_keepout_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html">Using Rotation Shim Controller</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#what-is-the-rotation-shim-controller">What is the Rotation Shim Controller?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#configuring-rotation-shim-controller">Configuring Rotation Shim Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#configuring-primary-controller">Configuring Primary Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_shim_controller.html#demo-execution">Demo Execution</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html">Adding a Smoother to a BT</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#familiarization-with-the-smoother-bt-node">0- Familiarization with the Smoother BT Node</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#specifying-a-smoother-plugin">1- Specifying a Smoother Plugin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/adding_smoother.html#modifying-your-bt-xml">2- Modifying your BT XML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation2_with_speed_filter.html">Navigating with Speed Limits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="navigation2_with_speed_filter.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#prepare-filter-mask">1. Prepare filter mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#configure-costmap-filter-info-publisher-server">2. Configure Costmap Filter Info Publisher Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#enable-speed-filter">3. Enable Speed Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_with_speed_filter.html#run-nav2-stack">4. Run Nav2 stack</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html">Using Collision Monitor</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor">Configuring Collision Monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#configuring-collision-monitor-with-velocitypolygon">Configuring Collision Monitor with VelocityPolygon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/using_collision_monitor.html#demo-execution">Demo Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_shim_controller.html">Using Rotation Shim Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#what-is-the-rotation-shim-controller">What is the Rotation Shim Controller?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#configuring-rotation-shim-controller">Configuring Rotation Shim Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#configuring-primary-controller">Configuring Primary Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_shim_controller.html#demo-execution">Demo Execution</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html">Adding a New Nav2 Task Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html#lifecycle-nodes">Lifecycle Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html#composition">Composition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html#error-codes">Error codes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding_smoother.html">Adding a Smoother to a BT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adding_smoother.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding_smoother.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding_smoother.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adding_smoother.html#familiarization-with-the-smoother-bt-node">0- Familiarization with the Smoother BT Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adding_smoother.html#specifying-a-smoother-plugin">1- Specifying a Smoother Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adding_smoother.html#modifying-your-bt-xml">2- Modifying your BT XML</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/filtering_of_noise-induced_obstacles.html">Filtering of Noise-Induced Obstacles</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/filtering_of_noise-induced_obstacles.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/filtering_of_noise-induced_obstacles.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/filtering_of_noise-induced_obstacles.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/filtering_of_noise-induced_obstacles.html#enable-denoise-layer">1. Enable Denoise Layer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/filtering_of_noise-induced_obstacles.html#run-nav2-stack">2. Run Nav2 stack</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/filtering_of_noise-induced_obstacles.html#how-it-works">How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_collision_monitor.html">Using Collision Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="using_collision_monitor.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_collision_monitor.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_collision_monitor.html#configuring-collision-monitor">Configuring Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_collision_monitor.html#configuring-collision-monitor-with-velocitypolygon">Configuring Collision Monitor with VelocityPolygon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_collision_monitor.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_collision_monitor.html#demo-execution">Demo Execution</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html">Camera Calibration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding_a_nav2_task_server.html">Adding a New Nav2 Task Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#lifecycle-nodes">Lifecycle Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#composition">Composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#error-codes">Error codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-node">From a Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-large-project">From Large Project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#from-nav2-bringup">From Nav2 Bringup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html">Filtering of Noise-Induced Obstacles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#tutorial-steps">Tutorial Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#enable-denoise-layer">1. Enable Denoise Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#run-nav2-stack">2. Run Nav2 stack</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/get_profile.html">Profiling in ROS 2 / Nav2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#profile-from-a-node">Profile from a Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#profile-from-a-launch-file">Profile from a Launch File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#from-nav2-bringup">From Nav2 Bringup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/get_profile.html#interpreting-results">Interpreting Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filtering_of_noise-induced_obstacles.html#how-it-works">How it works</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/docs/docker_dev.html">Docker for Development: Zero to Hero</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#important-docker-commands">Important Docker Commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#exploring-your-first-container">Exploring Your First Container</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#understanding-ros-docker-images">Understanding ROS Docker Images</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#for-docker-based-development">For Docker-Based Development</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#building-a-development-image">Building a Development Image</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#visualizations-from-docker">Visualizations from Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="camera_calibration.html">Camera Calibration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="camera_calibration.html#tutorial-steps">Tutorial Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#for-docker-based-deployment">For Docker-Based Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#conclusion">Conclusion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#appendix">Appendix</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#nav2-development-image">Nav2 Development Image</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/docker_dev.html#nav2-deployment-image">Nav2 Deployment Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_backtrace.html">Get Backtrace in ROS 2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-a-node">From a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-a-launch-file">From a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-large-project">From Large Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_backtrace.html#automatic-backtrace-on-crash">Automatic backtrace on crash</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="get_profile.html">Profiling in ROS 2 / Nav2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="get_profile.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_profile.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_profile.html#profile-from-a-node">Profile from a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_profile.html#profile-from-a-launch-file">Profile from a Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_profile.html#from-nav2-bringup">From Nav2 Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="get_profile.html#interpreting-results">Interpreting Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_dev.html">Docker for Development: Zero to Hero</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_dev.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_dev.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_dev.html#important-docker-commands">Important Docker Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_dev.html#exploring-your-first-container">Exploring Your First Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_dev.html#understanding-ros-docker-images">Understanding ROS Docker Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_dev.html#for-docker-based-development">For Docker-Based Development</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docker_dev.html#building-a-development-image">Building a Development Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_dev.html#visualizations-from-docker">Visualizations from Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="docker_dev.html#for-docker-based-deployment">For Docker-Based Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_dev.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_dev.html#appendix">Appendix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docker_dev.html#nav2-development-image">Nav2 Development Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_dev.html#nav2-deployment-image">Nav2 Deployment Image</a></li>
 </ul>
 </li>
 </ul>
@@ -1060,9 +1060,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../index.html">Development Guides</a></li>
-          <li class="breadcrumb-item"><a href="index.html">Dev Containers</a></li>
-      <li class="breadcrumb-item active">Dev Container Guide</li>
+          <li class="breadcrumb-item"><a href="../index.html">General Tutorials</a></li>
+      <li class="breadcrumb-item active">Using Docking Server</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1071,265 +1070,336 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="dev-container-guide">
-<span id="devcontainer-guide"></span><h1>Dev Container Guide<a class="headerlink" href="#dev-container-guide" title="Permalink to this headline">¶</a></h1>
-<p>In this guide, we’ll walk through the process of creating and using dev containers for the project. While included subsections will provide greater detail on the various aspects of the process, complete comprehension of the entire guide is not required to get started, but is recommended for those interested in how dev containers work, or how to customize and optimize them for their own personal workflows.</p>
-<div class="section" id="creating-dev-containers">
-<h2>Creating Dev Containers<a class="headerlink" href="#creating-dev-containers" title="Permalink to this headline">¶</a></h2>
-<p>Before creating a dev container, you’ll want to choose the exact configuration to use. By default the <code class="docutils literal notranslate"><span class="pre">.devcontainer/devcontainer.json</span></code> configuration is selected, however you can also choose any other <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> file in the <code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> directory, where such configurations can be nested to provide greater customization: either by targeting different stages within different Dockerfiles, overriding any merged metadata or default properties, or inclusion of additional extensions and alternate commands.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>The specification, reference, and schema for the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file format can be found here:</p>
+  <div class="section" id="using-docking-server">
+<span id="docking-tutorial"></span><h1>Using Docking Server<a class="headerlink" href="#using-docking-server" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p><a class="reference external" href="https://containers.dev/implementors/spec">Specification</a></p>
-<ul>
-<li><p>Development Container Specification</p></li>
+<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
+<li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#chargingdock-plugins">ChargingDock Plugins</a></p></li>
+<li><p><a class="reference internal" href="#dock-database">Dock Database</a></p></li>
+<li><p><a class="reference internal" href="#configuring-docking-server">Configuring Docking Server</a></p></li>
+<li><p><a class="reference internal" href="#adding-docking-server-to-launch">Adding Docking Server to Launch</a></p></li>
+<li><p><a class="reference internal" href="#putting-it-all-together">Putting It All Together</a></p></li>
 </ul>
-</li>
-<li><p><a class="reference external" href="https://containers.dev/implementors/json_reference">Reference</a></p>
-<ul>
-<li><p>Metadata and properties reference</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://containers.dev/implementors/json_schema">Schema</a></p>
-<ul>
-<li><p>JSON schema for <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code></p></li>
-</ul>
-</li>
-</ul>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial shows how to use the Docking Server with Nav2 robot systems.
+The Docking Server is a general framework which can be used with arbitrary types of robots and charging docks in order to auto-dock them.
+This is accomplished via plugin <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> s which implement the dock specifics like detecting the pose of the dock using sensor data, how to detect when the robot is in contact with the dock, and when charging has successfully started.
+A configuration of the docking server can contain a database of many docks of different plugin <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> types to handle a broad range of docking locations and hardware dock revisions.
+Included with the package is an example <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> plugin which contains features and methods very common for robot docking.
+It is likely that you may be able to use this as well rather than developing your own charging dock plugin to get started.</p>
+<p>The docking procedure is as follows:</p>
+<ol class="arabic simple">
+<li><p>Take action request and obtain the dock’s plugin and its pose</p></li>
+<li><p>If the robot is not within the prestaging tolerance of the dock’s staging pose, navigate to the staging pose</p></li>
+<li><p>Use the dock’s plugin to initially detect the dock and return the docking pose</p></li>
+<li><p>Enter a vision-control loop where the robot attempts to reach the docking pose while its actively being refined by the vision system</p></li>
+<li><p>Exit the vision-control loop once contact has been detected or charging has started</p></li>
+<li><p>Wait until charging starts and return success.</p></li>
+</ol>
+<p>Thanks to NVIDIA for sponsoring this Docking Server package and this tutorial!
+You can find how to dock your Nova Carter robot using Nav2 and this work in the <a class="reference external" href="https://github.com/open-navigation/opennav_docking/tree/main/nova_carter_docking">nova_carter_docking package</a>!</p>
+<h1 align="center">
+  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/leiGkSVnQak?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+  </div>
+</h1></div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>It is assumed ROS2 and Nav2 dependent packages are installed or built locally - including <code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code>.
+Please make sure that Nav2 project is also built locally, see <a class="reference internal" href="../../development_guides/build_docs/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a> for reference.</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> README for complete concept explanations, parameters, and APIs.</p>
 </div>
-<div class="section" id="building-the-image">
-<h3>Building the image<a class="headerlink" href="#building-the-image" title="Permalink to this headline">¶</a></h3>
-<p>When first creating Dev Containers, any supporting tool or service used will download and build the docker images needed to run the container. This includes pulling any parent images the project’s Dockerfile builds <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, as well as any tags or layers declared via <code class="docutils literal notranslate"><span class="pre">cacheFrom</span></code>, as specified in the chosen <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file. This can take a while, but only needs to be done once, or at least not again until such layers are updated and pushed to the image registry.</p>
-<p>Specifically, for this project, the default <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> file targets the <code class="docutils literal notranslate"><span class="pre">dever</span></code> stage within the project’s root Dockerfile, the stage that also includes handy tools for developing the project, such as bash auto completion. This stage is in turn built <code class="docutils literal notranslate"><span class="pre">FROM</span></code> the <code class="docutils literal notranslate"><span class="pre">builder</span></code> stage, the stage that only includes the dependencies needed for building the project, as reused by the project’s CI. For example, the <code class="docutils literal notranslate"><span class="pre">dever</span></code> stage modifies <code class="docutils literal notranslate"><span class="pre">/etc/bash.bashrc</span></code> to automatically source <code class="docutils literal notranslate"><span class="pre">install/setup.bash</span></code> from the underlay workspace, ensuring all VS Code extensions are loaded with the correct environment, while avoiding any race conditions during installation and startup.</p>
-<p>To speed up the initial build, images layers from this <code class="docutils literal notranslate"><span class="pre">builder</span></code> stage are cached by pulling the same image tag used by the project’s CI, hosted from the image registry. This ensures your local dev container replicates our CI environment as close as possible, while benefiting from any cached work preemptively performed by the CI. Yet, this still allows you to customize the project’s Dockerfile and rebuild the container, without needing to update CI images to reflect your local modifications.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>More details on the project’s CI and related docker image registry can be found here:</p>
+<div class="section" id="chargingdock-plugins">
+<h2>ChargingDock Plugins<a class="headerlink" href="#chargingdock-plugins" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">opennav_docking_core::ChargingDock</span></code> plugins are established to abstract out robot- and dock-specifics from the generalized framework.
+This allows a system to leverage this framework and provide its own methods for detecting the dock’s current pose, when the robot is charging, and when contact is made.
+Luckily, there are several common ROS APIs that allow us to create a semi-generalized <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> plugin that allows out-of-the-box docking as long as users provide <code class="docutils literal notranslate"><span class="pre">JointState</span></code>, <code class="docutils literal notranslate"><span class="pre">BatteryState</span></code>, and detected dock pose <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> topics.
+However, one way or another, your system requires an applicable <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> plugin for each type of dock you wish to use.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> plugin has a few key APIs:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://vimeo.com/649647161/5b0c278e6c">Chronicles of Caching and Containerising CI for Nav2</a></p>
-<ul>
-<li><p>Video presentation from ROS World 2021 - Ruffin White</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PoseStamped</span> <span class="pre">getStagingPose(const</span> <span class="pre">Pose</span> <span class="pre">&amp;</span> <span class="pre">pose,</span> <span class="pre">const</span> <span class="pre">string</span> <span class="pre">&amp;</span> <span class="pre">frame)</span></code> which must provide the pre-docking staging pose given a dock’s location and frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">getRefinedPose(PoseStamped</span> <span class="pre">&amp;</span> <span class="pre">pose)</span></code> which must provide the detected (or pass through) pose of the dock</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">isDocked()</span></code> which provides if we’ve made contact with the dock</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">isCharging()</span></code> which provides if we’ve started charging while docked</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">disableCharging()</span></code> which should disable charging, if under the robot’s control for undocking</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">hasStoppedCharging()</span></code> which indicates if we’ve successfully stopped charging on undocking</p></li>
 </ul>
-</li>
-</ul>
-</div>
-<p>Once the base image from the target stage is built, the supporting tool or service may then add additional layers to the image, such as installing additional <a class="reference external" href="https://containers.dev/features">features</a> or customizations. For VS Code, this also includes some fancy file caching for any extensions to install later. Once this custom image is built, it is then used to start the dev container.</p>
-</div>
-<div class="section" id="starting-the-container">
-<h3>Starting the container<a class="headerlink" href="#starting-the-container" title="Permalink to this headline">¶</a></h3>
-<p>When first creating Dev Containers, any supporting tool or service will invoke a sequence of commands specified in the chosen <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file. This can take a while, but only needs to be done once, or at least not again until the container is rebuilt, triggered by either updating the Dockerfile, base image, or <code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> config.</p>
-<p>Specifically, for this project, the default <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config executes the <code class="docutils literal notranslate"><span class="pre">onCreateCommand</span></code> to initially colcon cache, clean, and build the overlay workspace for the project. This ensures the workspace is precompiled and ready to use, while also ensuring any changes to the project’s source code are reflected in the container. This is useful for:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> provides an implementation with common options for these APIs:</p>
 <ul class="simple">
-<li><p>IntelliSense</p>
-<ul>
-<li><p>Enables VS Code extensions to parse auto generated code</p></li>
-<li><p>Applicable for ROS package defining messages and services files</p></li>
-<li><p>Necessary for code modeling, navigation, and syntax highlighting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getStagingPose</span></code> - Finds a relative offset pose with translation and rotation from the dock’s pose</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getRefinedPose</span></code> - Filters a detected pose topic of type <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> into the fixed frame <em>or</em> is a pass through function returning the dock’s database location if detection is not enabled</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isDocked</span></code> - Returns as dock if a pose tolerance is met relative to the dock <em>or</em> if the <code class="docutils literal notranslate"><span class="pre">JointStates</span></code> of the motors detect a clear spike due to stalling by driving into the dock’s surface, if enabled</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isCharging</span></code> - Returns charging if <code class="docutils literal notranslate"><span class="pre">isDocked</span></code> <em>or</em> if <code class="docutils literal notranslate"><span class="pre">BatteryState</span></code>’s current is above a threshold, if enabled</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disableCharging</span></code> - Always <code class="docutils literal notranslate"><span class="pre">true</span></code>, considers disable of charging as automatic when robot leaves dock</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hasStoppedCharging</span></code> - The inverse of <code class="docutils literal notranslate"><span class="pre">isCharging</span></code></p></li>
 </ul>
-</li>
-<li><p>Caching</p>
-<ul>
-<li><p>Enables Codespace Prebuilds to cache the workspace artifacts</p></li>
-<li><p>Applicable for reducing startup time when spawning new Codespaces</p></li>
-<li><p>Necessary for limiting costs from CPU and storage usage</p></li>
-</ul>
-</li>
-</ul>
-<p>While the colcon workspace is being built, VS Code will simultaneously install any specified extensions and settings. Next the <code class="docutils literal notranslate"><span class="pre">updateContentCommand</span></code> is executed, which reruns whenever the container is started or restarted. Specifically, for this project, this command re-cleans and re-builds the same colcon workspace as before, but only for invalidated packages detected by colcon cache using the lockfiles initialized during the <code class="docutils literal notranslate"><span class="pre">onCreateCommand</span></code>. This caching behavior also replicates the project’s CI workflow. This is useful for:</p>
-<ul class="simple">
-<li><p>Branching</p>
-<ul>
-<li><p>Enables caching of workspace artifacts when switching between branches</p></li>
-<li><p>Applicable for reviewing pull requests without rebuilding entire container</p></li>
-<li><p>Necessary for reducing startup time when spawning new Codespaces</p></li>
-</ul>
-</li>
-</ul>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>More documentation about these additional colcon verb extensions can be found here:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ruffsl/colcon-cache">colcon-cache</a></p>
-<ul>
-<li><p>A colcon extension to cache the processing of packages</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/colcon/colcon-clean">colcon-clean</a></p>
-<ul>
-<li><p>A colcon extension to clean package workspaces</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<p>Finally, the <code class="docutils literal notranslate"><span class="pre">postCreateCommand</span></code> is executed, which also reruns whenever the container is started or restarted. Specifically, for this project, this command makes a last few tweaks to the user’s environment to improve the development experience.</p>
-<p>To speed up subsequent startups, volumes that are mounted to the container store a persistent ccache and colcon workspace, while the environment is set to enable <a class="reference external" href="https://ccache.dev/">ccache</a> via <a class="reference external" href="https://github.com/colcon/colcon-mixin-repository">colcon mixins</a>. These volumes are labeled using the <a class="reference external" href="https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson"><code class="docutils literal notranslate"><span class="pre">devcontainerId</span></code></a> variable, which uniquely identify the dev container on a Docker host, allowing us to refer to a common identifier that is unique to the dev container, while remaining stable across rebuilds. This is useful for:</p>
-<ul class="simple">
-<li><p>Caching</p>
-<ul>
-<li><p>Enables colcon workspaces and ccache to persist between container rebuilds</p></li>
-<li><p>Applicable for avoiding re-compilation when modifying dev container config files</p></li>
-<li><p>Necessary for quickly customizing image or features without rebuilding from scratch</p></li>
-</ul>
-</li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>While these volumes are uniquely named, you could rename them locally to further organize or segment works-in-progress. E.g. appending branch names to the volume name to quickly switch between pull requests and cached colcon workspaces.</p>
-</div>
-<p>Additionally, the container can be granted <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/run/#privileged">privileged</a> and non-default <a class="reference external" href="https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities">Linux capabilities</a>, connected using the <a class="reference external" href="https://docs.docker.com/network/host/">host</a> network mode and <a class="reference external" href="https://docs.docker.com/engine/reference/run/#ipc-settings---ipc">IPC</a> and <a class="reference external" href="https://docs.docker.com/engine/reference/run/#pid-settings---pid">PID</a> spaces, with a relaxed <a class="reference external" href="https://docs.docker.com/engine/reference/run/#security-configuration">security configuration</a> and seccomp confinement for native debugging and external connectivity. This is useful for:</p>
-<ul class="simple">
-<li><p>Hybrid development</p>
-<ul>
-<li><p>Enables connecting ROS nodes external to the container</p></li>
-<li><p>Applicable for debugging or visualizing distributed systems</p></li>
-<li><p>Necessary for DDS discovery and shared memory transport</p></li>
-</ul>
-</li>
-<li><p>Device connectivity</p>
-<ul>
-<li><p>Enables hardware forwarding from host machine to container</p></li>
-<li><p>Applicable for ROS package using sensors and actuators</p></li>
-<li><p>Necessary for some GPU drivers and USB devices</p></li>
-</ul>
-</li>
-</ul>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>Such <code class="docutils literal notranslate"><span class="pre">runArgs</span></code> in the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config can be enabled or customized, either expanded or narrowed in scope, to better suit your desired development environment. The default configuration merely comments out these parameters, to limit unintended side effects or cross talk between containers, but can be uncommented to accommodate the widest range of development use cases.</p>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>More details on using DDS, debuggers, or devices with Docker containers can be found here:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://community.rti.com/kb/how-use-rti-connext-dds-communicate-across-docker-containers-using-host-driver">How to Communicate Across Docker Containers Using the Host Driver</a></p>
-<ul>
-<li><p>Using the <code class="docutils literal notranslate"><span class="pre">host</span></code> network driver to access all network interfaces of the host machine from the Docker container</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://community.rti.com/kb/communicate-between-two-docker-containers-using-rti-connext-dds-and-shared-memory">Communicate between two Docker containers using DDS and shared memory</a></p>
-<ul>
-<li><p>Enabling containers to communicate with one another and with the host machine using interprocess communication (IPC)</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://nvartolomei.com/debugging-programs-running-inside-docker-containers--in-production/">Debugging programs running inside Docker containers, in production</a></p>
-<ul>
-<li><p>Using tools like strace, perf, gdb when debugging programs running inside containers</p></li>
-</ul>
-</li>
-</ul>
+<p>Thus, for testing (no detection, no battery information, no joint state information) and realistic application (dock detection, battery status information, joint state information), this dock plugin can be used.
+It can also be used when only some of the information if available as well.
+If your robot or dock does not fall into these implementations (i.e. using custom battery or detection messages that cannot be converted into ROS standard types), then you may be required to build your own plugin to meet your particular needs.
+However, you can use the <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> assuming you turn off these settings and dock blind to get started.</p>
+<p>If you do not currently have a way to detect your dock, dock detection can be done easily using Apriltags and the <a class="reference external" href="https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag">isaac_ros_apriltag</a> or <a class="reference external" href="https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp">ROS image_proc</a> nodes to get started.
+Use the Isaac ROS if using a Jetson platform to obtain a GPU optimized pipeline with your camera feeds.
+The defaults support this out of the box, see <code class="docutils literal notranslate"><span class="pre">nova_carter_docking</span></code> for an example.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important to note that you should provide detected dock poses, battery status information for charging, and motor controller efforts for the highest quality and reliable docking for production use.</p>
 </div>
 </div>
+<div class="section" id="dock-database">
+<h2>Dock Database<a class="headerlink" href="#dock-database" title="Permalink to this headline">¶</a></h2>
+<p>To dock your robot, you must provide the set of docks in your environment you’d like to utilize.
+This is done in the docking server via the <em>Dock Database</em> which contains the set of docks, their instance types, and a set of shared plugins.
+The plugins are separated from the dock instances so that many instances can share the same plugin to save on memory and networking overhead when potentially dozens or more docks exist in a space.</p>
+<p>The docks plugins must be provided in your docking server’s configuration file.
+However, the dock instance may be provided either in the configuration file <em>or</em> within a provided filepath to decouple the server’s configuration from a particular application environment.
+The example below shows an inline configuration of the docking plugins and dock instances where one dock type (<code class="docutils literal notranslate"><span class="pre">nova_carter_dock</span></code>) is specified with 3 individual instances: a home dock, and 2 general shared fallback docks.
+The docks can be specified as <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code> in any reference frame you like, as long as TF is aware of them.
+Please update these with your own docking plugin and dock locations in your map.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">docking_server</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Types of docks</span>
+<span class="w">    </span><span class="nt">dock_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;nova_carter_dock&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">nova_carter_dock</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;opennav_docking::SimpleChargingDock&#39;</span>
+<span class="w">      </span><span class="c1"># More parameters exist here that we will discuss later in the tutorial</span>
+
+<span class="w">    </span><span class="c1"># Dock instances</span>
+<span class="w">    </span><span class="nt">docks</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;home_dock&#39;</span><span class="p p-Indicator">,</span><span class="s">&#39;flex_dock1&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;flex_dock2&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">home_dock</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nova_carter_dock&#39;</span>
+<span class="w">      </span><span class="nt">frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
+<span class="w">      </span><span class="nt">pose</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">flex_dock1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nova_carter_dock&#39;</span>
+<span class="w">      </span><span class="nt">frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
+<span class="w">      </span><span class="nt">pose</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">flex_dock2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nova_carter_dock&#39;</span>
+<span class="w">      </span><span class="nt">frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
+<span class="w">      </span><span class="nt">pose</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">30.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">30.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="c1"># Or use</span>
+<span class="w">    </span><span class="c1"># dock_database: /my/path/to/dock_database.yaml</span>
+</pre></div>
 </div>
-<div class="section" id="using-dev-containers">
-<h2>Using Dev Containers<a class="headerlink" href="#using-dev-containers" title="Permalink to this headline">¶</a></h2>
-<p>Once the dev container has been created and setup completed, VS Code will open a new workspace directly from the project’s root directory, which itself is mounted within the source directory in the overlay colcon workspace. From here you can build, test, and debug the project as you normally would, with the added benefit of having the project’s dependencies, intellisense, linters, and other extensions pre-configured and ready to use. Simply open a new terminal (Crtl+Shift+`), cd to the root of the colcon workspace, and run the usual colcon commands.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can incorporate the same scripts used by the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file to further automate your local development workflow.</p>
+<p>The analog of this is shown below as an independent <code class="docutils literal notranslate"><span class="pre">dock_database.yaml</span></code> which can be provided to the <code class="docutils literal notranslate"><span class="pre">docking_server</span></code> via the <code class="docutils literal notranslate"><span class="pre">dock_database</span></code> parameter.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">docks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">home_dock</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nova_carter_dock&quot;</span>
+<span class="w">    </span><span class="nt">frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
+<span class="w">    </span><span class="nt">pose</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">flex_dock1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nova_carter_dock&quot;</span>
+<span class="w">    </span><span class="nt">frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
+<span class="w">    </span><span class="nt">pose</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">flex_dock2</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nova_carter_dock&quot;</span>
+<span class="w">    </span><span class="nt">frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
+<span class="w">    </span><span class="nt">pose</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">20.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">20.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+</pre></div>
 </div>
-<div class="section" id="terminals">
-<h3>Terminals<a class="headerlink" href="#terminals" title="Permalink to this headline">¶</a></h3>
-<p>If you prefer using an alternate terminal emulator, rather than the built-in VS Code terminal, you can open a separate shell session by simply using the Dev Container CLI or directly using the Docker CLI via the <code class="docutils literal notranslate"><span class="pre">exec</span></code> subcommands.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://code.visualstudio.com/docs/devcontainers/devcontainer-cli">Dev Container CLI</a></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">devcontainer</span> <span class="pre">exec</span> <span class="pre">--workspace-folder</span> <span class="pre">$NAV2_WS/src/navigation2</span> <span class="pre">bash</span></code></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://docs.docker.com/engine/reference/commandline/exec/">docker exec
-</a></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">&lt;container-id&gt;</span> <span class="pre">bash</span></code></p></li>
-</ul>
-</li>
-</ul>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>Shell sessions spawned directly via <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> do not set the same environment that <code class="docutils literal notranslate"><span class="pre">devcontainer</span> <span class="pre">exec</span></code> does using <code class="docutils literal notranslate"><span class="pre">userEnvProbe</span></code>. Additional environment variables include <code class="docutils literal notranslate"><span class="pre">REMOTE_CONTAINERS_IPC</span></code>, <code class="docutils literal notranslate"><span class="pre">REMOTE_CONTAINERS_SOCKETS</span></code> and are used by vscode, ssh and X11.</p>
+<p>Note that you are required to provide at least 1 dock plugin and 1 dock instance.
+The Docking Server’s Action API can take in a dock’s instance information separately to bypass the database, but its plugin must exist in the server’s configuration.
+If you plan to only use this API, you can set a <code class="docutils literal notranslate"><span class="pre">dummy_dock</span></code>.
+Generally speaking, its wise to set your docks in the database and use the Docking Server’s API to dock at an instance’s Dock ID to decouple the semantic information about docks from the action request (requiring your application instead to have all of the docks’ locations), but bypassing the database can be useful for testing.</p>
+<p>The dock poses in the map can be annotated using your favorite map editing tools, obtained by <code class="docutils literal notranslate"><span class="pre">/clicked_point</span></code> in rviz2, or measured location.</p>
 </div>
-<div class="dropdown admonition hint">
-<p class="admonition-title">Hint</p>
-<p>The environment provided by <code class="docutils literal notranslate"><span class="pre">userEnvProbe</span></code> can be sourced manually. E.g. for the default <code class="docutils literal notranslate"><span class="pre">loginInteractiveShell</span></code> probe:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>/tmp<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-path<span class="w"> </span><span class="s2">&quot;*/devcontainers-*/env-loginInteractiveShell.json&quot;</span><span class="w"> </span>-exec<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;to_entries | .[] | &quot;\(.key)=\(.value | @sh)&quot;&#39;</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span>&gt;<span class="w"> </span>.env
-<span class="nb">source</span><span class="w"> </span>.env
+<div class="section" id="configuring-docking-server">
+<h2>Configuring Docking Server<a class="headerlink" href="#configuring-docking-server" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have both a plugin for interacting with a dock and specified the locations of docks in your map, we’re ready to configure the docking server.
+For this example, we’re going to use the Nvidia-Segway Nova Carter Robot and you can find the source code of this demo in the <code class="docutils literal notranslate"><span class="pre">nova_carter_docking</span></code> package.
+For a full list of parameters and their descriptions, check out the <a class="reference internal" href="../../configuration/packages/configuring-docking-server.html#configuring-docking-server"><span class="std std-ref">Docking Server</span></a>.</p>
+<p>Below is an example configuration used by the Nova Carter robot.
+Notable is the setting of the <code class="docutils literal notranslate"><span class="pre">fixed_frame</span></code> to <code class="docutils literal notranslate"><span class="pre">odom</span></code>, not <code class="docutils literal notranslate"><span class="pre">map</span></code> in order to decouple localization error from the docking procedure.
+We also use one dock plugin <code class="docutils literal notranslate"><span class="pre">nova_carter_dock</span></code> for all <code class="docutils literal notranslate"><span class="pre">N</span></code> docks specified in the <code class="docutils literal notranslate"><span class="pre">dock_database</span></code> file.</p>
+<p>The simple charging dock plugin uses a 70cm staging offset from the dock’s database pose for staging.
+This staging pose is selected as close enough to detect the dock but far enough away to give maneuvering space to account for expected dock movement or localization error.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">use_stall_detection</span></code> for the <code class="docutils literal notranslate"><span class="pre">JointStates</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, we are considered successfully docked once we’re within <code class="docutils literal notranslate"><span class="pre">docking_threshold</span></code> (5cm) to the docking pose.
+This docking pose is specified as the detected pose with the <code class="docutils literal notranslate"><span class="pre">external_detection_*</span></code> offsets applied to account for the robot’s intended docking pose relative to the detected feature.
+In this example, Apriltags are used, so we apply the rotations to the Apriltag detected frame and a <code class="docutils literal notranslate"><span class="pre">-0.18</span></code> translational offset to account for the pose the robot should be in when docked relative to the tag’s pose.
+Since <code class="docutils literal notranslate"><span class="pre">use_external_detection_pose</span></code> and <code class="docutils literal notranslate"><span class="pre">use_battery_status</span></code> are both enabled, we use both detected dock poses (apriltag) and battery state information for determining if we’re charging.</p>
+<p>The maximum speed is 15 cm/s to slowly and carefully back into the dock and we’ll retry docking 3x in case charging is not detected or we lose detected dock tracks during the attempt.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">docking_server</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50.0</span>
+<span class="w">    </span><span class="nt">initial_perception_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="w">    </span><span class="nt">wait_charge_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="w">    </span><span class="nt">dock_approach_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span>
+<span class="w">    </span><span class="nt">undock_linear_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">    </span><span class="nt">undock_angular_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">    </span><span class="nt">max_retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="nt">base_frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_link&quot;</span>
+<span class="w">    </span><span class="nt">fixed_frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
+<span class="w">    </span><span class="nt">dock_backwards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">dock_prestaging_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+
+<span class="w">    </span><span class="c1"># Types of docks</span>
+<span class="w">    </span><span class="nt">dock_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;nova_carter_dock&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">nova_carter_dock</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;opennav_docking::SimpleChargingDock&#39;</span>
+<span class="w">      </span><span class="nt">docking_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">      </span><span class="nt">staging_x_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.7</span>
+<span class="w">      </span><span class="nt">use_external_detection_pose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">use_battery_status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">use_stall_detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">      </span><span class="nt">external_detection_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">external_detection_translation_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.18</span>
+<span class="w">      </span><span class="nt">external_detection_translation_y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">      </span><span class="nt">external_detection_rotation_roll</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.57</span>
+<span class="w">      </span><span class="nt">external_detection_rotation_pitch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.57</span>
+<span class="w">      </span><span class="nt">external_detection_rotation_yaw</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">      </span><span class="nt">filter_coef</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+
+<span class="w">    </span><span class="c1"># Sep. file of dock instances so config file can be used in multiple locations</span>
+<span class="w">    </span><span class="nt">dock_database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/my/path/to/dock_database.yaml</span>
+
+<span class="w">    </span><span class="nt">controller</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">k_phi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
+<span class="w">      </span><span class="nt">k_delta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">      </span><span class="nt">v_linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.15</span>
+<span class="w">      </span><span class="nt">v_linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.15</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="adding-docking-server-to-launch">
+<h2>Adding Docking Server to Launch<a class="headerlink" href="#adding-docking-server-to-launch" title="Permalink to this headline">¶</a></h2>
+<p>This server can now be added to your launch file with the path to this parameter file for use (or added to your main shared configuration file).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nova_carter_dock_params_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;nova_carter_docking&#39;</span><span class="p">),</span> <span class="s1">&#39;params&#39;</span><span class="p">)</span>
+<span class="n">params_file</span> <span class="o">=</span> <span class="n">default_value</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nova_carter_dock_params_dir</span><span class="p">,</span> <span class="s1">&#39;nova_carter_docking.yaml&#39;</span><span class="p">)</span>
+
+<span class="n">docking_server</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;opennav_docking&#39;</span><span class="p">,</span>
+    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;opennav_docking&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;docking_server&#39;</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">params_file</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="lifecycle">
-<h3>Lifecycle<a class="headerlink" href="#lifecycle" title="Permalink to this headline">¶</a></h3>
-<p>While using the dev container, try and keep in mind the lifecycle of the container itself. Specifically, containers are ephemeral, meaning they are normally destroyed and recreated whenever the dev environment is rebuilt or updated. Subsequently, a best practice is to avoid storing any persistent data within the container, and instead utilize the project’s source directory, or a separate mounted volume. When altering the development environment inside the container, try to remember to codify your changes into the Dockerfile, or the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file, so that they can be easily reproduced and shared with others.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>This is particularly important when the host machine is inherently ephemeral as well, as the case may be when using cloud based environments such as Codespaces, so be sure to commit and push local changes to a remote repository:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Docking Server is also a composible node like others in Nav2, so you may also launch it within the Nav2 process using <code class="docutils literal notranslate"><span class="pre">LoadComposableNodes/ComposableNode</span></code>.</p>
+</div>
+</div>
+<div class="section" id="docking-action-api">
+<h2>Docking Action API<a class="headerlink" href="#docking-action-api" title="Permalink to this headline">¶</a></h2>
+<p>The API for docking and undocking is comparatively simple.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">DockRobot</span></code> action consists of two main modalities: using the dock database or specifying a dock to use in the action.
+If using the database, set <code class="docutils literal notranslate"><span class="pre">use_dock_id</span> <span class="pre">=</span> <span class="pre">True</span></code> (default) and you only need to specify the <code class="docutils literal notranslate"><span class="pre">dock_id</span></code> you wish to use, such as <code class="docutils literal notranslate"><span class="pre">home_dock</span></code>, <code class="docutils literal notranslate"><span class="pre">flex_dock1</span></code>, or whatever dock instance you like.
+If bypassing the database, <code class="docutils literal notranslate"><span class="pre">use_dock_id</span></code> must be set to false and <code class="docutils literal notranslate"><span class="pre">dock_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">dock_type</span></code> must be fully specified to make up for the lack of entry metadata in the database.
+This requires the action caller to know about all of the docks, rather than pushing that into the Docking Server’s database, which is not recommended.</p>
+<p>Optionally, you can disable using Nav2 to navigate to the staging pose if outside of the pre-staging tolerance using <code class="docutils literal notranslate"><span class="pre">navigate_to_staging_pose</span> <span class="pre">=</span> <span class="pre">False</span></code> or set the maximum time for staging navigation <code class="docutils literal notranslate"><span class="pre">max_staging_time</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#goal definition</span>
+bool<span class="w"> </span>use_dock_id<span class="w"> </span>True<span class="w">  </span><span class="c1"># Whether to use the dock_id or dock_pose fields</span>
+string<span class="w"> </span>dock_id<span class="w">  </span><span class="c1"># Dock name or ID to dock at, from given dock database</span>
+
+geometry_msgs/PoseStamped<span class="w"> </span>dock_pose<span class="w">  </span><span class="c1"># Dock pose</span>
+string<span class="w"> </span>dock_type<span class="w">  </span><span class="c1"># If using dock_pose, what type of dock it is. Not necessary if only using one type of dock.</span>
+
+float32<span class="w"> </span>max_staging_time<span class="w"> </span><span class="m">1000</span>.0<span class="w">  </span><span class="c1"># Maximum time for navigation to get to the dock&#39;s staging pose.</span>
+bool<span class="w"> </span>navigate_to_staging_pose<span class="w"> </span>True<span class="w">  </span><span class="c1"># Whether or not to navigate to staging pose or assume robot is already at staging pose within tolerance to execute behavior</span>
+
+---
+<span class="c1">#result definition</span>
+bool<span class="w"> </span>success<span class="w"> </span>True<span class="w">  </span><span class="c1"># docking success status</span>
+uint16<span class="w"> </span>error_code<span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="c1"># Contextual error code, if any</span>
+uint16<span class="w"> </span>num_retries<span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="c1"># Number of retries attempted</span>
+
+---
+<span class="c1">#feedback definition</span>
+uint16<span class="w"> </span>state<span class="w">  </span><span class="c1"># Current docking state</span>
+builtin_interfaces/Duration<span class="w"> </span>docking_time<span class="w">  </span><span class="c1"># Docking time elapsed</span>
+uint16<span class="w"> </span>num_retries<span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="c1"># Number of retries attempted</span>
+</pre></div>
+</div>
+<p>In result, you obtain if the action was successful, if it wasn’t what the error code was, and the total number of retries attempted.
+During execution, feedback is provided on the current docking state - which is published irregularly only when an event occurs. It contains the state, the current total elapsed duration of attempted docking, and the current number of retries.
+The feedback can be obtained from your action client if this information is useful to your application.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">UndockRobot</span></code> action is even simpler. There are no required goal fields except <code class="docutils literal notranslate"><span class="pre">dock_type</span></code> if undocking is being called when the server’s instance did not dock the robot to store its current state information (such as after a restart on the dock).
+It contains no feedback and returns the <code class="docutils literal notranslate"><span class="pre">success</span></code> state and the <code class="docutils literal notranslate"><span class="pre">error_code</span></code> if a problem occurs.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#goal definition</span>
+string<span class="w"> </span>dock_type
+float32<span class="w"> </span>max_undocking_time<span class="w"> </span><span class="m">30</span>.0<span class="w"> </span><span class="c1"># Maximum time to undock</span>
+
+---
+<span class="c1">#result definition</span>
+bool<span class="w"> </span>success<span class="w"> </span>True<span class="w">  </span><span class="c1"># docking success status</span>
+uint16<span class="w"> </span>error_code<span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="c1"># Contextual error code, if any</span>
+
+---
+<span class="c1">#feedback definition</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="putting-it-all-together">
+<h2>Putting It All Together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h2>
+<p>At this point, if you haven’t already, create your dock plugin (or use <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code>), configuration file, and launch file - along with any other nodes required like apriltags or other detectors.
+You can see an example package used in this tutorial in the <code class="docutils literal notranslate"><span class="pre">nova_carter_docking</span></code> package, which contains a configuration file and launch file containing the apriltags detector and <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> pose publisher.</p>
+<p>If you’re interested in using Apriltags and an Nvidia Jetson, you can find the tags we used in the <code class="docutils literal notranslate"><span class="pre">media/</span></code> directory and the launch file <code class="docutils literal notranslate"><span class="pre">isaac_apriltag_detection_pipeline.launch.py</span></code> which sets it all up for you.
+If not using the Jetson, you can replace the Isaac ROS apriltag detector with <code class="docutils literal notranslate"><span class="pre">image_proc</span></code>.</p>
+<p>We can test this using the script <code class="docutils literal notranslate"><span class="pre">demo.py</span></code> in <code class="docutils literal notranslate"><span class="pre">nova_carter_docking</span></code>’s root directory.
+It will set the robot’s pose as virtually the dock’s staging pose to bypass navigating to the staging pose and attempt docking immediately, then infinitely loop docking and undocking in a row.
+This is a useful first-time setup to try docking, refine your detection offsets, and obtain reliability metrics of your complete system.
+See the video below of this all at work!</p>
+<h1 align="center">
+  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/J3ygkehttlg?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+  </div>
+</h1><p>Note that the robot is able to overcome:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.github.com/en/codespaces/getting-started/the-codespace-lifecycle">The codespace lifecycle</a></p>
-<ul>
-<li><p>Maintain your data throughout the entire codespace lifecycle</p></li>
+<li><p>Large distances away from the dock staging pose, as long as the dock was in view</p></li>
+<li><p>Able to detect the dock’s offsets and compute controls to dock successfully - including when we manually move it during and between runs</p></li>
+<li><p>Dock repeatedly with a 100% success rate due to the detections and charging state feedback</p></li>
 </ul>
-</li>
-</ul>
+<p>This script demonstrates the essential use of the Docking Server.
+However, it does not use the dock database of pre-mapped dock locations that you setup.
+After you launch Nav2 and localize your robot in your map, we can adjust <code class="docutils literal notranslate"><span class="pre">dockRobot()</span></code> to take in your desired <code class="docutils literal notranslate"><span class="pre">dock_id</span></code> and perform docking instead:
+Then, we can see the full docking system in action in a non-trivial environment!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dockRobot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dock_id</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Send a `DockRobot` action request.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Waiting for &#39;DockRobot&#39; action server&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">docking_client</span><span class="o">.</span><span class="n">wait_for_server</span><span class="p">(</span><span class="n">timeout_sec</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;DockRobot&quot; action server not available, waiting...&#39;</span><span class="p">)</span>
+
+    <span class="n">goal_msg</span> <span class="o">=</span> <span class="n">DockRobot</span><span class="o">.</span><span class="n">Goal</span><span class="p">()</span>
+    <span class="n">goal_msg</span><span class="o">.</span><span class="n">use_dock_id</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">goal_msg</span><span class="o">.</span><span class="n">dock_id</span> <span class="o">=</span> <span class="n">dock_id</span>  <span class="c1"># if wanting to use ID instead</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Docking at ID: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dock_id</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span><span class="p">)</span>
+    <span class="n">send_goal_future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">docking_client</span><span class="o">.</span><span class="n">send_goal_async</span><span class="p">(</span><span class="n">goal_msg</span><span class="p">,</span>
+                                                            <span class="bp">self</span><span class="o">.</span><span class="n">_feedbackCallback</span><span class="p">)</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin_until_future_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">send_goal_future</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">goal_handle</span> <span class="o">=</span> <span class="n">send_goal_future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">goal_handle</span><span class="o">.</span><span class="n">accepted</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Docking request was rejected!&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">result_future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">goal_handle</span><span class="o">.</span><span class="n">get_result_async</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="o">...</span>
+
+<span class="n">dock_id</span> <span class="o">=</span> <span class="s1">&#39;home_dock&#39;</span>
+<span class="n">tester</span><span class="o">.</span><span class="n">dockRobot</span><span class="p">(</span><span class="n">dock_id</span><span class="p">)</span>
+</pre></div>
 </div>
-</div>
-<div class="section" id="rebuilding">
-<h3>Rebuilding<a class="headerlink" href="#rebuilding" title="Permalink to this headline">¶</a></h3>
-<p>From time to time, you may need to rebuild the dev container, either because the base image, or <code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> config was updated, or simply out of wanting a new fresh development environment. To do so, simply open the Command Palette (Ctrl+Shift+P) and select the <code class="docutils literal notranslate"><span class="pre">Remote-Containers:</span> <span class="pre">Rebuild</span> <span class="pre">Container</span></code> command.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Rebuilding the container will destroy any changes made to the container itself, such as installing additional packages, or modifying the environment. However, the project’s source directory, and any mounted volumes, will remain unaffected.</p>
-</div>
-<p>For example, you may need to rebuild the dev container when:</p>
-<ul class="simple">
-<li><p>Pulling newer images from a container registry</p>
-<ul>
-<li><p>specifically, image tags built <code class="docutils literal notranslate"><span class="pre">FROM</span></code> in the Dockerfile</p></li>
-<li><p>or tags listed under <code class="docutils literal notranslate"><span class="pre">cacheFrom</span></code> in <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code></p></li>
-<li><p>periodically done manually to ensure local environment reflects CI</p></li>
-</ul>
-</li>
-<li><p>Updating the dev container configuration</p>
-<ul>
-<li><p>specifically when modifying dependent stages in the <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code></p></li>
-<li><p>or when modifying <code class="docutils literal notranslate"><span class="pre">./devcontainer</span></code> files and commands</p></li>
-<li><p>where build cache reuse correlates with severity of changes made</p></li>
-</ul>
-</li>
-</ul>
-<p>When necessary, you can also rebuild the container from scratch, e.i. without caching from docker, by selecting the <code class="docutils literal notranslate"><span class="pre">Remote-Containers:</span> <span class="pre">Rebuild</span> <span class="pre">Container</span> <span class="pre">Without</span> <span class="pre">Cache</span></code> command. This instead omits the <code class="docutils literal notranslate"><span class="pre">--cache-from</span></code> flag from the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">buildx</span></code> command, while also adding the <code class="docutils literal notranslate"><span class="pre">--no-cache</span></code> and <code class="docutils literal notranslate"><span class="pre">--pull</span></code> flags to prevent caching from any existing image layers, using only the latest images from a container registry.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Rebuilding the container without cache may likely pull newer images from a container registry or install newer packages, as is common when developing for ROS 2 Rolling. You may then want to clean your overlay volume to avoid ABI incompatibilities or stale artifacts.</p>
-</div>
-<p>Rebuilding without caching may be necessary when:</p>
-<ul class="simple">
-<li><p>Needing to update the base image</p>
-<ul>
-<li><p>specifically if dev container configurations remain unmodified</p></li>
-<li><p>to forcefully rerun a <code class="docutils literal notranslate"><span class="pre">RUN</span></code> directive in the Dockerfile</p></li>
-<li><p>such as unchanged <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">upgrade</span></code> or <code class="docutils literal notranslate"><span class="pre">rosdep</span> <span class="pre">update</span></code> commands</p></li>
-</ul>
-</li>
-</ul>
-<p>Specifically, for this project, volumes remain unaffected by this rebuilding process: i.e. those used to mount the ccache directory or colcon workspace. While volume management is left to the user’s discretion, other projects may of course handle this differently, so be sure to check the <code class="docutils literal notranslate"><span class="pre">./devcontainer</span></code> configuration to inspect how various container resources may be managed.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Docker volume management can be done via the Docker CLI, or the VS Code Docker extension:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.docker.com/engine/reference/commandline/volume">Docker Volume CLI</a></p>
-<ul>
-<li><p>Manage volumes using subcommands to create, inspect, list, remove, or prune volumes</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">VS Code Docker extension</a></p>
-<ul>
-<li><p>Makes it easy to create, manage, and debug containerized applications</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
+<h1 align="center">
+  <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe width="708" height="400" src="https://www.youtube.com/embed/uHT5TeHJqZg?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+  </div>
+</h1><p>Depending on your robot’s relative pose to the dock and your pre-staging tolerance settings, Nav2 may attempt to navigate to the staging pose before docking.
+If you wish to disable that, set <code class="docutils literal notranslate"><span class="pre">goal_msg.navigate_to_staging_pose</span> <span class="pre">=</span> <span class="pre">False</span></code> and then Docking will trigger immediately.
+You can see both of these in action in the video above.</p>
+<p>Don’t want to call Docking Server from a script Python or C++ script and want to use it in your Autonomous Behavior Tree? See <code class="docutils literal notranslate"><span class="pre">opennav_docking_bt</span></code> for <code class="docutils literal notranslate"><span class="pre">DockRobot</span></code>, <code class="docutils literal notranslate"><span class="pre">UndockRobot</span></code> Behavior Tree nodes to call the Docking Server from your application behavior tree – with a provided <code class="docutils literal notranslate"><span class="pre">XML</span></code> example.
+Note that if using <code class="docutils literal notranslate"><span class="pre">navigate_to_staging_pose</span> <span class="pre">=</span> <span class="pre">True</span></code>, you cannot call <code class="docutils literal notranslate"><span class="pre">DockRobot</span></code> from inside a Nav2 Behavior Tree, only from your higher level autonomy tree since it recursively calls Nav2.
+If you wish to call <code class="docutils literal notranslate"><span class="pre">DockRobot</span></code> from inside your Nav2 BT, you must roughly pre-stage the robot near the dock first (which should be easy as a navigation goal).
+However, you can always call <code class="docutils literal notranslate"><span class="pre">UndockRobot</span></code> from any behavior tree!</p>
+<p>Happy docking!</p>
 </div>
 </div>
 
