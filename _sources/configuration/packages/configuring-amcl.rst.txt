@@ -478,6 +478,16 @@ Parameters
   Description
     Allows AMCL to accept maps more than once on the map_topic. This is especially useful when you're using the `LoadMap` service in `map_server`. Prior to Humble, this is ``first_map_only_``.
 
+:bond_heartbeat_period:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 Example
 *******

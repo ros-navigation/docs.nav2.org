@@ -997,6 +997,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-dynamic-radius-for-circle-type-polygons">Collision monitor: dynamic radius for circle type polygons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#static-layer-new-parameter-footprint-clearing-enabled">Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)</a></li>
 </ul>
 </li>
 </ul>
@@ -1320,6 +1321,10 @@ Smac and Theta* planners have a new parameter <code class="docutils literal notr
 <div class="section" id="static-layer-new-parameter-footprint-clearing-enabled">
 <h2>Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code><a class="headerlink" href="#static-layer-new-parameter-footprint-clearing-enabled" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4282">PR #4282</a> introduces usage of parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code> for the static layer. It works similarly to the <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code> parameter in the obstacle and voxel layer. If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the static layer will clear the costmap cells that are within the robot’s footprint. It is <code class="docutils literal notranslate"><span class="pre">false</span></code> by default to keep the previous behavior.</p>
+</div>
+<div class="section" id="lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">
+<h2>Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)<a class="headerlink" href="#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4342">PR #4342</a> adds the parameter <code class="docutils literal notranslate"><span class="pre">bond_heartbeat_period</span></code> to the lifecycle nodes to customize the bond mechanism publishing period (on the <code class="docutils literal notranslate"><span class="pre">/bond</span></code> topic). Default value unchanged to 0.1s. Disabled if inferior or equal to 0.0.</p>
 </div>
 </div>
 

@@ -997,6 +997,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#collision-monitor-dynamic-radius-for-circle-type-polygons">Collision monitor: dynamic radius for circle type polygons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#static-layer-new-parameter-footprint-clearing-enabled">Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)</a></li>
 </ul>
 </li>
 </ul>
@@ -1536,6 +1537,26 @@ True uses TwistStamped, false uses Twist.</p>
 <dl class="simple">
 <dt>Description</dt><dd><p>Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
 True uses TwistStamped, false uses Twist.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">bond_heartbeat_period</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.</p>
 </dd>
 </dl>
 </dd>
