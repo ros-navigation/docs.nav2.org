@@ -146,6 +146,17 @@ Costmap Filter Info Server Parameters
   Description
     Multiplier of ``OccupancyGrid`` mask value -> filter space value linear conversion which is being proceeded as:
     ``filter_space_value = base + multiplier * mask_value``
+    
+:bond_heartbeat_period:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 Example
 *******
