@@ -30,10 +30,11 @@ It is assumed ROS2 and Nav2 dependent packages are installed or built locally. A
 
    .. code-block:: bash
 
-      sudo apt install ros-<ros2-distro>-robot-localization
-      sudo apt install ros-<ros2-distro>-mapviz
-      sudo apt install ros-<ros2-distro>-mapviz-plugins
-      sudo apt install ros-<ros2-distro>-tile-map
+      source /opt/ros/<ros2-distro>/setup.bash
+      sudo apt install ros-$ROS_DISTRO-robot-localization
+      sudo apt install ros-$ROS_DISTRO-mapviz
+      sudo apt install ros-$ROS_DISTRO-mapviz-plugins
+      sudo apt install ros-$ROS_DISTRO-tile-map
     
 The code for this tutorial is hosted on `nav2_gps_waypoint_follower_demo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo>`_. Though we will go through the most important steps of the setup, it's highly recommended that you clone and build the package when setting up your dev environment.
 
@@ -66,7 +67,7 @@ To cope with this, geodesy proposes several planar projection systems for locali
 
 In the real world GPS sensors can be noisy: With standalone GPSs you should expect accuracies of 1-2 meters under excellent conditions and up to 10 meters, and frequent jumps in the position as the GPS sensor picks up less or more satellites, which can degrade the quality of navigation significantly. Several positioning augmentation technologies exists to reduce the error of GPS measurements, one of the most common ones is called `RTK <https://en.wikipedia.org/wiki/Real-time_kinematic_positioning>`_ (Real Time Kinematic Positioning), which can bring the accuracy of receivers down to 1cm. If accuracy matters in your application this technology is highly recommended; though this requires the deployment of a second fixed GPS called base, most of the US and Europe are already covered with public free to use bases that you can connect to. You can read more about RTK and how to get started `here <https://learn.sparkfun.com/tutorials/setting-up-a-rover-base-rtk-system>`_. In this tutorial we assume the robot's GPS produces an accurate and smooth estimation of the robot's position.
 
-Additionally, to fully describe a robot's localization we need to know its heading as well, however standalone GPS sensors do not provide orientation measurements, only position measurements. In this tutorial we will refer as 'absolute heading' to a yaw measurement which is given w.r.t. a cardinal direction (e.g, the east), in contrast to relative heading, which is given w.r.t. the angle the robot is turned on or any other reference that cannot be directly mapped  to a cardinal direction.
+Additionally, to fully describe a robot's localization we need to know its heading as well, however standalone GPS sensors do not provide orientation measurements, only position measurements. In this tutorial we will refer to 'absolute heading' as a yaw measurement which is given w.r.t. a cardinal direction (e.g, the east), in contrast to relative heading, which is given w.r.t. the angle the robot is turned on or any other reference that cannot be directly mapped  to a cardinal direction.
 
 When using robot_localization with GPS, measuring absolute orientation is mandatory. There are several strategies for getting absolute orientation data, like IMUs with magnetometers, dual GPS systems or matching techniques over a known map; in this tutorial we assume the robot is equipped with an IMU that can accurately measure absolute orientation following the ENU convention, meaning it will output zero yaw when facing east and +90 degrees when facing north. 
 
@@ -88,7 +89,7 @@ Tutorial Steps
 0- Setup Gazebo World
 ---------------------
 
-To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://dev.px4.io/v1.11_noredirect/en/simulation/gazebo_worlds.html#sonoma-raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
+To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://docs.px4.io/v1.12/en/simulation/gazebo_worlds.html#sonoma-raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
 
 .. code-block:: xml
 
