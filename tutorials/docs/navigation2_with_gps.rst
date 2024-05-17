@@ -89,7 +89,7 @@ Tutorial Steps
 0- Setup Gazebo World
 ---------------------
 
-To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://dev.px4.io/v1.11_noredirect/en/simulation/gazebo_worlds.html#sonoma-raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
+To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://docs.px4.io/v1.12/en/simulation/gazebo_worlds.html#sonoma-raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
 
 .. code-block:: xml
 
