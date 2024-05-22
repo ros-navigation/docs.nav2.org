@@ -259,6 +259,7 @@ Finally, ``docker images`` is a command used to tell you what docker images you 
   REPOSITORY   TAG                    IMAGE ID       CREATED        SIZE
   osrf/ros     rolling-desktop-full   7cd0c5068235   6 days ago     3.86GB
 
+.. note:: If errors are seen *Failed to create Shared Memory Manager* or similar, use the ``--shm-size=100mb`` command to increase the shared memory buffer size in the container.
 
 Understanding ROS Docker Images
 ===============================
