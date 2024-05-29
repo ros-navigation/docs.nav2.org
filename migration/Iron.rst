@@ -352,3 +352,7 @@ Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the b
 **********************************************************************************************
 
 `PR #4342 <https://github.com/ros-planning/navigation2/pull/4342>`_ adds the parameter ``bond_heartbeat_period`` to the lifecycle nodes to customize the bond mechanism publishing period (on the ``/bond`` topic). Default value unchanged to 0.1s. Disabled if inferior or equal to 0.0.
+
+Rotation Shim Controller: new parameter ``rotate_to_goal_heading``
+******************************************************************
+`PR #4332 <https://github.com/ros-planning/navigation2/pull/4332>`_ introduces usage of parameter ``rotate_to_goal_heading`` for the rotation shim controller. It allows the rotation shim controller to take back control when reaching the XY goal tolerance to perform a clean rotation towards the goal heading.

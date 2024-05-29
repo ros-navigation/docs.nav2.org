@@ -9,6 +9,8 @@ Source code on Github_.
 
 The ``nav2_rotation_shim_controller`` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the ``primary_controller`` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task. 
 
+When the ``rotate_to_goal_heading`` parameter is set to true, this controller is also able to take back control of the robot when reaching the XY goal tolerance of the goal checker. In this case, the robot will rotate towards the goal heading until the goal checker validate the goal and ends the current navigation task.
+
 The ``RotationShimController`` is most suitable for:
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
@@ -94,6 +96,17 @@ Rotation Shim Controller Parameters
   Description
     Time in seconds to forward simulate a rotation command to check for collisions. If a collision is found, forwards control back to the primary controller plugin.
 
+:rotate_to_goal_heading:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    If true, the rotationShimController will take back control of the robot when in XY tolerance of the goal and start rotating towards the goal heading.
+
 Example
 *******
 .. code-block:: yaml
@@ -126,6 +139,7 @@ Example
         rotate_to_heading_angular_vel: 1.8
         max_angular_accel: 3.2
         simulate_ahead_time: 1.0
+        rotate_to_goal_heading: false
 
         # Primary controller params can be placed here below
         # ...
