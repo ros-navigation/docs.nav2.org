@@ -998,6 +998,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#collision-monitor-dynamic-radius-for-circle-type-polygons">Collision monitor: dynamic radius for circle type polygons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#static-layer-new-parameter-footprint-clearing-enabled">Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotation-shim-controller-new-parameter-rotate-to-goal-heading">Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1325,6 +1326,10 @@ Smac and Theta* planners have a new parameter <code class="docutils literal notr
 <div class="section" id="lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">
 <h2>Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)<a class="headerlink" href="#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4342">PR #4342</a> adds the parameter <code class="docutils literal notranslate"><span class="pre">bond_heartbeat_period</span></code> to the lifecycle nodes to customize the bond mechanism publishing period (on the <code class="docutils literal notranslate"><span class="pre">/bond</span></code> topic). Default value unchanged to 0.1s. Disabled if inferior or equal to 0.0.</p>
+</div>
+<div class="section" id="rotation-shim-controller-new-parameter-rotate-to-goal-heading">
+<h2>Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code><a class="headerlink" href="#rotation-shim-controller-new-parameter-rotate-to-goal-heading" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4332">PR #4332</a> introduces usage of parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code> for the rotation shim controller. It allows the rotation shim controller to take back control when reaching the XY goal tolerance to perform a clean rotation towards the goal heading. Some controllers will do this internally, but it is a useful option for others.</p>
 </div>
 </div>
 

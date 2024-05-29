@@ -998,6 +998,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#collision-monitor-dynamic-radius-for-circle-type-polygons">Collision monitor: dynamic radius for circle type polygons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#static-layer-new-parameter-footprint-clearing-enabled">Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#rotation-shim-controller-new-parameter-rotate-to-goal-heading">Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1058,6 +1059,7 @@
 <span id="configuring-rotation-shim"></span><h1>Rotation Shim Controller<a class="headerlink" href="#rotation-shim-controller" title="Permalink to this headline">¶</a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller">Github</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_rotation_shim_controller</span></code> will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the <code class="docutils literal notranslate"><span class="pre">primary_controller</span></code> to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot’s main plugin will take control for a smooth hand off into the task.</p>
+<p>When the <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code> parameter is set to true, this controller is also able to take back control of the robot when reaching the XY goal tolerance of the goal checker. In this case, the robot will rotate towards the goal heading until the goal checker validate the goal and ends the current navigation task.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">RotationShimController</span></code> is most suitable for:</p>
 <ul class="simple">
 <li><p>Robots that can rotate in place, such as differential and omnidirectional robots.</p></li>
@@ -1192,6 +1194,26 @@
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">rotate_to_goal_heading</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>If true, the rotationShimController will take back control of the robot when in XY tolerance of the goal and start rotating towards the goal heading.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -1224,6 +1246,7 @@
 <span class="w">      </span><span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.8</span>
 <span class="w">      </span><span class="nt">max_angular_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
 <span class="w">      </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">rotate_to_goal_heading</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 
 <span class="w">      </span><span class="c1"># Primary controller params can be placed here below</span>
 <span class="w">      </span><span class="c1"># ...</span>
