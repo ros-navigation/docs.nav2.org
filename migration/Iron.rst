@@ -355,4 +355,4 @@ Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the b
 
 Rotation Shim Controller: new parameter ``rotate_to_goal_heading``
 ******************************************************************
-`PR #4332 <https://github.com/ros-planning/navigation2/pull/4332>`_ introduces usage of parameter ``rotate_to_goal_heading`` for the rotation shim controller. It allows the rotation shim controller to take back control when reaching the XY goal tolerance to perform a clean rotation towards the goal heading.
+`PR #4332 <https://github.com/ros-planning/navigation2/pull/4332>`_ introduces usage of parameter ``rotate_to_goal_heading`` for the rotation shim controller. It allows the rotation shim controller to take back control when reaching the XY goal tolerance to perform a clean rotation towards the goal heading. Some controllers will do this internally, but it is a useful option for others.
