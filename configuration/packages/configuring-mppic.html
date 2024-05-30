@@ -999,6 +999,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#static-layer-new-parameter-footprint-clearing-enabled">Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#rotation-shim-controller-new-parameter-rotate-to-goal-heading">Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#mppi-controller-addition-of-acceleration-constraints">MPPI Controller: Addition of acceleration constraints</a></li>
 </ul>
 </li>
 </ul>
@@ -1328,6 +1329,86 @@ This process is then repeated a number of times and returns a converged solution
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Maximum rotational velocity (rad/s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">ax_max</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum forward acceleration (m/s^2).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">ay_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum lateral acceleration in either direction, if using <code class="docutils literal notranslate"><span class="pre">Omni</span></code> motion model (m/s^2).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">ax_min</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>-3.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum deceleration along the X-axis (m/s^2).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">az_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum angular acceleration (rad/s^2).</p>
 </dd>
 </dl>
 </dd>
@@ -2751,6 +2832,10 @@ This process is then repeated a number of times and returns a converged solution
 <span class="w">      </span><span class="nt">vx_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.35</span>
 <span class="w">      </span><span class="nt">vy_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">      </span><span class="nt">wz_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.9</span>
+<span class="w">      </span><span class="nt">ax_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
+<span class="w">      </span><span class="nt">ax_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-3.0</span>
+<span class="w">      </span><span class="nt">ay_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
+<span class="w">      </span><span class="nt">az_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.5</span>
 <span class="w">      </span><span class="nt">iteration_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">      </span><span class="nt">prune_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.7</span>
 <span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
