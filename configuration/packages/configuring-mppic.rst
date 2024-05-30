@@ -173,6 +173,50 @@ MPPI Parameters
   Description
     Maximum rotational velocity (rad/s).
 
+:ax_max:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         3.0 
+  ============== ===========================
+
+  Description
+    Maximum forward acceleration (m/s^2).
+
+:ay_max:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         3.0 
+  ============== ===========================
+
+  Description
+    Maximum lateral acceleration in either direction, if using ``Omni`` motion model (m/s^2).
+
+:ax_min:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         -3.0 
+  ============== ===========================
+
+  Description
+    Maximum deceleration along the X-axis (m/s^2).
+
+:az_max:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         3.5 
+  ============== ===========================
+
+  Description
+    Maximum angular acceleration (rad/s^2).
+
 :temperature:
 
   ============== ===========================
@@ -987,6 +1031,10 @@ Example
           vx_min: -0.35
           vy_max: 0.5
           wz_max: 1.9
+          ax_max: 3.0
+          ax_min: -3.0
+          ay_max: 3.0
+          az_max: 3.5
           iteration_count: 1
           prune_distance: 1.7
           transform_tolerance: 0.1
