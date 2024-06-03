@@ -17,7 +17,6 @@ Navigation2 Tutorials
    docs/navigation2_dynamic_point_following.rst
    docs/navigation2_with_keepout_filter.rst
    docs/navigation2_with_speed_filter.rst
-   docs/using_docking.rst
    docs/using_shim_controller.rst
    docs/adding_smoother.rst
    docs/using_collision_monitor.rst
@@ -27,3 +26,4 @@ Navigation2 Tutorials
    docs/get_backtrace.rst
    docs/get_profile.rst
    docs/docker_dev.rst
+   .. docs/using_docking.rst
