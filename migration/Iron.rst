@@ -359,4 +359,4 @@ Rotation Shim Controller: new parameter ``rotate_to_goal_heading``
 
 MPPI Controller: Addition of acceleration constraints 
 ******************************************************
-`PR #4352 <https://github.com/ros-navigation/navigation2/pull/4352>`_ adds new parameters ``ax_max``,``ax_min``,``ay_max``,``az_max`` for the MPPI controller. These parameters will enable the MPPI controller to generate local trajectories within the specified acceleration constraints.
+`PR #4352 <https://github.com/ros-navigation/navigation2/pull/4352>`_ adds new parameters ``ax_max``, ``ax_min``, ``ay_max``, ``az_max`` for the MPPI controller. These parameters will enable the MPPI controller to generate local trajectories within the specified acceleration constraints.
