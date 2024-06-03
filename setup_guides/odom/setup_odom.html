@@ -1386,12 +1386,13 @@ geometry_msgs/TwistWithCovariance<span class="w"> </span>twist
 <span class="w">                      </span><span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable joint_state_publisher_gui&#39;</span><span class="o">)</span>
 </pre></div>
 </div>
-<p>Remove the condition from the <cite>joint_state_publisher_node</cite>:</p>
+<p>Remove the condition and parameters. Add arguments to the <cite>joint_state_publisher_node</cite>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">joint_state_publisher_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>launch_ros.actions.Node<span class="o">(</span>
 <span class="w">  </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
 <span class="w">  </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
 <span class="w">  </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
-<span class="w">  </span><span class="nv">arguments</span><span class="o">=[</span>default_model_path<span class="o">]</span>,
+<span class="w">  </span><span class="nv">arguments</span><span class="o">=[</span>default_model_path<span class="o">]</span>,<span class="w"> </span><span class="c1">#Add this line</span>
+<span class="w">  </span><span class="nv">parameters</span><span class="o">=[{</span><span class="s1">&#39;robot_description&#39;</span>:<span class="w"> </span>Command<span class="o">([</span><span class="s1">&#39;xarcro &#39;</span>,<span class="w"> </span>default_model_path<span class="o">])}]</span>,<span class="w"> </span><span class="c1">#Remove this line</span>
 <span class="w">  </span><span class="nv">condition</span><span class="o">=</span>launch.conditions.UnlessCondition<span class="o">(</span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;gui&#39;</span><span class="o">))</span><span class="w"> </span><span class="c1"># Remove this line</span>
 <span class="o">)</span>
 </pre></div>

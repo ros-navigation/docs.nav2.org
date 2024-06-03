@@ -246,7 +246,7 @@ Remove the following `gui` param:
   DeclareLaunchArgument(name='gui', default_value='True',
                         description='Flag to enable joint_state_publisher_gui')
                         
-Remove the condition from the `joint_state_publisher_node`:
+Remove the condition and parameters. Add arguments to the `joint_state_publisher_node`:
 
 .. code-block:: shell
 
@@ -254,7 +254,8 @@ Remove the condition from the `joint_state_publisher_node`:
     package='joint_state_publisher',
     executable='joint_state_publisher',
     name='joint_state_publisher',
-    arguments=[default_model_path],
+    arguments=[default_model_path], #Add this line
+    parameters=[{'robot_description': Command(['xarcro ', default_model_path])}], #Remove this line
     condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui')) # Remove this line
   )
 
