@@ -3,7 +3,7 @@
 General Tutorials
 #################
 
-Navigation2 Tutorials
+Nav2 Tutorials
 
 .. toctree::
    :maxdepth: 1
