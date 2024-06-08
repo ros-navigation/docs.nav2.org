@@ -105,6 +105,15 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 | getRoute(start, goal,                 | Gets a sparse route and dense path from start to goal, where start and     |
 | use_start=False)                      | goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.          |
 +---------------------------------------+----------------------------------------------------------------------------+
+| dockRobot(dock_pose, dock_type)       | Attempts to dock the robot at a given docking pose and type, without using |
+|                                       | docking database of known docks.                                           |
++---------------------------------------+----------------------------------------------------------------------------+
+| dockRobot(dock_id)                    | Attempts to dock the robot at a given dock ID in the database of known     |
+|                                       | docks.                                                                     |
++---------------------------------------+----------------------------------------------------------------------------+
+| undockRobot(dock_type="")             | Undocks robot. If docking server instance was used to dock, type is not    |
+|                                       | required.                                                                  |
++---------------------------------------+----------------------------------------------------------------------------+
 | getandTrackRoute(start, goal,         | Gets and tracks a sparse route and dense path from start to goal, where    |
 | use_start=False)                      | start & goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.  |
 +---------------------------------------+----------------------------------------------------------------------------+
