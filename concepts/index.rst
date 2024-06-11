@@ -84,7 +84,7 @@ It should only take about 30 minutes.
 
 Behavior Trees provide a formal structure for navigation logic which can be both used to create complex systems but also be verifiable and validated as provenly correct using advanced tools. Having the application logic centralized in the behavior tree and with independent task servers (which only communicate data over the tree) allows for formal analysis. 
 
-For this project, we use `BehaviorTree CPP V3 <https://www.behaviortree.dev/>`_ as the behavior tree library.
+For this project, we use `BehaviorTree CPP V4 <https://www.behaviortree.dev/>`_ as the behavior tree library.
 We create node plugins which can be constructed into a tree, inside the ``BT Navigator``.
 The node plugins are loaded into the BT and when the XML file of the tree is parsed, the registered names are associated.
 At this point, we can march through the behavior tree to navigate.
