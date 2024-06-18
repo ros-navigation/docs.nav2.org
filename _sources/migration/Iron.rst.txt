@@ -360,3 +360,7 @@ Rotation Shim Controller: new parameter ``rotate_to_goal_heading``
 MPPI Controller: Addition of acceleration constraints 
 ******************************************************
 `PR #4352 <https://github.com/ros-navigation/navigation2/pull/4352>`_ adds new parameters ``ax_max``, ``ax_min``, ``ay_max``, ``az_max`` for the MPPI controller. These parameters will enable the MPPI controller to generate local trajectories within the specified acceleration constraints.
+
+RegulatedPurePursuit Controller [RPP]: new parameter ``use_cancel_deceleration``
+********************************************************************************
+`PR #4441 <https://github.com/ros-navigation/navigation2/pull/4441>`_ adds a new parameter use_cancel_deceleration for the regulated pure pursuit controllers. This parameter enables the controller to use a constant deceleration to stop the robot gracefully instead of stopping immediately when a goal is canceled.

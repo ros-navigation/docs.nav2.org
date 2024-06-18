@@ -1017,6 +1017,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#rotation-shim-controller-new-parameter-rotate-to-goal-heading">Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#mppi-controller-addition-of-acceleration-constraints">MPPI Controller: Addition of acceleration constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Iron.html#regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">use_cancel_deceleration</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1533,8 +1534,28 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">cancel_deceleration</dt>
+<dt class="field-odd">use_cancel_deceleration</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use deceleration when the goal is canceled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cancel_deceleration</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1553,8 +1574,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-even">max_robot_pose_search_dist</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">max_robot_pose_search_dist</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 78%" />
@@ -1573,8 +1594,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">interpolate_curvature_after_goal</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">interpolate_curvature_after_goal</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
