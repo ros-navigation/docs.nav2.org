@@ -84,15 +84,17 @@ The last example for this section is the `Regulated Pure Pursuit controller (RPP
 Summary
 -------
 
-+----------------+---------------------------------------------------+----------------------------+
-| Plugin Name    | Supported Robot Types                             | Task                       |
-+================+===================================================+============================+
-| DWB controller | Differential, Omnidirectional                     | Dynamic obstacle avoidance |
-+----------------+---------------------------------------------------+                            |
-| TEB Controller | Differential, Omnidirectional, Ackermann, Legged  |                            |
-+----------------+---------------------------------------------------+----------------------------+
-| RPP controller | Differential, Ackermann, Legged                   | Exact path following       |
-+----------------+---------------------------------------------------+----------------------------+
++-----------------+---------------------------------------------------+----------------------------+
+| Plugin Name     | Supported Robot Types                             | Task                       |
++=================+===================================================+============================+
+| DWB controller  | Differential, Omnidirectional                     | Dynamic obstacle avoidance |
++-----------------+---------------------------------------------------+                            |
+| TEB Controller  | Differential, Omnidirectional, Ackermann, Legged  |                            |
++-----------------+---------------------------------------------------+----------------------------+
+| RPP controller  | Differential, Ackermann, Legged                   | Exact path following       |
++-----------------+---------------------------------------------------+----------------------------+
+| MPPI controller | Differential, Ackermann, Legged, Omnidirectional  | Modern MPC controller      |
++-----------------+---------------------------------------------------+----------------------------+
 
 All of these algorithms work for both circular and non-circular robots.
 
