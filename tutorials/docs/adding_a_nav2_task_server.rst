@@ -165,7 +165,7 @@ Error codes are attached to the response of the action message. An example can b
     uint16 UNKNOWN=10000 # first error code in the sequence is reserved for UNKNOWN
 
     # User Error codes below
-    int16 INVILAD_START=10001
+    int16 INVALID_START=10001
     int16 NO_VALID_ROUTE=10002
 
     #goal definition
