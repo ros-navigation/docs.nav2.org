@@ -274,7 +274,7 @@ Parameters
   ============== =============================
 
   Description
-    Particle filter population density.
+    Particle filter population density. 2.33 is the 99% percentile.
 
 :recovery_alpha_fast:
 
