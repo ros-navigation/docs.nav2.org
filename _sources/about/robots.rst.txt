@@ -26,11 +26,11 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |mpo_700|      +         |data|         +           |RB1|        |
 +------------------------+------------------------+------------------------+
-|         |yunji|        +         |tb4|          +           |kar2|       |
+|         |yunji|        +         |pm_boat|      +           |kar2|       |
 +------------------------+------------------------+------------------------+
-|         |tb3|          +      |rosbot_xl|       +          |rover|       |
+|         |torch|        +      |rosbot_xl|       +          |rover|       |
 +------------------------+------------------------+------------------------+
-|         |soon|         +      |torch|           +          |soon|        |
+|         |tb4|          +      |tb3|             +          |soon|        |
 +------------------------+------------------------+------------------------+
 
 .. |torch| image:: images/torch.png
@@ -38,6 +38,12 @@ Click on the images below for a link to the drivers or navigation configurations
     :align: middle
     :alt: Torch Technologies
     :target: https://torchtechnologies.com/
+
+.. |pm_boat| image:: images/polymath_boat.png
+    :width: 100%
+    :align: middle
+    :alt: Polymath Robotics
+    :target: https://www.polymathrobotics.com/
 
 .. |nova| image:: images/novacarter.png
     :width: 100%
