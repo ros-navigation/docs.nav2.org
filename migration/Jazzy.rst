@@ -24,3 +24,10 @@ Here we can see the working demo of the plugin:
 .. image:: images/docking_panel.gif
 
 .. attention:: If the docking server is unavailable, then the combo box of the dock type will be empty.
+
+New BT Nodes
+************
+
+Below is a list of new BT Nodes added:
+
+- ``GetPoseFromPath``: An action to get a particular pose from an input path.
