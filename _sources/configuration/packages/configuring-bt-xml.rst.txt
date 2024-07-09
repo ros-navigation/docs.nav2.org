@@ -50,6 +50,7 @@ Action Plugins
   bt-plugins/actions/CancelDriveOnHeading.rst
   bt-plugins/actions/CancelAssistedTeleop.rst
   bt-plugins/actions/Smooth.rst
+  bt-plugins/actions/GetPoseFromPath.rst
 
 Condition Plugins
 *****************
