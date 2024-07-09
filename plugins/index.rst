@@ -410,6 +410,8 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Compute Complete Coverage Path Action`_   | Steve Macenski      | Calls coverage planner server            |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Get Pose From Path Action`_               |  Marc Morcos        | Extracts a pose from a path              |
++--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Drive On Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
@@ -442,6 +444,7 @@ Behavior Tree Nodes
 .. _Cancel Assisted Teleop Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
 .. _Cancel Complete Coverage Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp
 .. _Compute Complete Coverage Path Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp
+.. _Get Pose From Path Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp
 
 
 +------------------------------------+--------------------+------------------------+
