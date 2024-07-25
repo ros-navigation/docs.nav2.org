@@ -78,4 +78,4 @@ independent consultants or contractors that know this project well.
 
 Check out the Navigation 2 Slack_ community.
 
-.. _Slack: https://join.slack.com/t/navigation2/shared_invite/zt-g00k4xwx-~ABwlU1rwHU96OGihC0ESA
+.. _Slack: https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA
