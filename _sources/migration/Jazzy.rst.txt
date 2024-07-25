@@ -31,3 +31,19 @@ New BT Nodes
 Below is a list of new BT Nodes added:
 
 - ``GetPoseFromPath``: An action to get a particular pose from an input path.
+
+New RViz Tool for Costmap Cost Cell Inspection
+**********************************************
+
+In `PR #4546 <https://github.com/ros-navigation/navigation2/pull/4546>`_ a new RViz tool was added to get the costmap costcell's cost and a service to get the costcell's cost at the footprint pose.
+
+Usage:
+
+- Click on any point in the costmap with costmap rviz tool to retrieve and display the cost value at that cell.
+- ``nav2_msgs/GetCost`` service can be used to retrieve the cost at footprint pose
+
+Working demo of the tool:
+
+.. image:: images/rviz_costmap_cost_tool.gif
+
+.. attention:: If the costmap service is unavailable, then the tool will not be able to fetch and display the cost values.

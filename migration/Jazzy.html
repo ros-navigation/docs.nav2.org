@@ -1024,6 +1024,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Jazzy to K-Turtle</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-bt-nodes">New BT Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
 </ul>
 </li>
 </ul>
@@ -1105,6 +1106,21 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">GetPoseFromPath</span></code>: An action to get a particular pose from an input path.</p></li>
 </ul>
+</div>
+<div class="section" id="new-rviz-tool-for-costmap-cost-cell-inspection">
+<h2>New RViz Tool for Costmap Cost Cell Inspection<a class="headerlink" href="#new-rviz-tool-for-costmap-cost-cell-inspection" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4546">PR #4546</a> a new RViz tool was added to get the costmap costcell’s cost and a service to get the costcell’s cost at the footprint pose.</p>
+<p>Usage:</p>
+<ul class="simple">
+<li><p>Click on any point in the costmap with costmap rviz tool to retrieve and display the cost value at that cell.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nav2_msgs/GetCost</span></code> service can be used to retrieve the cost at footprint pose</p></li>
+</ul>
+<p>Working demo of the tool:</p>
+<img alt="../_images/rviz_costmap_cost_tool.gif" src="../_images/rviz_costmap_cost_tool.gif" />
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If the costmap service is unavailable, then the tool will not be able to fetch and display the cost values.</p>
+</div>
 </div>
 </div>
 
