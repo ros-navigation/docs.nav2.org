@@ -51,6 +51,8 @@ Action Plugins
   bt-plugins/actions/CancelAssistedTeleop.rst
   bt-plugins/actions/Smooth.rst
   bt-plugins/actions/GetPoseFromPath.rst
+  bt-plugins/actions/DockRobot.rst
+  bt-plugins/actions/UndockRobot.rst
 
 Condition Plugins
 *****************
