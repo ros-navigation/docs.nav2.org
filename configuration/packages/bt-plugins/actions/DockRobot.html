@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CancelCoverage &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>DockRobot &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
@@ -22,8 +22,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="RemovePassedGoals" href="RemovePassedGoals.html" />
-    <link rel="prev" title="ComputeCoveragePath" href="ComputeCoveragePath.html" />
+    <link rel="next" title="UndockRobot" href="UndockRobot.html" />
+    <link rel="prev" title="GetPoseFromPath" href="GetPoseFromPath.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -529,7 +529,7 @@
 <li class="toctree-l4"><a class="reference internal" href="NavigateThroughPoses.html">NavigateThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputeCoveragePath.html">ComputeCoveragePath</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">CancelCoverage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CancelCoverage.html">CancelCoverage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="RemovePassedGoals.html">RemovePassedGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelControl.html">CancelControl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelBackUp.html">CancelBackUp</a></li>
@@ -539,7 +539,7 @@
 <li class="toctree-l4"><a class="reference internal" href="CancelAssistedTeleop.html">CancelAssistedTeleop</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Smooth.html">SmoothPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="GetPoseFromPath.html">GetPoseFromPath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="DockRobot.html">DockRobot</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">DockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="UndockRobot.html">UndockRobot</a></li>
 </ul>
 </li>
@@ -1075,7 +1075,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">CancelCoverage</li>
+      <li class="breadcrumb-item active">DockRobot</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1084,14 +1084,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="cancelcoverage">
-<span id="bt-cancel-coverage"></span><h1>CancelCoverage<a class="headerlink" href="#cancelcoverage" title="Permalink to this headline">¶</a></h1>
-<p>Used to cancel the goals given to the complete coverage action server. The server address can be remapped using the <code class="docutils literal notranslate"><span class="pre">server_name</span></code> input port.</p>
+  <div class="section" id="dockrobot">
+<span id="bt-dock-robot-action"></span><h1>DockRobot<a class="headerlink" href="#dockrobot" title="Permalink to this headline">¶</a></h1>
+<p>Invokes the DockRobot ROS 2 action server, which is implemented by the docking server.</p>
+<p>It is used to dock the robot to a docking station.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list">
-<dt class="field-odd">service_name</dt>
+<dt class="field-odd">use_dock_id</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use the dock’s ID or dock pose fields.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">dock_id</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1106,11 +1127,31 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Service name.</p>
+<dt>Description</dt><dd><p>Dock ID or name to use.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">server_timeout</dt>
+<dt class="field-odd">dock_pose</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 78%" />
+<col style="width: 22%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>geometry_msgs/PoseStamped</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The dock pose, if not using dock id.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">dock_type</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
@@ -1120,22 +1161,127 @@
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>10</p></td>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Server timeout (ms).</p>
+<dt>Description</dt><dd><p>The dock plugin type, if using dock pose.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">max_staging_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 58%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>float</p></td>
+<td><p>1000.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum time to navigate to the staging pose.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">navigate_to_staging_pose</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to autonomously navigate to staging pose.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="section" id="output-ports">
+<h3>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">success</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>If the action was successful.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">error_code_id</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>uint16</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Dock robot error code. See <code class="docutils literal notranslate"><span class="pre">DockRobot</span></code> action message for the enumerated set of error codes.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">num_retries</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>uint16</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The number of retries executed.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;CancelCoverage</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;compute_complete_coverage&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DockRobot</span><span class="w"> </span><span class="na">dock_id=</span><span class="s">&quot;{dock_id}&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{dock_error_code}&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
