@@ -412,6 +412,10 @@ Behavior Tree Nodes
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Get Pose From Path Action`_               |  Marc Morcos        | Extracts a pose from a path              |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Dock Robot Action`_                       | Steve Macenski      | Calls dock robot action                  |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Undock Robot Action`_                     | Steve Macenski      | Calls undock robot action                |
++--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Drive On Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
@@ -445,6 +449,8 @@ Behavior Tree Nodes
 .. _Cancel Complete Coverage Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp
 .. _Compute Complete Coverage Path Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp
 .. _Get Pose From Path Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp
+.. _Dock Robot Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp
+.. _Undock Robot Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp
 
 
 +------------------------------------+--------------------+------------------------+
