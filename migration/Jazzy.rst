@@ -51,7 +51,7 @@ Working demo of the tool:
 Fix flickering visualization
 ****************************
 
-In `PR #4561 <https://github.com/ros-navigation/navigation2/pull/4561>`_ a map_vis_z parameter has been introduced to Costmap2DROS to help modify the map slightly below the default plane, aiming to eliminate flickering issues.
+In `PR #4561 <https://github.com/ros-navigation/navigation2/pull/4561>`_ a ``map_vis_z`` parameter has been introduced to Costmap2DROS to help modify the map slightly below the default plane, aiming to eliminate rviz visualization flickering issues.
 
 Default Value:
 
