@@ -1027,6 +1027,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-bt-nodes">New BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fix-flickering-visualization">Fix flickering visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -1123,6 +1124,22 @@
 <p class="admonition-title">Attention</p>
 <p>If the costmap service is unavailable, then the tool will not be able to fetch and display the cost values.</p>
 </div>
+</div>
+<div class="section" id="fix-flickering-visualization">
+<h2>Fix flickering visualization<a class="headerlink" href="#fix-flickering-visualization" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4561">PR #4561</a> a <code class="docutils literal notranslate"><span class="pre">map_vis_z</span></code> parameter has been introduced to Costmap2DROS to help modify the map slightly below the default plane, aiming to eliminate rviz visualization flickering issues.</p>
+<p>Default Value:</p>
+<ul class="simple">
+<li><p>map_vis_z: 0.0</p></li>
+</ul>
+<p>Minimum Value Without Flickering:</p>
+<ul class="simple">
+<li><p>map_vis_z: -0.008</p></li>
+</ul>
+<p>Before:</p>
+<img alt="../_images/fix_flickering_visualization_before.png" src="../_images/fix_flickering_visualization_before.png" />
+<p>After:</p>
+<img alt="../_images/fix_flickering_visualization_after.png" src="../_images/fix_flickering_visualization_after.png" />
 </div>
 </div>
 

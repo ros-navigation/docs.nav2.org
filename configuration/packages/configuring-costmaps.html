@@ -1027,6 +1027,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-bt-nodes">New BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#fix-flickering-visualization">Fix flickering visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -1251,8 +1252,28 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">observation_sources</dt>
+<dt class="field-odd">map_vis_z</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The height of map, allows to avoid rviz visualization flickering at -0.008</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">observation_sources</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1271,8 +1292,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">origin_x</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">origin_x</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1291,8 +1312,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">origin_y</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">origin_y</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1311,8 +1332,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">publish_frequency</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">publish_frequency</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1331,8 +1352,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">resolution</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">resolution</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1351,8 +1372,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">robot_base_frame</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">robot_base_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 56%" />
 <col style="width: 44%" />
@@ -1371,8 +1392,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">robot_radius</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">robot_radius</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1391,8 +1412,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">rolling_window</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">rolling_window</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1411,8 +1432,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">track_unknown_space</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">track_unknown_space</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1431,8 +1452,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">transform_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1451,8 +1472,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">initial_transform_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">initial_transform_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1471,8 +1492,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">trinary_costmap</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">trinary_costmap</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1491,8 +1512,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">unknown_cost_value</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">unknown_cost_value</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1511,8 +1532,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">update_frequency</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">update_frequency</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1531,8 +1552,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">use_maximum</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">use_maximum</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1551,8 +1572,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">plugins</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">plugins</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 21%" />
 <col style="width: 79%" />
@@ -1585,8 +1606,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">filters</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">filters</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
