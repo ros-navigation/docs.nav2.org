@@ -47,3 +47,24 @@ Working demo of the tool:
 .. image:: images/rviz_costmap_cost_tool.gif
 
 .. attention:: If the costmap service is unavailable, then the tool will not be able to fetch and display the cost values.
+
+Fix flickering visualization
+****************************
+
+In `PR #4561 <https://github.com/ros-navigation/navigation2/pull/4561>`_ a ``map_vis_z`` parameter has been introduced to Costmap2DROS to help modify the map slightly below the default plane, aiming to eliminate rviz visualization flickering issues.
+
+Default Value:
+
+- map_vis_z: 0.0
+
+Minimum Value Without Flickering:
+
+- map_vis_z: -0.008
+
+Before:
+
+.. image:: images/fix_flickering_visualization_before.png
+
+After:
+
+.. image:: images/fix_flickering_visualization_after.png

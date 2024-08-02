@@ -101,6 +101,17 @@ Costmap2D ROS Parameters
   Description
     Topic of map from map_server or SLAM.
 
+:map_vis_z:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  double         0.0   
+  ============== =======
+
+  Description
+    The height of map, allows to avoid rviz visualization flickering at -0.008
+
 :observation_sources:
 
   ============== =======
