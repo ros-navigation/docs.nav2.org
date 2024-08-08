@@ -40,7 +40,7 @@ Input Ports
   ====== =======
 
   Description
-    The cost threshold above which a waypoint is considered in collision and should be removed.
+    The cost threshold above which a waypoint is considered in collision and should be removed. If ``use_footprint = false``, consider setting to 253 for occupied. 
 
 :use_footprint:
 
