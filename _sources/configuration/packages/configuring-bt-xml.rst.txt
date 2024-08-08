@@ -43,6 +43,7 @@ Action Plugins
   bt-plugins/actions/ComputeCoveragePath.rst
   bt-plugins/actions/CancelCoverage.rst
   bt-plugins/actions/RemovePassedGoals.rst
+  bt-plugins/actions/RemoveInCollisionGoals.rst
   bt-plugins/actions/CancelControl.rst
   bt-plugins/actions/CancelBackUp.rst
   bt-plugins/actions/CancelSpin.rst

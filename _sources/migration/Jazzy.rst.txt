@@ -31,6 +31,7 @@ New BT Nodes
 Below is a list of new BT Nodes added:
 
 - ``GetPoseFromPath``: An action to get a particular pose from an input path.
+- ``RemoveInCollisionGoals``: An action to remove waypoints that have a cost higher than a threshold.
 
 New RViz Tool for Costmap Cost Cell Inspection
 **********************************************
@@ -40,7 +41,7 @@ In `PR #4546 <https://github.com/ros-navigation/navigation2/pull/4546>`_ a new R
 Usage:
 
 - Click on any point in the costmap with costmap rviz tool to retrieve and display the cost value at that cell.
-- ``nav2_msgs/GetCost`` service can be used to retrieve the cost at footprint pose
+- ``nav2_msgs/GetCosts`` service can be used to retrieve the cost at footprint pose
 
 Working demo of the tool:
 

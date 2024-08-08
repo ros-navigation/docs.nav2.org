@@ -531,6 +531,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputeCoveragePath.html">ComputeCoveragePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelCoverage.html">CancelCoverage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemoveInCollisionGoals.html">RemoveInCollisionGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelControl.html">CancelControl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelBackUp.html">CancelBackUp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelSpin.html">CancelSpin</a></li>
@@ -1696,53 +1697,58 @@ to call Nav2’s NavThroughPoses action</p></td>
 tolerance for culling old viapoints from
 path re-planning</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp">Compute Path Through Poses</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp">Remove In Collision Goals</a></p></td>
+<td><p>Tony Najjar</p></td>
+<td><p>Removes goal poses that have a footprint
+or point cost above a threshold.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp">Compute Path Through Poses</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Computes a path through a set of poses
 rather than a single end goal pose
 using the planner plugin specified</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp">Cancel Control Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp">Cancel Control Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels Nav2 controller server</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp">Cancel BackUp Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp">Cancel BackUp Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels backup behavior action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp">Cancel Spin Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp">Cancel Spin Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels spin behavior action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp">Cancel Wait Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp">Cancel Wait Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels wait behavior action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp">Cancel Drive on Heading Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp">Cancel Drive on Heading Action</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Cancels drive on heading behavior action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp">Cancel Assisted Teleop Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp">Cancel Assisted Teleop Action</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Cancels assisted teleop behavior action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp">Cancel Complete Coverage Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp">Cancel Complete Coverage Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Cancels compute complete coverage</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp">Compute Complete Coverage Path Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp">Compute Complete Coverage Path Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Calls coverage planner server</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp">Get Pose From Path Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp">Get Pose From Path Action</a></p></td>
 <td><p>Marc Morcos</p></td>
 <td><p>Extracts a pose from a path</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp">Dock Robot Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp">Dock Robot Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Calls dock robot action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp">Undock Robot Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp">Undock Robot Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Calls undock robot action</p></td>
 </tr>

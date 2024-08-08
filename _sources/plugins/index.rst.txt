@@ -390,6 +390,9 @@ Behavior Tree Nodes
 |                                            |                     | tolerance for culling old viapoints from |
 |                                            |                     | path re-planning                         |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Remove In Collision Goals`_               | Tony Najjar         | Removes goal poses that have a footprint |
+|                                            |                     | or point cost above a threshold.         |
++--------------------------------------------+---------------------+------------------------------------------+
 | `Compute Path Through Poses`_              | Steve Macenski      | Computes a path through a set of poses   |
 |                                            |                     | rather than a single end goal pose       |
 |                                            |                     | using the planner plugin specified       |
@@ -439,6 +442,7 @@ Behavior Tree Nodes
 .. _Progress Checker Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/progress_checker_selector_node.cpp
 .. _Navigate Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
 .. _Remove Passed Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
+.. _Remove In Collision Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp
 .. _Compute Path Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
 .. _Cancel Control Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
 .. _Cancel BackUp Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp

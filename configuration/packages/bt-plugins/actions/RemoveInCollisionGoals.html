@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ComputePathThroughPoses &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>RemoveInCollisionGoals &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
@@ -22,8 +22,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="ComputeCoveragePath" href="ComputeCoveragePath.html" />
-    <link rel="prev" title="NavigateThroughPoses" href="NavigateThroughPoses.html" />
+    <link rel="next" title="CancelControl" href="CancelControl.html" />
+    <link rel="prev" title="RemovePassedGoals" href="RemovePassedGoals.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -527,11 +527,11 @@
 <li class="toctree-l4"><a class="reference internal" href="GoalCheckerSelector.html">GoalCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ProgressCheckerSelector.html">ProgressCheckerSelector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="NavigateThroughPoses.html">NavigateThroughPoses</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ComputePathThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ComputeCoveragePath.html">ComputeCoveragePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelCoverage.html">CancelCoverage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="RemovePassedGoals.html">RemovePassedGoals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RemoveInCollisionGoals.html">RemoveInCollisionGoals</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">RemoveInCollisionGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelControl.html">CancelControl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelBackUp.html">CancelBackUp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CancelSpin.html">CancelSpin</a></li>
@@ -1077,7 +1077,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">ComputePathThroughPoses</li>
+      <li class="breadcrumb-item active">RemoveInCollisionGoals</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1086,18 +1086,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="computepaththroughposes">
-<span id="bt-compute-path-through-poses-action"></span><h1>ComputePathThroughPoses<a class="headerlink" href="#computepaththroughposes" title="Permalink to this headline">¶</a></h1>
-<p>Invokes the ComputePathThroughPoses ROS 2 action server, which is implemented by the <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_planner">nav2_planner</a> module.
-The server address can be remapped using the <code class="docutils literal notranslate"><span class="pre">server_name</span></code> input port.</p>
+  <div class="section" id="removeincollisiongoals">
+<span id="bt-remove-in-collision-goals-action"></span><h1>RemoveInCollisionGoals<a class="headerlink" href="#removeincollisiongoals" title="Permalink to this headline">¶</a></h1>
+<p>Looks over the input port <code class="docutils literal notranslate"><span class="pre">goals</span></code> and removes any waypoint that has a point or footprint cost above a certain threshold.
+This may be used to cull goal points passed from <code class="docutils literal notranslate"><span class="pre">ComputePathThroughPoses</span></code> to avoid waiting indefinitely on occupied waypoints.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list">
-<dt class="field-odd">start</dt>
+<dt class="field-odd">service_name</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 84%" />
-<col style="width: 16%" />
+<col style="width: 13%" />
+<col style="width: 87%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>/global_costmap/get_cost_global_costmap</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>costmap service name responsible for getting the cost.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">input_goals</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 82%" />
+<col style="width: 18%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
@@ -1109,87 +1129,47 @@ The server address can be remapped using the <code class="docutils literal notra
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. “{start}”.</p>
+<dt>Description</dt><dd><p>A vector of goals to check if in collision</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">goals</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 87%" />
-<col style="width: 13%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>vector&lt;geometry_msgs::msg::PoseStamped&gt;</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Goal poses. Takes in a blackboard variable, e.g. “{goals}”.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">planner_id</dt>
+<dt class="field-odd">cost_threshold</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Mapped name to the planner plugin type to use, e.g. GridBased.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">server_name</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Action server name.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">server_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
+<col style="width: 46%" />
+<col style="width: 54%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>double</p></td>
-<td><p>10</p></td>
+<td><p>254.0</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Action server timeout (ms).</p>
+<dt>Description</dt><dd><p>The cost threshold above which a waypoint is considered in collision and should be removed. If <code class="docutils literal notranslate"><span class="pre">use_footprint</span> <span class="pre">=</span> <span class="pre">false</span></code>, consider setting to 253 for occupied.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">use_footprint</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use the footprint cost or the point cost.</p>
 </dd>
 </dl>
 </dd>
@@ -1198,43 +1178,23 @@ The server address can be remapped using the <code class="docutils literal notra
 <div class="section" id="output-ports">
 <h2>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list">
-<dt class="field-odd">path</dt>
+<dt class="field-odd">output_goals</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 79%" />
-<col style="width: 21%" />
+<col style="width: 82%" />
+<col style="width: 18%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>nav_msgs::msg::Path</p></td>
+<tr class="row-even"><td><p>geometry_msgs::msg::PoseStamped</p></td>
 <td><p>N/A</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Path created by action server. Takes in a blackboard variable, e.g. “{path}”.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">error_code_id</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>uint16</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Compute path through poses error code. See <code class="docutils literal notranslate"><span class="pre">ComputePathThroughPoses</span></code> action message for the enumerated set of error codes.</p>
+<dt>Description</dt><dd><p>A vector of goals containing only those that are not in collision.</p>
 </dd>
 </dl>
 </dd>
@@ -1242,7 +1202,7 @@ The server address can be remapped using the <code class="docutils literal notra
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ComputePathThroughPoses</span><span class="w"> </span><span class="na">goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">planner_id=</span><span class="s">&quot;GridBased&quot;</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;ComputePathThroughPoses&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{compute_path_error_code}&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RemoveInCollisionGoals</span><span class="w"> </span><span class="na">input_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">output_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">cost_threshold=</span><span class="s">&quot;254.0&quot;</span><span class="w"> </span><span class="na">use_footprint=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;/global_costmap/get_cost_global_costmap&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

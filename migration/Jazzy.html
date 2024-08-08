@@ -531,6 +531,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ComputeCoveragePath.html">ComputeCoveragePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelCoverage.html">CancelCoverage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/RemoveInCollisionGoals.html">RemoveInCollisionGoals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelControl.html">CancelControl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelBackUp.html">CancelBackUp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelSpin.html">CancelSpin</a></li>
@@ -1108,6 +1109,7 @@
 <p>Below is a list of new BT Nodes added:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">GetPoseFromPath</span></code>: An action to get a particular pose from an input path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RemoveInCollisionGoals</span></code>: An action to remove waypoints that have a cost higher than a threshold.</p></li>
 </ul>
 </div>
 <div class="section" id="new-rviz-tool-for-costmap-cost-cell-inspection">
@@ -1116,7 +1118,7 @@
 <p>Usage:</p>
 <ul class="simple">
 <li><p>Click on any point in the costmap with costmap rviz tool to retrieve and display the cost value at that cell.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nav2_msgs/GetCost</span></code> service can be used to retrieve the cost at footprint pose</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nav2_msgs/GetCosts</span></code> service can be used to retrieve the cost at footprint pose</p></li>
 </ul>
 <p>Working demo of the tool:</p>
 <img alt="../_images/rviz_costmap_cost_tool.gif" src="../_images/rviz_costmap_cost_tool.gif" />
