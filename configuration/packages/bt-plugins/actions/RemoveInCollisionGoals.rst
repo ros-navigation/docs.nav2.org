@@ -1,7 +1,7 @@
 .. _bt_remove_in_collision_goals_action:
 
 RemoveInCollisionGoals
-=================
+======================
 
 Looks over the input port ``goals`` and removes any waypoint that has a point or footprint cost above a certain threshold.
 This may be used to cull goal points passed from ``ComputePathThroughPoses`` to avoid waiting indefinitely on occupied waypoints.
