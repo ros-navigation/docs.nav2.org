@@ -4,7 +4,7 @@ RemovePassedGoals
 =================
 
 Looks over the input port ``goals`` and removes any point that the robot is in close proximity to or has recently passed.
-This is used to cull goal points that have been passed from ``ComputePathToPoses`` to enable replanning to only the current task goals.
+This is used to cull goal points that have been passed from ``ComputePathThroughPoses`` to enable replanning to only the current task goals.
 
 Input Ports
 -----------
