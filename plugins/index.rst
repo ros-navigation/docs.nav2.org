@@ -391,7 +391,7 @@ Behavior Tree Nodes
 |                                            |                     | path re-planning                         |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Remove In Collision Goals`_               | Tony Najjar         | Removes goal poses that have a footprint |
-|                                            |                     | or point cost above a threshold.          |
+|                                            |                     | or point cost above a threshold.         |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Compute Path Through Poses`_              | Steve Macenski      | Computes a path through a set of poses   |
 |                                            |                     | rather than a single end goal pose       |
