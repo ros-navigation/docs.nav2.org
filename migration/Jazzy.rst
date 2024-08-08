@@ -31,6 +31,7 @@ New BT Nodes
 Below is a list of new BT Nodes added:
 
 - ``GetPoseFromPath``: An action to get a particular pose from an input path.
+- ``RemoveInCollisionGoals``: An action to remove waypoints that have a cost higher than a threshold.
 
 New RViz Tool for Costmap Cost Cell Inspection
 **********************************************
