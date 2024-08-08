@@ -11,22 +11,22 @@ Input Ports
 
 :service_name:
 
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         /global_costmap/get_cost_global_costmap  
-  ============== =======
+  ====== =======================================
+  Type   Default
+  ------ -------
+  string /global_costmap/get_cost_global_costmap  
+  ====== =======================================
 
   Description
     costmap service name responsible for getting the cost.
 
 :input_goals:
 
-  ===================================== =======
-  Type                                  Default
-  ------------------------------------- -------
-  geometry_msgs::msg::PoseStamped         N/A  
-  ===================================== =======
+  =============================== =======
+  Type                            Default
+  ------------------------------- -------
+  geometry_msgs::msg::PoseStamped   N/A  
+  =============================== =======
 
   Description
     A vector of goals to check if in collision
@@ -58,11 +58,11 @@ Output Ports
 
 :output_goals:
 
-  ===================================== =======
-  Type                                  Default
-  ------------------------------------- -------
-  geometry_msgs::msg::PoseStamped         N/A  
-  ===================================== =======
+  =============================== =======
+  Type                            Default
+  ------------------------------- -------
+  geometry_msgs::msg::PoseStamped   N/A  
+  =============================== =======
 
   Description
     A vector of goals containing only those that are not in collision.
