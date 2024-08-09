@@ -34,4 +34,5 @@ the best navigation performance.
    packages/configuring-velocity-smoother.rst
    packages/configuring-collision-monitor.rst
    packages/configuring-waypoint-follower.rst
+   packages/configuring-loopback-sim.rst
    packages/configuring-docking-server.rst
