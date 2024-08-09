@@ -5,6 +5,11 @@ Jazzy to K-Turtle
 
 Moving from ROS 2 Jazzy to K-Turtle, a number of stability improvements were added that we will not specifically address here.
 
+New Nav2 Loopback Simulator
+***************************
+
+The ``nav2_looback_sim`` is a stand-alone simulator to create a "loopback" for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
+It computes the robot's odometry based on the command velocity's output request to create a perfect 'frictionless plane'-style simulation for unit testing, system testing, R&D on higher level systems, testing behaviors without concerning yourself with localization accuracy or system dynamics, and multirobot simulations.
 
 New RViz panel for Docking
 **************************
