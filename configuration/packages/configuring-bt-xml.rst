@@ -43,6 +43,7 @@ Action Plugins
   bt-plugins/actions/ComputeCoveragePath.rst
   bt-plugins/actions/CancelCoverage.rst
   bt-plugins/actions/RemovePassedGoals.rst
+  bt-plugins/actions/RemoveInCollisionGoals.rst
   bt-plugins/actions/CancelControl.rst
   bt-plugins/actions/CancelBackUp.rst
   bt-plugins/actions/CancelSpin.rst
@@ -50,6 +51,9 @@ Action Plugins
   bt-plugins/actions/CancelDriveOnHeading.rst
   bt-plugins/actions/CancelAssistedTeleop.rst
   bt-plugins/actions/Smooth.rst
+  bt-plugins/actions/GetPoseFromPath.rst
+  bt-plugins/actions/DockRobot.rst
+  bt-plugins/actions/UndockRobot.rst
 
 Condition Plugins
 *****************

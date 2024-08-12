@@ -137,7 +137,7 @@ See the README.md and :ref:`configuring_mppic` page for more detail.
 
 Behavior Tree Uses Error Codes
 ******************************
-`PR #3324 <https:https://github.com/ros-planning/navigation2/pull/3324>`_ adds three new condition nodes to check for error codes on the blackboard set by action BT nodes which contain them. 
+`PR #3324 <https://github.com/ros-planning/navigation2/pull/3324>`_ adds three new condition nodes to check for error codes on the blackboard set by action BT nodes which contain them. 
 
 The ``AreErrorCodesPresent`` condition node allows the user to specify the error code from the server along with the error codes to match against. 
 The ``WouldAControllerRecoveryHelp`` checks if the active error code is UNKNOWN, PATIENCE_EXCEEDED, FAILED_TO_MAKE_PROGRESS or NO_VALID_CONTROL. 
@@ -155,7 +155,7 @@ These error code are potentially able to be cleared by a smoother recovery.
 Load, Save and Loop Waypoints from the Nav2 Panel in RViz
 *********************************************************
 
-`PR #3165 <https:https://github.com/ros-planning/navigation2/pull/3165>`_ provides three new functionalities for the nav2 panel in RViz, they are:
+`PR #3165 <https://github.com/ros-planning/navigation2/pull/3165>`_ provides three new functionalities for the nav2 panel in RViz, they are:
 
 - load and save waypoints in a yaml file for waypoint following (initial pose can also be stored if required)
 - loop functionality to revisit the waypoints

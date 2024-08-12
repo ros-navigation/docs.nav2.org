@@ -390,6 +390,9 @@ Behavior Tree Nodes
 |                                            |                     | tolerance for culling old viapoints from |
 |                                            |                     | path re-planning                         |
 +--------------------------------------------+---------------------+------------------------------------------+
+| `Remove In Collision Goals`_               | Tony Najjar         | Removes goal poses that have a footprint |
+|                                            |                     | or point cost above a threshold.         |
++--------------------------------------------+---------------------+------------------------------------------+
 | `Compute Path Through Poses`_              | Steve Macenski      | Computes a path through a set of poses   |
 |                                            |                     | rather than a single end goal pose       |
 |                                            |                     | using the planner plugin specified       |
@@ -409,6 +412,12 @@ Behavior Tree Nodes
 | `Cancel Complete Coverage Action`_         | Steve Macenski      | Cancels compute complete coverage        |
 +--------------------------------------------+---------------------+------------------------------------------+
 | `Compute Complete Coverage Path Action`_   | Steve Macenski      | Calls coverage planner server            |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Get Pose From Path Action`_               |  Marc Morcos        | Extracts a pose from a path              |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Dock Robot Action`_                       | Steve Macenski      | Calls dock robot action                  |
++--------------------------------------------+---------------------+------------------------------------------+
+| `Undock Robot Action`_                     | Steve Macenski      | Calls undock robot action                |
 +--------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
@@ -433,6 +442,7 @@ Behavior Tree Nodes
 .. _Progress Checker Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/progress_checker_selector_node.cpp
 .. _Navigate Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
 .. _Remove Passed Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
+.. _Remove In Collision Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp
 .. _Compute Path Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
 .. _Cancel Control Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
 .. _Cancel BackUp Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
@@ -442,6 +452,9 @@ Behavior Tree Nodes
 .. _Cancel Assisted Teleop Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
 .. _Cancel Complete Coverage Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp
 .. _Compute Complete Coverage Path Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp
+.. _Get Pose From Path Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp
+.. _Dock Robot Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp
+.. _Undock Robot Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp
 
 
 +------------------------------------+--------------------+------------------------+

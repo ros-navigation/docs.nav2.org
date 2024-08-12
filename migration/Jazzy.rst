@@ -5,6 +5,11 @@ Jazzy to K-Turtle
 
 Moving from ROS 2 Jazzy to K-Turtle, a number of stability improvements were added that we will not specifically address here.
 
+New Nav2 Loopback Simulator
+***************************
+
+The ``nav2_looback_sim`` is a stand-alone simulator to create a "loopback" for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
+It computes the robot's odometry based on the command velocity's output request to create a perfect 'frictionless plane'-style simulation for unit testing, system testing, R&D on higher level systems, testing behaviors without concerning yourself with localization accuracy or system dynamics, and multirobot simulations.
 
 New RViz panel for Docking
 **************************
@@ -24,3 +29,48 @@ Here we can see the working demo of the plugin:
 .. image:: images/docking_panel.gif
 
 .. attention:: If the docking server is unavailable, then the combo box of the dock type will be empty.
+
+New BT Nodes
+************
+
+Below is a list of new BT Nodes added:
+
+- ``GetPoseFromPath``: An action to get a particular pose from an input path.
+- ``RemoveInCollisionGoals``: An action to remove waypoints that have a cost higher than a threshold.
+
+New RViz Tool for Costmap Cost Cell Inspection
+**********************************************
+
+In `PR #4546 <https://github.com/ros-navigation/navigation2/pull/4546>`_ a new RViz tool was added to get the costmap costcell's cost and a service to get the costcell's cost at the footprint pose.
+
+Usage:
+
+- Click on any point in the costmap with costmap rviz tool to retrieve and display the cost value at that cell.
+- ``nav2_msgs/GetCosts`` service can be used to retrieve the cost at footprint pose
+
+Working demo of the tool:
+
+.. image:: images/rviz_costmap_cost_tool.gif
+
+.. attention:: If the costmap service is unavailable, then the tool will not be able to fetch and display the cost values.
+
+Fix flickering visualization
+****************************
+
+In `PR #4561 <https://github.com/ros-navigation/navigation2/pull/4561>`_ a ``map_vis_z`` parameter has been introduced to Costmap2DROS to help modify the map slightly below the default plane, aiming to eliminate rviz visualization flickering issues.
+
+Default Value:
+
+- map_vis_z: 0.0
+
+Minimum Value Without Flickering:
+
+- map_vis_z: -0.008
+
+Before:
+
+.. image:: images/fix_flickering_visualization_before.png
+
+After:
+
+.. image:: images/fix_flickering_visualization_after.png

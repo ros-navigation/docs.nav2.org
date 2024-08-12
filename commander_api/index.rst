@@ -102,9 +102,6 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 | getPathThroughPoses(start, goals,     | Gets a path through a starting to a set of goals, a list                   |
 | planner_id='', use_start=False)       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
 +---------------------------------------+----------------------------------------------------------------------------+
-| getRoute(start, goal,                 | Gets a sparse route and dense path from start to goal, where start and     |
-| use_start=False)                      | goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.          |
-+---------------------------------------+----------------------------------------------------------------------------+
 | dockRobot(dock_pose, dock_type)       | Attempts to dock the robot at a given docking pose and type, without using |
 |                                       | docking database of known docks.                                           |
 +---------------------------------------+----------------------------------------------------------------------------+
