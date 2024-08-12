@@ -12,6 +12,7 @@ Nav2 Tutorials
    docs/navigation2_with_slam.rst
    docs/navigation2_with_stvl.rst
    docs/navigation2_with_gps.rst
+   docs/navigation2_with_microstrain_gq7.rst
    docs/using_groot.rst
    docs/integrating_vio.rst
    docs/navigation2_dynamic_point_following.rst
