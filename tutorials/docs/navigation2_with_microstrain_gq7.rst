@@ -10,14 +10,12 @@ Animation at the top
 - `Requirements`_
 - `Coordinate Frames`_
 - `Tutorial Steps`_
-  Key parameters to configure for the GQ7 (aiding sources, antenna lever arm stuff)
-  Setup transform tree to have antenna offsets in it, and also show how to set it up in the file itself
-  Talk about parameters that we configured in nav2 to work and talk about lidar usage
-  Show example of single waypoint navigation
   Show example of waypoint navigation
 
 - `Conclusion`_
   Talk about how easy it is to use a GQ7 for the global solution
+
+TODO: Include our video here instead
 
 .. raw:: html
 
@@ -55,6 +53,10 @@ Requirements
 2. Note that this example uses a real robot and does not provide simulation configuration, so you will need a real robot that is able to operate outside.
 
     For this tutorial, we are using a skid-steer ground robot. Specifically, we use the `Jackal by Clearpath Robotics <https://clearpathrobotics.com/jackal-small-unmanned-ground-vehicle/>`_, but assuming that you modify the Nav2 parameters properly, this should work for most ground robots.
+
+3. An outdoor location to test your robot.
+
+    The GQ7 is a GNSS-INS, in order for it to acquire a good fix and get a good position output, it needs clear sky view somewhere outside.
 
 3. If you want RTK level precision, you will need to either have a `3DM-RTK <https://www.microstrain.com/inertial-sensors/3dm-rtk>`_, or internet access from your robot and a subscription to an NTRIP network.
 
@@ -210,7 +212,7 @@ TODO: Talk about mounting, maybe get Ian to help write some documentation on thi
 
 
 2- Configure your GQ7
--------------------------------
+---------------------
 
 Now that the GQ7 is mounted, you will need to start the ``microstrain_inertial_driver`` node with the appropriate parameters. We will create a new .yml file for the GQ7 to run with, and it will start with the following contents
 
@@ -221,7 +223,9 @@ Now that the GQ7 is mounted, you will need to start the ``microstrain_inertial_d
       # We will fill in parameters here
 
 
-2.2- Configure the main port
+**Note:** The following sections will talk about each individual section and parameter we used to configure the GQ7, if you do not care, and just want to get things up running, skip to :ref:`combine_configuration`
+
+2.1- Configure the main port
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The GQ7 has two ports that can be connected to your robot using either a USB or serial connection. For more information on the ports available on the GQ7, see the `Main/Aux <https://files.microstrain.com/GQ7+User+Manual/user_manual_content/specifications/Main_Aux.htm>`_ page of the manual.
@@ -241,7 +245,7 @@ If using serial, you will need to know which serial port the device is connected
   set_baud: True  # this will ensure that the device has the same baudrate as the baudrate you configured
 
 
-2.3- Configure the aux port
+2.2- Configure the aux port
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Note:** If you are using the `3DM-RTK <https://www.microstrain.com/inertial-sensors/3dm-rtk>`_ or do not want RTK level precision, your connection parameters are fully configured, and you should skip this step. If you want to use the ntrip_client for corrections, you will also need to configure the aux port.
@@ -266,12 +270,12 @@ Once you have configured the aux port, you will need to enable the NTRIP interfa
   ntrip_interface_enable : True  # Will cause the driver to open the aux port, publish the NMEA sentences it produces to the ROS network, and accept RTCM messages from the network.
 
 
-2.4- Configure the filter
+2.3- Configure the filter
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to get the most out of the GQ7, you will need to properly configure the filter. Most of these settings are defaulted to the same values in the ``microstrain_inertial_driver``, but we will review them here
 
-2.4.1- Antenna offsets
+2.3.1- Antenna offsets
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Most important for filter performance is to make sure that your antenna offsets are properly configured. If these are not properly configured, the GQ7 filter may never become fully stable, and if they are not very accurate, our heading and position performance will suffer.
@@ -287,7 +291,7 @@ Luckily, we have them setup in the robot description, so we just need to tell th
   filter_enable_gnss_antenna_cal     : True  # Tells the GQ7 to correct for errors in the configured antenna offsets
   filter_gnss_antenna_cal_max_offset : 0.1  # Tells the GQ7 that it should only correct for errors up to 10cm
 
-2.4.2- Aiding measurements
+2.3.2- Aiding measurements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For our use case, we want the GQ7 to use GNSS as it's main source of truth. To do that, we need to enable the GNSS aiding sources, and disable others that might give us worse results in the outdoor environment we are operating in such as the magnetometer.
@@ -304,7 +308,7 @@ Additionally, we will configure the GQ7 to accept RTCM corrections so that if we
   filter_enable_magnetometer_aiding     : False  # Disable magnetometer as dual antenna heading is more accurate and reliable in this use-case
   filter_enable_external_heading_aiding : False  # Disable external heading as we will be using heading computed on the GQ7
 
-2.4.3- Filter Initialization
+2.3.3- Filter Initialization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since we will be operating outside, and startup time isn't a big concern for this application, this section is fairly easy as we just need to tell the GQ7 to handle all of this on it's own.
@@ -326,12 +330,12 @@ However, if you wanted to reduce startup time, and you knew with fairly good acc
   filter_pps_source : 1  # Tells the GQ7 to get it's PPS from GNSS antenna 1
 
 
-2.5- Configure Frame IDs and transforms
+2.4- Configure Frame IDs and transforms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this example, the GQ7 will handle publishing the transforms from ``earth -> map``, and ``map -> base_link``. The ``microstrain_inertial_driver`` can be configured to do all of this out of the box.
 
-2.5.1- Configure frames and transforms
+2.4.1- Configure frames and transforms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We need to tell the ``microstrain_inertial_driver`` which frames we are going to publish and how to publish them. The driver can operate in a couple different modes as mentioned in :ref:`coordinate_frames`.
@@ -352,7 +356,7 @@ For this example, we want to operate entirely in the ``map`` frame.
 
   tf_mode: 2  # This tells the driver to publish the earth_frame_id -> map_frame_id and map_frame_id to target_frame_id transforms.
 
-2.5.2- Configure local tangent plane
+2.4.2- Configure local tangent plane
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now that the transforms are configured to be published and the Frame IDs are properly configured, we need to setup the location of the local tangent plane, which will be the location of the ``map`` frame.
@@ -364,7 +368,7 @@ Now that the transforms are configured to be published and the Frame IDs are pro
   filter_relative_position_frame  : 2  # Not used in this example, this will determine the frame that filter_relative_position_ref is in. (1 - WGS84 ECEF, 2 - WGS84 LLH)
   filter_relative_position_ref    : [0.0, 0.0, 0.01]  # Not used in this example, this will determine the starting location of the local tangent plane. Useful if you want to send waypoints in the map frame and have your robot travel to the same location.
 
-2.5.3- Configure data rates
+2.4.3- Configure data rates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Finally, we need to setup the data rates of each of the publishers to publish the data to the ROS2 network so it can be consumed by Nav2.
@@ -387,8 +391,10 @@ Finally, we need to setup the data rates of each of the publishers to publish th
   filter_odometry_map_data_rate : 100  # This data rate will determine the speed at which we publish the odometry message in the map frame as well as the transform from map_frame_id -> target_frame_id
 
 
+.. _combine_configuration:
+
 2.6- Combine configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Having configured everything individually, we can now combine all of the parameters into our config file. For the purpose of this tutorial, we will call this config file ``gq7.yml``, and it should now look like this:
 
@@ -519,11 +525,70 @@ Finally, if you are using a velocity smoother, you will want to set it up to rec
 
 # TODO: Check in the nav2 config we used and link to it
 
+
+4- Navigate using Nav2
+----------------------
+
+Now that we have our configuration setup, we can start navigating.
+
+4.1- Start nodes
+~~~~~~~~~~~~~~~~
+
+To start the nodes, we will launch the ``microstrain_inertial_driver`` and ``nav2_bringup`` in two different terminals.
+
+In the first terminal, replace ``/path/to/gq7.yml`` with the path to your ``gq7.yml`` and then run:
+
+.. code-block:: bash
+
+  ros2 launch microstrain_inertial_driver microstrain_launch.py namespace:=/gq7 params_file:="/path/to/gq7.yml"
+
+In the second terminal, replace ``/path/to/nav2_params.yaml`` with the path to your ``nav2_params.yaml`` and then run:
+
+.. code-block:: bash
+
+  ros2 launch nav2_bringup bringup_launch.py params_file:="/path/to/nav2_params.yaml"
+
+Now that everything is running, the GQ7 will take some time to acquire a fix, but assuming your antenna offsets are accurate, and you have good sky view where you are testing, it should happen within a few minutes.
+If it doesn't enter full navigation in 3 minutes, see `this FAQ <https://files.microstrain.com/GQ7+User+Manual/user_manual_content/FAQ/FAQ.htm#Why>`_.
+
+A simple indication that the GQ7 has entered full navigation can be determined by looking at the `LED <https://files.microstrain.com/GQ7+User+Manual/user_manual_content/additional_features/LED%20States.htm>`_.
+If you are using RTK, you want the LED to be blue with a flash of white every second. If you are not using RTK, you want the LED to be green with a flash of white every second.
+
+For more in-depth information about the state of the filter, you can subscribe to ``/gq7/ekf/status``. Ideally, you want to see the following in the message:
+
+TODO: Include an example of a good status message
+
+4.2- Send waypoints to nav2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With the tf tree setup, there are now a couple different ways to send waypoints.
+
+4.2.1- Earth Frame
+^^^^^^^^^^^^^^^^^^
+
+Since we have a path in transforms from ``earth -> base_link`` we can send goals in the earth frame. This is useful if you want to navigate to known global waypoints while automatically acquiring your map frame.
+GUI tools like RViz don't work that well with these types of waypoints, but you can publish these waypoints from the command line, or code very easily. A simple example of navigating to a waypoint in the earth frame from the command line can be seen here
+
+.. code-block:: bash
+
+  ros2 topic pub TODO: Find the topic and include an example waypoint
+
+4.2.2- Map Frame
+^^^^^^^^^^^^^^^^
+
+We also have a path in transforms from ``map -> base_link``, so we can send goals in the map frame. TODO: Why is this useful? This is also very convenient because tools like RViz make sending goals in this frame extremely easy.
+TODO: Link to RViz config file to show how this could work.
+
+TODO: Show a gif of sending a waypoint to Nav2 from RViz
+
 Conclusion
 ==========
 
-This tutorial discussed the usage of a GPS sensor for global localization using RL and the ``navsat_transform`` node, covering the setup of a gazebo simulation with a GPS equipped robot as well. It also went through the configuration changes in Nav2 for navigating with GPS localization, emphasizing on some different possibilities for setting up the global costmap. Finally it showcased the capabilities of Nav2's GPS waypoint follower as a demonstration on how to use the stack in outdoors environments.
+This tutorial discussed how to configure, mount, and use a `3DM-GQ7 <https://www.microstrain.com/inertial-sensors/3dm-gq7>`_ to provide a global localization solution. It also covered how to configure nav2 to work with the localization solution either by itself or alongside a local ``robot_localization`` solution.
+Finally it showed how to send waypoints in multiple different frames to show the flexibility this solution allows.
 
-The tutorial should be a good starting point for setting up autonomous navigation using Nav2 on an outdoors robot, however users should keep in mind that GPS is just a means for providing global localization to the stack, and that all cartesian tools in Nav2 are still available for going past the GPS waypoint follower and building custom autonomy applications according to each use case.
+This tutorial should be a good starting point for users who wish to use a `3DM-GQ7 <https://www.microstrain.com/inertial-sensors/3dm-gq7>`_ to provide a global localization solution and use Nav2 to navigate.
+
+For further support on the ``microstrain_inertial_driver``, you can open an issue on `GitHub <https://github.com/LORD-MicroStrain/microstrain_inertial/issues>`_. For support on the GQ7 itself, you can open a ticket on the `MicroStrain Support Portal <https://sensor.support.microstrain.com/servicedesk/customer/portals>`_.
 
 Happy outdoors navigating!
