@@ -321,7 +321,7 @@ To keep things simpler when we get to visualization, we have provided an RVIz co
         Value: Orbit (rviz)
       Saved: ~
 
-Lastly, let us modify the ``CMakeLists.txt`` file in the project root directory to include the files we just created during the package installation process. Add the following snippet to ``CMakeLists.txt`` file preferrably above the ``if(BUILD_TESTING)`` line:
+Lastly, let us modify the ``CMakeLists.txt`` file in the project root directory to include the files we just created during the package installation process. Add the following snippet to ``CMakeLists.txt`` file preferably above the ``if(BUILD_TESTING)`` line:
 
 .. code-block:: shell
 
@@ -372,7 +372,7 @@ Let us first define macros containing the inertial properties of the geometric p
 .. code-block:: xml
   :lineno-start: 17
 
-    <!-- Define intertial property macros  -->
+    <!-- Define inertial property macros  -->
     <xacro:macro name="box_inertia" params="m w h d">
       <inertial>
         <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>

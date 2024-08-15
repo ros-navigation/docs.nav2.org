@@ -17,7 +17,7 @@ Overview
 ========
 
 This tutorial is a hands on walkthrough from your first Docker usage to commands and processes you can use for development of ROS 2 applications using Docker.
-This is not an exhausive introduction by any stretch, but should help you go from nothing to a functional process you can use on a daily basis for development and testing.
+This is not an exhaustive introduction by any stretch, but should help you go from nothing to a functional process you can use on a daily basis for development and testing.
 If you know some basics about Docker already, you can skip to later sections about development and deployment. 
 You'll also find a set of Docker images in the Appendix to this tutorial which are useful for developing with Nav2 or a containerized deployment of it.
 The same process template can be used for other company applications and projects as well.
@@ -32,9 +32,9 @@ Preliminaries
 =============
 
 Docker is a tool used to build, deploy, test, and otherwise work with software in an isolated environment, called a *container*.
-This diffs from a VM in that it shares the same linux kernal as your host operating system, making it faster to spin up and share host resources.
+This diffs from a VM in that it shares the same linux kernel as your host operating system, making it faster to spin up and share host resources.
 By building or deploying software in this isolated environment, you can ensure many users, robots, or servers are running the same software with the same software versions across many instances.
-It gives you a controlled environment to work in that is reproducable on other developer's machines and even work in a different (linux-based) operating system than your computer currently runs.
+It gives you a controlled environment to work in that is reproducible on other developer's machines and even work in a different (linux-based) operating system than your computer currently runs.
 For example, you can run a 22.04 Docker container that contains ROS 2 Humble on Nvidia Jetson's Jetpack 5.1 (which is a flavor of 20.04) and deploy that container to a fleet of robots.
 
 In common Docker language, an *image* is the built ``Dockerfile`` which can be used to create *containers*.
@@ -42,7 +42,7 @@ Thus, *containers* are self-contained, runnable instances of the docker *image*.
 The ``Dockerfile`` is a set of instructions for how to build an image to create some kind of environment to work in - and often contain applications to deploy in that environment.
 The Dockerfile instruct sets have a number of options such as:
 
-- ``ARG``: Obtain build-time arugments
+- ``ARG``: Obtain build-time arguments
 - ``FROM``: Specify a base image to build from
 - ``RUN``: Run a particular command
 - ``WORKDIR``: Set the working directory
@@ -139,7 +139,7 @@ We mentioned before that the container on spin up will automatically source the 
   touch navigator_dockerlayer.txt
   l # <-- you should see this file
 
-Nice! It all works. Now, if we exit our iteractive session (type ``exit``), we should reenter our computer.
+Nice! It all works. Now, if we exit our interactive session (type ``exit``), we should reenter our computer.
 In that second terminal, if you rerun ``sudo docker ps``, you should see that the list of containers is now empty since our container is no longer running.
 If you want to see a full list of containers, including exited containers, you can use the flag ``-a`` to display all containers.
 
@@ -270,7 +270,7 @@ For each distribution, there are a couple of variants:
 
 - ``ros-core``: Contains only the ROS core communication protocols and utilities
 - ``ros-base``: Contains ``ros-core`` and other core utilities like pluginlib, bond, actions, etc
-- ``perception``: Contains ``ros-base`` and image common, pipeline, laser filters, laser geomtry, vision opencv, etc
+- ``perception``: Contains ``ros-base`` and image common, pipeline, laser filters, laser geometry, vision opencv, etc
 - ``desktop``: Contains ``ros-base`` and tutorials, lifecycle, rviz2, teleop, and rqt
 - ``desktop-full``: Contains ``desktop``, ``perception`` and simulation
 
@@ -422,7 +422,7 @@ Nav2 Development Image
 ----------------------
 
 This container downloads, but does not install Nav2.
-Instead, it pulls the dependencies so that when you run this container, you obtain everything needed to immedately start building and working with Nav2 on any ROS 2 distribution, including Rolling.
+Instead, it pulls the dependencies so that when you run this container, you obtain everything needed to immediately start building and working with Nav2 on any ROS 2 distribution, including Rolling.
 
 .. code-block:: bash
 

@@ -8,7 +8,7 @@ Namely, the costmap layer, planner, controller, behavior tree, and behavior plug
 A list of all known plugins are listed here below for ROS 2 Navigation.
 If you know of a plugin, or you have created a new plugin, please consider submitting a pull request with that information.
 
-This file can be found and editted under ``sphinx_docs/plugins/index.rst``.
+This file can be found and edited under ``sphinx_docs/plugins/index.rst``.
 For tutorials on creating your own plugins, please see :ref:`writing_new_costmap2d_plugin`, :ref:`writing_new_nbt_plugin`, :ref:`writing_new_nav2controller_plugin`, :ref:`writing_new_nav2planner_plugin`, :ref:`writing_new_behavior_plugin`, or :ref:`writing_new_nav2navigator_plugin`.
 
 Behavior-Tree Navigators
@@ -38,12 +38,12 @@ Costmap Layers
 +--------------------------------+------------------------+----------------------------------+
 |            Plugin Name         |         Creator        |       Description                |
 +================================+========================+==================================+
-| `Voxel Layer`_                 | Eitan Marder-Eppstein  | Maintains persistant             |
+| `Voxel Layer`_                 | Eitan Marder-Eppstein  | Maintains persistent             |
 |                                |                        | 3D voxel layer using depth and   |
 |                                |                        | laser sensor readings and        |
 |                                |                        | raycasting to clear free space   |
 +--------------------------------+------------------------+----------------------------------+
-| `Range Layer`_                 | David Lu               | Uses a probabalistic model to    |
+| `Range Layer`_                 | David Lu               | Uses a probabilistic model to    |
 |                                |                        | put data from sensors that       |
 |                                |                        | publish range msgs on the costmap|
 +--------------------------------+------------------------+----------------------------------+
@@ -174,7 +174,7 @@ Planners
 |                           |                                       | Ackermann, diff, omni, and   |                     |
 |                           |                                       | legged robots.               |                     |
 +---------------------------+---------------------------------------+------------------------------+---------------------+
-|`ThetaStarPlanner`_        | Anshumaan Singh                       | An implementaion of Theta*   | Differential,       |
+|`ThetaStarPlanner`_        | Anshumaan Singh                       | An implementation of Theta*  | Differential,       |
 |                           |                                       | using either 4 or 8          | Omnidirectional     |
 |                           |                                       | connected neighborhoods,     |                     |
 |                           |                                       | assumes the robot as a       |                     |
@@ -327,98 +327,98 @@ Progress Checkers
 Behavior Tree Nodes
 ===================
 
-+--------------------------------------------+---------------------+------------------------------------------+
-| Action Plugin Name                         |   Creator           |       Description                        |
-+============================================+=====================+==========================================+
-| `Back Up Action`_                          | Michael Jeronimo    | Calls backup behavior action             |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Drive On Heading Action`_                 | Joshua Wallace      | Calls drive on heading behavior action   |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Assisted Teleop Action`_                  | Joshua Wallace      | Calls assisted teleop behavior action    |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Clear Entire Costmap Service`_            | Carl Delsey         | Calls clear entire costmap service       |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Clear Costmap Except Region Service`_     | Guillaume Doisy     | Calls clear costmap except region service|
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Clear Costmap Around Robot Service`_      | Guillaume Doisy     | Calls clear costmap around robot service |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Compute Path to Pose Action`_             | Michael Jeronimo    | Calls Nav2 planner server                |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Smooth Path Action`_                      | Matej Vargovcik     | Calls Nav2 smoother server               |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Follow Path Action`_                      | Michael Jeronimo    | Calls Nav2 controller server             |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Navigate to Pose Action`_                 | Michael Jeronimo    | BT Node for other                        |
-|                                            |                     | BehaviorTree.CPP BTs to call             |
-|                                            |                     | Navigation2 as a subtree action          |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Reinitalize Global Localization Service`_ | Carl Delsey         | Reinitialize AMCL to a new pose          |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Spin Action`_                             | Carl Delsey         | Calls spin behavior action               |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Wait Action`_                             | Steve Macenski      | Calls wait behavior action               |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Truncate Path`_                           | Francisco Martín    | Modifies a path making it shorter        |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Truncate Path Local`_                     | Matej Vargovcik     | Extracts a path section around robot     |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Planner Selector`_                        | Pablo Iñigo Blasco  | Selects the global planner based on a    |
-|                                            |                     | topic input, otherwises uses a default   |
-|                                            |                     | planner id                               |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Controller Selector`_                     | Pablo Iñigo Blasco  | Selects the controller based on a        |
-|                                            |                     | topic input, otherwises uses a default   |
-|                                            |                     | controller id                            |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Goal Checker Selector`_                   | Pablo Iñigo Blasco  | Selects the goal checker based on a      |
-|                                            |                     | topic input, otherwises uses a default   |
-|                                            |                     | goal checker id                          |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Smoother Selector`_                       | Owen Hooper         | Selects the smoother based on a          |
-|                                            |                     | topic input, otherwises uses a default   |
-|                                            |                     | smoother id                              |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Progress Checker Selector`_               | Steve Macenski      | Selects the progress checker based on a  |
-|                                            |                     | topic input, otherwises uses a default   |
-|                                            |                     | progress checker id                      |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Navigate Through Poses`_                  | Steve Macenski      | BT Node for other BehaviorTree.CPP BTs   |
-|                                            |                     | to call Nav2's NavThroughPoses action    |
-|                                            |                     |                                          |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Remove Passed Goals`_                     | Steve Macenski      | Removes goal poses passed or within a    |
-|                                            |                     | tolerance for culling old viapoints from |
-|                                            |                     | path re-planning                         |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Remove In Collision Goals`_               | Tony Najjar         | Removes goal poses that have a footprint |
-|                                            |                     | or point cost above a threshold.         |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Compute Path Through Poses`_              | Steve Macenski      | Computes a path through a set of poses   |
-|                                            |                     | rather than a single end goal pose       |
-|                                            |                     | using the planner plugin specified       |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Control Action`_                   |Pradheep Padmanabhan | Cancels Nav2 controller server           |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel BackUp Action`_                    |Pradheep Padmanabhan | Cancels backup behavior action           |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Spin Action`_                      |Pradheep Padmanabhan | Cancels spin behavior action             |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Wait Action`_                      |Pradheep Padmanabhan | Cancels wait behavior action             |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Drive on Heading Action`_          | Joshua Wallace      | Cancels drive on heading behavior action |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Assisted Teleop Action`_           | Joshua Wallace      | Cancels assisted teleop behavior action  |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Cancel Complete Coverage Action`_         | Steve Macenski      | Cancels compute complete coverage        |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Compute Complete Coverage Path Action`_   | Steve Macenski      | Calls coverage planner server            |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Get Pose From Path Action`_               |  Marc Morcos        | Extracts a pose from a path              |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Dock Robot Action`_                       | Steve Macenski      | Calls dock robot action                  |
-+--------------------------------------------+---------------------+------------------------------------------+
-| `Undock Robot Action`_                     | Steve Macenski      | Calls undock robot action                |
-+--------------------------------------------+---------------------+------------------------------------------+
++---------------------------------------------+---------------------+------------------------------------------+
+| Action Plugin Name                          |   Creator           |       Description                        |
++=============================================+=====================+==========================================+
+| `Back Up Action`_                           | Michael Jeronimo    | Calls backup behavior action             |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Drive On Heading Action`_                  | Joshua Wallace      | Calls drive on heading behavior action   |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Assisted Teleop Action`_                   | Joshua Wallace      | Calls assisted teleop behavior action    |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Clear Entire Costmap Service`_             | Carl Delsey         | Calls clear entire costmap service       |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Clear Costmap Except Region Service`_      | Guillaume Doisy     | Calls clear costmap except region service|
++---------------------------------------------+---------------------+------------------------------------------+
+| `Clear Costmap Around Robot Service`_       | Guillaume Doisy     | Calls clear costmap around robot service |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Compute Path to Pose Action`_              | Michael Jeronimo    | Calls Nav2 planner server                |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Smooth Path Action`_                       | Matej Vargovcik     | Calls Nav2 smoother server               |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Follow Path Action`_                       | Michael Jeronimo    | Calls Nav2 controller server             |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Navigate to Pose Action`_                  | Michael Jeronimo    | BT Node for other                        |
+|                                             |                     | BehaviorTree.CPP BTs to call             |
+|                                             |                     | Navigation2 as a subtree action          |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Reinitialize Global Localization Service`_ | Carl Delsey         | Reinitialize AMCL to a new pose          |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Spin Action`_                              | Carl Delsey         | Calls spin behavior action               |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Wait Action`_                              | Steve Macenski      | Calls wait behavior action               |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Truncate Path`_                            | Francisco Martín    | Modifies a path making it shorter        |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Truncate Path Local`_                      | Matej Vargovcik     | Extracts a path section around robot     |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Planner Selector`_                         | Pablo Iñigo Blasco  | Selects the global planner based on a    |
+|                                             |                     | topic input, otherwises uses a default   |
+|                                             |                     | planner id                               |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Controller Selector`_                      | Pablo Iñigo Blasco  | Selects the controller based on a        |
+|                                             |                     | topic input, otherwises uses a default   |
+|                                             |                     | controller id                            |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Goal Checker Selector`_                    | Pablo Iñigo Blasco  | Selects the goal checker based on a      |
+|                                             |                     | topic input, otherwises uses a default   |
+|                                             |                     | goal checker id                          |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Smoother Selector`_                        | Owen Hooper         | Selects the smoother based on a          |
+|                                             |                     | topic input, otherwises uses a default   |
+|                                             |                     | smoother id                              |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Progress Checker Selector`_                | Steve Macenski      | Selects the progress checker based on a  |
+|                                             |                     | topic input, otherwises uses a default   |
+|                                             |                     | progress checker id                      |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Navigate Through Poses`_                   | Steve Macenski      | BT Node for other BehaviorTree.CPP BTs   |
+|                                             |                     | to call Nav2's NavThroughPoses action    |
+|                                             |                     |                                          |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Remove Passed Goals`_                      | Steve Macenski      | Removes goal poses passed or within a    |
+|                                             |                     | tolerance for culling old viapoints from |
+|                                             |                     | path re-planning                         |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Remove In Collision Goals`_                | Tony Najjar         | Removes goal poses that have a footprint |
+|                                             |                     | or point cost above a threshold.         |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Compute Path Through Poses`_               | Steve Macenski      | Computes a path through a set of poses   |
+|                                             |                     | rather than a single end goal pose       |
+|                                             |                     | using the planner plugin specified       |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Control Action`_                    |Pradheep Padmanabhan | Cancels Nav2 controller server           |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel BackUp Action`_                     |Pradheep Padmanabhan | Cancels backup behavior action           |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Spin Action`_                       |Pradheep Padmanabhan | Cancels spin behavior action             |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Wait Action`_                       |Pradheep Padmanabhan | Cancels wait behavior action             |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Drive on Heading Action`_           | Joshua Wallace      | Cancels drive on heading behavior action |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Assisted Teleop Action`_            | Joshua Wallace      | Cancels assisted teleop behavior action  |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Complete Coverage Action`_          | Steve Macenski      | Cancels compute complete coverage        |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Compute Complete Coverage Path Action`_    | Steve Macenski      | Calls coverage planner server            |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Get Pose From Path Action`_                |  Marc Morcos        | Extracts a pose from a path              |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Dock Robot Action`_                        | Steve Macenski      | Calls dock robot action                  |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Undock Robot Action`_                      | Steve Macenski      | Calls undock robot action                |
++---------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Drive On Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp

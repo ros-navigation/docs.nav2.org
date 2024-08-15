@@ -55,13 +55,13 @@ Open up your command line and execute the following command:
 
   ros2 run tf2_ros static_transform_publisher 0.1 0 0.2 0 0 0 base_link base_laser
 
-With this, we are now sucessfully publishing our ``base_link`` to ``base_laser`` transform in TF2. Let us now check if it is working properly through ``tf2_echo``. Open up a separate command line window and execute the following:
+With this, we are now successfully publishing our ``base_link`` to ``base_laser`` transform in TF2. Let us now check if it is working properly through ``tf2_echo``. Open up a separate command line window and execute the following:
 
 .. code-block:: shell
 
   ros2 run tf2_ros tf2_echo base_link base_laser
 
-You should be able to observe a repeated output simiar to the one below.
+You should be able to observe a repeated output similar to the one below.
 
 .. code-block:: shell
 
@@ -112,4 +112,4 @@ In this tutorial, we have discussed about the concept of transforms and how they
 
 In the last section, we have also explored using the static_transform_publisher of TF2 to publish our transforms. You may use this to set up your transforms for Nav2, but this is generally not the best way to do it. In most robotics projects, we make use of the Robot State Publisher since it is much easier to use and scales well as our robot gets more complex. We will be talking about the Robot State Publisher, URDF, and how to set it up in the next tutorial on :ref:`urdf_handson`.
 
-Lastly, we also discussed the three published transform requirements of Nav2 and the neccessary REPs to keep in mind when setting them up. 
+Lastly, we also discussed the three published transform requirements of Nav2 and the necessary REPs to keep in mind when setting them up. 

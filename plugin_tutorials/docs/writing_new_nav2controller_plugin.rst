@@ -54,11 +54,11 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 |                           | parent node, controller name, tf buffer pointer and shared pointer to costmap.        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | activate()                | Method is called when controller server enters on_activate state. Ideally this method | Yes                    |
-|                           | should implement operations which are neccessary before controller goes to an active  |                        |
+|                           | should implement operations which are necessary before controller goes to an active   |                        |
 |                           | state.                                                                                |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | deactivate()              | Method is called when controller server enters on_deactivate state. Ideally this      | Yes                    |
-|                           | method should implement operations which are neccessary before controller goes to an  |                        |
+|                           | method should implement operations which are necessary before controller goes to an   |                        |
 |                           | inactive state.                                                                       |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | cleanup()                 | Method is called when controller server goes to on_cleanup state. Ideally this method | Yes                    |

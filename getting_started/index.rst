@@ -57,7 +57,7 @@ Running the Example
       For ``ROS 2 Dashing Diademata`` or earlier, use
       ``nav2_simulation_launch.py``.
       However, it is recommended to use the most recent `ROS 2 LTS distribution
-      <https://ros.org/reps/rep-2000.html>`_  for improved stablity and feature
+      <https://ros.org/reps/rep-2000.html>`_  for improved stability and feature
       completeness.
       
       ``headless`` defaults to true; if not set to false, gzclient (the 3d view) is not started.

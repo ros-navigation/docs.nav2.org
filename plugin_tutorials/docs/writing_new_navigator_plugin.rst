@@ -34,7 +34,7 @@ We will be implementing pure point-to-point navigation behavior. The code in thi
 
 Our example plugin class ``nav2_bt_navigator::NavigateToPoseNavigator`` inherits from the base class ``nav2_core::BehaviorTreeNavigator``. The base class provides a set of virtual methods to implement a navigator plugin. These methods are called at runtime by the BT Navigator server or as a response to ROS 2 actions to process a navigation request.
 
-Note that this class has itself a base class of ``NavigatorBase``. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. ``on_XYZ``) are implemented for you in ``BehaviorTreeNavigator`` and marked as ``final`` so they are not possible to be overrided by the user. The API that you will be implementing for your navigator are the virtual methods within ``BehaviorTreeNavigator``, not ``NavigatorBase``. These ``on_XYZ`` APIs are implemented in necessary functions in ``BehaviorTreeNavigator`` to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. ``on_configure`` will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined ``configure`` function for any additional user-specific needs).
+Note that this class has itself a base class of ``NavigatorBase``. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. ``on_XYZ``) are implemented for you in ``BehaviorTreeNavigator`` and marked as ``final`` so they are not possible to be overridden by the user. The API that you will be implementing for your navigator are the virtual methods within ``BehaviorTreeNavigator``, not ``NavigatorBase``. These ``on_XYZ`` APIs are implemented in necessary functions in ``BehaviorTreeNavigator`` to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. ``on_configure`` will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined ``configure`` function for any additional user-specific needs).
 
 The list of methods, their descriptions, and necessity are presented in the table below:
 
@@ -42,18 +42,18 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 | **Virtual method**        | **Method description**                                                                | **Requires override?** |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | getDefaultBTFilepath()    | Method is called on initialization to retrieve the default BT filepath to use for     | Yes                    |
-|                           | navigation. This may be done via parameters, hardcoded logic, sentinal files, etc.    |                        |
+|                           | navigation. This may be done via parameters, hardcoded logic, sentinel files, etc.    |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | configure()               | Method is called when BT navigator server enters on_configure state. This method      | No                     |
-|                           | should implement operations which are neccessary before navigator goes to an active   |                        |
+|                           | should implement operations which are necessary before navigator goes to an active    |                        |
 |                           | state, such as getting parameters, setting up the blackboard, etc.                    |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | activate()                | Method is called when BT navigator server enters on_activate state. This method       | No                     |
-|                           | should implement operations which are neccessary before navigator goes to an active   |                        |
+|                           | should implement operations which are necessary before navigator goes to an active    |                        |
 |                           | state, such as create clients and subscriptions.                                      |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | deactivate()              | Method is called when BT navigator server enters on_deactivate state.  This           | No                     |
-|                           | method should implement operations which are neccessary before navigator goes to an   |                        |
+|                           | method should implement operations which are necessary before navigator goes to an    |                        |
 |                           | inactive state.                                                                       |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | cleanup()                 | Method is called when BT navigator server goes to on_cleanup state. This method       | No                     |
@@ -70,7 +70,7 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 | onPreempt()               | Method is called when a new goal is requesting preemption over the existing           | Yes                    |
 |                           | goal currently being processed. If the new goal is viable, it should make all         |                        |
 |                           | appropriate updates to the BT and blackboard such that this new request may           |                        |
-|                           | immediately start being processed without hard cancelation of the initial task        |                        |
+|                           | immediately start being processed without hard cancellation of the initial task       |                        |
 |                           | (e.g. preemption).                                                                    |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | goalCompleted()           | Method is called when a goal is completed to populate the action result object or     | Yes                    |
@@ -208,7 +208,7 @@ If however a goal is preempted (e.g. a new action request comes in while an exis
       }
     }
 
-Note that here you can also see the ``initializeGoalPose`` method called. This method will set the goal parameters for this navigator onto the blackboard and reset important state information to cleanly re-use a behavior tree without old state information, as shown below:
+Note that here you can also see the ``initializeGoalPose`` method called. This method will set the goal parameters for this navigator onto the blackboard and reset important state information to cleanly reuse a behavior tree without old state information, as shown below:
 
 .. code-block:: c++
 

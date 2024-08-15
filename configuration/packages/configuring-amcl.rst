@@ -98,7 +98,7 @@ Parameters
   ============== =============================
 
   Description
-    Percentage of beams after not matching map to force full update due to bad convergance.
+    Percentage of beams after not matching map to force full update due to bad convergence.
 
 :beam_skip_threshold:
 
