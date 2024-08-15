@@ -18,7 +18,7 @@ After creating the generic representation, your project will be to create demons
 
 **Project output requirements**
 - Generic semantics standard added to Nav2 documentation
-- Generic semantics ROS 2 library that implements the standard and makes it easy for applications to get, retreive, or analyze semantic data for custom purposes
+- Generic semantics ROS 2 library that implements the standard and makes it easy for applications to get, retrieve, or analyze semantic data for custom purposes
 - A route server to enable navigation-graph and/or route following capabilities
 - 1 more demonstration using the semantics library of your choice (could be costmap layer with different rules in different rooms or with different objects, a multi-story building demo using semantic info to allow a robot to plan and execute multi-story trajectories, etc)
 

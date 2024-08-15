@@ -266,7 +266,7 @@ Parameters
   ====== =======
 
   Description
-    Advanced feature: Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
+    Advanced feature: Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
 
 :``<name>``.allow_primitive_interpolation:
 
@@ -288,7 +288,7 @@ Parameters
   ====== =======
 
   Description
-    Advanced feature: This allows a user to disable downsampling of the obstacle heuristic's costmap representation to search at the costmap's full-resolution. This will come at increased up-front costs while searching for the 2D approximate route to the goal in exchange for less search iterations and a slightly more smooth path. With ``smooth_path`` on, this increased smoothness is noticable but not massively different. When combined with all of the advanced features however, it can contribute to a better overall plan in exchange for some compute time. This scales with map size and complexity of the path plan requested. For simpler maps / paths, this may actually improve performance due to low up-front search times and lower iterations.
+    Advanced feature: This allows a user to disable downsampling of the obstacle heuristic's costmap representation to search at the costmap's full-resolution. This will come at increased up-front costs while searching for the 2D approximate route to the goal in exchange for less search iterations and a slightly more smooth path. With ``smooth_path`` on, this increased smoothness is noticeable but not massively different. When combined with all of the advanced features however, it can contribute to a better overall plan in exchange for some compute time. This scales with map size and complexity of the path plan requested. For simpler maps / paths, this may actually improve performance due to low up-front search times and lower iterations.
 
 :``<name>``.use_quadratic_cost_penalty:
 
@@ -409,7 +409,7 @@ Example
         cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
         retrospective_penalty: 0.015
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
-        cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.   
+        cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.   
         debug_visualizations: false         # For Hybrid nodes: Whether to publish expansions on the /expansions topic as an array of poses (the orientation has no meaning) and the path's footprints on the /planned_footprints topic. WARNING: heavy to compute and to display, for debug only as it degrades the performance.
         use_quadratic_cost_penalty: False
         downsample_obstacle_heuristic: True

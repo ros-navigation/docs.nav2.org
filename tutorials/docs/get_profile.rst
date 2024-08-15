@@ -20,7 +20,7 @@ The following steps show ROS 2 users how to modify the Nav2 stack to get profili
 Preliminaries
 =============
 
-This tutorial makes use of two tools, callgrind from the ``Valgrind`` set of tools and ``kcachegrind``. Valgrind is used to get the profiling information about the program and kcachegrind is the visualization engine used to interprete this information to do useful work.
+This tutorial makes use of two tools, callgrind from the ``Valgrind`` set of tools and ``kcachegrind``. Valgrind is used to get the profiling information about the program and kcachegrind is the visualization engine used to interpret this information to do useful work.
 
 Thus, we must install them.
 
@@ -56,7 +56,7 @@ As in our generic example, for a given node, we need to compile with debug flags
 
 	colcon build --packages-select <packages of interest> --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
 
-Optionally, you may add the following line to the ``CMakeLists.txt`` of the package you're looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single ``colcon build`` invokation. 
+Optionally, you may add the following line to the ``CMakeLists.txt`` of the package you're looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single ``colcon build`` invocation. 
 
 It is important that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin's run-time profile.
 

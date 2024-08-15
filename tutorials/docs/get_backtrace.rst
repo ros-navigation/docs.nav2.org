@@ -174,7 +174,7 @@ From Large Project
 ==================
 
 Working with launch files with multiple nodes is a little different so you can interact with your GDB session without being bogged down by other logging in the same terminal.
-For this reason, when working with larger launch files, its good to pull out the specific server you're interested in and launching it seperately.
+For this reason, when working with larger launch files, its good to pull out the specific server you're interested in and launching it separately.
 These instructions are targeting Nav2, but are applicable to any large project with many nodes of any type in a series of launch file(s).
 
 As such, for this case, when you see a crash you'd like to investigate, its beneficial to separate this server from the others.
@@ -189,7 +189,7 @@ If your server of interest is being launched from a nested launch file (e.g. an 
 
 - Launch the server's launch file in another terminal following the instructions in `From a Launch File`_.
 
-Alternatively, if you server of interest is being launched in these files directly (e.g. you see a ``Node``, ``LifecycleNode``, or inside a ``ComponentContainer``), you will need to seperate this from the others:
+Alternatively, if you server of interest is being launched in these files directly (e.g. you see a ``Node``, ``LifecycleNode``, or inside a ``ComponentContainer``), you will need to separate this from the others:
 
 - Comment out the node's inclusion from the parent launch file
 
@@ -228,7 +228,7 @@ To debug directly from the nav2 bringup launch files you may want to do the foll
 
 - Recompile the package of interest with ``-g`` flag for debug symbols.
 
-- Launch normally with ``ros2 launch nav2_bringup tb3_simulation_launch.py use_composition:=False``. A seperate xterm window will open with the proccess of intrest running in gdb.
+- Launch normally with ``ros2 launch nav2_bringup tb3_simulation_launch.py use_composition:=False``. A separate xterm window will open with the process of interest running in gdb.
 
 .. note::
   Turning off composition has serious performance impacts. If this is important to you please follow "From Large Project". 

@@ -11,7 +11,7 @@ This project is admittedly abstract to explain to someone unfamiliar with the in
 
 ROS 2 architecturally was changed before Foxy in order to ensure that any single process containing multiple ROS 2 node objects will share the same DDS participant on the network. This is important due to the overhead that each additional DDS participant has on the system.
 
-In order for nav2 to leverage this the best, we need to adjust our usage of ROS 2 nodes and executors to further minimize the number of node objects in existance. In the early days of ROS 2 when Nav2 was being built, we were required to have many nodes in a single server in order to handle action requests and other callbacks. Now, we can make use of multi-threaded spinners, callback groups, and individual executors for specific tasks.
+In order for nav2 to leverage this the best, we need to adjust our usage of ROS 2 nodes and executors to further minimize the number of node objects in existence. In the early days of ROS 2 when Nav2 was being built, we were required to have many nodes in a single server in order to handle action requests and other callbacks. Now, we can make use of multi-threaded spinners, callback groups, and individual executors for specific tasks.
 
 This project will involve identifying all of the Node objects in the stack (control+F makes this easy) and work with mentors to ensure by the end of the summer each server contains only a single node. Additionally, the behavior tree plugins should be updated to leverage callback groups to ensure that any single BT node spinning to check if any new messages are on its callback will **only** trigger its own callback by the same mechanisms.
 

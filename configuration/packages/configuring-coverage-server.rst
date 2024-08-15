@@ -180,7 +180,7 @@ Parameters
   ============== ========
 
   Description
-    The default custom swath order for the route planner in the ``CUSTOM`` mode. The length of this custom order must be ``>= swaths.size()``. Only relevent when using the ``CUSTOM`` Route Type.
+    The default custom swath order for the route planner in the ``CUSTOM`` mode. The length of this custom order must be ``>= swaths.size()``. Only relevant when using the ``CUSTOM`` Route Type.
 
 :default_spiral_n:
 
@@ -191,7 +191,7 @@ Parameters
   ============== ===============
 
   Description
-    Default number of swaths to skip and double back on to create a spiral pattern in the route. Only relevent when usign the ``SPIRAL`` Route Type. ``SNAKE`` is a special case when Spiral N = 2.
+    Default number of swaths to skip and double back on to create a spiral pattern in the route. Only relevant when using the ``SPIRAL`` Route Type. ``SNAKE`` is a special case when Spiral N = 2.
 
 
 :default_path_continuity_type:

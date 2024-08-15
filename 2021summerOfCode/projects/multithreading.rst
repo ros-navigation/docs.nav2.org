@@ -12,7 +12,7 @@ Some examples include:
 - AMCL particle cloud updates
 - Costmap layer updates
 - Costmap sensor data population
-- Controller critic evalulation
+- Controller critic evaluation
 - Collision checking
 - Voxel grid ray casting
 - and more.
