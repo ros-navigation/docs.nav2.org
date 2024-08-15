@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1654,7 +1654,7 @@ Service<span class="w"> </span>Servers:
 </pre></div>
 </div>
 <p>From the output above, we can see that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> is subscribed to <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code>. We can also see that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> publishes on the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>, <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics.</p>
-<p>You may also verify that <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> is publishing the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform by using the tf2_echo utility. Run the folllowing command in a separate command line terminal:</p>
+<p>You may also verify that <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> is publishing the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform by using the tf2_echo utility. Run the following command in a separate command line terminal:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>odom<span class="w"> </span>base_link
 </pre></div>
 </div>

@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1123,7 +1123,7 @@ Behavior tree cpp v3 supports plugins and will be converted in the next release.
 </div>
 <div class="section" id="navigation2-architectural-changes">
 <h2>Navigation2 Architectural Changes<a class="headerlink" href="#navigation2-architectural-changes" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">nav2_world_model</span></code> package was removed. The individual <code class="docutils literal notranslate"><span class="pre">nav2_planner</span></code> and <code class="docutils literal notranslate"><span class="pre">nav2_controller</span></code> servers now host their relevent costmaps.
+<p>The <code class="docutils literal notranslate"><span class="pre">nav2_world_model</span></code> package was removed. The individual <code class="docutils literal notranslate"><span class="pre">nav2_planner</span></code> and <code class="docutils literal notranslate"><span class="pre">nav2_controller</span></code> servers now host their relevant costmaps.
 This was done to reduce network traffic and ensure up-to-date information for the safety-critical elements of the system.
 As above mentions, plugins were introduced into the stack and these servers each host plugins for navigation, control, and costmap layers.</p>
 <p>Map server was substantially refactored but the external API remains the same. It now uses the SDL library for image loading.</p>

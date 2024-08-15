@@ -42,7 +42,7 @@ Input Ports
   ====== =======
 
   Description
-      Time to envoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
+      Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
 :server_name:
 

@@ -44,7 +44,7 @@ Map Saver Parameters
   ============== =============================
 
   Description
-    Occupied space minimum probability threshhold value for occupancy grid.
+    Occupied space minimum probability threshold value for occupancy grid.
 
 Map Server Parameters
 *********************

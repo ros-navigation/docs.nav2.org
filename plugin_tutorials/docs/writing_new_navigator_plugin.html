@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1119,7 +1119,7 @@
 <h3>1- Create a new Navigator Plugin<a class="headerlink" href="#create-a-new-navigator-plugin" title="Permalink to this headline">¶</a></h3>
 <p>We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator">Nav2’s BT Navigator package</a> as the <code class="docutils literal notranslate"><span class="pre">NavigateToPoseNavigator</span></code>. This package can be considered as a reference for writing your own plugin.</p>
 <p>Our example plugin class <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator::NavigateToPoseNavigator</span></code> inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_core::BehaviorTreeNavigator</span></code>. The base class provides a set of virtual methods to implement a navigator plugin. These methods are called at runtime by the BT Navigator server or as a response to ROS 2 actions to process a navigation request.</p>
-<p>Note that this class has itself a base class of <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code>) are implemented for you in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> and marked as <code class="docutils literal notranslate"><span class="pre">final</span></code> so they are not possible to be overrided by the user. The API that you will be implementing for your navigator are the virtual methods within <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code>, not <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. These <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code> APIs are implemented in necessary functions in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. <code class="docutils literal notranslate"><span class="pre">on_configure</span></code> will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined <code class="docutils literal notranslate"><span class="pre">configure</span></code> function for any additional user-specific needs).</p>
+<p>Note that this class has itself a base class of <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code>) are implemented for you in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> and marked as <code class="docutils literal notranslate"><span class="pre">final</span></code> so they are not possible to be overridden by the user. The API that you will be implementing for your navigator are the virtual methods within <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code>, not <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. These <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code> APIs are implemented in necessary functions in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. <code class="docutils literal notranslate"><span class="pre">on_configure</span></code> will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined <code class="docutils literal notranslate"><span class="pre">configure</span></code> function for any additional user-specific needs).</p>
 <p>The list of methods, their descriptions, and necessity are presented in the table below:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1134,24 +1134,24 @@
 </tr>
 <tr class="row-even"><td><p>getDefaultBTFilepath()</p></td>
 <td><p>Method is called on initialization to retrieve the default BT filepath to use for
-navigation. This may be done via parameters, hardcoded logic, sentinal files, etc.</p></td>
+navigation. This may be done via parameters, hardcoded logic, sentinel files, etc.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-odd"><td><p>configure()</p></td>
 <td><p>Method is called when BT navigator server enters on_configure state. This method
-should implement operations which are neccessary before navigator goes to an active
+should implement operations which are necessary before navigator goes to an active
 state, such as getting parameters, setting up the blackboard, etc.</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p>activate()</p></td>
 <td><p>Method is called when BT navigator server enters on_activate state. This method
-should implement operations which are neccessary before navigator goes to an active
+should implement operations which are necessary before navigator goes to an active
 state, such as create clients and subscriptions.</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p>deactivate()</p></td>
 <td><p>Method is called when BT navigator server enters on_deactivate state.  This
-method should implement operations which are neccessary before navigator goes to an
+method should implement operations which are necessary before navigator goes to an
 inactive state.</p></td>
 <td><p>No</p></td>
 </tr>
@@ -1176,7 +1176,7 @@ or more commonly to publish action feedback statuses to the client.</p></td>
 <td><p>Method is called when a new goal is requesting preemption over the existing
 goal currently being processed. If the new goal is viable, it should make all
 appropriate updates to the BT and blackboard such that this new request may
-immediately start being processed without hard cancelation of the initial task
+immediately start being processed without hard cancellation of the initial task
 (e.g. preemption).</p></td>
 <td><p>Yes</p></td>
 </tr>
@@ -1308,7 +1308,7 @@ The <code class="docutils literal notranslate"><span class="pre">goalReceived</s
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Note that here you can also see the <code class="docutils literal notranslate"><span class="pre">initializeGoalPose</span></code> method called. This method will set the goal parameters for this navigator onto the blackboard and reset important state information to cleanly re-use a behavior tree without old state information, as shown below:</p>
+<p>Note that here you can also see the <code class="docutils literal notranslate"><span class="pre">initializeGoalPose</span></code> method called. This method will set the goal parameters for this navigator onto the blackboard and reset important state information to cleanly reuse a behavior tree without old state information, as shown below:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span>
 <span class="nf">NavigateToPoseNavigator::initializeGoalPose</span><span class="p">(</span><span class="n">ActionT</span><span class="o">::</span><span class="n">Goal</span><span class="o">::</span><span class="n">ConstSharedPtr</span><span class="w"> </span><span class="n">goal</span><span class="p">)</span>
 <span class="p">{</span>

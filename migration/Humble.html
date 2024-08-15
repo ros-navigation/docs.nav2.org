@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1188,10 +1188,10 @@ See <a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_ser
 </div>
 <div class="section" id="give-behavior-server-access-to-both-costmaps">
 <h2>Give Behavior Server Access to Both Costmaps<a class="headerlink" href="#give-behavior-server-access-to-both-costmaps" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3255">PR #3255</a> addes the ability for a behavior to access the local and global costmap.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3255">PR #3255</a> adds the ability for a behavior to access the local and global costmap.</p>
 <p>To update behaviors, any reference to the global_frame must be updated to the local_frame parameter
 along with the <code class="docutils literal notranslate"><span class="pre">configuration</span></code> method which now takes in the local and global collision checkers.
-Lastly, <code class="docutils literal notranslate"><span class="pre">getResourceInfo</span></code> must be overriden to return <code class="docutils literal notranslate"><span class="pre">CostmapInfoType::LOCAL</span></code>. Other options include <code class="docutils literal notranslate"><span class="pre">GLOBAL</span></code> if the behavior useses global costmap and/or footprint)
+Lastly, <code class="docutils literal notranslate"><span class="pre">getResourceInfo</span></code> must be overridden to return <code class="docutils literal notranslate"><span class="pre">CostmapInfoType::LOCAL</span></code>. Other options include <code class="docutils literal notranslate"><span class="pre">GLOBAL</span></code> if the behavior useses global costmap and/or footprint)
 or <code class="docutils literal notranslate"><span class="pre">BOTH</span></code> if both are required. This allows us to only create and maintain the minimum amount of expensive resources.</p>
 </div>
 <div class="section" id="new-model-predictive-path-integral-controller">
@@ -1279,7 +1279,7 @@ More information about <code class="docutils literal notranslate"><span class="p
 </div>
 <div class="section" id="smacplannerhybrid-viz-expansions-parameter">
 <h2>SmacPlannerHybrid viz_expansions parameter<a class="headerlink" href="#smacplannerhybrid-viz-expansions-parameter" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3577">PR #3577</a> adds a new paremeter for visualising SmacPlannerHybrid expansions for debug purpose.</p>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3577">PR #3577</a> adds a new parameter for visualising SmacPlannerHybrid expansions for debug purpose.</p>
 </div>
 </div>
 

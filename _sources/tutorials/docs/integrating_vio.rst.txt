@@ -43,7 +43,7 @@ We're using the ZED X for the purposes of this tutorial due to its:
 
 - Smaller size similar to other AMR depth sensors
 
-- High quality depth information at relevent ranges for mobile robotics and manipulation
+- High quality depth information at relevant ranges for mobile robotics and manipulation
 
 - Hardware synchronized IMU
 
@@ -148,7 +148,7 @@ While out of the scope of this tutorial, it is possible to continue to produce V
 
 - Fuse that topic into a global localization EKF in ``world_frame: map`` along with other sources of information (e.g. external IMU, AMCL, GPS, etc). 
 
-- The fusion of multiple global localization techniques should be done carefully. The most trusted source should be set ``_differential: false`` to use the actual pose information. All other subsiquent systems should use ``_differential: true`` so that diverging coordinate systems do not create bouncing solutions. Instead, this will fuse one as absolute poses and the other as the changes of poses between iterations. 
+- The fusion of multiple global localization techniques should be done carefully. The most trusted source should be set ``_differential: false`` to use the actual pose information. All other subsequent systems should use ``_differential: true`` so that diverging coordinate systems do not create bouncing solutions. Instead, this will fuse one as absolute poses and the other as the changes of poses between iterations. 
 
 
 Testing it Out!
@@ -160,7 +160,7 @@ The Visual-Inertial Odometry's error over these datasets is 4.1% over the 70m pa
 
 .. note::
     
-    Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve's a bad robot driver (he doesn't play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has alot of additional assymmetric weight on it. It is not representative of Nav2 and should be mocked. *Its meant to test the accuracy of the VIO solution in more harsh conditions... yeah... lets go with that*. 
+    Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve's a bad robot driver (he doesn't play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has a lot of additional asymmetric weight on it. It is not representative of Nav2 and should be mocked. *Its meant to test the accuracy of the VIO solution in more harsh conditions... yeah... lets go with that*. 
 
 .. raw:: html
 

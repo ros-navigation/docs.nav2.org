@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1107,7 +1107,7 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial is a hands on walkthrough from your first Docker usage to commands and processes you can use for development of ROS 2 applications using Docker.
-This is not an exhausive introduction by any stretch, but should help you go from nothing to a functional process you can use on a daily basis for development and testing.
+This is not an exhaustive introduction by any stretch, but should help you go from nothing to a functional process you can use on a daily basis for development and testing.
 If you know some basics about Docker already, you can skip to later sections about development and deployment.
 You’ll also find a set of Docker images in the Appendix to this tutorial which are useful for developing with Nav2 or a containerized deployment of it.
 The same process template can be used for other company applications and projects as well.</p>
@@ -1121,16 +1121,16 @@ The same process template can be used for other company applications and project
 <div class="section" id="preliminaries">
 <h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
 <p>Docker is a tool used to build, deploy, test, and otherwise work with software in an isolated environment, called a <em>container</em>.
-This diffs from a VM in that it shares the same linux kernal as your host operating system, making it faster to spin up and share host resources.
+This diffs from a VM in that it shares the same linux kernel as your host operating system, making it faster to spin up and share host resources.
 By building or deploying software in this isolated environment, you can ensure many users, robots, or servers are running the same software with the same software versions across many instances.
-It gives you a controlled environment to work in that is reproducable on other developer’s machines and even work in a different (linux-based) operating system than your computer currently runs.
+It gives you a controlled environment to work in that is reproducible on other developer’s machines and even work in a different (linux-based) operating system than your computer currently runs.
 For example, you can run a 22.04 Docker container that contains ROS 2 Humble on Nvidia Jetson’s Jetpack 5.1 (which is a flavor of 20.04) and deploy that container to a fleet of robots.</p>
 <p>In common Docker language, an <em>image</em> is the built <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> which can be used to create <em>containers</em>.
 Thus, <em>containers</em> are self-contained, runnable instances of the docker <em>image</em>.
 The <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> is a set of instructions for how to build an image to create some kind of environment to work in - and often contain applications to deploy in that environment.
 The Dockerfile instruct sets have a number of options such as:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ARG</span></code>: Obtain build-time arugments</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARG</span></code>: Obtain build-time arguments</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code>: Specify a base image to build from</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RUN</span></code>: Run a particular command</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">WORKDIR</span></code>: Set the working directory</p></li>
@@ -1213,7 +1213,7 @@ touch<span class="w"> </span>navigator_dockerlayer.txt
 l<span class="w"> </span><span class="c1"># &lt;-- you should see this file</span>
 </pre></div>
 </div>
-<p>Nice! It all works. Now, if we exit our iteractive session (type <code class="docutils literal notranslate"><span class="pre">exit</span></code>), we should reenter our computer.
+<p>Nice! It all works. Now, if we exit our interactive session (type <code class="docutils literal notranslate"><span class="pre">exit</span></code>), we should reenter our computer.
 In that second terminal, if you rerun <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">docker</span> <span class="pre">ps</span></code>, you should see that the list of containers is now empty since our container is no longer running.
 If you want to see a full list of containers, including exited containers, you can use the flag <code class="docutils literal notranslate"><span class="pre">-a</span></code> to display all containers.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>steve@reese:~$<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>-a
@@ -1316,7 +1316,7 @@ For each distribution, there are a couple of variants:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ros-core</span></code>: Contains only the ROS core communication protocols and utilities</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ros-base</span></code>: Contains <code class="docutils literal notranslate"><span class="pre">ros-core</span></code> and other core utilities like pluginlib, bond, actions, etc</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">perception</span></code>: Contains <code class="docutils literal notranslate"><span class="pre">ros-base</span></code> and image common, pipeline, laser filters, laser geomtry, vision opencv, etc</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">perception</span></code>: Contains <code class="docutils literal notranslate"><span class="pre">ros-base</span></code> and image common, pipeline, laser filters, laser geometry, vision opencv, etc</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">desktop</span></code>: Contains <code class="docutils literal notranslate"><span class="pre">ros-base</span></code> and tutorials, lifecycle, rviz2, teleop, and rqt</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">desktop-full</span></code>: Contains <code class="docutils literal notranslate"><span class="pre">desktop</span></code>, <code class="docutils literal notranslate"><span class="pre">perception</span></code> and simulation</p></li>
 </ul>
@@ -1444,7 +1444,7 @@ If in production, you cannot use a hammer, you may need to dig into your system 
 <div class="section" id="nav2-development-image">
 <h3>Nav2 Development Image<a class="headerlink" href="#nav2-development-image" title="Permalink to this headline">¶</a></h3>
 <p>This container downloads, but does not install Nav2.
-Instead, it pulls the dependencies so that when you run this container, you obtain everything needed to immedately start building and working with Nav2 on any ROS 2 distribution, including Rolling.</p>
+Instead, it pulls the dependencies so that when you run this container, you obtain everything needed to immediately start building and working with Nav2 on any ROS 2 distribution, including Rolling.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ARG<span class="w"> </span><span class="nv">ROS_DISTRO</span><span class="o">=</span>rolling
 FROM<span class="w"> </span>ros:<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>-ros-core
 

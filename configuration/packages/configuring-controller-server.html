@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1136,7 +1136,7 @@ It also hosts the local costmap.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller’s execution thread to a higher priority than the rest of the system (<code class="docutils literal notranslate"><span class="pre">90</span></code>) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of <code class="docutils literal notranslate"><span class="pre">/etc/security/limits.conf</span></code> to give userspace access to elevated prioritization permissions: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span> <span class="pre">soft</span> <span class="pre">rtprio</span> <span class="pre">99</span> <span class="pre">&lt;username&gt;</span> <span class="pre">hard</span> <span class="pre">rtprio</span> <span class="pre">99</span></code></p>
+<dt>Description</dt><dd><p>Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller’s execution thread to a higher priority than the rest of the system (<code class="docutils literal notranslate"><span class="pre">90</span></code>) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of <code class="docutils literal notranslate"><span class="pre">/etc/security/limits.conf</span></code> to give userspace access to elevated prioritization permissions: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span> <span class="pre">soft</span> <span class="pre">rtprio</span> <span class="pre">99</span> <span class="pre">&lt;username&gt;</span> <span class="pre">hard</span> <span class="pre">rtprio</span> <span class="pre">99</span></code></p>
 </dd>
 </dl>
 </dd>

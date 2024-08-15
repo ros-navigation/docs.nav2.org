@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1151,13 +1151,13 @@ and shared pointer to a collision checker.</p></td>
 </tr>
 <tr class="row-odd"><td><p>activate()</p></td>
 <td><p>Method is called when behavior server enters on_activate state. Ideally
-this method should implement operations which are neccessary before the
+this method should implement operations which are necessary before the
 behavior goes to an active state.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-even"><td><p>deactivate()</p></td>
 <td><p>Method is called when behavior server enters on_deactivate state. Ideally
-this method should implement operations which are neccessary before
+this method should implement operations which are necessary before
 behavior goes to an inactive state.</p></td>
 <td><p>Yes</p></td>
 </tr>
@@ -1195,7 +1195,7 @@ velocity for the current cycle, publishing it and checking for completion.</p></
 </tr>
 <tr class="row-even"><td><p>onConfigure()</p></td>
 <td><p>Method is called when behavior server enters on_configure state. Ideally
-this method should implement operations which are neccessary before
+this method should implement operations which are necessary before
 behavior goes to a configured state (get parameters, etc).</p></td>
 <td><p>No</p></td>
 </tr>
@@ -1240,7 +1240,7 @@ For the case of our call for help behavior, we can trivially compute all of our 
 <code class="docutils literal notranslate"><span class="pre">command</span></code> contains a field <code class="docutils literal notranslate"><span class="pre">message</span></code> that contains the message we want to communicate to our mothership.
 This is the “call for help” message that we want to send via SMS to our brothers in arms in the operations center.</p>
 <p>We use the service Twilio to complete this task.
-Please <a class="reference external" href="https://www.twilio.com/">create an account</a> and get all the relavent information needed for creating the service (e.g. <code class="docutils literal notranslate"><span class="pre">account_sid</span></code>, <code class="docutils literal notranslate"><span class="pre">auth_token</span></code>, and a phone number).
+Please <a class="reference external" href="https://www.twilio.com/">create an account</a> and get all the relevant information needed for creating the service (e.g. <code class="docutils literal notranslate"><span class="pre">account_sid</span></code>, <code class="docutils literal notranslate"><span class="pre">auth_token</span></code>, and a phone number).
 You can set these values as parameters in your configuration files corresponding to the <code class="docutils literal notranslate"><span class="pre">onConfigure()</span></code> parameter declarations.</p>
 <p>We use the <code class="docutils literal notranslate"><span class="pre">_twilio</span></code> object to send our message with your account information from the configuration file.
 We send the message and log to screen whether or not the message was sent successfully or not.

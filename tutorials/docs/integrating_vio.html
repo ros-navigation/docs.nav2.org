@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1121,7 +1121,7 @@
 <p>We’re using the ZED X for the purposes of this tutorial due to its:</p>
 <ul class="simple">
 <li><p>Smaller size similar to other AMR depth sensors</p></li>
-<li><p>High quality depth information at relevent ranges for mobile robotics and manipulation</p></li>
+<li><p>High quality depth information at relevant ranges for mobile robotics and manipulation</p></li>
 <li><p>Hardware synchronized IMU</p></li>
 <li><p>Wide field of view requiring only one camera in most situations</p></li>
 <li><p>Use of GMSL2 connectors over USB (yay!)</p></li>
@@ -1200,7 +1200,7 @@ $<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </sp
 <ul class="simple">
 <li><p>Continue to disable the TF tree for <code class="docutils literal notranslate"><span class="pre">map-&gt;odom</span></code>, but the global pose topic will continue to publish under <code class="docutils literal notranslate"><span class="pre">pose</span></code> for fusion</p></li>
 <li><p>Fuse that topic into a global localization EKF in <code class="docutils literal notranslate"><span class="pre">world_frame:</span> <span class="pre">map</span></code> along with other sources of information (e.g. external IMU, AMCL, GPS, etc).</p></li>
-<li><p>The fusion of multiple global localization techniques should be done carefully. The most trusted source should be set <code class="docutils literal notranslate"><span class="pre">_differential:</span> <span class="pre">false</span></code> to use the actual pose information. All other subsiquent systems should use <code class="docutils literal notranslate"><span class="pre">_differential:</span> <span class="pre">true</span></code> so that diverging coordinate systems do not create bouncing solutions. Instead, this will fuse one as absolute poses and the other as the changes of poses between iterations.</p></li>
+<li><p>The fusion of multiple global localization techniques should be done carefully. The most trusted source should be set <code class="docutils literal notranslate"><span class="pre">_differential:</span> <span class="pre">false</span></code> to use the actual pose information. All other subsequent systems should use <code class="docutils literal notranslate"><span class="pre">_differential:</span> <span class="pre">true</span></code> so that diverging coordinate systems do not create bouncing solutions. Instead, this will fuse one as absolute poses and the other as the changes of poses between iterations.</p></li>
 </ul>
 </div>
 </div>
@@ -1210,7 +1210,7 @@ $<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </sp
 <p>The Visual-Inertial Odometry’s error over these datasets is 4.1% over the 70m path. Typically for ‘good’ odometry from wheel encoders + IMU, I would like to see 2-3% fully tuned (or less than 1% for ‘great’ odometry), so this is a great source! Fused in with the legged robot odometry, it improves overall performance to an acceptable level!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve’s a bad robot driver (he doesn’t play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has alot of additional assymmetric weight on it. It is not representative of Nav2 and should be mocked. <em>Its meant to test the accuracy of the VIO solution in more harsh conditions… yeah… lets go with that</em>.</p>
+<p>Steve is walking his robot dog through Golden Gate Park in San Francisco, CA with a joystick to collect this data. Steve’s a bad robot driver (he doesn’t play video games), the zig-zagging you see is due to his lack of good joystick control + the quadruped has a lot of additional asymmetric weight on it. It is not representative of Nav2 and should be mocked. <em>Its meant to test the accuracy of the VIO solution in more harsh conditions… yeah… lets go with that</em>.</p>
 </div>
 <h1 align="center">
   <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">

@@ -30,7 +30,7 @@ The Smac Planner was significantly improved, of both the 2D and Hybrid-A* implem
   - Precompute primitives at all orientation bins
   - SmacPlanner2D parameters are now all reconfigurable
   - Both Hybrid-A* and State Lattice planners are now fully admissible
-  - Hybrid-A* and State Lattice have had their parameterization for path smoothing readded.
+  - Hybrid-A* and State Lattice have had their parameterization for path smoothing re-added.
   - The smoother now enables kinematically feasible boundary conditions.
   - State Lattice supports turning in place primitive types
   - Retrospective penalty added to speed up the planner, making it prioritize later search branches before earlier ones, which have negligible chance to improve path in vast majority of situations
@@ -154,12 +154,12 @@ The Rotation Shim Controller is suitable for:
 Spawning the robot in Gazebo
 ****************************
 
-`This PR 2473 <https://github.com/ros-planning/navigation2/pull/2473>`_ deletes the pkg ``nav2_gazebo_spawner`` inside nav2_bringup directory. Instead of ``nav2_gazebo_spawner`` the Node `spawn_entity.py <https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py>`_ of ``gazebo_ros`` is recomended to spawn the robot in gazebo.
+`This PR 2473 <https://github.com/ros-planning/navigation2/pull/2473>`_ deletes the pkg ``nav2_gazebo_spawner`` inside nav2_bringup directory. Instead of ``nav2_gazebo_spawner`` the Node `spawn_entity.py <https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_ros/scripts/spawn_entity.py>`_ of ``gazebo_ros`` is recommended to spawn the robot in gazebo.
 Note that
 
   * gazebo should be started with both ``libgazebo_ros_init.so`` and ``libgazebo_ros_factory.so`` to work correctly.
 
-  * spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument ``<remapping>/tf:=tf</remapping>``  ``<remapping>/tf_static:=tf_static</remapping>`` under ros2 tag in each plugin which publishs transforms in the SDF file. It is essential to differentiate the tf's of the different robot.
+  * spawn_entity node could not remap /tf and /tf_static to tf and tf_static in the launch file yet, used only for multi-robot situations. This problem was overcame by adding remapping argument ``<remapping>/tf:=tf</remapping>``  ``<remapping>/tf_static:=tf_static</remapping>`` under ros2 tag in each plugin which publishes transforms in the SDF file. It is essential to differentiate the tf's of the different robot.
 
 Recovery Behavior Timeout
 *************************
@@ -212,7 +212,7 @@ When BT action nodes throw exceptions due to networking or action server failure
 BT Navigator Groot Multiple Navigators
 **************************************
 
-`This PR 2627 <https://github.com/ros-planning/navigation2/pull/2627>`_ creates separate parameters for groot monitoring for the NavToPose and NavThroughPoses navigator types so you can individually track the state of each behavior tree through the ZMQ publisher. This resolves a long-standing problem after we added multiple navigator types to BT Navigator that you could only view the nav to poses BT execution live. BT.CPP and Groot only support one static ZMQ stream at a time, so there is a bit of a quirk where you must locally reset Groot after switching trees in order to view the live stream of the Nav Through Poses BT, if in use. This is a state of the BT.CPP and Groot libraries and not something we can resolve withing Nav2.
+`This PR 2627 <https://github.com/ros-planning/navigation2/pull/2627>`_ creates separate parameters for groot monitoring for the NavToPose and NavThroughPoses navigator types so you can individually track the state of each behavior tree through the ZMQ publisher. This resolves a long-standing problem after we added multiple navigator types to BT Navigator that you could only view the nav to poses BT execution live. BT.CPP and Groot only support one static ZMQ stream at a time, so there is a bit of a quirk where you must locally reset Groot after switching trees in order to view the live stream of the Nav Through Poses BT, if in use. This is a state of the BT.CPP and Groot libraries and not something we can resolve within Nav2.
 
 There is some thought into the future regarding complete deprecation of live BT monitoring using Groot due to this quirk and the almost-certain infux of tickets on the topic. Groot will however always be supported for visualizing behavior tree XML files and modifications, simply not visualizing the BT execution live during robot navigation.
 
@@ -253,7 +253,7 @@ Replanning Only if Path is Invalid
 
 Fix CostmapLayer clearArea invert param logic
 *********************************************
-`This PR 2772 <https://github.com/ros-planning/navigation2/pull/2772>`_ fixes the invert paramlogic of the CostmapLayer clearArea fonction. Hence correcting the behavior of the clearAroundRobot and clearExceptRegion services and their corresponding BT actions.
+`This PR 2772 <https://github.com/ros-planning/navigation2/pull/2772>`_ fixes the invert paramlogic of the CostmapLayer clearArea function. Hence correcting the behavior of the clearAroundRobot and clearExceptRegion services and their corresponding BT actions.
 
 Dynamic Composition
 *******************

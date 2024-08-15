@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1107,7 +1107,7 @@
 </div>
 <div class="section" id="preliminaries">
 <h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial makes use of two tools, callgrind from the <code class="docutils literal notranslate"><span class="pre">Valgrind</span></code> set of tools and <code class="docutils literal notranslate"><span class="pre">kcachegrind</span></code>. Valgrind is used to get the profiling information about the program and kcachegrind is the visualization engine used to interprete this information to do useful work.</p>
+<p>This tutorial makes use of two tools, callgrind from the <code class="docutils literal notranslate"><span class="pre">Valgrind</span></code> set of tools and <code class="docutils literal notranslate"><span class="pre">kcachegrind</span></code>. Valgrind is used to get the profiling information about the program and kcachegrind is the visualization engine used to interpret this information to do useful work.</p>
 <p>Thus, we must install them.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>valgrind<span class="w"> </span>kcachegrind
 </pre></div>
@@ -1133,7 +1133,7 @@ kcachegrind<span class="w"> </span>callgrind.out.XXX
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>&lt;packages<span class="w"> </span>of<span class="w"> </span>interest&gt;<span class="w"> </span>--cmake-args<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
 </pre></div>
 </div>
-<p>Optionally, you may add the following line to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> of the package you’re looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> invokation.</p>
+<p>Optionally, you may add the following line to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> of the package you’re looking to profile. This may be preferable when you have a workspace with many packages but would like to only compile a subset with debug information using a single <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> invocation.</p>
 <p>It is important that this should be added to both the host server and plugin packages(s) if you would like the results of a plugin’s run-time profile.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-pg</span><span class="p">)</span>
 </pre></div>

@@ -7,7 +7,7 @@
 
 **Task description** 
 
-`Moveit <https://moveit.ros.org/>`_ has long has a QT `configuration assistant <http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html>`_. This setup assistent helps the user configure their UDRF and needs to setup MoveIt configuration files.
+`Moveit <https://moveit.ros.org/>`_ has long has a QT `configuration assistant <http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html>`_. This setup assistant helps the user configure their UDRF and needs to setup MoveIt configuration files.
 
 A configuration assistant could be extremely beneficial to Navigation2 users as a way to minimize friction. We should provide a gui tool to cover the following configurations:
 

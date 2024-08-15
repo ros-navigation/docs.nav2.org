@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1126,11 +1126,11 @@
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>static_transform_publisher<span class="w"> </span><span class="m">0</span>.1<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.2<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>base_link<span class="w"> </span>base_laser
 </pre></div>
 </div>
-<p>With this, we are now sucessfully publishing our <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> transform in TF2. Let us now check if it is working properly through <code class="docutils literal notranslate"><span class="pre">tf2_echo</span></code>. Open up a separate command line window and execute the following:</p>
+<p>With this, we are now successfully publishing our <code class="docutils literal notranslate"><span class="pre">base_link</span></code> to <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> transform in TF2. Let us now check if it is working properly through <code class="docutils literal notranslate"><span class="pre">tf2_echo</span></code>. Open up a separate command line window and execute the following:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>base_link<span class="w"> </span>base_laser
 </pre></div>
 </div>
-<p>You should be able to observe a repeated output simiar to the one below.</p>
+<p>You should be able to observe a repeated output similar to the one below.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>At<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">0</span>.0
 -<span class="w"> </span>Translation:<span class="w"> </span><span class="o">[</span><span class="m">0</span>.100,<span class="w"> </span><span class="m">0</span>.000,<span class="w"> </span><span class="m">0</span>.200<span class="o">]</span>
 -<span class="w"> </span>Rotation:<span class="w"> </span><span class="k">in</span><span class="w"> </span>Quaternion<span class="w"> </span><span class="o">[</span><span class="m">0</span>.000,<span class="w"> </span><span class="m">0</span>.000,<span class="w"> </span><span class="m">0</span>.000,<span class="w"> </span><span class="m">1</span>.000<span class="o">]</span>
@@ -1173,7 +1173,7 @@
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>In this tutorial, we have discussed about the concept of transforms and how they are used in Nav2.</p>
 <p>In the last section, we have also explored using the static_transform_publisher of TF2 to publish our transforms. You may use this to set up your transforms for Nav2, but this is generally not the best way to do it. In most robotics projects, we make use of the Robot State Publisher since it is much easier to use and scales well as our robot gets more complex. We will be talking about the Robot State Publisher, URDF, and how to set it up in the next tutorial on <a class="reference internal" href="../urdf/setup_urdf.html#urdf-handson"><span class="std std-ref">Setting Up The URDF</span></a>.</p>
-<p>Lastly, we also discussed the three published transform requirements of Nav2 and the neccessary REPs to keep in mind when setting them up.</p>
+<p>Lastly, we also discussed the three published transform requirements of Nav2 and the necessary REPs to keep in mind when setting them up.</p>
 </div>
 </div>
 

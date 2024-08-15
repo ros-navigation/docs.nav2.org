@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1115,7 +1115,7 @@ You should also have a copy of the <code class="docutils literal notranslate"><s
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="familiarization-with-the-smoother-bt-node">
 <h3>0- Familiarization with the Smoother BT Node<a class="headerlink" href="#familiarization-with-the-smoother-bt-node" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference internal" href="../../configuration/packages/bt-plugins/actions/Smooth.html#bt-smooth-action"><span class="std std-ref">SmoothPath</span></a> BT node is a behavior tree node that interacts with the smoother task server similar to that which you may expect to find for the planner or controller servers. It contains the action client to call the server and specifies its arguments and return types as BT ports. It too calls the server via an action interface that may be seperately interacted with via other servers and client library languages.</p>
+<p>The <a class="reference internal" href="../../configuration/packages/bt-plugins/actions/Smooth.html#bt-smooth-action"><span class="std std-ref">SmoothPath</span></a> BT node is a behavior tree node that interacts with the smoother task server similar to that which you may expect to find for the planner or controller servers. It contains the action client to call the server and specifies its arguments and return types as BT ports. It too calls the server via an action interface that may be separately interacted with via other servers and client library languages.</p>
 <p>Please see the BT node’s configuration page to familiarize yourself with all aspects, but the core ports to note are the <code class="docutils literal notranslate"><span class="pre">unsmoothed_path</span></code> input port and the <code class="docutils literal notranslate"><span class="pre">smoothed_path</span></code> output port. The first takes in a raw path from a planning algorithm and the latter will set the value of the smoothed output path post-smoothing. Other ports are available that fully implements the Smoother Server’s action API.</p>
 </div>
 <div class="section" id="specifying-a-smoother-plugin">

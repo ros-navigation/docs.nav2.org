@@ -140,7 +140,7 @@ Original GitHub tickets:
 Costmap Filters
 ***************
 
-A new concept interacting with spatial-dependent objects called "Costmap Filters" appeared in Galactic (more information about this concept could be found at :ref:`concepts` page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin's algorithms to make required updates in the resulting costmap and robot's behavor.
+A new concept interacting with spatial-dependent objects called "Costmap Filters" appeared in Galactic (more information about this concept could be found at :ref:`concepts` page). Costmap filters are acting as a costmap plugins, applied to a separate costmap above common plugins. In order to make a filtered costmap and change robot's behavior in annotated areas, filter plugin reads the data came from filter mask. Then this data is being linearly transformed into feature map in a filter space. It could be passability of an area, maximum speed limit in m/s, robot desired direction in degrees or anything else. Transformed feature map along with the map/costmap, sensors data and current robot position is used in plugin's algorithms to make required updates in the resulting costmap and robot's behavior.
 
 Architecturally, costmap filters consists from ``CostmapFilter`` class which is a basic class incorporating much common of its inherited filter plugins:
 
@@ -151,7 +151,7 @@ Architecturally, costmap filters consists from ``CostmapFilter`` class which is 
 Each costmap filter subscribes to filter info topic (publishing by `Costmap Filter Info Publisher Server <https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info>`_) having all necessary information for loaded costmap filter and filter mask topic.
 ``SpeedFilter`` additionally publishes maximum speed restricting `messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ targeted for a Controller to enforce robot won't exceed given limit.
 
-High-level design of this concept could be found `here <https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf>`_. The functionality of costmap filters is being disscussed in `the ticket #1263 <https://github.com/ros-planning/navigation2/issues/1263>`_ and carried out by `PR #1882 <https://github.com/ros-planning/navigation2/pull/1882>`_. The following tutorials: :ref:`navigation2_with_keepout_filter` and :ref:`navigation2_with_speed_filter` will help to easily get involved with ``KeepoutFilter`` and ``SpeedFilter`` functionalities.
+High-level design of this concept could be found `here <https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf>`_. The functionality of costmap filters is being discussed in `the ticket #1263 <https://github.com/ros-planning/navigation2/issues/1263>`_ and carried out by `PR #1882 <https://github.com/ros-planning/navigation2/pull/1882>`_. The following tutorials: :ref:`navigation2_with_keepout_filter` and :ref:`navigation2_with_speed_filter` will help to easily get involved with ``KeepoutFilter`` and ``SpeedFilter`` functionalities.
 
 SmacPlanner
 ***********
@@ -160,7 +160,7 @@ A new package, ``nav2_smac_planner`` was added containing 4 or 8 connected 2D A*
 
 The ``nav2_smac_planner`` package contains an optimized templated A* search algorithm used to create multiple A*-based planners for multiple types of robot platforms. We support differential-drive and omni-directional drive robots using the ``SmacPlanner2D`` planner which implements a cost-aware A* planner. We support cars, car-like, and ackermann vehicles using the ``SmacPlanner`` plugin which implements a Hybrid-A* planner. This plugin is also useful for curvature constrained planning, like when planning robot at high speeds to make sure they don't flip over or otherwise skid out of control.
 
-The ``SmacPlanner`` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and hueristic functions.
+The ``SmacPlanner`` fully-implements the Hybrid-A* planner as proposed in `Practical Search Techniques in Path Planning for Autonomous Driving <https://ai.stanford.edu/~ddolgov/papers/dolgov_gpp_stair08.pdf>`_, including hybrid searching, CG smoothing, analytic expansions and heuristic functions.
 
 ThetaStarPlanner
 ****************
@@ -171,7 +171,7 @@ This package implements an optimized version of the Theta* Path Planner (specifi
 RegulatedPurePursuitController
 ******************************
 
-A new package, ``nav2_regulated_pure_pursuit_controller`` was added containing a novel varient of the Pure Pursuit algorithm.
+A new package, ``nav2_regulated_pure_pursuit_controller`` was added containing a novel variant of the Pure Pursuit algorithm.
 It also includes configurations to enable Pure Pursuit and Adaptive Pure Pursuit variations as well.
 
 This variation is specifically targeting service / industrial robot needs.

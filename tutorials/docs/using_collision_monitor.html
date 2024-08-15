@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1192,7 +1192,7 @@ The whole <code class="docutils literal notranslate"><span class="pre">nav2_coll
 <div class="section" id="configuring-collision-monitor-with-velocitypolygon">
 <h2>Configuring Collision Monitor with VelocityPolygon<a class="headerlink" href="#configuring-collision-monitor-with-velocitypolygon" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="../../_images/dexory_velocity_polygon.gif"><img alt="../../_images/dexory_velocity_polygon.gif" src="../../_images/dexory_velocity_polygon.gif" style="width: 800px;" /></a>
-<p>For this part of tutorial, we will set up the Collision Monitor with <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> type for a <code class="docutils literal notranslate"><span class="pre">stop</span></code> action. <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the approriate polygon to be used for collision checking.</p>
+<p>For this part of tutorial, we will set up the Collision Monitor with <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> type for a <code class="docutils literal notranslate"><span class="pre">stop</span></code> action. <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.</p>
 <p>In general, here are the steps to configure the Collision Monitor with <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> type:</p>
 <ol class="arabic simple">
 <li><p>Add a <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> to the <code class="docutils literal notranslate"><span class="pre">polygons</span></code> param list</p></li>

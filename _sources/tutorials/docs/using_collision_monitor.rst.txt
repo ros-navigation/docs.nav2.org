@@ -115,7 +115,7 @@ Configuring Collision Monitor with VelocityPolygon
 .. image:: images/Collision_Monitor/dexory_velocity_polygon.gif
   :width: 800px
 
-For this part of tutorial, we will set up the Collision Monitor with ``VelocityPolygon`` type for a ``stop`` action. ``VelocityPolygon`` allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the approriate polygon to be used for collision checking.
+For this part of tutorial, we will set up the Collision Monitor with ``VelocityPolygon`` type for a ``stop`` action. ``VelocityPolygon`` allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.
 
 In general, here are the steps to configure the Collision Monitor with ``VelocityPolygon`` type:
 

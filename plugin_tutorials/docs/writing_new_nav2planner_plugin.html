@@ -217,7 +217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-enviroment-variables">0- Setup Your Enviroment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#setup-your-environment-variables">0- Setup Your Environment Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-turtlebot-3">1- Launch Turtlebot 3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-nav2">2- Launch Nav2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/docs/navigation2_on_real_turtlebot3.html#launch-rviz">3-  Launch RVIZ</a></li>
@@ -1142,25 +1142,25 @@ shared pointer to costmap.</p></td>
 </tr>
 <tr class="row-odd"><td><p>activate()</p></td>
 <td><p>Method is called when planner server enters on_activate state. Ideally this
-method should implement operations which are neccessary before planner goes
+method should implement operations which are necessary before planner goes
 to an active state.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-even"><td><p>deactivate()</p></td>
 <td><p>Method is called when planner server enters on_deactivate state. Ideally
-this method should implement operations which are neccessary before planner
+this method should implement operations which are necessary before planner
 goes to an inactive state.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-odd"><td><p>cleanup()</p></td>
 <td><p>Method is called when planner server goes to on_cleanup state. Ideally this
-method should clean up resoures which are created for the planner.</p></td>
+method should clean up resources which are created for the planner.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-even"><td><p>createPlan()</p></td>
 <td><p>Method is called when planner server demands a global plan for specified
 start and goal pose. This method returns <cite>nav_msgs::msg::Path</cite> carrying
-global plan. This method takes 2 input parmas: start pose and goal pose.</p></td>
+global plan. This method takes 2 input params: start pose and goal pose.</p></td>
 <td><p>Yes</p></td>
 </tr>
 </tbody>
