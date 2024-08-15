@@ -25,13 +25,13 @@ A new parameter ``enable_stamped_cmd_vel`` has been added to all of the publishe
 Add VelocityPolygon in Collision Monitor
 ****************************************
 
-`PR #3708 <https://github.com/ros-planning/navigation2/pull/3708>`_ adds ``VelocityPolgon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the approriate polygon to be used for collision checking. The tutorial is available in the :ref:`Configuring Collision Monitor with VelocityPolygon <collision_monitor_tutorial>` section.
+`PR #3708 <https://github.com/ros-planning/navigation2/pull/3708>`_ adds ``VelocityPolgon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the :ref:`Configuring Collision Monitor with VelocityPolygon <collision_monitor_tutorial>` section.
 
 
 Change polygon points parameter format in Collision Monitor
 ***********************************************************
 
-`PR #4020 <https://github.com/ros-planning/navigation2/pull/4020>`_ changes the format of the Polygon points parameter from ``vector<double>`` to ``string``. This makes the polygon description more uniform accross the Collision Monitor and Costmap_2D.
+`PR #4020 <https://github.com/ros-planning/navigation2/pull/4020>`_ changes the format of the Polygon points parameter from ``vector<double>`` to ``string``. This makes the polygon description more uniform across the Collision Monitor and Costmap_2D.
 Now we can define a polygon's points in string that has a ``vector<vector<double>>`` structure like this ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y],...]"`` with a minimum of 4 points described. An example of a Square polygon will be written as follows.
 
 
@@ -49,7 +49,7 @@ Now we can define a polygon's points in string that has a ``vector<vector<double
 Introduction of Soft-Real Time Action Servers
 *********************************************
 
-`PR #3914 <https://github.com/ros-planning/navigation2/pull/3914>`_ adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. The Simple Action Server now has a ``realtime`` input field exposed in the Controller Server via the parameter ``use_realtime_priority`` which will set the controller's execution thread to a higher priority than the rest of the system to meet scheduling deadlines. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions. This is currently only enabled in the Controller Server, who's execution thread is sensitive to scheduling priorities, but could be set with other threads in the future if found necessary.
+`PR #3914 <https://github.com/ros-planning/navigation2/pull/3914>`_ adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. The Simple Action Server now has a ``realtime`` input field exposed in the Controller Server via the parameter ``use_realtime_priority`` which will set the controller's execution thread to a higher priority than the rest of the system to meet scheduling deadlines. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions. This is currently only enabled in the Controller Server, who's execution thread is sensitive to scheduling priorities, but could be set with other threads in the future if found necessary.
 
 .. code-block:: text
 
@@ -77,7 +77,7 @@ See :ref:`docking_tutorial` for a tutorial on using this new capability! Thanks 
 Introduce a new Multi-Robot Bringup Launch
 ******************************************
 
-`PR #3572 <https://github.com/ros-planning/navigation2/pull/3572>`_ introduces a new way of bringup tb3 multi-robot that names as ``cloned_tb3_simulation_launch.py`` for simulation. ``cloned_tb3_simulation_launch.py`` enables to bring up multiple robots with same parameter that described in ``nav2_multirobot_param_all.yaml``. And multiple robots are separeted by namespaces which are given as a Launch Arguments.
+`PR #3572 <https://github.com/ros-planning/navigation2/pull/3572>`_ introduces a new way of bringup tb3 multi-robot that names as ``cloned_tb3_simulation_launch.py`` for simulation. ``cloned_tb3_simulation_launch.py`` enables to bring up multiple robots with same parameter that described in ``nav2_multirobot_param_all.yaml``. And multiple robots are separated by namespaces which are given as a Launch Arguments.
 Existing ``multi_tb3_simulation_launch.py`` which was utilized in previous is replaced with ``unique_tb3_simulation_launch.py``, allowing for multiple unique robot instances utilizing ``nav2_multirobot_params_<N>.yaml`` configuration files.
 
 
@@ -253,7 +253,7 @@ The stack no longer contains wall timers or wall rates. It will now use the node
 New Graceful Motion Controller
 ******************************
 
-`PR #4021 <https://github.com/ros-planning/navigation2/pull/4021>`_ introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and confortable trajectory.
+`PR #4021 <https://github.com/ros-planning/navigation2/pull/4021>`_ introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and comfortable trajectory.
 
 See :ref:`configuring_graceful_motion_controller` for more information.
 

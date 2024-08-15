@@ -41,7 +41,7 @@ Behavior tree cpp v3 supports plugins and will be converted in the next release.
 Navigation2 Architectural Changes
 *********************************
 
-The ``nav2_world_model`` package was removed. The individual ``nav2_planner`` and ``nav2_controller`` servers now host their relevent costmaps.
+The ``nav2_world_model`` package was removed. The individual ``nav2_planner`` and ``nav2_controller`` servers now host their relevant costmaps.
 This was done to reduce network traffic and ensure up-to-date information for the safety-critical elements of the system.
 As above mentions, plugins were introduced into the stack and these servers each host plugins for navigation, control, and costmap layers.
 

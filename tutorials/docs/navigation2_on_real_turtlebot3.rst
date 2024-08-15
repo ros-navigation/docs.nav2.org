@@ -33,8 +33,8 @@ If you don't have them installed, please follow :ref:`getting_started`.
 Tutorial Steps
 ==============
 
-0- Setup Your Enviroment Variables
-----------------------------------
+0- Setup Your Environment Variables
+-----------------------------------
 
 Run the following commands first whenever you open a new terminal during this tutorial.
 

@@ -137,7 +137,7 @@ Parameters
   ============== =============================
 
   Description:
-    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. This parameter can be overriden per observation source.
+    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, the robot will be stopped. Setting ``source_timeout: 0.0`` disables this blocking mechanism. This parameter can be overridden per observation source.
 
 :base_shift_correction:
 
@@ -193,7 +193,7 @@ Parameters
   ============== =======
 
   Description
-    Adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
+    Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
 
 :enable_stamped_cmd_vel:
 
@@ -232,7 +232,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to ``polygon_sub_topic`` for points in the ``stop``/``slowdown``/``limit`` action types, or footprint subscriber to ``footprint_topic`` for ``approach`` action type.
+    Polygon vertices, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision monitor will use dynamic polygon subscription to ``polygon_sub_topic`` for points in the ``stop``/``slowdown``/``limit`` action types, or footprint subscriber to ``footprint_topic`` for ``approach`` action type.
 
 :``<polygon_name>``.polygon_sub_topic:
 
@@ -424,7 +424,7 @@ All previous Polygon parameters apply, in addition to the following unique param
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. Causes an error, if not specified.
+    Polygon vertices, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. Causes an error, if not specified.
 
 :``<vel_poly>.<subpoly>``.linear_min:
 

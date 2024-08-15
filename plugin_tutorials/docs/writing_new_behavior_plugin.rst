@@ -54,11 +54,11 @@ Let's learn more about the methods needed to write a Behavior Plugin **if you di
 |                      | and shared pointer to a collision checker.                                  |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | activate()           | Method is called when behavior server enters on_activate state. Ideally     | Yes                     |
-|                      | this method should implement operations which are neccessary before the     |                         |
+|                      | this method should implement operations which are necessary before the      |                         |
 |                      | behavior goes to an active state.                                           |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | deactivate()         | Method is called when behavior server enters on_deactivate state. Ideally   | Yes                     |
-|                      | this method should implement operations which are neccessary before         |                         |
+|                      | this method should implement operations which are necessary before          |                         |
 |                      | behavior goes to an inactive state.                                         |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | cleanup()            | Method is called when behavior server goes to on_cleanup state. Ideally     | Yes                     |
@@ -80,7 +80,7 @@ This tutorial uses this wrapper so these are the main elements we will address.
 |                      | velocity for the current cycle, publishing it and checking for completion.  |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | onConfigure()        | Method is called when behavior server enters on_configure state. Ideally    | No                      |
-|                      | this method should implement operations which are neccessary before         |                         |
+|                      | this method should implement operations which are necessary before          |                         |
 |                      | behavior goes to a configured state (get parameters, etc).                  |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | onCleanup()          | Method is called when behavior server goes to on_cleanup state. Ideally     | No                      |
@@ -123,7 +123,7 @@ We receive an action goal, ``command``, which we want to process.
 This is the "call for help" message that we want to send via SMS to our brothers in arms in the operations center.
 
 We use the service Twilio to complete this task.
-Please `create an account <https://www.twilio.com/>`_ and get all the relavent information needed for creating the service (e.g. ``account_sid``, ``auth_token``, and a phone number).
+Please `create an account <https://www.twilio.com/>`_ and get all the relevant information needed for creating the service (e.g. ``account_sid``, ``auth_token``, and a phone number).
 You can set these values as parameters in your configuration files corresponding to the ``onConfigure()`` parameter declarations.
 
 We use the ``_twilio`` object to send our message with your account information from the configuration file.

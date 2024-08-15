@@ -30,8 +30,8 @@ Input Ports
   Description
     	The distance to the original goal for truncating the path.
 
-Ouput Ports
------------
+Output Ports
+------------
 
 :output_path:
 

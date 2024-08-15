@@ -75,7 +75,7 @@ Parameters
   ============== =============================
 
   Description:
-    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting ``source_timeout: 0.0`` disables it. This parameter can be overriden per observation source.
+    Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting ``source_timeout: 0.0`` disables it. This parameter can be overridden per observation source.
 
 :base_shift_correction:
 
@@ -136,7 +136,7 @@ Polygons parameters
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision detector will use dynamic polygon subscription to ``polygon_sub_topic``
+    Polygon vertices, listed in ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], ...]"`` format (e.g. ``"[[0.5, 0.25], [0.5, -0.25], [0.0, -0.25], [0.0, 0.25]]"`` for the square in the front). Used for ``polygon`` type. Minimum 3 points for a triangle polygon. If not specified, the collision detector will use dynamic polygon subscription to ``polygon_sub_topic``
 
 :``<polygon_name>``.polygon_sub_topic:
 

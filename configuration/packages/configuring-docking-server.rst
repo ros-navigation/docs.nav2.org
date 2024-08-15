@@ -37,7 +37,7 @@ Parameters
   ============== ==============
 
   Description
-    Timeout (s) to wait to obtain intial perception of the dock.
+    Timeout (s) to wait to obtain initial perception of the dock.
 
 :wait_charge_timeout:
 

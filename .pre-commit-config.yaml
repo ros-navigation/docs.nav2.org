@@ -1,0 +1,23 @@
+# To use:
+#
+#     pre-commit run -a
+#
+# Or:
+#
+#     pre-commit install  # (runs every time you commit in git)
+#
+# To update this file:
+#
+#     pre-commit autoupdate
+#
+# See https://github.com/pre-commit/pre-commit
+---
+repos:
+  # Spellcheck in comments and docs
+  # skipping of *.svg files is not working...
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.3.0
+    hooks:
+      - id: codespell
+        args: ['--write-changes', '--ignore-words=.codespell_words']
+        exclude: CHANGELOG\.rst|\.(svg|pyc|drawio|dcf|eds)$

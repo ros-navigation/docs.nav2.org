@@ -226,7 +226,7 @@ Parameters
   ====== =======
 
   Description
-    Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
+    Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
 
 :``<name>``.allow_reverse_expansion:
 
@@ -356,7 +356,7 @@ Example
         retrospective_penalty: 0.015
         lattice_filepath: ""                # The filepath to the state lattice graph
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
-        cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
+        cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
         allow_reverse_expansion: false      # If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
         smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
         smoother:
