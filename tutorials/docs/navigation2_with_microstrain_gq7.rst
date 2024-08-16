@@ -208,7 +208,9 @@ The following XML shows the most simple version of adding a GQ7 to your robot al
 
 An in-depth installation guide can be found on the `GQ7 manual <https://files.microstrain.com/GQ7+User+Manual/user_manual_content/installation/Installation.htm>`_, but we will provide a trimmed down guide for this tutorial.
 
-TODO: Talk about mounting, maybe get Ian to help write some documentation on this?
+When mounting the GQ7, and antennas, you will need to measure the offsets between the GQ7 and the mount it is placed on, as well as the antennas and the mount they are placed on, and update the .urdf.xacro file we made above with those offsets.
+
+**Note:** The GQ7 has axes printed on the case, in ROS if you are using the robot_description like we are using in this tutorial, **DO NOT** use those as a reference, instead use the `ROS body frame <https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions>`_.
 
 
 2- Configure your GQ7
@@ -479,7 +481,7 @@ We will not review the entire nav2 configuration file. Instead, we will start fr
 
 Since the ``microstrain_inertial_driver`` and ``robot_description`` are already providing the full transform tree, we do not need to launch Nav2's localization launch file, nor do we need to amcl configuration, so that can be removed from the params file.
 
-``bt_navigator`` needs to be configured to receive the odometry message from the GQ7 like so
+``bt_navigator``, ``controller_server``, and ``velocity_smoother`` need to be configured to receive the odometry message from the GQ7 like so
 
 .. code-block:: yaml
 
@@ -489,6 +491,17 @@ Since the ``microstrain_inertial_driver`` and ``robot_description`` are already 
       robot_base_frame: base_link
       odom_topic: gq7/ekf/odometry_map
       ...
+
+  controller_server:
+    ros__parameters:
+      use_sim_time: True
+      odom_topic: /gq7/ekf/odometry_map
+      ...
+
+  velocity_smoother:
+    ros__parameters:
+      odom_topic: "gq7/ekf/odometry_map"
+      odom_duration: 0.01
 
 We also need to configure the ``local_costmap`` to point to the correct frames. The way we do this is a bit strange since most of the time the ``local_costmap`` operates in the ``odom`` frame, but for our purposes, the global frame will be the ``map`` frame.
 If you were to run the ``microstrain_inertial_driver`` alongside ``robot_localization`` you would change ``global_frame`` to ``odom`` here.
@@ -503,8 +516,8 @@ If you have a lidar installed on your robot, this is one of the points where you
         robot_base_frame: base_link
         ...
 
-The ``global_costmap`` setup will look mostly identical to the ``local_costmap`` configuration in terms of our changes. For the rest of the parameters you may configure on the ``global_costmap`` it depends on what other sensors you have available.
-For our testing, we chose to remove the static layer, and use observations from a lidar sensor mounted on the robot.
+The ``global_costmap`` setup will look mostly identical to the ``local_costmap`` configuration in terms of our changes, but we will also increase the size of the costmap to 50x50 and make it a rolling window.
+For the rest of the parameters you may configure on the ``global_costmap`` it depends on what other sensors you have available. For our testing, we chose to remove the static layer, and use observations from a lidar sensor mounted on the robot.
 
 .. code-block:: yaml
 
@@ -513,15 +526,9 @@ For our testing, we chose to remove the static layer, and use observations from 
       ros__parameters:
         global_frame: map
         robot_base_frame: base_link
-
-Finally, if you are using a velocity smoother, you will want to set it up to receive it's odometry from the GQ7 like so
-
-.. code-block:: yaml
-
-  velocity_smoother:
-    ros__parameters:
-      odom_topic: "gq7/ekf/odometry_map"
-      odom_duration: 0.01
+        rolling_window: true
+        width: 50
+        height: 50
 
 # TODO: Check in the nav2 config we used and link to it
 
@@ -546,7 +553,7 @@ In the second terminal, replace ``/path/to/nav2_params.yaml`` with the path to y
 
 .. code-block:: bash
 
-  ros2 launch nav2_bringup bringup_launch.py params_file:="/path/to/nav2_params.yaml"
+  ros2 launch nav2_bringup navigation_launch.py params_file:="/path/to/nav2_params.yaml" autostart:=True
 
 Now that everything is running, the GQ7 will take some time to acquire a fix, but assuming your antenna offsets are accurate, and you have good sky view where you are testing, it should happen within a few minutes.
 If it doesn't enter full navigation in 3 minutes, see `this FAQ <https://files.microstrain.com/GQ7+User+Manual/user_manual_content/FAQ/FAQ.htm#Why>`_.
