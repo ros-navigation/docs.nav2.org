@@ -15,7 +15,7 @@ Overview
 ========
 
 This tutorial shows how to use the Docking Server with Nav2 robot systems.
-The Docking Server is a general framework which can be used with arbitrary types of robots and charging docks in order to auto-dock them.
+The Docking Server is a general framework which can be used with arbitrary types of robots and docks in order to auto-dock them.
 This is accomplished via plugins ``ChargingDock`` and ``NonChargingDock`` which implement the dock specifics like detecting the pose of the dock using sensor data, how to detect when the robot is in contact with the dock, and when charging has successfully started.
 A configuration of the docking server can contain a database of many docks of different plugin ``ChargingDock`` and ``NonChargingDock`` types to handle a broad range of docking locations and hardware dock revisions.
 Included with the package is an example ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins which contains features and methods very common for robot docking.
