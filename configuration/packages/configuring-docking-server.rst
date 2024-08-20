@@ -8,7 +8,7 @@ Source code on Github_.
 .. _Github: https://github.com/open-navigation/opennav_docking
 
 The Docking Server in ``opennav_docking`` implements a server for docking and undocking a robot. 
-This can be from Charging stations (i.e. docks) or non-charging docking locations such as the end of a conveyer belt or a pallet.
+This can be from Charging stations (i.e. docks) or non-charging docking locations such as the end of a conveyor belt or a pallet.
 It uses plugin `dock` implementations for a particular platform to enable the framework to generalize to robots of many different kinematic models, charging methods, sensor modalities, charging-type, and so on.
 It can also handle a database of many different docking locations and dock models to handle a heterogeneous environment.
 This task server is designed be called by an application BT or autonomy application to dock once completed with tasks or battery is low -- not within the navigate-to-pose action itself (though `undock` may be called from inside navigate actions!).
