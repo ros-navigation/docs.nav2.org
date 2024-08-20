@@ -8,8 +8,15 @@ Moving from ROS 2 Jazzy to K-Turtle, a number of stability improvements were add
 New Nav2 Loopback Simulator
 ***************************
 
-The ``nav2_looback_sim`` is a stand-alone simulator to create a "loopback" for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
+The ``nav2_loopback_sim`` is a stand-alone simulator to create a "loopback" for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
 It computes the robot's odometry based on the command velocity's output request to create a perfect 'frictionless plane'-style simulation for unit testing, system testing, R&D on higher level systems, testing behaviors without concerning yourself with localization accuracy or system dynamics, and multirobot simulations.
+
+Docking with Static Infrastructure or Dynamic Docking
+*****************************************************
+
+In `PR #4627 <https://github.com/ros-navigation/navigation2/pull/4627>`_ a docking plugin type and logic was added to support non-charging dock types in the nav2 docking server.
+This allows users to specify docking locations to static infrastructure, such as conveyers, or dynamic docking locations, such as a pallet.
+It also includes a new docking plugin to demonstrate the new docking server capabilities ``simple_non_charging_dock``.
 
 New RViz panel for Docking
 **************************

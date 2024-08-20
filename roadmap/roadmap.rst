@@ -24,11 +24,11 @@ Jazzy Roadmap
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Fuse Migration`_              |  Medium                |
+| `Fuse Migration`_              |  Medium  (incomplete)  |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
-| `Ignition Migration`_          |  Medium (in progress)  |
+| `Ignition Migration`_          |  Medium (DONE)         |
 |                                |                        |
 |                                |                        |
 +--------------------------------+------------------------+
@@ -50,6 +50,9 @@ Jazzy Roadmap
 +--------------------------------+------------------------+
 | Velocity-Scheduled Collision   |  Medium (DONE)         |
 | Monitor Polygons               |                        |
+|                                |                        |
++--------------------------------+------------------------+
+| Nav2 auto-docking capability   |  Medium (DONE)         |
 |                                |                        |
 +--------------------------------+------------------------+
 
