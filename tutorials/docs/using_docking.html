@@ -1031,6 +1031,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Jazzy.html">Jazzy to K-Turtle</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-bt-nodes">New BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
@@ -1105,11 +1106,12 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial shows how to use the Docking Server with Nav2 robot systems.
-The Docking Server is a general framework which can be used with arbitrary types of robots and charging docks in order to auto-dock them.
-This is accomplished via plugin <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> s which implement the dock specifics like detecting the pose of the dock using sensor data, how to detect when the robot is in contact with the dock, and when charging has successfully started.
-A configuration of the docking server can contain a database of many docks of different plugin <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> types to handle a broad range of docking locations and hardware dock revisions.
-Included with the package is an example <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> plugin which contains features and methods very common for robot docking.
-It is likely that you may be able to use this as well rather than developing your own charging dock plugin to get started.</p>
+The Docking Server is a general framework which can be used with arbitrary types of robots and docks in order to auto-dock them.
+This is accomplished via plugins <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">NonChargingDock</span></code> which implement the dock specifics like detecting the pose of the dock using sensor data, how to detect when the robot is in contact with the dock, and when charging has successfully started.
+A configuration of the docking server can contain a database of many docks of different plugin <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">NonChargingDock</span></code> types to handle a broad range of docking locations and hardware dock revisions.
+Included with the package is an example <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">SimpleNonChargingDock</span></code> plugins which contains features and methods very common for robot docking.
+These support charging stations and docking with static infrastructure (ex. conveyor belts) or dynamic docking (ex pallets) locations.
+It is likely that you may be able to use this as well rather than developing your own dock plugin to get started.</p>
 <p>The docking procedure is as follows:</p>
 <ol class="arabic simple">
 <li><p>Take action request and obtain the dock’s plugin and its pose</p></li>
@@ -1117,7 +1119,7 @@ It is likely that you may be able to use this as well rather than developing you
 <li><p>Use the dock’s plugin to initially detect the dock and return the docking pose</p></li>
 <li><p>Enter a vision-control loop where the robot attempts to reach the docking pose while its actively being refined by the vision system</p></li>
 <li><p>Exit the vision-control loop once contact has been detected or charging has started</p></li>
-<li><p>Wait until charging starts and return success.</p></li>
+<li><p>Wait until charging starts (if applicable) and return success.</p></li>
 </ol>
 <p>Thanks to NVIDIA for sponsoring this Docking Server package and this tutorial!
 You can find how to dock your Nova Carter robot using Nav2 and this work in the <a class="reference external" href="https://github.com/open-navigation/opennav_docking/tree/main/nova_carter_docking">nova_carter_docking package</a>!</p>
@@ -1134,32 +1136,33 @@ Please make sure that Nav2 project is also built locally, see <a class="referenc
 </div>
 <div class="section" id="chargingdock-plugins">
 <h2>ChargingDock Plugins<a class="headerlink" href="#chargingdock-plugins" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">opennav_docking_core::ChargingDock</span></code> plugins are established to abstract out robot- and dock-specifics from the generalized framework.
+<p><code class="docutils literal notranslate"><span class="pre">opennav_docking_core::ChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">opennav_docking_core::ChargingDock</span></code> plugins are established to abstract out robot- and dock-specifics from the generalized framework.
 This allows a system to leverage this framework and provide its own methods for detecting the dock’s current pose, when the robot is charging, and when contact is made.
-Luckily, there are several common ROS APIs that allow us to create a semi-generalized <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> plugin that allows out-of-the-box docking as long as users provide <code class="docutils literal notranslate"><span class="pre">JointState</span></code>, <code class="docutils literal notranslate"><span class="pre">BatteryState</span></code>, and detected dock pose <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> topics.
-However, one way or another, your system requires an applicable <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> plugin for each type of dock you wish to use.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> plugin has a few key APIs:</p>
+Luckily, there are several common ROS APIs that allow us to create semi-generalized <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">SimpleNonChargingDock</span></code> plugins that allows out-of-the-box docking as long as users provide <code class="docutils literal notranslate"><span class="pre">JointState</span></code>, <code class="docutils literal notranslate"><span class="pre">BatteryState</span></code>, and detected dock pose <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> topics.
+However, one way or another, your system requires an applicable <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> or <code class="docutils literal notranslate"><span class="pre">NonChargingDock</span></code> plugin for each type of dock you wish to use.</p>
+<p>The plugins has a few key APIs:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">PoseStamped</span> <span class="pre">getStagingPose(const</span> <span class="pre">Pose</span> <span class="pre">&amp;</span> <span class="pre">pose,</span> <span class="pre">const</span> <span class="pre">string</span> <span class="pre">&amp;</span> <span class="pre">frame)</span></code> which must provide the pre-docking staging pose given a dock’s location and frame.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">getRefinedPose(PoseStamped</span> <span class="pre">&amp;</span> <span class="pre">pose)</span></code> which must provide the detected (or pass through) pose of the dock</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">isDocked()</span></code> which provides if we’ve made contact with the dock</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">isCharging()</span></code> which provides if we’ve started charging while docked</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">disableCharging()</span></code> which should disable charging, if under the robot’s control for undocking</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">hasStoppedCharging()</span></code> which indicates if we’ve successfully stopped charging on undocking</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">isCharging()</span></code> which provides if we’ve started charging while docked (charging docks only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">disableCharging()</span></code> which should disable charging, if under the robot’s control for undocking (charging docks only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">hasStoppedCharging()</span></code> which indicates if we’ve successfully stopped charging on undocking (charging docks only)</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> provides an implementation with common options for these APIs:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">getStagingPose</span></code> - Finds a relative offset pose with translation and rotation from the dock’s pose</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">getRefinedPose</span></code> - Filters a detected pose topic of type <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> into the fixed frame <em>or</em> is a pass through function returning the dock’s database location if detection is not enabled</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isDocked</span></code> - Returns as dock if a pose tolerance is met relative to the dock <em>or</em> if the <code class="docutils literal notranslate"><span class="pre">JointStates</span></code> of the motors detect a clear spike due to stalling by driving into the dock’s surface, if enabled</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">isCharging</span></code> - Returns charging if <code class="docutils literal notranslate"><span class="pre">isDocked</span></code> <em>or</em> if <code class="docutils literal notranslate"><span class="pre">BatteryState</span></code>’s current is above a threshold, if enabled</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">disableCharging</span></code> - Always <code class="docutils literal notranslate"><span class="pre">true</span></code>, considers disable of charging as automatic when robot leaves dock</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hasStoppedCharging</span></code> - The inverse of <code class="docutils literal notranslate"><span class="pre">isCharging</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isCharging</span></code> - Returns charging if <code class="docutils literal notranslate"><span class="pre">isDocked</span></code> <em>or</em> if <code class="docutils literal notranslate"><span class="pre">BatteryState</span></code>’s current is above a threshold, if enabled (charging docks only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disableCharging</span></code> - Always <code class="docutils literal notranslate"><span class="pre">true</span></code>, considers disable of charging as automatic when robot leaves dock (charging docks only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hasStoppedCharging</span></code> - The inverse of <code class="docutils literal notranslate"><span class="pre">isCharging</span></code> (charging docks only)</p></li>
 </ul>
 <p>Thus, for testing (no detection, no battery information, no joint state information) and realistic application (dock detection, battery status information, joint state information), this dock plugin can be used.
 It can also be used when only some of the information if available as well.
 If your robot or dock does not fall into these implementations (i.e. using custom battery or detection messages that cannot be converted into ROS standard types), then you may be required to build your own plugin to meet your particular needs.
-However, you can use the <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> assuming you turn off these settings and dock blind to get started.</p>
+However, you can use the <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> assuming you turn off these settings and dock blind to get started.
+There is an equivalent <code class="docutils literal notranslate"><span class="pre">SimpleNonChargingDock</span></code> plugin for non-charging docking needs.</p>
 <p>If you do not currently have a way to detect your dock, dock detection can be done easily using Apriltags and the <a class="reference external" href="https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag">isaac_ros_apriltag</a> or <a class="reference external" href="https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp">ROS image_proc</a> nodes to get started.
 Use the Isaac ROS if using a Jetson platform to obtain a GPU optimized pipeline with your camera feeds.
 The defaults support this out of the box, see <code class="docutils literal notranslate"><span class="pre">nova_carter_docking</span></code> for an example.</p>
@@ -1224,7 +1227,7 @@ Please update these with your own docking plugin and dock locations in your map.
 <p>Note that you are required to provide at least 1 dock plugin and 1 dock instance.
 The Docking Server’s Action API can take in a dock’s instance information separately to bypass the database, but its plugin must exist in the server’s configuration.
 If you plan to only use this API, you can set a <code class="docutils literal notranslate"><span class="pre">dummy_dock</span></code>.
-Generally speaking, its wise to set your docks in the database and use the Docking Server’s API to dock at an instance’s Dock ID to decouple the semantic information about docks from the action request (requiring your application instead to have all of the docks’ locations), but bypassing the database can be useful for testing.</p>
+Generally speaking, its wise to set your docks in the database and use the Docking Server’s API to dock at an instance’s Dock ID to decouple the semantic information about docks from the action request (requiring your application instead to have all of the docks’ locations), but bypassing the database can be useful for testing and movable docking targets.</p>
 <p>The dock poses in the map can be annotated using your favorite map editing tools, obtained by <code class="docutils literal notranslate"><span class="pre">/clicked_point</span></code> in rviz2, or measured location.</p>
 </div>
 <div class="section" id="configuring-docking-server">

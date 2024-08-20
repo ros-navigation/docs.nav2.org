@@ -1031,6 +1031,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Jazzy.html">Jazzy to K-Turtle</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-bt-nodes">New BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
@@ -1095,7 +1096,8 @@
 <span id="configuring-docking-server"></span><h1>Docking Server<a class="headerlink" href="#docking-server" title="Permalink to this headline">¶</a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/open-navigation/opennav_docking">Github</a>.</p>
 <p>The Docking Server in <code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> implements a server for docking and undocking a robot.
-It uses plugin <cite>dock</cite> implementations for a particular platform to enable the framework to generalize to robots of many different kinematic models, charging methods, sensor modalities, and so on.
+This can be from Charging stations (i.e. docks) or non-charging docking locations such as the end of a conveyor belt or a pallet.
+It uses plugin <cite>dock</cite> implementations for a particular platform to enable the framework to generalize to robots of many different kinematic models, charging methods, sensor modalities, charging-type, and so on.
 It can also handle a database of many different docking locations and dock models to handle a heterogeneous environment.
 This task server is designed be called by an application BT or autonomy application to dock once completed with tasks or battery is low – not within the navigate-to-pose action itself (though <cite>undock</cite> may be called from inside navigate actions!).</p>
 <p>Thanks to NVIDIA for sponsoring this Docking Server package!</p>
@@ -1930,7 +1932,7 @@ This task server is designed be called by an application BT or autonomy applicat
 <span class="w">    </span><span class="c1"># Types of docks</span>
 <span class="w">    </span><span class="nt">dock_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;nova_carter_dock&#39;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">nova_carter_dock</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;opennav_docking::SimpleChargingDock&#39;</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;opennav_docking::SimpleChargingDock&#39;</span><span class="w">  </span><span class="c1"># Also &#39;opennav_docking::SimpleNonChargingDock&#39;</span>
 <span class="w">      </span><span class="nt">docking_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
 <span class="w">      </span><span class="nt">staging_x_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.7</span>
 <span class="w">      </span><span class="nt">use_external_detection_pose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>

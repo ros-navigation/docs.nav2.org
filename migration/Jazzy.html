@@ -1031,6 +1031,7 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Jazzy to K-Turtle</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-bt-nodes">New BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
@@ -1096,8 +1097,14 @@
 <p>Moving from ROS 2 Jazzy to K-Turtle, a number of stability improvements were added that we will not specifically address here.</p>
 <div class="section" id="new-nav2-loopback-simulator">
 <h2>New Nav2 Loopback Simulator<a class="headerlink" href="#new-nav2-loopback-simulator" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">nav2_looback_sim</span></code> is a stand-alone simulator to create a “loopback” for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
+<p>The <code class="docutils literal notranslate"><span class="pre">nav2_loopback_sim</span></code> is a stand-alone simulator to create a “loopback” for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
 It computes the robot’s odometry based on the command velocity’s output request to create a perfect ‘frictionless plane’-style simulation for unit testing, system testing, R&amp;D on higher level systems, testing behaviors without concerning yourself with localization accuracy or system dynamics, and multirobot simulations.</p>
+</div>
+<div class="section" id="docking-with-static-infrastructure-or-dynamic-docking">
+<h2>Docking with Static Infrastructure or Dynamic Docking<a class="headerlink" href="#docking-with-static-infrastructure-or-dynamic-docking" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4627">PR #4627</a> a docking plugin type and logic was added to support non-charging dock types in the nav2 docking server.
+This allows users to specify docking locations to static infrastructure, such as conveyers, or dynamic docking locations, such as a pallet.
+It also includes a new docking plugin to demonstrate the new docking server capabilities <code class="docutils literal notranslate"><span class="pre">simple_non_charging_dock</span></code>.</p>
 </div>
 <div class="section" id="new-rviz-panel-for-docking">
 <h2>New RViz panel for Docking<a class="headerlink" href="#new-rviz-panel-for-docking" title="Permalink to this headline">¶</a></h2>

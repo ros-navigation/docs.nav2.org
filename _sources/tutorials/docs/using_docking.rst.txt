@@ -15,11 +15,12 @@ Overview
 ========
 
 This tutorial shows how to use the Docking Server with Nav2 robot systems.
-The Docking Server is a general framework which can be used with arbitrary types of robots and charging docks in order to auto-dock them.
-This is accomplished via plugin ``ChargingDock`` s which implement the dock specifics like detecting the pose of the dock using sensor data, how to detect when the robot is in contact with the dock, and when charging has successfully started.
-A configuration of the docking server can contain a database of many docks of different plugin ``ChargingDock`` types to handle a broad range of docking locations and hardware dock revisions.
-Included with the package is an example ``SimpleChargingDock`` plugin which contains features and methods very common for robot docking.
-It is likely that you may be able to use this as well rather than developing your own charging dock plugin to get started. 
+The Docking Server is a general framework which can be used with arbitrary types of robots and docks in order to auto-dock them.
+This is accomplished via plugins ``ChargingDock`` and ``NonChargingDock`` which implement the dock specifics like detecting the pose of the dock using sensor data, how to detect when the robot is in contact with the dock, and when charging has successfully started.
+A configuration of the docking server can contain a database of many docks of different plugin ``ChargingDock`` and ``NonChargingDock`` types to handle a broad range of docking locations and hardware dock revisions.
+Included with the package is an example ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins which contains features and methods very common for robot docking.
+These support charging stations and docking with static infrastructure (ex. conveyor belts) or dynamic docking (ex pallets) locations.
+It is likely that you may be able to use this as well rather than developing your own dock plugin to get started. 
 
 The docking procedure is as follows:
 
@@ -28,7 +29,7 @@ The docking procedure is as follows:
 3. Use the dock's plugin to initially detect the dock and return the docking pose
 4. Enter a vision-control loop where the robot attempts to reach the docking pose while its actively being refined by the vision system
 5. Exit the vision-control loop once contact has been detected or charging has started 
-6. Wait until charging starts and return success.
+6. Wait until charging starts (if applicable) and return success.
 
 Thanks to NVIDIA for sponsoring this Docking Server package and this tutorial!
 You can find how to dock your Nova Carter robot using Nav2 and this work in the `nova_carter_docking package <https://github.com/open-navigation/opennav_docking/tree/main/nova_carter_docking>`_!
@@ -53,33 +54,34 @@ See ``opennav_docking`` README for complete concept explanations, parameters, an
 ChargingDock Plugins
 ====================
 
-``opennav_docking_core::ChargingDock`` plugins are established to abstract out robot- and dock-specifics from the generalized framework.
+``opennav_docking_core::ChargingDock`` and ``opennav_docking_core::ChargingDock`` plugins are established to abstract out robot- and dock-specifics from the generalized framework.
 This allows a system to leverage this framework and provide its own methods for detecting the dock's current pose, when the robot is charging, and when contact is made.
-Luckily, there are several common ROS APIs that allow us to create a semi-generalized ``SimpleChargingDock`` plugin that allows out-of-the-box docking as long as users provide ``JointState``, ``BatteryState``, and detected dock pose ``PoseStamped`` topics.
-However, one way or another, your system requires an applicable ``ChargingDock`` plugin for each type of dock you wish to use.
+Luckily, there are several common ROS APIs that allow us to create semi-generalized ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins that allows out-of-the-box docking as long as users provide ``JointState``, ``BatteryState``, and detected dock pose ``PoseStamped`` topics.
+However, one way or another, your system requires an applicable ``ChargingDock`` or ``NonChargingDock`` plugin for each type of dock you wish to use.
 
-The ``ChargingDock`` plugin has a few key APIs:
+The plugins has a few key APIs:
 
 - ``PoseStamped getStagingPose(const Pose & pose, const string & frame)`` which must provide the pre-docking staging pose given a dock's location and frame.
 - ``bool getRefinedPose(PoseStamped & pose)`` which must provide the detected (or pass through) pose of the dock 
 - ``bool isDocked()`` which provides if we've made contact with the dock
-- ``bool isCharging()`` which provides if we've started charging while docked
-- ``bool disableCharging()`` which should disable charging, if under the robot's control for undocking
-- ``bool hasStoppedCharging()`` which indicates if we've successfully stopped charging on undocking
+- ``bool isCharging()`` which provides if we've started charging while docked (charging docks only)
+- ``bool disableCharging()`` which should disable charging, if under the robot's control for undocking (charging docks only)
+- ``bool hasStoppedCharging()`` which indicates if we've successfully stopped charging on undocking (charging docks only)
 
 The ``SimpleChargingDock`` provides an implementation with common options for these APIs:
 
 - ``getStagingPose`` - Finds a relative offset pose with translation and rotation from the dock's pose
 - ``getRefinedPose`` - Filters a detected pose topic of type ``PoseStamped`` into the fixed frame *or* is a pass through function returning the dock's database location if detection is not enabled
 - ``isDocked`` - Returns as dock if a pose tolerance is met relative to the dock *or* if the ``JointStates`` of the motors detect a clear spike due to stalling by driving into the dock's surface, if enabled
-- ``isCharging`` - Returns charging if ``isDocked`` *or* if ``BatteryState``'s current is above a threshold, if enabled
-- ``disableCharging`` - Always ``true``, considers disable of charging as automatic when robot leaves dock
-- ``hasStoppedCharging`` - The inverse of ``isCharging``
+- ``isCharging`` - Returns charging if ``isDocked`` *or* if ``BatteryState``'s current is above a threshold, if enabled (charging docks only)
+- ``disableCharging`` - Always ``true``, considers disable of charging as automatic when robot leaves dock (charging docks only)
+- ``hasStoppedCharging`` - The inverse of ``isCharging`` (charging docks only)
 
 Thus, for testing (no detection, no battery information, no joint state information) and realistic application (dock detection, battery status information, joint state information), this dock plugin can be used.
 It can also be used when only some of the information if available as well. 
 If your robot or dock does not fall into these implementations (i.e. using custom battery or detection messages that cannot be converted into ROS standard types), then you may be required to build your own plugin to meet your particular needs.
 However, you can use the ``SimpleChargingDock`` assuming you turn off these settings and dock blind to get started.
+There is an equivalent ``SimpleNonChargingDock`` plugin for non-charging docking needs.
 
 If you do not currently have a way to detect your dock, dock detection can be done easily using Apriltags and the `isaac_ros_apriltag <https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_apriltag>`_ or `ROS image_proc <https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp>`_ nodes to get started.
 Use the Isaac ROS if using a Jetson platform to obtain a GPU optimized pipeline with your camera feeds.
@@ -150,7 +152,7 @@ The analog of this is shown below as an independent ``dock_database.yaml`` which
 Note that you are required to provide at least 1 dock plugin and 1 dock instance.
 The Docking Server's Action API can take in a dock's instance information separately to bypass the database, but its plugin must exist in the server's configuration.
 If you plan to only use this API, you can set a ``dummy_dock``.
-Generally speaking, its wise to set your docks in the database and use the Docking Server's API to dock at an instance's Dock ID to decouple the semantic information about docks from the action request (requiring your application instead to have all of the docks' locations), but bypassing the database can be useful for testing.
+Generally speaking, its wise to set your docks in the database and use the Docking Server's API to dock at an instance's Dock ID to decouple the semantic information about docks from the action request (requiring your application instead to have all of the docks' locations), but bypassing the database can be useful for testing and movable docking targets.
 
 The dock poses in the map can be annotated using your favorite map editing tools, obtained by ``/clicked_point`` in rviz2, or measured location.
 
