@@ -20,7 +20,7 @@ Input Ports
   ====== =======
 
   Description
-    	Distance to travel (m).
+        Distance to travel (m).
 
 :speed:
 
@@ -31,7 +31,7 @@ Input Ports
   ====== =======
 
   Description
-    	Speed at which to travel (m/s).
+        Speed at which to travel (m/s).
 
 :time_allowance:
 
@@ -53,7 +53,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server name.
+        Action server name.
 
 :server_timeout:
 
@@ -64,7 +64,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server timeout (ms).
+        Action server timeout (ms).
 
 :disable_collision_checks:
 
@@ -89,11 +89,23 @@ Output Ports
   ============== =======
 
   Description
-    	Drive on heading error code. See ``DriveOnHeading`` action message for the enumerated set of error codes.
+        Drive on heading error code. See ``DriveOnHeading`` action message for the enumerated set of error codes.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        Drive on heading error message. See ``DriveOnHeading`` action message for the enumerated set of error codes.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <DriveOnHeading dist_to_travel="0.2" speed="0.05" server_name="backup_server" server_timeout="10" error_code_id="{drive_on_heading_error_code}" disable_collision_checks="false"/>
+  <DriveOnHeading dist_to_travel="0.2" speed="0.05" server_name="backup_server" server_timeout="10" disable_collision_checks="false"
+                  error_code_id="{drive_on_heading_error_code}" error_msg="{drive_on_heading_error_msg}"/>

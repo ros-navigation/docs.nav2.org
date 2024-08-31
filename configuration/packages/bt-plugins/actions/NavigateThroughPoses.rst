@@ -30,7 +30,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server name.
+        Action server name.
 
 :server_timeout:
 
@@ -41,7 +41,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server timeout (ms).
+        Action server timeout (ms).
 
 :behavior_tree:
 
@@ -52,7 +52,7 @@ Input Ports
   ====== =======
 
   Description
-    	Behavior tree absolute path. If none is specified, NavigateThroughPoses action server uses a default behavior tree.
+        Behavior tree absolute path. If none is specified, NavigateThroughPoses action server uses a default behavior tree.
 
 Output Ports
 ------------
@@ -66,12 +66,24 @@ Output Ports
   ============== =======
 
   Description
-    	The lowest error code in the list of the `error_code_names` parameter.
+        The lowest error code in the list of the `error_code_names` parameter.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        The error message associated with the lowest error code in the list of the `error_code_name_prefixes` parameter.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10" error_code_id="{navigate_through_poses_error_code}"
+  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10"
+                        error_code_id="{navigate_through_poses_error_code}" error_msg="{navigate_through_poses_error_msg}"
                         behavior_tree="<some-path>/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml"/>

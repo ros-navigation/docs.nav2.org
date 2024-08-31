@@ -110,9 +110,9 @@ We make use of the launch files to compose different servers into a single proce
 Error codes
 ***********
 
-Your nav2 task server may also wish to return a 'error_code' in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
+Your nav2 task server may also wish to return a 'error_code' and 'error_msg' in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
 
-It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535. 
+It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535.
 The table below shows the current servers along with the expected error code structure.
 
 
@@ -153,8 +153,7 @@ The table below shows the current servers along with the expected error code str
 .. _Waypoint Follower Server: https://github.com/ros-navigation/navigation2/blob/main/nav2_waypoint_follower/src/waypoint_follower.cpp
 .. _Behavior Server: https://github.com/ros-navigation/navigation2/blob/main/nav2_behaviors/src/behavior_server.cpp
 
-Error codes are attached to the response of the action message. An example can be seen below for the route server. Note that by convention we set the error code field within the message definition to ``error_code``.
-
+Error codes and messages are attached to the response of the action message. An example can be seen below for the route server. Note it is necessary to set the error code field within the message result definition to ``error_code`` and the error message field to ``error_msg``.
 
 
 .. code-block:: bash
@@ -177,22 +176,22 @@ Error codes are attached to the response of the action message. An example can b
     nav_msgs/Route route
     builtin_interfaces/Duration route_time
     uint16 error_code
+    string error_msg
     ---
 
-As stated in the message, the priority order of the errors should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
+As stated in the message, the priority order of the errors codes should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
 Since the the route server is a external server, the errors codes start at 10000 and go up to 10099.
 
-In order to propagate your server's error code to the rest of the system it must be added to the nav2_params.yaml file. 
-The `error_code_id_names` inside of the BT Navigator define what error codes to look for on the blackboard by the server. The lowest error code of the sequence is then returned - whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
+To ensure your server's error codes, and associated error messages, are properly communicated throughout the system, you need to configure them in your nav2_params.yaml file.
 
-
+The BT Navigator parameter `error_code_name_prefixes` defines a list of prefixes used to search the behavior tree blackboard, for the existence and content of error codes and error messages keys, that may have been generated.  If the blackboard contains multiple error code keys then the lowest error code value of the sequence, and associated error message, is then returned in the result of the navigator action message. Error code enums increase the higher up they occur in the software stack.  In other words higher priority is given to reporting lower-level failures.
 
 .. code-block:: yaml
 
-    error_code_id_names:
-        - compute_path_error_code_id
-        - follow_path_error_code_id
-        - route_error_code_id
+    error_code_name_prefixes:
+        - compute_path
+        - follow_path
+        - route
 
 Conclusion
 **********

@@ -18,7 +18,7 @@ Input Ports
   ====== =======
 
   Description
-    	Takes in a blackboard variable containing the path to follow, eg. "{path}".
+        Takes in a blackboard variable containing the path to follow, eg. "{path}".
 
 :controller_id:
 
@@ -29,7 +29,7 @@ Input Ports
   ====== =======
 
   Description
-    	Mapped name of the controller plugin type to use, e.g. FollowPath.
+        Mapped name of the controller plugin type to use, e.g. FollowPath.
 
 :goal_checker_id:
 
@@ -40,7 +40,7 @@ Input Ports
   ====== =======
 
   Description
-    	Mapped name of the goal checker plugin type to use, e.g. SimpleGoalChecker.
+        Mapped name of the goal checker plugin type to use, e.g. SimpleGoalChecker.
 
 :server_name:
 
@@ -51,7 +51,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server name.
+        Action server name.
 
 
 :server_timeout:
@@ -63,7 +63,7 @@ Input Ports
   ============== =======
 
   Description
-    	Action server timeout (ms).
+        Action server timeout (ms).
 
 
 Output Ports
@@ -78,11 +78,23 @@ Output Ports
   ============== =======
 
   Description
-    	Follow path error code. See ``FollowPath`` action for the enumerated set of error code definitions.
+        Follow path error code. See ``FollowPath`` action for the enumerated set of error code definitions.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        Follow path error message. See ``FollowPath`` action for the enumerated set of error code definitions.
+
 
 Example
 -------
 
 .. code-block:: xml
 
-    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10" error_code_id="{follow_path_error_code}"/>
+    <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
