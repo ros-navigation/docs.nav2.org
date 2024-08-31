@@ -3,7 +3,7 @@
 FollowPath
 ==========
 
-Invokes the FollowPath ROS 2 action server, which is implemented by the controller plugin modules loaded. 
+Invokes the FollowPath ROS 2 action server, which is implemented by the controller plugin modules loaded.
 The server address can be remapped using the ``server_name`` input port.
 
 Input Ports
@@ -14,7 +14,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -25,7 +25,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -36,7 +36,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -47,7 +47,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -59,7 +59,7 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  double         10  
+  double         10
   ============== =======
 
   Description
@@ -74,7 +74,7 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description

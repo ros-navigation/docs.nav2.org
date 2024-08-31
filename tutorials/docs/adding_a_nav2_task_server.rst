@@ -1,9 +1,9 @@
 .. _adding_a_nav2_task_server:
 
-Adding a New Nav2 Task Server 
+Adding a New Nav2 Task Server
 #############################
 
-A nav2 task server consists of server side logic to complete different types of requests, usually called by the autonomy system or through the Behavior Tree Navigator. In this guide, we will discuss the core components needed to add a new task server to Nav2 (ex. Controller, Behavior, Smoother, Planner Servers). Namely, how to set up your new Lifecycle-Component Node for launch and state management and the communication of semantically meaningful error codes (if necessary). 
+A nav2 task server consists of server side logic to complete different types of requests, usually called by the autonomy system or through the Behavior Tree Navigator. In this guide, we will discuss the core components needed to add a new task server to Nav2 (ex. Controller, Behavior, Smoother, Planner Servers). Namely, how to set up your new Lifecycle-Component Node for launch and state management and the communication of semantically meaningful error codes (if necessary).
 
 While this tutorial does not cover how to add the complementary Behavior Tree Node to interact with this new Task Server, that is covered at length in :ref:`writing_new_nbt_plugin` so this Task Server can be invoked in the BTs in BT Navigator.
 
@@ -107,7 +107,7 @@ We make use of the launch files to compose different servers into a single proce
         <exec_depend>nav2_route_server</exec_depend>
 
 
-Error codes 
+Error codes
 ***********
 
 Your nav2 task server may also wish to return a 'error_code' in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.

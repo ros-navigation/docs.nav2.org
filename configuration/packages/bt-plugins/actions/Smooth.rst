@@ -35,7 +35,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  bool   false  
+  bool   false
   ====== =======
 
   Description
@@ -46,7 +46,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -60,7 +60,7 @@ Output Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -71,7 +71,7 @@ Output Ports
   ====== =======
   Type   Default
   ------ -------
-  double N/A  
+  double N/A
   ====== =======
 
   Description
@@ -82,7 +82,7 @@ Output Ports
   ====== =======
   Type   Default
   ------ -------
-  bool   N/A  
+  bool   N/A
   ====== =======
 
   Description
@@ -93,7 +93,7 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description

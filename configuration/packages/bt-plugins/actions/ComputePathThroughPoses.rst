@@ -3,7 +3,7 @@
 ComputePathThroughPoses
 =======================
 
-Invokes the ComputePathThroughPoses ROS 2 action server, which is implemented by the nav2_planner_ module. 
+Invokes the ComputePathThroughPoses ROS 2 action server, which is implemented by the nav2_planner_ module.
 The server address can be remapped using the ``server_name`` input port.
 
 .. _nav2_planner: https://github.com/ros-navigation/navigation2/tree/main/nav2_planner
@@ -15,12 +15,12 @@ Input Ports
   ===================================== =======
   Type                                  Default
   ------------------------------------- -------
-  geometry_msgs::msg::PoseStamped         N/A  
+  geometry_msgs::msg::PoseStamped         N/A
   ===================================== =======
 
   Description
     	Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
-    	
+
 :goals:
 
   ===================================== =======
@@ -37,7 +37,7 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  string         N/A  
+  string         N/A
   ============== =======
 
   Description
@@ -48,7 +48,7 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  string         N/A  
+  string         N/A
   ============== =======
 
   Description
@@ -60,12 +60,12 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  double         10  
+  double         10
   ============== =======
 
   Description
     	Action server timeout (ms).
-  
+
 Output Ports
 ------------
 
@@ -74,7 +74,7 @@ Output Ports
   ========================== =======
   Type                       Default
   -------------------------- -------
-  nav_msgs::msg::Path         N/A  
+  nav_msgs::msg::Path         N/A
   ========================== =======
 
   Description
@@ -85,7 +85,7 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description
