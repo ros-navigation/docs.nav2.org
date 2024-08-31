@@ -19,7 +19,7 @@ Input Ports
   ====== =======
 
   Description
-    	The dock plugin type, if not previous instance used for docking.
+        The dock plugin type, if not previous instance used for docking.
 
 :max_undocking_time:
 
@@ -30,7 +30,7 @@ Input Ports
   ===== =======
 
   Description
-    	Maximum time to get back to the staging pose.
+        Maximum time to get back to the staging pose.
 
 Output Ports
 ------------
@@ -44,7 +44,7 @@ Output Ports
   ==== =======
 
   Description
-    	If the action was successful.
+        If the action was successful.
 
 :error_code_id:
 
@@ -55,11 +55,22 @@ Output Ports
   ============== =======
 
   Description
-    	Dock robot error code. See ``UndockRobot`` action message for the enumerated set of error codes.
+        Dock robot error code. See ``UndockRobot`` action message for the enumerated set of error codes.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         0
+  ============== =======
+
+  Description
+        Dock robot error message. See ``UndockRobot`` action message for the enumerated set of error codes.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <UndockRobot dock_type="{dock_type}"/>
+  <UndockRobot dock_type="{dock_type}" error_code_id={undock_error_code} error_msg={undock_error_msg}/>

@@ -17,7 +17,7 @@ Input Ports
   ====== =======
 
   Description
-    	The blackboard variable or hard-coded input path to smooth
+        The blackboard variable or hard-coded input path to smooth
 
 :max_smoothing_duration:
 
@@ -39,7 +39,7 @@ Input Ports
   ====== =======
 
   Description
-    	Whether to check the output smoothed path for collisions.
+        Whether to check the output smoothed path for collisions.
 
 :smoother_id:
 
@@ -50,7 +50,7 @@ Input Ports
   ====== =======
 
   Description
-    	The smoother plugin ID to use for smoothing in the smoother server
+        The smoother plugin ID to use for smoothing in the smoother server
 
 Output Ports
 ------------
@@ -97,11 +97,22 @@ Output Ports
   ============== =======
 
   Description
-    	Follow smoother error code. See ``SmoothPath`` action for the enumerated set of error code definitions.
+        Follow smoother error code. See ``SmoothPath`` action for the enumerated set of error code definitions.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        Follow smoother error message. See ``SmoothPath`` action for the enumerated set of error code definitions.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" max_smoothing_duration="3.0" smoother_id="simple_smoother" check_for_collisions="false" smoothing_duration="{smoothing_duration_used}" was_completed="{smoothing_completed}" error_code_id="{smoothing_path_error_code}"/>
+  <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" max_smoothing_duration="3.0" smoother_id="simple_smoother" check_for_collisions="false" smoothing_duration="{smoothing_duration_used}" was_completed="{smoothing_completed}" error_code_id="{smoothing_path_error_code}" error_msg="{smoothing_path_error_msg}"/>

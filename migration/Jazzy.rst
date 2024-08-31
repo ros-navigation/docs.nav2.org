@@ -81,3 +81,15 @@ Before:
 After:
 
 .. image:: images/fix_flickering_visualization_after.png
+
+BehaviorTree error_msg
+**********************
+
+`PR #4459 https://github.com/ros-navigation/navigation2/pull/4459>`_ adds error_msg to all action result messages
+`PR #4460 <https://github.com/ros-navigation/navigation2/pull/4460>`_ captures and propagates error_msg result strings through the bt_navigator.
+
+A new parameter for the BT Navigator "error_code_name_prefixes" was introduced.  It replaces the "error_code_id_names" parameter to support both an error code and an associated error message.  Behavior tree elements that support an "error_code_id" and "error_msg" attribute, must have values that use the corresponding prefix with the suffix "_error_code" and "_error_msg" respectively.
+
+.. code-block:: xml
+
+  <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code} error_msg="{compute_path_error_msg}"/>

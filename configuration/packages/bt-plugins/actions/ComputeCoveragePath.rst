@@ -20,7 +20,7 @@ Input Ports
   ===================================== =======
 
   Description
-    	Whether or not to generate a headland of the field or polygon to compute coverage of
+        Whether or not to generate a headland of the field or polygon to compute coverage of
 
 :generate_route:
 
@@ -31,7 +31,7 @@ Input Ports
   ============================================= =======
 
   Description
-    	Whether or not to generate a route, e.g. an ordered set of swaths
+        Whether or not to generate a route, e.g. an ordered set of swaths
 
 :generate_path:
 
@@ -42,7 +42,7 @@ Input Ports
   ============== =======
 
   Description
-      Whether or not to generate a path, e.g. adding path connectors to the ordered route
+        Whether or not to generate a path, e.g. adding path connectors to the ordered route
 
 :file_field:
 
@@ -53,7 +53,7 @@ Input Ports
   ============== =======
 
   Description
-    	The filepath to the field's GML file to use, if not specifying the field via ``polygons``
+        The filepath to the field's GML file to use, if not specifying the field via ``polygons``
 
 
 :file_field_id:
@@ -65,7 +65,7 @@ Input Ports
   ============== =======
 
   Description
-    	The ID of the field in the GML File to use, if multiple exist in the same file. This is the ordered number of the fields in the file.
+        The ID of the field in the GML File to use, if multiple exist in the same file. This is the ordered number of the fields in the file.
 
 :polygons:
 
@@ -101,7 +101,7 @@ Output Ports
   ========================== =======
 
   Description
-    	Path created by action server in the form of a navigation path. Takes in a blackboard variable, e.g. "{path}".
+        Path created by action server in the form of a navigation path. Takes in a blackboard variable, e.g. "{path}".
 
 :coverage_path:
 
@@ -123,13 +123,24 @@ Output Ports
   ============== =======
 
   Description
-    	Compute coverage error code. See ``ComputeCoveragePath`` action message for the enumerated set of error codes.
+        Compute coverage error code. See ``ComputeCoveragePath`` action message for the enumerated set of error codes.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        Compute coverage error message. See ``ComputeCoveragePath`` action message for the enumerated set of error codes.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <ComputeCoveragePath file_field="{field_filepath}" nav_path="{path}" coverage_path="{cov_path}" server_name="ComputeCoverage" server_timeout="10" error_code_id="{compute_coverage_error_code}"/>
+  <ComputeCoveragePath file_field="{field_filepath}" nav_path="{path}" coverage_path="{cov_path}" server_name="ComputeCoverage" server_timeout="10" error_code_id="{compute_coverage_error_code}" error_msg="{compute_coverage_error_msg}"/>
 
-Note: the blackboard IDs for the path, error code, and more may be adjusted,but need to match the corresponding parameters in the ``CoverageNavigator`` plugin to set on the blackboard for use from the action server.
+Note: the blackboard IDs for the path, error code, and more may be adjusted, but need to match the corresponding parameters in the ``CoverageNavigator`` plugin to set on the blackboard for use from the action server.
