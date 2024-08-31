@@ -38,7 +38,7 @@ Please see the BT node's configuration page to familiarize yourself with all asp
 1- Specifying a Smoother Plugin
 -------------------------------
 
-In order to use a smoother in your BT node, you must first configure the smoother server itself to contain the smoother plugins of interest. These plugins implement the specific algorithms that you would like to use. 
+In order to use a smoother in your BT node, you must first configure the smoother server itself to contain the smoother plugins of interest. These plugins implement the specific algorithms that you would like to use.
 
 For each smoother plugin you would like to use, a name must be given to it (e.g. ``simple_smoother``, ``curvature_smoother``). This name is its ``smoother_id`` for other servers to interact with this algorithm from a request to the Smoother Server's action interface.
 
@@ -68,7 +68,7 @@ Now that you have selected and configured the smoother server for your given plu
 
 Note: If you use only a single type of smoothing algorithm, there is no need to specify the ``smoother_id`` in the BT XML entry. Since there is only a single option, that will be used for any request that does not specifically request a smoother plugin. However, if you leverage multiple smoother plugins, you **must** populate the ``smoother_id`` XML port.
 
-A given behavior tree will have a line: 
+A given behavior tree will have a line:
 
 .. code-block:: xml
 
@@ -85,7 +85,7 @@ This line calls the planner server and return a path to the ``path`` blackboard 
 
 If you wish to have recoveries for the smoother error codes, such as triggering the system recoveries branch of a behavior tree:
 
-.. code-block:: xml 
+.. code-block:: xml
 
     <Sequence name= "TryToResolveSmootherErrorCodes">
       <WouldASmootherRecoveryHelp error_code="{smoother_error_code}">

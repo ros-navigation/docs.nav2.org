@@ -3,7 +3,7 @@
 ComputeCoveragePath
 ===================
 
-Invokes the ComputeCoveragePath ROS 2 action server, which is implemented by the opennav_coverage_ server module. 
+Invokes the ComputeCoveragePath ROS 2 action server, which is implemented by the opennav_coverage_ server module.
 The server address can be remapped using the ``server_name`` input port.
 This server can take in both cartesian and GPS coordinates and is implemented using the ``Fields2Cover`` library.
 
@@ -16,18 +16,18 @@ Input Ports
   ===================================== =======
   Type                                  Default
   ------------------------------------- -------
-  bool                                  true  
+  bool                                  true
   ===================================== =======
 
   Description
     	Whether or not to generate a headland of the field or polygon to compute coverage of
-    	
+
 :generate_route:
 
   ============================================= =======
   Type                                          Default
   --------------------------------------------- -------
-  bool                                          true  
+  bool                                          true
   ============================================= =======
 
   Description
@@ -38,7 +38,7 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  bool           true  
+  bool           true
   ============== =======
 
   Description
@@ -49,7 +49,7 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  string         N/A  
+  string         N/A
   ============== =======
 
   Description
@@ -61,7 +61,7 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  int            0  
+  int            0
   ============== =======
 
   Description
@@ -72,7 +72,7 @@ Input Ports
   =================================== =======
   Type                                Default
   ----------------------------------- -------
-  vector<geometry_msgs::msg::Polygon>  N/A 
+  vector<geometry_msgs::msg::Polygon>  N/A
   =================================== =======
 
   Description
@@ -83,12 +83,12 @@ Input Ports
   =================================== =======
   Type                                Default
   ----------------------------------- -------
-  string                              "map" 
+  string                              "map"
   =================================== =======
 
   Description
       The polygon's frame ID, since the GML file provides the frame ID for its format, this is the frame ID for user-defined input ``polygons``.
-  
+
 Output Ports
 ------------
 
@@ -97,7 +97,7 @@ Output Ports
   ========================== =======
   Type                       Default
   -------------------------- -------
-  nav_msgs::msg::Path         N/A  
+  nav_msgs::msg::Path         N/A
   ========================== =======
 
   Description
@@ -108,7 +108,7 @@ Output Ports
   ========================== =======
   Type                       Default
   -------------------------- -------
-  vector<PathComponents>      N/A  
+  vector<PathComponents>      N/A
   ========================== =======
 
   Description
@@ -119,7 +119,7 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description

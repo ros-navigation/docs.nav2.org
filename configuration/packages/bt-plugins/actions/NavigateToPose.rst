@@ -15,7 +15,7 @@ Input Ports
   =========== =======
   Type        Default
   ----------- -------
-  PoseStamped N/A  
+  PoseStamped N/A
   =========== =======
 
   Description
@@ -26,7 +26,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -37,7 +37,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 10  
+  double 10
   ====== =======
 
   Description
@@ -48,7 +48,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -62,11 +62,11 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description
-    	The lowest error code in the list of the `error_code_names` parameter. 
+    	The lowest error code in the list of the `error_code_names` parameter.
 
 Example
 -------

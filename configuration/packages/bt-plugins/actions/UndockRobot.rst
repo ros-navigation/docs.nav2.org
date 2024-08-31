@@ -51,7 +51,7 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          0  
+  uint16          0
   ============== =======
 
   Description
