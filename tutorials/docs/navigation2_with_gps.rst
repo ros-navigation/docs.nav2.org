@@ -38,6 +38,8 @@ It is assumed ROS2 and Nav2 dependent packages are installed or built locally. A
     
 The code for this tutorial is hosted on `nav2_gps_waypoint_follower_demo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo>`_. Though we will go through the most important steps of the setup, it's highly recommended that you clone and build the package when setting up your dev environment.
 
+You may also need to install gazebo and turtlebot3 simulation if you have not executed previous tutorials or Nav2 demos. See Nav2's Getting Started page for more information.
+
 GPS Localization Overview
 =========================
 
