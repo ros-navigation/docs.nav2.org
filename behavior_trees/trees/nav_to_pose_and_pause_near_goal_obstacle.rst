@@ -72,9 +72,9 @@ In conclusion, this particular BT would serve, both as an example and ready-to-u
               <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
               <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
             </Sequence>
-            <Spin spin_dist="1.57"/>
+            <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
             <Wait wait_duration="5.0"/>
-            <BackUp backup_dist="0.30" backup_speed="0.05"/>
+            <BackUp backup_dist="0.30" backup_speed="0.05" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
           </RoundRobin>
         </ReactiveFallback>
       </RecoveryNode>

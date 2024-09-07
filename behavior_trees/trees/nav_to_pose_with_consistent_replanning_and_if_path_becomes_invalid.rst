@@ -62,9 +62,9 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
               <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
               <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
             </Sequence>
-            <Spin name="SpinRecovery" spin_dist="1.57"/>
+            <Spin name="SpinRecovery" spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
             <Wait name="WaitRecovery" wait_duration="5.0"/>
-            <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.05"/>
+            <BackUp name="BackUpRecovery" backup_dist="0.30" backup_speed="0.05" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
           </RoundRobin>
         </ReactiveFallback>
       </RecoveryNode>
