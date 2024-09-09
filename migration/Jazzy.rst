@@ -13,6 +13,8 @@ BehaviorTree error_msg
 
 A new parameter for the BT Navigator "error_code_name_prefixes" was introduced.  It replaces the "error_code_id_names" parameter to support both an error code and an associated error message.  Behavior tree elements that support an "error_code_id" and "error_msg" attribute, must have values that use the corresponding prefix with the suffix "_error_code" and "_error_msg" respectively. The error messages can then be viewed by applications calling Nav2 or its servers for handling specific errors with more contextual information than simply the error code.
 
+Thus, users must update their ``nav2_params.yaml`` to include this new format of specifying error message and code locations.
+
 .. code-block:: xml
 
   <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code} error_msg="{compute_path_error_msg}"/>
