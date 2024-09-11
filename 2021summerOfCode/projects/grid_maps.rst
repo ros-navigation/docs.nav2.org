@@ -37,8 +37,8 @@ This will involve porting code from ROS 1 to ROS 2, analyzing uses of the enviro
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
-- `Original github issue 1 <https://github.com/ros-planning/navigation2/issues/1278>`_
-- `Original github issue 2 <https://github.com/ros-planning/navigation2/issues/1517>`_
+- `Original github issue 1 <https://github.com/ros-navigation/navigation2/issues/1278>`_
+- `Original github issue 2 <https://github.com/ros-navigation/navigation2/issues/1517>`_
 - `Navigation2 <https://docs.nav2.org/>`_
 
 **Licensing**

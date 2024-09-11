@@ -40,7 +40,7 @@ Your task will be to create a high-quality implementation of one of the followin
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
-- `Github issue page <https://github.com/ros-planning/navigation2/issues/1710>`_
+- `Github issue page <https://github.com/ros-navigation/navigation2/issues/1710>`_
 - `Nav2 <https://docs.nav2.org/>`_
 
 **Licensing**

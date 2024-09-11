@@ -47,7 +47,7 @@ After the items are configured, there should be a preview to see how the paramet
 
 - `QT <https://www.qt.io/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
-- `Original github issue page <https://github.com/ros-planning/navigation2/issues/1721>`_
+- `Original github issue page <https://github.com/ros-navigation/navigation2/issues/1721>`_
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.

@@ -7,7 +7,7 @@ It is used to select the Smoother that will be used by the Smoother server. It s
 
 Any publisher to this topic needs to be configured with some QoS defined as ``reliable`` and ``transient local``.
 
-.. _bt_navigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator
+.. _bt_navigator: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator
 
 Input Ports
 -----------

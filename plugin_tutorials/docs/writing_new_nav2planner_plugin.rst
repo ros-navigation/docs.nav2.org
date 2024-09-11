@@ -32,7 +32,7 @@ Tutorial Steps
 --------------------------------
 
 We will create a simple straight-line planner.
-The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as the ``nav2_straightline_planner``.
+The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-navigation/navigation2_tutorials>`_ repository as the ``nav2_straightline_planner``.
 This package can be considered as a reference for writing planner plugin.
 
 Our example plugin inherits from the base class ``nav2_core::GlobalPlanner``. The base class provides 5 pure virtual methods to implement a planner plugin. The plugin will be used by the planner server to compute trajectories.

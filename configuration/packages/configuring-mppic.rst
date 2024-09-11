@@ -5,7 +5,7 @@ Model Predictive Path Integral Controller
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_mppi_controller
 
 
 .. image:: images/mppi_demo.gif

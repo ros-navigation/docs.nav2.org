@@ -25,12 +25,12 @@ Configuring the Robot's Footprint
 *********************************
 In this section, we will configure the footprint of ``sam_bot`` such that ``footprint`` (polygon) is used for the local costmap and ``robot_radius`` (circular) is used for the global costmap. We will utilize the default configuration file of Nav2 with a modified footprint parameter for the global and local costmaps.
 
-.. note:: The complete source code for ``sam_bot`` can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description>`_ repository.
+.. note:: The complete source code for ``sam_bot`` can be found in `navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description>`_ repository.
 
-Under the ``config`` directory, create a new file named  ``nav2_params.yaml``. Next, copy the contents of `config/nav2_params.yaml <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml>`_ and paste them into the newly created file. The contents of `config/nav2_params.yaml <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml>`_ are copied from the default configuration file of Nav2 but with changes in the ``footprint`` and  ``robot_radius`` parameters to match the shape of ``sam_bot``.
+Under the ``config`` directory, create a new file named  ``nav2_params.yaml``. Next, copy the contents of `config/nav2_params.yaml <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml>`_ and paste them into the newly created file. The contents of `config/nav2_params.yaml <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/config/nav2_params.yaml>`_ are copied from the default configuration file of Nav2 but with changes in the ``footprint`` and  ``robot_radius`` parameters to match the shape of ``sam_bot``.
 
 .. seealso::
-  The default configuration file for Nav2 can be found in the official `Navigation2 repository <https://github.com/ros-planning/navigation2/blob/galactic/nav2_bringup/bringup/params/nav2_params.yaml>`_. 
+  The default configuration file for Nav2 can be found in the official `Navigation2 repository <https://github.com/ros-navigation/navigation2/blob/galactic/nav2_bringup/bringup/params/nav2_params.yaml>`_. 
 
 Below is the code snippet from ``nav2_params.yaml`` defining the local costmap footprint. In this configuration file, the ``footprint`` parameter of the local costmap has already been set with a rectangular-shaped footprint. This box is centered at the ``base_link`` frame of ``sam_bot``. 
 
@@ -54,7 +54,7 @@ Build, Run and Verification
 ***************************
 We will now confirm that we have properly set up ``sam_bot``'s footprint.
 
-First, we launch `launch/display.launch.py <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_ to launch the robot state publisher, spawn ``sam_bot`` in Gazebo, and visualize ``sam_bot`` and its footprint in Rviz. The robot state publisher publishes the ``base_link`` => ``sensors`` transforms defined in ``sam_bot``'s URDF, while Gazebo's differential drive plugin publishes the ``odom`` => ``base_link`` transform. Open a new terminal and execute the lines below. 
+First, we launch `launch/display.launch.py <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_ to launch the robot state publisher, spawn ``sam_bot`` in Gazebo, and visualize ``sam_bot`` and its footprint in Rviz. The robot state publisher publishes the ``base_link`` => ``sensors`` transforms defined in ``sam_bot``'s URDF, while Gazebo's differential drive plugin publishes the ``odom`` => ``base_link`` transform. Open a new terminal and execute the lines below. 
 
 .. code-block:: shell
 

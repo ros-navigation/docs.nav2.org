@@ -35,7 +35,7 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
   ====== =======
 
   Description
-    Name of the incoming `CostmapFilterInfo <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg>`_ topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the :ref:`configuring_map_server` configuration page.
+    Name of the incoming `CostmapFilterInfo <https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg>`_ topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the :ref:`configuring_map_server` configuration page.
 
 :``<filter name>``.speed_limit_topic:
 
@@ -46,7 +46,7 @@ Speed Filter - is a Costmap Filter that restricting maximum velocity of robot. T
   ====== =============
 
   Description
-    Topic to publish speed limit to. The `messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ have the following fields' meaning:
+    Topic to publish speed limit to. The `messages <https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ have the following fields' meaning:
 
     - ``percentage``: speed limit is expressed in percentage if ``true`` or in absolute values in ``false`` case. This parameter is set depending on ``type`` field of ``CostmapFilterInfo`` message.
 

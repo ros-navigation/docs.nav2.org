@@ -5,7 +5,7 @@ NavigateThroughPoses
 
 Invokes the NavigateThroughPoses ROS 2 action server, which is implemented by the bt_navigator_ module.
 
-.. _bt_navigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator
+.. _bt_navigator: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator
 
 Input Ports
 -----------
