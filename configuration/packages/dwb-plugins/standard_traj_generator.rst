@@ -83,4 +83,4 @@ Parameters
   ==== =======
     
     Description
-        Whether to limit velocity command in trajectory using current velocity.
+        Whether to limit velocity command in trajectory using sampled velocity instead of the commanded velocity.
