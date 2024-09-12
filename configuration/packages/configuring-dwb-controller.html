@@ -1036,6 +1036,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-bt-nodes">New BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#fix-flickering-visualization">Fix flickering visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
 </ul>
 </li>
 </ul>
@@ -1187,6 +1188,7 @@ modified for ROS 2 using the Dynamic Window Approach.</p>
 <span class="w">      </span><span class="nt">xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">trans_stopped_velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">short_circuit_trajectory_evaluation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">limit_vel_cmd_in_traj</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
 <span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">critics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;RotateToGoal&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Oscillation&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;BaseObstacle&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalAlign&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAlign&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathDist&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalDist&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">BaseObstacle.scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.02</span>

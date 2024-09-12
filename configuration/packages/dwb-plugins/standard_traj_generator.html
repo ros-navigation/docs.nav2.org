@@ -1036,6 +1036,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#new-bt-nodes">New BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#fix-flickering-visualization">Fix flickering visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
 </ul>
 </li>
 </ul>
@@ -1227,6 +1228,28 @@
 <blockquote>
 <div><dl class="simple">
 <dt>Description</dt><dd><p>Whether to include the last pose in the trajectory.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.limit_vel_cmd_in_traj</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Whether to limit velocity command in trajectory using sampled velocity instead of the commanded velocity.</p>
 </dd>
 </dl>
 </div></blockquote>

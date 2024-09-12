@@ -1036,6 +1036,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-bt-nodes">New BT Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fix-flickering-visualization">Fix flickering visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
 </ul>
 </li>
 </ul>
@@ -1160,6 +1161,14 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 <img alt="../_images/fix_flickering_visualization_before.png" src="../_images/fix_flickering_visualization_before.png" />
 <p>After:</p>
 <img alt="../_images/fix_flickering_visualization_after.png" src="../_images/fix_flickering_visualization_after.png" />
+</div>
+<div class="section" id="option-to-limit-velocity-through-dwb-trajectory">
+<h2>Option to limit velocity through DWB trajectory<a class="headerlink" href="#option-to-limit-velocity-through-dwb-trajectory" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4663">PR #4663</a> a <code class="docutils literal notranslate"><span class="pre">limit_vel_cmd_in_traj</span></code> parameter was introduced to DWB local planner to allow the user to limit the velocity used in the trajectory generation based on the robot’s current velocity.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>false</p></li>
+</ul>
 </div>
 </div>
 
