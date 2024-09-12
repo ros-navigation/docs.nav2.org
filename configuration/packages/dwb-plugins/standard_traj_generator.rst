@@ -73,3 +73,14 @@ Parameters
     
     Description
         Whether to include the last pose in the trajectory.
+
+:``<dwb plugin>``.limit_vel_cmd_in_traj:
+
+  ==== =======
+  Type Default
+  ---- -------
+  bool false
+  ==== =======
+    
+    Description
+        Whether to limit velocity command in trajectory using sampled velocity instead of the commanded velocity.

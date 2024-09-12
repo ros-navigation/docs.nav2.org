@@ -104,6 +104,7 @@ Example
           xy_goal_tolerance: 0.25
           trans_stopped_velocity: 0.25
           short_circuit_trajectory_evaluation: True
+          limit_vel_cmd_in_traj: False
           stateful: True
           critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
           BaseObstacle.scale: 0.02
