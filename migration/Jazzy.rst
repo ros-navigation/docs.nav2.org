@@ -81,3 +81,13 @@ Before:
 After:
 
 .. image:: images/fix_flickering_visualization_after.png
+
+Option to limit velocity through DWB trajectory
+***********************************************
+
+In `PR #4663 <https://github.com/ros-navigation/navigation2/pull/4663>`_ a ``limit_vel_cmd_in_traj`` parameter was introduced to DWB local planner to allow the user to limit the velocity used in the trajectory generation based on the robot's current velocity.
+
+Default value: 
+
+- false
+
