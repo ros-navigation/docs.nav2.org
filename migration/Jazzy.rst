@@ -91,3 +91,11 @@ Default value:
 
 - false
 
+Option to disable zero velocity publishing on goal exit
+*******************************************************
+
+In `PR #4675 <https://github.com/ros-navigation/navigation2/pull/4675>`_ a ``publish_zero_velocity`` parameter was introduced for the `Controller server </configuration/packages/configuring-controller-server.html#controller-server>`_ in order to disable zero velocity publishing on goal exit.
+
+Default value:
+
+- true
