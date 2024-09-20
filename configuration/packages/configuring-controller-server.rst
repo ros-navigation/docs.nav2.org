@@ -36,6 +36,17 @@ Parameters
   Description
     Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
 
+:publish_zero_velocity:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           true
+  ============== =======
+
+  Description
+    Whether to publish a zero velocity command on goal exit. This is useful for stopping the robot when a goal terminates.
+
 :action_server_result_timeout:
 
   ====== ======= ======= 
