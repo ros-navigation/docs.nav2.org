@@ -1224,50 +1224,45 @@ docks.</p></td>
 <td><p>Undocks robot. If docking server instance was used to dock, type is not
 required.</p></td>
 </tr>
-<tr class="row-even"><td><p>getandTrackRoute(start, goal,
-use_start=False)</p></td>
-<td><p>Gets and tracks a sparse route and dense path from start to goal, where
-start &amp; goal may be of type <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> or <code class="docutils literal notranslate"><span class="pre">int</span></code> for known NodeIDs.</p></td>
-</tr>
-<tr class="row-odd"><td><p>smoothPath(path, smoother_id=’‘,
+<tr class="row-even"><td><p>smoothPath(path, smoother_id=’‘,
 max_duration=2.0,
 check_for_collision=False)</p></td>
 <td><p>Smooths a given path of type <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>changeMap(map_filepath)</p></td>
+<tr class="row-odd"><td><p>changeMap(map_filepath)</p></td>
 <td><p>Requests a change from the current map to <cite>map_filepath</cite>’s yaml.</p></td>
 </tr>
-<tr class="row-odd"><td><p>clearAllCostmaps()</p></td>
+<tr class="row-even"><td><p>clearAllCostmaps()</p></td>
 <td><p>Clears both the global and local costmaps.</p></td>
 </tr>
-<tr class="row-even"><td><p>clearLocalCostmap()</p></td>
+<tr class="row-odd"><td><p>clearLocalCostmap()</p></td>
 <td><p>Clears the local costmap.</p></td>
 </tr>
-<tr class="row-odd"><td><p>clearGlobalCostmap()</p></td>
+<tr class="row-even"><td><p>clearGlobalCostmap()</p></td>
 <td><p>Clears the global costmap.</p></td>
 </tr>
-<tr class="row-even"><td><p>getGlobalCostmap()</p></td>
+<tr class="row-odd"><td><p>getGlobalCostmap()</p></td>
 <td><p>Returns the global costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>getLocalCostmap()</p></td>
+<tr class="row-even"><td><p>getLocalCostmap()</p></td>
 <td><p>Returns the local costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>waitUntilNav2Active(
+<tr class="row-odd"><td><p>waitUntilNav2Active(
 navigator=’bt_navigator’,
 localizer=’amcl’)</p></td>
 <td><p>Blocks until Nav2 is completely online and lifecycle nodes are in the
 active state. To be used in conjunction with autostart or external
 lifecycle bringup. Custom navigator and localizer nodes can be specified</p></td>
 </tr>
-<tr class="row-odd"><td><p>lifecycleStartup()</p></td>
+<tr class="row-even"><td><p>lifecycleStartup()</p></td>
 <td><p>Sends a request to all lifecycle management servers to bring them into
 the active state, to be used if autostart is <code class="docutils literal notranslate"><span class="pre">False</span></code> and you want this
 program to control Nav2’s lifecycle.</p></td>
 </tr>
-<tr class="row-even"><td><p>lifecycleShutdown()</p></td>
+<tr class="row-odd"><td><p>lifecycleShutdown()</p></td>
 <td><p>Sends a request to all lifecycle management servers to shut them down.</p></td>
 </tr>
-<tr class="row-odd"><td><p>destroyNode()</p></td>
+<tr class="row-even"><td><p>destroyNode()</p></td>
 <td><p>Releases the resources used by the object.</p></td>
 </tr>
 </tbody>
@@ -1394,7 +1389,6 @@ x, y, theta (<code class="docutils literal notranslate"><span class="pre">float<
 <li><p><code class="docutils literal notranslate"><span class="pre">example_waypoint_follower.py</span></code> - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">example_follow_path.py</span></code> - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">example_assisted_teleop.py</span></code> - Demonstrates the assisted teleop capabilities of the navigator.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">example_route.py</span></code> - Demonstrates the Route server capabilities of the navigator.</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code> has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:</p>
 <ul class="simple">
