@@ -1037,6 +1037,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fix-flickering-visualization">Fix flickering visualization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
 </ul>
 </li>
 </ul>
@@ -1168,6 +1169,14 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 <p>Default value:</p>
 <ul class="simple">
 <li><p>false</p></li>
+</ul>
+</div>
+<div class="section" id="option-to-disable-zero-velocity-publishing-on-goal-exit">
+<h2>Option to disable zero velocity publishing on goal exit<a class="headerlink" href="#option-to-disable-zero-velocity-publishing-on-goal-exit" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4675">PR #4675</a> a <code class="docutils literal notranslate"><span class="pre">publish_zero_velocity</span></code> parameter was introduced for the <a class="reference external" href="/configuration/packages/configuring-controller-server.html#controller-server">Controller server</a> in order to disable zero velocity publishing on goal exit.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>true</p></li>
 </ul>
 </div>
 </div>
