@@ -53,6 +53,17 @@ Input Ports
   Description
     Whether to use the footprint cost or the point cost.
 
+:consider_unknown_as_obstacle:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false  
+  ====== =======
+
+  Description
+    Whether to consider unknown cost (255) as obstacle.
+
 Output Ports
 ------------
 
