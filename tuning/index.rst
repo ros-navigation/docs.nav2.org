@@ -86,6 +86,8 @@ In general though, the following table is a good first-order description of the 
 +----------------+---------------------------------------------------+----------------------------+
 | Plugin Name    | Supported Robot Types                             | Task                       |
 +================+===================================================+============================+
+| VP controller  | Differential, Ackermann, Legged                   | High speed path tracking   |
++----------------+---------------------------------------------------+----------------------------+
 | DWB controller | Differential, Omnidirectional                     | Dynamic obstacle avoidance |
 +----------------+---------------------------------------------------+                            |
 | MPPI Controller| Differential, Omnidirectional, Ackermann, Legged  | Dynamic obstacle avoidance |
@@ -98,6 +100,8 @@ In general though, the following table is a good first-order description of the 
 All of the above controllers can handle both circular and arbitrary shaped robots in configuration.
 
 Regulated Pure Pursuit is good for exact path following and is typically paired with one of the kinematically feasible planners (eg State Lattice, Hybrid-A\*, etc) since those paths are known to be drivable given hard physical constraints. However, it can also be applied to differential drive robots who can easily pivot to match any holonomic path. This is the plugin of choice if you simply want your robot to follow the path, rather exactly, without any dynamic obstacle avoidance or deviation. It is simple and geometric, as well as slowing the robot in the presence of near-by obstacles *and* while making sharp turns.
+
+Vector Pursuit is another good path tracking solution and just like RPP, is paired with a kinematically feasible planner. It is a bit more advanced than RPP in the sense it also takes path heading into account and can handle more complex paths at higher speeds, but it is still a simple geometric controller thus requiring low computation resources.
 
 DWB and MPPI are both options that will track paths, but also diverge from the path if there are dynamic obstacles present (in order to avoid them). DWB does this through scoring multiple trajectories on a set of critics. These trajectories are also generated via plugins that can be replaced, but support out of the box Omni and Diff robot types within the valid velocity and acceleration restrictions. These critics are plugins that can be selected at run-time and contain weights that may be tuned to create the desired behavior, such as minimizing path distance, minimizing distance to the goal or headings, and other action penalties that can be designed. This does require a bit of tuning for a given platform, application, and desired behavior, but it is possible to tune DWB to do nearly any single thing well. 
 

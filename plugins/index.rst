@@ -103,34 +103,39 @@ Costmap Filters
 Controllers
 ===========
 
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-|      Plugin Name               |       Creator      |       Description                | Drivetrain support    |
-+================================+====================+==================================+=======================+
-|  `DWB Controller`_             | David Lu!!         | A highly configurable  DWA       | Differential,         |
-|                                |                    | implementation with plugin       | Omnidirectional,      |
-|                                |                    | interfaces                       | Legged                |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-|  `TEB Controller`_             | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
-|                                |                    | for ackermann, differential, and | Omnidirectional,      |
-|                                |                    | holonomic robots.                | Differential          |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-| `Regulated Pure Pursuit`_      | Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
-|                                |                    | variation on the pure pursuit    | Differential          |
-|                                |                    | algorithm with adaptive features.|                       |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-| `MPPI Controller`_             | Steve Macenski     | A predictive MPC controller with | Differential, Omni,   |
-|                                | Aleksei Budyakov   | modular & custom cost functions  | **Ackermann**         |
-|                                |                    | that can accomplish many tasks.  |                       |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-| `Rotation Shim Controller`_    | Steve Macenski     | A "shim" controller to rotate    | Differential, Omni,   |
-|                                |                    | to path heading before passing   | model rotate in place |
-|                                |                    | to main controller for  tracking.|                       |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-| `Graceful Controller`_         | Alberto Tudela     | A controller based on a          | Differential          |
-|                                |                    | pose-following control law to    |                       |
-|                                |                    | generate smooth trajectories.    |                       |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
++--------------------------------+----------------------+----------------------------------+-----------------------+
+|      Plugin Name               |       Creator        |       Description                | Drivetrain support    |
++================================+======================+==================================+=======================+
+|  `Vector Pursuit Controller`_  | Black Coffee Robotics| A controller based on the vector | Differential,         |
+|                                |                      | pursuit algorithm useful for     | Ackermann, Legged,    |
+|                                |                      | high speed accurate path tracking|                       |
++--------------------------------+----------------------+----------------------------------+-----------------------+
+|  `DWB Controller`_             | David Lu!!           | A highly configurable  DWA       | Differential,         |
+|                                |                      | implementation with plugin       | Omnidirectional,      |
+|                                |                      | interfaces                       | Legged                |
++--------------------------------+----------------------+----------------------------------+-----------------------+
+|  `TEB Controller`_             | Christoph Rösmann    | A MPC-like controller suitable   | **Ackermann**, Legged,|
+|                                |                      | for ackermann, differential, and | Omnidirectional,      |
+|                                |                      | holonomic robots.                | Differential          |
++--------------------------------+----------------------+----------------------------------+-----------------------+
+| `Regulated Pure Pursuit`_      | Steve Macenski       | A service / industrial robot     | **Ackermann**, Legged,|
+|                                |                      | variation on the pure pursuit    | Differential          |
+|                                |                      | algorithm with adaptive features.|                       |
++--------------------------------+----------------------+----------------------------------+-----------------------+
+| `MPPI Controller`_             | Steve Macenski       | A predictive MPC controller with | Differential, Omni,   |
+|                                | Aleksei Budyakov     | modular & custom cost functions  | **Ackermann**         |
+|                                |                      | that can accomplish many tasks.  |                       |
++--------------------------------+----------------------+----------------------------------+-----------------------+
+| `Rotation Shim Controller`_    | Steve Macenski       | A "shim" controller to rotate    | Differential, Omni,   |
+|                                |                      | to path heading before passing   | model rotate in place |
+|                                |                      | to main controller for  tracking.|                       |
++--------------------------------+----------------------+----------------------------------+-----------------------+
+| `Graceful Controller`_         | Alberto Tudela       | A controller based on a          | Differential          |
+|                                |                      | pose-following control law to    |                       |
+|                                |                      | generate smooth trajectories.    |                       |
++--------------------------------+----------------------+----------------------------------+-----------------------+
 
+.. _Vector Pursuit Controller: https://github.com/blackcoffeerobotics/vector_pursuit_controller
 .. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
 .. _TEB Controller: https://github.com/rst-tu-dortmund/teb_local_planner
 .. _Regulated Pure Pursuit: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
