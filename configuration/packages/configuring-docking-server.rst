@@ -281,7 +281,7 @@ SimpleChargingDock Parameters
 
 Simple Charging Dock is a provided charging dock plugin that can handle many docks and common techniques.
 
-:controller.staging_x_offset:
+:<dock_name>.staging_x_offset:
 
   ============== ==============
   Type           Default                                               
@@ -292,7 +292,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Staging pose offset forward (negative) of dock pose (m).
 
-:controller.staging_yaw_offset:
+:<dock_name>.staging_yaw_offset:
 
   ============== ==============
   Type           Default                                               
@@ -303,7 +303,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Staging pose angle relative to dock pose (rad).
 
-:controller.use_battery_status:
+:<dock_name>.use_battery_status:
 
   ============== ==============
   Type           Default                                               
@@ -314,7 +314,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Whether to use the battery state message or ``isDocked()`` for ``isCharging()``.
 
-:controller.use_external_detection_pose:
+:<dock_name>.use_external_detection_pose:
 
   ============== ==============
   Type           Default                                               
@@ -325,7 +325,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Whether to use external detection topic for dock or use the databases' pose.
 
-:controller.external_detection_timeout:
+:<dock_name>.external_detection_timeout:
 
   ============== ==============
   Type           Default                                               
@@ -337,7 +337,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
     Timeout (s) at which if the newest detection update does not meet to fail.
 
 
-:controller.external_detection_translation_x:
+:<dock_name>.external_detection_translation_x:
 
   ============== ==============
   Type           Default                                               
@@ -348,7 +348,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     X offset from detected pose for docking pose (m).
 
-:controller.external_detection_translation_y:
+:<dock_name>.external_detection_translation_y:
 
   ============== ==============
   Type           Default                                               
@@ -359,7 +359,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Y offset from detected pose for docking pose (m).
 
-:controller.external_detection_rotation_yaw:
+:<dock_name>.external_detection_rotation_yaw:
 
   ============== ==============
   Type           Default                                               
@@ -370,7 +370,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Yaw offset from detected pose for docking pose (rad).
 
-:controller.external_detection_rotation_pitch:
+:<dock_name>.external_detection_rotation_pitch:
 
   ============== ==============
   Type           Default                                               
@@ -381,7 +381,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Pitch offset from detected pose for docking pose (rad). Note: The external detection rotation angles are setup to work out of the box with Apriltags detectors in `image_proc` and `isaac_ros`.
 
-:controller.external_detection_rotation_roll:
+:<dock_name>.external_detection_rotation_roll:
 
   ============== ==============
   Type           Default                                               
@@ -392,7 +392,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Roll offset from detected pose for docking pose (rad). Note: The external detection rotation angles are setup to work out of the box with Apriltags detectors in `image_proc` and `isaac_ros`.
 
-:controller.filter_coef:
+:<dock_name>.filter_coef:
 
   ============== ==============
   Type           Default                                               
@@ -403,7 +403,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Dock external detection method filtering algorithm coefficient.
 
-:controller.charging_threshold:
+:<dock_name>.charging_threshold:
 
   ============== ==============
   Type           Default                                               
@@ -414,7 +414,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Threshold of current in battery state above which ``isCharging() = true``.
 
-:controller.use_stall_detection:
+:<dock_name>.use_stall_detection:
 
   ============== ==============
   Type           Default                                               
@@ -425,7 +425,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Whether or not to use stall detection for ``isDocked()`` or positional threshold.
 
-:controller.stall_joint_names:
+:<dock_name>.stall_joint_names:
 
   ============== ==============
   Type           Default                                               
@@ -436,7 +436,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Names in ``joint_states`` topic of joints to track.
 
-:controller.stall_velocity_threshold:
+:<dock_name>.stall_velocity_threshold:
 
   ============== ==============
   Type           Default                                               
@@ -447,7 +447,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     The joint velocity below which to trigger ``isDocked() = true``.
 
-:controller.stall_effort_threshold:
+:<dock_name>.stall_effort_threshold:
 
   ============== ==============
   Type           Default                                               
@@ -458,7 +458,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Current or motor effort in joint state to trigger ``isDocked() = true``.
 
-:controller.docking_threshold:
+:<dock_name>.docking_threshold:
 
   ============== ==============
   Type           Default                                               
