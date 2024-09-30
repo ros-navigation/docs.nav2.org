@@ -511,6 +511,7 @@ Example
           type: 'nova_carter_dock'
           frame: map
           pose: [0.0, 0.0, 0.0]
+          id: 'c67f50cb-e152-4720-85cc-5eb20bd85ce8'
 
         controller:
           k_phi: 3.0
