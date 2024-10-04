@@ -9,7 +9,7 @@ Introduction To Nav2 Specific Nodes
         - An ``ActionNode`` in the context of BTs is not necessarily connected to an Action Server in the ROS 2 context (but often it is)
 
 There are quite a few custom Nav2 BT nodes that are provided to be used in the Nav2 specific fashion. Some commonly used Nav2 nodes will be described below.
-The full list of custom BT nodes can be found in the `nav2_behavior_tree plugins folder <https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins>`_.
+The full list of custom BT nodes can be found in the `nav2_behavior_tree plugins folder <https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins>`_.
 The `configuration guide <../../configuration/packages/configuring-bt-xml.html>`_ can also be quite useful.
 
 Action Nodes

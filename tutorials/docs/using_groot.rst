@@ -113,7 +113,7 @@ After completing, select `OK` in :numref:`groot_interactive_node_creation`, the 
 Before starting to create a new BT based on the new custom nodes, it is recommend to export the newly created nodes to save in case of Groot crashing.
 This can be performed with the icon highlighted in green from :numref:`groot_export_new_node`.
 The resulting XML output from the node created in :numref:`groot_interactive_node_creation` can be seen below.
-You can see more examples in `Nav2's BT Node Palette XML <https://github.com/ros-planning/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml>`_.
+You can see more examples in `Nav2's BT Node Palette XML <https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/nav2_tree_nodes.xml>`_.
 
 
 .. code-block:: xml

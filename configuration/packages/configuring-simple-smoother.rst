@@ -5,7 +5,7 @@ Simple Smoother
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother
 
 The Simple Smoother is a Smoother Server plugin that will take in an input path and smooth it using a simple and fast smoothing technique. It weights the initial path points and the smoothed path points to create a balanced result where the path retains its high level characteristics but reduces oscillations or jagged features.
 

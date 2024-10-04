@@ -18,7 +18,7 @@ It also reduces the redundant code in ``nav2_bringup``.
 
 The lifecycle manager also now contains ``Bond`` connections to each lifecycle server.
 This means that if a server crashes or exits, the lifecycle manager will be constantly checking and transition down its lifecycle nodes for safety.
-This acts as a watchdog during run-time to complement the lifecycle manager's transitioning up and down from active states. See `this PR for details <https://github.com/ros-planning/navigation2/pull/1894>`_.
+This acts as a watchdog during run-time to complement the lifecycle manager's transitioning up and down from active states. See `this PR for details <https://github.com/ros-navigation/navigation2/pull/1894>`_.
 
 A fix to the BT navigator was added to remove a rare issue where it may crash due to asynchronous issues.
 As a result, a behavior tree is created for each navigation request rather than resetting an existing tree.
@@ -69,7 +69,7 @@ An example: ``controller_server`` defines the parameter ``controller_plugins`` w
 Each plugin will load the parameters in their namespace, e.g. ``FollowPath.max_vel_x``, rather than globally in the server namespace.
 This will allow multiple plugins of the same type with different parameters and reduce conflicting parameter names.
 
-DWB Contains new parameters as an update relative to the ROS 1 updates, `see here for more information <https://github.com/ros-planning/navigation2/pull/1501>`_.
+DWB Contains new parameters as an update relative to the ROS 1 updates, `see here for more information <https://github.com/ros-navigation/navigation2/pull/1501>`_.
 Additionally, the controller and planner interfaces were updated to include a ``std::string name`` parameter on initialization.
 This was added to the interfaces to allow the plugins to know the namespace it should load its parameters in.
 E.g. for a controller to find the parameter ``FollowPath.max_vel_x``, it must be given its name, ``FollowPath`` to get this parameter.
@@ -86,16 +86,16 @@ These plugins are set as default in the ``nav2_bt_navigator`` but may be overrid
 
 Original GitHub tickets:
 
-- `DistanceController <https://github.com/ros-planning/navigation2/pull/1699>`_
-- `SpeedController <https://github.com/ros-planning/navigation2/pull/1744>`_
-- `GoalUpdatedCondition <https://github.com/ros-planning/navigation2/pull/1712>`_
-- `DistanceTraveledCondition <https://github.com/ros-planning/navigation2/pull/1705>`_
-- `TimeExpiredCondition <https://github.com/ros-planning/navigation2/pull/1705>`_
-- `UpdateGoal <https://github.com/ros-planning/navigation2/pull/1859>`_
-- `TruncatePath <https://github.com/ros-planning/navigation2/pull/1859>`_
-- `IsBatteryLowCondition <https://github.com/ros-planning/navigation2/pull/1974>`_
-- `ProgressChecker <https://github.com/ros-planning/navigation2/pull/1857>`_
-- `GoalChecker <https://github.com/ros-planning/navigation2/pull/1857>`_
+- `DistanceController <https://github.com/ros-navigation/navigation2/pull/1699>`_
+- `SpeedController <https://github.com/ros-navigation/navigation2/pull/1744>`_
+- `GoalUpdatedCondition <https://github.com/ros-navigation/navigation2/pull/1712>`_
+- `DistanceTraveledCondition <https://github.com/ros-navigation/navigation2/pull/1705>`_
+- `TimeExpiredCondition <https://github.com/ros-navigation/navigation2/pull/1705>`_
+- `UpdateGoal <https://github.com/ros-navigation/navigation2/pull/1859>`_
+- `TruncatePath <https://github.com/ros-navigation/navigation2/pull/1859>`_
+- `IsBatteryLowCondition <https://github.com/ros-navigation/navigation2/pull/1974>`_
+- `ProgressChecker <https://github.com/ros-navigation/navigation2/pull/1857>`_
+- `GoalChecker <https://github.com/ros-navigation/navigation2/pull/1857>`_
 
 Map Server Re-Work
 ******************
@@ -110,7 +110,7 @@ Map Server now has new ``map_io`` dynamic library. All functions saving/loading 
 
 ``map_loader`` was completely removed from ``nav2_util``. All its functionality already present in ``map_io``. Please use it in your code instead.
 
-Please refer to the `original GitHub ticket <https://github.com/ros-planning/navigation2/issues/1010>`_ and `Map Server README <https://github.com/ros-planning/navigation2/blob/main/nav2_map_server/README.md>`_ for more information.
+Please refer to the `original GitHub ticket <https://github.com/ros-navigation/navigation2/issues/1010>`_ and `Map Server README <https://github.com/ros-navigation/navigation2/blob/main/nav2_map_server/README.md>`_ for more information.
 
 
 New Particle Filter Messages
@@ -122,7 +122,7 @@ New particle filter messages for particle clouds were added to include the parti
 
 ``AMCL`` now publishes its particle cloud as a ``nav2_msgs/ParticleCloud`` instead of a ``geometry_msgs/PoseArray``.
 
-`See here for more information. <https://github.com/ros-planning/navigation2/pull/1677>`_
+`See here for more information. <https://github.com/ros-navigation/navigation2/pull/1677>`_
 
 
 Selection of Behavior Tree in each navigation action
@@ -130,7 +130,7 @@ Selection of Behavior Tree in each navigation action
 
 The ``NavigateToPose`` action allows now to select in the action request the behavior tree to be used by ``bt_navigator`` for carrying out the navigation action through the ``string behavior_tree`` field. This field indicates the absolute path of the xml file that will be used to use to carry out the action. If no file is specified, leaving this field empty, the default behavior tree specified in the ``default_bt_xml_filename parameter`` will be used.
 
-This functionality has been discussed in `the ticket #1780 <https://github.com/ros-planning/navigation2/issues/1780>`_, and carried out in `the pull request #1784 <https://github.com/ros-planning/navigation2/pull/1784>`_.
+This functionality has been discussed in `the ticket #1780 <https://github.com/ros-navigation/navigation2/issues/1780>`_, and carried out in `the pull request #1784 <https://github.com/ros-navigation/navigation2/pull/1784>`_.
 
 
 FollowPoint Capability
@@ -138,7 +138,7 @@ FollowPoint Capability
 
 A new behavior tree ``followpoint.xml`` has added. This behavior tree makes a robot follow a dynamically generated point, keeping a certain distance from the target. This can be used for moving target following maneuvers.
 
-This functionality has been discussed in `the ticket #1660 <https://github.com/ros-planning/navigation2/issues/1660>`_, and carried out in `the pull request #1859 <https://github.com/ros-planning/navigation2/issues/1859>`_.
+This functionality has been discussed in `the ticket #1660 <https://github.com/ros-navigation/navigation2/issues/1660>`_, and carried out in `the pull request #1859 <https://github.com/ros-navigation/navigation2/issues/1859>`_.
 
 New Costmap Layer
 *****************

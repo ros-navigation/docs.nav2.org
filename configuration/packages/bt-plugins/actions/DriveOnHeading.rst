@@ -6,7 +6,7 @@ DriveOnHeading
 Invokes the DriveOnHeading ROS 2 action server, which causes the robot to drive on the current heading by a specific displacement.
 It performs a linear translation by a given distance. The nav2_behaviors module implements the DriveOnHeading action server.
 
-.. nav2_behaviors_: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors
+.. nav2_behaviors_: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors
 
 Input Ports
 ***********

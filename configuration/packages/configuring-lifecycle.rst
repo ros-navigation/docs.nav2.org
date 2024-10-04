@@ -5,7 +5,7 @@ Lifecycle Manager
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_lifecycle_manager
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_lifecycle_manager
 
 The Lifecycle Manager module implements the method for handling the lifecycle transition states for the stack in a deterministic way.
 It will take in a set of ordered nodes to transition one-by-one into the configuration and activate states to run the stack.

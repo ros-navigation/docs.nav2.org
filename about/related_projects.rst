@@ -27,9 +27,9 @@ This is a community maintained list of related repositories and projects to Navi
 | `slam_toolbox`_                |  Steve Macenski        | Default 2D SLAM library          |
 +--------------------------------+------------------------+----------------------------------+
 
-.. _Navigation2: https://github.com/ros-planning/navigation2
-.. _docs.nav2.org: https://github.com/ros-planning/docs.nav2.org
-.. _navigation2_tutorials: https://github.com/ros-planning/navigation2_tutorials
-.. _navigation2_dynamic: https://github.com/ros-planning/navigation2_dynamic
+.. _Navigation2: https://github.com/ros-navigation/navigation2
+.. _docs.nav2.org: https://github.com/ros-navigation/docs.nav2.org
+.. _navigation2_tutorials: https://github.com/ros-navigation/navigation2_tutorials
+.. _navigation2_dynamic: https://github.com/ros-navigation/navigation2_dynamic
 .. _robot_localization: https://github.com/cra-ros-pkg/robot_localization
 .. _slam_toolbox: https://github.com/SteveMacenski/slam_toolbox

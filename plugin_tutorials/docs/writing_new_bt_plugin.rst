@@ -32,7 +32,7 @@ For this example, we're going to analyze the simplest behavior tree action node 
 Beyond this example of an action BT node, you can also create custom decorator, condition, and control nodes.
 Each node type has a unique role in the behavior tree to perform actions like planning, control the flow of the BT, check the status of a condition, or modify the output of other BT nodes.
 
-The code in this tutorial can be found in `nav2_behavior_tree <https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree>`_ package as the ``wait_action`` node.
+The code in this tutorial can be found in `nav2_behavior_tree <https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree>`_ package as the ``wait_action`` node.
 This action node can be considered as a reference for writing other action node plugins.
 
 Our example plugin inherits from the base class ``nav2_behavior_tree::BtActionNode``.

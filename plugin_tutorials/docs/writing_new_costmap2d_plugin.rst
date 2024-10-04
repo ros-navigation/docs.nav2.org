@@ -31,7 +31,7 @@ Tutorial Steps
 -------------------------------
 
 For a demonstration, this example will create a costmap plugin that puts repeating cost gradients in the costmap.
-The annotated code for this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as the ``nav2_gradient_costmap_plugin`` ROS 2-package.
+The annotated code for this tutorial can be found in `navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials>`_ repository as the ``nav2_gradient_costmap_plugin`` ROS 2-package.
 Please refer to it when making your own layer plugin for Costmap2D.
 
 The plugin class ``nav2_gradient_costmap_plugin::GradientLayer`` is inherited from basic class ``nav2_costmap_2d::Layer``:

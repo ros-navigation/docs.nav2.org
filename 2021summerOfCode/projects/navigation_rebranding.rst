@@ -32,7 +32,7 @@ As such, we would like to initiate a re-branding effort to help differentiate it
 
 **List of relevant open source software repositories and refs** 
 
-- `Github issue <https://github.com/ros-planning/navigation2/issues/1485>`_
+- `Github issue <https://github.com/ros-navigation/navigation2/issues/1485>`_
 - `Navigation2 <https://docs.nav2.org/>`_
 
 **Licensing**

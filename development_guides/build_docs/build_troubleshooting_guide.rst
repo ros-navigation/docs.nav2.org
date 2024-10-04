@@ -21,13 +21,13 @@ Common Nav2 Dependencies Build Failures
 
 * Make sure you've activated the lifecycle nodes if you're not seeing transforms or servers running.
 
-* Search `GitHub Issues <https://github.com/ros-planning/navigation2/issues>`_
+* Search `GitHub Issues <https://github.com/ros-navigation/navigation2/issues>`_
 
 * Make sure you're using the correct branch for your distribution. There is no cross support from branch for ``DistroA`` in ``DistroB``. The main development branch uses the rolling distribution.
 
-Still can't solve it? Let us know about your issue. `Open a ticket <https://github.com/ros-planning/navigation2/issues/new>`_.
+Still can't solve it? Let us know about your issue. `Open a ticket <https://github.com/ros-navigation/navigation2/issues/new>`_.
 
 Reporting Issue
 ===============
 
-- If you run into any issues when building Navigation2, you can use the search tool in the issues tab on `GitHub <https://github.com/ros-planning/navigation2/issues>`_ and always feel free to `open a ticket <https://github.com/ros-planning/navigation2/issues/new>`_.
+- If you run into any issues when building Navigation2, you can use the search tool in the issues tab on `GitHub <https://github.com/ros-navigation/navigation2/issues>`_ and always feel free to `open a ticket <https://github.com/ros-navigation/navigation2/issues/new>`_.

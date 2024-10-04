@@ -5,7 +5,7 @@ Regulated Pure Pursuit
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
 
 The Regulated Pure Pursuit controller implements a variation on the Pure Pursuit controller that specifically targeting service / industrial robot needs.
 It regulates the linear velocities by curvature of the path to help reduce overshoot at high speeds around blind corners allowing operations to be much more safe.
