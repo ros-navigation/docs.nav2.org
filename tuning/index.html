@@ -1,24 +1,20 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tuning Guide &mdash; Nav2 1.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>Tuning Guide &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
 
   
-    <link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
+      <script src="../_static/jquery.js"></script>
+      <script src="../_static/underscore.js"></script>
+      <script src="../_static/doctools.js"></script>
+      <script src="../_static/clipboard.min.js"></script>
+      <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -42,9 +38,6 @@
             Nav2
               <img src="../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                latest
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1198,13 +1191,18 @@
 <td><p>Differential, Omnidirectional</p></td>
 <td><p>Rotate to rough heading</p></td>
 </tr>
+<tr class="row-even"><td><p>VP controller</p></td>
+<td><p>Differential, Ackermann, Legged</p></td>
+<td><p>High speed path tracking</p></td>
+</tr>
 </tbody>
 </table>
 <p>All of the above controllers can handle both circular and arbitrary shaped robots in configuration.</p>
 <p>Regulated Pure Pursuit is good for exact path following and is typically paired with one of the kinematically feasible planners (eg State Lattice, Hybrid-A*, etc) since those paths are known to be drivable given hard physical constraints. However, it can also be applied to differential drive robots who can easily pivot to match any holonomic path. This is the plugin of choice if you simply want your robot to follow the path, rather exactly, without any dynamic obstacle avoidance or deviation. It is simple and geometric, as well as slowing the robot in the presence of near-by obstacles <em>and</em> while making sharp turns.</p>
 <p>DWB and MPPI are both options that will track paths, but also diverge from the path if there are dynamic obstacles present (in order to avoid them). DWB does this through scoring multiple trajectories on a set of critics. These trajectories are also generated via plugins that can be replaced, but support out of the box Omni and Diff robot types within the valid velocity and acceleration restrictions. These critics are plugins that can be selected at run-time and contain weights that may be tuned to create the desired behavior, such as minimizing path distance, minimizing distance to the goal or headings, and other action penalties that can be designed. This does require a bit of tuning for a given platform, application, and desired behavior, but it is possible to tune DWB to do nearly any single thing well.</p>
 <p>MPPI on the other hand implements an optimization based approach, using randomly perturbed samples of the previous optimal trajectory to maximize a set of plugin-based objective functions. In that regard, it is similar to DWB however MPPI is a far more modern and advanced technique that will deal with dynamic agents in the environment and create intelligent behavior due to the optimization based trajectory planning, rather then DWB’s constant action model. MPPI however does have moderately higher compute costs, but it is highly recommended to go this route and has received considerable development resources and attention due to its power. This typically works pretty well out of the box, but to tune for specific behaviors, you may have to retune some of the parameters. The README.md file for this package contains details on how to tune it efficiently.</p>
-<p>Finally, the Rotation Shim Plugin helps assist plugins like TEB and DWB (among others) to rotate the robot in place towards a new path’s heading before starting to track the path. This allows you to tune your local trajectory planner to operate with a desired behavior without having to worry about being able to rotate on a dime with a significant deviation in angular distance over a very small euclidean distance. Some controllers when heavily tuned for accurate path tracking are constrained in their actions and don’t very cleanly rotate to a new heading. Other controllers have a ‘spiral out’ behavior because their sampling requires some translational velocity, preventing it from simply rotating in place. This helps alleviate that problem and makes the robot rotate in place very smoothly.</p>
+<p>The Rotation Shim Plugin helps assist plugins like TEB and DWB (among others) to rotate the robot in place towards a new path’s heading before starting to track the path. This allows you to tune your local trajectory planner to operate with a desired behavior without having to worry about being able to rotate on a dime with a significant deviation in angular distance over a very small euclidean distance. Some controllers when heavily tuned for accurate path tracking are constrained in their actions and don’t very cleanly rotate to a new heading. Other controllers have a ‘spiral out’ behavior because their sampling requires some translational velocity, preventing it from simply rotating in place. This helps alleviate that problem and makes the robot rotate in place very smoothly.</p>
+<p>Finally, Vector Pursuit is another good path tracking solution and just like RPP, is paired with a kinematically feasible planner. It is a bit more advanced than RPP in the sense it also takes path heading into account. Vector Pursuit can handle complex paths at high speeds, but it is still a simple geometric controller thus requiring low computation resources.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#writing-new-nav2controller-plugin"><span class="std std-ref">Writing a New Controller Plugin</span></a> tutorial for more details. If you’re willing to contribute this work back to the community, please file a ticket or contact a maintainer! They’d love to hear from you.</p>
