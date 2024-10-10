@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Writing a New Behavior Plugin &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,14 +1099,14 @@
            <div itemprop="articleBody">
              
   <div class="section" id="writing-a-new-behavior-plugin">
-<span id="writing-new-behavior-plugin"></span><h1>Writing a New Behavior Plugin<a class="headerlink" href="#writing-a-new-behavior-plugin" title="Permalink to this headline">¶</a></h1>
+<span id="writing-new-behavior-plugin"></span><h1>Writing a New Behavior Plugin<a class="headerlink" href="#writing-a-new-behavior-plugin" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
 <li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial shows how to create you own Behavior Plugin.
 The Behavior Plugins live in the behavior server.
 Unlike the planner and controller servers, each behavior will host its own unique action server.
@@ -1104,7 +1115,7 @@ However, recoveries can be used to do a wide variety of tasks, so each behavior 
 This allows for massive flexibility in the behavior server enabling any behavior action imaginable that doesn’t need to have other reuse.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>ROS 2 (binary or build-from-source)</p></li>
 <li><p>Nav2 (Including dependencies)</p></li>
@@ -1113,9 +1124,9 @@ This allows for massive flexibility in the behavior server enabling any behavior
 </ul>
 </div>
 <div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="creating-a-new-behavior-plugin">
-<h3>1- Creating a new Behavior Plugin<a class="headerlink" href="#creating-a-new-behavior-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>1- Creating a new Behavior Plugin<a class="headerlink" href="#creating-a-new-behavior-plugin" title="Permalink to this heading"></a></h3>
 <p>We will create a simple send sms behavior.
 It will use Twilio to send a message via SMS to a remote operations center.
 The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials">navigation_tutorials</a> repository as <code class="docutils literal notranslate"><span class="pre">nav2_sms_behavior</span></code>.
@@ -1253,7 +1264,7 @@ For our example, we simply return success because we already completed our missi
 <p>The remaining methods are not used and are not mandatory to override them.</p>
 </div>
 <div class="section" id="exporting-the-behavior-plugin">
-<h3>2- Exporting the Behavior Plugin<a class="headerlink" href="#exporting-the-behavior-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>2- Exporting the Behavior Plugin<a class="headerlink" href="#exporting-the-behavior-plugin" title="Permalink to this heading"></a></h3>
 <p>Now that we have created our custom behavior, we need to export our Behavior Plugin so that it would be visible to the behavior server. Plugins are loaded at runtime and if they are not visible, then our behavior server won’t be able to load it. In ROS 2, exporting and loading plugins is handled by <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
 <p>Coming to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_sms_bahavior::SendSms</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::Behavior</span></code> which is our base class.</p>
 <ol class="arabic simple">
@@ -1304,7 +1315,7 @@ For our example, we simply return success because we already completed our missi
 </ol>
 </div>
 <div class="section" id="pass-the-plugin-name-through-params-file">
-<h3>3- Pass the plugin name through params file<a class="headerlink" href="#pass-the-plugin-name-through-params-file" title="Permalink to this headline">¶</a></h3>
+<h3>3- Pass the plugin name through params file<a class="headerlink" href="#pass-the-plugin-name-through-params-file" title="Permalink to this heading"></a></h3>
 <p>To enable the plugin, we need to modify the <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> file as below to replace following params</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">behavior_server</span><span class="p">:</span><span class="w">  </span><span class="c1"># Humble and later</span>
 <span class="nt">recoveries_server</span><span class="p">:</span><span class="w">  </span><span class="c1"># Galactic and earlier</span>
@@ -1367,7 +1378,7 @@ For our example, we simply return success because we already completed our missi
 We also tell the behavior server that the <code class="docutils literal notranslate"><span class="pre">send_sms</span></code> is of type <code class="docutils literal notranslate"><span class="pre">SendSms</span></code> and give it our parameters for your Twilio account.</p>
 </div>
 <div class="section" id="run-behavior-plugin">
-<h3>4- Run Behavior Plugin<a class="headerlink" href="#run-behavior-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>4- Run Behavior Plugin<a class="headerlink" href="#run-behavior-plugin" title="Permalink to this heading"></a></h3>
 <p>Run Turtlebot3 simulation with enabled Nav2. Detailed instruction how to make it are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is shortcut command for that:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>params_file:<span class="o">=</span>/path/to/your_params_file.yaml
 </pre></div>

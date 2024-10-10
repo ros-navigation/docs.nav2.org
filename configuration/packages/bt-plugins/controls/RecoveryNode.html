@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RecoveryNode &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
 
   
-      <script src="../../../../_static/jquery.js"></script>
-      <script src="../../../../_static/underscore.js"></script>
-      <script src="../../../../_static/doctools.js"></script>
-      <script src="../../../../_static/clipboard.min.js"></script>
-      <script src="../../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1089,7 +1100,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="recoverynode">
-<span id="bt-recovery-node-control"></span><h1>RecoveryNode<a class="headerlink" href="#recoverynode" title="Permalink to this headline">¶</a></h1>
+<span id="bt-recovery-node-control"></span><h1>RecoveryNode<a class="headerlink" href="#recoverynode" title="Permalink to this heading"></a></h1>
 <p>The RecoveryNode is a control flow node with two children.
 It returns SUCCESS if and only if the first child returns SUCCESS.
 The second child will be executed only if the first child returns FAILURE.
@@ -1097,7 +1108,7 @@ If the second child SUCCEEDS, then the first child will be executed again.
 The user can specify how many times the recovery actions should be taken before returning FAILURE.
 In nav2, the RecoveryNode is included in Behavior Trees to implement recovery actions upon failures.</p>
 <div class="section" id="input-ports">
-<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
+<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">number_of_retries</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1122,7 +1133,7 @@ In nav2, the RecoveryNode is included in Behavior Trees to implement recovery ac
 </dl>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RecoveryNode</span><span class="w"> </span><span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="cm">&lt;!--Add tree components here---&gt;</span>
 <span class="nt">&lt;/RecoveryNode&gt;</span>

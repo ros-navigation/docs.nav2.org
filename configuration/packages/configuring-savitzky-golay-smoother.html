@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Savitzky-Golay Smoother &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,14 +1099,14 @@
            <div itemprop="articleBody">
              
   <div class="section" id="savitzky-golay-smoother">
-<span id="configuring-savitzky-golay-filter-smoother"></span><h1>Savitzky-Golay Smoother<a class="headerlink" href="#savitzky-golay-smoother" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-savitzky-golay-filter-smoother"></span><h1>Savitzky-Golay Smoother<a class="headerlink" href="#savitzky-golay-smoother" title="Permalink to this heading"></a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_smoother">Github</a>.</p>
 <p>The Savitzky-Golay Smoother is a Smoother Server plugin that will take in an input path and smooth it using a simple and fast smoothing technique based on <a class="reference external" href="https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter">Savitzky Golay Filters</a>. It uses a digital signal processing technique designed to reduce noise distorting a reference signal, in this case, a path.</p>
 <p>It is useful for all types of planners, but particularly in NavFn to remove tiny artifacts that can occur near the end of paths or Theta* to slightly soften the transition between Line of Sight line segments <strong>without</strong> modifying the primary path. It is very fast (&lt;&lt; 1ms) so is a recommended default for planners that may result in slight discontinuities. However, it will not smooth out larger scale discontinuities, oscillations, or improve smoothness. For those, use one of the other provided smoother plugins. It also provides estimated orientation vectors of the path points after smoothing.</p>
 <p>This algorithm is deterministic and low-parameter. In the below image, some odd points from NavFn’s gradient descent are smoothed out by the smoother in the middle and end of a given path, while otherwise retaining the exact character of the path.</p>
 <img alt="../../_images/savitzky-golay-example.png" class="align-center" src="../../_images/savitzky-golay-example.png" />
 <div class="section" id="savitzky-golay-smoother-parameters">
-<h2>Savitzky-Golay Smoother Parameters<a class="headerlink" href="#savitzky-golay-smoother-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Savitzky-Golay Smoother Parameters<a class="headerlink" href="#savitzky-golay-smoother-parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">do_refinement</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1140,7 +1151,7 @@
 </dl>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">smoother_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_costmap/costmap_raw</span>

@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Navigating with a Physical Turtlebot 3 &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="navigating-with-a-physical-turtlebot-3">
-<span id="navigation2-on-real-turtlebot3"></span><h1>Navigating with a Physical Turtlebot 3<a class="headerlink" href="#navigating-with-a-physical-turtlebot-3" title="Permalink to this headline">¶</a></h1>
+<span id="navigation2-on-real-turtlebot3"></span><h1>Navigating with a Physical Turtlebot 3<a class="headerlink" href="#navigating-with-a-physical-turtlebot-3" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
@@ -1099,21 +1110,21 @@
     <iframe width="700" height="450" src="https://www.youtube.com/embed/ZeCds7Sv-5Q?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </h1><div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial shows how to control and navigate Turtlebot 3 using the ROS 2 Nav2 on a physical Turtlebot 3 robot.
 Before completing this tutorials, completing <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a> is highly recommended especially if you are new to ROS and Nav2.</p>
 <p>This tutorial may take about 1 hour to complete.
 It depends on your experience with ROS, robots, and what computer system you have.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>You must install Nav2, Turtlebot3.
 If you don’t have them installed, please follow <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.</p>
 </div>
 <div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="setup-your-environment-variables">
-<h3>0- Setup Your Environment Variables<a class="headerlink" href="#setup-your-environment-variables" title="Permalink to this headline">¶</a></h3>
+<h3>0- Setup Your Environment Variables<a class="headerlink" href="#setup-your-environment-variables" title="Permalink to this heading"></a></h3>
 <p>Run the following commands first whenever you open a new terminal during this tutorial.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/opt/ros/&lt;ros2-distro&gt;/setup.bash</span></code></p></li>
@@ -1121,14 +1132,14 @@ If you don’t have them installed, please follow <a class="reference internal" 
 </ul>
 </div>
 <div class="section" id="launch-turtlebot-3">
-<h3>1- Launch Turtlebot 3<a class="headerlink" href="#launch-turtlebot-3" title="Permalink to this headline">¶</a></h3>
+<h3>1- Launch Turtlebot 3<a class="headerlink" href="#launch-turtlebot-3" title="Permalink to this heading"></a></h3>
 <p>You will need to launch your robot’s interface,</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">turtlebot3_bringup</span> <span class="pre">robot.launch.py</span>&#160; <span class="pre">use_sim_time:=False</span></code></p>
 </div></blockquote>
 </div>
 <div class="section" id="launch-nav2">
-<h3>2- Launch Nav2<a class="headerlink" href="#launch-nav2" title="Permalink to this headline">¶</a></h3>
+<h3>2- Launch Nav2<a class="headerlink" href="#launch-nav2" title="Permalink to this heading"></a></h3>
 <p>You need to have a map of the environment where you want to Navigate Turtlebot 3, or create one live with SLAM.</p>
 <p>In case you are interested, there is a use case tutorial which shows how to use Nav2 with SLAM.
 <a class="reference internal" href="navigation2_with_slam.html#navigation2-with-slam"><span class="std std-ref">(SLAM) Navigating While Mapping</span></a>.</p>
@@ -1149,7 +1160,7 @@ Make sure <cite>use_sim time</cite> is set to <strong>False</strong>, because we
 <p>Note: Don’t forget to change <strong>/path/to/your-map.yaml</strong> to the actual path to the your-map.yaml file.</p>
 </div>
 <div class="section" id="launch-rviz">
-<h3>3-  Launch RVIZ<a class="headerlink" href="#launch-rviz" title="Permalink to this headline">¶</a></h3>
+<h3>3-  Launch RVIZ<a class="headerlink" href="#launch-rviz" title="Permalink to this heading"></a></h3>
 <p>Launch RVIZ with a pre-defined configuration file.</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">rviz2</span> <span class="pre">rviz2</span> <span class="pre">-d</span> <span class="pre">$(ros2</span> <span class="pre">pkg</span> <span class="pre">prefix</span> <span class="pre">nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz</span></code></p>
@@ -1161,7 +1172,7 @@ Then, the map should appear in RViz.</p>
 <a class="reference internal image-reference" href="../../_images/rviz_slam_map_view.png"><img alt="../../_images/rviz_slam_map_view.png" src="../../_images/rviz_slam_map_view.png" style="width: 45%;" /></a>
 </div>
 <div class="section" id="initialize-the-location-of-turtlebot-3">
-<h3>4- Initialize the Location of Turtlebot 3<a class="headerlink" href="#initialize-the-location-of-turtlebot-3" title="Permalink to this headline">¶</a></h3>
+<h3>4- Initialize the Location of Turtlebot 3<a class="headerlink" href="#initialize-the-location-of-turtlebot-3" title="Permalink to this heading"></a></h3>
 <p>First, find where the robot is on the map. Check where your robot is in the room.</p>
 <p>Set the pose of the robot in RViz.
 Click on the 2D Pose Estimate button and point the location of the robot on the map.
@@ -1171,7 +1182,7 @@ The direction of the green arrow is the orientation of Turtlebot.</p>
 A small error in the estimated location is tolerable.</p>
 </div>
 <div class="section" id="send-a-goal-pose">
-<h3>5-  Send a Goal Pose<a class="headerlink" href="#send-a-goal-pose" title="Permalink to this headline">¶</a></h3>
+<h3>5-  Send a Goal Pose<a class="headerlink" href="#send-a-goal-pose" title="Permalink to this heading"></a></h3>
 <p>Pick a target location for Turtlebot on the map.
 You can send Turtlebot 3 a goal position and a goal orientation by using the <strong>Nav2 Goal</strong> or the <strong>GoalTool</strong> buttons.</p>
 <p>Note: Nav2 Goal button uses a ROS 2 Action to send the goal and the GoalTool publishes the goal to a topic.</p>

@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Writing a New Behavior Tree Plugin &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,19 +1099,19 @@
            <div itemprop="articleBody">
              
   <div class="section" id="writing-a-new-behavior-tree-plugin">
-<span id="writing-new-nbt-plugin"></span><h1>Writing a New Behavior Tree Plugin<a class="headerlink" href="#writing-a-new-behavior-tree-plugin" title="Permalink to this headline">¶</a></h1>
+<span id="writing-new-nbt-plugin"></span><h1>Writing a New Behavior Tree Plugin<a class="headerlink" href="#writing-a-new-behavior-tree-plugin" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
 <li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial shows how to create your own behavior tree (BT) plugin.
 The BT plugins are used as nodes in the behavior tree XML processed by the BT Navigator for navigation logic.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>ROS 2 (binary or build-from-source)</p></li>
 <li><p>Nav2 (Including dependencies)</p></li>
@@ -1109,9 +1120,9 @@ The BT plugins are used as nodes in the behavior tree XML processed by the BT Na
 </ul>
 </div>
 <div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="creating-a-new-bt-plugin">
-<h3>1- Creating a new BT Plugin<a class="headerlink" href="#creating-a-new-bt-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>1- Creating a new BT Plugin<a class="headerlink" href="#creating-a-new-bt-plugin" title="Permalink to this heading"></a></h3>
 <p>We will create a simple BT plugin node to perform an action on another server.
 For this example, we’re going to analyze the simplest behavior tree action node in the <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> package, the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node.
 Beyond this example of an action BT node, you can also create custom decorator, condition, and control nodes.
@@ -1239,7 +1250,7 @@ Only some BT node plugins will require overriding <code class="docutils literal 
 The success, aborted, and cancelled methods will default to <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>, <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> respectively, if not overridden.</p>
 </div>
 <div class="section" id="exporting-the-planner-plugin">
-<h3>2- Exporting the planner plugin<a class="headerlink" href="#exporting-the-planner-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>2- Exporting the planner plugin<a class="headerlink" href="#exporting-the-planner-plugin" title="Permalink to this heading"></a></h3>
 <p>Now that we have created our custom BT node, we need to export our plugin so that it would be visible to the behavior tree when it loads a custom BT XML.
 Plugins are loaded at runtime, and if they are not visible, then our BT Navigator server won’t be able to load them or use them.
 In BehaviorTree.CPP, exporting and loading plugins is handled by the <code class="docutils literal notranslate"><span class="pre">BT_REGISTER_NODES</span></code> macro.</p>
@@ -1267,7 +1278,7 @@ An example can be seen below, where the <code class="docutils literal notranslat
 </div>
 </div>
 <div class="section" id="add-plugin-library-name-to-config">
-<h3>3- Add plugin library name to config<a class="headerlink" href="#add-plugin-library-name-to-config" title="Permalink to this headline">¶</a></h3>
+<h3>3- Add plugin library name to config<a class="headerlink" href="#add-plugin-library-name-to-config" title="Permalink to this heading"></a></h3>
 <p>In order for the BT Navigator node to discover the plugin we’ve just registered, we need to list the plugin library name under the bt_navigator node in the configuration YAML file. Configuration should look similar to the one shown below. Take note of nav2_wait_action_bt_node listed under plugin_lib_names.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>bt_navigator:
   ros__parameters:
@@ -1283,7 +1294,7 @@ An example can be seen below, where the <code class="docutils literal notranslat
 </div>
 </div>
 <div class="section" id="run-your-custom-plugin">
-<h3>4- Run Your Custom plugin<a class="headerlink" href="#run-your-custom-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>4- Run Your Custom plugin<a class="headerlink" href="#run-your-custom-plugin" title="Permalink to this heading"></a></h3>
 <p>Now you can use a behavior tree with your custom BT node.
 For example, the <code class="docutils literal notranslate"><span class="pre">navigate_w_replanning_and_recovery.xml</span></code> file is shown below.</p>
 <p>Select this BT XML file in your specific navigation request in <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> or as the default behavior tree in the BT Navigator’s configuration yaml file.</p>

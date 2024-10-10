@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Keepout Filter Parameters &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
 
   
-      <script src="../../../_static/jquery.js"></script>
-      <script src="../../../_static/underscore.js"></script>
-      <script src="../../../_static/doctools.js"></script>
-      <script src="../../../_static/clipboard.min.js"></script>
-      <script src="../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1089,7 +1100,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="keepout-filter-parameters">
-<span id="keepout-filter"></span><h1>Keepout Filter Parameters<a class="headerlink" href="#keepout-filter-parameters" title="Permalink to this headline">¶</a></h1>
+<span id="keepout-filter"></span><h1>Keepout Filter Parameters<a class="headerlink" href="#keepout-filter-parameters" title="Permalink to this heading"></a></h1>
 <p>Keepout Filter - is a Costmap Filter that enforces robot to avoid keepout areas or stay on preferred lanes, by updating corresponding costmap layer using filter mask information.</p>
 <p>Note: As Costmap Filters does not have the inflation layer applied to them (since inflation is not sensible for a speed or other non-occupation zone type), it may be beneficial to add a separate inflation layer into the vector of filters when using only a keepout zone. Some planners (e.g. Smac Feasible) will use the cost of the center point for a collision checking optimization before doing full SE2 footprint checks. Without inflation, the planner will not respect the Keepout Zone on it extremities – but will still respect it for the robot centers. If you wish to have a Keepout Zone for any part of the robot base while using a feasible planner, please enable the inflation layer.</p>
 <p><cite>&lt;filter name&gt;</cite>: is the corresponding plugin name selected for this type.</p>
@@ -1156,7 +1167,7 @@
 </dd>
 </dl>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>

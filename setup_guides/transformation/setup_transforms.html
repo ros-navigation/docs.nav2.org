@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setting Up Transformations &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,12 +1099,12 @@
            <div itemprop="articleBody">
              
   <div class="section" id="setting-up-transformations">
-<span id="setup-transforms"></span><h1>Setting Up Transformations<a class="headerlink" href="#setting-up-transformations" title="Permalink to this headline">¶</a></h1>
+<span id="setup-transforms"></span><h1>Setting Up Transformations<a class="headerlink" href="#setting-up-transformations" title="Permalink to this heading"></a></h1>
 <p>In this guide, we will be looking at the necessary transforms required by Nav2. These transforms allow Nav2 to interpret information coming in from various sources, such as sensors and odometry, by transforming them to the coordinate frames for use. Below is what a full transform tree for a robot looks like but we’ll start with something much more simpler.</p>
 <img alt="../../_images/tf_full_tree.png" class="align-center" src="../../_images/tf_full_tree.png" />
 <p>For this tutorial, we will first provide a brief introduction to transforms in ROS. Second, we will be working on a simple command-line demo of a TF2 static publisher to see it in action. Lastly, we will outline the necessary transforms that need to be published for Nav2 to function.</p>
 <div class="section" id="transforms-introduction">
-<h2>Transforms Introduction<a class="headerlink" href="#transforms-introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Transforms Introduction<a class="headerlink" href="#transforms-introduction" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This section of this guide has been adapted from the <a class="reference external" href="http://wiki.ros.org/navigation/Tutorials/RobotSetup/TF">Setting Up You Robot using tf</a> tutorial in the ROS (1) Navigation documentation.</p>
@@ -1112,7 +1123,7 @@
 <p>With this transform tree set up, converting the laser scan received in the <code class="docutils literal notranslate"><span class="pre">base_laser</span></code> frame to the  <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame is as simple as making a call to the TF2 library. Our robot can now use this information to reason about laser scans in the  <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame and safely plan around obstacles in its environment.</p>
 </div>
 <div class="section" id="static-transform-publisher-demo">
-<h2>Static Transform Publisher Demo<a class="headerlink" href="#static-transform-publisher-demo" title="Permalink to this headline">¶</a></h2>
+<h2>Static Transform Publisher Demo<a class="headerlink" href="#static-transform-publisher-demo" title="Permalink to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If you are new to ROS 2 or do not have a working environment yet, then please take some time to properly setup your machine using the resources in the official <a class="reference external" href="https://docs.ros.org/en/rolling/Installation.html">ROS 2 Installation Documentation</a></p>
@@ -1139,7 +1150,7 @@
 </div>
 </div>
 <div class="section" id="transforms-in-navigation2">
-<h2>Transforms in Navigation2<a class="headerlink" href="#transforms-in-navigation2" title="Permalink to this headline">¶</a></h2>
+<h2>Transforms in Navigation2<a class="headerlink" href="#transforms-in-navigation2" title="Permalink to this heading"></a></h2>
 <p>There are two important ROS REPs which we highly suggest for you to check out. These documents detail some standards set about by the ROS community to ensure proper operation across different packages. Nav2 also adheres to these standards and conventions.</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.ros.org/reps/rep-0105.html">REP 105 - Coordinate Frames for Mobile Platforms</a></p></li>
@@ -1166,7 +1177,7 @@
 </div>
 </div>
 <div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h2>
 <p>In this tutorial, we have discussed about the concept of transforms and how they are used in Nav2.</p>
 <p>In the last section, we have also explored using the static_transform_publisher of TF2 to publish our transforms. You may use this to set up your transforms for Nav2, but this is generally not the best way to do it. In most robotics projects, we make use of the Robot State Publisher since it is much easier to use and scales well as our robot gets more complex. We will be talking about the Robot State Publisher, URDF, and how to set it up in the next tutorial on <a class="reference internal" href="../urdf/setup_urdf.html#urdf-handson"><span class="std std-ref">Setting Up The URDF</span></a>.</p>
 <p>Lastly, we also discussed the three published transform requirements of Nav2 and the necessary REPs to keep in mind when setting them up.</p>

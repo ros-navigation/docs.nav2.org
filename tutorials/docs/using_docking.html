@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Using Docking Server &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="using-docking-server">
-<span id="docking-tutorial"></span><h1>Using Docking Server<a class="headerlink" href="#using-docking-server" title="Permalink to this headline">¶</a></h1>
+<span id="docking-tutorial"></span><h1>Using Docking Server<a class="headerlink" href="#using-docking-server" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
@@ -1099,7 +1110,7 @@
 <li><p><a class="reference internal" href="#putting-it-all-together">Putting It All Together</a></p></li>
 </ul>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial shows how to use the Docking Server with Nav2 robot systems.
 The Docking Server is a general framework which can be used with arbitrary types of robots and docks in order to auto-dock them.
 This is accomplished via plugins <code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">NonChargingDock</span></code> which implement the dock specifics like detecting the pose of the dock using sensor data, how to detect when the robot is in contact with the dock, and when charging has successfully started.
@@ -1124,13 +1135,13 @@ You can find how to dock your Nova Carter robot using Nav2 and this work in the 
   </div>
 </h1></div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>It is assumed ROS2 and Nav2 dependent packages are installed or built locally - including <code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code>.
 Please make sure that Nav2 project is also built locally, see <a class="reference internal" href="../../development_guides/build_docs/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a> for reference.</p>
 <p>See <code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> README for complete concept explanations, parameters, and APIs.</p>
 </div>
 <div class="section" id="chargingdock-plugins">
-<h2>ChargingDock Plugins<a class="headerlink" href="#chargingdock-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>ChargingDock Plugins<a class="headerlink" href="#chargingdock-plugins" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">opennav_docking_core::ChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">opennav_docking_core::ChargingDock</span></code> plugins are established to abstract out robot- and dock-specifics from the generalized framework.
 This allows a system to leverage this framework and provide its own methods for detecting the dock’s current pose, when the robot is charging, and when contact is made.
 Luckily, there are several common ROS APIs that allow us to create semi-generalized <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">SimpleNonChargingDock</span></code> plugins that allows out-of-the-box docking as long as users provide <code class="docutils literal notranslate"><span class="pre">JointState</span></code>, <code class="docutils literal notranslate"><span class="pre">BatteryState</span></code>, and detected dock pose <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> topics.
@@ -1167,7 +1178,7 @@ The defaults support this out of the box, see <code class="docutils literal notr
 </div>
 </div>
 <div class="section" id="dock-database">
-<h2>Dock Database<a class="headerlink" href="#dock-database" title="Permalink to this headline">¶</a></h2>
+<h2>Dock Database<a class="headerlink" href="#dock-database" title="Permalink to this heading"></a></h2>
 <p>To dock your robot, you must provide the set of docks in your environment you’d like to utilize.
 This is done in the docking server via the <em>Dock Database</em> which contains the set of docks, their instance types, and a set of shared plugins.
 The plugins are separated from the dock instances so that many instances can share the same plugin to save on memory and networking overhead when potentially dozens or more docks exist in a space.</p>
@@ -1226,7 +1237,7 @@ Generally speaking, its wise to set your docks in the database and use the Docki
 <p>The dock poses in the map can be annotated using your favorite map editing tools, obtained by <code class="docutils literal notranslate"><span class="pre">/clicked_point</span></code> in rviz2, or measured location.</p>
 </div>
 <div class="section" id="configuring-docking-server">
-<h2>Configuring Docking Server<a class="headerlink" href="#configuring-docking-server" title="Permalink to this headline">¶</a></h2>
+<h2>Configuring Docking Server<a class="headerlink" href="#configuring-docking-server" title="Permalink to this heading"></a></h2>
 <p>Now that we have both a plugin for interacting with a dock and specified the locations of docks in your map, we’re ready to configure the docking server.
 For this example, we’re going to use the Nvidia-Segway Nova Carter Robot and you can find the source code of this demo in the <code class="docutils literal notranslate"><span class="pre">nova_carter_docking</span></code> package.
 For a full list of parameters and their descriptions, check out the <a class="reference internal" href="../../configuration/packages/configuring-docking-server.html#configuring-docking-server"><span class="std std-ref">Docking Server</span></a>.</p>
@@ -1284,7 +1295,7 @@ Since <code class="docutils literal notranslate"><span class="pre">use_external_
 </div>
 </div>
 <div class="section" id="adding-docking-server-to-launch">
-<h2>Adding Docking Server to Launch<a class="headerlink" href="#adding-docking-server-to-launch" title="Permalink to this headline">¶</a></h2>
+<h2>Adding Docking Server to Launch<a class="headerlink" href="#adding-docking-server-to-launch" title="Permalink to this heading"></a></h2>
 <p>This server can now be added to your launch file with the path to this parameter file for use (or added to your main shared configuration file).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nova_carter_dock_params_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
         <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;nova_carter_docking&#39;</span><span class="p">),</span> <span class="s1">&#39;params&#39;</span><span class="p">)</span>
@@ -1305,7 +1316,7 @@ Since <code class="docutils literal notranslate"><span class="pre">use_external_
 </div>
 </div>
 <div class="section" id="docking-action-api">
-<h2>Docking Action API<a class="headerlink" href="#docking-action-api" title="Permalink to this headline">¶</a></h2>
+<h2>Docking Action API<a class="headerlink" href="#docking-action-api" title="Permalink to this heading"></a></h2>
 <p>The API for docking and undocking is comparatively simple.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">DockRobot</span></code> action consists of two main modalities: using the dock database or specifying a dock to use in the action.
 If using the database, set <code class="docutils literal notranslate"><span class="pre">use_dock_id</span> <span class="pre">=</span> <span class="pre">True</span></code> (default) and you only need to specify the <code class="docutils literal notranslate"><span class="pre">dock_id</span></code> you wish to use, such as <code class="docutils literal notranslate"><span class="pre">home_dock</span></code>, <code class="docutils literal notranslate"><span class="pre">flex_dock1</span></code>, or whatever dock instance you like.
@@ -1355,7 +1366,7 @@ uint16<span class="w"> </span>error_code<span class="w"> </span><span class="m">
 </div>
 </div>
 <div class="section" id="putting-it-all-together">
-<h2>Putting It All Together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h2>
+<h2>Putting It All Together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this heading"></a></h2>
 <p>At this point, if you haven’t already, create your dock plugin (or use <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code>), configuration file, and launch file - along with any other nodes required like apriltags or other detectors.
 You can see an example package used in this tutorial in the <code class="docutils literal notranslate"><span class="pre">nova_carter_docking</span></code> package, which contains a configuration file and launch file containing the apriltags detector and <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> pose publisher.</p>
 <p>If you’re interested in using Apriltags and an Nvidia Jetson, you can find the tags we used in the <code class="docutils literal notranslate"><span class="pre">media/</span></code> directory and the launch file <code class="docutils literal notranslate"><span class="pre">isaac_apriltag_detection_pipeline.launch.py</span></code> which sets it all up for you.

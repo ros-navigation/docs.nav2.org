@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashing to Eloquent &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
 
   
-      <script src="../_static/jquery.js"></script>
-      <script src="../_static/underscore.js"></script>
-      <script src="../_static/doctools.js"></script>
-      <script src="../_static/clipboard.min.js"></script>
-      <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,10 +1099,10 @@
            <div itemprop="articleBody">
              
   <div class="section" id="dashing-to-eloquent">
-<span id="dashing-migration"></span><h1>Dashing to Eloquent<a class="headerlink" href="#dashing-to-eloquent" title="Permalink to this headline">¶</a></h1>
+<span id="dashing-migration"></span><h1>Dashing to Eloquent<a class="headerlink" href="#dashing-to-eloquent" title="Permalink to this heading"></a></h1>
 <p>Moving from ROS 2 Dashing to Eloquent, a number of stability improvements were added that we will not specifically address here.</p>
 <div class="section" id="new-packages">
-<h2>New Packages<a class="headerlink" href="#new-packages" title="Permalink to this headline">¶</a></h2>
+<h2>New Packages<a class="headerlink" href="#new-packages" title="Permalink to this heading"></a></h2>
 <p>Navigation2 now includes a new package <code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code>.
 The waypoint follower is an action server that will take in a list of waypoints to follow and follow them in order.
 There is a parameter <code class="docutils literal notranslate"><span class="pre">stop_on_failure</span></code> whether the robot should continue to the next waypoint on a single waypoint failure,
@@ -1104,7 +1115,7 @@ Nav2 also supports SLAM Toolbox as the default SLAM implementation for ROS 2.
 This replaces the use of Cartographer.</p>
 </div>
 <div class="section" id="new-plugins">
-<h2>New Plugins<a class="headerlink" href="#new-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>New Plugins<a class="headerlink" href="#new-plugins" title="Permalink to this heading"></a></h2>
 <p>Eloquent introduces back in pluginlib plugins to the navigation stack.
 <code class="docutils literal notranslate"><span class="pre">nav2_core</span></code> defines the plugin header interfaces to be used to implement controller, planner, recovery, and goal checker plugins.
 All algorithms (NavFn, DWB, recoveries) were added as plugin interfaces and the general packages for servers were created.
@@ -1118,7 +1129,7 @@ This plugin is especially helpful for time-dependent obstacles or pausing naviga
 Behavior tree cpp v3 supports plugins and will be converted in the next release.</p>
 </div>
 <div class="section" id="navigation2-architectural-changes">
-<h2>Navigation2 Architectural Changes<a class="headerlink" href="#navigation2-architectural-changes" title="Permalink to this headline">¶</a></h2>
+<h2>Navigation2 Architectural Changes<a class="headerlink" href="#navigation2-architectural-changes" title="Permalink to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_world_model</span></code> package was removed. The individual <code class="docutils literal notranslate"><span class="pre">nav2_planner</span></code> and <code class="docutils literal notranslate"><span class="pre">nav2_controller</span></code> servers now host their relevant costmaps.
 This was done to reduce network traffic and ensure up-to-date information for the safety-critical elements of the system.
 As above mentions, plugins were introduced into the stack and these servers each host plugins for navigation, control, and costmap layers.</p>

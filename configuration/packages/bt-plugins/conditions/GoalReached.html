@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoalReached &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
 
   
-      <script src="../../../../_static/jquery.js"></script>
-      <script src="../../../../_static/underscore.js"></script>
-      <script src="../../../../_static/doctools.js"></script>
-      <script src="../../../../_static/clipboard.min.js"></script>
-      <script src="../../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1089,10 +1100,10 @@
            <div itemprop="articleBody">
              
   <div class="section" id="goalreached">
-<span id="bt-goal-reached-condition"></span><h1>GoalReached<a class="headerlink" href="#goalreached" title="Permalink to this headline">¶</a></h1>
+<span id="bt-goal-reached-condition"></span><h1>GoalReached<a class="headerlink" href="#goalreached" title="Permalink to this heading"></a></h1>
 <p>Checks the distance to the goal, if the distance to goal is less than the pre-defined threshold, the tree returns SUCCESS, otherwise it returns FAILURE.</p>
 <div class="section" id="parameter">
-<h2>Parameter<a class="headerlink" href="#parameter" title="Permalink to this headline">¶</a></h2>
+<h2>Parameter<a class="headerlink" href="#parameter" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">transform_tolerance</dt>
 <dd class="field-odd"><p>Defined and declared in <a class="reference internal" href="../../configuring-bt-navigator.html#configuring-bt-navigator"><span class="std std-ref">Behavior-Tree Navigator</span></a>.</p>
@@ -1119,7 +1130,7 @@
 </dd>
 </dl>
 <div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">bt_navigator</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># other bt_navigator parameters</span>
@@ -1130,7 +1141,7 @@
 </div>
 </div>
 <div class="section" id="input-ports">
-<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
+<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">goal</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1175,7 +1186,7 @@ The global reference frame is taken from the goal’s header <cite>frame_id</cit
 </dd>
 </dl>
 <div class="section" id="id1">
-<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalReached</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">robot_base_frame=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>

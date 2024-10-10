@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>(SLAM) Navigating While Mapping &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,14 +1099,14 @@
            <div itemprop="articleBody">
              
   <div class="section" id="slam-navigating-while-mapping">
-<span id="navigation2-with-slam"></span><h1>(SLAM) Navigating While Mapping<a class="headerlink" href="#slam-navigating-while-mapping" title="Permalink to this headline">¶</a></h1>
+<span id="navigation2-with-slam"></span><h1>(SLAM) Navigating While Mapping<a class="headerlink" href="#slam-navigating-while-mapping" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
 <li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This document explains how to use Nav2 with SLAM.
 The following steps show ROS 2 users how to generate occupancy grid maps and use Nav2 to move their robot around.
 This tutorial applies to both simulated and physical robots, but will be completed here on physical robot.</p>
@@ -1103,7 +1114,7 @@ This tutorial applies to both simulated and physical robots, but will be complet
 <p>In this tutorial we’ll be using SLAM Toolbox. More information can be found in the <a class="reference external" href="https://vimeo.com/378682207">ROSCon talk for SLAM Toolbox</a></p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>You must install Navigation2, Turtlebot3, and SLAM Toolbox.
 If you don’t have them installed, please follow <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.</p>
 <p>SLAM Toolbox can be installed via:</p>
@@ -1116,9 +1127,9 @@ If you don’t have them installed, please follow <a class="reference internal" 
 </div></blockquote>
 </div>
 <div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="launch-robot-interfaces">
-<h3>0- Launch Robot Interfaces<a class="headerlink" href="#launch-robot-interfaces" title="Permalink to this headline">¶</a></h3>
+<h3>0- Launch Robot Interfaces<a class="headerlink" href="#launch-robot-interfaces" title="Permalink to this heading"></a></h3>
 <p>For this tutorial, we will use the turtlebot3.
 If you have another robot, replace with your robot specific interfaces.
 Typically, this includes the robot state publisher of the URDF, simulated or physical robot interfaces, controllers, safety nodes, and the like.</p>
@@ -1133,7 +1144,7 @@ Typically, this includes the robot state publisher of the URDF, simulated or phy
 </div></blockquote>
 </div>
 <div class="section" id="launch-navigation2">
-<h3>1- Launch Navigation2<a class="headerlink" href="#launch-navigation2" title="Permalink to this headline">¶</a></h3>
+<h3>1- Launch Navigation2<a class="headerlink" href="#launch-navigation2" title="Permalink to this heading"></a></h3>
 <p>Launch Navigation without nav2_amcl and nav2_map_server.
 It is assumed that the SLAM node(s) will publish to /map topic and provide the map-&gt;odom transform.</p>
 <blockquote>
@@ -1141,7 +1152,7 @@ It is assumed that the SLAM node(s) will publish to /map topic and provide the m
 </div></blockquote>
 </div>
 <div class="section" id="launch-slam">
-<h3>2- Launch SLAM<a class="headerlink" href="#launch-slam" title="Permalink to this headline">¶</a></h3>
+<h3>2- Launch SLAM<a class="headerlink" href="#launch-slam" title="Permalink to this heading"></a></h3>
 <p>Bring up your choice of SLAM implementation.
 Make sure it provides the map-&gt;odom transform and /map topic.
 Run Rviz and add the topics you want to visualize such as /map, /tf, /laserscan etc.
@@ -1151,7 +1162,7 @@ For this tutorial, we will use <a class="reference external" href="https://githu
 </div></blockquote>
 </div>
 <div class="section" id="working-with-slam">
-<h3>3- Working with SLAM<a class="headerlink" href="#working-with-slam" title="Permalink to this headline">¶</a></h3>
+<h3>3- Working with SLAM<a class="headerlink" href="#working-with-slam" title="Permalink to this heading"></a></h3>
 <p>Move your robot by requesting a goal through RViz or the ROS 2 CLI, ie:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/goal_pose<span class="w"> </span>geometry_msgs/PoseStamped<span class="w"> </span><span class="s2">&quot;{header: {stamp: {sec: 0}, frame_id: &#39;map&#39;}, pose: {position: {x: 0.2, y: 0.0, z: 0.0}, orientation: {w: 1.0}}}&quot;</span>
 </pre></div>
@@ -1163,7 +1174,7 @@ For this tutorial, we will use <a class="reference external" href="https://githu
 <a class="reference internal image-reference" href="../../_images/navigation2_with_slam.gif"><img alt="Navigation2 with SLAM" class="align-center" src="../../_images/navigation2_with_slam.gif" style="width: 700px;" /></a>
 </div>
 <div class="section" id="getting-started-simplification">
-<h3>4- Getting Started Simplification<a class="headerlink" href="#getting-started-simplification" title="Permalink to this headline">¶</a></h3>
+<h3>4- Getting Started Simplification<a class="headerlink" href="#getting-started-simplification" title="Permalink to this heading"></a></h3>
 <p>If you’re only interested in running SLAM in the turtlebot3 getting started sandbox world, we also provide a simple way to enable SLAM as a launch configuration.
 Rather than individually launching the interfaces, navigation, and SLAM, you can continue to use the <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code> with <code class="docutils literal notranslate"><span class="pre">slam</span></code> config set to true.
 We provide the instructions above with the assumption that you’d like to run SLAM on your own robot which would have separated simulation / robot interfaces and navigation launch files that are combined in <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code> for the purposes of easy testing.</p>

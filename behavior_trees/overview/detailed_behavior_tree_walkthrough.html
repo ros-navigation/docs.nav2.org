@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Detailed Behavior Tree Walkthrough &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="detailed-behavior-tree-walkthrough">
-<span id="id1"></span><h1>Detailed Behavior Tree Walkthrough<a class="headerlink" href="#detailed-behavior-tree-walkthrough" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Detailed Behavior Tree Walkthrough<a class="headerlink" href="#detailed-behavior-tree-walkthrough" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites">Prerequisites</a></p></li>
@@ -1097,7 +1108,7 @@
 <li><p><a class="reference internal" href="#recovery-subtree">Recovery Subtree</a></p></li>
 </ul>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This document serves as a reference guide to the main behavior tree (BT) used in Nav2.</p>
 <p>There are many example behavior trees provided in <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator/behavior_trees</span></code>,
 but these sometimes have to be re-configured based on the application of the robot.
@@ -1105,7 +1116,7 @@ The following document will walk through the current main default BT <code class
 in great detail.</p>
 </div>
 <div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
 <ul>
 <li><p>Become familiar with the concept of a behavior tree before continuing with this walkthrough</p>
 <blockquote>
@@ -1119,7 +1130,7 @@ in great detail.</p>
 </ul>
 </div>
 <div class="section" id="navigate-to-pose-with-replanning-and-recovery">
-<h2>Navigate To Pose With Replanning and Recovery<a class="headerlink" href="#navigate-to-pose-with-replanning-and-recovery" title="Permalink to this headline">¶</a></h2>
+<h2>Navigate To Pose With Replanning and Recovery<a class="headerlink" href="#navigate-to-pose-with-replanning-and-recovery" title="Permalink to this heading"></a></h2>
 <p>The following section will describe in detail the concept of the main and default BT currently used in Nav2, <code class="docutils literal notranslate"><span class="pre">navigate_to_pose_w_replanning_and_recovery.xml</span></code>.
 This behavior tree replans the global path periodically at 1 Hz and it also has recovery actions.</p>
 <div class="line-block">
@@ -1199,7 +1210,7 @@ The system will move on to the <code class="docutils literal notranslate"><span 
 </div>
 </div>
 <div class="section" id="navigation-subtree">
-<h2>Navigation Subtree<a class="headerlink" href="#navigation-subtree" title="Permalink to this headline">¶</a></h2>
+<h2>Navigation Subtree<a class="headerlink" href="#navigation-subtree" title="Permalink to this heading"></a></h2>
 <p>Now that we have gone over the control flow between the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree and the <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree, let’s focus on the Navigation subtree.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1291,7 +1302,7 @@ calculating the path. There are other decorators that can be used instead of the
 </ul>
 </div>
 <div class="section" id="recovery-subtree">
-<h2>Recovery Subtree<a class="headerlink" href="#recovery-subtree" title="Permalink to this headline">¶</a></h2>
+<h2>Recovery Subtree<a class="headerlink" href="#recovery-subtree" title="Permalink to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Recovery</span></code> subtree is the second big “half” of the Nav2 default <code class="docutils literal notranslate"><span class="pre">navigate_to_pose_w_replanning_and_recovery.xml</span></code> tree.
 In short, this subtree is triggered when the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> and controls the recoveries at the system level (in the case the contextual recoveries in the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> subtree were not sufficient).</p>
 <div class="line-block">

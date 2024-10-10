@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Navigating Using GPS Localization &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="navigating-using-gps-localization">
-<span id="navigation2-with-gps"></span><h1>Navigating Using GPS Localization<a class="headerlink" href="#navigating-using-gps-localization" title="Permalink to this headline">¶</a></h1>
+<span id="navigation2-with-gps"></span><h1>Navigating Using GPS Localization<a class="headerlink" href="#navigating-using-gps-localization" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
@@ -1101,11 +1112,11 @@
     <iframe width="708" height="400" src="https://www.youtube.com/embed/R_5HW1TUDQk?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1><div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial shows how to set up a localization system using a GPS sensor(s) as the source of global positioning, robot_localization (RL) for sensor fusion, and how to use Nav2 to follow GPS waypoints. It was written by Pedro Gonzalez at <a class="reference external" href="https://www.kiwibot.com/">Kiwibot</a>.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>It is assumed ROS2 and Nav2 dependent packages are installed or built locally. Additionally you will have to install robot_localization and mapviz:</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;ros2-distro&gt;/setup.bash
@@ -1120,7 +1131,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>You may also need to install gazebo and turtlebot3 simulation if you have not executed previous tutorials or Nav2 demos. See Nav2’s Getting Started page for more information.</p>
 </div>
 <div class="section" id="gps-localization-overview">
-<h2>GPS Localization Overview<a class="headerlink" href="#gps-localization-overview" title="Permalink to this headline">¶</a></h2>
+<h2>GPS Localization Overview<a class="headerlink" href="#gps-localization-overview" title="Permalink to this heading"></a></h2>
 <p>GPS (Global Positioning System) or more broadly GNSS (Global Navigation Satellite System) is a technology that relies on satellites to provide receivers with an estimate of where they are located on the earth. These satellites are in orbit at altitudes around 20.000km and use radio frequency to continuously broadcast time signals, these are picked up by receivers when satellites are along their line of sight, they use trilateration to estimate their latitude, longitude and altitude.</p>
 <p>Commonly GPS devices calculate their position using the <a class="reference external" href="https://en.wikipedia.org/wiki/World_Geodetic_System">WGS84 standard</a>, which defines a cartesian system with its origin on the earth’s center of mass, the <code class="docutils literal notranslate"><span class="pre">z</span></code> axis pointing north and the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis pointing to the first meridian as the image below shows.</p>
 <a class="reference internal image-reference" href="../../_images/WGS_84_reference_frame.svg"><img alt="WGS84 reference frame" class="align-center" src="../../_images/WGS_84_reference_frame.svg" width="562px" /></a>
@@ -1145,9 +1156,9 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>For the purposes of this tutorial, we model a well-built system using an IMU that has absolute orientation already, but that may be augmented or replaced on a practical system using one of the techniques above (or others).</p>
 </div>
 <div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="setup-gazebo-world">
-<h3>0- Setup Gazebo World<a class="headerlink" href="#setup-gazebo-world" title="Permalink to this headline">¶</a></h3>
+<h3>0- Setup Gazebo World<a class="headerlink" href="#setup-gazebo-world" title="Permalink to this heading"></a></h3>
 <p>To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the <a class="reference external" href="https://docs.px4.io/v1.12/en/simulation/gazebo_worlds.html#sonoma-raceway">Sonoma Raceway</a> because its aligned with the real location. A sample world has been setup <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world">here</a> using gazebo’s spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;spherical_coordinates&gt;</span>
 <span class="w">  </span><span class="cm">&lt;!-- currently gazebo has a bug: instead of outputting lat, long, altitude in ENU</span>
@@ -1207,13 +1218,13 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <a class="reference internal image-reference" href="../../_images/gazebo_sonoma_raceway.png"><img alt="Turtlebot in the sonoma raceway" class="align-center" src="../../_images/gazebo_sonoma_raceway.png" style="width: 700px;" /></a>
 </div>
 <div class="section" id="setup-gps-localization-system">
-<h3>1- Setup GPS Localization system<a class="headerlink" href="#setup-gps-localization-system" title="Permalink to this headline">¶</a></h3>
+<h3>1- Setup GPS Localization system<a class="headerlink" href="#setup-gps-localization-system" title="Permalink to this heading"></a></h3>
 <p>Once you have your simulation (or real robot) up and running, it’s time to set up your localization system. Remember that Nav2 uses a <code class="docutils literal notranslate"><span class="pre">tf</span></code> chain with the structure <code class="docutils literal notranslate"><span class="pre">map</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">[sensor</span> <span class="pre">frames]</span></code>; global localization (<code class="docutils literal notranslate"><span class="pre">map</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">odom</span></code>) is usually provided by <code class="docutils literal notranslate"><span class="pre">amcl</span></code>, while <code class="docutils literal notranslate"><span class="pre">odom</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> is usually provided by the user’s odometry system (wheel odometry, visual odometry, etc).</p>
 <p>In this tutorial, the GPS sensor on the robot will replace <code class="docutils literal notranslate"><span class="pre">amcl</span></code> in providing global localization. Though you may build a custom module that takes in the <code class="docutils literal notranslate"><span class="pre">NavSatFix</span></code> and <code class="docutils literal notranslate"><span class="pre">Imu</span></code> messages of your GPS and imu, and outputs a <code class="docutils literal notranslate"><span class="pre">tf</span></code> between your <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">odom</span></code> frames using a planar projection, Nav2’s GPS waypoint follower currently uses robot_localization for converting GPS goals to cartesian goals, and thus at a <a class="reference external" href="http://docs.ros.org/en/jade/api/robot_localization/html/navsat_transform_node.html">navsat_transform_node</a> should be active. Additionally, <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> features reconfigurable state estimation nodes that use Kalman Filters to fuse multiple sources of data, which is yet another reason to use it.</p>
 <p>We will setup one Extended Kalman Filter for local odometry, fusing wheel odometry and IMU data; a second one for global localization, fusing the local cartesian converted GPS coordinates, the wheel odometry and the IMU data; and a navsat_transform node to output cartesian odometry messages from GPS data. This is a common setup on robot_localization when using GPS data and more details around its configuration can be found in <a class="reference external" href="http://docs.ros.org/en/jade/api/robot_localization/html/integrating_gps.html">RL’s docs</a>.</p>
 <p>A <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/dual_ekf_navsat_params.yaml">configuration file</a> and a <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/launch/dual_ekf_navsat.launch.py">launch file</a> are provided for this purpose. You may take a while before continuing to understand these two files and what they configure. Let’s walk through the most relevant setting of each node.</p>
 <div class="section" id="local-odometry">
-<h4>Local Odometry<a class="headerlink" href="#local-odometry" title="Permalink to this headline">¶</a></h4>
+<h4>Local Odometry<a class="headerlink" href="#local-odometry" title="Permalink to this heading"></a></h4>
 <p>The local odometry is provided by the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node_odom</span></code>, which publishes the transform between <code class="docutils literal notranslate"><span class="pre">odom</span></code> and <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code>, the base frame of the turtlebot’s diff drive plugin in gazebo. The robot state publisher provides a static transform between <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code> and <code class="docutils literal notranslate"><span class="pre">base_link</span></code>, however make sure to set the base frame properly in RL according to your configuration. Note that the EKFs are set to work in 2D mode, this is because nav2’s costmap environment representation is 2-Dimensional, and several layers rely on the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame being on the same plane as their global frame for the height related parameters to make sense. This is encoded in the following parameters:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ekf_filter_node_odom</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
@@ -1242,7 +1253,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </div>
 </div>
 <div class="section" id="global-odometry">
-<h4>Global Odometry<a class="headerlink" href="#global-odometry" title="Permalink to this headline">¶</a></h4>
+<h4>Global Odometry<a class="headerlink" href="#global-odometry" title="Permalink to this heading"></a></h4>
 <p>The global odometry is provided by the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node_map</span></code>, which publishes the transform between <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">base_footprint</span></code>. This EKF is set to work in 2D mode as well. In addition to the IMU and wheel odometry data, this filter takes in the odometry output of the gps, published by the <code class="docutils literal notranslate"><span class="pre">navsat_transform</span></code> node on <code class="docutils literal notranslate"><span class="pre">/odometry/gps</span></code> as an odometry message:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ekf_filter_node_map</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
@@ -1262,7 +1273,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </div>
 </div>
 <div class="section" id="navsat-transform">
-<h4>Navsat Transform<a class="headerlink" href="#navsat-transform" title="Permalink to this headline">¶</a></h4>
+<h4>Navsat Transform<a class="headerlink" href="#navsat-transform" title="Permalink to this heading"></a></h4>
 <p>The navsat transform produces an odometry output with the position of the GPS in the <code class="docutils literal notranslate"><span class="pre">map</span></code> frame, which is ingested by the global EKF as said above. It exposes the <code class="docutils literal notranslate"><span class="pre">datum</span></code> parameter to set the GPS coordinates and heading of the origin of <code class="docutils literal notranslate"><span class="pre">map</span></code>; if left undeclared it will be set automatically to the coordinates of the first valid <code class="docutils literal notranslate"><span class="pre">NavSatFix</span></code> message it gets, and it may be changed in runtime as well calling the <code class="docutils literal notranslate"><span class="pre">/datum</span></code> service.</p>
 <p>In this tutorial we will go with the automatic <code class="docutils literal notranslate"><span class="pre">datum</span></code> initialization because there is no information about the environment stored in cartesian coordinates (a static map, semantic navigation waypoints, a 3D pointcloud map, etc), however if that’s the case in your application you may fix the <code class="docutils literal notranslate"><span class="pre">datum</span></code> so a given pair of coordinates produced by the GPS always correspond to the same cartesian coordinates in your reference system.</p>
 <p>The node also exposes the <code class="docutils literal notranslate"><span class="pre">yaw_offset</span></code> parameter to compensate for known errors that the IMU absolute yaw measurement may have with respect to the east. Since Gazebo’s IMU follows the ENU convention this is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> in the tutorial, but you may want to change it if you know beforehand there’s a fixed offset in your data.</p>
@@ -1283,7 +1294,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </div>
 </div>
 <div class="section" id="localization-testing">
-<h4>Localization Testing<a class="headerlink" href="#localization-testing" title="Permalink to this headline">¶</a></h4>
+<h4>Localization Testing<a class="headerlink" href="#localization-testing" title="Permalink to this heading"></a></h4>
 <p>As a sanity check that everything is working correctly, launch RL’s launch file while Gazebo is still running:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_gps_waypoint_follower_demo<span class="w"> </span>dual_ekf_navsat.launch.py
 </pre></div>
@@ -1313,7 +1324,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </div>
 </div>
 <div class="section" id="setup-navigation-system">
-<h3>2- Setup Navigation system<a class="headerlink" href="#setup-navigation-system" title="Permalink to this headline">¶</a></h3>
+<h3>2- Setup Navigation system<a class="headerlink" href="#setup-navigation-system" title="Permalink to this heading"></a></h3>
 <p>Once you have your localization system up and running it’s time to set up Nav2. Since RL is already providing the <code class="docutils literal notranslate"><span class="pre">tf</span></code> tree we don’t need to launch <code class="docutils literal notranslate"><span class="pre">amcl</span></code>, thus we can remove its parameters from the params file and not launch Nav2’s localization launch file.</p>
 <p>There are three main possible setups for the global costmap:</p>
 <ol class="arabic simple">
@@ -1359,7 +1370,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <a class="reference internal image-reference" href="../../_images/navigation_check.gif"><img alt="../../_images/navigation_check.gif" class="align-center" src="../../_images/navigation_check.gif" style="width: 600px;" /></a>
 </div>
 <div class="section" id="interactive-gps-waypoint-follower">
-<h3>3-  Interactive GPS Waypoint Follower<a class="headerlink" href="#interactive-gps-waypoint-follower" title="Permalink to this headline">¶</a></h3>
+<h3>3-  Interactive GPS Waypoint Follower<a class="headerlink" href="#interactive-gps-waypoint-follower" title="Permalink to this heading"></a></h3>
 <p>Now that we have performed our complete system setup, let’s leverage Nav2 GPS waypoint follower capabilities to navigate to goals that are expressed directly in GPS coordinates. For this demo we want to build an interactive interface similar to rviz’s, that allows us to click over a map to make the robot navigate to the clicked location. For that we will use mapviz’s point click publisher on the <code class="docutils literal notranslate"><span class="pre">wgs84</span></code> reference frame, which will publish a <code class="docutils literal notranslate"><span class="pre">PointStamped</span></code> message with the GPS coordinates of the point clicked over the satellite image. This is a great way to get started in your custom GPS navigation setup!</p>
 <p>For this purpose we provide the <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/interactive_waypoint_follower.py">interactive_waypoint_follower</a> python node, which subscribes to mapviz’s topic and calls the <code class="docutils literal notranslate"><span class="pre">/follow_gps_waypoints</span></code> action server with the clicked point as goal using the <code class="docutils literal notranslate"><span class="pre">BasicNavigator</span></code> in <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code>. To run it source your workspace and with the rest of the system running type:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>nav2_gps_waypoint_follower_demo<span class="w"> </span>interactive_waypoint_follower
@@ -1369,7 +1380,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <a class="reference internal image-reference" href="../../_images/interactive_wpf.gif"><img alt="../../_images/interactive_wpf.gif" class="align-center" src="../../_images/interactive_wpf.gif" style="width: 600px;" /></a>
 </div>
 <div class="section" id="logged-gps-waypoint-follower-waypoint-logging">
-<h3>4-  Logged GPS Waypoint Follower &amp; Waypoint Logging<a class="headerlink" href="#logged-gps-waypoint-follower-waypoint-logging" title="Permalink to this headline">¶</a></h3>
+<h3>4-  Logged GPS Waypoint Follower &amp; Waypoint Logging<a class="headerlink" href="#logged-gps-waypoint-follower-waypoint-logging" title="Permalink to this heading"></a></h3>
 <p>Finally let’s make a robot go through a set of predefined GPS waypoints. We provide a <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/gps_waypoint_logger.py">waypoint logging tool</a> that subscribes to the robot’s GPS and IMU and offers a simple GUI to save the robot coordinates and heading on demand to a <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file with the format:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">waypoints</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">latitude</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">38.161491054181276</span>
@@ -1396,7 +1407,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </div>
 </div>
 <div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h2>
 <p>This tutorial discussed the usage of a GPS sensor for global localization using RL and the <code class="docutils literal notranslate"><span class="pre">navsat_transform</span></code> node, covering the setup of a gazebo simulation with a GPS equipped robot as well. It also went through the configuration changes in Nav2 for navigating with GPS localization, emphasizing on some different possibilities for setting up the global costmap. Finally it showcased the capabilities of Nav2’s GPS waypoint follower as a demonstration on how to use the stack in outdoors environments.</p>
 <p>The tutorial should be a good starting point for setting up autonomous navigation using Nav2 on an outdoors robot, however users should keep in mind that GPS is just a means for providing global localization to the stack, and that all cartesian tools in Nav2 are still available for going past the GPS waypoint follower and building custom autonomy applications according to each use case.</p>
 <p>Happy outdoors navigating!</p>

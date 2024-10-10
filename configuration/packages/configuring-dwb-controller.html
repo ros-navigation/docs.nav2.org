@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DWB Controller &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,13 +1099,13 @@
            <div itemprop="articleBody">
              
   <div class="section" id="dwb-controller">
-<span id="configuring-dwb-controller"></span><h1>DWB Controller<a class="headerlink" href="#dwb-controller" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-dwb-controller"></span><h1>DWB Controller<a class="headerlink" href="#dwb-controller" title="Permalink to this heading"></a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller">Github</a>.</p>
 <p>The DWB controller is the default controller. It is a fork of <a class="reference external" href="https://github.com/locusrobotics/robot_navigation/tree/master/dwb_local_planner">David Lu’s
 controller</a>
 modified for ROS 2 using the Dynamic Window Approach.</p>
 <div class="section" id="controller">
-<h2>Controller<a class="headerlink" href="#controller" title="Permalink to this headline">¶</a></h2>
+<h2>Controller<a class="headerlink" href="#controller" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dwb-params/controller.html">DWB Controller</a></li>
@@ -1105,7 +1116,7 @@ modified for ROS 2 using the Dynamic Window Approach.</p>
 </div>
 </div>
 <div class="section" id="plugins">
-<h2>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Plugins<a class="headerlink" href="#plugins" title="Permalink to this heading"></a></h2>
 <p>The plugins listed below are inside the <code class="docutils literal notranslate"><span class="pre">dwb_plugins</span></code> namespace.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -1115,7 +1126,7 @@ modified for ROS 2 using the Dynamic Window Approach.</p>
 </div>
 </div>
 <div class="section" id="trajectory-critics">
-<h2>Trajectory Critics<a class="headerlink" href="#trajectory-critics" title="Permalink to this headline">¶</a></h2>
+<h2>Trajectory Critics<a class="headerlink" href="#trajectory-critics" title="Permalink to this heading"></a></h2>
 <p>The trajectory critics listed below are inside the <code class="docutils literal notranslate"><span class="pre">dwb_critics</span></code> namespace.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -1133,7 +1144,7 @@ modified for ROS 2 using the Dynamic Window Approach.</p>
 </div>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># controller server parameters (see Controller Server for more info)</span>

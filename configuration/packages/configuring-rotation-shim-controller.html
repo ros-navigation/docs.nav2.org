@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rotation Shim Controller &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="rotation-shim-controller">
-<span id="configuring-rotation-shim"></span><h1>Rotation Shim Controller<a class="headerlink" href="#rotation-shim-controller" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-rotation-shim"></span><h1>Rotation Shim Controller<a class="headerlink" href="#rotation-shim-controller" title="Permalink to this heading"></a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller">Github</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_rotation_shim_controller</span></code> will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the <code class="docutils literal notranslate"><span class="pre">primary_controller</span></code> to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot’s main plugin will take control for a smooth hand off into the task.</p>
 <p>When the <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code> parameter is set to true, this controller is also able to take back control of the robot when reaching the XY goal tolerance of the goal checker. In this case, the robot will rotate towards the goal heading until the goal checker validate the goal and ends the current navigation task.</p>
@@ -1104,7 +1115,7 @@
     <iframe width="708" height="400" src="https://www.youtube.com/embed/t-g2CBGByEw?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
   </div>
 </h1><div class="section" id="rotation-shim-controller-parameters">
-<h2>Rotation Shim Controller Parameters<a class="headerlink" href="#rotation-shim-controller-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Rotation Shim Controller Parameters<a class="headerlink" href="#rotation-shim-controller-parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">angular_dist_threshold</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1249,7 +1260,7 @@
 </dl>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>

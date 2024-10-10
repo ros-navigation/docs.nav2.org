@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Behavior Tree XML Nodes &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,12 +1099,12 @@
            <div itemprop="articleBody">
              
   <div class="section" id="behavior-tree-xml-nodes">
-<span id="configuring-behavior-tree-xml"></span><h1>Behavior Tree XML Nodes<a class="headerlink" href="#behavior-tree-xml-nodes" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-behavior-tree-xml"></span><h1>Behavior Tree XML Nodes<a class="headerlink" href="#behavior-tree-xml-nodes" title="Permalink to this heading"></a></h1>
 <p>The <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree">nav2_behavior_tree</a> package provides several navigation-specific nodes that are pre-registered and can be included in Behavior Trees.</p>
 <p>Check this <a class="reference external" href="https://www.behaviortree.dev/bt_basics/">introduction</a> to learn how behavior trees work and the difference between actions, conditions, controls and decorators.</p>
 <p>Consider checking out the <a class="reference internal" href="../../tutorials/docs/using_groot.html#groot-introduction"><span class="std std-ref">Groot - Interacting with Behavior Trees</span></a> tutorial for using Groot to visualize and modify behavior trees.</p>
 <div class="section" id="action-plugins">
-<h2>Action Plugins<a class="headerlink" href="#action-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Action Plugins<a class="headerlink" href="#action-plugins" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bt-plugins/actions/Wait.html">Wait</a></li>
@@ -1135,7 +1146,7 @@
 </div>
 </div>
 <div class="section" id="condition-plugins">
-<h2>Condition Plugins<a class="headerlink" href="#condition-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Condition Plugins<a class="headerlink" href="#condition-plugins" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bt-plugins/conditions/GoalReached.html">GoalReached</a></li>
@@ -1158,7 +1169,7 @@
 </div>
 </div>
 <div class="section" id="control-plugins">
-<h2>Control Plugins<a class="headerlink" href="#control-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Control Plugins<a class="headerlink" href="#control-plugins" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bt-plugins/controls/PipelineSequence.html">PipelineSequence</a></li>
@@ -1168,7 +1179,7 @@
 </div>
 </div>
 <div class="section" id="decorator-plugins">
-<h2>Decorator Plugins<a class="headerlink" href="#decorator-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Decorator Plugins<a class="headerlink" href="#decorator-plugins" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bt-plugins/decorators/RateController.html">RateController</a></li>
@@ -1181,7 +1192,7 @@
 </div>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>This Behavior Tree replans the global path periodically at 1 Hz and it also has
 recovery actions.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>

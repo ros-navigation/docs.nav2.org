@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Behavior Server &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,14 +1099,14 @@
            <div itemprop="articleBody">
              
   <div class="section" id="behavior-server">
-<span id="configuring-behavior-server"></span><h1>Behavior Server<a class="headerlink" href="#behavior-server" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-behavior-server"></span><h1>Behavior Server<a class="headerlink" href="#behavior-server" title="Permalink to this heading"></a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors">Github</a>.</p>
 <p>The Behavior Server implements the server for handling various behavior, such as recoveries and docking, requests and hosting a vector of plugins implementing various C++ behaviors.
 It is also possible to implement independent behavior servers for each custom behavior, but this server will allow multiple behaviors to share resources such as costmaps and TF buffers to lower incremental costs for new behaviors.</p>
 <p>Note: the wait recovery behavior has no parameters, the duration to wait is given in the action request.
 Note: pre-Rolling/Humble this was the Recovery server, not behavior server. Launch files, behaviors and tests were all renamed.</p>
 <div class="section" id="behavior-server-parameters">
-<h2>Behavior Server Parameters<a class="headerlink" href="#behavior-server-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Behavior Server Parameters<a class="headerlink" href="#behavior-server-parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">local_costmap_topic</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1342,7 +1353,7 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dl>
 </div>
 <div class="section" id="default-plugins">
-<h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In Iron and older versions, “/” was used instead of “::”.</p>
@@ -1375,7 +1386,7 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </div></blockquote>
 </div>
 <div class="section" id="spin-behavior-parameters">
-<h2>Spin Behavior Parameters<a class="headerlink" href="#spin-behavior-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Spin Behavior Parameters<a class="headerlink" href="#spin-behavior-parameters" title="Permalink to this heading"></a></h2>
 <p>Spin distance is given from the action request</p>
 <dl class="field-list">
 <dt class="field-odd">simulate_ahead_time</dt>
@@ -1482,7 +1493,7 @@ True uses TwistStamped, false uses Twist.</p>
 </dl>
 </div>
 <div class="section" id="backup-behavior-parameters">
-<h2>BackUp Behavior Parameters<a class="headerlink" href="#backup-behavior-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>BackUp Behavior Parameters<a class="headerlink" href="#backup-behavior-parameters" title="Permalink to this heading"></a></h2>
 <p>Backup distance, speed and time_allowance is given from the action request.</p>
 <dl class="field-list">
 <dt class="field-odd">simulate_ahead_time</dt>
@@ -1529,7 +1540,7 @@ True uses TwistStamped, false uses Twist.</p>
 </dl>
 </div>
 <div class="section" id="driveonheading-behavior-parameters">
-<h2>DriveOnHeading Behavior Parameters<a class="headerlink" href="#driveonheading-behavior-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>DriveOnHeading Behavior Parameters<a class="headerlink" href="#driveonheading-behavior-parameters" title="Permalink to this heading"></a></h2>
 <p>DriveOnHeading distance, speed and time_allowance is given from the action request.</p>
 <dl class="field-list">
 <dt class="field-odd">simulate_ahead_time</dt>
@@ -1596,7 +1607,7 @@ True uses TwistStamped, false uses Twist.</p>
 </dl>
 </div>
 <div class="section" id="assistedteleop-behavior-parameters">
-<h2>AssistedTeleop Behavior Parameters<a class="headerlink" href="#assistedteleop-behavior-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>AssistedTeleop Behavior Parameters<a class="headerlink" href="#assistedteleop-behavior-parameters" title="Permalink to this heading"></a></h2>
 <p>AssistedTeleop time_allowance is given in the action request</p>
 <dl class="field-list">
 <dt class="field-odd">projection_time</dt>
@@ -1683,7 +1694,7 @@ True uses TwistStamped, false uses Twist.</p>
 </dl>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">behavior_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">local_costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_costmap/costmap_raw</span>

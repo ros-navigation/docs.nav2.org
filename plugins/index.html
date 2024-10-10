@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Navigation Plugins &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
 
   
-      <script src="../_static/jquery.js"></script>
-      <script src="../_static/underscore.js"></script>
-      <script src="../_static/doctools.js"></script>
-      <script src="../_static/clipboard.min.js"></script>
-      <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1087,7 +1098,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="navigation-plugins">
-<span id="plugins"></span><h1>Navigation Plugins<a class="headerlink" href="#navigation-plugins" title="Permalink to this headline">¶</a></h1>
+<span id="plugins"></span><h1>Navigation Plugins<a class="headerlink" href="#navigation-plugins" title="Permalink to this heading"></a></h1>
 <p>There are a number of plugin interfaces for users to create their own custom applications or algorithms with.
 Namely, the costmap layer, planner, controller, behavior tree, and behavior plugins.
 A list of all known plugins are listed here below for ROS 2 Navigation.
@@ -1095,7 +1106,7 @@ If you know of a plugin, or you have created a new plugin, please consider submi
 <p>This file can be found and edited under <code class="docutils literal notranslate"><span class="pre">sphinx_docs/plugins/index.rst</span></code>.
 For tutorials on creating your own plugins, please see <a class="reference internal" href="../plugin_tutorials/docs/writing_new_costmap2d_plugin.html#writing-new-costmap2d-plugin"><span class="std std-ref">Writing a New Costmap2D Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#writing-new-nbt-plugin"><span class="std std-ref">Writing a New Behavior Tree Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2controller_plugin.html#writing-new-nav2controller-plugin"><span class="std std-ref">Writing a New Controller Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_nav2planner_plugin.html#writing-new-nav2planner-plugin"><span class="std std-ref">Writing a New Planner Plugin</span></a>, <a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html#writing-new-behavior-plugin"><span class="std std-ref">Writing a New Behavior Plugin</span></a>, or <a class="reference internal" href="../plugin_tutorials/docs/writing_new_navigator_plugin.html#writing-new-nav2navigator-plugin"><span class="std std-ref">Writing a New Navigator Plugin</span></a>.</p>
 <div class="section" id="behavior-tree-navigators">
-<h2>Behavior-Tree Navigators<a class="headerlink" href="#behavior-tree-navigators" title="Permalink to this headline">¶</a></h2>
+<h2>Behavior-Tree Navigators<a class="headerlink" href="#behavior-tree-navigators" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 38%" />
@@ -1128,7 +1139,7 @@ via a behavior tree action server</p></td>
 </table>
 </div>
 <div class="section" id="costmap-layers">
-<h2>Costmap Layers<a class="headerlink" href="#costmap-layers" title="Permalink to this headline">¶</a></h2>
+<h2>Costmap Layers<a class="headerlink" href="#costmap-layers" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
@@ -1194,7 +1205,7 @@ obstacles groups</p></td>
 </table>
 </div>
 <div class="section" id="costmap-filters">
-<h2>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this headline">¶</a></h2>
+<h2>Costmap Filters<a class="headerlink" href="#costmap-filters" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 27%" />
@@ -1227,7 +1238,7 @@ behavior to trigger actions.</p></td>
 </table>
 </div>
 <div class="section" id="controllers">
-<h2>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">¶</a></h2>
+<h2>Controllers<a class="headerlink" href="#controllers" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 28%" />
@@ -1305,7 +1316,7 @@ Ackermann, Legged,</p></td>
 </table>
 </div>
 <div class="section" id="planners">
-<h2>Planners<a class="headerlink" href="#planners" title="Permalink to this headline">¶</a></h2>
+<h2>Planners<a class="headerlink" href="#planners" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 23%" />
@@ -1392,7 +1403,7 @@ Omnidirectional</p></td>
 </table>
 </div>
 <div class="section" id="smoothers">
-<h2>Smoothers<a class="headerlink" href="#smoothers" title="Permalink to this headline">¶</a></h2>
+<h2>Smoothers<a class="headerlink" href="#smoothers" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 28%" />
@@ -1435,7 +1446,7 @@ path.</p></td>
 </table>
 </div>
 <div class="section" id="behaviors">
-<h2>Behaviors<a class="headerlink" href="#behaviors" title="Permalink to this headline">¶</a></h2>
+<h2>Behaviors<a class="headerlink" href="#behaviors" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 28%" />
@@ -1491,7 +1502,7 @@ prevent collisions.</p></td>
 </table>
 </div>
 <div class="section" id="waypoint-task-executors">
-<h2>Waypoint Task Executors<a class="headerlink" href="#waypoint-task-executors" title="Permalink to this headline">¶</a></h2>
+<h2>Waypoint Task Executors<a class="headerlink" href="#waypoint-task-executors" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
@@ -1527,7 +1538,7 @@ waypoint.</p></td>
 </table>
 </div>
 <div class="section" id="goal-checkers">
-<h2>Goal Checkers<a class="headerlink" href="#goal-checkers" title="Permalink to this headline">¶</a></h2>
+<h2>Goal Checkers<a class="headerlink" href="#goal-checkers" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
@@ -1558,7 +1569,7 @@ and velocity threshold.</p></td>
 </table>
 </div>
 <div class="section" id="progress-checkers">
-<h2>Progress Checkers<a class="headerlink" href="#progress-checkers" title="Permalink to this headline">¶</a></h2>
+<h2>Progress Checkers<a class="headerlink" href="#progress-checkers" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
@@ -1590,7 +1601,7 @@ to make progress towards a goal</p></td>
 </table>
 </div>
 <div class="section" id="behavior-tree-nodes">
-<h2>Behavior Tree Nodes<a class="headerlink" href="#behavior-tree-nodes" title="Permalink to this headline">¶</a></h2>
+<h2>Behavior Tree Nodes<a class="headerlink" href="#behavior-tree-nodes" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 42%" />

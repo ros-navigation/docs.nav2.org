@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Constrained smoother &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="constrained-smoother">
-<span id="configuring-constrained-smoother"></span><h1>Constrained smoother<a class="headerlink" href="#constrained-smoother" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-constrained-smoother"></span><h1>Constrained smoother<a class="headerlink" href="#constrained-smoother" title="Permalink to this heading"></a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_constrained_smoother">Github</a>.</p>
 <p>A smoother plugin for nav2_smoother based on the original deprecated smoother in nav2_smac_planner and put into operational state by <a class="reference external" href="https://robotechvision.com/">RoboTech Vision</a>.
 Suitable for applications which need planned global path to be pushed away from obstacles and/or for Reeds-Shepp motion models. It optimizes for path length, smoothness, distance from obstacles, and curvature in a large Ceres-based optimization program.</p>
@@ -1098,7 +1109,7 @@ Suitable for applications which need planned global path to be pushed away from 
 increasing its smoothness and distance from obstacles. Resulting path is marked by green color. Note: last few path poses are not smoothed since TruncatePathLocal is used on this path.</p>
 <a class="reference internal image-reference" href="../../_images/constrained_smoother.png"><img alt="../../_images/constrained_smoother.png" class="align-center" src="../../_images/constrained_smoother.png" style="width: 698px; height: 593px;" /></a>
 <div class="section" id="smoother-server-parameters">
-<h2>Smoother Server Parameters<a class="headerlink" href="#smoother-server-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Smoother Server Parameters<a class="headerlink" href="#smoother-server-parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">reversing_enabled</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1488,7 +1499,7 @@ Following image depicts improvement of the path with <code class="docutils liter
 </dl>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">smoother_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>

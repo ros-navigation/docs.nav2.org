@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Filtering of Noise-Induced Obstacles &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="filtering-of-noise-induced-obstacles">
-<span id="id1"></span><h1>Filtering of Noise-Induced Obstacles<a class="headerlink" href="#filtering-of-noise-induced-obstacles" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Filtering of Noise-Induced Obstacles<a class="headerlink" href="#filtering-of-noise-induced-obstacles" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
@@ -1097,18 +1108,18 @@
 </ul>
 <a class="reference internal image-reference" href="../../_images/title.png"><img alt="../../_images/title.png" src="../../_images/title.png" style="width: 1000px;" /></a>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>Noisy sensor measurements can cause to errors in <code class="docutils literal notranslate"><span class="pre">Voxel</span> <span class="pre">Layer</span></code> or <code class="docutils literal notranslate"><span class="pre">Obstacle</span> <span class="pre">Layer</span></code>. As a result, salt and pepper noise may appear on the costmap. This noise creates false obstacles that prevent the robot from finding the best path on the map. While the images above show both salt and pepper noise as well as error due to mislocalization, this layer will only remove sensor noise, not mislocalized artifacts misaligned with the static map.
 This tutorial shows how to configure filtering of false obstacles caused by noise. This functionality is provided by the <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> costmap layer plugin which will be enabled and used in this document.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in <a class="reference internal" href="../../development_guides/build_docs/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
 </div>
 <div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="enable-denoise-layer">
-<h3>1. Enable Denoise Layer<a class="headerlink" href="#enable-denoise-layer" title="Permalink to this headline">¶</a></h3>
+<h3>1. Enable Denoise Layer<a class="headerlink" href="#enable-denoise-layer" title="Permalink to this heading"></a></h3>
 <p>Denoise Layer is Costmap2D plugin. You can enable the <code class="docutils literal notranslate"><span class="pre">DenoiseLayer</span></code> plugin in Costmap2D by adding <code class="docutils literal notranslate"><span class="pre">denoise_layer</span></code> to the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>. You can place it in the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> and (or) <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> to filter noise on a global or local map. The DenoiseLayer plugin should have the following parameter defined:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plugin</span></code>: type of plugin. In our case <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::DenoiseLayer</span></code>.</p></li>
@@ -1159,7 +1170,7 @@ It is worth taking this into account as an application designer.</p>
 </div>
 </div>
 <div class="section" id="run-nav2-stack">
-<h3>2. Run Nav2 stack<a class="headerlink" href="#run-nav2-stack" title="Permalink to this headline">¶</a></h3>
+<h3>2. Run Nav2 stack<a class="headerlink" href="#run-nav2-stack" title="Permalink to this heading"></a></h3>
 <p>After Denoise Layer was enabled for global/local costmaps, run Nav2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>headless:<span class="o">=</span>False
 </pre></div>
@@ -1169,7 +1180,7 @@ no standalone obstacles should remain on the cost map. This can be checked, for 
 </div>
 </div>
 <div class="section" id="how-it-works">
-<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this heading"></a></h2>
 <p>The plugin is based on two algorithms.</p>
 <p>When parameter <code class="docutils literal notranslate"><span class="pre">minimal_group_size</span></code> = 2, the first algorithm turns on.
 It apply <a class="reference external" href="https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html">erosion</a> function with kernel from image below (left if <code class="docutils literal notranslate"><span class="pre">group_connectivity_type</span></code> = 4 or right if <code class="docutils literal notranslate"><span class="pre">group_connectivity_type</span></code> = 8) to the costmap.

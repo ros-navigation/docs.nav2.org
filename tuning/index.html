@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tuning Guide &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
 
   
-      <script src="../_static/jquery.js"></script>
-      <script src="../_static/underscore.js"></script>
-      <script src="../_static/doctools.js"></script>
-      <script src="../_static/clipboard.min.js"></script>
-      <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1087,18 +1098,18 @@
            <div itemprop="articleBody">
              
   <div class="section" id="tuning-guide">
-<span id="tuning"></span><h1>Tuning Guide<a class="headerlink" href="#tuning-guide" title="Permalink to this headline">¶</a></h1>
+<span id="tuning"></span><h1>Tuning Guide<a class="headerlink" href="#tuning-guide" title="Permalink to this heading"></a></h1>
 <p>This guide is meant to assist users in tuning their navigation system. While <a class="reference internal" href="../configuration/index.html#configuration"><span class="std std-ref">Configuration Guide</span></a> is the home of the list of parameters for all of Nav2, it doesn’t contain much <em>color</em> for how to tune a system using the most important of them. The aim of this guide is to give more advice in how to setup your system beyond a first time setup, which you can find at <a class="reference internal" href="../setup_guides/index.html#setup-guides"><span class="std std-ref">First-Time Robot Setup Guide</span></a>. This will by no means cover all of the parameters (so please, do review the configuration guides for the packages of interest), but will give some helpful hints and tips.</p>
 <p>This tuning guide is a perpetual work in progress. If you see some insights you have missing, please feel free to file a ticket or pull request with the wisdom you would like to share. This is an open section supported by the generosity of Nav2 users and maintainers. Please consider paying it forward.</p>
 <div class="section" id="inflation-potential-fields">
-<h2>Inflation Potential Fields<a class="headerlink" href="#inflation-potential-fields" title="Permalink to this headline">¶</a></h2>
+<h2>Inflation Potential Fields<a class="headerlink" href="#inflation-potential-fields" title="Permalink to this heading"></a></h2>
 <p>Many users and ecosystem navigation configuration files the maintainers find are really missing the point of the inflation layer. While it’s true that you can simply inflate a small radius around the walls to weight against critical collisions, the <em>true</em> value of the inflation layer is creating a consistent potential field around the entire map.</p>
 <p>Some of the most popular tuning guides for ROS Navigation / Nav2 even <a class="reference external" href="https://arxiv.org/pdf/1706.09068.pdf">call this out specifically</a> that there’s substantial benefit to creating a gentle potential field across the width of the map - after inscribed costs are applied - yet very few users do this in practice.</p>
 <p>This habit actually results in paths produced by NavFn, Theta*, and Smac Planner to be somewhat suboptimal. They really want to look for a smooth potential field rather than wide open 0-cost spaces in order to stay in the middle of spaces and deal with close-by moving obstacles better. It will allow search to be weighted towards freespace far before the search algorithm runs into the obstacle that the inflation is caused by, letting the planner give obstacles as wide of a berth as possible.</p>
 <p>So it is the maintainers’ recommendation, as well as all other cost-aware search planners available in ROS, to increase your inflation layer cost scale and radius in order to adequately produce a smooth potential across the entire map. For very large open spaces, its fine to have 0-cost areas in the middle, but for halls, aisles, and similar; <strong>please create a smooth potential to provide the best performance</strong>.</p>
 </div>
 <div class="section" id="robot-footprint-vs-radius">
-<h2>Robot Footprint vs Radius<a class="headerlink" href="#robot-footprint-vs-radius" title="Permalink to this headline">¶</a></h2>
+<h2>Robot Footprint vs Radius<a class="headerlink" href="#robot-footprint-vs-radius" title="Permalink to this heading"></a></h2>
 <p>Nav2 allows users to specify the robot’s shape in 2 ways: a geometric <code class="docutils literal notranslate"><span class="pre">footprint</span></code> or the radius of a circle encompassing the robot. In ROS (1), it was pretty reasonable to always specify a radius approximation of the robot, since the global planning algorithms didn’t use it and the local planners / costmaps were set up with the circular assumption baked in.</p>
 <p>However, in Nav2, we now have multiple planning and controller algorithms that make use of the full SE2 footprint. If your robot is non-circular, it is recommended that you give the planners and controllers the actual, geometric footprint of your robot. This will allow the planners and controllers to plan or create trajectories into tighter spaces. For example, if you have a very long but skinny robot, the circular assumption wouldn’t allow a robot to plan into a space only a little wider than your robot, since the robot would not fit length-wise.</p>
 <p>The kinematically feasible planners (e.g. Smac Hybrid-A*, Smac State Lattice) will use the SE2 footprint for collision checking to create kinematically feasible plans, if provided with the actual footprint. As of December, 2021 all of the controller plugins support full footprint collision checking to ensure safe path tracking. If you provide a footprint of your robot, it will be used to make sure trajectories are valid and it is recommended you do so. It will prevent a number of “stuck robot” situations that could have been easily avoided.</p>
@@ -1110,7 +1121,7 @@
 </ul>
 </div>
 <div class="section" id="rotate-in-place-behavior">
-<h2>Rotate in Place Behavior<a class="headerlink" href="#rotate-in-place-behavior" title="Permalink to this headline">¶</a></h2>
+<h2>Rotate in Place Behavior<a class="headerlink" href="#rotate-in-place-behavior" title="Permalink to this heading"></a></h2>
 <p>Using the <a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#configuring-rotation-shim"><span class="std std-ref">Rotation Shim Controller</span></a>, a robot will simply rotate in place before starting to track a holonomic path. This allows a developer to tune a controller plugin to be optimized for path tracking and give you clean rotations, out of the box.</p>
 <p>This was added due to quirks in some existing controllers whereas tuning the controller for a task can make it rigid – or the algorithm simply doesn’t rotate in place when working with holonomic paths (if that’s a desirable trait). The result is an awkward, stuttering, or whipping around behavior when your robot’s initial and path heading’s are significantly divergent. Giving a controller a better starting point to start tracking a path makes tuning the controllers significantly easier and creates more intuitive results for on-lookers (in one maintainer’s opinion).</p>
 <p>Note: If using a non-holonomic, kinematically feasible planner (e.g. Smac Hybrid-A*, Smac State Lattice), this is not a necessary behavioral optimization. This class of planner will create plans that take into account the robot’s starting heading, not requiring any rotation behaviors.</p>
@@ -1121,7 +1132,7 @@
 </ul>
 </div>
 <div class="section" id="planner-plugin-selection">
-<h2>Planner Plugin Selection<a class="headerlink" href="#planner-plugin-selection" title="Permalink to this headline">¶</a></h2>
+<h2>Planner Plugin Selection<a class="headerlink" href="#planner-plugin-selection" title="Permalink to this heading"></a></h2>
 <p>Nav2 provides a number of planning plugins out of the box. For a first-time setup, see <a class="reference internal" href="../setup_guides/algorithm/select_algorithm.html#select-algorithm"><span class="std std-ref">Setting Up Navigation Plugins</span></a> for a more verbose breakdown of algorithm styles within Nav2, and <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for a full accounting of the current list of plugins available (which may be updated over time).</p>
 <p>In general though, the following table is a good guide for the optimal planning plugin for different types of robot bases:</p>
 <table class="docutils align-default">
@@ -1158,7 +1169,7 @@
 </div>
 </div>
 <div class="section" id="controller-plugin-selection">
-<h2>Controller Plugin Selection<a class="headerlink" href="#controller-plugin-selection" title="Permalink to this headline">¶</a></h2>
+<h2>Controller Plugin Selection<a class="headerlink" href="#controller-plugin-selection" title="Permalink to this heading"></a></h2>
 <p>Nav2 provides a number of controller plugins out of the box. For a first-time setup, see <a class="reference internal" href="../setup_guides/algorithm/select_algorithm.html#select-algorithm"><span class="std std-ref">Setting Up Navigation Plugins</span></a> for a more verbose breakdown of algorithm styles within Nav2, and <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for a full accounting of the current list of plugins available (which may be updated over time).</p>
 <p>In general though, the following table is a good first-order description of the controller plugins available for different types of robot bases:</p>
 <table class="docutils align-default">
@@ -1209,13 +1220,13 @@
 </div>
 </div>
 <div class="section" id="caching-obstacle-heuristic-in-smac-planners">
-<h2>Caching Obstacle Heuristic in Smac Planners<a class="headerlink" href="#caching-obstacle-heuristic-in-smac-planners" title="Permalink to this headline">¶</a></h2>
+<h2>Caching Obstacle Heuristic in Smac Planners<a class="headerlink" href="#caching-obstacle-heuristic-in-smac-planners" title="Permalink to this heading"></a></h2>
 <p>Smac’s Hybrid-A* and State Lattice Planners provide an option, <code class="docutils literal notranslate"><span class="pre">cache_obstacle_heuristic</span></code>. This can be used to cache the heuristic to use between replannings to the same goal pose, which can increase the speed of the planner <strong>significantly</strong> (40-300% depending on many factors). The obstacle heuristic is used to steer the robot into the middle of spaces, respecting costs, and drives the kinematically feasible search down the corridors towards a valid solution. Think of it like a 2D cost-aware search to “prime” the planner about where it should go when it needs to expend more effort in the fully feasible search / SE2 collision checking.</p>
 <p>This is useful to speed up performance to achieve better replanning speeds. However, if you cache this heuristic, it will not be updated with the most current information in the costmap to steer search. During planning, the planner will still make use of the newest cost information for collision checking, <em>thusly this will not impact the safety of the path</em>. However, it may steer the search down newly blocked corridors or guide search towards areas that may have new dynamic obstacles in them, which can slow things down significantly if entire solution spaces are blocked.</p>
 <p>Therefore, it is the recommendation of the maintainers to enable this only when working in largely static (e.g. not many moving things or changes, not using live sensor updates in the global costmap, etc) environments when planning across large spaces to singular goals. Between goal changes to Nav2, this heuristic will be updated with the most current set of information, so it is not very helpful if you change goals very frequently.</p>
 </div>
 <div class="section" id="costmap2d-plugins">
-<h2>Costmap2D Plugins<a class="headerlink" href="#costmap2d-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Costmap2D Plugins<a class="headerlink" href="#costmap2d-plugins" title="Permalink to this heading"></a></h2>
 <p>Costmap2D has a number of plugins that you can use (including the availability for you to create your own!).</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">StaticLayer</span></code>: Used to set the map from SLAM (either pre-built or currently being built live) for sizing the environment and setting key features like walls and rooms for global planning.</p></li>
@@ -1233,7 +1244,7 @@
 <p>Note: When the costmap filters can be paired with the <code class="docutils literal notranslate"><span class="pre">VectorObject</span></code> server to use vectorized zones rather than map rastered zones sharing the same software.</p>
 </div>
 <div class="section" id="nav2-launch-options">
-<h2>Nav2 Launch Options<a class="headerlink" href="#nav2-launch-options" title="Permalink to this headline">¶</a></h2>
+<h2>Nav2 Launch Options<a class="headerlink" href="#nav2-launch-options" title="Permalink to this heading"></a></h2>
 <p>Nav2’s launch files are made to be very configurable. Obviously for any serious application, a user should use <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code> as the basis of their navigation launch system, but should be moved to a specific repository for a users’ work. A typical thing to do is to have a <code class="docutils literal notranslate"><span class="pre">&lt;robot_name&gt;_nav</span></code> configuration package containing the launch and parameter files.</p>
 <p>Within <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>, there is a main entryfile <code class="docutils literal notranslate"><span class="pre">tb3_simulation_launch.py</span></code>. This is the main file used for simulating the robot and contains the following configurations:</p>
 <ul class="simple">
@@ -1258,7 +1269,7 @@
 </ul>
 </div>
 <div class="section" id="other-pages-we-d-love-to-offer">
-<h2>Other Pages We’d Love To Offer<a class="headerlink" href="#other-pages-we-d-love-to-offer" title="Permalink to this headline">¶</a></h2>
+<h2>Other Pages We’d Love To Offer<a class="headerlink" href="#other-pages-we-d-love-to-offer" title="Permalink to this heading"></a></h2>
 <p>If you are willing to chip in, some ideas are in <a class="reference external" href="https://github.com/ros-planning/docs.nav2.org/issues/204">https://github.com/ros-planning/docs.nav2.org/issues/204</a>, but we’d be open to anything you think would be insightful!</p>
 </div>
 </div>

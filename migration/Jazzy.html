@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jazzy to K-Turtle &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
 
   
-      <script src="../_static/jquery.js"></script>
-      <script src="../_static/underscore.js"></script>
-      <script src="../_static/doctools.js"></script>
-      <script src="../_static/clipboard.min.js"></script>
-      <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,21 +1099,21 @@
            <div itemprop="articleBody">
              
   <div class="section" id="jazzy-to-k-turtle">
-<span id="jazzy-migration"></span><h1>Jazzy to K-Turtle<a class="headerlink" href="#jazzy-to-k-turtle" title="Permalink to this headline">¶</a></h1>
+<span id="jazzy-migration"></span><h1>Jazzy to K-Turtle<a class="headerlink" href="#jazzy-to-k-turtle" title="Permalink to this heading"></a></h1>
 <p>Moving from ROS 2 Jazzy to K-Turtle, a number of stability improvements were added that we will not specifically address here.</p>
 <div class="section" id="new-nav2-loopback-simulator">
-<h2>New Nav2 Loopback Simulator<a class="headerlink" href="#new-nav2-loopback-simulator" title="Permalink to this headline">¶</a></h2>
+<h2>New Nav2 Loopback Simulator<a class="headerlink" href="#new-nav2-loopback-simulator" title="Permalink to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_loopback_sim</span></code> is a stand-alone simulator to create a “loopback” for non-physical simulation to replace robot hardware, physics simulators (Gazebo, Bullet, Isaac Sim, etc).
 It computes the robot’s odometry based on the command velocity’s output request to create a perfect ‘frictionless plane’-style simulation for unit testing, system testing, R&amp;D on higher level systems, testing behaviors without concerning yourself with localization accuracy or system dynamics, and multirobot simulations.</p>
 </div>
 <div class="section" id="docking-with-static-infrastructure-or-dynamic-docking">
-<h2>Docking with Static Infrastructure or Dynamic Docking<a class="headerlink" href="#docking-with-static-infrastructure-or-dynamic-docking" title="Permalink to this headline">¶</a></h2>
+<h2>Docking with Static Infrastructure or Dynamic Docking<a class="headerlink" href="#docking-with-static-infrastructure-or-dynamic-docking" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4627">PR #4627</a> a docking plugin type and logic was added to support non-charging dock types in the nav2 docking server.
 This allows users to specify docking locations to static infrastructure, such as conveyers, or dynamic docking locations, such as a pallet.
 It also includes a new docking plugin to demonstrate the new docking server capabilities <code class="docutils literal notranslate"><span class="pre">simple_non_charging_dock</span></code>.</p>
 </div>
 <div class="section" id="new-rviz-panel-for-docking">
-<h2>New RViz panel for Docking<a class="headerlink" href="#new-rviz-panel-for-docking" title="Permalink to this headline">¶</a></h2>
+<h2>New RViz panel for Docking<a class="headerlink" href="#new-rviz-panel-for-docking" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4458">PR #4458</a> a new RViz panel was added to interact with the Docking Server.</p>
 <p>This panel allows the user to:</p>
 <ul class="simple">
@@ -1118,7 +1129,7 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 </div>
 </div>
 <div class="section" id="new-bt-nodes">
-<h2>New BT Nodes<a class="headerlink" href="#new-bt-nodes" title="Permalink to this headline">¶</a></h2>
+<h2>New BT Nodes<a class="headerlink" href="#new-bt-nodes" title="Permalink to this heading"></a></h2>
 <p>Below is a list of new BT Nodes added:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">GetPoseFromPath</span></code>: An action to get a particular pose from an input path.</p></li>
@@ -1126,7 +1137,7 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 </ul>
 </div>
 <div class="section" id="new-rviz-tool-for-costmap-cost-cell-inspection">
-<h2>New RViz Tool for Costmap Cost Cell Inspection<a class="headerlink" href="#new-rviz-tool-for-costmap-cost-cell-inspection" title="Permalink to this headline">¶</a></h2>
+<h2>New RViz Tool for Costmap Cost Cell Inspection<a class="headerlink" href="#new-rviz-tool-for-costmap-cost-cell-inspection" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4546">PR #4546</a> a new RViz tool was added to get the costmap costcell’s cost and a service to get the costcell’s cost at the footprint pose.</p>
 <p>Usage:</p>
 <ul class="simple">
@@ -1141,7 +1152,7 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 </div>
 </div>
 <div class="section" id="fix-flickering-visualization">
-<h2>Fix flickering visualization<a class="headerlink" href="#fix-flickering-visualization" title="Permalink to this headline">¶</a></h2>
+<h2>Fix flickering visualization<a class="headerlink" href="#fix-flickering-visualization" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4561">PR #4561</a> a <code class="docutils literal notranslate"><span class="pre">map_vis_z</span></code> parameter has been introduced to Costmap2DROS to help modify the map slightly below the default plane, aiming to eliminate rviz visualization flickering issues.</p>
 <p>Default Value:</p>
 <ul class="simple">
@@ -1157,7 +1168,7 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 <img alt="../_images/fix_flickering_visualization_after.png" src="../_images/fix_flickering_visualization_after.png" />
 </div>
 <div class="section" id="option-to-limit-velocity-through-dwb-trajectory">
-<h2>Option to limit velocity through DWB trajectory<a class="headerlink" href="#option-to-limit-velocity-through-dwb-trajectory" title="Permalink to this headline">¶</a></h2>
+<h2>Option to limit velocity through DWB trajectory<a class="headerlink" href="#option-to-limit-velocity-through-dwb-trajectory" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4663">PR #4663</a> a <code class="docutils literal notranslate"><span class="pre">limit_vel_cmd_in_traj</span></code> parameter was introduced to DWB local planner to allow the user to limit the velocity used in the trajectory generation based on the robot’s current velocity.</p>
 <p>Default value:</p>
 <ul class="simple">
@@ -1165,7 +1176,7 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 </ul>
 </div>
 <div class="section" id="option-to-disable-zero-velocity-publishing-on-goal-exit">
-<h2>Option to disable zero velocity publishing on goal exit<a class="headerlink" href="#option-to-disable-zero-velocity-publishing-on-goal-exit" title="Permalink to this headline">¶</a></h2>
+<h2>Option to disable zero velocity publishing on goal exit<a class="headerlink" href="#option-to-disable-zero-velocity-publishing-on-goal-exit" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4675">PR #4675</a> a <code class="docutils literal notranslate"><span class="pre">publish_zero_velocity</span></code> parameter was introduced for the <a class="reference external" href="/configuration/packages/configuring-controller-server.html#controller-server">Controller server</a> in order to disable zero velocity publishing on goal exit.</p>
 <p>Default value:</p>
 <ul class="simple">

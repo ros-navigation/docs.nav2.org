@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model Predictive Path Integral Controller &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="model-predictive-path-integral-controller">
-<span id="configuring-mppic"></span><h1>Model Predictive Path Integral Controller<a class="headerlink" href="#model-predictive-path-integral-controller" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-mppic"></span><h1>Model Predictive Path Integral Controller<a class="headerlink" href="#model-predictive-path-integral-controller" title="Permalink to this heading"></a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller">Github</a>.</p>
 <a class="reference internal image-reference" href="../../_images/mppi_demo.gif"><img alt="MPPI on Turtlebot3 demo" class="align-center" src="../../_images/mppi_demo.gif" style="width: 600px;" /></a>
 <p>The MPPI Controller implements a <a class="reference external" href="https://ieeexplore.ieee.org/document/7487277">Model Predictive Path Integral Controller</a>.
@@ -1101,7 +1112,7 @@ This process is then repeated a number of times and returns a converged solution
 <p>A powerful result of this work is the ability to utilize objective functions which are not require to be convex nor differentiable, providing greater designer flexibility in behavior.</p>
 <p>See the package’s <code class="docutils literal notranslate"><span class="pre">README</span></code> for more complete information.</p>
 <div class="section" id="mppi-parameters">
-<h2>MPPI Parameters<a class="headerlink" href="#mppi-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>MPPI Parameters<a class="headerlink" href="#mppi-parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">motion_model</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1565,7 +1576,7 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 <div class="section" id="trajectory-visualization">
-<h3>Trajectory Visualization<a class="headerlink" href="#trajectory-visualization" title="Permalink to this headline">¶</a></h3>
+<h3>Trajectory Visualization<a class="headerlink" href="#trajectory-visualization" title="Permalink to this heading"></a></h3>
 <dl class="field-list">
 <dt class="field-odd">trajectory_step</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1610,7 +1621,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="path-handler">
-<h3>Path Handler<a class="headerlink" href="#path-handler" title="Permalink to this headline">¶</a></h3>
+<h3>Path Handler<a class="headerlink" href="#path-handler" title="Permalink to this heading"></a></h3>
 <dl class="field-list">
 <dt class="field-odd">transform_tolerance</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1735,7 +1746,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="ackermann-motion-model">
-<h3>Ackermann Motion Model<a class="headerlink" href="#ackermann-motion-model" title="Permalink to this headline">¶</a></h3>
+<h3>Ackermann Motion Model<a class="headerlink" href="#ackermann-motion-model" title="Permalink to this heading"></a></h3>
 <dl class="field-list">
 <dt class="field-odd">min_turning_r</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1760,7 +1771,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="constraint-critic">
-<h3>Constraint Critic<a class="headerlink" href="#constraint-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Constraint Critic<a class="headerlink" href="#constraint-critic" title="Permalink to this heading"></a></h3>
 <p>This critic penalizes trajectories that have components outside of the set dynamic or kinematic constraints</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -1806,7 +1817,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="goal-angle-critic">
-<h3>Goal Angle Critic<a class="headerlink" href="#goal-angle-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Goal Angle Critic<a class="headerlink" href="#goal-angle-critic" title="Permalink to this heading"></a></h3>
 <p>This critic incentivizes navigating to achieve the angle of the goal posewhen in reasonable proximity to goal</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -1872,7 +1883,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="goal-critic">
-<h3>Goal Critic<a class="headerlink" href="#goal-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Goal Critic<a class="headerlink" href="#goal-critic" title="Permalink to this heading"></a></h3>
 <p>This critic incentivizes navigating spatially towards the goal when in reasonable proximity to goal</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -1938,7 +1949,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="obstacles-critic">
-<h3>Obstacles Critic<a class="headerlink" href="#obstacles-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Obstacles Critic<a class="headerlink" href="#obstacles-critic" title="Permalink to this heading"></a></h3>
 <p>This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check using distances from obstacles.</p>
 <dl class="field-list">
 <dt class="field-odd">critical_weight</dt>
@@ -2144,7 +2155,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="cost-critic">
-<h3>Cost Critic<a class="headerlink" href="#cost-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Cost Critic<a class="headerlink" href="#cost-critic" title="Permalink to this heading"></a></h3>
 <p>This critic incentivizes navigating away from obstacles and critical collisions using either a circular robot point-check or full SE2 footprint check using the costmap values.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -2310,7 +2321,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="path-align-critic">
-<h3>Path Align Critic<a class="headerlink" href="#path-align-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Path Align Critic<a class="headerlink" href="#path-align-critic" title="Permalink to this heading"></a></h3>
 <p>This critic incentivizes aligning with the global path, if relevant. It does not implement path following behavior.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -2456,7 +2467,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="path-angle-critic">
-<h3>Path Angle Critic<a class="headerlink" href="#path-angle-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Path Angle Critic<a class="headerlink" href="#path-angle-critic" title="Permalink to this heading"></a></h3>
 <p>This critic penalizes trajectories at a high relative angle to the path. This helps the robot make sharp turns when necessary due to large accumulated angular errors.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -2582,7 +2593,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="path-follow-critic">
-<h3>Path Follow Critic<a class="headerlink" href="#path-follow-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Path Follow Critic<a class="headerlink" href="#path-follow-critic" title="Permalink to this heading"></a></h3>
 <p>This critic incentivizes making progress along the path. This is what drives the robot forward along the path.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -2668,7 +2679,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="prefer-forward-critic">
-<h3>Prefer Forward Critic<a class="headerlink" href="#prefer-forward-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Prefer Forward Critic<a class="headerlink" href="#prefer-forward-critic" title="Permalink to this heading"></a></h3>
 <p>This critic incentivizes moving in the forward direction, rather than reversing.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -2734,7 +2745,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="twirling-critic">
-<h3>Twirling Critic<a class="headerlink" href="#twirling-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Twirling Critic<a class="headerlink" href="#twirling-critic" title="Permalink to this heading"></a></h3>
 <p>This critic penalizes unnecessary ‘twisting’ with holonomic vehicles. It adds a constraint on the rotation angle to keep it consistent.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -2780,7 +2791,7 @@ This process is then repeated a number of times and returns a converged solution
 </dl>
 </div>
 <div class="section" id="velocity-deadband-critic">
-<h3>Velocity Deadband Critic<a class="headerlink" href="#velocity-deadband-critic" title="Permalink to this headline">¶</a></h3>
+<h3>Velocity Deadband Critic<a class="headerlink" href="#velocity-deadband-critic" title="Permalink to this heading"></a></h3>
 <p>This critic penalizes velocities that fall below the deadband threshold, helping to mitigate hardware limitations on certain platforms.</p>
 <dl class="field-list">
 <dt class="field-odd">cost_weight</dt>
@@ -2847,7 +2858,7 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span>
@@ -2957,22 +2968,22 @@ This process is then repeated a number of times and returns a converged solution
 </div>
 </div>
 <div class="section" id="notes-to-users">
-<h2>Notes to Users<a class="headerlink" href="#notes-to-users" title="Permalink to this headline">¶</a></h2>
+<h2>Notes to Users<a class="headerlink" href="#notes-to-users" title="Permalink to this heading"></a></h2>
 <div class="section" id="general-words-of-wisdom">
-<h3>General Words of Wisdom<a class="headerlink" href="#general-words-of-wisdom" title="Permalink to this headline">¶</a></h3>
+<h3>General Words of Wisdom<a class="headerlink" href="#general-words-of-wisdom" title="Permalink to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">model_dt</span></code> parameter generally should be set to the duration of your control frequency. So if your control frequency is 20hz, this should be <code class="docutils literal notranslate"><span class="pre">0.05</span></code>. However, you may also set it lower <strong>but not larger</strong>.</p>
 <p>Visualization of the trajectories using <code class="docutils literal notranslate"><span class="pre">visualize</span></code> uses compute resources to back out trajectories for visualization and therefore slows compute time. It is not suggested that this parameter is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> during a deployed use, but is a useful debug instrument while tuning the system, but use sparingly. Visualizing 2000 batches &#64; 56 points at 30 hz is <em>a lot</em>.</p>
 <p>The most common parameters you might want to start off changing are the velocity profiles (<code class="docutils literal notranslate"><span class="pre">vx_max</span></code>, <code class="docutils literal notranslate"><span class="pre">vx_min</span></code>, <code class="docutils literal notranslate"><span class="pre">wz_max</span></code>, and <code class="docutils literal notranslate"><span class="pre">vy_max</span></code> if holonomic) and the <code class="docutils literal notranslate"><span class="pre">motion_model</span></code> to correspond to your vehicle. Its wise to consider the <code class="docutils literal notranslate"><span class="pre">prune_distance</span></code> of the path plan in proportion to your maximum velocity and prediction horizon. The only deeper parameter that will likely need to be adjusted for your particular settings is the Obstacle critics’ <code class="docutils literal notranslate"><span class="pre">repulsion_weight</span></code> since the tuning of this is proprtional to your inflation layer’s radius. Higher radii should correspond to reduced <code class="docutils literal notranslate"><span class="pre">repulsion_weight</span></code> due to the penalty formation (e.g. <code class="docutils literal notranslate"><span class="pre">inflation_radius</span> <span class="pre">-</span> <span class="pre">min_dist_to_obstacle</span></code>). If this penalty is too high, the robot will slow significantly when entering cost-space from non-cost space or jitter in narrow corridors. It is noteworthy, but likely not necessary to be changed, that the Obstacle critic may use the full footprint information if <code class="docutils literal notranslate"><span class="pre">consider_footprint</span> <span class="pre">=</span> <span class="pre">true</span></code>, though comes at an increased compute cost.</p>
 <p>Otherwise, the parameters have been closely pre-tuned by your friendly neighborhood navigator to give you a decent starting point that hopefully you only need to retune for your specific desired behavior lightly (if at all). Varying costmap parameters or maximum speeds are the actions which require the most attention, as described below:</p>
 </div>
 <div class="section" id="prediction-horizon-costmap-sizing-and-offsets">
-<h3>Prediction Horizon, Costmap Sizing, and Offsets<a class="headerlink" href="#prediction-horizon-costmap-sizing-and-offsets" title="Permalink to this headline">¶</a></h3>
+<h3>Prediction Horizon, Costmap Sizing, and Offsets<a class="headerlink" href="#prediction-horizon-costmap-sizing-and-offsets" title="Permalink to this heading"></a></h3>
 <p>As this is a predictive planner, there is some relationship between maximum speed, prediction times, and costmap size that users should keep in mind while tuning for their application. If a controller server costmap is set to 3.0m in size, that means that with the robot in the center, there is 1.5m of information on either side of the robot. When your prediction horizon (<code class="docutils literal notranslate"><span class="pre">time_steps</span> <span class="pre">*</span> <span class="pre">model_dt</span></code>) at maximum speed (<code class="docutils literal notranslate"><span class="pre">vx_max</span></code>) is larger than this, then your robot will be artificially limited in its maximum speeds and behavior by the costmap limitation. For example, if you predict forward 3 seconds (60 steps &#64; 0.05s per step) at 0.5m/s maximum speed, the <strong>minimum</strong> required costmap radius is 1.5m - or 3m total width.</p>
 <p>The same applies to the Path Follow and Align offsets from furthest. In the same example if the furthest point we can consider is already at the edge of the costmap, then further offsets are thresholded because they’re unusable. So its important while selecting these parameters to make sure that the theoretical offsets can exist on the costmap settings selected with the maximum prediction horizon and velocities desired. Setting the threshold for consideration in the path follower + goal critics as the same as your prediction horizon can make sure you have clean hand-offs between them, as the path follower will otherwise attempt to slow slightly once it reaches the final goal pose as its marker.</p>
 <p>The Path Follow critic cannot drive velocities greater than the projectable distance of that velocity on the available path on the rolling costmap. The Path Align critic <cite>offset_from_furthest</cite> represents the number of path points a trajectory passes through while tracking the path. If this is set either absurdly low (e.g. 5) it can trigger when a robot is simply trying to start path tracking causing some suboptimal behaviors and local minima while starting a task. If it is set absurdly high (e.g. 50) relative to the path resolution and costmap size, then the critic may never trigger or only do so when at full-speed. A balance here is wise. A selection of this value to be ~30% of the maximum velocity distance projected is good (e.g. if a planner produces points every 2.5cm, 60 can fit on the 1.5m local costmap radius. If the max speed is 0.5m/s with a 3s prediction time, then 20 points represents 33% of the maximum speed projected over the prediction horizon onto the path). When in doubt, <code class="docutils literal notranslate"><span class="pre">prediction_horizon_s</span> <span class="pre">*</span> <span class="pre">max_speed</span> <span class="pre">/</span> <span class="pre">path_resolution</span> <span class="pre">/</span> <span class="pre">3.0</span></code> is a good baseline.</p>
 </div>
 <div class="section" id="obstacle-inflation-layer-and-path-following">
-<h3>Obstacle, Inflation Layer, and Path Following<a class="headerlink" href="#obstacle-inflation-layer-and-path-following" title="Permalink to this headline">¶</a></h3>
+<h3>Obstacle, Inflation Layer, and Path Following<a class="headerlink" href="#obstacle-inflation-layer-and-path-following" title="Permalink to this heading"></a></h3>
 <p>There also exists a relationship between the costmap configurations and the Obstacle critic configurations. If the Obstacle critic is not well tuned with the costmap parameters (inflation radius, scale) it can cause the robot to wobble significantly as it attempts to take finitely lower-cost trajectories with a slightly lower cost in exchange for jerky motion. It may also perform awkward maneuvers when in free-space to try to maximize time in a small pocket of 0-cost over a more natural motion which involves moving into some low-costed region. Finally, it may generally refuse to go into costed space at all when starting in a free 0-cost space if the gain is set disproportionately higher than the Path Follow scoring to encourage the robot to move along the path. This is due to the critic cost of staying in free space becoming more attractive than entering even lightly costed space in exchange for progression along the task.</p>
 <p>Thus, care should be taken to select weights of the obstacle critic in conjunction with the costmap inflation radius and scale so that a robot does not have such issues. How I (Steve, your friendly neighborhood navigator) tuned this was to first create the appropriate obstacle critic behavior desirable in conjunction with the inflation layer parameters. Its worth noting that the Obstacle critic converts the cost into a distance from obstacles, so the nature of the distribution of costs in the inflation isn’t overly significant. However, the inflation radius and the scale will define the cost at the end of the distribution where free-space meets the lowest cost value within the radius. So testing for quality behavior when going over that threshold should be considered.</p>
 <p>As you increase or decrease your weights on the Obstacle, you may notice the aforementioned behaviors (e.g. won’t overcome free to non-free threshold). To overcome them, increase the FollowPath critic cost to increase the desire for the trajectory planner to continue moving towards the goal. Make sure to not overshoot this though, keep them balanced. A desirable outcome is smooth motion roughly in the center of spaces without significant close interactions with obstacles. It shouldn’t be perfectly following a path yet nor should the output velocity be wobbling jaggedly.</p>

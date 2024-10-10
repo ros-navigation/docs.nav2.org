@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ProgressCheckerSelector &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
 
   
-      <script src="../../../../_static/jquery.js"></script>
-      <script src="../../../../_static/underscore.js"></script>
-      <script src="../../../../_static/doctools.js"></script>
-      <script src="../../../../_static/clipboard.min.js"></script>
-      <script src="../../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1089,11 +1100,11 @@
            <div itemprop="articleBody">
              
   <div class="section" id="progresscheckerselector">
-<span id="bt-progress-checker-selector-node"></span><h1>ProgressCheckerSelector<a class="headerlink" href="#progresscheckerselector" title="Permalink to this headline">¶</a></h1>
+<span id="bt-progress-checker-selector-node"></span><h1>ProgressCheckerSelector<a class="headerlink" href="#progresscheckerselector" title="Permalink to this heading"></a></h1>
 <p>It is used to select the ProgressChecker that will be used by the progress_checker server. It subscribes to the <code class="docutils literal notranslate"><span class="pre">progress_checker_selector</span></code> topic to receive command messages with the name of the ProgressChecker to be used. It is commonly used before of the FollowPathAction. The <code class="docutils literal notranslate"><span class="pre">selected_progess_checker</span></code> output port is passed to <code class="docutils literal notranslate"><span class="pre">progress_checker_id</span></code> input port of the FollowPathAction. If none is provided on the topic, the <code class="docutils literal notranslate"><span class="pre">default_progress_checker</span></code> is used.</p>
 <p>Any publisher to this topic needs to be configured with some QoS defined as <code class="docutils literal notranslate"><span class="pre">reliable</span></code> and <code class="docutils literal notranslate"><span class="pre">transient</span> <span class="pre">local</span></code>.</p>
 <div class="section" id="input-ports">
-<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h2>
+<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">topic_name</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1138,7 +1149,7 @@
 </dl>
 </div>
 <div class="section" id="output-ports">
-<h2>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h2>
+<h2>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">selected_progress_checker</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1163,7 +1174,7 @@
 </dl>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ProgressCheckerSelector</span><span class="w"> </span><span class="na">selected_progress_checker=</span><span class="s">&quot;{selected_progress_checker}&quot;</span><span class="w"> </span><span class="na">default_progress_checker=</span><span class="s">&quot;precise_progress_checker&quot;</span><span class="w"> </span><span class="na">topic_name=</span><span class="s">&quot;progress_checker_selector&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>

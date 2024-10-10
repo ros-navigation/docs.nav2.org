@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iron to Jazzy &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
 
   
-      <script src="../_static/jquery.js"></script>
-      <script src="../_static/underscore.js"></script>
-      <script src="../_static/doctools.js"></script>
-      <script src="../_static/clipboard.min.js"></script>
-      <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,10 +1099,10 @@
            <div itemprop="articleBody">
              
   <div class="section" id="iron-to-jazzy">
-<span id="iron-migration"></span><h1>Iron to Jazzy<a class="headerlink" href="#iron-to-jazzy" title="Permalink to this headline">¶</a></h1>
+<span id="iron-migration"></span><h1>Iron to Jazzy<a class="headerlink" href="#iron-to-jazzy" title="Permalink to this heading"></a></h1>
 <p>Moving from ROS 2 Iron to Jazzy, a number of stability improvements were added that we will not specifically address here.</p>
 <div class="section" id="behaviortree-cpp-upgraded-to-version-4-5">
-<h2>BehaviorTree.CPP upgraded to version 4.5+<a class="headerlink" href="#behaviortree-cpp-upgraded-to-version-4-5" title="Permalink to this headline">¶</a></h2>
+<h2>BehaviorTree.CPP upgraded to version 4.5+<a class="headerlink" href="#behaviortree-cpp-upgraded-to-version-4-5" title="Permalink to this heading"></a></h2>
 <p>Since we migrated from version 3.8 to 4.5, users must upgrade their XML and source code accordingly.</p>
 <p>You can refer to [this page](<a class="reference external" href="https://www.behaviortree.dev/docs/migration">https://www.behaviortree.dev/docs/migration</a>) for more details, but the main changes are:</p>
 <ul class="simple">
@@ -1101,15 +1112,15 @@
 </ul>
 </div>
 <div class="section" id="added-twiststamped-option-for-commands">
-<h2>Added TwistStamped Option for Commands<a class="headerlink" href="#added-twiststamped-option-for-commands" title="Permalink to this headline">¶</a></h2>
+<h2>Added TwistStamped Option for Commands<a class="headerlink" href="#added-twiststamped-option-for-commands" title="Permalink to this heading"></a></h2>
 <p>A new parameter <code class="docutils literal notranslate"><span class="pre">enable_stamped_cmd_vel</span></code> has been added to all of the publishers and subscribers of <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> and related topics. This allows you to set the publication and subscription of TwistStamped messages over Twist messages to have frame and timestamp information of the set command. For now, this is default to <code class="docutils literal notranslate"><span class="pre">false</span></code> to not change current behavior, but it is planned to make <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> the default behavior alongside Gazebo, ROS 2 Control, and related projects.</p>
 </div>
 <div class="section" id="add-velocitypolygon-in-collision-monitor">
-<h2>Add VelocityPolygon in Collision Monitor<a class="headerlink" href="#add-velocitypolygon-in-collision-monitor" title="Permalink to this headline">¶</a></h2>
+<h2>Add VelocityPolygon in Collision Monitor<a class="headerlink" href="#add-velocitypolygon-in-collision-monitor" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3708">PR #3708</a> adds <code class="docutils literal notranslate"><span class="pre">VelocityPolgon</span></code> type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the <a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#collision-monitor-tutorial"><span class="std std-ref">Configuring Collision Monitor with VelocityPolygon</span></a> section.</p>
 </div>
 <div class="section" id="change-polygon-points-parameter-format-in-collision-monitor">
-<h2>Change polygon points parameter format in Collision Monitor<a class="headerlink" href="#change-polygon-points-parameter-format-in-collision-monitor" title="Permalink to this headline">¶</a></h2>
+<h2>Change polygon points parameter format in Collision Monitor<a class="headerlink" href="#change-polygon-points-parameter-format-in-collision-monitor" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4020">PR #4020</a> changes the format of the Polygon points parameter from <code class="docutils literal notranslate"><span class="pre">vector&lt;double&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">string</span></code>. This makes the polygon description more uniform across the Collision Monitor and Costmap_2D.
 Now we can define a polygon’s points in string that has a <code class="docutils literal notranslate"><span class="pre">vector&lt;vector&lt;double&gt;&gt;</span></code> structure like this <code class="docutils literal notranslate"><span class="pre">&quot;[[p1.x,</span> <span class="pre">p1.y],</span> <span class="pre">[p2.x,</span> <span class="pre">p2.y],</span> <span class="pre">[p3.x,</span> <span class="pre">p3.y],...]&quot;</span></code> with a minimum of 4 points described. An example of a Square polygon will be written as follows.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">PolygonFront</span><span class="p">:</span>
@@ -1123,7 +1134,7 @@ Now we can define a polygon’s points in string that has a <code class="docutil
 </div>
 </div>
 <div class="section" id="introduction-of-soft-real-time-action-servers">
-<h2>Introduction of Soft-Real Time Action Servers<a class="headerlink" href="#introduction-of-soft-real-time-action-servers" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction of Soft-Real Time Action Servers<a class="headerlink" href="#introduction-of-soft-real-time-action-servers" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3914">PR #3914</a> adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. The Simple Action Server now has a <code class="docutils literal notranslate"><span class="pre">realtime</span></code> input field exposed in the Controller Server via the parameter <code class="docutils literal notranslate"><span class="pre">use_realtime_priority</span></code> which will set the controller’s execution thread to a higher priority than the rest of the system to meet scheduling deadlines. To use this feature, you use set the following inside of <code class="docutils literal notranslate"><span class="pre">/etc/security/limits.conf</span></code> to give userspace access to elevated prioritization permissions. This is currently only enabled in the Controller Server, who’s execution thread is sensitive to scheduling priorities, but could be set with other threads in the future if found necessary.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;username&gt; soft rtprio 99
 &lt;username&gt; hard rtprio 99
@@ -1132,62 +1143,62 @@ Now we can define a polygon’s points in string that has a <code class="docutil
 <p>The Collision Monitor and Velocity Smoothers also had <code class="docutils literal notranslate"><span class="pre">use_realtime_priority</span></code> added as well!</p>
 </div>
 <div class="section" id="opennav-coverage-project">
-<h2><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project<a class="headerlink" href="#opennav-coverage-project" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project<a class="headerlink" href="#opennav-coverage-project" title="Permalink to this heading"></a></h2>
 <p>A new metapackage exists in: <a class="reference external" href="https://github.com/open-navigation/opennav_coverage">https://github.com/open-navigation/opennav_coverage</a> which contains complete coverage navigator plugins, BT nodes, behavior tree demos, and coverage planning server based on <code class="docutils literal notranslate"><span class="pre">Fields2Cover</span></code>. See that project for more information. It is on long-term trajectory for inclusion into <code class="docutils literal notranslate"><span class="pre">Nav2</span></code>, but there are still yet a few missing features from Fields2Cover before we can integrate that into the main project to be up to snuff in terms of all the major features and capabilities users would expect from a coverage planning system.</p>
 <p>If you’d like to see coverage planning in Nav2 directly, please consider contributing <a class="reference external" href="https://github.com/Fields2Cover/Fields2Cover/issues/73">to the as-of-yet needed features described here</a>.</p>
 </div>
 <div class="section" id="opennav-docking-project">
-<h2><code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> Project<a class="headerlink" href="#opennav-docking-project" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> Project<a class="headerlink" href="#opennav-docking-project" title="Permalink to this heading"></a></h2>
 <p>A new metapackage exists in: <a class="reference external" href="https://github.com/open-navigation/opennav_docking">https://github.com/open-navigation/opennav_docking</a> which contains complete automatic charging dock framework, BT nodes, plugins, and demos.
 This allows for docking of any type of robot with any type of charging dock in a repeatable and generalized way.
 It will be integrated into Nav2 directly soon (Update June 2024: within Nav2 stack directly <code class="docutils literal notranslate"><span class="pre">nav2_docking</span></code>!)</p>
 <p>See <a class="reference internal" href="../tutorials/docs/using_docking.html#docking-tutorial"><span class="std std-ref">Using Docking Server</span></a> for a tutorial on using this new capability! Thanks to NVIDIA for sponsoring this package!</p>
 </div>
 <div class="section" id="introduce-a-new-multi-robot-bringup-launch">
-<h2>Introduce a new Multi-Robot Bringup Launch<a class="headerlink" href="#introduce-a-new-multi-robot-bringup-launch" title="Permalink to this headline">¶</a></h2>
+<h2>Introduce a new Multi-Robot Bringup Launch<a class="headerlink" href="#introduce-a-new-multi-robot-bringup-launch" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3572">PR #3572</a> introduces a new way of bringup tb3 multi-robot that names as <code class="docutils literal notranslate"><span class="pre">cloned_tb3_simulation_launch.py</span></code> for simulation. <code class="docutils literal notranslate"><span class="pre">cloned_tb3_simulation_launch.py</span></code> enables to bring up multiple robots with same parameter that described in <code class="docutils literal notranslate"><span class="pre">nav2_multirobot_param_all.yaml</span></code>. And multiple robots are separated by namespaces which are given as a Launch Arguments.
 Existing <code class="docutils literal notranslate"><span class="pre">multi_tb3_simulation_launch.py</span></code> which was utilized in previous is replaced with <code class="docutils literal notranslate"><span class="pre">unique_tb3_simulation_launch.py</span></code>, allowing for multiple unique robot instances utilizing <code class="docutils literal notranslate"><span class="pre">nav2_multirobot_params_&lt;N&gt;.yaml</span></code> configuration files.</p>
 </div>
 <div class="section" id="new-option-for-the-voxel-and-obstacle-layers">
-<h2>New option for the Voxel and Obstacle Layers<a class="headerlink" href="#new-option-for-the-voxel-and-obstacle-layers" title="Permalink to this headline">¶</a></h2>
+<h2>New option for the Voxel and Obstacle Layers<a class="headerlink" href="#new-option-for-the-voxel-and-obstacle-layers" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3612">PR #3612</a> adds a new MaxWithoutUnknownOverwrite option to combination_method parameter in Voxel and Obstacle Layers. This can be used to make sure that the static map is the dominant source of information, and
 easily prevent the robot to go through places that are not present in the static map.</p>
 </div>
 <div class="section" id="use-interpolation-rpp-parameter-depreciated">
-<h2>use_interpolation RPP Parameter Depreciated<a class="headerlink" href="#use-interpolation-rpp-parameter-depreciated" title="Permalink to this headline">¶</a></h2>
+<h2>use_interpolation RPP Parameter Depreciated<a class="headerlink" href="#use-interpolation-rpp-parameter-depreciated" title="Permalink to this heading"></a></h2>
 <p>After a distribution of testing by many users, we have depreciated the use_interpolation parameter and it is now default on at all times without the ability to disable. It improves velocity smoothness and overall quality of tracking positively in all cases.</p>
 </div>
 <div class="section" id="changes-to-mppi-goal-critic">
-<h2>Changes to MPPI Goal Critic<a class="headerlink" href="#changes-to-mppi-goal-critic" title="Permalink to this headline">¶</a></h2>
+<h2>Changes to MPPI Goal Critic<a class="headerlink" href="#changes-to-mppi-goal-critic" title="Permalink to this heading"></a></h2>
 <p>The MPPI Goal critic’s formulation is changed to better keep up with speed on approach to goal instead of preemptively slowing too significantly. It also allows you to better use the weight to adjust the degree at which it slows more naturally. This change involves adjusting the <code class="docutils literal notranslate"><span class="pre">threshold_to_consider</span></code> to be the same as your prediction horizon (e.g. samples * dt * max speed) for both the goal critic and path follower critic to have a good hand-off between them without deceleration.</p>
 </div>
 <div class="section" id="changes-to-mppi-path-angle-critic">
-<h2>Changes to MPPI Path Angle Critic<a class="headerlink" href="#changes-to-mppi-path-angle-critic" title="Permalink to this headline">¶</a></h2>
+<h2>Changes to MPPI Path Angle Critic<a class="headerlink" href="#changes-to-mppi-path-angle-critic" title="Permalink to this heading"></a></h2>
 <p>MPPI’s Path Angle critic now has a <code class="docutils literal notranslate"><span class="pre">mode</span></code> setting to adjust behavior depending on robot’s desired behavioral traits. Previously, it penalized path orientations that deviated far the the robot’s forward orientation to turn the robot towards sharp changes in the path. This is still default (<code class="docutils literal notranslate"><span class="pre">mode:</span> <span class="pre">0</span></code>), but other modes now exist too.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mode:</span> <span class="pre">1</span></code> sets the penalization of path’s relative directions by either forward orientation or the opposite for reversing to allow for true bidirectional motion when one way or another is not preferable for a symmetric robot. This uses only the path’s relative points to the robot to decide which direction to incentivize.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mode:</span> <span class="pre">2</span></code> instead uses the path’s orientations when a feasible path is given from the Smac Planners or the Smoother server’s algorithms. This way, the globally planned orientations are followed rather than the based solely on the path’s relative points. This is useful for non-circular robots in highly confined settings where there may be restricted opportunities to change directions so following the global path’s orientation are required to end in the orientation you require.</p>
 </div>
 <div class="section" id="changes-to-mppi-path-handling-for-directionality">
-<h2>Changes to MPPI Path Handling For Directionality<a class="headerlink" href="#changes-to-mppi-path-handling-for-directionality" title="Permalink to this headline">¶</a></h2>
+<h2>Changes to MPPI Path Handling For Directionality<a class="headerlink" href="#changes-to-mppi-path-handling-for-directionality" title="Permalink to this heading"></a></h2>
 <p>MPPI’s Path Align Critic and Path Handler object now have options to utilize the path’s orientation information to force the controller to change directions when and only when requested by a feasible planner. When <code class="docutils literal notranslate"><span class="pre">enforce_path_inversion</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the path handler will prune the path to the first time the directions change to force the controller to plan to the inversion point and then be set the rest of the path, once in tolerance. The Path Align critic also contains a parameter <code class="docutils literal notranslate"><span class="pre">use_path_orientations</span></code>  which can be paired with it to incentivize aligning the path containing orientation information to better attempt to achieve path inversions where requested <strong>and</strong> not do them when not requested.</p>
 <p>See MPPI’s configuration guide for complete information.</p>
 </div>
 <div class="section" id="addition-of-new-mppi-cost-critic">
-<h2>Addition of new MPPI Cost Critic<a class="headerlink" href="#addition-of-new-mppi-cost-critic" title="Permalink to this headline">¶</a></h2>
+<h2>Addition of new MPPI Cost Critic<a class="headerlink" href="#addition-of-new-mppi-cost-critic" title="Permalink to this heading"></a></h2>
 <p>Analog to the <code class="docutils literal notranslate"><span class="pre">ObstacleCritic</span></code>, the <code class="docutils literal notranslate"><span class="pre">CostCritic</span></code> is another obstacle avoiding critic alternative if the <code class="docutils literal notranslate"><span class="pre">ObstacleCritic</span></code> is not working well for you.
 This critic uses the inflated costs in the costmap to score rather than distance to obstacles as the <code class="docutils literal notranslate"><span class="pre">ObstaclesCritic</span></code> does.
 See the configuration guide for more information.</p>
 </div>
 <div class="section" id="mppi-acceleration">
-<h2>MPPI Acceleration<a class="headerlink" href="#mppi-acceleration" title="Permalink to this headline">¶</a></h2>
+<h2>MPPI Acceleration<a class="headerlink" href="#mppi-acceleration" title="Permalink to this heading"></a></h2>
 <p>New to Jazzy, MPPI is 45% faster due to a weeks long optimization campaign. Enjoy!</p>
 </div>
 <div class="section" id="move-error-code-enumerations">
-<h2>Move Error Code Enumerations<a class="headerlink" href="#move-error-code-enumerations" title="Permalink to this headline">¶</a></h2>
+<h2>Move Error Code Enumerations<a class="headerlink" href="#move-error-code-enumerations" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3693">PR #3693</a> moves the enumeration codes from the goal to the result section.</p>
 </div>
 <div class="section" id="substitution-in-parameter-file">
-<h2>Substitution in parameter file<a class="headerlink" href="#substitution-in-parameter-file" title="Permalink to this headline">¶</a></h2>
+<h2>Substitution in parameter file<a class="headerlink" href="#substitution-in-parameter-file" title="Permalink to this heading"></a></h2>
 <p>Enabled substitution in parameter file. For example, you can write the following</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">bt_navigator</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
@@ -1197,101 +1208,101 @@ See the configuration guide for more information.</p>
 <p>For more information about substitutions syntax, see <a class="reference external" href="https://docs.ros.org/en/rolling/How-To-Guides/Launch-files-migration-guide.html#substitutions">here</a></p>
 </div>
 <div class="section" id="allow-behavior-server-plugins-to-access-the-action-result">
-<h2>Allow Behavior Server Plugins to Access The Action Result<a class="headerlink" href="#allow-behavior-server-plugins-to-access-the-action-result" title="Permalink to this headline">¶</a></h2>
+<h2>Allow Behavior Server Plugins to Access The Action Result<a class="headerlink" href="#allow-behavior-server-plugins-to-access-the-action-result" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3704">PR #3704</a> allows behavior servers plugins to access and modify the action result.</p>
 </div>
 <div class="section" id="smac-planner-debug-param-name-change">
-<h2>Smac Planner Debug Param Name Change<a class="headerlink" href="#smac-planner-debug-param-name-change" title="Permalink to this headline">¶</a></h2>
+<h2>Smac Planner Debug Param Name Change<a class="headerlink" href="#smac-planner-debug-param-name-change" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">debug_visualizations</span></code> replaces <code class="docutils literal notranslate"><span class="pre">viz_expansions</span></code> parameter in Hybrid-A* to reflect the new inclusion of footprint debug information being published as well.</p>
 </div>
 <div class="section" id="smac-planner-on-approach-to-goal-shortcutting-solutions">
-<h2>Smac Planner On Approach to Goal Shortcutting Solutions<a class="headerlink" href="#smac-planner-on-approach-to-goal-shortcutting-solutions" title="Permalink to this headline">¶</a></h2>
+<h2>Smac Planner On Approach to Goal Shortcutting Solutions<a class="headerlink" href="#smac-planner-on-approach-to-goal-shortcutting-solutions" title="Permalink to this heading"></a></h2>
 <p>PR #3962 adds new params <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_cost</span></code> and <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_cost_override</span></code> in extension of <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_length</span></code> in Humble to further limit potential shortcutting of paths near obstacles in close proximity to the goal.
 It uses a maximum cost parameter (default <code class="docutils literal notranslate"><span class="pre">200</span></code>) to tell if an expansion is closer to an obstacle than a user would like. If the expansion is critically close to the goal, then it may override this constraint if <code class="docutils literal notranslate"><span class="pre">analytic_expansion_max_cost_override</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code> - allowing the constraint to be overridden to find a successful path solution, as it may be required.
 This PR also introduces additional analytic expansion scoring logic and edge case handling to improve path qualities by an analog heuristic function.</p>
 </div>
 <div class="section" id="added-gps-waypoint-follower-server">
-<h2>Added GPS Waypoint Follower Server<a class="headerlink" href="#added-gps-waypoint-follower-server" title="Permalink to this headline">¶</a></h2>
+<h2>Added GPS Waypoint Follower Server<a class="headerlink" href="#added-gps-waypoint-follower-server" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/2814">This PR 2814</a>  adds the <code class="docutils literal notranslate"><span class="pre">follow_gps_waypoints</span></code> action server in <code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code>. This server accepts a set of GPS goals instead of cartesian goals and provides all the other functionalities available on <code class="docutils literal notranslate"><span class="pre">nav2_waypoint_follower</span></code>. A new tutorial demonstrating its functionality was also added on <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/pull/70">PR 70 on navigation2_tutorials</a> and can be found on the General Tutorials directory on this website.</p>
 </div>
 <div class="section" id="smac-planner-hybrid-a-new-features">
-<h2>Smac Planner Hybrid-A* New Features<a class="headerlink" href="#smac-planner-hybrid-a-new-features" title="Permalink to this headline">¶</a></h2>
+<h2>Smac Planner Hybrid-A* New Features<a class="headerlink" href="#smac-planner-hybrid-a-new-features" title="Permalink to this heading"></a></h2>
 <p>New features <code class="docutils literal notranslate"><span class="pre">allow_primitive_interpolation</span></code> which allows for more primitives in the search set, <code class="docutils literal notranslate"><span class="pre">use_quadratic_cost_penalty</span></code>  to impact the cost penalty order in the traversal and heuristic functions, and <code class="docutils literal notranslate"><span class="pre">downsample_obstacle_heuristic</span></code> to optionally not downsample the obstacle heuristic’s costmap were added. The default behavior will remain the same. If you would like to use these new features, please check out the Smac Planner Hybrid-A* configuration guide.</p>
 </div>
 <div class="section" id="new-node-in-nav2-collision-monitor-collision-detector">
-<h2>New node in nav2_collision_monitor: Collision Detector<a class="headerlink" href="#new-node-in-nav2-collision-monitor-collision-detector" title="Permalink to this headline">¶</a></h2>
+<h2>New node in nav2_collision_monitor: Collision Detector<a class="headerlink" href="#new-node-in-nav2-collision-monitor-collision-detector" title="Permalink to this heading"></a></h2>
 <p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3500">PR #3693</a> A new node was introduced in the nav2_collision_monitor: Collision Detector.
 It works similarly to the Collision Monitor, but does not affect the robot’s velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the <code class="docutils literal notranslate"><span class="pre">collision_detector_state</span></code> topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).</p>
 </div>
 <div class="section" id="dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector">
-<h2>Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector<a class="headerlink" href="#dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector" title="Permalink to this headline">¶</a></h2>
+<h2>Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector<a class="headerlink" href="#dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector" title="Permalink to this heading"></a></h2>
 <p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3825">PR #3825</a> we added the ability to dynamically enable/disable sources and polygons in the Collision Monitor/Detector.</p>
 </div>
 <div class="section" id="expose-action-server-s-result-timeout">
-<h2>Expose action server’s result timeout<a class="headerlink" href="#expose-action-server-s-result-timeout" title="Permalink to this headline">¶</a></h2>
+<h2>Expose action server’s result timeout<a class="headerlink" href="#expose-action-server-s-result-timeout" title="Permalink to this heading"></a></h2>
 <p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3787">PR #3787</a> the timeout for action server’s result was exposed in all nodes having action servers.
 This is because in this <a class="reference external" href="https://github.com/ros2/rcl/pull/1012">PR #1012</a> in rcl a change was introduced which makes action servers discard a goal handle if the result
 is not produced within 10 seconds, when the default was set to 15 minutes before. Since some actions in Nav2 may take more than 10 seconds to complete, the user has now the ability
 to set this value through the <code class="docutils literal notranslate"><span class="pre">action_server_result_timeout</span></code> parameter, which defaults to 15 minutes in the <code class="docutils literal notranslate"><span class="pre">bt_navigators</span></code> and <code class="docutils literal notranslate"><span class="pre">waypoint_follower</span></code> and to 10 seconds in all other nodes.</p>
 </div>
 <div class="section" id="rewrittenyaml-could-add-new-parameters-to-yamls">
-<h2>RewrittenYaml could add new parameters to YAMLs<a class="headerlink" href="#rewrittenyaml-could-add-new-parameters-to-yamls" title="Permalink to this headline">¶</a></h2>
+<h2>RewrittenYaml could add new parameters to YAMLs<a class="headerlink" href="#rewrittenyaml-could-add-new-parameters-to-yamls" title="Permalink to this heading"></a></h2>
 <p>Now <code class="docutils literal notranslate"><span class="pre">RewrittenYaml</span></code> widely used in Nav2 launch-scripts, could do not only substitutions of ROS-parameters existing in original YAML, but rather additions of new parameters, that did not exist in the YAML. Certainly, these parameters should be declared for target ROS-nodes, otherwise they won’t be processed in run-time. In such functionality, they should be expressed in absolute values, separated by a dot. For example, the rewrite for a <code class="docutils literal notranslate"><span class="pre">prune_distance</span></code> parameter of a <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> node will look like <code class="docutils literal notranslate"><span class="pre">'controller_server.ros__parameters.FollowPath.prune_distance':</span> <span class="pre">'1.0'</span></code> in a <code class="docutils literal notranslate"><span class="pre">param_rewrites</span></code> dictionary of <code class="docutils literal notranslate"><span class="pre">RewrittenYaml()</span></code> argument.
 The change was intoroduced in the scope of <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3785">PR #3785</a> fix.</p>
 </div>
 <div class="section" id="simple-commander-api-allows-multi-robot-namespacing">
-<h2>Simple Commander API Allows Multi-Robot Namespacing<a class="headerlink" href="#simple-commander-api-allows-multi-robot-namespacing" title="Permalink to this headline">¶</a></h2>
+<h2>Simple Commander API Allows Multi-Robot Namespacing<a class="headerlink" href="#simple-commander-api-allows-multi-robot-namespacing" title="Permalink to this heading"></a></h2>
 <p>The Simple Navigator API now allows multi-robot namespacing by exposing a <code class="docutils literal notranslate"><span class="pre">namespace</span></code> field in the constructor to allow you to specify the Nav2 stacks’ namespace for a robot or system. See <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3803/files">this PR for details</a>.</p>
 </div>
 <div class="section" id="change-duration-type-in-wait-action-node">
-<h2>Change duration type in wait_action node<a class="headerlink" href="#change-duration-type-in-wait-action-node" title="Permalink to this headline">¶</a></h2>
+<h2>Change duration type in wait_action node<a class="headerlink" href="#change-duration-type-in-wait-action-node" title="Permalink to this heading"></a></h2>
 <p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3871">PR #3871</a> the type of duration variable in wait_action node is changed from int to double, which allows you to use floating values for wait_action.</p>
 </div>
 <div class="section" id="the-costmap-activation-fails-when-required-transforms-are-not-available">
-<h2>The costmap activation fails when required transforms are not available<a class="headerlink" href="#the-costmap-activation-fails-when-required-transforms-are-not-available" title="Permalink to this headline">¶</a></h2>
+<h2>The costmap activation fails when required transforms are not available<a class="headerlink" href="#the-costmap-activation-fails-when-required-transforms-are-not-available" title="Permalink to this heading"></a></h2>
 <p>In this <a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3866">PR #3866</a> the parameter <code class="docutils literal notranslate"><span class="pre">initial_transform_timeout</span></code> is added to the costmap. The activation of the costmap now fails,
 if the transformation from the robot base frame to the global frame does not become available during this timeout.</p>
 </div>
 <div class="section" id="subtrees-obtain-shared-resources">
-<h2>Subtrees Obtain Shared Resources<a class="headerlink" href="#subtrees-obtain-shared-resources" title="Permalink to this headline">¶</a></h2>
+<h2>Subtrees Obtain Shared Resources<a class="headerlink" href="#subtrees-obtain-shared-resources" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3911">PR #3911</a> gives all sub-trees in BT.CPP the same shared resources as the main tree (node, shared timeouts, etc).</p>
 </div>
 <div class="section" id="collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior">
-<h2>Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior<a class="headerlink" href="#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior" title="Permalink to this headline">¶</a></h2>
+<h2>Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior<a class="headerlink" href="#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3880">PR #3880</a> adds a watchdog mechanism that stops the robot if a source data is not published yet, or if no new data is received within the <cite>source_timeout`</cite> parameter, or if impossible to transform data to base frame. <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter can now be set per source: if <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> is not set for a source, the value of the node <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter is used.</p>
 <p>Additionally, this watchdog mechanism can be disabled by setting <code class="docutils literal notranslate"><span class="pre">source_timeout:</span> <span class="pre">0.0</span></code>.</p>
 </div>
 <div class="section" id="btactionserver-use-native-library-halttree">
-<h2>BtActionServer: use native library haltTree()<a class="headerlink" href="#btactionserver-use-native-library-halttree" title="Permalink to this headline">¶</a></h2>
+<h2>BtActionServer: use native library haltTree()<a class="headerlink" href="#btactionserver-use-native-library-halttree" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3950">PR #3950</a> changes the method used by <cite>BehaviorTreeEngine::haltAllActions</cite> to halt the BT nodes to the bt.cpp native method <cite>haltTree()</cite>.</p>
 <p>Before this change, only the active BT node was halted when finishing the action. After this change, all BT nodes halt() methods are called. This is very convenient to handle cleaning operation (switch off your lights when leaving) in halt().</p>
 <p>Also updated nav2_behavior_tree::BtActionServer::haltTree() to use the same. It is used nowhere in nav2 but is useful for external users (like me) that want for instance to halt the tree on preemption.</p>
 </div>
 <div class="section" id="global-frame-removed-from-2-bt-nodes">
-<h2>Global Frame Removed from 2 BT Nodes<a class="headerlink" href="#global-frame-removed-from-2-bt-nodes" title="Permalink to this headline">¶</a></h2>
+<h2>Global Frame Removed from 2 BT Nodes<a class="headerlink" href="#global-frame-removed-from-2-bt-nodes" title="Permalink to this heading"></a></h2>
 <p>The Global Frame was removed from <code class="docutils literal notranslate"><span class="pre">RemovePassedGoals</span></code> and <code class="docutils literal notranslate"><span class="pre">GoalReached</span></code> BT nodes and instead using the <code class="docutils literal notranslate"><span class="pre">frame_id</span></code> of the goal’s headers for transformation.</p>
 </div>
 <div class="section" id="introduction-of-costmapupdate-msg">
-<h2>Introduction of <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code><a class="headerlink" href="#introduction-of-costmapupdate-msg" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction of <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code><a class="headerlink" href="#introduction-of-costmapupdate-msg" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/3965">PR #3965</a> introduces a new type of message - <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code>. It is the update message related to the <code class="docutils literal notranslate"><span class="pre">Costmap.msg</span></code>. Now instead of sending the whole costmap in every message, such as with <code class="docutils literal notranslate"><span class="pre">Costmap.msg</span></code>, the <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code> includes only the area of the costmap that has changed since the previous update message. The <code class="docutils literal notranslate"><span class="pre">Costmap.msg</span></code> is sent only once at the beginning, followed by the messages of the <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code> type. The idea is to mimic the <code class="docutils literal notranslate"><span class="pre">OccupancyGrid.msg</span></code> and <code class="docutils literal notranslate"><span class="pre">OccupancyGridUpdate.msg</span></code> behavior.</p>
 <p>To activate this feature, the Costmap2D ROS parameter <code class="docutils literal notranslate"><span class="pre">always_send_full_costmap</span></code> has to be set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 <p>To subscribe to <code class="docutils literal notranslate"><span class="pre">Costmap.msg</span></code> and <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code> it is recommended to use the <code class="docutils literal notranslate"><span class="pre">CostmapSubscriber</span></code> class.</p>
 </div>
 <div class="section" id="full-stack-uses-node-clocks">
-<h2>Full Stack Uses Node Clocks<a class="headerlink" href="#full-stack-uses-node-clocks" title="Permalink to this headline">¶</a></h2>
+<h2>Full Stack Uses Node Clocks<a class="headerlink" href="#full-stack-uses-node-clocks" title="Permalink to this heading"></a></h2>
 <p>The stack no longer contains wall timers or wall rates. It will now use the node clocks. This will be ROS Time for simulation when <code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> is true. Else, it uses a steady clock.</p>
 </div>
 <div class="section" id="new-graceful-motion-controller">
-<h2>New Graceful Motion Controller<a class="headerlink" href="#new-graceful-motion-controller" title="Permalink to this headline">¶</a></h2>
+<h2>New Graceful Motion Controller<a class="headerlink" href="#new-graceful-motion-controller" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4021">PR #4021</a> introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and comfortable trajectory.</p>
 <p>See <a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html#configuring-graceful-motion-controller"><span class="std std-ref">Graceful Controller</span></a> for more information.</p>
 </div>
 <div class="section" id="plugin-libraries-in-bt-navigator-only-includes-custom-nodes">
-<h2>Plugin Libraries in BT Navigator Only Includes Custom Nodes<a class="headerlink" href="#plugin-libraries-in-bt-navigator-only-includes-custom-nodes" title="Permalink to this headline">¶</a></h2>
+<h2>Plugin Libraries in BT Navigator Only Includes Custom Nodes<a class="headerlink" href="#plugin-libraries-in-bt-navigator-only-includes-custom-nodes" title="Permalink to this heading"></a></h2>
 <p>New to Jazzy, the <code class="docutils literal notranslate"><span class="pre">plugin_lib_names</span></code> parameter implicitly includes all Nav2 BT nodes automatically. It is only required now to specify additional user-generated BT plugins to load.</p>
 </div>
 <div class="section" id="new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">
-<h2>New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers<a class="headerlink" href="#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers" title="Permalink to this headline">¶</a></h2>
+<h2>New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers<a class="headerlink" href="#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4091">In PR #4091</a> a new RViz plugin was added to select the planner, controller, goal checker, progress checker, and smoother on the fly.</p>
 <p>The primary goal of this plugin is to facilitate the developers and easy integration testing of their configuration before deploying the robot in the intended application.</p>
 <p>In order to facilitate the dynamic selection of the specified components, the BT selector nodes for all these components were utilized and were updated to all the relevant BT nodes.</p>
@@ -1305,14 +1316,14 @@ if the transformation from the robot base frame to the global frame does not bec
 </div>
 </div>
 <div class="section" id="rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing">
-<h2>RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code><a class="headerlink" href="#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing" title="Permalink to this headline">¶</a></h2>
+<h2>RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code><a class="headerlink" href="#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4140">In PR #4140</a> a new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> parameter (default <code class="docutils literal notranslate"><span class="pre">false</span></code>) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same.</p>
 <p>Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. It can be used only when <code class="docutils literal notranslate"><span class="pre">use_fixed_curvature_lookahead:</span> <span class="pre">true</span></code>.</p>
 <a class="reference internal image-reference" href="../_images/rpp_goal_lookahead_interpolate.gif"><img alt="../_images/rpp_goal_lookahead_interpolate.gif" src="../_images/rpp_goal_lookahead_interpolate.gif" style="width: 45%;" /></a>
 <p>Additionally, the conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code> was fixed so <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> can now be used backward.</p>
 </div>
 <div class="section" id="cancel-checker-interface-for-globalplanner">
-<h2>Cancel Checker Interface For GlobalPlanner<a class="headerlink" href="#cancel-checker-interface-for-globalplanner" title="Permalink to this headline">¶</a></h2>
+<h2>Cancel Checker Interface For GlobalPlanner<a class="headerlink" href="#cancel-checker-interface-for-globalplanner" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4148">PR #4148</a> introduces a new interface for the <code class="docutils literal notranslate"><span class="pre">GlobalPlanner</span></code> to allow for the cancellation of the current planning task.
 Before the planners would continue to plan even if the goal was cancelled, now they can check it and stop planning if the goal is cancelled.
 New interface for <code class="docutils literal notranslate"><span class="pre">GlobalPlanner::createPlan</span></code>:</p>
@@ -1326,19 +1337,19 @@ New interface for <code class="docutils literal notranslate"><span class="pre">G
 Smac and Theta* planners have a new parameter <code class="docutils literal notranslate"><span class="pre">terminal_checking_interval</span></code> which is the frequency of the cancel or timeout checking in terms of number of iterations.</p>
 </div>
 <div class="section" id="new-btactionserver-btnavigator-parameter">
-<h2>New BtActionServer/BtNavigator parameter<a class="headerlink" href="#new-btactionserver-btnavigator-parameter" title="Permalink to this headline">¶</a></h2>
+<h2>New BtActionServer/BtNavigator parameter<a class="headerlink" href="#new-btactionserver-btnavigator-parameter" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4209">PR #4209</a> introduces a new boolean parameter <code class="docutils literal notranslate"><span class="pre">always_reload_bt_xml</span></code>, which enables the possibility to always reload a requested behavior tree XML description, regardless of the currently active XML. This allows keeping the action server running while changing/developing the XML description.</p>
 </div>
 <div class="section" id="new-collision-monitor-parameter">
-<h2>New collision monitor parameter<a class="headerlink" href="#new-collision-monitor-parameter" title="Permalink to this headline">¶</a></h2>
+<h2>New collision monitor parameter<a class="headerlink" href="#new-collision-monitor-parameter" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4207">PR #4207</a> introduces a new boolean parameter <code class="docutils literal notranslate"><span class="pre">polygon_subscribe_transient_local</span></code> (value is false by default), which set the QoS durability for polygon topic or footprint topic subscription.</p>
 </div>
 <div class="section" id="new-graceful-cancellation-api-for-controllers">
-<h2>New graceful cancellation API for Controllers<a class="headerlink" href="#new-graceful-cancellation-api-for-controllers" title="Permalink to this headline">¶</a></h2>
+<h2>New graceful cancellation API for Controllers<a class="headerlink" href="#new-graceful-cancellation-api-for-controllers" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4136">PR #4136</a> introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the <code class="docutils literal notranslate"><span class="pre">RegulatedPurePursuitController</span></code> by adding a new parameter <code class="docutils literal notranslate"><span class="pre">cancel_deceleration</span></code>. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.</p>
 </div>
 <div class="section" id="standardization-of-plugin-naming-with-double-colons">
-<h2>Standardization of Plugin Naming with Double Colons (::)<a class="headerlink" href="#standardization-of-plugin-naming-with-double-colons" title="Permalink to this headline">¶</a></h2>
+<h2>Standardization of Plugin Naming with Double Colons (::)<a class="headerlink" href="#standardization-of-plugin-naming-with-double-colons" title="Permalink to this heading"></a></h2>
 <p><a href="#id2"><span class="problematic" id="id3">`PR #4220`_</span></a> standardizes plugin naming across the Navigation2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:</p>
 <ul class="simple">
 <li><p>Behavior Server: <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::Spin</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::BackUp</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::DriveOnHeading</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::Wait</span></code>, <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::AssistedTeleop</span></code></p></li>
@@ -1348,27 +1359,27 @@ Smac and Theta* planners have a new parameter <code class="docutils literal notr
 </ul>
 </div>
 <div class="section" id="collision-monitor-dynamic-radius-for-circle-type-polygons">
-<h2>Collision monitor: dynamic radius for circle type polygons<a class="headerlink" href="#collision-monitor-dynamic-radius-for-circle-type-polygons" title="Permalink to this headline">¶</a></h2>
+<h2>Collision monitor: dynamic radius for circle type polygons<a class="headerlink" href="#collision-monitor-dynamic-radius-for-circle-type-polygons" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4226">PR #4226</a> introduces usage of parameter <code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;.polygon_sub_topic</span></code> for circle type polygons. If parameter <code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;.radius</span></code> is not set, collision monitor node subscribes to topic <code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;.polygon_sub_topic</span></code> (subscription type is <code class="docutils literal notranslate"><span class="pre">std_msgs/msg/Float32</span></code>), and the current circle polygon radius will be updating accordingly to received messages on topic.</p>
 </div>
 <div class="section" id="static-layer-new-parameter-footprint-clearing-enabled">
-<h2>Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code><a class="headerlink" href="#static-layer-new-parameter-footprint-clearing-enabled" title="Permalink to this headline">¶</a></h2>
+<h2>Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code><a class="headerlink" href="#static-layer-new-parameter-footprint-clearing-enabled" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4282">PR #4282</a> introduces usage of parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code> for the static layer. It works similarly to the <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code> parameter in the obstacle and voxel layer. If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the static layer will clear the costmap cells that are within the robot’s footprint. It is <code class="docutils literal notranslate"><span class="pre">false</span></code> by default to keep the previous behavior.</p>
 </div>
 <div class="section" id="lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">
-<h2>Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)<a class="headerlink" href="#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism" title="Permalink to this headline">¶</a></h2>
+<h2>Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)<a class="headerlink" href="#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4342">PR #4342</a> adds the parameter <code class="docutils literal notranslate"><span class="pre">bond_heartbeat_period</span></code> to the lifecycle nodes to customize the bond mechanism publishing period (on the <code class="docutils literal notranslate"><span class="pre">/bond</span></code> topic). Default value unchanged to 0.1s. Disabled if inferior or equal to 0.0.</p>
 </div>
 <div class="section" id="rotation-shim-controller-new-parameter-rotate-to-goal-heading">
-<h2>Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code><a class="headerlink" href="#rotation-shim-controller-new-parameter-rotate-to-goal-heading" title="Permalink to this headline">¶</a></h2>
+<h2>Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code><a class="headerlink" href="#rotation-shim-controller-new-parameter-rotate-to-goal-heading" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4332">PR #4332</a> introduces usage of parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code> for the rotation shim controller. It allows the rotation shim controller to take back control when reaching the XY goal tolerance to perform a clean rotation towards the goal heading. Some controllers will do this internally, but it is a useful option for others.</p>
 </div>
 <div class="section" id="mppi-controller-addition-of-acceleration-constraints">
-<h2>MPPI Controller: Addition of acceleration constraints<a class="headerlink" href="#mppi-controller-addition-of-acceleration-constraints" title="Permalink to this headline">¶</a></h2>
+<h2>MPPI Controller: Addition of acceleration constraints<a class="headerlink" href="#mppi-controller-addition-of-acceleration-constraints" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4352">PR #4352</a> adds new parameters <code class="docutils literal notranslate"><span class="pre">ax_max</span></code>, <code class="docutils literal notranslate"><span class="pre">ax_min</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_max</span></code>, <code class="docutils literal notranslate"><span class="pre">az_max</span></code> for the MPPI controller. These parameters will enable the MPPI controller to generate local trajectories within the specified acceleration constraints.</p>
 </div>
 <div class="section" id="regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration">
-<h2>RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">use_cancel_deceleration</span></code><a class="headerlink" href="#regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration" title="Permalink to this headline">¶</a></h2>
+<h2>RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">use_cancel_deceleration</span></code><a class="headerlink" href="#regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4441">PR #4441</a> adds a new parameter use_cancel_deceleration for the regulated pure pursuit controllers. This parameter enables the controller to use a constant deceleration to stop the robot gracefully instead of stopping immediately when a goal is canceled.</p>
 </div>
 </div>

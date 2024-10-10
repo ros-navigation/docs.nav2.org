@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Binary Filter Parameters &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
 
   
-      <script src="../../../_static/jquery.js"></script>
-      <script src="../../../_static/underscore.js"></script>
-      <script src="../../../_static/doctools.js"></script>
-      <script src="../../../_static/clipboard.min.js"></script>
-      <script src="../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1089,7 +1100,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="binary-filter-parameters">
-<span id="binary-filter"></span><h1>Binary Filter Parameters<a class="headerlink" href="#binary-filter-parameters" title="Permalink to this headline">¶</a></h1>
+<span id="binary-filter"></span><h1>Binary Filter Parameters<a class="headerlink" href="#binary-filter-parameters" title="Permalink to this heading"></a></h1>
 <p>Binary Filter - is a Costmap Filter that publishes a boolean topic, flipping binary state when the encoded filter space value (corresponding to the filter mask point where the robot is) is higher than given threshold. It then flips back when lower or equal.</p>
 <p>Filter space value is being calculated as: <code class="docutils literal notranslate"><span class="pre">Fv</span> <span class="pre">=</span> <span class="pre">base</span> <span class="pre">+</span> <span class="pre">multiplier</span> <span class="pre">*</span> <span class="pre">mask_value</span></code>, where <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> are being published in a filter info by Costmap Filter Info Server. The example of usage are include: camera operating on/off to turn off cameras in sensitive areas, headlights switch on/off for moving indoors to outdoors, smart house light triggering, etc.</p>
 <img alt="../../../_images/binary_filter.png" class="align-center" src="../../../_images/binary_filter.png" />
@@ -1217,7 +1228,7 @@
 </dd>
 </dl>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>

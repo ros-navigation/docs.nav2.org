@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Using VIO to Augment Robot Odometry &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="using-vio-to-augment-robot-odometry">
-<span id="integrating-vio"></span><h1>Using VIO to Augment Robot Odometry<a class="headerlink" href="#using-vio-to-augment-robot-odometry" title="Permalink to this headline">¶</a></h1>
+<span id="integrating-vio"></span><h1>Using VIO to Augment Robot Odometry<a class="headerlink" href="#using-vio-to-augment-robot-odometry" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#setting-up-the-zed-x-camera">Setting Up the ZED X Camera</a></p></li>
@@ -1097,7 +1108,7 @@
 <li><p><a class="reference internal" href="#fusing-vslam-into-global-state-estimate">Fusing VSLAM Into Global State Estimate</a></p></li>
 </ul>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial highlights how to setup Visual-Inerial Odometry (VIO) into a Nav2 and ROS 2 based robotics system to augment robot odometry.</p>
 <p>Many modern robotics platforms have unideal configurations for high quality wheel odometry. For example, skid-steer, tracked, omnidirectional robots using mecanum wheels, and legged robots are notorious for producing suboptimal odometry. These types of platforms are becoming increasingly common in the robotics landscape and require augmentations or replacement sources of odometry. Further, some applications of robotics technologies involve retrofitting existing equipment which may not have odometry altogether.</p>
 <p>A subfield of computer vision and robotics focuses on how to use Visual (e.g. camera) and Inertial (e.g. IMU) data in order to compute high-speed relative motion independent of robot mechanics. This is an especially useful technology for UAVs without accurate intrinsic odometric sensing capabilities – or mobile robots with poor interinsic odometry measurements.</p>
@@ -1113,7 +1124,7 @@
 </div>
 </div>
 <div class="section" id="setting-up-the-zed-x-camera">
-<h2>Setting Up the ZED X Camera<a class="headerlink" href="#setting-up-the-zed-x-camera" title="Permalink to this headline">¶</a></h2>
+<h2>Setting Up the ZED X Camera<a class="headerlink" href="#setting-up-the-zed-x-camera" title="Permalink to this heading"></a></h2>
 <p>We’re using the ZED X for the purposes of this tutorial due to its:</p>
 <ul class="simple">
 <li><p>Smaller size similar to other AMR depth sensors</p></li>
@@ -1134,7 +1145,7 @@ $<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </sp
 <p>We want to be able to fuse in other information such as an external IMU, wheel odometry, GPS, or other sensors into our local or global state estimates, so we need to disable TF publication of <code class="docutils literal notranslate"><span class="pre">map-&gt;odom</span></code> and <code class="docutils literal notranslate"><span class="pre">odom-&gt;base_link</span></code> to be provided by our fused outputs. Especially considering the ZED X camera knows nothing about the nature of the <code class="docutils literal notranslate"><span class="pre">base_link</span></code> frame. However, if you would like to use the ZED’s state estimate for your entire system without further sensor fusion, you certainly can!</p>
 </div>
 <div class="section" id="setting-up-zed-ros">
-<h2>Setting Up ZED ROS<a class="headerlink" href="#setting-up-zed-ros" title="Permalink to this headline">¶</a></h2>
+<h2>Setting Up ZED ROS<a class="headerlink" href="#setting-up-zed-ros" title="Permalink to this heading"></a></h2>
 <p>In order to run VIO alone, we need to do the following:</p>
 <ol class="arabic simple">
 <li><p>Stop computing VSLAM’s <code class="docutils literal notranslate"><span class="pre">map-&gt;odom</span></code>, TF transform. This part of the TF tree is provided by our global localization solution (e.g. AMCL, GPS, fused global state estimate).</p></li>
@@ -1170,7 +1181,7 @@ $<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </sp
 </div>
 </div>
 <div class="section" id="fusing-vio-into-local-state-estimate">
-<h2>Fusing VIO Into Local State Estimate<a class="headerlink" href="#fusing-vio-into-local-state-estimate" title="Permalink to this headline">¶</a></h2>
+<h2>Fusing VIO Into Local State Estimate<a class="headerlink" href="#fusing-vio-into-local-state-estimate" title="Permalink to this heading"></a></h2>
 <p>Now that we have the ZED ROS 2 drivers set up to publish our VIO to a topic and leave our TF tree to the fusion algorithm and Robot State Publisher (e.g. URDF), we’re finally ready to fuse in VIO into our broader state estimate using the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package.</p>
 <p>This package is a generalized EKF and UKF solution to state estimation of potentially many different topics, publishing at different rates, of different types. If you’re unfamiliar with <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> checkout our <a class="reference internal" href="../../setup_guides/index.html#setup-guides"><span class="std std-ref">First-Time Robot Setup Guide</span></a>’s Odometry page for basic information and the <a class="reference external" href="http://docs.ros.org/en/noetic/api/robot_localization/html/index.html">package’s extensive documentation</a>.</p>
 <p>Most users at this point already have a <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> configuration file in their robot systems to fuse existing sensors together, such as wheel odometry (even poor) and robot IMUs. We’ll be adding a new odom field, <code class="docutils literal notranslate"><span class="pre">odom1</span></code>, to our configuration to fuse in VIO’s position and orientation into our filter. If this is your first odometry field, use <code class="docutils literal notranslate"><span class="pre">odom0</span></code> and you can base your file on <a class="reference external" href="https://github.com/cra-ros-pkg/robot_localization/blob/ros2/params/ekf.yaml">ekf.yaml</a>.</p>
@@ -1191,7 +1202,7 @@ $<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </sp
 </div>
 <p>Make sure to evaluate your EKF’s <code class="docutils literal notranslate"><span class="pre">frequency</span></code>, <code class="docutils literal notranslate"><span class="pre">two_d_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_tf</span></code>, and key frames to be appropriate for your application. We generally want to publish TF and have 2D mode on when navigating in flat indoor environments only.</p>
 <div class="section" id="fusing-vslam-into-global-state-estimate">
-<h3>Fusing VSLAM Into Global State Estimate<a class="headerlink" href="#fusing-vslam-into-global-state-estimate" title="Permalink to this headline">¶</a></h3>
+<h3>Fusing VSLAM Into Global State Estimate<a class="headerlink" href="#fusing-vslam-into-global-state-estimate" title="Permalink to this heading"></a></h3>
 <p>While out of the scope of this tutorial, it is possible to continue to produce VSLAM results for global localization with loop closure (both in general and using the Stereolabs Position Tracking SDK). The steps for integration are similar to the last sections, except:</p>
 <ul class="simple">
 <li><p>Continue to disable the TF tree for <code class="docutils literal notranslate"><span class="pre">map-&gt;odom</span></code>, but the global pose topic will continue to publish under <code class="docutils literal notranslate"><span class="pre">pose</span></code> for fusion</p></li>
@@ -1201,7 +1212,7 @@ $<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </sp
 </div>
 </div>
 <div class="section" id="testing-it-out">
-<h2>Testing it Out!<a class="headerlink" href="#testing-it-out" title="Permalink to this headline">¶</a></h2>
+<h2>Testing it Out!<a class="headerlink" href="#testing-it-out" title="Permalink to this heading"></a></h2>
 <p>In the below example, we’re fusing the Stereolabs SDK’s Pose Tracking VIO solution with a robot’s external IMU and odometry (e.g. <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> has <code class="docutils literal notranslate"><span class="pre">odom0</span></code> <code class="docutils literal notranslate"><span class="pre">odom1</span></code> and <code class="docutils literal notranslate"><span class="pre">imu0</span></code>) to improve performance while navigating on a legged robot platform in outdoor environments. The robot’s internal odometry based on leg motion is quite poor and causes the robot to have generally poor autonomous navigation performance.</p>
 <p>The Visual-Inertial Odometry’s error over these datasets is 4.1% over the 70m path. Typically for ‘good’ odometry from wheel encoders + IMU, I would like to see 2-3% fully tuned (or less than 1% for ‘great’ odometry), so this is a great source! Fused in with the legged robot odometry, it improves overall performance to an acceptable level!</p>
 <div class="admonition note">

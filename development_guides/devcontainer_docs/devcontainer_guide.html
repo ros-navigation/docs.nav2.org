@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dev Container Guide &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1089,10 +1100,10 @@
            <div itemprop="articleBody">
              
   <div class="section" id="dev-container-guide">
-<span id="devcontainer-guide"></span><h1>Dev Container Guide<a class="headerlink" href="#dev-container-guide" title="Permalink to this headline">¶</a></h1>
+<span id="devcontainer-guide"></span><h1>Dev Container Guide<a class="headerlink" href="#dev-container-guide" title="Permalink to this heading"></a></h1>
 <p>In this guide, we’ll walk through the process of creating and using dev containers for the project. While included subsections will provide greater detail on the various aspects of the process, complete comprehension of the entire guide is not required to get started, but is recommended for those interested in how dev containers work, or how to customize and optimize them for their own personal workflows.</p>
 <div class="section" id="creating-dev-containers">
-<h2>Creating Dev Containers<a class="headerlink" href="#creating-dev-containers" title="Permalink to this headline">¶</a></h2>
+<h2>Creating Dev Containers<a class="headerlink" href="#creating-dev-containers" title="Permalink to this heading"></a></h2>
 <p>Before creating a dev container, you’ll want to choose the exact configuration to use. By default the <code class="docutils literal notranslate"><span class="pre">.devcontainer/devcontainer.json</span></code> configuration is selected, however you can also choose any other <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> file in the <code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> directory, where such configurations can be nested to provide greater customization: either by targeting different stages within different Dockerfiles, overriding any merged metadata or default properties, or inclusion of additional extensions and alternate commands.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1116,7 +1127,7 @@
 </ul>
 </div>
 <div class="section" id="building-the-image">
-<h3>Building the image<a class="headerlink" href="#building-the-image" title="Permalink to this headline">¶</a></h3>
+<h3>Building the image<a class="headerlink" href="#building-the-image" title="Permalink to this heading"></a></h3>
 <p>When first creating Dev Containers, any supporting tool or service used will download and build the docker images needed to run the container. This includes pulling any parent images the project’s Dockerfile builds <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, as well as any tags or layers declared via <code class="docutils literal notranslate"><span class="pre">cacheFrom</span></code>, as specified in the chosen <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file. This can take a while, but only needs to be done once, or at least not again until such layers are updated and pushed to the image registry.</p>
 <p>Specifically, for this project, the default <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> file targets the <code class="docutils literal notranslate"><span class="pre">dever</span></code> stage within the project’s root Dockerfile, the stage that also includes handy tools for developing the project, such as bash auto completion. This stage is in turn built <code class="docutils literal notranslate"><span class="pre">FROM</span></code> the <code class="docutils literal notranslate"><span class="pre">builder</span></code> stage, the stage that only includes the dependencies needed for building the project, as reused by the project’s CI. For example, the <code class="docutils literal notranslate"><span class="pre">dever</span></code> stage modifies <code class="docutils literal notranslate"><span class="pre">/etc/bash.bashrc</span></code> to automatically source <code class="docutils literal notranslate"><span class="pre">install/setup.bash</span></code> from the underlay workspace, ensuring all VS Code extensions are loaded with the correct environment, while avoiding any race conditions during installation and startup.</p>
 <p>To speed up the initial build, images layers from this <code class="docutils literal notranslate"><span class="pre">builder</span></code> stage are cached by pulling the same image tag used by the project’s CI, hosted from the image registry. This ensures your local dev container replicates our CI environment as close as possible, while benefiting from any cached work preemptively performed by the CI. Yet, this still allows you to customize the project’s Dockerfile and rebuild the container, without needing to update CI images to reflect your local modifications.</p>
@@ -1134,7 +1145,7 @@
 <p>Once the base image from the target stage is built, the supporting tool or service may then add additional layers to the image, such as installing additional <a class="reference external" href="https://containers.dev/features">features</a> or customizations. For VS Code, this also includes some fancy file caching for any extensions to install later. Once this custom image is built, it is then used to start the dev container.</p>
 </div>
 <div class="section" id="starting-the-container">
-<h3>Starting the container<a class="headerlink" href="#starting-the-container" title="Permalink to this headline">¶</a></h3>
+<h3>Starting the container<a class="headerlink" href="#starting-the-container" title="Permalink to this heading"></a></h3>
 <p>When first creating Dev Containers, any supporting tool or service will invoke a sequence of commands specified in the chosen <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file. This can take a while, but only needs to be done once, or at least not again until the container is rebuilt, triggered by either updating the Dockerfile, base image, or <code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> config.</p>
 <p>Specifically, for this project, the default <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config executes the <code class="docutils literal notranslate"><span class="pre">onCreateCommand</span></code> to initially colcon cache, clean, and build the overlay workspace for the project. This ensures the workspace is precompiled and ready to use, while also ensuring any changes to the project’s source code are reflected in the container. This is useful for:</p>
 <ul class="simple">
@@ -1239,14 +1250,14 @@
 </div>
 </div>
 <div class="section" id="using-dev-containers">
-<h2>Using Dev Containers<a class="headerlink" href="#using-dev-containers" title="Permalink to this headline">¶</a></h2>
+<h2>Using Dev Containers<a class="headerlink" href="#using-dev-containers" title="Permalink to this heading"></a></h2>
 <p>Once the dev container has been created and setup completed, VS Code will open a new workspace directly from the project’s root directory, which itself is mounted within the source directory in the overlay colcon workspace. From here you can build, test, and debug the project as you normally would, with the added benefit of having the project’s dependencies, intellisense, linters, and other extensions pre-configured and ready to use. Simply open a new terminal (Crtl+Shift+`), cd to the root of the colcon workspace, and run the usual colcon commands.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can incorporate the same scripts used by the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file to further automate your local development workflow.</p>
 </div>
 <div class="section" id="terminals">
-<h3>Terminals<a class="headerlink" href="#terminals" title="Permalink to this headline">¶</a></h3>
+<h3>Terminals<a class="headerlink" href="#terminals" title="Permalink to this heading"></a></h3>
 <p>If you prefer using an alternate terminal emulator, rather than the built-in VS Code terminal, you can open a separate shell session by simply using the Dev Container CLI or directly using the Docker CLI via the <code class="docutils literal notranslate"><span class="pre">exec</span></code> subcommands.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs/devcontainers/devcontainer-cli">Dev Container CLI</a></p>
@@ -1276,7 +1287,7 @@
 </div>
 </div>
 <div class="section" id="lifecycle">
-<h3>Lifecycle<a class="headerlink" href="#lifecycle" title="Permalink to this headline">¶</a></h3>
+<h3>Lifecycle<a class="headerlink" href="#lifecycle" title="Permalink to this heading"></a></h3>
 <p>While using the dev container, try and keep in mind the lifecycle of the container itself. Specifically, containers are ephemeral, meaning they are normally destroyed and recreated whenever the dev environment is rebuilt or updated. Subsequently, a best practice is to avoid storing any persistent data within the container, and instead utilize the project’s source directory, or a separate mounted volume. When altering the development environment inside the container, try to remember to codify your changes into the Dockerfile, or the <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> config file, so that they can be easily reproduced and shared with others.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -1291,7 +1302,7 @@
 </div>
 </div>
 <div class="section" id="rebuilding">
-<h3>Rebuilding<a class="headerlink" href="#rebuilding" title="Permalink to this headline">¶</a></h3>
+<h3>Rebuilding<a class="headerlink" href="#rebuilding" title="Permalink to this heading"></a></h3>
 <p>From time to time, you may need to rebuild the dev container, either because the base image, or <code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> config was updated, or simply out of wanting a new fresh development environment. To do so, simply open the Command Palette (Ctrl+Shift+P) and select the <code class="docutils literal notranslate"><span class="pre">Remote-Containers:</span> <span class="pre">Rebuild</span> <span class="pre">Container</span></code> command.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>

@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction To Nav2 Specific Nodes &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="introduction-to-nav2-specific-nodes">
-<span id="nav2-specifc-nodes"></span><h1>Introduction To Nav2 Specific Nodes<a class="headerlink" href="#introduction-to-nav2-specific-nodes" title="Permalink to this headline">¶</a></h1>
+<span id="nav2-specifc-nodes"></span><h1>Introduction To Nav2 Specific Nodes<a class="headerlink" href="#introduction-to-nav2-specific-nodes" title="Permalink to this heading"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <dl class="simple">
@@ -1103,7 +1114,7 @@
 The full list of custom BT nodes can be found in the <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins">nav2_behavior_tree plugins folder</a>.
 The <a class="reference external" href="../../configuration/packages/configuring-bt-xml.html">configuration guide</a> can also be quite useful.</p>
 <div class="section" id="action-nodes">
-<h2>Action Nodes<a class="headerlink" href="#action-nodes" title="Permalink to this headline">¶</a></h2>
+<h2>Action Nodes<a class="headerlink" href="#action-nodes" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>ComputePathToPose - ComputePathToPose Action Server Client (Planner Interface)</p></li>
 <li><p>FollowPath - FollowPath Action Server Client (Controller Interface)</p></li>
@@ -1114,7 +1125,7 @@ The <a class="reference external" href="../../configuration/packages/configuring
 the <cite>ClearCostmapService</cite> action node is <em>not</em> an action server client, but a service client.</p>
 </div>
 <div class="section" id="condition-nodes">
-<h2>Condition Nodes<a class="headerlink" href="#condition-nodes" title="Permalink to this headline">¶</a></h2>
+<h2>Condition Nodes<a class="headerlink" href="#condition-nodes" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>GoalUpdated - Checks if the goal on the goal topic has been updated</p></li>
 <li><p>GoalReached - Checks if the goal has been reached</p></li>
@@ -1126,7 +1137,7 @@ The key condition that is used in the default Nav2 BT is <code class="docutils l
 Condition nodes are typically paired with ReactiveFallback nodes.</p>
 </div>
 <div class="section" id="decorator-nodes">
-<h2>Decorator Nodes<a class="headerlink" href="#decorator-nodes" title="Permalink to this headline">¶</a></h2>
+<h2>Decorator Nodes<a class="headerlink" href="#decorator-nodes" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Distance Controller - Will tick children nodes every time the robot has traveled a certain distance</p></li>
 <li><p>Rate Controller - Controls the ticking of its child node at a constant frequency. The tick rate is an exposed port</p></li>
@@ -1136,7 +1147,7 @@ Condition nodes are typically paired with ReactiveFallback nodes.</p>
 </ul>
 </div>
 <div class="section" id="control-pipelinesequence">
-<h2>Control: PipelineSequence<a class="headerlink" href="#control-pipelinesequence" title="Permalink to this headline">¶</a></h2>
+<h2>Control: PipelineSequence<a class="headerlink" href="#control-pipelinesequence" title="Permalink to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">PipelineSequence</span></code> control node re-ticks previous children when a child returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>.
 This node is similar to the <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> node, with the additional property that the children prior to the “current” are re-ticked, (resembling the flow of water in a pipe).
 If at any point a child returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>, all children will be halted and the parent node will also return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>. Upon <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> of the <strong>last node</strong> in the sequence, this node will halt and return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.</p>
@@ -1214,7 +1225,7 @@ If at any point a child returns <code class="docutils literal notranslate"><span
 <p>For additional details regarding the <code class="docutils literal notranslate"><span class="pre">PipelineSequence</span></code> please see the <a class="reference external" href="../../configuration/packages/bt-plugins/controls/PipelineSequence.html">PipelineSequence configuration guide</a>.</p>
 </div>
 <div class="section" id="control-recovery">
-<h2>Control: Recovery<a class="headerlink" href="#control-recovery" title="Permalink to this headline">¶</a></h2>
+<h2>Control: Recovery<a class="headerlink" href="#control-recovery" title="Permalink to this heading"></a></h2>
 <p>The Recovery control node has only two children and returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code> if and only if the first child returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.
 If the first child returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>, the second child will be ticked. This loop will continue until either:</p>
 <ul class="simple">
@@ -1248,7 +1259,7 @@ Now that we have cleared the costmap, let’s say the robot is correctly able to
 <p>For additional details regarding the <code class="docutils literal notranslate"><span class="pre">RecoveryNode</span></code> please see the <a class="reference external" href="../../configuration/packages/bt-plugins/controls/RecoveryNode.html">RecoveryNode configuration guide</a>.</p>
 </div>
 <div class="section" id="control-roundrobin">
-<h2>Control: RoundRobin<a class="headerlink" href="#control-roundrobin" title="Permalink to this headline">¶</a></h2>
+<h2>Control: RoundRobin<a class="headerlink" href="#control-roundrobin" title="Permalink to this heading"></a></h2>
 <p>The RoundRobin control node ticks its children in a round robin fashion until a child returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>, in which the parent node will also return <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>.
 If all children return <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> so will the parent RoundRobin.</p>
 <p>Here is an example BT we will use to walk through the concept.</p>

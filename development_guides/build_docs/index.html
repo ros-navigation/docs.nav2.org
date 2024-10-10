@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Build and Install &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,9 +1099,9 @@
            <div itemprop="articleBody">
              
   <div class="section" id="build-and-install">
-<span id="build-instructions"></span><h1>Build and Install<a class="headerlink" href="#build-and-install" title="Permalink to this headline">¶</a></h1>
+<span id="build-instructions"></span><h1>Build and Install<a class="headerlink" href="#build-and-install" title="Permalink to this heading"></a></h1>
 <div class="section" id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this heading"></a></h2>
 <p>Nav2 and its dependencies are released as binaries.
 You may install it via the following to get the latest stable released version:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;distro&gt;/setup.bash
@@ -1102,7 +1113,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </div>
 </div>
 <div class="section" id="build">
-<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<h2>Build<a class="headerlink" href="#build" title="Permalink to this heading"></a></h2>
 <p>There are a few ways to build Nav2 using:</p>
 <ul class="simple">
 <li><p>Released Distribution Binaries</p>
@@ -1126,7 +1137,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>For a <em>repeatable</em>, <em>reproducible</em> and <em>streamlined</em> development experience, check the Nav2 documentation on using <a class="reference internal" href="../devcontainer_docs/index.html#devcontainers"><span class="std std-ref">Dev Containers</span></a>!</p>
 </div>
 <div class="content-collapse section" id="released-distribution-binaries">
-<h3>Released Distribution Binaries<a class="headerlink" href="#released-distribution-binaries" title="Permalink to this headline">¶</a></h3>
+<h3>Released Distribution Binaries<a class="headerlink" href="#released-distribution-binaries" title="Permalink to this heading"></a></h3>
 <p>To build Nav2, you’ll first need to build or install ROS 2 and related development tools, including: <code class="docutils literal notranslate"><span class="pre">colcon</span></code>, <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> and <code class="docutils literal notranslate"><span class="pre">vcstool</span></code>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1158,7 +1169,7 @@ colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</s
 </div>
 </div>
 <div class="content-collapse section" id="rolling-development-source">
-<h3>Rolling Development Source<a class="headerlink" href="#rolling-development-source" title="Permalink to this headline">¶</a></h3>
+<h3>Rolling Development Source<a class="headerlink" href="#rolling-development-source" title="Permalink to this heading"></a></h3>
 <p>Building Nav2 using rolling development source is similar to building Nav2 from released distribution binaries, where instead you build dependencies from source using the main development branches for all ROS based packages.
 Nav2 does not currently release binaries on rolling, so it must be build from source.</p>
 <div class="admonition seealso">
@@ -1187,7 +1198,7 @@ to ignore the rosdep error of from the missing <code class="docutils literal not
 </div>
 </div>
 <div class="content-collapse section" id="docker-container-images">
-<h3>Docker Container Images<a class="headerlink" href="#docker-container-images" title="Permalink to this headline">¶</a></h3>
+<h3>Docker Container Images<a class="headerlink" href="#docker-container-images" title="Permalink to this heading"></a></h3>
 <p>Building Nav2 using Docker container images provides a repeatable and reproducible environment to automate and self document the entire setup process. Instead of manually invoking the development tools as documented above, you can leverage the project’s Dockerfiles to build and install Nav2 for various distributions.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1216,14 +1227,14 @@ docker<span class="w"> </span>build<span class="w"> </span>--tag<span class="w">
 </div>
 <hr class="docutils" />
 <div class="section" id="generate-doxygen">
-<h2>Generate Doxygen<a class="headerlink" href="#generate-doxygen" title="Permalink to this headline">¶</a></h2>
+<h2>Generate Doxygen<a class="headerlink" href="#generate-doxygen" title="Permalink to this heading"></a></h2>
 <p>Run <code class="docutils literal notranslate"><span class="pre">doxygen</span></code> in the root of the Nav2 repository.
 It will generate a <code class="docutils literal notranslate"><span class="pre">/doc/*</span></code> directory containing the documentation.
 The documentation entrypoint in a browser is index.html.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="help">
-<h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
+<h2>Help<a class="headerlink" href="#help" title="Permalink to this heading"></a></h2>
 <p><a class="reference internal" href="build_troubleshooting_guide.html#build-troubleshooting-guide"><span class="std std-ref">Build Troubleshooting Guide</span></a></p>
 <div class="toctree-wrapper compound">
 </div>

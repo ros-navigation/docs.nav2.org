@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Writing a New Costmap2D Plugin &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="writing-a-new-costmap2d-plugin">
-<span id="writing-new-costmap2d-plugin"></span><h1>Writing a New Costmap2D Plugin<a class="headerlink" href="#writing-a-new-costmap2d-plugin" title="Permalink to this headline">¶</a></h1>
+<span id="writing-new-costmap2d-plugin"></span><h1>Writing a New Costmap2D Plugin<a class="headerlink" href="#writing-a-new-costmap2d-plugin" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
@@ -1096,18 +1107,18 @@
 </ul>
 <a class="reference internal image-reference" href="../../_images/gradient_layer_preview.gif"><img alt="Animated gif with gradient demo" class="align-center" src="../../_images/gradient_layer_preview.gif" style="width: 700px;" /></a>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial shows how to create your own simple <a class="reference external" href="http://wiki.ros.org/pluginlib">plugin</a> for Costmap2D.</p>
 <p>Before starting the tutorial, please check this <a class="reference external" href="https://vimeo.com/106994708">video</a> which contains information about Costmap2D layers design and plugins basic operational principals.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in <a class="reference internal" href="../../development_guides/build_docs/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
 </div>
 <div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="write-a-new-costmap2d-plugin">
-<h3>1- Write a new Costmap2D plugin<a class="headerlink" href="#write-a-new-costmap2d-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>1- Write a new Costmap2D plugin<a class="headerlink" href="#write-a-new-costmap2d-plugin" title="Permalink to this heading"></a></h3>
 <p>For a demonstration, this example will create a costmap plugin that puts repeating cost gradients in the costmap.
 The annotated code for this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials">navigation2_tutorials</a> repository as the <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin</span></code> ROS 2-package.
 Please refer to it when making your own layer plugin for Costmap2D.</p>
@@ -1215,7 +1226,7 @@ using one of the following update methods: <code class="docutils literal notrans
 </ol>
 </div>
 <div class="section" id="export-and-make-gradientlayer-plugin">
-<h3>2- Export and make GradientLayer plugin<a class="headerlink" href="#export-and-make-gradientlayer-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>2- Export and make GradientLayer plugin<a class="headerlink" href="#export-and-make-gradientlayer-plugin" title="Permalink to this heading"></a></h3>
 <p>The written plugin will be loaded at runtime as its basic parent class and then will be called by plugin handling modules (for costmap2d by <code class="docutils literal notranslate"><span class="pre">LayeredCostmap</span></code>). Pluginlib opens a given plugin in run-time and provides methods from exported classes to be callable. The mechanism of class exporting tells pluginlib which basic class should be used during these calls. This allows to extend an application by plugins without knowing application source code or recompiling it.</p>
 <p>In our example the <code class="docutils literal notranslate"><span class="pre">nav2_gradient_costmap_plugin::GradientLayer</span></code> plugin’s class should be dynamically loaded as a <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::Layer</span></code> basic class. For this the plugin should be registered as follows:</p>
 <ol class="arabic simple">
@@ -1260,7 +1271,7 @@ PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap
 <p>Now the plugin is ready to use.</p>
 </div>
 <div class="section" id="enable-the-plugin-in-costmap2d">
-<h3>3- Enable the plugin in Costmap2D<a class="headerlink" href="#enable-the-plugin-in-costmap2d" title="Permalink to this headline">¶</a></h3>
+<h3>3- Enable the plugin in Costmap2D<a class="headerlink" href="#enable-the-plugin-in-costmap2d" title="Permalink to this heading"></a></h3>
 <p>At the next step it is required to tell Costmap2D about new plugin. For that the plugin should be added to <code class="docutils literal notranslate"><span class="pre">plugin_names</span></code> and <code class="docutils literal notranslate"><span class="pre">plugin_types</span></code> lists in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> optionally for <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code>/<code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> in order to be enabled in run-time for Controller/Planner Server. <code class="docutils literal notranslate"><span class="pre">plugin_names</span></code> list contains the names of plugin objects. These names could be anything you want. <code class="docutils literal notranslate"><span class="pre">plugin_types</span></code> contains types of listed in <code class="docutils literal notranslate"><span class="pre">plugin_names</span></code> objects. These types should correspond to <code class="docutils literal notranslate"><span class="pre">name</span></code> field of plugin class specified in plugin description XML-file.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1307,7 +1318,7 @@ gradient_layer_2:
 </div>
 </div>
 <div class="section" id="run-gradientlayer-plugin">
-<h3>4- Run GradientLayer plugin<a class="headerlink" href="#run-gradientlayer-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>4- Run GradientLayer plugin<a class="headerlink" href="#run-gradientlayer-plugin" title="Permalink to this heading"></a></h3>
 <p>Run Turtlebot3 simulation with enabled Nav2. Detailed instructions how to make it are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is shortcut command for that:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py
 </pre></div>

@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Collision Monitor Node &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
 
   
-      <script src="../../../_static/jquery.js"></script>
-      <script src="../../../_static/underscore.js"></script>
-      <script src="../../../_static/doctools.js"></script>
-      <script src="../../../_static/clipboard.min.js"></script>
-      <script src="../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1089,7 +1100,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="collision-monitor-node">
-<span id="configuring-collision-monitor-node"></span><h1>Collision Monitor Node<a class="headerlink" href="#collision-monitor-node" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-collision-monitor-node"></span><h1>Collision Monitor Node<a class="headerlink" href="#collision-monitor-node" title="Permalink to this heading"></a></h1>
 <p>The Collision Monitor is a node providing an additional level of robot safety.
 It performs several collision avoidance related tasks using incoming data from the sensors, bypassing the costmap and trajectory planners, to monitor for and prevent potential collisions at the emergency-stop level.</p>
 <p>This is analogous to safety sensor and hardware features; take in laser scans from a real-time certified safety scanner, detect if there is to be an imminent collision in a configurable bounding box, and either emergency-stop the certified robot controller or slow the robot to avoid such collision.
@@ -1106,7 +1117,7 @@ The costmaps / trajectory planners will handle most situations, but this is to h
     </div>
   </div>
 </h1><div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
 <p>The Collision Monitor uses polygons relative the robot’s base frame origin to define “zones”.
 Data that fall into these zones trigger an operation depending on the model being used.
 A given instance of the Collision Monitor can have many zones with different models at the same time.
@@ -1135,7 +1146,7 @@ Subscribed footprint is also having the same properties as other polygons, but i
 </ul>
 </div>
 <div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">base_frame_id</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1401,7 +1412,7 @@ True uses TwistStamped, false uses Twist.</p>
 </dd>
 </dl>
 <div class="section" id="polygons-parameters">
-<h3>Polygons parameters<a class="headerlink" href="#polygons-parameters" title="Permalink to this headline">¶</a></h3>
+<h3>Polygons parameters<a class="headerlink" href="#polygons-parameters" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;polygon</span> <span class="pre">name&gt;</span></code> is the corresponding polygon name ID selected for this type.</p>
 <dl class="field-list">
 <dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;polygon_name&gt;</span></code>.type</dt>
@@ -1727,7 +1738,7 @@ True uses TwistStamped, false uses Twist.</p>
 </dl>
 </div>
 <div class="section" id="velocitypolygon-parameters">
-<h3>VelocityPolygon parameters<a class="headerlink" href="#velocitypolygon-parameters" title="Permalink to this headline">¶</a></h3>
+<h3>VelocityPolygon parameters<a class="headerlink" href="#velocitypolygon-parameters" title="Permalink to this heading"></a></h3>
 <p>All previous Polygon parameters apply, in addition to the following unique parameters for VelocityPolygon.</p>
 <dl class="field-list">
 <dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;vel_poly&gt;</span></code>.holonomic</dt>
@@ -1913,7 +1924,7 @@ True uses TwistStamped, false uses Twist.</p>
 </dl>
 </div>
 <div class="section" id="observation-sources-parameters">
-<h3>Observation sources parameters<a class="headerlink" href="#observation-sources-parameters" title="Permalink to this headline">¶</a></h3>
+<h3>Observation sources parameters<a class="headerlink" href="#observation-sources-parameters" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code> is the corresponding data source name ID selected for this type.</p>
 <dl class="field-list">
 <dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.type</dt>
@@ -2080,7 +2091,7 @@ True uses TwistStamped, false uses Twist.</p>
 </div>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>Here is an example illustrating the common configurations for holonomic robots that cover multiple directions of the resultant velocity:</p>
 <a class="reference internal image-reference" href="../../../_images/holonomic_examples.png"><img alt="../../../_images/holonomic_examples.png" src="../../../_images/holonomic_examples.png" style="height: 2880px;" /></a>
 <p>Here is an example of configuration YAML for the Collision Monitor.</p>

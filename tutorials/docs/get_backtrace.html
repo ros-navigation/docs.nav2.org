@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Backtrace in ROS 2 / Nav2 &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="get-backtrace-in-ros-2-nav2">
-<span id="get-backtrace"></span><h1>Get Backtrace in ROS 2 / Nav2<a class="headerlink" href="#get-backtrace-in-ros-2-nav2" title="Permalink to this headline">¶</a></h1>
+<span id="get-backtrace"></span><h1>Get Backtrace in ROS 2 / Nav2<a class="headerlink" href="#get-backtrace-in-ros-2-nav2" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#preliminaries">Preliminaries</a></p></li>
@@ -1098,7 +1109,7 @@
 <li><p><a class="reference internal" href="#automatic-backtrace-on-crash">Automatic backtrace on crash</a></p></li>
 </ul>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This document explains one set of methods for getting backtraces for ROS 2 and Nav2.
 There are many ways to accomplish this, but this is a good starting point for new C++ developers without GDB experience.</p>
 <p>The following steps show ROS 2 users how to modify the Nav2 stack to get traces from specific servers when they encounter a problem.
@@ -1107,7 +1118,7 @@ This tutorial applies to both simulated and physical robots.</p>
 By the end of this tutorial, you should be able to get a backtrace when you notice a server crashing in ROS 2.</p>
 </div>
 <div class="section" id="preliminaries">
-<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
+<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this heading"></a></h2>
 <p>GDB is the most popular debugger for C++ on Unix systems.
 It can be used to determine the reason for a crash and track threads.
 It may also be used to add breakpoints in your code to check values in memory a particular points in your software.</p>
@@ -1140,7 +1151,7 @@ However, since this is a ROS project with lots of node configurations and other 
 Read the section that best describes the problem you’re attempting to solve.</p>
 </div>
 <div class="section" id="from-a-node">
-<h2>From a Node<a class="headerlink" href="#from-a-node" title="Permalink to this headline">¶</a></h2>
+<h2>From a Node<a class="headerlink" href="#from-a-node" title="Permalink to this heading"></a></h2>
 <p>Just as in our non-ROS example, we need to setup a GDB session before launching our ROS 2 node.
 While we could set this up through the commandline with some knowledge of the ROS 2 file system, we can instead use the launch <code class="docutils literal notranslate"><span class="pre">--prefix</span></code> option the kind folks at Open Robotics provided for us.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--prefix</span></code> will execute some bits of code before our <code class="docutils literal notranslate"><span class="pre">ros2</span></code> command allowing us to insert some information.
@@ -1190,7 +1201,7 @@ When you are done with GDB, type <code class="docutils literal notranslate"><spa
 It may ask you if you want to kill some threads at the end, say yes.</p>
 </div>
 <div class="section" id="from-a-launch-file">
-<h2>From a Launch File<a class="headerlink" href="#from-a-launch-file" title="Permalink to this headline">¶</a></h2>
+<h2>From a Launch File<a class="headerlink" href="#from-a-launch-file" title="Permalink to this heading"></a></h2>
 <p>Just as in our non-ROS example, we need to setup a GDB session before launching our ROS 2 launch file.
 While we could set this up through the commandline, we can instead make use of the same mechanics that we did in the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> node example, now using a launch file.</p>
 <p>In your launch file, find the node that you’re interested in debugging.
@@ -1227,7 +1238,7 @@ When you are done with GDB, type <code class="docutils literal notranslate"><spa
 It may ask you if you want to kill some threads at the end, say yes.</p>
 </div>
 <div class="section" id="from-large-project">
-<h2>From Large Project<a class="headerlink" href="#from-large-project" title="Permalink to this headline">¶</a></h2>
+<h2>From Large Project<a class="headerlink" href="#from-large-project" title="Permalink to this heading"></a></h2>
 <p>Working with launch files with multiple nodes is a little different so you can interact with your GDB session without being bogged down by other logging in the same terminal.
 For this reason, when working with larger launch files, its good to pull out the specific server you’re interested in and launching it separately.
 These instructions are targeting Nav2, but are applicable to any large project with many nodes of any type in a series of launch file(s).</p>
@@ -1264,7 +1275,7 @@ When you are done with GDB, type <code class="docutils literal notranslate"><spa
 It may ask you if you want to kill some threads at the end, say yes.</p>
 </div>
 <div class="section" id="from-nav2-bringup">
-<h2>From Nav2 Bringup<a class="headerlink" href="#from-nav2-bringup" title="Permalink to this headline">¶</a></h2>
+<h2>From Nav2 Bringup<a class="headerlink" href="#from-nav2-bringup" title="Permalink to this heading"></a></h2>
 <p>To debug directly from the nav2 bringup launch files you may want to do the following:</p>
 <ul class="simple">
 <li><p>Add <code class="docutils literal notranslate"><span class="pre">prefix=['xterm</span> <span class="pre">-e</span> <span class="pre">gdb</span> <span class="pre">-ex</span> <span class="pre">run</span> <span class="pre">--args']</span></code> to the non-composed node in the appropriate launch file.</p></li>
@@ -1288,7 +1299,7 @@ When you are done with GDB, type <code class="docutils literal notranslate"><spa
 It may ask you if you want to kill some threads at the end, say yes.</p>
 </div>
 <div class="section" id="automatic-backtrace-on-crash">
-<h2>Automatic backtrace on crash<a class="headerlink" href="#automatic-backtrace-on-crash" title="Permalink to this headline">¶</a></h2>
+<h2>Automatic backtrace on crash<a class="headerlink" href="#automatic-backtrace-on-crash" title="Permalink to this heading"></a></h2>
 <p>The <a class="reference external" href="https://github.com/bombela/backward-cpp">backward-cpp</a> library provides beautiful stack traces, and the <a class="reference external" href="https://github.com/pal-robotics/backward_ros/tree/foxy-devel">backward_ros</a> wrapper simplifies its integration.</p>
 <p>Just add it as a dependency and <cite>find_package</cite> it in your CMakeLists and the backward libraries will be injected in all your executables and libraries.</p>
 </div>

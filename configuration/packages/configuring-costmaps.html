@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Costmap 2D &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,12 +1099,12 @@
            <div itemprop="articleBody">
              
   <div class="section" id="costmap-2d">
-<span id="configuring-cosmaps"></span><h1>Costmap 2D<a class="headerlink" href="#costmap-2d" title="Permalink to this headline">¶</a></h1>
+<span id="configuring-cosmaps"></span><h1>Costmap 2D<a class="headerlink" href="#costmap-2d" title="Permalink to this heading"></a></h1>
 <p>Source code on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d">Github</a>.</p>
 <p>The Costmap 2D package implements a 2D grid-based costmap for environmental representations and a number of sensor processing plugins (AI outputs, depth sensor obstacle buffering, semantic information, etc).
 It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around.</p>
 <div class="section" id="costmap2d-ros-parameters">
-<h2>Costmap2D ROS Parameters<a class="headerlink" href="#costmap2d-ros-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Costmap2D ROS Parameters<a class="headerlink" href="#costmap2d-ros-parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">always_send_full_costmap</dt>
 <dd class="field-odd"><table class="docutils align-default">
@@ -1644,7 +1655,7 @@ It is used in the planner and controller servers for creating the space to check
 </dl>
 </div>
 <div class="section" id="default-plugins">
-<h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Default Plugins<a class="headerlink" href="#default-plugins" title="Permalink to this heading"></a></h2>
 <p>When the <code class="code docutils literal notranslate"><span class="pre">plugins</span></code> parameter is not overridden, the following default plugins are loaded:</p>
 <blockquote>
 <div><table class="docutils align-default">
@@ -1670,7 +1681,7 @@ It is used in the planner and controller servers for creating the space to check
 </div></blockquote>
 </div>
 <div class="section" id="plugin-parameters">
-<h2>Plugin Parameters<a class="headerlink" href="#plugin-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Plugin Parameters<a class="headerlink" href="#plugin-parameters" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="costmap-plugins/static.html">Static Layer Parameters</a></li>
@@ -1683,7 +1694,7 @@ It is used in the planner and controller servers for creating the space to check
 </div>
 </div>
 <div class="section" id="costmap-filters-parameters">
-<h2>Costmap Filters Parameters<a class="headerlink" href="#costmap-filters-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Costmap Filters Parameters<a class="headerlink" href="#costmap-filters-parameters" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
@@ -1693,7 +1704,7 @@ It is used in the planner and controller servers for creating the space to check
 </div>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>

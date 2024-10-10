@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Writing a New Navigator Plugin &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,20 +1099,20 @@
            <div itemprop="articleBody">
              
   <div class="section" id="writing-a-new-navigator-plugin">
-<span id="writing-new-nav2navigator-plugin"></span><h1>Writing a New Navigator Plugin<a class="headerlink" href="#writing-a-new-navigator-plugin" title="Permalink to this headline">¶</a></h1>
+<span id="writing-new-nav2navigator-plugin"></span><h1>Writing a New Navigator Plugin<a class="headerlink" href="#writing-a-new-navigator-plugin" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
 <li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
 </ul>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial shows how to create your own behavior-tree navigator <a class="reference external" href="https://index.ros.org/p/pluginlib/">plugin</a> based on the <code class="docutils literal notranslate"><span class="pre">nav2_core::BehaviorTreeNavigator</span></code> base class.</p>
 <p>In this tutorial, we will be reviewing the <code class="docutils literal notranslate"><span class="pre">Navigate</span> <span class="pre">to</span> <span class="pre">Pose</span></code> behavior-tree navigator plugin, which is the foundational navigator of Nav2 and complimentary behavior to ROS 1 Navigation. This completes point-to-point navigation. This tutorial will be reviewing the code and structure as of ROS 2 Iron. While small variations may be made over time, this should be sufficient to get started writing your own navigator if you choose as we do not expect major API changes on this system.</p>
 <p>It may be beneficial to write your own Navigator if you have a custom action message definition you’d like to use with Navigation rather than the provided <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> or <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> interfaces (e.g. doing complete coverage or containing additional constraint information). The role of the Navigators are to extract information from requests to pass to the behavior tree / blackboard, populate feedback and responses, and maintain the state of the behavior tree if relevant. The behavior tree XML will define the actual navigation logic used.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>ROS 2 (binary or build-from-source)</p></li>
 <li><p>Nav2 (Including dependencies)</p></li>
@@ -1110,9 +1121,9 @@
 </ul>
 </div>
 <div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="create-a-new-navigator-plugin">
-<h3>1- Create a new Navigator Plugin<a class="headerlink" href="#create-a-new-navigator-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>1- Create a new Navigator Plugin<a class="headerlink" href="#create-a-new-navigator-plugin" title="Permalink to this heading"></a></h3>
 <p>We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator">Nav2’s BT Navigator package</a> as the <code class="docutils literal notranslate"><span class="pre">NavigateToPoseNavigator</span></code>. This package can be considered as a reference for writing your own plugin.</p>
 <p>Our example plugin class <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator::NavigateToPoseNavigator</span></code> inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_core::BehaviorTreeNavigator</span></code>. The base class provides a set of virtual methods to implement a navigator plugin. These methods are called at runtime by the BT Navigator server or as a response to ROS 2 actions to process a navigation request.</p>
 <p>Note that this class has itself a base class of <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code>) are implemented for you in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> and marked as <code class="docutils literal notranslate"><span class="pre">final</span></code> so they are not possible to be overridden by the user. The API that you will be implementing for your navigator are the virtual methods within <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code>, not <code class="docutils literal notranslate"><span class="pre">NavigatorBase</span></code>. These <code class="docutils literal notranslate"><span class="pre">on_XYZ</span></code> APIs are implemented in necessary functions in <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code> to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. <code class="docutils literal notranslate"><span class="pre">on_configure</span></code> will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined <code class="docutils literal notranslate"><span class="pre">configure</span></code> function for any additional user-specific needs).</p>
@@ -1350,7 +1361,7 @@ The <code class="docutils literal notranslate"><span class="pre">goalReceived</s
 </div>
 </div>
 <div class="section" id="exporting-the-navigator-plugin">
-<h3>2- Exporting the navigator plugin<a class="headerlink" href="#exporting-the-navigator-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>2- Exporting the navigator plugin<a class="headerlink" href="#exporting-the-navigator-plugin" title="Permalink to this heading"></a></h3>
 <p>Now that we have created our custom navigator, we need to export our plugin so that it would be visible to the BT Navigator server.
 Plugins are loaded at runtime, and if they are not visible, then our server won’t be able to load it. In ROS 2, exporting and loading
 plugins is handled by <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
@@ -1403,7 +1414,7 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
 </ol>
 </div>
 <div class="section" id="pass-the-plugin-name-through-the-params-file">
-<h3>3- Pass the plugin name through the params file<a class="headerlink" href="#pass-the-plugin-name-through-the-params-file" title="Permalink to this headline">¶</a></h3>
+<h3>3- Pass the plugin name through the params file<a class="headerlink" href="#pass-the-plugin-name-through-the-params-file" title="Permalink to this heading"></a></h3>
 <p>To enable the plugin, we need to modify the <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> file as below</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>bt_navigator:
   ros__parameters:
@@ -1427,7 +1438,7 @@ plugins is handled by <code class="docutils literal notranslate"><span class="pr
 To pass plugin-specific parameters we have used <code class="docutils literal notranslate"><span class="pre">&lt;plugin_id&gt;.&lt;plugin_specific_parameter&gt;</span></code>.</p>
 </div>
 <div class="section" id="run-plugin">
-<h3>4- Run plugin<a class="headerlink" href="#run-plugin" title="Permalink to this headline">¶</a></h3>
+<h3>4- Run plugin<a class="headerlink" href="#run-plugin" title="Permalink to this heading"></a></h3>
 <p>Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to make it run are written at <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>. Below is a shortcut command for that:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>params_file:<span class="o">=</span>/path/to/your_params_file.yaml
 </pre></div>

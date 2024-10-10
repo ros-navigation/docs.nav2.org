@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Navigating with Keepout Zones &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="navigating-with-keepout-zones">
-<span id="navigation2-with-keepout-filter"></span><h1>Navigating with Keepout Zones<a class="headerlink" href="#navigating-with-keepout-zones" title="Permalink to this headline">¶</a></h1>
+<span id="navigation2-with-keepout-filter"></span><h1>Navigating with Keepout Zones<a class="headerlink" href="#navigating-with-keepout-zones" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
@@ -1099,17 +1110,17 @@
     <iframe width="600" height="480" src="https://www.youtube.com/embed/iVteYQR5IYQ?autoplay=1" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </h1><div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial shows how to simply utilize keep-out/safety zones where robots can’t enter and preferred lanes for robots moving in industrial environments and warehouses. All this functionality is being covered by <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> costmap filter plugin which will be enabled and used in this document.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in <a class="reference internal" href="../../development_guides/build_docs/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
 </div>
 <div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h2>
+<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="prepare-filter-mask">
-<h3>1. Prepare filter mask<a class="headerlink" href="#prepare-filter-mask" title="Permalink to this headline">¶</a></h3>
+<h3>1. Prepare filter mask<a class="headerlink" href="#prepare-filter-mask" title="Permalink to this heading"></a></h3>
 <p>As was written in <a class="reference internal" href="../../concepts/index.html#concepts"><span class="std std-ref">Navigation Concepts</span></a>, any Costmap Filter (including Keepout Filter) are reading the data marked in a filter mask file. Filter mask - is the usual Nav2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The following steps help to understand how to make a new filter mask:</p>
 <p>Create a new image with a PGM/PNG/BMP format: copy <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.pgm">turtlebot3_world.pgm</a> main map which will be used in a world simulation from a <code class="docutils literal notranslate"><span class="pre">Nav2</span></code> repository to a new <code class="docutils literal notranslate"><span class="pre">keepout_mask.pgm</span></code> file.</p>
 <p>Open <code class="docutils literal notranslate"><span class="pre">keepout_mask.pgm</span></code> in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the <code class="docutils literal notranslate"><span class="pre">[0..255]</span></code> range (or <code class="docutils literal notranslate"><span class="pre">[0..100]</span></code> in percent scale), where <code class="docutils literal notranslate"><span class="pre">0</span></code> means black color and <code class="docutils literal notranslate"><span class="pre">255</span></code> - white. Another term “darkness” will be understood as the exact opposite of lightness. In other words <code class="docutils literal notranslate"><span class="pre">color_darkness</span> <span class="pre">=</span> <span class="pre">100%</span> <span class="pre">-</span> <span class="pre">color_lightness</span></code>.</p>
@@ -1148,7 +1159,7 @@ image: keepout_mask.pgm
 </div>
 </div>
 <div class="section" id="configure-costmap-filter-info-publisher-server">
-<h3>2. Configure Costmap Filter Info Publisher Server<a class="headerlink" href="#configure-costmap-filter-info-publisher-server" title="Permalink to this headline">¶</a></h3>
+<h3>2. Configure Costmap Filter Info Publisher Server<a class="headerlink" href="#configure-costmap-filter-info-publisher-server" title="Permalink to this heading"></a></h3>
 <p>Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in a messages of <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> type. These messages are being published by <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>. The server is running as a lifecycle node. According to the <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/doc/design/CostmapFilters_design.pdf">design document</a>, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> messages are going in a pair with <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter mask.</p>
 <p>In order to enable Keepout Filter in your configuration, both servers should be enabled as a lifecycle nodes in Python launch-file. It is also possible to add them as Composition Nodes to your Navigation Component Container, which might look as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -1341,7 +1352,7 @@ $<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </sp
 </div>
 </div>
 <div class="section" id="enable-keepout-filter">
-<h3>3. Enable Keepout Filter<a class="headerlink" href="#enable-keepout-filter" title="Permalink to this headline">¶</a></h3>
+<h3>3. Enable Keepout Filter<a class="headerlink" href="#enable-keepout-filter" title="Permalink to this heading"></a></h3>
 <p>Costmap Filters are Costamp2D plugins. You can enable the <code class="docutils literal notranslate"><span class="pre">KeepoutFilter</span></code> plugin in Costmap2D by adding <code class="docutils literal notranslate"><span class="pre">keepout_filter</span></code> to the <code class="docutils literal notranslate"><span class="pre">plugins</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code>. You can place it in the <code class="docutils literal notranslate"><span class="pre">global_costmap</span></code> for planning with keepouts and <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> to make sure the robot won’t attempt to drive through a keepout zone. The KeepoutFilter plugin should have the following parameters defined:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plugin</span></code>: type of plugin. In our case <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::KeepoutFilter</span></code>.</p></li>
@@ -1381,7 +1392,7 @@ local_costmap:
 </div>
 </div>
 <div class="section" id="run-nav2-stack">
-<h3>4. Run Nav2 stack<a class="headerlink" href="#run-nav2-stack" title="Permalink to this headline">¶</a></h3>
+<h3>4. Run Nav2 stack<a class="headerlink" href="#run-nav2-stack" title="Permalink to this heading"></a></h3>
 <p>After Costmap Filter Info Publisher Server and Map Server were launched and Keepout Filter was enabled for global/local costmaps, run Nav2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py
 </pre></div>

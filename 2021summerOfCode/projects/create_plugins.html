@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2. Create New Planner and Controller Plugins &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -36,6 +44,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1085,7 +1096,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="create-new-planner-and-controller-plugins">
-<span id="create-plugins"></span><h1>2. Create New Planner and Controller Plugins<a class="headerlink" href="#create-new-planner-and-controller-plugins" title="Permalink to this headline">¶</a></h1>
+<span id="create-plugins"></span><h1>2. Create New Planner and Controller Plugins<a class="headerlink" href="#create-new-planner-and-controller-plugins" title="Permalink to this heading"></a></h1>
 <p><strong>Task description</strong></p>
 <p>The ROS 2 Navigation Stack has a number of plugin interfaces to help users create or select specific plugins for planning, control, and behaviors for their applications. Two specific areas that the Nav2 stack could use more algorithm plugins for is for path planning (referred to as a planner plugin) and local trajectory generation (referred to as controller plugins). A simple tutorial for creating a <a class="reference external" href="https://docs.nav2.org/tutorials/docs/writing_new_nav2planner_plugin.html">planner plugin can be found here.</a> Currently, we have one planner, NavFn which implements an A* and Dijkstra’s planner. It also has two controllers, DWB and TEB which implement a DWA and timed elastic-band optimization techniques. There is also a Hybrid-A* and OMPL planner in development.</p>
 <p>Your task will be to create a high-quality implementation of one of the following algorithms for the Nav2 plugin interfaces. Alternative algorithms may also be considered upon approval, please ask &#64;steve in the application phase. Please select only one to discuss.</p>

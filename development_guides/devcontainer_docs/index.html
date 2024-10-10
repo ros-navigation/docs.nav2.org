@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dev Containers &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="dev-containers">
-<span id="devcontainers"></span><h1>Dev Containers<a class="headerlink" href="#dev-containers" title="Permalink to this headline">¶</a></h1>
+<span id="devcontainers"></span><h1>Dev Containers<a class="headerlink" href="#dev-containers" title="Permalink to this heading"></a></h1>
 <p>You can use dev containers to build the project if you prefer a streamlined setup experience. This means you can use the same tools and dependencies as the rest of the team, including our Continuous Integration (CI) workflows, without worrying about installing dependencies on your host machine. Additionally, using Dev Containers makes it simple to switch between local or remote development environments, such as GitHub Codespaces.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1114,7 +1125,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <div class="section" id="what-why-how">
-<h2>What, Why, How?<a class="headerlink" href="#what-why-how" title="Permalink to this headline">¶</a></h2>
+<h2>What, Why, How?<a class="headerlink" href="#what-why-how" title="Permalink to this heading"></a></h2>
 <p>Lets briefly explain what dev containers are, why you should use them, and how they work.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -1138,15 +1149,15 @@
 </ul>
 </div>
 <div class="section" id="what-is-a-dev-container">
-<h3>What is a Dev Container?<a class="headerlink" href="#what-is-a-dev-container" title="Permalink to this headline">¶</a></h3>
+<h3>What is a Dev Container?<a class="headerlink" href="#what-is-a-dev-container" title="Permalink to this heading"></a></h3>
 <p>A dev container is a Docker container that has all the tools and dependencies you need to develop the project. It runs in a self-contained environment and is isolated from other containers and your host machine. This lets you reliably develop for the project anywhere, notably for linux distributions targeted by ROS, regardless of your host machine’s operating system.</p>
 </div>
 <div class="section" id="why-use-a-dev-container">
-<h3>Why use a Dev Container?<a class="headerlink" href="#why-use-a-dev-container" title="Permalink to this headline">¶</a></h3>
+<h3>Why use a Dev Container?<a class="headerlink" href="#why-use-a-dev-container" title="Permalink to this heading"></a></h3>
 <p>A dev container provides a common and consistent development environment. It ensures that everyone on the team is using the same tools and dependencies. It also makes it easy to switch between projects because each project can use a different container. This is especially useful if you work on multiple projects that use different versions of the same tools and dependencies, such as different versions of ROS.</p>
 </div>
 <div class="section" id="how-do-dev-containers-work">
-<h3>How do Dev Containers work?<a class="headerlink" href="#how-do-dev-containers-work" title="Permalink to this headline">¶</a></h3>
+<h3>How do Dev Containers work?<a class="headerlink" href="#how-do-dev-containers-work" title="Permalink to this heading"></a></h3>
 <p>When you open the project in VS Code, VS Code checks for the dev container configuration nested within the <code class="docutils literal notranslate"><span class="pre">.devcontainer</span></code> folder under the project’s root directory. If it finds one, it can prompt you to reopen the project in a container. If you choose to do so, it launches the container, connects to it, and mounts your project folder inside the container. You can then use VS Code in the container just as you would locally. While setting up the container, VS Code can also attempt to passthrough useful aspects of your local environment, such as git user configurations, X11 sockets, and more.</p>
 <p>This is quite similar to earlier tools used to customize and run docker containers for development:</p>
 <ul class="simple">
@@ -1166,7 +1177,7 @@
 </div>
 </div>
 <div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
 <p>To use dev containers, you’ll need the following:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.docker.com/engine/install/">Docker Engine</a> installed and running on the host machine</p></li>
@@ -1191,7 +1202,7 @@
 </div>
 </div>
 <div class="section" id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
 <p>Getting started using dev containers is as simple as opening the project in VS Code by either: following the notification prompt to reopen the project in a container, or explicitly opening the command palette (Crtl+Shift+P) and selecting <code class="docutils literal notranslate"><span class="pre">Remote-Containers:</span> <span class="pre">Reopen</span> <span class="pre">in</span> <span class="pre">Container</span></code>. This will create a new container, install any extensions specified in the project’s default <code class="docutils literal notranslate"><span class="pre">.devcontainer/devcontainer.json</span></code> config file, and mount the project’s root directory as the workspace folder. Once the container is created, VS Code will connect to it and you can start developing.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1207,7 +1218,7 @@
 </ul>
 </div>
 <div class="section" id="security">
-<h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
+<h2>Security<a class="headerlink" href="#security" title="Permalink to this heading"></a></h2>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Ensure you trust the authors and contents of workspaces before launching derived dev containers.</p>

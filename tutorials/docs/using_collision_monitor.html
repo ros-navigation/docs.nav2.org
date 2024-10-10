@@ -1,20 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Using Collision Monitor &mdash; Nav2 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/underscore.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/clipboard.min.js"></script>
-      <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/nav2_48x48.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -38,6 +46,9 @@
             Nav2
               <img src="../../_static/nav2_logo_powered.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                latest
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -1088,7 +1099,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="using-collision-monitor">
-<span id="collision-monitor-tutorial"></span><h1>Using Collision Monitor<a class="headerlink" href="#using-collision-monitor" title="Permalink to this headline">¶</a></h1>
+<span id="collision-monitor-tutorial"></span><h1>Using Collision Monitor<a class="headerlink" href="#using-collision-monitor" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
@@ -1099,16 +1110,16 @@
 </ul>
 <a class="reference internal image-reference" href="../../_images/collision_monitor.gif"><img alt="../../_images/collision_monitor.gif" src="../../_images/collision_monitor.gif" style="width: 800px;" /></a>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This tutorial shows how to use a Collision Monitor with Nav2 stack. Based on this tutorial, you can setup it for your environment and needs.</p>
 </div>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>It is assumed ROS2 and Nav2 dependent packages are installed or built locally.
 Please make sure that Nav2 project is also built locally as it was made in <a class="reference internal" href="../../development_guides/build_docs/index.html#build-instructions"><span class="std std-ref">Build and Install</span></a>.</p>
 </div>
 <div class="section" id="configuring-collision-monitor">
-<h2>Configuring Collision Monitor<a class="headerlink" href="#configuring-collision-monitor" title="Permalink to this headline">¶</a></h2>
+<h2>Configuring Collision Monitor<a class="headerlink" href="#configuring-collision-monitor" title="Permalink to this heading"></a></h2>
 <p>The Collision Monitor node has its own <code class="docutils literal notranslate"><span class="pre">collision_monitor_node.launch.py</span></code> launch-file and preset parameters in the <code class="docutils literal notranslate"><span class="pre">collision_monitor_params.yaml</span></code> file for demonstration, though its trivial to add this to Nav2’s main launch file if being used in practice.
 For the demonstration, two shapes will be created - an inner stop and a larger slowdown bounding boxes placed in the front of the robot:</p>
 <a class="reference internal image-reference" href="../../_images/polygons.png"><img alt="../../_images/polygons.png" src="../../_images/polygons.png" style="width: 800px;" /></a>
@@ -1186,7 +1197,7 @@ The whole <code class="docutils literal notranslate"><span class="pre">nav2_coll
 </div>
 </div>
 <div class="section" id="configuring-collision-monitor-with-velocitypolygon">
-<h2>Configuring Collision Monitor with VelocityPolygon<a class="headerlink" href="#configuring-collision-monitor-with-velocitypolygon" title="Permalink to this headline">¶</a></h2>
+<h2>Configuring Collision Monitor with VelocityPolygon<a class="headerlink" href="#configuring-collision-monitor-with-velocitypolygon" title="Permalink to this heading"></a></h2>
 <a class="reference internal image-reference" href="../../_images/dexory_velocity_polygon.gif"><img alt="../../_images/dexory_velocity_polygon.gif" src="../../_images/dexory_velocity_polygon.gif" style="width: 800px;" /></a>
 <p>For this part of tutorial, we will set up the Collision Monitor with <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> type for a <code class="docutils literal notranslate"><span class="pre">stop</span></code> action. <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.</p>
 <p>In general, here are the steps to configure the Collision Monitor with <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> type:</p>
@@ -1253,7 +1264,7 @@ The whole <code class="docutils literal notranslate"><span class="pre">nav2_coll
 <a class="reference internal image-reference" href="../../_images/holonomic_examples1.png"><img alt="../../_images/holonomic_examples1.png" src="../../_images/holonomic_examples1.png" style="height: 2880px;" /></a>
 </div>
 <div class="section" id="preparing-nav2-stack">
-<h2>Preparing Nav2 stack<a class="headerlink" href="#preparing-nav2-stack" title="Permalink to this headline">¶</a></h2>
+<h2>Preparing Nav2 stack<a class="headerlink" href="#preparing-nav2-stack" title="Permalink to this heading"></a></h2>
 <p>The Collision Monitor is designed to operate below Nav2 as an independent safety node.
 It acts as a filter for the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> messages from the controller to avoid potential collisions.
 If no such zone is triggered, then the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> message is used.
@@ -1289,7 +1300,7 @@ Else, it is scaled or set to stop as appropriate.</p>
 </div>
 </div>
 <div class="section" id="demo-execution">
-<h2>Demo Execution<a class="headerlink" href="#demo-execution" title="Permalink to this headline">¶</a></h2>
+<h2>Demo Execution<a class="headerlink" href="#demo-execution" title="Permalink to this heading"></a></h2>
 <p>Once Collision Monitor node has been tuned and <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topics adjusted, Collision Monitor node is ready to run.
 For that, run Nav2 stack as written in <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>tb3_simulation_launch.py<span class="w"> </span>headless:<span class="o">=</span>False
