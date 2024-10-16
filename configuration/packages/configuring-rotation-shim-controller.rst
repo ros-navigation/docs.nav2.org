@@ -107,6 +107,17 @@ Rotation Shim Controller Parameters
   Description
     If true, the rotationShimController will take back control of the robot when in XY tolerance of the goal and start rotating towards the goal heading.
 
+:rotate_to_heading_once:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    If true, the rotationShimController will only rotate to heading once on a new goal, not each time a path is set.
+
 Example
 *******
 .. code-block:: yaml
