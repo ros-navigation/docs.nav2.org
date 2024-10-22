@@ -5,7 +5,7 @@ Waypoint Follower
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_waypoint_follower
 
 The Waypoint Follower module implements a way of doing waypoint following using the NavigateToPose action server.
 It will take in a set of ordered waypoints to follow and then try to navigate to them in order.
