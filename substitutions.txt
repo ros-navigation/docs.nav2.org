@@ -13,9 +13,9 @@
 
 .. _nav2_params file: https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/bringup/params/nav2_params.yaml
 
-.. _documentation site: https://rosplanning.github.io/docs.nav2.org/
+.. _documentation site: https://docs.nav2.org/
 
-.. _project website: https://rosplanning.github.io/navigation2/
+.. _project website: https://nav2.org
 
 .. |PP| replace:: https://github.com/ros-navigation/navigation2/blob/main
 
