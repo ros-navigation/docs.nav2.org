@@ -61,7 +61,7 @@ In both cases negative values are silently inverted.
 Nav2 Controllers and Goal Checker Plugin Interface Changes
 **********************************************************
 
-As of `this PR 2247 <https://github.com/ros-planning/navigation2/pull/2247>`_, the ``controller`` plugins will now be given a pointer to the current goal checker in use of the navigation task in ``computeAndPublishVelocity()``. This is geared to enabling controllers to have access to predictive checks for goal completion as well as access to the state information of the goal checker plugin.
+As of `this PR 2247 <https://github.com/ros-navigation/navigation2/pull/2247>`_, the ``controller`` plugins will now be given a pointer to the current goal checker in use of the navigation task in ``computeAndPublishVelocity()``. This is geared to enabling controllers to have access to predictive checks for goal completion as well as access to the state information of the goal checker plugin.
 
 The ``goal_checker`` plugins also have the change of including a ``getTolerances()`` method. This method allows a goal checker holder to access the tolerance information of the goal checker to consider at the goal. Each field of the ``pose`` and ``velocity`` represents the maximum allowable error in each dimension for a goal to be considered completed. In the case of a translational tolerance (combined X and Y components), each the X and Y will be populated with the tolerance value because it is the **maximum** tolerance in the dimension (assuming the other has no error). If the goal checker does not contain any tolerances for a dimension, the ``numeric_limits<double> lowest()`` value is utilized in its place.
 
@@ -132,10 +132,10 @@ Loading a plugin of this type is done through ``nav2_bringup/params/nav2_param.y
 
 Original GitHub tickets:
 
-- `WaypointTaskExecutor <https://github.com/ros-planning/navigation2/pull/1993>`_
-- `WaitAtWaypoint <https://github.com/ros-planning/navigation2/pull/1993>`_
-- `PhotoAtWaypoint <https://github.com/ros-planning/navigation2/pull/2041>`_
-- `InputAtWaypoint <https://github.com/ros-planning/navigation2/pull/2049>`_
+- `WaypointTaskExecutor <https://github.com/ros-navigation/navigation2/pull/1993>`_
+- `WaitAtWaypoint <https://github.com/ros-navigation/navigation2/pull/1993>`_
+- `PhotoAtWaypoint <https://github.com/ros-navigation/navigation2/pull/2041>`_
+- `InputAtWaypoint <https://github.com/ros-navigation/navigation2/pull/2049>`_
 
 Costmap Filters
 ***************
@@ -146,12 +146,12 @@ Architecturally, costmap filters consists from ``CostmapFilter`` class which is 
 
 - ``KeepoutFilter``: keep-out/safety zones filter plugin.
 - ``SpeedFilter``: slow/speed-restricted areas filter.
-- Preferred lanes in industries. This plugin is covered by ``KeepoutFilter`` (see discussion in `corresponding PR <https://github.com/ros-planning/navigation2/issues/1522>`_ for more details).
+- Preferred lanes in industries. This plugin is covered by ``KeepoutFilter`` (see discussion in `corresponding PR <https://github.com/ros-navigation/navigation2/issues/1522>`_ for more details).
 
-Each costmap filter subscribes to filter info topic (publishing by `Costmap Filter Info Publisher Server <https://github.com/ros-planning/navigation2/tree/main/nav2_map_server/src/costmap_filter_info>`_) having all necessary information for loaded costmap filter and filter mask topic.
-``SpeedFilter`` additionally publishes maximum speed restricting `messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ targeted for a Controller to enforce robot won't exceed given limit.
+Each costmap filter subscribes to filter info topic (publishing by `Costmap Filter Info Publisher Server <https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server/src/costmap_filter_info>`_) having all necessary information for loaded costmap filter and filter mask topic.
+``SpeedFilter`` additionally publishes maximum speed restricting `messages <https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ targeted for a Controller to enforce robot won't exceed given limit.
 
-High-level design of this concept could be found `here <https://github.com/ros-planning/navigation2/tree/main/doc/design/CostmapFilters_design.pdf>`_. The functionality of costmap filters is being discussed in `the ticket #1263 <https://github.com/ros-planning/navigation2/issues/1263>`_ and carried out by `PR #1882 <https://github.com/ros-planning/navigation2/pull/1882>`_. The following tutorials: :ref:`navigation2_with_keepout_filter` and :ref:`navigation2_with_speed_filter` will help to easily get involved with ``KeepoutFilter`` and ``SpeedFilter`` functionalities.
+High-level design of this concept could be found `here <https://github.com/ros-navigation/navigation2/tree/main/doc/design/CostmapFilters_design.pdf>`_. The functionality of costmap filters is being discussed in `the ticket #1263 <https://github.com/ros-navigation/navigation2/issues/1263>`_ and carried out by `PR #1882 <https://github.com/ros-navigation/navigation2/pull/1882>`_. The following tutorials: :ref:`navigation2_with_keepout_filter` and :ref:`navigation2_with_speed_filter` will help to easily get involved with ``KeepoutFilter`` and ``SpeedFilter`` functionalities.
 
 SmacPlanner
 ***********
@@ -207,7 +207,7 @@ To follow the SI units outlined in REP-103 to the "T" nodes below were modified 
 
 Ray Tracing Parameters
 **********************
-Raytracing functionality was modified to include a minimum range parameter from which ray tracing starts to clear obstacles to avoid incorrectly clearing obstacles too close to the robot. This issue was mentioned in `ROS Answers <https://answers.ros.org/question/355150/obstacles-in-sensor-deadzone/>`_. An existing parameter ``raytrace_range`` was renamed to ``raytrace_max_range`` to reflect the functionality it affects. The renamed parameters and the plugins that they belong to are mentioned below. The changes were introduced in this `pull request <https://github.com/ros-planning/navigation2/pull/2126>`_.
+Raytracing functionality was modified to include a minimum range parameter from which ray tracing starts to clear obstacles to avoid incorrectly clearing obstacles too close to the robot. This issue was mentioned in `ROS Answers <https://answers.ros.org/question/355150/obstacles-in-sensor-deadzone/>`_. An existing parameter ``raytrace_range`` was renamed to ``raytrace_max_range`` to reflect the functionality it affects. The renamed parameters and the plugins that they belong to are mentioned below. The changes were introduced in this `pull request <https://github.com/ros-navigation/navigation2/pull/2126>`_.
 
 - obstacle_layer plugin
 
@@ -239,19 +239,19 @@ Obstacle marking was modified to include a minimum range parameter from which ob
 
 Recovery Action Changes
 ***********************
-The recovery actions, ``Spin`` and ``BackUp`` were modified to correctly return ``FAILURE`` if the recovery action is aborted due to a potential collision. Previously, these actions incorrectly always returned ``SUCCESS``. Changes to this resulted in downstream action clients, such as the default behavior tree. The changes were introduced in this `pull request 1855 <https://github.com/ros-planning/navigation2/pull/1855>`_.
+The recovery actions, ``Spin`` and ``BackUp`` were modified to correctly return ``FAILURE`` if the recovery action is aborted due to a potential collision. Previously, these actions incorrectly always returned ``SUCCESS``. Changes to this resulted in downstream action clients, such as the default behavior tree. The changes were introduced in this `pull request 1855 <https://github.com/ros-navigation/navigation2/pull/1855>`_.
 
 Default Behavior Tree Changes
 *****************************
-The default behavior tree (BT) ``navigate_w_replanning_and_recovery.xml`` has been updated to allow for replanning in between recoveries. The changes were introduced in this `PR 1855 <https://github.com/ros-planning/navigation2/pull/1855>`_. Additionally, an alternative BT ``navigate_w_replanning_and_round_robin_recovery.xml`` was removed due to similarity with the updated default BT.
+The default behavior tree (BT) ``navigate_w_replanning_and_recovery.xml`` has been updated to allow for replanning in between recoveries. The changes were introduced in this `PR 1855 <https://github.com/ros-navigation/navigation2/pull/1855>`_. Additionally, an alternative BT ``navigate_w_replanning_and_round_robin_recovery.xml`` was removed due to similarity with the updated default BT.
 
 NavFn Planner Parameters
 ************************
-The NavFn Planner has now its 3 parameters reconfigurable at runtime (``tolerance``, ``use_astar`` and ``allow_unknown``). The changes were introduced in this `pull request 2181 <https://github.com/ros-planning/navigation2/pull/2181>`_.
+The NavFn Planner has now its 3 parameters reconfigurable at runtime (``tolerance``, ``use_astar`` and ``allow_unknown``). The changes were introduced in this `pull request 2181 <https://github.com/ros-navigation/navigation2/pull/2181>`_.
 
 New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes
 *****************************************************************
-The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services ``(local_or_global)_costmap/clear_except_(local_or_global)_costmap`` and ``clear_around_(local_or_global)_costmap`` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a ``reset_distance`` input port. See :ref:`bt_clear_costmap_except_region_action` and :ref:`bt_clear_entire_costmap_around_robot_action` for more.  The changes were introduced in this `pull request 2204 <https://github.com/ros-planning/navigation2/pull/2204>`_.
+The ClearEntireCostmap action node was already implemented but the ClearCostmapExceptRegion and ClearCostmapAroundRobot BT nodes calling the sister services ``(local_or_global)_costmap/clear_except_(local_or_global)_costmap`` and ``clear_around_(local_or_global)_costmap`` of Costmap 2D were missing, they are now implemented in a similar way. They both expose a ``reset_distance`` input port. See :ref:`bt_clear_costmap_except_region_action` and :ref:`bt_clear_entire_costmap_around_robot_action` for more.  The changes were introduced in this `pull request 2204 <https://github.com/ros-navigation/navigation2/pull/2204>`_.
 
 New Behavior Tree Nodes
 ***********************
@@ -261,13 +261,13 @@ These plugins are set as default in the ``nav2_bt_navigator`` but may be overrid
 
 Original GitHub tickets:
 
-- `SingleTrigger <https://github.com/ros-planning/navigation2/pull/2236>`_
-- `PlannerSelector <https://github.com/ros-planning/navigation2/pull/2249>`_
-- `ControllerSelector <https://github.com/ros-planning/navigation2/pull/2266>`_
-- `GoalCheckerSelector <https://github.com/ros-planning/navigation2/pull/2269>`_
-- `NavigateThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
-- `RemovePassedGoals <https://github.com/ros-planning/navigation2/pull/2271>`_
-- `ComputePathThroughPoses <https://github.com/ros-planning/navigation2/pull/2271>`_
+- `SingleTrigger <https://github.com/ros-navigation/navigation2/pull/2236>`_
+- `PlannerSelector <https://github.com/ros-navigation/navigation2/pull/2249>`_
+- `ControllerSelector <https://github.com/ros-navigation/navigation2/pull/2266>`_
+- `GoalCheckerSelector <https://github.com/ros-navigation/navigation2/pull/2269>`_
+- `NavigateThroughPoses <https://github.com/ros-navigation/navigation2/pull/2271>`_
+- `RemovePassedGoals <https://github.com/ros-navigation/navigation2/pull/2271>`_
+- `ComputePathThroughPoses <https://github.com/ros-navigation/navigation2/pull/2271>`_
 
 Additionally, behavior tree nodes were modified to contain their own local executors to spin for actions, topics, services, etc to ensure that each behavior tree node is independent of each other (e.g. spinning in one BT node doesn't trigger a callback in another). 
 
@@ -279,25 +279,25 @@ Due to deprecation of `sensor_msgs/PointCloud <https://docs.ros2.org/foxy/api/se
 - ``voxel_marked_cloud`` and ``voxel_unknown_cloud`` topic in ``costmap_2d_cloud`` node of ``nav2_costmap_2d`` package
 - ``cost_cloud`` topic of ``publisher.cpp`` of ``dwb_core`` package.
 
-These changes were introduced in `pull request 2263 <https://github.com/ros-planning/navigation2/pull/2263>`_.
+These changes were introduced in `pull request 2263 <https://github.com/ros-navigation/navigation2/pull/2263>`_.
 
 ControllerServer New Parameter failure_tolerance
 ************************************************
 A new parameter :code:`failure_tolerance` was added to the Controller Server for tolerating controller plugin exceptions without failing immediately. It is analogous to ``controller_patience`` in ROS(1) Nav. See :ref:`configuring_controller_server` for description.
-This change was introduced in this `pull request 2264 <https://github.com/ros-planning/navigation2/pull/2264>`_.
+This change was introduced in this `pull request 2264 <https://github.com/ros-navigation/navigation2/pull/2264>`_.
 
 Removed BT XML Launch Configurations
 ************************************
 The launch python configurations for CLI setting of the behavior tree XML file has been removed. Instead, you should use the yaml files to set this value. If you, however, have a ``path`` to the yaml file that is inconsistent in a larger deployment, you can use the ``RewrittenYaml`` tool in your parent launch file to remap the default XML paths utilizing the ``get_shared_package_path()`` directory finder (or as you were before in python3).
 
 The use of map subscription QoS launch configuration was also removed, use parameter file. 
-This change was introduced in this `pull request 2295 <https://github.com/ros-planning/navigation2/pull/2295>`_.
+This change was introduced in this `pull request 2295 <https://github.com/ros-navigation/navigation2/pull/2295>`_.
 
 Nav2 RViz Panel Action Feedback Information
 *******************************************
 The Nav2 RViz Panel now displays the action feedback published by ``nav2_msgs/NavigateToPose`` and ``nav2_msgs/NavigateThroughPoses`` actions.
 Users can find information like the estimated time of arrival, distance remaining to goal, time elapsed since navigation started, and number of recoveries performed during a navigation action directly through the RViz panel.
-This feature was introduced in this `pull request 2338 <https://github.com/ros-planning/navigation2/pull/2338>`_.
+This feature was introduced in this `pull request 2338 <https://github.com/ros-navigation/navigation2/pull/2338>`_.
 
 .. image:: /images/rviz/panel-feedback.gif
     :width: 600px

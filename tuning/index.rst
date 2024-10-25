@@ -171,4 +171,4 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 Other Pages We'd Love To Offer
 ==============================
 
-If you are willing to chip in, some ideas are in https://github.com/ros-planning/docs.nav2.org/issues/204, but we'd be open to anything you think would be insightful!
+If you are willing to chip in, some ideas are in https://github.com/ros-navigation/docs.nav2.org/issues/204, but we'd be open to anything you think would be insightful!

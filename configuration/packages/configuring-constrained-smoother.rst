@@ -5,7 +5,7 @@ Constrained smoother
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_constrained_smoother
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_constrained_smoother
 
 .. _`RoboTech Vision`: https://robotechvision.com/
 

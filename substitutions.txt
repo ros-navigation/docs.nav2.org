@@ -5,19 +5,19 @@
 
 .. |LPN| replace:: Nav2
 
-.. _project repo: https://github.com/ros-planning/navigation2
+.. _project repo: https://github.com/ros-navigation/navigation2
 
-.. _documentation repo: https://github.com/ros-planning/docs.nav2.org/doc
+.. _documentation repo: https://github.com/ros-navigation/docs.nav2.org/doc
 
-.. _nav2_bringup pkg: https://github.com/ros-planning/navigation2/tree/main/nav2_bringup/bringup
+.. _nav2_bringup pkg: https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/bringup
 
-.. _nav2_params file: https://github.com/ros-planning/navigation2/blob/main/nav2_bringup/bringup/params/nav2_params.yaml
+.. _nav2_params file: https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/bringup/params/nav2_params.yaml
 
-.. _documentation site: https://rosplanning.github.io/docs.nav2.org/
+.. _documentation site: https://docs.nav2.org/
 
-.. _project website: https://rosplanning.github.io/navigation2/
+.. _project website: https://nav2.org
 
-.. |PP| replace:: https://github.com/ros-planning/navigation2/blob/main
+.. |PP| replace:: https://github.com/ros-navigation/navigation2/blob/main
 
 .. _`ROS 2 binary packages`: https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Debians.html
 
