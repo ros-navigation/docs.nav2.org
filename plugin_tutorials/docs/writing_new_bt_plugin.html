@@ -1127,7 +1127,7 @@ The BT plugins are used as nodes in the behavior tree XML processed by the BT Na
 For this example, we’re going to analyze the simplest behavior tree action node in the <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> package, the <code class="docutils literal notranslate"><span class="pre">wait</span></code> node.
 Beyond this example of an action BT node, you can also create custom decorator, condition, and control nodes.
 Each node type has a unique role in the behavior tree to perform actions like planning, control the flow of the BT, check the status of a condition, or modify the output of other BT nodes.</p>
-<p>The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree">nav2_behavior_tree</a> package as the <code class="docutils literal notranslate"><span class="pre">wait_action</span></code> node.
+<p>The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree">nav2_behavior_tree</a> package as the <code class="docutils literal notranslate"><span class="pre">wait_action</span></code> node.
 This action node can be considered as a reference for writing other action node plugins.</p>
 <p>Our example plugin inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree::BtActionNode</span></code>.
 The base class is a wrapper on the BehaviorTree.CPP <code class="docutils literal notranslate"><span class="pre">BT::ActionNodeBase</span></code> that simplifies BT action nodes that utilize ROS 2 action clients.

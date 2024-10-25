@@ -1112,7 +1112,7 @@
 <p>In this tutorial, we will be implementing the pure pursuit path tracking algorithm based on this <a class="reference external" href="https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf">paper</a>.
 It is recommended you go through it.</p>
 <p>Note: This tutorial is based on a previously existing simplified version of the Regulated Pure Pursuit controller now in the Nav2 stack.
-You can find the source code matching this tutorial <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller">here</a>.</p>
+You can find the source code matching this tutorial <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller">here</a>.</p>
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
@@ -1127,7 +1127,7 @@ You can find the source code matching this tutorial <a class="reference external
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="create-a-new-controller-plugin">
 <h3>1- Create a new Controller Plugin<a class="headerlink" href="#create-a-new-controller-plugin" title="Permalink to this heading"></a></h3>
-<p>We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials">navigation_tutorials</a> repository
+<p>We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials">navigation_tutorials</a> repository
 as the <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller</span></code>. This package can be considered as a reference for writing your own controller plugin.</p>
 <p>Our example plugin class <code class="docutils literal notranslate"><span class="pre">nav2_pure_pursuit_controller::PurePursuitController</span></code> inherits from the base class <code class="docutils literal notranslate"><span class="pre">nav2_core::Controller</span></code>. The base class provides a
 set of virtual methods to implement a controller plugin. These methods are called at runtime by the controller server to compute velocity commands.

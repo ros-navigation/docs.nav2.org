@@ -1100,7 +1100,7 @@
              
   <div class="section" id="collision-monitor">
 <span id="configuring-collision-monitor"></span><h1>Collision Monitor<a class="headerlink" href="#collision-monitor" title="Permalink to this heading"></a></h1>
-<p>Source code and <code class="docutils literal notranslate"><span class="pre">README</span></code> with design, explanations, and metrics can be found on <a class="reference external" href="https://github.com/ros-planning/navigation2/tree/main/nav2_collision_monitor">Github</a>.</p>
+<p>Source code and <code class="docutils literal notranslate"><span class="pre">README</span></code> with design, explanations, and metrics can be found on <a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_collision_monitor">Github</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_collision_monitor</span></code> package contains nodes providing an additional level of robot safety, namely the Collision Monitor and the Collision Detector.
 The Collision Monitor is a node providing an additional level of robot safety. It performs several collision avoidance related tasks using incoming data from the sensors, bypassing the costmap and trajectory planners, to monitor for and prevent potential collisions at the emergency-stop level.
 The Collision Detector works similarly to the Collision Monitor, but does not affect the robot’s velocity. It will only inform that data from the configured sources has been detected within the configured polygons via a message to a topic.</p>

@@ -36,8 +36,8 @@ More details about this project can be supplied if interested, but the tickets l
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
-- `Github ticket <https://github.com/ros-planning/navigation2/issues/2251>`_
-- `Github ticket2 <https://github.com/ros-planning/navigation2/issues/816>`_
+- `Github ticket <https://github.com/ros-navigation/navigation2/issues/2251>`_
+- `Github ticket2 <https://github.com/ros-navigation/navigation2/issues/816>`_
 - `Navigation2 <https://docs.nav2.org/>`_
 - `Some related works <https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf>`_
 

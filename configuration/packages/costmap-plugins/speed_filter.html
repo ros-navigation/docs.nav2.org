@@ -1144,7 +1144,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Name of the incoming <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg">CostmapFilterInfo</a> topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the <a class="reference internal" href="../configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> configuration page.</p>
+<dt>Description</dt><dd><p>Name of the incoming <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg">CostmapFilterInfo</a> topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the <a class="reference internal" href="../configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> configuration page.</p>
 </dd>
 </dl>
 </dd>
@@ -1164,7 +1164,7 @@
 </tbody>
 </table>
 <dl>
-<dt>Description</dt><dd><p>Topic to publish speed limit to. The <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">messages</a> have the following fields’ meaning:</p>
+<dt>Description</dt><dd><p>Topic to publish speed limit to. The <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg">messages</a> have the following fields’ meaning:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">percentage</span></code>: speed limit is expressed in percentage if <code class="docutils literal notranslate"><span class="pre">true</span></code> or in absolute values in <code class="docutils literal notranslate"><span class="pre">false</span></code> case. This parameter is set depending on <code class="docutils literal notranslate"><span class="pre">type</span></code> field of <code class="docutils literal notranslate"><span class="pre">CostmapFilterInfo</span></code> message.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">speed_limit</span></code>: non-zero values show maximum allowed speed expressed in a percent of maximum robot speed or in absolute value depending on <code class="docutils literal notranslate"><span class="pre">percentage</span></code> value. Zero value means no speed restriction (independently on <code class="docutils literal notranslate"><span class="pre">percentage</span></code>). <code class="docutils literal notranslate"><span class="pre">speed_limit</span></code> is being linearly converted from <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> filter mask value as: <code class="docutils literal notranslate"><span class="pre">speed_limit</span> <span class="pre">=</span> <span class="pre">base</span> <span class="pre">+</span> <span class="pre">multiplier</span> <span class="pre">*</span> <span class="pre">mask_value</span></code>, where <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> coefficients are taken from <code class="docutils literal notranslate"><span class="pre">CostmapFilterInfo</span></code> message.</p>

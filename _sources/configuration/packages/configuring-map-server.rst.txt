@@ -5,7 +5,7 @@ Map Server / Saver
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_map_server
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server
 
 The Map Server implements the server for handling the map load requests for the stack and host a map topic.
 It also implements a map saver server which will run in the background and save maps based on service requests. There exists a map saver CLI similar to ROS 1 as well for a single map save.

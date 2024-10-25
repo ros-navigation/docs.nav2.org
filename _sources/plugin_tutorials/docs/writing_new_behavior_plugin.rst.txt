@@ -33,7 +33,7 @@ Tutorial Steps
 
 We will create a simple send sms behavior.
 It will use Twilio to send a message via SMS to a remote operations center.
-The code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as ``nav2_sms_behavior``.
+The code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-navigation/navigation2_tutorials>`_ repository as ``nav2_sms_behavior``.
 This package can be a considered as a reference for writing Behavior Plugin.
 
 Our example plugin implements the plugin class of ``nav2_core::Behavior``.

@@ -85,13 +85,13 @@ Iron Roadmap
 |                                |                        |
 +--------------------------------+------------------------+
 
-.. _Smac Planner Improvements: https://github.com/ros-planning/navigation2/issues/3172
-.. _Pluginize Navigators: https://github.com/ros-planning/navigation2/issues/3335
-.. _MPPI Controller: https://github.com/ros-planning/navigation2/pull/3350
-.. _Route Graph Planner: https://github.com/ros-planning/navigation2/issues/2229
-.. _Velocity Smoother: https://github.com/ros-planning/navigation2/pull/2964
-.. _Fuse Migration: https://github.com/ros-planning/navigation2/issues/2598
-.. _Ignition Migration: https://github.com/ros-planning/navigation2/issues/2997
+.. _Smac Planner Improvements: https://github.com/ros-navigation/navigation2/issues/3172
+.. _Pluginize Navigators: https://github.com/ros-navigation/navigation2/issues/3335
+.. _MPPI Controller: https://github.com/ros-navigation/navigation2/pull/3350
+.. _Route Graph Planner: https://github.com/ros-navigation/navigation2/issues/2229
+.. _Velocity Smoother: https://github.com/ros-navigation/navigation2/pull/2964
+.. _Fuse Migration: https://github.com/ros-navigation/navigation2/issues/2598
+.. _Ignition Migration: https://github.com/ros-navigation/navigation2/issues/2997
 
 Humble Roadmap
 **************
@@ -136,11 +136,11 @@ Humble Roadmap
 |                                |                        |
 +--------------------------------+------------------------+
 
-.. _Smac Lattice Planner: https://github.com/ros-planning/navigation2/issues/1710
-.. _Nav2 1 Node Per Server: https://github.com/ros-planning/navigation2/issues/816
-.. _Safety Collision Nodes: https://github.com/ros-planning/navigation2/issues/1899
-.. _Fix Min Range Bug: https://github.com/ros-planning/navigation2/pull/2460
-.. _Complete First Time Guide: https://github.com/ros-planning/navigation2/issues/1589
-.. _Rotation Shim Controller: https://github.com/ros-planning/navigation2/pull/2718
-.. _Move Development from Master to Rolling: https://github.com/ros-planning/navigation2/issues/2337
-.. _Dynamic Composition: https://github.com/ros-planning/navigation2/issues/2147
+.. _Smac Lattice Planner: https://github.com/ros-navigation/navigation2/issues/1710
+.. _Nav2 1 Node Per Server: https://github.com/ros-navigation/navigation2/issues/816
+.. _Safety Collision Nodes: https://github.com/ros-navigation/navigation2/issues/1899
+.. _Fix Min Range Bug: https://github.com/ros-navigation/navigation2/pull/2460
+.. _Complete First Time Guide: https://github.com/ros-navigation/navigation2/issues/1589
+.. _Rotation Shim Controller: https://github.com/ros-navigation/navigation2/pull/2718
+.. _Move Development from Master to Rolling: https://github.com/ros-navigation/navigation2/issues/2337
+.. _Dynamic Composition: https://github.com/ros-navigation/navigation2/issues/2147

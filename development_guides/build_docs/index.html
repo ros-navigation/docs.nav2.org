@@ -1154,7 +1154,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;distro&gt;/setup.bash
 mkdir<span class="w"> </span>-p<span class="w"> </span>~/nav2_ws/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/nav2_ws
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2.git<span class="w"> </span>--branch<span class="w"> </span><span class="nv">$ROS_DISTRO</span><span class="w"> </span>./src/navigation2
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-navigation/navigation2.git<span class="w"> </span>--branch<span class="w"> </span><span class="nv">$ROS_DISTRO</span><span class="w"> </span>./src/navigation2
 rosdep<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--from-paths<span class="w"> </span>./src<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--ignore-src
@@ -1165,7 +1165,7 @@ colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</s
 <p>You can then <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/nav2_ws/install/setup.bash</span></code> to get ready for demonstrations!</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>For more examples on building Nav2 from released distribution binaries, checkout <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/tools/distro.Dockerfile">distro.Dockerfile</a>.</p>
+<p>For more examples on building Nav2 from released distribution binaries, checkout <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/tools/distro.Dockerfile">distro.Dockerfile</a>.</p>
 </div>
 </div>
 <div class="content-collapse section" id="rolling-development-source">
@@ -1182,7 +1182,7 @@ Nav2 does not currently release binaries on rolling, so it must be build from so
 <p>Once your environment is setup, clone the repo and build the workspace:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>&lt;ros_ws&gt;/install/setup.bash
 mkdir<span class="w"> </span>-p<span class="w"> </span>~/nav2_ws/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/nav2_ws
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>./src/navigation2
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-navigation/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>./src/navigation2
 rosdep<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--from-paths<span class="w"> </span>./src<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--ignore-src
@@ -1194,7 +1194,7 @@ colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</s
 to ignore the rosdep error of from the missing <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> key.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>For more examples on building Nav2 from rolling development source, checkout <a class="reference external" href="https://github.com/ros-planning/navigation2/blob/main/tools/source.Dockerfile">source.Dockerfile</a>.</p>
+<p>For more examples on building Nav2 from rolling development source, checkout <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/tools/source.Dockerfile">source.Dockerfile</a>.</p>
 </div>
 </div>
 <div class="content-collapse section" id="docker-container-images">
@@ -1210,15 +1210,15 @@ to ignore the rosdep error of from the missing <code class="docutils literal not
 </div>
 <p>Once your system is setup, you can build the Nav2 Dockerfile from the root of the repo:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_DISTRO</span><span class="o">=</span>rolling
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-navigation/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main
 docker<span class="w"> </span>build<span class="w"> </span>--tag<span class="w"> </span>navigation2:<span class="nv">$ROS_DISTRO</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--build-arg<span class="w"> </span><span class="nv">FROM_IMAGE</span><span class="o">=</span>ros:<span class="nv">$ROS_DISTRO</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--build-arg<span class="w"> </span><span class="nv">OVERLAY_MIXINS</span><span class="o">=</span><span class="s2">&quot;release ccache lld&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--cache-from<span class="w"> </span>ghcr.io/ros-planning/navigation2:main<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cache-from<span class="w"> </span>ghcr.io/ros-navigation/navigation2:main<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>./navigation2
 </pre></div>
 </div>
-<p>The <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/build/">docker build</a> command above creates a tagged image using the <cite>Dockerfile</cite> from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of <a class="reference external" href="https://github.com/colcon/colcon-mixin-repository">colcon mixins</a> to configure the workspace build. Check the <code class="docutils literal notranslate"><span class="pre">ARG</span></code> directives in the <cite>Dockerfile</cite> to discover all build-time variables available. The command also specifies an <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/build/#cache-from">external cache source</a> to pull the latest cached image from Nav2’s <a class="reference external" href="https://github.com/ros-planning/navigation2/pkgs/container/navigation2">Container Registry</a> to speed up the build process.</p>
+<p>The <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/build/">docker build</a> command above creates a tagged image using the <cite>Dockerfile</cite> from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of <a class="reference external" href="https://github.com/colcon/colcon-mixin-repository">colcon mixins</a> to configure the workspace build. Check the <code class="docutils literal notranslate"><span class="pre">ARG</span></code> directives in the <cite>Dockerfile</cite> to discover all build-time variables available. The command also specifies an <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/build/#cache-from">external cache source</a> to pull the latest cached image from Nav2’s <a class="reference external" href="https://github.com/ros-navigation/navigation2/pkgs/container/navigation2">Container Registry</a> to speed up the build process.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The images cached from above are used for Nav2 CI, but can also be used with Nav2 <a class="reference internal" href="../devcontainer_docs/index.html#devcontainers"><span class="std std-ref">Dev Containers</span></a>!</p>

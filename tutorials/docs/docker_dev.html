@@ -1462,7 +1462,7 @@ RUN<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </s
 
 WORKDIR<span class="w"> </span>/root/nav2_ws
 RUN<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/nav2_ws/src
-RUN<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>./src/navigation2
+RUN<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-navigation/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>./src/navigation2
 RUN<span class="w"> </span>rosdep<span class="w"> </span>init
 RUN<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rosdep<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
@@ -1485,7 +1485,7 @@ RUN<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </s
 <span class="c1"># For Rolling or want to build from source a particular branch / fork</span>
 WORKDIR<span class="w"> </span>/root/nav2_ws
 RUN<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/nav2_ws/src
-RUN<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-planning/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>./src/navigation2
+RUN<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-navigation/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>./src/navigation2
 RUN<span class="w"> </span>rosdep<span class="w"> </span>init
 RUN<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rosdep<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>

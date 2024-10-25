@@ -1129,7 +1129,7 @@ This allows for massive flexibility in the behavior server enabling any behavior
 <h3>1- Creating a new Behavior Plugin<a class="headerlink" href="#creating-a-new-behavior-plugin" title="Permalink to this heading"></a></h3>
 <p>We will create a simple send sms behavior.
 It will use Twilio to send a message via SMS to a remote operations center.
-The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-planning/navigation2_tutorials">navigation_tutorials</a> repository as <code class="docutils literal notranslate"><span class="pre">nav2_sms_behavior</span></code>.
+The code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials">navigation_tutorials</a> repository as <code class="docutils literal notranslate"><span class="pre">nav2_sms_behavior</span></code>.
 This package can be a considered as a reference for writing Behavior Plugin.</p>
 <p>Our example plugin implements the plugin class of <code class="docutils literal notranslate"><span class="pre">nav2_core::Behavior</span></code>.
 However, we have a nice wrapper for actions in <code class="docutils literal notranslate"><span class="pre">nav2_behaviors</span></code>, so we use the <code class="docutils literal notranslate"><span class="pre">nav2_behaviors::TimedBehavior</span></code> base class for this application instead.
