@@ -1202,7 +1202,87 @@ It computes the robot’s odometry based on the command velocity’s output requ
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The scan frame to use to publish a scan for collision monitor’s happiness</p>
+<dt>Description</dt><dd><p>The scan frame to use to publish a scan</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">enable_stamped_cmd_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether cmd_vel is stamped or unstamped (i.e. Twist or TwistStamped)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">scan_publish_dur</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The duration between publishing scan (in sec)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">publish_map_odom_tf</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether or not to publish tf from <code class="docutils literal notranslate"><span class="pre">map_frame_id</span></code> to <code class="docutils literal notranslate"><span class="pre">odom_frame_id</span></code></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">publish_clock</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether or not to publish simulated clock to <code class="docutils literal notranslate"><span class="pre">/clock</span></code></p>
 </dd>
 </dl>
 </dd>
