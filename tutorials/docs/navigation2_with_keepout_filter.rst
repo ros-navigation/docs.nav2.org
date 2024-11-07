@@ -33,7 +33,7 @@ Tutorial Steps
 
 As was written in :ref:`concepts`, any Costmap Filter (including Keepout Filter) are reading the data marked in a filter mask file. Filter mask - is the usual Nav2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The following steps help to understand how to make a new filter mask:
 
-Create a new image with a PGM/PNG/BMP format: copy `turtlebot3_world.pgm <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.pgm>`_ main map which will be used in a world simulation from a ``Nav2`` repository to a new ``keepout_mask.pgm`` file.
+Create a new image with a PGM/PNG/BMP format: copy `turtlebot3_world.pgm <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/tb3_sandbox.pgm>`_ main map which will be used in a world simulation from a ``Nav2`` repository to a new ``keepout_mask.pgm`` file.
 
 Open ``keepout_mask.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. Another term "darkness" will be understood as the exact opposite of lightness. In other words ``color_darkness = 100% - color_lightness``.
 
@@ -64,7 +64,7 @@ For simplicity, in the example fill the areas with black color (in ``trinary`` m
 
 After all keepout areas will be filled save the ``keepout_mask.pgm`` image.
 
-Like all other maps, filter mask should have its own YAML metadata file. Copy `turtlebot3_world.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.yaml>`_ to ``keepout_mask.yaml``. Open ``keepout_mask.yaml`` and correct ``image`` field to a newly made PGM mask:
+Like all other maps, filter mask should have its own YAML metadata file. Copy `turtlebot3_world.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/tb3_sandbox.yaml>`_ to ``keepout_mask.yaml``. Open ``keepout_mask.yaml`` and correct ``image`` field to a newly made PGM mask:
 
 .. code-block:: text
 
