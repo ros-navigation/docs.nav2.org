@@ -72,7 +72,7 @@ We will use ``scale`` map mode with no thresholds. In this mode darker colors wi
 
 After all speed restriction areas will be filled, save the ``speed_mask.pgm`` image.
 
-Like all other maps, the filter mask should have its own YAML metadata file. Copy `turtlebot3_world.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/bringup/maps/turtlebot3_world.yaml>`_ to ``speed_mask.yaml``. Open ``speed_mask.yaml`` and update the fields as shown below (as mentioned before for the ``scale`` mode to use whole color lightness range there should be no thresholds: ``free_thresh = 0.0`` and ``occupied_thresh = 1.0``):
+Like all other maps, the filter mask should have its own YAML metadata file. Copy `turtlebot3_world.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/tb3_sandbox.yaml>`_ to ``speed_mask.yaml``. Open ``speed_mask.yaml`` and update the fields as shown below (as mentioned before for the ``scale`` mode to use whole color lightness range there should be no thresholds: ``free_thresh = 0.0`` and ``occupied_thresh = 1.0``):
 
 .. code-block:: yaml
 
