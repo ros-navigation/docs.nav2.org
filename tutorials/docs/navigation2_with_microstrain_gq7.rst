@@ -10,20 +10,13 @@ Animation at the top
 - `Requirements`_
 - `Coordinate Frames`_
 - `Tutorial Steps`_
-  Show example of waypoint navigation
-
 - `Conclusion`_
-  Talk about how easy it is to use a GQ7 for the global solution
 
-TODO: Include our video here instead
-
-.. raw:: html
-
-    <h1 align="center">
-      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe width="708" height="400" src="https://www.youtube.com/embed/R_5HW1TUDQk?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
-      </div>
-    </h1>
+.. image:: images/Navigation2_with_MicroStrain_GQ7/nav2_with_gq7.gif
+    :width: 708px
+    :height: 400px
+    :align: center
+    :alt: Navigating using GQ7 and rviz
 
 Overview
 ========
@@ -305,7 +298,7 @@ Additionally, we will configure the GQ7 to accept RTCM corrections so that if we
 
   filter_enable_gnss_pos_vel_aiding     : True  # Use GNSS for position and velocity aiding
   filter_enable_gnss_heading_aiding     : True  # Use GNSS for heading aiding
-  filter_enable_altimeter_aiding        : False  # Disable altimeter for this use-case (TODO: why?)
+  filter_enable_altimeter_aiding        : False  # Disable altimeter for this use-case
   filter_enable_odometer_aiding         : False  # Disable odometer as we do not have one connected
   filter_enable_magnetometer_aiding     : False  # Disable magnetometer as dual antenna heading is more accurate and reliable in this use-case
   filter_enable_external_heading_aiding : False  # Disable external heading as we will be using heading computed on the GQ7
@@ -398,79 +391,8 @@ Finally, we need to setup the data rates of each of the publishers to publish th
 2.6- Combine configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Having configured everything individually, we can now combine all of the parameters into our config file. For the purpose of this tutorial, we will call this config file ``gq7.yml``, and it should now look like this:
-
-**Note:** This does not include any aux port or ntrip_client configuration
-
-.. code-block:: yaml
-
-  /gq7/microstrain_inertial_driver:
-    ros__parameters:
-      port: /dev/microstrain_main  # Assuming you only have one GQ7 plugged in, this should point to the GQ7, if you have multiple microstrain devices, change this to /dev/microstrain_main_<serial_number>
-
-      gnss1_frame_id       : "right_antenna_link"  # Tells us which frame_id we should look for in the tf tree for the GNSS1 antenna. This should match the frame ID configured in your robot description
-      gnss2_frame_id       : "left_antenna_link"  # Tells us which frame_id we should look for in the tf tree for the GNSS2 antenna. This should match the frame ID configured in your robot description
-      gnss1_antenna_source : 2  # Tells the driver to look for the GNSS1 antenna offsets in the tf tree
-      gnss2_antenna_source : 2  # Tells the driver to look for the GNSS2 antenna offsets in the tf tree
-
-      filter_enable_gnss_antenna_cal     : True  # Tells the GQ7 to correct for errors in the configured antenna offsets
-      filter_gnss_antenna_cal_max_offset : 0.1  # Tells the GQ7 that it should only correct for errors up to 10cm
-
-      rtk_dongle_enable: True  # Tells the GQ7 to produce NMEA sentences on the aux port, and receive RTCM on the aux port
-
-      filter_enable_gnss_pos_vel_aiding     : True  # Use GNSS for position and velocity aiding
-      filter_enable_gnss_heading_aiding     : True  # Use GNSS for heading aiding
-      filter_enable_altimeter_aiding        : False  # Disable altimeter for this use-case (TODO: why?)
-      filter_enable_odometer_aiding         : False  # Disable odometer as we do not have one connected
-      filter_enable_magnetometer_aiding     : False  # Disable magnetometer as dual antenna heading is more accurate and reliable in this use-case
-      filter_enable_external_heading_aiding : False  # Disable external heading as we will be using heading computed on the GQ7
-
-      filter_init_condition_src              : 0  # Setting this to 0 means auto position, velocity and attitude
-      filter_auto_heading_alignment_selector : 1  # Tells the GQ7 to use dual antenna heading to align it's heading startup
-      filter_init_reference_frame            : 2  # Not used in this example, but this would determine the frame of the following keys (1 - WGS84 ECEF, 2 - WGS84 LLH)
-      filter_init_position : [0.0, 0.0, 0.0]  # Not used in this example, but if filter_init_condition_src was 3, this would determine the starting position for the filter.
-      filter_init_velocity : [0.0, 0.0, 0.0]  # Not used in this example, but if filter_init_condition_src was 3, this would determine the starting velocity for the filter.
-      filter_init_attitude : [0.0, 0.0, 0.0]  # Not used in this example, but if filter_init_condition_src was 1, the third component would determine the starting heading, and if filter_condition_src was 2, this would determine the starting roll, pitch, and heading for the filter.
-
-      filter_auto_init : True  # Tells the GQ7 to auto initialize the GQ7, and not wait for us to manually initialize it later
-
-      filter_reset_after_config : True  # Tells the driver to reset the filter after configuring. Most of the time this is desired to make sure all changes to filter config get a chance to have an affect at the same time.
-
-      filter_pps_source : 1  # Tells the GQ7 to get it's PPS from GNSS antenna 1
-
-      use_enu_frame : True  # This will cause the node to convert any NED measurements to ENU
-                            # This will also cause the node to convert any vehicle frame measurements to the ROS definition of a vehicle frame
-
-      frame_id          : 'gq7_link'                 # Frame ID of all of the filter messages. Represents the location of the GQ7 in the tf tree. This should match up with the name we gave the GQ7 in the urdf.xacro file
-      map_frame_id      : "map"                      # Frame ID of the local tangent plane.
-      earth_frame_id    : "earth"                    # Frame ID of the global (ECEF) frame
-      target_frame_id   : "base_link"                # Frame ID that we will publish a transform to. For this example, we will go directly to base_link, if you were running robot_localization, you could change this to odom
-                                                    # Note that there MUST be a path of transforms between target_frame_id and frame_id
-
-      publish_mount_to_frame_id_transform : False  # Disable the transform from the mount_frame_id to frame_id as we have configured it in our test robot description
-
-      tf_mode: 2  # This tells the driver to publish the earth_frame_id -> map_frame_id and map_frame_id to target_frame_id transforms.
-
-      filter_relative_position_config : True  # Tell the driver to setup the local tangent plane
-      filter_relative_position_source : 2  # The local tangent plane will be placed at the first position after the GQ7 enters full nav
-      filter_relative_position_frame  : 2  # Not used in this example, this will determine the frame that filter_relative_position_ref is in. (1 - WGS84 ECEF, 2 - WGS84 LLH)
-      filter_relative_position_ref    : [0.0, 0.0, 0.01]  # Not used in this example, this will determine the starting location of the local tangent plane. Useful if you want to send waypoints in the map frame and have your robot travel to the same location.
-
-      imu_data_rate : 0  # The driver wants to publish raw IMU data by default, but we don't need it for our use-case. If you do decide to use robot_localization though, this can help the performance of robot_localization
-
-      # The default is to publish LLH position and velocity from both receivers, but nav2 and rviz can't consume those, so we will turn them off.
-      # Additionally, this data comes directly from the GNSS receivers and does not benefit from the filter running on the GQ7
-      gnss1_llh_position_data_rate   : 0
-      gnss1_velocity_data_rate       : 0
-      gnss1_odometry_earth_data_rate : 0
-      gnss2_llh_position_data_rate   : 0
-      gnss2_velocity_data_rate       : 0
-      gnss2_odometry_earth_data_rate : 0
-
-      filter_human_readable_status_data_rate : 1  # This human readable status message is a useful topic to view on the command line to view the overall status of the GQ7
-
-      filter_odometry_map_data_rate : 100  # This data rate will determine the speed at which we publish the odometry message in the map frame as well as the transform from map_frame_id -> target_frame_id
-
+Having configured everything individually, we can now combine all of the parameters into our config file. For the purpose of this tutorial, we will call this config file ``gq7.yml``, and it should now look like 
+`this <https://github.com/robbiefish/navigation2_tutorials/blob/master/nav2_gq7_demo/config/gq7.yml>`_. Note that this file does not contain any aux port configuration.
 
 3- Configure Nav2
 -----------------
@@ -530,7 +452,7 @@ For the rest of the parameters you may configure on the ``global_costmap`` it de
         width: 50
         height: 50
 
-# TODO: Check in the nav2 config we used and link to it
+Once all the modifications have been made, your configuration should look similar to `this nav2.yaml <https://github.com/robbiefish/navigation2_tutorials/blob/master/nav2_gq7_demo/config/nav2.yaml>`_.
 
 
 4- Navigate using Nav2
@@ -541,19 +463,12 @@ Now that we have our configuration setup, we can start navigating.
 4.1- Start nodes
 ~~~~~~~~~~~~~~~~
 
-To start the nodes, we will launch the ``microstrain_inertial_driver`` and ``nav2_bringup`` in two different terminals.
-
-In the first terminal, replace ``/path/to/gq7.yml`` with the path to your ``gq7.yml`` and then run:
-
-.. code-block:: bash
-
-  ros2 launch microstrain_inertial_driver microstrain_launch.py namespace:=/gq7 params_file:="/path/to/gq7.yml"
-
-In the second terminal, replace ``/path/to/nav2_params.yaml`` with the path to your ``nav2_params.yaml`` and then run:
+For convenience, the configuration files above have been checked into the `nav2_gq7_demo <https://github.com/robbiefish/navigation2_tutorials/tree/master/nav2_gq7_demo>`_ package.
+You can launch both the ``microstrain_inertial_driver`` and Nav2 by running
 
 .. code-block:: bash
 
-  ros2 launch nav2_bringup navigation_launch.py params_file:="/path/to/nav2_params.yaml" autostart:=True
+  ros2 launch nav2_gq7_demo gq7_demo.launch.py
 
 Now that everything is running, the GQ7 will take some time to acquire a fix, but assuming your antenna offsets are accurate, and you have good sky view where you are testing, it should happen within a few minutes.
 If it doesn't enter full navigation in 3 minutes, see `this FAQ <https://files.microstrain.com/GQ7+User+Manual/user_manual_content/FAQ/FAQ.htm#Why>`_.
@@ -563,7 +478,24 @@ If you are using RTK, you want the LED to be blue with a flash of white every se
 
 For more in-depth information about the state of the filter, you can subscribe to ``/gq7/ekf/status``. Ideally, you want to see the following in the message:
 
-TODO: Include an example of a good status message
+.. code-block:: yaml
+
+  header:
+    frame_id: gq7_link
+  device_info:
+    firmware_version: 1.1.04
+    model_name: 3DM-GQ7
+    model_number: 6284-4220
+    serial_number: '6284.000000'
+    lot_number: ''
+    device_options: 8g,300dps
+  gnss_state: RTK Fixed  # This is what you want to see if you are providing RTK corrections. If you are not providing RTK corrections, "3D Fix" or "SBAS" are also good statuses here
+  dual_antenna_fix_type: Dual Antenna Fixed
+  filter_state: Full Nav
+  status_flags:
+  - Stable
+  continuous_bit_flags: []
+
 
 4.2- Send waypoints to nav2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -578,15 +510,40 @@ GUI tools like RViz don't work that well with these types of waypoints, but you 
 
 .. code-block:: bash
 
-  ros2 topic pub TODO: Find the topic and include an example waypoint
+  ros2 action send_goal /navigate_to_pose nav2_msgs/action/NavigateToPose "
+    pose:
+      header:
+        frame_id: 'earth'
+      pose:
+        position:
+          x: 1325.626
+          y: -4364.86
+          z: 4443.04
+        orientation:
+          x: 0.0
+          y: 0.0
+          z: 0.0
+          w: 1.0
+    behavior_tree: ''
+  "
 
 4.2.2- Map Frame
 ^^^^^^^^^^^^^^^^
 
 We also have a path in transforms from ``map -> base_link``, so we can send goals in the map frame. TODO: Why is this useful? This is also very convenient because tools like RViz make sending goals in this frame extremely easy.
-TODO: Link to RViz config file to show how this could work.
 
-TODO: Show a gif of sending a waypoint to Nav2 from RViz
+To send a waypoint in the map frame, we can use rviz. Launch the `rviz.launch.py <https://github.com/robbiefish/navigation2_tutorials/blob/master/nav2_gq7_demo/launch/rviz.launch.py>`_ included in the ``navigation2_tutorials`` package
+
+.. code-block:: bash
+
+  ros2 launch nav2_gq7_demo rviz.launch.py
+
+Then send waypoints using the **Nav2 Goal** button at the top of the application like so
+
+.. image:: images/Navigation2_with_MicroStrain_GQ7/rviz.gif
+    :width: 550px
+    :align: center
+    :alt: Navigating using GQ7 and rviz
 
 Conclusion
 ==========
