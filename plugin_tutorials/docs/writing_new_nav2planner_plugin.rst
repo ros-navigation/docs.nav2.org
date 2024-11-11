@@ -32,7 +32,7 @@ Tutorial Steps
 --------------------------------
 
 We will create a simple straight-line planner.
-The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as the ``nav2_straightline_planner``.
+The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-navigation/navigation2_tutorials>`_ repository as the ``nav2_straightline_planner``.
 This package can be considered as a reference for writing planner plugin.
 
 Our example plugin inherits from the base class ``nav2_core::GlobalPlanner``. The base class provides 5 pure virtual methods to implement a planner plugin. The plugin will be used by the planner server to compute trajectories.
@@ -48,19 +48,19 @@ Let's learn more about the methods needed to write a planner plugin.
 |                      | shared pointer to costmap.                                                  |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | activate()           | Method is called when planner server enters on_activate state. Ideally this | Yes                     |
-|                      | method should implement operations which are neccessary before planner goes |                         |
+|                      | method should implement operations which are necessary before planner goes  |                         |
 |                      | to an active state.                                                         |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | deactivate()         | Method is called when planner server enters on_deactivate state. Ideally    | Yes                     |
-|                      | this method should implement operations which are neccessary before planner |                         |
+|                      | this method should implement operations which are necessary before planner  |                         |
 |                      | goes to an inactive state.                                                  |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | cleanup()            | Method is called when planner server goes to on_cleanup state. Ideally this | Yes                     |
-|                      | method should clean up resoures which are created for the planner.          |                         |
+|                      | method should clean up resources which are created for the planner.         |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | createPlan()         | Method is called when planner server demands a global plan for specified    | Yes                     |
 |                      | start and goal pose. This method returns `nav_msgs\:\:msg\:\:Path` carrying |                         |
-|                      | global plan. This method takes 2 input parmas: start pose and goal pose.    |                         |
+|                      | global plan. This method takes 2 input params: start pose and goal pose.    |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 
 For this tutorial, we will be using methods ``StraightLine::configure()`` and ``StraightLine::createPlan()`` to create straight-line planner.

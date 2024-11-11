@@ -18,7 +18,7 @@ Aside from the ``sensor_msgs`` package, there are also the ``radar_msgs`` and ``
 .. seealso::
    For more information, see the API documentation of `sensor_msgs <http://wiki.ros.org/sensor_msgs>`_, `radar_msgs <http://wiki.ros.org/radar_msgs>`_, and `vision_msgs <http://wiki.ros.org/vision_msgs>`_.
 
-Your physical robot's sensors probably have ROS drivers written for them (e.g. a ROS node that connects to the sensors, populates data into messages, and publishes them for your robot to use) that follow the standard interface in the ``sensor_msgs`` package. The ``sensor_msgs`` package makes it easy for you to use many different sensors from different manufacturers. General software packages like Nav2 can then can read these standardized messages and perform tasks independent of the sensor hardware. On simulated robots such as ``sam_bot``, Gazebo has sensor plugins which also publish their information following the ``sensor_msgs`` package.
+Your physical robot's sensors probably have ROS drivers written for them (e.g. a ROS node that connects to the sensors, populates data into messages, and publishes them for your robot to use) that follow the standard interface in the ``sensor_msgs`` package. The ``sensor_msgs`` package makes it easy for you to use many different sensors from different manufacturers. General software packages like Nav2 can then read these standardized messages and perform tasks independent of the sensor hardware. On simulated robots such as ``sam_bot``, Gazebo has sensor plugins which also publish their information following the ``sensor_msgs`` package.
 
 Common Sensor Messages
 ======================  
@@ -65,7 +65,7 @@ To be able to follow the rest of this section, make sure that you have properly 
 Adding Gazebo Plugins to a URDF
 ===============================
 
-Let us first add a lidar sensor to ``sam_bot``. Open the URDF file, `src/description/sam_bot_description.urdf <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/src/description/sam_bot_description.urdf>`_ and paste the following lines before the ``</robot>`` tag.
+Let us first add a lidar sensor to ``sam_bot``. Open the URDF file, `src/description/sam_bot_description.urdf <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/src/description/sam_bot_description.urdf>`_ and paste the following lines before the ``</robot>`` tag.
 
 .. code-block:: xml
   :lineno-start: 251
@@ -218,16 +218,16 @@ Similar to the lidar sensor, we create ``camera_link`` which will be referenced 
 Launch and Build Files
 ======================
 
-To verify that the sensors are set up properly and that they can see objects in our environemnt, let us launch ``sam_bot`` in a Gazebo world with objects. 
+To verify that the sensors are set up properly and that they can see objects in our environment, let us launch ``sam_bot`` in a Gazebo world with objects. 
 Let us create a Gazebo world with a single cube and a single sphere that are within the range of ``sam_bot``'s sensors so we can verify if it can see the objects correctly. 
 
-To create the world, create a directory named ``world`` at the root of your project and create a file named ``my_world.sdf`` inside the ``world`` folder . Then copy the contents of `world/my_world.sdf <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/world/my_world.sdf>`_ and paste them inside ``my_world.sdf``.
+To create the world, create a directory named ``world`` at the root of your project and create a file named ``my_world.sdf`` inside the ``world`` folder . Then copy the contents of `world/my_world.sdf <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/world/my_world.sdf>`_ and paste them inside ``my_world.sdf``.
 
-Now, let us edit our launch file, `launch/display.launch.py <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_, to launch Gazebo with the world we just created. First, add the path of ``my_world.sdf`` by adding the following lines inside the ``generate_launch_description()``:
+Now, let us edit our launch file, `launch/display.launch.py <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_, to launch Gazebo with the world we just created. First, add the path of ``my_world.sdf`` by adding the following lines inside the ``generate_launch_description()``:
 
 .. code-block:: shell
 
-  world_path=os.path.join(pkg_share, 'world/my_world.sdf'),
+  world_path=os.path.join(pkg_share, 'world/my_world.sdf')
 
 Lastly, add the world path in the ``launch.actions.ExecuteProcess(cmd=['gazebo',...`` line, as shown below.
 
@@ -235,7 +235,7 @@ Lastly, add the world path in the ``launch.actions.ExecuteProcess(cmd=['gazebo',
 
   launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so', world_path], output='screen'),
 
-We also have to add the ``world`` directory to our ``CMakeLists.txt`` file. Open `CmakeLists.txt <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/CMakeLists.txt>`_ and append the ``world`` directory inside the install(DIRECTORY...), as shown in the snippet below.
+We also have to add the ``world`` directory to our ``CMakeLists.txt`` file. Open `CmakeLists.txt <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/CMakeLists.txt>`_ and append the ``world`` directory inside the install(DIRECTORY...), as shown in the snippet below.
 
 .. code-block:: shell
 
@@ -419,7 +419,7 @@ Note that the obstacle layer and voxel layer can use either or both ``LaserScan`
       topic: /depth_camera/points
       data_type: "PointCloud2"
 
-For the other parameters of the obstacle layer, the ``max_obstacle_height`` parameter sets the maximum height of the sensor reading to return to the occupancy grid. The minimum height of the sensor reading can also be set using the ``min_obstacle_height`` parameter, which defaults to 0 since we did not set it in the configation. The ``clearing`` parameter is used to set whether the obstacle is to be removed from the costmap or not. The clearing operation is done by raytracing through the grid. The maximum and minimum range to raytrace clear objects from the costmap is set using the ``raytrace_max_range`` and ``raytrace_min_range`` respectively. The ``marking`` parameter is used to set whether the inserted obstacle is marked into the costmap or not. We also set the maximum and minimum range to mark obstacles in the costmap through the ``obstacle_max_range`` and ``obstacle_min_range`` respectively. 
+For the other parameters of the obstacle layer, the ``max_obstacle_height`` parameter sets the maximum height of the sensor reading to return to the occupancy grid. The minimum height of the sensor reading can also be set using the ``min_obstacle_height`` parameter, which defaults to 0 since we did not set it in the configuration. The ``clearing`` parameter is used to set whether the obstacle is to be removed from the costmap or not. The clearing operation is done by raytracing through the grid. The maximum and minimum range to raytrace clear objects from the costmap is set using the ``raytrace_max_range`` and ``raytrace_min_range`` respectively. The ``marking`` parameter is used to set whether the inserted obstacle is marked into the costmap or not. We also set the maximum and minimum range to mark obstacles in the costmap through the ``obstacle_max_range`` and ``obstacle_min_range`` respectively. 
 
 For the inflation layer (lines 31-34 and 67-70), we set the exponential decay factor across the inflation radius using the ``cost_scaling_factor`` parameter. The value of the radius to inflate around lethal obstacles is defined using the ``inflation_radius``. 
 
@@ -450,7 +450,7 @@ Let us now launch our Robot Description Nodes, RViz and Gazebo through the launc
   . install/setup.bash
   ros2 launch sam_bot_description display.launch.py
 
-RViz and the Gazebo should now be launched with ``sam_bot`` present in both. Recall that the ``base_link`` => ``sensors`` transform is now being published by ``robot_state_publisher`` and the ``odom`` => ``base_link`` transform by our Gazebo plugins. Both transforms should now be dislpayed show without errors in RViz.
+RViz and the Gazebo should now be launched with ``sam_bot`` present in both. Recall that the ``base_link`` => ``sensors`` transform is now being published by ``robot_state_publisher`` and the ``odom`` => ``base_link`` transform by our Gazebo plugins. Both transforms should now be displayed show without errors in RViz.
 
 Launching slam_toolbox
 ----------------------
@@ -481,7 +481,7 @@ We can also check that the transforms are correct by executing the following lin
   ros2 run tf2_tools view_frames.py
 
 Note: For Galactic and newer, it should be ``view_frames`` and not ``view_frames.py``
-The line above will create a ``frames.pdf`` file that shows the current transform tree. Your tranform tree should be similar to the one shown below:
+The line above will create a ``frames.pdf`` file that shows the current transform tree. Your transform tree should be similar to the one shown below:
 
 .. image:: images/view_frames.png
     :align: center

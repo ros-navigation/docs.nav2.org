@@ -5,7 +5,7 @@ Savitzky-Golay Smoother
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother
 
 The Savitzky-Golay Smoother is a Smoother Server plugin that will take in an input path and smooth it using a simple and fast smoothing technique based on `Savitzky Golay Filters <https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter>`_. It uses a digital signal processing technique designed to reduce noise distorting a reference signal, in this case, a path.
 

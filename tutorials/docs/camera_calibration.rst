@@ -27,7 +27,7 @@ Requirements
 
 2- Image Pipeline need to be built from source in your workspace with:
 
-        ``git clone – b <ros2-distro> git@github.com:ros-perception/image_pipeline.git``
+        ``git clone -b <ros2-distro> git@github.com:ros-perception/image_pipeline.git``
 
 
 **Also, make sure you have the following:**

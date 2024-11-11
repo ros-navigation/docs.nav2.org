@@ -22,7 +22,7 @@ In this tutorial, we will be implementing the pure pursuit path tracking algorit
 It is recommended you go through it.
 
 Note: This tutorial is based on a previously existing simplified version of the Regulated Pure Pursuit controller now in the Nav2 stack.
-You can find the source code matching this tutorial `here <https://github.com/ros-planning/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller>`_.
+You can find the source code matching this tutorial `here <https://github.com/ros-navigation/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller>`_.
 
 Requirements
 ============
@@ -38,7 +38,7 @@ Tutorial Steps
 1- Create a new Controller Plugin
 ---------------------------------
 
-We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository 
+We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-navigation/navigation2_tutorials>`_ repository 
 as the ``nav2_pure_pursuit_controller``. This package can be considered as a reference for writing your own controller plugin.
 
 Our example plugin class ``nav2_pure_pursuit_controller::PurePursuitController`` inherits from the base class ``nav2_core::Controller``. The base class provides a
@@ -54,11 +54,11 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 |                           | parent node, controller name, tf buffer pointer and shared pointer to costmap.        |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | activate()                | Method is called when controller server enters on_activate state. Ideally this method | Yes                    |
-|                           | should implement operations which are neccessary before controller goes to an active  |                        |
+|                           | should implement operations which are necessary before controller goes to an active   |                        |
 |                           | state.                                                                                |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | deactivate()              | Method is called when controller server enters on_deactivate state. Ideally this      | Yes                    |
-|                           | method should implement operations which are neccessary before controller goes to an  |                        |
+|                           | method should implement operations which are necessary before controller goes to an   |                        |
 |                           | inactive state.                                                                       |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | cleanup()                 | Method is called when controller server goes to on_cleanup state. Ideally this method | Yes                    |

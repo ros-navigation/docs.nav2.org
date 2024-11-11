@@ -5,7 +5,7 @@ Theta Star Planner
 
 .. The source code and README with design, explanations, metrics and usage tips can be found on Github_.
 
-.. .. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
+.. .. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_theta_star_planner
 
 Theta Star Planner implements the Theta* path planner meant to plan any-angled line-segment focused paths using A*.
 

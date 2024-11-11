@@ -199,4 +199,4 @@ breathe_default_project = "SOF Project"
 breathe_default_members = ('members', 'undoc-members', 'content-only')
 
 extlinks = {'projectfile':
-    ('https://github.com/ros-planning/navigation2/blob/main/%s', 'filepath ')}
+    ('https://github.com/ros-navigation/navigation2/blob/main/%s', 'filepath ')}

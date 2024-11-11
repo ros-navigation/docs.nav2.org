@@ -31,7 +31,7 @@ Tutorial Steps
 0- Familiarization with the Smoother BT Node
 --------------------------------------------
 
-The :ref:`bt_smooth_action` BT node is a behavior tree node that interacts with the smoother task server similar to that which you may expect to find for the planner or controller servers. It contains the action client to call the server and specifies its arguments and return types as BT ports. It too calls the server via an action interface that may be seperately interacted with via other servers and client library languages.
+The :ref:`bt_smooth_action` BT node is a behavior tree node that interacts with the smoother task server similar to that which you may expect to find for the planner or controller servers. It contains the action client to call the server and specifies its arguments and return types as BT ports. It too calls the server via an action interface that may be separately interacted with via other servers and client library languages.
 
 Please see the BT node's configuration page to familiarize yourself with all aspects, but the core ports to note are the ``unsmoothed_path`` input port and the ``smoothed_path`` output port. The first takes in a raw path from a planning algorithm and the latter will set the value of the smoothed output path post-smoothing. Other ports are available that fully implements the Smoother Server's action API.
 

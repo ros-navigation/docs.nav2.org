@@ -5,7 +5,7 @@ AMCL
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_amcl
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_amcl
 
 AMCL implements the server for taking a static map and localizing the robot within it using an Adaptive Monte-Carlo Localizer.
 
@@ -98,7 +98,7 @@ Parameters
   ============== =============================
 
   Description
-    Percentage of beams after not matching map to force full update due to bad convergance.
+    Percentage of beams after not matching map to force full update due to bad convergence.
 
 :beam_skip_threshold:
 

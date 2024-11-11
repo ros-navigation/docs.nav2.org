@@ -5,7 +5,7 @@ DWB Controller
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_dwb_controller
 
 The DWB controller is the default controller. It is a fork of `David Lu's
 controller <https://github.com/locusrobotics/robot_navigation/tree/master/dwb_local_planner>`_
@@ -104,6 +104,7 @@ Example
           xy_goal_tolerance: 0.25
           trans_stopped_velocity: 0.25
           short_circuit_trajectory_evaluation: True
+          limit_vel_cmd_in_traj: False
           stateful: True
           critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
           BaseObstacle.scale: 0.02

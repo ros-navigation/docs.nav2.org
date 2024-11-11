@@ -6,7 +6,7 @@ Simple Commander API
 Overview
 ********
 
-The goal of the Nav2 Simple (Python3) Commander is to provide a "navigation as a library" capability to Python3 users. We provide an API that handles all the ROS 2 and Action Server tasks for you such that you can focus on building an application leveraging the capabilities of Nav2 (after you've configured it to your liking with your plugins of choice). `We also provide you with demos and examples of API usage <https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander>`_ to build common basic capabilities in autonomous mobile robotics in the ``nav2_simple_commander`` package.
+The goal of the Nav2 Simple (Python3) Commander is to provide a "navigation as a library" capability to Python3 users. We provide an API that handles all the ROS 2 and Action Server tasks for you such that you can focus on building an application leveraging the capabilities of Nav2 (after you've configured it to your liking with your plugins of choice). `We also provide you with demos and examples of API usage <https://github.com/ros-navigation/navigation2/tree/main/nav2_simple_commander>`_ to build common basic capabilities in autonomous mobile robotics in the ``nav2_simple_commander`` package.
 
 A simple demonstration is shown below. Note: ``goToPose()``, ``goThroughPoses()``, ``followWaypoints()`` and similar are **non-blocking** such that you can receive and process feedback in a single-threaded application. As such while waiting for a task to be completed, the ``while not nav.isTaskComplete()`` design is necessary to poll for changes in the navigation completion, and if not complete some tasks of interest to your application (like processing feedback, doing something with the data the robot is collecting, or checking for faults).
 
@@ -111,9 +111,6 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 | undockRobot(dock_type="")             | Undocks robot. If docking server instance was used to dock, type is not    |
 |                                       | required.                                                                  |
 +---------------------------------------+----------------------------------------------------------------------------+
-| getandTrackRoute(start, goal,         | Gets and tracks a sparse route and dense path from start to goal, where    |
-| use_start=False)                      | start & goal may be of type ``PoseStamped`` or ``int`` for known NodeIDs.  |
-+---------------------------------------+----------------------------------------------------------------------------+
 | smoothPath(path, smoother_id='',      | Smooths a given path of type ``nav_msgs/Path``.                            |
 | max_duration=2.0,                     |                                                                            |
 | check_for_collision=False)            |                                                                            |
@@ -217,7 +214,7 @@ and calculate the cost of a Footprint in a given map.
 Examples and Demos
 ******************
 
-All of these can be found in the `package <https://github.com/ros-planning/navigation2/tree/main/nav2_simple_commander>`_.
+All of these can be found in the `package <https://github.com/ros-navigation/navigation2/tree/main/nav2_simple_commander>`_.
 
 .. image:: readme.gif
   :width: 800
@@ -231,7 +228,6 @@ The ``nav2_simple_commander`` has a few examples to highlight the API functions 
 - ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.
 - ``example_assisted_teleop.py`` - Demonstrates the assisted teleop capabilities of the navigator.  
-- ``example_route.py`` - Demonstrates the Route server capabilities of the navigator.  
 
 The ``nav2_simple_commander`` has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:
 

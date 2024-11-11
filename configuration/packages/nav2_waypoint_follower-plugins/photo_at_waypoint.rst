@@ -33,7 +33,7 @@ Parameters
   ============== =============================
 
   Description
-     Camera image topic name to susbcribe
+     Camera image topic name to subscribe
 
 :``<nav2_waypoint_follower plugin>``.save_images_dir:
 

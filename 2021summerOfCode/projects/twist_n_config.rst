@@ -41,8 +41,8 @@ In the meantime while you're waiting for PRs to be merged or blocked by reviews 
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
-- `Github ticket <https://github.com/ros-planning/navigation2/issues/956>`_
-- `Github ticket2 <https://github.com/ros-planning/navigation2/issues/1594>`_
+- `Github ticket <https://github.com/ros-navigation/navigation2/issues/956>`_
+- `Github ticket2 <https://github.com/ros-navigation/navigation2/issues/1594>`_
 - `Navigation2 <https://docs.nav2.org/>`_
 - `Some related works <https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf>`_
 

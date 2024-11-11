@@ -28,10 +28,24 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |yunji|        +         |pm_boat|      +           |kar2|       |
 +------------------------+------------------------+------------------------+
-|         |torch|        +      |rosbot_xl|       +          |rover|       |
+|         |torch|        +      |ACFR|            +          |rover|       |
 +------------------------+------------------------+------------------------+
-|         |tb4|          +      |tb3|             +          |soon|        |
+|         |tb4|          +      |tb3|             +      |rosbot_xl|       |
 +------------------------+------------------------+------------------------+
+|         |soon|         +      |botr|            +      |soon|            |
++------------------------+------------------------+------------------------+
+
+.. |botr| image:: images/botronics.png
+    :width: 100%
+    :align: middle
+    :alt: Botronics
+    :target: https://botronics.be/
+
+.. |ACFR| image:: images/ACFR.png
+    :width: 100%
+    :align: middle
+    :alt: Australian Centre for Robotics 
+    :target: https://robotics.sydney.edu.au/
 
 .. |torch| image:: images/torch.png
     :width: 100%

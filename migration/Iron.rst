@@ -25,13 +25,13 @@ A new parameter ``enable_stamped_cmd_vel`` has been added to all of the publishe
 Add VelocityPolygon in Collision Monitor
 ****************************************
 
-`PR #3708 <https://github.com/ros-planning/navigation2/pull/3708>`_ adds ``VelocityPolgon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the approriate polygon to be used for collision checking. The tutorial is available in the :ref:`Configuring Collision Monitor with VelocityPolygon <collision_monitor_tutorial>` section.
+`PR #3708 <https://github.com/ros-navigation/navigation2/pull/3708>`_ adds ``VelocityPolgon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the :ref:`Configuring Collision Monitor with VelocityPolygon <collision_monitor_tutorial>` section.
 
 
 Change polygon points parameter format in Collision Monitor
 ***********************************************************
 
-`PR #4020 <https://github.com/ros-planning/navigation2/pull/4020>`_ changes the format of the Polygon points parameter from ``vector<double>`` to ``string``. This makes the polygon description more uniform accross the Collision Monitor and Costmap_2D.
+`PR #4020 <https://github.com/ros-navigation/navigation2/pull/4020>`_ changes the format of the Polygon points parameter from ``vector<double>`` to ``string``. This makes the polygon description more uniform across the Collision Monitor and Costmap_2D.
 Now we can define a polygon's points in string that has a ``vector<vector<double>>`` structure like this ``"[[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y],...]"`` with a minimum of 4 points described. An example of a Square polygon will be written as follows.
 
 
@@ -49,7 +49,7 @@ Now we can define a polygon's points in string that has a ``vector<vector<double
 Introduction of Soft-Real Time Action Servers
 *********************************************
 
-`PR #3914 <https://github.com/ros-planning/navigation2/pull/3914>`_ adds soft real-time priorization to the controller server to better ensure resources to time sensitive portions of the codebase. The Simple Action Server now has a ``realtime`` input field exposed in the Controller Server via the parameter ``use_realtime_priority`` which will set the controller's execution thread to a higher priority than the rest of the system to meet scheduling deadlines. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions. This is currently only enabled in the Controller Server, who's execution thread is sensitive to scheduling priorities, but could be set with other threads in the future if found necessary.
+`PR #3914 <https://github.com/ros-navigation/navigation2/pull/3914>`_ adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. The Simple Action Server now has a ``realtime`` input field exposed in the Controller Server via the parameter ``use_realtime_priority`` which will set the controller's execution thread to a higher priority than the rest of the system to meet scheduling deadlines. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions. This is currently only enabled in the Controller Server, who's execution thread is sensitive to scheduling priorities, but could be set with other threads in the future if found necessary.
 
 .. code-block:: text
 
@@ -77,13 +77,13 @@ See :ref:`docking_tutorial` for a tutorial on using this new capability! Thanks 
 Introduce a new Multi-Robot Bringup Launch
 ******************************************
 
-`PR #3572 <https://github.com/ros-planning/navigation2/pull/3572>`_ introduces a new way of bringup tb3 multi-robot that names as ``cloned_tb3_simulation_launch.py`` for simulation. ``cloned_tb3_simulation_launch.py`` enables to bring up multiple robots with same parameter that described in ``nav2_multirobot_param_all.yaml``. And multiple robots are separeted by namespaces which are given as a Launch Arguments.
+`PR #3572 <https://github.com/ros-navigation/navigation2/pull/3572>`_ introduces a new way of bringup tb3 multi-robot that names as ``cloned_tb3_simulation_launch.py`` for simulation. ``cloned_tb3_simulation_launch.py`` enables to bring up multiple robots with same parameter that described in ``nav2_multirobot_param_all.yaml``. And multiple robots are separated by namespaces which are given as a Launch Arguments.
 Existing ``multi_tb3_simulation_launch.py`` which was utilized in previous is replaced with ``unique_tb3_simulation_launch.py``, allowing for multiple unique robot instances utilizing ``nav2_multirobot_params_<N>.yaml`` configuration files.
 
 
 New option for the Voxel and Obstacle Layers
 ********************************************
-`PR #3612 <https://github.com/ros-planning/navigation2/pull/3612>`_ adds a new MaxWithoutUnknownOverwrite option to combination_method parameter in Voxel and Obstacle Layers. This can be used to make sure that the static map is the dominant source of information, and
+`PR #3612 <https://github.com/ros-navigation/navigation2/pull/3612>`_ adds a new MaxWithoutUnknownOverwrite option to combination_method parameter in Voxel and Obstacle Layers. This can be used to make sure that the static map is the dominant source of information, and
 easily prevent the robot to go through places that are not present in the static map.
 
 use_interpolation RPP Parameter Depreciated 
@@ -127,7 +127,7 @@ New to Jazzy, MPPI is 45% faster due to a weeks long optimization campaign. Enjo
 Move Error Code Enumerations
 ****************************
 
-`PR #3693 <https://github.com/ros-planning/navigation2/pull/3693>`_ moves the enumeration codes from the goal to the result section. 
+`PR #3693 <https://github.com/ros-navigation/navigation2/pull/3693>`_ moves the enumeration codes from the goal to the result section. 
 
 Substitution in parameter file
 ******************************
@@ -145,7 +145,7 @@ For more information about substitutions syntax, see `here <https://docs.ros.org
 Allow Behavior Server Plugins to Access The Action Result
 *********************************************************
 
-`PR #3704 <https://github.com/ros-planning/navigation2/pull/3704>`_ allows behavior servers plugins to access and modify the action result.
+`PR #3704 <https://github.com/ros-navigation/navigation2/pull/3704>`_ allows behavior servers plugins to access and modify the action result.
 
 Smac Planner Debug Param Name Change
 ************************************
@@ -162,7 +162,7 @@ This PR also introduces additional analytic expansion scoring logic and edge cas
 Added GPS Waypoint Follower Server
 **********************************
 
-`This PR 2814 <https://github.com/ros-planning/navigation2/pull/2814>`_  adds the ``follow_gps_waypoints`` action server in ``nav2_waypoint_follower``. This server accepts a set of GPS goals instead of cartesian goals and provides all the other functionalities available on ``nav2_waypoint_follower``. A new tutorial demonstrating its functionality was also added on `PR 70 on navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/pull/70>`_ and can be found on the General Tutorials directory on this website. 
+`This PR 2814 <https://github.com/ros-navigation/navigation2/pull/2814>`_  adds the ``follow_gps_waypoints`` action server in ``nav2_waypoint_follower``. This server accepts a set of GPS goals instead of cartesian goals and provides all the other functionalities available on ``nav2_waypoint_follower``. A new tutorial demonstrating its functionality was also added on `PR 70 on navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials/pull/70>`_ and can be found on the General Tutorials directory on this website. 
 
 Smac Planner Hybrid-A* New Features
 ***********************************
@@ -172,18 +172,18 @@ New features ``allow_primitive_interpolation`` which allows for more primitives 
 New node in nav2_collision_monitor: Collision Detector
 ******************************************************
 
-In this `PR #3693 <https://github.com/ros-planning/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector. 
+In this `PR #3693 <https://github.com/ros-navigation/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector. 
 It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the ``collision_detector_state`` topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).
 
 Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector
 ****************************************************************************
 
-In this `PR #3825 <https://github.com/ros-planning/navigation2/pull/3825>`_ we added the ability to dynamically enable/disable sources and polygons in the Collision Monitor/Detector.
+In this `PR #3825 <https://github.com/ros-navigation/navigation2/pull/3825>`_ we added the ability to dynamically enable/disable sources and polygons in the Collision Monitor/Detector.
 
 Expose action server's result timeout
 *************************************
 
-In this `PR #3787 <https://github.com/ros-planning/navigation2/pull/3787>`_ the timeout for action server's result was exposed in all nodes having action servers. 
+In this `PR #3787 <https://github.com/ros-navigation/navigation2/pull/3787>`_ the timeout for action server's result was exposed in all nodes having action servers. 
 This is because in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_ in rcl a change was introduced which makes action servers discard a goal handle if the result
 is not produced within 10 seconds, when the default was set to 15 minutes before. Since some actions in Nav2 may take more than 10 seconds to complete, the user has now the ability
 to set this value through the ``action_server_result_timeout`` parameter, which defaults to 15 minutes in the ``bt_navigators`` and ``waypoint_follower`` and to 10 seconds in all other nodes.
@@ -192,40 +192,40 @@ RewrittenYaml could add new parameters to YAMLs
 ***********************************************
 
 Now ``RewrittenYaml`` widely used in Nav2 launch-scripts, could do not only substitutions of ROS-parameters existing in original YAML, but rather additions of new parameters, that did not exist in the YAML. Certainly, these parameters should be declared for target ROS-nodes, otherwise they won't be processed in run-time. In such functionality, they should be expressed in absolute values, separated by a dot. For example, the rewrite for a ``prune_distance`` parameter of a ``FollowPath`` node will look like ``'controller_server.ros__parameters.FollowPath.prune_distance': '1.0'`` in a ``param_rewrites`` dictionary of ``RewrittenYaml()`` argument.
-The change was intoroduced in the scope of `PR #3785 <https://github.com/ros-planning/navigation2/pull/3785>`_ fix.
+The change was intoroduced in the scope of `PR #3785 <https://github.com/ros-navigation/navigation2/pull/3785>`_ fix.
 
 Simple Commander API Allows Multi-Robot Namespacing
 ***************************************************
 
-The Simple Navigator API now allows multi-robot namespacing by exposing a ``namespace`` field in the constructor to allow you to specify the Nav2 stacks' namespace for a robot or system. See `this PR for details <https://github.com/ros-planning/navigation2/pull/3803/files>`_.
+The Simple Navigator API now allows multi-robot namespacing by exposing a ``namespace`` field in the constructor to allow you to specify the Nav2 stacks' namespace for a robot or system. See `this PR for details <https://github.com/ros-navigation/navigation2/pull/3803/files>`_.
 
 Change duration type in wait_action node
 ****************************************
 
-In this `PR #3871 <https://github.com/ros-planning/navigation2/pull/3871>`_ the type of duration variable in wait_action node is changed from int to double, which allows you to use floating values for wait_action.
+In this `PR #3871 <https://github.com/ros-navigation/navigation2/pull/3871>`_ the type of duration variable in wait_action node is changed from int to double, which allows you to use floating values for wait_action.
 
 The costmap activation fails when required transforms are not available
 ***********************************************************************
 
-In this `PR #3866 <https://github.com/ros-planning/navigation2/pull/3866>`_ the parameter ``initial_transform_timeout`` is added to the costmap. The activation of the costmap now fails,
+In this `PR #3866 <https://github.com/ros-navigation/navigation2/pull/3866>`_ the parameter ``initial_transform_timeout`` is added to the costmap. The activation of the costmap now fails,
 if the transformation from the robot base frame to the global frame does not become available during this timeout.
 
 Subtrees Obtain Shared Resources
 ********************************
 
-`PR #3911 <https://github.com/ros-planning/navigation2/pull/3911>`_ gives all sub-trees in BT.CPP the same shared resources as the main tree (node, shared timeouts, etc).
+`PR #3911 <https://github.com/ros-navigation/navigation2/pull/3911>`_ gives all sub-trees in BT.CPP the same shared resources as the main tree (node, shared timeouts, etc).
 
 Collision Monitor: added watchdog mechanism based on ``source_timeout`` parameter with default blocking behavior
 ****************************************************************************************************************
 
-`PR #3880 <https://github.com/ros-planning/navigation2/pull/3880>`_ adds a watchdog mechanism that stops the robot if a source data is not published yet, or if no new data is received within the `source_timeout`` parameter, or if impossible to transform data to base frame. ``source_timeout`` parameter can now be set per source: if ``source_timeout`` is not set for a source, the value of the node ``source_timeout`` parameter is used.
+`PR #3880 <https://github.com/ros-navigation/navigation2/pull/3880>`_ adds a watchdog mechanism that stops the robot if a source data is not published yet, or if no new data is received within the `source_timeout`` parameter, or if impossible to transform data to base frame. ``source_timeout`` parameter can now be set per source: if ``source_timeout`` is not set for a source, the value of the node ``source_timeout`` parameter is used.
 
 Additionally, this watchdog mechanism can be disabled by setting ``source_timeout: 0.0``.
 
 BtActionServer: use native library haltTree()
 *********************************************
 
-`PR #3950 <https://github.com/ros-planning/navigation2/pull/3950>`_ changes the method used by `BehaviorTreeEngine::haltAllActions` to halt the BT nodes to the bt.cpp native method `haltTree()`.
+`PR #3950 <https://github.com/ros-navigation/navigation2/pull/3950>`_ changes the method used by `BehaviorTreeEngine::haltAllActions` to halt the BT nodes to the bt.cpp native method `haltTree()`.
 
 Before this change, only the active BT node was halted when finishing the action. After this change, all BT nodes halt() methods are called. This is very convenient to handle cleaning operation (switch off your lights when leaving) in halt().
 
@@ -239,7 +239,7 @@ The Global Frame was removed from ``RemovePassedGoals`` and ``GoalReached`` BT n
 Introduction of ``CostmapUpdate.msg``
 *************************************
 
-`PR #3965 <https://github.com/ros-planning/navigation2/pull/3965>`_ introduces a new type of message - ``CostmapUpdate.msg``. It is the update message related to the ``Costmap.msg``. Now instead of sending the whole costmap in every message, such as with ``Costmap.msg``, the ``CostmapUpdate.msg`` includes only the area of the costmap that has changed since the previous update message. The ``Costmap.msg`` is sent only once at the beginning, followed by the messages of the ``CostmapUpdate.msg`` type. The idea is to mimic the ``OccupancyGrid.msg`` and ``OccupancyGridUpdate.msg`` behavior.
+`PR #3965 <https://github.com/ros-navigation/navigation2/pull/3965>`_ introduces a new type of message - ``CostmapUpdate.msg``. It is the update message related to the ``Costmap.msg``. Now instead of sending the whole costmap in every message, such as with ``Costmap.msg``, the ``CostmapUpdate.msg`` includes only the area of the costmap that has changed since the previous update message. The ``Costmap.msg`` is sent only once at the beginning, followed by the messages of the ``CostmapUpdate.msg`` type. The idea is to mimic the ``OccupancyGrid.msg`` and ``OccupancyGridUpdate.msg`` behavior.
 
 To activate this feature, the Costmap2D ROS parameter ``always_send_full_costmap`` has to be set to ``false``. 
 
@@ -253,7 +253,7 @@ The stack no longer contains wall timers or wall rates. It will now use the node
 New Graceful Motion Controller
 ******************************
 
-`PR #4021 <https://github.com/ros-planning/navigation2/pull/4021>`_ introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and confortable trajectory.
+`PR #4021 <https://github.com/ros-navigation/navigation2/pull/4021>`_ introduces a new type of controller for differential robots based on a pose-following kinematic control law that generates a smooth and comfortable trajectory.
 
 See :ref:`configuring_graceful_motion_controller` for more information.
 
@@ -265,7 +265,7 @@ New to Jazzy, the ``plugin_lib_names`` parameter implicitly includes all Nav2 BT
 New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers
 ***************************************************************************************************
 
-`In PR #4091 <https://github.com/ros-planning/navigation2/pull/4091>`_ a new RViz plugin was added to select the planner, controller, goal checker, progress checker, and smoother on the fly.
+`In PR #4091 <https://github.com/ros-navigation/navigation2/pull/4091>`_ a new RViz plugin was added to select the planner, controller, goal checker, progress checker, and smoother on the fly.
 
 The primary goal of this plugin is to facilitate the developers and easy integration testing of their configuration before deploying the robot in the intended application.
 
@@ -284,7 +284,7 @@ In this case, the `FollowPath` is the default controller_id. The difference betw
 RPP new optional ``interpolate_curvature_after_goal`` behavior and fix conflict between ``use_rotate_to_heading`` and ``allow_reversing``
 *****************************************************************************************************************************************
 
-`In PR #4140 <https://github.com/ros-planning/navigation2/pull/4140>`_ a new optional ``interpolate_curvature_after_goal`` parameter (default ``false``) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same. 
+`In PR #4140 <https://github.com/ros-navigation/navigation2/pull/4140>`_ a new optional ``interpolate_curvature_after_goal`` parameter (default ``false``) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same. 
 
 Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when ``interpolate_curvature_after_goal`` is ``true``. It can be used only when ``use_fixed_curvature_lookahead: true``.
 
@@ -295,7 +295,7 @@ Additionally, the conflict between ``use_rotate_to_heading`` and ``allow_reversi
 
 Cancel Checker Interface For GlobalPlanner
 *******************************************
-`PR #4148 <https://github.com/ros-planning/navigation2/pull/4148>`_ introduces a new interface for the ``GlobalPlanner`` to allow for the cancellation of the current planning task.
+`PR #4148 <https://github.com/ros-navigation/navigation2/pull/4148>`_ introduces a new interface for the ``GlobalPlanner`` to allow for the cancellation of the current planning task.
 Before the planners would continue to plan even if the goal was cancelled, now they can check it and stop planning if the goal is cancelled.
 New interface for ``GlobalPlanner::createPlan``:
 
@@ -313,19 +313,19 @@ Smac and Theta* planners have a new parameter ``terminal_checking_interval`` whi
 New BtActionServer/BtNavigator parameter
 ****************************************
 
-`PR #4209 <https://github.com/ros-planning/navigation2/pull/4209>`_ introduces a new boolean parameter ``always_reload_bt_xml``, which enables the possibility to always reload a requested behavior tree XML description, regardless of the currently active XML. This allows keeping the action server running while changing/developing the XML description.
+`PR #4209 <https://github.com/ros-navigation/navigation2/pull/4209>`_ introduces a new boolean parameter ``always_reload_bt_xml``, which enables the possibility to always reload a requested behavior tree XML description, regardless of the currently active XML. This allows keeping the action server running while changing/developing the XML description.
 
 
 New collision monitor parameter
 *******************************
 
-`PR #4207 <https://github.com/ros-planning/navigation2/pull/4207>`_ introduces a new boolean parameter ``polygon_subscribe_transient_local`` (value is false by default), which set the QoS durability for polygon topic or footprint topic subscription.
+`PR #4207 <https://github.com/ros-navigation/navigation2/pull/4207>`_ introduces a new boolean parameter ``polygon_subscribe_transient_local`` (value is false by default), which set the QoS durability for polygon topic or footprint topic subscription.
 
 
 New graceful cancellation API for Controllers
 *********************************************
 
-`PR #4136 <https://github.com/ros-planning/navigation2/pull/4136>`_ introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the ``RegulatedPurePursuitController`` by adding a new parameter ``cancel_deceleration``. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.
+`PR #4136 <https://github.com/ros-navigation/navigation2/pull/4136>`_ introduces a new graceful cancellation API for controllers. Previously when a goal was canceled, the controller would stop the robot immediately. This API allows the controller to stop the robot in a more graceful way. The new API is implemented in the ``RegulatedPurePursuitController`` by adding a new parameter ``cancel_deceleration``. So when the goal is canceled, a constant deceleration will be used while continuing to track the path to stop the robot instead of stopping immediately. This API can be should be added to all controllers that have acceleration limits.
 
 
 Standardization of Plugin Naming with Double Colons (::)
@@ -341,21 +341,21 @@ Standardization of Plugin Naming with Double Colons (::)
 
 Collision monitor: dynamic radius for circle type polygons
 **********************************************************
-`PR #4226 <https://github.com/ros-planning/navigation2/pull/4226>`_ introduces usage of parameter ``<polygon_name>.polygon_sub_topic`` for circle type polygons. If parameter ``<polygon_name>.radius`` is not set, collision monitor node subscribes to topic ``<polygon_name>.polygon_sub_topic`` (subscription type is ``std_msgs/msg/Float32``), and the current circle polygon radius will be updating accordingly to received messages on topic.
+`PR #4226 <https://github.com/ros-navigation/navigation2/pull/4226>`_ introduces usage of parameter ``<polygon_name>.polygon_sub_topic`` for circle type polygons. If parameter ``<polygon_name>.radius`` is not set, collision monitor node subscribes to topic ``<polygon_name>.polygon_sub_topic`` (subscription type is ``std_msgs/msg/Float32``), and the current circle polygon radius will be updating accordingly to received messages on topic.
 
 
 Static Layer: new parameter ``footprint_clearing_enabled``
 **********************************************************
-`PR #4282 <https://github.com/ros-planning/navigation2/pull/4282>`_ introduces usage of parameter ``footprint_clearing_enabled`` for the static layer. It works similarly to the ``footprint_clearing_enabled`` parameter in the obstacle and voxel layer. If set to ``true``, the static layer will clear the costmap cells that are within the robot's footprint. It is ``false`` by default to keep the previous behavior.
+`PR #4282 <https://github.com/ros-navigation/navigation2/pull/4282>`_ introduces usage of parameter ``footprint_clearing_enabled`` for the static layer. It works similarly to the ``footprint_clearing_enabled`` parameter in the obstacle and voxel layer. If set to ``true``, the static layer will clear the costmap cells that are within the robot's footprint. It is ``false`` by default to keep the previous behavior.
 
 Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)
 **********************************************************************************************
 
-`PR #4342 <https://github.com/ros-planning/navigation2/pull/4342>`_ adds the parameter ``bond_heartbeat_period`` to the lifecycle nodes to customize the bond mechanism publishing period (on the ``/bond`` topic). Default value unchanged to 0.1s. Disabled if inferior or equal to 0.0.
+`PR #4342 <https://github.com/ros-navigation/navigation2/pull/4342>`_ adds the parameter ``bond_heartbeat_period`` to the lifecycle nodes to customize the bond mechanism publishing period (on the ``/bond`` topic). Default value unchanged to 0.1s. Disabled if inferior or equal to 0.0.
 
 Rotation Shim Controller: new parameter ``rotate_to_goal_heading``
 ******************************************************************
-`PR #4332 <https://github.com/ros-planning/navigation2/pull/4332>`_ introduces usage of parameter ``rotate_to_goal_heading`` for the rotation shim controller. It allows the rotation shim controller to take back control when reaching the XY goal tolerance to perform a clean rotation towards the goal heading. Some controllers will do this internally, but it is a useful option for others.
+`PR #4332 <https://github.com/ros-navigation/navigation2/pull/4332>`_ introduces usage of parameter ``rotate_to_goal_heading`` for the rotation shim controller. It allows the rotation shim controller to take back control when reaching the XY goal tolerance to perform a clean rotation towards the goal heading. Some controllers will do this internally, but it is a useful option for others.
 
 MPPI Controller: Addition of acceleration constraints 
 ******************************************************

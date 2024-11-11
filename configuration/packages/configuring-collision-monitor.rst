@@ -5,7 +5,7 @@ Collision Monitor
 
 Source code and ``README`` with design, explanations, and metrics can be found on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_collision_monitor
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_collision_monitor
 
 The ``nav2_collision_monitor`` package contains nodes providing an additional level of robot safety, namely the Collision Monitor and the Collision Detector.
 The Collision Monitor is a node providing an additional level of robot safety. It performs several collision avoidance related tasks using incoming data from the sensors, bypassing the costmap and trajectory planners, to monitor for and prevent potential collisions at the emergency-stop level.

@@ -92,7 +92,7 @@ developer. In the commit message of the contribution, (described more
 fully later in this document), the developer simply adds a
 ``Signed-off-by`` statement and thereby agrees to the DCO.
 
-In practice, its easier to just ``git commit -s -m "commit messsage."``.
+In practice, its easier to just ``git commit -s -m "commit message."``.
 Where ``-s`` adds this automatically.
 If you forgot to add this to a commit, it is easy to append via: ``git commit --amend -s``.
 
