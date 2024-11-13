@@ -13,17 +13,10 @@ Animation at the top
 - `Conclusion`_
 
 .. image:: images/Navigation2_with_MicroStrain_GQ7/nav2_with_gq7.gif
-    :width: 708px
-    :height: 400px
+    :width: 70%
     :align: center
     :alt: Navigating using GQ7 and rviz
 
-
-.. image:: images/Navigation2_with_MicroStrain_GQ7/microstrain_clearpath_jackal.jpg
-    :width: 708px
-    :height: 400px
-    :align: center
-    :alt: Clearpath Jackal robot with a 3DM-GQ7
 
 Overview
 ========
@@ -205,6 +198,14 @@ The following XML shows the most simple version of adding a GQ7 to your robot al
 
 1- Mount your GQ7
 -----------------
+
+.. figure:: images/Navigation2_with_MicroStrain_GQ7/microstrain_clearpath_jackal.jpg
+    :width: 70%
+    :height: 400px
+    :align: center
+    :alt: Clearpath Jackal robot with a 3DM-GQ7
+
+    Clearpath Jackal robot with a 3DM-GQ7
 
 An in-depth installation guide can be found on the `GQ7 manual <https://files.microstrain.com/GQ7+User+Manual/user_manual_content/installation/Installation.htm>`_, but we will provide a trimmed down guide for this tutorial.
 
