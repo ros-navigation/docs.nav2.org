@@ -71,13 +71,6 @@ RTK corrections (optional)
 
     If you want RTK level precision, you will need to either have a `3DM-RTK <https://www.microstrain.com/inertial-sensors/3dm-rtk>`_, or internet access from your robot and a subscription to an NTRIP network.
 
-    If you have internet access from your robot, and wish to get corrections from an NTRIP network, you will also need to install the ``ntrip_client`` package:
-
-    .. code-block:: bash
-
-      source /opt/ros/<ros2-distro>/setup.bash
-      sudo apt install ros-$ROS_DISTRO-ntrip-client
-
 Obstacle detection (optional)
 -----------------------------
 
@@ -259,32 +252,6 @@ If using serial, you will need to know which serial port the device is connected
   baudrate: 921600  # This is the ideal baudrate for this application, but can be reduced to 115200 if absolutely necessary
   set_baud: True  # this will ensure that the device has the same baudrate as the baudrate you configured
 
-
-2.2- Configure the aux port (optional)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**Note:** This section is only relevant if using the ``ntrip_client``.
-
-Again, if using USB, this is as simple as adding the following key:
-
-.. code-block:: yaml
-
-  aux_port: /dev/microstrain_aux  # Assuming you only have one GQ7 plugged in, this should point to the GQ7 aux port, if you have multiple GQ7s, change this to /dev/microstrain_aux_<serial_number>
-
-If you are using serial, you will need to know the serial port of the aux port, and then configure it like so:
-
-.. code-block:: yaml
-
-  aux_port: /dev/ttyS1  # Change this to the serial port your aux port is connected on
-  aux_baudrate: 115200  # The baudrate required for the aux port is much lower. 115200 should be more than enough, and this could be reduced even more if need be
-
-Once you have configured the aux port, you will need to enable the NTRIP interface in order to communicate with the ``ntrip_client``:
-
-.. code-block:: yaml
-
-  ntrip_interface_enable : True  # Will cause the driver to open the aux port, publish the NMEA sentences it produces to the ROS network, and accept RTCM messages from the network.
-
-
 2.3- Configure the EKF
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -412,7 +379,7 @@ Finally, we need to setup the data rates of each of the publishers.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Having configured everything individually, we can now combine all of the parameters into our config file. For the purpose of this tutorial, we will call this config file ``gq7.yml``, and it should now look like 
-`this <https://github.com/robbiefish/navigation2_tutorials/blob/master/nav2_gq7_demo/config/gq7.yml>`_. Note that this file does not contain any aux port configuration.
+`this <https://github.com/robbiefish/navigation2_tutorials/blob/master/nav2_gq7_demo/config/gq7.yml>`_.
 
 3- Configure Nav2
 -----------------
@@ -536,14 +503,14 @@ GUI tools like RViz don't work that well with these types of waypoints, but you 
         frame_id: 'earth'
       pose:
         position:
-          x: 1325.626
-          y: -4364.86
-          z: 4443.04
+          x: 1325671.3122646695
+          y: -4364809.647592493
+          z: 4442998.532355218
         orientation:
-          x: 0.0
-          y: 0.0
-          z: 0.0
-          w: 1.0
+          x: 0.3653483194153644
+          y: 0.16011500347965674
+          z: -0.013738607576914997
+          w: 0.9168942369886103
     behavior_tree: ''
   "
 
