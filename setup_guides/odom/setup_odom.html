@@ -66,7 +66,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development_guides/index.html">Development Guides</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development_guides/build_docs/index.html">Build and Install</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#install">Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#install">Install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#for-iron-and-older">For Iron and Older</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#for-jazzy-and-newer">For Jazzy and Newer</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#build">Build</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#released-distribution-binaries">Released Distribution Binaries</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#rolling-development-source">Rolling Development Source</a></li>
@@ -1100,7 +1104,13 @@
              
   <div class="section" id="setting-up-odometry">
 <h1>Setting Up Odometry<a class="headerlink" href="#setting-up-odometry" title="Permalink to this heading"></a></h1>
-<p>In this guide, we will be looking at how to integrate our robot’s odometry system with Nav2. First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly. Next, we will show how to setup odometry with two different cases. In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders. In the second case, we will build a demo that simulates a functioning odometry system on <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> (the robot that we built in the previous section) using Gazebo. Afterwards, we will discuss how various sources of odometry can be fused to provide a smoothed odometry using the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package. Lastly, we will also show how to publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform using <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>.</p>
+<p>In this guide, we will be looking at how to integrate our robot’s odometry system with Nav2.
+First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly.
+Next, we will show how to setup odometry with two different cases.
+In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders.
+In the second case, we will build a demo that simulates a functioning odometry system on <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> (the robot that we built in the previous section) using Gazebo.
+Afterwards, we will discuss how various sources of odometry can be fused to provide a smoothed odometry using the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package.
+Lastly, we will also show how to publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform using <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>The complete source code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository under the <code class="docutils literal notranslate"><span class="pre">sam_bot_description</span></code> package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.</p>

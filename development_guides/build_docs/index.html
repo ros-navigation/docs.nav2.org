@@ -66,7 +66,11 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Development Guides</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Build and Install</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install">Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install">Install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#for-iron-and-older">For Iron and Older</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-jazzy-and-newer">For Jazzy and Newer</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#build">Build</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#released-distribution-binaries">Released Distribution Binaries</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rolling-development-source">Rolling Development Source</a></li>
@@ -1104,12 +1108,25 @@
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this heading"></a></h2>
 <p>Nav2 and its dependencies are released as binaries.
 You may install it via the following to get the latest stable released version:</p>
+<div class="section" id="for-iron-and-older">
+<h3>For Iron and Older<a class="headerlink" href="#for-iron-and-older" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;distro&gt;/setup.bash
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>ros-<span class="nv">$ROS_DISTRO</span>-navigation2<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>ros-<span class="nv">$ROS_DISTRO</span>-nav2-bringup<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>ros-<span class="nv">$ROS_DISTRO</span>-turtlebot3*
 </pre></div>
+</div>
+</div>
+<div class="section" id="for-jazzy-and-newer">
+<h3>For Jazzy and Newer<a class="headerlink" href="#for-jazzy-and-newer" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;distro&gt;/setup.bash
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ros-<span class="nv">$ROS_DISTRO</span>-navigation2<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ros-<span class="nv">$ROS_DISTRO</span>-nav2-bringup<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ros-<span class="nv">$ROS_DISTRO</span>-nav2-minimal-tb*
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="build">
@@ -1183,6 +1200,7 @@ Nav2 does not currently release binaries on rolling, so it must be build from so
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>&lt;ros_ws&gt;/install/setup.bash
 mkdir<span class="w"> </span>-p<span class="w"> </span>~/nav2_ws/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/nav2_ws
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-navigation/navigation2.git<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>./src/navigation2
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation.git<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>./src/nav2_minimal_turtlebot_simulation
 rosdep<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--from-paths<span class="w"> </span>./src<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--ignore-src

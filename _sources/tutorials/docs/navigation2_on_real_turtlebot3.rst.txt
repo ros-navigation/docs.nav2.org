@@ -30,6 +30,12 @@ Requirements
 You must install Nav2, Turtlebot3.
 If you don't have them installed, please follow :ref:`getting_started`.
 
+The turtlebot3 software can be installed via the following or on the `turtlebot3 repository <https://github.com/ROBOTIS-GIT/turtlebot3>`_:
+
+.. code-block:: bash
+
+  sudo apt install ros-<ros2-distro>-turtlebot3 ros-<ros2-distro>-turtlebot3-msgs ros-<ros2-distro>-turtlebot3-bringup
+
 Tutorial Steps
 ==============
 
@@ -44,7 +50,7 @@ Run the following commands first whenever you open a new terminal during this tu
 1- Launch Turtlebot 3
 ---------------------
 
-You will need to launch your robot's interface,
+You will need to launch your robot's interface, for example:
 
   ``ros2 launch turtlebot3_bringup robot.launch.py  use_sim_time:=False``
 

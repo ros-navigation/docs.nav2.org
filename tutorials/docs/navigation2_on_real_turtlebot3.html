@@ -66,7 +66,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../development_guides/index.html">Development Guides</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../development_guides/build_docs/index.html">Build and Install</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#install">Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#install">Install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#for-iron-and-older">For Iron and Older</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#for-jazzy-and-newer">For Jazzy and Newer</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../development_guides/build_docs/index.html#build">Build</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#released-distribution-binaries">Released Distribution Binaries</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../development_guides/build_docs/index.html#rolling-development-source">Rolling Development Source</a></li>
@@ -1120,6 +1124,10 @@ It depends on your experience with ROS, robots, and what computer system you hav
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <p>You must install Nav2, Turtlebot3.
 If you don’t have them installed, please follow <a class="reference internal" href="../../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>.</p>
+<p>The turtlebot3 software can be installed via the following or on the <a class="reference external" href="https://github.com/ROBOTIS-GIT/turtlebot3">turtlebot3 repository</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3-msgs<span class="w"> </span>ros-&lt;ros2-distro&gt;-turtlebot3-bringup
+</pre></div>
+</div>
 </div>
 <div class="section" id="tutorial-steps">
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
@@ -1133,7 +1141,7 @@ If you don’t have them installed, please follow <a class="reference internal" 
 </div>
 <div class="section" id="launch-turtlebot-3">
 <h3>1- Launch Turtlebot 3<a class="headerlink" href="#launch-turtlebot-3" title="Permalink to this heading"></a></h3>
-<p>You will need to launch your robot’s interface,</p>
+<p>You will need to launch your robot’s interface, for example:</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">turtlebot3_bringup</span> <span class="pre">robot.launch.py</span>&#160; <span class="pre">use_sim_time:=False</span></code></p>
 </div></blockquote>
