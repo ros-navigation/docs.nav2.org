@@ -6,8 +6,12 @@ Build and Install
 Install
 *******
 
+
 Nav2 and its dependencies are released as binaries.
 You may install it via the following to get the latest stable released version:
+
+For Iron and Older
+==================
 
 .. code:: bash
 
@@ -16,6 +20,17 @@ You may install it via the following to get the latest stable released version:
     ros-$ROS_DISTRO-navigation2 \
     ros-$ROS_DISTRO-nav2-bringup \
     ros-$ROS_DISTRO-turtlebot3*
+
+For Jazzy and Newer
+===================
+
+.. code:: bash
+
+  source /opt/ros/<distro>/setup.bash
+  sudo apt install \
+    ros-$ROS_DISTRO-navigation2 \
+    ros-$ROS_DISTRO-nav2-bringup \
+    ros-$ROS_DISTRO-nav2-minimal-tb*
 
 Build
 *****
@@ -91,6 +106,7 @@ Once your environment is setup, clone the repo and build the workspace:
   source <ros_ws>/install/setup.bash
   mkdir -p ~/nav2_ws/src && cd ~/nav2_ws
   git clone https://github.com/ros-navigation/navigation2.git --branch main ./src/navigation2
+  git clone https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation.git --branch main ./src/nav2_minimal_turtlebot_simulation
   rosdep install -r -y \
     --from-paths ./src \
     --ignore-src

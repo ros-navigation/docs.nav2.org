@@ -20,6 +20,9 @@ and navigating a simulated Turtlebot 3 in the Gazebo simulator.
 Installation
 ************
 
+Jazzy introduced the new Gazebo modern simulator, replacing Gazebo Classic.
+Thus, for Jazzy and newer, the installation packages and instructions are slightly different to pull in the appropriate packages.
+
 1. Install the `ROS 2 binary packages`_ as described in the official docs
 2. Install the |PN| packages using your operating system's package manager:
 
@@ -28,7 +31,16 @@ Installation
       sudo apt install ros-<ros2-distro>-navigation2
       sudo apt install ros-<ros2-distro>-nav2-bringup
 
-3. Install the Turtlebot 3 packages (Humble and older):
+3. Install the demo robot (Turtlebot) for gazebo:
+
+For **Jazzy and newer**, install the Turtlebot 3 & 4 packages for Gazebo Modern. It should be automatically installed with ``nav2_bringup``:
+
+   .. code-block:: bash
+
+      sudo apt install ros-<ros2-distro>-nav2-minimal-tb*
+
+
+For **Iron and older**, install Turtlebot 3 packages for gazebo classic:
 
    .. code-block:: bash
 
@@ -38,13 +50,13 @@ Running the Example
 *******************
 
 1. Start a terminal in your GUI
-2. Set key environment variables:
+2. Set key environment variables, some of which are only required for Iron and older:
 
    .. code-block:: bash
 
       source /opt/ros/<ros2-distro>/setup.bash
-      export TURTLEBOT3_MODEL=waffle
-      export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/<ros2-distro>/share/turtlebot3_gazebo/models
+      export TURTLEBOT3_MODEL=waffle  # Iron and older only with Gazebo Classic
+      export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/<ros2-distro>/share/turtlebot3_gazebo/models # Iron and older only with Gazebo Classic
 
 3. In the same terminal, run:
 
@@ -53,22 +65,16 @@ Running the Example
       ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
    
    .. note::
-
-      For ``ROS 2 Dashing Diademata`` or earlier, use
-      ``nav2_simulation_launch.py``.
-      However, it is recommended to use the most recent `ROS 2 LTS distribution
-      <https://ros.org/reps/rep-2000.html>`_  for improved stability and feature
-      completeness.
       
       ``headless`` defaults to true; if not set to false, gzclient (the 3d view) is not started.
 
    This launch file will launch Nav2 with the AMCL localizer in the
-   ``turtlebot3_world`` world.
+   simulation world.
    It will also launch the robot state publisher to provide transforms,
    a Gazebo instance with the Turtlebot3 URDF, and RVIZ.
 
    If everything has started correctly, you will see the RViz and Gazebo GUIs like
-   this:
+   this (this is Gazebo Classic, but what you see with modern Gazebo is virtually identical):
 
    .. image:: /images/rviz/rviz-not-started.png
       :width: 45%

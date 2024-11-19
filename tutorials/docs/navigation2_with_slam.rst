@@ -12,7 +12,7 @@ Overview
 
 This document explains how to use Nav2 with SLAM.
 The following steps show ROS 2 users how to generate occupancy grid maps and use Nav2 to move their robot around.
-This tutorial applies to both simulated and physical robots, but will be completed here on physical robot.
+This tutorial applies to both simulated and physical robots, but will be completed here on a physical robot.
 
 Before completing this tutorial, completing the :ref:`getting_started` is highly recommended especially if you are new to ROS and Navigation2.
 
@@ -41,6 +41,12 @@ Tutorial Steps
 --------------------------
 
 For this tutorial, we will use the turtlebot3.
+The turtlebot3 software can be installed via the following or on the `turtlebot3 repository <https://github.com/ROBOTIS-GIT/turtlebot3>`_:
+
+.. code-block:: bash
+
+  sudo apt install ros-<ros2-distro>-turtlebot3 ros-<ros2-distro>-turtlebot3-msgs ros-<ros2-distro>-turtlebot3-bringup
+
 If you have another robot, replace with your robot specific interfaces.
 Typically, this includes the robot state publisher of the URDF, simulated or physical robot interfaces, controllers, safety nodes, and the like.
 
@@ -50,7 +56,7 @@ Run the following commands first whenever you open a new terminal during this tu
 - ``export TURTLEBOT3_MODEL=waffle``
 
 
-Launch your robot's interface and robot state publisher,
+Launch your robot's interface and robot state publisher, for example:
 
   ``ros2 launch turtlebot3_bringup robot.launch.py``
 
