@@ -20,6 +20,9 @@ To guide you through the first-time setup of your robot, we will be tackling the
 - Select and set up planner and controller navigation plugins for your robot's navigation tasks  
 - Lifecycle node management for easy bringup of other related sensors or nodes
 
+The simulator of record in these tutorials is Gazebo Classic, which is the default simulator in ROS 2 Humble, Iron and all previous distributions.
+When using Jazzy or newer, consider that the simulation elements of the tutorial may be out of date and are worth looking at other resources like `nav2_minimal_turtlebot_simulation <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation>`_ which fully leverages modern Gazebo with Nav2.
+
 **Table of Contents:**
 
 .. toctree::
