@@ -23,9 +23,6 @@ Installation
 Jazzy introduced the new Gazebo modern simulator, replacing Gazebo Classic.
 Thus, for Jazzy and newer, the installation packages and instructions are slightly different to pull in the appropriate packages.
 
-Jazzy and Newer
-===============
-
 1. Install the `ROS 2 binary packages`_ as described in the official docs
 2. Install the |PN| packages using your operating system's package manager:
 
