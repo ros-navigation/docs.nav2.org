@@ -101,7 +101,7 @@ Default value:
 - true
 
 Revamped multirobot bringup and config files to use namespaces
-*******************************************************
+**************************************************************
 
 In `PR #4715 <https://github.com/ros-navigation/navigation2/pull/4715>`_ multirobot bringup and the use of namespaces were overhauled to be compatible out of the box with ROS namespaces and remove custom logic, specifically:
 
@@ -112,3 +112,9 @@ In `PR #4715 <https://github.com/ros-navigation/navigation2/pull/4715>`_ multiro
 Note that some plugins / nodes might have their own local namespace. This is the case for ``CostmapLayer`` which will be in a ``/ns/[layer_name]`` namespace. For these, a new function ``joinWithParentNamespace`` has been added to make sure joining relative paths results in ``/ns/topic_name`` rather than ``/ns/[layer_name]/topic_name``.
 
 If your use case doesn't require multiple robots, keeping absolute paths in your ``nav2_params.yaml`` config file and rviz config file will preserve existing behavior.
+
+For example, if you specify `topic: scan` in the `voxel_layer` of a `local_costmap` and you launch your bringup with a `tb4` namespace:
+* User chosen namespace is `tb4`.
+* User chosen topic is `scan`.
+* Topic will be remapped to `/tb4/scan` without `local_costmap`.
+* Use global topic `/scan` if you do not wish the node namespace to apply
