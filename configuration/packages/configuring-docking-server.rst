@@ -347,7 +347,7 @@ Parameters
   ============== =============================
 
   Description
-    Distance (m) from the dock pose to ignore collisions, i.e. the robot will not check for collisions within this distance from the dock pose.
+    Distance (m) from the dock pose to ignore collisions, i.e. the robot will not check for collisions within this distance from the dock pose, as the robot will make contact with the dock. Set to ``0.0`` when physical contact is not made with a dock.
 
 
 Note: ``dock_plugins`` and either ``docks`` or ``dock_database`` are required.
