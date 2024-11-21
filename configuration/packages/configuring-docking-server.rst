@@ -272,6 +272,83 @@ Parameters
   Description
     Radius to end goal to commense slow down.
 
+:controller.use_collision_detection:
+
+  ============== ==============
+  Type           Default                                               
+  -------------- --------------
+  bool           true          
+  ============== ==============
+
+  Description
+    Whether to use collision detection to avoid obstacles.
+
+:controller.costmap_topic:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  string         "local_costmap/costmap_raw"   
+  ============== ===========================
+
+  Description
+    Raw costmap topic for collision checking.
+
+:controller.footprint_topic:
+
+  ============== ===================================
+  Type           Default                                               
+  -------------- -----------------------------------
+  string         "local_costmap/published_footprint"            
+  ============== ===================================
+
+  Description
+    Topic for footprint in the costmap frame.
+
+:controller.transform_tolerance:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.
+
+:controller.projection_time:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         1.0
+  ============== =============================
+
+  Description
+    Time to look ahead for collisions (s).
+
+:controller.simulation_time_step:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    Time step for projections (s).
+
+:controller.dock_collision_threshold:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.3
+  ============== =============================
+
+  Description
+    Distance (m) from the dock pose to ignore collisions, i.e. the robot will not check for collisions within this distance from the dock pose, as the robot will make contact with the dock. Set to ``0.0`` when physical contact is not made with a dock.
+
 
 Note: ``dock_plugins`` and either ``docks`` or ``dock_database`` are required.
 

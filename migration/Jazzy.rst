@@ -99,3 +99,12 @@ In `PR #4675 <https://github.com/ros-navigation/navigation2/pull/4675>`_ a ``pub
 Default value:
 
 - true
+
+Added optional collision checking for the Docking Server
+********************************************************
+
+In `PR #4752 <https://github.com/ros-navigation/navigation2/pull/4752>`_ an optional collision checking feature was added to the `Docking server </configuration/packages/configuring-docking-server.html#docking-server>`_ to check for collisions between the robot and the dock.
+
+Default value:
+
+- true
