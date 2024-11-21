@@ -1046,6 +1046,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#fix-flickering-visualization">Fix flickering visualization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#added-optional-collision-checking-for-the-docking-server">Added optional collision checking for the Docking Server</a></li>
 </ul>
 </li>
 </ul>
@@ -1571,6 +1572,146 @@ This task server is designed be called by an application BT or autonomy applicat
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Radius to end goal to commense slow down.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">controller.use_collision_detection</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use collision detection to avoid obstacles.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">controller.costmap_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“local_costmap/costmap_raw”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Raw costmap topic for collision checking.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">controller.footprint_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“local_costmap/published_footprint”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic for footprint in the costmap frame.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">controller.transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">controller.projection_time</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time to look ahead for collisions (s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">controller.simulation_time_step</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time step for projections (s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">controller.dock_collision_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Distance (m) from the dock pose to ignore collisions, i.e. the robot will not check for collisions within this distance from the dock pose, as the robot will make contact with the dock. Set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> when physical contact is not made with a dock.</p>
 </dd>
 </dl>
 </dd>

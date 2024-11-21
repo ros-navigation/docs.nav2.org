@@ -1046,6 +1046,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#fix-flickering-visualization">Fix flickering visualization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#added-optional-collision-checking-for-the-docking-server">Added optional collision checking for the Docking Server</a></li>
 </ul>
 </li>
 </ul>
@@ -1182,6 +1183,14 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 <div class="section" id="option-to-disable-zero-velocity-publishing-on-goal-exit">
 <h2>Option to disable zero velocity publishing on goal exit<a class="headerlink" href="#option-to-disable-zero-velocity-publishing-on-goal-exit" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4675">PR #4675</a> a <code class="docutils literal notranslate"><span class="pre">publish_zero_velocity</span></code> parameter was introduced for the <a class="reference external" href="/configuration/packages/configuring-controller-server.html#controller-server">Controller server</a> in order to disable zero velocity publishing on goal exit.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>true</p></li>
+</ul>
+</div>
+<div class="section" id="added-optional-collision-checking-for-the-docking-server">
+<h2>Added optional collision checking for the Docking Server<a class="headerlink" href="#added-optional-collision-checking-for-the-docking-server" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4752">PR #4752</a> an optional collision checking feature was added to the <a class="reference external" href="/configuration/packages/configuring-docking-server.html#docking-server">Docking server</a> to check for collisions between the robot and the dock.</p>
 <p>Default value:</p>
 <ul class="simple">
 <li><p>true</p></li>
