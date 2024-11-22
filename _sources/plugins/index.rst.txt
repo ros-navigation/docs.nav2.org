@@ -435,7 +435,7 @@ Behavior Tree Nodes
 .. _Smooth Path Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/smooth_path_action.cpp
 .. _Follow Path Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/follow_path_action.cpp
 .. _Navigate to Pose Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp
-.. _Reinitalize Global Localization Service: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp
+.. _Reinitialize Global Localization Service: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp
 .. _Spin Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_action.cpp
 .. _Wait Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_action.cpp
 .. _Truncate Path: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_action.cpp
