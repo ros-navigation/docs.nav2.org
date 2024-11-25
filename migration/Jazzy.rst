@@ -123,6 +123,7 @@ Note that some plugins / nodes might have their own local namespace. This is the
 If your use case doesn't require multiple robots, keeping absolute paths in your ``nav2_params.yaml`` config file and rviz config file will preserve existing behavior.
 
 For example, if you specify `topic: scan` in the `voxel_layer` of a `local_costmap` and you launch your bringup with a `tb4` namespace:
+
 * User chosen namespace is `tb4`.
 * User chosen topic is `scan`.
 * Topic will be remapped to `/tb4/scan` without `local_costmap`.
