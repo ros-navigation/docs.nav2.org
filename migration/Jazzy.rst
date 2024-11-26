@@ -128,3 +128,23 @@ For example, if you specify `topic: scan` in the `voxel_layer` of a `local_costm
 * User chosen topic is `scan`.
 * Topic will be remapped to `/tb4/scan` without `local_costmap`.
 * Use global topic `/scan` if you do not wish the node namespace to apply
+
+Removed global map_topic from Costmap node
+******************************************
+
+In `PR #4715 <https://github.com/ros-navigation/navigation2/pull/4715>`_ the global `map_topic` parameter has been removed from the `Costmap2DROS` node. This parameterwas only used in the `StaticLayer` and should be defined as a parameter local to the `StaticLayer` instead, for example:
+
+```
+global_costmap:
+  global_costmap:
+    ros__parameters:
+      [...]
+      # Not supported anymore
+      map_topic: my_map
+      static_layer:
+        plugin: "nav2_costmap_2d::StaticLayer"
+        map_subscribe_transient_local: True
+        # Do this instead
+        map_topic: my_map
+
+```
