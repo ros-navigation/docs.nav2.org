@@ -3,39 +3,39 @@
 Vector Object Server
 ####################
 
-Vector Object server - is a node that puts vector objects (such as polygons and circles) on OccupancyGrid raster map. The output raster map is being published by Vector Object server, and it could be used anywhere in the Nav2 stack or outside it.
+The Vector Object Server implements a server that puts vector objects (such as polygons and circles) on OccupancyGrid raster map. The output raster map is being published by Vector Object server, and it could be used anywhere in the Nav2 stack or outside it.
 
-The main application of Vector Object server - is to combine output raster maps with existing costmaps of environment, targeting for robot navigation purposes (for example for dynamic obstacles simulation/highlighting, sensors noise removal, black-out areas on maps, synthetic testing purposes, and much more).
-Typical set-up model for this - is Nav2 stack with enabled Costmap Filters in it, which is operating along with Vector Object server producing vectorized OccupancyGrid maps as an input mask for Costmap Filters:
+The main application of Vector Object server is to combine output raster maps with existing costmaps of environment, targeting for robot navigation purposes (for example for dynamic obstacles simulation/highlighting, sensors noise removal, black-out areas on maps, synthetic testing purposes, and much more).
+A typical setup model for this is a Nav2 stack with Costmap Filters enabled, running in conjunction with a Vector Object server, which produces vectorised OccupancyGrid maps as input masks for the Costmap Filters:
 
 .. image:: images/vector_object_server/vo_design.png
     :width: 1000px
     :align: center
 
-These vector shapes could be added by using input ROS-parameters as well as being handled by the following service calls: ``AddShapes.srv`` which adds new or modifies existing shapes, ``RemoveShapes.srv`` that removes any or all shapes from map and ``GetShapes.srv`` which reports back all shapes on map.
+These vector shapes could be added by using ROS input parameters as well as being handled by the following service calls: ``AddShapes.srv`` which adds new shapes or modifies existing ones, ``RemoveShapes.srv`` which removes any or all shapes from the map ``GetShapes.srv`` which returns all shapes on the map.
 
-Each vector shape is being handled by its UUID which is of ``unique_identifier_msgs/UUID`` type. Final developer could choose whether to specify it manually for a new shape, or it will be generated automatically by the Vector Object server. The UUID can be always obtained by making a ``GetShapes.srv`` request and getting the response with all shapes' UUID-s and their properties.
+Each vector shape is being handled by its UUID, which is of ``unique_identifier_msgs/UUID`` type. Final developer could choose whether to specify it manually for a new shape, or have it generated automatically by the Vector Object server. The UUID can always be obtained by making a ``GetShapes.srv`` request and getting the response with all shapes' UUIDs and their properties.
 
-During its work, Vector Object server puts shapes on map. Each vector object has its own value in the range from ``{-1}, [0..100]`` that is meeting OccupancyGrid values. Vector objects could be overlapped with each other by using one of the global overlapping rules: sequential overlay in the same order as vector objects have been arrived to server, or taking the maximum / minimum value from all vector objects and the map background (if it is known).
+During its work, Vector Object server places shapes on the map. Each vector object has its own value in the range from ``{-1}, [0..100]``, which matches the OccupancyGrid values. Vector objects can be overlapped with each other by using one of the global overlapping rules: sequential overlapping in the same order as vector objects arrived on the server, or taking the maximum / minimum value from all vector objects and the map background (if it is known).
 
-This page describes all configuration parameters of the Vector Object server. For more information how to navigate with your own Vector Object server, please refer to the :ref:`navigation2_with_vector_objects` tutorial.
+This page describes all the configuration parameters of the Vector Object server. For more information on how to navigate with your own Vector Object server, please refer to the :ref:`navigation2_with_vector_objects` tutorial.
 
 Features
 ********
 
-- The following vector shapes are currently supported to be put on map:
+- The following vector shapes are currently supported for placing on a map:
 
   - Polygons
   - Circles
 
-- Polygons could be filled with any value or drawn as polygonal chain, if it is not supposed to be a closed shape:
+- Polygons can be filled with any value or drawn as a polygonal chain, if it is not supposed to be a closed shape:
 
 .. image:: images/vector_object_server/polygon_closed.png
     :width: 400px
     :height: 200px
     :align: center
 
-- Circles could be filled with some value or drawn without any fill (only circle border being put on map):
+- Circles can be filled with any value or drawn without any fill (only the circle boundary is placed on the map):
 
 .. image:: images/vector_object_server/circle_fill.png
     :width: 400px
@@ -44,15 +44,16 @@ Features
 
 - Vector shapes could be set once during the Vector Object server startup as ROS-parameters, and added/modified/removed over the time using the following service calls:
 
-  - ``AddShapes.srv`` - adds new or modifies existing shapes
-  - ``RemoveShapes.srv`` - removes any or all shapes from map
-  - ``GetShapes.srv`` - obtains all shapes and their properties
+  - ``AddShapes.srv``: adds new shapes or modifies existing ones
+  - ``RemoveShapes.srv``: removes any or all shapes from the map
+  - ``GetShapes.srv``: gets all shapes and their properties
 
-- Vector shapes are being identified by their UUID (``unique_identifier_msgs/UUID``), which is generating automatically for a new shape, or could be given manually by developer
-- Vector shapes could be set in any frame:
+- Vector shapes are being identified by their UUID (``unique_identifier_msgs/UUID``), which is generated automatically for a new shape, or could be given manually by the developer.
 
-  - If at least one of the shape is set in different than map's frame, dynamic update model to be enabled: this shape can move over the time, output map will be published dynamically with a given rate.
-  - If all shapes are set in the same as map frame, map is being published/updated once: during Vector Object server startup and per each shape changing call (``AddShapes.srv`` or ``RemoveShapes.srv``).
+- Vector shapes can be placed in any frame:
+
+  - If at least one of the shapes is set in a different frame than the map, a dynamic update model will be enabled: this shape can move over the time, output map will be published dynamically with a given rate.
+  - If all shapes are set in the same frame as map, map will be published/updated once: at startup of Vector Object server and on each call of ``AddShapes.srv`` or ``RemoveShapes.srv`` to change the shape.
 
 Covered use-cases
 *****************

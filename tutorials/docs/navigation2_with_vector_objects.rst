@@ -17,14 +17,14 @@ Overview
 ========
 
 This tutorial shows how to navigate with vector objects added to raster costmaps.
-It could be made for different purposes, e.g. for hiding some areas or sticking-out robot parts, for adding virtual obstacles on maps, or like Costmap Filters do - adding keep-out or maximum speed restricted areas, but on vector basis.
-In current tutorial added vector objects will be treated as obstacles in costmaps.
-For that, we need to prepare Navigation2 stack with enabled Keepout Filter in it, operating along with Vector Object server which publishing an OccupancyGrid map with rasterized vector objects as an input mask for Keepout Filter.
-Other use-cases are utilizing the similar principles and could be trivially adjusted after this tutorial completion.
+They can be used for various purposes, such as hiding some areas or sticking-out robot parts, for adding virtual obstacles on maps, or like Costmap Filters do - adding keep-out or maximum speed restricted areas, but on a vector basis.
+In the current tutorial, the added vector objects will be treated as obstacles in costmaps.
+To do this, we need to prepare the Navigation2 stack with the Keepout Filter enabled, operating along with Vector Object server that publlishes an OccupancyGrid map with rasterized vector objects as an input mask for the Keepout Filter.
+Other use cases use similar principles and could be easily adapted after finishing this tutorial.
 
 .. note::
 
-  Using with Keepout Filter is the choice for adding virtual obstacles or removing some areas from costmaps. However, Vector Object server is not restricted to be operated with Keepout Filter only. It also could be used with different Costmap Filters for another use-cases. For example, for having speed restriction area defined by vector shape, one could choose Speed Filter; or for polygon-defined room where camera to be switched-off, Vector Object server could be operated with Binary Filter.
+  Using with Keepout Filter is the choice for adding virtual obstacles or removing some areas from costmaps. However, the Vector Object server is not restricted to use with the Keepout Filter only. It could also be used with different Costmap Filters for other use cases. For example, to have a speed restriction area defined by a vector shape, one could choose Speed Filter; or for a polygon-defined room where the camera is to be turned off, Vector Object server could be used with Binary Filter.
 
 Requirements
 ============
