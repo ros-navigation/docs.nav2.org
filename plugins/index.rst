@@ -482,6 +482,9 @@ Behavior Tree Nodes
 |                                    |                    | making progress or     |
 |                                    |                    | stuck                  |
 +------------------------------------+--------------------+------------------------+
+| `Is Stopped Condition`_            |  Tony Najjar       | Checks if robot is     |
+|                                    |                    | stopped for a duration |
++------------------------------------+--------------------+------------------------+
 | `Transform Available Condition`_   |  Steve Macenski    | Checks if a TF         |
 |                                    |                    | transformation is      |
 |                                    |                    | available. When        |
