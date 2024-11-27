@@ -540,6 +540,7 @@ Behavior Tree Nodes
 .. _Globally Updated Goal Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
 .. _Initial Pose received Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
 .. _Is Stuck Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
+.. _Is Stopped Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stopped_condition.cpp
 .. _Transform Available Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
 .. _Distance Traveled Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
 .. _Time Expired Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
