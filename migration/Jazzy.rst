@@ -172,4 +172,5 @@ They have been consolidated into a single one:
     const std::string & parent_namespace = "/",
     const bool & use_sim_time = false);
 
-The ``local_namespace`` parameter has been removed is now automatically set to the node's name (which is what the second removed constructor did) and parameters ``parent_namespace`` / ``use_sim_time`` both provide default values to maintain the ability of creating a ``Costmap2DROS`` object by just specifying a name.
+The ``local_namespace`` parameter has been removed and is now automatically set to the node's name (which is what the second removed constructor did).
+Parameters ``parent_namespace`` / ``use_sim_time`` both provide default values to maintain the ability of creating a ``Costmap2DROS`` object by just specifying a name.
