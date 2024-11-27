@@ -147,3 +147,29 @@ In `PR #4715 <https://github.com/ros-navigation/navigation2/pull/4715>`_ the glo
           map_subscribe_transient_local: True
           # Do this instead
           map_topic: my_map
+
+Simplified Costmap2DROS constructors
+************************************
+
+The following constructors for `Costmap2DROS` have been removed:
+
+.. code-block:: cpp
+
+   explicit Costmap2DROS(
+    const std::string & name,
+    const std::string & parent_namespace,
+    const std::string & local_namespace,
+    const bool & use_sim_time);
+
+   explicit Costmap2DROS(const std::string & name, const bool & use_sim_time = false);
+
+They have been consolidated into a single one:
+
+.. code-block:: cpp
+
+   explicit Costmap2DROS(
+    const std::string & name,
+    const std::string & parent_namespace = "/",
+    const bool & use_sim_time = false);
+
+The `local_namespace` parameter has been removed is now automatically set to the node's name (which is what the second removed constructor did) and parameters `parent_namespace` / `use_sim_time` both provide default values to maintain the ability of creating a `Costmap2DROS` object by just specifying a name.
