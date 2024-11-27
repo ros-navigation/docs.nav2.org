@@ -122,17 +122,17 @@ Note that some plugins / nodes might have their own local namespace. This is the
 
 If your use case doesn't require multiple robots, keeping absolute paths in your ``nav2_params.yaml`` config file and rviz config file will preserve existing behavior.
 
-For example, if you specify `topic: scan` in the `voxel_layer` of a `local_costmap` and you launch your bringup with a `tb4` namespace:
+For example, if you specify ``topic: scan`` in the ``voxel_layer`` of a ``local_costmap`` and you launch your bringup with a ``tb4`` namespace:
 
-* User chosen namespace is `tb4`.
-* User chosen topic is `scan`.
-* Topic will be remapped to `/tb4/scan` without `local_costmap`.
-* Use global topic `/scan` if you do not wish the node namespace to apply
+* User chosen namespace is ``tb4``.
+* User chosen topic is ``scan``.
+* Topic will be remapped to ``/tb4/scan`` without ``local_costmap``.
+* Use global topic ``/scan`` if you do not wish the node namespace to apply
 
 Removed global map_topic from Costmap node
 ******************************************
 
-In `PR #4715 <https://github.com/ros-navigation/navigation2/pull/4715>`_ the global `map_topic` parameter has been removed from the `Costmap2DROS` node. This parameterwas only used in the `StaticLayer` and should be defined as a parameter local to the `StaticLayer` instead, for example:
+In `PR #4715 <https://github.com/ros-navigation/navigation2/pull/4715>`_ the global ``map_topic`` parameter has been removed from the ``Costmap2DROS`` node. This parameterwas only used in the ``StaticLayer`` and should be defined as a parameter local to the ``StaticLayer`` instead, for example:
 
 .. code-block:: yaml
 
@@ -151,7 +151,7 @@ In `PR #4715 <https://github.com/ros-navigation/navigation2/pull/4715>`_ the glo
 Simplified Costmap2DROS constructors
 ************************************
 
-The following constructors for `Costmap2DROS` have been removed:
+The following constructors for ``Costmap2DROS`` have been removed:
 
 .. code-block:: cpp
 
@@ -172,4 +172,4 @@ They have been consolidated into a single one:
     const std::string & parent_namespace = "/",
     const bool & use_sim_time = false);
 
-The `local_namespace` parameter has been removed is now automatically set to the node's name (which is what the second removed constructor did) and parameters `parent_namespace` / `use_sim_time` both provide default values to maintain the ability of creating a `Costmap2DROS` object by just specifying a name.
+The ``local_namespace`` parameter has been removed is now automatically set to the node's name (which is what the second removed constructor did) and parameters ``parent_namespace`` / ``use_sim_time`` both provide default values to maintain the ability of creating a ``Costmap2DROS`` object by just specifying a name.
