@@ -268,6 +268,7 @@ Example
           - nav2_wait_action_bt_node
           - nav2_clear_costmap_service_bt_node
           - nav2_is_stuck_condition_bt_node
+          - nav2_is_stopped_condition_bt_node
           - nav2_goal_reached_condition_bt_node
           - nav2_initial_pose_received_condition_bt_node
           - nav2_goal_updated_condition_bt_node
