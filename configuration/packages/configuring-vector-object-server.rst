@@ -227,7 +227,7 @@ Parameters applicable for polygons only
   ============== =============================
 
   Description:
-    Polygon vertexes, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5}`` for the square). Minimum 3 points for a triangle polygon. Causes an error, if not specialized incorrectly (less than 6 or odd number of items in the vector) or not specialized.
+    Polygon vertices, listed in ``{p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, ...}`` format (e.g. ``{0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5}`` for the square). Minimum 3 points for a triangle polygon. Causes an error, if not specialized incorrectly (less than 6 or odd number of items in the vector) or not specialized.
 
 :``<shape_name>``.closed:
 
