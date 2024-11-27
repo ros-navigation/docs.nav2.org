@@ -44,6 +44,7 @@ Below is a list of new BT Nodes added:
 
 - ``GetPoseFromPath``: An action to get a particular pose from an input path.
 - ``RemoveInCollisionGoals``: An action to remove waypoints that have a cost higher than a threshold.
+- ``IsStopped``: A condition to check if the robot is stopped for a certain duration.
 
 New RViz Tool for Costmap Cost Cell Inspection
 **********************************************
