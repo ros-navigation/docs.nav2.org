@@ -26,6 +26,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="TimeExpired" href="TimeExpired.html" />
+    <link rel="prev" title="IsStuck" href="IsStuck.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -55,7 +57,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/index.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../getting_started/index.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../getting_started/index.html#running-the-example">Running the Example</a></li>
@@ -505,13 +507,13 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Configuration Guide</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Configuration Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../configuring-bt-navigator.html">Behavior-Tree Navigator</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-navigator.html#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-navigator.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../actions/Wait.html">Wait</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../actions/Spin.html">Spin</a></li>
@@ -550,7 +552,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../actions/UndockRobot.html">UndockRobot</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="GoalReached.html">GoalReached</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DistanceTraveled.html">DistanceTraveled</a></li>
@@ -558,6 +560,7 @@
 <li class="toctree-l4"><a class="reference internal" href="GloballyUpdatedGoal.html">GloballyUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IsStuck.html">IsStuck</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">IsStopped</a></li>
 <li class="toctree-l4"><a class="reference internal" href="TimeExpired.html">TimeExpired</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IsBatteryLow.html">IsBatteryLow</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IsPathValid.html">IsPathValid</a></li>
@@ -1091,6 +1094,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
+          <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
       <li class="breadcrumb-item active">IsStopped</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -1118,7 +1123,7 @@ RUNNING if stopped but not for long enough and FAILURE otherwise</p>
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>double</p></td>
-<td><p>N/A</p></td>
+<td><p>0.01</p></td>
 </tr>
 </tbody>
 </table>
