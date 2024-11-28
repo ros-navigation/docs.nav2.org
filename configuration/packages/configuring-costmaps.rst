@@ -360,6 +360,7 @@ Plugin Parameters
   costmap-plugins/voxel.rst
   costmap-plugins/range.rst
   costmap-plugins/denoise.rst
+  costmap-plugins/plugin_container.rst
 
 Costmap Filters Parameters
 **************************
