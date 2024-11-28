@@ -14,7 +14,7 @@ Input Port
   ======= =======
   Type    Default
   ------- -------
-  double    N/A
+  double   0.01
   ======= =======
 
   Description
