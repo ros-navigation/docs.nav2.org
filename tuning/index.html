@@ -1048,6 +1048,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#added-optional-collision-checking-for-the-docking-server">Added optional collision checking for the Docking Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#revamped-multirobot-bringup-and-config-files-to-use-namespaces">Revamped multirobot bringup and config files to use namespaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
 </ul>
 </li>
 </ul>
@@ -1267,8 +1270,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">use_robot_state_pub</span></code> : Whether or not to start the robot state publisher to publish the robot’s URDF transformations to TF2. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to publish the robot’s TF2 transformations.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">use_rviz</span></code> : Whether or not to launch rviz for visualization. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to show rviz.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">headless</span></code> : Whether or not to launch the Gazebo front-end alongside the background Gazebo simulation. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> to display the Gazebo window.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">namespace</span></code> : The namespace to launch robots into, if need be.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">use_namespace</span></code> : Whether or not to launch robots into this namespace. Default <code class="docutils literal notranslate"><span class="pre">false</span></code> and uses global namespace for single robot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">namespace</span></code> : The namespace to launch robots into.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">robot_name</span></code> : The name of the robot to launch.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">robot_sdf</span></code> : The filepath to the robot’s gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">x_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">y_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">z_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">roll</span></code>, <code class="docutils literal notranslate"><span class="pre">pitch</span></code>, <code class="docutils literal notranslate"><span class="pre">yaw</span></code> : Parameters to set the initial position of the robot in the simulation.</p></li>

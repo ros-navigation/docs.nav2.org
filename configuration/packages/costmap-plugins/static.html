@@ -1048,6 +1048,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#added-optional-collision-checking-for-the-docking-server">Added optional collision checking for the Docking Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#revamped-multirobot-bringup-and-config-files-to-use-namespaces">Revamped multirobot bringup and config files to use namespaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
 </ul>
 </li>
 </ul>
@@ -1221,14 +1224,22 @@
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>string</p></td>
-<td><p>“”</p></td>
+<td><p>“map”</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Map topic to subscribe to. If left empty the map topic will default to the global <cite>map_topic</cite> parameter in <cite>costmap_2d_ros</cite>.</p>
+<dt>Description</dt><dd><p>Map topic to subscribe to.</p>
 </dd>
 </dl>
+<p>Relative topics will be relative to the node’s parent namespace.
+For example, if you specify <cite>map_topic: map</cite> in the <cite>static_layer</cite> of a <cite>global_costmap</cite> and you launch your bringup with a <cite>tb4</cite> namespace:</p>
+<ul class="simple">
+<li><p>User chosen namespace is <cite>tb4</cite>.</p></li>
+<li><p>User chosen topic is <cite>map</cite>.</p></li>
+<li><p>Topic will be remapped to <cite>/tb4/map</cite> without <cite>global_costmap</cite>.</p></li>
+<li><p>Use global topic <cite>/map</cite> if you do not wish the node namespace to apply.</p></li>
+</ul>
 </dd>
 </dl>
 </div>

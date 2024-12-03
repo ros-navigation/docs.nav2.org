@@ -1048,6 +1048,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#added-optional-collision-checking-for-the-docking-server">Added optional collision checking for the Docking Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#revamped-multirobot-bringup-and-config-files-to-use-namespaces">Revamped multirobot bringup and config files to use namespaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
 </ul>
 </li>
 </ul>
@@ -1197,6 +1200,63 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 <ul class="simple">
 <li><p>true</p></li>
 </ul>
+</div>
+<div class="section" id="revamped-multirobot-bringup-and-config-files-to-use-namespaces">
+<h2>Revamped multirobot bringup and config files to use namespaces<a class="headerlink" href="#revamped-multirobot-bringup-and-config-files-to-use-namespaces" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4715">PR #4715</a> multirobot bringup and the use of namespaces were overhauled to be compatible out of the box with ROS namespaces and remove custom logic, specifically:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">use_namespace</span></code> parameter has been removed from <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code> launch files. The <code class="docutils literal notranslate"><span class="pre">namespace</span></code> parameter will now always be used and default to <code class="docutils literal notranslate"><span class="pre">/</span></code> for “global namespace”.</p></li>
+<li><p>There is now a single rviz config file for both normal and namespaced robots. Topics have been changed to a relative path (i.e. <code class="docutils literal notranslate"><span class="pre">/map</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">map</span></code>) and the rviz <code class="docutils literal notranslate"><span class="pre">namespace</span></code> will be added automatically.</p></li>
+<li><p>There is now a single <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> config file for both single and multirobot bringup. All the topics have been changed to relative (i.e. <code class="docutils literal notranslate"><span class="pre">/scan</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">scan</span></code>).</p></li>
+</ul>
+<p>Note that some plugins / nodes might have their own local namespace. This is the case for <code class="docutils literal notranslate"><span class="pre">CostmapLayer</span></code> which will be in a <code class="docutils literal notranslate"><span class="pre">/ns/[layer_name]</span></code> namespace. For these, a new function <code class="docutils literal notranslate"><span class="pre">joinWithParentNamespace</span></code> has been added to make sure joining relative paths results in <code class="docutils literal notranslate"><span class="pre">/ns/topic_name</span></code> rather than <code class="docutils literal notranslate"><span class="pre">/ns/[layer_name]/topic_name</span></code>.</p>
+<p>If your use case doesn’t require multiple robots, keeping absolute paths in your <code class="docutils literal notranslate"><span class="pre">nav2_params.yaml</span></code> config file and rviz config file will preserve existing behavior.</p>
+<p>For example, if you specify <code class="docutils literal notranslate"><span class="pre">topic:</span> <span class="pre">scan</span></code> in the <code class="docutils literal notranslate"><span class="pre">voxel_layer</span></code> of a <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code> and you launch your bringup with a <code class="docutils literal notranslate"><span class="pre">tb4</span></code> namespace:</p>
+<ul class="simple">
+<li><p>User chosen namespace is <code class="docutils literal notranslate"><span class="pre">tb4</span></code>.</p></li>
+<li><p>User chosen topic is <code class="docutils literal notranslate"><span class="pre">scan</span></code>.</p></li>
+<li><p>Topic will be remapped to <code class="docutils literal notranslate"><span class="pre">/tb4/scan</span></code> without <code class="docutils literal notranslate"><span class="pre">local_costmap</span></code>.</p></li>
+<li><p>Use global topic <code class="docutils literal notranslate"><span class="pre">/scan</span></code> if you do not wish the node namespace to apply</p></li>
+</ul>
+</div>
+<div class="section" id="removed-global-map-topic-from-costmap-node">
+<h2>Removed global map_topic from Costmap node<a class="headerlink" href="#removed-global-map-topic-from-costmap-node" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4715">PR #4715</a> the global <code class="docutils literal notranslate"><span class="pre">map_topic</span></code> parameter has been removed from the <code class="docutils literal notranslate"><span class="pre">Costmap2DROS</span></code> node. This parameterwas only used in the <code class="docutils literal notranslate"><span class="pre">StaticLayer</span></code> and should be defined as a parameter local to the <code class="docutils literal notranslate"><span class="pre">StaticLayer</span></code> instead, for example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">global_costmap</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="c1"># Not supported anymore</span>
+<span class="w">      </span><span class="nt">map_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_map</span>
+<span class="w">      </span><span class="nt">static_layer</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span>
+<span class="w">        </span><span class="nt">map_subscribe_transient_local</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">        </span><span class="c1"># Do this instead</span>
+<span class="w">        </span><span class="nt">map_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_map</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="simplified-costmap2dros-constructors">
+<h2>Simplified Costmap2DROS constructors<a class="headerlink" href="#simplified-costmap2dros-constructors" title="Permalink to this heading"></a></h2>
+<p>The following constructors for <code class="docutils literal notranslate"><span class="pre">Costmap2DROS</span></code> have been removed:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">explicit</span><span class="w"> </span><span class="n">Costmap2DROS</span><span class="p">(</span>
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent_namespace</span><span class="p">,</span>
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">local_namespace</span><span class="p">,</span>
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">use_sim_time</span><span class="p">);</span>
+
+<span class="k">explicit</span><span class="w"> </span><span class="n">Costmap2DROS</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">use_sim_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>They have been consolidated into a single one:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">explicit</span><span class="w"> </span><span class="n">Costmap2DROS</span><span class="p">(</span>
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent_namespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="p">,</span>
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">use_sim_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">local_namespace</span></code> parameter has been removed and is now automatically set to the node’s name (which is what the second removed constructor did).
+Parameters <code class="docutils literal notranslate"><span class="pre">parent_namespace</span></code> / <code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> both provide default values to maintain the ability of creating a <code class="docutils literal notranslate"><span class="pre">Costmap2DROS</span></code> object by just specifying a name.</p>
 </div>
 </div>
 

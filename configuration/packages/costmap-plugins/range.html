@@ -1048,6 +1048,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#added-optional-collision-checking-for-the-docking-server">Added optional collision checking for the Docking Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#revamped-multirobot-bringup-and-config-files-to-use-namespaces">Revamped multirobot bringup and config files to use namespaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
 </ul>
 </li>
 </ul>
@@ -1149,6 +1152,14 @@
 <dt>Description</dt><dd><p>Range topics to subscribe to.</p>
 </dd>
 </dl>
+<p>Relative topics will be relative to the node’s parent namespace.
+For example, if you specify <cite>topics: [range1, /range2]</cite> in the <cite>range_layer</cite> of a <cite>local_costmap</cite> and you launch your bringup with a <cite>tb4</cite> namespace:</p>
+<ul class="simple">
+<li><p>User chosen namespace is <cite>tb4</cite>.</p></li>
+<li><p>User chosen topics are [<cite>range1</cite>, <cite>/range2</cite>].</p></li>
+<li><p>Topic will be remapped to <cite>/tb4/range1</cite>, without <cite>local_costmap</cite>, and <cite>/range2</cite>.</p></li>
+<li><p>Use global topics such as <cite>/range2</cite> if you do not wish the node namespace to apply.</p></li>
+</ul>
 </dd>
 <dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;range</span> <span class="pre">layer&gt;</span></code>.phi</dt>
 <dd class="field-odd"><table class="docutils align-default">
