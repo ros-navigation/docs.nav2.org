@@ -200,12 +200,13 @@ Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
 Polygons parameters
 ===================
@@ -608,7 +609,7 @@ Here is an example of configuration YAML for the Collision Monitor.
         source_timeout: 5.0
         base_shift_correction: True
         stop_pub_timeout: 2.0
-        enable_stamped_cmd_vel: False
+        enable_stamped_cmd_vel: True  # False for Jazzy or older
         use_realtime_priority: false
         polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
         PolygonStop:

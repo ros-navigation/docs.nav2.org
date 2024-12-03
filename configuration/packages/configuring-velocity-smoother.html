@@ -1039,6 +1039,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Jazzy.html">Jazzy to K-Turtle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
@@ -1368,13 +1369,14 @@ It can also interpolate velocity commands at higher rates than the controller se
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
-True uses TwistStamped, false uses Twist.</p>
+True uses TwistStamped, false uses Twist.
+Note: This parameter is default <code class="docutils literal notranslate"><span class="pre">false</span></code> in Jazzy or older! Kilted or newer uses <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> by default.</p>
 </dd>
 </dl>
 </dd>

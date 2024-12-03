@@ -1039,6 +1039,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../migration/Jazzy.html">Jazzy to K-Turtle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
@@ -1409,13 +1410,14 @@ Please note, pre-<code class="docutils literal notranslate"><span class="pre">Ja
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
+<td><p>true</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
-True uses TwistStamped, false uses Twist.</p>
+True uses TwistStamped, false uses Twist.
+Note: This parameter is default <code class="docutils literal notranslate"><span class="pre">false</span></code> in Jazzy or older! Kilted or newer uses <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> by default.</p>
 </dd>
 </dl>
 </dd>
@@ -2115,7 +2117,7 @@ True uses TwistStamped, false uses Twist.</p>
 <span class="w">    </span><span class="nt">source_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
 <span class="w">    </span><span class="nt">base_shift_correction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">stop_pub_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
-<span class="w">    </span><span class="nt">enable_stamped_cmd_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">    </span><span class="nt">enable_stamped_cmd_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w">  </span><span class="c1"># False for Jazzy or older</span>
 <span class="w">    </span><span class="nt">use_realtime_priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">polygons</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;PolygonStop&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PolygonSlow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;FootprintApproach&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">PolygonStop</span><span class="p">:</span>
