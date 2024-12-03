@@ -5,6 +5,20 @@ Jazzy to K-Turtle
 
 Moving from ROS 2 Jazzy to K-Turtle, a number of stability improvements were added that we will not specifically address here.
 
+TwistStamped Default CmdVel Change
+**********************************
+
+In Kilted and newer, the default ``cmd_vel`` topic for all ``Twist`` publishers and subscriptions is changed to ``TwistStamped`` in order to enable a broader range of applications.
+it also allows for rejection of stale velocity messages, which can be useful in some applications.
+Your robot should now subscribe to a ``TwistStamped`` message instead of a ``Twist`` message & update your simulation appropriately.
+The topic names are the same.
+
+However, this can be disabled by setting ``enable_twist_stamped`` to ``false`` in the ``nav2_params.yaml`` file for all nodes that involve Twist subscriptions or publications.
+See the configuration guide for more information on how to configure this parameter for each node.
+
+An example simulation migration using Gazebo can be seen in the `following pull request for the Turtlebot 3 and 4 <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/pull/16>`_.
+
+
 New Nav2 Loopback Simulator
 ***************************
 
