@@ -29,6 +29,14 @@ This costmap layer implements a plugin that processes sonar, IR, or other 1-D se
   Description
     Range topics to subscribe to.
 
+  Relative topics will be relative to the node's parent namespace.
+  For example, if you specify `topics: [range1, /range2]` in the `range_layer` of a `local_costmap` and you launch your bringup with a `tb4` namespace:
+
+  * User chosen namespace is `tb4`.
+  * User chosen topics are [`range1`, `/range2`].
+  * Topic will be remapped to `/tb4/range1`, without `local_costmap`, and `/range2`.
+  * Use global topics such as `/range2` if you do not wish the node namespace to apply.
+
 :``<range layer>``.phi:
 
   ====== =======

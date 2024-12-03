@@ -162,8 +162,7 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 - ``use_robot_state_pub`` : Whether or not to start the robot state publisher to publish the robot's URDF transformations to TF2. Defaults to ``true`` to publish the robot's TF2 transformations.
 - ``use_rviz`` : Whether or not to launch rviz for visualization. Defaults to ``true`` to show rviz.
 - ``headless`` : Whether or not to launch the Gazebo front-end alongside the background Gazebo simulation. Defaults to ``true`` to display the Gazebo window.
-- ``namespace`` : The namespace to launch robots into, if need be.
-- ``use_namespace`` : Whether or not to launch robots into this namespace. Default ``false`` and uses global namespace for single robot.
+- ``namespace`` : The namespace to launch robots into.
 - ``robot_name`` : The name of the robot to launch.
 - ``robot_sdf`` : The filepath to the robot's gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.
 - ``x_pose``, ``y_pose``, ``z_pose``, ``roll``, ``pitch``, ``yaw`` : Parameters to set the initial position of the robot in the simulation. 
