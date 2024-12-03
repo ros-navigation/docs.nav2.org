@@ -87,7 +87,7 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
         transform_tolerance: 0.5
         source_timeout: 5.0
         stop_pub_timeout: 2.0
-        enable_stamped_cmd_vel: False
+        enable_stamped_cmd_vel: True # False for Jazzy or older by default
         polygons: ["PolygonStop", "PolygonSlow"]
         PolygonStop:
           type: "polygon"

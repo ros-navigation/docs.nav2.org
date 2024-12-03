@@ -153,12 +153,13 @@ Velocity Smoother Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
 :bond_heartbeat_period:
 
