@@ -20,11 +20,11 @@ This implements a costmap layer which combines costmap layers within a submap, w
 
 :``<plugin container layer>``.plugins:
 
-  ============== =====================================================
+  ============== =======
   Type           Default
-  -------------- -----------------------------------------------------
-  vector<string> {"static_layer", "obstacle_layer", "inflation_layer"}
-  ============== =====================================================
+  -------------- -------
+  vector<string> {}
+  ============== =======
 
   Description
     List of mapped costmap layer names for parameter namespaces and names.
