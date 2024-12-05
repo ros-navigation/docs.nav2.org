@@ -193,5 +193,5 @@ Parameters ``parent_namespace`` / ``use_sim_time`` both provide default values t
 MPPI controller re-implemented using Eigen library and performance improved by 40-45%
 *************************************************************************************
 
-In the `PR #4621 <https://github.com/ros-navigation/navigation2/pull/4621>` MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
+In the `PR #4621 <https://github.com/ros-navigation/navigation2/pull/4621>`_ MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
 MPPI Optimizer's performance is improved by 40-45%. 
