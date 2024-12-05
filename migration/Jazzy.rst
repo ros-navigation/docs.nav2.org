@@ -189,3 +189,9 @@ They have been consolidated into a single one:
 
 The ``local_namespace`` parameter has been removed and is now automatically set to the node's name (which is what the second removed constructor did).
 Parameters ``parent_namespace`` / ``use_sim_time`` both provide default values to maintain the ability of creating a ``Costmap2DROS`` object by just specifying a name.
+
+MPPI controller re-implemented using Eigen library and performance improved by 40-45%
+*************************************************************************************
+
+In the `PR #4621 <https://github.com/ros-navigation/navigation2/pull/4621>` MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
+MPPI Optimizer's performance is improved by 40-45%. 
