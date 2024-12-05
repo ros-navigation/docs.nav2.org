@@ -133,7 +133,7 @@ Costmap2D has a number of plugins that you can use (including the availability f
 - ``SpatioTemporalVoxelLayer``: 3D costmap layer for 3D lidars, non-planar 2D lidars, or depth camera processing based on temporal decay. Useful for robots with high sensor coverage like 3D lidars or many depth cameras at a reduced computational overhead due to lack of raycasting.
 - ``RangeLayer``: Models sonars, IR sensors, or other range sensors for costmap inclusion
 - ``DenoiseLayer``: Removes salt and pepper noise from final costmap in order to remove unfiltered noise. Also has the option to remove clusters of configurable size to remove effects of dynamic obstacles without temporal decay.
-- ``PluginContainerLayer``: Combines the layers above to allow for different submaps to exist in the map. This would allow applying different denoise layers or inflation layers to different obstacle or static layers in the same costmap 
+- ``PluginContainerLayer``: Combines the costmap layers specified within this plugin, resulting in an internal costmap that is a product of the costmap layers specified under this layer. This would allow different isolated combinations of costmap layers within the same parent costmap, such as applying a different inflation layers to static layers and obstacle layers 
 
 In addition, costmap filters:
 - ``KeepoutFilter``: Marks keepout, higher weighted, or lower weighted zones in the costmap

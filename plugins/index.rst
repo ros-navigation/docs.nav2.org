@@ -70,9 +70,11 @@ Costmap Layers
 |                                |                        | standalone obstacles or small    |
 |                                |                        | obstacles groups                 |
 +--------------------------------+------------------------+----------------------------------+
-| `Plugin Container Layer`_      |  Alexander Yuen        | Combines the different layers    |
-|                                |                        | above into different sub maps    |
-|                                |                        | in the same parent costmap       |
+| `Plugin Container Layer`_      |  Alexander Yuen        | Combines the different costmap   |
+|                                |                        | layers specified under this      |
+|                                |                        | layer in order populate the same |
+|                                |                        | costmap with different isolated  |
+|                                |                        | combinations of costmap layers   |
 +--------------------------------+------------------------+----------------------------------+
 
 .. _Voxel Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
