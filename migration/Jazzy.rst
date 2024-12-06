@@ -189,3 +189,13 @@ They have been consolidated into a single one:
 
 The ``local_namespace`` parameter has been removed and is now automatically set to the node's name (which is what the second removed constructor did).
 Parameters ``parent_namespace`` / ``use_sim_time`` both provide default values to maintain the ability of creating a ``Costmap2DROS`` object by just specifying a name.
+
+Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions
+*********************************************************************************
+
+In `PR #4785 <https://github.com/ros-navigation/navigation2/pull/4785>`_ a new boolean parameter named `disable_collision_checks` was added to the `DriveOnHeading`, `BackUp` and `Spin` actions to optionally disable collision checking. 
+This can be useful, for example, in cases where you want to move the robot even in the presence of known obstacles.
+
+Default value:
+
+- false
