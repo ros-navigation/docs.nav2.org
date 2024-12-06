@@ -67,6 +67,17 @@ Input Ports
   Description
     	True if the action is being used as a recovery.
 
+:disable_collision_checks:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false
+  ====== =======
+
+  Description
+      Disable collision checking.
+
 Output Ports
 ------------
 
@@ -86,5 +97,5 @@ Example
 
 .. code-block:: xml
 
-  <Spin spin_dist="1.57" server_name="spin" server_timeout="10" is_recovery="true" error_code_id="{spin_error_code}"/>
+  <Spin spin_dist="1.57" server_name="spin" server_timeout="10" is_recovery="true" error_code_id="{spin_error_code}" disable_collision_checks="false"/>
 

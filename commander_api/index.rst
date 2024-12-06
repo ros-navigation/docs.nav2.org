@@ -74,13 +74,16 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 | goal_checker_id='')                   | ``PoseStamped``, ``nav_msgs/Path``.                                        |
 +---------------------------------------+----------------------------------------------------------------------------+
 | spin(spin_dist=1.57,                  | Requests the robot to performs an in-place rotation by a given angle.      |
-| time_allowance=10)                    |                                                                            |
+| time_allowance=10,                    |                                                                            |
+| disable_collision_checks=False)       |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | driveOnHeading(dist=0.15,             | Requests the robot to drive on heading by a given distance.                |
-| speed=0.025, time_allowance=10)       |                                                                            |
+| speed=0.025, time_allowance=10,       |                                                                            |
+| disable_collision_checks=False)       |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | backup(backup_dist=0.15,              | Requests the robot to back up by a given distance.                         |
-| backup_speed=0.025, time_allowance=10)|                                                                            |
+| backup_speed=0.025, time_allowance=10,|                                                                            |
+| disable_collision_checks=False)       |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | assistedTeleop(time_allowance=30)     | Requests the robot to run the assisted teleop action.                      |
 +---------------------------------------+----------------------------------------------------------------------------+

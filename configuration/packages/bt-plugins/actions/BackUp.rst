@@ -67,6 +67,17 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+:disable_collision_checks:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false
+  ====== =======
+
+  Description
+      Disable collision checking.
+
 Output Ports
 ------------
 
@@ -86,4 +97,4 @@ Example
 
 .. code-block:: xml
 
-  <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10" error_code_id="{backup_error_code}"/>
+  <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10" error_code_id="{backup_error_code}" disable_collision_checks="false"/>
