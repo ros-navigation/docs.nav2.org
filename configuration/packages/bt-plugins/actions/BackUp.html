@@ -1052,6 +1052,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#revamped-multirobot-bringup-and-config-files-to-use-namespaces">Revamped multirobot bringup and config files to use namespaces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions</a></li>
 </ul>
 </li>
 </ul>
@@ -1217,6 +1218,26 @@ This is used in nav2 Behavior Trees as a recovery behavior. The nav2_behaviors m
 </dd>
 </dl>
 </dd>
+<dt class="field-even">disable_collision_checks</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Disable collision checking.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 <div class="section" id="output-ports">
 <h3>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this heading"></a></h3>
@@ -1245,7 +1266,7 @@ This is used in nav2 Behavior Trees as a recovery behavior. The nav2_behaviors m
 </div>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h3>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;BackUp</span><span class="w"> </span><span class="na">backup_dist=</span><span class="s">&quot;-0.2&quot;</span><span class="w"> </span><span class="na">backup_speed=</span><span class="s">&quot;0.05&quot;</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;backup_server&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{backup_error_code}&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;BackUp</span><span class="w"> </span><span class="na">backup_dist=</span><span class="s">&quot;-0.2&quot;</span><span class="w"> </span><span class="na">backup_speed=</span><span class="s">&quot;0.05&quot;</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;backup_server&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{backup_error_code}&quot;</span><span class="w"> </span><span class="na">disable_collision_checks=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

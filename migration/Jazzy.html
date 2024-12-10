@@ -1052,6 +1052,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#revamped-multirobot-bringup-and-config-files-to-use-namespaces">Revamped multirobot bringup and config files to use namespaces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions</a></li>
 </ul>
 </li>
 </ul>
@@ -1268,6 +1269,15 @@ It also includes a new docking plugin to demonstrate the new docking server capa
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">local_namespace</span></code> parameter has been removed and is now automatically set to the node’s name (which is what the second removed constructor did).
 Parameters <code class="docutils literal notranslate"><span class="pre">parent_namespace</span></code> / <code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> both provide default values to maintain the ability of creating a <code class="docutils literal notranslate"><span class="pre">Costmap2DROS</span></code> object by just specifying a name.</p>
+</div>
+<div class="section" id="option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">
+<h2>Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions<a class="headerlink" href="#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4785">PR #4785</a> a new boolean parameter named <cite>disable_collision_checks</cite> was added to the <cite>DriveOnHeading</cite>, <cite>BackUp</cite> and <cite>Spin</cite> actions to optionally disable collision checking.
+This can be useful, for example, in cases where you want to move the robot even in the presence of known obstacles.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>false</p></li>
+</ul>
 </div>
 </div>
 
