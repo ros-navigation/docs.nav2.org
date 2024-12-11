@@ -1327,6 +1327,7 @@ gradient_layer_2:
   ...
 </pre></div>
 </div>
+<p>NOTE: the order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.</p>
 </div>
 <div class="section" id="run-gradientlayer-plugin">
 <h3>4- Run GradientLayer plugin<a class="headerlink" href="#run-gradientlayer-plugin" title="Permalink to this heading"></a></h3>
