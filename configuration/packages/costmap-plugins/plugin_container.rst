@@ -58,8 +58,8 @@ Example
           map_subscribe_transient_local: True
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"
-          cost_scaling_factor: 30.0
-          inflation_radius: 0.1
+          cost_scaling_factor: 2.0
+          inflation_radius: 0.5
 
       plugin_container_obstacle_layer:
         plugin: "nav2_costmap_2d::PluginContainerLayer"
