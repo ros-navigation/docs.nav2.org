@@ -133,7 +133,7 @@ Parameters
           ros__parameters:
             goal_checker_plugins: ["goal_checker"]
             goal_checker:
-              plugin: "nav2_controller::SimpleGoalChecker"
+              plugin: "nav2_controller::PathCompleteGoalChecker"
 
 :min_x_velocity_threshold:
 
@@ -240,6 +240,7 @@ Provided Plugins
   nav2_controller-plugins/pose_progress_checker.rst
   nav2_controller-plugins/simple_goal_checker.rst
   nav2_controller-plugins/stopped_goal_checker.rst
+  nav2_controller-plugins/path_complete_goal_checker.rst
 
 Default Plugins
 ***************
@@ -251,7 +252,7 @@ When the :code:`progress_checker_plugins`, :code:`goal_checker_plugin` or :code:
   ------------------ -----------------------------------------------------
   "progress_checker" "nav2_controller::SimpleProgressChecker"
   ------------------ -----------------------------------------------------
-  "goal_checker"     "nav2_controller::SimpleGoalChecker"
+  "goal_checker"     "nav2_controller::PathCompleteGoalChecker"
   ------------------ -----------------------------------------------------
   "FollowPath"       "dwb_core::DWBLocalPlanner"
   ================== =====================================================
@@ -277,7 +278,7 @@ Example
           required_movement_radius: 0.5
           movement_time_allowance: 10.0
         goal_checker:
-          plugin: "nav2_controller::SimpleGoalChecker"
+          plugin: "nav2_controller::PathCompleteGoalChecker"
           xy_goal_tolerance: 0.25
           yaw_goal_tolerance: 0.25
           stateful: True
