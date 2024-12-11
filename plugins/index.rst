@@ -291,22 +291,28 @@ Waypoint Task Executors
 Goal Checkers
 =============
 
-+---------------------------------+------------------------+----------------------------------+
-|     Plugin Name                 |         Creator        |       Description                |
-+=================================+========================+==================================+
-| `SimpleGoalChecker`_            | David Lu!!             | A plugin check whether robot     |
-|                                 |                        | is within translational distance |
-|                                 |                        | and rotational distance of goal. |
-|                                 |                        |                                  |
-+---------------------------------+------------------------+----------------------------------+
-| `StoppedGoalChecker`_           | David Lu!!             | A plugin check whether robot     |
-|                                 |                        | is within translational distance |
-|                                 |                        | , rotational distance of goal,   |
-|                                 |                        | and velocity threshold.          |
-+---------------------------------+------------------------+----------------------------------+
++---------------------------------+------------------------+-----------------------------------+
+|     Plugin Name                 |         Creator        |       Description                 |
++=================================+========================+===================================+
+| `SimpleGoalChecker`_            | David Lu!!             | A plugin check whether robot      |
+|                                 |                        | is within translational distance  |
+|                                 |                        | and rotational distance of goal.  |
+|                                 |                        |                                   |
++---------------------------------+------------------------+-----------------------------------+
+| `StoppedGoalChecker`_           | David Lu!!             | A plugin check whether robot      |
+|                                 |                        | is within translational distance  |
+|                                 |                        | , rotational distance of goal,    |
+|                                 |                        | and velocity threshold.           |
++---------------------------------+------------------------+-----------------------------------+
+| `PathCompleteGoalChecker`_      | Joseph Duchesne        | A plugin that checks if robot is  |
+|                                 |                        | within translational & rotational |
+|                                 |                        | distance of goal, once path       |
+|                                 |                        | length is below a threshold.      |
++---------------------------------+------------------------+-----------------------------------+
 
 .. _SimpleGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
 .. _StoppedGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
+.. _PathCompleteGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/path_complete_goal_checker.cpp
 
 Progress Checkers
 =================

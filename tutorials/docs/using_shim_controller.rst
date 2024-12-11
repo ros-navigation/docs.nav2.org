@@ -59,7 +59,7 @@ As such, its configuration looks very similar to that of any other plugin. In th
           required_movement_radius: 0.5
           movement_time_allowance: 10.0
         goal_checker:
-          plugin: "nav2_controller::SimpleGoalChecker"
+          plugin: "nav2_controller::PathCompleteGoalChecker"
           xy_goal_tolerance: 0.25
           yaw_goal_tolerance: 0.25
           stateful: True

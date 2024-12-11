@@ -199,3 +199,35 @@ This can be useful, for example, in cases where you want to move the robot even 
 Default value:
 
 - false
+
+Extended GoalChecker Interface
+******************************
+
+In `PR #4789 <https://github.com/ros-navigation/navigation2/pull/4789>`_ the GoalChecker interface gained a new parameter `path` in the method `is_goal_reached`.
+
+Before:
+
+.. code-block:: cpp
+  
+  bool isGoalReached(
+      const geometry_msgs::msg::Pose & query_pose, const geometry_msgs::msg::Pose & goal_pose
+      const geometry_msgs::msg::Twist & velocity);
+  
+After:
+
+.. code-block:: cpp
+  
+  bool isGoalReached(
+      const geometry_msgs::msg::Pose & query_pose, const geometry_msgs::msg::Pose & goal_pose,
+      const geometry_msgs::msg::Twist & velocity, const nav_msgs::msg::Path & current_path);
+  
+This allows for GoalChecker plugins to account for the current path in deciding if the goal has been reached or not.
+
+The new argument `current_path` can be ignored by existing out of tree plugins that do not make use of it, once they are updated to use the new method signature.
+
+New (default) Goal Checker Plugin: PathCompleteGoalChecker
+********************************************************
+
+In `PR #4789 <https://github.com/ros-navigation/navigation2/pull/4789>`_ a new goal checker plugin: :ref:`configuring_nav2_controller_path_complete_goal_checker_plugin` was introduced.
+
+This was made the default goal checker, resolving a `premature path completion bug <https://github.com/ros-navigation/navigation2/issues/4304>`_.

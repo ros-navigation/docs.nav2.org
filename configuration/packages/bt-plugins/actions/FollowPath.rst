@@ -40,7 +40,7 @@ Input Ports
   ====== =======
 
   Description
-    	Mapped name of the goal checker plugin type to use, e.g. SimpleGoalChecker.
+    	Mapped name of the goal checker plugin type to use, e.g. PathCompleteGoalChecker.
 
 :server_name:
 
