@@ -5,6 +5,20 @@ Jazzy to K-Turtle
 
 Moving from ROS 2 Jazzy to K-Turtle, a number of stability improvements were added that we will not specifically address here.
 
+TwistStamped Default CmdVel Change
+**********************************
+
+In Kilted and newer, the default ``cmd_vel`` topic for all ``Twist`` publishers and subscriptions is changed to ``TwistStamped`` in order to enable a broader range of applications.
+it also allows for rejection of stale velocity messages, which can be useful in some applications.
+Your robot should now subscribe to a ``TwistStamped`` message instead of a ``Twist`` message & update your simulation appropriately.
+The topic names are the same.
+
+However, this can be disabled by setting ``enable_twist_stamped`` to ``false`` in the ``nav2_params.yaml`` file for all nodes that involve Twist subscriptions or publications.
+See the configuration guide for more information on how to configure this parameter for each node.
+
+An example simulation migration using Gazebo can be seen in the `following pull request for the Turtlebot 3 and 4 <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/pull/16>`_.
+
+
 New Nav2 Loopback Simulator
 ***************************
 
@@ -109,3 +123,85 @@ In `PR #4752 <https://github.com/ros-navigation/navigation2/pull/4752>`_ an opti
 Default value:
 
 - true
+
+Revamped multirobot bringup and config files to use namespaces
+**************************************************************
+
+In `PR #4715 <https://github.com/ros-navigation/navigation2/pull/4715>`_ multirobot bringup and the use of namespaces were overhauled to be compatible out of the box with ROS namespaces and remove custom logic, specifically:
+
+* The ``use_namespace`` parameter has been removed from ``nav2_bringup`` launch files. The ``namespace`` parameter will now always be used and default to ``/`` for "global namespace".
+* There is now a single rviz config file for both normal and namespaced robots. Topics have been changed to a relative path (i.e. ``/map`` -> ``map``) and the rviz ``namespace`` will be added automatically.
+* There is now a single ``nav2_params.yaml`` config file for both single and multirobot bringup. All the topics have been changed to relative (i.e. ``/scan`` -> ``scan``).
+
+Note that some plugins / nodes might have their own local namespace. This is the case for ``CostmapLayer`` which will be in a ``/ns/[layer_name]`` namespace. For these, a new function ``joinWithParentNamespace`` has been added to make sure joining relative paths results in ``/ns/topic_name`` rather than ``/ns/[layer_name]/topic_name``.
+
+If your use case doesn't require multiple robots, keeping absolute paths in your ``nav2_params.yaml`` config file and rviz config file will preserve existing behavior.
+
+For example, if you specify ``topic: scan`` in the ``voxel_layer`` of a ``local_costmap`` and you launch your bringup with a ``tb4`` namespace:
+
+* User chosen namespace is ``tb4``.
+* User chosen topic is ``scan``.
+* Topic will be remapped to ``/tb4/scan`` without ``local_costmap``.
+* Use global topic ``/scan`` if you do not wish the node namespace to apply
+
+Removed global map_topic from Costmap node
+******************************************
+
+In `PR #4715 <https://github.com/ros-navigation/navigation2/pull/4715>`_ the global ``map_topic`` parameter has been removed from the ``Costmap2DROS`` node. This parameterwas only used in the ``StaticLayer`` and should be defined as a parameter local to the ``StaticLayer`` instead, for example:
+
+.. code-block:: yaml
+
+  global_costmap:
+    global_costmap:
+      ros__parameters:
+        [...]
+        # Not supported anymore
+        map_topic: my_map
+        static_layer:
+          plugin: "nav2_costmap_2d::StaticLayer"
+          map_subscribe_transient_local: True
+          # Do this instead
+          map_topic: my_map
+
+Simplified Costmap2DROS constructors
+************************************
+
+The following constructors for ``Costmap2DROS`` have been removed:
+
+.. code-block:: cpp
+
+   explicit Costmap2DROS(
+    const std::string & name,
+    const std::string & parent_namespace,
+    const std::string & local_namespace,
+    const bool & use_sim_time);
+
+   explicit Costmap2DROS(const std::string & name, const bool & use_sim_time = false);
+
+They have been consolidated into a single one:
+
+.. code-block:: cpp
+
+   explicit Costmap2DROS(
+    const std::string & name,
+    const std::string & parent_namespace = "/",
+    const bool & use_sim_time = false);
+
+The ``local_namespace`` parameter has been removed and is now automatically set to the node's name (which is what the second removed constructor did).
+Parameters ``parent_namespace`` / ``use_sim_time`` both provide default values to maintain the ability of creating a ``Costmap2DROS`` object by just specifying a name.
+
+Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions
+*******************************************************************************
+
+In `PR #4785 <https://github.com/ros-navigation/navigation2/pull/4785>`_ a new boolean parameter named `disable_collision_checks` was added to the `DriveOnHeading`, `BackUp` and `Spin` actions to optionally disable collision checking. 
+This can be useful, for example, in cases where you want to move the robot even in the presence of known obstacles.
+
+Default value:
+
+- false
+
+New Plugin Container Layer
+**************************
+
+In `PR #4785 <https://github.com/ros-navigation/navigation2/pull/4785>`_ a new boolean parameter named `disable_collision_checks` was added to the `DriveOnHeading`, `BackUp` and `Spin` actions to optionally disable collision checking. This can be useful, for example, in cases where you want to move the robot even in the presence of known obstacles.
+
