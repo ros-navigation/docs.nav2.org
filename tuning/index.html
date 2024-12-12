@@ -1136,7 +1136,7 @@
 <p>Using the <a class="reference internal" href="../configuration/packages/configuring-rotation-shim-controller.html#configuring-rotation-shim"><span class="std std-ref">Rotation Shim Controller</span></a>, a robot will simply rotate in place before starting to track a holonomic path. This allows a developer to tune a controller plugin to be optimized for path tracking and give you clean rotations, out of the box.</p>
 <p>This was added due to quirks in some existing controllers whereas tuning the controller for a task can make it rigid – or the algorithm simply doesn’t rotate in place when working with holonomic paths (if that’s a desirable trait). The result is an awkward, stuttering, or whipping around behavior when your robot’s initial and path heading’s are significantly divergent. Giving a controller a better starting point to start tracking a path makes tuning the controllers significantly easier and creates more intuitive results for on-lookers (in one maintainer’s opinion).</p>
 <p>Note: If using a non-holonomic, kinematically feasible planner (e.g. Smac Hybrid-A*, Smac State Lattice), this is not a necessary behavioral optimization. This class of planner will create plans that take into account the robot’s starting heading, not requiring any rotation behaviors.</p>
-<p>This behavior is most optimially for:</p>
+<p>This behavior is most optimally for:</p>
 <ul class="simple">
 <li><p>Robots that can rotate in place, such as differential and omnidirectional robots.</p></li>
 <li><p>Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot’s current heading – or when tuning your controller for its task makes tight rotations difficult.</p></li>
