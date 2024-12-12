@@ -21,11 +21,11 @@ Parameters
 
 :goals_updater_topic:
 
-  ====== ==============
+  ====== ===============
   Type   Default
-  ------ --------------
+  ------ ---------------
   string  "goals_update"
-  ====== ==============
+  ====== ===============
 
   Description
       The topic to receive the updated goals poses
