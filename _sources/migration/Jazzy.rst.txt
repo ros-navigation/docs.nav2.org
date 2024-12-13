@@ -199,3 +199,8 @@ This can be useful, for example, in cases where you want to move the robot even 
 Default value:
 
 - false
+
+New Plugin Container Layer
+**************************
+
+In `PR #4781 <https://github.com/ros-navigation/navigation2/pull/4781>`_ a costmap layer plugin type was added to support the grouping of different costmap layers under a single costmap layer. This would allow for different isolated combinations of costmap layers to be combined under one parent costmap instead of the current implementation which would indiscriminately combine all costmap layers together.

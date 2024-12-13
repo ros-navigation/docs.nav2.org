@@ -600,6 +600,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/range.html">Range Sensor Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/denoise.html">Denoise Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/costmap-plugins/plugin_container.html">Plugin Container Layer Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
@@ -1053,6 +1054,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-plugin-container-layer">New Plugin Container Layer</a></li>
 </ul>
 </li>
 </ul>
@@ -1211,6 +1213,14 @@ sets of measurements</p></td>
 <td><p>Filters noise-induced
 standalone obstacles or small
 obstacles groups</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp">Plugin Container Layer</a></p></td>
+<td><p>Alexander Yuen</p></td>
+<td><p>Combines the different costmap
+layers specified under this
+layer in order populate the same
+costmap with different isolated
+combinations of costmap layers</p></td>
 </tr>
 </tbody>
 </table>

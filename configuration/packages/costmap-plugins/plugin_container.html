@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OscillationCritic &mdash; Nav2 1.0.0 documentation</title>
+  <title>Plugin Container Layer Parameters &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="PathAlignCritic" href="path_align.html" />
-    <link rel="prev" title="ObstacleFootprintCritic" href="obstacle_footprint.html" />
+    <link rel="next" title="Keepout Filter Parameters" href="keepout_filter.html" />
+    <link rel="prev" title="Denoise Layer Parameters" href="denoise.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -590,23 +590,23 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-bt-xml.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuring-costmaps.html">Costmap 2D</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#costmap2d-ros-parameters">Costmap2D ROS Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#default-plugins">Default Plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/static.html">Static Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/inflation.html">Inflation Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/obstacle.html">Obstacle Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/voxel.html">Voxel Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/range.html">Range Sensor Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/denoise.html">Denoise Layer Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/plugin_container.html">Plugin Container Layer Parameters</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-costmaps.html#plugin-parameters">Plugin Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="static.html">Static Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="inflation.html">Inflation Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="obstacle.html">Obstacle Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="voxel.html">Voxel Layer Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="range.html">Range Sensor Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="denoise.html">Denoise Layer Parameters</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Plugin Container Layer Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#costmap-filters-parameters">Costmap Filters Parameters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/keepout_filter.html">Keepout Filter Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/speed_filter.html">Speed Filter Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../costmap-plugins/binary_filter.html">Binary Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keepout_filter.html">Keepout Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="speed_filter.html">Speed Filter Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="binary_filter.html">Binary Filter Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-costmaps.html#example">Example</a></li>
@@ -661,7 +661,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-dwb-controller.html">DWB Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#controller">Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/controller.html">DWB Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dwb-params/iterator.html">XYTheta Iterator</a></li>
@@ -674,17 +674,17 @@
 <li class="toctree-l4"><a class="reference internal" href="../dwb-plugins/standard_traj_generator.html">StandardTrajectoryGenerator</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="base_obstacle.html">BaseObstacleCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="goal_align.html">GoalAlignCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="goal_dist.html">GoalDistCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="obstacle_footprint.html">ObstacleFootprintCritic</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">OscillationCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="path_align.html">PathAlignCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="path_dist.html">PathDistCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="prefer_forward.html">PreferForwardCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="rotate_to_goal.html">RotateToGoalCritic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="twirling.html">TwirlingCritic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#trajectory-critics">Trajectory Critics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/base_obstacle.html">BaseObstacleCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/goal_align.html">GoalAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/goal_dist.html">GoalDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/obstacle_footprint.html">ObstacleFootprintCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/oscillation.html">OscillationCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/path_align.html">PathAlignCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/path_dist.html">PathDistCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/prefer_forward.html">PreferForwardCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/rotate_to_goal.html">RotateToGoalCritic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trajectory_critics/twirling.html">TwirlingCritic</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-dwb-controller.html#example">Example</a></li>
@@ -1102,8 +1102,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Configuration Guide</a></li>
-          <li class="breadcrumb-item"><a href="../configuring-dwb-controller.html">DWB Controller</a></li>
-      <li class="breadcrumb-item active">OscillationCritic</li>
+          <li class="breadcrumb-item"><a href="../configuring-costmaps.html">Costmap 2D</a></li>
+      <li class="breadcrumb-item active">Plugin Container Layer Parameters</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1112,125 +1112,111 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="oscillationcritic">
-<span id="configuring-dwb-oscillation"></span><h1>OscillationCritic<a class="headerlink" href="#oscillationcritic" title="Permalink to this heading"></a></h1>
-<p>Prevents the robot from just moving backwards and forwards.</p>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>: DWB plugin name defined in the <strong>controller_plugin_ids</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>: OscillationCritic critic name defined in the <strong>&lt;dwb plugin&gt;.critics</strong> parameter defined in <a class="reference internal" href="../dwb-params/controller.html#dwb-controller"><span class="std std-ref">DWB Controller</span></a>.</p>
+  <div class="section" id="plugin-container-layer-parameters">
+<h1>Plugin Container Layer Parameters<a class="headerlink" href="#plugin-container-layer-parameters" title="Permalink to this heading"></a></h1>
+<p>This implements a costmap layer which combines costmap layers within a submap, which can then be integrated with other submaps in the same parent costmap. An example would be the use of different inflation layers for different sensors, objects, or static layers</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;plugin</span> <span class="pre">container</span> <span class="pre">layer&gt;</span></code> is the corresponding plugin name selected for this type.</p>
 <dl class="field-list">
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.oscillation_reset_dist</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;plugin</span> <span class="pre">container</span> <span class="pre">layer&gt;</span></code>.enabled</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.05</p></td>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><dl class="simple">
-<dt>Description</dt><dd><p>Minimum distance to move to reset oscillation watchdog (m).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether it is enabled.</p>
 </dd>
 </dl>
-</div></blockquote>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.oscillation_reset_angle</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;plugin</span> <span class="pre">container</span> <span class="pre">layer&gt;</span></code>.plugins</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.2</p></td>
+<tr class="row-even"><td><p>vector&lt;string&gt;</p></td>
+<td><p>{}</p></td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><dl class="simple">
-<dt>Description</dt><dd><p>Minimum angular distance to move to reset watchdog (rad).</p>
+<dl class="simple">
+<dt>Description</dt><dd><p>List of mapped costmap layer names for parameter namespaces and names.</p>
+</dd>
+<dt>Note</dt><dd><p>Costmap filters are presently unsupported</p>
 </dd>
 </dl>
-</div></blockquote>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.oscillation_reset_time</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>-1</p></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<div><dl class="simple">
-<dt>Description</dt><dd><p>Duration when a reset may be called. If -1, cannot be reset..</p>
 </dd>
 </dl>
-</div></blockquote>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.x_only_threshold</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.05</p></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<div><dl class="simple">
-<dt>Description</dt><dd><p>Threshold to check in the X velocity direction.</p>
-</dd>
-</dl>
-</div></blockquote>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;dwb</span> <span class="pre">plugin&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.scale</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>1.0</p></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<div><dl class="simple">
-<dt>Description</dt><dd><p>Weighed scale for critic.</p>
-</dd>
-</dl>
-</div></blockquote>
-</dd>
-</dl>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">update_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">    </span><span class="nt">publish_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">    </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
+<span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>
+<span class="w">    </span><span class="nt">robot_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.22</span>
+<span class="w">    </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">    </span><span class="nt">track_unknown_space</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;plugin_container_static_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;plugin_container_obstacle_layer&quot;</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="nt">plugin_container_static_layer</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::PluginContainerLayer&quot;</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">combination_method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">static_layer</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span>
+<span class="w">        </span><span class="nt">map_subscribe_transient_local</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">inflation_layer</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span>
+<span class="w">        </span><span class="nt">cost_scaling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">        </span><span class="nt">inflation_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+
+<span class="w">    </span><span class="nt">plugin_container_obstacle_layer</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::PluginContainerLayer&quot;</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">combination_method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">obstacle_layer</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::ObstacleLayer&quot;</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">        </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scan</span>
+<span class="w">        </span><span class="nt">scan</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/scan</span>
+<span class="w">          </span><span class="nt">max_obstacle_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">          </span><span class="nt">clearing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">          </span><span class="nt">marking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">          </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LaserScan&quot;</span>
+<span class="w">          </span><span class="nt">raytrace_max_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
+<span class="w">          </span><span class="nt">raytrace_min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">          </span><span class="nt">obstacle_max_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.5</span>
+<span class="w">          </span><span class="nt">obstacle_min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">      </span><span class="nt">inflation_layer</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span>
+<span class="w">        </span><span class="nt">cost_scaling_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
+<span class="w">        </span><span class="nt">inflation_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</pre></div>
+</div>
+<p>The above example settings, when applied to the Nav2 turtlebot simulation would give the following costmap on startup</p>
+<div class="figure align-center" id="id1">
+<img alt="Costmap generated by plugin container layer" src="../../../_images/plugin_container_layer.png" />
+<p class="caption"><span class="caption-number">Figure 7 </span><span class="caption-text">Costmap generated by turtlebot using example plugin container layer settings</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</div>
 </div>
 </div>
 
