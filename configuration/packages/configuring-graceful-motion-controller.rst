@@ -25,16 +25,27 @@ Graceful Controller Parameters
   Description
     The TF transform tolerance (s).
 
-:motion_target_dist:
+:max_lookahead:
 
   ============== =============================
   Type           Default                      
   -------------- -----------------------------
-  double         0.6
+  double         1.0
   ============== =============================
 
   Description
-    The lookahead distance (m) to use to find the motion_target point.
+    The maximum lookahead distance (m) to use when selecting a target pose for the underlying control law. Using poses that are further away will generally result in smoother operations, but simulating poses that are very far away can result in reduced performance, especially in tight or cluttered environments. If the controller cannot forward simulate to a pose this far away without colliding, it will iteratively select a target pose that is closer to the robot.
+
+:min_lookahead:
+
+  ============== =============================
+  Type           Default                      
+  -------------- -----------------------------
+  double         0.25
+  ============== =============================
+
+  Description
+    The minimum lookahead distance (m) to use when selecting a target pose for the underlying control law. This parameter avoids instability when an unexpected obstacle appears in the path of the robot by returning failure, which typically triggers replanning.
 
 :max_robot_pose_search_dist:
 
@@ -124,6 +135,17 @@ Graceful Controller Parameters
   Description
     Maximum angular velocity (rad/s) produced by the control law.
 
+:v_angular_min_in_place:
+
+  ============== =============================
+  Type           Default                      
+  -------------- -----------------------------
+  double         0.25
+  ============== =============================
+
+  Description
+    Minimum angular velocity (rad/s) produced by the control law when rotating in place. This value should be based on the minimum rotation speed controllable by the robot.
+
 :slowdown_radius:
 
   ============== =============================
@@ -135,7 +157,18 @@ Graceful Controller Parameters
   Description
     Radius (m) around the goal pose in which the robot will start to slow down.
 
-:initial_rotation:
+:initial_rotation_tolerance:
+
+  ============== =============================
+  Type           Default                      
+  -------------- -----------------------------
+  double         0.75
+  ============== =============================
+
+  Description
+    When non-zero, specifies the difference in the path orientation and the starting robot orientation to trigger an initial in-place rotation. Without the initial rotation, the control law may generate large sweeping arcs depending on the initial robot orientation and ``k_phi``, ``k_delta``.
+
+:prefer_final_rotation:
 
   ============== =============================
   Type           Default                      
@@ -144,29 +177,7 @@ Graceful Controller Parameters
   ============== =============================
 
   Description
-    Enable a rotation in place to the goal before starting the path. The control law may generate large sweeping arcs to the goal pose, depending on the initial robot orientation and ``k_phi``, ``k_delta``.
-
-:initial_rotation_min_angle:
-
-  ============== =============================
-  Type           Default                      
-  -------------- -----------------------------
-  double         0.75 
-  ============== =============================
-
-  Description
-    The difference in the path orientation and the starting robot orientation to trigger a rotate in place, if ``initial_rotation`` is enabled.
-
-:final_rotation:
-
-  ============== =============================
-  Type           Default                      
-  -------------- -----------------------------
-  bool           true 
-  ============== =============================
-
-  Description
-    Similar to ``initial_rotation``, the control law can generate large arcs when the goal orientation is not aligned with the path. If this is enabled, the final pose will be ignored and the robot will follow the orientation of he path and will make a final rotation in place to the goal orientation.
+    The control law can generate large arcs when the goal orientation is not aligned with the path. If this is enabled, the orientation of the final pose will be ignored and the robot will follow the orientation of the path and will make a final rotation in place to the goal orientation.
 
 :rotation_scaling_factor:
 
@@ -217,10 +228,10 @@ Example
       FollowPath:
         plugin: nav2_graceful_controller::GracefulController
         transform_tolerance: 0.1
-        motion_target_dist: 0.6
-        initial_rotation: true
-        initial_rotation_min_angle: 0.75
-        final_rotation: true
+        min_lookahead: 0.25
+        max_lookahead: 1.0
+        initial_rotation_threshold: 0.75
+        prefer_final_rotation: true
         allow_backward: false
         k_phi: 3.0
         k_delta: 2.0
@@ -229,4 +240,5 @@ Example
         v_linear_min: 0.1
         v_linear_max: 1.0
         v_angular_max: 5.0
+        v_angular_min_in_place: 0.25
         slowdown_radius: 1.5
