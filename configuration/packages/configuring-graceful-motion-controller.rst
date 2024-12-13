@@ -201,6 +201,17 @@ Graceful Controller Parameters
   Description
     Whether to allow the robot to move backward.
 
+:add_orientations:
+
+  ============== =============================
+  Type           Default                      
+  -------------- -----------------------------
+  bool           false 
+  ============== =============================
+
+  Description
+    Not all planners set the orientation of the poses in their plans, but this controller requires orientations. If using a planner that does not set the orientations, this parameter must be set to true.
+
 Example
 *******
 .. code-block:: yaml
