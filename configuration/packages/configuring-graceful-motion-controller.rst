@@ -67,7 +67,7 @@ Graceful Controller Parameters
   ============== =============================
 
   Description
-    Ratio of the rate of change in phi to the rate of change in r. Controls the convergence of the slow subsystem. If this value is equal to zero, the controller will behave as a pure waypoint follower. A high value offers extreme scenario of pose-following where theta is reduced much faster than r.
+    Ratio of the rate of change in phi to the rate of change in r. Controls the convergence of the slow subsystem. If this value is equal to zero, the controller will behave as a pure waypoint follower. A high value offers extreme scenario of pose-following where theta is reduced much faster than r. The referenced paper calls this `k1`.
 
 :k_delta:
 
@@ -78,7 +78,7 @@ Graceful Controller Parameters
   ============== =============================
 
   Description
-    Constant factor applied to the heading error feedback. Controls the convergence of the fast subsystem. The bigger the value, the robot converge faster to the reference heading.
+    Constant factor applied to the heading error feedback. Controls the convergence of the fast subsystem. The bigger the value, the robot converge faster to the reference heading. The referenced paper calls this `k2`.
 
 :beta:
 
@@ -157,6 +157,17 @@ Graceful Controller Parameters
   Description
     Radius (m) around the goal pose in which the robot will start to slow down.
 
+:initial_rotation:
+
+  ============== =============================
+  Type           Default                      
+  -------------- -----------------------------
+  bool           true 
+  ============== =============================
+
+  Description
+    Enable a rotation in place to the goal before starting the path. The control law may generate large sweeping arcs to the goal pose, depending on the initial robot orientation and ``k_phi``, ``k_delta``.
+
 :initial_rotation_tolerance:
 
   ============== =============================
@@ -166,7 +177,7 @@ Graceful Controller Parameters
   ============== =============================
 
   Description
-    When non-zero, specifies the difference in the path orientation and the starting robot orientation to trigger an initial in-place rotation. Without the initial rotation, the control law may generate large sweeping arcs depending on the initial robot orientation and ``k_phi``, ``k_delta``.
+    The difference in the path orientation and the starting robot orientation to trigger a rotate in place, if ``initial_rotation`` is enabled.
 
 :prefer_final_rotation:
 
@@ -200,17 +211,6 @@ Graceful Controller Parameters
 
   Description
     Whether to allow the robot to move backward.
-
-:add_orientations:
-
-  ============== =============================
-  Type           Default                      
-  -------------- -----------------------------
-  bool           false 
-  ============== =============================
-
-  Description
-    Not all planners set the orientation of the poses in their plans, but this controller requires orientations. If using a planner that does not set the orientations, this parameter must be set to true.
 
 Example
 *******
