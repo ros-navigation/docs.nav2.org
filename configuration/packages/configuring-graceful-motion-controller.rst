@@ -212,6 +212,17 @@ Graceful Controller Parameters
   Description
     Whether to allow the robot to move backward.
 
+:in_place_collision_tolerance:
+
+  ============== =============================
+  Type           Default                      
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    When performing an in-place rotation after the XY goal tolerance has been met, this is the angle (in radians) between poses to check for collision.
+
 Example
 *******
 .. code-block:: yaml
@@ -241,6 +252,7 @@ Example
         transform_tolerance: 0.1
         min_lookahead: 0.25
         max_lookahead: 1.0
+        initial_rotation: true
         initial_rotation_threshold: 0.75
         prefer_final_rotation: true
         allow_backward: false
