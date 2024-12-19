@@ -7,7 +7,7 @@ Source code on Github_.
 
 .. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_graceful_controller
 
-The graceful controller implements a controller based on the works of Jong Jin Park and Benjamin Kuipers in "A Smooth Control Law for Graceful Motion of Differential Wheeled Mobile Robots in 2D Environment" (ICRA 2011). In this implementation, a `motion_target` is set at a distance away from the robot that is exponentially stable to generate a smooth trajectory for the robot to follow.
+The graceful controller implements a controller based on the works of Jong Jin Park and Benjamin Kuipers in "A Smooth Control Law for Graceful Motion of Differential Wheeled Mobile Robots in 2D Environment" (ICRA 2011). In this implementation, a `motion_target` is set at a distance away from the robot that is exponentially stable to generate a smooth trajectory for the robot to follow. 
 
 See the package's ``README`` for more complete information.
 
@@ -177,7 +177,7 @@ Graceful Controller Parameters
   ============== =============================
 
   Description
-    The difference in the path orientation and the starting robot orientation to trigger a rotate in place, if ``initial_rotation`` is enabled.
+    The difference in the path orientation and the starting robot orientation to trigger a rotate in place, if ``initial_rotation`` is enabled. This value is generally acceptable if continuous replanning is enabled. If not using continuous replanning, a lower value may perform better.
 
 :prefer_final_rotation:
 
