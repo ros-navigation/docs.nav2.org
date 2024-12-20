@@ -204,3 +204,13 @@ New Plugin Container Layer
 **************************
 
 In `PR #4781 <https://github.com/ros-navigation/navigation2/pull/4781>`_ a costmap layer plugin type was added to support the grouping of different costmap layers under a single costmap layer. This would allow for different isolated combinations of costmap layers to be combined under one parent costmap instead of the current implementation which would indiscriminately combine all costmap layers together.
+
+Iterative Target Selection for the Graceful Controller
+******************************************************
+
+In `PR #4795 <https://github.com/ros-navigation/navigation2/pull/4795>`_ the ``nav2_graceful_controller`` was updated to iteratively select motion targets. This is a large refactor which signficantly improves the performance of the controller. The ``motion_target_dist`` parameter has been replaced by ``min_lookahead`` and ``max_lookahead`` parameters. Additional changes include:
+
+* Improved defaults for ``k_phi``, ``k_delta``, ``beta`` parameters of the underlying control law.
+* Automatic creation of orientations for the plan if they are missing.
+* Addition of ``v_angular_min_in_place`` parameter to avoid the robot getting stuck while rotating due to mechanical limitations.
+* ``final_rotation`` has been renamed ``prefer_final_rotation`` and the behavior has changed slightly.
