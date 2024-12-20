@@ -1055,6 +1055,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-plugin-container-layer">New Plugin Container Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iterative-target-selection-for-the-graceful-controller">Iterative Target Selection for the Graceful Controller</a></li>
 </ul>
 </li>
 </ul>
@@ -1284,6 +1285,16 @@ This can be useful, for example, in cases where you want to move the robot even 
 <div class="section" id="new-plugin-container-layer">
 <h2>New Plugin Container Layer<a class="headerlink" href="#new-plugin-container-layer" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4781">PR #4781</a> a costmap layer plugin type was added to support the grouping of different costmap layers under a single costmap layer. This would allow for different isolated combinations of costmap layers to be combined under one parent costmap instead of the current implementation which would indiscriminately combine all costmap layers together.</p>
+</div>
+<div class="section" id="iterative-target-selection-for-the-graceful-controller">
+<h2>Iterative Target Selection for the Graceful Controller<a class="headerlink" href="#iterative-target-selection-for-the-graceful-controller" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4795">PR #4795</a> the <code class="docutils literal notranslate"><span class="pre">nav2_graceful_controller</span></code> was updated to iteratively select motion targets. This is a large refactor which significantly improves the performance of the controller. The <code class="docutils literal notranslate"><span class="pre">motion_target_dist</span></code> parameter has been replaced by <code class="docutils literal notranslate"><span class="pre">min_lookahead</span></code> and <code class="docutils literal notranslate"><span class="pre">max_lookahead</span></code> parameters. Additional changes include:</p>
+<ul class="simple">
+<li><p>Improved defaults for <code class="docutils literal notranslate"><span class="pre">k_phi</span></code>, <code class="docutils literal notranslate"><span class="pre">k_delta</span></code>, <code class="docutils literal notranslate"><span class="pre">beta</span></code> parameters of the underlying control law.</p></li>
+<li><p>Automatic creation of orientations for the plan if they are missing.</p></li>
+<li><p>Addition of <code class="docutils literal notranslate"><span class="pre">v_angular_min_in_place</span></code> parameter to avoid the robot getting stuck while rotating due to mechanical limitations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">final_rotation</span></code> has been renamed <code class="docutils literal notranslate"><span class="pre">prefer_final_rotation</span></code> and the behavior has changed slightly.</p></li>
+</ul>
 </div>
 </div>
 

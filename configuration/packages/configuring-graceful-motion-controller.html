@@ -1055,6 +1055,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-plugin-container-layer">New Plugin Container Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#iterative-target-selection-for-the-graceful-controller">Iterative Target Selection for the Graceful Controller</a></li>
 </ul>
 </li>
 </ul>
@@ -1139,7 +1140,7 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">motion_target_dist</dt>
+<dt class="field-even">max_lookahead</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1150,17 +1151,37 @@
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>double</p></td>
-<td><p>0.6</p></td>
+<td><p>1.0</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The lookahead distance (m) to use to find the motion_target point.</p>
+<dt>Description</dt><dd><p>The maximum lookahead distance (m) to use when selecting a target pose for the underlying control law. Using poses that are further away will generally result in smoother operations, but simulating poses that are very far away can result in reduced performance, especially in tight or cluttered environments. If the controller cannot forward simulate to a pose this far away without colliding, it will iteratively select a target pose that is closer to the robot.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">max_robot_pose_search_dist</dt>
+<dt class="field-odd">min_lookahead</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.25</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The minimum lookahead distance (m) to use when selecting a target pose for the underlying control law. This parameter avoids instability when an unexpected obstacle appears in the path of the robot by returning failure, which typically triggers replanning.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">max_robot_pose_search_dist</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 78%" />
@@ -1179,27 +1200,7 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">k_phi</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>3.0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Ratio of the rate of change in phi to the rate of change in r. Controls the convergence of the slow subsystem. If this value is equal to zero, the controller will behave as a pure waypoint follower. A high value offers extreme scenario of pose-following where theta is reduced much faster than r.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">k_delta</dt>
+<dt class="field-odd">k_phi</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1215,11 +1216,11 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Constant factor applied to the heading error feedback. Controls the convergence of the fast subsystem. The bigger the value, the robot converge faster to the reference heading.</p>
+<dt>Description</dt><dd><p>Ratio of the rate of change in phi to the rate of change in r. Controls the convergence of the slow subsystem. If this value is equal to zero, the controller will behave as a pure waypoint follower. A high value offers extreme scenario of pose-following where theta is reduced much faster than r. The referenced paper calls this <cite>k1</cite>.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">beta</dt>
+<dt class="field-even">k_delta</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1230,7 +1231,27 @@
 <td><p>Default</p></td>
 </tr>
 <tr class="row-even"><td><p>double</p></td>
-<td><p>0.2</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Constant factor applied to the heading error feedback. Controls the convergence of the fast subsystem. The bigger the value, the robot converge faster to the reference heading. The referenced paper calls this <cite>k2</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">beta</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.4</p></td>
 </tr>
 </tbody>
 </table>
@@ -1239,8 +1260,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">lambda</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">lambda</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1259,8 +1280,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">v_linear_min</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">v_linear_min</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1279,8 +1300,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">v_linear_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">v_linear_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1299,8 +1320,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">v_angular_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">v_angular_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1316,6 +1337,26 @@
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Maximum angular velocity (rad/s) produced by the control law.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">v_angular_min_in_place</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.25</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimum angular velocity (rad/s) produced by the control law when rotating in place. This value should be based on the minimum rotation speed controllable by the robot.</p>
 </dd>
 </dl>
 </dd>
@@ -1359,7 +1400,7 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">initial_rotation_min_angle</dt>
+<dt class="field-odd">initial_rotation_tolerance</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1375,11 +1416,11 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The difference in the path orientation and the starting robot orientation to trigger a rotate in place, if <code class="docutils literal notranslate"><span class="pre">initial_rotation</span></code> is enabled.</p>
+<dt>Description</dt><dd><p>The difference in the path orientation and the starting robot orientation to trigger a rotate in place, if <code class="docutils literal notranslate"><span class="pre">initial_rotation</span></code> is enabled. This value is generally acceptable if continuous replanning is enabled. If not using continuous replanning, a lower value may perform better.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">final_rotation</dt>
+<dt class="field-even">prefer_final_rotation</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1395,7 +1436,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Similar to <code class="docutils literal notranslate"><span class="pre">initial_rotation</span></code>, the control law can generate large arcs when the goal orientation is not aligned with the path. If this is enabled, the final pose will be ignored and the robot will follow the orientation of he path and will make a final rotation in place to the goal orientation.</p>
+<dt>Description</dt><dd><p>The control law can generate large arcs when the goal orientation is not aligned with the path. If this is enabled, the orientation of the final pose will be ignored and the robot will follow the orientation of the path and will make a final rotation in place to the goal orientation.</p>
 </dd>
 </dl>
 </dd>
@@ -1439,6 +1480,26 @@
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">in_place_collision_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>When performing an in-place rotation after the XY goal tolerance has been met, this is the angle (in radians) between poses to check for collision.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -1466,10 +1527,11 @@
 <span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav2_graceful_controller::GracefulController</span>
 <span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
-<span class="w">      </span><span class="nt">motion_target_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span>
+<span class="w">      </span><span class="nt">min_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+<span class="w">      </span><span class="nt">max_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">initial_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">initial_rotation_min_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
-<span class="w">      </span><span class="nt">final_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">initial_rotation_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
+<span class="w">      </span><span class="nt">prefer_final_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">allow_backward</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">k_phi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
 <span class="w">      </span><span class="nt">k_delta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
@@ -1478,6 +1540,7 @@
 <span class="w">      </span><span class="nt">v_linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">      </span><span class="nt">v_linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">v_angular_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="w">      </span><span class="nt">v_angular_min_in_place</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">slowdown_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.5</span>
 </pre></div>
 </div>
