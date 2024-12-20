@@ -133,8 +133,8 @@ Controllers
 |                                |                       | to path heading before passing     | model rotate in place |
 |                                |                       | to main controller for  tracking.  |                       |
 +--------------------------------+-----------------------+------------------------------------+-----------------------+
-| `Graceful Controller`_         | Alberto Tudela        | A controller based on a            | Differential          |
-|                                |                       | pose-following control law to      |                       |
+| `Graceful Controller`_         | Alberto Tudela        | A controller based on a            | Differential, Omni,   |
+|                                |                       | pose-following control law to      | Legged                |
 |                                |                       | generate smooth trajectories.      |                       |
 +--------------------------------+-----------------------+------------------------------------+-----------------------+
 | `Vector Pursuit Controller`_   | Black Coffee Robotics | A controller based on the vector   | Differential,         |
