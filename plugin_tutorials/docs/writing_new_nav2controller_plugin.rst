@@ -220,11 +220,11 @@ It is good practice to place these lines at the end of the file, but technically
 
 2. The next step would be to create the plugin's description file in the root directory of the package. For example, ``pure_pursuit_controller_plugin.xml`` file in our tutorial package. This file contains the following information
 
-- ``library path``: Plugin's library name and its location.
-- ``class name``: Name of the class.
-- ``class type``: Type of class.
-- ``base class``: Name of the base class.
-- ``description``: Description of the plugin.
+ - ``library path``: Plugin's library name and its location.
+ - ``class name``: Name of the class (optional). If not set, it will default to the ``class type``.
+ - ``class type``: Type of class.
+ - ``base class``: Name of the base class.
+ - ``description``: Description of the plugin.
 
 .. code-block:: xml
 
