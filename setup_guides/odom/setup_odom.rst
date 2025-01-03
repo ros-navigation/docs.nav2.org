@@ -77,32 +77,22 @@ As an overview for this section, we will first setup Gazebo and the necessary pa
 Setup and Prerequisites
 =======================
 
-`Gazebo <http://gazebosim.org/>`_ is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the `Gazebo Installation Documentation <http://gazebosim.org/tutorials?cat=install>`_.
+`Gazebo <http://gazebosim.org/>`_ is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the `Gazebo Installation Documentation <https://gazebosim.org/docs/latest/ros_installation/>`_.
 
-We also need to install the ``gazebo_ros_pkgs`` package to simulate odometry and control the robot with ROS 2 in Gazebo:
+Note that you may have described ``sam_bot`` using URDF. However, Gazebo uses `Simulation Description Format (SDF) <http://sdformat.org/>`_ to describe a robot in its simulated environment. Fortunately, Gazebo automatically translates compatible URDF files into SDF. The main requirement for the URDF to be compatible with Gazebo is to have an ``<inertia>`` element within each ``<link>`` element. This requirement is already satisfied in the URDF file of ``sam_bot``, so it can already be used in Gazebo.
 
-.. code-block:: shell
- 
-  sudo apt install ros-<ros2-distro>-gazebo-ros-pkgs
+Adding Gazebo Plugins to a URDF/SDF
+===================================
 
-You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions `given here <http://gazebosim.org/tutorials?tut=ros2_installing&cat=connect_ros#TestingGazeboandROS2integration>`_. 
+We will now add the IMU sensor and the differential drive plugins of Gazebo to our URDF/SDF. For an overview of the different sensors available in Gazebo, have a look at the `Sensor Documentation <https://gazebosim.org/docs/latest/sensors>`_.
 
-Note that we described ``sam_bot`` using URDF. However, Gazebo uses `Simulation Description Format (SDF) <http://sdformat.org/>`_ to describe a robot in its simulated environment. Fortunately, Gazebo automatically translates compatible URDF files into SDF. The main requirement for the URDF to be compatible with Gazebo is to have an ``<inertia>`` element within each ``<link>`` element. This requirement is already satisfied in the URDF file of ``sam_bot``, so it can already be used in Gazebo. 
+A sensor must be attached to a link, thus we will create an ``imu_link`` to which the IMU sensor will be attached. This link will be referenced under the ``<gazebo>`` element if using URDF. Next, we will set ``/demo/imu`` as the topic to which the IMU will be publishing its information, and we will comply with `REP145 <https://www.ros.org/reps/rep-0145.html>`_ by setting ``initalOrientationAsReference`` to ``false``. We will also add some noise to the sensor configuration using Gazebo's `sensor noise model <https://classic.gazebosim.org/tutorials?tut=sensor_noise>`_.
 
-.. seealso::
-  For more information on how to use URDF in Gazebo, see `Tutorial: Using a URDF in Gazebo <http://gazebosim.org/tutorials/?tut=ros_urdf>`_.
-
-Adding Gazebo Plugins to a URDF
-===============================
-
-We will now add the IMU sensor and the differential drive plugins of Gazebo to our URDF. For an overview of the different plugins available in Gazebo, have a look at `Tutorial: Using Gazebo plugins with ROS <http://gazebosim.org/tutorials?tut=ros_gzplugins>`_. 
-
-For our robot, we will be using the `GazeboRosImuSensor <http://gazebosim.org/tutorials?tut=ros_gzplugins#IMUsensor(GazeboRosImuSensor)>`_ which is a SensorPlugin. A SensorPlugin must be attached to a link, thus we will create an ``imu_link`` to which the IMU sensor will be attached. This link will be referenced under the ``<gazebo>`` element. Next, we will set ``/demo/imu`` as the topic to which the IMU will be publishing its information, and we will comply with `REP145 <https://www.ros.org/reps/rep-0145.html>`_ by setting ``initalOrientationAsReference`` to ``false``. We will also add some noise to the sensor configuration using Gazebo's `sensor noise model <http://gazebosim.org/tutorials?tut=sensor_noise>`_. 
-
-Now, we will set up our IMU sensor plugin according to the description above by adding the following lines before the ``</robot>`` line in our URDF:
+Now, we will set up our IMU sensor plugin according to the description above.
+If using URDF add the following lines before the ``</robot>`` line:
 
 .. code-block:: xml
-  :lineno-start: 132
+  :lineno-start: 133
 
   <link name="imu_link">
     <visual>
@@ -126,18 +116,12 @@ Now, we will set up our IMU sensor plugin according to the description above by 
     <origin xyz="0 0 0.01"/>
   </joint>
 
-   <gazebo reference="imu_link">
+  <gazebo reference="imu_link">
     <sensor name="imu_sensor" type="imu">
-     <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-      	<ros>
-          <namespace>/demo</namespace>
-          <remapping>~/out:=imu</remapping>
-        </ros>
-        <initial_orientation_as_reference>false</initial_orientation_as_reference>
-      </plugin>
       <always_on>true</always_on>
       <update_rate>100</update_rate>
       <visualize>true</visualize>
+      <topic>demo/imu</topic>
       <imu>
         <angular_velocity>
           <x>
@@ -195,108 +179,296 @@ Now, we will set up our IMU sensor plugin according to the description above by 
     </sensor>
   </gazebo>
 
-Now, let us add the differential drive ModelPlugin. We will configure the plugin such that ``nav_msgs/Odometry`` messages are published on the ``/demo/odom`` topic. The joints of the left and right wheels will be set to the wheel joints of ``sam_bot``. The wheel separation and wheel diameter are set according to the values of the defined values of ``wheel_ygap`` and ``wheel_radius`` respectively. 
-
-To include this plugin in our URDF, add the following lines after the ``</gazebo>`` tag of the IMU plugin:
+If using SDF add the following lines before the ``</model>`` line:
 
 .. code-block:: xml
-  :lineno-start: 223
-  
+  :lineno-start: 184
+
+    <link name='imu_link'>
+      <must_be_base_link>true</must_be_base_link>
+      <visual name="imu_link_visual">
+        <geometry>
+          <box><size>
+            0.1 0.1 0.1
+          </size></box>
+        </geometry>
+      </visual>
+
+      <collision name="imu_link_collision">
+        <geometry>
+          <box><size>
+            0.1 0.1 0.1
+          </size></box>
+        </geometry>
+      </collision>
+
+      <xacro:box_inertia m="0.1" w="0.1" d="0.1" h="0.1"/>
+
+      <sensor name="imu_sensor" type="imu">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <visualize>true</visualize>
+        <topic>demo/imu</topic>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+    </link>
+
+    <joint name='imu_joint' type='fixed'>
+      <parent>base_link</parent>
+      <child>imu_link</child>
+      <pose relative_to="base_link">0.0 0.0 0.01 0 0 0</pose>
+    </joint>
+
+Now, let us add the DiffDrive ModelPlugin and the JointStatePublisher plugin. We will configure the plugin such that ``nav_msgs/Odometry`` messages are published on the ``/demo/odom`` topic and the ``sensor_msgs/msg/JointState`` messages for the two wheels are published on ``/joint_states``. The joints of the left and right wheels will be set to the wheel joints of ``sam_bot``. The wheel separation and wheel radius are set according to the values of the defined values of ``wheel_ygap`` and ``wheel_radius`` respectively.
+We will configure the DiffDrive ModelPLugin to also publish ``tf2_msgs/msg/TFMessage`` messages on the ``/demo/tf`` topic, but instead of them the transform messages published by ``ekf_node`` will be used. See `Robot Localization Demo <https://docs.nav2.org/setup_guides/odom/setup_odom.html#robot-localization-demo/>`_
+
+If using URDF, add the following lines after the ``</gazebo>`` tag of the IMU sensor:
+
+.. code-block:: xml
+  :lineno-start: 218
+
   <gazebo>
-    <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
-      <ros>
-        <namespace>/demo</namespace>
-      </ros>
-      
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
       <!-- wheels -->
       <left_joint>drivewhl_l_joint</left_joint>
       <right_joint>drivewhl_r_joint</right_joint>
 
       <!-- kinematics -->
       <wheel_separation>0.4</wheel_separation>
-      <wheel_diameter>0.2</wheel_diameter>
+      <wheel_radius>${wheel_radius}</wheel_radius>
 
-      <!-- limits -->	
-      <max_wheel_torque>20</max_wheel_torque>
-      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <!-- limits -->
+      <max_linear_acceleration>0.1</max_linear_acceleration>
+
+      <!-- input -->
+      <topic>/demo/cmd_vel</topic>
 
       <!-- output -->
-      <publish_odom>true</publish_odom>
-      <publish_odom_tf>false</publish_odom_tf>
-      <publish_wheel_tf>true</publish_wheel_tf>
-      
-      <odometry_frame>odom</odometry_frame>
-      <robot_base_frame>base_link</robot_base_frame>
+      <odom_topic>/demo/odom</odom_topic>
+      <tf_topic>/demo/tf</tf_topic>
+
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_link</child_frame_id>
+    </plugin>
+
+    <plugin
+      filename="gz-sim-joint-state-publisher-system"
+      name="gz::sim::systems::JointStatePublisher">
+      <topic>joint_states</topic>
     </plugin>
   </gazebo>
 
+If using SDF, add the following lines after the ``</link>`` tag of the IMU sensor:
+
+.. code-block:: xml
+  :lineno-start: 272
+
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+      <!-- wheels -->
+      <left_joint>drivewhl_l_joint</left_joint>
+      <right_joint>drivewhl_r_joint</right_joint>
+
+      <!-- kinematics -->
+      <wheel_separation>0.4</wheel_separation>
+      <wheel_radius>${wheel_radius}</wheel_radius>
+
+      <!-- limits -->
+      <max_linear_acceleration>0.1</max_linear_acceleration>
+
+      <!-- input -->
+      <topic>/demo/cmd_vel</topic>
+
+      <!-- output -->
+      <odom_topic>/demo/odom</odom_topic>
+      <tf_topic>/demo/tf</tf_topic>
+
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_link</child_frame_id>
+    </plugin>
+
+    <plugin
+      filename="gz-sim-joint-state-publisher-system"
+      name="gz::sim::systems::JointStatePublisher">
+      <topic>joint_states</topic>
+    </plugin>
 
 Launch and Build Files
 ======================
 
-We will now edit our launch file, `launch/display.launch.py <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_, to spawn ``sam_bot`` in Gazebo. Since we will be simulating our robot, we can remove the GUI for the joint state publisher by deleting the following lines inside the ``generate_launch_description()``:
+We will now edit our launch file, `launch/display.launch.py <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_, to spawn ``sam_bot`` in Gazebo. Since the DiffDrive ModelPLugin will now publish the ``joint_states``, we can remove everything related to the joint state publisher by deleting the following lines inside the ``generate_launch_description()``:
 
-.. code-block:: shell
+.. code-block:: python
 
-  joint_state_publisher_gui_node = launch_ros.actions.Node(
-    package='joint_state_publisher_gui',
-    executable='joint_state_publisher_gui',
-    name='joint_state_publisher_gui',
-    condition=launch.conditions.IfCondition(LaunchConfiguration('gui'))
+  joint_state_publisher_node = Node(
+      package='joint_state_publisher',
+      executable='joint_state_publisher',
+      name='joint_state_publisher',
+      parameters=[{'robot_description': Command(['xacro ', default_model_path])}],
+      condition=UnlessCondition(LaunchConfiguration('gui'))
+  )
+  joint_state_publisher_gui_node = Node(
+      package='joint_state_publisher_gui',
+      executable='joint_state_publisher_gui',
+      name='joint_state_publisher_gui',
+      condition=IfCondition(LaunchConfiguration('gui'))
   )
 
-Remove the following `gui` param:
+Remove the following from ``return LaunchDescription([])``:
 
 .. code-block:: shell
 
-  DeclareLaunchArgument(name='gui', default_value='True',
-                        description='Flag to enable joint_state_publisher_gui')
-                        
-Remove the condition and parameters. Add arguments to the `joint_state_publisher_node`:
+  DeclareLaunchArgument(name='gui', default_value='True', description='Flag to enable joint_state_publisher_gui'),
+  joint_state_publisher_node,
+  joint_state_publisher_gui_node,
+
+Next, open `package.xml <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/package.xml>`_ and delete the lines:
 
 .. code-block:: shell
 
-  joint_state_publisher_node = launch_ros.actions.Node(
-    package='joint_state_publisher',
-    executable='joint_state_publisher',
-    name='joint_state_publisher',
-    arguments=[default_model_path], #Add this line
-    parameters=[{'robot_description': Command(['xarcro ', default_model_path])}], #Remove this line
-    condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui')) # Remove this line
-  )
-
-Next, open `package.xml <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/package.xml>`_ and delete the line:
-
-.. code-block:: shell
-
+  <exec_depend>joint_state_publisher</exec_depend>
   <exec_depend>joint_state_publisher_gui</exec_depend>
 
-To launch Gazebo, add the following before the ``joint_state_publisher_node,`` line in ``display.launch.py``
+To make ``robot_state_publisher`` ``use_sim_time`` change it in the following way:
+
+.. code-block:: shell
+
+  robot_state_publisher_node = Node(
+      package='robot_state_publisher',
+      executable='robot_state_publisher',
+      parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])}, {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+  )
+
+Also declare the ``use_sim_time`` argument in ``LaunchDescription([])`` by adding the below line to it:
+
+.. code-block:: shell
+
+  DeclareLaunchArgument(name='use_sim_time', default_value='True', description='Flag to enable use_sim_time'),
+
+To launch Gazebo and spawn ``sam_bot`` in it, add the following after the ``rviz_node`` definition ``display.launch.py``:
 
 .. code-block:: shell
   
-  launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'], output='screen'),
+  gz_server = GzServer(
+      world_sdf_file=world_path,
+      container_name='ros_gz_container',
+      create_own_container='True',
+      use_composition='True',
+  )
+  ros_gz_bridge = RosGzBridge(
+      bridge_name='ros_gz_bridge',
+      config_file=bridge_config_path,
+      container_name='ros_gz_container',
+      create_own_container='False',
+      use_composition='True',
+  )
+  spawn_entity = IncludeLaunchDescription(
+      PythonLaunchDescriptionSource(gz_spawn_model_launch_source),
+      launch_arguments={
+          'world': 'my_world',
+          'topic': '/robot_description',
+          'entity_name': 'sam_bot',
+      }.items(),
+  )
 
-We will now add a node that spawns ``sam_bot`` in Gazebo. Open `launch/display.launch.py <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_ again and paste the following lines before the ``return launch.LaunchDescription([`` line.
+Also add the following lines to ``LaunchDescription([])``:
 
 .. code-block:: shell
  
-  spawn_entity = launch_ros.actions.Node(
-    package='gazebo_ros', 
-    executable='spawn_entity.py',
-    arguments=['-entity', 'sam_bot', '-topic', 'robot_description'],
-    output='screen'
-  )
+  ExecuteProcess(cmd=['gz', 'sim', '-g'], output='screen'),
+  gz_server,
+  ros_gz_bridge,
+  spawn_entity,
 
-Then add the line ``spawn_entity,`` before the ``rviz_node`` line, as shown below. 
+Finally, create a file named ``bridge_config.yaml`` in the ``config`` directory of your package and add the following line to it to define what topics we want to bridge between ROS and Gazebo:
 
 .. code-block:: shell
+ 
+  ---
+  - ros_topic_name: "/clock"
+    gz_topic_name: "/clock"
+    ros_type_name: "rosgraph_msgs/msg/Clock"
+    gz_type_name: "gz.msgs.Clock"
+    direction: GZ_TO_ROS
 
-        robot_state_publisher_node,
-        spawn_entity,
-        rviz_node
-  ])
+  - ros_topic_name: "/demo/imu"
+    gz_topic_name: "/demo/imu"
+    ros_type_name: "sensor_msgs/msg/Imu"
+    gz_type_name: "gz.msgs.IMU"
+    direction: GZ_TO_ROS
 
+  # Topic published by DiffDrive plugin
+  - ros_topic_name: "/demo/odom"
+    gz_topic_name: "/demo/odom"
+    ros_type_name: "nav_msgs/msg/Odometry"
+    gz_type_name: "gz.msgs.Odometry"
+    direction: GZ_TO_ROS
+
+  # Topic published by JointStatePublisher plugin
+  - ros_topic_name: "/joint_states"
+    gz_topic_name: "/joint_states"
+    ros_type_name: "sensor_msgs/msg/JointState"
+    gz_type_name: "gz.msgs.Model"
+    direction: GZ_TO_ROS
+
+  # Topic subscribed to by DiffDrive plugin
+  - ros_topic_name: "/demo/cmd_vel"
+    gz_topic_name: "/demo/cmd_vel"
+    ros_type_name: "geometry_msgs/msg/TwistStamped"
+    gz_type_name: "gz.msgs.Twist"
+    direction: ROS_TO_GZ
 
 Build, Run and Verification
 ===========================
@@ -449,30 +621,15 @@ Now, let us add the ``ekf_node`` into the launch file. Open ``launch/display.lau
 
 .. code-block:: shell
  
-  robot_localization_node = launch_ros.actions.Node(
-         package='robot_localization',
-         executable='ekf_node',
-         name='ekf_filter_node',
-         output='screen',
-         parameters=[os.path.join(pkg_share, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+  robot_localization_node = Node(
+      package='robot_localization',
+      executable='ekf_node',
+      name='ekf_filter_node',
+      output='screen',
+      parameters=[os.path.join(pkg_share, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
   )
 
-Next, add the following launch arguments within the ``return launch.LaunchDescription([`` block.
-
-.. code-block:: shell
-
-  launch.actions.DeclareLaunchArgument(name='use_sim_time', default_value='True',
-                                              description='Flag to enable use_sim_time'),
-
-Lastly, add ``robot_localization_node,`` above the ``rviz_node`` line to launch the robot localization node.
-
-.. code-block:: shell
-
-        robot_state_publisher_node,
-        spawn_entity,
-        robot_localization_node,
-        rviz_node
-  ])
+Lastly, add ``robot_localization_node,`` to ``LaunchDescription([])``.
 
 Next, we need to add the ``robot_localization`` dependency to our package definition. Open ``package.xml`` and add the following line below the last ``<exec_depend>`` tag.  
 
