@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roadmaps &mdash; Nav2 1.0.0 documentation</title>
+  <title>ROSCon Talks &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="About and Contact" href="../about/index.html" />
-    <link rel="prev" title="Simple Commander API" href="../commander_api/index.html" />
+    <link rel="next" title="General Tutorials" href="../tutorials/index.html" />
+    <link rel="prev" title="Robots Using" href="robots.html" />
 
 <link rel="stylesheet" href="../_static/tcs_theme.css" type="text/css" />
 
@@ -219,10 +219,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../about/robots.html">Robots Using</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../about/roscon.html">ROSCon Talks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../about/roscon.html#nav2-developer-talks">Nav2 Developer Talks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../about/roscon.html#community-s-talks">Community’s Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robots.html">Robots Using</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROSCon Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#nav2-developer-talks">Nav2 Developer Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#community-s-talks">Community’s Talks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">General Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html">Navigating with a Physical Turtlebot 3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_on_real_turtlebot3.html#overview">Overview</a></li>
@@ -1071,16 +1071,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../commander_api/index.html#examples-and-demos">Examples and Demos</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Roadmaps</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#jazzy-roadmap">Jazzy Roadmap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#iron-roadmap">Iron Roadmap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#humble-roadmap">Humble Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/roadmap.html">Roadmaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#jazzy-roadmap">Jazzy Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#iron-roadmap">Iron Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap/roadmap.html#humble-roadmap">Humble Roadmap</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About and Contact</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../about/related_projects.html">Related Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/index.html#id1">About</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../about/index.html#contact">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">About and Contact</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="related_projects.html">Related Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id1">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#contact">Contact</a></li>
 </ul>
 </li>
 </ul>
@@ -1105,7 +1105,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Roadmaps</li>
+      <li class="breadcrumb-item active">ROSCon Talks</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1114,136 +1114,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="roadmaps">
-<span id="roadmap"></span><h1>Roadmaps<a class="headerlink" href="#roadmaps" title="Permalink to this heading"></a></h1>
-<p>This is the list of major issues and features the Nav2 maintainers are committing for completion for various ROS 2 releases.
-This is <em>not</em> an exhaustive list of planned features or what changes may be found in the new distribution.
-It represents only the items of direct commitment to give insight into commitments for REP-2005 repositories in the <a class="reference external" href="https://docs.ros.org/en/rolling/Roadmap.html">ROS 2 Roadmap</a>.
-For a full list of important completed changes in the project, see the Migration Guides <a class="reference internal" href="../migration/index.html#migration"><span class="std std-ref">Migration Guides</span></a>.</p>
-<div class="section" id="jazzy-roadmap">
-<h2>Jazzy Roadmap<a class="headerlink" href="#jazzy-roadmap" title="Permalink to this heading"></a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 57%" />
-<col style="width: 43%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/3172">Smac Planner Improvements</a></p></td>
-<td><p>Large (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p>Get CI Green Again</p></td>
-<td><p>Small (DONE)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Various MPPI Improvements</p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/2598">Fuse Migration</a></p></td>
-<td><p>Medium  (incomplete)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/2997">Ignition Migration</a></p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/2229">Route Graph Planner</a></p></td>
-<td><p>Large (in progress)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Provide Advanced Capabilities
-Tutorials (e.g. gps, vio)</p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p>ROS Time Respect Across Stack</p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-odd"><td><p>TwistStamped Migration</p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p>Velocity-Scheduled Collision
-Monitor Polygons</p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Nav2 auto-docking capability</p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="roscon-talks">
+<span id="roscon"></span><h1>ROSCon Talks<a class="headerlink" href="#roscon-talks" title="Permalink to this heading"></a></h1>
+<p>Below is a list of ROSCon talks that have been given by the Nav2 team and the community which describe important features, tuning and configuration advice, and how to work with them in your applications.</p>
 </div>
-<div class="section" id="iron-roadmap">
-<h2>Iron Roadmap<a class="headerlink" href="#iron-roadmap" title="Permalink to this heading"></a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 57%" />
-<col style="width: 43%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
-<th class="head"><p>Size</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/3335">Pluginize Navigators</a></p></td>
-<td><p>Medium  (DONE)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/3350">MPPI Controller</a></p></td>
-<td><p>Very Large (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/2229">Route Graph Planner</a></p></td>
-<td><p>Large (incomplete)</p></td>
-</tr>
-<tr class="row-odd"><td><p>90% unit test coverage</p></td>
-<td><p>Small  (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/2964">Velocity Smoother</a></p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-odd"><td><p>ROS Time Respect Across Stack</p></td>
-<td><p>Medium (incomplete)</p></td>
-</tr>
-</tbody>
-</table>
+<div class="section" id="nav2-developer-talks">
+<h1>Nav2 Developer Talks<a class="headerlink" href="#nav2-developer-talks" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://vimeo.com/1024971348">ROSCon 2024: On Use of Nav2 Docking</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=2W3zWO-msEo">ROSCon FR 2023: Nav2 Whys over What’s: Navigating the Philosophies Behind the Features</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/879001391">ROSCon 2023: On Use of Nav2 MPPI Controller</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/879000809">ROSCon 2023: Bidirectional navigation with Nav2</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767157646">ROSCon 2022: On Use of Nav2 Smac Planners</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/638041661/a5306a02ab">ROSCon JP 2021: The Past, Present, and Future of Navigation</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/649647161">ROSCon 2021: Chronicles of Caching and Containerising CI for Nav2</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480604621">ROSCon 2020: Navigation2: The Next Generation Navigation System</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/378682207">ROSCon 2019: On Use of SLAM Toolbox</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/378682188">ROSCon 2019: Navigation 2 Overview</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/292699571">ROSCon 2018: On Use of the Spatio-Temporal Voxel Layer</a></p></li>
+</ul>
 </div>
-<div class="section" id="humble-roadmap">
-<h2>Humble Roadmap<a class="headerlink" href="#humble-roadmap" title="Permalink to this heading"></a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 57%" />
-<col style="width: 43%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
-<th class="head"><p>Size</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/816">Nav2 1 Node Per Server</a></p></td>
-<td><p>Medium  (DONE)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/1710">Smac Lattice Planner</a></p></td>
-<td><p>Large (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/1899">Safety Collision Nodes</a></p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/2460">Fix Min Range Bug</a></p></td>
-<td><p>Small  (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/2337">Move Development
-from Master to Rolling</a></p></td>
-<td><p>Small (DONE)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Push Test Coverage to 88%</p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/1589">Complete First Time Guide</a></p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/2718">Rotation Shim Controller</a></p></td>
-<td><p>Small (DONE)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/2147">Dynamic Composition</a></p></td>
-<td><p>Medium (DONE)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="section" id="community-s-talks">
+<h1>Community’s Talks<a class="headerlink" href="#community-s-talks" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://vimeo.com/showcase/11453818/video/1029492785">ROSCon ES 2024: Navegación robusta en ROS2</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767160437">ROSCon 2022: BehaviorTree.CPP 4.0. What is new and roadmap</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/1024971160">ROSCon 2024: Mobile Robotics Scale-up Leveraging ROS</a></p></li>
+<li><p><a class="reference external" href="https://vimeo.com/1024971565">ROSCon 2024: Radar Tracks for Path Planning in the presence of Dynamic Obstacles</a></p></li>
+</ul>
 </div>
 
 
