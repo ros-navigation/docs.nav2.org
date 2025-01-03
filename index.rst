@@ -193,6 +193,7 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
    concepts/index.rst
    setup_guides/index.rst
    about/robots.rst
+   about/roscon.rst
    tutorials/index.rst
    plugin_tutorials/index.rst
    configuration/index.rst
