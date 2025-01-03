@@ -9,7 +9,7 @@ Nav2 Developer Talks
 ####################
 
 - `ROSCon 2024: On Use of Nav2 Docking <https://vimeo.com/1024971348>`_
-- `ROSCon FR 2023: Nav2 Whys over Whats: Navigating the Philosophies Behind the Features <https://www.youtube.com/watch?v=2W3zWO-msEo>`_
+- `ROSCon FR 2023: Nav2 Whys over What's: Navigating the Philosophies Behind the Features <https://www.youtube.com/watch?v=2W3zWO-msEo>`_
 - `ROSCon 2023: On Use of Nav2 MPPI Controller <https://vimeo.com/879001391>`_
 - `ROSCon 2023: Bidirectional navigation with Nav2 <https://vimeo.com/879000809>`_
 - `ROSCon 2022: On Use of Nav2 Smac Planners <https://vimeo.com/showcase/9954564/video/767157646>`_
