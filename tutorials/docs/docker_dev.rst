@@ -190,7 +190,7 @@ Now we can do something fun while we have both terminals of the same docker cont
 
 .. code-block:: bash
 
-	ros2 run ros2 run demo_nodes_cpp talker
+	ros2 run demo_nodes_cpp talker
 	ros2 run demo_nodes_py listener
 
 ------------
