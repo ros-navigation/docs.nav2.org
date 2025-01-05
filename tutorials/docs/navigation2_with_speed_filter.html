@@ -1201,18 +1201,18 @@ We will use <code class="docutils literal notranslate"><span class="pre">scale</
 <h3>2. Configure Costmap Filter Info Publisher Server<a class="headerlink" href="#configure-costmap-filter-info-publisher-server" title="Permalink to this heading"></a></h3>
 <p>Each costmap filter reads incoming meta-information (such as filter type or data conversion coefficients) in messages of <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> type. These messages are being published by <a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server/src/costmap_filter_info">Costmap Filter Info Publisher Server</a>. The server is running as a lifecycle node. According to the <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/doc/design/CostmapFilters_design.pdf">design document</a>, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/CostmapFilterInfo</span></code> messages are going in a pair with <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> filter mask topic. Therefore, along with Costmap Filter Info Publisher Server there should be enabled a new instance of Map Server configured to publish filter masks.</p>
 <p>In order to enable Speed Filter in your configuration, both servers should be enabled as lifecycle nodes in Python launch-file. For example, this might look as follows, though adding them as Composition Nodes to your Navigation Component Container is also possible:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ament_index_python.packages</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_package_share_directory</span>
 
-<span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
-<span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
-<span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">LaunchConfiguration</span>
-<span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
-<span class="kn">from</span> <span class="nn">nav2_common.launch</span> <span class="kn">import</span> <span class="n">RewrittenYaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.substitutions</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchConfiguration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nav2_common.launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">RewrittenYaml</span>
 
 
-<span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
     <span class="c1"># Get the launch directory</span>
     <span class="n">costmap_filters_demo_dir</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;nav2_costmap_filters_demo&#39;</span><span class="p">)</span>
 

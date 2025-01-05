@@ -1284,12 +1284,12 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </pre></div>
 </div>
 <p>Next, let us create our launch file. Launch files are used by ROS 2 to bring up the necessary nodes for our package. From the root of the project, create a directory named <code class="docutils literal notranslate"><span class="pre">launch</span></code> and a <code class="docutils literal notranslate"><span class="pre">display.launch.py</span></code> file within it. The launch file below launches a robot publisher node in ROS 2 that uses our URDF to publish the transforms for our robot. In addition, the launch file also automatically launches RVIZ so we can visualize our robot as defined by the URDF. Copy and paste the snippet below into your <code class="docutils literal notranslate"><span class="pre">display.launch.py</span></code> file.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">launch</span>
-<span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">LaunchConfiguration</span>
-<span class="kn">import</span> <span class="nn">launch_ros</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">launch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.substitutions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">LaunchConfiguration</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">launch_ros</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
     <span class="n">pkg_share</span> <span class="o">=</span> <span class="n">launch_ros</span><span class="o">.</span><span class="n">substitutions</span><span class="o">.</span><span class="n">FindPackageShare</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="s1">&#39;sam_bot_description&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sam_bot_description&#39;</span><span class="p">)</span>
     <span class="n">default_model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;src/description/sam_bot_description.urdf&#39;</span><span class="p">)</span>
     <span class="n">default_rviz_config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;rviz/urdf_config.rviz&#39;</span><span class="p">)</span>
