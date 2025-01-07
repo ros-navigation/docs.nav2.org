@@ -1061,6 +1061,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-plugin-container-layer">New Plugin Container Layer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#iterative-target-selection-for-the-graceful-controller">Iterative Target Selection for the Graceful Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file</a></li>
 </ul>
 </li>
 </ul>
@@ -1300,6 +1301,19 @@ This can be useful, for example, in cases where you want to move the robot even 
 <li><p>Addition of <code class="docutils literal notranslate"><span class="pre">v_angular_min_in_place</span></code> parameter to avoid the robot getting stuck while rotating due to mechanical limitations.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">final_rotation</span></code> has been renamed <code class="docutils literal notranslate"><span class="pre">prefer_final_rotation</span></code> and the behavior has changed slightly.</p></li>
 </ul>
+</div>
+<div class="section" id="conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">
+<h2>Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file<a class="headerlink" href="#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4811">PR #4811</a> the <code class="docutils literal notranslate"><span class="pre">cloned_multi_tb3_simulation_launch.py</span></code> launch file was updated so that parsing the robots conforms to the ROS 2 launch file standards. This was achieved by refactoring the <code class="docutils literal notranslate"><span class="pre">ParseMultiRobotPose</span></code> class to be a custom launch substitution. This change allows users to pass the <code class="docutils literal notranslate"><span class="pre">robots</span></code> from another launch file through <code class="docutils literal notranslate"><span class="pre">launch_arguments</span></code> which was not possible with the old version.</p>
+<p>Example for including <code class="docutils literal notranslate"><span class="pre">cloned_multi_tb3_simulation_launch.py</span></code> in another launch file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">IncludeLaunchDescription</span><span class="p">(</span>
+    <span class="n">PythonLaunchDescriptionSource</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;nav2_bringup&#39;</span><span class="p">),</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span> <span class="s2">&quot;cloned_multi_tb3_simulation_launch.py&quot;</span><span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">launch_arguments</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;robots&quot;</span><span class="p">:</span> <span class="s2">&quot;robot1={x: 0.5, y: 0.5, yaw: 1.5707}&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
