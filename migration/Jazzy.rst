@@ -219,3 +219,14 @@ Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file
 *********************************************************************
 
 In `PR #4811 <https://github.com/ros-navigation/navigation2/pull/4811>`_ the ``cloned_multi_tb3_simulation_launch.py`` launch file was updated so that parsing the robots conforms to the ROS 2 launch file standards. This was achieved by refactoring the ``ParseMultiRobotPose`` class to be a custom launch substitution. This change allows users to pass the ``robots`` from another launch file through ``launch_arguments`` which was not possible with the old version.
+
+Example for including ``cloned_multi_tb3_simulation_launch.py`` in another launch file:
+
+.. code-block:: python
+
+    IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('nav2_bringup'), "launch", "cloned_multi_tb3_simulation_launch.py")
+        ),
+        launch_arguments={"robots": "robot1={x: 0.5, y: 0.5, yaw: 1.5707}"}.items(),
+    )
