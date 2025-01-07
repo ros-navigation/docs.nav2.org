@@ -1,9 +1,9 @@
 .. _jazzy_migration:
 
-Jazzy to K-Turtle
+Jazzy to Kilted
 #################
 
-Moving from ROS 2 Jazzy to K-Turtle, a number of stability improvements were added that we will not specifically address here.
+Moving from ROS 2 Jazzy to Kilted, a number of stability improvements were added that we will not specifically address here.
 
 TwistStamped Default CmdVel Change
 **********************************
@@ -199,3 +199,10 @@ This can be useful, for example, in cases where you want to move the robot even 
 Default value:
 
 - false
+
+Introduction of PoseStampedArray
+********************************
+
+In `PR #262 <https://github.com/ros2/common_interfaces/pull/262>`_ a new message type `PoseStampedArray` was introduced to the `geometry_msgs` package.
+In `PR #4791 <https://github.com/ros-navigation/navigation2/pull/4791>`_, most instances of `std::vector<geometry_msgs::msg::PoseStamped>` have been replaced with `geometry_msgs::msg::PoseStampedArray`. Most notably, `NavigateThroughPoses.action` and `ComputePathThroughPoses.action` have been updated to use `PoseStampedArray`.
+Since `PoseStampedArray` contains a header, the poses are now accessed via `NavigateThroughPoses.poses.poses` instead of `NavigateThroughPoses.poses` or `ComputePathThroughPoses.goals.poses` instead of `ComputePathThroughPoses.poses`. Please update your code accordingly when using these interfaces.
