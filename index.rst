@@ -18,7 +18,7 @@
 Our Sponsors
 ############
 
-.. image:: images/sponsors_feb_2024.png
+.. image:: images/sponsors_jan_2025.png
     :width: 700px
     :align: center
     :alt: Our Sponsors
@@ -193,6 +193,7 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
    concepts/index.rst
    setup_guides/index.rst
    about/robots.rst
+   about/roscon.rst
    tutorials/index.rst
    plugin_tutorials/index.rst
    configuration/index.rst

@@ -13,7 +13,7 @@ it also allows for rejection of stale velocity messages, which can be useful in 
 Your robot should now subscribe to a ``TwistStamped`` message instead of a ``Twist`` message & update your simulation appropriately.
 The topic names are the same.
 
-However, this can be disabled by setting ``enable_twist_stamped`` to ``false`` in the ``nav2_params.yaml`` file for all nodes that involve Twist subscriptions or publications.
+However, this can be disabled by setting ``enable_stamped_cmd_vel`` to ``false`` in the ``nav2_params.yaml`` file for all nodes that involve Twist subscriptions or publications.
 See the configuration guide for more information on how to configure this parameter for each node.
 
 An example simulation migration using Gazebo can be seen in the `following pull request for the Turtlebot 3 and 4 <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/pull/16>`_.
@@ -199,6 +199,21 @@ This can be useful, for example, in cases where you want to move the robot even 
 Default value:
 
 - false
+
+New Plugin Container Layer
+**************************
+
+In `PR #4781 <https://github.com/ros-navigation/navigation2/pull/4781>`_ a costmap layer plugin type was added to support the grouping of different costmap layers under a single costmap layer. This would allow for different isolated combinations of costmap layers to be combined under one parent costmap instead of the current implementation which would indiscriminately combine all costmap layers together.
+
+Iterative Target Selection for the Graceful Controller
+******************************************************
+
+In `PR #4795 <https://github.com/ros-navigation/navigation2/pull/4795>`_ the ``nav2_graceful_controller`` was updated to iteratively select motion targets. This is a large refactor which significantly improves the performance of the controller. The ``motion_target_dist`` parameter has been replaced by ``min_lookahead`` and ``max_lookahead`` parameters. Additional changes include:
+
+* Improved defaults for ``k_phi``, ``k_delta``, ``beta`` parameters of the underlying control law.
+* Automatic creation of orientations for the plan if they are missing.
+* Addition of ``v_angular_min_in_place`` parameter to avoid the robot getting stuck while rotating due to mechanical limitations.
+* ``final_rotation`` has been renamed ``prefer_final_rotation`` and the behavior has changed slightly.
 
 Introduction of PoseStampedArray
 ********************************
