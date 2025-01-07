@@ -214,3 +214,8 @@ In `PR #4795 <https://github.com/ros-navigation/navigation2/pull/4795>`_ the ``n
 * Automatic creation of orientations for the plan if they are missing.
 * Addition of ``v_angular_min_in_place`` parameter to avoid the robot getting stuck while rotating due to mechanical limitations.
 * ``final_rotation`` has been renamed ``prefer_final_rotation`` and the behavior has changed slightly.
+
+Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file
+*********************************************************************
+
+In `PR #4811 <https://github.com/ros-navigation/navigation2/pull/4811>`_ the ``cloned_multi_tb3_simulation_launch.py`` launch file was updated so that parsing the robots conforms to the ROS 2 launch file standards. This was achieved by refactoring the ``ParseMultiRobotPose`` class to be a custom launch substitution. This change allows users to pass the ``robots`` from another launch file through ``launch_arguments`` which was not possible with the old version.
