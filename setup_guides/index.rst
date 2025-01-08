@@ -23,20 +23,53 @@ To guide you through the first-time setup of your robot, we will be tackling the
 There are tutorials below for the Gazebo Classic simulator and the Gazebo simulator. Gazebo Classic is used with ROS 2 Humble and previous ROS distributions, while Gazebo (Gazebo Harmonic or newer) is used with ROS 2 Jazzy or newer.
 
 
-**Table of Contents:**
+Table of Contents
+=================
+
+.. raw:: html  
+
+    <div style="display: flex; gap: 20px;">  
+
+    <div style="flex: 1; padding: 10px; border-right: 1px solid #ccc;">  
+
+    <h3 style="text-align: center;">Gazebo</h3>
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    transformation/setup_transforms.rst
    urdf/setup_urdf.rst
    sdf/setup_sdf.rst
    odom/setup_odom_gz.rst
-   odom/setup_odom_gz_classic.rst
    odom/setup_robot_localization.rst
    sensors/setup_sensors_gz.rst
+   footprint/setup_footprint.rst
+   algorithm/select_algorithm.rst
+
+.. raw:: html
+
+    </div>
+
+    <div style="flex: 1; padding: 10px;">
+
+    <h3 style="text-align: center;">Gazebo Classic</h3>
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   transformation/setup_transforms.rst
+   urdf/setup_urdf.rst
+   odom/setup_odom_gz_classic.rst
+   odom/setup_robot_localization.rst
    sensors/setup_sensors_gz_classic.rst
    footprint/setup_footprint.rst
    algorithm/select_algorithm.rst
+
+.. raw:: html
+
+    </div>
+    </div>
 
 .. note:: These tutorials are not meant to be full tuning and configuration guides since they only aim to help you get your robot up and running with a basic configuration. For more detailed discussions and guides on how to customize and tune Nav2 for your robot, head on to the :ref:`configuration` section.
