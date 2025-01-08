@@ -41,6 +41,17 @@ Rotation Shim Controller Parameters
   Description
     Maximum angular distance, in radians, away from the path heading to trigger rotation until within.
 
+:angular_disengage_threshold:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         0.3925
+  ============== ===========================
+
+  Description
+    New to Jazzy, the threshold to the path's heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the ``angular_dist_threshold`` instead. This allows for better alignment before passing to the child controller when engaged.
+
 :forward_sampling_distance:
 
   ============== =============================
@@ -147,6 +158,7 @@ Example
         primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
         angular_dist_threshold: 0.785
         forward_sampling_distance: 0.5
+        angular_disengage_threshold: 0.3925
         rotate_to_heading_angular_vel: 1.8
         max_angular_accel: 3.2
         simulate_ahead_time: 1.0

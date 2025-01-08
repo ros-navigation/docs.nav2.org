@@ -1157,8 +1157,28 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">forward_sampling_distance</dt>
+<dt class="field-even">angular_disengage_threshold</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3925</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>New to Jazzy, the threshold to the path’s heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the <code class="docutils literal notranslate"><span class="pre">angular_dist_threshold</span></code> instead. This allows for better alignment before passing to the child controller when engaged.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">forward_sampling_distance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1177,8 +1197,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">rotate_to_heading_angular_vel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">rotate_to_heading_angular_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1197,8 +1217,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">primary_controller</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">primary_controller</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1217,8 +1237,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">max_angular_accel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">max_angular_accel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1237,8 +1257,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">simulate_ahead_time</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">simulate_ahead_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1257,8 +1277,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">rotate_to_goal_heading</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">rotate_to_goal_heading</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1277,8 +1297,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">rotate_to_heading_once</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">rotate_to_heading_once</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1326,6 +1346,7 @@
 <span class="w">      </span><span class="nt">primary_controller</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController&quot;</span>
 <span class="w">      </span><span class="nt">angular_dist_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span>
 <span class="w">      </span><span class="nt">forward_sampling_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">      </span><span class="nt">angular_disengage_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3925</span>
 <span class="w">      </span><span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.8</span>
 <span class="w">      </span><span class="nt">max_angular_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
 <span class="w">      </span><span class="nt">simulate_ahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
