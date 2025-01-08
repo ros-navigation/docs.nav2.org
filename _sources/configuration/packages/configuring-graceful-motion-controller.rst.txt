@@ -256,12 +256,12 @@ Example
         initial_rotation_threshold: 0.75
         prefer_final_rotation: true
         allow_backward: false
-        k_phi: 3.0
-        k_delta: 2.0
+        k_phi: 2.0
+        k_delta: 1.0
         beta: 0.4
         lambda: 2.0
         v_linear_min: 0.1
-        v_linear_max: 1.0
+        v_linear_max: 0.5
         v_angular_max: 5.0
         v_angular_min_in_place: 0.25
         slowdown_radius: 1.5
