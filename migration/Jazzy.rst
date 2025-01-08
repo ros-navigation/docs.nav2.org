@@ -1,7 +1,7 @@
 .. _jazzy_migration:
 
 Jazzy to Kilted
-#################
+###############
 
 Moving from ROS 2 Jazzy to Kilted, a number of stability improvements were added that we will not specifically address here.
 
