@@ -20,7 +20,8 @@ To guide you through the first-time setup of your robot, we will be tackling the
 - Select and set up planner and controller navigation plugins for your robot's navigation tasks  
 - Lifecycle node management for easy bringup of other related sensors or nodes
 
-There are tutorials below for the Gazebo Classic simulator and the Gazebo simulator. Gazebo Classic is used with ROS2 Humble and all previous ROS distributions, while Gazebo (Gazebo Harmonic or newer) is used with ROS2 Jazzy or newer.
+There are tutorials below for the Gazebo Classic simulator and the Gazebo simulator. Gazebo Classic is used with ROS 2 Humble and previous ROS distributions, while Gazebo (Gazebo Harmonic or newer) is used with ROS 2 Jazzy or newer.
+
 
 **Table of Contents:**
 
