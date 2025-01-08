@@ -17,7 +17,7 @@ As discussed in the previous tutorial, one of the requirements for Navigation2 i
 
 The Robot State Publisher is a package of ROS 2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct SDF and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees. 
 
-SDF is a description format primarly used by the Gazebo simulator to define various properties of a robot or other models and to also define a Gazebo world. In this tutorial we are going to be looking at how we can describe a robot using SDF.
+SDF is a description format primarily used by the Gazebo simulator to define various properties of a robot or other models and to also define a Gazebo world. In this tutorial we are going to be looking at how we can describe a robot using SDF.
 
 .. seealso::
   If you want to learn more about the SDF and the Robot State Publisher, we encourage you to have a look at the official `SDFormat Website <http://sdformat.org/>`__ and `Robot State Publisher Documentation <http://wiki.ros.org/robot_state_publisher>`__  
@@ -387,7 +387,7 @@ Let us first define macros containing the inertial properties of the geometric p
 
 .. code-block:: xml
 
-      <!-- Define some commonly used intertial properties  -->
+      <!-- Define some commonly used inertial properties  -->
       <xacro:macro name="box_inertia" params="m w h d">
         <inertial>
           <pose>0 0 0 ${pi/2} 0 ${pi/2}</pose>
