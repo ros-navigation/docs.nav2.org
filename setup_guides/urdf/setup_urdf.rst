@@ -3,6 +3,8 @@
 Setting Up The URDF
 ###################
 
+.. note:: You can also setup a SDF description if using Gazebo (not Gazebo Classic), see :ref:`sdf_handson`. It is recommended to setup a SDF instead of URDF if you are going to be using Gazebo. There is no need to setup both URDF and SDF, only one of them is needed.
+
 For this guide, we will be creating the Unified Robot Description Format (URDF) file for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
 .. seealso::
@@ -211,8 +213,8 @@ Next, let us create our launch file. Launch files are used by ROS 2 to bring up 
 
   def generate_launch_description():
       pkg_share = FindPackageShare(package='sam_bot_description').find('sam_bot_description')
-      default_model_path = os.path.join(pkg_share, 'src/description/sam_bot_description.urdf')
-      default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config.rviz')
+      default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.urdf')
+      default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
 
       robot_state_publisher_node = Node(
           package='robot_state_publisher',
@@ -242,7 +244,7 @@ Next, let us create our launch file. Launch files are used by ROS 2 to bring up 
 
       return LaunchDescription([
           DeclareLaunchArgument(name='gui', default_value='True', description='Flag to enable joint_state_publisher_gui'),
-          DeclareLaunchArgument(name='model', default_value=default_model_path, description='Absolute path to robot urdf file'),
+          DeclareLaunchArgument(name='model', default_value=default_model_path, description='Absolute path to robot model file'),
           DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path, description='Absolute path to rviz config file'),
           joint_state_publisher_node,
           joint_state_publisher_gui_node,
@@ -252,7 +254,7 @@ Next, let us create our launch file. Launch files are used by ROS 2 to bring up 
 
 .. seealso:: For more information regarding the launch system in ROS 2, you can have a look at the official `ROS 2 Launch System Documentation <https://docs.ros.org/en/rolling/Tutorials/Launch-system.html>`__
 
-To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``urdf_config.rviz`` under it. Place the following as the contents of ``urdf_config.rviz``
+To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``config.rviz`` under it. Place the following as the contents of ``config.rviz``
 
 .. code-block:: shell
 
