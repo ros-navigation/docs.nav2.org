@@ -215,8 +215,8 @@ In `PR #4795 <https://github.com/ros-navigation/navigation2/pull/4795>`_ the ``n
 * Addition of ``v_angular_min_in_place`` parameter to avoid the robot getting stuck while rotating due to mechanical limitations.
 * ``final_rotation`` has been renamed ``prefer_final_rotation`` and the behavior has changed slightly.
 
-Introduction of PoseStampedArray
-********************************
+ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use PoseStampedArray instead of vector<PoseStamped>
+************************************************************************************************************************
 
 In `PR #262 <https://github.com/ros2/common_interfaces/pull/262>`_ a new message type `PoseStampedArray` was introduced to the `geometry_msgs` package.
 In `PR #4791 <https://github.com/ros-navigation/navigation2/pull/4791>`_, most instances of `std::vector<geometry_msgs::msg::PoseStamped>` have been replaced with `geometry_msgs::msg::PoseStampedArray`. Most notably, `NavigateThroughPoses.action` and `ComputePathThroughPoses.action` have been updated to use `PoseStampedArray`.
