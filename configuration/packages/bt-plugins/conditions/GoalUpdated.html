@@ -1044,7 +1044,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Iron.html#regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">use_cancel_deceleration</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../migration/Jazzy.html">Jazzy to K-Turtle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../migration/Jazzy.html">Jazzy to Kilted</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
@@ -1062,6 +1062,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#new-plugin-container-layer">New Plugin Container Layer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#iterative-target-selection-for-the-graceful-controller">Iterative Target Selection for the Graceful Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#computepaththroughposes-navigatethroughposes-and-other-bt-nodes-now-use-posestampedarray-instead-of-vector-posestamped">ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use PoseStampedArray instead of vector&lt;PoseStamped&gt;</a></li>
 </ul>
 </li>
 </ul>
@@ -1149,14 +1150,14 @@ Returns failure if the goal is the same, if it changes, it returns success.</p>
 <dt class="field-even">goals</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col style="width: 83%" />
-<col style="width: 17%" />
+<col style="width: 80%" />
+<col style="width: 20%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>std::vector&lt;geometry_msgs::msg::PoseStamped&gt;</p></td>
+<tr class="row-even"><td><p>geometry_msgs::msg::PoseStampedArray</p></td>
 <td><p>“{goals}”</p></td>
 </tr>
 </tbody>
