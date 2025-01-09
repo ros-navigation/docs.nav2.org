@@ -15,13 +15,15 @@ Overview
 ========
 
 The Nav2 route tool is an Rviz panel designed to ease the process of creating and editing the route graphs used by the Nav2 Route Server.
-Supported operations include loading in existing route graphs, adding new nodes/edges, editing existing nodes/edges, removing nodes/edges, and saving changes to a new file.
+In contrast to a free-space planner, route graphs provided a structure path for mobile robots to follow when navigating through their environment.
+Supported operations for the route tool include loading in existing route graphs, adding new nodes and edges, editing existing nodes and edges, removing nodes and edges, and saving changes to a new file.
+By the end of this tutorial, you should feel comfortable creating and modifying route graphs using the route tool.
 
 Prerequisites
 ============
 
 Prior to using the route tool, you will need to create an occupancy grid map using the slam_toolbox package. 
-Follow [this tutorial](https://roboticsbackend.com/ros2-nav2-generate-a-map-with-slam_toolbox/) for instructions on how to generate and save an occupancy grid map.
+Follow `this tutorial <https://roboticsbackend.com/ros2-nav2-generate-a-map-with-slam_toolbox/>`_ for instructions on how to generate and save an occupancy grid map.
 
 Tutorial Steps
 ==============
