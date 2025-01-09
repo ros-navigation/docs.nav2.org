@@ -22,11 +22,11 @@ Input Ports
 
 :input_goals:
 
-  =============================== =======
-  Type                            Default
-  ------------------------------- -------
-  geometry_msgs::msg::PoseStamped   N/A  
-  =============================== =======
+  ==================================== =======
+  Type                                 Default
+  ------------------------------------ -------
+  geometry_msgs::msg::PoseStampedArray   N/A  
+  ==================================== =======
 
   Description
     A vector of goals to check if in collision

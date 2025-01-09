@@ -12,11 +12,11 @@ Input Ports
 
 :goals:
 
-  ============================================= =======
-  Type                                          Default
-  --------------------------------------------- -------
-  vector<geometry_msgs::msg::PoseStamped>         N/A  
-  ============================================= =======
+  ==================================== =======
+  Type                                 Default
+  ------------------------------------ -------
+  geometry_msgs::msg::PoseStampedArray   N/A  
+  ==================================== =======
 
   Description
       Goal poses. Takes in a blackboard variable, e.g. "{goals}".
