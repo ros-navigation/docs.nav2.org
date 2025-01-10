@@ -67,8 +67,16 @@ This implements a costmap layer taking in a map from either SLAM or ``map_server
   ====== =======
   Type   Default
   ------ -------
-  string ""
+  string "map"
   ====== =======
 
   Description
-    Map topic to subscribe to. If left empty the map topic will default to the global `map_topic` parameter in `costmap_2d_ros`.
+    Map topic to subscribe to.
+
+  Relative topics will be relative to the node's parent namespace.
+  For example, if you specify `map_topic: map` in the `static_layer` of a `global_costmap` and you launch your bringup with a `tb4` namespace:
+
+  * User chosen namespace is `tb4`.
+  * User chosen topic is `map`.
+  * Topic will be remapped to `/tb4/map` without `global_costmap`.
+  * Use global topic `/map` if you do not wish the node namespace to apply.
