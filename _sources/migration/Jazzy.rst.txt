@@ -51,14 +51,18 @@ Here we can see the working demo of the plugin:
 
 .. attention:: If the docking server is unavailable, then the combo box of the dock type will be empty.
 
-New BT Nodes
-************
+BT Nodes Changes
+****************
 
 Below is a list of new BT Nodes added:
 
 - ``GetPoseFromPath``: An action to get a particular pose from an input path.
 - ``RemoveInCollisionGoals``: An action to remove waypoints that have a cost higher than a threshold.
 - ``IsStopped``: A condition to check if the robot is stopped for a certain duration.
+
+Below is a list of changes to existing BT Nodes:
+
+- ``GoalUpdater``: It now supports updating a list of goals as well (useful for NavigateThroughPoses interface)
 
 New RViz Tool for Costmap Cost Cell Inspection
 **********************************************

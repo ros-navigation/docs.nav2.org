@@ -1049,7 +1049,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#new-bt-nodes">New BT Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#bt-nodes-changes">BT Nodes Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#fix-flickering-visualization">Fix flickering visualization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
@@ -1122,7 +1122,7 @@
              
   <div class="section" id="goalupdater">
 <span id="bt-goal-updater"></span><h1>GoalUpdater<a class="headerlink" href="#goalupdater" title="Permalink to this heading"></a></h1>
-<p>A custom control node, which updates the goal pose. It subscribes to a topic in which it can receive an updated goal pose to use instead of the one commanded in action. It is useful for dynamic object following tasks.</p>
+<p>A custom control node, which updates the goal(s) pose(s). It subscribes to a topic in which it can receive (an) updated goal(s) pose(s) to use instead of the one(s) commanded in action. It is useful for dynamic object following tasks.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
@@ -1143,6 +1143,26 @@
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>The topic to receive the updated goal pose</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">goals_updater_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“goals_update”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The topic to receive the updated goals poses</p>
 </dd>
 </dl>
 </dd>
@@ -1171,8 +1191,28 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">output_goal</dt>
+<dt class="field-even">input_goals</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 81%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>geometry_msgs/PoseStampedArray</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The original goals poses</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">output_goal</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 78%" />
 <col style="width: 22%" />
@@ -1191,11 +1231,31 @@
 </dd>
 </dl>
 </dd>
+<dt class="field-even">output_goals</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 81%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>geometry_msgs/PoseStampedArray</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The resulting updated goals. If no goals received by subscription, it will be the input_goals</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalUpdater</span><span class="w"> </span><span class="na">input_goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">output_goal=</span><span class="s">&quot;{updated_goal}&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalUpdater</span><span class="w"> </span><span class="na">input_goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">input_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">output_goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">output_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="cm">&lt;!--Add tree components here---&gt;</span>
 <span class="nt">&lt;/GoalUpdater&gt;</span>
 </pre></div>
