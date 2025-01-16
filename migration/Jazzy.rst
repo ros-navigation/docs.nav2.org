@@ -119,6 +119,12 @@ Default value:
 
 - true
 
+Rotation Shim Disengagement Threshold
+*************************************
+
+The parameter ``angular_disengage_threshold`` was introduced as a new threshold for disengagement of the rotation in the rotation shim controller.
+Previous behavior rotated until the ``angular_dist_threshold``, now it can rotate until the ``angular_disengage_threshold``, which can be set closer to the path's orientation if desired.
+
 Added optional collision checking for the Docking Server
 ********************************************************
 
