@@ -178,7 +178,7 @@ Parameters
   ====== =======
 
   Description
-    Minimum turning radius in meters of vehicle. Also used in the smoother to compute maximum curvature.
+    Minimum turning radius in meters of vehicle. Also used in the smoother to compute maximum curvature. Must be greater than 0.
 
 :``<name>``.reverse_penalty:
 

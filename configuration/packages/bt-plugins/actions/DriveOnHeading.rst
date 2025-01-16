@@ -66,6 +66,17 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+:disable_collision_checks:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false
+  ====== =======
+
+  Description
+      Disable collision checking.
+
 Output Ports
 ------------
 
@@ -85,4 +96,4 @@ Example
 
 .. code-block:: xml
 
-  <DriveOnHeading dist_to_travel="0.2" speed="0.05" server_name="backup_server" server_timeout="10" error_code_id="{drive_on_heading_error_code}"/>
+  <DriveOnHeading dist_to_travel="0.2" speed="0.05" server_name="backup_server" server_timeout="10" error_code_id="{drive_on_heading_error_code}" disable_collision_checks="false"/>

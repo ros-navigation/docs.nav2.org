@@ -43,7 +43,7 @@ This was added due to quirks in some existing controllers whereas tuning the con
 
 Note: If using a non-holonomic, kinematically feasible planner (e.g. Smac Hybrid-A\*, Smac State Lattice), this is not a necessary behavioral optimization. This class of planner will create plans that take into account the robot's starting heading, not requiring any rotation behaviors. 
 
-This behavior is most optimially for: 
+This behavior is most optimally for: 
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
 - Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot’s current heading – or when tuning your controller for its task makes tight rotations difficult.
@@ -133,6 +133,7 @@ Costmap2D has a number of plugins that you can use (including the availability f
 - ``SpatioTemporalVoxelLayer``: 3D costmap layer for 3D lidars, non-planar 2D lidars, or depth camera processing based on temporal decay. Useful for robots with high sensor coverage like 3D lidars or many depth cameras at a reduced computational overhead due to lack of raycasting.
 - ``RangeLayer``: Models sonars, IR sensors, or other range sensors for costmap inclusion
 - ``DenoiseLayer``: Removes salt and pepper noise from final costmap in order to remove unfiltered noise. Also has the option to remove clusters of configurable size to remove effects of dynamic obstacles without temporal decay.
+- ``PluginContainerLayer``: Combines the costmap layers specified within this plugin, resulting in an internal costmap that is a product of the costmap layers specified under this layer. This would allow different isolated combinations of costmap layers within the same parent costmap, such as applying a different inflation layers to static layers and obstacle layers 
 
 In addition, costmap filters:
 - ``KeepoutFilter``: Marks keepout, higher weighted, or lower weighted zones in the costmap

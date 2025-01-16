@@ -22,11 +22,11 @@ Input Ports
 
 :goals:
 
-  ============================================ =========
-  Type                                         Default
-  -------------------------------------------- ---------
-  std::vector<geometry_msgs::msg::PoseStamped> "{goals}"
-  ============================================ =========
+  ==================================== =========
+  Type                                 Default
+  ------------------------------------ ---------
+  geometry_msgs::msg::PoseStampedArray "{goals}"
+  ==================================== =========
 
   Description
     	Vector of goals to check. Takes in a blackboard variable, "{goals}" if not specified.

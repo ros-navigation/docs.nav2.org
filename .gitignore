@@ -1,1 +1,4 @@
 _build
+lib/
+bin/
+pyvenv.cfg
