@@ -5,7 +5,7 @@ Controller Server
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_controller
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_controller
 
 The Controller Server implements the server for handling the controller requests for the stack and host a map of plugin implementations.
 It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.
@@ -192,7 +192,7 @@ Parameters
   ============== =============================
 
   Description
-    Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to :ref:`speed_filter` configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish `these messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_.
+    Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to :ref:`speed_filter` configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish `these messages <https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_.
 
 :odom_topic:
 
@@ -210,12 +210,13 @@ Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
     
 :bond_heartbeat_period:
 

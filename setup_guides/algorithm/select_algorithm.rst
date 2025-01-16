@@ -77,9 +77,11 @@ The default controller plugin is the `DWB controller <https://docs.nav2.org/conf
 
 The ``DWB controller`` can be used on **circular or non-circular differential, and circular or non-circular omnidirectional** robots. It may also be configured for **ackerman and legged** robots if it is given a ``Trajectory Generation plugin`` that produces a set of possible trajectories that considers the robot's minimum curvature constraint.
 
-Another example of a controller server plugin is the `TEB controller <https://github.com/rst-tu-dortmund/teb_local_planner>`_ which is an MPC time optimal controller. It implements the Timed Elastic Band (TEB) approach which optimizes the robot's trajectory based on its execution time, distance from obstacles, and feasibility with respect to the robot's kinematic constraints. This controller can be used on **differential, omnidirectional, ackermann, and legged** robots.
+Next example of a controller server plugin is the `TEB controller <https://github.com/rst-tu-dortmund/teb_local_planner>`_ which is an MPC time optimal controller. It implements the Timed Elastic Band (TEB) approach which optimizes the robot's trajectory based on its execution time, distance from obstacles, and feasibility with respect to the robot's kinematic constraints. This controller can be used on **differential, omnidirectional, ackermann, and legged** robots.
 
-The last example for this section is the `Regulated Pure Pursuit controller (RPP) <https://docs.nav2.org/configuration/packages/configuring-regulated-pp.html>`_ . This controller implements a variant of the pure pursuit algorithm with added regulation heuristic functions to manage collision and velocity constraints. This variation is implemented to target the needs of service or industrial robots and is suitable for use with **differential, ackermann, and legged** robots.
+Another example for this section is the `Regulated Pure Pursuit controller (RPP) <https://docs.nav2.org/configuration/packages/configuring-regulated-pp.html>`_ . This controller implements a variant of the pure pursuit algorithm with added regulation heuristic functions to manage collision and velocity constraints. This variation is implemented to target the needs of service or industrial robots and is suitable for use with **differential, ackermann, and legged** robots.
+
+The last example is the `Vector Pursuit Controller <https://github.com/blackcoffeerobotics/vector_pursuit_controller>`_ . It implements the `Vector Pursuit algorithm <https://apps.dtic.mil/sti/pdfs/ADA468928.pdf>`_ and calculates the command velocity using screw theory. This controller is suitable for high speed path tracking and sharp turns or when computation resources are limited. It can be used for **differential, ackermann, and legged** robots.
 
 Summary
 -------
@@ -94,6 +96,8 @@ Summary
 | RPP controller  | Differential, Ackermann, Legged                   | Exact path following       |
 +-----------------+---------------------------------------------------+----------------------------+
 | MPPI controller | Differential, Ackermann, Legged, Omnidirectional  | Modern MPC controller      |
++-----------------+---------------------------------------------------+----------------------------+
+| VP controller   | Differential, Ackermann, Legged                   | High speed path tracking   |
 +-----------------+---------------------------------------------------+----------------------------+
 
 All of these algorithms work for both circular and non-circular robots.

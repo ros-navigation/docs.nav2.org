@@ -190,7 +190,7 @@ Now we can do something fun while we have both terminals of the same docker cont
 
 .. code-block:: bash
 
-	ros2 run ros2 run demo_nodes_cpp talker
+	ros2 run demo_nodes_cpp talker
 	ros2 run demo_nodes_py listener
 
 ------------
@@ -436,7 +436,7 @@ Instead, it pulls the dependencies so that when you run this container, you obta
     
   WORKDIR /root/nav2_ws 
   RUN mkdir -p ~/nav2_ws/src
-  RUN git clone https://github.com/ros-planning/navigation2.git --branch main ./src/navigation2
+  RUN git clone https://github.com/ros-navigation/navigation2.git --branch main ./src/navigation2
   RUN rosdep init
   RUN apt update && apt upgrade -y \
       && rosdep update \
@@ -461,7 +461,7 @@ From here, you can go to the :ref:`getting_started` to test it out!
   # For Rolling or want to build from source a particular branch / fork
   WORKDIR /root/nav2_ws 
   RUN mkdir -p ~/nav2_ws/src
-  RUN git clone https://github.com/ros-planning/navigation2.git --branch main ./src/navigation2
+  RUN git clone https://github.com/ros-navigation/navigation2.git --branch main ./src/navigation2
   RUN rosdep init
   RUN apt update && apt upgrade -y \
       && rosdep update \

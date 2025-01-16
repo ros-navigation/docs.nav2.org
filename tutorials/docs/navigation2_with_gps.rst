@@ -36,7 +36,8 @@ It is assumed ROS2 and Nav2 dependent packages are installed or built locally. A
       sudo apt install ros-$ROS_DISTRO-mapviz-plugins
       sudo apt install ros-$ROS_DISTRO-tile-map
     
-The code for this tutorial is hosted on `nav2_gps_waypoint_follower_demo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo>`_. Though we will go through the most important steps of the setup, it's highly recommended that you clone and build the package when setting up your dev environment.
+The code for this tutorial is hosted on `nav2_gps_waypoint_follower_demo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo>`_. Though we will go through the most important steps of the setup, it's highly recommended that you clone and build the package when setting up your dev environment.
+This is available in ROS 2 Iron and newer.
 
 You may also need to install gazebo and turtlebot3 simulation if you have not executed previous tutorials or Nav2 demos. See Nav2's Getting Started page for more information.
 
@@ -91,7 +92,7 @@ Tutorial Steps
 0- Setup Gazebo World
 ---------------------
 
-To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://docs.px4.io/v1.12/en/simulation/gazebo_worlds.html#sonoma-raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
+To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://docs.px4.io/v1.12/en/simulation/gazebo_worlds.html#sonoma-raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
 
 .. code-block:: xml
 
@@ -107,7 +108,7 @@ To navigate using GPS we first need to create an outdoors Gazebo world with a ro
     <heading_deg>180</heading_deg>
   </spherical_coordinates>
 
-To get GPS readings from Gazebo we need to create a robot model with a GPS sensor. An updated Turtlebot model with such sensor is provided in the `tutorial repo <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/models/turtlebot_waffle_gps>`_, it outputs ``NavSatFix`` messages on the topic ``/gps/fix``:
+To get GPS readings from Gazebo we need to create a robot model with a GPS sensor. An updated Turtlebot model with such sensor is provided in the `tutorial repo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/models/turtlebot_waffle_gps>`_, it outputs ``NavSatFix`` messages on the topic ``/gps/fix``:
 
 .. code-block:: xml
 
@@ -170,7 +171,7 @@ In this tutorial, the GPS sensor on the robot will replace ``amcl`` in providing
 
 We will setup one Extended Kalman Filter for local odometry, fusing wheel odometry and IMU data; a second one for global localization, fusing the local cartesian converted GPS coordinates, the wheel odometry and the IMU data; and a navsat_transform node to output cartesian odometry messages from GPS data. This is a common setup on robot_localization when using GPS data and more details around its configuration can be found in `RL's docs <http://docs.ros.org/en/jade/api/robot_localization/html/integrating_gps.html>`_. 
 
-A `configuration file <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/dual_ekf_navsat_params.yaml>`_ and a `launch file <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/launch/dual_ekf_navsat.launch.py>`_ are provided for this purpose. You may take a while before continuing to understand these two files and what they configure. Let's walk through the most relevant setting of each node.
+A `configuration file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/dual_ekf_navsat_params.yaml>`_ and a `launch file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/launch/dual_ekf_navsat.launch.py>`_ are provided for this purpose. You may take a while before continuing to understand these two files and what they configure. Let's walk through the most relevant setting of each node.
 
 Local Odometry
 ^^^^^^^^^^^^^^
@@ -262,7 +263,7 @@ As a sanity check that everything is working correctly, launch RL's launch file 
 
   ros2 launch nav2_gps_waypoint_follower_demo dual_ekf_navsat.launch.py
 
-On a different terminal launch mapviz using the pre-built `config file <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/gps_wpf_demo.mvc>`_ in the repo. `Get a bing maps API key <https://www.microsoft.com/en-us/maps/create-a-bing-maps-key>`_ and use it to display satellite pictures.
+On a different terminal launch mapviz using the pre-built `config file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/gps_wpf_demo.mvc>`_ in the repo. `Get a bing maps API key <https://www.microsoft.com/en-us/maps/create-a-bing-maps-key>`_ and use it to display satellite pictures.
 
 .. code-block:: bash
 
@@ -342,7 +343,7 @@ There are three main possible setups for the global costmap:
         origin_x: 25.0
         origin_y: 25.0
 
-We provide a `Nav2 params file <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/nav2_no_map_params.yaml>`_ with the rolling costmap setup and a `launch file <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/gps_waypoint_follower.launch.py>`_ to put it all together. Remember that the GPS setup of robot_localization was just a means for setting up the global localization system, however Nav2 is still a cartesian navigation stack and you may still use all its cartesian tools. To confirm that everything is working, launch the provided file (this launches gazebo and RL as well so close them if you have them running from the previous steps) and use rviz to send a goal to the robot:
+We provide a `Nav2 params file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/nav2_no_map_params.yaml>`_ with the rolling costmap setup and a `launch file <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/gps_waypoint_follower.launch.py>`_ to put it all together. Remember that the GPS setup of robot_localization was just a means for setting up the global localization system, however Nav2 is still a cartesian navigation stack and you may still use all its cartesian tools. To confirm that everything is working, launch the provided file (this launches gazebo and RL as well so close them if you have them running from the previous steps) and use rviz to send a goal to the robot:
 
 .. code-block:: bash
 
@@ -359,7 +360,7 @@ The gif below shows what you should see Nav2 navigating the robot autonomously!
 
 Now that we have performed our complete system setup, let's leverage Nav2 GPS waypoint follower capabilities to navigate to goals that are expressed directly in GPS coordinates. For this demo we want to build an interactive interface similar to rviz's, that allows us to click over a map to make the robot navigate to the clicked location. For that we will use mapviz's point click publisher on the ``wgs84`` reference frame, which will publish a ``PointStamped`` message with the GPS coordinates of the point clicked over the satellite image. This is a great way to get started in your custom GPS navigation setup!
 
-For this purpose we provide the `interactive_waypoint_follower <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/interactive_waypoint_follower.py>`_ python node, which subscribes to mapviz's topic and calls the ``/follow_gps_waypoints`` action server with the clicked point as goal using the ``BasicNavigator`` in ``nav2_simple_commander``. To run it source your workspace and with the rest of the system running type:
+For this purpose we provide the `interactive_waypoint_follower <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/interactive_waypoint_follower.py>`_ python node, which subscribes to mapviz's topic and calls the ``/follow_gps_waypoints`` action server with the clicked point as goal using the ``BasicNavigator`` in ``nav2_simple_commander``. To run it source your workspace and with the rest of the system running type:
 
 .. code-block:: bash
 
@@ -374,7 +375,7 @@ You can now click on the mapviz map the pose you want the robot to go. The gif b
 4-  Logged GPS Waypoint Follower & Waypoint Logging
 ---------------------------------------------------
 
-Finally let's make a robot go through a set of predefined GPS waypoints. We provide a `waypoint logging tool <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/gps_waypoint_logger.py>`_ that subscribes to the robot's GPS and IMU and offers a simple GUI to save the robot coordinates and heading on demand to a ``yaml`` file with the format:
+Finally let's make a robot go through a set of predefined GPS waypoints. We provide a `waypoint logging tool <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/gps_waypoint_logger.py>`_ that subscribes to the robot's GPS and IMU and offers a simple GUI to save the robot coordinates and heading on demand to a ``yaml`` file with the format:
 
 .. code-block:: yaml
 
@@ -398,7 +399,7 @@ If you don't provide a path to save your waypoints, they will be saved in your `
   :width: 800px
   :align: center
 
-After that you should get a ``yaml`` file in the location you specified with the format shown above; let's now make the robot follow the logged waypoints. For this purpose we provide the `logged_waypoint_follower <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py>`_ node, which takes in the path to the waypoints file as an argument and uses the ``BasicNavigator`` in ``nav2_simple_commander`` to send the logged goals to the ``/follow_gps_waypoints`` action server. If not provided, the node uses the `default waypoints <https://github.com/ros-planning/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/demo_waypoints.yaml>`_ in the ``nav2_gps_waypoint_follower_demo`` package.
+After that you should get a ``yaml`` file in the location you specified with the format shown above; let's now make the robot follow the logged waypoints. For this purpose we provide the `logged_waypoint_follower <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py>`_ node, which takes in the path to the waypoints file as an argument and uses the ``BasicNavigator`` in ``nav2_simple_commander`` to send the logged goals to the ``/follow_gps_waypoints`` action server. If not provided, the node uses the `default waypoints <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/config/demo_waypoints.yaml>`_ in the ``nav2_gps_waypoint_follower_demo`` package.
 
 To run this node source your workspace and with the rest of the system running type:
 

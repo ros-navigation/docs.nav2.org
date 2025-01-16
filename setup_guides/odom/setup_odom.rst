@@ -1,10 +1,16 @@
 Setting Up Odometry
 ###################
 
-In this guide, we will be looking at how to integrate our robot's odometry system with Nav2. First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly. Next, we will show how to setup odometry with two different cases. In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders. In the second case, we will build a demo that simulates a functioning odometry system on ``sam_bot`` (the robot that we built in the previous section) using Gazebo. Afterwards, we will discuss how various sources of odometry can be fused to provide a smoothed odometry using the ``robot_localization`` package. Lastly, we will also show how to publish the ``odom`` => ``base_link`` transform using ``robot_localization``.
+In this guide, we will be looking at how to integrate our robot's odometry system with Nav2.
+First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly.
+Next, we will show how to setup odometry with two different cases.
+In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders.
+In the second case, we will build a demo that simulates a functioning odometry system on ``sam_bot`` (the robot that we built in the previous section) using Gazebo.
+Afterwards, we will discuss how various sources of odometry can be fused to provide a smoothed odometry using the ``robot_localization`` package.
+Lastly, we will also show how to publish the ``odom`` => ``base_link`` transform using ``robot_localization``.
 
 .. seealso::
-  The complete source code in this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description>`_ repository under the ``sam_bot_description`` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
+  The complete source code in this tutorial can be found in `navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description>`_ repository under the ``sam_bot_description`` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
 Odometry Introduction
 *********************
@@ -62,7 +68,7 @@ For other types of sensors such as IMU, VIO, etc, their respective ROS drivers s
 Simulating an Odometry System using Gazebo
 ******************************************
 
-In this section, we will be using Gazebo to simulate the odometry system of ``sam_bot``, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the `complete source here  <https://github.com/ros-planning/navigation2_tutorials/tree/master/sam_bot_description/>`_. 
+In this section, we will be using Gazebo to simulate the odometry system of ``sam_bot``, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the `complete source here  <https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description/>`_. 
 
 .. note:: If you are working on your own physical robot and have already set up your odometry sensors, you may opt to skip this section and head onto the next one where we fuse IMU and odometry messages to provide a smooth ``odom`` => ``base_link`` transformation.
 
@@ -228,7 +234,7 @@ To include this plugin in our URDF, add the following lines after the ``</gazebo
 Launch and Build Files
 ======================
 
-We will now edit our launch file, `launch/display.launch.py <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_, to spawn ``sam_bot`` in Gazebo. Since we will be simulating our robot, we can remove the GUI for the joint state publisher by deleting the following lines inside the ``generate_launch_description()``:
+We will now edit our launch file, `launch/display.launch.py <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_, to spawn ``sam_bot`` in Gazebo. Since we will be simulating our robot, we can remove the GUI for the joint state publisher by deleting the following lines inside the ``generate_launch_description()``:
 
 .. code-block:: shell
 
@@ -259,7 +265,7 @@ Remove the condition and parameters. Add arguments to the `joint_state_publisher
     condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui')) # Remove this line
   )
 
-Next, open `package.xml <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/package.xml>`_ and delete the line:
+Next, open `package.xml <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/package.xml>`_ and delete the line:
 
 .. code-block:: shell
 
@@ -271,7 +277,7 @@ To launch Gazebo, add the following before the ``joint_state_publisher_node,`` l
   
   launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'], output='screen'),
 
-We will now add a node that spawns ``sam_bot`` in Gazebo. Open `launch/display.launch.py <https://github.com/ros-planning/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_ again and paste the following lines before the ``return launch.LaunchDescription([`` line.
+We will now add a node that spawns ``sam_bot`` in Gazebo. Open `launch/display.launch.py <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py>`_ again and paste the following lines before the ``return launch.LaunchDescription([`` line.
 
 .. code-block:: shell
  

@@ -6,8 +6,12 @@ Build and Install
 Install
 *******
 
+
 Nav2 and its dependencies are released as binaries.
 You may install it via the following to get the latest stable released version:
+
+For Iron and Older
+==================
 
 .. code:: bash
 
@@ -16,6 +20,17 @@ You may install it via the following to get the latest stable released version:
     ros-$ROS_DISTRO-navigation2 \
     ros-$ROS_DISTRO-nav2-bringup \
     ros-$ROS_DISTRO-turtlebot3*
+
+For Jazzy and Newer
+===================
+
+.. code:: bash
+
+  source /opt/ros/<distro>/setup.bash
+  sudo apt install \
+    ros-$ROS_DISTRO-navigation2 \
+    ros-$ROS_DISTRO-nav2-bringup \
+    ros-$ROS_DISTRO-nav2-minimal-tb*
 
 Build
 *****
@@ -59,7 +74,7 @@ Once your environment is setup, clone the repo, install all dependencies, and bu
 
   source /opt/ros/<distro>/setup.bash
   mkdir -p ~/nav2_ws/src && cd ~/nav2_ws
-  git clone https://github.com/ros-planning/navigation2.git --branch $ROS_DISTRO ./src/navigation2
+  git clone https://github.com/ros-navigation/navigation2.git --branch $ROS_DISTRO ./src/navigation2
   rosdep install -y \
     --from-paths ./src \
     --ignore-src
@@ -69,7 +84,7 @@ Once your environment is setup, clone the repo, install all dependencies, and bu
 You can then ``source ~/nav2_ws/install/setup.bash`` to get ready for demonstrations!
 
 .. hint::
-  For more examples on building Nav2 from released distribution binaries, checkout `distro.Dockerfile <https://github.com/ros-planning/navigation2/blob/main/tools/distro.Dockerfile>`_.
+  For more examples on building Nav2 from released distribution binaries, checkout `distro.Dockerfile <https://github.com/ros-navigation/navigation2/blob/main/tools/distro.Dockerfile>`_.
 
 .. rst-class:: content-collapse
 
@@ -90,7 +105,8 @@ Once your environment is setup, clone the repo and build the workspace:
 
   source <ros_ws>/install/setup.bash
   mkdir -p ~/nav2_ws/src && cd ~/nav2_ws
-  git clone https://github.com/ros-planning/navigation2.git --branch main ./src/navigation2
+  git clone https://github.com/ros-navigation/navigation2.git --branch main ./src/navigation2
+  git clone https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation.git --branch main ./src/nav2_minimal_turtlebot_simulation
   rosdep install -r -y \
     --from-paths ./src \
     --ignore-src
@@ -101,7 +117,7 @@ You can then ``source ~/nav2_ws/install/setup.bash`` to get ready for demonstrat
 to ignore the rosdep error of from the missing ``slam_toolbox`` key.
 
 .. hint::
-  For more examples on building Nav2 from rolling development source, checkout `source.Dockerfile <https://github.com/ros-planning/navigation2/blob/main/tools/source.Dockerfile>`_.
+  For more examples on building Nav2 from rolling development source, checkout `source.Dockerfile <https://github.com/ros-navigation/navigation2/blob/main/tools/source.Dockerfile>`_.
 
 .. rst-class:: content-collapse
 
@@ -121,14 +137,14 @@ Once your system is setup, you can build the Nav2 Dockerfile from the root of th
 .. code:: bash
 
   export ROS_DISTRO=rolling
-  git clone https://github.com/ros-planning/navigation2.git --branch main
+  git clone https://github.com/ros-navigation/navigation2.git --branch main
   docker build --tag navigation2:$ROS_DISTRO \
     --build-arg FROM_IMAGE=ros:$ROS_DISTRO \
     --build-arg OVERLAY_MIXINS="release ccache lld" \
-    --cache-from ghcr.io/ros-planning/navigation2:main \
+    --cache-from ghcr.io/ros-navigation/navigation2:main \
     ./navigation2
 
-The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command above creates a tagged image using the `Dockerfile` from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of `colcon mixins <https://github.com/colcon/colcon-mixin-repository>`_ to configure the workspace build. Check the ``ARG`` directives in the `Dockerfile` to discover all build-time variables available. The command also specifies an `external cache source <https://docs.docker.com/engine/reference/commandline/build/#cache-from>`_ to pull the latest cached image from Nav2's `Container Registry <https://github.com/ros-planning/navigation2/pkgs/container/navigation2>`_ to speed up the build process.
+The `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_ command above creates a tagged image using the `Dockerfile` from the context specified using the path to the repo, where build-time variables are set using additional arguments, e.g. passing a set of `colcon mixins <https://github.com/colcon/colcon-mixin-repository>`_ to configure the workspace build. Check the ``ARG`` directives in the `Dockerfile` to discover all build-time variables available. The command also specifies an `external cache source <https://docs.docker.com/engine/reference/commandline/build/#cache-from>`_ to pull the latest cached image from Nav2's `Container Registry <https://github.com/ros-navigation/navigation2/pkgs/container/navigation2>`_ to speed up the build process.
 
 .. tip::
   The images cached from above are used for Nav2 CI, but can also be used with Nav2 :ref:`devcontainers`!

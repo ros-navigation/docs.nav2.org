@@ -22,7 +22,7 @@ In this tutorial, we will be implementing the pure pursuit path tracking algorit
 It is recommended you go through it.
 
 Note: This tutorial is based on a previously existing simplified version of the Regulated Pure Pursuit controller now in the Nav2 stack.
-You can find the source code matching this tutorial `here <https://github.com/ros-planning/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller>`_.
+You can find the source code matching this tutorial `here <https://github.com/ros-navigation/navigation2_tutorials/tree/126902457c5c646b136569886d6325f070c1073d/nav2_pure_pursuit_controller>`_.
 
 Requirements
 ============
@@ -38,7 +38,7 @@ Tutorial Steps
 1- Create a new Controller Plugin
 ---------------------------------
 
-We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository 
+We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-navigation/navigation2_tutorials>`_ repository 
 as the ``nav2_pure_pursuit_controller``. This package can be considered as a reference for writing your own controller plugin.
 
 Our example plugin class ``nav2_pure_pursuit_controller::PurePursuitController`` inherits from the base class ``nav2_core::Controller``. The base class provides a
@@ -221,7 +221,7 @@ It is good practice to place these lines at the end of the file, but technically
 2. The next step would be to create the plugin's description file in the root directory of the package. For example, ``pure_pursuit_controller_plugin.xml`` file in our tutorial package. This file contains the following information
 
 - ``library path``: Plugin's library name and its location.
-- ``class name``: Name of the class.
+- ``class name``: Name of the class (optional). If not set, it will default to the ``class type``.
 - ``class type``: Type of class.
 - ``base class``: Name of the base class.
 - ``description``: Description of the plugin.

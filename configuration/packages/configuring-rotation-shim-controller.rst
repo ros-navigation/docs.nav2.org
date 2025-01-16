@@ -5,7 +5,7 @@ Rotation Shim Controller
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_rotation_shim_controller
 
 The ``nav2_rotation_shim_controller`` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the ``primary_controller`` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task. 
 
@@ -51,6 +51,17 @@ Rotation Shim Controller Parameters
 
   Description
     Angular distance, in radians, away from the path heading to rotation until within (new as of Oct 1, 2024 - previous behavior rotated until ``angular_dist_threshold``).
+
+:angular_disengage_threshold:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         0.3925
+  ============== ===========================
+
+  Description
+    New to Jazzy, the threshold to the path's heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the ``angular_dist_threshold`` instead. This allows for better alignment before passing to the child controller when engaged.
 
 :forward_sampling_distance:
 
@@ -118,6 +129,17 @@ Rotation Shim Controller Parameters
   Description
     If true, the rotationShimController will take back control of the robot when in XY tolerance of the goal and start rotating towards the goal heading.
 
+:rotate_to_heading_once:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    If true, the rotationShimController will only rotate to heading once on a new goal, not each time a path is set.
+
 Example
 *******
 .. code-block:: yaml
@@ -147,6 +169,7 @@ Example
         primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
         angular_dist_threshold: 0.785
         forward_sampling_distance: 0.5
+        angular_disengage_threshold: 0.3925
         rotate_to_heading_angular_vel: 1.8
         max_angular_accel: 3.2
         simulate_ahead_time: 1.0

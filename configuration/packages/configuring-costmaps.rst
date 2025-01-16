@@ -5,7 +5,7 @@ Costmap 2D
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d
 
 The Costmap 2D package implements a 2D grid-based costmap for environmental representations and a number of sensor processing plugins (AI outputs, depth sensor obstacle buffering, semantic information, etc).
 It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around. 
@@ -89,17 +89,6 @@ Costmap2D ROS Parameters
 
   Description
     Minimum cost of an occupancy grid map to be considered a lethal obstacle.
-
-:map_topic:
-
-  ============== =======
-  Type           Default
-  -------------- -------
-  string         "map"   
-  ============== =======
-
-  Description
-    Topic of map from map_server or SLAM.
 
 :map_vis_z:
 
@@ -360,6 +349,7 @@ Plugin Parameters
   costmap-plugins/voxel.rst
   costmap-plugins/range.rst
   costmap-plugins/denoise.rst
+  costmap-plugins/plugin_container.rst
 
 Costmap Filters Parameters
 **************************

@@ -5,7 +5,7 @@ DWB Controller
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_dwb_controller
 
 The DWB controller is the default controller. It is a fork of `David Lu's
 controller <https://github.com/locusrobotics/robot_navigation/tree/master/dwb_local_planner>`_

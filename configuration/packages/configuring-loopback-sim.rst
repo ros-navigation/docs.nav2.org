@@ -17,9 +17,9 @@ Parameters
 :update_duration:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.01          
+  double         0.01
   ============== ==============
 
   Description
@@ -28,9 +28,9 @@ Parameters
 :base_frame_id:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         "base_link"          
+  string         "base_link"
   ============== ==============
 
   Description
@@ -39,9 +39,9 @@ Parameters
 :odom_frame_id:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         "odom"          
+  string         "odom"
   ============== ==============
 
   Description
@@ -50,9 +50,9 @@ Parameters
 :map_frame_id:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         "map"      
+  string         "map"
   ============== ==============
 
   Description
@@ -61,13 +61,58 @@ Parameters
 :scan_frame_id:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         "base_scan"    
+  string         "base_scan"
   ============== ==============
 
   Description
-    The scan frame to use to publish a scan for collision monitor's happiness
+    The scan frame to use to publish a scan
+
+:enable_stamped_cmd_vel:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         True
+  ============== ==============
+
+  Description
+    Whether cmd_vel is stamped or unstamped (i.e. Twist or TwistStamped).
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
+
+:scan_publish_dur:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         0.1
+  ============== ==============
+
+  Description
+    The duration between publishing scan (in sec)
+
+:publish_map_odom_tf:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         true
+  ============== ==============
+
+  Description
+    Whether or not to publish tf from ``map_frame_id`` to ``odom_frame_id``
+
+:publish_clock:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         true
+  ============== ==============
+
+  Description
+    Whether or not to publish simulated clock to ``/clock``
 
 Example
 *******

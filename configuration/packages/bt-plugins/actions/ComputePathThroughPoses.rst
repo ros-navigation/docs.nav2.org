@@ -6,7 +6,7 @@ ComputePathThroughPoses
 Invokes the ComputePathThroughPoses ROS 2 action server, which is implemented by the nav2_planner_ module. 
 The server address can be remapped using the ``server_name`` input port.
 
-.. _nav2_planner: https://github.com/ros-planning/navigation2/tree/main/nav2_planner
+.. _nav2_planner: https://github.com/ros-navigation/navigation2/tree/main/nav2_planner
 
 Input Ports
 -----------
@@ -23,11 +23,11 @@ Input Ports
     	
 :goals:
 
-  ============================================= =======
-  Type                                          Default
-  --------------------------------------------- -------
-  vector<geometry_msgs::msg::PoseStamped>         N/A  
-  ============================================= =======
+  ===================================== =======
+  Type                                  Default
+  ------------------------------------- -------
+  geometry_msgs::msg::PoseStampedArray    N/A  
+  ===================================== =======
 
   Description
     	Goal poses. Takes in a blackboard variable, e.g. "{goals}".

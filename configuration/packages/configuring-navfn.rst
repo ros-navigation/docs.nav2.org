@@ -5,7 +5,7 @@ NavFn Planner
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_navfn_planner
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_navfn_planner
 
 The Navfn Planner plugin implements a wavefront Dijkstra or A* expanded holonomic planner.
 

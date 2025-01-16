@@ -5,18 +5,18 @@ NavigateThroughPoses
 
 Invokes the NavigateThroughPoses ROS 2 action server, which is implemented by the bt_navigator_ module.
 
-.. _bt_navigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator
+.. _bt_navigator: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator
 
 Input Ports
 -----------
 
 :goals:
 
-  ============================================= =======
-  Type                                          Default
-  --------------------------------------------- -------
-  vector<geometry_msgs::msg::PoseStamped>         N/A  
-  ============================================= =======
+  ==================================== =======
+  Type                                 Default
+  ------------------------------------ -------
+  geometry_msgs::msg::PoseStampedArray   N/A  
+  ==================================== =======
 
   Description
       Goal poses. Takes in a blackboard variable, e.g. "{goals}".

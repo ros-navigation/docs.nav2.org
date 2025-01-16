@@ -58,7 +58,7 @@ Under each name, the parameters for that particular algorithm must be specified 
           tolerance: 1.0e-10
           do_refinement: True
         curvature_smoother:
-          plugin: "nav2_ceres_costaware_smoother/CeresCostawareSmoother"
+          plugin: "nav2_smoother::SavitzkyGolaySmoother"
 
 
 2- Modifying your BT XML

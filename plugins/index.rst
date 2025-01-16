@@ -27,8 +27,8 @@ Behavior-Tree Navigators
 |                                  |                    | (Cartesian or GPS) via a BTs      |
 +----------------------------------+--------------------+-----------------------------------+
 
-.. _NavigateToPoseNavigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator/src/navigators
-.. _NavigateThroughPosesNavigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator/src/navigators
+.. _NavigateToPoseNavigator: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator/src/navigators
+.. _NavigateThroughPosesNavigator: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator/src/navigators
 .. _CoverageNavigator: https://github.com/open-navigation/opennav_coverage/tree/main/opennav_coverage_navigator
 
 
@@ -70,15 +70,22 @@ Costmap Layers
 |                                |                        | standalone obstacles or small    |
 |                                |                        | obstacles groups                 |
 +--------------------------------+------------------------+----------------------------------+
+| `Plugin Container Layer`_      |  Alexander Yuen        | Combines the different costmap   |
+|                                |                        | layers specified under this      |
+|                                |                        | layer in order populate the same |
+|                                |                        | costmap with different isolated  |
+|                                |                        | combinations of costmap layers   |
++--------------------------------+------------------------+----------------------------------+
 
-.. _Voxel Layer: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
-.. _Static Layer: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
-.. _Range Layer: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp
-.. _Inflation Layer: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp
-.. _Obstacle Layer: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
+.. _Voxel Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
+.. _Static Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
+.. _Range Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/range_sensor_layer.cpp
+.. _Inflation Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/inflation_layer.cpp
+.. _Obstacle Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/obstacle_layer.cpp
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer
 .. _Denoise Layer: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
+.. _Plugin Container Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
 
 Costmap Filters
 ===============
@@ -96,47 +103,52 @@ Costmap Filters
 |                    |                    | behavior to trigger actions.      |
 +--------------------+--------------------+-----------------------------------+
 
-.. _Keepout Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
-.. _Speed Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/speed_filter.cpp
-.. _Binary Filter: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/binary_filter.cpp
+.. _Keepout Filter: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/keepout_filter.cpp
+.. _Speed Filter: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/speed_filter.cpp
+.. _Binary Filter: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/costmap_filters/binary_filter.cpp
 
 Controllers
 ===========
 
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-|      Plugin Name               |       Creator      |       Description                | Drivetrain support    |
-+================================+====================+==================================+=======================+
-|  `DWB Controller`_             | David Lu!!         | A highly configurable  DWA       | Differential,         |
-|                                |                    | implementation with plugin       | Omnidirectional,      |
-|                                |                    | interfaces                       | Legged                |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-|  `TEB Controller`_             | Christoph Rösmann  | A MPC-like controller suitable   | **Ackermann**, Legged,|
-|                                |                    | for ackermann, differential, and | Omnidirectional,      |
-|                                |                    | holonomic robots.                | Differential          |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-| `Regulated Pure Pursuit`_      | Steve Macenski     | A service / industrial robot     | **Ackermann**, Legged,|
-|                                |                    | variation on the pure pursuit    | Differential          |
-|                                |                    | algorithm with adaptive features.|                       |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-| `MPPI Controller`_             | Steve Macenski     | A predictive MPC controller with | Differential, Omni,   |
-|                                | Aleksei Budyakov   | modular & custom cost functions  | **Ackermann**         |
-|                                |                    | that can accomplish many tasks.  |                       |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-| `Rotation Shim Controller`_    | Steve Macenski     | A "shim" controller to rotate    | Differential, Omni,   |
-|                                |                    | to path heading before passing   | model rotate in place |
-|                                |                    | to main controller for  tracking.|                       |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
-| `Graceful Controller`_         | Alberto Tudela     | A controller based on a          | Differential          |
-|                                |                    | pose-following control law to    |                       |
-|                                |                    | generate smooth trajectories.    |                       |
-+--------------------------------+--------------------+----------------------------------+-----------------------+
++--------------------------------+-----------------------+------------------------------------+-----------------------+
+|      Plugin Name               |         Creator       |       Description                  | Drivetrain support    |
++================================+=======================+====================================+=======================+
+|  `DWB Controller`_             | David Lu!!            | A highly configurable  DWA         | Differential,         |
+|                                |                       | implementation with plugin         | Omnidirectional,      |
+|                                |                       | interfaces                         | Legged                |
++--------------------------------+-----------------------+------------------------------------+-----------------------+
+|  `TEB Controller`_             | Christoph Rösmann     | A MPC-like controller suitable     | **Ackermann**, Legged,|
+|                                |                       | for ackermann, differential, and   | Omnidirectional,      |
+|                                |                       | holonomic robots.                  | Differential          |
++--------------------------------+-----------------------+------------------------------------+-----------------------+
+| `Regulated Pure Pursuit`_      | Steve Macenski        | A service / industrial robot       | **Ackermann**, Legged,|
+|                                |                       | variation on the pure pursuit      | Differential          |
+|                                |                       | algorithm with adaptive features.  |                       |
++--------------------------------+-----------------------+------------------------------------+-----------------------+
+| `MPPI Controller`_             | Steve Macenski        | A predictive MPC controller with   | Differential, Omni,   |
+|                                | Aleksei Budyakov      | modular & custom cost functions    | **Ackermann**         |
+|                                |                       | that can accomplish many tasks.    |                       |
++--------------------------------+-----------------------+------------------------------------+-----------------------+
+| `Rotation Shim Controller`_    | Steve Macenski        | A "shim" controller to rotate      | Differential, Omni,   |
+|                                |                       | to path heading before passing     | model rotate in place |
+|                                |                       | to main controller for  tracking.  |                       |
++--------------------------------+-----------------------+------------------------------------+-----------------------+
+| `Graceful Controller`_         | Alberto Tudela        | A controller based on a            | Differential, Omni,   |
+|                                |                       | pose-following control law to      | Legged                |
+|                                |                       | generate smooth trajectories.      |                       |
++--------------------------------+-----------------------+------------------------------------+-----------------------+
+| `Vector Pursuit Controller`_   | Black Coffee Robotics | A controller based on the vector   | Differential,         |
+|                                |                       | pursuit algorithm useful for       | Ackermann, Legged,    |
+|                                |                       | high speed accurate path tracking. |                       |
++--------------------------------+-----------------------+------------------------------------+-----------------------+
 
-.. _DWB Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
+.. _Vector Pursuit Controller: https://github.com/blackcoffeerobotics/vector_pursuit_controller
+.. _DWB Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_dwb_controller
 .. _TEB Controller: https://github.com/rst-tu-dortmund/teb_local_planner
-.. _Regulated Pure Pursuit: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
-.. _Rotation Shim Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_rotation_shim_controller
-.. _MPPI Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller
-.. _Graceful Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_graceful_controller
+.. _Regulated Pure Pursuit: https://github.com/ros-navigation/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
+.. _Rotation Shim Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_rotation_shim_controller
+.. _MPPI Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_mppi_controller
+.. _Graceful Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_graceful_controller
 
 Planners
 ========
@@ -181,11 +193,11 @@ Planners
 |                           |                                       | 2D holonomic particle        |                     |
 +---------------------------+---------------------------------------+------------------------------+---------------------+
 
-.. _NavFn Planner: https://github.com/ros-planning/navigation2/tree/main/nav2_navfn_planner
-.. _SmacPlannerHybrid: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
-.. _SmacPlanner2D: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
-.. _ThetaStarPlanner: https://github.com/ros-planning/navigation2/tree/main/nav2_theta_star_planner
-.. _SmacPlannerLattice: https://github.com/ros-planning/navigation2/tree/main/nav2_smac_planner
+.. _NavFn Planner: https://github.com/ros-navigation/navigation2/tree/main/nav2_navfn_planner
+.. _SmacPlannerHybrid: https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner
+.. _SmacPlanner2D: https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner
+.. _ThetaStarPlanner: https://github.com/ros-navigation/navigation2/tree/main/nav2_theta_star_planner
+.. _SmacPlannerLattice: https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner
 
 
 Smoothers
@@ -214,9 +226,9 @@ Smoothers
 |                           |                                       | path.                        |
 +---------------------------+---------------------------------------+------------------------------+
 
-.. _Simple Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
-.. _Constrained Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_constrained_smoother
-.. _Savitzky-Golay Smoother: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
+.. _Simple Smoother: https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother
+.. _Constrained Smoother: https://github.com/ros-navigation/navigation2/tree/main/nav2_constrained_smoother
+.. _Savitzky-Golay Smoother: https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother
 
 Behaviors
 =========
@@ -251,12 +263,12 @@ Behaviors
 |                      |                        | prevent collisions.              |
 +----------------------+------------------------+----------------------------------+
 
-.. _Back Up: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
-.. _Spin: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
-.. _Wait: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
-.. _Drive On Heading: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
-.. _Clear Costmap: https://github.com/ros-planning/navigation2/blob/main/nav2_costmap_2d/src/clear_costmap_service.cpp
-.. _Assisted Teleop: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors/plugins
+.. _Back Up: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
+.. _Spin: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
+.. _Wait: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
+.. _Drive On Heading: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
+.. _Clear Costmap: https://github.com/ros-navigation/navigation2/blob/main/nav2_costmap_2d/src/clear_costmap_service.cpp
+.. _Assisted Teleop: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors/plugins
 
 Waypoint Task Executors
 =======================
@@ -279,9 +291,9 @@ Waypoint Task Executors
 |                                 |                        | waypoint.                        |
 +---------------------------------+------------------------+----------------------------------+
 
-.. _WaitAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
-.. _PhotoAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/photo_at_waypoint.cpp
-.. _InputAtWaypoint: https://github.com/ros-planning/navigation2/tree/main/nav2_waypoint_follower/plugins/input_at_waypoint.cpp
+.. _WaitAtWaypoint: https://github.com/ros-navigation/navigation2/tree/main/nav2_waypoint_follower/plugins/wait_at_waypoint.cpp
+.. _PhotoAtWaypoint: https://github.com/ros-navigation/navigation2/tree/main/nav2_waypoint_follower/plugins/photo_at_waypoint.cpp
+.. _InputAtWaypoint: https://github.com/ros-navigation/navigation2/tree/main/nav2_waypoint_follower/plugins/input_at_waypoint.cpp
 
 Goal Checkers
 =============
@@ -300,8 +312,8 @@ Goal Checkers
 |                                 |                        | and velocity threshold.          |
 +---------------------------------+------------------------+----------------------------------+
 
-.. _SimpleGoalChecker: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
-.. _StoppedGoalChecker: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
+.. _SimpleGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
+.. _StoppedGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
 
 Progress Checkers
 =================
@@ -320,8 +332,8 @@ Progress Checkers
 |                                 |                        | to make progress towards a goal  |
 +---------------------------------+------------------------+----------------------------------+
 
-.. _SimpleProgressChecker: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/simple_progress_checker.cpp
-.. _PoseProgressChecker: https://github.com/ros-planning/navigation2/blob/main/nav2_controller/plugins/pose_progress_checker.cpp
+.. _SimpleProgressChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_progress_checker.cpp
+.. _PoseProgressChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/pose_progress_checker.cpp
 
 
 Behavior Tree Nodes
@@ -420,36 +432,36 @@ Behavior Tree Nodes
 | `Undock Robot Action`_                      | Steve Macenski      | Calls undock robot action                |
 +---------------------------------------------+---------------------+------------------------------------------+
 
-.. _Back Up Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
-.. _Drive On Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
-.. _Assisted Teleop Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_action.cpp
-.. _Clear Entire Costmap Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
-.. _Clear Costmap Except Region Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
-.. _Clear Costmap Around Robot Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
-.. _Compute Path to Pose Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp
-.. _Smooth Path Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/smooth_path_action.cpp
-.. _Follow Path Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/follow_path_action.cpp
-.. _Navigate to Pose Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp
-.. _Reinitalize Global Localization Service: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp
-.. _Spin Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_action.cpp
-.. _Wait Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_action.cpp
-.. _Truncate Path: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_action.cpp
-.. _Truncate Path Local: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_local_action.cpp
-.. _Planner Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/planner_selector_node.cpp
-.. _Controller Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector_node.cpp
-.. _Goal Checker Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
-.. _Smoother Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/smoother_selector_node.cpp
-.. _Progress Checker Selector: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/progress_checker_selector_node.cpp
-.. _Navigate Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
-.. _Remove Passed Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
-.. _Remove In Collision Goals: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp
-.. _Compute Path Through Poses: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
-.. _Cancel Control Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
-.. _Cancel BackUp Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
-.. _Cancel Spin Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
-.. _Cancel Wait Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
-.. _Cancel Drive on Heading Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp
-.. _Cancel Assisted Teleop Action: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
+.. _Back Up Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
+.. _Drive On Heading Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
+.. _Assisted Teleop Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_action.cpp
+.. _Clear Entire Costmap Service: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Clear Costmap Except Region Service: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Clear Costmap Around Robot Service: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/clear_costmap_service.cpp
+.. _Compute Path to Pose Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_to_pose_action.cpp
+.. _Smooth Path Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/smooth_path_action.cpp
+.. _Follow Path Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/follow_path_action.cpp
+.. _Navigate to Pose Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_to_pose_action.cpp
+.. _Reinitialize Global Localization Service: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/reinitialize_global_localization_service.cpp
+.. _Spin Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_action.cpp
+.. _Wait Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_action.cpp
+.. _Truncate Path: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_action.cpp
+.. _Truncate Path Local: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/truncate_path_local_action.cpp
+.. _Planner Selector: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/planner_selector_node.cpp
+.. _Controller Selector: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_selector_node.cpp
+.. _Goal Checker Selector: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/goal_checker_selector_node.cpp
+.. _Smoother Selector: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/smoother_selector_node.cpp
+.. _Progress Checker Selector: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/progress_checker_selector_node.cpp
+.. _Navigate Through Poses: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/navigate_through_poses_action.cpp
+.. _Remove Passed Goals: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
+.. _Remove In Collision Goals: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp
+.. _Compute Path Through Poses: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
+.. _Cancel Control Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
+.. _Cancel BackUp Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
+.. _Cancel Spin Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
+.. _Cancel Wait Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
+.. _Cancel Drive on Heading Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp
+.. _Cancel Assisted Teleop Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
 .. _Cancel Complete Coverage Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp
 .. _Compute Complete Coverage Path Action: https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp
 .. _Get Pose From Path Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp
@@ -476,6 +488,9 @@ Behavior Tree Nodes
 | `Is Stuck Condition`_              |  Michael Jeronimo  | Checks if robot is     |
 |                                    |                    | making progress or     |
 |                                    |                    | stuck                  |
++------------------------------------+--------------------+------------------------+
+| `Is Stopped Condition`_            |  Tony Najjar       | Checks if robot is     |
+|                                    |                    | stopped for a duration |
 +------------------------------------+--------------------+------------------------+
 | `Transform Available Condition`_   |  Steve Macenski    | Checks if a TF         |
 |                                    |                    | transformation is      |
@@ -530,22 +545,23 @@ Behavior Tree Nodes
 |                                    |                    | is charging.           |
 +------------------------------------+--------------------+------------------------+
 
-.. _Goal Reached Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
-.. _Goal Updated Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
+.. _Goal Reached Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
+.. _Goal Updated Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
 .. _Globally Updated Goal Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
-.. _Initial Pose received Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
-.. _Is Stuck Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
-.. _Transform Available Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
-.. _Distance Traveled Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
-.. _Time Expired Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
-.. _Is Battery Low Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
+.. _Initial Pose received Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
+.. _Is Stuck Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
+.. _Is Stopped Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stopped_condition.cpp
+.. _Transform Available Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/transform_available_condition.cpp
+.. _Distance Traveled Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
+.. _Time Expired Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
+.. _Is Battery Low Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
 .. _Is Path Valid Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
-.. _Path Expiring Timer: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
-.. _Are Error Codes Present: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
-.. _Would A Controller Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help.cpp
-.. _Would A Planner Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help.cpp
-.. _Would A Smoother Recovery Help: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help.cpp
-.. _Is Battery Charging Condition: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
+.. _Path Expiring Timer: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
+.. _Are Error Codes Present: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
+.. _Would A Controller Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help.cpp
+.. _Would A Planner Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help.cpp
+.. _Would A Smoother Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help.cpp
+.. _Is Battery Charging Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |
@@ -571,12 +587,12 @@ Behavior Tree Nodes
 |                          |                     | on approach to the goal          |
 +--------------------------+---------------------+----------------------------------+
 
-.. _Rate Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
-.. _Distance Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
-.. _Speed Controller: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
-.. _Goal Updater: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
-.. _Single Trigger: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
-.. _PathLongerOnApproach: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
+.. _Rate Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
+.. _Distance Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
+.. _Speed Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/speed_controller.cpp
+.. _Goal Updater: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
+.. _Single Trigger: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
+.. _PathLongerOnApproach: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
@@ -596,6 +612,6 @@ Behavior Tree Nodes
 |                       |                        | a result and move on to ``i+1``  |
 +-----------------------+------------------------+----------------------------------+
 
-.. _Pipeline Sequence: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
-.. _Recovery: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
-.. _Round Robin: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp
+.. _Pipeline Sequence: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
+.. _Recovery: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
+.. _Round Robin: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp

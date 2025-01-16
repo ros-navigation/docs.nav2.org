@@ -43,7 +43,7 @@ This was added due to quirks in some existing controllers whereas tuning the con
 
 Note: If using a non-holonomic, kinematically feasible planner (e.g. Smac Hybrid-A\*, Smac State Lattice), this is not a necessary behavioral optimization. This class of planner will create plans that take into account the robot's starting heading, not requiring any rotation behaviors. 
 
-This behavior is most optimially for: 
+This behavior is most optimally for: 
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
 - Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot’s current heading – or when tuning your controller for its task makes tight rotations difficult.
@@ -94,6 +94,8 @@ In general though, the following table is a good first-order description of the 
 +----------------+---------------------------------------------------+----------------------------+
 | Rotation Shim  | Differential, Omnidirectional                     | Rotate to rough heading    |
 +----------------+---------------------------------------------------+----------------------------+
+| VP controller  | Differential, Ackermann, Legged                   | High speed path tracking   |
++----------------+---------------------------------------------------+----------------------------+
 
 All of the above controllers can handle both circular and arbitrary shaped robots in configuration.
 
@@ -103,7 +105,9 @@ DWB and MPPI are both options that will track paths, but also diverge from the p
 
 MPPI on the other hand implements an optimization based approach, using randomly perturbed samples of the previous optimal trajectory to maximize a set of plugin-based objective functions. In that regard, it is similar to DWB however MPPI is a far more modern and advanced technique that will deal with dynamic agents in the environment and create intelligent behavior due to the optimization based trajectory planning, rather then DWB's constant action model. MPPI however does have moderately higher compute costs, but it is highly recommended to go this route and has received considerable development resources and attention due to its power. This typically works pretty well out of the box, but to tune for specific behaviors, you may have to retune some of the parameters. The README.md file for this package contains details on how to tune it efficiently. 
 
-Finally, the Rotation Shim Plugin helps assist plugins like TEB and DWB (among others) to rotate the robot in place towards a new path's heading before starting to track the path. This allows you to tune your local trajectory planner to operate with a desired behavior without having to worry about being able to rotate on a dime with a significant deviation in angular distance over a very small euclidean distance. Some controllers when heavily tuned for accurate path tracking are constrained in their actions and don't very cleanly rotate to a new heading. Other controllers have a 'spiral out' behavior because their sampling requires some translational velocity, preventing it from simply rotating in place. This helps alleviate that problem and makes the robot rotate in place very smoothly.
+The Rotation Shim Plugin helps assist plugins like TEB and DWB (among others) to rotate the robot in place towards a new path's heading before starting to track the path. This allows you to tune your local trajectory planner to operate with a desired behavior without having to worry about being able to rotate on a dime with a significant deviation in angular distance over a very small euclidean distance. Some controllers when heavily tuned for accurate path tracking are constrained in their actions and don't very cleanly rotate to a new heading. Other controllers have a 'spiral out' behavior because their sampling requires some translational velocity, preventing it from simply rotating in place. This helps alleviate that problem and makes the robot rotate in place very smoothly.
+
+Finally, Vector Pursuit is another good path tracking solution and just like RPP, is paired with a kinematically feasible planner. It is a bit more advanced than RPP in the sense it also takes path heading into account. Vector Pursuit can handle complex paths at high speeds, but it is still a simple geometric controller thus requiring low computation resources.
 
 .. note::
    These are simply the default and available plugins from the community. For a specific robot platform / company, you may also choose to use none of these and create your own. See the :ref:`writing_new_nav2controller_plugin` tutorial for more details. If you're willing to contribute this work back to the community, please file a ticket or contact a maintainer! They'd love to hear from you.
@@ -129,6 +133,7 @@ Costmap2D has a number of plugins that you can use (including the availability f
 - ``SpatioTemporalVoxelLayer``: 3D costmap layer for 3D lidars, non-planar 2D lidars, or depth camera processing based on temporal decay. Useful for robots with high sensor coverage like 3D lidars or many depth cameras at a reduced computational overhead due to lack of raycasting.
 - ``RangeLayer``: Models sonars, IR sensors, or other range sensors for costmap inclusion
 - ``DenoiseLayer``: Removes salt and pepper noise from final costmap in order to remove unfiltered noise. Also has the option to remove clusters of configurable size to remove effects of dynamic obstacles without temporal decay.
+- ``PluginContainerLayer``: Combines the costmap layers specified within this plugin, resulting in an internal costmap that is a product of the costmap layers specified under this layer. This would allow different isolated combinations of costmap layers within the same parent costmap, such as applying a different inflation layers to static layers and obstacle layers 
 
 In addition, costmap filters:
 - ``KeepoutFilter``: Marks keepout, higher weighted, or lower weighted zones in the costmap
@@ -158,8 +163,7 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 - ``use_robot_state_pub`` : Whether or not to start the robot state publisher to publish the robot's URDF transformations to TF2. Defaults to ``true`` to publish the robot's TF2 transformations.
 - ``use_rviz`` : Whether or not to launch rviz for visualization. Defaults to ``true`` to show rviz.
 - ``headless`` : Whether or not to launch the Gazebo front-end alongside the background Gazebo simulation. Defaults to ``true`` to display the Gazebo window.
-- ``namespace`` : The namespace to launch robots into, if need be.
-- ``use_namespace`` : Whether or not to launch robots into this namespace. Default ``false`` and uses global namespace for single robot.
+- ``namespace`` : The namespace to launch robots into.
 - ``robot_name`` : The name of the robot to launch.
 - ``robot_sdf`` : The filepath to the robot's gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.
 - ``x_pose``, ``y_pose``, ``z_pose``, ``roll``, ``pitch``, ``yaw`` : Parameters to set the initial position of the robot in the simulation. 
@@ -167,4 +171,4 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 Other Pages We'd Love To Offer
 ==============================
 
-If you are willing to chip in, some ideas are in https://github.com/ros-planning/docs.nav2.org/issues/204, but we'd be open to anything you think would be insightful!
+If you are willing to chip in, some ideas are in https://github.com/ros-navigation/docs.nav2.org/issues/204, but we'd be open to anything you think would be insightful!

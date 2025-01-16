@@ -32,7 +32,14 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb4|          +      |tb3|             +      |rosbot_xl|       |
 +------------------------+------------------------+------------------------+
+|         |soon|         +      |botr|            +      |soon|            |
++------------------------+------------------------+------------------------+
 
+.. |botr| image:: images/botronics.png
+    :width: 100%
+    :align: middle
+    :alt: Botronics
+    :target: https://botronics.be/
 
 .. |ACFR| image:: images/ACFR.png
     :width: 100%
