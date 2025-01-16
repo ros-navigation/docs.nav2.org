@@ -50,17 +50,6 @@ Rotation Shim Controller Parameters
   ============== ===========================
 
   Description
-    Angular distance, in radians, away from the path heading to rotation until within (new as of Oct 1, 2024 - previous behavior rotated until ``angular_dist_threshold``).
-
-:angular_disengage_threshold:
-
-  ============== ===========================
-  Type           Default                    
-  -------------- ---------------------------
-  double         0.3925
-  ============== ===========================
-
-  Description
     New to Jazzy, the threshold to the path's heading before disengagement (radians). Prior to Jazzy, disengagement occurs at the ``angular_dist_threshold`` instead. This allows for better alignment before passing to the child controller when engaged.
 
 :forward_sampling_distance:
