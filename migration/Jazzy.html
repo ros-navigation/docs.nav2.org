@@ -1063,6 +1063,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#iterative-target-selection-for-the-graceful-controller">Iterative Target Selection for the Graceful Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#computepaththroughposes-navigatethroughposes-and-other-bt-nodes-now-use-posestampedarray-instead-of-vector-posestamped">ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use PoseStampedArray instead of vector&lt;PoseStamped&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45">MPPI controller re-implemented using Eigen library and performance improved by 40-45%</a></li>
 </ul>
 </li>
 </ul>
@@ -1325,6 +1326,11 @@ This can be useful, for example, in cases where you want to move the robot even 
 <p>In <a class="reference external" href="https://github.com/ros2/common_interfaces/pull/262">PR #262</a> a new message type <cite>PoseStampedArray</cite> was introduced to the <cite>geometry_msgs</cite> package.
 In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4791">PR #4791</a>, most instances of <cite>std::vector&lt;geometry_msgs::msg::PoseStamped&gt;</cite> have been replaced with <cite>geometry_msgs::msg::PoseStampedArray</cite>. Most notably, <cite>NavigateThroughPoses.action</cite> and <cite>ComputePathThroughPoses.action</cite> have been updated to use <cite>PoseStampedArray</cite>.
 Since <cite>PoseStampedArray</cite> contains a header, the poses are now accessed via <cite>NavigateThroughPoses.poses.poses</cite> instead of <cite>NavigateThroughPoses.poses</cite> or <cite>ComputePathThroughPoses.goals.poses</cite> instead of <cite>ComputePathThroughPoses.poses</cite>. Please update your code accordingly when using these interfaces.</p>
+</div>
+<div class="section" id="mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45">
+<h2>MPPI controller re-implemented using Eigen library and performance improved by 40-45%<a class="headerlink" href="#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45" title="Permalink to this heading"></a></h2>
+<p>In the <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4621">PR #4621</a> MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
+MPPI Optimizer’s performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively.</p>
 </div>
 </div>
 

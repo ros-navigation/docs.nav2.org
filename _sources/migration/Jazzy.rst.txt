@@ -241,3 +241,9 @@ ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use PoseSta
 In `PR #262 <https://github.com/ros2/common_interfaces/pull/262>`_ a new message type `PoseStampedArray` was introduced to the `geometry_msgs` package.
 In `PR #4791 <https://github.com/ros-navigation/navigation2/pull/4791>`_, most instances of `std::vector<geometry_msgs::msg::PoseStamped>` have been replaced with `geometry_msgs::msg::PoseStampedArray`. Most notably, `NavigateThroughPoses.action` and `ComputePathThroughPoses.action` have been updated to use `PoseStampedArray`.
 Since `PoseStampedArray` contains a header, the poses are now accessed via `NavigateThroughPoses.poses.poses` instead of `NavigateThroughPoses.poses` or `ComputePathThroughPoses.goals.poses` instead of `ComputePathThroughPoses.poses`. Please update your code accordingly when using these interfaces.
+
+MPPI controller re-implemented using Eigen library and performance improved by 40-45%
+*************************************************************************************
+
+In the `PR #4621 <https://github.com/ros-navigation/navigation2/pull/4621>`_ MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
+MPPI Optimizer's performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively. 
