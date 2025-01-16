@@ -39,7 +39,18 @@ Rotation Shim Controller Parameters
   ============== ===========================
 
   Description
-    Maximum angular distance, in radians, away from the path heading to trigger rotation until within.
+    Maximum angular distance, in radians, away from the path heading to trigger rotation
+
+:angular_disengage_threshold:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  double         0.3925
+  ============== ===========================
+
+  Description
+    Angular distance, in radians, away from the path heading to rotation until within (new as of Oct 1, 2024 - previous behavior rotated until ``angular_dist_threshold``).
 
 :angular_disengage_threshold:
 
