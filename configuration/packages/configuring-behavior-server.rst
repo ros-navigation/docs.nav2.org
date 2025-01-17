@@ -271,6 +271,39 @@ Backup distance, speed and time_allowance is given from the action request.
     True uses TwistStamped, false uses Twist.
     Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
+:backup.acceleration_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         2.5
+  ============== =============================
+
+  Description
+    Maximum acceleration limit (m/s^2). This effects the speed decreasing of the robot as we move backwards.
+
+:backup.deceleration_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         -2.5
+  ============== =============================
+
+  Description
+    Maximum deceleration limit (m/s^2). Negative value. This effects the speed increasing of the robot as we move backwards.
+
+:backup.minimum_speed:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.10
+  ============== =============================
+
+  Description
+    Minimum speed (m/s). Positive value.
+
 DriveOnHeading Behavior Parameters
 **********************************
 
@@ -310,6 +343,39 @@ DriveOnHeading distance, speed and time_allowance is given from the action reque
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+:drive_on_heading.acceleration_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         2.5
+  ============== =============================
+
+  Description
+    Maximum acceleration limit (m/s^2).
+
+:drive_on_heading.deceleration_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         -2.5
+  ============== =============================
+
+  Description
+    Maximum deceleration limit (m/s^2). Negative value.
+
+:drive_on_heading.minimum_speed:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.10
+  ============== =============================
+
+  Description
+    Minimum speed (m/s).
 
 AssistedTeleop Behavior Parameters
 **********************************
