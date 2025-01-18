@@ -6,8 +6,6 @@ First we will provide a brief introduction on odometry, plus the necessary messa
 Next, we will show how to setup odometry with two different cases.
 In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders.
 In the second case, we will build a demo that simulates a functioning odometry system on ``sam_bot`` (the robot that we built in the previous section) using Gazebo.
-Afterwards, we will discuss how various sources of odometry can be fused to provide a smoothed odometry using the ``robot_localization`` package.
-Lastly, we will also show how to publish the ``odom`` => ``base_link`` transform using ``robot_localization``.
 
 .. seealso::
   The complete source code in this tutorial can be found in `navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials/tree/humble/sam_bot_description>`_ repository under the ``sam_bot_description`` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.

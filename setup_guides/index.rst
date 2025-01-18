@@ -36,7 +36,6 @@ Table of Contents
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
 
    transformation/setup_transforms.rst
    urdf/setup_urdf.rst
@@ -57,7 +56,6 @@ Table of Contents
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
 
    transformation/setup_transforms.rst
    urdf/setup_urdf.rst

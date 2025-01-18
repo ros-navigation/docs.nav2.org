@@ -1,3 +1,5 @@
+.. _setup_odom_gz:
+
 Setting Up Odometry - Gazebo
 ############################
 
@@ -76,6 +78,10 @@ Setup and Prerequisites
 =======================
 
 `Gazebo <http://gazebosim.org/>`_ is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the `Gazebo Installation Documentation <https://gazebosim.org/docs/latest/ros_installation/>`_.
+
+.. code-block:: shell
+
+  sudo apt install ros-<ros2-distro>-ros-gz
 
 Adding Gazebo Plugins to a URDF/SDF
 ===================================
@@ -268,56 +274,6 @@ If using SDF add the following lines before the ``</model>`` line:
       </sensor>
     </link>
 
-Also set the friction of the caster wheel to near zero. This is to keep things simple.
-
-If using URDF, add the following:
-
-.. code-block:: xml
-
-  <gazebo reference="front_caster">
-    <collision>
-      <surface><friction><ode>
-        <mu>0.001</mu>
-        <mu2>0.001</mu2>
-      </ode></friction></surface>
-    </collision>
-  </gazebo>
-
-If using SDF, modify the caster link as shown below:
-
-.. code-block:: xml
-
-    <link name="front_caster">
-      <pose relative_to="caster_joint"/>
-
-      <visual name="front_caster_visual">
-        <geometry>
-          <sphere>
-            <radius>${(wheel_radius+wheel_zoff-(base_height/2))}</radius>
-          </sphere>
-        </geometry>
-        <material>
-          <ambient>0 1 1 1</ambient>
-          <diffuse>0 1 1 1</diffuse>
-        </material>
-      </visual>
-
-      <collision name="front_caster_collision">
-        <geometry>
-          <sphere>
-            <radius>${(wheel_radius+wheel_zoff-(base_height/2))}</radius>
-          </sphere>
-        </geometry>
-        <surface><friction><ode>
-          <mu>0.001</mu>
-          <mu2>0.001</mu2>
-        </ode></friction></surface>
-      </collision>
-
-      <xacro:sphere_inertia m="0.5" r="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
-    </link>
-
-
 Now, let us add the DiffDrive plugin and the JointStatePublisher plugin. We will configure the plugins such that ``nav_msgs/Odometry`` messages are published on the ``/demo/odom`` topic, ``tf2_msgs/msg/TFMessage`` messages on the ``/tf`` topic, and the ``sensor_msgs/msg/JointState`` messages for the two wheels are published on ``/joint_states``. The joints of the left and right wheels will be set to the wheel joints of ``sam_bot``.
 The wheel separation and wheel radius are set according to the values of the defined values of ``wheel_ygap`` and ``wheel_radius`` respectively.
 
@@ -389,6 +345,104 @@ If using SDF, add the following lines after the ``</link>`` tag of the IMU senso
       <topic>joint_states</topic>
     </plugin>
 
+Also set the friction of the caster wheel to near zero. This is to keep things simple.
+
+If using URDF, add the following:
+
+.. code-block:: xml
+
+  <gazebo reference="front_caster">
+    <collision>
+      <surface><friction><ode>
+        <mu>0.001</mu>
+        <mu2>0.001</mu2>
+      </ode></friction></surface>
+    </collision>
+  </gazebo>
+
+If using SDF, modify the caster link as shown below:
+
+.. code-block:: xml
+
+    <link name="front_caster">
+      <pose relative_to="caster_joint"/>
+
+      <visual name="front_caster_visual">
+        <geometry>
+          <sphere>
+            <radius>${(wheel_radius+wheel_zoff-(base_height/2))}</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0 1 1 1</ambient>
+          <diffuse>0 1 1 1</diffuse>
+        </material>
+      </visual>
+
+      <collision name="front_caster_collision">
+        <geometry>
+          <sphere>
+            <radius>${(wheel_radius+wheel_zoff-(base_height/2))}</radius>
+          </sphere>
+        </geometry>
+        <surface><friction><ode>
+          <mu>0.001</mu>
+          <mu2>0.001</mu2>
+        </ode></friction></surface>
+      </collision>
+
+      <xacro:sphere_inertia m="0.5" r="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
+    </link>
+
+Creating ROS<->Gazebo Bridge
+============================
+
+There is a bridge included in the `ros_gz_bridge` package which allows us to translate Gazebo topics into ROS topics and vice-versa. We need to launch the bridge with a configuration which tells it about what topics we want to bridge.
+
+Now, create a file named ``bridge_config.yaml`` in the ``config`` directory of your package and add the following lines to it to define what topics we want to bridge between ROS and Gazebo:
+
+.. code-block:: yaml
+
+  ---
+  - ros_topic_name: "/clock"
+    gz_topic_name: "/clock"
+    ros_type_name: "rosgraph_msgs/msg/Clock"
+    gz_type_name: "gz.msgs.Clock"
+    direction: GZ_TO_ROS
+
+  - ros_topic_name: "/demo/imu"
+    gz_topic_name: "/demo/imu"
+    ros_type_name: "sensor_msgs/msg/Imu"
+    gz_type_name: "gz.msgs.IMU"
+    direction: GZ_TO_ROS
+
+  # Topic published by DiffDrive plugin
+  - ros_topic_name: "/demo/odom"
+    gz_topic_name: "/demo/odom"
+    ros_type_name: "nav_msgs/msg/Odometry"
+    gz_type_name: "gz.msgs.Odometry"
+    direction: GZ_TO_ROS
+
+  # Topic published by JointStatePublisher plugin
+  - ros_topic_name: "/joint_states"
+    gz_topic_name: "/joint_states"
+    ros_type_name: "sensor_msgs/msg/JointState"
+    gz_type_name: "gz.msgs.Model"
+    direction: GZ_TO_ROS
+
+  # Topic subscribed to by DiffDrive plugin
+  - ros_topic_name: "/demo/cmd_vel"
+    gz_topic_name: "/demo/cmd_vel"
+    ros_type_name: "geometry_msgs/msg/TwistStamped"
+    gz_type_name: "gz.msgs.Twist"
+    direction: ROS_TO_GZ
+
+Finally, add the below variable to the launch file which we will use in the next section to tell the bridge where the config file is:
+
+.. code-block:: python
+
+  bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
+
 Launch and Build Files
 ======================
 
@@ -420,7 +474,7 @@ Remove the following from ``return LaunchDescription([])``:
 
 Next, open `package.xml <https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/package.xml>`_ and delete the lines:
 
-.. code-block:: python
+.. code-block:: xml
 
   <exec_depend>joint_state_publisher</exec_depend>
   <exec_depend>joint_state_publisher_gui</exec_depend>
@@ -476,43 +530,12 @@ Also add the following lines to ``LaunchDescription([])``:
   ros_gz_bridge,
   spawn_entity,
 
-Finally, create a file named ``bridge_config.yaml`` in the ``config`` directory of your package and add the following line to it to define what topics we want to bridge between ROS and Gazebo:
+Finally, add the below lines to your `package.xml`:
 
-.. code-block:: yaml
+.. code-block:: xml
 
-  ---
-  - ros_topic_name: "/clock"
-    gz_topic_name: "/clock"
-    ros_type_name: "rosgraph_msgs/msg/Clock"
-    gz_type_name: "gz.msgs.Clock"
-    direction: GZ_TO_ROS
-
-  - ros_topic_name: "/demo/imu"
-    gz_topic_name: "/demo/imu"
-    ros_type_name: "sensor_msgs/msg/Imu"
-    gz_type_name: "gz.msgs.IMU"
-    direction: GZ_TO_ROS
-
-  # Topic published by DiffDrive plugin
-  - ros_topic_name: "/demo/odom"
-    gz_topic_name: "/demo/odom"
-    ros_type_name: "nav_msgs/msg/Odometry"
-    gz_type_name: "gz.msgs.Odometry"
-    direction: GZ_TO_ROS
-
-  # Topic published by JointStatePublisher plugin
-  - ros_topic_name: "/joint_states"
-    gz_topic_name: "/joint_states"
-    ros_type_name: "sensor_msgs/msg/JointState"
-    gz_type_name: "gz.msgs.Model"
-    direction: GZ_TO_ROS
-
-  # Topic subscribed to by DiffDrive plugin
-  - ros_topic_name: "/demo/cmd_vel"
-    gz_topic_name: "/demo/cmd_vel"
-    ros_type_name: "geometry_msgs/msg/TwistStamped"
-    gz_type_name: "gz.msgs.Twist"
-    direction: ROS_TO_GZ
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>ros_gz_sim</exec_depend>
 
 Build, Run and Verification
 ===========================
