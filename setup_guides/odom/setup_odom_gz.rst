@@ -397,7 +397,7 @@ If using SDF, modify the caster link as shown below:
 Creating ROS<->Gazebo Bridge
 ============================
 
-There is a bridge included in the `ros_gz_bridge` package which allows us to translate Gazebo topics into ROS topics and vice-versa. We need to launch the bridge with a configuration which tells it about what topics we want to bridge.
+There is a bridge included in the ``ros_gz_bridge`` package which allows us to translate Gazebo topics into ROS topics and vice-versa. We need to launch the bridge with a configuration which tells it about what topics we want to bridge.
 
 Now, create a file named ``bridge_config.yaml`` in the ``config`` directory of your package and add the following lines to it to define what topics we want to bridge between ROS and Gazebo:
 
@@ -442,6 +442,289 @@ Finally, add the below variable to the launch file which we will use in the next
 .. code-block:: python
 
   bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
+
+Making a Gazebo world
+=====================
+
+Create a ``world`` directory in your package and add the following to a new file named ``my_world.sdf``:
+
+.. code-block:: xml
+
+  <sdf version='1.7'>
+    <world name='my_world'>
+      <physics name="1ms" type="ignored">
+        <max_step_size>0.001</max_step_size>
+        <real_time_factor>1.0</real_time_factor>
+      </physics>
+      <plugin
+        filename="gz-sim-physics-system"
+        name="gz::sim::systems::Physics">
+      </plugin>
+      <plugin
+        filename="gz-sim-user-commands-system"
+        name="gz::sim::systems::UserCommands">
+      </plugin>
+      <plugin
+        filename="gz-sim-scene-broadcaster-system"
+        name="gz::sim::systems::SceneBroadcaster">
+      </plugin>
+      <plugin filename="gz-sim-imu-system"
+        name="gz::sim::systems::Imu">
+      </plugin>
+      <plugin
+        filename="gz-sim-sensors-system"
+        name="gz::sim::systems::Sensors">
+        <render_engine>ogre2</render_engine>
+      </plugin>
+      <light name='sun' type='directional'>
+        <cast_shadows>1</cast_shadows>
+        <pose>0 0 10 0 -0 0</pose>
+        <diffuse>0.8 0.8 0.8 1</diffuse>
+        <specular>0.2 0.2 0.2 1</specular>
+        <attenuation>
+          <range>1000</range>
+          <constant>0.9</constant>
+          <linear>0.01</linear>
+          <quadratic>0.001</quadratic>
+        </attenuation>
+        <direction>-0.5 0.1 -0.9</direction>
+        <spot>
+          <inner_angle>0</inner_angle>
+          <outer_angle>0</outer_angle>
+          <falloff>0</falloff>
+        </spot>
+      </light>
+      <model name='ground_plane'>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <plane>
+                <normal>0 0 1</normal>
+                <size>100 100</size>
+              </plane>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>100</mu>
+                  <mu2>50</mu2>
+                </ode>
+                <torsional>
+                  <ode/>
+                </torsional>
+              </friction>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+            </surface>
+            <max_contacts>10</max_contacts>
+          </collision>
+          <visual name='visual'>
+            <cast_shadows>0</cast_shadows>
+            <geometry>
+              <plane>
+                <normal>0 0 1</normal>
+                <size>100 100</size>
+              </plane>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+        </link>
+      </model>
+      <gravity>0 0 -9.8</gravity>
+      <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+      <atmosphere type='adiabatic'/>
+      <physics type='ode'>
+        <max_step_size>0.001</max_step_size>
+        <real_time_factor>1</real_time_factor>
+        <real_time_update_rate>1000</real_time_update_rate>
+      </physics>
+      <scene>
+        <ambient>0.4 0.4 0.4 1</ambient>
+        <background>0.7 0.7 0.7 1</background>
+        <shadows>1</shadows>
+      </scene>
+      <wind/>
+      <spherical_coordinates>
+        <surface_model>EARTH_WGS84</surface_model>
+        <latitude_deg>0</latitude_deg>
+        <longitude_deg>0</longitude_deg>
+        <elevation>0</elevation>
+        <heading_deg>0</heading_deg>
+      </spherical_coordinates>
+      <model name='unit_box'>
+        <pose>1.51271 -0.181418 0.5 0 -0 0</pose>
+        <link name='link'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>1 1 1</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>1 1 1</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <name>Gazebo/Grey</name>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+        </link>
+      </model>
+      <model name='unit_sphere'>
+        <pose>-1.89496 2.36764 0.5 0 -0 0</pose>
+        <link name='link'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.1</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.1</iyy>
+              <iyz>0</iyz>
+              <izz>0.1</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <collision name='collision'>
+            <geometry>
+              <sphere>
+                <radius>0.5</radius>
+              </sphere>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <sphere>
+                <radius>0.5</radius>
+              </sphere>
+            </geometry>
+            <material>
+              <script>
+                <name>Gazebo/Grey</name>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+        </link>
+      </model>
+      <state world_name='default'>
+        <sim_time>0 0</sim_time>
+        <real_time>0 0</real_time>
+        <wall_time>1626668720 808592627</wall_time>
+        <iterations>0</iterations>
+        <model name='ground_plane'>
+          <pose>0 0 0 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose>0 0 0 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='unit_box'>
+          <pose>1.51272 -0.181418 0.499995 0 1e-05 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose>1.51272 -0.181418 0.499995 0 1e-05 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0.010615 -0.006191 -9.78231 0.012424 0.021225 1.8e-05</acceleration>
+            <wrench>0.010615 -0.006191 -9.78231 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='unit_sphere'>
+          <pose>-0.725833 1.36206 0.5 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose>-0.944955 1.09802 0.5 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <light name='sun'>
+          <pose>0 0 10 0 -0 0</pose>
+        </light>
+      </state>
+      <gui fullscreen='0'>
+        <camera name='user_camera'>
+          <pose>3.17226 -5.10401 6.58845 0 0.739643 2.19219</pose>
+          <view_controller>orbit</view_controller>
+          <projection_type>perspective</projection_type>
+        </camera>
+      </gui>
+    </world>
+  </sdf>
+
+We also have to add the ``world`` directory to our ``CMakeLists.txt`` file. Open `CmakeLists.txt <https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/CMakeLists.txt>`_ and append the ``world`` directory inside the install(DIRECTORY...), as shown in the snippet below.
+
+.. code-block:: cmake
+
+  install(
+    DIRECTORY src launch rviz config world
+    DESTINATION share/${PROJECT_NAME}
+  )
 
 Launch and Build Files
 ======================

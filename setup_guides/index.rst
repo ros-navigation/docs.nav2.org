@@ -43,6 +43,7 @@ Table of Contents
    odom/setup_odom_gz.rst
    odom/setup_robot_localization.rst
    sensors/setup_sensors_gz.rst
+   sensors/mapping_localization.rst
    footprint/setup_footprint.rst
    algorithm/select_algorithm.rst
 
@@ -62,6 +63,7 @@ Table of Contents
    odom/setup_odom_gz_classic.rst
    odom/setup_robot_localization.rst
    sensors/setup_sensors_gz_classic.rst
+   sensors/mapping_localization.rst
    footprint/setup_footprint.rst
    algorithm/select_algorithm.rst
 
