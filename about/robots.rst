@@ -32,7 +32,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb4|          +      |tb3|             +      |rosbot_xl|       |
 +------------------------+------------------------+------------------------+
-|         |waratah|         +      |botr|            +      |soon|            |
+|         |waratah|      +      |botr|            +      |soon|            |
 +------------------------+------------------------+------------------------+
 .. |botr| image:: images/botronics.png
     :width: 100%
