@@ -5,7 +5,7 @@ Setting Up The SDF - Gazebo
 
 .. note:: You can also setup a URDF description, see :ref:`urdf_handson`. It is recommended to setup a SDF instead of URDF if you are going to be using Gazebo. There is no need to setup both URDF and SDF, only one of them is needed.
 
-For this guide, we will be creating the SDF (Simulation Description Format) file for a simple differential drive robot to give you hands-on experience on working with SDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot SDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
+For this guide, we will be creating the SDF (Simulation Description Format) file for a simple differential drive robot to give you hands-on experience on building an SDF file for Gazebo simulation. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot SDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
 .. seealso::
   The complete source code in this tutorial can be found in `navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description>`_ repository under the ``sam_bot_description`` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
