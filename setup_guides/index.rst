@@ -13,7 +13,8 @@ This section is a collection of guides that aims to provide readers a good resou
 
 To guide you through the first-time setup of your robot, we will be tackling the following topics:
 
-- Introduce TF2 and setup your robot URDF or SDF
+- Introduce TF2 and setup your robot URDF & SDF
+
 - Setup sensor sources for robot odometry
 - Setup sensor sources for perception
 - Configure round or arbitrary shaped footprints for your robot
