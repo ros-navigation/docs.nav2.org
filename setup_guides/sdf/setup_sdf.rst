@@ -33,7 +33,7 @@ Let's begin by installing some additional ROS 2 packages that we will be using d
 
   sudo apt install ros-<ros2-distro>-joint-state-publisher-gui
   sudo apt install ros-<ros2-distro>-xacro
-  sudo apt install ros-<ros2-distro>-sdformat_urdf
+  sudo apt install ros-<ros2-distro>-sdformat-urdf
  
 Next, create a directory for your project, initialize a ROS 2 workspace and give your robot a name. For ours, we'll be calling it ``sam_bot``.
 
