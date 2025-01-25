@@ -3,6 +3,8 @@
 Setting Up The URDF
 ###################
 
+.. note:: Note that you will also be setting up a SDF for simulation in Gazebo in the next tutorials. URDF is used to set up the robot frames and describe the robot's structure for run-time use on hardware and possibly in simulation. SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
+
 For this guide, we will be creating the Unified Robot Description Format (URDF) file for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
 .. seealso::
@@ -201,35 +203,38 @@ Next, let us create our launch file. Launch files are used by ROS 2 to bring up 
 
 .. code-block:: python
 
-  import launch
+  from launch import LaunchDescription
+  from launch.actions import DeclareLaunchArgument
+  from launch.conditions import IfCondition, UnlessCondition
   from launch.substitutions import Command, LaunchConfiguration
-  import launch_ros
+  from launch_ros.actions import Node
+  from launch_ros.substitutions import FindPackageShare
   import os
 
   def generate_launch_description():
-      pkg_share = launch_ros.substitutions.FindPackageShare(package='sam_bot_description').find('sam_bot_description')
-      default_model_path = os.path.join(pkg_share, 'src/description/sam_bot_description.urdf')
-      default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config.rviz')
+      pkg_share = FindPackageShare(package='sam_bot_description').find('sam_bot_description')
+      default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.urdf')
+      default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
 
-      robot_state_publisher_node = launch_ros.actions.Node(
+      robot_state_publisher_node = Node(
           package='robot_state_publisher',
           executable='robot_state_publisher',
           parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
       )
-      joint_state_publisher_node = launch_ros.actions.Node(
+      joint_state_publisher_node = Node(
           package='joint_state_publisher',
           executable='joint_state_publisher',
           name='joint_state_publisher',
           parameters=[{'robot_description': Command(['xacro ', default_model_path])}],
-          condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui'))
+          condition=UnlessCondition(LaunchConfiguration('gui'))
       )
-      joint_state_publisher_gui_node = launch_ros.actions.Node(
+      joint_state_publisher_gui_node = Node(
           package='joint_state_publisher_gui',
           executable='joint_state_publisher_gui',
           name='joint_state_publisher_gui',
-          condition=launch.conditions.IfCondition(LaunchConfiguration('gui'))
+          condition=IfCondition(LaunchConfiguration('gui'))
       )
-      rviz_node = launch_ros.actions.Node(
+      rviz_node = Node(
           package='rviz2',
           executable='rviz2',
           name='rviz2',
@@ -237,13 +242,10 @@ Next, let us create our launch file. Launch files are used by ROS 2 to bring up 
           arguments=['-d', LaunchConfiguration('rvizconfig')],
       )
 
-      return launch.LaunchDescription([
-          launch.actions.DeclareLaunchArgument(name='gui', default_value='True',
-                                              description='Flag to enable joint_state_publisher_gui'),
-          launch.actions.DeclareLaunchArgument(name='model', default_value=default_model_path,
-                                              description='Absolute path to robot urdf file'),
-          launch.actions.DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path,
-                                              description='Absolute path to rviz config file'),
+      return LaunchDescription([
+          DeclareLaunchArgument(name='gui', default_value='True', description='Flag to enable joint_state_publisher_gui'),
+          DeclareLaunchArgument(name='model', default_value=default_model_path, description='Absolute path to robot model file'),
+          DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path, description='Absolute path to rviz config file'),
           joint_state_publisher_node,
           joint_state_publisher_gui_node,
           robot_state_publisher_node,
@@ -252,7 +254,7 @@ Next, let us create our launch file. Launch files are used by ROS 2 to bring up 
 
 .. seealso:: For more information regarding the launch system in ROS 2, you can have a look at the official `ROS 2 Launch System Documentation <https://docs.ros.org/en/rolling/Tutorials/Launch-system.html>`__
 
-To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``urdf_config.rviz`` under it. Place the following as the contents of ``urdf_config.rviz``
+To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``config.rviz`` under it. Place the following as the contents of ``config.rviz``
 
 .. code-block:: shell
 
