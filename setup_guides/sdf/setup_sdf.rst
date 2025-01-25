@@ -52,7 +52,7 @@ Here is the SDF version of the URDF code:
 
       <xacro:property name="caster_xoff" value="0.14"/>
 
-      <!-- Define some commonly used intertial properties  -->
+      <!-- Define some commonly used inertial properties  -->
       <xacro:macro name="box_inertia" params="m w h d">
         <inertial>
           <pose>0 0 0 ${pi/2} 0 ${pi/2}</pose>
