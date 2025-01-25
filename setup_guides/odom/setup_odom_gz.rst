@@ -90,98 +90,9 @@ We will now add the IMU sensor and the differential drive plugins of Gazebo to o
 
 A sensor must be attached to a link, thus we will create an ``imu_link`` to which the IMU sensor will be attached. This link will be referenced under the ``<gazebo>`` element if using URDF. Next, we will set ``/demo/imu`` as the topic to which the IMU will be publishing its information, and we will comply with `REP145 <https://www.ros.org/reps/rep-0145.html>`_ by setting ``initalOrientationAsReference`` to ``false``. We will also add some noise to the sensor configuration using Gazebo's `sensor noise model <https://classic.gazebosim.org/tutorials?tut=sensor_noise>`_.
 
-Now, we will set up our IMU sensor plugin according to the description above.
-If using URDF add the following lines before the ``</robot>`` line:
+Now, we will set up our IMU sensor according to the description above.
 
-.. code-block:: xml
-
-  <link name="imu_link">
-    <visual>
-      <geometry>
-        <box size="0.1 0.1 0.1"/>
-      </geometry>
-    </visual>
-
-    <collision>
-      <geometry>
-        <box size="0.1 0.1 0.1"/>
-      </geometry>
-    </collision>
-
-    <xacro:box_inertia m="0.1" w="0.1" d="0.1" h="0.1"/>
-  </link>
-
-  <joint name="imu_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="imu_link"/>
-    <origin xyz="0 0 0.01"/>
-  </joint>
-
-  <gazebo reference="imu_link">
-    <sensor name="imu_sensor" type="imu">
-      <always_on>true</always_on>
-      <update_rate>100</update_rate>
-      <visualize>true</visualize>
-      <topic>demo/imu</topic>
-      <gz_frame_id>imu_link</gz_frame_id>
-      <imu>
-        <angular_velocity>
-          <x>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>2e-4</stddev>
-              <bias_mean>0.0000075</bias_mean>
-              <bias_stddev>0.0000008</bias_stddev>
-            </noise>
-          </x>
-          <y>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>2e-4</stddev>
-              <bias_mean>0.0000075</bias_mean>
-              <bias_stddev>0.0000008</bias_stddev>
-            </noise>
-          </y>
-          <z>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>2e-4</stddev>
-              <bias_mean>0.0000075</bias_mean>
-              <bias_stddev>0.0000008</bias_stddev>
-            </noise>
-          </z>
-        </angular_velocity>
-        <linear_acceleration>
-          <x>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>1.7e-2</stddev>
-              <bias_mean>0.1</bias_mean>
-              <bias_stddev>0.001</bias_stddev>
-            </noise>
-          </x>
-          <y>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>1.7e-2</stddev>
-              <bias_mean>0.1</bias_mean>
-              <bias_stddev>0.001</bias_stddev>
-            </noise>
-          </y>
-          <z>
-            <noise type="gaussian">
-              <mean>0.0</mean>
-              <stddev>1.7e-2</stddev>
-              <bias_mean>0.1</bias_mean>
-              <bias_stddev>0.001</bias_stddev>
-            </noise>
-          </z>
-        </linear_acceleration>
-      </imu>
-    </sensor>
-  </gazebo>
-
-If using SDF add the following lines before the ``</model>`` line:
+Add the following lines before the ``</model>`` line in your robot SDF:
 
 .. code-block:: xml
 
@@ -277,42 +188,7 @@ If using SDF add the following lines before the ``</model>`` line:
 Now, let us add the DiffDrive plugin and the JointStatePublisher plugin. We will configure the plugins such that ``nav_msgs/Odometry`` messages are published on the ``/demo/odom`` topic, ``tf2_msgs/msg/TFMessage`` messages on the ``/tf`` topic, and the ``sensor_msgs/msg/JointState`` messages for the two wheels are published on ``/joint_states``. The joints of the left and right wheels will be set to the wheel joints of ``sam_bot``.
 The wheel separation and wheel radius are set according to the values of the defined values of ``wheel_ygap`` and ``wheel_radius`` respectively.
 
-If using URDF, add the following lines after the ``</gazebo>`` tag of the IMU sensor:
-
-.. code-block:: xml
-
-  <gazebo>
-    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
-      <!-- wheels -->
-      <left_joint>drivewhl_l_joint</left_joint>
-      <right_joint>drivewhl_r_joint</right_joint>
-
-      <!-- kinematics -->
-      <wheel_separation>0.4</wheel_separation>
-      <wheel_radius>${wheel_radius}</wheel_radius>
-
-      <!-- limits -->
-      <max_linear_acceleration>0.1</max_linear_acceleration>
-
-      <!-- input -->
-      <topic>/demo/cmd_vel</topic>
-
-      <!-- output -->
-      <odom_topic>/demo/odom</odom_topic>
-      <tf_topic>/tf</tf_topic>
-
-      <frame_id>odom</frame_id>
-      <child_frame_id>base_link</child_frame_id>
-    </plugin>
-
-    <plugin
-      filename="gz-sim-joint-state-publisher-system"
-      name="gz::sim::systems::JointStatePublisher">
-      <topic>joint_states</topic>
-    </plugin>
-  </gazebo>
-
-If using SDF, add the following lines after the ``</link>`` tag of the IMU sensor:
+Add the following lines after the ``</link>`` tag of the IMU sensor in your SDF:
 
 .. code-block:: xml
 
@@ -345,22 +221,7 @@ If using SDF, add the following lines after the ``</link>`` tag of the IMU senso
       <topic>joint_states</topic>
     </plugin>
 
-Also set the friction of the caster wheel to near zero. This is to keep things simple.
-
-If using URDF, add the following:
-
-.. code-block:: xml
-
-  <gazebo reference="front_caster">
-    <collision>
-      <surface><friction><ode>
-        <mu>0.001</mu>
-        <mu2>0.001</mu2>
-      </ode></friction></surface>
-    </collision>
-  </gazebo>
-
-If using SDF, modify the caster link as shown below:
+Also set the friction of the caster wheel to near zero by modifying the caster link in your SDF as shown below. This is to keep things simple.
 
 .. code-block:: xml
 

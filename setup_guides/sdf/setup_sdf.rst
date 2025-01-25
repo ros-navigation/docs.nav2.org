@@ -3,73 +3,41 @@
 Setting Up The SDF - Gazebo
 ###########################
 
-.. note:: You can also setup a URDF description, see :ref:`urdf_handson`. It is recommended to setup a SDF instead of URDF if you are going to be using Gazebo. There is no need to setup both URDF and SDF, only one of them is needed.
+.. note:: Note that you have already setup a URDF in the previous tutorials but will also need to setup a SDF. URDF is used to set up the robot frames and describe the robot's structure for run-time use on hardware and possibly in simulation. SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
 
-For this guide, we will be creating the SDF (Simulation Description Format) file for a simple differential drive robot to give you hands-on experience on building an SDF file for Gazebo simulation. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot SDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
+For this guide, we will be creating the SDF (Simulation Description Format) file for a simple differential drive robot to give you hands-on experience on building an SDF file for Gazebo simulation.
 
 .. seealso::
   The complete source code in this tutorial can be found in `navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description>`_ repository under the ``sam_bot_description`` package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.
 
-SDF and the Robot State Publisher
-==================================
+About SDF
+=========
 
-As discussed in the previous tutorial, one of the requirements for Navigation2 is the transformation from  ``base_link`` to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  ``base_link`` to ``laser_link`` or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms. 
+SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
 
-The Robot State Publisher is a package of ROS 2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct SDF and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees. 
+We can also use our SDF with the robot_state_publisher but the following package would be required to do that:
 
-SDF is a description format primarily used by the Gazebo simulator to define various properties of a robot or other models and to also define a Gazebo world. In this tutorial we are going to be looking at how we can describe a robot using SDF.
+.. code-block:: shell
+
+  sudo apt install ros-<ros2-distro>-sdformat-urdf
+
+This package contains a C++ library and urdf_parser_plugin for converting SDFormat XML into URDF C++ structures. Installing it allows one to use SDFormat XML instead of URDF XML as a robot description.
 
 .. seealso::
-  If you want to learn more about the SDF and the Robot State Publisher, we encourage you to have a look at the official `SDFormat Website <http://sdformat.org/>`__ and `Robot State Publisher Documentation <http://wiki.ros.org/robot_state_publisher>`__  
-
-Setting Up the Environment
-==========================
-
-In this guide, we are assuming that you are already familiar with ROS 2 and how to setup your development environment, so we'll breeze through the steps in this section.
-
-Let's begin by installing some additional ROS 2 packages that we will be using during this tutorial.
-
-.. code-block:: shell
-
-  sudo apt install ros-<ros2-distro>-joint-state-publisher-gui
-  sudo apt install ros-<ros2-distro>-xacro
-  sudo apt install ros-<ros2-distro>-sdformat-urdf
- 
-Next, create a directory for your project, initialize a ROS 2 workspace and give your robot a name. For ours, we'll be calling it ``sam_bot``.
-
-.. code-block:: shell
-
-  ros2 pkg create --build-type ament_cmake sam_bot_description
+  If you want to learn more about the SDF and sdformat_urdf, we encourage you to have a look at the official `SDFormat Website <http://sdformat.org/>`__ and the `sdformat_urdf GitHub repository <https://github.com/ros/sdformat_urdf/tree/rolling/sdformat_urdf>`__
 
 Writing the SDF
 ================
 
-Now that we have our project workspace set up, let's dive straight into writing the SDF. Below is an image of the robot we will be trying to build.
+For now the SDF will pretty much be a copy of the URDF code converted into SDFormat. Changes between the two descriptions will happen when we start adding various plugins and sensors in the next tutorials.
 
-.. image:: images/base-bot_1.png
-   :width: 49%
-.. image:: images/base-bot_2.png
-   :width: 49%
-
-|
-
- To get started, create a file named ``sam_bot_description.sdf`` under ``src/description`` and input the following as the initial contents of the file. 
+Here is the SDF version of the URDF code:
 
 .. code-block:: xml
 
   <?xml version="1.0" ?>
   <sdf version="1.8" xmlns:xacro="http://ros.org/wiki/xacro">
     <model name='sam_bot' canonical_link='base_link'>
-
-
-    </model>
-  </sdf>
-
-.. note:: The following code snippets should be placed within the ``<model>`` tags. We suggest to add them in the same order as introduced in this tutorial.
-
-Next, let us define some constants using Xacro properties that will be reused throughout the SDF.
-
-.. code-block:: xml
 
       <!-- Define robot constants -->
       <xacro:property name="base_width" value="0.31"/>
@@ -84,310 +52,7 @@ Next, let us define some constants using Xacro properties that will be reused th
 
       <xacro:property name="caster_xoff" value="0.14"/>
 
-Here is a brief discussion on what these properties will represent in our sdf. The ``base_*`` properties all define the size of the robot's main chassis. The ``wheel_radius`` and ``wheel_width`` define the shape of the robot's two back wheels. The ``wheel_ygap`` adjusts the gap between the wheel and the chassis along the y-axis whilst ``wheel_zoff`` and ``wheel_xoff`` position the back wheels along the z-axis and x-axis appropriately. Lastly, the ``caster_xoff`` positions the front caster wheel along the x-axis.
-
-Let us then define our ``base_link`` - this link will be a large box and will act as the main chassis of our robot. In SDF, a ``link`` element describes a rigid part or component of our robot. The robot state publisher then utilizes these definitions to determine coordinate frames for each link and publish the transformations between them. 
-
-We will also be defining some of the link's visual properties which can be used by tools such as Gazebo and Rviz to show us a 3D model of our robot. Amongst these properties are ``<geometry>`` which describes the link's shape and ``<material>`` which describes it's color.
-
-For the code block below, we access the ``base`` properties from the robot constants sections we defined before using the ``${property}`` syntax. In addition, we also set the material color of the main chassis. Note that we set these parameters under the ``<visual>`` tag so they will only be applied as visual parameters which dont affect any collision or physical properties.
-
-.. code-block:: xml
-
-      <!-- Robot Base -->
-      <link name='base_link'>
-        <must_be_base_link>true</must_be_base_link>
-        <visual name="base_link_visual">
-          <geometry>
-            <box><size>
-              ${base_length} ${base_width} ${base_height}
-            </size></box>
-          </geometry>
-          <material>
-            <ambient>0 1 1 1</ambient>
-            <diffuse>0 1 1 1</diffuse>
-          </material>
-        </visual>
-      </link>
-
-Next, let us define a ``base_footprint`` link. The ``base_footprint`` link is a virtual (non-physical) link which has no dimensions or collision areas. Its primary purpose is to enable various packages determine the center of a robot projected to the ground. For example, Navigation2 uses this link to determine the center of a circular footprint used in its obstacle avoidance algorithms. Again, we set this link with no dimensions and to which position the robot's center is in when it is projected to the ground plane.
-
-After defining our base_link, we then add a joint to connect it to ``base_link``. In SDF, a ``joint`` element describes the kinematic and dynamic properties between coordinate frames. For this case, we will be defining a ``fixed`` joint with the appropriate offsets to place our ``base_footprint`` link in the proper location based on the description above. Remember that we want to set our base_footprint to be at the ground plane when projected from the center of the main chassis, hence we get the sum of the ``wheel_radius`` and the ``wheel_zoff`` to get the appropriate location along the z-axis.
-
-.. code-block:: xml
-
-      <!-- Robot Footprint -->
-      <link name='base_footprint'>
-        <pose relative_to="base_joint"/>
-      </link>
-
-      <joint name='base_joint' type='fixed'>
-        <parent>base_link</parent>
-        <child>base_footprint</child>
-        <pose relative_to="base_link">0.0 0.0 ${-(wheel_radius+wheel_zoff)} 0 0 0</pose>
-      </joint>
-
-Now, we will be adding two large drive wheels to our robot. To make our code cleaner and avoid repetition, we will make use of macros to define a block of code that will be repeated with differing parameters. Our macro will have 3 params: ``prefix`` which simply adds a prefix to our link and joint names, and ``x_reflect`` and ``y_reflect`` which allows us to flip the positions of our wheels with respect to the x and y axis respectively. Within this macro, we can also define the visual properties of a single wheel. Lastly, we will also define a ``revloute`` joint with infinite limits (a continuous joint should have been used, but it isn't supported by Gazebo at the time of writing) to allow our wheels to freely rotate about an axis. This joint also connects our wheel to the ``base_link`` at the appropriate location. 
-
-At the end of this code block, we will be instantiating two wheels using the macro we just made through the ``xacro:wheel`` tags. Note that we also define the parameters to have one wheel on both sides at the back of our robot. 
-
-.. code-block:: xml
-
-      <!-- Wheels -->
-      <xacro:macro name="wheel" params="prefix x_reflect y_reflect">
-        <link name="${prefix}_link">
-          <pose relative_to="${prefix}_joint"/>
-
-          <visual name="${prefix}_link_visual">
-            <pose relative_to="${prefix}_link">0 0 0 ${pi/2} 0 0</pose>
-            <geometry>
-              <cylinder>
-                <radius>${wheel_radius}</radius>
-                <length>${wheel_width}</length>
-              </cylinder>
-            </geometry>
-            <material>
-              <ambient>0.3 0.3 0.3 1.0</ambient>
-              <diffuse>0.7 0.7 0.7 1.0</diffuse>
-            </material>
-          </visual>
-        </link>
-
-        <joint name="${prefix}_joint" type="revolute">
-          <parent>base_link</parent>
-          <child>${prefix}_link</child>
-          <pose relative_to="base_link">${x_reflect*wheel_xoff} ${y_reflect*(base_width/2+wheel_ygap)} ${-wheel_zoff} 0 0 0</pose>
-          <axis>
-            <xyz>0 1 0</xyz>
-            <limit>
-              <lower>-inf</lower>
-              <upper>inf</upper>
-            </limit>
-          </axis>
-        </joint>
-      </xacro:macro>
-
-      <xacro:wheel prefix="drivewhl_l" x_reflect="-1" y_reflect="1" />
-      <xacro:wheel prefix="drivewhl_r" x_reflect="-1" y_reflect="-1" />
-
-Next, we will be adding a caster wheel at the front of our robot. We will be modelling this wheel as a sphere to keep things simple. Again, we define the wheel's geometry, material and the joint to connect it to ``base_link`` at the appropriate location.
-
-.. code-block:: xml
-
-      <!-- Caster Wheel -->
-      <link name="front_caster">
-        <pose relative_to="caster_joint"/>
-
-        <visual name="front_caster_visual">
-          <geometry>
-            <sphere>
-              <radius>${(wheel_radius+wheel_zoff-(base_height/2))}</radius>
-            </sphere>
-          </geometry>
-          <material>
-            <ambient>0 1 1 1</ambient>
-            <diffuse>0 1 1 1</diffuse>
-          </material>
-        </visual>
-      </link>
-
-      <joint name="caster_joint" type="fixed">
-        <parent>base_link</parent>
-        <child>front_caster</child>
-        <pose relative_to="base_link">${caster_xoff} 0.0 ${-(base_height/2)} 0 0 0</pose>
-      </joint>
-
-And that's it! We have built a SDF for a simple differential drive robot. In the next section, we will focus on building the ROS Package containing our SDF, launching the robot state publisher, and visualizing the robot in RVIz.
-
-Build and Launch
-================
-
-Let's start this section by adding some dependencies that will be required once we build this project. Open up the root of your project directory and add the following lines to your ``package.xml`` (preferably after the ``<buildtool_depend>`` tag)
-
-.. code-block:: xml
-
-  <exec_depend>joint_state_publisher</exec_depend>
-  <exec_depend>joint_state_publisher_gui</exec_depend>
-  <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>rviz</exec_depend>
-  <exec_depend>sdformat_urdf</exec_depend>
-  <exec_depend>xacro</exec_depend>
-
-Next, let us create our launch file. Launch files are used by ROS 2 to bring up the necessary nodes for our package. From the root of the project, create a directory named ``launch`` and a ``display.launch.py`` file within it. The launch file below launches a robot publisher node in ROS 2 that uses our SDF to publish the transforms for our robot. In addition, the launch file also automatically launches RVIZ so we can visualize our robot as defined by the SDF. Copy and paste the snippet below into your ``display.launch.py`` file. 
-
-.. code-block:: python
-
-  from launch import LaunchDescription
-  from launch.actions import DeclareLaunchArgument
-  from launch.conditions import IfCondition, UnlessCondition
-  from launch.substitutions import Command, LaunchConfiguration
-  from launch_ros.actions import Node
-  from launch_ros.substitutions import FindPackageShare
-  import os
-
-  def generate_launch_description():
-      pkg_share = FindPackageShare(package='sam_bot_description').find('sam_bot_description')
-      default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.sdf')
-      default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
-
-      robot_state_publisher_node = Node(
-          package='robot_state_publisher',
-          executable='robot_state_publisher',
-          parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
-      )
-      joint_state_publisher_node = Node(
-          package='joint_state_publisher',
-          executable='joint_state_publisher',
-          name='joint_state_publisher',
-          parameters=[{'robot_description': Command(['xacro ', default_model_path])}],
-          condition=UnlessCondition(LaunchConfiguration('gui'))
-      )
-      joint_state_publisher_gui_node = Node(
-          package='joint_state_publisher_gui',
-          executable='joint_state_publisher_gui',
-          name='joint_state_publisher_gui',
-          condition=IfCondition(LaunchConfiguration('gui'))
-      )
-      rviz_node = Node(
-          package='rviz2',
-          executable='rviz2',
-          name='rviz2',
-          output='screen',
-          arguments=['-d', LaunchConfiguration('rvizconfig')],
-      )
-
-      return LaunchDescription([
-          DeclareLaunchArgument(name='gui', default_value='True', description='Flag to enable joint_state_publisher_gui'),
-          DeclareLaunchArgument(name='model', default_value=default_model_path, description='Absolute path to robot model file'),
-          DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path, description='Absolute path to rviz config file'),
-          joint_state_publisher_node,
-          joint_state_publisher_gui_node,
-          robot_state_publisher_node,
-          rviz_node
-      ])
-
-.. seealso:: For more information regarding the launch system in ROS 2, you can have a look at the official `ROS 2 Launch System Documentation <https://docs.ros.org/en/rolling/Tutorials/Launch-system.html>`__
-
-To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``config.rviz`` under it. Place the following as the contents of ``config.rviz``
-
-.. code-block:: shell
-
-  Panels:
-    - Class: rviz_common/Displays
-      Help Height: 78
-      Name: Displays
-      Property Tree Widget:
-        Expanded:
-          - /Global Options1
-          - /Status1
-          - /RobotModel1/Links1
-          - /TF1
-        Splitter Ratio: 0.5
-      Tree Height: 557
-  Visualization Manager:
-    Class: ""
-    Displays:
-      - Alpha: 0.5
-        Cell Size: 1
-        Class: rviz_default_plugins/Grid
-        Color: 160; 160; 164
-        Enabled: true
-        Name: Grid
-      - Alpha: 0.6
-        Class: rviz_default_plugins/RobotModel
-        Description Topic:
-          Depth: 5
-          Durability Policy: Volatile
-          History Policy: Keep Last
-          Reliability Policy: Reliable
-          Value: /robot_description
-        Enabled: true
-        Name: RobotModel
-        Visual Enabled: true
-      - Class: rviz_default_plugins/TF
-        Enabled: true
-        Name: TF
-        Marker Scale: 0.3
-        Show Arrows: true
-        Show Axes: true
-        Show Names: true
-    Enabled: true
-    Global Options:
-      Background Color: 48; 48; 48
-      Fixed Frame: base_link
-      Frame Rate: 30
-    Name: root
-    Tools:
-      - Class: rviz_default_plugins/Interact
-        Hide Inactive Objects: true
-      - Class: rviz_default_plugins/MoveCamera
-      - Class: rviz_default_plugins/Select
-      - Class: rviz_default_plugins/FocusCamera
-      - Class: rviz_default_plugins/Measure
-        Line color: 128; 128; 0
-    Transformation:
-      Current:
-        Class: rviz_default_plugins/TF
-    Value: true
-    Views:
-      Current:
-        Class: rviz_default_plugins/Orbit
-        Name: Current View
-        Target Frame: <Fixed Frame>
-        Value: Orbit (rviz)
-      Saved: ~
-
-Lastly, let us modify the ``CMakeLists.txt`` file in the project root directory to include the files we just created during the package installation process. Add the following snippet to ``CMakeLists.txt`` file preferably above the ``if(BUILD_TESTING)`` line:
-
-.. code-block:: shell
-
-  install(
-    DIRECTORY src launch rviz
-    DESTINATION share/${PROJECT_NAME}
-  )
-
-We are now ready to build our project using colcon. Navigate to the project root and execute the following commands.
-
-.. code-block:: shell
-
-  colcon build
-  . install/setup.bash
-
-After a successful build, execute the following commands to install the ROS 2 package and launch our project.
-
-.. code-block:: shell
-
-  ros2 launch sam_bot_description display.launch.py
-
-ROS 2 should now launch a robot publisher node and start up RVIZ using our SDF. We'll be taking a look at our robot using RVIZ in the next section.
-
-Visualization using RVIZ
-========================
-
-RVIZ is a robot visualization tool that allows us to see a 3D model of our robot using its SDF. Upon a successful launch using the commands in the previous section, RVIZ should now be visible on your screen and should look like the image below. You may need to move around and manipulate the view to get a good look at your robot. 
-
-.. image:: images/base-bot_3.png
-
-As you can see, we have successfully created a simple differential drive robot and visualized it in RVIz. It is not necessary to visualize your robot in RVIz, but it's a good step in order to see if you have properly defined your SDF. This helps you ensure that the robot state publisher is publishing the correct transformations. 
-
-You may have noticed that another window was launched - this is a GUI for the joint state publisher. The joint state publisher is another ROS 2 package which publishes the state for our non-fixed joints. You can manipulate this publisher through the small GUI and the new pose of the joints will be reflected in RVIz. Sliding the bars for any of the two wheels will rotate these joints. You can see this in action by viewing RVIZ as you sweep the sliders in the Joint State Publisher GUI.
-
-.. image:: images/base-bot_4.png
-
-.. note:: We won't be interacting much with this package for Nav2, but if you would like to know more about the joint state publisher, feel free to have a look at the official `Joint State Publisher Documentation <http://wiki.ros.org/joint_state_publisher>`_.
-
-At this point, you may already decide to stop with this tutorial since we have already achieved our objective of creating a SDF for a simple differential drive robot. The robot state publisher is now publishing the transforms derived from the SDF. These transforms can now be used by other packages (such as Nav2) to get information regarding the shape and structure of your robot. However, to properly use this SDF in a simulation, we need physical properties so that the robot reacts to physical environments like a real robot would. The visualization fields are only for visualization, not collision, so your robot will drive straight through obstacles. We'll get into adding these properties in our SDF in the next section.
-
-Adding Physical Properties
-==========================
-
-As an additional section to this guide, we will be modifying our current SDF to include some of our robot's kinematic properties. This information may be used by physics simulators such as Gazebo to model and simulate how our robot will act in the virtual environment.
-
-Let us first define macros containing the inertial properties of the geometric primitives we used in our project. Place the snippet below after our constants section in the SDF:
-
-.. code-block:: xml
-
-      <!-- Define some commonly used inertial properties  -->
+      <!-- Define some commonly used intertial properties  -->
       <xacro:macro name="box_inertia" params="m w h d">
         <inertial>
           <pose>0 0 0 ${pi/2} 0 ${pi/2}</pose>
@@ -433,9 +98,20 @@ Let us first define macros containing the inertial properties of the geometric p
         </inertial>
       </xacro:macro>
 
-Let us start by adding collision areas to our ``base_link`` using the ``<collision>`` tag. We will also be using the box_inertia macro we defined before to add some inertial properties to our ``base_link``. Include the following code snippet within ``<link name="base_link">`` tag of base_link in our SDF.
-
-.. code-block:: xml
+      <!-- Robot Base -->
+      <link name='base_link'>
+        <must_be_base_link>true</must_be_base_link>
+        <visual name="base_link_visual">
+          <geometry>
+            <box><size>
+              ${base_length} ${base_width} ${base_height}
+            </size></box>
+          </geometry>
+          <material>
+            <ambient>0 1 1 1</ambient>
+            <diffuse>0 1 1 1</diffuse>
+          </material>
+        </visual>
 
         <collision name="base_link_collision">
           <geometry>
@@ -446,10 +122,39 @@ Let us start by adding collision areas to our ``base_link`` using the ``<collisi
         </collision>
 
         <xacro:box_inertia m="15" w="${base_width}" d="${base_length}" h="${base_height}"/>
+      </link>
 
-Next, let us do the same for our wheel macros. Include the following code snippet within the ``<link name="${prefix}_link">`` tag of our wheel macros in our SDF.
+      <!-- Robot Footprint -->
+      <link name='base_footprint'>
+        <pose relative_to="base_joint"/>
+        <xacro:box_inertia m="0" w="0" d="0" h="0"/>
+      </link>
 
-.. code-block:: xml
+      <joint name='base_joint' type='fixed'>
+        <parent>base_link</parent>
+        <child>base_footprint</child>
+        <pose relative_to="base_link">0.0 0.0 ${-(wheel_radius+wheel_zoff)} 0 0 0</pose>
+      </joint>
+
+
+      <!-- Wheels -->
+      <xacro:macro name="wheel" params="prefix x_reflect y_reflect">
+        <link name="${prefix}_link">
+          <pose relative_to="${prefix}_joint"/>
+
+          <visual name="${prefix}_link_visual">
+            <pose relative_to="${prefix}_link">0 0 0 ${pi/2} 0 0</pose>
+            <geometry>
+              <cylinder>
+                <radius>${wheel_radius}</radius>
+                <length>${wheel_width}</length>
+              </cylinder>
+            </geometry>
+            <material>
+              <ambient>0.3 0.3 0.3 1.0</ambient>
+              <diffuse>0.7 0.7 0.7 1.0</diffuse>
+            </material>
+          </visual>
 
           <collision name="${prefix}_link_collision">
             <pose relative_to="${prefix}_link">0 0 0 ${pi/2} 0 0</pose>
@@ -462,10 +167,39 @@ Next, let us do the same for our wheel macros. Include the following code snippe
           </collision>
 
           <xacro:cylinder_inertia m="0.5" r="${wheel_radius}" h="${wheel_width}"/>
+        </link>
 
-Lastly, let us add the similar properties to our spherical caster wheels. Include the following in the ``<link name="front_caster">`` tag of our caster wheel in the SDF.
+        <joint name="${prefix}_joint" type="revolute">
+          <parent>base_link</parent>
+          <child>${prefix}_link</child>
+          <pose relative_to="base_link">${x_reflect*wheel_xoff} ${y_reflect*(base_width/2+wheel_ygap)} ${-wheel_zoff} 0 0 0</pose>
+          <axis>
+            <xyz>0 1 0</xyz>
+            <limit>
+              <lower>-inf</lower>
+              <upper>inf</upper>
+            </limit>
+          </axis>
+        </joint>
+      </xacro:macro>
 
-.. code-block:: xml
+      <xacro:wheel prefix="drivewhl_l" x_reflect="-1" y_reflect="1" />
+      <xacro:wheel prefix="drivewhl_r" x_reflect="-1" y_reflect="-1" />
+
+      <link name="front_caster">
+        <pose relative_to="caster_joint"/>
+
+        <visual name="front_caster_visual">
+          <geometry>
+            <sphere>
+              <radius>${(wheel_radius+wheel_zoff-(base_height/2))}</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0 1 1 1</ambient>
+            <diffuse>0 1 1 1</diffuse>
+          </material>
+        </visual>
 
         <collision name="front_caster_collision">
           <geometry>
@@ -473,29 +207,274 @@ Lastly, let us add the similar properties to our spherical caster wheels. Includ
               <radius>${(wheel_radius+wheel_zoff-(base_height/2))}</radius>
             </sphere>
           </geometry>
+          <surface><friction><ode>
+            <mu>0.001</mu>
+            <mu2>0.001</mu2>
+          </ode></friction></surface>
         </collision>
 
         <xacro:sphere_inertia m="0.5" r="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
+      </link>
 
-.. note:: We did not add any inertial or collision properties to our ``base_footprint`` link since this is a virtual and non-physical link.
+      <joint name="caster_joint" type="fixed">
+        <parent>base_link</parent>
+        <child>front_caster</child>
+        <pose relative_to="base_link">${caster_xoff} 0.0 ${-(base_height/2)} 0 0 0</pose>
+      </joint>
 
-Build your project and then launch RViz using the same commands in the previous section.
+      <joint name='imu_joint' type='fixed'>
+        <parent>base_link</parent>
+        <child>imu_link</child>
+        <pose relative_to="base_link">0.0 0.0 0.01 0 0 0</pose>
+      </joint>
+
+      <link name='imu_link'>
+        <pose relative_to="imu_joint"/>
+        <visual name="imu_link_visual">
+          <geometry>
+            <box><size>
+              0.1 0.1 0.1
+            </size></box>
+          </geometry>
+        </visual>
+
+        <collision name="imu_link_collision">
+          <geometry>
+            <box><size>
+              0.1 0.1 0.1
+            </size></box>
+          </geometry>
+        </collision>
+
+        <xacro:box_inertia m="0.1" w="0.1" d="0.1" h="0.1"/>
+
+        <sensor name="imu_sensor" type="imu">
+          <always_on>true</always_on>
+          <update_rate>100</update_rate>
+          <visualize>true</visualize>
+          <topic>demo/imu</topic>
+          <gz_frame_id>imu_link</gz_frame_id>
+          <imu>
+            <angular_velocity>
+              <x>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>2e-4</stddev>
+                  <bias_mean>0.0000075</bias_mean>
+                  <bias_stddev>0.0000008</bias_stddev>
+                </noise>
+              </x>
+              <y>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>2e-4</stddev>
+                  <bias_mean>0.0000075</bias_mean>
+                  <bias_stddev>0.0000008</bias_stddev>
+                </noise>
+              </y>
+              <z>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>2e-4</stddev>
+                  <bias_mean>0.0000075</bias_mean>
+                  <bias_stddev>0.0000008</bias_stddev>
+                </noise>
+              </z>
+            </angular_velocity>
+            <linear_acceleration>
+              <x>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>1.7e-2</stddev>
+                  <bias_mean>0.1</bias_mean>
+                  <bias_stddev>0.001</bias_stddev>
+                </noise>
+              </x>
+              <y>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>1.7e-2</stddev>
+                  <bias_mean>0.1</bias_mean>
+                  <bias_stddev>0.001</bias_stddev>
+                </noise>
+              </y>
+              <z>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>1.7e-2</stddev>
+                  <bias_mean>0.1</bias_mean>
+                  <bias_stddev>0.001</bias_stddev>
+                </noise>
+              </z>
+            </linear_acceleration>
+          </imu>
+        </sensor>
+      </link>
+
+      <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+        <!-- wheels -->
+        <left_joint>drivewhl_l_joint</left_joint>
+        <right_joint>drivewhl_r_joint</right_joint>
+
+        <!-- kinematics -->
+        <wheel_separation>0.4</wheel_separation>
+        <wheel_radius>${wheel_radius}</wheel_radius>
+
+        <!-- limits -->
+        <max_linear_acceleration>0.1</max_linear_acceleration>
+
+        <!-- input -->
+        <topic>/demo/cmd_vel</topic>
+
+        <!-- output -->
+        <odom_topic>/demo/odom</odom_topic>
+        <tf_topic>/tf</tf_topic>
+
+        <frame_id>odom</frame_id>
+        <child_frame_id>base_link</child_frame_id>
+      </plugin>
+
+      <plugin
+        filename="gz-sim-joint-state-publisher-system"
+        name="gz::sim::systems::JointStatePublisher">
+        <topic>joint_states</topic>
+      </plugin>
+
+      <joint name="lidar_joint" type="fixed">
+        <parent>base_link</parent>
+        <child>lidar_link</child>
+        <pose relative_to="base_link">0.0 0.0 0.12 0 0 0</pose>
+      </joint>
+
+      <link name='lidar_link'>
+        <pose relative_to="lidar_joint"/>
+        <visual name="lidar_link_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.0508</radius>
+              <length>0.055</length>
+            </cylinder>
+          </geometry>
+        </visual>
+
+        <collision name="lidar_link_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.0508</radius>
+              <length>0.055</length>
+            </cylinder>
+          </geometry>
+        </collision>
+
+        <xacro:cylinder_inertia m="0.125" r="0.0508" h="0.055"/>
+
+        <sensor name="lidar" type="gpu_lidar">
+          <always_on>true</always_on>
+          <visualize>true</visualize>
+          <update_rate>5</update_rate>
+          <topic>scan</topic>
+          <gz_frame_id>lidar_link</gz_frame_id>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>360</samples>
+                <resolution>1.000000</resolution>
+                <min_angle>0.000000</min_angle>
+                <max_angle>6.280000</max_angle>
+              </horizontal>
+            </scan>
+            <range>
+              <min>0.120000</min>
+              <max>3.5</max>
+              <resolution>0.015000</resolution>
+            </range>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.01</stddev>
+            </noise>
+          </ray>
+        </sensor>
+      </link>
+
+      <joint name="camera_joint" type="fixed">
+        <parent>base_link</parent>
+        <child>camera_link</child>
+        <pose relative_to="base_link">0.215 0 0.05 0 0 0</pose>
+      </joint>
+
+      <link name='camera_link'>
+        <pose relative_to="camera_joint"/>
+        <visual name="camera_link_visual">
+          <geometry>
+            <box><size>
+              0.015 0.130 0.0222
+            </size></box>
+          </geometry>
+        </visual>
+
+        <collision name="camera_link_collision">
+          <geometry>
+            <box><size>
+              0.015 0.130 0.0222
+            </size></box>
+          </geometry>
+        </collision>
+
+        <xacro:box_inertia m="0.035" w="0.015" d="0.130" h="0.0222"/>
+
+        <sensor name="depth_camera" type="rgbd_camera">
+          <always_on>true</always_on>
+          <visualize>true</visualize>
+          <update_rate>30.0</update_rate>
+          <topic>depth_camera</topic>
+          <gz_frame_id>camera_link</gz_frame_id>
+          <camera>
+            <horizontal_fov>1.047198</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+            </image>
+            <clip>
+              <near>0.05</near>
+              <far>3</far>
+            </clip>
+          </camera>
+          <baseline>0.2</baseline>
+          <pointCloudCutoff>0.5</pointCloudCutoff>
+          <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+          <distortionK1>0</distortionK1>
+          <distortionK2>0</distortionK2>
+          <distortionK3>0</distortionK3>
+          <distortionT1>0</distortionT1>
+          <distortionT2>0</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </sensor>
+      </link>
+    </model>
+  </sdf>
+
+Build and Launch
+================
+Change the ``default_model_path`` in ``display.launch.py`` to reference the SDF description instead of the URDF one.
+
+.. code-block:: python
+
+  default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.sdf')
+
+Now build and source your package and launch ``display.launch.py``:
 
 .. code-block:: shell
 
-  colcon build
-  . install/setup.bash
+  colcon build --symlink-install
+  source install/setup.bash
   ros2 launch sam_bot_description display.launch.py
-
-You can verify whether you have properly set up the collision areas by enabling ``Collision Enabled`` under ``RobotModel`` on the left pane (it may be easier to see if you also turn off ``Visual Enabled``). For this tutorial we defined a collision area which is similar to our visual properties. Note that this may not always be the case since you may opt for simpler collision areas based on how your robot looks.
-
-.. image:: images/base-bot_5.png
-
-For now, we will have to stop here since we will need to set up a lot more components to actually start simulating our robot in Gazebo. We will be coming back to this project during the course of these setup guides, and we will eventually see our robot move in a virtual environment once we get to the simulation sections. The major components that are missing from this work are the simulation plugins required to mimic your robot controllers. We will introduce those and add them to this SDF in the appropriate section.
 
 Conclusion
 ==========
 
-And that's it. In this tutorial, you have successfully created a SDF for a simple differential drive robot. You have also set up a ROS 2 project that launches a robot publisher node, which then uses your SDF to publish the robot's transforms. We have also used RViz to visualize our robot to verify whether our SDF is correct. Lastly, we have added in some physical properties to our SDF in order to prepare it for simulation.
-
-Feel free to use this tutorial as a template for your own robot. Remember that your main goal is to publish the correct transforms from your base_link up to your sensor_frames. Once these have been setup, then you may proceed to our other setup guides.
+And that's it. In this tutorial, you have successfully created a SDF for a simple differential drive robot. You have also set up a ROS 2 project that launches a robot publisher node, which then uses your SDF to publish the robot's transforms. We have also used RViz to visualize our robot to verify whether our SDF is correct.

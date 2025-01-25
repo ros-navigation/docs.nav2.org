@@ -65,7 +65,7 @@ To be able to follow the rest of this section, make sure that you have properly 
 Adding Gazebo Plugins to a URDF or SDF
 ======================================
 
-Let us first add a lidar sensor to ``sam_bot``. If using URDF paste the following lines before the ``</robot>`` tag.
+Let us first add a lidar sensor to ``sam_bot``. In your URDF paste the following lines before the ``</robot>`` tag to just add the lidar's link and joint.
 
 .. code-block:: xml
 
@@ -97,37 +97,7 @@ Let us first add a lidar sensor to ``sam_bot``. If using URDF paste the followin
       <origin xyz="0 0 0.12" rpy="0 0 0"/>
     </joint>
 
-    <gazebo reference="lidar_link">
-      <sensor name="lidar" type="gpu_lidar">
-        <always_on>true</always_on>
-        <visualize>true</visualize>
-        <update_rate>5</update_rate>
-        <topic>scan</topic>
-        <gz_frame_id>lidar_link</gz_frame_id>
-        <ray>
-          <scan>
-            <horizontal>
-              <samples>360</samples>
-              <resolution>1.000000</resolution>
-              <min_angle>0.000000</min_angle>
-              <max_angle>6.280000</max_angle>
-            </horizontal>
-          </scan>
-          <range>
-            <min>0.120000</min>
-            <max>3.5</max>
-            <resolution>0.015000</resolution>
-          </range>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.01</stddev>
-          </noise>
-        </ray>
-      </sensor>
-    </gazebo>
-
-If using SDF add the below before the ``</model>`` line:
+In your SDF add the below before the ``</model>`` line to add the lidar's link, joint, and Gazebo specific sensor information:
 
 .. code-block:: xml
 
@@ -188,7 +158,9 @@ If using SDF add the below before the ``</model>`` line:
         </sensor>
       </link>
 
-Next, let us add a depth camera to ``sam_bot``. If using URDF paste the following lines after the ``</gazebo>`` tag of the lidar sensor. 
+In the code snippet above we set the sensor values of lidar_link to the simulated lidar's scan and range properties and set /scan as the topic to which it will publish the sensor_msgs/LaserScan messages.
+
+Next, let us add a depth camera to ``sam_bot``. In your URDF paste the following lines after the ``</joint>`` tag of the lidar sensor to just add the camera's link and joint. 
 
 .. code-block:: xml
 
@@ -220,41 +192,7 @@ Next, let us add a depth camera to ``sam_bot``. If using URDF paste the followin
       <origin xyz="0.215 0 0.05" rpy="0 0 0"/>
     </joint>
 
-    <gazebo reference="camera_link">
-      <sensor name="depth_camera" type="rgbd_camera">
-        <always_on>true</always_on>
-        <visualize>true</visualize>
-        <update_rate>30.0</update_rate>
-        <topic>depth_camera</topic>
-        <gz_frame_id>camera_link</gz_frame_id>
-        <camera>
-          <horizontal_fov>1.047198</horizontal_fov>
-          <image>
-            <width>640</width>
-            <height>480</height>
-          </image>
-          <clip>
-            <near>0.05</near>
-            <far>3</far>
-          </clip>
-        </camera>
-        <baseline>0.2</baseline>
-        <pointCloudCutoff>0.5</pointCloudCutoff>
-        <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
-        <distortionK1>0</distortionK1>
-        <distortionK2>0</distortionK2>
-        <distortionK3>0</distortionK3>
-        <distortionT1>0</distortionT1>
-        <distortionT2>0</distortionT2>
-        <CxPrime>0</CxPrime>
-        <Cx>0</Cx>
-        <Cy>0</Cy>
-        <focalLength>0</focalLength>
-        <hackBaseline>0</hackBaseline>
-      </sensor>
-    </gazebo>
-
-If using SDF, paste the following lines after the ``</link>`` tag of the lidar sensor:
+In your SDF, paste the following lines after the ``</link>`` tag of the lidar sensor to add the camera's link, joint, and Gazebo specific sensor information:
 
 .. code-block:: xml
 
@@ -316,6 +254,8 @@ If using SDF, paste the following lines after the ``</link>`` tag of the lidar s
           <hackBaseline>0</hackBaseline>
         </sensor>
       </link>
+
+In the code snippet above we set the sensor values of camera_link to the simulated depth camera's properties and configure the sensor such that it will publish sensor_msgs/Image and sensor_msgs/PointCloud2 messages to /depth_camera/image_raw and /depth_camera/points topics respectively.
 
 Updating Bridge Config
 ======================

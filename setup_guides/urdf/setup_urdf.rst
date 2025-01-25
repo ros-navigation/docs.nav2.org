@@ -3,7 +3,7 @@
 Setting Up The URDF
 ###################
 
-.. note:: You can also setup a SDF description if using Gazebo (not Gazebo Classic), see :ref:`sdf_handson`. It is recommended to setup a SDF instead of URDF if you are going to be using Gazebo. There is no need to setup both URDF and SDF, only one of them is needed.
+.. note:: Note that you will also be setting up a SDF for simulation in Gazebo in the next tutorials. URDF is used to set up the robot frames and describe the robot's structure for run-time use on hardware and possibly in simulation. SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
 
 For this guide, we will be creating the Unified Robot Description Format (URDF) file for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
