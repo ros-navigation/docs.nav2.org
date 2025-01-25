@@ -309,6 +309,32 @@ New interface for ``GlobalPlanner::createPlan``:
 This is implemented for all the planners in the stack, you can check them for the example use of ``cancel_checker`` function (simply check ``cancel_checker()``).
 Smac and Theta* planners have a new parameter ``terminal_checking_interval`` which is the frequency of the cancel or timeout checking in terms of number of iterations.
 
+Enable goal orientation non-specificity
+*******************************************
+`PR #4148 <https://github.com/ros-planning/navigation2/pull/4127>`_  introduces two new parameters(goal_heading_mode, coarse_search_resolution) in the smac planner, specifically the smac planner hybrid and smac planner lattice that allows for the
+planner to plan to a goal with multiple orientations and return the best path in just one planning call. This is useful for robots that can approach a goal from multiple orientations and the user does not want to plan to each orientation separately.
+In addition to this, the coarse_search_resolution parameter is added to the smac planner lattice to allow for a faster search for the best path.
+
+Here is an Example of the smacHybrid planner with the default goal_heading_mode to see the difference in the planned path.
+
+.. image:: images/smacHybrid_with_default_goal_heading_mode.gif
+    :width: 700px
+    :alt: Navigation2 with smacHybrid planner with default goal_heading_mode
+    :align: center
+
+Here is an Example of the smacHybrid planner with the bidirectional goal_heading_mode to see the difference in the planned path.
+
+.. image:: images/smacHybrid_with_bidirectional_goal_heading_mode.gif
+    :width: 700px
+    :alt: Navigation2 with smacHybrid planner with bidirectional goal_heading_mode
+    :align: center
+
+Here is an Example of the smacHybrid planner with the all_directions goal_heading_mode to see the difference in the planned path.
+
+.. image:: images/smacHybrid_with_all_direction_goal_heading_mode.gif
+    :width: 700px
+    :alt: Navigation2 with smacHybrid planner with all_direction goal_heading_mode
+    :align: center
 
 New BtActionServer/BtNavigator parameter
 ****************************************
