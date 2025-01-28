@@ -304,6 +304,11 @@ Finally, add the below variable to the launch file which we will use in the next
 
   bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
 
+
+You now need to put `this <https://github.com/ros-navigation/navigation2_tutorials/blob/rolling/sam_bot_description/world/my_world.sdf>`_ world file into a new ``world`` directory, add that directory to your CMakeLists, and make a ``world_path`` variable pointing to it. For more detailed instructions open the dropdown below.
+
+.. rst-class:: content-collapse
+
 Making a Gazebo world
 =====================
 
@@ -586,6 +591,13 @@ We also have to add the ``world`` directory to our ``CMakeLists.txt`` file. Open
     DIRECTORY src launch rviz config world
     DESTINATION share/${PROJECT_NAME}
   )
+
+Finally, add the below variable to the launch file which we will use in the next section to tell Gazebo where the world file is located:
+
+.. code-block:: python
+
+  world_path = os.path.join(pkg_share, 'world', 'my_world.sdf')
+
 
 Launch and Build Files
 ======================

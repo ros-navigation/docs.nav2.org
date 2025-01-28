@@ -225,7 +225,7 @@ In your SDF, paste the following lines after the ``</link>`` tag of the lidar se
         <sensor name="depth_camera" type="rgbd_camera">
           <always_on>true</always_on>
           <visualize>true</visualize>
-          <update_rate>30.0</update_rate>
+          <update_rate>5.0</update_rate>
           <topic>depth_camera</topic>
           <gz_frame_id>camera_link</gz_frame_id>
           <camera>
