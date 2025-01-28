@@ -255,7 +255,7 @@ In your SDF, paste the following lines after the ``</link>`` tag of the lidar se
         </sensor>
       </link>
 
-In the code snippet above we set the sensor values of camera_link to the simulated depth camera's properties and configure the sensor such that it will publish sensor_msgs/Image and sensor_msgs/PointCloud2 messages to /depth_camera/image_raw and /depth_camera/points topics respectively.
+In the code snippet above we set the sensor values of camera_link to the simulated depth camera's properties and configure the sensor such that it will publish sensor_msgs/Image and ``sensor_msgs/PointCloud2`` messages to `/depth_camera/image_raw`` and ``/depth_camera/points`` topics respectively.
 
 Updating Bridge Config
 ======================

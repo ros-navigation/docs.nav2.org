@@ -13,7 +13,7 @@ For this guide, we will be creating the SDF (Simulation Description Format) file
 About SDF
 =========
 
-SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
+SDF is a file format for simulators, like Gazebo, that describes the simulator environment, models (including its links, connections, and physics simulator metadata), and appropriate plugins. The SDF that we will make is for modern Gazebo, but there are other simulator options such as Open3D Engine or Isaac Sim.
 
 We can also use our SDF with the robot_state_publisher but the following package would be required to do that:
 
