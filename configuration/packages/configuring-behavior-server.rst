@@ -280,7 +280,7 @@ Backup distance, speed and time_allowance is given from the action request.
   ============== =============================
 
   Description
-    Maximum acceleration limit (m/s^2). This effects the speed decreasing of the robot as we move backwards.
+    Maximum acceleration limit (m/s^2). This parameter limits the rate at which speed increases when moving backward.
 
 :backup.deceleration_limit:
 
@@ -291,7 +291,7 @@ Backup distance, speed and time_allowance is given from the action request.
   ============== =============================
 
   Description
-    Maximum deceleration limit (m/s^2). Negative value. This effects the speed increasing of the robot as we move backwards.
+    Maximum deceleration limit (m/s^2). Negative value. This parameter limits the rate at which speed decreases when moving backward.
 
 :backup.minimum_speed:
 
