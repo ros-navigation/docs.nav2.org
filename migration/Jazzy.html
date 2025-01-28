@@ -1068,6 +1068,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#computepaththroughposes-navigatethroughposes-and-other-bt-nodes-now-use-posestampedarray-instead-of-vector-posestamped">ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use PoseStampedArray instead of vector&lt;PoseStamped&gt;</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45">MPPI controller re-implemented using Eigen library and performance improved by 40-45%</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">DriveOnHeading and BackUp behaviors: Addition of acceleration constraints</a></li>
 </ul>
 </li>
 </ul>
@@ -1340,6 +1341,15 @@ Since <cite>PoseStampedArray</cite> contains a header, the poses are now accesse
 <h2>MPPI controller re-implemented using Eigen library and performance improved by 40-45%<a class="headerlink" href="#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45" title="Permalink to this heading"></a></h2>
 <p>In the <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4621">PR #4621</a> MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
 MPPI Optimizer’s performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively.</p>
+</div>
+<div class="section" id="driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">
+<h2>DriveOnHeading and BackUp behaviors: Addition of acceleration constraints<a class="headerlink" href="#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4810">PR #4810</a> adds new parameters <code class="docutils literal notranslate"><span class="pre">acceleration_limit</span></code>, <code class="docutils literal notranslate"><span class="pre">deceleration_limit</span></code>, <code class="docutils literal notranslate"><span class="pre">minimum_speed</span></code> for the <cite>DriveOnHeading</cite> and <cite>BackUp</cite> Behaviors. The default values are as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">acceleration_limit</span></code>: 2.5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deceleration_limit</span></code>: -2.5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minimum_speed</span></code>: 0.10</p></li>
+</ul>
 </div>
 </div>
 
