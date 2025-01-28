@@ -302,7 +302,7 @@ Backup distance, speed and time_allowance is given from the action request.
   ============== =============================
 
   Description
-    Minimum speed (m/s). Positive value.
+    Minimum speed to move, the deadband velocity of the robot behavior (m/s). Positive value.
 
 DriveOnHeading Behavior Parameters
 **********************************
@@ -375,7 +375,7 @@ DriveOnHeading distance, speed and time_allowance is given from the action reque
   ============== =============================
 
   Description
-    Minimum speed (m/s).
+    Minimum speed to move, the deadband velocity of the robot behavior (m/s). Positive value.
 
 AssistedTeleop Behavior Parameters
 **********************************
