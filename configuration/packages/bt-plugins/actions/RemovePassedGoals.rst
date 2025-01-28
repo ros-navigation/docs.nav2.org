@@ -33,11 +33,11 @@ Input Ports
 
 :input_goals:
 
-  ===================================== =======
-  Type                                  Default
-  ------------------------------------- -------
-  geometry_msgs::msg::PoseStamped         N/A  
-  ===================================== =======
+  ==================================== =======
+  Type                                 Default
+  ------------------------------------ -------
+  geometry_msgs::msg::PoseStampedArray   N/A  
+  ==================================== =======
 
   Description
     A vector of goals to check if it passed any in the current iteration.
@@ -47,11 +47,11 @@ Output Ports
 
 :output_goals:
 
-  ===================================== =======
-  Type                                  Default
-  ------------------------------------- -------
-  geometry_msgs::msg::PoseStamped         N/A  
-  ===================================== =======
+  ==================================== =======
+  Type                                 Default
+  ------------------------------------ -------
+  geometry_msgs::msg::PoseStampedArray   N/A  
+  ==================================== =======
 
   Description
     A vector of goals with goals removed in proximity to the robot

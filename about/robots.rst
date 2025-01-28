@@ -35,6 +35,14 @@ Click on the images below for a link to the drivers or navigation configurations
 |         |soon|         +      |botr|            +      |soon|            |
 +------------------------+------------------------+------------------------+
 
+Research Robots
+================
+
++------------------------+------------------------+------------------------+
+|         |waratah|      +      |soon|            +      |soon|            |
++------------------------+------------------------+------------------------+
+
+
 .. |botr| image:: images/botronics.png
     :width: 100%
     :align: middle
@@ -226,3 +234,10 @@ Click on the images below for a link to the drivers or navigation configurations
     :align: middle
     :alt: Husarion ROSbot XL
     :target: https://github.com/husarion/rosbot-xl-autonomy
+
+.. |waratah| image:: images/waratah.png
+    :width: 100%
+    :align: middle
+    :alt: Waratah from Monash Nova Rocer
+    :target: https://www.novarover.space/
+

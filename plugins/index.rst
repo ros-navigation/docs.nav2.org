@@ -70,6 +70,12 @@ Costmap Layers
 |                                |                        | standalone obstacles or small    |
 |                                |                        | obstacles groups                 |
 +--------------------------------+------------------------+----------------------------------+
+| `Plugin Container Layer`_      |  Alexander Yuen        | Combines the different costmap   |
+|                                |                        | layers specified under this      |
+|                                |                        | layer in order populate the same |
+|                                |                        | costmap with different isolated  |
+|                                |                        | combinations of costmap layers   |
++--------------------------------+------------------------+----------------------------------+
 
 .. _Voxel Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/voxel_layer.cpp
 .. _Static Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/static_layer.cpp
@@ -79,6 +85,7 @@ Costmap Layers
 .. _Spatio-Temporal Voxel Layer: https://github.com/SteveMacenski/spatio_temporal_voxel_layer/
 .. _Non-Persistent Voxel Layer: https://github.com/SteveMacenski/nonpersistent_voxel_layer
 .. _Denoise Layer: https://github.com/ryzhikovas/navigation2/tree/feature-costmap2d-denoise/nav2_costmap_2d/plugins/denoise_layer.cpp
+.. _Plugin Container Layer: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d/plugins/plugin_container_layer.cpp
 
 Costmap Filters
 ===============
@@ -126,8 +133,8 @@ Controllers
 |                                |                       | to path heading before passing     | model rotate in place |
 |                                |                       | to main controller for  tracking.  |                       |
 +--------------------------------+-----------------------+------------------------------------+-----------------------+
-| `Graceful Controller`_         | Alberto Tudela        | A controller based on a            | Differential          |
-|                                |                       | pose-following control law to      |                       |
+| `Graceful Controller`_         | Alberto Tudela        | A controller based on a            | Differential, Omni,   |
+|                                |                       | pose-following control law to      | Legged                |
 |                                |                       | generate smooth trajectories.      |                       |
 +--------------------------------+-----------------------+------------------------------------+-----------------------+
 | `Vector Pursuit Controller`_   | Black Coffee Robotics | A controller based on the vector   | Differential,         |

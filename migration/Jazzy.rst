@@ -1,9 +1,9 @@
 .. _jazzy_migration:
 
-Jazzy to K-Turtle
-#################
+Jazzy to Kilted
+###############
 
-Moving from ROS 2 Jazzy to K-Turtle, a number of stability improvements were added that we will not specifically address here.
+Moving from ROS 2 Jazzy to Kilted, a number of stability improvements were added that we will not specifically address here.
 
 TwistStamped Default CmdVel Change
 **********************************
@@ -13,7 +13,7 @@ it also allows for rejection of stale velocity messages, which can be useful in 
 Your robot should now subscribe to a ``TwistStamped`` message instead of a ``Twist`` message & update your simulation appropriately.
 The topic names are the same.
 
-However, this can be disabled by setting ``enable_twist_stamped`` to ``false`` in the ``nav2_params.yaml`` file for all nodes that involve Twist subscriptions or publications.
+However, this can be disabled by setting ``enable_stamped_cmd_vel`` to ``false`` in the ``nav2_params.yaml`` file for all nodes that involve Twist subscriptions or publications.
 See the configuration guide for more information on how to configure this parameter for each node.
 
 An example simulation migration using Gazebo can be seen in the `following pull request for the Turtlebot 3 and 4 <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/pull/16>`_.
@@ -51,14 +51,18 @@ Here we can see the working demo of the plugin:
 
 .. attention:: If the docking server is unavailable, then the combo box of the dock type will be empty.
 
-New BT Nodes
-************
+BT Nodes Changes
+****************
 
 Below is a list of new BT Nodes added:
 
 - ``GetPoseFromPath``: An action to get a particular pose from an input path.
 - ``RemoveInCollisionGoals``: An action to remove waypoints that have a cost higher than a threshold.
 - ``IsStopped``: A condition to check if the robot is stopped for a certain duration.
+
+Below is a list of changes to existing BT Nodes:
+
+- ``GoalUpdater``: It now supports updating a list of goals as well (useful for NavigateThroughPoses interface)
 
 New RViz Tool for Costmap Cost Cell Inspection
 **********************************************
@@ -114,6 +118,12 @@ In `PR #4675 <https://github.com/ros-navigation/navigation2/pull/4675>`_ a ``pub
 Default value:
 
 - true
+
+Rotation Shim Disengagement Threshold
+*************************************
+
+The parameter ``angular_disengage_threshold`` was introduced as a new threshold for disengagement of the rotation in the rotation shim controller.
+Previous behavior rotated until the ``angular_dist_threshold``, now it can rotate until the ``angular_disengage_threshold``, which can be set closer to the path's orientation if desired.
 
 Added optional collision checking for the Docking Server
 ********************************************************
@@ -199,3 +209,47 @@ This can be useful, for example, in cases where you want to move the robot even 
 Default value:
 
 - false
+
+New Plugin Container Layer
+**************************
+
+In `PR #4781 <https://github.com/ros-navigation/navigation2/pull/4781>`_ a costmap layer plugin type was added to support the grouping of different costmap layers under a single costmap layer. This would allow for different isolated combinations of costmap layers to be combined under one parent costmap instead of the current implementation which would indiscriminately combine all costmap layers together.
+
+Iterative Target Selection for the Graceful Controller
+******************************************************
+
+In `PR #4795 <https://github.com/ros-navigation/navigation2/pull/4795>`_ the ``nav2_graceful_controller`` was updated to iteratively select motion targets. This is a large refactor which significantly improves the performance of the controller. The ``motion_target_dist`` parameter has been replaced by ``min_lookahead`` and ``max_lookahead`` parameters. Additional changes include:
+
+* Improved defaults for ``k_phi``, ``k_delta``, ``beta`` parameters of the underlying control law.
+* Automatic creation of orientations for the plan if they are missing.
+* Addition of ``v_angular_min_in_place`` parameter to avoid the robot getting stuck while rotating due to mechanical limitations.
+* ``final_rotation`` has been renamed ``prefer_final_rotation`` and the behavior has changed slightly.
+
+Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file
+*********************************************************************
+
+In `PR #4811 <https://github.com/ros-navigation/navigation2/pull/4811>`_ the ``cloned_multi_tb3_simulation_launch.py`` launch file was updated so that parsing the robots conforms to the ROS 2 launch file standards. This was achieved by refactoring the ``ParseMultiRobotPose`` class to be a custom launch substitution. This change allows users to pass the ``robots`` from another launch file through ``launch_arguments`` which was not possible with the old version.
+
+Example for including ``cloned_multi_tb3_simulation_launch.py`` in another launch file:
+
+.. code-block:: python
+
+    IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('nav2_bringup'), "launch", "cloned_multi_tb3_simulation_launch.py")
+        ),
+        launch_arguments={"robots": "robot1={x: 0.5, y: 0.5, yaw: 1.5707}"}.items(),
+    )
+
+ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use PoseStampedArray instead of vector<PoseStamped>
+************************************************************************************************************************
+
+In `PR #262 <https://github.com/ros2/common_interfaces/pull/262>`_ a new message type `PoseStampedArray` was introduced to the `geometry_msgs` package.
+In `PR #4791 <https://github.com/ros-navigation/navigation2/pull/4791>`_, most instances of `std::vector<geometry_msgs::msg::PoseStamped>` have been replaced with `geometry_msgs::msg::PoseStampedArray`. Most notably, `NavigateThroughPoses.action` and `ComputePathThroughPoses.action` have been updated to use `PoseStampedArray`.
+Since `PoseStampedArray` contains a header, the poses are now accessed via `NavigateThroughPoses.poses.poses` instead of `NavigateThroughPoses.poses` or `ComputePathThroughPoses.goals.poses` instead of `ComputePathThroughPoses.poses`. Please update your code accordingly when using these interfaces.
+
+MPPI controller re-implemented using Eigen library and performance improved by 40-45%
+*************************************************************************************
+
+In the `PR #4621 <https://github.com/ros-navigation/navigation2/pull/4621>`_ MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
+MPPI Optimizer's performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively. 
