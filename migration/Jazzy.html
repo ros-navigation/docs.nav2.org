@@ -1069,6 +1069,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#computepaththroughposes-navigatethroughposes-and-other-bt-nodes-now-use-posestampedarray-instead-of-vector-posestamped">ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use PoseStampedArray instead of vector&lt;PoseStamped&gt;</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45">MPPI controller re-implemented using Eigen library and performance improved by 40-45%</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">DriveOnHeading and BackUp behaviors: Addition of acceleration constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
 </ul>
 </li>
 </ul>
@@ -1350,6 +1351,20 @@ MPPI Optimizer’s performance is improved by 40-50%. Now MPPI Controller can al
 <li><p><code class="docutils literal notranslate"><span class="pre">deceleration_limit</span></code>: -2.5</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">minimum_speed</span></code>: 0.10</p></li>
 </ul>
+</div>
+<div class="section" id="rotation-shim-deceleration-as-a-function-of-its-target-orientation">
+<h2>Rotation Shim Deceleration as a function of its target orientation<a class="headerlink" href="#rotation-shim-deceleration-as-a-function-of-its-target-orientation" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4864">PR #4864</a> the Rotation Shim Controller was updated to decelerate as a function of its target orientation. This allows the robot to slow down as it approaches its target orientation, reducing overshoot when passing to the primary controller. The deceleration is controlled by the <cite>max_angular_accel</cite> parameter.</p>
+<p>A demo can be seen below with the following parameters:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]:</span>
+<span class="w">  </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_rotation_shim_controller::RotationShimController&quot;</span>
+<span class="w">  </span><span class="nt">angular_dist_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.22</span><span class="w"> </span><span class="c1"># (70 degrees)</span>
+<span class="w">  </span><span class="nt">angular_disengage_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"> </span><span class="c1"># (3 degrees)</span>
+<span class="w">  </span><span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
+<span class="w">  </span><span class="nt">max_angular_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/rotation_shim_decel.gif"><img alt="Rotation Shim Deceleration" class="align-center" src="../_images/rotation_shim_decel.gif" style="width: 800px;" /></a>
 </div>
 </div>
 
