@@ -255,7 +255,7 @@ In the `PR #4621 <https://github.com/ros-navigation/navigation2/pull/4621>`_ MPP
 MPPI Optimizer's performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively. 
 
 DriveOnHeading and BackUp behaviors: Addition of acceleration constraints
-******************************************************************
+*************************************************************************
 `PR #4810 <https://github.com/ros-navigation/navigation2/pull/4810>`_ adds new parameters ``acceleration_limit``, ``deceleration_limit``, ``minimum_speed`` for the `DriveOnHeading` and `BackUp` Behaviors. The default values are as follows:
 
 - ``acceleration_limit``: 2.5
