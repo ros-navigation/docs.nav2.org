@@ -261,3 +261,25 @@ DriveOnHeading and BackUp behaviors: Addition of acceleration constraints
 - ``acceleration_limit``: 2.5
 - ``deceleration_limit``: -2.5
 - ``minimum_speed``: 0.10
+
+Rotation Shim Deceleration as a function of its target orientation
+**************************************************************************
+
+In `PR #4864 <https://github.com/ros-navigation/navigation2/pull/4864>`_ the Rotation Shim Controller was updated to decelerate as a function of its target orientation. This allows the robot to slow down as it approaches its target orientation, reducing overshoot when passing to the primary controller. The deceleration is controlled by the `max_angular_accel` parameter.
+
+A demo can be seen below with the following parameters:
+
+.. code-block:: yaml
+
+  [...]:
+    plugin: "nav2_rotation_shim_controller::RotationShimController"
+    angular_dist_threshold: 1.22 # (70 degrees)
+    angular_disengage_threshold: 0.05 # (3 degrees)
+    rotate_to_heading_angular_vel: 0.8
+    max_angular_accel: 0.5
+
+
+.. image:: images/rotation_shim_decel.gif
+  :width: 800
+  :alt: Rotation Shim Deceleration
+  :align: center
