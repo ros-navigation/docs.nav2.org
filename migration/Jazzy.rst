@@ -253,3 +253,11 @@ MPPI controller re-implemented using Eigen library and performance improved by 4
 
 In the `PR #4621 <https://github.com/ros-navigation/navigation2/pull/4621>`_ MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
 MPPI Optimizer's performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively. 
+
+DriveOnHeading and BackUp behaviors: Addition of acceleration constraints
+*************************************************************************
+`PR #4810 <https://github.com/ros-navigation/navigation2/pull/4810>`_ adds new parameters ``acceleration_limit``, ``deceleration_limit``, ``minimum_speed`` for the `DriveOnHeading` and `BackUp` Behaviors. The default values are as follows:
+
+- ``acceleration_limit``: 2.5
+- ``deceleration_limit``: -2.5
+- ``minimum_speed``: 0.10
