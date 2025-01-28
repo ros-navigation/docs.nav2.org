@@ -158,7 +158,7 @@ In your SDF add the below before the ``</model>`` line to add the lidar's link, 
         </sensor>
       </link>
 
-In the code snippet above we set the sensor values of lidar_link to the simulated lidar's scan and range properties and set /scan as the topic to which it will publish the sensor_msgs/LaserScan messages.
+In the code snippet above we set the sensor values of lidar_link to the simulated lidar's scan and range properties and set ``/scan`` as the topic to which it will publish the ``sensor_msgs/LaserScan`` messages.
 
 Next, let us add a depth camera to ``sam_bot``. In your URDF paste the following lines after the ``</joint>`` tag of the lidar sensor to just add the camera's link and joint. 
 
