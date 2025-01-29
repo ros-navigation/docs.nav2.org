@@ -13,7 +13,7 @@ About SDF
 
 SDF is a file format for simulators, like Gazebo, that describes the simulator environment, models (including its links, connections, and physics simulator metadata), and appropriate plugins. The SDF that we will make is for modern Gazebo, but there are other simulator options such as Open3D Engine or Isaac Sim.
 
-We can also use our SDF with the robot_state_publisher using the following package:
+We can also use our SDF with the robot_state_publisher using the following package. You will see how to do this in the tutorial below.
 
 .. code-block:: shell
 
@@ -27,7 +27,7 @@ This package contains a C++ library and urdf_parser_plugin for converting SDForm
 Writing the SDF
 ================
 
-For now the SDF will pretty much be a copy of the URDF code converted into SDFormat. Changes between the two descriptions will happen when we start adding various plugins and sensors in the next tutorials.
+For now the SDF will pretty much be a copy of the URDF code converted into SDFormat. Changes between the two descriptions will happen when we start adding various plugins and sensors in the next tutorials. We also add in physical properties needed by the simulator such as the ineria, mass, and material.
 
 Here is the SDF version of the URDF code:
 
