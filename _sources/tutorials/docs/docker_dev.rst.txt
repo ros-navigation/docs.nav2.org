@@ -469,11 +469,11 @@ From here, you can go to the :ref:`getting_started` to test it out!
   RUN . /opt/ros/${ROS_DISTRO}/setup.sh \
       && colcon build --symlink-install
 
-  # For all else, uncomment the above Rolling lines and replace with below
-  # RUN rosdep init
-  # RUN apt update && apt upgrade -y \
+  # For all else, comment the above Rolling lines and replace with below
+  # RUN rosdep init \
+  #     && apt update && apt upgrade -y \
   #     && rosdep update \
-  #     && apt install \
-  #         ros-${NAV2_BRANCH}-nav2-bringup \
-  #         ros-${NAV2_BRANCH}-navigation2 \
-  #         ros-${NAV2_BRANCH}-turtlebot3-gazebo
+  #     && apt install -y \
+  #         ros-${ROS_DISTRO}-nav2-bringup \
+  #         ros-${ROS_DISTRO}-navigation2 \
+  #         ros-${ROS_DISTRO}-turtlebot3-gazebo
