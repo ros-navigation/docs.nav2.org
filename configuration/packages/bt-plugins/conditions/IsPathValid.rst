@@ -8,9 +8,57 @@ obstacle along the path, the condition returns FAILURE, otherwise
 it returns SUCCESS. Additionally, users can specify a threshold cost(0-254)
 for path validity. If the path cost exceeds this threshold, the condition will also return FAILURE.
 
+Input Ports
+-----------
+
+:service_timeout:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 20.0
+  ====== =======
+
+  Description
+    Service response timeout (ms).
+
+:path:
+
+  ==================================== =======
+  Type                                 Default
+  ------------------------------------ -------
+  nav_msgs::msg::Path                  N/A  
+  ==================================== =======
+
+  Description
+    The global path to check for validity.
+
+:max_cost:
+
+  ============== ==========
+  Type           Default
+  -------------- ----------
+  unsigned int   253
+  ============== ==========
+
+  Description
+    The maximum allowable cost for the path to be considered valid.
+
+:consider_unknown_as_obstacle:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false  
+  ====== =======
+
+  Description
+    Whether to consider unknown cost (255) as obstacle.
+
+
 Example
 -------
 
 .. code-block:: xml
 
-    <IsPathValid server_timeout="10" path="{path}" max_cost="100"/>
+    <IsPathValid server_timeout="10" path="{path}" max_cost="100" consider_unknown_as_obstacle="false" />
