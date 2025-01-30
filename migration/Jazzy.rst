@@ -283,3 +283,12 @@ A demo can be seen below with the following parameters:
   :width: 800
   :alt: Rotation Shim Deceleration
   :align: center
+
+Rotation Shim Open-loop Control
+*******************************
+
+The parameter ``closed_loop`` was introduced to the Rotation Shim Controller to allow users to choose between open-loop and closed-loop control. When set to ``false``, the controller will use the last commanded velocity as the next iteration's current velocity. When acceleration limits are set appropriately, this is a good assumption and doesn't require high-rate, low-latency odometry. 
+
+Default value:
+
+- true
