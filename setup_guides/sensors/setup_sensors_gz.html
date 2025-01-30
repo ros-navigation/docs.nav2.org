@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setting Up Odometry &mdash; Nav2 1.0.0 documentation</title>
+  <title>Setting Up Sensors - Gazebo &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Setting Up Sensors" href="../sensors/setup_sensors.html" />
-    <link rel="prev" title="Setting Up The URDF" href="../urdf/setup_urdf.html" />
+    <link rel="next" title="Mapping and Localization" href="mapping_localization.html" />
+    <link rel="prev" title="Smoothing Odometry using Robot Localization" href="../odom/setup_robot_localization.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -143,78 +143,124 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">First-Time Robot Setup Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../transformation/setup_transforms.html">Setting Up Transformations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-introduction">Transforms Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#static-transform-publisher-demo">Static Transform Publisher Demo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-in-navigation2">Transforms in Navigation2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#table-of-contents">Table of Contents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html">Setting Up Transformations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-introduction">Transforms Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transformation/setup_transforms.html#static-transform-publisher-demo">Static Transform Publisher Demo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-in-navigation2">Transforms in Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transformation/setup_transforms.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../urdf/setup_urdf.html">Setting Up The URDF</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#urdf-and-the-robot-state-publisher">URDF and the Robot State Publisher</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#setting-up-the-environment">Setting Up the Environment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#writing-the-urdf">Writing the URDF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#build-and-launch">Build and Launch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#visualization-using-rviz">Visualization using RVIZ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#adding-physical-properties">Adding Physical Properties</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html">Setting Up The URDF</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#urdf-and-the-robot-state-publisher">URDF and the Robot State Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#setting-up-the-environment">Setting Up the Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#writing-the-urdf">Writing the URDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#build-and-launch">Build and Launch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#visualization-using-rviz">Visualization using RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#adding-physical-properties">Adding Physical Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting Up Odometry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#odometry-introduction">Odometry Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setting-up-odometry-on-your-robot">Setting Up Odometry on your Robot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#simulating-an-odometry-system-using-gazebo">Simulating an Odometry System using Gazebo</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#setup-and-prerequisites">Setup and Prerequisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-gazebo-plugins-to-a-urdf">Adding Gazebo Plugins to a URDF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-and-build-files">Launch and Build Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build-run-and-verification">Build, Run and Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sdf/setup_sdf.html">Setting Up The SDF - Gazebo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../sdf/setup_sdf.html#about-sdf">About SDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdf/setup_sdf.html#writing-the-sdf">Writing the SDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdf/setup_sdf.html#build-and-launch">Build and Launch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdf/setup_sdf.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#robot-localization-demo">Robot Localization Demo</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#configuring-robot-localization">Configuring Robot Localization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">Launch and Build Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Build, Run and Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odom/setup_odom_gz.html">Setting Up Odometry - Gazebo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_odom_gz.html#odometry-introduction">Odometry Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_odom_gz.html#setting-up-odometry-on-your-robot">Setting Up Odometry on your Robot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_odom_gz.html#simulating-an-odometry-system-using-gazebo">Simulating an Odometry System using Gazebo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_odom_gz.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odom/setup_robot_localization.html">Smoothing Odometry using Robot Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_robot_localization.html#configuring-robot-localization">Configuring Robot Localization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_robot_localization.html#launch-and-build-files">Launch and Build Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_robot_localization.html#build-run-and-verification">Build, Run and Verification</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../sensors/setup_sensors.html">Setting Up Sensors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../sensors/setup_sensors.html#sensor-introduction">Sensor Introduction</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../sensors/setup_sensors.html#common-sensor-messages">Common Sensor Messages</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Setting Up Sensors - Gazebo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor-introduction">Sensor Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simulating-sensors-using-gazebo">Simulating Sensors using Gazebo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../sensors/setup_sensors.html#simulating-sensors-using-gazebo">Simulating Sensors using Gazebo</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../sensors/setup_sensors.html#adding-gazebo-plugins-to-a-urdf">Adding Gazebo Plugins to a URDF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../sensors/setup_sensors.html#launch-and-build-files">Launch and Build Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../sensors/setup_sensors.html#build-run-and-verification">Build, Run and Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mapping_localization.html">Mapping and Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mapping_localization.html#costmap-2d">Costmap 2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mapping_localization.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../sensors/setup_sensors.html#mapping-and-localization">Mapping and Localization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../sensors/setup_sensors.html#costmap-2d">Costmap 2D</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../sensors/setup_sensors.html#configuring-nav2-costmap-2d">Configuring nav2_costmap_2d</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../sensors/setup_sensors.html#id2">Build, Run and Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#footprint-introduction">Footprint Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#configuring-the-robot-s-footprint">Configuring the Robot’s Footprint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#build-run-and-verification">Build, Run and Verification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#visualizing-footprint-in-rviz">Visualizing Footprint in RViz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../sensors/setup_sensors.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithm/select_algorithm.html">Setting Up Navigation Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../algorithm/select_algorithm.html#planner-and-controller-servers">Planner and Controller Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algorithm/select_algorithm.html#selecting-the-algorithm-plugins">Selecting the Algorithm Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algorithm/select_algorithm.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#footprint-introduction">Footprint Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#configuring-the-robot-s-footprint">Configuring the Robot’s Footprint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#build-run-and-verification">Build, Run and Verification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#visualizing-footprint-in-rviz">Visualizing Footprint in RViz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transformation/setup_transforms.html">Setting Up Transformations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-introduction">Transforms Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transformation/setup_transforms.html#static-transform-publisher-demo">Static Transform Publisher Demo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transformation/setup_transforms.html#transforms-in-navigation2">Transforms in Navigation2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transformation/setup_transforms.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithm/select_algorithm.html">Setting Up Navigation Plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../algorithm/select_algorithm.html#planner-and-controller-servers">Planner and Controller Servers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../algorithm/select_algorithm.html#selecting-the-algorithm-plugins">Selecting the Algorithm Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../algorithm/select_algorithm.html#planner-server">Planner Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../algorithm/select_algorithm.html#controller-server">Controller Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../urdf/setup_urdf.html">Setting Up The URDF</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#urdf-and-the-robot-state-publisher">URDF and the Robot State Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#setting-up-the-environment">Setting Up the Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#writing-the-urdf">Writing the URDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#build-and-launch">Build and Launch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#visualization-using-rviz">Visualization using RVIZ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#adding-physical-properties">Adding Physical Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../urdf/setup_urdf.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../algorithm/select_algorithm.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odom/setup_odom_gz_classic.html">Setting Up Odometry - Gazebo Classic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_odom_gz_classic.html#odometry-introduction">Odometry Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_odom_gz_classic.html#setting-up-odometry-on-your-robot">Setting Up Odometry on your Robot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_odom_gz_classic.html#simulating-an-odometry-system-using-gazebo">Simulating an Odometry System using Gazebo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_odom_gz_classic.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odom/setup_robot_localization.html">Smoothing Odometry using Robot Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_robot_localization.html#configuring-robot-localization">Configuring Robot Localization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_robot_localization.html#launch-and-build-files">Launch and Build Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odom/setup_robot_localization.html#build-run-and-verification">Build, Run and Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="setup_sensors_gz_classic.html">Setting Up Sensors - Gazebo Classic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="setup_sensors_gz_classic.html#sensor-introduction">Sensor Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup_sensors_gz_classic.html#simulating-sensors-using-gazebo-classic">Simulating Sensors using Gazebo Classic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup_sensors_gz_classic.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mapping_localization.html">Mapping and Localization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mapping_localization.html#costmap-2d">Costmap 2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mapping_localization.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../footprint/setup_footprint.html">Setting Up the Robot’s Footprint</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#footprint-introduction">Footprint Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#configuring-the-robot-s-footprint">Configuring the Robot’s Footprint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#build-run-and-verification">Build, Run and Verification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#visualizing-footprint-in-rviz">Visualizing Footprint in RViz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../footprint/setup_footprint.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithm/select_algorithm.html">Setting Up Navigation Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../algorithm/select_algorithm.html#planner-and-controller-servers">Planner and Controller Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algorithm/select_algorithm.html#selecting-the-algorithm-plugins">Selecting the Algorithm Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algorithm/select_algorithm.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1117,7 +1163,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">First-Time Robot Setup Guide</a></li>
-      <li class="breadcrumb-item active">Setting Up Odometry</li>
+      <li class="breadcrumb-item active">Setting Up Sensors - Gazebo</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1126,478 +1172,294 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="setting-up-odometry">
-<h1>Setting Up Odometry<a class="headerlink" href="#setting-up-odometry" title="Permalink to this heading"></a></h1>
-<p>In this guide, we will be looking at how to integrate our robot’s odometry system with Nav2.
-First we will provide a brief introduction on odometry, plus the necessary messages and transforms that need to be published for Nav2 to function correctly.
-Next, we will show how to setup odometry with two different cases.
-In the first case, we will show how to setup an odometry system for a robot with already available wheel encoders.
-In the second case, we will build a demo that simulates a functioning odometry system on <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> (the robot that we built in the previous section) using Gazebo.
-Afterwards, we will discuss how various sources of odometry can be fused to provide a smoothed odometry using the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package.
-Lastly, we will also show how to publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform using <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>.</p>
+  <div class="section" id="setting-up-sensors-gazebo">
+<span id="setup-sensors-gz"></span><h1>Setting Up Sensors - Gazebo<a class="headerlink" href="#setting-up-sensors-gazebo" title="Permalink to this heading"></a></h1>
+<p>In this guide, we will discuss the importance of the sensors in navigating a robot safely and how to set up the sensors with Nav2. In the first half of this tutorial, we will take a brief look at commonly used sensors and common sensor messages in Nav2. Next, we will add a basic sensor setup on our previously built simulated robot, <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. Lastly, we will then verify the simulated sensor messages of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> by visualizing them in RViz.</p>
+<p>Once sensors have been set up on a robot, their readings can be used in mapping, localization, and perception tasks. In the second half of this guide, we will first discuss how mapping and localization use the sensor data. Then, we will also take a look at one of Nav2’s packages, <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code>, which generates costmaps that will eventually be used in Nav2 path planning. We will set up basic configuration parameters for this package so it properly takes in sensor information from <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. Lastly, we visualize a generated costmaps in RViz to verify its received data.</p>
+<div class="section" id="sensor-introduction">
+<h2>Sensor Introduction<a class="headerlink" href="#sensor-introduction" title="Permalink to this heading"></a></h2>
+<p>Mobile robots are equipped with a multitude of sensors that allow them to see and perceive their environment. These sensors obtain information which can be used to build and maintain the map of the environment, to localize the robot on the map, and to see the obstacles in the environment. These tasks are essential to be able to safely and efficiently navigate a robot through a dynamic environment.</p>
+<p>Examples of commonly used sensors are lidar, radar, RGB camera, depth camera, IMU, and GPS. To standardize the message formats of these sensors and allow for easier interoperation between vendors, ROS provides the <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package that defines the common sensor interfaces. This also allows users to use any sensor vendor as long as it follows the standard format in <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code>. In the next subsection, we introduce some of commonly used messages in navigation, namely the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/LaserScan</span></code>, <code class="docutils literal notranslate"><span class="pre">sensor_msgs/PointCloud2</span></code>, <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Range</span></code>, and <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Image</span></code>.</p>
+<p>Aside from the <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package, there are also the <code class="docutils literal notranslate"><span class="pre">radar_msgs</span></code> and <code class="docutils literal notranslate"><span class="pre">vision_msgs</span></code> standard interfaces you should be aware of.  The <code class="docutils literal notranslate"><span class="pre">radar_msgs</span></code> defines the messages for radar-specific sensors while the <code class="docutils literal notranslate"><span class="pre">vision_msgs</span></code> package defines the messages used in computer vision such as object detection, segmentation, and other machine learning models. Messages supported by this package are <code class="docutils literal notranslate"><span class="pre">vision_msgs/Classification2D</span></code>, <code class="docutils literal notranslate"><span class="pre">vision_msgs/Classification3D</span></code>, <code class="docutils literal notranslate"><span class="pre">vision_msgs/Detection2D</span></code>, and <code class="docutils literal notranslate"><span class="pre">vision_msgs/Detection3D</span></code>, to name a few.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>The complete source code in this tutorial can be found in <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description">navigation2_tutorials</a> repository under the <code class="docutils literal notranslate"><span class="pre">sam_bot_description</span></code> package. Note that the repository contains the full code after accomplishing all the tutorials in this guide.</p>
+<p>For more information, see the API documentation of <a class="reference external" href="http://wiki.ros.org/sensor_msgs">sensor_msgs</a>, <a class="reference external" href="http://wiki.ros.org/radar_msgs">radar_msgs</a>, and <a class="reference external" href="http://wiki.ros.org/vision_msgs">vision_msgs</a>.</p>
 </div>
-<div class="section" id="odometry-introduction">
-<h2>Odometry Introduction<a class="headerlink" href="#odometry-introduction" title="Permalink to this heading"></a></h2>
-<p>The odometry system provides a locally accurate estimate of a robot’s pose and velocity based on its motion. The odometry information can be obtained from various sources such as IMU, LIDAR, RADAR, VIO, and wheel encoders. One thing to note is that IMUs drift over time while wheel encoders drift over distance traveled, thus they are often used together to counter each other’s negative characteristics.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame and the transformation associated with it use a robot’s odometry system to publish localization information that is continuous but becomes less accurate over time or distance (depending on the sensor modalities and drift). In spite of this, the information can still be used by the robot to navigate its immediate vicinity (e.g collision avoidance). To obtain consistently accurate odometry information over time, the <code class="docutils literal notranslate"><span class="pre">map</span></code> frame provides globally accurate information that is used to correct the <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame.</p>
-<p>As discussed in the previous guides and in <a class="reference external" href="https://www.ros.org/reps/rep-0105.html">REP 105</a>, the <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame is connected to the rest of the system and Nav2 through the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform. This transform is published by a tf2 broadcaster or by frameworks such as <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, which also provide additional functionalities. We will be talking more about <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> in a following section.</p>
-<p>In addition to the required <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform, Nav2 also requires the publishing of <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message because this message provides the velocity information of the robot. In detail, the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message contains the following information:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># This represents estimates of position and velocity in free space.</span>
-<span class="c1"># The pose in this message should be specified in the coordinate frame given by header.frame_id</span>
-<span class="c1"># The twist in this message should be specified in the coordinate frame given by the child_frame_id</span>
-
-<span class="c1"># Includes the frame id of the pose parent.</span>
-std_msgs/Header<span class="w"> </span>header
-
-<span class="c1"># Frame id the pose is pointing at. The twist is in this coordinate frame.</span>
-string<span class="w"> </span>child_frame_id
-
-<span class="c1"># Estimated pose that is typically relative to a fixed world frame.</span>
-geometry_msgs/PoseWithCovariance<span class="w"> </span>pose
-
-<span class="c1"># Estimated linear and angular velocity relative to child_frame_id.</span>
-geometry_msgs/TwistWithCovariance<span class="w"> </span>twist
-</pre></div>
-</div>
-<p>This message tells us the estimates for the pose and velocity of the robot. The <code class="docutils literal notranslate"><span class="pre">header</span></code> message provides the timestamped data in a given coordinate frame. The <code class="docutils literal notranslate"><span class="pre">pose</span></code> message provides the position and orientation of the robot relative to the frame specified in <code class="docutils literal notranslate"><span class="pre">header.frame_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">twist</span></code> message gives the linear and angular velocity relative to the frame defined in <code class="docutils literal notranslate"><span class="pre">child_frame_id</span></code>.</p>
-</div>
-<div class="section" id="setting-up-odometry-on-your-robot">
-<h2>Setting Up Odometry on your Robot<a class="headerlink" href="#setting-up-odometry-on-your-robot" title="Permalink to this heading"></a></h2>
-<p>Setting up the odometry system for Nav2 for your physical robot depends a lot on which odometry sensors are available with your robot. Due to the large number of configurations your robot may have, specific setup instructions will not be within the scope of this tutorial. Instead, we will provide some basic examples and useful resources to help you configure your robot for Nav2.</p>
-<p>To start, we will use an example of a robot with wheel encoders as its odometry source. Note that wheel encoders are not required for Nav2 but it is common in most setups. The goal in setting up the odometry is to compute the odometry information and publish the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message and <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform over ROS 2. To calculate this information, you will need to setup some code that will translate wheel encoder information into odometry information, similar to the snippet below:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">linear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>right_wheel_est_vel<span class="w"> </span>+<span class="w"> </span>left_wheel_est_vel<span class="o">)</span><span class="w"> </span>/<span class="w"> </span><span class="m">2</span>
-<span class="nv">angular</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>right_wheel_est_vel<span class="w"> </span>-<span class="w"> </span>left_wheel_est_vel<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>wheel_separation<span class="p">;</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> are the estimated velocities of the right and left wheels respectively, and the <code class="docutils literal notranslate"><span class="pre">wheel</span> <span class="pre">separation</span></code> is the distance between the wheels. The values of <code class="docutils literal notranslate"><span class="pre">right_wheel_est_vel</span></code> and <code class="docutils literal notranslate"><span class="pre">left_wheel_est_vel</span></code> can be obtained by simply getting the changes in the positions of the wheel joints over time. This information can then be used to publish the Nav2 requirements. A basic example on how to do this can be found in the Navigation documentation on odometry <a class="reference external" href="http://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom/">located here</a></p>
-<p>An alternative to manually publishing this information that we recommend is through the <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> framework. The <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> framework contains various packages for real-time control of robots in ROS 2. For wheel encoders, <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> has a <code class="docutils literal notranslate"><span class="pre">diff_drive_controller</span></code> (differential drive controller) under the <code class="docutils literal notranslate"><span class="pre">ros2_controller</span></code> package. The <code class="docutils literal notranslate"><span class="pre">diff_drive_controller</span></code> takes in the <code class="docutils literal notranslate"><span class="pre">geometry_msgs/Twist</span></code> messages published on <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic, computes odometry information, and publishes <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages on <code class="docutils literal notranslate"><span class="pre">odom</span></code> topic. Other packages that deal with different kind of sensors are also available in <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code>.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>For more information, see the <a class="reference external" href="https://ros-controls.github.io/control.ros.org/">ros2_control documentation</a> and the <a class="reference external" href="https://github.com/ros-controls/ros2_controllers/tree/master/diff_drive_controller/">Github repository of diff_drive_controller</a>.</p>
-</div>
-<p>For other types of sensors such as IMU, VIO, etc, their respective ROS drivers should have documentation on how publish the odometry information. Keep in mind that Nav2 requires the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message and <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transforms to be published and this should be your goal when setting up your odometry system.</p>
-</div>
-<div class="section" id="simulating-an-odometry-system-using-gazebo">
-<h2>Simulating an Odometry System using Gazebo<a class="headerlink" href="#simulating-an-odometry-system-using-gazebo" title="Permalink to this heading"></a></h2>
-<p>In this section, we will be using Gazebo to simulate the odometry system of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, the robot that we built in the previous section of this tutorial series. You may go through that guide first or grab the <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/tree/master/sam_bot_description/">complete source here</a>.</p>
+<p>Your physical robot’s sensors probably have ROS drivers written for them (e.g. a ROS node that connects to the sensors, populates data into messages, and publishes them for your robot to use) that follow the standard interface in the <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package. The <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package makes it easy for you to use many different sensors from different manufacturers. General software packages like Nav2 can then read these standardized messages and perform tasks independent of the sensor hardware. On simulated robots such as <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, Gazebo has sensor plugins which also publish their information following the <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> package.</p>
+<div class="section" id="common-sensor-messages">
+<h3>Common Sensor Messages<a class="headerlink" href="#common-sensor-messages" title="Permalink to this heading"></a></h3>
+<p>In this subsection, we discuss some of the common types of <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> you might encounter when setting up Nav2. We will provide a brief description for each sensor, an image of it being simulated in Gazebo and the corresponding visualization of the sensor readings in RViz.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you are working on your own physical robot and have already set up your odometry sensors, you may opt to skip this section and head onto the next one where we fuse IMU and odometry messages to provide a smooth <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transformation.</p>
+<p>There are other types of <code class="docutils literal notranslate"><span class="pre">sensor_msgs</span></code> aside from the ones listed below.  The complete list of messages and their definitions can be found in the <a class="reference external" href="http://wiki.ros.org/sensor_msgs">sensor_msgs documentation</a>.</p>
 </div>
-<p>As an overview for this section, we will first setup Gazebo and the necessary packages required to make it work with ROS 2. Next, we will be adding Gazebo plugins, which simulate an IMU sensor and a differential drive odometry system, in order to publish <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> and <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages respectively. Lastly, we will spawn <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in a Gazebo environment and verify the published <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> and <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages over ROS 2.</p>
-<div class="section" id="setup-and-prerequisites">
-<h3>Setup and Prerequisites<a class="headerlink" href="#setup-and-prerequisites" title="Permalink to this heading"></a></h3>
-<p><a class="reference external" href="http://gazebosim.org/">Gazebo</a> is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the <a class="reference external" href="http://gazebosim.org/tutorials?cat=install">Gazebo Installation Documentation</a>.</p>
-<p>We also need to install the <code class="docutils literal notranslate"><span class="pre">gazebo_ros_pkgs</span></code> package to simulate odometry and control the robot with ROS 2 in Gazebo:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-gazebo-ros-pkgs
+<div class="section" id="sensor-msgs-laserscan">
+<h4>sensor_msgs/LaserScan<a class="headerlink" href="#sensor-msgs-laserscan" title="Permalink to this heading"></a></h4>
+<p>This message represents a single scan from a planar laser range-finder. This message is used in <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> and <code class="docutils literal notranslate"><span class="pre">nav2_amcl</span></code> for localization and mapping, or in <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d</span></code> for perception.</p>
+<img alt="../../_images/sensor_laserscan.png" src="../../_images/sensor_laserscan.png" />
+</div>
+<div class="section" id="sensor-msgs-pointcloud2">
+<h4>sensor_msgs/PointCloud2<a class="headerlink" href="#sensor-msgs-pointcloud2" title="Permalink to this heading"></a></h4>
+<p>This message holds a collection of 3D points, plus optional additional information about each point. This can be from a 3D lidar, a 2D lidar, a depth camera or more.</p>
+<img alt="../../_images/sensor_pointcloud2.png" src="../../_images/sensor_pointcloud2.png" />
+</div>
+<div class="section" id="sensor-msgs-range">
+<h4>sensor_msgs/Range<a class="headerlink" href="#sensor-msgs-range" title="Permalink to this heading"></a></h4>
+<p>This is a single range reading from an active ranger that emits energy and reports one range reading that is valid along an arc at the distance measured. A sonar, IR sensor, or 1D range finder are examples of sensors that use this message.</p>
+<img alt="../../_images/sensor_range.png" src="../../_images/sensor_range.png" />
+</div>
+<div class="section" id="sensor-msgs-image">
+<h4>sensor_msgs/Image<a class="headerlink" href="#sensor-msgs-image" title="Permalink to this heading"></a></h4>
+<p>This represents the sensor readings from RGB or depth camera, corresponding to RGB or range values.</p>
+<img alt="../../_images/sensor_image.png" src="../../_images/sensor_image.png" />
+</div>
+</div>
+</div>
+<div class="section" id="simulating-sensors-using-gazebo">
+<h2>Simulating Sensors using Gazebo<a class="headerlink" href="#simulating-sensors-using-gazebo" title="Permalink to this heading"></a></h2>
+<p>To give you a better grasp of how to set up sensors on a simulated robot, we will build up on our previous tutorials and attach sensors to our simulated robot <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. Similar to the previous tutorial where we used Gazebo plugins to add odometry sensors to <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, we will be using the Gazebo plugins to simulate a lidar sensor and a depth camera on <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. If you are working with a real robot, most of these steps are still required for setting up your URDF frames and it will not hurt to also add in the gazebo plugins for later use.</p>
+<p>To be able to follow the rest of this section, make sure that you have properly installed Gazebo. You can follow the instructions at the <a class="reference external" href="https://docs.nav2.org/setup_guides/odom/setup_odom_gz.html#setup-and-prerequisites">Setup and Prerequisites</a> of the previous tutorial to setup Gazebo.</p>
+<div class="section" id="adding-gazebo-plugins-to-a-urdf-or-sdf">
+<h3>Adding Gazebo Plugins to a URDF or SDF<a class="headerlink" href="#adding-gazebo-plugins-to-a-urdf-or-sdf" title="Permalink to this heading"></a></h3>
+<p>Let us first add a lidar sensor to <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. In your URDF paste the following lines before the <code class="docutils literal notranslate"><span class="pre">&lt;/robot&gt;</span></code> tag to just add the lidar’s link and joint.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lidar_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;inertial&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;mass</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.125&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;inertia</span><span class="w"> </span><span class="na">ixx=</span><span class="s">&quot;0.001&quot;</span><span class="w"> </span><span class="na">ixy=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">ixz=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">iyy=</span><span class="s">&quot;0.001&quot;</span><span class="w"> </span><span class="na">iyz=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">izz=</span><span class="s">&quot;0.001&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/inertial&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;collision&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.0508&quot;</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.055&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/collision&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.0508&quot;</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.055&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/visual&gt;</span>
+<span class="nt">&lt;/link&gt;</span>
+
+<span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lidar_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;lidar_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0.12&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/joint&gt;</span>
 </pre></div>
 </div>
-<p>You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros2_installing&amp;cat=connect_ros#TestingGazeboandROS2integration">given here</a>.</p>
-<p>Note that we described <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> using URDF. However, Gazebo uses <a class="reference external" href="http://sdformat.org/">Simulation Description Format (SDF)</a> to describe a robot in its simulated environment. Fortunately, Gazebo automatically translates compatible URDF files into SDF. The main requirement for the URDF to be compatible with Gazebo is to have an <code class="docutils literal notranslate"><span class="pre">&lt;inertia&gt;</span></code> element within each <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> element. This requirement is already satisfied in the URDF file of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>, so it can already be used in Gazebo.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>For more information on how to use URDF in Gazebo, see <a class="reference external" href="http://gazebosim.org/tutorials/?tut=ros_urdf">Tutorial: Using a URDF in Gazebo</a>.</p>
-</div>
-</div>
-<div class="section" id="adding-gazebo-plugins-to-a-urdf">
-<h3>Adding Gazebo Plugins to a URDF<a class="headerlink" href="#adding-gazebo-plugins-to-a-urdf" title="Permalink to this heading"></a></h3>
-<p>We will now add the IMU sensor and the differential drive plugins of Gazebo to our URDF. For an overview of the different plugins available in Gazebo, have a look at <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros_gzplugins">Tutorial: Using Gazebo plugins with ROS</a>.</p>
-<p>For our robot, we will be using the <a class="reference external" href="http://gazebosim.org/tutorials?tut=ros_gzplugins#IMUsensor(GazeboRosImuSensor)">GazeboRosImuSensor</a> which is a SensorPlugin. A SensorPlugin must be attached to a link, thus we will create an <code class="docutils literal notranslate"><span class="pre">imu_link</span></code> to which the IMU sensor will be attached. This link will be referenced under the <code class="docutils literal notranslate"><span class="pre">&lt;gazebo&gt;</span></code> element. Next, we will set <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> as the topic to which the IMU will be publishing its information, and we will comply with <a class="reference external" href="https://www.ros.org/reps/rep-0145.html">REP145</a> by setting <code class="docutils literal notranslate"><span class="pre">initalOrientationAsReference</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>. We will also add some noise to the sensor configuration using Gazebo’s <a class="reference external" href="http://gazebosim.org/tutorials?tut=sensor_noise">sensor noise model</a>.</p>
-<p>Now, we will set up our IMU sensor plugin according to the description above by adding the following lines before the <code class="docutils literal notranslate"><span class="pre">&lt;/robot&gt;</span></code> line in our URDF:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">132</span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">133</span><span class="w">  </span><span class="nt">&lt;visual&gt;</span>
-<span class="linenos">134</span><span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
-<span class="linenos">135</span><span class="w">      </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.1 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
-<span class="linenos">136</span><span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
-<span class="linenos">137</span><span class="w">  </span><span class="nt">&lt;/visual&gt;</span>
-<span class="linenos">138</span>
-<span class="linenos">139</span><span class="w">  </span><span class="nt">&lt;collision&gt;</span>
-<span class="linenos">140</span><span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
-<span class="linenos">141</span><span class="w">      </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.1 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
-<span class="linenos">142</span><span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
-<span class="linenos">143</span><span class="w">  </span><span class="nt">&lt;/collision&gt;</span>
-<span class="linenos">144</span>
-<span class="linenos">145</span><span class="w">  </span><span class="nt">&lt;xacro:box_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">w=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">h=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
-<span class="linenos">146</span><span class="nt">&lt;/link&gt;</span>
-<span class="linenos">147</span>
-<span class="linenos">148</span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;imu_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">149</span><span class="w">  </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-<span class="linenos">150</span><span class="w">  </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">/&gt;</span>
-<span class="linenos">151</span><span class="w">  </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0.01&quot;</span><span class="nt">/&gt;</span>
-<span class="linenos">152</span><span class="nt">&lt;/joint&gt;</span>
-<span class="linenos">153</span>
-<span class="linenos">154</span><span class="w"> </span><span class="nt">&lt;gazebo</span><span class="w"> </span><span class="na">reference=</span><span class="s">&quot;imu_link&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">155</span><span class="w">  </span><span class="nt">&lt;sensor</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;imu_sensor&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;imu&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">156</span><span class="w">   </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">filename=</span><span class="s">&quot;libgazebo_ros_imu_sensor.so&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;imu_plugin&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">157</span><span class="w">      </span><span class="nt">&lt;ros&gt;</span>
-<span class="linenos">158</span><span class="w">        </span><span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
-<span class="linenos">159</span><span class="w">        </span><span class="nt">&lt;remapping&gt;</span>~/out:=imu<span class="nt">&lt;/remapping&gt;</span>
-<span class="linenos">160</span><span class="w">      </span><span class="nt">&lt;/ros&gt;</span>
-<span class="linenos">161</span><span class="w">      </span><span class="nt">&lt;initial_orientation_as_reference&gt;</span>false<span class="nt">&lt;/initial_orientation_as_reference&gt;</span>
-<span class="linenos">162</span><span class="w">    </span><span class="nt">&lt;/plugin&gt;</span>
-<span class="linenos">163</span><span class="w">    </span><span class="nt">&lt;always_on&gt;</span>true<span class="nt">&lt;/always_on&gt;</span>
-<span class="linenos">164</span><span class="w">    </span><span class="nt">&lt;update_rate&gt;</span>100<span class="nt">&lt;/update_rate&gt;</span>
-<span class="linenos">165</span><span class="w">    </span><span class="nt">&lt;visualize&gt;</span>true<span class="nt">&lt;/visualize&gt;</span>
-<span class="linenos">166</span><span class="w">    </span><span class="nt">&lt;imu&gt;</span>
-<span class="linenos">167</span><span class="w">      </span><span class="nt">&lt;angular_velocity&gt;</span>
-<span class="linenos">168</span><span class="w">        </span><span class="nt">&lt;x&gt;</span>
-<span class="linenos">169</span><span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">170</span><span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-<span class="linenos">171</span><span class="w">            </span><span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
-<span class="linenos">172</span><span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
-<span class="linenos">173</span><span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
-<span class="linenos">174</span><span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
-<span class="linenos">175</span><span class="w">        </span><span class="nt">&lt;/x&gt;</span>
-<span class="linenos">176</span><span class="w">        </span><span class="nt">&lt;y&gt;</span>
-<span class="linenos">177</span><span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">178</span><span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-<span class="linenos">179</span><span class="w">            </span><span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
-<span class="linenos">180</span><span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
-<span class="linenos">181</span><span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
-<span class="linenos">182</span><span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
-<span class="linenos">183</span><span class="w">        </span><span class="nt">&lt;/y&gt;</span>
-<span class="linenos">184</span><span class="w">        </span><span class="nt">&lt;z&gt;</span>
-<span class="linenos">185</span><span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">186</span><span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-<span class="linenos">187</span><span class="w">            </span><span class="nt">&lt;stddev&gt;</span>2e-4<span class="nt">&lt;/stddev&gt;</span>
-<span class="linenos">188</span><span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.0000075<span class="nt">&lt;/bias_mean&gt;</span>
-<span class="linenos">189</span><span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.0000008<span class="nt">&lt;/bias_stddev&gt;</span>
-<span class="linenos">190</span><span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
-<span class="linenos">191</span><span class="w">        </span><span class="nt">&lt;/z&gt;</span>
-<span class="linenos">192</span><span class="w">      </span><span class="nt">&lt;/angular_velocity&gt;</span>
-<span class="linenos">193</span><span class="w">      </span><span class="nt">&lt;linear_acceleration&gt;</span>
-<span class="linenos">194</span><span class="w">        </span><span class="nt">&lt;x&gt;</span>
-<span class="linenos">195</span><span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">196</span><span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-<span class="linenos">197</span><span class="w">            </span><span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
-<span class="linenos">198</span><span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
-<span class="linenos">199</span><span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
-<span class="linenos">200</span><span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
-<span class="linenos">201</span><span class="w">        </span><span class="nt">&lt;/x&gt;</span>
-<span class="linenos">202</span><span class="w">        </span><span class="nt">&lt;y&gt;</span>
-<span class="linenos">203</span><span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">204</span><span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-<span class="linenos">205</span><span class="w">            </span><span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
-<span class="linenos">206</span><span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
-<span class="linenos">207</span><span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
-<span class="linenos">208</span><span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
-<span class="linenos">209</span><span class="w">        </span><span class="nt">&lt;/y&gt;</span>
-<span class="linenos">210</span><span class="w">        </span><span class="nt">&lt;z&gt;</span>
-<span class="linenos">211</span><span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
-<span class="linenos">212</span><span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
-<span class="linenos">213</span><span class="w">            </span><span class="nt">&lt;stddev&gt;</span>1.7e-2<span class="nt">&lt;/stddev&gt;</span>
-<span class="linenos">214</span><span class="w">            </span><span class="nt">&lt;bias_mean&gt;</span>0.1<span class="nt">&lt;/bias_mean&gt;</span>
-<span class="linenos">215</span><span class="w">            </span><span class="nt">&lt;bias_stddev&gt;</span>0.001<span class="nt">&lt;/bias_stddev&gt;</span>
-<span class="linenos">216</span><span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
-<span class="linenos">217</span><span class="w">        </span><span class="nt">&lt;/z&gt;</span>
-<span class="linenos">218</span><span class="w">      </span><span class="nt">&lt;/linear_acceleration&gt;</span>
-<span class="linenos">219</span><span class="w">    </span><span class="nt">&lt;/imu&gt;</span>
-<span class="linenos">220</span><span class="w">  </span><span class="nt">&lt;/sensor&gt;</span>
-<span class="linenos">221</span><span class="nt">&lt;/gazebo&gt;</span>
+<p>In your SDF add the below before the <code class="docutils literal notranslate"><span class="pre">&lt;/model&gt;</span></code> line to add the lidar’s link, joint, and Gazebo specific sensor information:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lidar_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;parent&gt;</span>base_link<span class="nt">&lt;/parent&gt;</span>
+<span class="w">  </span><span class="nt">&lt;child&gt;</span>lidar_link<span class="nt">&lt;/child&gt;</span>
+<span class="w">  </span><span class="nt">&lt;pose</span><span class="w"> </span><span class="na">relative_to=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>0.0<span class="w"> </span>0.0<span class="w"> </span>0.12<span class="w"> </span>0<span class="w"> </span>0<span class="w"> </span>0<span class="nt">&lt;/pose&gt;</span>
+<span class="nt">&lt;/joint&gt;</span>
+
+<span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&#39;lidar_link&#39;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;pose</span><span class="w"> </span><span class="na">relative_to=</span><span class="s">&quot;lidar_joint&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;visual</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lidar_link_visual&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cylinder&gt;</span>
+<span class="w">        </span><span class="nt">&lt;radius&gt;</span>0.0508<span class="nt">&lt;/radius&gt;</span>
+<span class="w">        </span><span class="nt">&lt;length&gt;</span>0.055<span class="nt">&lt;/length&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/cylinder&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/visual&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;collision</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lidar_link_collision&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cylinder&gt;</span>
+<span class="w">        </span><span class="nt">&lt;radius&gt;</span>0.0508<span class="nt">&lt;/radius&gt;</span>
+<span class="w">        </span><span class="nt">&lt;length&gt;</span>0.055<span class="nt">&lt;/length&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/cylinder&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/collision&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xacro:cylinder_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;0.125&quot;</span><span class="w"> </span><span class="na">r=</span><span class="s">&quot;0.0508&quot;</span><span class="w"> </span><span class="na">h=</span><span class="s">&quot;0.055&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;sensor</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lidar&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gpu_lidar&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;always_on&gt;</span>true<span class="nt">&lt;/always_on&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visualize&gt;</span>true<span class="nt">&lt;/visualize&gt;</span>
+<span class="w">    </span><span class="nt">&lt;update_rate&gt;</span>5<span class="nt">&lt;/update_rate&gt;</span>
+<span class="w">    </span><span class="nt">&lt;topic&gt;</span>scan<span class="nt">&lt;/topic&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gz_frame_id&gt;</span>lidar_link<span class="nt">&lt;/gz_frame_id&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ray&gt;</span>
+<span class="w">      </span><span class="nt">&lt;scan&gt;</span>
+<span class="w">        </span><span class="nt">&lt;horizontal&gt;</span>
+<span class="w">          </span><span class="nt">&lt;samples&gt;</span>360<span class="nt">&lt;/samples&gt;</span>
+<span class="w">          </span><span class="nt">&lt;resolution&gt;</span>1.000000<span class="nt">&lt;/resolution&gt;</span>
+<span class="w">          </span><span class="nt">&lt;min_angle&gt;</span>0.000000<span class="nt">&lt;/min_angle&gt;</span>
+<span class="w">          </span><span class="nt">&lt;max_angle&gt;</span>6.280000<span class="nt">&lt;/max_angle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/horizontal&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/scan&gt;</span>
+<span class="w">      </span><span class="nt">&lt;range&gt;</span>
+<span class="w">        </span><span class="nt">&lt;min&gt;</span>0.120000<span class="nt">&lt;/min&gt;</span>
+<span class="w">        </span><span class="nt">&lt;max&gt;</span>3.5<span class="nt">&lt;/max&gt;</span>
+<span class="w">        </span><span class="nt">&lt;resolution&gt;</span>0.015000<span class="nt">&lt;/resolution&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/range&gt;</span>
+<span class="w">      </span><span class="nt">&lt;noise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;type&gt;</span>gaussian<span class="nt">&lt;/type&gt;</span>
+<span class="w">        </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+<span class="w">        </span><span class="nt">&lt;stddev&gt;</span>0.01<span class="nt">&lt;/stddev&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/noise&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ray&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/sensor&gt;</span>
+<span class="nt">&lt;/link&gt;</span>
 </pre></div>
 </div>
-<p>Now, let us add the differential drive ModelPlugin. We will configure the plugin such that <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> messages are published on the <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> topic. The joints of the left and right wheels will be set to the wheel joints of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. The wheel separation and wheel diameter are set according to the values of the defined values of <code class="docutils literal notranslate"><span class="pre">wheel_ygap</span></code> and <code class="docutils literal notranslate"><span class="pre">wheel_radius</span></code> respectively.</p>
-<p>To include this plugin in our URDF, add the following lines after the <code class="docutils literal notranslate"><span class="pre">&lt;/gazebo&gt;</span></code> tag of the IMU plugin:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">223</span><span class="nt">&lt;gazebo&gt;</span>
-<span class="linenos">224</span><span class="w">  </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">name=</span><span class="s">&#39;diff_drive&#39;</span><span class="w"> </span><span class="na">filename=</span><span class="s">&#39;libgazebo_ros_diff_drive.so&#39;</span><span class="nt">&gt;</span>
-<span class="linenos">225</span><span class="w">    </span><span class="nt">&lt;ros&gt;</span>
-<span class="linenos">226</span><span class="w">      </span><span class="nt">&lt;namespace&gt;</span>/demo<span class="nt">&lt;/namespace&gt;</span>
-<span class="linenos">227</span><span class="w">    </span><span class="nt">&lt;/ros&gt;</span>
-<span class="linenos">228</span>
-<span class="linenos">229</span><span class="w">    </span><span class="cm">&lt;!-- wheels --&gt;</span>
-<span class="linenos">230</span><span class="w">    </span><span class="nt">&lt;left_joint&gt;</span>drivewhl_l_joint<span class="nt">&lt;/left_joint&gt;</span>
-<span class="linenos">231</span><span class="w">    </span><span class="nt">&lt;right_joint&gt;</span>drivewhl_r_joint<span class="nt">&lt;/right_joint&gt;</span>
-<span class="linenos">232</span>
-<span class="linenos">233</span><span class="w">    </span><span class="cm">&lt;!-- kinematics --&gt;</span>
-<span class="linenos">234</span><span class="w">    </span><span class="nt">&lt;wheel_separation&gt;</span>0.4<span class="nt">&lt;/wheel_separation&gt;</span>
-<span class="linenos">235</span><span class="w">    </span><span class="nt">&lt;wheel_diameter&gt;</span>0.2<span class="nt">&lt;/wheel_diameter&gt;</span>
-<span class="linenos">236</span>
-<span class="linenos">237</span><span class="w">    </span><span class="cm">&lt;!-- limits --&gt;</span>
-<span class="linenos">238</span><span class="w">    </span><span class="nt">&lt;max_wheel_torque&gt;</span>20<span class="nt">&lt;/max_wheel_torque&gt;</span>
-<span class="linenos">239</span><span class="w">    </span><span class="nt">&lt;max_wheel_acceleration&gt;</span>1.0<span class="nt">&lt;/max_wheel_acceleration&gt;</span>
-<span class="linenos">240</span>
-<span class="linenos">241</span><span class="w">    </span><span class="cm">&lt;!-- output --&gt;</span>
-<span class="linenos">242</span><span class="w">    </span><span class="nt">&lt;publish_odom&gt;</span>true<span class="nt">&lt;/publish_odom&gt;</span>
-<span class="linenos">243</span><span class="w">    </span><span class="nt">&lt;publish_odom_tf&gt;</span>false<span class="nt">&lt;/publish_odom_tf&gt;</span>
-<span class="linenos">244</span><span class="w">    </span><span class="nt">&lt;publish_wheel_tf&gt;</span>true<span class="nt">&lt;/publish_wheel_tf&gt;</span>
-<span class="linenos">245</span>
-<span class="linenos">246</span><span class="w">    </span><span class="nt">&lt;odometry_frame&gt;</span>odom<span class="nt">&lt;/odometry_frame&gt;</span>
-<span class="linenos">247</span><span class="w">    </span><span class="nt">&lt;robot_base_frame&gt;</span>base_link<span class="nt">&lt;/robot_base_frame&gt;</span>
-<span class="linenos">248</span><span class="w">  </span><span class="nt">&lt;/plugin&gt;</span>
-<span class="linenos">249</span><span class="nt">&lt;/gazebo&gt;</span>
+<p>In the code snippet above we set the sensor values of lidar_link to the simulated lidar’s scan and range properties and set <code class="docutils literal notranslate"><span class="pre">/scan</span></code> as the topic to which it will publish the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/LaserScan</span></code> messages.</p>
+<p>Next, let us add a depth camera to <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. In your URDF paste the following lines after the <code class="docutils literal notranslate"><span class="pre">&lt;/joint&gt;</span></code> tag of the lidar sensor to just add the camera’s link and joint.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;camera_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.015 0.130 0.022&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/visual&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;collision&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.015 0.130 0.022&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/collision&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;inertial&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;mass</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.035&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;inertia</span><span class="w"> </span><span class="na">ixx=</span><span class="s">&quot;0.001&quot;</span><span class="w"> </span><span class="na">ixy=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">ixz=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">iyy=</span><span class="s">&quot;0.001&quot;</span><span class="w"> </span><span class="na">iyz=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">izz=</span><span class="s">&quot;0.001&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/inertial&gt;</span>
+<span class="nt">&lt;/link&gt;</span>
+
+<span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;camera_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;camera_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.215 0 0.05&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/joint&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="launch-and-build-files">
-<h3>Launch and Build Files<a class="headerlink" href="#launch-and-build-files" title="Permalink to this heading"></a></h3>
-<p>We will now edit our launch file, <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py">launch/display.launch.py</a>, to spawn <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in Gazebo. Since we will be simulating our robot, we can remove the GUI for the joint state publisher by deleting the following lines inside the <code class="docutils literal notranslate"><span class="pre">generate_launch_description()</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">joint_state_publisher_gui_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>launch_ros.actions.Node<span class="o">(</span>
-<span class="w">  </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
-<span class="w">  </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
-<span class="w">  </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher_gui&#39;</span>,
-<span class="w">  </span><span class="nv">condition</span><span class="o">=</span>launch.conditions.IfCondition<span class="o">(</span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;gui&#39;</span><span class="o">))</span>
-<span class="o">)</span>
+<p>In your SDF, paste the following lines after the <code class="docutils literal notranslate"><span class="pre">&lt;/link&gt;</span></code> tag of the lidar sensor to add the camera’s link, joint, and Gazebo specific sensor information:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;camera_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;parent&gt;</span>base_link<span class="nt">&lt;/parent&gt;</span>
+<span class="w">  </span><span class="nt">&lt;child&gt;</span>camera_link<span class="nt">&lt;/child&gt;</span>
+<span class="w">  </span><span class="nt">&lt;pose</span><span class="w"> </span><span class="na">relative_to=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>0.215<span class="w"> </span>0<span class="w"> </span>0.05<span class="w"> </span>0<span class="w"> </span>0<span class="w"> </span>0<span class="nt">&lt;/pose&gt;</span>
+<span class="nt">&lt;/joint&gt;</span>
+
+<span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&#39;camera_link&#39;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;pose</span><span class="w"> </span><span class="na">relative_to=</span><span class="s">&quot;camera_joint&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;visual</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;camera_link_visual&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;box&gt;&lt;size&gt;</span>
+<span class="w">        </span>0.015<span class="w"> </span>0.130<span class="w"> </span>0.0222
+<span class="w">      </span><span class="nt">&lt;/size&gt;&lt;/box&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/visual&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;collision</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;camera_link_collision&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;box&gt;&lt;size&gt;</span>
+<span class="w">        </span>0.015<span class="w"> </span>0.130<span class="w"> </span>0.0222
+<span class="w">      </span><span class="nt">&lt;/size&gt;&lt;/box&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/collision&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xacro:box_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;0.035&quot;</span><span class="w"> </span><span class="na">w=</span><span class="s">&quot;0.015&quot;</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;0.130&quot;</span><span class="w"> </span><span class="na">h=</span><span class="s">&quot;0.0222&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;sensor</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;depth_camera&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;rgbd_camera&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;always_on&gt;</span>true<span class="nt">&lt;/always_on&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visualize&gt;</span>true<span class="nt">&lt;/visualize&gt;</span>
+<span class="w">    </span><span class="nt">&lt;update_rate&gt;</span>5.0<span class="nt">&lt;/update_rate&gt;</span>
+<span class="w">    </span><span class="nt">&lt;topic&gt;</span>depth_camera<span class="nt">&lt;/topic&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gz_frame_id&gt;</span>camera_link<span class="nt">&lt;/gz_frame_id&gt;</span>
+<span class="w">    </span><span class="nt">&lt;camera&gt;</span>
+<span class="w">      </span><span class="nt">&lt;horizontal_fov&gt;</span>1.047198<span class="nt">&lt;/horizontal_fov&gt;</span>
+<span class="w">      </span><span class="nt">&lt;image&gt;</span>
+<span class="w">        </span><span class="nt">&lt;width&gt;</span>640<span class="nt">&lt;/width&gt;</span>
+<span class="w">        </span><span class="nt">&lt;height&gt;</span>480<span class="nt">&lt;/height&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/image&gt;</span>
+<span class="w">      </span><span class="nt">&lt;clip&gt;</span>
+<span class="w">        </span><span class="nt">&lt;near&gt;</span>0.05<span class="nt">&lt;/near&gt;</span>
+<span class="w">        </span><span class="nt">&lt;far&gt;</span>3<span class="nt">&lt;/far&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/clip&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/camera&gt;</span>
+<span class="w">    </span><span class="nt">&lt;baseline&gt;</span>0.2<span class="nt">&lt;/baseline&gt;</span>
+<span class="w">    </span><span class="nt">&lt;pointCloudCutoff&gt;</span>0.5<span class="nt">&lt;/pointCloudCutoff&gt;</span>
+<span class="w">    </span><span class="nt">&lt;pointCloudCutoffMax&gt;</span>3.0<span class="nt">&lt;/pointCloudCutoffMax&gt;</span>
+<span class="w">    </span><span class="nt">&lt;distortionK1&gt;</span>0<span class="nt">&lt;/distortionK1&gt;</span>
+<span class="w">    </span><span class="nt">&lt;distortionK2&gt;</span>0<span class="nt">&lt;/distortionK2&gt;</span>
+<span class="w">    </span><span class="nt">&lt;distortionK3&gt;</span>0<span class="nt">&lt;/distortionK3&gt;</span>
+<span class="w">    </span><span class="nt">&lt;distortionT1&gt;</span>0<span class="nt">&lt;/distortionT1&gt;</span>
+<span class="w">    </span><span class="nt">&lt;distortionT2&gt;</span>0<span class="nt">&lt;/distortionT2&gt;</span>
+<span class="w">    </span><span class="nt">&lt;CxPrime&gt;</span>0<span class="nt">&lt;/CxPrime&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Cx&gt;</span>0<span class="nt">&lt;/Cx&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Cy&gt;</span>0<span class="nt">&lt;/Cy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;focalLength&gt;</span>0<span class="nt">&lt;/focalLength&gt;</span>
+<span class="w">    </span><span class="nt">&lt;hackBaseline&gt;</span>0<span class="nt">&lt;/hackBaseline&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/sensor&gt;</span>
+<span class="nt">&lt;/link&gt;</span>
 </pre></div>
 </div>
-<p>Remove the following <cite>gui</cite> param:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>DeclareLaunchArgument<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;gui&#39;</span>,<span class="w"> </span><span class="nv">default_value</span><span class="o">=</span><span class="s1">&#39;True&#39;</span>,
-<span class="w">                      </span><span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable joint_state_publisher_gui&#39;</span><span class="o">)</span>
-</pre></div>
+<p>In the code snippet above we set the sensor values of camera_link to the simulated depth camera’s properties and configure the sensor such that it will publish sensor_msgs/Image and <code class="docutils literal notranslate"><span class="pre">sensor_msgs/PointCloud2</span></code> messages to <cite>/depth_camera/image_raw`</cite> and <code class="docutils literal notranslate"><span class="pre">/depth_camera/points</span></code> topics respectively.</p>
 </div>
-<p>Remove the condition and parameters. Add arguments to the <cite>joint_state_publisher_node</cite>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">joint_state_publisher_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>launch_ros.actions.Node<span class="o">(</span>
-<span class="w">  </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
-<span class="w">  </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
-<span class="w">  </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;joint_state_publisher&#39;</span>,
-<span class="w">  </span><span class="nv">arguments</span><span class="o">=[</span>default_model_path<span class="o">]</span>,<span class="w"> </span><span class="c1">#Add this line</span>
-<span class="w">  </span><span class="nv">parameters</span><span class="o">=[{</span><span class="s1">&#39;robot_description&#39;</span>:<span class="w"> </span>Command<span class="o">([</span><span class="s1">&#39;xarcro &#39;</span>,<span class="w"> </span>default_model_path<span class="o">])}]</span>,<span class="w"> </span><span class="c1">#Remove this line</span>
-<span class="w">  </span><span class="nv">condition</span><span class="o">=</span>launch.conditions.UnlessCondition<span class="o">(</span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;gui&#39;</span><span class="o">))</span><span class="w"> </span><span class="c1"># Remove this line</span>
-<span class="o">)</span>
-</pre></div>
-</div>
-<p>Next, open <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/package.xml">package.xml</a> and delete the line:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;exec_depend&gt;joint_state_publisher_gui&lt;/exec_depend&gt;
-</pre></div>
-</div>
-<p>To launch Gazebo, add the following before the <code class="docutils literal notranslate"><span class="pre">joint_state_publisher_node,</span></code> line in <code class="docutils literal notranslate"><span class="pre">display.launch.py</span></code></p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>launch.actions.ExecuteProcess<span class="o">(</span><span class="nv">cmd</span><span class="o">=[</span><span class="s1">&#39;gazebo&#39;</span>,<span class="w"> </span><span class="s1">&#39;--verbose&#39;</span>,<span class="w"> </span><span class="s1">&#39;-s&#39;</span>,<span class="w"> </span><span class="s1">&#39;libgazebo_ros_init.so&#39;</span>,<span class="w"> </span><span class="s1">&#39;-s&#39;</span>,<span class="w"> </span><span class="s1">&#39;libgazebo_ros_factory.so&#39;</span><span class="o">]</span>,<span class="w"> </span><span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="o">)</span>,
-</pre></div>
-</div>
-<p>We will now add a node that spawns <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> in Gazebo. Open <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/blob/master/sam_bot_description/launch/display.launch.py">launch/display.launch.py</a> again and paste the following lines before the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> line.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">spawn_entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>launch_ros.actions.Node<span class="o">(</span>
-<span class="w">  </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;gazebo_ros&#39;</span>,
-<span class="w">  </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;spawn_entity.py&#39;</span>,
-<span class="w">  </span><span class="nv">arguments</span><span class="o">=[</span><span class="s1">&#39;-entity&#39;</span>,<span class="w"> </span><span class="s1">&#39;sam_bot&#39;</span>,<span class="w"> </span><span class="s1">&#39;-topic&#39;</span>,<span class="w"> </span><span class="s1">&#39;robot_description&#39;</span><span class="o">]</span>,
-<span class="w">  </span><span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>
-<span class="o">)</span>
-</pre></div>
-</div>
-<p>Then add the line <code class="docutils literal notranslate"><span class="pre">spawn_entity,</span></code> before the <code class="docutils literal notranslate"><span class="pre">rviz_node</span></code> line, as shown below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w">      </span>robot_state_publisher_node,
-<span class="w">      </span>spawn_entity,
-<span class="w">      </span>rviz_node
-<span class="o">])</span>
+<div class="section" id="updating-bridge-config">
+<h3>Updating Bridge Config<a class="headerlink" href="#updating-bridge-config" title="Permalink to this heading"></a></h3>
+<p>We will also need to bridge the necessary sensor topics from Gazebo to ROS, add the following to your <code class="docutils literal notranslate"><span class="pre">bridge_config.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ros_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/scan&quot;</span>
+<span class="w">  </span><span class="nt">gz_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/scan&quot;</span>
+<span class="w">  </span><span class="nt">ros_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sensor_msgs/msg/LaserScan&quot;</span>
+<span class="w">  </span><span class="nt">gz_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gz.msgs.LaserScan&quot;</span>
+<span class="w">  </span><span class="nt">direction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GZ_TO_ROS</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ros_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/scan/points&quot;</span>
+<span class="w">  </span><span class="nt">gz_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/scan/points&quot;</span>
+<span class="w">  </span><span class="nt">ros_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sensor_msgs/msg/PointCloud2&quot;</span>
+<span class="w">  </span><span class="nt">gz_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gz.msgs.PointCloudPacked&quot;</span>
+<span class="w">  </span><span class="nt">direction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GZ_TO_ROS</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ros_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/depth_camera/camera_info&quot;</span>
+<span class="w">  </span><span class="nt">gz_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/depth_camera/camera_info&quot;</span>
+<span class="w">  </span><span class="nt">ros_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sensor_msgs/msg/CameraInfo&quot;</span>
+<span class="w">  </span><span class="nt">gz_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gz.msgs.CameraInfo&quot;</span>
+<span class="w">  </span><span class="nt">direction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GZ_TO_ROS</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ros_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/depth_camera/points&quot;</span>
+<span class="w">  </span><span class="nt">gz_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/depth_camera/points&quot;</span>
+<span class="w">  </span><span class="nt">ros_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sensor_msgs/msg/PointCloud2&quot;</span>
+<span class="w">  </span><span class="nt">gz_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gz.msgs.PointCloudPacked&quot;</span>
+<span class="w">  </span><span class="nt">direction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GZ_TO_ROS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="build-run-and-verification">
 <h3>Build, Run and Verification<a class="headerlink" href="#build-run-and-verification" title="Permalink to this heading"></a></h3>
-<p>Let us run our package to check if the <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> topics are active in the system.</p>
-<p>Navigate to the root of the project and execute the following lines:</p>
+<p>We can now build and run our project. Navigate to the root of the project and execute the following lines:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build
 .<span class="w"> </span>install/setup.bash
 ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<span class="w"> </span>display.launch.py
 </pre></div>
 </div>
-<p>Gazebo should launch and you should see a 3D model of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>:</p>
-<a class="reference internal image-reference" href="../../_images/gazebo_sam_bot.png"><img alt="../../_images/gazebo_sam_bot.png" class="align-center" src="../../_images/gazebo_sam_bot.png" style="width: 50%;" /></a>
-<p>To see the active topics in the system, open a new terminal and execute:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>list
-</pre></div>
-</div>
-<p>You should see <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> in the list of topics.</p>
-<p>To see more information about the topics, execute:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/demo/imu
-ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/demo/odom
-</pre></div>
-</div>
-<p>You should see an output similar to below:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Type:<span class="w"> </span>sensor_msgs/msg/Imu
-Publisher<span class="w"> </span>count:<span class="w"> </span><span class="m">1</span>
-Subscription<span class="w"> </span>count:<span class="w"> </span><span class="m">0</span>
-</pre></div>
-</div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Type:<span class="w"> </span>nav_msgs/msg/Odometry
-Publisher<span class="w"> </span>count:<span class="w"> </span><span class="m">1</span>
-Subscription<span class="w"> </span>count:<span class="w"> </span><span class="m">0</span>
-</pre></div>
-</div>
-<p>Observe that the <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> topic publishes <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> type messages while the <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> topic publishes <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> type messages. The information being published on these topics come from the gazebo simulation of the IMU sensor and the differential drive respectively. Also note that both topics currently have no subscribers. In the next section, we will create a <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> node that will subscribe to these two topics. It will then use the messages published on both topics to provide a fused, locally accurate and smooth odometry information for Nav2.</p>
-</div>
-</div>
-<div class="section" id="robot-localization-demo">
-<h2>Robot Localization Demo<a class="headerlink" href="#robot-localization-demo" title="Permalink to this heading"></a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package is used to provide a fused and locally accurate smooth odometry information from the data provided by <code class="docutils literal notranslate"><span class="pre">N</span></code> odometry sensor inputs. These information can be provided to the package through <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code>, <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code>, <code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseWithCovarianceStamped</span></code>, and <code class="docutils literal notranslate"><span class="pre">geometry_msgs/TwistWithCovarianceStamped</span></code> messages.</p>
-<p>A usual robot setup consists of at least the wheel encoders and IMU as its odometry sensor sources. When multiple sources are provided to <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, it is able to fuse the odometry information given by the sensors through the use of state estimation nodes. These nodes make use of either an Extended Kalman filter (<code class="docutils literal notranslate"><span class="pre">ekf_node</span></code>) or an Unscented Kalman Filter (<code class="docutils literal notranslate"><span class="pre">ukf_node</span></code>) to implement this fusion. In addition, the package also implements a <code class="docutils literal notranslate"><span class="pre">navsat_transform_node</span></code> which transforms geographic coordinates into the robot’s world frame when working with GPS.</p>
-<p>Fused sensor data is published by the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package through the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code> and the <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code> topics, if enabled in its configuration. In addition, it can also publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform on the <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topic.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>More details on <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> can be found in the official <a class="reference external" href="http://docs.ros.org/en/noetic/api/robot_localization/html/index.html">Robot Localization Documentation</a>.</p>
-</div>
-<p>If your robot is only able to provide one odometry source, the use of <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> would have minimal effects aside from smoothing. In this case, an alternative approach is to publish transforms through a tf2 broadcaster in your single source of odometry node. Nevertheless, you can still opt to use <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> to publish the transforms and some smoothing properties may still be observed in the output.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>For more information on how to write a tf2 broadcaster, you can check Writing a tf2 broadcaster <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">(C++)</a>  <a class="reference external" href="https://docs.ros.org/en/rolling/Tutorials/Tf2/Writing-A-Tf2-Broadcaster-Py.html">(Python)</a>.</p>
-</div>
-<p>For the rest of this section, we will show how to use <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> to fuse the sensors of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>. It will use the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> messages published on <code class="docutils literal notranslate"><span class="pre">/demo/Imu</span></code> and the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> message published on <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> and then it will publish data on <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>,  <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics.</p>
-<div class="section" id="configuring-robot-localization">
-<h3>Configuring Robot Localization<a class="headerlink" href="#configuring-robot-localization" title="Permalink to this heading"></a></h3>
-<p>Let us now configure the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package to use an Extended Kalman Filter (<code class="docutils literal notranslate"><span class="pre">ekf_node</span></code>) to fuse odometry information and publish the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform.</p>
-<p>First, install the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> package using your machines package manager or by executing the following command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;ros2-distro&gt;-robot-localization
-</pre></div>
-</div>
-<p>Next, we specify the parameters of the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> using a YAML file. Create a directory named <code class="docutils literal notranslate"><span class="pre">config</span></code> at the root of your project and create a file named <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code>. Copy the following lines of code into your <code class="docutils literal notranslate"><span class="pre">ekf.yaml</span></code> file.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">### ekf config file ###</span>
-<span class="nt">ekf_filter_node</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="c1"># The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin</span>
-<span class="c1"># computation until it receives at least one message from one of theinputs. It will then run continuously at the</span>
-<span class="c1"># frequency specified here, regardless of whether it receives more measurements. Defaults to 30 if unspecified.</span>
-<span class="w">        </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span>
-
-<span class="c1"># ekf_localization_node and ukf_localization_node both use a 3D omnidirectional motion model. If this parameter is</span>
-<span class="c1"># set to true, no 3D information will be used in your state estimate. Use this if you are operating in a planar</span>
-<span class="c1"># environment and want to ignore the effect of small variations in the ground plane that might otherwise be detected</span>
-<span class="c1"># by, for example, an IMU. Defaults to false if unspecified.</span>
-<span class="w">        </span><span class="nt">two_d_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-
-<span class="c1"># Whether to publish the acceleration state. Defaults to false if unspecified.</span>
-<span class="w">        </span><span class="nt">publish_acceleration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="c1"># Whether to broadcast the transformation over the /tf topic. Defaultsto true if unspecified.</span>
-<span class="w">        </span><span class="nt">publish_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="c1"># 1. Set the map_frame, odom_frame, and base_link frames to the appropriate frame names for your system.</span>
-<span class="c1">#     1a. If your system does not have a map_frame, just remove it, and make sure &quot;world_frame&quot; is set to the value of odom_frame.</span>
-<span class="c1"># 2. If you are fusing continuous position data such as wheel encoder odometry, visual odometry, or IMU data, set &quot;world_frame&quot;</span>
-<span class="c1">#    to your odom_frame value. This is the default behavior for robot_localization&#39;s state estimation nodes.</span>
-<span class="c1"># 3. If you are fusing global absolute position data that is subject to discrete jumps (e.g., GPS or position updates from landmark</span>
-<span class="c1">#    observations) then:</span>
-<span class="c1">#     3a. Set your &quot;world_frame&quot; to your map_frame value</span>
-<span class="c1">#     3b. MAKE SURE something else is generating the odom-&gt;base_link transform. Note that this can even be another state estimation node</span>
-<span class="c1">#         from robot_localization! However, that instance should *not* fuse the global data.</span>
-<span class="w">        </span><span class="nt">map_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span><span class="w">              </span><span class="c1"># Defaults to &quot;map&quot; if unspecified</span>
-<span class="w">        </span><span class="nt">odom_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w">            </span><span class="c1"># Defaults to &quot;odom&quot; if unspecified</span>
-<span class="w">        </span><span class="nt">base_link_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span><span class="w">  </span><span class="c1"># Defaults to &quot;base_link&quot; ifunspecified</span>
-<span class="w">        </span><span class="nt">world_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span><span class="w">           </span><span class="c1"># Defaults to the value ofodom_frame if unspecified</span>
-
-<span class="w">        </span><span class="nt">odom0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo/odom</span>
-<span class="w">        </span><span class="nt">odom0_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span>
-<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
-<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
-<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
-<span class="w">                       </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">]</span>
-
-<span class="w">        </span><span class="nt">imu0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo/imu</span>
-<span class="w">        </span><span class="nt">imu0_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
-<span class="w">                      </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">true</span><span class="p p-Indicator">,</span>
-<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
-<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
-<span class="w">                      </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">]</span>
-</pre></div>
-</div>
-<p>In this configuration, we defined the parameter values of <code class="docutils literal notranslate"><span class="pre">frequency</span></code>, <code class="docutils literal notranslate"><span class="pre">two_d_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_acceleration</span></code>, <code class="docutils literal notranslate"><span class="pre">publish_tf</span></code>, <code class="docutils literal notranslate"><span class="pre">map_frame</span></code>, <code class="docutils literal notranslate"><span class="pre">odom_frame</span></code>, <code class="docutils literal notranslate"><span class="pre">base_link_frame</span></code>, and <code class="docutils literal notranslate"><span class="pre">world_frame</span></code>. For more information on the other parameters you can modify, see <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/state_estimation_nodes.html#parameters">Parameters of state estimation nodes</a>, and a sample <code class="docutils literal notranslate"><span class="pre">efk.yaml</span></code> can be found <a class="reference external" href="https://github.com/cra-ros-pkg/robot_localization/blob/foxy-devel/params/ekf.yaml">here</a>.</p>
-<p>To add a sensor input to the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code>, add the next number in the sequence to its base name (odom, imu, pose, twist). In our case, we have one <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code> and one <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code> as inputs to the filter, thus we use <code class="docutils literal notranslate"><span class="pre">odom0</span></code> and <code class="docutils literal notranslate"><span class="pre">imu0</span></code>. We set the value of <code class="docutils literal notranslate"><span class="pre">odom0</span></code> to <code class="docutils literal notranslate"><span class="pre">demo/odom</span></code>, which is the topic that publishes the <code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code>. Similarly, we set the value of <code class="docutils literal notranslate"><span class="pre">imu0</span></code> to the topic that publishes <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code>, which is <code class="docutils literal notranslate"><span class="pre">demo/imu</span></code>.</p>
-<p>You can specify which values from a sensor are to be used by the filter using the <code class="docutils literal notranslate"><span class="pre">_config</span></code> parameter. The order of the values of this parameter is x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. In our example, we set everything in <code class="docutils literal notranslate"><span class="pre">odom0_config</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code> except the 1st, 2nd, 3rd, and 12th entries, which means the filter will only use the x, y, z, and the vyaw values of <code class="docutils literal notranslate"><span class="pre">odom0</span></code>.</p>
-<p>In the <code class="docutils literal notranslate"><span class="pre">imu0_config</span></code> matrix, you’ll notice that only roll, pitch, and yaw are used. Typical mobile robot-grade IMUs will also provide angular velocities and linear accelerations. For <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> to work properly, you should not fuse in multiple fields that are derivative of each other. Since angular velocity is fused internally to the IMU to provide the roll, pitch and yaw estimates, we should not fuse in the angular velocities used to derive that information. We also do not fuse in angular velocity due to the noisy characteristics it has when not using exceptionally high quality (and expensive) IMUs.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>For more advise on configuration of input data to <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>, see <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/preparing_sensor_data.html#odometry">Preparing Your Data for Use with robot_localization</a>, and <a class="reference external" href="http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html">Configuring robot_localization</a>.</p>
-</div>
-</div>
-<div class="section" id="id3">
-<h3>Launch and Build Files<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
-<p>Now, let us add the <code class="docutils literal notranslate"><span class="pre">ekf_node</span></code> into the launch file. Open <code class="docutils literal notranslate"><span class="pre">launch/display.launch.py</span></code> and paste the following lines before the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> line.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">robot_localization_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>launch_ros.actions.Node<span class="o">(</span>
-<span class="w">       </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;robot_localization&#39;</span>,
-<span class="w">       </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;ekf_node&#39;</span>,
-<span class="w">       </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;ekf_filter_node&#39;</span>,
-<span class="w">       </span><span class="nv">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>,
-<span class="w">       </span><span class="nv">parameters</span><span class="o">=[</span>os.path.join<span class="o">(</span>pkg_share,<span class="w"> </span><span class="s1">&#39;config/ekf.yaml&#39;</span><span class="o">)</span>,<span class="w"> </span><span class="o">{</span><span class="s1">&#39;use_sim_time&#39;</span>:<span class="w"> </span>LaunchConfiguration<span class="o">(</span><span class="s1">&#39;use_sim_time&#39;</span><span class="o">)}]</span>
-<span class="o">)</span>
-</pre></div>
-</div>
-<p>Next, add the following launch arguments within the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">launch.LaunchDescription([</span></code> block.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>launch.actions.DeclareLaunchArgument<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;use_sim_time&#39;</span>,<span class="w"> </span><span class="nv">default_value</span><span class="o">=</span><span class="s1">&#39;True&#39;</span>,
-<span class="w">                                            </span><span class="nv">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable use_sim_time&#39;</span><span class="o">)</span>,
-</pre></div>
-</div>
-<p>Lastly, add <code class="docutils literal notranslate"><span class="pre">robot_localization_node,</span></code> above the <code class="docutils literal notranslate"><span class="pre">rviz_node</span></code> line to launch the robot localization node.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w">      </span>robot_state_publisher_node,
-<span class="w">      </span>spawn_entity,
-<span class="w">      </span>robot_localization_node,
-<span class="w">      </span>rviz_node
-<span class="o">])</span>
-</pre></div>
-</div>
-<p>Next, we need to add the <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> dependency to our package definition. Open <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> and add the following line below the last <code class="docutils literal notranslate"><span class="pre">&lt;exec_depend&gt;</span></code> tag.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;exec_depend&gt;robot_localization&lt;/exec_depend&gt;
-</pre></div>
-</div>
-<p>Lastly, open <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and append the <code class="docutils literal notranslate"><span class="pre">config</span></code> directory inside the <code class="docutils literal notranslate"><span class="pre">install(DIRECTORY...)</span></code>, as shown in the snippet below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>install<span class="o">(</span>
-<span class="w">  </span>DIRECTORY<span class="w"> </span>src<span class="w"> </span>launch<span class="w"> </span>rviz<span class="w"> </span>config
-<span class="w">  </span>DESTINATION<span class="w"> </span>share/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span>
-<span class="o">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id4">
-<h3>Build, Run and Verification<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
-<p>Let us now build and run our package. Navigate to the root of the project and execute the following lines:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build
-.<span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<span class="w"> </span>display.launch.py
-</pre></div>
-</div>
-<p>Gazebo and RVIZ should launch. In the RVIZ window, you should see the model and TF frames of <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code>:</p>
-<a class="reference internal image-reference" href="../../_images/rviz.png"><img alt="../../_images/rviz.png" class="align-center" src="../../_images/rviz.png" style="width: 100%;" /></a>
-<p>Next, let us verify that the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>,  <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics are active in the system. Open a new terminal and execute:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>list
-</pre></div>
-</div>
-<p>You should see <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>, <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> in the list of the topics.</p>
-<p>You can also check the subscriber count of these topics again by executing:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/demo/imu
-ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/demo/odom
-</pre></div>
-</div>
-<p>You should see that <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code> now both have 1 subscriber each.</p>
-<p>To verify that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> are the subscribers of these topics, execute:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/ekf_filter_node
-</pre></div>
-</div>
-<p>You should see an output as shown below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/ekf_filter_node
-Subscribers:
-<span class="w">  </span>/demo/imu:<span class="w"> </span>sensor_msgs/msg/Imu
-<span class="w">  </span>/demo/odom:<span class="w"> </span>nav_msgs/msg/Odometry
-<span class="w">  </span>/parameter_events:<span class="w"> </span>rcl_interfaces/msg/ParameterEvent
-<span class="w">  </span>/set_pose:<span class="w"> </span>geometry_msgs/msg/PoseWithCovarianceStamped
-Publishers:
-<span class="w">  </span>/accel/filtered:<span class="w"> </span>geometry_msgs/msg/AccelWithCovarianceStamped
-<span class="w">  </span>/diagnostics:<span class="w"> </span>diagnostic_msgs/msg/DiagnosticArray
-<span class="w">  </span>/odometry/filtered:<span class="w"> </span>nav_msgs/msg/Odometry
-<span class="w">  </span>/parameter_events:<span class="w"> </span>rcl_interfaces/msg/ParameterEvent
-<span class="w">  </span>/rosout:<span class="w"> </span>rcl_interfaces/msg/Log
-<span class="w">  </span>/tf:<span class="w"> </span>tf2_msgs/msg/TFMessage
-Service<span class="w"> </span>Servers:
-<span class="w">   </span>...
-</pre></div>
-</div>
-<p>From the output above, we can see that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> is subscribed to <code class="docutils literal notranslate"><span class="pre">/demo/imu</span></code> and <code class="docutils literal notranslate"><span class="pre">/demo/odom</span></code>. We can also see that the <code class="docutils literal notranslate"><span class="pre">ekf_filter_node</span></code> publishes on the <code class="docutils literal notranslate"><span class="pre">odometry/filtered</span></code>, <code class="docutils literal notranslate"><span class="pre">accel/filtered</span></code>, and <code class="docutils literal notranslate"><span class="pre">/tf</span></code> topics.</p>
-<p>You may also verify that <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code> is publishing the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform by using the tf2_echo utility. Run the following command in a separate command line terminal:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>odom<span class="w"> </span>base_link
-</pre></div>
-</div>
-<p>You should see a continuous output similar to what is shown below.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>At<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">8</span>.842000000
--<span class="w"> </span>Translation:<span class="w"> </span><span class="o">[</span><span class="m">0</span>.003,<span class="w"> </span>-0.000,<span class="w"> </span><span class="m">0</span>.127<span class="o">]</span>
--<span class="w"> </span>Rotation:<span class="w"> </span><span class="k">in</span><span class="w"> </span>Quaternion<span class="w"> </span><span class="o">[</span>-0.000,<span class="w"> </span><span class="m">0</span>.092,<span class="w"> </span><span class="m">0</span>.003,<span class="w"> </span><span class="m">0</span>.996<span class="o">]</span>
-At<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">9</span>.842000000
--<span class="w"> </span>Translation:<span class="w"> </span><span class="o">[</span><span class="m">0</span>.002,<span class="w"> </span>-0.000,<span class="w"> </span><span class="m">0</span>.127<span class="o">]</span>
--<span class="w"> </span>Rotation:<span class="w"> </span><span class="k">in</span><span class="w"> </span>Quaternion<span class="w"> </span><span class="o">[</span>-0.000,<span class="w"> </span><span class="m">0</span>.092,<span class="w"> </span><span class="m">0</span>.003,<span class="w"> </span><span class="m">0</span>.996<span class="o">]</span>
-</pre></div>
-</div>
+<p>RViz and the Gazebo will then be launched with <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> present in both. In the Gazebo window, the world that we created should be launched and <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> should be spawned in that world. You should now be able to observe <code class="docutils literal notranslate"><span class="pre">sam_bot</span></code> with the 360 lidar sensor and the depth camera, as shown in the image below.</p>
+<img alt="../../_images/gazebo_sensors.png" class="align-center" src="../../_images/gazebo_sensors.png" />
+<p>In the RViz window, we can verify if we have properly modeled our sensors and if the transforms of our newly added sensors are correct:</p>
+<img alt="../../_images/rviz_sensors.png" class="align-center" src="../../_images/rviz_sensors.png" />
+<p>Lastly, we can also visualize the sensor readings in RViz.  To visualize the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/LaserScan</span></code> message published on <code class="docutils literal notranslate"><span class="pre">/scan</span></code> topic, click the add button at the bottom part of the RViz window. Then go to the <code class="docutils literal notranslate"><span class="pre">By</span> <span class="pre">topic</span></code> tab and select the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> option under <code class="docutils literal notranslate"><span class="pre">/scan</span></code>, as shown below.</p>
+<a class="reference internal image-reference" href="../../_images/add_topic_laserscan.png"><img alt="../../_images/add_topic_laserscan.png" class="align-center" src="../../_images/add_topic_laserscan.png" style="width: 400px;" /></a>
+<p>Next, set the <code class="docutils literal notranslate"><span class="pre">Reliability</span> <span class="pre">Policy</span></code> in RViz to <code class="docutils literal notranslate"><span class="pre">Best</span> <span class="pre">Effort</span></code> and set the <code class="docutils literal notranslate"><span class="pre">size</span></code> to 0.1 to see the points clearer. You should see the visualized <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> detection as shown below. This corresponds to the detected cube and sphere that we added to the Gazebo world.</p>
+<img alt="../../_images/demo_laserscan_rviz.png" class="align-center" src="../../_images/demo_laserscan_rviz.png" />
+<p>To visualize <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Image</span></code> and <code class="docutils literal notranslate"><span class="pre">sensor_msgs/PointCloud2</span></code>, do the same for topics <code class="docutils literal notranslate"><span class="pre">/depth_camera/image_raw</span></code> and <code class="docutils literal notranslate"><span class="pre">/depth_camera/points</span></code> respectively:</p>
+<img alt="../../_images/add_topic_image_pointcloud2.png" src="../../_images/add_topic_image_pointcloud2.png" />
+<p>After adding the <code class="docutils literal notranslate"><span class="pre">/depth_camera/image_raw</span></code> topic in RViz, set the <code class="docutils literal notranslate"><span class="pre">Reliability</span> <span class="pre">Policy</span></code> in RViz to <code class="docutils literal notranslate"><span class="pre">Best</span> <span class="pre">Effort</span></code>. Then you should see the cube in the image window at the lower-left side of the RViz window, as shown below.</p>
+<img alt="../../_images/demo_image_rviz.png" class="align-center" src="../../_images/demo_image_rviz.png" />
+<p>You should also see the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/PointCloud2</span></code>, as shown below.</p>
+<img alt="../../_images/pointcloud2_data.png" class="align-center" src="../../_images/pointcloud2_data.png" />
 </div>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h2>
-<p>In this guide, we have discussed the messages and transforms that are expected by Nav2 from the odometry system. We have seen how to set up an odometry system and how to verify the published messages. We also have discussed how multiple odometry sensors can be used to provide a filtered and smoothed odometry using <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>. We have also checked if the <code class="docutils literal notranslate"><span class="pre">odom</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">base_link</span></code> transform is being published correctly by <code class="docutils literal notranslate"><span class="pre">robot_localization</span></code>.</p>
+<p>In this section of our robot setup guide, we had a discussion on the common types of sensor messages in Nav2 which standardize the message formats for different sensor vendors. We also discussed how to add sensors to a simulated robot using Gazebo and how to verify that the sensors are working correctly through RViz.</p>
 </div>
 </div>
 
