@@ -29,6 +29,17 @@ This implements a costmap layer taking in a map from either SLAM or ``map_server
   Description
     Clear any occupied cells under robot footprint.
 
+:``<static layer>``.restore_outdated_map:
+
+  ==== =======
+  Type Default                                                   
+  ---- -------
+  bool False            
+  ==== =======
+
+  Description
+    Restore map after clearing the area the footprint occupied.
+
 :``<static layer>``.subscribe_to_updates:
 
   ==== =======
