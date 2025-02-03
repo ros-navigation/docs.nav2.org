@@ -244,4 +244,4 @@ The parent node retains this state information, and will tick ``Action_C`` upon 
 
 |
 
-For additional details regarding the ``RecoveryNode`` please see the `RoundRobin configuration guide <../../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
+For additional details regarding the ``RoundRobin`` please see the `RoundRobin configuration guide <../../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
