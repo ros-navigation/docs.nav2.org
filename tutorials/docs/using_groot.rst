@@ -123,7 +123,7 @@ You can see more examples in `Nav2's BT Node Palette XML <https://github.com/ros
           <Action ID="MyAwesomeNewNode">
               <input_port name="key_name" default="false">coffee</input_port>
               <output_port name="key_name2" default="42">Sense of life</output_port>
-              <input_port name="next_target" default="pancakes">rolling target</input_port>
+              <inout_port name="next_target" default="pancakes">rolling target</inout_port>
           </Action>
       </TreeNodesModel>
   </root>
