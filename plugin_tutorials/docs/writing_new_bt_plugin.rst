@@ -224,12 +224,12 @@ Select this BT XML file in your specific navigation request in ``NavigateToPose`
         </PipelineSequence>
         <ReactiveFallback name="RecoveryFallback">
           <GoalUpdated/>
-          <SequenceStar name="RecoveryActions">
+          <SequenceWithMemory name="RecoveryActions">
             <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
             <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
             <Spin spin_dist="1.57"/>
             <Wait wait_duration="5"/>
-          </SequenceStar>
+          </SequenceWithMemory>
         </ReactiveFallback>
       </RecoveryNode>
     </BehaviorTree>

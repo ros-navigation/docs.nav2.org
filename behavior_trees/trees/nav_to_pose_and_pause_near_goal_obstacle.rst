@@ -1,7 +1,7 @@
 Navigate To Pose and Pause Near Goal-Obstacle
 #############################################
 
-.. note:: As a prerequisite, we encourage the users to go through the `Behavior Tree documentation <https://behaviortree.github.io/BehaviorTree.CPP/>`_, which explains about different behaviors nodes used in these trees such as ``ReactiveSequence``, ``SequenceStar`` and ``RetryUntilSucessfull``. 
+.. note:: As a prerequisite, we encourage the users to go through the `Behavior Tree documentation <https://behaviortree.github.io/BehaviorTree.CPP/>`_, which explains about different behaviors nodes used in these trees such as ``ReactiveSequence``, ``SequenceWithMemory`` and ``RetryUntilSucessfull``. 
 
 This behavior tree is a soft extension to the :ref:`behavior_tree_nav_to_pose`. 
 Apart from the functionalities of :ref:`behavior_tree_nav_to_pose`, this behavior tree allows the robot to efficiently handle an obstacle (e.g. forklift, person, or other temporary obstacles) close to the goal by pausing the robot's navigation and wait for a user-specified time to check if the obstacle has cleared.
@@ -16,9 +16,9 @@ If there is no significantly longer path, the monitor node goes into the ``Follo
 .. image:: ../images/walkthrough/patience_and_recovery.png
 
 Once there is a significantly longer path, the child node for the ``PathLongerOnApproach`` node ticks.
-The child node is a ``RetryUntilSuccesfull`` decorator node, which inturns have a ``SequenceStar`` node as its child. 
-Firstly, the ``SequenceStar`` node cancels the controller server by ticking the ``CancelControl`` node. The cancellation of the controller server halts the further navigation of the robot.  
-Next, the ``SequenceStar`` node ticks the ``Wait`` node, which enables the robot to wait for the given user-specified time. 
+The child node is a ``RetryUntilSuccesfull`` decorator node, which inturns have a ``SequenceWithMemory`` node as its child. 
+Firstly, the ``SequenceWithMemory`` node cancels the controller server by ticking the ``CancelControl`` node. The cancellation of the controller server halts the further navigation of the robot.  
+Next, the ``SequenceWithMemory`` node ticks the ``Wait`` node, which enables the robot to wait for the given user-specified time. 
 Here we need to note that, the ``MonitorAndFollowPath`` is a ``ReactiveSequence`` node, therefore the ``PathLongerOnApproach`` node needs to return SUCCESS, before the ``FollowPath`` node can be ticked once again.
 
 In the below GIF, it can be seen that the robot is approaching the goal location, but it found an obstacle in the goal proximity, because of which the global planner, plans a longer path around. 
@@ -53,10 +53,10 @@ In conclusion, this particular BT would serve, both as an example and ready-to-u
           <ReactiveSequence name="MonitorAndFollowPath">
             <PathLongerOnApproach path="{path}" prox_len="3.0" length_factor="2.0">
               <RetryUntilSuccessful num_attempts="1">
-                <SequenceStar name="CancelingControlAndWait">
+                <SequenceWithMemory name="CancelingControlAndWait">
                   <CancelControl name="ControlCancel"/>
                   <Wait wait_duration="5.0"/>
-                </SequenceStar>
+                </SequenceWithMemory>
               </RetryUntilSuccessful>
             </PathLongerOnApproach>
             <RecoveryNode number_of_retries="1" name="FollowPath">
