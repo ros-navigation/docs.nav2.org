@@ -26,7 +26,7 @@ Prerequisites
 
     - Read the short explanation in `navigation concepts <../../concepts/index.html>`_
 
-    - Read the general tutorial and guide (not Nav2 specific) on the `BehaviorTree CPP V3 <https://www.behaviortree.dev/>`_ website. Specifically, the "Learn the Basics" section on the BehaviorTree CPP V3 website explains the basic generic nodes that will be used that this guide will build upon.
+    - Read the general tutorial and guide (not Nav2 specific) on the `BehaviorTree CPP V4 <https://www.behaviortree.dev/>`_ website. Specifically, the "Basic Concepts" section on the BehaviorTree CPP V4 website explains the basic generic nodes that will be used that this guide will build upon.
 
 - Become familiar with the custom `Nav2 specific BT nodes <nav2_specific_nodes.html>`_
 

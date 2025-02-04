@@ -1390,12 +1390,12 @@ For example, the <code class="docutils literal notranslate"><span class="pre">na
 <span class="w">      </span><span class="nt">&lt;/PipelineSequence&gt;</span>
 <span class="w">      </span><span class="nt">&lt;ReactiveFallback</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;RecoveryFallback&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span><span class="nt">&lt;GoalUpdated/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;SequenceStar</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;RecoveryActions&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;SequenceWithMemory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;RecoveryActions&quot;</span><span class="nt">&gt;</span>
 <span class="w">          </span><span class="nt">&lt;ClearEntireCostmap</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ClearLocalCostmap-Subtree&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;local_costmap/clear_entirely_local_costmap&quot;</span><span class="nt">/&gt;</span>
 <span class="w">          </span><span class="nt">&lt;ClearEntireCostmap</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ClearGlobalCostmap-Subtree&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_entirely_global_costmap&quot;</span><span class="nt">/&gt;</span>
 <span class="w">          </span><span class="nt">&lt;Spin</span><span class="w"> </span><span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span><span class="nt">/&gt;</span>
 <span class="w">          </span><span class="nt">&lt;Wait</span><span class="w"> </span><span class="na">wait_duration=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/SequenceStar&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/SequenceWithMemory&gt;</span>
 <span class="w">      </span><span class="nt">&lt;/ReactiveFallback&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/RecoveryNode&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/BehaviorTree&gt;</span>
