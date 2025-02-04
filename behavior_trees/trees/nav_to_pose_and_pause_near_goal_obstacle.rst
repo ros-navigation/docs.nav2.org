@@ -1,7 +1,7 @@
 Navigate To Pose and Pause Near Goal-Obstacle
 #############################################
 
-.. note:: As a prerequisite, we encourage the users to go through the `Behavior Tree documentation <https://behaviortree.github.io/BehaviorTree.CPP/>`_, which explains about different behaviors nodes used in these trees such as ``ReactiveSequence``, ``SequenceWithMemory`` and ``RetryUntilSucessfull``. 
+.. note:: As a prerequisite, we encourage the users to go through the `Behavior Tree documentation <https://behaviortree.github.io/BehaviorTree.CPP/>`_, which explains about different behaviors nodes used in these trees such as ``ReactiveSequence``, ``SequenceWithMemory`` and ``RetryUntilSuccessful``. 
 
 This behavior tree is a soft extension to the :ref:`behavior_tree_nav_to_pose`. 
 Apart from the functionalities of :ref:`behavior_tree_nav_to_pose`, this behavior tree allows the robot to efficiently handle an obstacle (e.g. forklift, person, or other temporary obstacles) close to the goal by pausing the robot's navigation and wait for a user-specified time to check if the obstacle has cleared.
@@ -16,7 +16,7 @@ If there is no significantly longer path, the monitor node goes into the ``Follo
 .. image:: ../images/walkthrough/patience_and_recovery.png
 
 Once there is a significantly longer path, the child node for the ``PathLongerOnApproach`` node ticks.
-The child node is a ``RetryUntilSuccesfull`` decorator node, which inturns have a ``SequenceWithMemory`` node as its child. 
+The child node is a ``RetryUntilSuccesful`` decorator node, which inturns have a ``SequenceWithMemory`` node as its child. 
 Firstly, the ``SequenceWithMemory`` node cancels the controller server by ticking the ``CancelControl`` node. The cancellation of the controller server halts the further navigation of the robot.  
 Next, the ``SequenceWithMemory`` node ticks the ``Wait`` node, which enables the robot to wait for the given user-specified time. 
 Here we need to note that, the ``MonitorAndFollowPath`` is a ``ReactiveSequence`` node, therefore the ``PathLongerOnApproach`` node needs to return SUCCESS, before the ``FollowPath`` node can be ticked once again.
