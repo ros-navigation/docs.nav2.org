@@ -2019,7 +2019,7 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description:</dt><dd><p>Type of polygon shape. Could be <code class="docutils literal notranslate"><span class="pre">scan</span></code>, <code class="docutils literal notranslate"><span class="pre">pointcloud</span></code> or <code class="docutils literal notranslate"><span class="pre">range</span></code>.</p>
+<dt>Description:</dt><dd><p>Type of polygon shape. Could be <code class="docutils literal notranslate"><span class="pre">scan</span></code>, <code class="docutils literal notranslate"><span class="pre">pointcloud</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span></code> or <code class="docutils literal notranslate"><span class="pre">polygon</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -2103,8 +2103,28 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.enabled</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.sampling_distance</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for <code class="docutils literal notranslate"><span class="pre">polygon</span></code> source type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.enabled</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2123,8 +2143,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.source_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.source_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -2143,8 +2163,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-even">bond_heartbeat_period</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">bond_heartbeat_period</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
