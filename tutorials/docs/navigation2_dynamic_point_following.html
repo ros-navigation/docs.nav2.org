@@ -1287,7 +1287,7 @@ this repo in your workspace, build, and type in a terminal.</p>
 <div class="section" id="run-dynamic-object-following-in-nav2-simulation">
 <h3>2- Run Dynamic Object Following in Nav2 Simulation<a class="headerlink" href="#run-dynamic-object-following-in-nav2-simulation" title="Permalink to this heading"></a></h3>
 <p>Start Nav2 in one terminal:</p>
-<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">nav2_bringup</span> <span class="pre">tb3_simulation_launch.py</span> <span class="pre">default_bt_xml_filename:=/path/to/bt.xml</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">nav2_bringup</span> <span class="pre">tb3_simulation_launch.py</span> <span class="pre">headless:=False</span></code></p>
 <p>Open RViz and, after initialize the robot position, command the robot to navigate to any position. Use the button clicked point to simulate a new detection of the object of interest, as shown in the video in the head of this tutorial.</p>
 <p>When you have a detector detecting your obstacle at a higher rate (1 hz, 10 hz, 100 hz) you will see a far more reactive robot following your detected object of interest!</p>
 <h1 align="center">

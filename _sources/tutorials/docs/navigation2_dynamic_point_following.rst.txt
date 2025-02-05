@@ -144,7 +144,7 @@ Optionally, you can remap this topic in your rviz configuration file to ``goal_u
 
 Start Nav2 in one terminal:
 
-``ros2 launch nav2_bringup tb3_simulation_launch.py default_bt_xml_filename:=/path/to/bt.xml``
+``ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False``
 
 Open RViz and, after initialize the robot position, command the robot to navigate to any position. Use the button clicked point to simulate a new detection of the object of interest, as shown in the video in the head of this tutorial.
 
