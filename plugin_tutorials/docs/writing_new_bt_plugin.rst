@@ -192,7 +192,8 @@ In order for the BT Navigator node to discover the plugin we've just registered,
       global_frame: map
       robot_base_frame: base_link
       odom_topic: /odom
-      default_bt_xml_filename: "navigate_w_replanning_and_recovery.xml"
+      default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
+      default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
       plugin_lib_names:
       - nav2_back_up_action_bt_node # other plugin 
       - nav2_wait_action_bt_node    # our new plugin
