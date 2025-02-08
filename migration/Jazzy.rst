@@ -9,20 +9,20 @@ BehaviorTree error_msg
 **********************
 
 In `PR #4459 <https://github.com/ros-navigation/navigation2/pull/4459>`_ adds error_msg to all action result messages
-and `PR #4460 <https://github.com/ros-navigation/navigation2/pull/4460>`_ captures and propagates error_msg result strings through the bt_navigator
-a new parameter for the BT Navigator ``error_code_name_prefixes`` was introduced, and it is a *mandatory* replacement for ``error_code_names``.
+and `PR #4460 <https://github.com/ros-navigation/navigation2/pull/4460>`_ captures and propagates error_msg result strings through the bt_navigator,
+a new parameter for the BT Navigator ``error_code_name_prefixes`` was introduced, *AND* it is a *mandatory* replacement for ``error_code_names``.
 
-IOW the existence of the ``error_code_names`` parameter will be rejected as a runtime exception at startup and *MUST* be removed.
+In other words the existence of the ``error_code_names`` parameter will be rejected as a runtime exception at startup and *MUST* be removed.
 
 When configured correctly, and the behaviour tree xml configuration is modified appropriately, error codes and contextual error messages are propagated in the Result message of Nav2 action server requests.
 
 This allows handling of specific errors with more contextual information, than simply the error code, to be viewed by application clients calling Nav2 or its servers.
 
-Behavior tree based Navigator Action requests require augmentation of behavior tree elements that support ``error_code_id`` and ``error_msg`` output ports.
+Behavior tree based Navigator Action requests, require augmentation of behavior tree elements that support ``error_code_id`` and ``error_msg`` output ports.
 
-The corresponding attribute values must use port variable names that combine the relevant ``error_code_names_prefix`` with the suffix ``_error_code`` and ``_error_msg``.
+The corresponding attribute values, must use port variable names that combine the relevant ``error_code_names_prefix`` with the suffix ``_error_code`` and ``_error_msg``.
 
-The following is an example of replacing the ``error_code_names`` parameter
+The following is an example of the ``error_code_names`` parameter that must be replaced
 
 .. code-block:: yaml
 
@@ -30,7 +30,7 @@ The following is an example of replacing the ``error_code_names`` parameter
       - compute_path_error_code
       - follow_path_error_code
 
-with the ``error_code_names_prefixes`` parameter
+with the ``error_code_names_prefixes`` parameter which specifies prefixes for the current set of built in action servers.
 
 .. code-block:: yaml
 
