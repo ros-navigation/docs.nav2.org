@@ -8,16 +8,61 @@ Moving from ROS 2 Jazzy to Kilted, a number of stability improvements were added
 BehaviorTree error_msg
 **********************
 
-`PR #4459 https://github.com/ros-navigation/navigation2/pull/4459>`_ adds error_msg to all action result messages
-`PR #4460 <https://github.com/ros-navigation/navigation2/pull/4460>`_ captures and propagates error_msg result strings through the bt_navigator.
+In `PR #4459 <https://github.com/ros-navigation/navigation2/pull/4459>`_ adds error_msg to all action result messages
+and `PR #4460 <https://github.com/ros-navigation/navigation2/pull/4460>`_ captures and propagates error_msg result strings through the bt_navigator
+a new parameter for the BT Navigator ``error_code_name_prefixes`` was introduced, and it is a *mandatory* replacement for ``error_code_names``.
 
-A new parameter for the BT Navigator "error_code_name_prefixes" was introduced.  It replaces the "error_code_id_names" parameter to support both an error code and an associated error message.  Behavior tree elements that support an "error_code_id" and "error_msg" attribute, must have values that use the corresponding prefix with the suffix "_error_code" and "_error_msg" respectively. The error messages can then be viewed by applications calling Nav2 or its servers for handling specific errors with more contextual information than simply the error code.
+IOW the existence of the ``error_code_names`` parameter will be rejected as a runtime exception at startup and *MUST* be removed.
 
-Thus, users must update their ``nav2_params.yaml`` to include this new format of specifying error message and code locations.
+When configured correctly, and the behaviour tree xml configuration is modified appropriately, error codes and contextual error messages are propagated in the Result message of Nav2 action server requests.
+
+This allows handling of specific errors with more contextual information, than simply the error code, to be viewed by application clients calling Nav2 or its servers.
+
+Behavior tree based Navigator Action requests require augmentation of behavior tree elements that support ``error_code_id`` and ``error_msg`` output ports.
+
+The corresponding attribute values must use port variable names that combine the relevant ``error_code_names_prefix`` with the suffix ``_error_code`` and ``_error_msg``.
+
+The following is an example of replacing the ``error_code_names`` parameter
+
+.. code-block:: yaml
+
+    error_code_names:
+      - compute_path_error_code
+      - follow_path_error_code
+
+with the ``error_code_names_prefixes`` parameter
+
+.. code-block:: yaml
+
+    error_code_name_prefixes:
+      - assisted_teleop
+      - backup
+      - compute_path
+      - dock_robot
+      - drive_on_heading
+      - follow_path
+      - nav_thru_poses
+      - nav_to_pose
+      - spin
+      - route
+      - undock_robot
+      - wait
+
+The following provides examples of modifications that should be made to behavior tree configurations.
 
 .. code-block:: xml
 
   <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code} error_msg="{compute_path_error_msg}"/>
+  <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
+  <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
+  <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
+  <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+  <DriveOnHeading dist_to_travel="2.0" speed="0.2" time_allowance="12" error_code_id="{drive_on_heading_error_code}" error_msg="{drive_on_heading_error_msg}"/>
+  <UndockRobot dock_type="{dock_type}" error_code_id="{undock_robot_error_code}" error_msg="{undock_robot_error_msg}" />
+  <DockRobot dock_id="{dock_id}" error_code_id="{dock_robot_error_code}" error_msg="{dock_robot_error_msg}"/>
+  <NavigateToPose goal="{picking_location}" error_code_id="{nav_to_pose_error_code}" error_msg="{nav_to_pose_error_msg}"/>
+
+The explicit specification of the ``error_code_names_prefix`` for both ``error_code_id`` and ``error_msg`` in the behavior tree xml is done to provide a configuration based level of indirection to enable resolution of namespace conflicts between built in Nav2 and third party actions servers.
 
 TwistStamped Default CmdVel Change
 **********************************
@@ -120,7 +165,7 @@ Option to limit velocity through DWB trajectory
 
 In `PR #4663 <https://github.com/ros-navigation/navigation2/pull/4663>`_ a ``limit_vel_cmd_in_traj`` parameter was introduced to DWB local planner to allow the user to limit the velocity used in the trajectory generation based on the robot's current velocity.
 
-Default value: 
+Default value:
 
 - false
 
@@ -217,7 +262,7 @@ Parameters ``parent_namespace`` / ``use_sim_time`` both provide default values t
 Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions
 *******************************************************************************
 
-In `PR #4785 <https://github.com/ros-navigation/navigation2/pull/4785>`_ a new boolean parameter named `disable_collision_checks` was added to the `DriveOnHeading`, `BackUp` and `Spin` actions to optionally disable collision checking. 
+In `PR #4785 <https://github.com/ros-navigation/navigation2/pull/4785>`_ a new boolean parameter named `disable_collision_checks` was added to the `DriveOnHeading`, `BackUp` and `Spin` actions to optionally disable collision checking.
 This can be useful, for example, in cases where you want to move the robot even in the presence of known obstacles.
 
 Default value:
@@ -266,7 +311,7 @@ MPPI controller re-implemented using Eigen library and performance improved by 4
 *************************************************************************************
 
 In the `PR #4621 <https://github.com/ros-navigation/navigation2/pull/4621>`_ MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
-MPPI Optimizer's performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively. 
+MPPI Optimizer's performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively.
 
 DriveOnHeading and BackUp behaviors: Addition of acceleration constraints
 *************************************************************************
