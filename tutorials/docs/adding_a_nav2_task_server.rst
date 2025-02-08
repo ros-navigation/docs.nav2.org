@@ -199,9 +199,18 @@ The BT Navigator parameter `error_code_name_prefixes` defines a list of prefixes
 .. code-block:: yaml
 
     error_code_name_prefixes:
-        - compute_path
-        - follow_path
-        - route
+      - assisted_teleop
+      - backup
+      - compute_path
+      - dock_robot
+      - drive_on_heading
+      - follow_path
+      - nav_thru_poses
+      - nav_to_pose
+      - spin
+      - route
+      - undock_robot
+      - wait
 
 Conclusion
 **********
