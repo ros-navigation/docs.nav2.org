@@ -66,7 +66,7 @@ Output Ports
   ============== =======
 
   Description
-        The lowest error code in the list of the `error_code_names` parameter.
+        The lowest error code in the list of the `error_code_names_prefixes` + `_error_code` suffix parameter.
 
 :error_msg:
 
@@ -77,7 +77,7 @@ Output Ports
   ============== =======
 
   Description
-        The error messages associated with the lowest error code in the list of the `error_code_name_prefixes` parameter.
+        The error messages associated with the lowest error code in the list of the `error_code_name_prefixes` + `_error_code` parameter.
 
 Example
 -------

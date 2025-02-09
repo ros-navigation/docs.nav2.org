@@ -15,7 +15,7 @@ Input Ports
   ==================================== =======
   Type                                 Default
   ------------------------------------ -------
-  geometry_msgs::msg::PoseStampedArray   N/A  
+  geometry_msgs::msg::PoseStampedArray   N/A
   ==================================== =======
 
   Description
@@ -66,7 +66,7 @@ Output Ports
   ============== =======
 
   Description
-        The lowest error code in the list of the `error_code_names` parameter.
+        The lowest error code in the list of the `error_code_name_prefixes` parameter.
 
 :error_msg:
 
