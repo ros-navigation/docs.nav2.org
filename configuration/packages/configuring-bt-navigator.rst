@@ -217,7 +217,6 @@ Parameters
     Use time provided by simulation.
 
 :error_code_name_prefixes
-
   ============== ===========================
   Type           Default
   -------------- ---------------------------
@@ -236,7 +235,19 @@ Parameters
   ============== ===========================
 
   Description
-    List of of error code name prefixes to be appended with '_error_code' and searched for during aborted navigator error processing.
+    For Kilted and newer: List of of error code name prefixes to be appended with '_error_code' and searched for during aborted navigator error processing.
+
+:error_code_names
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  vector<string> ["compute_path",
+                  "follow_path"]
+  ============== ===========================
+
+  Description
+    For Jazzy and older: List of of error codes to compare.
 
 :bond_heartbeat_period:
 
