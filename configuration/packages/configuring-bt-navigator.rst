@@ -242,8 +242,8 @@ Parameters
   ============== ===========================
   Type           Default
   -------------- ---------------------------
-  vector<string> ["compute_path",
-                  "follow_path"]
+  vector<string> ["compute_path_error_code",
+                  "follow_path_error_code"]
   ============== ===========================
 
   Description
