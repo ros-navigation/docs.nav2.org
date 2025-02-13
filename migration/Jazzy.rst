@@ -48,7 +48,7 @@ with the ``error_code_names_prefixes`` parameter which specifies prefixes for th
       - undock_robot
       - wait
 
-The following provides examples of modifications that should be made to behavior tree configurations.
+The following provides examples of modifications that should be made to behavior tree configurations to propagate the error messages and codes to the BT navigator result.
 
 .. code-block:: xml
 
