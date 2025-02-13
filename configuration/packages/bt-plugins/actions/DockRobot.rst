@@ -19,7 +19,7 @@ Input Ports
   ==== =======
 
   Description
-    	Whether to use the dock's ID or dock pose fields.
+        Whether to use the dock's ID or dock pose fields.
 
 :dock_id:
 
@@ -30,7 +30,7 @@ Input Ports
   ====== =======
 
   Description
-    	Dock ID or name to use.
+        Dock ID or name to use.
 
 :dock_pose:
 
@@ -41,7 +41,7 @@ Input Ports
   ========================= =======
 
   Description
-    	The dock pose, if not using dock id.
+        The dock pose, if not using dock id.
 
 :dock_type:
 
@@ -52,7 +52,7 @@ Input Ports
   ====== =======
 
   Description
-    	The dock plugin type, if using dock pose.
+        The dock plugin type, if using dock pose.
 
 :max_staging_time:
 
@@ -63,7 +63,7 @@ Input Ports
   ===== =======
 
   Description
-    	Maximum time to navigate to the staging pose.
+        Maximum time to navigate to the staging pose.
 
 :navigate_to_staging_pose:
 
@@ -74,7 +74,7 @@ Input Ports
   ==== =======
 
   Description
-    	Whether to autonomously navigate to staging pose.
+        Whether to autonomously navigate to staging pose.
 
 Output Ports
 ------------
@@ -88,18 +88,29 @@ Output Ports
   ==== =======
 
   Description
-    	If the action was successful.
+        If the action was successful.
 
 :error_code_id:
 
   ============== =======
   Type           Default
   -------------- -------
-  uint16          0  
+  uint16          0
   ============== =======
 
   Description
-    	Dock robot error code. See ``DockRobot`` action message for the enumerated set of error codes.
+        Dock robot error code. See ``DockRobot`` action message for the enumerated set of error codes.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         0
+  ============== =======
+
+  Description
+        Dock robot error message. See ``DockRobot`` action message for the enumerated set of error codes.
 
 :num_retries:
 
@@ -110,11 +121,11 @@ Output Ports
   ====== =======
 
   Description
-    	The number of retries executed.
+        The number of retries executed.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <DockRobot dock_id="{dock_id}" error_code_id="{dock_error_code}"/>
+  <DockRobot dock_id="{dock_id}" error_code_id="{dock_error_code}" error_msg="{dock_error_msg}"/>
