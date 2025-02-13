@@ -235,7 +235,7 @@ Parameters
   ============== ===========================
 
   Description
-    For Kilted and newer: List of of error code name prefixes to be appended with '_error_code' and searched for during aborted navigator error processing.
+    For Kilted and newer: List of of error code name prefixes to be appended with '_error_code' and '_error_msg' and searched for during aborted navigator error processing.
 
 :error_code_names
 
