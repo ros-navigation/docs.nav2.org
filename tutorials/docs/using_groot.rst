@@ -42,7 +42,7 @@ Visualize Behavior Trees
 
 To display a Behavior Tree like that in :numref:`groot_nav2_default_bt`, we will first start the Groot executable.
 Out of the box, Groot can only display Behavior Trees and nodes that are from the defaults in BT.CPP, since it does not know anything about Nav2 or your other projects.
-Therefore, we must point Groot to our palette, or index, of Nav2 / custom behavior tree nodes:
+Therefore, we must point Groot to our palette, or index of Nav2 / custom behavior tree nodes:
 
 1. Open Groot in editor mode. Now, Groot should look like in :numref:`groot_bt_editor`.
 2. Select the `Load palette from file` option either via the context menu or the import icon in the top middle of the menu bar.
