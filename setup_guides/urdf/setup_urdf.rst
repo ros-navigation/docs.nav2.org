@@ -398,7 +398,7 @@ Let us first define macros containing the inertial properties of the geometric p
       </inertial>
     </xacro:macro>
 
-Let us start by adding collision areas to our ``base_link`` using the ``<collision>`` tag. We will also be using the box_inertia macro we defined before to add some inertial properties to our ``base_link``. Include the following code snippet within ``<link name="base_link">`` tag of base_link in our URDF.
+Let us start by adding collision areas to our ``base_link`` using the ``<collision>`` tag. Include the following code snippet within ``<link name="base_link">`` tag of ``base_link`` in our URDF.
 
 .. code-block:: xml
   :lineno-start: 52
@@ -409,7 +409,14 @@ Let us start by adding collision areas to our ``base_link`` using the ``<collisi
         </geometry>
       </collision>
 
-      <xacro:box_inertia m="15" w="${base_width}" d="${base_length}" h="${base_height}"/>
+We will also be using the box_inertia macro we defined before to add some inertial properties to our ``base_link``.
+The ``kdl_parser`` package used in ``robot_state_publisher`` doesn't like inertial properties being specified in the root link, in this case the ``base_link``, to combat this we will be including them in the ``base_footprint`` instead.
+Include the following code snippet within ``<link name="base_footprint">`` tag of ``base_footprint`` in our URDF.
+
+.. code-block:: xml
+  :lineno-start: 62
+
+       <xacro:box_inertia m="15" w="${base_width}" d="${base_length}" h="${base_height}"/>
 
 Next, let us do the same for our wheel macros. Include the following code snippet within the ``<link name="${prefix}_link">`` tag of our wheel macros in our URDF.
 
