@@ -42,6 +42,17 @@ Input Ports
   Description
     	Mapped name of the goal checker plugin type to use, e.g. SimpleGoalChecker.
 
+:progress_checker_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string N/A  
+  ====== =======
+
+  Description
+    	Mapped name of the progress checker plugin type to use, e.g. SimpleProgressChecker.
+
 :server_name:
 
   ====== =======
