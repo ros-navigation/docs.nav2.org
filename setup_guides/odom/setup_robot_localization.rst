@@ -85,7 +85,7 @@ Next, we specify the parameters of the ``ekf_node`` using a YAML file. Create a 
 
 In this configuration, we defined the parameter values of ``frequency``, ``two_d_mode``, ``publish_acceleration``, ``publish_tf``, ``map_frame``, ``odom_frame``, ``base_link_frame``, and ``world_frame``. For more information on the other parameters you can modify, see `Parameters of state estimation nodes <http://docs.ros.org/en/melodic/api/robot_localization/html/state_estimation_nodes.html#parameters>`_, and a sample ``efk.yaml`` can be found `here <https://github.com/cra-ros-pkg/robot_localization/blob/ros2/params/ekf.yaml>`_.
 
-To add a sensor input to the ``ekf_filter_node``, add the next number in the sequence to its base name (odom, imu, pose, twist). In our case, we have one ``nav_msgs/Odometry`` and one ``sensor_msgs/Imu`` as inputs to the filter, thus we use ``odom0`` and ``imu0``. We set the value of ``odom0`` to ``demo/odom``, which is the topic that publishes the ``nav_msgs/Odometry``. Similarly, we set the value of ``imu0`` to the topic that publishes ``sensor_msgs/Imu``, which is ``demo/imu``.
+To add a sensor input to the ``ekf_node``, add the next number in the sequence to its base name (odom, imu, pose, twist). In our case, we have one ``nav_msgs/Odometry`` and one ``sensor_msgs/Imu`` as inputs to the filter, thus we use ``odom0`` and ``imu0``. We set the value of ``odom0`` to ``demo/odom``, which is the topic that publishes the ``nav_msgs/Odometry``. Similarly, we set the value of ``imu0`` to the topic that publishes ``sensor_msgs/Imu``, which is ``demo/imu``.
 
 To understand how ``robot_localization`` is configured and understand the reasoning behind the config have a look at `Configuring robot_localization <http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html>`_.
 
@@ -175,17 +175,17 @@ You can also check the subscriber count of these topics again by executing:
 
 You should see that ``/demo/imu`` and ``/demo/odom`` now both have 1 subscriber each.
 
-To verify that the ``ekf_filter_node`` are the subscribers of these topics, execute:
+To verify that the ``ekf_node`` are the subscribers of these topics, execute:
 
 .. code-block:: shell
 
-  ros2 node info /ekf_filter_node
+  ros2 node info /ekf_node
 
 You should see an output as shown below.
 
 .. code-block:: shell
 
-  /ekf_filter_node
+  /ekf_node
   Subscribers:
     /demo/imu: sensor_msgs/msg/Imu
     /demo/odom: nav_msgs/msg/Odometry
@@ -201,7 +201,7 @@ You should see an output as shown below.
   Service Servers:
      ...
 
-From the output above, we can see that the ``ekf_filter_node`` is subscribed to ``/demo/imu`` and ``/demo/odom``. We can also see that the ``ekf_filter_node`` publishes on the ``odometry/filtered``, ``accel/filtered``, and ``/tf`` topics.
+From the output above, we can see that the ``ekf_node`` is subscribed to ``/demo/imu`` and ``/demo/odom``. We can also see that the ``ekf_node`` publishes on the ``odometry/filtered``, ``accel/filtered``, and ``/tf`` topics.
 
 You may also verify that ``robot_localization`` is publishing the ``odom`` => ``base_link`` transform by using the tf2_echo utility. Run the following command in a separate command line terminal:
 
