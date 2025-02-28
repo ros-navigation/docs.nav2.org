@@ -669,7 +669,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
   ============== ===========================
 
   Description
-    Cost to apply to a pose with any point in in inflated space to prefer distance from obstacles.
+    Cost to apply to a pose with any point in inflated space to prefer distance from obstacles.
 
 
 :near_goal_distance:
