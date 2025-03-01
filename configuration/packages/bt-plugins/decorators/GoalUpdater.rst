@@ -55,6 +55,9 @@ Input Ports
   Description
       The original goals poses
 
+Output Ports
+------------
+
 :output_goal:
 
   ========================= =======
