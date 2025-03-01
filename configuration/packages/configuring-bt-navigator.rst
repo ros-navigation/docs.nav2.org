@@ -159,7 +159,7 @@ Parameters
   ====== =========
 
   Description
-    Path to behavior tree XML description.
+    Robot base frame.
 
 :odom_topic:
 
