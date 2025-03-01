@@ -75,11 +75,11 @@ The following error codes are supported (with more to come as necessary): Unknow
 
 `PR #3251 <https://github.com/ros-navigation/navigation2/pull/3251>`_ pipes the highest priority error code through the bt_navigator and defines the error code structure. 
 
-A new parameter for the the BT Navigator called "error_code_id_names" was added to the nav2_params.yaml to define the error codes to compare. 
+A new parameter for the the BT Navigator called "error_code_id_names" was added to the nav2_params.yaml to define the error codes to compare.
 The lowest error in the "error_code_id_names" is then returned in the action request (navigate to pose, navigate through poses waypoint follower), whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
 
-The error codes produced from the servers follow the guidelines stated below. 
-Error codes from 0 to 9999 are reserved for nav2 while error codes from 10000-65535 are reserved for external servers. 
+The error codes produced from the servers follow the guidelines stated below.
+Error codes from 0 to 9999 are reserved for nav2 while error codes from 10000-65535 are reserved for external servers.
 Each server has two "reserved" error codes. 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
 
 The current implemented servers with error codes are:
@@ -115,7 +115,7 @@ SmootherSelector BT Node
 `PR #3283 <https://github.com/ros-navigation/navigation2/pull/3283>`_ adds a BT node to set the smoother based on a topic or a default. See the configuration guide :ref:`configuring_simple_smoother` for more details. 
 
 
-Publish Costmap Layers 
+Publish Costmap Layers
 **********************
 `PR #3320 <https://github.com/ros-navigation/navigation2/pull/3320>`_ adds the ability for the nav2_costmap_2d package to publish out costmap data associated with each layer.
 
@@ -126,7 +126,7 @@ Give Behavior Server Access to Both Costmaps
 To update behaviors, any reference to the global_frame must be updated to the local_frame parameter
 along with the ``configuration`` method which now takes in the local and global collision checkers.
 Lastly, ``getResourceInfo`` must be overridden to return ``CostmapInfoType::LOCAL``. Other options include ``GLOBAL`` if the behavior useses global costmap and/or footprint)
-or ``BOTH`` if both are required. This allows us to only create and maintain the minimum amount of expensive resources.   
+or ``BOTH`` if both are required. This allows us to only create and maintain the minimum amount of expensive resources.
 
 New Model Predictive Path Integral Controller
 *********************************************
@@ -139,18 +139,18 @@ Behavior Tree Uses Error Codes
 ******************************
 `PR #3324 <https://github.com/ros-navigation/navigation2/pull/3324>`_ adds three new condition nodes to check for error codes on the blackboard set by action BT nodes which contain them. 
 
-The ``AreErrorCodesPresent`` condition node allows the user to specify the error code from the server along with the error codes to match against. 
-The ``WouldAControllerRecoveryHelp`` checks if the active error code is UNKNOWN, PATIENCE_EXCEEDED, FAILED_TO_MAKE_PROGRESS or NO_VALID_CONTROL. 
+The ``AreErrorCodesPresent`` condition node allows the user to specify the error code from the server along with the error codes to match against.
+The ``WouldAControllerRecoveryHelp`` checks if the active error code is UNKNOWN, PATIENCE_EXCEEDED, FAILED_TO_MAKE_PROGRESS or NO_VALID_CONTROL.
 If the error code is a match, the condition returns ``SUCCESS``.
-These error code are potentially able to be cleared by a controller recovery. 
+These error code are potentially able to be cleared by a controller recovery.
 
 The ``WouldAPlannerRecoveryHelp`` checks if the active error code is UNKNOWN, NO_VALID_CONTROL, or TIMEOUT.
 If the error code is a match, the condition returns ``SUCCESS``.
-These error code are potentially able to be cleared by a planner recovery. 
+These error code are potentially able to be cleared by a planner recovery.
 
 The ``WouldASmootherRecoveryHelp`` checks if the active error code is UNKNOWN, TIMEOUT, FAILED_TO_SMOOTH_PATH, or SMOOTHED_PATH_IN_COLLISION.
 If the error code is a match, the condition returns ``SUCCESS``.
-These error code are potentially able to be cleared by a smoother recovery. 
+These error code are potentially able to be cleared by a smoother recovery.
 
 Load, Save and Loop Waypoints from the Nav2 Panel in RViz
 *********************************************************
@@ -205,7 +205,7 @@ IsBatteryChargingCondition BT Node
 **********************************
 `PR #3553 <https://github.com/ros-navigation/navigation2/pull/3553>`_ adds a BT node to check if the battery is charging. See the configuration guide :ref:`bt_is_battery_charging_condition` for more details. 
 
-Behavior Server Error Codes 
+Behavior Server Error Codes
 ***************************
 `PR #3569 <https://github.com/ros-navigation/navigation2/pull/3539>`_ updates the behavior server plugins to provide error codes on failure. 
 
