@@ -1282,14 +1282,12 @@
 <span class="w">          </span><span class="nt">&lt;/size&gt;&lt;/box&gt;</span>
 <span class="w">        </span><span class="nt">&lt;/geometry&gt;</span>
 <span class="w">      </span><span class="nt">&lt;/collision&gt;</span>
-
-<span class="w">      </span><span class="nt">&lt;xacro:box_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;15&quot;</span><span class="w"> </span><span class="na">w=</span><span class="s">&quot;${base_width}&quot;</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;${base_length}&quot;</span><span class="w"> </span><span class="na">h=</span><span class="s">&quot;${base_height}&quot;</span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/link&gt;</span>
 
 <span class="w">    </span><span class="cm">&lt;!-- Robot Footprint --&gt;</span>
 <span class="w">    </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&#39;base_footprint&#39;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;pose</span><span class="w"> </span><span class="na">relative_to=</span><span class="s">&quot;base_joint&quot;</span><span class="nt">/&gt;</span>
-<span class="w">      </span><span class="nt">&lt;xacro:box_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">h=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xacro:box_inertia</span><span class="w"> </span><span class="na">m=</span><span class="s">&quot;15&quot;</span><span class="w"> </span><span class="na">w=</span><span class="s">&quot;${base_width}&quot;</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;${base_length}&quot;</span><span class="w"> </span><span class="na">h=</span><span class="s">&quot;${base_height}&quot;</span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/link&gt;</span>
 
 <span class="w">    </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&#39;base_joint&#39;</span><span class="w"> </span><span class="na">type=</span><span class="s">&#39;fixed&#39;</span><span class="nt">&gt;</span>
@@ -1395,6 +1393,10 @@
 <span class="nb">source</span><span class="w"> </span>install/setup.bash
 ros2<span class="w"> </span>launch<span class="w"> </span>sam_bot_description<span class="w"> </span>display.launch.py
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may get a warning like <code class="docutils literal notranslate"><span class="pre">[kdl_parser]:</span> <span class="pre">The</span> <span class="pre">root</span> <span class="pre">link</span> <span class="pre">base_link</span> <span class="pre">has</span> <span class="pre">an</span> <span class="pre">inertia</span> <span class="pre">specified</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">URDF,</span> <span class="pre">but</span> <span class="pre">KDL</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">support</span> <span class="pre">a</span> <span class="pre">root</span> <span class="pre">link</span> <span class="pre">with</span> <span class="pre">an</span> <span class="pre">inertia.</span> <span class="pre">As</span> <span class="pre">a</span> <span class="pre">workaround,</span> <span class="pre">you</span> <span class="pre">can</span> <span class="pre">add</span> <span class="pre">an</span> <span class="pre">extra</span> <span class="pre">dummy</span> <span class="pre">link</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">URDF.</span></code> This warning can be safely ignored as it is just a quirk of the conversion from SDF to URDF.</p>
 </div>
 <img alt="../../_images/base-bot_3.png" src="../../_images/base-bot_3.png" />
 </div>
