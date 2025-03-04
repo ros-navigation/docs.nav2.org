@@ -15,7 +15,7 @@ Input Ports
   ==================================== =======
   Type                                 Default
   ------------------------------------ -------
-  geometry_msgs::msg::PoseStampedArray   N/A  
+  geometry_msgs::msg::PoseStampedArray   N/A
   ==================================== =======
 
   Description
@@ -26,33 +26,33 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
-    	Action server name.
+        Action server name.
 
 :server_timeout:
 
   ====== =======
   Type   Default
   ------ -------
-  double 10  
+  double 10
   ====== =======
 
   Description
-    	Action server timeout (ms).
+        Action server timeout (ms).
 
 :behavior_tree:
 
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
-    	Behavior tree absolute path. If none is specified, NavigateThroughPoses action server uses a default behavior tree.
+        Behavior tree absolute path. If none is specified, NavigateThroughPoses action server uses a default behavior tree.
 
 Output Ports
 ------------
@@ -62,16 +62,28 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description
-    	The lowest error code in the list of the `error_code_names` parameter. 
+        The lowest error code in the list of the `error_code_name_prefixes` parameter.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        The error message associated with the lowest error code in the list of the `error_code_name_prefixes` parameter.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10" error_code_id="{navigate_through_poses_error_code}"
+  <NavigateThroughPoses goals="{goals}" server_name="NavigateThroughPoses" server_timeout="10"
+                        error_code_id="{navigate_through_poses_error_code}" error_msg="{navigate_through_poses_error_msg}"
                         behavior_tree="<some-path>/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml"/>

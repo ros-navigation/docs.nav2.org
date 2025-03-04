@@ -1,9 +1,9 @@
 .. _adding_a_nav2_task_server:
 
-Adding a New Nav2 Task Server 
+Adding a New Nav2 Task Server
 #############################
 
-A nav2 task server consists of server side logic to complete different types of requests, usually called by the autonomy system or through the Behavior Tree Navigator. In this guide, we will discuss the core components needed to add a new task server to Nav2 (ex. Controller, Behavior, Smoother, Planner Servers). Namely, how to set up your new Lifecycle-Component Node for launch and state management and the communication of semantically meaningful error codes (if necessary). 
+A nav2 task server consists of server side logic to complete different types of requests, usually called by the autonomy system or through the Behavior Tree Navigator. In this guide, we will discuss the core components needed to add a new task server to Nav2 (ex. Controller, Behavior, Smoother, Planner Servers). Namely, how to set up your new Lifecycle-Component Node for launch and state management and the communication of semantically meaningful error codes (if necessary).
 
 While this tutorial does not cover how to add the complementary Behavior Tree Node to interact with this new Task Server, that is covered at length in :ref:`writing_new_nbt_plugin` so this Task Server can be invoked in the BTs in BT Navigator.
 
@@ -107,12 +107,12 @@ We make use of the launch files to compose different servers into a single proce
         <exec_depend>nav2_route_server</exec_depend>
 
 
-Error codes 
+Error codes
 ***********
 
-Your nav2 task server may also wish to return a 'error_code' in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
+Your nav2 task server may also wish to return a 'error_code' and 'error_msg' in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.
 
-It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535. 
+It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535.
 The table below shows the current servers along with the expected error code structure.
 
 
@@ -136,11 +136,21 @@ The table below shows the current servers along with the expected error code str
 +---------------------------------------------------+-----------------------+----------------------+
 | `Behavior Server`_                                | NONE=0                | 701-799              |
 +---------------------------------------------------+-----------------------+----------------------+
-| Coverage Server                                   | NONE=0, UNKNOWN=800   | 801-899              |
+| `Coverage Server`                                 | NONE=0, UNKNOWN=800   | 801-899              |
 +---------------------------------------------------+-----------------------+----------------------+
 | ...                                               | ...                   |                      |
 +---------------------------------------------------+-----------------------+----------------------+
-| Last Nav2 Server                                  | NONE=0, UNKNOWN=9900  | 9901-9999            |
+| Last Nav2 Server                                  | NONE=0, UNKNOWN=8900  | 8901-8999            |
++---------------------------------------------------+-----------------------+----------------------+
+| ...                                               | ...                   |                      |
++---------------------------------------------------+-----------------------+----------------------+
+| `Navigator`_ - (nav_to_pose)                      | NONE=0, UNKNOWN=9000  | 9001-9099            |
++---------------------------------------------------+-----------------------+----------------------+
+| `Navigator`_ - (nav_thru_poses)                   | NONE=0, UNKNOWN=9100  | 9101-9199            |
++---------------------------------------------------+-----------------------+----------------------+
+| `Navigator`_ - Last Navigator                     | NONE=0, UNKNOWN=9900  | 9901-9999            |
++---------------------------------------------------+-----------------------+----------------------+
+| ...                                               | ...                   |                      |
 +---------------------------------------------------+-----------------------+----------------------+
 | First External Server                             | NONE=0, UNKNOWN=10000 | 10001-10099          |
 +---------------------------------------------------+-----------------------+----------------------+
@@ -153,8 +163,7 @@ The table below shows the current servers along with the expected error code str
 .. _Waypoint Follower Server: https://github.com/ros-navigation/navigation2/blob/main/nav2_waypoint_follower/src/waypoint_follower.cpp
 .. _Behavior Server: https://github.com/ros-navigation/navigation2/blob/main/nav2_behaviors/src/behavior_server.cpp
 
-Error codes are attached to the response of the action message. An example can be seen below for the route server. Note that by convention we set the error code field within the message definition to ``error_code``.
-
+Error codes and messages are attached to the response of the action message. An example can be seen below for the route server. Note it is necessary to set the error code field within the message result definition to ``error_code`` and the error message field to ``error_msg``.
 
 
 .. code-block:: bash
@@ -177,22 +186,31 @@ Error codes are attached to the response of the action message. An example can b
     nav_msgs/Route route
     builtin_interfaces/Duration route_time
     uint16 error_code
+    string error_msg
     ---
 
-As stated in the message, the priority order of the errors should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
+As stated in the message, the priority order of the errors codes should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
 Since the the route server is a external server, the errors codes start at 10000 and go up to 10099.
 
-In order to propagate your server's error code to the rest of the system it must be added to the nav2_params.yaml file. 
-The `error_code_id_names` inside of the BT Navigator define what error codes to look for on the blackboard by the server. The lowest error code of the sequence is then returned - whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
+To ensure your server's error codes, and associated error messages, are properly communicated throughout the system, you need to configure them in your nav2_params.yaml file.
 
-
+The BT Navigator parameter `error_code_name_prefixes` defines a list of prefixes used to search the behavior tree blackboard, for the existence and content of error codes and error messages keys, that may have been generated.  If the blackboard contains multiple error code keys then the lowest error code value of the sequence, and associated error message, is then returned in the result of the navigator action message. Error code enums increase the higher up they occur in the software stack.  In other words higher priority is given to reporting lower-level failures.
 
 .. code-block:: yaml
 
-    error_code_id_names:
-        - compute_path_error_code_id
-        - follow_path_error_code_id
-        - route_error_code_id
+    error_code_name_prefixes:
+      - assisted_teleop
+      - backup
+      - compute_path
+      - dock_robot
+      - drive_on_heading
+      - follow_path
+      - nav_thru_poses
+      - nav_to_pose
+      - spin
+      - route
+      - undock_robot
+      - wait
 
 Conclusion
 **********

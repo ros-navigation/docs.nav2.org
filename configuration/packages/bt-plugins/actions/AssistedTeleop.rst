@@ -44,7 +44,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server name.
+        Action server name.
 
 :server_timeout:
 
@@ -55,22 +55,34 @@ Input Ports
   ====== =======
 
   Description
-    	Action server timeout (ms).
+        Action server timeout (ms).
 
 :error_code_id:
 
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description
-    	Assisted teleop error code. See ``AssistedTeleop`` action message for the enumerated set of error codes.
+        Assisted teleop error code. See ``AssistedTeleop`` action message for the enumerated set of error codes.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A
+  ============== =======
+
+  Description
+        Assisted teleop error message. See ``AssistedTeleop`` action message for the enumerated set of error codes.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10" error_code_id="{assisted_teleop_error_code}"/>
+  <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10"
+                  error_code_id="{assisted_teleop_error_code}" error_msg="{assisted_teleop_error_msg}"/>
