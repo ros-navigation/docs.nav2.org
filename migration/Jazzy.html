@@ -1094,6 +1094,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Jazzy to Kilted</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#behaviortree-error-msg">BehaviorTree error_msg</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
@@ -1176,6 +1177,53 @@
   <div class="section" id="jazzy-to-kilted">
 <span id="jazzy-migration"></span><h1>Jazzy to Kilted<a class="headerlink" href="#jazzy-to-kilted" title="Permalink to this heading"></a></h1>
 <p>Moving from ROS 2 Jazzy to Kilted, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="behaviortree-error-msg">
+<h2>BehaviorTree error_msg<a class="headerlink" href="#behaviortree-error-msg" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4459">PR #4459</a> adds error_msg to all action result messages
+and <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4460">PR #4460</a> captures and propagates error_msg result strings through the bt_navigator,
+a new parameter for the BT Navigator <code class="docutils literal notranslate"><span class="pre">error_code_name_prefixes</span></code> was introduced, <em>AND</em> it is a <em>mandatory</em> replacement for <code class="docutils literal notranslate"><span class="pre">error_code_names</span></code>.</p>
+<p>In other words the existence of the <code class="docutils literal notranslate"><span class="pre">error_code_names</span></code> parameter will be rejected as a runtime exception at startup and <em>MUST</em> be removed.</p>
+<p>When configured correctly, and the behaviour tree xml configuration is modified appropriately, error codes and contextual error messages are propagated in the Result message of Nav2 action server requests.</p>
+<p>This allows handling of specific errors with more contextual information, than simply the error code, to be viewed by application clients calling Nav2 or its servers.</p>
+<p>Behavior tree based Navigator Action requests, require augmentation of behavior tree elements that support <code class="docutils literal notranslate"><span class="pre">error_code_id</span></code> and <code class="docutils literal notranslate"><span class="pre">error_msg</span></code> output ports.</p>
+<p>The corresponding attribute values, must use port variable names that combine the relevant <code class="docutils literal notranslate"><span class="pre">error_code_names_prefix</span></code> with the suffix <code class="docutils literal notranslate"><span class="pre">_error_code</span></code> and <code class="docutils literal notranslate"><span class="pre">_error_msg</span></code>.</p>
+<p>The following is an example of the <code class="docutils literal notranslate"><span class="pre">error_code_names</span></code> parameter that must be replaced</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">error_code_names</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute_path_error_code</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">follow_path_error_code</span>
+</pre></div>
+</div>
+<p>with the <code class="docutils literal notranslate"><span class="pre">error_code_names_prefixes</span></code> parameter which specifies prefixes for the current set of built in action servers.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">error_code_name_prefixes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assisted_teleop</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backup</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute_path</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock_robot</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drive_on_heading</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">follow_path</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav_thru_poses</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav_to_pose</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spin</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">route</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">undock_robot</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wait</span>
+</pre></div>
+</div>
+<p>The following provides examples of modifications that should be made to behavior tree configurations to propagate the error messages and codes to the BT navigator result.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>&lt;ComputePathToPose goal=&quot;{goal}&quot; path=&quot;{path}&quot; planner_id=&quot;{selected_planner}&quot; error_code_id=&quot;{compute_path_error_code} error_msg=&quot;{compute_path_error_msg}&quot;/&gt;
+&lt;FollowPath path=&quot;{path}&quot; controller_id=&quot;{selected_controller}&quot; error_code_id=&quot;{follow_path_error_code}&quot; error_msg=&quot;{follow_path_error_msg}&quot;/&gt;
+&lt;Spin spin_dist=&quot;1.57&quot; error_code_id=&quot;{spin_error_code}&quot; error_msg=&quot;{spin_error_msg}&quot;/&gt;
+&lt;Wait wait_duration=&quot;5.0&quot; error_code_id=&quot;{wait_error_code}&quot; error_msg=&quot;{wait_error_msg}&quot;/&gt;
+&lt;BackUp backup_dist=&quot;0.30&quot; backup_speed=&quot;0.15&quot; error_code_id=&quot;{backup_error_code}&quot; error_msg=&quot;{backup_error_msg}&quot;/&gt;
+&lt;DriveOnHeading dist_to_travel=&quot;2.0&quot; speed=&quot;0.2&quot; time_allowance=&quot;12&quot; error_code_id=&quot;{drive_on_heading_error_code}&quot; error_msg=&quot;{drive_on_heading_error_msg}&quot;/&gt;
+&lt;UndockRobot dock_type=&quot;{dock_type}&quot; error_code_id=&quot;{undock_robot_error_code}&quot; error_msg=&quot;{undock_robot_error_msg}&quot; /&gt;
+&lt;DockRobot dock_id=&quot;{dock_id}&quot; error_code_id=&quot;{dock_robot_error_code}&quot; error_msg=&quot;{dock_robot_error_msg}&quot;/&gt;
+&lt;NavigateToPose goal=&quot;{picking_location}&quot; error_code_id=&quot;{nav_to_pose_error_code}&quot; error_msg=&quot;{nav_to_pose_error_msg}&quot;/&gt;
+</pre></div>
+</div>
+<p>The explicit specification of the <code class="docutils literal notranslate"><span class="pre">error_code_names_prefix</span></code> for both <code class="docutils literal notranslate"><span class="pre">error_code_id</span></code> and <code class="docutils literal notranslate"><span class="pre">error_msg</span></code> in the behavior tree xml is done to provide a configuration based level of indirection to enable resolution of namespace conflicts between built in Nav2 and third party actions servers.</p>
+<p>If custom <code class="docutils literal notranslate"><span class="pre">BTActionServer</span></code>, <code class="docutils literal notranslate"><span class="pre">BehaviorTreeNavigator</span></code>, or associated BT nodes for task servers exist in your system, please review the PR to update the files to support the error code propagation.</p>
+</div>
 <div class="section" id="twiststamped-default-cmdvel-change">
 <h2>TwistStamped Default CmdVel Change<a class="headerlink" href="#twiststamped-default-cmdvel-change" title="Permalink to this heading"></a></h2>
 <p>In Kilted and newer, the default <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic for all <code class="docutils literal notranslate"><span class="pre">Twist</span></code> publishers and subscriptions is changed to <code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code> in order to enable a broader range of applications.

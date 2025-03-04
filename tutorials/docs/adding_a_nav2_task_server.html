@@ -1094,6 +1094,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Jazzy.html">Jazzy to Kilted</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#behaviortree-error-msg">BehaviorTree error_msg</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
@@ -1266,7 +1267,7 @@
 </div>
 <div class="section" id="error-codes">
 <h2>Error codes<a class="headerlink" href="#error-codes" title="Permalink to this heading"></a></h2>
-<p>Your nav2 task server may also wish to return a ‘error_code’ in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.</p>
+<p>Your nav2 task server may also wish to return a ‘error_code’ and ‘error_msg’ in its action response (though not required). If there are semantically meaningful and actionable types of failures for your system, this is a systemic way to communicate those failures which may be automatically aggregated into the responses of the navigation system to your application.</p>
 <p>It is important to note that error codes from 0-9999 are reserved for internal nav2 servers with each server offset by 100 while external servers start at 10000 and end at 65535.
 The table below shows the current servers along with the expected error code structure.</p>
 <table class="docutils align-default">
@@ -1314,7 +1315,7 @@ The table below shows the current servers along with the expected error code str
 <td><p>NONE=0</p></td>
 <td><p>701-799</p></td>
 </tr>
-<tr class="row-even"><td><p>Coverage Server</p></td>
+<tr class="row-even"><td><p><cite>Coverage Server</cite></p></td>
 <td><p>NONE=0, UNKNOWN=800</p></td>
 <td><p>801-899</p></td>
 </tr>
@@ -1323,20 +1324,40 @@ The table below shows the current servers along with the expected error code str
 <td></td>
 </tr>
 <tr class="row-even"><td><p>Last Nav2 Server</p></td>
+<td><p>NONE=0, UNKNOWN=8900</p></td>
+<td><p>8901-8999</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a href="#id1"><span class="problematic" id="id2">`Navigator`_</span></a> - (nav_to_pose)</p></td>
+<td><p>NONE=0, UNKNOWN=9000</p></td>
+<td><p>9001-9099</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="#id3"><span class="problematic" id="id4">`Navigator`_</span></a> - (nav_thru_poses)</p></td>
+<td><p>NONE=0, UNKNOWN=9100</p></td>
+<td><p>9101-9199</p></td>
+</tr>
+<tr class="row-even"><td><p><a href="#id5"><span class="problematic" id="id6">`Navigator`_</span></a> - Last Navigator</p></td>
 <td><p>NONE=0, UNKNOWN=9900</p></td>
 <td><p>9901-9999</p></td>
 </tr>
-<tr class="row-odd"><td><p>First External Server</p></td>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>First External Server</p></td>
 <td><p>NONE=0, UNKNOWN=10000</p></td>
 <td><p>10001-10099</p></td>
 </tr>
-<tr class="row-even"><td><p>…</p></td>
+<tr class="row-odd"><td><p>…</p></td>
 <td><p>…</p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p>Error codes are attached to the response of the action message. An example can be seen below for the route server. Note that by convention we set the error code field within the message definition to <code class="docutils literal notranslate"><span class="pre">error_code</span></code>.</p>
+<p>Error codes and messages are attached to the response of the action message. An example can be seen below for the route server. Note it is necessary to set the error code field within the message result definition to <code class="docutils literal notranslate"><span class="pre">error_code</span></code> and the error message field to <code class="docutils literal notranslate"><span class="pre">error_msg</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error codes</span>
 <span class="c1"># Note: The expected priority order of the errors should match the message order</span>
 uint16<span class="w"> </span><span class="nv">NONE</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="c1"># 0 is reserved for NONE</span>
@@ -1355,17 +1376,27 @@ string<span class="w"> </span>route_id
 nav_msgs/Route<span class="w"> </span>route
 builtin_interfaces/Duration<span class="w"> </span>route_time
 uint16<span class="w"> </span>error_code
+string<span class="w"> </span>error_msg
 ---
 </pre></div>
 </div>
-<p>As stated in the message, the priority order of the errors should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
+<p>As stated in the message, the priority order of the errors codes should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
 Since the the route server is a external server, the errors codes start at 10000 and go up to 10099.</p>
-<p>In order to propagate your server’s error code to the rest of the system it must be added to the nav2_params.yaml file.
-The <cite>error_code_id_names</cite> inside of the BT Navigator define what error codes to look for on the blackboard by the server. The lowest error code of the sequence is then returned - whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">error_code_id_names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute_path_error_code_id</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">follow_path_error_code_id</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">route_error_code_id</span>
+<p>To ensure your server’s error codes, and associated error messages, are properly communicated throughout the system, you need to configure them in your nav2_params.yaml file.</p>
+<p>The BT Navigator parameter <cite>error_code_name_prefixes</cite> defines a list of prefixes used to search the behavior tree blackboard, for the existence and content of error codes and error messages keys, that may have been generated.  If the blackboard contains multiple error code keys then the lowest error code value of the sequence, and associated error message, is then returned in the result of the navigator action message. Error code enums increase the higher up they occur in the software stack.  In other words higher priority is given to reporting lower-level failures.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">error_code_name_prefixes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assisted_teleop</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backup</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute_path</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock_robot</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drive_on_heading</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">follow_path</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav_thru_poses</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav_to_pose</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spin</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">route</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">undock_robot</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wait</span>
 </pre></div>
 </div>
 </div>
