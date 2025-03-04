@@ -64,6 +64,8 @@ The following provides examples of modifications that should be made to behavior
 
 The explicit specification of the ``error_code_names_prefix`` for both ``error_code_id`` and ``error_msg`` in the behavior tree xml is done to provide a configuration based level of indirection to enable resolution of namespace conflicts between built in Nav2 and third party actions servers.
 
+If custom ``BTActionServer``, ``BehaviorTreeNavigator``, or associated BT nodes for task servers exist in your system, please review the PR to update the files to support the error code propagation.
+
 TwistStamped Default CmdVel Change
 **********************************
 
