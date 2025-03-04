@@ -118,14 +118,12 @@ Here is the SDF version of the URDF code:
             </size></box>
           </geometry>
         </collision>
-
-        <xacro:box_inertia m="15" w="${base_width}" d="${base_length}" h="${base_height}"/>
       </link>
 
       <!-- Robot Footprint -->
       <link name='base_footprint'>
         <pose relative_to="base_joint"/>
-        <xacro:box_inertia m="0" w="0" d="0" h="0"/>
+        <xacro:box_inertia m="15" w="${base_width}" d="${base_length}" h="${base_height}"/>
       </link>
 
       <joint name='base_joint' type='fixed'>
@@ -233,6 +231,8 @@ Now build and source your package and launch ``display.launch.py``:
   colcon build --symlink-install
   source install/setup.bash
   ros2 launch sam_bot_description display.launch.py
+
+.. note:: You may get a warning like ``[kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia. As a workaround, you can add an extra dummy link to your URDF.`` This warning can be safely ignored as it is just a quirk of the conversion from SDF to URDF.
 
 .. image:: ../urdf/images/base-bot_3.png
 
