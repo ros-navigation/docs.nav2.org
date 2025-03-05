@@ -55,17 +55,6 @@ Input Ports
   Description
       The maximum robot speed above which the child node is ticked at maximum rate (m/s).
 
-:filter_duration:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  double  0.3
-  ====== =======
-
-  Description
-      Duration (secs) over which robot velocity should be smoothed.
-
 :goal:
 
   =============================== ========
