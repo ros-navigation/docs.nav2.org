@@ -36,7 +36,7 @@ Next, we specify the parameters of the ``ekf_node`` using a YAML file. Create a 
 .. code-block:: yaml
 
   ### ekf config file ###
-  ekf_node:
+  ekf_filter_node:
       ros__parameters:
   # The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin
   # computation until it receives at least one message from one of the inputs. It will then run continuously at the
@@ -85,7 +85,7 @@ Next, we specify the parameters of the ``ekf_node`` using a YAML file. Create a 
 
 In this configuration, we defined the parameter values of ``frequency``, ``two_d_mode``, ``publish_acceleration``, ``publish_tf``, ``map_frame``, ``odom_frame``, ``base_link_frame``, and ``world_frame``. For more information on the other parameters you can modify, see `Parameters of state estimation nodes <http://docs.ros.org/en/melodic/api/robot_localization/html/state_estimation_nodes.html#parameters>`_, and a sample ``efk.yaml`` can be found `here <https://github.com/cra-ros-pkg/robot_localization/blob/ros2/params/ekf.yaml>`_.
 
-To add a sensor input to the ``ekf_filter_node``, add the next number in the sequence to its base name (odom, imu, pose, twist). In our case, we have one ``nav_msgs/Odometry`` and one ``sensor_msgs/Imu`` as inputs to the filter, thus we use ``odom0`` and ``imu0``. We set the value of ``odom0`` to ``demo/odom``, which is the topic that publishes the ``nav_msgs/Odometry``. Similarly, we set the value of ``imu0`` to the topic that publishes ``sensor_msgs/Imu``, which is ``demo/imu``.
+To add a sensor input to the ``ekf_node``, add the next number in the sequence to its base name (odom, imu, pose, twist). In our case, we have one ``nav_msgs/Odometry`` and one ``sensor_msgs/Imu`` as inputs to the filter, thus we use ``odom0`` and ``imu0``. We set the value of ``odom0`` to ``demo/odom``, which is the topic that publishes the ``nav_msgs/Odometry``. Similarly, we set the value of ``imu0`` to the topic that publishes ``sensor_msgs/Imu``, which is ``demo/imu``.
 
 To understand how ``robot_localization`` is configured and understand the reasoning behind the config have a look at `Configuring robot_localization <http://docs.ros.org/en/melodic/api/robot_localization/html/configuring_robot_localization.html>`_.
 
@@ -103,7 +103,7 @@ Now, let us add the ``ekf_node`` into the launch file. Open ``launch/display.lau
   robot_localization_node = Node(
       package='robot_localization',
       executable='ekf_node',
-      name='ekf_node',
+      name='ekf_filter_node',
       output='screen',
       parameters=[os.path.join(pkg_share, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
   )
