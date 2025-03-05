@@ -1179,6 +1179,31 @@
 <span id="bt-is-battery-charging-condition"></span><h1>IsBatteryCharging<a class="headerlink" href="#isbatterycharging" title="Permalink to this heading"></a></h1>
 <p>Checks if the battery is charging by subscribing to a <code class="docutils literal notranslate"><span class="pre">sensor_msgs/BatteryState</span></code> topic and checking if the power_supply_status is <code class="docutils literal notranslate"><span class="pre">POWER_SUPPLY_STATUS_CHARGING</span></code>.
 Returns SUCCESS in that case, FAILURE otherwise.</p>
+<div class="section" id="input-ports">
+<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd">battery_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“/battery_status”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic for battery info.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsBatteryCharging</span><span class="w"> </span><span class="na">battery_topic=</span><span class="s">&quot;/battery_status&quot;</span><span class="nt">/&gt;</span>

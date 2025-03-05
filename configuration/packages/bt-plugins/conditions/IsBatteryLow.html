@@ -1180,6 +1180,71 @@
 <p>Checks if battery is low by subscribing to a <code class="docutils literal notranslate"><span class="pre">sensor_msgs/BatteryState</span></code> topic and checking if battery percentage/voltage is below a specified minimum value.
 By default percentage (in range 0 to 1) is used to check for low battery. Set the <code class="docutils literal notranslate"><span class="pre">is_voltage</span></code> parameter to <cite>true</cite> to use voltage.
 Returns SUCCESS when battery percentage/voltage is lower than the specified value, FAILURE otherwise.</p>
+<div class="section" id="input-ports">
+<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd">min_battery</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Min battery percentage or voltage before triggering.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">battery_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“/battery_status”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Topic for battery info.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">is_voltage</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>If true voltage will be used to check for low battery.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsBatteryLow</span><span class="w"> </span><span class="na">min_battery=</span><span class="s">&quot;0.5&quot;</span><span class="w"> </span><span class="na">battery_topic=</span><span class="s">&quot;/battery_status&quot;</span><span class="w"> </span><span class="na">is_voltage=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
