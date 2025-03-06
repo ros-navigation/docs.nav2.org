@@ -611,7 +611,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/DistanceTraveled.html">DistanceTraveled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GloballyUpdatedGoal.html">GloballyUpdatedGoal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GlobalUpdatedGoal.html">GlobalUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsStopped.html">IsStopped</a></li>
@@ -639,6 +639,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/GoalUpdatedController.html">GoalUpdatedController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#example">Example</a></li>
@@ -1190,7 +1191,7 @@ In this particular BT, the monitoring branch is exclusively utilized by <code cl
 If there is no significantly longer path, the monitor node goes into the <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> recovery node, which then generates the necessary control commands.</p>
 <img alt="../../_images/patience_and_recovery.png" src="../../_images/patience_and_recovery.png" />
 <p>Once there is a significantly longer path, the child node for the <code class="docutils literal notranslate"><span class="pre">PathLongerOnApproach</span></code> node ticks.
-The child node is a <code class="docutils literal notranslate"><span class="pre">RetryUntilSuccesful</span></code> decorator node, which inturns have a <code class="docutils literal notranslate"><span class="pre">SequenceWithMemory</span></code> node as its child.
+The child node is a <code class="docutils literal notranslate"><span class="pre">RetryUntilSuccessful</span></code> decorator node, which inturns have a <code class="docutils literal notranslate"><span class="pre">SequenceWithMemory</span></code> node as its child.
 Firstly, the <code class="docutils literal notranslate"><span class="pre">SequenceWithMemory</span></code> node cancels the controller server by ticking the <code class="docutils literal notranslate"><span class="pre">CancelControl</span></code> node. The cancellation of the controller server halts the further navigation of the robot.
 Next, the <code class="docutils literal notranslate"><span class="pre">SequenceWithMemory</span></code> node ticks the <code class="docutils literal notranslate"><span class="pre">Wait</span></code> node, which enables the robot to wait for the given user-specified time.
 Here we need to note that, the <code class="docutils literal notranslate"><span class="pre">MonitorAndFollowPath</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReactiveSequence</span></code> node, therefore the <code class="docutils literal notranslate"><span class="pre">PathLongerOnApproach</span></code> node needs to return SUCCESS, before the <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> node can be ticked once again.</p>

@@ -25,7 +25,7 @@ A new parameter ``enable_stamped_cmd_vel`` has been added to all of the publishe
 Add VelocityPolygon in Collision Monitor
 ****************************************
 
-`PR #3708 <https://github.com/ros-navigation/navigation2/pull/3708>`_ adds ``VelocityPolgon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the :ref:`Configuring Collision Monitor with VelocityPolygon <collision_monitor_tutorial>` section.
+`PR #3708 <https://github.com/ros-navigation/navigation2/pull/3708>`_ adds ``VelocityPolygon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the :ref:`Configuring Collision Monitor with VelocityPolygon <collision_monitor_tutorial>` section.
 
 
 Change polygon points parameter format in Collision Monitor

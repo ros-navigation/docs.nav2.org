@@ -65,7 +65,7 @@ Condition Plugins
   bt-plugins/conditions/TransformAvailable.rst
   bt-plugins/conditions/DistanceTraveled.rst
   bt-plugins/conditions/GoalUpdated.rst
-  bt-plugins/conditions/GloballyUpdatedGoal.rst
+  bt-plugins/conditions/GlobalUpdatedGoal.rst
   bt-plugins/conditions/InitialPoseReceived.rst
   bt-plugins/conditions/IsStuck.rst
   bt-plugins/conditions/IsStopped.rst
@@ -101,6 +101,7 @@ Decorator Plugins
   bt-plugins/decorators/GoalUpdater.rst
   bt-plugins/decorators/PathLongerOnApproach.rst
   bt-plugins/decorators/SingleTrigger.rst
+  bt-plugins/decorators/GoalUpdatedController.rst
 
 Example
 *******

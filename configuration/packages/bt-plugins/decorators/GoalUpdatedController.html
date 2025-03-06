@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IsPathValid &mdash; Nav2 1.0.0 documentation</title>
+  <title>GoalUpdatedController &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="PathExpiringTimer" href="PathExpiringTimer.html" />
-    <link rel="prev" title="IsBatteryLow" href="IsBatteryLow.html" />
+    <link rel="next" title="Costmap 2D" href="../../configuring-costmaps.html" />
+    <link rel="prev" title="SingleTrigger" href="SingleTrigger.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -606,24 +606,24 @@
 <li class="toctree-l4"><a class="reference internal" href="../actions/UndockRobot.html">UndockRobot</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="GoalReached.html">GoalReached</a></li>
-<li class="toctree-l4"><a class="reference internal" href="TransformAvailable.html">TransformAvailable</a></li>
-<li class="toctree-l4"><a class="reference internal" href="DistanceTraveled.html">DistanceTraveled</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GlobalUpdatedGoal.html">GlobalUpdatedGoal</a></li>
-<li class="toctree-l4"><a class="reference internal" href="InitialPoseReceived.html">InitialPoseReceived</a></li>
-<li class="toctree-l4"><a class="reference internal" href="IsStuck.html">IsStuck</a></li>
-<li class="toctree-l4"><a class="reference internal" href="IsStopped.html">IsStopped</a></li>
-<li class="toctree-l4"><a class="reference internal" href="TimeExpired.html">TimeExpired</a></li>
-<li class="toctree-l4"><a class="reference internal" href="IsBatteryLow.html">IsBatteryLow</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">IsPathValid</a></li>
-<li class="toctree-l4"><a class="reference internal" href="PathExpiringTimer.html">PathExpiringTimer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="AreErrorCodesPresent.html">AreErrorCodesPresent</a></li>
-<li class="toctree-l4"><a class="reference internal" href="WouldAControllerRecoveryHelp.html">WouldAControllerRecoveryHelp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="WouldAPlannerRecoveryHelp.html">WouldAPlannerRecoveryHelp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="WouldASmootherRecoveryHelp.html">WouldASmootherRecoveryHelp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="IsBatteryCharging.html">IsBatteryCharging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/GoalReached.html">GoalReached</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/TransformAvailable.html">TransformAvailable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/DistanceTraveled.html">DistanceTraveled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/GoalUpdated.html">GoalUpdated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/GlobalUpdatedGoal.html">GlobalUpdatedGoal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/IsStuck.html">IsStuck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/IsStopped.html">IsStopped</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/TimeExpired.html">TimeExpired</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/IsBatteryLow.html">IsBatteryLow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/IsPathValid.html">IsPathValid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/PathExpiringTimer.html">PathExpiringTimer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/AreErrorCodesPresent.html">AreErrorCodesPresent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/WouldAControllerRecoveryHelp.html">WouldAControllerRecoveryHelp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/WouldAPlannerRecoveryHelp.html">WouldAPlannerRecoveryHelp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/WouldASmootherRecoveryHelp.html">WouldASmootherRecoveryHelp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/IsBatteryCharging.html">IsBatteryCharging</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -632,14 +632,14 @@
 <li class="toctree-l4"><a class="reference internal" href="../controls/RecoveryNode.html">RecoveryNode</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/RateController.html">RateController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/DistanceController.html">DistanceController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/SpeedController.html">SpeedController</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/GoalUpdater.html">GoalUpdater</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/SingleTrigger.html">SingleTrigger</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../decorators/GoalUpdatedController.html">GoalUpdatedController</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="RateController.html">RateController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DistanceController.html">DistanceController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SpeedController.html">SpeedController</a></li>
+<li class="toctree-l4"><a class="reference internal" href="GoalUpdater.html">GoalUpdater</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PathLongerOnApproach.html">PathLongerOnApproach</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">GoalUpdatedController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#example">Example</a></li>
@@ -1167,7 +1167,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">IsPathValid</li>
+      <li class="breadcrumb-item active">GoalUpdatedController</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1176,91 +1176,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="ispathvalid">
-<span id="bt-is-path-valid-condition"></span><h1>IsPathValid<a class="headerlink" href="#ispathvalid" title="Permalink to this heading"></a></h1>
-<p>Checks to see if the global path is valid. If there is a
-obstacle along the path, the condition returns FAILURE, otherwise
-it returns SUCCESS.</p>
+  <div class="section" id="goalupdatedcontroller">
+<span id="bt-goal-updated-controller"></span><h1>GoalUpdatedController<a class="headerlink" href="#goalupdatedcontroller" title="Permalink to this heading"></a></h1>
+<p>Checks if the global navigation goal, or a vector of goals, has changed in the blackboard. The node ticks its child if the goal was updated.</p>
 <div class="section" id="input-ports">
 <h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
-<dt class="field-odd">service_timeout</dt>
+<dt class="field-odd">goal</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
+<col style="width: 79%" />
+<col style="width: 21%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>20.0</p></td>
+<tr class="row-even"><td><p>geometry_msgs::msg::PoseStamped</p></td>
+<td><p>“{goal}”</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Service response timeout (ms).</p>
+<dt>Description</dt><dd><p>Destination to check. Takes in a blackboard variable, “{goal}” if not specified.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">path</dt>
+<dt class="field-even">goals</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
-<col style="width: 84%" />
-<col style="width: 16%" />
+<col style="width: 80%" />
+<col style="width: 20%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
 <td><p>Default</p></td>
 </tr>
-<tr class="row-even"><td><p>nav_msgs::msg::Path</p></td>
-<td><p>N/A</p></td>
+<tr class="row-even"><td><p>geometry_msgs::msg::PoseStampedArray</p></td>
+<td><p>“{goals}”</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The global path to check for validity.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">max_cost</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 58%" />
-<col style="width: 42%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>unsigned int</p></td>
-<td><p>253</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>The maximum allowable cost for the path to be considered valid.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">consider_unknown_as_obstacle</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Whether to consider unknown cost (255) as obstacle.</p>
+<dt>Description</dt><dd><p>Vector of goals to check. Takes in a blackboard variable, “{goals}” if not specified.</p>
 </dd>
 </dl>
 </dd>
@@ -1268,7 +1226,9 @@ it returns SUCCESS.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IsPathValid</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">max_cost=</span><span class="s">&quot;100&quot;</span><span class="w"> </span><span class="na">consider_unknown_as_obstacle=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GoalUpdatedController</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">goals=</span><span class="s">&quot;{goals}&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!--Add tree components here---&gt;</span>
+<span class="nt">&lt;/GoalUpdatedController&gt;</span>
 </pre></div>
 </div>
 </div>

@@ -611,7 +611,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/DistanceTraveled.html">DistanceTraveled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/GloballyUpdatedGoal.html">GloballyUpdatedGoal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/GlobalUpdatedGoal.html">GlobalUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/IsStopped.html">IsStopped</a></li>
@@ -639,6 +639,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/GoalUpdatedController.html">GoalUpdatedController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#example">Example</a></li>
@@ -1216,7 +1217,7 @@
 </div>
 <div class="section" id="smac-planner-path-tolerances">
 <h2>Smac Planner Path Tolerances<a class="headerlink" href="#smac-planner-path-tolerances" title="Permalink to this heading"></a></h2>
-<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/3219">PR 3219</a> adds path tolerances to Hybrid-A* and State Lattice planners to return approximate paths if exact paths cannot be found, within a configurable tolerance aroun the goal pose.</p>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/3219">PR 3219</a> adds path tolerances to Hybrid-A* and State Lattice planners to return approximate paths if exact paths cannot be found, within a configurable tolerance around the goal pose.</p>
 </div>
 <div class="section" id="costmap-2d-node-default-constructor">
 <h2>costmap_2d_node default constructor<a class="headerlink" href="#costmap-2d-node-default-constructor" title="Permalink to this heading"></a></h2>
@@ -1274,7 +1275,7 @@ See <a class="reference internal" href="../tutorials/docs/adding_a_nav2_task_ser
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/3255">PR #3255</a> adds the ability for a behavior to access the local and global costmap.</p>
 <p>To update behaviors, any reference to the global_frame must be updated to the local_frame parameter
 along with the <code class="docutils literal notranslate"><span class="pre">configuration</span></code> method which now takes in the local and global collision checkers.
-Lastly, <code class="docutils literal notranslate"><span class="pre">getResourceInfo</span></code> must be overridden to return <code class="docutils literal notranslate"><span class="pre">CostmapInfoType::LOCAL</span></code>. Other options include <code class="docutils literal notranslate"><span class="pre">GLOBAL</span></code> if the behavior useses global costmap and/or footprint)
+Lastly, <code class="docutils literal notranslate"><span class="pre">getResourceInfo</span></code> must be overridden to return <code class="docutils literal notranslate"><span class="pre">CostmapInfoType::LOCAL</span></code>. Other options include <code class="docutils literal notranslate"><span class="pre">GLOBAL</span></code> if the behavior uses global costmap and/or footprint)
 or <code class="docutils literal notranslate"><span class="pre">BOTH</span></code> if both are required. This allows us to only create and maintain the minimum amount of expensive resources.</p>
 </div>
 <div class="section" id="new-model-predictive-path-integral-controller">

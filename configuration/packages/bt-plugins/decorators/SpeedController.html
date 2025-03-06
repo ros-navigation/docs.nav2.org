@@ -611,7 +611,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../conditions/TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../conditions/DistanceTraveled.html">DistanceTraveled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../conditions/GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../conditions/GloballyUpdatedGoal.html">GloballyUpdatedGoal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conditions/GlobalUpdatedGoal.html">GlobalUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../conditions/IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../conditions/IsStopped.html">IsStopped</a></li>
@@ -639,6 +639,7 @@
 <li class="toctree-l4"><a class="reference internal" href="GoalUpdater.html">GoalUpdater</a></li>
 <li class="toctree-l4"><a class="reference internal" href="PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="GoalUpdatedController.html">GoalUpdatedController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#example">Example</a></li>
@@ -1264,28 +1265,8 @@ stack, the <code class="docutils literal notranslate"><span class="pre">SpeedCon
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">filter_duration</dt>
+<dt class="field-odd">goal</dt>
 <dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.3</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Duration (secs) over which robot velocity should be smoothed.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">goal</dt>
-<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 79%" />
 <col style="width: 21%" />
@@ -1304,8 +1285,8 @@ stack, the <code class="docutils literal notranslate"><span class="pre">SpeedCon
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">goals</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">goals</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 80%" />
 <col style="width: 20%" />

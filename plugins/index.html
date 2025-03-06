@@ -611,7 +611,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/DistanceTraveled.html">DistanceTraveled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/GloballyUpdatedGoal.html">GloballyUpdatedGoal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/GlobalUpdatedGoal.html">GlobalUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/IsStopped.html">IsStopped</a></li>
@@ -639,6 +639,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/GoalUpdatedController.html">GoalUpdatedController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#example">Example</a></li>
@@ -1883,7 +1884,7 @@ reached within tol.</p></td>
 <td><p>Checks if goal is
 preempted.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp">Globally Updated Goal Condition</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp">Global Updated Goal Condition</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Checks if goal is
 preempted in the global
@@ -1932,7 +1933,7 @@ passed.</p></td>
 percentage is below
 a specified value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp">Is Path Valid Condition</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp">Is Path Valid Condition</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Checks if a path is
 valid by making sure
@@ -2025,6 +2026,11 @@ only a single time per BT run.</p></td>
 global path is significantly
 larger than the old global path
 on approach to the goal</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/decorator/goal_updated_controller.cpp">GoalUpdatedController</a></p></td>
+<td><p>Sophia Koffler</p></td>
+<td><p>Ticks child node if the goal
+has been updated</p></td>
 </tr>
 </tbody>
 </table>

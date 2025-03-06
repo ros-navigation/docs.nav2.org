@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GloballyUpdatedGoal &mdash; Nav2 1.0.0 documentation</title>
+  <title>GlobalUpdatedGoal &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
@@ -611,7 +611,7 @@
 <li class="toctree-l4"><a class="reference internal" href="TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DistanceTraveled.html">DistanceTraveled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">GloballyUpdatedGoal</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">GlobalUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IsStopped.html">IsStopped</a></li>
@@ -639,6 +639,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../decorators/GoalUpdater.html">GoalUpdater</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../decorators/SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../decorators/GoalUpdatedController.html">GoalUpdatedController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#example">Example</a></li>
@@ -1166,7 +1167,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">GloballyUpdatedGoal</li>
+      <li class="breadcrumb-item active">GlobalUpdatedGoal</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1175,8 +1176,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="globallyupdatedgoal">
-<span id="bt-globally-updated-goal-condition"></span><h1>GloballyUpdatedGoal<a class="headerlink" href="#globallyupdatedgoal" title="Permalink to this heading"></a></h1>
+  <div class="section" id="globalupdatedgoal">
+<span id="bt-global-updated-goal-condition"></span><h1>GlobalUpdatedGoal<a class="headerlink" href="#globalupdatedgoal" title="Permalink to this heading"></a></h1>
 <p>Checks if the global navigation goal has changed in the blackboard.
 Returns failure if the goal is the same, if it changes, it returns success.</p>
 <p>This node differs from the GoalUpdated by retaining the state of the current goal/goals throughout each tick of the BehaviorTree

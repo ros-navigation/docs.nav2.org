@@ -611,7 +611,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/DistanceTraveled.html">DistanceTraveled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GloballyUpdatedGoal.html">GloballyUpdatedGoal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/GlobalUpdatedGoal.html">GlobalUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/conditions/IsStopped.html">IsStopped</a></li>
@@ -639,6 +639,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/decorators/GoalUpdatedController.html">GoalUpdatedController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#example">Example</a></li>
@@ -1342,12 +1343,12 @@ For our example, we simply return success because we already completed our missi
 <div class="section" id="exporting-the-behavior-plugin">
 <h3>2- Exporting the Behavior Plugin<a class="headerlink" href="#exporting-the-behavior-plugin" title="Permalink to this heading"></a></h3>
 <p>Now that we have created our custom behavior, we need to export our Behavior Plugin so that it would be visible to the behavior server. Plugins are loaded at runtime and if they are not visible, then our behavior server won’t be able to load it. In ROS 2, exporting and loading plugins is handled by <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
-<p>Coming to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_sms_bahavior::SendSms</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::Behavior</span></code> which is our base class.</p>
+<p>Coming to our tutorial, class <code class="docutils literal notranslate"><span class="pre">nav2_sms_behavior::SendSms</span></code> is loaded dynamically as <code class="docutils literal notranslate"><span class="pre">nav2_core::Behavior</span></code> which is our base class.</p>
 <ol class="arabic simple">
 <li><p>To export the behavior, we need to provide two lines</p></li>
 </ol>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pluginlib/class_list_macros.hpp&quot;</span>
-<span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_sms_bahavior</span><span class="o">::</span><span class="n">SendSms</span><span class="p">,</span><span class="w"> </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">Behavior</span><span class="p">)</span>
+<span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">nav2_sms_behavior</span><span class="o">::</span><span class="n">SendSms</span><span class="p">,</span><span class="w"> </span><span class="n">nav2_core</span><span class="o">::</span><span class="n">Behavior</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Note that it requires pluginlib to export out plugin’s class. Pluginlib would provide as macro <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code> which does all the work of exporting.</p>

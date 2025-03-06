@@ -611,7 +611,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/DistanceTraveled.html">DistanceTraveled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/GloballyUpdatedGoal.html">GloballyUpdatedGoal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/GlobalUpdatedGoal.html">GlobalUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/IsStopped.html">IsStopped</a></li>
@@ -639,6 +639,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/decorators/GoalUpdatedController.html">GoalUpdatedController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#example">Example</a></li>
@@ -1193,7 +1194,7 @@
 </div>
 <div class="section" id="add-velocitypolygon-in-collision-monitor">
 <h2>Add VelocityPolygon in Collision Monitor<a class="headerlink" href="#add-velocitypolygon-in-collision-monitor" title="Permalink to this heading"></a></h2>
-<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/3708">PR #3708</a> adds <code class="docutils literal notranslate"><span class="pre">VelocityPolgon</span></code> type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the <a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#collision-monitor-tutorial"><span class="std std-ref">Configuring Collision Monitor with VelocityPolygon</span></a> section.</p>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/3708">PR #3708</a> adds <code class="docutils literal notranslate"><span class="pre">VelocityPolygon</span></code> type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot’s velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot’s velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the <a class="reference internal" href="../tutorials/docs/using_collision_monitor.html#collision-monitor-tutorial"><span class="std std-ref">Configuring Collision Monitor with VelocityPolygon</span></a> section.</p>
 </div>
 <div class="section" id="change-polygon-points-parameter-format-in-collision-monitor">
 <h2>Change polygon points parameter format in Collision Monitor<a class="headerlink" href="#change-polygon-points-parameter-format-in-collision-monitor" title="Permalink to this heading"></a></h2>

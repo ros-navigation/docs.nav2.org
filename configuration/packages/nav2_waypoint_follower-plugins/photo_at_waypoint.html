@@ -611,7 +611,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../bt-plugins/conditions/TransformAvailable.html">TransformAvailable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../bt-plugins/conditions/DistanceTraveled.html">DistanceTraveled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../bt-plugins/conditions/GoalUpdated.html">GoalUpdated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../bt-plugins/conditions/GloballyUpdatedGoal.html">GloballyUpdatedGoal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../bt-plugins/conditions/GlobalUpdatedGoal.html">GlobalUpdatedGoal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../bt-plugins/conditions/InitialPoseReceived.html">InitialPoseReceived</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../bt-plugins/conditions/IsStuck.html">IsStuck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../bt-plugins/conditions/IsStopped.html">IsStopped</a></li>
@@ -639,6 +639,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../bt-plugins/decorators/GoalUpdater.html">GoalUpdater</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../bt-plugins/decorators/PathLongerOnApproach.html">PathLongerOnApproach</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../bt-plugins/decorators/SingleTrigger.html">SingleTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../bt-plugins/decorators/GoalUpdatedController.html">GoalUpdatedController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-bt-xml.html#example">Example</a></li>
@@ -1179,7 +1180,7 @@
 <span id="configuring-nav2-waypoint-follower-photo-at-waypoint-plugin"></span><h1>PhotoAtWaypoint<a class="headerlink" href="#photoatwaypoint" title="Permalink to this heading"></a></h1>
 <p>Run-time plugin that takes photos at waypoint arrivals when using waypoint follower node. Saves the taken photos to specified directory. The name for taken photos are determined by
 the waypoint index and timestamp(seconds). For instance <code class="docutils literal notranslate"><span class="pre">/home/atas/0_1602582820.png</span></code> is an sample taken image, where <code class="docutils literal notranslate"><span class="pre">0_1602582820</span></code> is the file name determined by waypoint
-index and time stamp. The leading digit in file name implies the waypoint index and the rest of digits at righthand side imples the time stamp when the photo was taken.</p>
+index and time stamp. The leading digit in file name implies the waypoint index and the rest of digits at righthand side implies the time stamp when the photo was taken.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;nav2_waypoint_follower</span> <span class="pre">plugin&gt;</span></code>: nav2_waypoint_follower plugin name defined in the <strong>waypoint_task_executor_plugin_id</strong> parameter in <a class="reference internal" href="../configuring-waypoint-follower.html#configuring-waypoint-follower"><span class="std std-ref">Waypoint Follower</span></a>.</p>

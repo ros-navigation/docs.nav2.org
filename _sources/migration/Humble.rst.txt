@@ -51,7 +51,7 @@ Expanded Planner Benchmark Tests
 Smac Planner Path Tolerances
 ****************************
 
-`PR 3219 <https://github.com/ros-navigation/navigation2/pull/3219>`_ adds path tolerances to Hybrid-A* and State Lattice planners to return approximate paths if exact paths cannot be found, within a configurable tolerance aroun the goal pose.
+`PR 3219 <https://github.com/ros-navigation/navigation2/pull/3219>`_ adds path tolerances to Hybrid-A* and State Lattice planners to return approximate paths if exact paths cannot be found, within a configurable tolerance around the goal pose.
 
 costmap_2d_node default constructor
 ***********************************
@@ -125,8 +125,8 @@ Give Behavior Server Access to Both Costmaps
 
 To update behaviors, any reference to the global_frame must be updated to the local_frame parameter
 along with the ``configuration`` method which now takes in the local and global collision checkers.
-Lastly, ``getResourceInfo`` must be overridden to return ``CostmapInfoType::LOCAL``. Other options include ``GLOBAL`` if the behavior useses global costmap and/or footprint)
-or ``BOTH`` if both are required. This allows us to only create and maintain the minimum amount of expensive resources.
+Lastly, ``getResourceInfo`` must be overridden to return ``CostmapInfoType::LOCAL``. Other options include ``GLOBAL`` if the behavior uses global costmap and/or footprint)
+or ``BOTH`` if both are required. This allows us to only create and maintain the minimum amount of expensive resources.   
 
 New Model Predictive Path Integral Controller
 *********************************************
