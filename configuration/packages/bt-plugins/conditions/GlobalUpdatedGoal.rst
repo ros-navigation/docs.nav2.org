@@ -1,7 +1,7 @@
 .. _bt_global_updated_goal_condition:
 
 GlobalUpdatedGoal
-===================
+=================
 
 Checks if the global navigation goal has changed in the blackboard. 
 Returns failure if the goal is the same, if it changes, it returns success.
