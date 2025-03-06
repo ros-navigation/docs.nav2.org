@@ -586,7 +586,7 @@ Behavior Tree Nodes
 |                          |                     | larger than the old global path  |
 |                          |                     | on approach to the goal          |
 +--------------------------+---------------------+----------------------------------+
-| `GoalUpdatedController`_ |                     | Ticks child node if the goal     |
+| `GoalUpdatedController`_ | Sophia Koffler      | Ticks child node if the goal     |
 |                          |                     | has been updated                 |
 +--------------------------+---------------------+----------------------------------+
 

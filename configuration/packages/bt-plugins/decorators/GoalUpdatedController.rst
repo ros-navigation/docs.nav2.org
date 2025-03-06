@@ -35,6 +35,6 @@ Example
 
 .. code-block:: xml
 
-  <GoalUpdatedController>
+  <GoalUpdatedController goal="{goal}" goals="{goals}">
     <!--Add tree components here--->
   </GoalUpdatedController>
