@@ -596,6 +596,7 @@ Behavior Tree Nodes
 .. _Goal Updater: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
 .. _Single Trigger: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
 .. _PathLongerOnApproach: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
+.. _GoalUpdatedController: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/decorator/goal_updated_controller.cpp
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
