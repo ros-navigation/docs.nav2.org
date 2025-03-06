@@ -586,6 +586,9 @@ Behavior Tree Nodes
 |                          |                     | larger than the old global path  |
 |                          |                     | on approach to the goal          |
 +--------------------------+---------------------+----------------------------------+
+| `GoalUpdatedController`_ |                     | Ticks child node if the goal     |
+|                          |                     | has been updated                 |
++--------------------------+---------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
 .. _Distance Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp

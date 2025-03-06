@@ -101,6 +101,7 @@ Decorator Plugins
   bt-plugins/decorators/GoalUpdater.rst
   bt-plugins/decorators/PathLongerOnApproach.rst
   bt-plugins/decorators/SingleTrigger.rst
+  bt-plugins/decorators/GoalUpdatedController.rst
 
 Example
 *******
