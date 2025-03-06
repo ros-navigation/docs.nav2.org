@@ -88,7 +88,7 @@ Adding Gazebo Plugins to a URDF/SDF
 
 We will now add the IMU sensor and the differential drive plugins of Gazebo to our URDF/SDF. For an overview of the different sensors available in Gazebo, have a look at the `Sensor Documentation <https://gazebosim.org/docs/latest/sensors>`_.
 
-A sensor must be attached to a link, thus we will create an ``imu_link`` to which the IMU sensor will be attached. This link will be referenced under the ``<gazebo>`` element if using URDF. Next, we will set ``/demo/imu`` as the topic to which the IMU will be publishing its information, and we will comply with `REP145 <https://www.ros.org/reps/rep-0145.html>`_ by setting ``initalOrientationAsReference`` to ``false``. We will also add some noise to the sensor configuration using Gazebo's `sensor noise model <https://classic.gazebosim.org/tutorials?tut=sensor_noise>`_.
+A sensor must be attached to a link, thus we will create an ``imu_link`` to which the IMU sensor will be attached. This link will be referenced under the ``<gazebo>`` element if using URDF. Next, we will set ``/demo/imu`` as the topic to which the IMU will be publishing its information, and we will comply with `REP145 <https://www.ros.org/reps/rep-0145.html>`_ by setting ``initialOrientationAsReference`` to ``false``. We will also add some noise to the sensor configuration using Gazebo's `sensor noise model <https://classic.gazebosim.org/tutorials?tut=sensor_noise>`_.
 
 Now, we will set up our IMU sensor according to the description above.
 

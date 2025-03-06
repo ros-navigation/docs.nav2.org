@@ -1,4 +1,4 @@
-.. _nav2_specifc_nodes:
+.. _nav2_specific_nodes:
 
 Introduction To Nav2 Specific Nodes
 ===================================
@@ -33,7 +33,7 @@ Condition Nodes
 
 * GoalReached - Checks if the goal has been reached
 
-* InitialPoseReceived - Checks to see if a pose on the ``intial_pose`` topic has been received
+* InitialPoseReceived - Checks to see if a pose on the ``initial_pose`` topic has been received
 
 * isBatteryLow - Checks to see if the battery is low by listening on the battery topic
 

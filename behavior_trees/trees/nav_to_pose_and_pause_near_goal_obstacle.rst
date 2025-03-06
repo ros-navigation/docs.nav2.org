@@ -16,7 +16,7 @@ If there is no significantly longer path, the monitor node goes into the ``Follo
 .. image:: ../images/walkthrough/patience_and_recovery.png
 
 Once there is a significantly longer path, the child node for the ``PathLongerOnApproach`` node ticks.
-The child node is a ``RetryUntilSuccesful`` decorator node, which inturns have a ``SequenceWithMemory`` node as its child. 
+The child node is a ``RetryUntilSuccessful`` decorator node, which inturns have a ``SequenceWithMemory`` node as its child. 
 Firstly, the ``SequenceWithMemory`` node cancels the controller server by ticking the ``CancelControl`` node. The cancellation of the controller server halts the further navigation of the robot.  
 Next, the ``SequenceWithMemory`` node ticks the ``Wait`` node, which enables the robot to wait for the given user-specified time. 
 Here we need to note that, the ``MonitorAndFollowPath`` is a ``ReactiveSequence`` node, therefore the ``PathLongerOnApproach`` node needs to return SUCCESS, before the ``FollowPath`` node can be ticked once again.

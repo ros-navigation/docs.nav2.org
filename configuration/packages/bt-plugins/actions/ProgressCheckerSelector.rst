@@ -3,7 +3,7 @@
 ProgressCheckerSelector
 =======================
 
-It is used to select the ProgressChecker that will be used by the progress_checker server. It subscribes to the ``progress_checker_selector`` topic to receive command messages with the name of the ProgressChecker to be used. It is commonly used before of the FollowPathAction. The ``selected_progess_checker`` output port is passed to ``progress_checker_id`` input port of the FollowPathAction. If none is provided on the topic, the ``default_progress_checker`` is used.
+It is used to select the ProgressChecker that will be used by the progress_checker server. It subscribes to the ``progress_checker_selector`` topic to receive command messages with the name of the ProgressChecker to be used. It is commonly used before of the FollowPathAction. The ``selected_progress_checker`` output port is passed to ``progress_checker_id`` input port of the FollowPathAction. If none is provided on the topic, the ``default_progress_checker`` is used.
 
 Any publisher to this topic needs to be configured with some QoS defined as ``reliable`` and ``transient local``.
 

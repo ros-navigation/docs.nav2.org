@@ -478,7 +478,7 @@ Behavior Tree Nodes
 | `Goal Updated Condition`_          |Aitor Miguel Blanco | Checks if goal is      |
 |                                    |                    | preempted.             |
 +------------------------------------+--------------------+------------------------+
-| `Globally Updated Goal Condition`_ | Joshua Wallace     | Checks if goal is      |
+| `Global Updated Goal Condition`_   | Joshua Wallace     | Checks if goal is      |
 |                                    |                    | preempted in the global|
 |                                    |                    | BT context             |
 +------------------------------------+--------------------+------------------------+
@@ -547,7 +547,7 @@ Behavior Tree Nodes
 
 .. _Goal Reached Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
 .. _Goal Updated Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_updated_condition.cpp
-.. _Globally Updated Goal Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
+.. _Global Updated Goal Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/globally_updated_goal_condition.cpp
 .. _Initial Pose received Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/initial_pose_received_condition.cpp
 .. _Is Stuck Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stuck_condition.cpp
 .. _Is Stopped Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_stopped_condition.cpp
@@ -555,7 +555,7 @@ Behavior Tree Nodes
 .. _Distance Traveled Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/distance_traveled_condition.cpp
 .. _Time Expired Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/time_expired_condition.cpp
 .. _Is Battery Low Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_low_condition.cpp
-.. _Is Path Valid Condition: https://github.com/navigation2/blob/replanning/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
+.. _Is Path Valid Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_path_valid_condition.cpp
 .. _Path Expiring Timer: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/path_expiring_timer_condition.cpp
 .. _Are Error Codes Present: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_error_codes_present_condition.cpp
 .. _Would A Controller Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_controller_recovery_help.cpp
@@ -586,6 +586,9 @@ Behavior Tree Nodes
 |                          |                     | larger than the old global path  |
 |                          |                     | on approach to the goal          |
 +--------------------------+---------------------+----------------------------------+
+| `GoalUpdatedController`_ | Sophia Koffler      | Ticks child node if the goal     |
+|                          |                     | has been updated                 |
++--------------------------+---------------------+----------------------------------+
 
 .. _Rate Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/rate_controller.cpp
 .. _Distance Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/distance_controller.cpp
@@ -593,6 +596,7 @@ Behavior Tree Nodes
 .. _Goal Updater: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/goal_updater_node.cpp
 .. _Single Trigger: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/single_trigger_node.cpp
 .. _PathLongerOnApproach: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
+.. _GoalUpdatedController: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/decorator/goal_updated_controller.cpp
 
 +-----------------------+------------------------+----------------------------------+
 | Control Plugin Name   |         Creator        |       Description                |
