@@ -45,4 +45,4 @@ Error codes to check are defined to be 101, 107 and 119.
 
 .. code-block:: xml
 
-    <AreErrorCodesPresent error_code="{error_code}" error_codes_to_check="101,107,119"/>
+    <AreErrorCodesPresent error_code="{error_code}" error_codes_to_check="101;107;119"/>
