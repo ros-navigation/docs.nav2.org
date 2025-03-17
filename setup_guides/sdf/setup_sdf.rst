@@ -17,7 +17,7 @@ We can also use our SDF with the robot_state_publisher using the following packa
 
 .. code-block:: shell
 
-  sudo apt install ros-<ros2-distro>-sdformat-urdf
+  sudo apt install ros-$ROS_DISTRO-sdformat-urdf
 
 This package contains a C++ library and urdf_parser_plugin for converting SDFormat XML into URDF C++ structures. Installing it allows one to use SDFormat XML instead of URDF XML as a robot description.
 

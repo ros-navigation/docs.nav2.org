@@ -27,11 +27,11 @@ If you don't have them installed, please follow :ref:`getting_started`.
 
 SLAM Toolbox can be installed via:
 
-  ``sudo apt install ros-<ros2-distro>-slam-toolbox``
+  ``sudo apt install ros-$ROS_DISTRO-slam-toolbox``
 
 or from built from source in your workspace with:
 
-  ``git clone -b <ros2-distro>-devel git@github.com:stevemacenski/slam_toolbox.git``
+  ``git clone -b $ROS_DISTRO-devel git@github.com:stevemacenski/slam_toolbox.git``
 
 
 Tutorial Steps
@@ -45,14 +45,14 @@ The turtlebot3 software can be installed via the following or on the `turtlebot3
 
 .. code-block:: bash
 
-  sudo apt install ros-<ros2-distro>-turtlebot3 ros-<ros2-distro>-turtlebot3-msgs ros-<ros2-distro>-turtlebot3-bringup
+  sudo apt install ros-$ROS_DISTRO-turtlebot3 ros-$ROS_DISTRO-turtlebot3-msgs ros-$ROS_DISTRO-turtlebot3-bringup
 
 If you have another robot, replace with your robot specific interfaces.
 Typically, this includes the robot state publisher of the URDF, simulated or physical robot interfaces, controllers, safety nodes, and the like.
 
 Run the following commands first whenever you open a new terminal during this tutorial.
 
-- ``source /opt/ros/<ros2-distro>/setup.bash``
+- ``source /opt/ros/$ROS_DISTRO/setup.bash``
 - ``export TURTLEBOT3_MODEL=waffle``
 
 

@@ -167,7 +167,7 @@ To be able to launch ``slam_toolbox``, make sure that you have installed the ``s
 
 .. code-block:: shell
 
-  sudo apt install ros-<ros2-distro>-slam-toolbox
+  sudo apt install ros-$ROS_DISTRO-slam-toolbox
 
 We will launch the ``async_slam_toolbox_node`` of ``slam_toolbox`` using the package's built-in launch files. Open a new terminal and then execute the following lines:
 
@@ -199,8 +199,8 @@ First, Make sure you have installed the Nav2 packages by executing the following
 
 .. code-block:: shell
 
-  sudo apt install ros-<ros2-distro>-navigation2
-  sudo apt install ros-<ros2-distro>-nav2-bringup
+  sudo apt install ros-$ROS_DISTRO-navigation2
+  sudo apt install ros-$ROS_DISTRO-nav2-bringup
 
 We will now launch Nav2 using the ``nav2_bringup``'s built-in launch file, ``navigation_launch.py`` . Open a new terminal and execute the following:
 

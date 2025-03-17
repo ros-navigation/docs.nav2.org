@@ -34,7 +34,7 @@ The turtlebot3 software can be installed via the following or on the `turtlebot3
 
 .. code-block:: bash
 
-  sudo apt install ros-<ros2-distro>-turtlebot3 ros-<ros2-distro>-turtlebot3-msgs ros-<ros2-distro>-turtlebot3-bringup
+  sudo apt install ros-$ROS_DISTRO-turtlebot3 ros-$ROS_DISTRO-turtlebot3-msgs ros-$ROS_DISTRO-turtlebot3-bringup
 
 Tutorial Steps
 ==============
@@ -44,7 +44,7 @@ Tutorial Steps
 
 Run the following commands first whenever you open a new terminal during this tutorial.
 
-- ``source /opt/ros/<ros2-distro>/setup.bash``
+- ``source /opt/ros/$ROS_DISTRO/setup.bash``
 - ``export TURTLEBOT3_MODEL=waffle``
 
 1- Launch Turtlebot 3
