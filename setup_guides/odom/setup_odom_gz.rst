@@ -81,7 +81,7 @@ Setup and Prerequisites
 
 .. code-block:: shell
 
-  sudo apt install ros-<ros2-distro>-ros-gz
+  sudo apt install ros-$ROS_DISTRO-ros-gz
 
 Adding Gazebo Plugins to a URDF/SDF
 ===================================

@@ -29,7 +29,7 @@ First, install the ``robot_localization`` package using your machines package ma
 
 .. code-block:: shell
 
-  sudo apt install ros-<ros2-distro>-robot-localization
+  sudo apt install ros-$ROS_DISTRO-robot-localization
 
 Next, we specify the parameters of the ``ekf_node`` using a YAML file. Create a directory named ``config`` at the root of your project and create a file named ``ekf.yaml``. Copy the following lines of code into your ``ekf.yaml`` file.
 

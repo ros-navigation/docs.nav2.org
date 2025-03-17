@@ -81,7 +81,7 @@ We also need to install the ``gazebo_ros_pkgs`` package to simulate odometry and
 
 .. code-block:: shell
 
-  sudo apt install ros-<ros2-distro>-gazebo-ros-pkgs
+  sudo apt install ros-$ROS_DISTRO-gazebo-ros-pkgs
 
 You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions `given here <http://gazebosim.org/tutorials?tut=ros2_installing&cat=connect_ros#TestingGazeboandROS2integration>`_.
 

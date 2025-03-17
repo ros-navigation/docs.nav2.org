@@ -28,8 +28,8 @@ Thus, for Jazzy and newer, the installation packages and instructions are slight
 
    .. code-block:: bash
 
-      sudo apt install ros-<ros2-distro>-navigation2
-      sudo apt install ros-<ros2-distro>-nav2-bringup
+      sudo apt install ros-$ROS_DISTRO-navigation2
+      sudo apt install ros-$ROS_DISTRO-nav2-bringup
 
 3. Install the demo robot (Turtlebot) for gazebo:
 
@@ -37,14 +37,14 @@ For **Jazzy and newer**, install the Turtlebot 3 & 4 packages for Gazebo Modern.
 
    .. code-block:: bash
 
-      sudo apt install ros-<ros2-distro>-nav2-minimal-tb*
+      sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb*
 
 
 For **Iron and older**, install Turtlebot 3 packages for gazebo classic:
 
    .. code-block:: bash
 
-      sudo apt install ros-<ros2-distro>-turtlebot3-gazebo
+      sudo apt install ros-$ROS_DISTRO-turtlebot3-gazebo
 
 Running the Example
 *******************
@@ -54,9 +54,9 @@ Running the Example
 
    .. code-block:: bash
 
-      source /opt/ros/<ros2-distro>/setup.bash
+      source /opt/ros/$ROS_DISTRO/setup.bash
       export TURTLEBOT3_MODEL=waffle  # Iron and older only with Gazebo Classic
-      export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/<ros2-distro>/share/turtlebot3_gazebo/models # Iron and older only with Gazebo Classic
+      export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/$ROS_DISTRO/share/turtlebot3_gazebo/models # Iron and older only with Gazebo Classic
 
 3. In the same terminal, run:
 

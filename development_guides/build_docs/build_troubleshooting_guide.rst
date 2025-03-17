@@ -9,7 +9,7 @@ Common Nav2 Dependencies Build Failures
 * Make sure that .bashrc file has no ROS environment variables in it. Open new terminals and try to build the packages again.
 
 * Make sure to run rosdep for the correct ROS 2 distribution.
-  ``rosdep install -y -r -q --from-paths src --ignore-src --rosdistro <ros2-distro>``
+  ``rosdep install -y -r -q --from-paths src --ignore-src --rosdistro $ROS_DISTRO``
 
 * Make sure that the ``setup.bash`` is sourced in the ROS 2 installation or ROS 2 main build workspace, if applicable. Check if you can run talker and listener nodes.
 
