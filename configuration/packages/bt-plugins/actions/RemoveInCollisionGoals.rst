@@ -14,7 +14,7 @@ Input Ports
   ====== =======================================
   Type   Default
   ------ ---------------------------------------
-  string /global_costmap/get_cost_global_costmap  
+  string /global_costmap/get_cost_global_costmap
   ====== =======================================
 
   Description
@@ -36,18 +36,18 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 254.0  
+  double 254.0
   ====== =======
 
   Description
-    The cost threshold above which a waypoint is considered in collision and should be removed. If ``use_footprint = false``, consider setting to 253 for occupied. 
+    The cost threshold above which a waypoint is considered in collision and should be removed. If ``use_footprint = false``, consider setting to 253 for occupied.
 
 :use_footprint:
 
   ====== =======
   Type   Default
   ------ -------
-  bool   true  
+  bool   true
   ====== =======
 
   Description
@@ -58,7 +58,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  bool   false  
+  bool   false
   ====== =======
 
   Description
@@ -72,7 +72,7 @@ Output Ports
   =============================== =======
   Type                            Default
   ------------------------------- -------
-  geometry_msgs::msg::PoseStamped   N/A  
+  geometry_msgs::msg::PoseStamped   N/A
   =============================== =======
 
   Description
@@ -84,4 +84,3 @@ Example
 .. code-block:: xml
 
   <RemoveInCollisionGoals input_goals="{goals}" output_goals="{goals}" cost_threshold="254.0" use_footprint="true" service_name="/global_costmap/get_cost_global_costmap" />
-    

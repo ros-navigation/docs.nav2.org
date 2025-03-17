@@ -19,7 +19,7 @@ You may use this simple commander preempt commands of the same type (e.g. you ca
 
   rclpy.init()
   nav = BasicNavigator()
-  
+
   # ...
 
   nav.setInitialPose(init_pose)
@@ -230,7 +230,7 @@ The ``nav2_simple_commander`` has a few examples to highlight the API functions 
 - ``example_nav_through_poses.py`` - Demonstrates the navigate through poses capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.
-- ``example_assisted_teleop.py`` - Demonstrates the assisted teleop capabilities of the navigator.  
+- ``example_assisted_teleop.py`` - Demonstrates the assisted teleop capabilities of the navigator.
 
 The ``nav2_simple_commander`` has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:
 

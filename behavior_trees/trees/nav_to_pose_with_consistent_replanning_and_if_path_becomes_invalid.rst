@@ -70,5 +70,3 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
       </RecoveryNode>
     </BehaviorTree>
   </root>
-
-

@@ -18,9 +18,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  string "last" 
+  string "last"
   ====== =======
-    
+
     Description
         last, sum, or product combination methods.
 
@@ -29,8 +29,8 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 1.0 
+  double 1.0
   ====== =======
-    
+
     Description
         Weighed scale for critic.

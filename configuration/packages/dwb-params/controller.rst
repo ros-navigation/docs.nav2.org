@@ -13,7 +13,7 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  vector<string> N/A    
+  vector<string> N/A
   ============== =======
 
   Description
@@ -22,9 +22,9 @@ Parameters
 :``<dwb plugin>``.default_critic_namespaces:
 
   ============== ===============
-  Type           Default                                               
+  Type           Default
   -------------- ---------------
-  vector<string> ["dwb_critics"]           
+  vector<string> ["dwb_critics"]
   ============== ===============
 
   Description
@@ -35,7 +35,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool true   
+  bool true
   ==== =======
 
   Description
@@ -46,7 +46,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool true   
+  bool true
   ==== =======
 
   Description
@@ -57,7 +57,7 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 2.0    
+  double 2.0
   ====== =======
 
   Description
@@ -77,9 +77,9 @@ Parameters
 :``<dwb plugin>``.debug_trajectory_details:
 
   ==== =======
-  Type Default                                     
+  Type Default
   ---- -------
-  bool false  
+  bool false
   ==== =======
 
   Description
@@ -88,9 +88,9 @@ Parameters
 :``<dwb plugin>``.trajectory_generator_name:
 
   ====== ==========================================
-  Type   Default                                               
+  Type   Default
   ------ ------------------------------------------
-  string "dwb_plugins::StandardTrajectoryGenerator"            
+  string "dwb_plugins::StandardTrajectoryGenerator"
   ====== ==========================================
 
   Description
@@ -99,9 +99,9 @@ Parameters
 :``<dwb plugin>``.goal_checker_name:
 
   ============== ================================
-  Type           Default                                               
+  Type           Default
   -------------- --------------------------------
-  string         "dwb_plugins::SimpleGoalChecker"           
+  string         "dwb_plugins::SimpleGoalChecker"
   ============== ================================
 
   Description
@@ -110,9 +110,9 @@ Parameters
 :``<dwb plugin>``.transform_tolerance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.1        
+  double         0.1
   ============== =============================
 
   Description
@@ -121,9 +121,9 @@ Parameters
 :``<dwb plugin>``.short_circuit_trajectory_evaluation:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           true            
+  bool           true
   ============== =============================
 
   Description
@@ -132,9 +132,9 @@ Parameters
 :``<dwb plugin>``.path_distance_bias (Legacy):
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         N/A            
+  double         N/A
   ============== =============================
 
   Description
@@ -143,9 +143,9 @@ Parameters
 :``<dwb plugin>``.goal_distance_bias (Legacy):
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         N/A           
+  double         N/A
   ============== =============================
 
   Description
@@ -154,9 +154,9 @@ Parameters
 :``<dwb plugin>``.occdist_scale (Legacy):
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         N/A            
+  double         N/A
   ============== =============================
 
   Description
@@ -165,9 +165,9 @@ Parameters
 :``<dwb plugin>``.max_scaling_factor (Legacy):
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         N/A         
+  double         N/A
   ============== =============================
 
   Description
@@ -176,9 +176,9 @@ Parameters
 :``<dwb plugin>``.scaling_speed (Legacy):
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         N/A           
+  double         N/A
   ============== =============================
 
   Description
@@ -187,9 +187,9 @@ Parameters
 :``<dwb plugin>``.PathAlign.scale:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         32.0    
+  double         32.0
   ============== =============================
 
   Description
@@ -198,9 +198,9 @@ Parameters
 :``<dwb plugin>``.GoalAlign.scale:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         24.0          
+  double         24.0
   ============== =============================
 
   Description
@@ -209,9 +209,9 @@ Parameters
 :``<dwb plugin>``.PathDist.scale:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         32.0           
+  double         32.0
   ============== =============================
 
   Description
@@ -220,9 +220,9 @@ Parameters
 :``<dwb plugin>``.GoalDist.scale:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         24.0            
+  double         24.0
   ============== =============================
 
   Description

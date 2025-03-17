@@ -3,8 +3,8 @@
 PhotoAtWaypoint
 ===============
 
-Run-time plugin that takes photos at waypoint arrivals when using waypoint follower node. Saves the taken photos to specified directory. The name for taken photos are determined by 
-the waypoint index and timestamp(seconds). For instance ``/home/atas/0_1602582820.png`` is an sample taken image, where ``0_1602582820`` is the file name determined by waypoint 
+Run-time plugin that takes photos at waypoint arrivals when using waypoint follower node. Saves the taken photos to specified directory. The name for taken photos are determined by
+the waypoint index and timestamp(seconds). For instance ``/home/atas/0_1602582820.png`` is an sample taken image, where ``0_1602582820`` is the file name determined by waypoint
 index and time stamp. The leading digit in file name implies the waypoint index and the rest of digits at righthand side implies the time stamp when the photo was taken.
 
 Parameters
@@ -15,9 +15,9 @@ Parameters
 :``<nav2_waypoint_follower plugin>``.enabled:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           true           
+  bool           true
   ============== =============================
 
   Description
@@ -27,9 +27,9 @@ Parameters
 :``<nav2_waypoint_follower plugin>``.camera_image_topic_name:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "/camera/color/image_raw"        
+  string         "/camera/color/image_raw"
   ============== =============================
 
   Description
@@ -38,9 +38,9 @@ Parameters
 :``<nav2_waypoint_follower plugin>``.save_images_dir:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "/tmp/waypoint_images"          
+  string         "/tmp/waypoint_images"
   ============== =============================
 
   Description
@@ -49,9 +49,9 @@ Parameters
 :``<nav2_waypoint_follower plugin>``.image_format:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "png"          
+  string         "png"
   ============== =============================
 
   Description

@@ -68,7 +68,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - _build 
+            - _build
   docs_publish:
     executor: docs_exec
     steps:

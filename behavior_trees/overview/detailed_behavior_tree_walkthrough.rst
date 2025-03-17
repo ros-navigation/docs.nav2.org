@@ -268,6 +268,3 @@ For example, let's say the robot is stuck and the ``Navigation`` subtree returns
 6. In this hypothetical scenario, let's assume that the ``BackUp`` action allowed the robot to successfully navigate in the ``Navigation`` subtree, and the robot reaches the goal. In this case, the overall BT will still return ``SUCCESS``.
 
 If the ``BackUp`` action was not sufficient enough to allow the robot to become un-stuck, the above logic will go on indefinitely until the ``number_of_retries`` in the parent of the ``Navigate`` subtree and ``Recovery`` subtree is exceeded, or if all the system-wide recoveries in the ``Recovery`` subtree return ``FAILURE`` (this is unlikely, and likely points to some other system failure).
-
-
-

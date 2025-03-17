@@ -15,7 +15,7 @@ Input Ports
     --------------- -------------------
     string          "/battery_status"
     =============== ===================
-    
+
     Description
         Topic for battery info.
 

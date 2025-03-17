@@ -13,9 +13,9 @@ Parameters
 :``<nav2_waypoint_follower plugin>``.enabled:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           true           
+  bool           true
   ============== =============================
 
   Description
@@ -25,9 +25,9 @@ Parameters
 :``<nav2_waypoint_follower plugin>``.timeout:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         10.0           
+  double         10.0
   ============== =============================
 
   Description
@@ -36,9 +36,9 @@ Parameters
 :``<nav2_waypoint_follower plugin>``.input_topic:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "input_at_waypoint/input"           
+  string         "input_at_waypoint/input"
   ============== =============================
 
   Description

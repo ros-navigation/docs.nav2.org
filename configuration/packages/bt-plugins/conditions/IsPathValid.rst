@@ -26,7 +26,7 @@ Input Ports
   ==================================== =======
   Type                                 Default
   ------------------------------------ -------
-  nav_msgs::msg::Path                  N/A  
+  nav_msgs::msg::Path                  N/A
   ==================================== =======
 
   Description
@@ -48,7 +48,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  bool   false  
+  bool   false
   ====== =======
 
   Description

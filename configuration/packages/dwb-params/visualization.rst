@@ -13,7 +13,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool true      
+  bool true
   ==== =======
 
   Description
@@ -24,7 +24,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool true      
+  bool true
   ==== =======
 
   Description
@@ -35,7 +35,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool true      
+  bool true
   ==== =======
 
   Description
@@ -46,7 +46,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool true      
+  bool true
   ==== =======
 
   Description
@@ -57,7 +57,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool true      
+  bool true
   ==== =======
 
   Description
@@ -68,7 +68,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool false      
+  bool false
   ==== =======
 
   Description
@@ -79,7 +79,7 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.1    
+  double         0.1
   ============== =======
 
   Description

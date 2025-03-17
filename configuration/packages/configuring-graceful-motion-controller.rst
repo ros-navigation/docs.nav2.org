@@ -17,9 +17,9 @@ Graceful Controller Parameters
 :transform_tolerance:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         0.1 
+  double         0.1
   ============== ===========================
 
   Description
@@ -28,7 +28,7 @@ Graceful Controller Parameters
 :max_lookahead:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
   double         1.0
   ============== =============================
@@ -39,7 +39,7 @@ Graceful Controller Parameters
 :min_lookahead:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
   double         0.25
   ============== =============================
@@ -61,7 +61,7 @@ Graceful Controller Parameters
 :k_phi:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
   double         2.0
   ============== =============================
@@ -72,7 +72,7 @@ Graceful Controller Parameters
 :k_delta:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
   double         1.0
   ============== =============================
@@ -83,7 +83,7 @@ Graceful Controller Parameters
 :beta:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
   double         0.4
   ============== =============================
@@ -94,9 +94,9 @@ Graceful Controller Parameters
 :lambda:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  double         2.0 
+  double         2.0
   ============== =============================
 
   Description
@@ -105,9 +105,9 @@ Graceful Controller Parameters
 :v_linear_min:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  double         0.1      
+  double         0.1
   ============== =============================
 
   Description
@@ -116,9 +116,9 @@ Graceful Controller Parameters
 :v_linear_max:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  double         0.5 
+  double         0.5
   ============== =============================
 
   Description
@@ -127,9 +127,9 @@ Graceful Controller Parameters
 :v_angular_max:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  double         1.0 
+  double         1.0
   ============== =============================
 
   Description
@@ -138,7 +138,7 @@ Graceful Controller Parameters
 :v_angular_min_in_place:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
   double         0.25
   ============== =============================
@@ -149,9 +149,9 @@ Graceful Controller Parameters
 :slowdown_radius:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  double         1.5 
+  double         1.5
   ============== =============================
 
   Description
@@ -160,9 +160,9 @@ Graceful Controller Parameters
 :initial_rotation:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  bool           true 
+  bool           true
   ============== =============================
 
   Description
@@ -171,7 +171,7 @@ Graceful Controller Parameters
 :initial_rotation_tolerance:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
   double         0.75
   ============== =============================
@@ -182,9 +182,9 @@ Graceful Controller Parameters
 :prefer_final_rotation:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  bool           true 
+  bool           true
   ============== =============================
 
   Description
@@ -193,9 +193,9 @@ Graceful Controller Parameters
 :rotation_scaling_factor:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  double         0.5 
+  double         0.5
   ============== =============================
 
   Description
@@ -204,9 +204,9 @@ Graceful Controller Parameters
 :allow_backward:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  bool           false 
+  bool           false
   ============== =============================
 
   Description
@@ -215,7 +215,7 @@ Graceful Controller Parameters
 :in_place_collision_tolerance:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
   double         0.1
   ============== =============================

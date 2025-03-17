@@ -128,4 +128,3 @@ agreement is shown below and at http://developercertificate.org/.
         sign-off) is maintained indefinitely and may be redistributed
         consistent with this project or the open source license(s)
         involved.
-

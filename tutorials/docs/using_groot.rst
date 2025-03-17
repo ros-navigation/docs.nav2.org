@@ -7,7 +7,7 @@ Groot - Interacting with Behavior Trees
   :name: groot_startup_menu
   :align: center
 
-- `Overview`_ 
+- `Overview`_
 - `Visualize Behavior Trees`_
 - `Edit Behavior Trees`_
 - `Adding A Custom Node`_
@@ -45,7 +45,7 @@ Out of the box, Groot can only display Behavior Trees and nodes that are from th
 Therefore, we must point Groot to our palette, or index, of Nav2 / custom behavior tree nodes:
 
 1. Open Groot in editor mode. Now, Groot should look like in :numref:`groot_bt_editor`.
-2. Select the `Load palette from file` option either via the context menu or the import icon in the top middle of the menu bar. 
+2. Select the `Load palette from file` option either via the context menu or the import icon in the top middle of the menu bar.
 3. Open the file `/path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml` to import all the custom behavior tree nodes used for navigation. This is the palette of Nav2 custom behavior tree nodes. Now, Groot should look like in :numref:`groot_bt_editor_with_nodes`.
 4. Select `Load tree` option near the top left corner
 5. Browse the tree you want to visualize, then select `OK`. The Nav2 BTs exist in `/path/to/navigation2/nav2_bt_navigator/behavior_trees/`
@@ -96,8 +96,8 @@ Implementing the node itself needs to be done separately from Groot, which is de
 +-----------------------------------------------------------+
 
 Creating a new custom node can be started by clicking the orange marked icon in :numref:`groot_create_custom_node`, while Groot is in Editor mode.
-This should load a new window, similar to :numref:`groot_interactive_node_creation`. 
-In this new window, it asks you to fill in the metadata about this new node, in order to create it. 
+This should load a new window, similar to :numref:`groot_interactive_node_creation`.
+In this new window, it asks you to fill in the metadata about this new node, in order to create it.
 It will ask you for standard information such as name (green box), type of node (orange box), and any optional ports for parameterization or access to blackboard variables (blue box).
 
 After completing, select `OK` in :numref:`groot_interactive_node_creation`, the new custom node should appear in blue in the `TreeNode Palette` as in :numref:`groot_export_new_node`.

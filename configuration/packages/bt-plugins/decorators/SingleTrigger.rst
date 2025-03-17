@@ -3,7 +3,7 @@
 SingleTrigger
 =============
 
-This node triggers its child only once and returns FAILURE for every succeeding tick. 
+This node triggers its child only once and returns FAILURE for every succeeding tick.
 
 Example
 -------

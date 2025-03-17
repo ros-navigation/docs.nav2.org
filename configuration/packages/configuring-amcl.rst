@@ -17,7 +17,7 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.2   
+  double         0.2
   ============== =======
 
   Description
@@ -26,9 +26,9 @@ Parameters
 :alpha2:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.2   
+  double         0.2
   ============== ==============
 
   Description
@@ -37,9 +37,9 @@ Parameters
 :alpha3:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.2   
+  double         0.2
   ============== =============================
 
   Description
@@ -48,9 +48,9 @@ Parameters
 :alpha4:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.2   
+  double         0.2
   ============== =============================
 
   Description
@@ -59,9 +59,9 @@ Parameters
 :alpha5:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.2   
+  double         0.2
   ============== =============================
 
   Description
@@ -70,9 +70,9 @@ Parameters
 :base_frame_id:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "base_footprint"            
+  string         "base_footprint"
   ============== =============================
 
   Description
@@ -81,9 +81,9 @@ Parameters
 :beam_skip_distance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.5            
+  double         0.5
   ============== =============================
 
   Description
@@ -92,9 +92,9 @@ Parameters
 :beam_skip_error_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.9         
+  double         0.9
   ============== =============================
 
   Description
@@ -103,9 +103,9 @@ Parameters
 :beam_skip_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.3         
+  double         0.3
   ============== =============================
 
   Description
@@ -114,9 +114,9 @@ Parameters
 :do_beamskip:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           False         
+  bool           False
   ============== =============================
 
   Description
@@ -125,9 +125,9 @@ Parameters
 :global_frame_id:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "map"         
+  string         "map"
   ============== =============================
 
   Description
@@ -136,9 +136,9 @@ Parameters
 :lambda_short:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.1         
+  double         0.1
   ============== =============================
 
   Description
@@ -147,9 +147,9 @@ Parameters
 :laser_likelihood_max_dist:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         2.0         
+  double         2.0
   ============== =============================
 
   Description
@@ -158,9 +158,9 @@ Parameters
 :laser_max_range:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         100.0         
+  double         100.0
   ============== =============================
 
   Description
@@ -169,9 +169,9 @@ Parameters
 :laser_min_range:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         -1.0         
+  double         -1.0
   ============== =============================
 
   Description
@@ -180,9 +180,9 @@ Parameters
 :laser_model_type:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "likelihood_field"         
+  string         "likelihood_field"
   ============== =============================
 
   Description
@@ -191,9 +191,9 @@ Parameters
 :set_initial_pose:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           False         
+  bool           False
   ============== =============================
 
   Description
@@ -202,7 +202,7 @@ Parameters
 :initial_pose:
 
   ============== ==================================
-  Type           Default                           
+  Type           Default
   -------------- ----------------------------------
   Pose2D         {x: 0.0, y: 0.0, z: 0.0, yaw: 0.0}
   ============== ==================================
@@ -213,9 +213,9 @@ Parameters
 :max_beams:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  int            60         
+  int            60
   ============== =============================
 
   Description
@@ -224,9 +224,9 @@ Parameters
 :max_particles:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  int            2000         
+  int            2000
   ============== =============================
 
   Description
@@ -235,9 +235,9 @@ Parameters
 :min_particles:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  int            500         
+  int            500
   ============== =============================
 
   Description
@@ -246,9 +246,9 @@ Parameters
 :odom_frame_id:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "odom"         
+  string         "odom"
   ============== =============================
 
   Description
@@ -257,9 +257,9 @@ Parameters
 :pf_err:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.05         
+  double         0.05
   ============== =============================
 
   Description
@@ -268,9 +268,9 @@ Parameters
 :pf_z:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.99         
+  double         0.99
   ============== =============================
 
   Description
@@ -279,9 +279,9 @@ Parameters
 :recovery_alpha_fast:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0         
+  double         0.0
   ============== =============================
 
   Description
@@ -290,9 +290,9 @@ Parameters
 :recovery_alpha_slow:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0         
+  double         0.0
   ============== =============================
 
   Description
@@ -302,9 +302,9 @@ Parameters
 :resample_interval:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  int            1         
+  int            1
   ============== =============================
 
   Description
@@ -313,9 +313,9 @@ Parameters
 :robot_model_type:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "nav2_amcl::DifferentialMotionModel"         
+  string         "nav2_amcl::DifferentialMotionModel"
   ============== =============================
 
   Description
@@ -327,9 +327,9 @@ Parameters
 :save_pose_rate:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.5         
+  double         0.5
   ============== =============================
 
   Description
@@ -338,9 +338,9 @@ Parameters
 :sigma_hit:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.2         
+  double         0.2
   ============== =============================
 
   Description
@@ -349,9 +349,9 @@ Parameters
 :tf_broadcast:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           True         
+  bool           True
   ============== =============================
 
   Description
@@ -360,9 +360,9 @@ Parameters
 :transform_tolerance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         1.0         
+  double         1.0
   ============== =============================
 
   Description
@@ -371,9 +371,9 @@ Parameters
 :update_min_a:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.2         
+  double         0.2
   ============== =============================
 
   Description
@@ -382,9 +382,9 @@ Parameters
 :update_min_d:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.25         
+  double         0.25
   ============== =============================
 
   Description
@@ -393,9 +393,9 @@ Parameters
 :z_hit:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.5         
+  double         0.5
   ============== =============================
 
   Description
@@ -404,9 +404,9 @@ Parameters
 :z_max:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.05         
+  double         0.05
   ============== =============================
 
   Description
@@ -415,9 +415,9 @@ Parameters
 :z_rand:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.5         
+  double         0.5
   ============== =============================
 
   Description
@@ -426,9 +426,9 @@ Parameters
 :z_short:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.005         
+  double         0.005
   ============== =============================
 
   Description
@@ -437,20 +437,20 @@ Parameters
 :always_reset_initial_pose:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           False         
+  bool           False
   ============== =============================
 
   Description
     Requires that AMCL is provided an initial pose either via topic or initial_pose* parameter (with parameter set_initial_pose: true) when reset. Otherwise, by default AMCL will use the last known pose to initialize.
-    
+
 :scan_topic:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         scan         
+  string         scan
   ============== =============================
 
   Description

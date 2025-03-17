@@ -22,9 +22,9 @@ Savitzky-Golay Smoother Parameters
 :do_refinement:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  bool           True   
+  bool           True
   ============== ===========================
 
   Description
@@ -33,9 +33,9 @@ Savitzky-Golay Smoother Parameters
 :refinement_num:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  int            2   
+  int            2
   ============== ===========================
 
   Description

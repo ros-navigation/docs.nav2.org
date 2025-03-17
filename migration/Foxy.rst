@@ -26,9 +26,9 @@ NavigateThroughPoses and ComputePathThroughPoses Actions Added
 
 The ``NavigateThroughPoses`` action has been added analog to the ``NavigateToPose``. Rather than going to a single position, this Action will allow a user to specify a number of hard intermediary pose constraints between the start and final pose to plan through. The new ``ComputePathThroughPoses`` action has been added to the ``planner_server`` to process these requests through ``N goal_poses``.
 
-The ``ComputePathThroughPoses`` action server will take in a set of ``N`` goals to achieve, plan through each pose and concatenate the output path for use in navigation. The controller and navigator know nothing about the semantics of the generated path, so the robot will not stop or slow on approach to these goals. It will rather continue through each pose as it were any other point on the path continuously. When paired with the ``SmacPlanner``, this feature can be used to generate **completely kinematically feasible trajectories through pose constraints**. 
+The ``ComputePathThroughPoses`` action server will take in a set of ``N`` goals to achieve, plan through each pose and concatenate the output path for use in navigation. The controller and navigator know nothing about the semantics of the generated path, so the robot will not stop or slow on approach to these goals. It will rather continue through each pose as it were any other point on the path continuously. When paired with the ``SmacPlanner``, this feature can be used to generate **completely kinematically feasible trajectories through pose constraints**.
 
-If you wish to stop at each goal pose, consider using the waypoint follower instead, which will stop and allow a user to optionally execute a task plugin at each pose. 
+If you wish to stop at each goal pose, consider using the waypoint follower instead, which will stop and allow a user to optionally execute a task plugin at each pose.
 
 ComputePathToPose BT-node Interface Changes
 *******************************************
@@ -74,7 +74,7 @@ For example: you could use for some specific navigation motion a more precise go
     <FollowPath path="{path}" controller_id="FollowPath" goal_checker_id="precise_goal_checker" server_name="FollowPath" server_timeout="10"/>
 
 - The previous usage of the ``goal_checker_plugin`` parameter to declare the controller_server goal_checker is now obsolete and removed.
-- The controller_server parameters now support the declaration of a list of goal checkers ``goal_checker_plugins`` mapped to unique identifier names, such as is the case with ``FollowPath`` and ``GridBased`` for the controller and planner plugins, respectively. 
+- The controller_server parameters now support the declaration of a list of goal checkers ``goal_checker_plugins`` mapped to unique identifier names, such as is the case with ``FollowPath`` and ``GridBased`` for the controller and planner plugins, respectively.
 
 - The specification of the selected goal checker is mandatory when more than one checker is defined in the controller_server parameter configuration. If only one goal_checker is configured in the controller_server it is selected by default even if no goal_checker is specified.
 
@@ -107,16 +107,16 @@ Enabled by default.
 New Plugins
 ***********
 
-``nav2_waypoint_follower`` has an action server that takes in a list of waypoints to follow and follow them in order. In some cases we might want robot to 
+``nav2_waypoint_follower`` has an action server that takes in a list of waypoints to follow and follow them in order. In some cases we might want robot to
 perform some tasks/behaviours at arrivals of these waypoints. In order to perform such tasks, a generic plugin interface `WaypointTaskExecutor` has been added to ``nav2_core``.
-Users can inherit from this interface to implement their own plugin to perform more specific tasks at waypoint arrivals for their needs. 
+Users can inherit from this interface to implement their own plugin to perform more specific tasks at waypoint arrivals for their needs.
 
-Several example implementations are included in ``nav2_waypoint_follower``. ``WaitAtWaypoint`` and ``PhotoAtWaypoint`` plusings are included in 
+Several example implementations are included in ``nav2_waypoint_follower``. ``WaitAtWaypoint`` and ``PhotoAtWaypoint`` plusings are included in
 ``nav2_waypoint_follower`` as run-time loadable plugins. ``WaitAtWaypoint`` simply lets robot to pause for a specified amount of time in milliseconds, at waypoint arrivals.
 While ``PhotoAtWaypoint`` takes photos at waypoint arrivals and saves the taken photos to specified directory, the format for taken photos also can be configured through parameters.
 All major image formats such as ``png``, ``jpeg``, ``jpg`` etc. are supported, the default format is ``png``.
 
-Loading a plugin of this type is done through ``nav2_bringup/params/nav2_param.yaml``, by specifying plugin's name, type and it's used parameters. 
+Loading a plugin of this type is done through ``nav2_bringup/params/nav2_param.yaml``, by specifying plugin's name, type and it's used parameters.
 
 .. code-block:: yaml
 
@@ -193,7 +193,7 @@ Standard time units in parameters
 *********************************
 To follow the SI units outlined in REP-103 to the "T" nodes below were modified to use seconds consistently in every parameter. Under each node name you can see which parameters changed to seconds instead of using milliseconds.
 
-- lifecycle manager 
+- lifecycle manager
 
   - ``bond_timeout_ms`` became ``bond_timeout`` in seconds
 
@@ -216,9 +216,9 @@ Raytracing functionality was modified to include a minimum range parameter from 
   - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
 
 - voxel_layer plugin
- 
+
   - ``raytrace_min_range`` controls the minimum range from which ray tracing clears obstacles from the costmap
- 
+
   - ``raytrace_max_range`` controls the maximum range to which ray tracing clears obstacles from the costmap
 
 Obstacle Marking Parameters
@@ -269,7 +269,7 @@ Original GitHub tickets:
 - `RemovePassedGoals <https://github.com/ros-navigation/navigation2/pull/2271>`_
 - `ComputePathThroughPoses <https://github.com/ros-navigation/navigation2/pull/2271>`_
 
-Additionally, behavior tree nodes were modified to contain their own local executors to spin for actions, topics, services, etc to ensure that each behavior tree node is independent of each other (e.g. spinning in one BT node doesn't trigger a callback in another). 
+Additionally, behavior tree nodes were modified to contain their own local executors to spin for actions, topics, services, etc to ensure that each behavior tree node is independent of each other (e.g. spinning in one BT node doesn't trigger a callback in another).
 
 sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change
 ********************************************************
@@ -290,7 +290,7 @@ Removed BT XML Launch Configurations
 ************************************
 The launch python configurations for CLI setting of the behavior tree XML file has been removed. Instead, you should use the yaml files to set this value. If you, however, have a ``path`` to the yaml file that is inconsistent in a larger deployment, you can use the ``RewrittenYaml`` tool in your parent launch file to remap the default XML paths utilizing the ``get_shared_package_path()`` directory finder (or as you were before in python3).
 
-The use of map subscription QoS launch configuration was also removed, use parameter file. 
+The use of map subscription QoS launch configuration was also removed, use parameter file.
 This change was introduced in this `pull request 2295 <https://github.com/ros-navigation/navigation2/pull/2295>`_.
 
 Nav2 RViz Panel Action Feedback Information

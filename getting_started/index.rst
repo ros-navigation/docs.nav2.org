@@ -63,9 +63,9 @@ Running the Example
    .. code-block:: bash
 
       ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
-   
+
    .. note::
-      
+
       ``headless`` defaults to true; if not set to false, gzclient (the 3d view) is not started.
 
    This launch file will launch Nav2 with the AMCL localizer in the

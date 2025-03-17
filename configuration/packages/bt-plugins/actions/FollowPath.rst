@@ -47,7 +47,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description

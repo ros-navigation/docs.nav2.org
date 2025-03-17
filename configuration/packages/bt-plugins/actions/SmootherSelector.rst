@@ -17,18 +17,18 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string smoother_selector  
+  string smoother_selector
   ====== =======
 
   Description
-    	The name of the topic used to received select command messages. This is used to support multiple SmootherSelector nodes. 
-      
+    	The name of the topic used to received select command messages. This is used to support multiple SmootherSelector nodes.
+
 :default_smoother:
 
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -43,7 +43,7 @@ Output Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
