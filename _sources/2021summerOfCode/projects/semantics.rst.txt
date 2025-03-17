@@ -29,7 +29,7 @@ After creating the generic representation, your project will be to create demons
 - Perception, semantic information motivation, or similar.
 - Recommended: Gazebo simulation, ROS navigation
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_

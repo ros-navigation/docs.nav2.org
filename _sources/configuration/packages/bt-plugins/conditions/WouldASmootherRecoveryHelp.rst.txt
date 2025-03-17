@@ -5,7 +5,7 @@ WouldASmootherRecoveryHelp
 
 Checks if the active controller server error code is UNKNOWN, TIMEOUT, FAILED_TO_SMOOTH_PATH, or SMOOTHED_PATH_IN_COLLISION.
 
-If the active error code is a match, the node returns ``SUCCESS``. Otherwise, it returns ``FAILURE``. 
+If the active error code is a match, the node returns ``SUCCESS``. Otherwise, it returns ``FAILURE``.
 
 Input Port
 ----------
@@ -19,7 +19,7 @@ Input Port
   ============== =======
 
   Description
-    	The active error code to compare against. This should match the smoother server error code. 
+    	The active error code to compare against. This should match the smoother server error code.
 
 Example
 -------

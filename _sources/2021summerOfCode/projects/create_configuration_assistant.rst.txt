@@ -5,7 +5,7 @@
 1. Create a Configuration Assistant (Analog to MoveIt)
 ======================================================
 
-**Task description** 
+**Task description**
 
 `Moveit <https://moveit.ros.org/>`_ has long has a QT `configuration assistant <http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html>`_. This setup assistant helps the user configure their UDRF and needs to setup MoveIt configuration files.
 
@@ -43,7 +43,7 @@ After the items are configured, there should be a preview to see how the paramet
 - 3D programming (maybe needed in the preview)
 - Recommended: Gazebo simulation, ROS, and Navigation experience
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
 - `QT <https://www.qt.io/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_

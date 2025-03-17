@@ -154,7 +154,7 @@ Plugins are loaded at runtime, and if they are not visible, then our BT Navigato
 In BehaviorTree.CPP, exporting and loading plugins is handled by the ``BT_REGISTER_NODES`` macro.
 
 .. code-block:: c++
-  
+
   BT_REGISTER_NODES(factory)
   {
     BT::NodeBuilder builder =
@@ -195,7 +195,7 @@ In order for the BT Navigator node to discover the plugin we've just registered,
       default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
       default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
       plugin_lib_names:
-      - nav2_back_up_action_bt_node # other plugin 
+      - nav2_back_up_action_bt_node # other plugin
       - nav2_wait_action_bt_node    # our new plugin
 
 4- Run Your Custom plugin

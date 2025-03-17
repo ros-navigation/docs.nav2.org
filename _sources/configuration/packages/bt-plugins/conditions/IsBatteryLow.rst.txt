@@ -26,7 +26,7 @@ Input Ports
     --------------- -------------------
     string          "/battery_status"
     =============== ===================
-    
+
     Description
         Topic for battery info.
 
@@ -36,7 +36,7 @@ Input Ports
     ------ -------
     bool   false
     ====== =======
-    
+
     Description
         If true voltage will be used to check for low battery.
 

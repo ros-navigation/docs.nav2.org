@@ -20,7 +20,7 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.125  
+  double         0.125
   ============== =======
 
   Description
@@ -29,9 +29,9 @@ Parameters
 :``<name>``.downsample_costmap:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool False            
+  bool False
   ==== =======
 
   Description
@@ -40,9 +40,9 @@ Parameters
 :``<name>``.downsampling_factor:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  int  1            
+  int  1
   ==== =======
 
   Description
@@ -51,9 +51,9 @@ Parameters
 :``<name>``.allow_unknown:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
@@ -62,9 +62,9 @@ Parameters
 :``<name>``.max_iterations:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  int  1000000            
+  int  1000000
   ==== =======
 
   Description
@@ -73,9 +73,9 @@ Parameters
 :``<name>``.max_on_approach_iterations:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  int  1000            
+  int  1000
   ==== =======
 
   Description
@@ -84,9 +84,9 @@ Parameters
 :``<name>``.terminal_checking_interval:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  int  5000            
+  int  5000
   ==== =======
 
   Description
@@ -95,9 +95,9 @@ Parameters
 :``<name>``.max_planning_time:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double  2.0            
+  double  2.0
   ====== =======
 
   Description
@@ -106,9 +106,9 @@ Parameters
 :``<name>``.cost_travel_multiplier:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 2.0            
+  double 2.0
   ====== =======
 
   Description
@@ -117,9 +117,9 @@ Parameters
 :``<name>``.use_final_approach_orientation:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   false      
+  bool   false
   ====== =======
 
   Description
@@ -128,9 +128,9 @@ Parameters
 :``<name>``.smoother.max_iterations:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  int    1000         
+  int    1000
   ====== =======
 
   Description
@@ -139,9 +139,9 @@ Parameters
 :``<name>``.smoother.w_smooth:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.3         
+  double 0.3
   ====== =======
 
   Description
@@ -150,9 +150,9 @@ Parameters
 :``<name>``.smoother.w_data:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.2         
+  double 0.2
   ====== =======
 
   Description
@@ -161,9 +161,9 @@ Parameters
 :``<name>``.smoother.tolerance:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 1e-10       
+  double 1e-10
   ====== =======
 
   Description

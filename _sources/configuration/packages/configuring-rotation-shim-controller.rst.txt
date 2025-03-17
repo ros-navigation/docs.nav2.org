@@ -7,7 +7,7 @@ Source code on Github_.
 
 .. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_rotation_shim_controller
 
-The ``nav2_rotation_shim_controller`` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the ``primary_controller`` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task. 
+The ``nav2_rotation_shim_controller`` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the ``primary_controller`` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task.
 
 When the ``rotate_to_goal_heading`` parameter is set to true, this controller is also able to take back control of the robot when reaching the XY goal tolerance of the goal checker. In this case, the robot will rotate towards the goal heading until the goal checker validate the goal and ends the current navigation task.
 
@@ -15,7 +15,7 @@ The ``RotationShimController`` is most suitable for:
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
 - Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot's current heading -- or when tuning your controller for its task makes tight rotations difficult.
-- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot's actual starting heading, requiring no rotation since their paths are guaranteed drivable by physical constraints). 
+- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot's actual starting heading, requiring no rotation since their paths are guaranteed drivable by physical constraints).
 
 See the package's ``README`` for more complete information.
 
@@ -33,7 +33,7 @@ Rotation Shim Controller Parameters
 :angular_dist_threshold:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.785
   ============== ===========================
@@ -44,7 +44,7 @@ Rotation Shim Controller Parameters
 :angular_disengage_threshold:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.3925
   ============== ===========================
@@ -55,7 +55,7 @@ Rotation Shim Controller Parameters
 :forward_sampling_distance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
   double         0.5
   ============== =============================
@@ -66,9 +66,9 @@ Rotation Shim Controller Parameters
 :rotate_to_heading_angular_vel:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         1.8 
+  double         1.8
   ============== =============================
 
   Description
@@ -77,9 +77,9 @@ Rotation Shim Controller Parameters
 :primary_controller:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         N/A 
+  string         N/A
   ============== =============================
 
   Description
@@ -88,7 +88,7 @@ Rotation Shim Controller Parameters
 :max_angular_accel:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
   double         3.2
   ============== =============================
@@ -99,7 +99,7 @@ Rotation Shim Controller Parameters
 :simulate_ahead_time:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
   double         1.0
   ============== =============================

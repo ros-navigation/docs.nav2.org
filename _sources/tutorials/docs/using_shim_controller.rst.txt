@@ -4,7 +4,7 @@ Using Rotation Shim Controller
 ******************************
 
 
-- `Overview`_ 
+- `Overview`_
 - `What is the Rotation Shim Controller?`_
 - `Configuring Rotation Shim Controller`_
 - `Configuring Primary Controller`_
@@ -20,17 +20,17 @@ Before starting this tutorial, completing the :ref:`getting_started` is highly r
 What is the Rotation Shim Controller?
 =====================================
 
-This was developed due to quirks in TEB and DWB, but applicable to any other controller plugin type that you'd like to have rotation in place behavior with. ``TEB``'s behavior tends to whip the robot around with small turns, or when the path is starting at a very different heading than current, in a somewhat surprising way due to the elastic band approach. ``DWB`` can be tuned to have any type of behavior, but typically to tune it to be an excellent path follower also makes it less optimally capable of smooth transitions to new paths at far away headings -- there are always trade offs. Giving both TEB and DWB a better starting point to start tracking a path makes tuning the controllers significantly easier and creates more intuitive results for on-lookers. 
+This was developed due to quirks in TEB and DWB, but applicable to any other controller plugin type that you'd like to have rotation in place behavior with. ``TEB``'s behavior tends to whip the robot around with small turns, or when the path is starting at a very different heading than current, in a somewhat surprising way due to the elastic band approach. ``DWB`` can be tuned to have any type of behavior, but typically to tune it to be an excellent path follower also makes it less optimally capable of smooth transitions to new paths at far away headings -- there are always trade offs. Giving both TEB and DWB a better starting point to start tracking a path makes tuning the controllers significantly easier and creates more intuitive results for on-lookers.
 
-Note that it is not required to use this with **any** plugin. Many users are perfectly successful without using this controller, but if a robot may rotate in place before beginning its path tracking task (or others), it can be advantageous to do so. 
+Note that it is not required to use this with **any** plugin. Many users are perfectly successful without using this controller, but if a robot may rotate in place before beginning its path tracking task (or others), it can be advantageous to do so.
 
-The ``nav2_rotation_shim_controller`` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the ``primary_controller`` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task. 
+The ``nav2_rotation_shim_controller`` will check the rough heading difference with respect to the robot and a newly received path. If within a threshold, it will pass the request onto the ``primary_controller`` to execute the task. If it is outside of the threshold, this controller will rotate the robot in place towards that path heading. Once it is within the tolerance, it will then pass off control-execution from this rotation shim controller onto the primary controller plugin. At this point, the robot's main plugin will take control for a smooth hand off into the task.
 
 The ``RotationShimController`` is most suitable for:
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
 - Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot's current heading -- or when tuning your controller for its task makes tight rotations difficult.
-- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot's actual starting heading, requiring no rotation since their paths are guaranteed drivable by physical constraints). 
+- Using planners that are non-kinematically feasible, such as NavFn, Theta\*, or Smac 2D (Feasible planners such as Smac Hybrid-A* and State Lattice will start search from the robot's actual starting heading, requiring no rotation since their paths are guaranteed drivable by physical constraints).
 
 .. note::
   Regulated Pure Pursuit has this built in so it is not necessary to pair with RPP. However, it is applicable to all others. See :ref:`plugins` for a full list of current controller plugins.
@@ -78,11 +78,11 @@ The Rotation Shim Controller is very simple and only has a couple of parameters 
 - ``rotate_to_heading_angular_vel``: The angular velocity (in rad/s) to have the robot rotate to heading by, when the behavior is enacted.
 - ``max_angular_accel``: The angular acceleration (in rad/s/s) to have the robot rotate to heading by, when the behavior is enacted.
 - ``simulate_ahead_time``: The Time (s) to forward project the rotation command to check for collision
-                
+
 Configuring Primary Controller
 ==============================
 
-There is one more remaining parameter of the ``RotationShimController`` not mentioned above, the ``primary_controller``. This is the type of controller that your application would like to use as the primary modus operandi. It will share the same name and yaml namespace as the shim plugin. You can observe this below with the primary controller set the ``DWB`` (with the progress and goal checkers removed for brevity). 
+There is one more remaining parameter of the ``RotationShimController`` not mentioned above, the ``primary_controller``. This is the type of controller that your application would like to use as the primary modus operandi. It will share the same name and yaml namespace as the shim plugin. You can observe this below with the primary controller set the ``DWB`` (with the progress and goal checkers removed for brevity).
 
 .. code-block:: yaml
 
@@ -108,7 +108,7 @@ There is one more remaining parameter of the ``RotationShimController`` not ment
           ...
           ...
 
-An important note is that **within the same yaml namespace**, you may also include any ``primary_controller`` specific parameters required for a robot. Thusly, after ``max_angular_accel``, you can include any of ``DWB``'s parameters for your platform. 
+An important note is that **within the same yaml namespace**, you may also include any ``primary_controller`` specific parameters required for a robot. Thusly, after ``max_angular_accel``, you can include any of ``DWB``'s parameters for your platform.
 
 
 Demo Execution

@@ -18,9 +18,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.25 
+  double 0.25
   ====== =======
-    
+
     Description
         Tolerance to meet goal completion criteria (m).
 
@@ -29,9 +29,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.25 
+  double 0.25
   ====== =======
-    
+
     Description
         Velocity below is considered to be stopped at tolerance met (rad/s).
 
@@ -40,9 +40,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 5.0 
+  double 5.0
   ====== =======
-    
+
     Description
        	Factor to slow robot motion by while rotating to goal.
 
@@ -51,9 +51,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double -1 
+  double -1
   ====== =======
-    
+
     Description
         If > 0, amount of time to look forward for a collision for..
 
@@ -62,8 +62,8 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 1.0 
+  double 1.0
   ====== =======
-    
+
     Description
         Weighed scale for critic.

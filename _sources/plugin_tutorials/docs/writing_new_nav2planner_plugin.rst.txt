@@ -143,7 +143,7 @@ Coming back to our tutorial, class ``nav2_straightline_planner::StraightLine`` i
 1. To export the planner, we need to provide two lines
 
 .. code-block:: c++
-  
+
   #include "pluginlib/class_list_macros.hpp"
   PLUGINLIB_EXPORT_CLASS(nav2_straightline_planner::StraightLine, nav2_core::GlobalPlanner)
 

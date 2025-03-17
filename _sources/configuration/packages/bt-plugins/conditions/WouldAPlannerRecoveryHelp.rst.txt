@@ -5,7 +5,7 @@ WouldAPlannerRecoveryHelp
 
 Checks if the active controller server error code is UNKNOWN, NO_VALID_CONTROL, or TIMEOUT.
 
-If the active error code is a match, the node returns ``SUCCESS``. Otherwise, it returns ``FAILURE``. 
+If the active error code is a match, the node returns ``SUCCESS``. Otherwise, it returns ``FAILURE``.
 
 Input Port
 ----------
@@ -19,7 +19,7 @@ Input Port
   ============== =======
 
   Description
-    	The active error code to compare against. This should match the planner server error code. 
+    	The active error code to compare against. This should match the planner server error code.
 
 Example
 -------

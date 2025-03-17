@@ -42,4 +42,3 @@ Parameters
 
   Description
     Maximum amount of time a robot has to move the minimum radius or the mnimum angle (s).
-

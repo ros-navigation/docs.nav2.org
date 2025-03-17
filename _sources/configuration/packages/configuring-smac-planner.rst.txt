@@ -28,7 +28,7 @@ The ``nav2_smac_planner`` package contains an optimized templated A* search algo
 
 We support circular differential-drive and omni-directional drive robots using the ``SmacPlanner2D`` planner which implements a cost-aware A* planner. We support car-like (ackermann) and legged vehicles using the ``SmacPlannerHybrid`` plugin which implements a Hybrid-A* planner. We support non-circular, arbitrary shaped, any model vehicles using the ``SmacPlannerLattice`` plugin which implements a State Lattice planner (e.g. omni, diff, ackermann, legged, custom). It contains control sets and generators for ackermann, legged, differential drive and omnidirectional vehicles, but you may provide your own for another robot type or to have different planning behaviors.
 
-The last two plugins are both **kinematically feasible** and support **reversing**. They have performance similar to its 2D counter parts like 2D-A* and NavFn via highly optimized heuristic functions and efficient programming. An example of the 3 planners can be seen below, planning a roughly 75 m path. 
+The last two plugins are both **kinematically feasible** and support **reversing**. They have performance similar to its 2D counter parts like 2D-A* and NavFn via highly optimized heuristic functions and efficient programming. An example of the 3 planners can be seen below, planning a roughly 75 m path.
 
 - Hybrid-A* computed the path in 144ms
 - State Lattice computed the path in 113ms

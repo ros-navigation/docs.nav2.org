@@ -33,9 +33,9 @@ MPPI Parameters
 :motion_model:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  string         "DiffDrive" 
+  string         "DiffDrive"
   ============== ===========================
 
   Description
@@ -44,9 +44,9 @@ MPPI Parameters
 :critics:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  string vector  N/A 
+  string vector  N/A
   ============== ===========================
 
   Description
@@ -55,9 +55,9 @@ MPPI Parameters
 :iteration_count:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  int            1 
+  int            1
   ============== ===========================
 
   Description
@@ -66,9 +66,9 @@ MPPI Parameters
 :batch_size:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  int            1000 
+  int            1000
   ============== ===========================
 
   Description
@@ -77,9 +77,9 @@ MPPI Parameters
 :time_steps:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  int            56 
+  int            56
   ============== ===========================
 
   Description
@@ -88,9 +88,9 @@ MPPI Parameters
 :model_dt:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         0.05 
+  double         0.05
   ============== ===========================
 
   Description
@@ -99,9 +99,9 @@ MPPI Parameters
 :vx_std:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         0.2 
+  double         0.2
   ============== ===========================
 
   Description
@@ -110,9 +110,9 @@ MPPI Parameters
 :vy_std:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         0.2 
+  double         0.2
   ============== ===========================
 
   Description
@@ -121,9 +121,9 @@ MPPI Parameters
 :wz_std:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         0.2 
+  double         0.2
   ============== ===========================
 
   Description
@@ -132,9 +132,9 @@ MPPI Parameters
 :vx_max:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         0.5 
+  double         0.5
   ============== ===========================
 
   Description
@@ -143,9 +143,9 @@ MPPI Parameters
 :vy_max:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         0.5 
+  double         0.5
   ============== ===========================
 
   Description
@@ -154,9 +154,9 @@ MPPI Parameters
 :vx_min:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         -0.35 
+  double         -0.35
   ============== ===========================
 
   Description
@@ -165,9 +165,9 @@ MPPI Parameters
 :wz_max:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         1.9 
+  double         1.9
   ============== ===========================
 
   Description
@@ -176,9 +176,9 @@ MPPI Parameters
 :ax_max:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         3.0 
+  double         3.0
   ============== ===========================
 
   Description
@@ -187,9 +187,9 @@ MPPI Parameters
 :ay_max:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         3.0 
+  double         3.0
   ============== ===========================
 
   Description
@@ -198,9 +198,9 @@ MPPI Parameters
 :ax_min:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         -3.0 
+  double         -3.0
   ============== ===========================
 
   Description
@@ -209,9 +209,9 @@ MPPI Parameters
 :az_max:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         3.5 
+  double         3.5
   ============== ===========================
 
   Description
@@ -220,7 +220,7 @@ MPPI Parameters
 :temperature:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.3
   ============== ===========================
@@ -231,18 +231,18 @@ MPPI Parameters
 :gamma:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.015
   ============== ===========================
 
   Description
-    A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won't need to be changed from the default. See Section 3D-2 in "Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving" for detailed information. 
+    A trade-off between smoothness (high) and low energy (low). This is a complex parameter that likely won't need to be changed from the default. See Section 3D-2 in "Information Theoretic Model Predictive Control: Theory and Applications to Autonomous Driving" for detailed information.
 
 :visualize:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           false
   ============== ===========================
@@ -253,7 +253,7 @@ MPPI Parameters
 :retry_attempt_limit:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
@@ -264,7 +264,7 @@ MPPI Parameters
 :reset_period:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double            1.0
   ============== ===========================
@@ -275,9 +275,9 @@ MPPI Parameters
 :regenerate_noises:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  bool           false 
+  bool           false
   ============== ===========================
 
   Description
@@ -289,7 +289,7 @@ Trajectory Visualization
 :trajectory_step:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            5
   ============== ===========================
@@ -300,13 +300,13 @@ Trajectory Visualization
 :time_step:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            3
   ============== ===========================
 
   Description
-    The step between points on trajectories to visualize to downsample trajectory density. 
+    The step between points on trajectories to visualize to downsample trajectory density.
 
 Path Handler
 ------------
@@ -314,7 +314,7 @@ Path Handler
 :transform_tolerance:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.1
   ============== ===========================
@@ -325,7 +325,7 @@ Path Handler
 :prune_distance:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         1.5
   ============== ===========================
@@ -336,7 +336,7 @@ Path Handler
 :max_robot_pose_search_dist:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         Costmap size / 2
   ============== ===========================
@@ -347,7 +347,7 @@ Path Handler
 :enforce_path_inversion:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           false
   ============== ===========================
@@ -358,7 +358,7 @@ Path Handler
 :inversion_xy_tolerance:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.2
   ============== ===========================
@@ -369,7 +369,7 @@ Path Handler
 :inversion_yaw_tolerance:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.4
   ============== ===========================
@@ -383,7 +383,7 @@ Ackermann Motion Model
 :min_turning_r:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.2
   ============== ===========================
@@ -400,7 +400,7 @@ This critic penalizes trajectories that have components outside of the set dynam
 :cost_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         4.0
   ============== ===========================
@@ -411,13 +411,13 @@ This critic penalizes trajectories that have components outside of the set dynam
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
 
   Description
-    Power order to apply to term. 
+    Power order to apply to term.
 
 Goal Angle Critic
 -----------------
@@ -427,7 +427,7 @@ This critic incentivizes navigating to achieve the angle of the goal posewhen in
 :cost_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         3.0
   ============== ===========================
@@ -438,18 +438,18 @@ This critic incentivizes navigating to achieve the angle of the goal posewhen in
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
 
   Description
-    Power order to apply to term. 
+    Power order to apply to term.
 
 :threshold_to_consider:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.5
   ============== ===========================
@@ -465,7 +465,7 @@ This critic incentivizes navigating spatially towards the goal when in reasonabl
 :cost_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         5.0
   ============== ===========================
@@ -476,18 +476,18 @@ This critic incentivizes navigating spatially towards the goal when in reasonabl
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
 
   Description
-    Power order to apply to term. 
+    Power order to apply to term.
 
 :threshold_to_consider:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         1.4
   ============== ===========================
@@ -503,7 +503,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :critical_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         20.0
   ============== ===========================
@@ -514,7 +514,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :repulsion_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         1.5
   ============== ===========================
@@ -525,7 +525,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
@@ -536,7 +536,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :consider_footprint:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           false
   ============== ===========================
@@ -547,7 +547,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :collision_cost:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         100000.0
   ============== ===========================
@@ -558,7 +558,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :collision_margin_distance:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.10
   ============== ===========================
@@ -569,7 +569,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :near_goal_distance:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.50
   ============== ===========================
@@ -580,7 +580,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :cost_scaling_factor:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         10.0
   ============== ===========================
@@ -591,7 +591,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :inflation_radius:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.55
   ============== ===========================
@@ -619,7 +619,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :cost_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         3.81
   ============== ===========================
@@ -630,7 +630,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
@@ -641,7 +641,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :consider_footprint:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           false
   ============== ===========================
@@ -652,7 +652,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :collision_cost:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         1000000.0
   ============== ===========================
@@ -663,7 +663,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :critical_cost:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         300.0
   ============== ===========================
@@ -675,7 +675,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :near_goal_distance:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.50
   ============== ===========================
@@ -697,7 +697,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
 :trajectory_point_step:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            2
   ============== ===========================
@@ -713,7 +713,7 @@ This critic incentivizes aligning with the global path, if relevant. It does not
 :cost_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         10.0
   ============== ===========================
@@ -724,18 +724,18 @@ This critic incentivizes aligning with the global path, if relevant. It does not
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
 
   Description
-    Power order to apply to term. 
+    Power order to apply to term.
 
 :threshold_to_consider:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.5
   ============== ===========================
@@ -746,7 +746,7 @@ This critic incentivizes aligning with the global path, if relevant. It does not
 :offset_from_furthest:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            20
   ============== ===========================
@@ -757,7 +757,7 @@ This critic incentivizes aligning with the global path, if relevant. It does not
 :max_path_occupancy_ratio:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.07
   ============== ===========================
@@ -768,7 +768,7 @@ This critic incentivizes aligning with the global path, if relevant. It does not
 :use_path_orientations:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           false
   ============== ===========================
@@ -779,7 +779,7 @@ This critic incentivizes aligning with the global path, if relevant. It does not
 :trajectory_point_step:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            4
   ============== ===========================
@@ -796,7 +796,7 @@ This critic penalizes trajectories at a high relative angle to the path. This he
 :cost_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         2.2
   ============== ===========================
@@ -807,7 +807,7 @@ This critic penalizes trajectories at a high relative angle to the path. This he
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
@@ -818,7 +818,7 @@ This critic penalizes trajectories at a high relative angle to the path. This he
 :threshold_to_consider:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.5
   ============== ===========================
@@ -829,7 +829,7 @@ This critic penalizes trajectories at a high relative angle to the path. This he
 :offset_from_furthest:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            20
   ============== ===========================
@@ -840,7 +840,7 @@ This critic penalizes trajectories at a high relative angle to the path. This he
 :max_angle_to_furthest:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.785398
   ============== ===========================
@@ -851,7 +851,7 @@ This critic penalizes trajectories at a high relative angle to the path. This he
 :mode:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            0
   ============== ===========================
@@ -868,7 +868,7 @@ This critic incentivizes making progress along the path. This is what drives the
 :cost_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         5.0
   ============== ===========================
@@ -879,7 +879,7 @@ This critic incentivizes making progress along the path. This is what drives the
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
@@ -890,7 +890,7 @@ This critic incentivizes making progress along the path. This is what drives the
 :threshold_to_consider:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         1.4
   ============== ===========================
@@ -901,7 +901,7 @@ This critic incentivizes making progress along the path. This is what drives the
 :offset_from_furthest:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            6
   ============== ===========================
@@ -917,7 +917,7 @@ This critic incentivizes moving in the forward direction, rather than reversing.
 :cost_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         5.0
   ============== ===========================
@@ -928,7 +928,7 @@ This critic incentivizes moving in the forward direction, rather than reversing.
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
@@ -939,7 +939,7 @@ This critic incentivizes moving in the forward direction, rather than reversing.
 :threshold_to_consider:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.5
   ============== ===========================
@@ -955,7 +955,7 @@ This critic penalizes unnecessary 'twisting' with holonomic vehicles. It adds a 
 :cost_weight:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         10.0
   ============== ===========================
@@ -966,7 +966,7 @@ This critic penalizes unnecessary 'twisting' with holonomic vehicles. It adds a 
 :cost_power:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
@@ -982,7 +982,7 @@ This critic penalizes velocities that fall below the deadband threshold, helping
 :cost_weight:
 
   =============== ===========================
-  Type            Default                    
+  Type            Default
   --------------- ---------------------------
   double          35.0
   =============== ===========================
@@ -993,7 +993,7 @@ This critic penalizes velocities that fall below the deadband threshold, helping
 :cost_power:
 
   ===============  ===========================
-  Type             Default                    
+  Type             Default
   ---------------  ---------------------------
   int              1
   ===============  ===========================
@@ -1004,7 +1004,7 @@ This critic penalizes velocities that fall below the deadband threshold, helping
 :deadband_velocities:
 
   ===============  ===========================
-  Type             Default                    
+  Type             Default
   ---------------  ---------------------------
   array of double  [0.05, 0.05, 0.05]
   ===============  ===========================
@@ -1149,10 +1149,10 @@ The Path Follow critic cannot drive velocities greater than the projectable dist
 Obstacle, Inflation Layer, and Path Following
 ---------------------------------------------
 
-There also exists a relationship between the costmap configurations and the Obstacle critic configurations. If the Obstacle critic is not well tuned with the costmap parameters (inflation radius, scale) it can cause the robot to wobble significantly as it attempts to take finitely lower-cost trajectories with a slightly lower cost in exchange for jerky motion. It may also perform awkward maneuvers when in free-space to try to maximize time in a small pocket of 0-cost over a more natural motion which involves moving into some low-costed region. Finally, it may generally refuse to go into costed space at all when starting in a free 0-cost space if the gain is set disproportionately higher than the Path Follow scoring to encourage the robot to move along the path. This is due to the critic cost of staying in free space becoming more attractive than entering even lightly costed space in exchange for progression along the task. 
+There also exists a relationship between the costmap configurations and the Obstacle critic configurations. If the Obstacle critic is not well tuned with the costmap parameters (inflation radius, scale) it can cause the robot to wobble significantly as it attempts to take finitely lower-cost trajectories with a slightly lower cost in exchange for jerky motion. It may also perform awkward maneuvers when in free-space to try to maximize time in a small pocket of 0-cost over a more natural motion which involves moving into some low-costed region. Finally, it may generally refuse to go into costed space at all when starting in a free 0-cost space if the gain is set disproportionately higher than the Path Follow scoring to encourage the robot to move along the path. This is due to the critic cost of staying in free space becoming more attractive than entering even lightly costed space in exchange for progression along the task.
 
 Thus, care should be taken to select weights of the obstacle critic in conjunction with the costmap inflation radius and scale so that a robot does not have such issues. How I (Steve, your friendly neighborhood navigator) tuned this was to first create the appropriate obstacle critic behavior desirable in conjunction with the inflation layer parameters. Its worth noting that the Obstacle critic converts the cost into a distance from obstacles, so the nature of the distribution of costs in the inflation isn't overly significant. However, the inflation radius and the scale will define the cost at the end of the distribution where free-space meets the lowest cost value within the radius. So testing for quality behavior when going over that threshold should be considered.
 
 As you increase or decrease your weights on the Obstacle, you may notice the aforementioned behaviors (e.g. won't overcome free to non-free threshold). To overcome them, increase the FollowPath critic cost to increase the desire for the trajectory planner to continue moving towards the goal. Make sure to not overshoot this though, keep them balanced. A desirable outcome is smooth motion roughly in the center of spaces without significant close interactions with obstacles. It shouldn't be perfectly following a path yet nor should the output velocity be wobbling jaggedly.
 
-Once you have your obstacle avoidance behavior tuned and matched with an appropriate path following penalty, tune the Path Align critic to align with the path. If you design exact-path-alignment behavior, its possible to skip the obstacle critic step as highly tuning the system to follow the path will give it less ability to deviate to avoid obstacles (though it'll slow and stop). Tuning the critic weight for the Obstacle critic high will do the job to avoid near-collisions but the repulsion weight is largely unnecessary to you. For others wanting more dynamic behavior, it *can* be beneficial to slowly lower the weight on the obstacle critic to give the path alignment critic some more room to work. If your path was generated with a cost-aware planner (like all provided by Nav2) and providing paths sufficiently far from obstacles for your satisfaction, the impact of a slightly reduced Obstacle critic with a Path Alignment critic will do you well. Not over-weighting the path align critic will allow the robot to  deviate from the path to get around dynamic obstacles in the scene or other obstacles not previous considered during path planning. It is subjective as to the best behavior for your application, but it has been shown that MPPI can be an exact path tracker and/or avoid dynamic obstacles very fluidly and everywhere in between. The defaults provided are in the generally right regime for a balanced initial trade-off. 
+Once you have your obstacle avoidance behavior tuned and matched with an appropriate path following penalty, tune the Path Align critic to align with the path. If you design exact-path-alignment behavior, its possible to skip the obstacle critic step as highly tuning the system to follow the path will give it less ability to deviate to avoid obstacles (though it'll slow and stop). Tuning the critic weight for the Obstacle critic high will do the job to avoid near-collisions but the repulsion weight is largely unnecessary to you. For others wanting more dynamic behavior, it *can* be beneficial to slowly lower the weight on the obstacle critic to give the path alignment critic some more room to work. If your path was generated with a cost-aware planner (like all provided by Nav2) and providing paths sufficiently far from obstacles for your satisfaction, the impact of a slightly reduced Obstacle critic with a Path Alignment critic will do you well. Not over-weighting the path align critic will allow the robot to  deviate from the path to get around dynamic obstacles in the scene or other obstacles not previous considered during path planning. It is subjective as to the best behavior for your application, but it has been shown that MPPI can be an exact path tracker and/or avoid dynamic obstacles very fluidly and everywhere in between. The defaults provided are in the generally right regime for a balanced initial trade-off.

@@ -19,9 +19,9 @@ Parameters
 :action_server_result_timeout:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         10.0            
+  double         10.0
   ============== ==============
 
   Description
@@ -96,7 +96,7 @@ Parameters
 :default_headland_type:
 
   ============== ==========
-  Type           Default   
+  Type           Default
   -------------- ----------
   string         "CONSTANT"
   ============== ==========
@@ -107,7 +107,7 @@ Parameters
 :default_headland_width:
 
   ============== ==========
-  Type           Default   
+  Type           Default
   -------------- ----------
   double         2.0
   ============== ==========
@@ -118,7 +118,7 @@ Parameters
 :default_swath_type:
 
   ============== ===============
-  Type           Default   
+  Type           Default
   -------------- ---------------
   string          "LENGTH"
   ============== ===============
@@ -130,7 +130,7 @@ Parameters
 :default_swath_angle_type:
 
   ============== ===============
-  Type           Default   
+  Type           Default
   -------------- ---------------
   double         1.7e-2
   ============== ===============
@@ -141,7 +141,7 @@ Parameters
 :default_step_angle:
 
   ============== ===============
-  Type           Default   
+  Type           Default
   -------------- ---------------
   double         1.7e-2
   ============== ===============
@@ -152,7 +152,7 @@ Parameters
 :default_swath_angle:
 
   ============== ===============
-  Type           Default   
+  Type           Default
   -------------- ---------------
   double         N/A
   ============== ===============
@@ -163,7 +163,7 @@ Parameters
 :default_route_type:
 
   ============== ===============
-  Type           Default   
+  Type           Default
   -------------- ---------------
   string         "BOUSTROPHEDON"
   ============== ===============
@@ -185,7 +185,7 @@ Parameters
 :default_spiral_n:
 
   ============== ===============
-  Type           Default   
+  Type           Default
   -------------- ---------------
   int            4
   ============== ===============
@@ -197,7 +197,7 @@ Parameters
 :default_path_continuity_type:
 
   ============== ============
-  Type           Default   
+  Type           Default
   -------------- ------------
   string         "CONTINUOUS"
   ============== ============
@@ -208,7 +208,7 @@ Parameters
 :default_path_type:
 
   ============== ============
-  Type           Default   
+  Type           Default
   -------------- ------------
   string         "DUBIN"
   ============== ============
@@ -219,18 +219,18 @@ Parameters
 :default_turn_point_distance:
 
   ============== ============
-  Type           Default   
+  Type           Default
   -------------- ------------
   double         0.1
   ============== ============
 
   Description
-    Distance between points on the plan and route for sending back in paths (e.g. 0.1m). This impacts the density of the output turn paths and the overall nav paths. 
+    Distance between points on the plan and route for sending back in paths (e.g. 0.1m). This impacts the density of the output turn paths and the overall nav paths.
 
 :default_offset:
 
   ============== ============
-  Type           Default   
+  Type           Default
   -------------- ------------
   double         0.0
   ============== ============
@@ -241,7 +241,7 @@ Parameters
 :order_ids:
 
   ============== ============
-  Type           Default   
+  Type           Default
   -------------- ------------
   bool           0.0
   ============== ============

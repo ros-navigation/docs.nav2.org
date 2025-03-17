@@ -52,7 +52,7 @@ Research Robots
 .. |ACFR| image:: images/ACFR.png
     :width: 100%
     :align: middle
-    :alt: Australian Centre for Robotics 
+    :alt: Australian Centre for Robotics
     :target: https://robotics.sydney.edu.au/
 
 .. |torch| image:: images/torch.png
@@ -240,4 +240,3 @@ Research Robots
     :align: middle
     :alt: Waratah from Monash Nova Rocer
     :target: https://www.novarover.space/
-

@@ -18,7 +18,7 @@ To guide you through the first-time setup of your robot, we will be tackling the
 - Setup sensor sources for robot odometry
 - Setup sensor sources for perception
 - Configure round or arbitrary shaped footprints for your robot
-- Select and set up planner and controller navigation plugins for your robot's navigation tasks  
+- Select and set up planner and controller navigation plugins for your robot's navigation tasks
 - Lifecycle node management for easy bringup of other related sensors or nodes
 
 There are tutorials below for the Gazebo Classic simulator and the Gazebo simulator. Gazebo Classic is used with ROS 2 Humble and previous ROS distributions, while Gazebo (Gazebo Harmonic or newer) is used with ROS 2 Jazzy or newer.
@@ -27,11 +27,11 @@ There are tutorials below for the Gazebo Classic simulator and the Gazebo simula
 Table of Contents
 =================
 
-.. raw:: html  
+.. raw:: html
 
-    <div style="display: flex; gap: 20px;">  
+    <div style="display: flex; gap: 20px;">
 
-    <div style="flex: 1; padding: 10px; border-right: 1px solid #ccc;">  
+    <div style="flex: 1; padding: 10px; border-right: 1px solid #ccc;">
 
     <h3 style="text-align: center;">Gazebo</h3>
 

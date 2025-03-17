@@ -17,7 +17,7 @@ Parameters
   ------ -------
   double 0.25
   ====== =======
-    
+
     Description
         Tolerance to meet goal completion criteria (m).
 
@@ -28,7 +28,7 @@ Parameters
   ------ -------
   double 0.25
   ====== =======
-    
+
     Description
         Tolerance to meet goal completion criteria (rad).
 
@@ -37,8 +37,8 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool true 
+  bool true
   ==== =======
-    
+
     Description
         Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.

@@ -15,7 +15,7 @@ Parameters
   ------ -------
   double 1.7
   ====== =======
-    
+
     Description
         Time to simulate ahead by (s).
 
@@ -26,7 +26,7 @@ Parameters
   ---- -------
   bool false
   ==== =======
-    
+
     Description
         If true, forward simulate by time. If False, forward simulate by linear and angular granularity.
 
@@ -37,7 +37,7 @@ Parameters
   ------ -------
   double 0.5
   ====== =======
-    
+
     Description
         Time ahead to project.
 
@@ -48,7 +48,7 @@ Parameters
   ------ -------
   double 0.5
   ====== =======
-    
+
     Description
         Linear distance forward to project.
 
@@ -59,7 +59,7 @@ Parameters
   ------ -------
   double 0.025
   ====== =======
-    
+
     Description
         Angular distance to project.
 
@@ -70,7 +70,7 @@ Parameters
   ---- -------
   bool true
   ==== =======
-    
+
     Description
         Whether to include the last pose in the trajectory.
 
@@ -81,6 +81,6 @@ Parameters
   ---- -------
   bool false
   ==== =======
-    
+
     Description
         Whether to limit velocity command in trajectory using sampled velocity instead of the commanded velocity.

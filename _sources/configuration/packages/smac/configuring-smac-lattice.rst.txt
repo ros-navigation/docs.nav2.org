@@ -22,9 +22,9 @@ Parameters
 :``<name>``.allow_unknown:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
@@ -33,9 +33,9 @@ Parameters
 :``<name>``.tolerance:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.25            
+  double 0.25
   ====== =======
 
   Description
@@ -44,20 +44,20 @@ Parameters
 :``<name>``.max_iterations:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  int  1000000            
+  int  1000000
   ==== =======
 
   Description
     Maximum number of search iterations before failing to limit compute time, disabled by -1.
-    
+
 :``<name>``.max_on_approach_iterations:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  int  1000            
+  int  1000
   ==== =======
 
   Description
@@ -66,9 +66,9 @@ Parameters
 :``<name>``.terminal_checking_interval:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  int  5000            
+  int  5000
   ==== =======
 
   Description
@@ -77,9 +77,9 @@ Parameters
 :``<name>``.max_planning_time:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double  5.0            
+  double  5.0
   ====== =======
 
   Description
@@ -88,9 +88,9 @@ Parameters
 :``<name>``.analytic_expansion_ratio:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 3.5            
+  double 3.5
   ====== =======
 
   Description
@@ -99,9 +99,9 @@ Parameters
 :``<name>``.analytic_expansion_max_length:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 3.0            
+  double 3.0
   ====== =======
 
   Description
@@ -110,9 +110,9 @@ Parameters
 :``<name>``.analytic_expansion_max_cost:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 200.0        
+  double 200.0
   ====== =======
 
   Description
@@ -121,20 +121,20 @@ Parameters
 :``<name>``.analytic_expansion_max_cost_override:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   false           
+  bool   false
   ====== =======
 
   Description
-    For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within 2*pi*min_r of the goal, then it will override the max cost if ``false``. 
+    For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within 2*pi*min_r of the goal, then it will override the max cost if ``false``.
 
 :``<name>``.reverse_penalty:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 2.0          
+  double 2.0
   ====== =======
 
   Description
@@ -143,9 +143,9 @@ Parameters
 :``<name>``.change_penalty:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.05          
+  double 0.05
   ====== =======
 
   Description
@@ -154,9 +154,9 @@ Parameters
 :``<name>``.non_straight_penalty:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 1.05         
+  double 1.05
   ====== =======
 
   Description
@@ -165,9 +165,9 @@ Parameters
 :``<name>``.cost_penalty:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 2.0         
+  double 2.0
   ====== =======
 
   Description
@@ -176,9 +176,9 @@ Parameters
 :``<name>``.rotation_penalty:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 5.0         
+  double 5.0
   ====== =======
 
   Description
@@ -187,20 +187,20 @@ Parameters
 :``<name>``.retrospective_penalty:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.015         
+  double 0.015
   ====== =======
 
   Description
-    Heuristic penalty to apply to SE2 node penalty. Causes State Lattice to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be >= 0.0 and <= 1.0. Must be `0.0` to be fully admissible. 
+    Heuristic penalty to apply to SE2 node penalty. Causes State Lattice to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be >= 0.0 and <= 1.0. Must be `0.0` to be fully admissible.
 
 :``<name>``.lattice_filepath:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  string ""         
+  string ""
   ====== =======
 
   Description
@@ -209,9 +209,9 @@ Parameters
 :``<name>``.lookup_table_size:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 20.0         
+  double 20.0
   ====== =======
 
   Description
@@ -220,9 +220,9 @@ Parameters
 :``<name>``.cache_obstacle_heuristic:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   false         
+  bool   false
   ====== =======
 
   Description
@@ -231,9 +231,9 @@ Parameters
 :``<name>``.allow_reverse_expansion:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   false      
+  bool   false
   ====== =======
 
   Description
@@ -243,9 +243,9 @@ Parameters
 :``<name>``.debug_visualizations:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   false         
+  bool   false
   ====== =======
 
   Description
@@ -254,9 +254,9 @@ Parameters
 :``<name>``.smooth_path:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   true      
+  bool   true
   ====== =======
 
   Description
@@ -265,9 +265,9 @@ Parameters
 :``<name>``.smoother.max_iterations:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  int    1000         
+  int    1000
   ====== =======
 
   Description
@@ -276,9 +276,9 @@ Parameters
 :``<name>``.smoother.w_smooth:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.3         
+  double 0.3
   ====== =======
 
   Description
@@ -287,9 +287,9 @@ Parameters
 :``<name>``.smoother.w_data:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.2         
+  double 0.2
   ====== =======
 
   Description
@@ -298,9 +298,9 @@ Parameters
 :``<name>``.smoother.tolerance:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 1e-10       
+  double 1e-10
   ====== =======
 
   Description
@@ -309,9 +309,9 @@ Parameters
 :``<name>``.smoother.do_refinement:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   true       
+  bool   true
   ====== =======
 
   Description
@@ -320,9 +320,9 @@ Parameters
 :``<name>``.smoother.refinement_num:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  int            2   
+  int            2
   ============== ===========================
 
   Description

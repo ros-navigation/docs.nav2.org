@@ -14,11 +14,11 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 0.5  
+  double 0.5
   ====== =======
 
   Description
-    The radius (m) in proximity to the viapoint for the BT node to remove from the list as having passed. 
+    The radius (m) in proximity to the viapoint for the BT node to remove from the list as having passed.
 
 :robot_base_frame:
 
@@ -62,4 +62,3 @@ Example
 .. code-block:: xml
 
   <RemovePassedGoals radius="0.6" input_goals="{goals}" output_goals="{goals}"/>
-    

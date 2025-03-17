@@ -38,7 +38,7 @@ The requirements for this task are as follows:
 - The configuration of the planner and the controller will not be modified.
 - The action will indefinitely run until it is canceled by who initiated it.
 
-The detection of the dynamic object (like a person) to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest, 
+The detection of the dynamic object (like a person) to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest,
 send the initial pose to the ``NavigateToPose`` action, and update it on a topic for the duration of the task. Many different types of detectors exist that you can leverage for this application:
 
 
@@ -132,7 +132,7 @@ For reference, this exact behavior tree is `made available <https://github.com/r
 ---------------------------
 
 We are going to use RViz instead of a full application so you can test at home without finding a detector to get started. We will use the "clicked point" button on the toolbar to substitute object detections to provide goal updates to Nav2. This button allows you to
-publish coordinates in the topic ``/clicked_point``. This point needs to be sent to the behavior tree, using the program ``clicked_point_to_pose``, from `this repo <https://github.com/fmrico/nav2_test_utils>`_. Clone 
+publish coordinates in the topic ``/clicked_point``. This point needs to be sent to the behavior tree, using the program ``clicked_point_to_pose``, from `this repo <https://github.com/fmrico/nav2_test_utils>`_. Clone
 this repo in your workspace, build, and type in a terminal.
 
 ``ros2 run nav2_test_utils clicked_point_to_pose``
