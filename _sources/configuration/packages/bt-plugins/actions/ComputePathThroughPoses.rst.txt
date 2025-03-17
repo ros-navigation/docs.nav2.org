@@ -23,11 +23,11 @@ Input Ports
 
 :goals:
 
-  ===================================== =======
-  Type                                  Default
-  ------------------------------------- -------
-  geometry_msgs::msg::PoseStampedArray    N/A  
-  ===================================== =======
+  ==================== =======
+  Type                 Default
+  -------------------- -------
+  nav_msgs::msg::Goals   N/A
+  ==================== =======
 
   Description
     	Goal poses. Takes in a blackboard variable, e.g. "{goals}".
