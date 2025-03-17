@@ -20,4 +20,3 @@ The nodes listed below are inside the ``nav2_collision_monitor`` package. See th
 
   collision_monitor/configuring-collision-monitor-node.rst
   collision_monitor/configuring-collision-detector-node.rst
-

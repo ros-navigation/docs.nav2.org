@@ -117,4 +117,3 @@ Example
           RotateToGoal.scale: 32.0
           RotateToGoal.slowing_factor: 5.0
           RotateToGoal.lookahead_time: -1.0
-

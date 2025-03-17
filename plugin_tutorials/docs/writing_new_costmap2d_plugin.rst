@@ -40,7 +40,7 @@ The plugin class ``nav2_gradient_costmap_plugin::GradientLayer`` is inherited fr
 
   namespace nav2_gradient_costmap_plugin
   {
-  
+
   class GradientLayer : public nav2_costmap_2d::Layer
 
 The basic class provides the set of virtual methods API for working with costmap layers in a plugin. These methods are called at runtime by ``LayeredCostmap``. The list of methods, their description, and necessity to have these methods in plugin's code is presented in the table below:

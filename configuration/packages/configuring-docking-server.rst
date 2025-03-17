@@ -7,7 +7,7 @@ Source code on Github_.
 
 .. _Github: https://github.com/open-navigation/opennav_docking
 
-The Docking Server in ``opennav_docking`` implements a server for docking and undocking a robot. 
+The Docking Server in ``opennav_docking`` implements a server for docking and undocking a robot.
 This can be from Charging stations (i.e. docks) or non-charging docking locations such as the end of a conveyor belt or a pallet.
 It uses plugin `dock` implementations for a particular platform to enable the framework to generalize to robots of many different kinematic models, charging methods, sensor modalities, charging-type, and so on.
 It can also handle a database of many different docking locations and dock models to handle a heterogeneous environment.
@@ -21,9 +21,9 @@ Parameters
 :controller_frequency:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         50.0            
+  double         50.0
   ============== ==============
 
   Description
@@ -32,9 +32,9 @@ Parameters
 :initial_perception_timeout:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         5.0            
+  double         5.0
   ============== ==============
 
   Description
@@ -43,9 +43,9 @@ Parameters
 :wait_charge_timeout:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         5.0            
+  double         5.0
   ============== ==============
 
   Description
@@ -54,9 +54,9 @@ Parameters
 :dock_approach_timeout:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         30.0            
+  double         30.0
   ============== ==============
 
   Description
@@ -65,9 +65,9 @@ Parameters
 :undock_linear_tolerance:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.05          
+  double         0.05
   ============== ==============
 
   Description
@@ -76,9 +76,9 @@ Parameters
 :undock_angular_tolerance:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.05          
+  double         0.05
   ============== ==============
 
   Description
@@ -87,9 +87,9 @@ Parameters
 :max_retries:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  int            3          
+  int            3
   ============== ==============
 
   Description
@@ -98,9 +98,9 @@ Parameters
 :base_frame:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         "base_link"          
+  string         "base_link"
   ============== ==============
 
   Description
@@ -109,9 +109,9 @@ Parameters
 :fixed_frame:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         "odom"          
+  string         "odom"
   ============== ==============
 
   Description
@@ -120,9 +120,9 @@ Parameters
 :dock_backwards:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  bool           false          
+  bool           false
   ============== ==============
 
   Description
@@ -131,9 +131,9 @@ Parameters
 :dock_prestaging_tolerance:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.5          
+  double         0.5
   ============== ==============
 
   Description
@@ -142,9 +142,9 @@ Parameters
 :dock_plugins:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  vector<string> N/A          
+  vector<string> N/A
   ============== ==============
 
   Description
@@ -153,9 +153,9 @@ Parameters
 :dock_database:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         N/A          
+  string         N/A
   ============== ==============
 
   Description
@@ -165,9 +165,9 @@ Parameters
 :docks:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  vector<string> N/A          
+  vector<string> N/A
   ============== ==============
 
   Description
@@ -176,9 +176,9 @@ Parameters
 :navigator_bt_xml:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         ""          
+  string         ""
   ============== ==============
 
   Description
@@ -187,9 +187,9 @@ Parameters
 :controller.k_phi:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         3.0          
+  double         3.0
   ============== ==============
 
   Description
@@ -198,9 +198,9 @@ Parameters
 :controller.k_delta:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         2.0          
+  double         2.0
   ============== ==============
 
   Description
@@ -209,9 +209,9 @@ Parameters
 :controller.beta:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.4        
+  double         0.4
   ============== ==============
 
   Description
@@ -220,9 +220,9 @@ Parameters
 :controller.lambda:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         2.0       
+  double         2.0
   ============== ==============
 
   Description
@@ -231,9 +231,9 @@ Parameters
 :controller.v_linear_min:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.1       
+  double         0.1
   ============== ==============
 
   Description
@@ -242,9 +242,9 @@ Parameters
 :controller.v_linear_max:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.24       
+  double         0.24
   ============== ==============
 
   Description
@@ -253,9 +253,9 @@ Parameters
 :controller.v_angular_max:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.75       
+  double         0.75
   ============== ==============
 
   Description
@@ -264,9 +264,9 @@ Parameters
 :controller.slowdown_radius:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.25       
+  double         0.25
   ============== ==============
 
   Description
@@ -275,9 +275,9 @@ Parameters
 :controller.use_collision_detection:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  bool           true          
+  bool           true
   ============== ==============
 
   Description
@@ -286,9 +286,9 @@ Parameters
 :controller.costmap_topic:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  string         "local_costmap/costmap_raw"   
+  string         "local_costmap/costmap_raw"
   ============== ===========================
 
   Description
@@ -297,9 +297,9 @@ Parameters
 :controller.footprint_topic:
 
   ============== ===================================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------------
-  string         "local_costmap/published_footprint"            
+  string         "local_costmap/published_footprint"
   ============== ===================================
 
   Description
@@ -361,7 +361,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.staging_x_offset:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         -0.7
   ============== ==============
@@ -372,7 +372,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.staging_yaw_offset:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         0.0
   ============== ==============
@@ -383,9 +383,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.use_battery_status:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  bool           true       
+  bool           true
   ============== ==============
 
   Description
@@ -394,9 +394,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.use_external_detection_pose:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  bool           false       
+  bool           false
   ============== ==============
 
   Description
@@ -405,9 +405,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_timeout:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         1.0       
+  double         1.0
   ============== ==============
 
   Description
@@ -417,9 +417,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_translation_x:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         -0.20     
+  double         -0.20
   ============== ==============
 
   Description
@@ -428,9 +428,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_translation_y:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.0     
+  double         0.0
   ============== ==============
 
   Description
@@ -439,9 +439,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_rotation_yaw:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.0     
+  double         0.0
   ============== ==============
 
   Description
@@ -450,9 +450,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_rotation_pitch:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         1.57    
+  double         1.57
   ============== ==============
 
   Description
@@ -461,9 +461,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_rotation_roll:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         -1.57   
+  double         -1.57
   ============== ==============
 
   Description
@@ -472,9 +472,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.filter_coef:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.1 
+  double         0.1
   ============== ==============
 
   Description
@@ -483,7 +483,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.charging_threshold:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         0.5
   ============== ==============
@@ -494,7 +494,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.use_stall_detection:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   bool           false
   ============== ==============
@@ -505,7 +505,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.stall_joint_names:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   vector<string> N/A
   ============== ==============
@@ -516,7 +516,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.stall_velocity_threshold:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         1.0
   ============== ==============
@@ -527,7 +527,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.stall_effort_threshold:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         1.0
   ============== ==============
@@ -538,7 +538,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.docking_threshold:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         0.05
   ============== ==============

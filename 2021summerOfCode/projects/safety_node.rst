@@ -4,7 +4,7 @@
 5. Navigation Safety Node
 =========================
 
-**Task description** 
+**Task description**
 
 The aim of this project is to create a safety watchdog node to ensure the robot is acting properly and not about to collide with an obstacle. Typical safety-rated lidars will contain "safety zones" whereas if any sensor points are located in a box around the lidar, then the lidar will send a signal to the robot to stop due to a potential collision. However, less and less people are using safety-rated lidars as consumer available lidars are dropping in cost and 3D lidars are seeing more use in mobile robotics.
 
@@ -14,7 +14,7 @@ Your project will be to re-create this logic at the Navigation level. While this
 - Projecting the velocity forward in time ``N`` seconds, check if that velocity will result in a collision with any sensor measurements
 - If not, allow the velocity command through to the base
 - If it does collide, scale back the velocity such that the robot will always be at minimum ``N`` seconds from a collision
-- Optionally if a flag is set, if ``M`` or more points are in defined bounding boxes around the robot, send only ``0`` commands to enact an emergency stop. 
+- Optionally if a flag is set, if ``M`` or more points are in defined bounding boxes around the robot, send only ``0`` commands to enact an emergency stop.
 
 This will be an excellent chance to make mobile robots and Nav2 users significantly safer and run at higher speeds in their production or research environments. It goes a long way for functional safety for those not using safety-rated lidars which contain similar features.
 
@@ -36,7 +36,7 @@ This will be an excellent chance to make mobile robots and Nav2 users significan
 - Geometry and statistics
 - Recommended: Gazebo simulation, ROS navigation
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_

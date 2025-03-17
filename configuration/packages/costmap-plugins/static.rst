@@ -3,16 +3,16 @@
 Static Layer Parameters
 =======================
 
-This implements a costmap layer taking in a map from either SLAM or ``map_server`` (or other) to place into the costmap. It resizes the costmap to its size and places the static obstacles on the planning space. 
+This implements a costmap layer taking in a map from either SLAM or ``map_server`` (or other) to place into the costmap. It resizes the costmap to its size and places the static obstacles on the planning space.
 
 ``<static layer>`` is the corresponding plugin name selected for this type.
 
 :``<static layer>``.enabled:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
@@ -21,9 +21,9 @@ This implements a costmap layer taking in a map from either SLAM or ``map_server
 :``<static layer>``.footprint_clearing_enabled:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool False            
+  bool False
   ==== =======
 
   Description
@@ -32,22 +32,22 @@ This implements a costmap layer taking in a map from either SLAM or ``map_server
 :``<static layer>``.restore_cleared_footprint:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
-    Restore map after clearing the area the footprint occupied. 
-  
+    Restore map after clearing the area the footprint occupied.
+
   If ``footprint_clearing_enabled`` is false, this parameter is ignored.
 
 :``<static layer>``.subscribe_to_updates:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool False            
+  bool False
   ==== =======
 
   Description
@@ -56,9 +56,9 @@ This implements a costmap layer taking in a map from either SLAM or ``map_server
 :``<static layer>``.map_subscribe_transient_local:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
@@ -67,9 +67,9 @@ This implements a costmap layer taking in a map from either SLAM or ``map_server
 :``<static layer>``.transform_tolerance:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.0            
+  double 0.0
   ====== =======
 
   Description

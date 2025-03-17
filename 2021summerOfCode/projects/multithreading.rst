@@ -4,7 +4,7 @@
 4. Navigation MultiThreading
 ============================
 
-**Task description** 
+**Task description**
 
 The aim of this project is the significantly improve the run-time performance of Nav2 making sure to leverage the full capabilities of multi-processor core CPUs. We seek to identify areas in the Nav2 stack that could leverage multi-threading or parallel processing to speed up computations and improve overall user performance on a broad range of compute platforms.
 
@@ -19,7 +19,7 @@ Some examples include:
 
 We are seeking a student interested in learning about multi-threading and parallel processing, ideally with some exposure to these concepts and libraries already, to analyze potential areas for parallel computing. Then, select the top candidates and implement them with parallel processing and benchmark the improvements to the Nav2 stack they provide.
 
-This will be an excellent chance to apply (or obtain) C++ parallel computing skills while also learning a great deal about how to build mobile robot navigation systems -- both very valuable skillsets. 
+This will be an excellent chance to apply (or obtain) C++ parallel computing skills while also learning a great deal about how to build mobile robot navigation systems -- both very valuable skillsets.
 
 **Project difficulty: Medium**
 
@@ -39,7 +39,7 @@ This will be an excellent chance to apply (or obtain) C++ parallel computing ski
 - Working knowledge (or ability to quickly obtain) on one or more of: TBB, OpenMP, OpenCL, Cuda, and similar
 - Recommended: Gazebo simulation, ROS navigation
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_

@@ -285,7 +285,7 @@ Observation sources parameters
 
   Description:
     Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for ``polygon`` source type.
-  
+
 :``<source name>``.enabled:
 
   ============== =============================
@@ -296,7 +296,7 @@ Observation sources parameters
 
   Description:
     Whether to use this source for collision detection. (Can be dynamically set)
-    
+
 :``<source name>``.source_timeout:
 
   ============== =============================
@@ -307,7 +307,7 @@ Observation sources parameters
 
   Description:
     Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting ``source_timeout: 0.0`` disables it. Overrides node parameter for each source individually, if desired.
-    
+
 :bond_heartbeat_period:
 
   ============== =============================
@@ -353,4 +353,3 @@ Here is an example of configuration YAML for the Collision Detector.
           min_height: 0.1
           max_height: 0.5
           enabled: True
-

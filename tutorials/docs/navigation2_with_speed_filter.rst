@@ -39,7 +39,7 @@ Let's look, how it is being decoded. As we know, ``OccupancyGrid`` values are be
 
   speed_limit = filter_mask_data * multiplier + base;
 
-where: 
+where:
 
  - ``filter_mask_data`` - is an ``OccupancyGrid`` value of the corresponding cell on mask where maximum speed should be restricted.
  - ``base`` and ``multiplier`` are coefficients taken from ``nav2_msgs/CostmapFilterInfo`` messages published by Costmap Filter Info Server (see in next chapter below).

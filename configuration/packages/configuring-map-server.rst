@@ -146,7 +146,7 @@ Costmap Filter Info Server Parameters
   Description
     Multiplier of ``OccupancyGrid`` mask value -> filter space value linear conversion which is being proceeded as:
     ``filter_space_value = base + multiplier * mask_value``
-    
+
 :bond_heartbeat_period:
 
   ============== =============================

@@ -129,4 +129,3 @@ Obstacles marked at the end of the animation will be removed (groups that size l
 
 .. image:: images/Filtering_of_noise-induced_obstacles/connected_components.gif
     :width: 600px
-

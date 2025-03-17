@@ -105,7 +105,7 @@ For example:
   #6  0x00007ffff7c553eb in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
   #7  0x000055555555936c in std::vector<int, std::allocator<int> >::_M_range_check (
       this=0x5555555cfdb0, __n=100) at /usr/include/c++/9/bits/stl_vector.h:1070
-  #8  0x0000555555558e1d in std::vector<int, std::allocator<int> >::at (this=0x5555555cfdb0, 
+  #8  0x0000555555558e1d in std::vector<int, std::allocator<int> >::at (this=0x5555555cfdb0,
       __n=100) at /usr/include/c++/9/bits/stl_vector.h:1091
   #9  0x000055555555828b in GDBTester::VectorCrash (this=0x5555555cfb40)
       at /home/steve/Documents/nav2_ws/src/gdb_test_pkg/src/gdb_test_node.cpp:44
@@ -224,14 +224,14 @@ From Nav2 Bringup
 
 To debug directly from the nav2 bringup launch files you may want to do the following:
 
-- Add ``prefix=['xterm -e gdb -ex run --args']`` to the non-composed node in the appropriate launch file. 
+- Add ``prefix=['xterm -e gdb -ex run --args']`` to the non-composed node in the appropriate launch file.
 
 - Recompile the package of interest with ``-g`` flag for debug symbols.
 
 - Launch normally with ``ros2 launch nav2_bringup tb3_simulation_launch.py use_composition:=False``. A separate xterm window will open with the process of interest running in gdb.
 
 .. note::
-  Turning off composition has serious performance impacts. If this is important to you please follow "From Large Project". 
+  Turning off composition has serious performance impacts. If this is important to you please follow "From Large Project".
 
 Once your server crashes, you'll see a prompt like below in the xterm window. At this point you can now get a backtrace.
 

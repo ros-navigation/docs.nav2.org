@@ -19,7 +19,7 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         20.0   
+  double         20.0
   ============== =======
 
   Description
@@ -30,7 +30,7 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           false   
+  bool           false
   ============== =======
 
   Description
@@ -49,7 +49,7 @@ Parameters
 
 :action_server_result_timeout:
 
-  ====== ======= ======= 
+  ====== ======= =======
   Type   Default Unit
   ------ ------- -------
   double 10.0    seconds
@@ -58,15 +58,15 @@ Parameters
   Description
     The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
     15 minutes in rcl but was changed to 10 seconds in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_, which may be less than
-    some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline. 
+    some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline.
     This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround
 
 :controller_plugins:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  vector<string> ['FollowPath']            
+  vector<string> ['FollowPath']
   ============== ==============
 
   Description
@@ -138,9 +138,9 @@ Parameters
 :min_x_velocity_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0001            
+  double         0.0001
   ============== =============================
 
   Description
@@ -150,9 +150,9 @@ Parameters
 :min_y_velocity_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0001            
+  double         0.0001
   ============== =============================
 
   Description
@@ -162,21 +162,21 @@ Parameters
 :min_theta_velocity_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0001            
+  double         0.0001
   ============== =============================
 
   Description
     The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
     Odometry values below this threshold (in rad/s) will be set to 0.0.
-    
+
 :failure_tolerance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0           
+  double         0.0
   ============== =============================
 
   Description
@@ -217,7 +217,7 @@ Parameters
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
     Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
-    
+
 :bond_heartbeat_period:
 
   ============== =============================

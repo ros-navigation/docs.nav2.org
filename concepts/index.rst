@@ -82,7 +82,7 @@ More information can be found `in this book <https://arxiv.org/abs/1709.00084>`_
 I **strongly** recommend reading chapters 1-3 to get a good understanding of the nomenclature and workflow.
 It should only take about 30 minutes.
 
-Behavior Trees provide a formal structure for navigation logic which can be both used to create complex systems but also be verifiable and validated as provenly correct using advanced tools. Having the application logic centralized in the behavior tree and with independent task servers (which only communicate data over the tree) allows for formal analysis. 
+Behavior Trees provide a formal structure for navigation logic which can be both used to create complex systems but also be verifiable and validated as provenly correct using advanced tools. Having the application logic centralized in the behavior tree and with independent task servers (which only communicate data over the tree) allows for formal analysis.
 
 For this project, we use `BehaviorTree CPP V4 <https://www.behaviortree.dev/>`_ as the behavior tree library.
 We create node plugins which can be constructed into a tree, inside the ``BT Navigator``.

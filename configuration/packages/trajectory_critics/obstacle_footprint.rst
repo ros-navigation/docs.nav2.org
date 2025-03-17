@@ -18,9 +18,9 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  bool false 
+  bool false
   ==== =======
-    
+
     Description
         Whether to allow for scores to be summed up.
 
@@ -29,8 +29,8 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 1.0 
+  double 1.0
   ====== =======
-    
+
     Description
         Weighed scale for critic.

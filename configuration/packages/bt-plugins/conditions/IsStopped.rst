@@ -25,11 +25,11 @@ Input Port
   ========  =======
   Type      Default
   --------  -------
-  int (ms)  1000         
+  int (ms)  1000
   ========  =======
 
   Description
-    	Duration (ms) the velocity must remain below the threshold 
+    	Duration (ms) the velocity must remain below the threshold
 
 Example
 -------

@@ -5,7 +5,7 @@ WouldAControllerRecoveryHelp
 
 Checks if the active controller server error code is UNKNOWN, PATIENCE_EXCEEDED, FAILED_TO_MAKE_PROGRESS, or NO_VALID_CONTROL.
 
-If the active error code is a match, the node returns ``SUCCESS``. Otherwise, it returns ``FAILURE``. 
+If the active error code is a match, the node returns ``SUCCESS``. Otherwise, it returns ``FAILURE``.
 
 Input Port
 ----------
@@ -19,7 +19,7 @@ Input Port
   ============== =======
 
   Description
-    	The active error code to compare against. This should match the controller server error code. 
+    	The active error code to compare against. This should match the controller server error code.
 
 Example
 -------

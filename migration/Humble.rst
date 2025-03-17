@@ -73,7 +73,7 @@ The following errors codes are supported (with more to come as necessary): Unkno
 
 The following error codes are supported (with more to come as necessary): Unknown, TF Error, Invalid Path, Patience Exceeded, Failed To Make Progress, or No Valid Control.
 
-`PR #3251 <https://github.com/ros-navigation/navigation2/pull/3251>`_ pipes the highest priority error code through the bt_navigator and defines the error code structure. 
+`PR #3251 <https://github.com/ros-navigation/navigation2/pull/3251>`_ pipes the highest priority error code through the bt_navigator and defines the error code structure.
 
 A new parameter for the the BT Navigator called "error_code_id_names" was added to the nav2_params.yaml to define the error codes to compare.
 The lowest error in the "error_code_id_names" is then returned in the action request (navigate to pose, navigate through poses waypoint follower), whereas the code enums increase the higher up in the software stack - giving higher priority to lower-level failures.
@@ -112,7 +112,7 @@ Changes to Map yaml file path for map_server node in Launch
 
 SmootherSelector BT Node
 ************************
-`PR #3283 <https://github.com/ros-navigation/navigation2/pull/3283>`_ adds a BT node to set the smoother based on a topic or a default. See the configuration guide :ref:`configuring_simple_smoother` for more details. 
+`PR #3283 <https://github.com/ros-navigation/navigation2/pull/3283>`_ adds a BT node to set the smoother based on a topic or a default. See the configuration guide :ref:`configuring_simple_smoother` for more details.
 
 
 Publish Costmap Layers
@@ -121,12 +121,12 @@ Publish Costmap Layers
 
 Give Behavior Server Access to Both Costmaps
 ********************************************
-`PR #3255 <https://github.com/ros-navigation/navigation2/pull/3255>`_ adds the ability for a behavior to access the local and global costmap. 
+`PR #3255 <https://github.com/ros-navigation/navigation2/pull/3255>`_ adds the ability for a behavior to access the local and global costmap.
 
 To update behaviors, any reference to the global_frame must be updated to the local_frame parameter
 along with the ``configuration`` method which now takes in the local and global collision checkers.
 Lastly, ``getResourceInfo`` must be overridden to return ``CostmapInfoType::LOCAL``. Other options include ``GLOBAL`` if the behavior uses global costmap and/or footprint)
-or ``BOTH`` if both are required. This allows us to only create and maintain the minimum amount of expensive resources.   
+or ``BOTH`` if both are required. This allows us to only create and maintain the minimum amount of expensive resources.
 
 New Model Predictive Path Integral Controller
 *********************************************
@@ -137,7 +137,7 @@ See the README.md and :ref:`configuring_mppic` page for more detail.
 
 Behavior Tree Uses Error Codes
 ******************************
-`PR #3324 <https://github.com/ros-navigation/navigation2/pull/3324>`_ adds three new condition nodes to check for error codes on the blackboard set by action BT nodes which contain them. 
+`PR #3324 <https://github.com/ros-navigation/navigation2/pull/3324>`_ adds three new condition nodes to check for error codes on the blackboard set by action BT nodes which contain them.
 
 The ``AreErrorCodesPresent`` condition node allows the user to specify the error code from the server along with the error codes to match against.
 The ``WouldAControllerRecoveryHelp`` checks if the active error code is UNKNOWN, PATIENCE_EXCEEDED, FAILED_TO_MAKE_PROGRESS or NO_VALID_CONTROL.
@@ -203,11 +203,11 @@ Beware that it is a breaking change and that configuration files will need to be
 
 IsBatteryChargingCondition BT Node
 **********************************
-`PR #3553 <https://github.com/ros-navigation/navigation2/pull/3553>`_ adds a BT node to check if the battery is charging. See the configuration guide :ref:`bt_is_battery_charging_condition` for more details. 
+`PR #3553 <https://github.com/ros-navigation/navigation2/pull/3553>`_ adds a BT node to check if the battery is charging. See the configuration guide :ref:`bt_is_battery_charging_condition` for more details.
 
 Behavior Server Error Codes
 ***************************
-`PR #3569 <https://github.com/ros-navigation/navigation2/pull/3539>`_ updates the behavior server plugins to provide error codes on failure. 
+`PR #3569 <https://github.com/ros-navigation/navigation2/pull/3539>`_ updates the behavior server plugins to provide error codes on failure.
 
 - Spin: NONE: 0, UNKNOWN: 701, server error codes: 701-709
 - BackUp: NONE: 0, UNKNOWN: 801, server error codes: 710-719

@@ -11,9 +11,9 @@ This layer places an exponential decay functions around obstacles to increase co
 :``<inflation layer>``.enabled:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
@@ -22,9 +22,9 @@ This layer places an exponential decay functions around obstacles to increase co
 :``<inflation layer>``.inflation_radius:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.55            
+  double 0.55
   ====== =======
 
   Description
@@ -33,9 +33,9 @@ This layer places an exponential decay functions around obstacles to increase co
 :``<inflation layer>``.cost_scaling_factor:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 10.0            
+  double 10.0
   ====== =======
 
   Description
@@ -45,9 +45,9 @@ This layer places an exponential decay functions around obstacles to increase co
 :``<inflation layer>``.inflate_unknown:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool False            
+  bool False
   ==== =======
 
   Description
@@ -57,9 +57,9 @@ This layer places an exponential decay functions around obstacles to increase co
 :``<inflation layer>``.inflate_around_unknown:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool False            
+  bool False
   ==== =======
 
   Description
