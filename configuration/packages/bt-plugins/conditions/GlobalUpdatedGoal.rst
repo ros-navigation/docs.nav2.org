@@ -25,11 +25,11 @@ Input Ports
 
 :goals:
 
-  ==================================== =========
-  Type                                 Default
-  ------------------------------------ ---------
-  geometry_msgs::msg::PoseStampedArray "{goals}"
-  ==================================== =========
+  ==================== =========
+  Type                 Default
+  -------------------- ---------
+  nav_msgs::msg::Goals "{goals}"
+  ==================== =========
 
   Description
     	Vector of goals to check. Takes in a blackboard variable, "{goals}" if not specified.

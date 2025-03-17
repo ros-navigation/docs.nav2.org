@@ -46,11 +46,11 @@ Input Ports
 
 :input_goals:
 
-  ============================== =======
-  Type                           Default
-  ------------------------------ -------
-  geometry_msgs/PoseStampedArray   N/A
-  ============================== =======
+  ============== =======
+  Type           Default
+  -------------- -------
+  nav_msgs/Goals   N/A
+  ============== =======
 
   Description
       The original goals poses
@@ -70,13 +70,13 @@ Output Ports
     	The resulting updated goal. If no goal received by subscription, it will be the input_goal
 
 :output_goals:
-  
-    ============================== =======
-    Type                           Default
-    ------------------------------ -------
-    geometry_msgs/PoseStampedArray   N/A
-    ============================== =======
-  
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  nav_msgs/Goals   N/A
+  ============== =======
+
     Description
       	The resulting updated goals. If no goals received by subscription, it will be the input_goals
 

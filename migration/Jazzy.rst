@@ -302,12 +302,12 @@ Example for including ``cloned_multi_tb3_simulation_launch.py`` in another launc
         launch_arguments={"robots": "robot1={x: 0.5, y: 0.5, yaw: 1.5707}"}.items(),
     )
 
-ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use PoseStampedArray instead of vector<PoseStamped>
+ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use nav_msgs/Goals instead of vector<PoseStamped>
 ************************************************************************************************************************
 
-In `PR #262 <https://github.com/ros2/common_interfaces/pull/262>`_ a new message type `PoseStampedArray` was introduced to the `geometry_msgs` package.
-In `PR #4791 <https://github.com/ros-navigation/navigation2/pull/4791>`_, most instances of `std::vector<geometry_msgs::msg::PoseStamped>` have been replaced with `geometry_msgs::msg::PoseStampedArray`. Most notably, `NavigateThroughPoses.action` and `ComputePathThroughPoses.action` have been updated to use `PoseStampedArray`.
-Since `PoseStampedArray` contains a header, the poses are now accessed via `NavigateThroughPoses.poses.poses` instead of `NavigateThroughPoses.poses` or `ComputePathThroughPoses.goals.poses` instead of `ComputePathThroughPoses.poses`. Please update your code accordingly when using these interfaces.
+In `PR #269 <https://github.com/ros2/common_interfaces/pull/269>`_ a new message type `Goals` was introduced to the `nav_msgs` package.
+In `PR #4980 <https://github.com/ros-navigation/navigation2/pull/4980>`_, all collections of `PoseStamped` has been migrated to use the `nav_msgs::msg::Goals` message. Most notably, `NavigateThroughPoses.action` and `ComputePathThroughPoses.action` have been updated to use `nav_msgs/Goals`.
+Since `nav_msgs/Goals` contains a header, the poses are now accessed via `NavigateThroughPoses.poses.goals` instead of `NavigateThroughPoses.poses` or `ComputePathThroughPoses.goals.goals` instead of `ComputePathThroughPoses.poses`. Please update your code accordingly when using these interfaces.
 
 MPPI controller re-implemented using Eigen library and performance improved by 40-45%
 *************************************************************************************
