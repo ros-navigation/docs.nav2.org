@@ -19,7 +19,7 @@ Therefore, we must point Groot2 to our palette, or index of Nav2 / custom behavi
 2. Click the red icon as shown in the second image, open the file `/path/to/navigation2/nav2_behavior_tree/nav2_tree_nodes.xml` to import all the custom behavior tree nodes used for navigation. Once loaded, you should see the full palette of Nav2's custom nodes.
 3. Click the blue icon as shown in the second image, browse the tree you want to visualize, then select `Open`. The Nav2 BTs exist in `/path/to/navigation2/nav2_bt_navigator/behavior_trees/`.
 
-.. image:: images/Groot2/groot_bt_editor.png  
+.. image:: images/Groot2/groot_bt_editor.png
   :width: 46%
 .. image:: images/Groot2/groot_with_nav2_custom_nodes.png
   :width: 45%
@@ -66,12 +66,12 @@ Creating a new custom node can be started by clicking the red marked icon, while
 .. image:: images/Groot2/groot_create_custom_node.png
   :width: 40%
 
-This should load a new window, as shown in the next image. 
+This should load a new window, as shown in the next image.
 
-.. image:: images/Groot2/groot_interactive_node_creation.png 
+.. image:: images/Groot2/groot_interactive_node_creation.png
   :width: 50%
 
-In this new window, it asks you to fill in the metadata about this new node, in order to create it. 
+In this new window, it asks you to fill in the metadata about this new node, in order to create it.
 It will ask you for standard information such as port name, type of node, and any optional ports for parameterization or access to blackboard variables.
 After completing, select `OK`, the new custom node should now appear in the `TreeNode Palette`.
 
