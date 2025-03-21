@@ -1,10 +1,11 @@
 .. _using_groot:
 
+Groot Tutorials
+###############
+
 .. figure:: images/Groot/groot_start_menu.png
   :name: groot_startup_menu
   :align: center
-
-- `Overview`_
 
 Overview
 ========
