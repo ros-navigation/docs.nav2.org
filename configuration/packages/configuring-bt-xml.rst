@@ -11,7 +11,7 @@ Check this introduction_ to learn how behavior trees work and the difference bet
 
 .. _introduction: https://www.behaviortree.dev/bt_basics/
 
-Consider checking out the tutorial :ref:`using_groot` for using Groot to visualize and modify behavior trees.
+Consider checking out the :ref:`using_groot` tutorial for using Groot to visualize and modify behavior trees.
 
 Action Plugins
 **************
