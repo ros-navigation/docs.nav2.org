@@ -13,7 +13,6 @@ Nav2 Tutorials
    docs/navigation2_with_stvl.rst
    docs/navigation2_with_gps.rst
    docs/using_groot.rst
-   docs/using_groot2.rst
    docs/integrating_vio.rst
    docs/navigation2_dynamic_point_following.rst
    docs/navigation2_with_keepout_filter.rst
