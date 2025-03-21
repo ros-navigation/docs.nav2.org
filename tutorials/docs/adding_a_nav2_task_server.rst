@@ -162,6 +162,7 @@ The table below shows the current servers along with the expected error code str
 .. _Smoother Server: https://github.com/ros-navigation/navigation2/blob/main/nav2_smoother/src/nav2_smoother.cpp
 .. _Waypoint Follower Server: https://github.com/ros-navigation/navigation2/blob/main/nav2_waypoint_follower/src/waypoint_follower.cpp
 .. _Behavior Server: https://github.com/ros-navigation/navigation2/blob/main/nav2_behaviors/src/behavior_server.cpp
+.. _Navigator: https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/src/bt_navigator.cpp
 
 Error codes and messages are attached to the response of the action message. An example can be seen below for the route server. Note it is necessary to set the error code field within the message result definition to ``error_code`` and the error message field to ``error_msg``.
 
