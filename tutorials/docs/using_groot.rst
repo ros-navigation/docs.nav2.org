@@ -1,8 +1,5 @@
 .. _using_groot:
 
-Groot Tutorials
-###############
-
 .. figure:: images/Groot/groot_start_menu.png
   :name: groot_startup_menu
   :align: center
@@ -28,6 +25,8 @@ Behavior Trees, in short BTs, consist of many nodes completing different tasks a
 These nodes are of types: `Action`, `Condition`, `Control`, or `Decorator`, and are described in more detail in :ref:`concepts` and `BehaviorTree.CPP <https://www.behaviortree.dev/docs/learn-the-basics/BT_basics#types-of-nodes>`_.
 
 :ref:`writing_new_nbt_plugin` offers a well written example of creating a simple ``Action`` node if creating new BT nodes is of interest. This tutorial will focus solely on launching Groot, visualizing a Behavior Tree, and modifying that tree for a given customization, assuming a library of BT nodes. Luckily, Nav2 provides a robust number of BT nodes for your use out of the box, enumerated in :ref:`plugins`.
+
+A BT configuration file in BehaviorTree.CPP is an XML file. This is used to dynamically load the BT node plugins at run-time from the appropriate libraries mapped to their names. The XML format is defined `in detail here <https://www.behaviortree.dev/docs/learn-the-basics/xml_format/>`_. Therefore, Groot needs to have a list of nodes it has access to and important metadata about them like their type and ports (or parameters). We refer to this as the "palette" of nodes later in the tutorial.
 
 In the video above you can see Groot side-by-side with RViz and a test platform 100% equipped with ROS-enabled hardware from SIEMENS.
 
