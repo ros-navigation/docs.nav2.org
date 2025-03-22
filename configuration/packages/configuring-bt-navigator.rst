@@ -11,7 +11,7 @@ The BT Navigator (Behavior Tree Navigator) module implements the NavigateToPose,
 It is a Behavior Tree-based implementation of navigation that is intended to allow for flexibility
 in the navigation task and provide a way to easily specify complex robot behaviors, including recovery.
 
-Consider checking out the :ref:`groot_introduction` tutorial for using Groot to visualize and modify behavior trees.
+Consider checking out the :ref:`using_groot` tutorial for using Groot to visualize and modify behavior trees.
 
 Make sure to review all parameters for non-default navigator plugins not discussed on this page (e.g. ``CoverageNavigator`` or custom additions).
 
