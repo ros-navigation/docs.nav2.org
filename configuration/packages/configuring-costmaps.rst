@@ -24,6 +24,17 @@ Costmap2D ROS Parameters
   Description
     Whether to send full costmap every update, rather than updates.
 
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
+
 :footprint_padding:
 
   ============== =======
@@ -435,6 +446,7 @@ Example
             inflate_unknown: false
             inflate_around_unknown: true
           always_send_full_costmap: True
+          service_introspection_mode: "disabled"
 
 
     local_costmap:
@@ -449,3 +461,4 @@ Example
           width: 3
           height: 3
           resolution: 0.05
+          service_introspection_mode: "disabled"
