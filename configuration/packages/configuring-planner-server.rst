@@ -44,7 +44,7 @@ Parameters
   ============== ========
   Type           Default
   -------------- --------
-  double         [20.0]
+  double         20.0
   ============== ========
 
   Description
