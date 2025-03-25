@@ -75,6 +75,17 @@ Parameters
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
+:costmap_update_timeout:
+
+  ============== ========
+  Type           Default
+  -------------- --------
+  double         1.0
+  ============== ========
+
+  Description
+    The timeout value (seconds) for the costmap to update.
+
 Default Plugins
 ***************
 
@@ -93,6 +104,7 @@ Example
     planner_server:
       ros__parameters:
         expected_planner_frequency: 20.0
+        costmap_update_timeout: 1.0
         planner_plugins: ['GridBased']
         GridBased:
           plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
