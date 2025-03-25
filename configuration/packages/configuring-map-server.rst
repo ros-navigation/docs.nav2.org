@@ -46,6 +46,17 @@ Map Saver Parameters
   Description
     Occupied space minimum probability threshold value for occupancy grid.
 
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
+
 Map Server Parameters
 *********************
 
@@ -81,6 +92,17 @@ Map Server Parameters
 
   Description
     Frame to publish loaded map in.
+
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
 
 Costmap Filter Info Server Parameters
 *************************************
@@ -167,12 +189,14 @@ Example
         yaml_filename: "turtlebot3_world.yaml"
         topic_name: "map"
         frame_id: "map"
+        service_introspection_mode: "disabled"
 
     map_saver:
       ros__parameters:
         save_map_timeout: 5.0
         free_thresh_default: 0.25
         occupied_thresh_default: 0.65
+        service_introspection_mode: "disabled"
 
     costmap_filter_info_server:
       ros__parameters:

@@ -368,6 +368,17 @@ Parameters
   Description
     Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.
 
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
+
 :update_min_a:
 
   ============== =============================
@@ -501,6 +512,7 @@ Example
         alpha4: 0.2
         alpha5: 0.2
         base_frame_id: "base_footprint"
+        service_introspection_mode: "disabled"
         beam_skip_distance: 0.5
         beam_skip_error_threshold: 0.9
         beam_skip_threshold: 0.3

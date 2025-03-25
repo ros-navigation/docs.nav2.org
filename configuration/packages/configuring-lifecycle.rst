@@ -70,6 +70,17 @@ Parameters
   Description
     When a server crashes or becomes non-responsive, the lifecycle manager will bring down all nodes for safety. This is the duration of which the lifecycle manager will attempt to reconnect with the failed server(s) during to recover and re-activate the system. If this passes, it will stop attempts and will require a manual re-activation once the problem is manually resolved. Units: seconds.
 
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
+
 Example
 *******
 .. code-block:: yaml
@@ -81,3 +92,4 @@ Example
         bond_timeout: 4.0
         attempt_respawn_reconnection: true
         bond_respawn_max_duration: 10.0
+        service_introspection_mode: "disabled"
