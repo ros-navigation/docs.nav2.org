@@ -34,7 +34,7 @@ Parameters
   ============== ========
 
   Description
-    The timeout value (seconds) for the costmap to update.
+    The timeout value (seconds) for the costmap to be fully updated before a control effort can be computed.
 
 :use_realtime_priority:
 
