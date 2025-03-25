@@ -223,6 +223,17 @@ Graceful Controller Parameters
   Description
     When performing an in-place rotation after the XY goal tolerance has been met, this is the angle (in radians) between poses to check for collision.
 
+:use_collision_detection:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to use collision detection to avoid obstacles.
+
 Example
 *******
 .. code-block:: yaml
