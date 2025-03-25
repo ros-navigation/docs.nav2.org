@@ -25,6 +25,17 @@ Parameters
   Description
     Frequency to run controller (Hz).
 
+:costmap_update_timeout:
+
+  ============== ========
+  Type           Default
+  -------------- --------
+  double         0.3
+  ============== ========
+
+  Description
+    The timeout value (seconds) for the costmap to be fully updated before a control effort can be computed.
+
 :use_realtime_priority:
 
   ============== =======
@@ -264,6 +275,7 @@ Example
       ros__parameters:
         use_sim_time: True
         controller_frequency: 20.0
+        costmap_update_timeout: 0.3
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5
         min_theta_velocity_threshold: 0.001

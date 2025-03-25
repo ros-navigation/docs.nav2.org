@@ -1204,8 +1204,28 @@ It also hosts the local costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">use_realtime_priority</dt>
+<dt class="field-even">costmap_update_timeout</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 36%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The timeout value (seconds) for the costmap to be fully updated before a control effort can be computed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">use_realtime_priority</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1224,8 +1244,8 @@ It also hosts the local costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">publish_zero_velocity</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">publish_zero_velocity</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1244,8 +1264,8 @@ It also hosts the local costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">action_server_result_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">action_server_result_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 35%" />
@@ -1270,8 +1290,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller_plugins</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller_plugins</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1300,8 +1320,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">progress_checker_plugins</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">progress_checker_plugins</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 41%" />
 <col style="width: 59%" />
@@ -1330,8 +1350,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">goal_checker_plugins</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">goal_checker_plugins</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 47%" />
 <col style="width: 53%" />
@@ -1360,8 +1380,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">min_x_velocity_threshold</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">min_x_velocity_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1381,8 +1401,8 @@ Odometry values below this threshold (in m/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_y_velocity_threshold</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_y_velocity_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1402,8 +1422,8 @@ Odometry values below this threshold (in m/s) will be set to 0.0. For non-holono
 </dd>
 </dl>
 </dd>
-<dt class="field-even">min_theta_velocity_threshold</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">min_theta_velocity_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1423,8 +1443,8 @@ Odometry values below this threshold (in rad/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">failure_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">failure_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1444,8 +1464,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-even">speed_limit_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">speed_limit_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1464,8 +1484,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">odom_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">odom_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1484,8 +1504,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-even">enable_stamped_cmd_vel</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">enable_stamped_cmd_vel</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1506,8 +1526,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">bond_heartbeat_period</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">bond_heartbeat_period</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1574,6 +1594,7 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
+<span class="w">    </span><span class="nt">costmap_update_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">    </span><span class="nt">min_x_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
 <span class="w">    </span><span class="nt">min_y_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">    </span><span class="nt">min_theta_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
