@@ -78,7 +78,7 @@ by selecting `Start Transformation`.
 
 |
 
-Drag and drop the georeferenced raster file into the layers window.
+Close the window. Drag and drop the georeferenced raster file that was just created into the layers window. This should be a tiff file, by default.
 
 |
 
