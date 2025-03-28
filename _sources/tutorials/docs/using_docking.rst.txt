@@ -54,7 +54,7 @@ See ``opennav_docking`` README for complete concept explanations, parameters, an
 ChargingDock Plugins
 ====================
 
-``opennav_docking_core::ChargingDock`` and ``opennav_docking_core::ChargingDock`` plugins are established to abstract out robot- and dock-specifics from the generalized framework.
+``opennav_docking_core::ChargingDock`` and ``opennav_docking_core::NonChargingDock`` plugins are established to abstract out robot- and dock-specifics from the generalized framework.
 This allows a system to leverage this framework and provide its own methods for detecting the dock's current pose, when the robot is charging, and when contact is made.
 Luckily, there are several common ROS APIs that allow us to create semi-generalized ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins that allows out-of-the-box docking as long as users provide ``JointState``, ``BatteryState``, and detected dock pose ``PoseStamped`` topics.
 However, one way or another, your system requires an applicable ``ChargingDock`` or ``NonChargingDock`` plugin for each type of dock you wish to use.
