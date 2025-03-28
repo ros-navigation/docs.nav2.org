@@ -50,7 +50,7 @@ For example, let's say you have a 100 by 200 raster image with a resolution of 0
 The first control point we could select is (0, -200)px -> (0, 0)m. (0, -200)px is the bottom left corner in the pixel frame and (0, 0)m is coordinates in the spatial frame.
 This is the convention of our ROS maps, typically.
 For the second control point we will select the top left corner of the image as the original (0, 0)px. The associated coordinates in the spatial frame can be calculated by using the resolution 
-to convert the pixels to meters. In this case, (0, 0)px -> (0, 10)m. Where 10 m is 200 px* 0.05 m/px. The last control will be the bottom right corner: (200, -200)px -> (5, 0)m. 
+to convert the pixels to meters. In this case, (0, 0)px -> (0, 10)m. Where 10 m is 200 px* 0.05 m/px. The last control will be the bottom right corner: (100, -200)px -> (5, 0)m. 
 
 
 To georeference image select `Raster -> Georefencer`. Set the `Trasformation Settings` to `Linear` for `Transformation 
