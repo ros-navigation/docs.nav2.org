@@ -178,7 +178,8 @@ Click `Ok`. You should now be able to see arrows for each line string. Note that
 
 Click on the edge layer and then on the `Toggle Editing` icon represented as a pencil to start editing the layer. 
 To add edges, click on the `Add Line Feature`. Start adding edges by clicking twice in the main window. 
-(First point is start, second point is end). Press `Esc` when you have finished adding the two points.  
+(First point is start, second point is end). Press right click anywhere when you have finished adding the two points for the prompt to save to come up.
+The edge locations must exactly match up to the node locations, so if Snapping is not already enabled by default, enable it via Views->Toolbars->Snapping Toolbar and depress the Magnet icon.
 
 |
 
