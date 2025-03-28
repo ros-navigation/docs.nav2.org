@@ -139,6 +139,7 @@ This will increment the node `id` by one every time a new node is added. The fir
 Click on the node layer and then select `Toggle Editing` icon represented as a pencil to start editing the layer. 
 To add points, select the `Add Point Feature`. Start adding nodes by clicking in the main window.
 Each time a node is added, a window will pop up with the auto incremented id. Press `OK` to continue placing points.
+Once complete, unselect 'Toggle Editing' and save changes.
 
 |
 
@@ -180,6 +181,7 @@ Click on the edge layer and then on the `Toggle Editing` icon represented as a p
 To add edges, click on the `Add Line Feature`. Start adding edges by clicking twice in the main window. 
 (First point is start, second point is end). Press right click anywhere when you have finished adding the two points for the prompt to save to come up.
 The edge locations must exactly match up to the node locations, so if Snapping is not already enabled by default, enable it via Views->Toolbars->Snapping Toolbar and depress the Magnet icon.
+Once complete, unselect 'Toggle Editing' and save changes.
 
 |
 
