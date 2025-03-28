@@ -23,7 +23,7 @@ Tutorial Steps
 --------------------------
 
 Open QGIS and create a new project by selecting `Project->New`. Save your project by selecting, `Project -> Save As`. 
-Set the project coordinate reference system by selecting `Project->Properties->CRS`. Set the coordinate system to `WGS 84/ Pseudo-Mercator` and click `OK`. 
+Set the project coordinate reference system by selecting `Project->Properties->CRS`. Set the coordinate system to `WGS 84 / Pseudo-Mercator` and click `OK`. 
 
 
 .. note:: 
