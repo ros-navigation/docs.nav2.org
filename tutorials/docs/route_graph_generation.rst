@@ -47,7 +47,8 @@ To correctly set the orgin and the resolution we will georeference the raster im
 To georeference the image, three control points will choosen. Each control point maps a pixel location to the spatial reference. 
 
 For example, let's say you have a 100 by 200 raster image with a resolution of 0.05 and a origin in the bottom left corner.
-The first control point we could select is (0, -200)px -> (0, 0)m. (0, -200)px is the bottom left corner in the pixel frame and (0, 0)m is coordinates in the spatial frame. 
+The first control point we could select is (0, -200)px -> (0, 0)m. (0, -200)px is the bottom left corner in the pixel frame and (0, 0)m is coordinates in the spatial frame.
+This is the convention of our ROS maps, typically.
 For the second control point we will select the top left corner of the image as the original (0, 0)px. The associated coordinates in the spatial frame can be calculated by using the resolution 
 to convert the pixels to meters. In this case, (0, 0)px -> (0, 10)m. Where 10 m is 200 px* 0.05 m/px. The last control will be the bottom right corner: (200, -200)px -> (5, 0)m. 
 
