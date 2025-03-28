@@ -14,7 +14,7 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  string         N/A  
+  string         N/A
   ============== =======
 
   Description
@@ -25,7 +25,7 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  double         10  
+  double         10
   ============== =======
 
   Description

@@ -7,7 +7,7 @@ Invokes the AssistedTeleop ROS 2 action server, which filters teleop twist comma
 collisions. This is used in nav2 Behavior Trees as a recovery behavior or a regular behavior.
 The nav2_behaviors_ module implements the AssistedTeleop action server.
 
-.. _nav2_behaviors: https://github.com/ros-planning/navigation2/tree/main/nav2_behaviors
+.. _nav2_behaviors: https://github.com/ros-navigation/navigation2/tree/main/nav2_behaviors
 
 
 Input Ports
@@ -33,7 +33,7 @@ Input Ports
   ====== =======
 
   Description
-      Time to envoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
+      Time to invoke behavior for, if exceeds considers it a stuck condition or failure case (seconds).
 
 :server_name:
 
@@ -44,7 +44,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server name.
+        Action server name.
 
 :server_timeout:
 
@@ -55,11 +55,34 @@ Input Ports
   ====== =======
 
   Description
-    	Action server timeout (ms).
+        Action server timeout (ms).
+
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A
+  ============== =======
+
+  Description
+        Assisted teleop error code. See ``AssistedTeleop`` action message for the enumerated set of error codes.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A
+  ============== =======
+
+  Description
+        Assisted teleop error message. See ``AssistedTeleop`` action message for the enumerated set of error codes.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10"/>
+  <AssistedTeleop is_recovery="false" server_name="assisted_teleop_server" server_timeout="10"
+                  error_code_id="{assisted_teleop_error_code}" error_msg="{assisted_teleop_error_msg}"/>

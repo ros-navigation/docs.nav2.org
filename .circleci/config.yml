@@ -3,34 +3,34 @@ version: 2.1
 references:
   on_checkout: &on_checkout
     checkout:
-      path: nav2_docs
+      path: .
   setup_doc_dependencies: &setup_doc_dependencies
     run:
       name: Install Doc Dependencies
       command: |
         export DEBIAN_FRONTEND=noninteractive
         apt update
-        apt install make -y
-        apt install doxygen -y
-        apt install graphviz -y
-        apt install ttf-dejavu -y
-        apt install openjdk-8-jre -y
-        apt install bash git openssh-server -y
-        apt install python3-pip python3 -y
-        pip3 install sphinx==3.5.0 docutils==0.14 sphinx_rtd_theme breathe==4.28.0 sphinxcontrib-plantuml jinja2==3.0.3
+        apt install -y \
+          doxygen \
+          git \
+          graphviz \
+          make \
+          openjdk-8-jre \
+          openssh-server \
+          python3-pip \
+          ttf-dejavu
+        pip3 install -r requirements.txt
   make_docs: &make_docs
     run:
       command: |
-        cd nav2_docs
         make html
   store_docs: &store_docs
     store_artifacts:
-        path: nav2_docs/_build/html
+        path: _build/html
         destination: html
   publish_docs: &publish_docs
     run:
       command: |
-        cd nav2_docs
         make publish
   install_deployment_key: &install_deployment_key
     add_ssh_keys:
@@ -56,27 +56,27 @@ executors:
   docs_exec:
     docker:
       - image: ubuntu:focal
-    working_directory: /
+    working_directory: /nav2_docs
 
 jobs:
   docs_build:
     executor: docs_exec
     steps:
-      - install_doc_dependencies
       - *on_checkout
+      - install_doc_dependencies
       - build_docs
       - persist_to_workspace:
-          root: nav2_docs
+          root: .
           paths:
-            - _build 
+            - _build
   docs_publish:
     executor: docs_exec
     steps:
-      - install_doc_dependencies
       - *on_checkout
+      - install_doc_dependencies
       - *install_deployment_key
       - attach_workspace:
-          at: nav2_docs
+          at: .
       - publish_docs_to_gh_pages_branch
 
 workflows:

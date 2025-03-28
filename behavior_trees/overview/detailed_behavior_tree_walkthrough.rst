@@ -26,7 +26,7 @@ Prerequisites
 
     - Read the short explanation in `navigation concepts <../../concepts/index.html>`_
 
-    - Read the general tutorial and guide (not Nav2 specific) on the `BehaviorTree CPP V3 <https://www.behaviortree.dev/>`_ website. Specifically, the "Learn the Basics" section on the BehaviorTree CPP V3 website explains the basic generic nodes that will be used that this guide will build upon.
+    - Read the general tutorial and guide (not Nav2 specific) on the `BehaviorTree CPP V4 <https://www.behaviortree.dev/>`_ website. Specifically, the "Basic Concepts" section on the BehaviorTree CPP V4 website explains the basic generic nodes that will be used that this guide will build upon.
 
 - Become familiar with the custom `Nav2 specific BT nodes <nav2_specific_nodes.html>`_
 
@@ -204,8 +204,9 @@ The only differences in the BT subtree of ``ComputePathToPose`` and ``FollowPath
 
 Recovery Subtree
 ================
+
 The ``Recovery`` subtree is the second big "half" of the Nav2 default ``navigate_to_pose_w_replanning_and_recovery.xml`` tree.
-In short, this subtree is triggered when the ``Navigation`` subtree returns ``FAILURE`` controls the recoveries at the system level (in the case the contextual recoveries in the ``Navigation`` subtree were not sufficient).
+In short, this subtree is triggered when the ``Navigation`` subtree returns ``FAILURE`` and controls the recoveries at the system level (in the case the contextual recoveries in the ``Navigation`` subtree were not sufficient).
 
 |
 
@@ -231,12 +232,12 @@ And the XML snippet:
         </RoundRobin>
     </ReactiveFallback>
 
-The top most parent, ``ReactiveFallback`` controls the flow between the rest of the system wide recoveries, and asynchronously checking if a new goal has been received.
+The top most parent, ``ReactiveFallback`` controls the flow between the rest of the system wide recoveries, and asynchronously checks if a new goal has been received.
 If at any point the goal gets updated, this subtree will halt all children and return ``SUCCESS``. This allows for quick reactions to new goals and preempt currently executing recoveries.
 This should look familiar to the contextual recovery portions of the ``Navigation`` subtree. This is a common BT pattern to handle the situation "Unless 'this condition' happens, Do action A".
 
 These condition nodes can be extremely powerful and are typically paired with ``ReactiveFallback``. It can be easy to imagine wrapping this whole ``navigate_to_pose_w_replanning_and_recovery`` tree
-in a ``ReactiveFallback`` with a ``isBatteryLow`` condition -- meaning the ``navigate_to_pose_w_replanning_and_recovery`` tree will execute *unless* the battery becomes low (and then entire a different subtree for docking to recharge).
+in a ``ReactiveFallback`` with a ``isBatteryLow`` condition -- meaning the ``navigate_to_pose_w_replanning_and_recovery`` tree will execute *unless* the battery becomes low (and then enter a different subtree for docking to recharge).
 
 If the goal is never updated, the behavior tree will go on to the ``RoundRobin`` node. These are the default four system-level recoveries in the BT are:
 
@@ -267,6 +268,3 @@ For example, let's say the robot is stuck and the ``Navigation`` subtree returns
 6. In this hypothetical scenario, let's assume that the ``BackUp`` action allowed the robot to successfully navigate in the ``Navigation`` subtree, and the robot reaches the goal. In this case, the overall BT will still return ``SUCCESS``.
 
 If the ``BackUp`` action was not sufficient enough to allow the robot to become un-stuck, the above logic will go on indefinitely until the ``number_of_retries`` in the parent of the ``Navigate`` subtree and ``Recovery`` subtree is exceeded, or if all the system-wide recoveries in the ``Recovery`` subtree return ``FAILURE`` (this is unlikely, and likely points to some other system failure).
-
-
-

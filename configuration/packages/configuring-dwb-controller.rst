@@ -5,11 +5,11 @@ DWB Controller
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_dwb_controller
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_dwb_controller
 
 The DWB controller is the default controller. It is a fork of `David Lu's
 controller <https://github.com/locusrobotics/robot_navigation/tree/master/dwb_local_planner>`_
-modified for ROS 2.
+modified for ROS 2 using the Dynamic Window Approach.
 
 Controller
 **********
@@ -64,7 +64,7 @@ Example
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5
         min_theta_velocity_threshold: 0.001
-        progress_checker_plugin: "progress_checker"
+        progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
         goal_checker_plugins: ["goal_checker"]
         controller_plugins: ["FollowPath"]
         progress_checker:
@@ -104,6 +104,7 @@ Example
           xy_goal_tolerance: 0.25
           trans_stopped_velocity: 0.25
           short_circuit_trajectory_evaluation: True
+          limit_vel_cmd_in_traj: False
           stateful: True
           critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
           BaseObstacle.scale: 0.02
@@ -116,4 +117,3 @@ Example
           RotateToGoal.scale: 32.0
           RotateToGoal.slowing_factor: 5.0
           RotateToGoal.lookahead_time: -1.0
-

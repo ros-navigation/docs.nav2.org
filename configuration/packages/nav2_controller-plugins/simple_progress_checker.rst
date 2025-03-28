@@ -3,7 +3,7 @@
 SimpleProgressChecker
 =====================
 
-Checks whether the robot has made progress.
+Checks whether the robot has made positional progress.
 
 Parameters
 **********
@@ -31,4 +31,3 @@ Parameters
 
   Description
     Maximum amount of time a robot has to move the minimum radius (s).
-

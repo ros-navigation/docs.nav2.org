@@ -1,15 +1,15 @@
-.. _nav2_specifc_nodes:
+.. _nav2_specific_nodes:
 
 Introduction To Nav2 Specific Nodes
 ===================================
 .. warning::
     Vocabulary can be a large point of confusion here when first starting out.
-        - A ``Node`` when discussing BT is entirely different than a ``Node`` in the ROS2 context
+        - A ``Node`` when discussing BTs is entirely different than a ``Node`` in the ROS 2 context
 
-        - An ``ActionNode`` in the context of BT is not necessarily connected to an Action Server in the ROS2 context (but often it is)
+        - An ``ActionNode`` in the context of BTs is not necessarily connected to an Action Server in the ROS 2 context (but often it is)
 
 There are quite a few custom Nav2 BT nodes that are provided to be used in the Nav2 specific fashion. Some commonly used Nav2 nodes will be described below.
-The full list of custom BT nodes can be found in the `nav2_behavior_tree plugins folder <https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree/plugins>`_.
+The full list of custom BT nodes can be found in the `nav2_behavior_tree plugins folder <https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins>`_.
 The `configuration guide <../../configuration/packages/configuring-bt-xml.html>`_ can also be quite useful.
 
 Action Nodes
@@ -33,12 +33,12 @@ Condition Nodes
 
 * GoalReached - Checks if the goal has been reached
 
-* InitialPoseReceived - Checks to see if a pose on the ``intial_pose`` topic has been received
+* InitialPoseReceived - Checks to see if a pose on the ``initial_pose`` topic has been received
 
 * isBatteryLow - Checks to see if the battery is low by listening on the battery topic
 
-The above list of condition nodes can be used to probe particular aspects of the system. Typically they will return ``SUCCESS`` is ``TRUE`` and ``FAILURE`` when ``FALSE``.
-The key condition that is used in the default Nav2 BT is ``GoalUpdated`` which is checked asynchronously within particular subtrees. This condition node allows for the behavior described as "If the goal has updated, then we must replan".
+The above list of condition nodes can be used to probe particular aspects of the system. Typically they will return ``SUCCESS`` if the condition is true and ``FAILURE`` otherwise.
+The key condition that is used in the default Nav2 BT is ``GoalUpdated`` which is checked asynchronously within particular subtrees. This condition node allows for the behavior described as "If the goal has been updated, then we must replan".
 Condition nodes are typically paired with ReactiveFallback nodes.
 
 Decorator Nodes
@@ -46,13 +46,13 @@ Decorator Nodes
 
 * Distance Controller - Will tick children nodes every time the robot has traveled a certain distance
 
-* Rate Controller - Controls the ticking of it's child node at a constant frequency. The tick rate is an exposed port
+* Rate Controller - Controls the ticking of its child node at a constant frequency. The tick rate is an exposed port
 
 * Goal Updater - Will update the goal of children nodes via ports on the BT
 
-* Single Trigger - Will only tick it's child node once, and will return ``FAILURE`` for all subsequent ticks
+* Single Trigger - Will only tick its child node once, and will return ``FAILURE`` for all subsequent ticks
 
-* Speed Controller - Controls the ticking of it's child node at a rate proportional to the robot's speed
+* Speed Controller - Controls the ticking of its child node at a rate proportional to the robot's speed
 
 Control: PipelineSequence
 -------------------------
@@ -155,13 +155,13 @@ and the second action will be something to be done in case of ``FAILURE`` of the
     </root>
 
 In the above example, let's assume ``ComputePathToPose`` fails. ``ClearLocalCostmap`` will be ticked in response, and return ``SUCCESS``.
-Now that we have cleared the costmap, lets' say the robot is correctly able to compute the path and ``ComputePathToPose`` now returns ``SUCCESS``. Then, the parent RecoveryNode will also return ``SUCCESS`` and the BT will be complete.
+Now that we have cleared the costmap, let's say the robot is correctly able to compute the path and ``ComputePathToPose`` now returns ``SUCCESS``. Then, the parent RecoveryNode will also return ``SUCCESS`` and the BT will be complete.
 
 For additional details regarding the ``RecoveryNode`` please see the `RecoveryNode configuration guide <../../configuration/packages/bt-plugins/controls/RecoveryNode.html>`_.
 
 Control: RoundRobin
 -----------------------
-The RoundRobin control node ticks it's children in a round robin fashion until a child returns ``SUCCESS``, in which the parent node will also return ``SUCCESS``.
+The RoundRobin control node ticks its children in a round robin fashion until a child returns ``SUCCESS``, in which the parent node will also return ``SUCCESS``.
 If all children return ``FAILURE`` so will the parent RoundRobin.
 
 Here is an example BT we will use to walk through the concept.
@@ -215,7 +215,7 @@ Let's assume ``Action_B`` returns ``RUNNING`` this time. That means the parent R
 
 |
 
-4. Upon this next tick,  let's assume that ``Action_B`` returns ``SUCCESS``. The parent RoundRobin will now halt all children and returns ``SUCCESS``.
+4. Upon this next tick,  let's assume that ``Action_B`` returns ``SUCCESS``. The parent RoundRobin will now halt all children and return ``SUCCESS``.
 The parent node retains this state information, and will tick ``Action_C`` upon the next tick rather than start from ``Action_A`` like Step 2 did.
 
 |
@@ -244,4 +244,4 @@ The parent node retains this state information, and will tick ``Action_C`` upon 
 
 |
 
-For additional details regarding the ``RecoveryNode`` please see the `RoundRobin configuration guide <../../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
+For additional details regarding the ``RoundRobin`` please see the `RoundRobin configuration guide <../../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.

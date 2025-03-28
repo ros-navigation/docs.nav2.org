@@ -7,6 +7,7 @@ Using Collision Monitor
 - `Requirements`_
 - `Preparing Nav2 stack`_
 - `Configuring Collision Monitor`_
+- `Configuring Collision Monitor with VelocityPolygon`_
 - `Demo Execution`_
 
 .. image:: images/Collision_Monitor/collision_monitor.gif
@@ -41,16 +42,16 @@ For this setup, the following lines should be added into ``collision_monitor_par
     polygons: ["PolygonStop", "PolygonSlow"]
     PolygonStop:
       type: "polygon"
-      points: [0.4, 0.3, 0.4, -0.3, 0.0, -0.3, 0.0, 0.3]
+      points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
       action_type: "stop"
-      max_points: 3
+      min_points: 4  # max_points: 3 for Humble
       visualize: True
       polygon_pub_topic: "polygon_stop"
     PolygonSlow:
       type: "polygon"
-      points: [0.6, 0.4, 0.6, -0.4, 0.0, -0.4, 0.0, 0.4]
+      points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
       action_type: "slowdown"
-      max_points: 3
+      min_points: 4  # max_points: 3 for Humble
       slowdown_ratio: 0.3
       visualize: True
       polygon_pub_topic: "polygon_slowdown"
@@ -81,24 +82,25 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
         use_sim_time: True
         base_frame_id: "base_footprint"
         odom_frame_id: "odom"
-        cmd_vel_in_topic: "cmd_vel_raw"
+        cmd_vel_in_topic: "cmd_vel_smoothed"
         cmd_vel_out_topic: "cmd_vel"
         transform_tolerance: 0.5
         source_timeout: 5.0
         stop_pub_timeout: 2.0
+        enable_stamped_cmd_vel: True # False for Jazzy or older by default
         polygons: ["PolygonStop", "PolygonSlow"]
         PolygonStop:
           type: "polygon"
-          points: [0.4, 0.3, 0.4, -0.3, 0.0, -0.3, 0.0, 0.3]
+          points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
           action_type: "stop"
-          max_points: 3
+          min_points: 4  # max_points: 3 for Humble
           visualize: True
           polygon_pub_topic: "polygon_stop"
         PolygonSlow:
           type: "polygon"
-          points: [0.6, 0.4, 0.6, -0.4, 0.0, -0.4, 0.0, 0.4]
+          points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
           action_type: "slowdown"
-          max_points: 3
+          min_points: 4  # max_points: 3 for Humble
           slowdown_ratio: 0.3
           visualize: True
           polygon_pub_topic: "polygon_slowdown"
@@ -107,39 +109,126 @@ The whole ``nav2_collision_monitor/params/collision_monitor_params.yaml`` file i
           type: "scan"
           topic: "scan"
 
+Configuring Collision Monitor with VelocityPolygon
+==================================================
+
+.. image:: images/Collision_Monitor/dexory_velocity_polygon.gif
+  :width: 800px
+
+For this part of tutorial, we will set up the Collision Monitor with ``VelocityPolygon`` type for a ``stop`` action. ``VelocityPolygon`` allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking.
+
+In general, here are the steps to configure the Collision Monitor with ``VelocityPolygon`` type:
+
+#. Add a ``VelocityPolygon`` to the ``polygons`` param list
+#. Configure the ``VelocityPolygon``
+#. Specify the ``holonomic`` property of the polygon (default is ``false``)
+#. Start by adding a ``stopped`` sub polygon to cover the full range of the robot's velocity limits in ``velocity_polygons`` list
+#. Add additional sub polygons to the front of the ``velocity_polygons`` list to cover the range of the robot's velocity limits for each type of motion (e.g. rotation, moving forward, moving backward)
+
+In this example, we will consider a **non-holonomic** robot with linear velocity limits of ``-1.0`` to ``1.0`` m/s and angular velocity limits of ``-1.0`` to ``1.0`` rad/s. The ``linear_min`` and ``linear_max`` parameters of the sub polygons should be set to the robot's linear velocity limits, while the ``theta_min`` and ``theta_max`` parameters should be set to the robot's angular velocity limits.
+
+Below is the example configuration using 4 sub-polygons to cover the full range of the robot's velocity limits:
+
+.. code-block:: yaml
+
+    polygons: ["VelocityPolygonStop"]
+    VelocityPolygonStop:
+      type: "velocity_polygon"
+      action_type: "stop"
+      min_points: 6
+      visualize: True
+      enabled: True
+      polygon_pub_topic: "velocity_polygon_stop"
+      velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+      holonomic: false
+      rotation:
+        points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+        linear_min: 0.0
+        linear_max: 0.05
+        theta_min: -1.0
+        theta_max: 1.0
+      translation_forward:
+        points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+        linear_min: 0.0
+        linear_max: 1.0
+        theta_min: -1.0
+        theta_max: 1.0
+      translation_backward:
+        points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+        linear_min: -1.0
+        linear_max: 0.0
+        theta_min: -1.0
+        theta_max: 1.0
+      # This is the last polygon to be checked, it should cover the entire range of robot's velocities
+      # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
+      # is not covered by any of the other sub-polygons
+      stopped:
+        points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+        linear_min: -1.0
+        linear_max: 1.0
+        theta_min: -1.0
+        theta_max: 1.0
+
+.. note::
+  It is recommended to include a ``stopped`` sub polygon as the last entry in the ``velocity_polygons`` list to cover the entire range of the robot's velocity limits. In cases where the velocity is not within the scope of any sub polygons, the Collision Monitor will log a warning message and continue with the previously matched polygon.
+
+.. note::
+  When velocity is covered by multiple sub polygons, the first sub polygon in the list will be used.
+
+**For holomic robots:**
+
+For holomic robots, the ``holonomic`` property should be set to ``true``. In this scenario, the ``linear_min`` and ``linear_max`` parameters should cover the robot's resultant velocity limits, while the ``theta_min`` and ``theta_max`` parameters should cover the robot's angular velocity limits. Additionally, there will be 2 more parameters, ``direction_start_angle`` and ``direction_end_angle``, to specify the resultant velocity direction. The covered direction will always span from ``direction_start_angle`` to ``direction_end_angle`` in the **counter-clockwise** direction.
+
+.. image:: images/Collision_Monitor/holonomic_direction.png
+  :width: 365px
+
+Below shows some common configurations for holonomic robots that cover multiple directions of the resultant velocity:
+
+.. image:: images/Collision_Monitor/holonomic_examples.png
+  :height: 2880px
+
 Preparing Nav2 stack
 ====================
 
 The Collision Monitor is designed to operate below Nav2 as an independent safety node.
-This acts as a filter on the ``cmd_vel`` topic coming out of the Controller Server.
-If no such zone is triggered, then the Controller's ``cmd_vel`` is used.
+It acts as a filter for the ``cmd_vel`` messages from the controller to avoid potential collisions.
+If no such zone is triggered, then the ``cmd_vel`` message is used.
 Else, it is scaled or set to stop as appropriate.
-For correct operation of the Collision Monitor with the Controller, it is required to add the ``cmd_vel -> cmd_vel_raw`` remapping to the ``navigation_launch.py`` bringup script as presented below:
+
+By default, the Collision Monitor is configured for usage with the Nav2 bringup package, running in parallel with the ``navigation_launch.py`` launch file. For correct operation of the Collision Monitor with the Velocity Smoother, it is required to remove the Velocity Smoother's ``cmd_vel_smoothed`` remapping in the ``navigation_launch.py`` bringup script as presented below. This will make the output topic of the Velocity Smoother to be untouched, which will be the input to the newly added Collision Monitor:
 
 .. code-block:: python
 
     Node(
-        package='nav2_controller',
-        executable='controller_server',
+        package='nav2_velocity_smoother',
+        executable='velocity_smoother',
+        name='velocity_smoother',
         output='screen',
         respawn=use_respawn,
         respawn_delay=2.0,
         parameters=[configured_params],
-    +   remappings=remappings + [('cmd_vel', 'cmd_vel_raw')]),
+        arguments=['--ros-args', '--log-level', log_level],
+        remappings=remappings +
+    -           [('cmd_vel', 'cmd_vel_nav'), ('cmd_vel_smoothed', 'cmd_vel')]),
+    +           [('cmd_vel', 'cmd_vel_nav')]),
     ...
     ComposableNode(
-        package='nav2_controller',
-        plugin='nav2_controller::ControllerServer',
-        name='controller_server',
+        package='nav2_velocity_smoother',
+        plugin='nav2_velocity_smoother::VelocitySmoother',
+        name='velocity_smoother',
         parameters=[configured_params],
-    +   remappings=remappings + [('cmd_vel', 'cmd_vel_raw')]),
+        remappings=remappings +
+    -              [('cmd_vel', 'cmd_vel_nav'), ('cmd_vel_smoothed', 'cmd_vel')]),
+    +              [('cmd_vel', 'cmd_vel_nav')]),
 
-Please note, that the remapped ``cmd_vel_raw`` topic should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement.
+If you have changed Collision Monitor's default ``cmd_vel_in_topic`` and ``cmd_vel_out_topic`` configuration, make sure Velocity Smoother's default output topic ``cmd_vel_smoothed`` should match to the input velocity ``cmd_vel_in_topic`` parameter value of the Collision Monitor node, and the output velocity ``cmd_vel_out_topic`` parameter value should be actual ``cmd_vel`` to fit the replacement.
+
+.. note:: As the Collision Monitor acts as a safety node, it must be the last link in the velocity message post-processing chain, making it the node that publishes to the ``cmd_vel`` topic. It could be placed after smoothed velocity, as in our demonstration, or after non-smoothed velocity from Controller Server, e.g. if Velocity Smoother was not enabled in the system, or going after any other module in custom configuration producing the end-velocity. Therefore, in any custom Nav2 launch configuration, the last node publishing to the ``cmd_vel`` topic, should be remapped to publish to the Collision Monitor input topic configured by ``cmd_vel_in_topic`` ROS-parameter (``cmd_vel_smoothed`` by default).
 
 Demo Execution
 ==============
 
-Once Collision Monitor node has been tuned and ``cmd_vel`` topics remapped, Collision Monitor node is ready to run.
+Once Collision Monitor node has been tuned and ``cmd_vel`` topics adjusted, Collision Monitor node is ready to run.
 For that, run Nav2 stack as written in :ref:`getting_started`:
 
 .. code-block:: bash

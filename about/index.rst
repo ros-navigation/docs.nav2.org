@@ -7,7 +7,6 @@ About and Contact
    :hidden:
 
    related_projects.rst
-   ros1_comparison.rst
 
 About
 *****
@@ -19,7 +18,6 @@ This project has been used by researchers, educators, and industry for over 10 y
 There are very few projects that have lasted as long or were as successful as ROS (1) Navigation.
 We would like to thank David Lu!! and Mike Ferguson for their tireless over the span of a decade to keep the Nav Stack alive and well.
 Without their hard work, this project would not have been able to happen.
-If you're interested in a comparison between ROS 1 Navigation and ROS 2 Navigation, see :ref:`ros1_comparison`.
 For a list of robots using Navigation2, see :ref:`robots`.
 
 Aslas, as time moves on, so must we.
@@ -39,41 +37,40 @@ Our current leadership team includes:
 +-------------------+-------------------+-------------------+------------------+
 | Name              | Organization      | GitHub ID         | Current Role     |
 +===================+===================+===================+==================+
-| Steve Macenski    | Samsung Research  | SteveMacenski_    | Project Lead     |
+| Steve Macenski    | Open Navigation   | SteveMacenski_    | Project Lead     |
 +-------------------+-------------------+-------------------+------------------+
 | Ruffin White      | UC San Diego      | ruffsl_           | CI Wizard        |
 +-------------------+-------------------+-------------------+------------------+
 | Joshua Wallace    | Locus Robotics    | JoshuaWallace_    | Main Contributor |
 +-------------------+-------------------+-------------------+------------------+
-| Alexey Merzlyakov | Samsung Research  | AlexeyMerzlyakov_ | Maintainer       |
-+-------------------+-------------------+-------------------+------------------+
-
 
 .. _SteveMacenski: https://github.com/SteveMacenski
 .. _ruffsl: https://github.com/ruffsl
 .. _JoshuaWallace: https://github.com/jwallace42
-.. _AlexeyMerzlyakov: https://github.com/AlexeyMerzlyakov
 
 Our former leadership team includes:
 
-+----------------+-------------------+-----------------+---------------------+
-| Name           | Organization      | GitHub ID       | Role                |
-+================+===================+=================+=====================+
-| Matt Hansen    | Intel Corporation | mkhansen_       | Former Project Lead |
-+----------------+-------------------+-----------------+---------------------+
-| Brian Wilcox   | Intel Corporation | bpwilcox_       | Former Maintainer   |
-+----------------+-------------------+-----------------+---------------------+
-| Carl Delsey    | Intel Corporation | crdelsey_       | Maintainer          |
-+----------------+-------------------+-----------------+---------------------+
++-------------------+-------------------+---------------------+---------------------+
+| Name              | Organization      | GitHub ID           | Role                |
++===================+===================+=====================+=====================+
+| Matt Hansen       | Intel Corporation | mkhansen_           | Former Project Lead |
++-------------------+-------------------+---------------------+---------------------+
+| Brian Wilcox      | Intel Corporation | bpwilcox_           | Former Maintainer   |
++-------------------+-------------------+---------------------+---------------------+
+| Carl Delsey       | Intel Corporation | crdelsey_           | Maintainer          |
++-------------------+-------------------+---------------------+---------------------+
+| Alexey Merzlyakov | Samsung Research  | AlexeyMerzlyakov_   | Maintainer          |
++-------------------+-------------------+---------------------+---------------------+
 
 .. _mkhansen: https://github.com/mkhansen-intel
 .. _bpwilcox: https://github.com/bpwilcox
 .. _crdelsey: https://github.com/crdelsey
+.. _AlexeyMerzlyakov: https://github.com/AlexeyMerzlyakov
 
 Contact
 *******
 
-If you are interested in contacting someone about Navigation, ROS 2, or related projects, please email the project leader.
+If you are interested in contacting someone about Navigation, ROS 2, or related projects, please email the project leader or email info@opennav.org.
 We intentionally make our emails easy to find.
 If your inquiry relates to bugs or open-source feature requests, consider posting a ticket on our GitHub project.
 If your inquiry relates to configuration support or private feature development, reach out and we may be able to connect you with
@@ -81,4 +78,4 @@ independent consultants or contractors that know this project well.
 
 Check out the Navigation 2 Slack_ community.
 
-.. _Slack: https://join.slack.com/t/navigation2/shared_invite/zt-g00k4xwx-~ABwlU1rwHU96OGihC0ESA
+.. _Slack: https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA

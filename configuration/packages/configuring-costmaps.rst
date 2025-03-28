@@ -5,10 +5,10 @@ Costmap 2D
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_costmap_2d
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_costmap_2d
 
-The Costmap 2D package implements a 2D grid-based costmap for environmental representations and a number of sensor processing plugins.
-It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around. 
+The Costmap 2D package implements a 2D grid-based costmap for environmental representations and a number of sensor processing plugins (AI outputs, depth sensor obstacle buffering, semantic information, etc).
+It is used in the planner and controller servers for creating the space to check for collisions or higher cost areas to negotiate around.
 
 Costmap2D ROS Parameters
 ************************
@@ -18,7 +18,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           False   
+  bool           False
   ============== =======
 
   Description
@@ -29,7 +29,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.01   
+  double         0.01
   ============== =======
 
   Description
@@ -40,18 +40,18 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  vector<double> "[]"   
+  vector<double> "[]"
   ============== =======
 
   Description
-    Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters `footprint: "[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]"`.
+    Ordered set of footprint points passed in as a string, must be closed set. For example, the following defines a square base with side lengths of 0.2 meters `footprint: "[ [0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1] ]"`. Note that this can also be adjusted over time using the costmap's ``~/footprint`` topic, which will update the polygon over time as needed due to changes in the robot's state, such as movement of an attached manipulator, picking up a pallet, or other actions that adjust a robot's shape. If this parameter is set, ``isPathValid`` will do full collision checking.
 
 :global_frame:
 
   ============== =======
   Type           Default
   -------------- -------
-  string         "map"   
+  string         "map"
   ============== =======
 
   Description
@@ -62,7 +62,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            5   
+  int            5
   ============== =======
 
   Description
@@ -73,7 +73,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            5   
+  int            5
   ============== =======
 
   Description
@@ -84,29 +84,29 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            100    
+  int            100
   ============== =======
 
   Description
     Minimum cost of an occupancy grid map to be considered a lethal obstacle.
 
-:map_topic:
+:map_vis_z:
 
   ============== =======
   Type           Default
   -------------- -------
-  string         "map"   
+  double         0.0
   ============== =======
 
   Description
-    Topic of map from map_server or SLAM.
+    The height of map, allows to avoid rviz visualization flickering at -0.008
 
 :observation_sources:
 
   ============== =======
   Type           Default
   -------------- -------
-  string         ""   
+  string         ""
   ============== =======
 
   Description
@@ -117,7 +117,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.0   
+  double         0.0
   ============== =======
 
   Description
@@ -128,7 +128,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.0   
+  double         0.0
   ============== =======
 
   Description
@@ -139,7 +139,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         1.0   
+  double         1.0
   ============== =======
 
   Description
@@ -150,7 +150,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.1   
+  double         0.1
   ============== =======
 
   Description
@@ -159,9 +159,9 @@ Costmap2D ROS Parameters
 :robot_base_frame:
 
   ============== ===========
-  Type           Default    
+  Type           Default
   -------------- -----------
-  string         "base_link"   
+  string         "base_link"
   ============== ===========
 
   Description
@@ -172,18 +172,18 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.1   
+  double         0.1
   ============== =======
 
   Description
-    Robot radius to use, if footprint coordinates not provided.
+    Robot radius to use, if footprint coordinates not provided. If this parameter is set, ``isPathValid`` will do circular collision checking.
 
 :rolling_window:
 
   ============== =======
   Type           Default
   -------------- -------
-  bool           False   
+  bool           False
   ============== =======
 
   Description
@@ -194,7 +194,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           False   
+  bool           False
   ============== =======
 
   Description
@@ -205,18 +205,29 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         0.3   
+  double         0.3
   ============== =======
 
   Description
     TF transform tolerance.
+
+:initial_transform_timeout:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  double         60.0
+  ============== =======
+
+  Description
+    Time to wait for the transform from robot base frame to global frame to become available. If exceeded, the  configuration stage is aborted.
 
 :trinary_costmap:
 
   ============== =======
   Type           Default
   -------------- -------
-  bool           True   
+  bool           True
   ============== =======
 
   Description
@@ -227,7 +238,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  int            255    
+  int            255
   ============== =======
 
   Description
@@ -238,7 +249,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         5.0   
+  double         5.0
   ============== =======
 
   Description
@@ -249,7 +260,7 @@ Costmap2D ROS Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           False   
+  bool           False
   ============== =======
 
   Description
@@ -337,6 +348,8 @@ Plugin Parameters
   costmap-plugins/obstacle.rst
   costmap-plugins/voxel.rst
   costmap-plugins/range.rst
+  costmap-plugins/denoise.rst
+  costmap-plugins/plugin_container.rst
 
 Costmap Filters Parameters
 **************************

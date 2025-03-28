@@ -5,7 +5,7 @@ Behavior Tree XML Nodes
 
 The nav2_behavior_tree_ package provides several navigation-specific nodes that are pre-registered and can be included in Behavior Trees.
 
-.. _nav2_behavior_tree: https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree
+.. _nav2_behavior_tree: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree
 
 Check this introduction_ to learn how behavior trees work and the difference between actions, conditions, controls and decorators.
 
@@ -37,9 +37,13 @@ Action Plugins
   bt-plugins/actions/ControllerSelector.rst
   bt-plugins/actions/SmootherSelector.rst
   bt-plugins/actions/GoalCheckerSelector.rst
+  bt-plugins/actions/ProgressCheckerSelector.rst
   bt-plugins/actions/NavigateThroughPoses.rst
   bt-plugins/actions/ComputePathThroughPoses.rst
+  bt-plugins/actions/ComputeCoveragePath.rst
+  bt-plugins/actions/CancelCoverage.rst
   bt-plugins/actions/RemovePassedGoals.rst
+  bt-plugins/actions/RemoveInCollisionGoals.rst
   bt-plugins/actions/CancelControl.rst
   bt-plugins/actions/CancelBackUp.rst
   bt-plugins/actions/CancelSpin.rst
@@ -47,6 +51,9 @@ Action Plugins
   bt-plugins/actions/CancelDriveOnHeading.rst
   bt-plugins/actions/CancelAssistedTeleop.rst
   bt-plugins/actions/Smooth.rst
+  bt-plugins/actions/GetPoseFromPath.rst
+  bt-plugins/actions/DockRobot.rst
+  bt-plugins/actions/UndockRobot.rst
 
 Condition Plugins
 *****************
@@ -58,9 +65,10 @@ Condition Plugins
   bt-plugins/conditions/TransformAvailable.rst
   bt-plugins/conditions/DistanceTraveled.rst
   bt-plugins/conditions/GoalUpdated.rst
-  bt-plugins/conditions/GloballyUpdatedGoal.rst
+  bt-plugins/conditions/GlobalUpdatedGoal.rst
   bt-plugins/conditions/InitialPoseReceived.rst
   bt-plugins/conditions/IsStuck.rst
+  bt-plugins/conditions/IsStopped.rst
   bt-plugins/conditions/TimeExpired.rst
   bt-plugins/conditions/IsBatteryLow.rst
   bt-plugins/conditions/IsPathValid.rst
@@ -69,6 +77,7 @@ Condition Plugins
   bt-plugins/conditions/WouldAControllerRecoveryHelp.rst
   bt-plugins/conditions/WouldAPlannerRecoveryHelp.rst
   bt-plugins/conditions/WouldASmootherRecoveryHelp.rst
+  bt-plugins/conditions/IsBatteryCharging.rst
 
 Control Plugins
 ***************
@@ -92,6 +101,7 @@ Decorator Plugins
   bt-plugins/decorators/GoalUpdater.rst
   bt-plugins/decorators/PathLongerOnApproach.rst
   bt-plugins/decorators/SingleTrigger.rst
+  bt-plugins/decorators/GoalUpdatedController.rst
 
 Example
 *******

@@ -5,11 +5,11 @@ Simple Smoother
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_smoother
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_smoother
 
 The Simple Smoother is a Smoother Server plugin that will take in an input path and smooth it using a simple and fast smoothing technique. It weights the initial path points and the smoothed path points to create a balanced result where the path retains its high level characteristics but reduces oscillations or jagged features.
 
-It is recommended this is paired ONLY with infeasible (e.g. 2D) planners, since this algorithm will break any kinematically feasible conditions. It is recommended users use the Constrained Smoother plugin instead with feasible plans. 
+It is recommended this is paired ONLY with infeasible (e.g. 2D) planners, since this algorithm will break any kinematically feasible conditions. It is recommended users use the Constrained Smoother plugin instead with feasible plans.
 
 Simple Smoother Parameters
 **************************
@@ -17,20 +17,20 @@ Simple Smoother Parameters
 :tolerance:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         1.0e-10   
+  double         1.0e-10
   ============== ===========================
 
   Description
-    Change in parameter values across path to terminate smoothing 
+    Change in parameter values across path to terminate smoothing
 
 :do_refinement:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  bool           True   
+  bool           True
   ============== ===========================
 
   Description
@@ -39,9 +39,9 @@ Simple Smoother Parameters
 :refinement_num:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  int            2   
+  int            2
   ============== ===========================
 
   Description
@@ -50,9 +50,9 @@ Simple Smoother Parameters
 :max_its:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  int            1000   
+  int            1000
   ============== ===========================
 
   Description
@@ -61,9 +61,9 @@ Simple Smoother Parameters
 :w_data:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         0.2   
+  double         0.2
   ============== ===========================
 
   Description
@@ -72,7 +72,7 @@ Simple Smoother Parameters
 :w_smooth:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.3
   ============== ===========================

@@ -21,7 +21,7 @@ Overview
 This tutorial shows how to control and navigate Turtlebot 3 using the ROS 2 Nav2 on a physical Turtlebot 3 robot.
 Before completing this tutorials, completing :ref:`getting_started` is highly recommended especially if you are new to ROS and Nav2.
 
-This tutorial may take about 1 hour to complete. 
+This tutorial may take about 1 hour to complete.
 It depends on your experience with ROS, robots, and what computer system you have.
 
 Requirements
@@ -30,11 +30,17 @@ Requirements
 You must install Nav2, Turtlebot3.
 If you don't have them installed, please follow :ref:`getting_started`.
 
+The turtlebot3 software can be installed via the following or on the `turtlebot3 repository <https://github.com/ROBOTIS-GIT/turtlebot3>`_:
+
+.. code-block:: bash
+
+  sudo apt install ros-<ros2-distro>-turtlebot3 ros-<ros2-distro>-turtlebot3-msgs ros-<ros2-distro>-turtlebot3-bringup
+
 Tutorial Steps
 ==============
 
-0- Setup Your Enviroment Variables
-----------------------------------
+0- Setup Your Environment Variables
+-----------------------------------
 
 Run the following commands first whenever you open a new terminal during this tutorial.
 
@@ -44,7 +50,7 @@ Run the following commands first whenever you open a new terminal during this tu
 1- Launch Turtlebot 3
 ---------------------
 
-You will need to launch your robot's interface,
+You will need to launch your robot's interface, for example:
 
   ``ros2 launch turtlebot3_bringup robot.launch.py  use_sim_time:=False``
 
@@ -54,7 +60,7 @@ You will need to launch your robot's interface,
 You need to have a map of the environment where you want to Navigate Turtlebot 3, or create one live with SLAM.
 
 In case you are interested, there is a use case tutorial which shows how to use Nav2 with SLAM.
-`Nav2 with SLAM <https://github.com/ros-planning/navigation2/blob/main/doc/use_cases/navigation_with_slam.md>`_
+:ref:`navigation2-with-slam`.
 
 Required files:
 
@@ -95,7 +101,7 @@ Then, the map should appear in RViz.
 First, find where the robot is on the map. Check where your robot is in the room.
 
 Set the pose of the robot in RViz.
-Click on the 2D Pose Estimate button and point the location of the robot on the map. 
+Click on the 2D Pose Estimate button and point the location of the robot on the map.
 The direction of the green arrow is the orientation of Turtlebot.
 
 .. image:: images/Navigation2_on_real_Turtlebot3/rviz_set_initial_pose.png
@@ -103,13 +109,13 @@ The direction of the green arrow is the orientation of Turtlebot.
     :align: center
     :alt: Set initial pose in RViz
 
-Now, the 3D model of Turtlebot should move to that location. 
+Now, the 3D model of Turtlebot should move to that location.
 A small error in the estimated location is tolerable.
 
 5-  Send a Goal Pose
 --------------------
 
-Pick a target location for Turtlebot on the map. 
+Pick a target location for Turtlebot on the map.
 You can send Turtlebot 3 a goal position and a goal orientation by using the **Nav2 Goal** or the **GoalTool** buttons.
 
 Note: Nav2 Goal button uses a ROS 2 Action to send the goal and the GoalTool publishes the goal to a topic.

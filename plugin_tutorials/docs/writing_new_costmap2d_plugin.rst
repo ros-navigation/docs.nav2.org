@@ -22,7 +22,7 @@ Before starting the tutorial, please check this `video <https://vimeo.com/106994
 Requirements
 ============
 
-It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Navigation2 project is also built locally as it was made in :ref:`build-instructions`.
+It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in :ref:`build-instructions`.
 
 Tutorial Steps
 ==============
@@ -30,8 +30,8 @@ Tutorial Steps
 1- Write a new Costmap2D plugin
 -------------------------------
 
-For a demonstration, this example will creates a costmap plugin that puts repeating costs gradients in the costmap.
-The annotated code for this tutorial can be found in `navigation2_tutorials <https://github.com/ros-planning/navigation2_tutorials>`_ repository as the ``nav2_gradient_costmap_plugin`` ROS 2-package.
+For a demonstration, this example will create a costmap plugin that puts repeating cost gradients in the costmap.
+The annotated code for this tutorial can be found in `navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials>`_ repository as the ``nav2_gradient_costmap_plugin`` ROS 2-package.
 Please refer to it when making your own layer plugin for Costmap2D.
 
 The plugin class ``nav2_gradient_costmap_plugin::GradientLayer`` is inherited from basic class ``nav2_costmap_2d::Layer``:
@@ -40,10 +40,10 @@ The plugin class ``nav2_gradient_costmap_plugin::GradientLayer`` is inherited fr
 
   namespace nav2_gradient_costmap_plugin
   {
-  
+
   class GradientLayer : public nav2_costmap_2d::Layer
 
-The basic class provides the set of virtual methods API for working with costmap layers in a plugin. These methods are calling in runtime by ``LayeredCostmap``. The list of methods, their description and necessity to have these methods in plugin's code is presented in the table below:
+The basic class provides the set of virtual methods API for working with costmap layers in a plugin. These methods are called at runtime by ``LayeredCostmap``. The list of methods, their description, and necessity to have these methods in plugin's code is presented in the table below:
 
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 | **Virtual method**   | **Method description**                                                     | **Requires override?**  |
@@ -53,15 +53,15 @@ The basic class provides the set of virtual methods API for working with costmap
 |                      | should occur.                                                              |                         |
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 | updateBounds()       | Method is called to ask the plugin: which area of costmap layer it needs   | Yes                     |
-|                      | to update. There are 3 input parameters of method: robot position and      |                         |
-|                      | orientation and 4 output parameters: pointers to window bounds.            |                         |
+|                      | to update. The method has 3 input parameters: robot position and           |                         |
+|                      | orientation, and 4 output parameters: pointers to window bounds.           |                         |
 |                      | These bounds are used for performance reasons: to update the area          |                         |
-|                      | inside the window where is new info available, avoiding updates of whole   |                         |
-|                      | costmap on every iteration.                                                |                         |
+|                      | inside the window where new info is available, avoiding updates of the     |                         |
+|                      | whole costmap on every iteration.                                          |                         |
 +----------------------+----------------------------------------------------------------------------+-------------------------+
 | updateCosts()        | Method is called each time when costmap re-calculation is required. It     | Yes                     |
-|                      | updates the costmap layer only within its bounds window. There are 4 input |                         |
-|                      | parameters of method: calculation window bounds and 1 output parameter:    |                         |
+|                      | updates the costmap layer only within its bounds window. The method has 4  |                         |
+|                      | input parameters: calculation window bounds, and 1 output parameter:       |                         |
 |                      | reference to a resulting costmap ``master_grid``. The ``Layer`` class      |                         |
 |                      | provides the plugin with an internal costmap, ``costmap_``, for updates.   |                         |
 |                      | The ``master_grid`` should be updated with values within the window bounds |                         |
@@ -78,7 +78,7 @@ The basic class provides the set of virtual methods API for working with costmap
 
 In our example these methods have the following functionality:
 
-1. ``GradientLayer::onInitialize()`` contains declaration of ROS parameter with its default value:
+1. ``GradientLayer::onInitialize()`` contains declaration of a ROS parameter with its default value:
 
 .. code-block:: c
 
@@ -123,12 +123,12 @@ These parameters are defined in plugin's header file.
 
 4. ``GradientLayer::onFootprintChanged()`` just resets ``need_recalculation_`` value.
 
-5. ``GradientLayer::reset()`` method is dummy: it is not used in this example plugin. It remaining there since pure virtual function ``reset()`` in parent ``Layer`` class required to be overriden.
+5. ``GradientLayer::reset()`` method is dummy: it is not used in this example plugin. It remains there since pure virtual function ``reset()`` in parent ``Layer`` class required to be overridden.
 
 2- Export and make GradientLayer plugin
 ---------------------------------------
 
-The written plugin will be loaded in runtime as it's basic parent class and then will be called by plugin handling modules (for costmap2d by ``LayeredCostmap``). Pluginlib opens a given plugin in run-time and provides methods from exported classes to be callable. The mechanism of class exporting tells pluginlib which basic class should be used during these calls. This allows to extend an application by plugins without knowing application source code or recompiling it.
+The written plugin will be loaded at runtime as its basic parent class and then will be called by plugin handling modules (for costmap2d by ``LayeredCostmap``). Pluginlib opens a given plugin in run-time and provides methods from exported classes to be callable. The mechanism of class exporting tells pluginlib which basic class should be used during these calls. This allows to extend an application by plugins without knowing application source code or recompiling it.
 
 In our example the ``nav2_gradient_costmap_plugin::GradientLayer`` plugin's class should be dynamically loaded as a ``nav2_costmap_2d::Layer`` basic class. For this the plugin should be registered as follows:
 
@@ -139,9 +139,9 @@ In our example the ``nav2_gradient_costmap_plugin::GradientLayer`` plugin's clas
   #include "pluginlib/class_list_macros.hpp"
   PLUGINLIB_EXPORT_CLASS(nav2_gradient_costmap_plugin::GradientLayer, nav2_costmap_2d::Layer)
 
-This part is usually placed at the end of cpp-file where the plugin class was written (in our example ``gradient_layer.cpp``). It is good practice to place these lines at the end of the file but technically, you can also place at the top.
+This part is usually placed at the end of cpp-file where the plugin class was written (in our example ``gradient_layer.cpp``). It is good practice to place these lines at the end of the file, but technically, you can also place at the top.
 
-2. Plugin's inormation should be stored to plugin description file. This is done by using separate XML (in our example ``gradient_plugins.xml``) in the plugin's package. This file contains information about:
+2. Plugin's information should be stored to the plugin's description file. This is done by using separate XML (in our example ``gradient_plugins.xml``) in the plugin's package. This file contains information about:
 
  - ``path``: Path and name of library where plugin is placed.
  - ``name``: Plugin type referenced in ``plugin_types`` parameter (see next section for more details). It could be whatever you want.
@@ -152,7 +152,7 @@ This part is usually placed at the end of cpp-file where the plugin class was wr
 .. code-block:: xml
 
   <library path="nav2_gradient_costmap_plugin_core">
-    <class name="nav2_gradient_costmap_plugin/GradientLayer" type="nav2_gradient_costmap_plugin::GradientLayer" base_class_type="nav2_costmap_2d::Layer">
+    <class type="nav2_gradient_costmap_plugin::GradientLayer" base_class_type="nav2_costmap_2d::Layer">
       <description>This is an example plugin which puts repeating costs gradients to costmap</description>
     </class>
   </library>
@@ -223,24 +223,25 @@ In this case each plugin object will be handled by its own parameters tree in a 
 .. code-block:: text
 
   gradient_layer_1:
-    plugin: nav2_gradient_costmap_plugin/GradientLayer
+    plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, "/" was used instead of "::"
     enabled: True
     ...
   gradient_layer_2:
-    plugin: nav2_gradient_costmap_plugin/GradientLayer
+    plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, "/" was used instead of "::"
     enabled: False
     ...
+NOTE: the order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.
 
 4- Run GradientLayer plugin
 ---------------------------
 
-Run Turtlebot3 simulation with enabled Nav2. Detailed instructuction how to make it are written at :ref:`getting_started`. Below is shortcut command for that:
+Run Turtlebot3 simulation with enabled Nav2. Detailed instructions how to make it are written at :ref:`getting_started`. Below is shortcut command for that:
 
 .. code-block:: bash
 
   $ ros2 launch nav2_bringup tb3_simulation_launch.py
 
-Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on map as it was described in :ref:`getting_started`. Robot will be localized on map and the result should be as presented at picture below. There is could be seen the gradient costmap. There are also 2 noticeable things: dynamically updated by ``GradientLayer::updateCosts()`` costmap within its bounds and global path curved by gradient:
+Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on map as it was described in :ref:`getting_started`. Robot will be localized on map and the result should be as presented at picture below. There, the gradient costmap can be seen. There are also 2 noticeable things: dynamically updated by ``GradientLayer::updateCosts()`` costmap within its bounds and global path curved by gradient:
 
 .. image:: images/Writing_new_Costmap2D_plugin/gradient_layer_run.png
     :width: 700px

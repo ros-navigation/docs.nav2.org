@@ -5,12 +5,12 @@ Constrained smoother
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_constrained_smoother
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_constrained_smoother
 
 .. _`RoboTech Vision`: https://robotechvision.com/
 
 A smoother plugin for nav2_smoother based on the original deprecated smoother in nav2_smac_planner and put into operational state by `RoboTech Vision`_.
-Suitable for applications which need planned global path to be pushed away from obstacles and/or for Reeds-Shepp motion models.
+Suitable for applications which need planned global path to be pushed away from obstacles and/or for Reeds-Shepp motion models. It optimizes for path length, smoothness, distance from obstacles, and curvature in a large Ceres-based optimization program.
 
 .. _`TruncatePathLocal BT Node`: bt-plugins/actions/TruncatePathLocal.html
 
@@ -31,7 +31,7 @@ Smoother Server Parameters
 :reversing_enabled:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           true
   ============== ===========================
@@ -42,7 +42,7 @@ Smoother Server Parameters
 :path_downsampling_factor:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
@@ -53,7 +53,7 @@ Smoother Server Parameters
 :path_upsampling_factor:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            1
   ============== ===========================
@@ -64,7 +64,7 @@ Smoother Server Parameters
 :keep_start_orientation:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           true
   ============== ===========================
@@ -75,7 +75,7 @@ Smoother Server Parameters
 :keep_goal_orientation:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           true
   ============== ===========================
@@ -86,7 +86,7 @@ Smoother Server Parameters
 :minimum_turning_radius:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.4
   ============== ===========================
@@ -97,7 +97,7 @@ Smoother Server Parameters
 :w_curve:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         30.0
   ============== ===========================
@@ -108,7 +108,7 @@ Smoother Server Parameters
 :w_dist:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.0
   ============== ===========================
@@ -119,7 +119,7 @@ Smoother Server Parameters
 :w_smooth:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         2000000.0
   ============== ===========================
@@ -130,7 +130,7 @@ Smoother Server Parameters
 :w_cost:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.015
   ============== ===========================
@@ -141,7 +141,7 @@ Smoother Server Parameters
 :w_cost_cusp_multiplier:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         3.0
   ============== ===========================
@@ -149,7 +149,7 @@ Smoother Server Parameters
   Description
     Option to use higher weight during forward/reverse direction change, helping optimizer to converge or add an extra obstacle avoidance at these problematic segments.
     Following image depicts improvement of the path with ``w_cost_cusp_multiplier`` (green) compared to one without it (purple). Original path has cyan color.
-    
+
     .. image:: images/constrained_smoother/w_cost_cusp_multiplier.png
         :height: 429px
         :width: 282px
@@ -158,7 +158,7 @@ Smoother Server Parameters
 :cusp_zone_length:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         2.5
   ============== ===========================
@@ -169,7 +169,7 @@ Smoother Server Parameters
 :cost_check_points:
 
   =============== ===========================
-  Type            Default                    
+  Type            Default
   --------------- ---------------------------
   array of double []
   =============== ===========================
@@ -185,11 +185,11 @@ Smoother Server Parameters
         :height: 284px
         :width: 176px
         :align: center
-  
+
 :optimizer.max_iterations:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   int            100
   ============== ===========================
@@ -200,7 +200,7 @@ Smoother Server Parameters
 :optimizer.debug_optimizer:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           false
   ============== ===========================
@@ -211,7 +211,7 @@ Smoother Server Parameters
 :optimizer.linear_solver_type:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   string         "SPARSE_NORMAL_CHOLESKY"
   ============== ===========================
@@ -222,7 +222,7 @@ Smoother Server Parameters
 :optimizer.gradient_tol:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           1e-10
   ============== ===========================
@@ -233,7 +233,7 @@ Smoother Server Parameters
 :optimizer.fn_tol:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           1e-7
   ============== ===========================
@@ -244,7 +244,7 @@ Smoother Server Parameters
 :optimizer.param_tol:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           1e-15
   ============== ===========================

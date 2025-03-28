@@ -4,9 +4,9 @@
 3. Assisted Teleop
 ==================
 
-**Task description** 
+**Task description**
 
-In mobile robot and autonomous vehicle navigation, there are situations where a human driver is required to intervene to get the vehicle out of a sticky situation. This can be both as a backup in case of autonomy failure as well as the primary function of the robot (e.g. telepresence robots). 
+In mobile robot and autonomous vehicle navigation, there are situations where a human driver is required to intervene to get the vehicle out of a sticky situation. This can be both as a backup in case of autonomy failure as well as the primary function of the robot (e.g. telepresence robots).
 
 This project's aim is to create an assisted teleop feature in Nav2 by means of a new behavior tree configuration file (the file that defines the flow of information for the navigation task) and potentially new plugins. This feature should make sure to use the local costmap and/or sensor data in order to avoid obstacles and take position and/or velocity commands to attempt to follow.
 
@@ -31,12 +31,12 @@ This will be an excellent chance to make a substantial new feature in the Nav2 s
 - Mobile robot navigation experience
 - Recommended: Gazebo simulation, ROS navigation, Behavior trees
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
-- `Github ticket <https://github.com/ros-planning/navigation2/issues/2226>`_
-- `Navigation2 <https://navigation.ros.org/>`_
+- `Github ticket <https://github.com/ros-navigation/navigation2/issues/2226>`_
+- `Navigation2 <https://docs.nav2.org/>`_
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.

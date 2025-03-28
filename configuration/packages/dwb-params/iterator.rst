@@ -13,7 +13,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  int  20     
+  int  20
   ==== =======
 
   Description
@@ -24,7 +24,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  int  5     
+  int  5
   ==== =======
 
   Description
@@ -35,7 +35,7 @@ Parameters
   ==== =======
   Type Default
   ---- -------
-  int  20     
+  int  20
   ==== =======
 
   Description

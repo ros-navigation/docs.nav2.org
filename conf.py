@@ -30,7 +30,16 @@ sys.path.insert(0, os.path.abspath('.'))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['breathe', 'sphinx.ext.graphviz', 'sphinxcontrib.plantuml', 'sphinx.ext.extlinks']
+extensions = [
+    'breathe',
+    'myst_parser',
+    'sphinx_copybutton',
+    'sphinx.ext.extlinks',
+    'sphinx.ext.graphviz',
+    'sphinxcontrib.plantuml',
+]
+
+myst_enable_extensions = ['colon_fence']
 
 graphviz_output_format='png'
 graphviz_dot_args=[
@@ -48,15 +57,15 @@ templates_path = ['_templates']
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = ['.rst', '.md']
 
 # The master toctree document.
 master_doc = 'index'
 
 # General information about the project.
-project = u'Navigation 2'
-copyright = u'2020'
-author = u'Various'
+project = u'Nav2'
+copyright = u'2023'
+author = u'Open Navigation LLC'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -75,12 +84,12 @@ version = release = "1.0.0"
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build','_themes','scripts' ]
+exclude_patterns = ['_build','_themes','scripts', 'README.md' ]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -111,7 +120,7 @@ else:
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
     html_theme_options = {
         'canonical_url': '',
-        'analytics_id': '',
+        'analytics_id': 'G-EVD5Z6G6NH',
         'logo_only': False,
         'display_version': True,
         'prev_next_buttons_location': 'None',
@@ -148,7 +157,7 @@ html_context = {
 #
 # html_theme_options = {}
 
-html_logo = 'images/nav2_logo.png'
+html_logo = 'images/nav2_logo_powered.png'
 html_favicon = 'images/nav2_48x48.png'
 
 numfig = True
@@ -190,4 +199,4 @@ breathe_default_project = "SOF Project"
 breathe_default_members = ('members', 'undoc-members', 'content-only')
 
 extlinks = {'projectfile':
-    ('https://github.com/ros-planning/navigation2/blob/main/%s', 'filepath ')}
+    ('https://github.com/ros-navigation/navigation2/blob/main/%s', 'filepath ')}

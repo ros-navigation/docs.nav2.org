@@ -7,7 +7,7 @@ It is used to select the GoalChecker that will be used by the goal_checker serve
 
 Any publisher to this topic needs to be configured with some QoS defined as ``reliable`` and ``transient local``.
 
-.. _bt_navigator: https://github.com/ros-planning/navigation2/tree/main/nav2_bt_navigator
+.. _bt_navigator: https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator
 
 Input Ports
 -----------
@@ -17,18 +17,18 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  string goal_checker_selector  
+  string goal_checker_selector
   ====== =======
 
   Description
-    	The name of the topic used to received select command messages. This is used to support multiple GoalCheckerSelector nodes. 
-      
+    	The name of the topic used to received select command messages. This is used to support multiple GoalCheckerSelector nodes.
+
 :default_goal_checker:
 
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
@@ -43,7 +43,7 @@ Output Ports
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description

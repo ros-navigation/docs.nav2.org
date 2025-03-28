@@ -5,20 +5,32 @@ Velocity Smoother
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_velocity_smoother
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_velocity_smoother
 
 The ``nav2_velocity_smoother`` is a package containing a lifecycle-component node for smoothing velocities sent by Nav2 to robot controllers.
 The aim of this package is to implement velocity, acceleration, and deadband smoothing from Nav2 to reduce wear-and-tear on robot motors and hardware controllers by smoothing out the accelerations/jerky movements that might be present with some local trajectory planners' control efforts.
+It can also interpolate velocity commands at higher rates than the controller server publishes.
 
 See the package's README for more information.
 
 Velocity Smoother Parameters
 ****************************
 
+:use_realtime_priority:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           false
+  ============== =======
+
+  Description
+    Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
+
 :smoothing_frequency:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         20.0
   ============== ===========================
@@ -29,7 +41,7 @@ Velocity Smoother Parameters
 :scale_velocities:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           false
   ============== ===========================
@@ -40,7 +52,7 @@ Velocity Smoother Parameters
 :feedback:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   string         "OPEN_LOOP"
   ============== ===========================
@@ -51,7 +63,7 @@ Velocity Smoother Parameters
 :max_velocity:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [0.5, 0.0, 2.5]
   ============== ===========================
@@ -62,7 +74,7 @@ Velocity Smoother Parameters
 :min_velocity:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [-0.5, 0.0, -2.5]
   ============== ===========================
@@ -73,7 +85,7 @@ Velocity Smoother Parameters
 :deadband_velocity:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [0.0, 0.0, 0.0]
   ============== ===========================
@@ -84,7 +96,7 @@ Velocity Smoother Parameters
 :velocity_timeout:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         1.0
   ============== ===========================
@@ -95,7 +107,7 @@ Velocity Smoother Parameters
 :max_accel:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [2.5, 0.0, 3.2]
   ============== ===========================
@@ -106,7 +118,7 @@ Velocity Smoother Parameters
 :max_decel:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [-2.5, 0.0, -3.2]
   ============== ===========================
@@ -117,7 +129,7 @@ Velocity Smoother Parameters
 :odom_topic:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   string         "odom"
   ============== ===========================
@@ -128,13 +140,38 @@ Velocity Smoother Parameters
 :odom_duration:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.1
   ============== ===========================
 
   Description
     Time (s) to buffer odometry commands to estimate the robot speed, if in ``CLOSED_LOOP`` operational mode.
+
+:enable_stamped_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+    True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
+
+:bond_heartbeat_period:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
 
 Example
 *******
@@ -153,3 +190,5 @@ Example
       max_decel: [-2.5, 0.0, -3.2]
       odom_topic: "odom"
       odom_duration: 0.1
+      use_realtime_priority: false
+      enable_stamped_cmd_vel: false

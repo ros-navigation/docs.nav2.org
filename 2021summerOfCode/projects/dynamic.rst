@@ -5,7 +5,7 @@
 1. Navigation Dynamic Obstacle Integration
 ==========================================
 
-**Task description** 
+**Task description**
 
 The Navigation Stack has long provided robust navigation in a wide range of environments. Controllers have been developed to operate effectively in the presence of dynamic obstacles without explicitly modeling the characteristics of dynamic obstacles. However, as the field has progressed and we see more and more robots using ROS deployed in human-filled spaces, more consideration must be taken with respect to dynamic obstacles such as people, carts, animals, and vehicles.
 
@@ -33,13 +33,13 @@ If time permits, you may also work to also integrate this dynamic information in
 - Geometry and statistics
 - Recommended: Gazebo simulation, machine learning, ROS navigation
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
-- `Starting project <https://github.com/ros-planning/navigation2_dynamic/>`_
+- `Starting project <https://github.com/ros-navigation/navigation2_dynamic/>`_
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
-- `Github ticket <https://github.com/ros-planning/navigation2/issues/1617>`_
-- `Navigation2 <https://navigation.ros.org/>`_
+- `Github ticket <https://github.com/ros-navigation/navigation2/issues/1617>`_
+- `Navigation2 <https://docs.nav2.org/>`_
 - `Some related works <https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf>`_
 
 **Licensing**

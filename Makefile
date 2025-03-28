@@ -8,7 +8,7 @@ else
 endif
 
 # You can set these variables from the command line.
-SPHINXOPTS    ?= -q
+SPHINXOPTS    ?=
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = "Nav2 Documentation"
 SOURCEDIR     = .
@@ -35,6 +35,11 @@ help:
 html:
 	$(Q)$(SPHINXBUILD) -t $(DOC_TAG) -b html -d $(BUILDDIR)/doctrees $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS) $(O)
 
+# Autobuild the docs on changes
+
+autobuild:
+	sphinx-autobuild -t $(DOC_TAG) -b html -d $(BUILDDIR)/doctrees $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS)
+
 # Remove generated content (Sphinx and doxygen)
 
 clean:
@@ -44,7 +49,7 @@ clean:
 # along with a README
 
 publish:
-	git clone --reference . git@github.com:ros-planning/navigation.ros.org.git $(PUBLISHDIR)
+	git clone --reference . git@github.com:open-navigation/docs.nav2.org.git $(PUBLISHDIR)
 	cd $(PUBLISHDIR) && \
 	git checkout gh-pages && \
 	git config user.email "navigation2-ci@circleci.com" && \

@@ -27,7 +27,7 @@ Requirements
 
 2- Image Pipeline need to be built from source in your workspace with:
 
-        ``git clone – b <ros2-distro> git@github.com:ros-perception/image_pipeline.git``
+        ``git clone -b <ros2-distro> git@github.com:ros-perception/image_pipeline.git``
 
 
 **Also, make sure you have the following:**
@@ -184,9 +184,3 @@ Tutorial Steps
        ``tar -xvf calibration.tar.gz``
 
 11-In the folder images used for calibration are available and also “**ost.yaml**” and “**ost.txt**”. You can use the yaml file which contains the calibration parameters as directed by the camera driver.
-
-
-
-
-
-  

@@ -14,7 +14,7 @@ This tutorial shows how to create your own behavior-tree navigator `plugin <http
 
 In this tutorial, we will be reviewing the ``Navigate to Pose`` behavior-tree navigator plugin, which is the foundational navigator of Nav2 and complimentary behavior to ROS 1 Navigation. This completes point-to-point navigation. This tutorial will be reviewing the code and structure as of ROS 2 Iron. While small variations may be made over time, this should be sufficient to get started writing your own navigator if you choose as we do not expect major API changes on this system.
 
-It may be beneficial to write your own Navigator if you have a custom action message definition you'd like to use with Navigation rather than the provided ``NavigateToPose`` or ``NavigateThroughPoses`` interfaces (e.g. doing complete coverage or containing additional constraint information). The role of the Navigators are to extract information from requests to pass to the behavior tree / blackboard, populate feedback and responses, and maintain the state of the behavior tree if relevant. The behavior tree XML will define the actual navigation logic used. 
+It may be beneficial to write your own Navigator if you have a custom action message definition you'd like to use with Navigation rather than the provided ``NavigateToPose`` or ``NavigateThroughPoses`` interfaces (e.g. doing complete coverage or containing additional constraint information). The role of the Navigators are to extract information from requests to pass to the behavior tree / blackboard, populate feedback and responses, and maintain the state of the behavior tree if relevant. The behavior tree XML will define the actual navigation logic used.
 
 Requirements
 ============
@@ -30,30 +30,30 @@ Tutorial Steps
 1- Create a new Navigator Plugin
 --------------------------------
 
-We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in `Nav2s BT Navigator package <https://github.com/ros-planning/navigation2/nav2_bt_navigator>`_ as the ``NavigateToPoseNavigator``. This package can be considered as a reference for writing your own plugin.
+We will be implementing pure point-to-point navigation behavior. The code in this tutorial can be found in `Nav2's BT Navigator package <https://github.com/ros-navigation/navigation2/tree/main/nav2_bt_navigator>`_ as the ``NavigateToPoseNavigator``. This package can be considered as a reference for writing your own plugin.
 
 Our example plugin class ``nav2_bt_navigator::NavigateToPoseNavigator`` inherits from the base class ``nav2_core::BehaviorTreeNavigator``. The base class provides a set of virtual methods to implement a navigator plugin. These methods are called at runtime by the BT Navigator server or as a response to ROS 2 actions to process a navigation request.
 
-Note that this class has itself a base class of ``NavigatorBase``. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. ``on_XYZ``) are implemented for you in ``BehaviorTreeNavigator`` and marked as ``final`` so they are not possible to be overrided by the user. The API that you will be implementing for your navigator are the virtual methods within ``BehaviorTreeNavigator``, not ``NavigatorBase``. These ``on_XYZ`` APIs are implemented in necessary functions in ``BehaviorTreeNavigator`` to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. ``on_configure`` will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined ``configure`` function for any additional user-specific needs).
+Note that this class has itself a base class of ``NavigatorBase``. This class is to provide a non-templated base-class for use in loading the plugins into vectors for storage and calls for basic state transition in the lifecycle node. Its members (e.g. ``on_XYZ``) are implemented for you in ``BehaviorTreeNavigator`` and marked as ``final`` so they are not possible to be overridden by the user. The API that you will be implementing for your navigator are the virtual methods within ``BehaviorTreeNavigator``, not ``NavigatorBase``. These ``on_XYZ`` APIs are implemented in necessary functions in ``BehaviorTreeNavigator`` to handle boilerplate logic regarding the behavior tree and action server to minimize code duplication across the navigator implementations (e.g. ``on_configure`` will create the action server, register callbacks, populate the blackboard with some necessary basic information, and then call a user-defined ``configure`` function for any additional user-specific needs).
 
-The list of methods, and their descriptions, and necessity are presented in the table below:
+The list of methods, their descriptions, and necessity are presented in the table below:
 
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | **Virtual method**        | **Method description**                                                                | **Requires override?** |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | getDefaultBTFilepath()    | Method is called on initialization to retrieve the default BT filepath to use for     | Yes                    |
-|                           | navigation. This may be done via parameters, hardcoded logic, sentinal files, etc.    |                        |
+|                           | navigation. This may be done via parameters, hardcoded logic, sentinel files, etc.    |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | configure()               | Method is called when BT navigator server enters on_configure state. This method      | No                     |
-|                           | should implement operations which are neccessary before navigator goes to an active   |                        |
+|                           | should implement operations which are necessary before navigator goes to an active    |                        |
 |                           | state, such as getting parameters, setting up the blackboard, etc.                    |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | activate()                | Method is called when BT navigator server enters on_activate state. This method       | No                     |
-|                           | should implement operations which are neccessary before navigator goes to an active   |                        |
+|                           | should implement operations which are necessary before navigator goes to an active    |                        |
 |                           | state, such as create clients and subscriptions.                                      |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | deactivate()              | Method is called when BT navigator server enters on_deactivate state.  This           | No                     |
-|                           | method should implement operations which are neccessary before navigator goes to an   |                        |
+|                           | method should implement operations which are necessary before navigator goes to an    |                        |
 |                           | inactive state.                                                                       |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | cleanup()                 | Method is called when BT navigator server goes to on_cleanup state. This method       | No                     |
@@ -70,7 +70,7 @@ The list of methods, and their descriptions, and necessity are presented in the 
 | onPreempt()               | Method is called when a new goal is requesting preemption over the existing           | Yes                    |
 |                           | goal currently being processed. If the new goal is viable, it should make all         |                        |
 |                           | appropriate updates to the BT and blackboard such that this new request may           |                        |
-|                           | immediately start being processed without hard cancelation of the initial task        |                        |
+|                           | immediately start being processed without hard cancellation of the initial task       |                        |
 |                           | (e.g. preemption).                                                                    |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | goalCompleted()           | Method is called when a goal is completed to populate the action result object or     | Yes                    |
@@ -125,7 +125,7 @@ The values of the blackboard IDs are stored alongside the odometry smoother the 
       return true;
     }
 
-In the ``getDefaultBTFilepath()``, we use a parameter ``default_nav_to_pose_bt_xml`` to get the default behavior tree XML file to use if none is provided by the navigation request and to initialize the BT Navigator with a behavior tree hot-loaded. If one is not provided in the parameter files, then we grab a known and reasonable default XML file in the ``nav2_bt_navigator`` package: 
+In the ``getDefaultBTFilepath()``, we use a parameter ``default_nav_to_pose_bt_xml`` to get the default behavior tree XML file to use if none is provided by the navigation request and to initialize the BT Navigator with a behavior tree hot-loaded. If one is not provided in the parameter files, then we grab a known and reasonable default XML file in the ``nav2_bt_navigator`` package:
 
 .. code-block:: c++
 
@@ -208,7 +208,7 @@ If however a goal is preempted (e.g. a new action request comes in while an exis
       }
     }
 
-Note that here you can also see the ``initializeGoalPose`` method called. This method will set the goal parameters for this navigator onto the blackboard and reset important state information to cleanly re-use a behavior tree without old state information, as shown below:
+Note that here you can also see the ``initializeGoalPose`` method called. This method will set the goal parameters for this navigator onto the blackboard and reset important state information to cleanly reuse a behavior tree without old state information, as shown below:
 
 .. code-block:: c++
 
@@ -260,8 +260,8 @@ The final function implemented is ``onLoop``, which is simplified below for tuto
 2- Exporting the navigator plugin
 ---------------------------------
 
-Now that we have created our custom navigator, we need to export our plugin so that it would be visible to the BT Navigator server. 
-Plugins are loaded at runtime, and if they are not visible, then our server won't be able to load it. In ROS 2, exporting and loading 
+Now that we have created our custom navigator, we need to export our plugin so that it would be visible to the BT Navigator server.
+Plugins are loaded at runtime, and if they are not visible, then our server won't be able to load it. In ROS 2, exporting and loading
 plugins is handled by ``pluginlib``.
 
 Coming to our tutorial, class ``nav2_bt_navigator::NavigateToPoseNavigator`` is loaded dynamically as ``nav2_core::NavigatorBase`` which is our base class due to the subtleties previously described.
@@ -269,7 +269,7 @@ Coming to our tutorial, class ``nav2_bt_navigator::NavigateToPoseNavigator`` is 
 1. To export the controller, we need to provide two lines
 
 .. code-block:: c++
- 
+
  #include "pluginlib/class_list_macros.hpp"
  PLUGINLIB_EXPORT_CLASS(nav2_bt_navigator::NavigateToPoseNavigator, nav2_core::NavigatorBase)
 
@@ -280,7 +280,7 @@ It is good practice to place these lines at the end of the file, but technically
 2. The next step would be to create the plugin's description file in the root directory of the package. For example, ``navigator_plugin.xml`` file in our tutorial package. This file contains the following information
 
 - ``library path``: Plugin's library name and it's location.
-- ``class name``: Name of the class.
+- ``class name``: Name of the class (optional). If not set, it will default to the ``class type``.
 - ``class type``: Type of class.
 - ``base class``: Name of the base class.
 - ``description``: Description of the plugin.
@@ -325,19 +325,19 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
         global_frame: map
         robot_base_frame: base_link
         transform_tolerance: 0.1
-        default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml
-        default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml
+        default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
+        default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
         goal_blackboard_id: goal
         goals_blackboard_id: goals
         path_blackboard_id: path
         navigators: ['navigate_to_pose', 'navigate_through_poses']
         navigate_to_pose:
-          plugin: "nav2_bt_navigator/NavigateToPoseNavigator"
+          plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
         navigate_through_poses:
-          plugin: "nav2_bt_navigator/NavigateThroughPosesNavigator"
+          plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
 
 
-In the above snippet, you can observe the mapping of our ``nav2_bt_navigator/NavigateToPoseNavigator`` plugin to its id ``navigate_to_pose``. 
+In the above snippet, you can observe the mapping of our ``nav2_bt_navigator::NavigateToPoseNavigator`` plugin to its id ``navigate_to_pose``.
 To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
 4- Run plugin
@@ -349,6 +349,6 @@ Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to mak
 
   $ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
 
-Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on the map as it was described in :ref:`getting_started`. 
-The robot will localize on the map and then click on the "Nav2 goal" and click on the pose where you want your robot to navigate to. 
+Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on the map as it was described in :ref:`getting_started`.
+The robot will localize on the map and then click on the "Nav2 goal" and click on the pose where you want your robot to navigate to.
 After that navigator will take over with the behavior tree XML file behavior definition provided to it.

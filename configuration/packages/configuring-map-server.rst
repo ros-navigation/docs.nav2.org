@@ -5,7 +5,7 @@ Map Server / Saver
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_map_server
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_map_server
 
 The Map Server implements the server for handling the map load requests for the stack and host a map topic.
 It also implements a map saver server which will run in the background and save maps based on service requests. There exists a map saver CLI similar to ROS 1 as well for a single map save.
@@ -44,7 +44,7 @@ Map Saver Parameters
   ============== =============================
 
   Description
-    Occupied space minimum probability threshhold value for occupancy grid.
+    Occupied space minimum probability threshold value for occupancy grid.
 
 Map Server Parameters
 *********************
@@ -99,6 +99,7 @@ Costmap Filter Info Server Parameters
     - 0: keepout zones / preferred lanes filter
     - 1: speed filter, speed limit is specified in % of maximum speed
     - 2: speed filter, speed limit is specified in absolute value (m/s)
+    - 3: binary filter
 
 :filter_info_topic:
 
@@ -145,6 +146,17 @@ Costmap Filter Info Server Parameters
   Description
     Multiplier of ``OccupancyGrid`` mask value -> filter space value linear conversion which is being proceeded as:
     ``filter_space_value = base + multiplier * mask_value``
+
+:bond_heartbeat_period:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 Example
 *******

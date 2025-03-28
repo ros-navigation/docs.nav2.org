@@ -16,7 +16,7 @@ The controller server generates the appropriate control efforts needed for a rob
 As mentioned before, the planner and controller servers host a map of one or multiple plugins wherein a certain plugin will be used for a certain environment, scenario, or task. For instance, the controller server can have a plugin for following a path when in long corridors to stay in the middle of the aisle, and then another plugin for avoiding dynamic obstacles in a crowded place. Selecting which planning algorithm to execute based on the robot's task can be done through the behavior tree of your navigation system or application server.
 
 .. seealso::
-  For a more in-depth discussion on Navigation Servers, we suggest to have a look at the `Navigation Servers <https://navigation.ros.org/concepts/index.html#navigation-servers>`_ section under the Navigation Concepts category.
+  For a more in-depth discussion on Navigation Servers, we suggest to have a look at the `Navigation Servers <https://docs.nav2.org/concepts/index.html#navigation-servers>`_ section under the Navigation Concepts category.
 
 Selecting the Algorithm Plugins
 *******************************
@@ -24,18 +24,18 @@ Selecting the Algorithm Plugins
 In this section, we discuss some of the available algorithm plugins for the planner and controller servers. We also discuss the purpose of each algorithm, and for which type of robot they are recommended to be used. Lastly, we show some sample yaml configuration that specifies the plugin to be used for each server.
 
 .. note::
-   The algorithm plugins you can use are not limited to the ones mentioned in this section. You may create custom plugins as well and new plugins are added to Nav2 regularly. For tutorials on how to write your own plugins, please see `Writing a New Planner Plugin <https://navigation.ros.org/plugin_tutorials/docs/writing_new_nav2planner_plugin.html>`_  and `Writing a New Controller Plugin <https://navigation.ros.org/plugin_tutorials/docs/writing_new_nav2controller_plugin.html>`_. The list of all available Nav2 plugins and their descriptions can be found in `Navigation Plugins Section <https://navigation.ros.org/plugins/index.html>`_.
+   The algorithm plugins you can use are not limited to the ones mentioned in this section. You may create custom plugins as well and new plugins are added to Nav2 regularly. For tutorials on how to write your own plugins, please see `Writing a New Planner Plugin <https://docs.nav2.org/plugin_tutorials/docs/writing_new_nav2planner_plugin.html>`_  and `Writing a New Controller Plugin <https://docs.nav2.org/plugin_tutorials/docs/writing_new_nav2controller_plugin.html>`_. The list of all available Nav2 plugins and their descriptions can be found in `Navigation Plugins Section <https://docs.nav2.org/plugins/index.html>`_.
 
 Planner Server
 ==============
 
 The algorithm plugins for the planner server find the robot's path using a representation of its environment captured by its different sensors. Some of these algorithms operate by searching through the environment's grid space while others expand the robot's possible states while accounting for path feasibility.
 
-As mentioned, the planner server may utilize plugins that work on the grid space such as the ``NavFn Planner``, ``Smac Planner 2D``, and ``Theta Star Planner``. The `NavFn planner <https://navigation.ros.org/configuration/packages/configuring-navfn.html>`_ is a navigation function planner that uses either Dijkstra or A*.  Next, the `Smac 2D planner <https://navigation.ros.org/configuration/packages/configuring-smac-planner.html>`_ implements a 2D A* algorithm using 4 or 8 connected neighborhoods with a smoother and multi-resolution query. Lastly, the `Theta Star planner <https://navigation.ros.org/configuration/packages/configuring-thetastar.html#>`_ is an implementation of Theta* using either line of sight to create non-discretely oriented path segments.
+As mentioned, the planner server may utilize plugins that work on the grid space such as the ``NavFn Planner``, ``Smac Planner 2D``, and ``Theta Star Planner``. The `NavFn planner <https://docs.nav2.org/configuration/packages/configuring-navfn.html>`_ is a navigation function planner that uses either Dijkstra or A*.  Next, the `Smac 2D planner <https://docs.nav2.org/configuration/packages/configuring-smac-planner.html>`_ implements a 2D A* algorithm using 4 or 8 connected neighborhoods with a smoother and multi-resolution query. Lastly, the `Theta Star planner <https://docs.nav2.org/configuration/packages/configuring-thetastar.html#>`_ is an implementation of Theta* using either line of sight to create non-discretely oriented path segments.
 
 One issue you may encounter when using algorithms that work on the grid space is that there is no guarantee that a drivable path can be generated for any type of robot. For example, it is not guaranteed that the ``NavFn Planner`` can plan a feasible path for a non-circular robot in a tight space since it uses the circular footprint of a robot (by approximating the robot's largest cross-sectional radius) and checks for collisions per costmap grid cell. In addition, these algorithms are also not suitable for ackermann and legged robots since they have turning constraints. That being said, these plugins are best used on robots that can drive in any direction or rotate safely in place, such as **circular differential and circular omnidirectional** robots.
 
-Another planner plugin is the `Smac Hybrid-A* planner <https://navigation.ros.org/configuration/packages/configuring-smac-planner.html>`_ that supports **arbitrary shaped ackermann and legged** robots. It is a highly optimized and fully reconfigurable Hybrid-A* implementation supporting Dubin and Reeds-Shepp motion models. This algorithm expands the robot's candidate paths while considering the robot's minimum turning radius constraint and the robot's full footprint for collision avoidance. Thus, this plugin is suitable for arbitrary shaped robots that require full footprint collision checking. It may also be used for high-speed robots that must be navigated carefully to not flip over, skid, or dump load at high speeds.
+Another planner plugin is the `Smac Hybrid-A* planner <https://docs.nav2.org/configuration/packages/configuring-smac-planner.html>`_ that supports **arbitrary shaped ackermann and legged** robots. It is a highly optimized and fully reconfigurable Hybrid-A* implementation supporting Dubin and Reeds-Shepp motion models. This algorithm expands the robot's candidate paths while considering the robot's minimum turning radius constraint and the robot's full footprint for collision avoidance. Thus, this plugin is suitable for arbitrary shaped robots that require full footprint collision checking. It may also be used for high-speed robots that must be navigated carefully to not flip over, skid, or dump load at high speeds.
 
 There is also the ``Smac Lattice planner`` plugin which is based on a State Lattice planner. This plugin functions by expanding the robot state space while ensuring the path complies with the robot's kinematic constraints. The algorithm provides minimum control sets which allows it to support **differential, omnidirectional, and ackermann** vehicles of any shape and size with minimal reconfiguration.
 
@@ -66,33 +66,39 @@ Example Configuration
       ros__parameters:
         planner_plugins: ['GridBased']
         GridBased:
-          plugin: 'nav2_navfn_planner/NavfnPlanner'
+          plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"
 
-An example configuration of the planner server is shown above. The ``planner_plugins`` parameter accepts a list of mapped planner plugin names. For each plugin namespace defined in ``planner_plugins`` (``GridBased`` in our example), we specify the type of plugin to be loaded in the ``plugin`` parameter. Additional configurations must then be specified in this namespace based on the algorithm to be used. Please see the `Configuration Guide <https://navigation.ros.org/configuration/index.html>`_ for more details.
+An example configuration of the planner server is shown above. The ``planner_plugins`` parameter accepts a list of mapped planner plugin names. For each plugin namespace defined in ``planner_plugins`` (``GridBased`` in our example), we specify the type of plugin to be loaded in the ``plugin`` parameter. Additional configurations must then be specified in this namespace based on the algorithm to be used. Please see the `Configuration Guide <https://docs.nav2.org/configuration/index.html>`_ for more details.
 
 Controller Server
 =================
 
-The default controller plugin is the `DWB controller <https://navigation.ros.org/configuration/packages/configuring-dwb-controller.html>`_. It implements a modified Dynamic Window Approach (DWA) algorithm with configurable plugins to compute the control commands for the robot. This controller makes use of a ``Trajectory Generator plugin`` that generates the set of possible trajectories. These are then evaluated by one or more ``Critic plugins``, each of which may give a different score based on how they are configured. The sum of the scores from these ``Critic plugins`` determine the overall score of a trajectory. The best scoring trajectory then determines the output command velocity.
+The default controller plugin is the `DWB controller <https://docs.nav2.org/configuration/packages/configuring-dwb-controller.html>`_. It implements a modified Dynamic Window Approach (DWA) algorithm with configurable plugins to compute the control commands for the robot. This controller makes use of a ``Trajectory Generator plugin`` that generates the set of possible trajectories. These are then evaluated by one or more ``Critic plugins``, each of which may give a different score based on how they are configured. The sum of the scores from these ``Critic plugins`` determine the overall score of a trajectory. The best scoring trajectory then determines the output command velocity.
 
 The ``DWB controller`` can be used on **circular or non-circular differential, and circular or non-circular omnidirectional** robots. It may also be configured for **ackerman and legged** robots if it is given a ``Trajectory Generation plugin`` that produces a set of possible trajectories that considers the robot's minimum curvature constraint.
 
-Another example of a controller server plugin is the `TEB controller <https://github.com/rst-tu-dortmund/teb_local_planner>`_ which is an MPC time optimal controller. It implements the Timed Elastic Band (TEB) approach which optimizes the robot's trajectory based on its execution time, distance from obstacles, and feasibility with respect to the robot's kinematic constraints. This controller can be used on **differential, omnidirectional, ackermann, and legged** robots.
+Next example of a controller server plugin is the `TEB controller <https://github.com/rst-tu-dortmund/teb_local_planner>`_ which is an MPC time optimal controller. It implements the Timed Elastic Band (TEB) approach which optimizes the robot's trajectory based on its execution time, distance from obstacles, and feasibility with respect to the robot's kinematic constraints. This controller can be used on **differential, omnidirectional, ackermann, and legged** robots.
 
-The last example for this section is the `Regulated Pure Pursuit controller (RPP) <https://navigation.ros.org/configuration/packages/configuring-regulated-pp.html>`_ . This controller implements a variant of the pure pursuit algorithm with added regulation heuristic functions to manage collision and velocity constraints. This variation is implemented to target the needs of service or industrial robots and is suitable for use with **differential, ackermann, and legged** robots.
+Another example for this section is the `Regulated Pure Pursuit controller (RPP) <https://docs.nav2.org/configuration/packages/configuring-regulated-pp.html>`_ . This controller implements a variant of the pure pursuit algorithm with added regulation heuristic functions to manage collision and velocity constraints. This variation is implemented to target the needs of service or industrial robots and is suitable for use with **differential, ackermann, and legged** robots.
+
+The last example is the `Vector Pursuit Controller <https://github.com/blackcoffeerobotics/vector_pursuit_controller>`_ . It implements the `Vector Pursuit algorithm <https://apps.dtic.mil/sti/pdfs/ADA468928.pdf>`_ and calculates the command velocity using screw theory. This controller is suitable for high speed path tracking and sharp turns or when computation resources are limited. It can be used for **differential, ackermann, and legged** robots.
 
 Summary
 -------
 
-+----------------+---------------------------------------------------+----------------------------+
-| Plugin Name    | Supported Robot Types                             | Task                       |
-+================+===================================================+============================+
-| DWB controller | Differential, Omnidirectional                     | Dynamic obstacle avoidance |
-+----------------+---------------------------------------------------+                            |
-| TEB Controller | Differential, Omnidirectional, Ackermann, Legged  |                            |
-+----------------+---------------------------------------------------+----------------------------+
-| RPP controller | Differential, Ackermann, Legged                   | Exact path following       |
-+----------------+---------------------------------------------------+----------------------------+
++-----------------+---------------------------------------------------+----------------------------+
+| Plugin Name     | Supported Robot Types                             | Task                       |
++=================+===================================================+============================+
+| DWB controller  | Differential, Omnidirectional                     | Dynamic obstacle avoidance |
++-----------------+---------------------------------------------------+                            |
+| TEB Controller  | Differential, Omnidirectional, Ackermann, Legged  |                            |
++-----------------+---------------------------------------------------+----------------------------+
+| RPP controller  | Differential, Ackermann, Legged                   | Exact path following       |
++-----------------+---------------------------------------------------+----------------------------+
+| MPPI controller | Differential, Ackermann, Legged, Omnidirectional  | Modern MPC controller      |
++-----------------+---------------------------------------------------+----------------------------+
+| VP controller   | Differential, Ackermann, Legged                   | High speed path tracking   |
++-----------------+---------------------------------------------------+----------------------------+
 
 All of these algorithms work for both circular and non-circular robots.
 
@@ -107,7 +113,7 @@ Example Configuration
         FollowPath:
            plugin: "dwb_core::DWBLocalPlanner"
 
-Shown above is a sample basic configuration of the controller server. The list of mapped names for controller plugins are defined in the ``controller_plugins`` parameter. Similar to the planner server, each namespace defined in the ``controller_plugins`` (``FollowPath`` in our example) must define the type of plugin it will use in the ``plugin`` parameter. Additional configurations must also be made for the selected algorithm in the namespace. Please see the `Configuration Guide <https://navigation.ros.org/configuration/index.html>`_ for more details.
+Shown above is a sample basic configuration of the controller server. The list of mapped names for controller plugins are defined in the ``controller_plugins`` parameter. Similar to the planner server, each namespace defined in the ``controller_plugins`` (``FollowPath`` in our example) must define the type of plugin it will use in the ``plugin`` parameter. Additional configurations must also be made for the selected algorithm in the namespace. Please see the `Configuration Guide <https://docs.nav2.org/configuration/index.html>`_ for more details.
 
 .. note::
    The planner and controller servers, along with the other servers of Nav2, are launched in ROS 2 through lifecycle nodes. Lifecycle nodes allow for easier bringup and teardown of the servers. Lifecycle node management will be discussed in the next tutorial.

@@ -1,11 +1,13 @@
+:orphan:
+
 .. _create_moveit_analog:
 
 1. Create a Configuration Assistant (Analog to MoveIt)
 ======================================================
 
-**Task description** 
+**Task description**
 
-`Moveit <https://moveit.ros.org/>`_ has long has a QT `configuration assistant <http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html>`_. This setup assistent helps the user configure their UDRF and needs to setup MoveIt configuration files.
+`Moveit <https://moveit.ros.org/>`_ has long has a QT `configuration assistant <http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html>`_. This setup assistant helps the user configure their UDRF and needs to setup MoveIt configuration files.
 
 A configuration assistant could be extremely beneficial to Navigation2 users as a way to minimize friction. We should provide a gui tool to cover the following configurations:
 
@@ -41,11 +43,11 @@ After the items are configured, there should be a preview to see how the paramet
 - 3D programming (maybe needed in the preview)
 - Recommended: Gazebo simulation, ROS, and Navigation experience
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
 - `QT <https://www.qt.io/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
-- `Original github issue page <https://github.com/ros-planning/navigation2/issues/1721>`_
+- `Original github issue page <https://github.com/ros-navigation/navigation2/issues/1721>`_
 
 **Licensing**
 - All contributions will be under the Apache 2.0 license.

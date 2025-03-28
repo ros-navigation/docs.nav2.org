@@ -14,18 +14,18 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  double         1  
+  double         1
   ============== =======
 
   Description
     	side size of the square area centered on the robot that will not be cleared on the costmap (all the rest of the costmap will)
-    	
+
 :service_name:
 
   ============== =======
   Type           Default
   -------------- -------
-  string         N/A  
+  string         N/A
   ============== =======
 
   Description
@@ -36,7 +36,7 @@ Input Ports
   ============== =======
   Type           Default
   -------------- -------
-  double         10  
+  double         10
   ============== =======
 
   Description

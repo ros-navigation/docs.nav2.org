@@ -5,7 +5,7 @@ Regulated Pure Pursuit
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_regulated_pure_pursuit_controller
 
 The Regulated Pure Pursuit controller implements a variation on the Pure Pursuit controller that specifically targeting service / industrial robot needs.
 It regulates the linear velocities by curvature of the path to help reduce overshoot at high speeds around blind corners allowing operations to be much more safe.
@@ -15,6 +15,9 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 
 See the package's ``README`` for more complete information.
 
+If you use the Regulated Pure Pursuit Controller algorithm or software from this repository, please cite this work in your papers:
+
+- S. Macenski, S. Singh, F. Martin, J. Gines, `Regulated Pure Pursuit for Robot Path Tracking <https://arxiv.org/abs/2305.20026>`_. Autonomous Robots, 2023.
 
 Regulated Pure Pursuit Parameters
 *********************************
@@ -22,9 +25,9 @@ Regulated Pure Pursuit Parameters
 :desired_linear_vel:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  double         0.5 
+  double         0.5
   ============== ===========================
 
   Description
@@ -33,7 +36,7 @@ Regulated Pure Pursuit Parameters
 :lookahead_dist:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
   double         0.6
   ============== =============================
@@ -44,9 +47,9 @@ Regulated Pure Pursuit Parameters
 :min_lookahead_dist:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.3 
+  double         0.3
   ============== =============================
 
   Description
@@ -55,9 +58,9 @@ Regulated Pure Pursuit Parameters
 :max_lookahead_dist:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.9 
+  double         0.9
   ============== =============================
 
   Description
@@ -66,7 +69,7 @@ Regulated Pure Pursuit Parameters
 :lookahead_time:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
   double         1.5
   ============== =============================
@@ -77,9 +80,9 @@ Regulated Pure Pursuit Parameters
 :rotate_to_heading_angular_vel:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         1.8            
+  double         1.8
   ============== =============================
 
   Description
@@ -88,9 +91,9 @@ Regulated Pure Pursuit Parameters
 :transform_tolerance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.1      
+  double         0.1
   ============== =============================
 
   Description
@@ -99,9 +102,9 @@ Regulated Pure Pursuit Parameters
 :use_velocity_scaled_lookahead_dist:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           false            
+  bool           false
   ============== =============================
 
   Description
@@ -110,31 +113,31 @@ Regulated Pure Pursuit Parameters
 :min_approach_linear_velocity:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.05            
+  double         0.05
   ============== =============================
 
   Description
-    The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be ``> 0.01``. 
+    The minimum velocity (m/s) threshold to apply when approaching the goal to ensure progress. Must be ``> 0.01``.
 
 :approach_velocity_scaling_dist:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.6            
+  double         0.6
   ============== =============================
 
   Description
-    The distance (m) left on the path at which to start slowing down. Should be less than the half the costmap width. 
+    The distance (m) left on the path at which to start slowing down. Should be less than the half the costmap width.
 
 :use_collision_detection:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           true           
+  bool           true
   ============== =============================
 
   Description
@@ -143,9 +146,9 @@ Regulated Pure Pursuit Parameters
 :max_allowed_time_to_collision_up_to_carrot:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         1.0          
+  double         1.0
   ============== =============================
 
   Description
@@ -154,9 +157,9 @@ Regulated Pure Pursuit Parameters
 :use_regulated_linear_velocity_scaling:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           true           
+  bool           true
   ============== =============================
 
   Description
@@ -165,9 +168,9 @@ Regulated Pure Pursuit Parameters
 :use_cost_regulated_linear_velocity_scaling:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           true            
+  bool           true
   ============== =============================
 
   Description
@@ -176,31 +179,31 @@ Regulated Pure Pursuit Parameters
 :regulated_linear_scaling_min_radius:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.90       
+  double         0.90
   ============== =============================
 
   Description
-    The turning radius (m) for which the regulation features are triggered when ``use_regulated_linear_velocity_scaling`` is ``tru``. Remember, sharper turns have smaller radii.
+    The turning radius (m) for which the regulation features are triggered when ``use_regulated_linear_velocity_scaling`` is ``true``. Remember, sharper turns have smaller radii.
 
 :regulated_linear_scaling_min_speed:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.25            
+  double         0.25
   ============== =============================
 
   Description
-    The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be ``> 0.1``. 
+    The minimum speed (m/s) for which any of the regulated heuristics can send, to ensure process is still achievable even in high cost spaces with high curvature. Must be ``> 0.1``.
 
 :use_fixed_curvature_lookahead:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  bool           false                        
+  bool           false
   ============== =============================
 
   Description
@@ -209,9 +212,9 @@ Regulated Pure Pursuit Parameters
 :curvature_lookahead_dist:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.6            
+  double         0.6
   ============== =============================
 
   Description
@@ -220,35 +223,33 @@ Regulated Pure Pursuit Parameters
 :use_rotate_to_heading:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           true            
+  bool           true
   ============== =============================
 
   Description
-    Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place. 
+    Whether to enable rotating to rough heading and goal orientation when using holonomic planners. Recommended on for all robot types that can rotate in place.
 
     Note: both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time as it would result in ambiguous situations.
 
 :allow_reversing:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  bool           false            
+  bool           false
   ============== =============================
 
   Description
     Enables the robot to drive in the reverse direction, when the path planned involves reversing (which is represented by orientation cusps). Variants of the smac_planner comes with the support of reversing. Checkout the :ref:`configuring_smac_planner` to know more.
 
-    Note: both ``use_rotate_to_heading`` and ``allow_reversing`` cannot be set to ``true`` at the same time as it would result in ambiguous situations.
-
 :rotate_to_heading_min_angle:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.785            
+  double         0.785
   ============== =============================
 
   Description
@@ -257,13 +258,35 @@ Regulated Pure Pursuit Parameters
 :max_angular_accel:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         3.2          
+  double         3.2
   ============== =============================
 
   Description
     Maximum allowable angular acceleration (rad/s/s) while rotating to heading, if ``use_rotate_to_heading`` is ``true``.
+
+:use_cancel_deceleration:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           false
+  ============== =============================
+
+  Description
+    Whether to use deceleration when the goal is canceled.
+
+:cancel_deceleration:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         3.2
+  ============== =============================
+
+  Description
+    Linear deceleration (m/s/s) to apply when the goal is canceled.
 
 :max_robot_pose_search_dist:
 
@@ -276,16 +299,18 @@ Regulated Pure Pursuit Parameters
   Description
     Upper bound on integrated distance along the global plan to search for the closest pose to the robot pose. This should be left as the default unless there are paths with loops and intersections that do not leave the local costmap, in which case making this value smaller is necessary to prevent shortcutting. If set to ``-1``, it will use the maximum distance possible to search every point on the path for the nearest path point.
 
-:use_interpolation:
+:interpolate_curvature_after_goal:
 
   ============== =============================
-  Type           Default                      
+  Type           Default
   -------------- -----------------------------
-  bool           true                         
+  bool           false
   ============== =============================
 
   Description
-    Enable linear interpolation between poses for lookahead point selection. Leads to smoother commanded linear and angular velocities.
+    Interpolate a carrot after the goal dedicated to the curvate calculation (to avoid oscilaltions at the end of the path). For visualization, it will be published on the ``/curvature_lookahead_point`` topic similarly to ``/lookahead_point``
+
+    Note: Needs ``use_fixed_curvature_lookahead`` to be ``true``
 
 Example
 *******
@@ -298,7 +323,7 @@ Example
       min_x_velocity_threshold: 0.001
       min_y_velocity_threshold: 0.5
       min_theta_velocity_threshold: 0.001
-      progress_checker_plugin: "progress_checker"
+      progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
       goal_checker_plugins: ["goal_checker"]
       controller_plugins: ["FollowPath"]
 
@@ -336,4 +361,3 @@ Example
         rotate_to_heading_min_angle: 0.785
         max_angular_accel: 3.2
         max_robot_pose_search_dist: 10.0
-        use_interpolation: false

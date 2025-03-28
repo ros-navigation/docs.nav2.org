@@ -5,10 +5,11 @@ Controller Server
 
 Source code on Github_.
 
-.. _Github: https://github.com/ros-planning/navigation2/tree/main/nav2_controller
+.. _Github: https://github.com/ros-navigation/navigation2/tree/main/nav2_controller
 
 The Controller Server implements the server for handling the controller requests for the stack and host a map of plugin implementations.
 It will take in path and plugin names for controller, progress checker and goal checker to use and call the appropriate plugins.
+It also hosts the local costmap.
 
 Parameters
 **********
@@ -18,18 +19,65 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         20.0   
+  double         20.0
   ============== =======
 
   Description
     Frequency to run controller (Hz).
 
+:costmap_update_timeout:
+
+  ============== ========
+  Type           Default
+  -------------- --------
+  double         0.3
+  ============== ========
+
+  Description
+    The timeout value (seconds) for the costmap to be fully updated before a control effort can be computed.
+
+:use_realtime_priority:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           false
+  ============== =======
+
+  Description
+    Adds soft real-time prioritization to the controller server to better ensure resources to time sensitive portions of the codebase. This will set the controller's execution thread to a higher priority than the rest of the system (``90``) to meet scheduling deadlines to have less missed loop rates. To use this feature, you use set the following inside of ``/etc/security/limits.conf`` to give userspace access to elevated prioritization permissions: ``<username> soft rtprio 99 <username> hard rtprio 99``
+
+:publish_zero_velocity:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           true
+  ============== =======
+
+  Description
+    Whether to publish a zero velocity command on goal exit. This is useful for stopping the robot when a goal terminates.
+
+:action_server_result_timeout:
+
+  ====== ======= =======
+  Type   Default Unit
+  ------ ------- -------
+  double 10.0    seconds
+  ====== ======= =======
+
+  Description
+    The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
+    15 minutes in rcl but was changed to 10 seconds in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_, which may be less than
+    some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline.
+    This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround
+
 :controller_plugins:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  vector<string> ['FollowPath']            
+  vector<string> ['FollowPath']
   ============== ==============
 
   Description
@@ -49,16 +97,16 @@ Parameters
               plugin: "dwb_core::DWBLocalPlanner"
     ..
 
-:progress_checker_plugin:
+:progress_checker_plugins:
 
   ============== ==============
   Type           Default
   -------------- --------------
-  string         'progress_checker'
+  vector<string> ["progress_checker"]
   ============== ==============
 
   Description
-    Mapped name for progress checker plugin for checking progress made by robot.
+    Mapped name for progress checker plugin for checking progress made by robot. Formerly ``progress_checker_plugin`` for Humble and older with a single string plugin.
 
   Note
     The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
@@ -69,21 +117,21 @@ Parameters
 
         controller_server:
           ros__parameters:
-            progress_checker_plugin: "progress_checker"
+            progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
             progress_checker:
               plugin: "nav2_controller::SimpleProgressChecker"
     ..
 
 :goal_checker_plugins:
 
-  ============== ==============
+  ============== ================
   Type           Default
-  -------------- --------------
-  string         'goal_checker'
-  ============== ==============
+  -------------- ----------------
+  vector<string> ["goal_checker"]
+  ============== ================
 
   Description
-    Mapped name for goal checker plugin for checking goal is reached.
+    Mapped name for goal checker plugin for checking goal is reached. When the number of the plugins is more than 2, each :code:`FollowPath` action needs to specify the goal checker plugin name with its :code:`goal_checker_id` field.
 
   Note
     The plugin namespace defined needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
@@ -101,9 +149,9 @@ Parameters
 :min_x_velocity_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0001            
+  double         0.0001
   ============== =============================
 
   Description
@@ -113,9 +161,9 @@ Parameters
 :min_y_velocity_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0001            
+  double         0.0001
   ============== =============================
 
   Description
@@ -125,21 +173,21 @@ Parameters
 :min_theta_velocity_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0001            
+  double         0.0001
   ============== =============================
 
   Description
     The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
     Odometry values below this threshold (in rad/s) will be set to 0.0.
-    
+
 :failure_tolerance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0           
+  double         0.0
   ============== =============================
 
   Description
@@ -155,7 +203,7 @@ Parameters
   ============== =============================
 
   Description
-    Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to :ref:`speed_filter` configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish `these messages <https://github.com/ros-planning/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_.
+    Speed limiting topic name to subscribe. This could be published by Speed Filter (please refer to :ref:`speed_filter` configuration page). You can also use this without the Speed Filter as well if you provide an external server to publish `these messages <https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_.
 
 :odom_topic:
 
@@ -168,6 +216,29 @@ Parameters
   Description
     Topic to get instantaneous measurement of speed from.
 
+:enable_stamped_cmd_vel:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
+    True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
+
+:bond_heartbeat_period:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description
+    The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
 Provided Plugins
 ****************
@@ -177,13 +248,14 @@ Provided Plugins
   :maxdepth: 1
 
   nav2_controller-plugins/simple_progress_checker.rst
+  nav2_controller-plugins/pose_progress_checker.rst
   nav2_controller-plugins/simple_goal_checker.rst
   nav2_controller-plugins/stopped_goal_checker.rst
 
 Default Plugins
 ***************
 
-When the :code:`progress_checker_plugin`, :code:`goal_checker_plugin` or :code:`controller_plugins` parameters are not overridden, the following default plugins are loaded:
+When the :code:`progress_checker_plugins`, :code:`goal_checker_plugin` or :code:`controller_plugins` parameters are not overridden, the following default plugins are loaded:
 
   ================== =====================================================
   Namespace          Plugin
@@ -203,13 +275,14 @@ Example
       ros__parameters:
         use_sim_time: True
         controller_frequency: 20.0
+        costmap_update_timeout: 0.3
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5
         min_theta_velocity_threshold: 0.001
         failure_tolerance: 0.3
         odom_topic: "odom"
-        progress_checker_plugin: "progress_checker"
-        goal_checker_plugin: "goal_checker"
+        progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
+        goal_checker_plugins: ["goal_checker"] # goal_checker_plugin: "goal_checker" For Galactic and older
         controller_plugins: ["FollowPath"]
         progress_checker:
           plugin: "nav2_controller::SimpleProgressChecker"

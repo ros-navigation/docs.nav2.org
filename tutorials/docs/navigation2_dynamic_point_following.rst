@@ -38,7 +38,7 @@ The requirements for this task are as follows:
 - The configuration of the planner and the controller will not be modified.
 - The action will indefinitely run until it is canceled by who initiated it.
 
-The detection of the dynamic object (like a person) to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest, 
+The detection of the dynamic object (like a person) to follow is outside the scope of this tutorial. As shown in the following diagram, your application should provide a detector for the object(s) of interest,
 send the initial pose to the ``NavigateToPose`` action, and update it on a topic for the duration of the task. Many different types of detectors exist that you can leverage for this application:
 
 
@@ -83,7 +83,7 @@ First, let's make this behavior run until there's a failure. For this purpose, w
     </BehaviorTree>
   </root>
 
-We will then use the decorator ``GoalUpdater`` to accept updates of the dynamic object pose we're trying to follow. This node takes as input the current goal and subscribes to the topic ``/goal_update``. It set the new goal as ``updated_goal`` if a new goal on that topic is received.
+We will then use the decorator ``GoalUpdater`` to accept updates of the dynamic object pose we're trying to follow. This node takes as input the current goal and subscribes to the topic ``/goal_update``. It sets the new goal as ``updated_goal`` if a new goal on that topic is received.
 
 .. code-block:: xml
 
@@ -126,13 +126,13 @@ To stay at a certain distance from the target, we will use the action node ``Tru
 
 Now, you may save this behavior tree and use it in our navigation task.
 
-For reference, this exact behavior tree is `made available <https://github.com/ros-planning/navigation2/blob/main/nav2_bt_navigator/behavior_trees/follow_point.xml>`_ to you batteries included in the ``nav2_bt_navigator`` package.
+For reference, this exact behavior tree is `made available <https://github.com/ros-navigation/navigation2/blob/main/nav2_bt_navigator/behavior_trees/follow_point.xml>`_ to you batteries included in the ``nav2_bt_navigator`` package.
 
 1- Setup Rviz clicked point
 ---------------------------
 
 We are going to use RViz instead of a full application so you can test at home without finding a detector to get started. We will use the "clicked point" button on the toolbar to substitute object detections to provide goal updates to Nav2. This button allows you to
-publish coordinates in the topic ``/clicked_point``. This point needs to be sent to the behavior tree, using the program ``clicked_point_to_pose``, from `this repo <https://github.com/fmrico/nav2_test_utils>`_. Clone 
+publish coordinates in the topic ``/clicked_point``. This point needs to be sent to the behavior tree, using the program ``clicked_point_to_pose``, from `this repo <https://github.com/fmrico/nav2_test_utils>`_. Clone
 this repo in your workspace, build, and type in a terminal.
 
 ``ros2 run nav2_test_utils clicked_point_to_pose``
@@ -144,7 +144,7 @@ Optionally, you can remap this topic in your rviz configuration file to ``goal_u
 
 Start Nav2 in one terminal:
 
-``ros2 launch nav2_bringup tb3_simulation_launch.py default_bt_xml_filename:=/path/to/bt.xml``
+``ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False``
 
 Open RViz and, after initialize the robot position, command the robot to navigate to any position. Use the button clicked point to simulate a new detection of the object of interest, as shown in the video in the head of this tutorial.
 

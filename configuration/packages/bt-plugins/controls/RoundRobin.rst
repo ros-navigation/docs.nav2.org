@@ -4,7 +4,7 @@
 RoundRobin
 ==========
 
-Custom control flow node used to create a round-robbin behavior for children BT nodes.
+Custom control flow node used to create a round-robin behavior for children BT nodes.
 
 Example
 -------

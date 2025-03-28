@@ -14,6 +14,7 @@ the best navigation performance.
    packages/configuring-costmaps.rst
    packages/configuring-lifecycle.rst
    packages/configuring-planner-server.rst
+   packages/configuring-coverage-server.rst
    packages/configuring-navfn.rst
    packages/configuring-smac-planner.rst
    packages/configuring-thetastar.rst
@@ -22,6 +23,7 @@ the best navigation performance.
    packages/configuring-regulated-pp.rst
    packages/configuring-mppic.rst
    packages/configuring-rotation-shim-controller.rst
+   packages/configuring-graceful-motion-controller.rst
    packages/configuring-map-server.rst
    packages/configuring-amcl.rst
    packages/configuring-behavior-server.rst
@@ -32,3 +34,5 @@ the best navigation performance.
    packages/configuring-velocity-smoother.rst
    packages/configuring-collision-monitor.rst
    packages/configuring-waypoint-follower.rst
+   packages/configuring-loopback-sim.rst
+   packages/configuring-docking-server.rst

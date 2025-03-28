@@ -1,11 +1,11 @@
 
-.. _spinners:
+.. _twist:
 
 
 8. Convert Twist to TwistStamped in Ecosystem and Run-Time Configuration
 ========================================================================
 
-**Task description** 
+**Task description**
 
 This project is comprised of 2 smaller projects that can be easily worked on in parallel.
 
@@ -18,7 +18,7 @@ Once you've created a list of places in the ecosystem where it is used, your pro
 
 Subproject B: Run-time Reconfiguration of Parameters
 
-In the meantime while you're waiting for PRs to be merged or blocked by reviews on converting all of the ecosystems ``cmd_vel`` use of ``Twist`` to ``TwistStamped``, your project will be to enable run-time reconfiguration of the major parameters in Nav2. In ROS 2 this is done via the parameter change event callbacks. See tickets below for a list of plugins or servers needing dynamically reconfigurable parameter support added. 
+In the meantime while you're waiting for PRs to be merged or blocked by reviews on converting all of the ecosystems ``cmd_vel`` use of ``Twist`` to ``TwistStamped``, your project will be to enable run-time reconfiguration of the major parameters in Nav2. In ROS 2 this is done via the parameter change event callbacks. See tickets below for a list of plugins or servers needing dynamically reconfigurable parameter support added.
 
 
 **Project difficulty: Medium**
@@ -37,13 +37,13 @@ In the meantime while you're waiting for PRs to be merged or blocked by reviews 
 - C++, Python3
 - ROS 2
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
 - `ROS <https://www.ros.org/>`_
 - `Gazebo Simulator <http://gazebosim.org/>`_
-- `Github ticket <https://github.com/ros-planning/navigation2/issues/956>`_
-- `Github ticket2 <https://github.com/ros-planning/navigation2/issues/1594>`_
-- `Navigation2 <https://navigation.ros.org/>`_
+- `Github ticket <https://github.com/ros-navigation/navigation2/issues/956>`_
+- `Github ticket2 <https://github.com/ros-navigation/navigation2/issues/1594>`_
+- `Navigation2 <https://docs.nav2.org/>`_
 - `Some related works <https://alyssapierson.files.wordpress.com/2018/05/pierson2018.pdf>`_
 
 **Licensing**
