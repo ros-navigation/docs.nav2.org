@@ -1229,14 +1229,15 @@ For more information about coordinate reference systems please review <a class="
 <div class="section" id="setup-coordinate-system">
 <h3>2- Setup Coordinate System<a class="headerlink" href="#setup-coordinate-system" title="Permalink to this heading"></a></h3>
 <p>By default, the imported raster image origin will be at the top left corner, with x pointing to the right, and y pointing up.
-To correctly set the orgin and the resolution we will georeference the raster image.
-To georeference the image, three control points will choosen. Each control point maps a pixel location to the spatial reference.</p>
+To correctly set the origin and the resolution we will georeference the raster image.
+To georeference the image, three control points will chosen. Each control point maps a pixel location to the spatial reference.</p>
 <p>For example, let’s say you have a 100 by 200 raster image with a resolution of 0.05 and a origin in the bottom left corner.
 The first control point we could select is (0, -200)px -&gt; (0, 0)m. (0, -200)px is the bottom left corner in the pixel frame and (0, 0)m is coordinates in the spatial frame.
 This is the convention of our ROS maps, typically.
 For the second control point we will select the top left corner of the image as the original (0, 0)px. The associated coordinates in the spatial frame can be calculated by using the resolution
-to convert the pixels to meters. In this case, (0, 0)px -&gt; (0, 10)m. Where 10 m is 200 px* 0.05 m/px. The last control will be the bottom right corner: (100, -200)px -&gt; (5, 0)m.</p>
-<p>To georeference image select <cite>Raster -&gt; Georefencer</cite>. Set the <cite>Trasformation Settings</cite> to <cite>Linear</cite> for <cite>Transformation
+to convert the pixels to meters. In this case, (0, 0)px -&gt; (0, 10)m. Where 10 m is 200 px* 0.05 m/px. The last control will be the bottom right corner: (100, -200)px -&gt; (5, 0)m.
+It is recommended to set the origin of your map to the lower left corner of the image (<code class="docutils literal notranslate"><span class="pre">[0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0]</span></code> in your <code class="docutils literal notranslate"><span class="pre">map.yaml</span></code>), to make this process easier.</p>
+<p>To georeference image select <cite>Raster -&gt; Georefencer</cite>. Set the <cite>Transformation Settings</cite> to <cite>Linear</cite> for <cite>Transformation
 type</cite>, <cite>WGS 84/ Pseudo-Mercator</cite> for <cite>Target SRS</cite> and set your desired path for the <cite>Output Raster</cite>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1248,7 +1249,7 @@ type</cite>, <cite>WGS 84/ Pseudo-Mercator</cite> for <cite>Target SRS</cite> an
 <div class="line"><br /></div>
 </div>
 <p>Select the raster image you wish to georeference and place control point by selecting <cite>Add Point</cite> and clicking on the raster image.
-The control points can be modified by clicking on the control point table and typing in new values. Once you are satified with your control points, apply the transformation
+The control points can be modified by clicking on the control point table and typing in new values. Once you are satisfied with your control points, apply the transformation
 by selecting <cite>Start Transformation</cite>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1324,7 +1325,7 @@ Once complete, unselect ‘Toggle Editing’ and save changes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>By default, if a is node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual
-or multiple nodes are deleted. Any node that is added will continue to increment based on the highest id, to ensure existing node are not automatically renumbered, breaking user implicit knowledge about the structure of the graph. This value can be overwriten by the user
+or multiple nodes are deleted. Any node that is added will continue to increment based on the highest id, to ensure existing node are not automatically renumbered, breaking user implicit knowledge about the structure of the graph. This value can be overwritten by the user
 though the pop window after node placement or though the <cite>Attribute Table</cite>. To delete features in a layer right click on the layer and select <cite>Open Attribute Table</cite>.
 Click on <cite>Target Multi Edit Mode</cite>, select the features to delete, and click on the trash can icon.</p>
 </div>
@@ -1333,7 +1334,7 @@ Click on <cite>Target Multi Edit Mode</cite>, select the features to delete, and
 <h3>4- Add Edges<a class="headerlink" href="#add-edges" title="Permalink to this heading"></a></h3>
 <p>Now an edge layer can be created. Select <cite>Layer -&gt; Create Layer -&gt; New ShapeFile Layer</cite>. Set the shapefile layer setting to be
 <cite>edges</cite> for the <cite>File name</cite>, <cite>LineString</cite> for the <cite>Geometry type</cite> and <cite>WGS 84/ Pseudo-Mercator</cite> for the coordinate system. Press <cite>OK</cite>.
-To auto incrment the <cite>id</cite> field follow the same steps as above except replace <cite>increment_node_id.json</cite> with <cite>increment_edge_id.json</cite>.
+To auto increment the <cite>id</cite> field follow the same steps as above except replace <cite>increment_node_id.json</cite> with <cite>increment_edge_id.json</cite>.
 This will increment the edge <cite>id</cite> by one every time a new edge is added. The first edge <cite>id</cite> will be <cite>10000</cite>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1388,8 +1389,8 @@ within the scripts directory located in the nav2_route module. This script conve
 <div class="section" id="congratulations">
 <h3>7- Congratulations<a class="headerlink" href="#congratulations" title="Permalink to this heading"></a></h3>
 <p>Your graph is ready to be consumed by the nav2 route! If you wish to add nodes or edges to your graph,
-edit the layers and repeat the proccess from step 5 to regenerate the graph. If you wish to adjust the graph, make sure <cite>Editing</cite> is toggled on for the
-node and edge layer. Then select <cite>Vertex Tool(all Layers)</cite> and toggle on <cite>Topological Editing</cite>. Repeat the proccess from step 5 to regenerate the graph.</p>
+edit the layers and repeat the process from step 5 to regenerate the graph. If you wish to adjust the graph, make sure <cite>Editing</cite> is toggled on for the
+node and edge layer. Then select <cite>Vertex Tool(all Layers)</cite> and toggle on <cite>Topological Editing</cite>. Repeat the process from step 5 to regenerate the graph.</p>
 <p>Happy Routing!</p>
 </div>
 </div>
