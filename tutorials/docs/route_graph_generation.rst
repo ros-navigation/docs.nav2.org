@@ -218,7 +218,7 @@ coordinate reference system is `WGS 84 /Pseudo-Mercator`. Press `OK`.
 We are now ready to export the node and edge layer as geojson files. Execute `export_shapefiles.py <prefix_of_file> <path_to_edges_shapefile> <path_to_nodes_shapefile>`
 within the scripts directory located in the nav2_route module. This script converts the nodes and edges shape file into a geojson file.
 
-7- Congratulations 
+7- Congratulations
 ------------------
 
 Your graph is ready to be consumed by the nav2 route! If you wish to add nodes or edges to your graph,
