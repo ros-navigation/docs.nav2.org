@@ -660,6 +660,17 @@ This critic incentivizes navigating away from obstacles and critical collisions 
   Description
     Cost to apply to a true collision in a trajectory.
 
+:near_collision_cost:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  int            253
+  ============== ===========================
+
+  Description
+    Costmap cost value to set a maximum proximity for avoidance.
+
 :critical_cost:
 
   ============== ===========================
@@ -669,8 +680,7 @@ This critic incentivizes navigating away from obstacles and critical collisions 
   ============== ===========================
 
   Description
-    Cost to apply to a pose with any point in inflated space to prefer distance from obstacles.
-
+    Cost to apply to a pose with a cost higher than the near_collision_cost.
 
 :near_goal_distance:
 

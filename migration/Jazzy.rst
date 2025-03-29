@@ -353,3 +353,12 @@ The parameter ``closed_loop`` was introduced to the Rotation Shim Controller to 
 Default value:
 
 - true
+
+Near collision cost in MPPI cost critic
+***************************************
+
+In `PR #4996 <https://github.com/ros-navigation/navigation2/pull/4996>`_ a new parameter ``near_collision_cost`` was added to the MPPI cost critic to set a maximum proximity for avoidance. The critical cost will be applied to costs higher than this value even if non-collision inducing.
+
+Default value:
+
+- 253
