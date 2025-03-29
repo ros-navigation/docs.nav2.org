@@ -43,7 +43,7 @@ Set the project coordinate reference system by selecting `Project->Properties->C
 --------------------------
 
 By default, the imported raster image origin will be at the top left corner, with x pointing to the right, and y pointing up.
-To correctly set the orgin and the resolution we will georeference the raster image.
+To correctly set the origin and the resolution we will georeference the raster image.
 To georeference the image, three control points will chosen. Each control point maps a pixel location to the spatial reference.
 
 For example, let's say you have a 100 by 200 raster image with a resolution of 0.05 and a origin in the bottom left corner.
@@ -226,4 +226,3 @@ edit the layers and repeat the process from step 5 to regenerate the graph. If y
 node and edge layer. Then select `Vertex Tool(all Layers)` and toggle on `Topological Editing`. Repeat the process from step 5 to regenerate the graph.
 
 Happy Routing!
-
