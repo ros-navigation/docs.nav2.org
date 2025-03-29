@@ -353,3 +353,12 @@ The parameter ``closed_loop`` was introduced to the Rotation Shim Controller to 
 Default value:
 
 - true
+
+Service introspection
+*********************
+
+In `PR #4955 <https://github.com/ros-navigation/navigation2/pull/4955>`_ the parameter ``service_introspection_mode`` was introduced to the `Nav2` stack to allow introspection of services. The options are "disabled", "metadata", "contents".
+
+Default value:
+
+- "disabled"

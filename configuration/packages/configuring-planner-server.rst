@@ -75,6 +75,17 @@ Parameters
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
+
 :costmap_update_timeout:
 
   ============== ========
@@ -104,6 +115,7 @@ Example
     planner_server:
       ros__parameters:
         expected_planner_frequency: 20.0
+        service_introspection_mode: "disabled"
         costmap_update_timeout: 1.0
         planner_plugins: ['GridBased']
         GridBased:
