@@ -39,12 +39,12 @@ Set the project coordinate reference system by selecting `Project->Properties->C
 
 |
 
-2- Setup Coordinate System 
+2- Setup Coordinate System
 --------------------------
 
 By default, the imported raster image origin will be at the top left corner, with x pointing to the right, and y pointing up.
 To correctly set the orgin and the resolution we will georeference the raster image.
-To georeference the image, three control points will choosen. Each control point maps a pixel location to the spatial reference.
+To georeference the image, three control points will chosen. Each control point maps a pixel location to the spatial reference.
 
 For example, let's say you have a 100 by 200 raster image with a resolution of 0.05 and a origin in the bottom left corner.
 The first control point we could select is (0, -200)px -> (0, 0)m. (0, -200)px is the bottom left corner in the pixel frame and (0, 0)m is coordinates in the spatial frame.
@@ -53,7 +53,7 @@ For the second control point we will select the top left corner of the image as 
 to convert the pixels to meters. In this case, (0, 0)px -> (0, 10)m. Where 10 m is 200 px* 0.05 m/px. The last control will be the bottom right corner: (100, -200)px -> (5, 0)m.
 It is recommended to set the origin of your map to the lower left corner of the image (``[0.0, 0.0, 0.0]`` in your ``map.yaml``), to make this process easier.
 
-To georeference image select `Raster -> Georefencer`. Set the `Trasformation Settings` to `Linear` for `Transformation
+To georeference image select `Raster -> Georefencer`. Set the `Transformation Settings` to `Linear` for `Transformation
 type`, `WGS 84/ Pseudo-Mercator` for `Target SRS` and set your desired path for the `Output Raster`.
 
 |
@@ -66,7 +66,7 @@ type`, `WGS 84/ Pseudo-Mercator` for `Target SRS` and set your desired path for 
 |
 
 Select the raster image you wish to georeference and place control point by selecting `Add Point` and clicking on the raster image.
-The control points can be modified by clicking on the control point table and typing in new values. Once you are satified with your control points, apply the transformation
+The control points can be modified by clicking on the control point table and typing in new values. Once you are satisfied with your control points, apply the transformation
 by selecting `Start Transformation`.
 
 |
@@ -91,7 +91,7 @@ Close the window. Drag and drop the georeferenced raster file that was just crea
 
 To verify the transformation worked, move the mouse around the raster image and look at the coordinates being displayed at the bottom of the window.
 
-3- Add Nodes 
+3- Add Nodes
 ------------
 
 Now that we have georeferenced the raster layer we can start placing nodes.
@@ -152,7 +152,7 @@ Once complete, unselect 'Toggle Editing' and save changes.
 
 .. note::
     By default, if a is node deleted the id list will not be updated. It is up to the user to determine how they wish to update the ids if individual
-    or multiple nodes are deleted. Any node that is added will continue to increment based on the highest id, to ensure existing node are not automatically renumbered, breaking user implicit knowledge about the structure of the graph. This value can be overwriten by the user
+    or multiple nodes are deleted. Any node that is added will continue to increment based on the highest id, to ensure existing node are not automatically renumbered, breaking user implicit knowledge about the structure of the graph. This value can be overwritten by the user
     though the pop window after node placement or though the `Attribute Table`. To delete features in a layer right click on the layer and select `Open Attribute Table`.
     Click on `Target Multi Edit Mode`, select the features to delete, and click on the trash can icon.
 
@@ -162,7 +162,7 @@ Once complete, unselect 'Toggle Editing' and save changes.
 
 Now an edge layer can be created. Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer setting to be
 `edges` for the `File name`, `LineString` for the `Geometry type` and `WGS 84/ Pseudo-Mercator` for the coordinate system. Press `OK`.
-To auto incrment the `id` field follow the same steps as above except replace `increment_node_id.json` with `increment_edge_id.json`.
+To auto increment the `id` field follow the same steps as above except replace `increment_node_id.json` with `increment_edge_id.json`.
 This will increment the edge `id` by one every time a new edge is added. The first edge `id` will be `10000`.
 
 |
@@ -222,9 +222,8 @@ within the scripts directory located in the nav2_route module. This script conve
 ------------------
 
 Your graph is ready to be consumed by the nav2 route! If you wish to add nodes or edges to your graph,
-edit the layers and repeat the proccess from step 5 to regenerate the graph. If you wish to adjust the graph, make sure `Editing` is toggled on for the
-node and edge layer. Then select `Vertex Tool(all Layers)` and toggle on `Topological Editing`. Repeat the proccess from step 5 to regenerate the graph.
-
+edit the layers and repeat the process from step 5 to regenerate the graph. If you wish to adjust the graph, make sure `Editing` is toggled on for the
+node and edge layer. Then select `Vertex Tool(all Layers)` and toggle on `Topological Editing`. Repeat the process from step 5 to regenerate the graph.
 
 Happy Routing!
 
