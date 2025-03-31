@@ -1134,6 +1134,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">DriveOnHeading and BackUp behaviors: Addition of acceleration constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
 </ul>
 </li>
 </ul>
@@ -2330,8 +2331,28 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">critical_cost</dt>
+<dt class="field-odd">near_collision_cost</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>253</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Costmap cost value to set a maximum proximity for avoidance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">critical_cost</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -2346,12 +2367,12 @@ This process is then repeated a number of times and returns a converged solution
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Cost to apply to a pose with any point in inflated space to prefer distance from obstacles.</p>
+<dt>Description</dt><dd><p>Cost to apply to a pose with a cost higher than the near_collision_cost.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">near_goal_distance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">near_goal_distance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -2370,8 +2391,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">inflation_layer_name</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">inflation_layer_name</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -2390,8 +2411,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">trajectory_point_step</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">trajectory_point_step</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
