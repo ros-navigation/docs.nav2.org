@@ -184,6 +184,17 @@ Parameters
   Description
     BT XML to use for Navigator, if non-default.
 
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
+
 :controller.k_phi:
 
   ============== ==============
@@ -563,6 +574,7 @@ Example
         fixed_frame: "odom"
         dock_backwards: false
         dock_prestaging_tolerance: 0.5
+        service_introspection_mode: "disabled"
 
         # Types of docks
         dock_plugins: ['nova_carter_dock']
