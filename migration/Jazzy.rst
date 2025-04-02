@@ -371,3 +371,12 @@ In `PR #4955 <https://github.com/ros-navigation/navigation2/pull/4955>`_ the par
 Default value:
 
 - "disabled"
+
+Rotation Shim Using Path Orientations
+*************************************
+
+The parameter ``use_path_orientations`` was introduced to the Rotation Shim Controller to allow users to choose between using the orientations of the path points to compute the heading of the path instead of computing the heading from the path point's relative locations. This is useful for planners that generate feasible paths with orientations for forward and reverse motion, such as the Smac Planner.
+
+Default value:
+
+- false
