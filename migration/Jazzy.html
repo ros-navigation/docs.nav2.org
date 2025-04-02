@@ -1135,6 +1135,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 </ul>
 </li>
 </ul>
@@ -1492,6 +1493,14 @@ MPPI Optimizer’s performance is improved by 40-50%. Now MPPI Controller can al
 <p>Default value:</p>
 <ul class="simple">
 <li><p>253</p></li>
+</ul>
+</div>
+<div class="section" id="rotation-shim-using-path-orientations">
+<h2>Rotation Shim Using Path Orientations<a class="headerlink" href="#rotation-shim-using-path-orientations" title="Permalink to this heading"></a></h2>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">use_path_orientations</span></code> was introduced to the Rotation Shim Controller to allow users to choose between using the orientations of the path points to compute the heading of the path instead of computing the heading from the path point’s relative locations. This is useful for planners that generate feasible paths with orientations for forward and reverse motion, such as the Smac Planner.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>false</p></li>
 </ul>
 </div>
 </div>
