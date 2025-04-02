@@ -364,7 +364,7 @@ Default value:
 - 253
 
 Rotation Shim Using Path Orientations
-*******************************
+*************************************
 
 The parameter ``use_path_orientations`` was introduced to the Rotation Shim Controller to allow users to choose between using the orientations of the path points to compute the heading of the path instead of computing the heading from the path points. This is useful for planners that generate feasible paths with orientations for forward and reverse motion, such as the Smac Planner.
 
