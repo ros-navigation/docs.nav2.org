@@ -1135,6 +1135,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#service-introspection">Service introspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 </ul>
 </li>
@@ -1263,8 +1264,28 @@ convert GPS waypoints to this frame.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">action_server_result_timeout</dt>
+<dt class="field-even">service_introspection_mode</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“disabled”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The introspection mode for services. Options are “disabled”, “metadata”, “contents”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">action_server_result_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 35%" />
@@ -1289,8 +1310,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">bond_heartbeat_period</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">bond_heartbeat_period</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1309,8 +1330,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">waypoint_task_executor_plugin</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">waypoint_task_executor_plugin</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 37%" />
 <col style="width: 63%" />
@@ -1382,6 +1403,7 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <span class="w">    </span><span class="nt">loop_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 <span class="w">    </span><span class="nt">stop_on_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">waypoint_task_executor_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;wait_at_waypoint&quot;</span>
+<span class="w">    </span><span class="nt">service_introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 <span class="w">      </span><span class="nt">wait_at_waypoint</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_waypoint_follower::WaitAtWaypoint&quot;</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>

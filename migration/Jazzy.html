@@ -1135,6 +1135,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-introspection">Service introspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 </ul>
 </li>
@@ -1493,6 +1494,14 @@ MPPI Optimizer’s performance is improved by 40-50%. Now MPPI Controller can al
 <p>Default value:</p>
 <ul class="simple">
 <li><p>253</p></li>
+</ul>
+</div>
+<div class="section" id="service-introspection">
+<h2>Service introspection<a class="headerlink" href="#service-introspection" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4955">PR #4955</a> the parameter <code class="docutils literal notranslate"><span class="pre">service_introspection_mode</span></code> was introduced to the <cite>Nav2</cite> stack to allow introspection of services. The options are “disabled”, “metadata”, “contents”.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>“disabled”</p></li>
 </ul>
 </div>
 <div class="section" id="rotation-shim-using-path-orientations">

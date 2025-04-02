@@ -1135,6 +1135,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#service-introspection">Service introspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 </ul>
 </li>
@@ -1841,8 +1842,28 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">update_min_a</dt>
+<dt class="field-odd">service_introspection_mode</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“disabled”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The introspection mode for services. Options are “disabled”, “metadata”, “contents”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">update_min_a</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1861,8 +1882,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">update_min_d</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">update_min_d</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1881,8 +1902,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">z_hit</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">z_hit</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1901,8 +1922,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">z_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">z_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1921,8 +1942,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">z_rand</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">z_rand</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1941,8 +1962,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">z_short</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">z_short</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1961,8 +1982,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">always_reset_initial_pose</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">always_reset_initial_pose</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1981,8 +2002,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">scan_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">scan_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2001,8 +2022,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">map_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">map_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2021,8 +2042,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">first_map_only</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">first_map_only</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2041,8 +2062,8 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">bond_heartbeat_period</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">bond_heartbeat_period</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2073,6 +2094,7 @@
 <span class="w">    </span><span class="nt">alpha4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 <span class="w">    </span><span class="nt">alpha5</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 <span class="w">    </span><span class="nt">base_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_footprint&quot;</span>
+<span class="w">    </span><span class="nt">service_introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 <span class="w">    </span><span class="nt">beam_skip_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">    </span><span class="nt">beam_skip_error_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
 <span class="w">    </span><span class="nt">beam_skip_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>

@@ -85,6 +85,16 @@ Parameters
 
   Description
     The timeout value (seconds) for the costmap to be fully updated before a planning request.
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
 
 Default Plugins
 ***************
@@ -105,6 +115,7 @@ Example
       ros__parameters:
         expected_planner_frequency: 20.0
         costmap_update_timeout: 1.0
+        service_introspection_mode: "disabled"
         planner_plugins: ['GridBased']
         GridBased:
           plugin: 'nav2_navfn_planner::NavfnPlanner' # In Iron and older versions, "/" was used instead of "::"

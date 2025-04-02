@@ -1135,6 +1135,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#service-introspection">Service introspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 </ul>
 </li>
@@ -1220,8 +1221,28 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">footprint_padding</dt>
+<dt class="field-even">service_introspection_mode</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“disabled”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The introspection mode for services. Options are “disabled”, “metadata”, “contents”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">footprint_padding</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1240,8 +1261,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">footprint</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">footprint</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1260,8 +1281,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">global_frame</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">global_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1280,8 +1301,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">height</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">height</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1300,8 +1321,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">width</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">width</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1320,8 +1341,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">lethal_cost_threshold</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">lethal_cost_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1340,8 +1361,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">map_vis_z</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">map_vis_z</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1360,8 +1381,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">observation_sources</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">observation_sources</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1380,8 +1401,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">origin_x</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">origin_x</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1400,8 +1421,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">origin_y</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">origin_y</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1420,8 +1441,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">publish_frequency</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">publish_frequency</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1440,8 +1461,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">resolution</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">resolution</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1460,8 +1481,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">robot_base_frame</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">robot_base_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 56%" />
 <col style="width: 44%" />
@@ -1480,8 +1501,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">robot_radius</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">robot_radius</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1500,8 +1521,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">rolling_window</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">rolling_window</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1520,8 +1541,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">track_unknown_space</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">track_unknown_space</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1540,8 +1561,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">transform_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1560,8 +1581,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">initial_transform_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">initial_transform_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1580,8 +1601,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">trinary_costmap</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">trinary_costmap</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1600,8 +1621,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">unknown_cost_value</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">unknown_cost_value</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1620,8 +1641,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">update_frequency</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">update_frequency</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1640,8 +1661,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">use_maximum</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">use_maximum</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1660,8 +1681,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-even">plugins</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">plugins</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 21%" />
 <col style="width: 79%" />
@@ -1694,8 +1715,8 @@ It is used in the planner and controller servers for creating the space to check
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">filters</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">filters</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1850,6 +1871,7 @@ It is used in the planner and controller servers for creating the space to check
 <span class="w">        </span><span class="nt">inflate_unknown</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">        </span><span class="nt">inflate_around_unknown</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">always_send_full_costmap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">service_introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 
 
 <span class="nt">local_costmap</span><span class="p">:</span>
@@ -1864,6 +1886,7 @@ It is used in the planner and controller servers for creating the space to check
 <span class="w">      </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">      </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">      </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">      </span><span class="nt">service_introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 </pre></div>
 </div>
 </div>
