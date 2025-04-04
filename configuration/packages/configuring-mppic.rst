@@ -184,6 +184,17 @@ MPPI Parameters
   Description
     Maximum forward acceleration (m/s^2).
 
+:ay_min:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         -3.0
+  ============== ===========================
+
+  Description
+    Minimum lateral acceleration in either direction, if using ``Omni`` motion model (m/s^2).
+
 :ay_max:
 
   ============== ===========================
@@ -1043,6 +1054,7 @@ Example
           wz_max: 1.9
           ax_max: 3.0
           ax_min: -3.0
+          ay_min: -3.0
           ay_max: 3.0
           az_max: 3.5
           iteration_count: 1
