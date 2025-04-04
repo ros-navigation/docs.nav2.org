@@ -1491,8 +1491,28 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">ay_max</dt>
+<dt class="field-odd">ay_min</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>-3.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimum lateral acceleration in either direction, if using <code class="docutils literal notranslate"><span class="pre">Omni</span></code> motion model (m/s^2).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">ay_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1511,8 +1531,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">ax_min</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">ax_min</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1531,8 +1551,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">az_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">az_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1551,8 +1571,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">temperature</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">temperature</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1571,8 +1591,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">gamma</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">gamma</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1591,8 +1611,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">visualize</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">visualize</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1611,8 +1631,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">retry_attempt_limit</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">retry_attempt_limit</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1631,8 +1651,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">reset_period</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">reset_period</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1651,8 +1671,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">regenerate_noises</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">regenerate_noises</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -2993,6 +3013,7 @@ This process is then repeated a number of times and returns a converged solution
 <span class="w">      </span><span class="nt">wz_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.9</span>
 <span class="w">      </span><span class="nt">ax_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
 <span class="w">      </span><span class="nt">ax_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-3.0</span>
+<span class="w">      </span><span class="nt">ay_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-3.0</span>
 <span class="w">      </span><span class="nt">ay_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span>
 <span class="w">      </span><span class="nt">az_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.5</span>
 <span class="w">      </span><span class="nt">iteration_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
