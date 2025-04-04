@@ -261,6 +261,17 @@ MPPI Parameters
   Description
     Whether to publish debugging trajectories for visualization. This can slow down the controller substantially (e.g. 1000 batches of 56 size every 30hz is a lot of data).
 
+:publish_optimal_trajectory:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  bool           false
+  ============== ===========================
+
+  Description
+    Whether to publish the optimal trajectory (pose, velocity, timestamps of via points) computed by MPC for visualization, debugging, or injection by lower-level control systems and/or collision avoidance systems that need awarenes of future velocity commands and/or poses.
+
 :retry_attempt_limit:
 
   ============== ===========================
