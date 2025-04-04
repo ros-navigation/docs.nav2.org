@@ -77,3 +77,16 @@ After completing, select `OK`, the new custom node should now appear in the `Tre
 
 .. image:: images/Groot2/groot_new_node.png
   :width: 35%
+
+Exporting Behavior Trees
+========================
+
+Once you have finished editing or creating your behavior tree in Groot2, you may want to export it for use in your application.
+To do this, you can either use the Export Project button shown in the image below, or use the Save Current Project As button next to it.
+
+.. image:: images/Groot2/groot_export_button.png
+  :width: 50%
+.. image:: images/Groot2/groot_export_page.png
+  :width: 40%
+
+Your behavior tree has been successfully exported! You can reload it the next time you open Groot2.
