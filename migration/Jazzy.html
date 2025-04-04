@@ -330,11 +330,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_gps.html#conclusion">Conclusion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_groot.html">Groot - Interacting with Behavior Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/using_groot.html">Groot Tutorials</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#visualize-behavior-trees">Visualize Behavior Trees</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#edit-behavior-trees">Edit Behavior Trees</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#adding-a-custom-node">Adding A Custom Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/using_groot.html#table-of-contents">Table of Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/groot.html">Groot - Interacting with Behavior Trees</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/docs/groot2.html">Groot2 - Interacting with Behavior Trees</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/integrating_vio.html">Using VIO to Augment Robot Odometry</a><ul>
@@ -1229,15 +1231,15 @@ a new parameter for the BT Navigator <code class="docutils literal notranslate">
 </pre></div>
 </div>
 <p>The following provides examples of modifications that should be made to behavior tree configurations to propagate the error messages and codes to the BT navigator result.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>&lt;ComputePathToPose goal=&quot;{goal}&quot; path=&quot;{path}&quot; planner_id=&quot;{selected_planner}&quot; error_code_id=&quot;{compute_path_error_code} error_msg=&quot;{compute_path_error_msg}&quot;/&gt;
-&lt;FollowPath path=&quot;{path}&quot; controller_id=&quot;{selected_controller}&quot; error_code_id=&quot;{follow_path_error_code}&quot; error_msg=&quot;{follow_path_error_msg}&quot;/&gt;
-&lt;Spin spin_dist=&quot;1.57&quot; error_code_id=&quot;{spin_error_code}&quot; error_msg=&quot;{spin_error_msg}&quot;/&gt;
-&lt;Wait wait_duration=&quot;5.0&quot; error_code_id=&quot;{wait_error_code}&quot; error_msg=&quot;{wait_error_msg}&quot;/&gt;
-&lt;BackUp backup_dist=&quot;0.30&quot; backup_speed=&quot;0.15&quot; error_code_id=&quot;{backup_error_code}&quot; error_msg=&quot;{backup_error_msg}&quot;/&gt;
-&lt;DriveOnHeading dist_to_travel=&quot;2.0&quot; speed=&quot;0.2&quot; time_allowance=&quot;12&quot; error_code_id=&quot;{drive_on_heading_error_code}&quot; error_msg=&quot;{drive_on_heading_error_msg}&quot;/&gt;
-&lt;UndockRobot dock_type=&quot;{dock_type}&quot; error_code_id=&quot;{undock_robot_error_code}&quot; error_msg=&quot;{undock_robot_error_msg}&quot; /&gt;
-&lt;DockRobot dock_id=&quot;{dock_id}&quot; error_code_id=&quot;{dock_robot_error_code}&quot; error_msg=&quot;{dock_robot_error_msg}&quot;/&gt;
-&lt;NavigateToPose goal=&quot;{picking_location}&quot; error_code_id=&quot;{nav_to_pose_error_code}&quot; error_msg=&quot;{nav_to_pose_error_msg}&quot;/&gt;
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ComputePathToPose</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">planner_id=</span><span class="s">&quot;{selected_planner}&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{compute_path_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{compute_path_error_msg}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;FollowPath</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">controller_id=</span><span class="s">&quot;{selected_controller}&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{follow_path_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{follow_path_error_msg}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;Spin</span><span class="w"> </span><span class="na">spin_dist=</span><span class="s">&quot;1.57&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{spin_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{spin_error_msg}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;Wait</span><span class="w"> </span><span class="na">wait_duration=</span><span class="s">&quot;5.0&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{wait_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{wait_error_msg}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;BackUp</span><span class="w"> </span><span class="na">backup_dist=</span><span class="s">&quot;0.30&quot;</span><span class="w"> </span><span class="na">backup_speed=</span><span class="s">&quot;0.15&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{backup_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{backup_error_msg}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;DriveOnHeading</span><span class="w"> </span><span class="na">dist_to_travel=</span><span class="s">&quot;2.0&quot;</span><span class="w"> </span><span class="na">speed=</span><span class="s">&quot;0.2&quot;</span><span class="w"> </span><span class="na">time_allowance=</span><span class="s">&quot;12&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{drive_on_heading_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{drive_on_heading_error_msg}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;UndockRobot</span><span class="w"> </span><span class="na">dock_type=</span><span class="s">&quot;{dock_type}&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{undock_robot_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{undock_robot_error_msg}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;DockRobot</span><span class="w"> </span><span class="na">dock_id=</span><span class="s">&quot;{dock_id}&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{dock_robot_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{dock_robot_error_msg}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;NavigateToPose</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{picking_location}&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{nav_to_pose_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{nav_to_pose_error_msg}&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 <p>The explicit specification of the <code class="docutils literal notranslate"><span class="pre">error_code_names_prefix</span></code> for both <code class="docutils literal notranslate"><span class="pre">error_code_id</span></code> and <code class="docutils literal notranslate"><span class="pre">error_msg</span></code> in the behavior tree xml is done to provide a configuration based level of indirection to enable resolution of namespace conflicts between built in Nav2 and third party actions servers.</p>

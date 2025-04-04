@@ -172,7 +172,7 @@ New features ``allow_primitive_interpolation`` which allows for more primitives 
 New node in nav2_collision_monitor: Collision Detector
 ******************************************************
 
-In this `PR #3693 <https://github.com/ros-navigation/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector.
+In this `PR #3500 <https://github.com/ros-navigation/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector.
 It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the ``collision_detector_state`` topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).
 
 Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector
@@ -331,7 +331,7 @@ New graceful cancellation API for Controllers
 Standardization of Plugin Naming with Double Colons (::)
 ********************************************************
 
-`PR #4220`_ standardizes plugin naming across the Navigation2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:
+`PR #4220 <https://github.com/ros-planning/navigation2/pull/4220>`_ standardizes plugin naming across the Navigation2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:
 
 - Behavior Server: ``nav2_behaviors::Spin``, ``nav2_behaviors::BackUp``, ``nav2_behaviors::DriveOnHeading``, ``nav2_behaviors::Wait``, ``nav2_behaviors::AssistedTeleop``
 - Planner Server: ``nav2_navfn_planner::NavfnPlanner``, ``nav2_smac_planner::SmacPlanner2D``, ``nav2_smac_planner::SmacPlannerHybrid``, ``nav2_theta_star_planner::ThetaStarPlanner``
