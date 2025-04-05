@@ -1631,8 +1631,28 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">retry_attempt_limit</dt>
+<dt class="field-even">publish_optimal_trajectory</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to publish the optimal trajectory (pose, velocity, timestamps of via points) computed by MPC for visualization, debugging, or injection by lower-level control systems and/or collision avoidance systems that need awarenes of future velocity commands and/or poses.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">retry_attempt_limit</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1651,8 +1671,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">reset_period</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">reset_period</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1671,8 +1691,8 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">regenerate_noises</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">regenerate_noises</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
