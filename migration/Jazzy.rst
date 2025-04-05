@@ -380,3 +380,8 @@ The parameter ``use_path_orientations`` was introduced to the Rotation Shim Cont
 Default value:
 
 - false
+
+MPPI - Publishing Optimal Trajectory
+************************************
+
+When ``publish_optimal_trajectory`` is enabled, the full optimal trajectory in the form of a ``nav2_msgs/Trajectory`` is published for debugging, visualization, and/or injection by other systems. This provides not just the pose information but velocities and timestamps of the MPC trajectory's viapoints which can be useful for multi-stage control systems, jerk minimization, or collision avoidance systems.
