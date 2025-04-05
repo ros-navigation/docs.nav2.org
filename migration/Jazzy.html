@@ -1139,6 +1139,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#service-introspection">Service introspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
 </ul>
 </li>
 </ul>
@@ -1513,6 +1514,10 @@ MPPI Optimizer’s performance is improved by 40-50%. Now MPPI Controller can al
 <ul class="simple">
 <li><p>false</p></li>
 </ul>
+</div>
+<div class="section" id="mppi-publishing-optimal-trajectory">
+<h2>MPPI - Publishing Optimal Trajectory<a class="headerlink" href="#mppi-publishing-optimal-trajectory" title="Permalink to this heading"></a></h2>
+<p>When <code class="docutils literal notranslate"><span class="pre">publish_optimal_trajectory</span></code> is enabled, the full optimal trajectory in the form of a <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Trajectory</span></code> is published for debugging, visualization, and/or injection by other systems. This provides not just the pose information but velocities and timestamps of the MPC trajectory’s viapoints which can be useful for multi-stage control systems, jerk minimization, or collision avoidance systems.</p>
 </div>
 </div>
 
