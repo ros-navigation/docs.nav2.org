@@ -227,6 +227,17 @@ Parameters
   Description
     Blackboard variable to use to supply the goals to the behavior tree for ``NavigateThroughPoses``. Should match ports of BT XML file.
 
+:waypoint_statuses_blackboard_id:
+
+  ====== ===================
+  Type   Default
+  ------ -------------------
+  string "waypoint_statuses"
+  ====== ===================
+
+  Description
+    Blackboard variable to get the statuses of waypoints from the behavior tree for ``NavigateThroughPoses`` feedback/result. Should match ports of BT XML file.
+
 :use_sim_time:
 
   ==== =======
@@ -300,6 +311,7 @@ Example
         goal_blackboard_id: goal
         goals_blackboard_id: goals
         path_blackboard_id: path
+        waypoint_statuses_blackboard_id: waypoint_statuses
         navigators: ['navigate_to_pose', 'navigate_through_poses']
         navigate_to_pose:
           plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
