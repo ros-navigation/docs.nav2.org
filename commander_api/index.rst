@@ -89,12 +89,12 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 +---------------------------------------+----------------------------------------------------------------------------+
 | cancelTask()                          | Cancel an ongoing task, including route tasks.                             |
 +---------------------------------------+----------------------------------------------------------------------------+
-| isTaskComplete(trackingRoute=False)   | Checks if task is complete yet, times out at ``100ms``. Returns            |
-|                                       | ``True`` if completed and ``False`` if still going. If checking a route    |
-|                                       | tracking task, set default argument to ``True``.                           |
+| isTaskComplete(task=RunningTask.NONE) | Checks if task is complete yet, times out at ``100ms``. Returns            |
+|                                       | ``True`` if completed and ``False`` if still going. Provide the task ID    |
+|                                       | from the long-running task (follow path, compute and track route, etc)     |
 +---------------------------------------+----------------------------------------------------------------------------+
-| getFeedback(trackingRoute=False)      | Gets feedback from task, returns action server feedback msg.               |
-|                                       | If getting feedback on a tracking task, set default argument to ``True``.  |
+| getFeedback(task=RunningTask.NONE)    | Gets feedback from task, returns action server feedback msg.               |
+|                                       | provide the task ID for the task you are requesting.                       |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getResult()                           | Gets final result of task, to be called after ``isTaskComplete``           |
 |                                       | returns ``True``. Returns action server result msg.                        |
@@ -104,6 +104,12 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 +---------------------------------------+----------------------------------------------------------------------------+
 | getPathThroughPoses(start, goals,     | Gets a path through a starting to a set of goals, a list                   |
 | planner_id='', use_start=False)       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
++---------------------------------------+----------------------------------------------------------------------------+
+| getRoute(start, goal,                 | Gets a route from a set start and goal nodeIDs or PoseStamped.             |
+| use_start=False)                      | Use Start if given, otherwises uses TF to obtain robot pose.               |
++---------------------------------------+----------------------------------------------------------------------------+
+| getAndTrackRoute(start, goal,         | Gets a route from a set of start and goal NodeIDs or PoseStamped.          |
+| use_start=False)                      | Uses start if given, otherwise uses TF to obtain the robot pose.           |
 +---------------------------------------+----------------------------------------------------------------------------+
 | dockRobot(dock_pose, dock_type)       | Attempts to dock the robot at a given docking pose and type, without using |
 |                                       | docking database of known docks.                                           |
@@ -231,6 +237,7 @@ The ``nav2_simple_commander`` has a few examples to highlight the API functions 
 - ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.
 - ``example_assisted_teleop.py`` - Demonstrates the assisted teleop capabilities of the navigator.
+- ``example_route.py`` - Demonstrates the route server capabilities of the navigator.
 
 The ``nav2_simple_commander`` has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:
 
