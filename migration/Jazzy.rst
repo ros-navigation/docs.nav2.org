@@ -398,6 +398,7 @@ This also updates the behavior tree nodes ``RemovePassedGoals`` and ``RemoveInCo
 The parameter ``waypoint_statuses_blackboard_id`` was introduced to the ``bt_navigator`` node to allow users to customize the variable name for ``waypoint_statuses`` in the blackboard.
 In the Behavior Tree XML, the ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes must expose corresponding ports to align with the ``waypoint_statuses`` workflow to manage the waypoints' state when removing them due to completion or skipped due to collision.
 This ensures ``NavigateThroughPoses`` can retrieve and propagate waypoint statuses via the blackboard.
+The action also populates the completed waypoints at the end when populating the action result.
 
 The following is an example of the ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes configuration:
 
