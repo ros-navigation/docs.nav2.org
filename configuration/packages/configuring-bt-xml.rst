@@ -25,6 +25,8 @@ Action Plugins
   bt-plugins/actions/DriveOnHeading.rst
   bt-plugins/actions/AssistedTeleop.rst
   bt-plugins/actions/ComputePathToPose.rst
+  bt-plugins/actions/ComputeRoute.rst
+  bt-plugins/actions/ComputeAndTrackRoute.rst
   bt-plugins/actions/FollowPath.rst
   bt-plugins/actions/NavigateToPose.rst
   bt-plugins/actions/ClearEntireCostmap.rst
@@ -50,6 +52,7 @@ Action Plugins
   bt-plugins/actions/CancelWait.rst
   bt-plugins/actions/CancelDriveOnHeading.rst
   bt-plugins/actions/CancelAssistedTeleop.rst
+  bt-plugins/actions/CancelComputeAndTrackRoute.rst
   bt-plugins/actions/Smooth.rst
   bt-plugins/actions/GetPoseFromPath.rst
   bt-plugins/actions/DockRobot.rst
