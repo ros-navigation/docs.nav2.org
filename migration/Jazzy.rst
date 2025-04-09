@@ -393,7 +393,7 @@ NavigateThroughPoses - Reporting waypoint statuses information
 Introduces the ``WaypointStatus`` message type, which indicates a waypoint's status: pending, complete, skipped, or failed.
 This also replaces the deprecated ``MissedWaypoint`` type used in ``WaypointFollower``.
 This also updates the behavior tree nodes ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` to mark waypoint statuses as the action progresses.
-``NavigateThroughPoses`` now retrieves waypoint statuses via the blackboard and organizes them into the action server’s feedback and result messages, exposing them to users.
+``NavigateThroughPoses`` now retrieves waypoint statuses via the blackboard (similar to path and goal(s)) and organizes them into the action server’s feedback and result messages, exposing the waypoint execution status to users.
 
 The parameter ``waypoint_statuses_blackboard_id`` was introduced to the ``bt_navigator`` node to allow users to customize the variable name for ``waypoint_statuses`` in the blackboard.
 In the Behavior Tree XML, the ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes must expose corresponding ports to align with the ``waypoint_statuses`` workflow.
