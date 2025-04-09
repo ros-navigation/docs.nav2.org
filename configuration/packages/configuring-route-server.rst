@@ -610,13 +610,13 @@ This route operation will track times taken to traverse particular edges to writ
     Metadata tag to write the time taken to within an edge. Is used with the ``TimeScorer`` to give an improved experiential estimate of traversal times.
 
 
-Rerouting Service
------------------
+ReroutingService
+----------------
 
 This route operation will receive service requests from a 3rd party application to cause a rerouting request.
 
-Trigger Event
--------------
+TriggerEvent
+------------
 
 This route operation will trigger an external service when a graph node or edge contains a route operation of this name.
 It uses a `std_srvs/Trigger` interface and is a demonstration of the `RouteOperationClient<SrvT>` base class which can be used to trigger other events of other types of other names as desired (opening doors, calling elevators, etc).
