@@ -42,6 +42,17 @@ Input Ports
   Description
     A vector of goals to check if it passed any in the current iteration.
 
+:input_waypoint_statuses:
+
+  =========================================== =======
+  Type                                        Default
+  ------------------------------------------- -------
+  std::vector<nav2_msgs::msg::WaypointStatus>   N/A
+  =========================================== =======
+
+  Description
+    Original waypoint_statuses to mark waypoint status from.
+
 Output Ports
 ------------
 
@@ -56,9 +67,20 @@ Output Ports
   Description
     A vector of goals with goals removed in proximity to the robot
 
+:output_waypoint_statuses:
+
+  =========================================== =======
+  Type                                        Default
+  ------------------------------------------- -------
+  std::vector<nav2_msgs::msg::WaypointStatus>   N/A
+  =========================================== =======
+
+  Description
+    Waypoint_statuses with passed waypoints marked.
+
 Example
 -------
 
 .. code-block:: xml
 
-  <RemovePassedGoals radius="0.6" input_goals="{goals}" output_goals="{goals}"/>
+  <RemovePassedGoals radius="0.6" input_goals="{goals}" output_goals="{goals}" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}"/>
