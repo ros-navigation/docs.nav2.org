@@ -210,6 +210,7 @@ Route
 
 The route server is a specialized planner that computes a route using a navigation graph, rather than the freespace costmap.
 The route is computed as the optimal way from the start to the goal through the set of nodes and directional edges in the pre-defined navigation graph.
+This navigation graph can be generated to represent lanes, areas the robot is allowed to navigate, a teach-and-repeat route, urban roadways, and more.
 
 Robot Footprints
 ================

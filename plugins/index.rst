@@ -637,7 +637,7 @@ Edge Scorers
 +--------------------------------+------------------------+----------------------------------+
 | TimeScorer                     | Steve Macenski         | Scores and edge traversal time   |
 |                                |                        | using absolute speed limits or   |
-|                                |                        | previous traveral times.         |
+|                                |                        | previous traversal times.        |
 +--------------------------------+------------------------+----------------------------------+
 | PenaltyScorer                  | Steve Macenski         | Scores using a static semantic   |
 |                                |                        | penalty.                         |
@@ -648,7 +648,7 @@ Edge Scorers
 |  StartPoseOrientationScorer    | Alex Yuen              | Scores based on the initial pose |
 |                                |                        | and start edge orientations.     |
 +--------------------------------+------------------------+----------------------------------+
-|  GoalPoseOrientationScorer     | Alex Yuen              | Scores baed on the goal pose and |
+|  GoalPoseOrientationScorer     | Alex Yuen              | Scores based on the goal pose and|
 |                                |                        | goal edge orientations.          |
 +--------------------------------+------------------------+----------------------------------+
 |  DynamicEdgesScorer            | Steve Macenski         | Scores based on a dynamically set|
