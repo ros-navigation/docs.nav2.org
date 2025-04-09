@@ -410,7 +410,7 @@ The following is an example of the ``RemovePassedGoals`` and ``RemoveInCollision
 The ``waypoint_statuses`` array matches the length of the original input ``goals`` vector, with each element being a ``WaypointStatus`` message.
 The ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes prune invalid or completed goals from the goals vector and update their corresponding entries in the ``waypoint_statuses`` array.
 
-Custom nodes can access the ``waypoint_statuses`` array via input ports. Use the utility method ``find_next_matching_goal_in_waypoint_statuses`` (from nav2_utils) to map goals to their status entries.
+Custom nodes can access or modify the ``waypoint_statuses`` array as well if other skip, removal, completion, or failures are used when working with multiple ordered goals. Use the utility method ``find_next_matching_goal_in_waypoint_statuses`` (from nav2_utils) to map goals to their status entries.
 Modified statuses should then be propagated through output ports for downstream nodes.
 
 The ``NavigateThroughPoses`` navigator retrieves the ``waypoint_statuses`` instance from the blackboard in its ``onLoop`` callback and writes it into the feedback message.
