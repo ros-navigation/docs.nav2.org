@@ -107,9 +107,10 @@ Recoveries are used to get the robot out of a bad situation or attempt to deal w
 Smoothers can be used for additional quality improvements of the planned path.
 In this section, the general concepts around them and their uses in this project are analyzed.
 
-Planner, Controller, Smoother and Recovery Servers
-==================================================
-Four of the action servers in this project are the planner, behavior, smoother and controller servers.
+Planner, Controller, Smoother, Route, and Behavior Servers
+==========================================================
+
+Four of the action servers in this project are the planner, behavior, smoother, route, and controller servers.
 
 These action servers are used to host a map of algorithm plugins to complete various tasks.
 They also host the environmental representation used by the algorithm plugins to compute their outputs.
@@ -130,6 +131,10 @@ For the behavior server, each of the behaviors also contains their own name, how
 This is done because of the wide variety of behavior actions that may be created which cannot have a single simple interface to share.
 The behavior server also contains a costmap subscriber to the local costmap, receiving real-time updates from the controller server, to compute its tasks.
 We do this to avoid having multiple instances of the local costmap which are computationally expensive to duplicate.
+
+The route server does not contain multiple "routing algorithms" like the planner or controller servers.
+Instead, it computes a route using a navigation graph using a set of plugins for scoring edges in the graph, parsing graph files, and performing operations along the route, if necessary.
+Rather than freespace planning, this computes a route using a graph that can be generated to represent lanes, areas the robot is allowed to navigate, a teach-and-repeat route, urban roadways, and more.
 
 Alternatively, since the BT nodes are trivial plugins calling an action, new BT nodes can be created to call other action servers with other action types.
 It is advisable to use the provided servers if possible at all times.
@@ -173,7 +178,7 @@ However, many classes of controllers and local planners exist.
 It is the goal of this project that all controller algorithms can be plugins in this server for common research and industrial tasks.
 
 Behaviors
-==========
+=========
 
 Recovery behaviors are a mainstay of fault-tolerant systems.
 The goal of recoveries are to deal with unknown or failure conditions of the system and autonomously handle them.
@@ -199,6 +204,12 @@ Use of a separate smoother over one that is included as part of a planner is adv
 
 The general task in Nav2 for a smoother is to receive a path and return its improved version.
 However, for different input paths, criteria of the improvements and methods of acquiring them exist, creating space for a multitude of smoothers that can be registered in this server.
+
+Route
+=====
+
+The route server is a specialized planner that computes a route using a navigation graph, rather than the freespace costmap.
+The route is computed as the optimal way from the start to the goal through the set of nodes and directional edges in the pre-defined navigation graph.
 
 Robot Footprints
 ================
