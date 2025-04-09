@@ -392,7 +392,7 @@ NavigateThroughPoses - Reporting waypoint statuses information
 `PR #4994 <https://github.com/ros-navigation/navigation2/pull/4994>`_ enhances the ``NavigateThroughPoses`` navigator to provide real-time status feedback for waypoints.
 Introduces the ``WaypointStatus`` message type, which indicates a waypoint's status: pending, complete, skipped, or failed.
 This also replaces the deprecated ``MissedWaypoint`` type used in ``WaypointFollower``.
-Updates the behavior tree nodes ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` to mark waypoint statuses.
+This also updates the behavior tree nodes ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` to mark waypoint statuses as the action progresses.
 ``NavigateThroughPoses`` now retrieves waypoint statuses via the blackboard and organizes them into the action server’s feedback and result messages, exposing them to users.
 
 The parameter ``waypoint_statuses_blackboard_id`` was introduced to the ``bt_navigator`` node to allow users to customize the variable name for ``waypoint_statuses`` in the blackboard.
