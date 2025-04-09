@@ -17,6 +17,7 @@ In nominal execution, this will replan the path at every 3 seconds and pass that
 The planner though is now ``ComputePathThroughPoses`` taking a vector, ``goals``, rather than a single pose ``goal`` to plan to.
 The ``RemovePassedGoals`` node is used to cull out ``goals`` that the robot has passed on its path.
 In this case, it is set to remove a pose from the poses when the robot is within ``0.5`` of the goal and it is the next goal in the list.
+Additionally, it records the status of each waypoint (e.g. ``PENDING``, ``COMPLETED``, ``SKIPPED`` or ``FAILED``) in the ``waypoint_statuses``.
 This is implemented such that replanning can be computed after the robot has passed by some of the intermediary poses and not continue to try to replan through them in the future.
 This time, if the planner fails, it will trigger contextually aware recoveries in its subtree, clearing the global costmap.
 Additional recoveries can be added here for additional context-specific recoveries, such as trying another algorithm.
@@ -46,7 +47,7 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
           <RateController hz="0.333">
             <RecoveryNode number_of_retries="1" name="ComputePathThroughPoses">
               <ReactiveSequence>
-                <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="0.7"/>
+                <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="0.7" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}"/>
                 <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
               </ReactiveSequence>
               <Sequence>

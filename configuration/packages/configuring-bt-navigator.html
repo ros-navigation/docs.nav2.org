@@ -1140,6 +1140,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#service-introspection">Service introspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
 </ul>
 </li>
 </ul>
@@ -1582,8 +1583,28 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">use_sim_time</dt>
+<dt class="field-odd">waypoint_statuses_blackboard_id</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“waypoint_statuses”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Blackboard variable to get the statuses of waypoints from the behavior tree for <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> feedback/result. Should match ports of BT XML file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">use_sim_time</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -1702,6 +1723,7 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <span class="w">    </span><span class="nt">goal_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">goal</span>
 <span class="w">    </span><span class="nt">goals_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">goals</span>
 <span class="w">    </span><span class="nt">path_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span>
+<span class="w">    </span><span class="nt">waypoint_statuses_blackboard_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">waypoint_statuses</span>
 <span class="w">    </span><span class="nt">navigators</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;navigate_to_pose&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;navigate_through_poses&#39;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">navigate_to_pose</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_bt_navigator::NavigateToPoseNavigator&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>

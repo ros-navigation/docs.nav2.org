@@ -1140,6 +1140,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#service-introspection">Service introspection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Jazzy.html#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
 </ul>
 </li>
 </ul>
@@ -1304,6 +1305,26 @@ This may be used to cull goal points passed from <code class="docutils literal n
 </dd>
 </dl>
 </dd>
+<dt class="field-even">input_waypoint_statuses</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 86%" />
+<col style="width: 14%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>std::vector&lt;nav2_msgs::msg::WaypointStatus&gt;</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Original waypoint_statuses to mark waypoint status from.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="output-ports">
@@ -1329,11 +1350,31 @@ This may be used to cull goal points passed from <code class="docutils literal n
 </dd>
 </dl>
 </dd>
+<dt class="field-even">output_waypoint_statuses</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 86%" />
+<col style="width: 14%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>std::vector&lt;nav2_msgs::msg::WaypointStatus&gt;</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Waypoint_statuses with in-collision waypoints marked.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RemoveInCollisionGoals</span><span class="w"> </span><span class="na">input_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">output_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">cost_threshold=</span><span class="s">&quot;254.0&quot;</span><span class="w"> </span><span class="na">use_footprint=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;/global_costmap/get_cost_global_costmap&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RemoveInCollisionGoals</span><span class="w"> </span><span class="na">input_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">output_goals=</span><span class="s">&quot;{goals}&quot;</span><span class="w"> </span><span class="na">cost_threshold=</span><span class="s">&quot;254.0&quot;</span><span class="w"> </span><span class="na">use_footprint=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;/global_costmap/get_cost_global_costmap&quot;</span><span class="w"> </span><span class="na">input_waypoint_statuses=</span><span class="s">&quot;{waypoint_statuses}&quot;</span><span class="w"> </span><span class="na">output_waypoint_statuses=</span><span class="s">&quot;{waypoint_statuses}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>
