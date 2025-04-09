@@ -396,7 +396,7 @@ This also updates the behavior tree nodes ``RemovePassedGoals`` and ``RemoveInCo
 ``NavigateThroughPoses`` now retrieves waypoint statuses via the blackboard (similar to path and goal(s)) and organizes them into the action server’s feedback and result messages, exposing the waypoint execution status to users.
 
 The parameter ``waypoint_statuses_blackboard_id`` was introduced to the ``bt_navigator`` node to allow users to customize the variable name for ``waypoint_statuses`` in the blackboard.
-In the Behavior Tree XML, the ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes must expose corresponding ports to align with the ``waypoint_statuses`` workflow.
+In the Behavior Tree XML, the ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes must expose corresponding ports to align with the ``waypoint_statuses`` workflow to manage the waypoints' state when removing them due to completion or skipped due to collision.
 This ensures ``NavigateThroughPoses`` can retrieve and propagate waypoint statuses via the blackboard.
 
 The following is an example of the ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes configuration:
