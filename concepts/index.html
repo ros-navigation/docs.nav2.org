@@ -118,11 +118,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#behavior-trees">Behavior Trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#navigation-servers">Navigation Servers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#planner-controller-smoother-and-recovery-servers">Planner, Controller, Smoother and Recovery Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#planner-controller-smoother-route-and-behavior-servers">Planner, Controller, Smoother, Route, and Behavior Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#planners">Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#controllers">Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#behaviors">Behaviors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smoothers">Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#route">Route</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#robot-footprints">Robot Footprints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#waypoint-following">Waypoint Following</a></li>
 </ul>
@@ -882,6 +883,29 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-route-server.html">Route Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#server-parameters">Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#edge-scorer-parameters">Edge Scorer Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#distancescorer">DistanceScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#timescorer">TimeScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#penaltyscorer">PenaltyScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#semanticscorer">SemanticScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#startposeorientationscorer">StartPoseOrientationScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#goalposeorientationscorer">GoalPoseOrientationScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#dynamicedgesscorer">DynamicEdgesScorer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#route-operations-parameters">Route Operations Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#adjustspeedlimit">AdjustSpeedLimit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#collisionmonitor">CollisionMonitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#timemarker">TimeMarker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#reroutingservice">ReroutingService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#triggerevent">TriggerEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#example">Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tuning/index.html">Tuning Guide</a><ul>
@@ -934,6 +958,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#progress-checkers">Progress Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#route-plugins">Route Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#edge-scorers">Edge Scorers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#route-operations">Route Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#graph-file-parsers">Graph File Parsers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration Guides</a><ul>
@@ -1112,6 +1142,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/Jazzy.html">Jazzy to Kilted</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#nav2-route-server">Nav2 Route Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#behaviortree-error-msg">BehaviorTree error_msg</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
@@ -1280,9 +1311,9 @@ However, due to the independent task server nature of Nav2, it is not difficult 
 Recoveries are used to get the robot out of a bad situation or attempt to deal with various forms of issues to make the system fault-tolerant.
 Smoothers can be used for additional quality improvements of the planned path.
 In this section, the general concepts around them and their uses in this project are analyzed.</p>
-<div class="section" id="planner-controller-smoother-and-recovery-servers">
-<h3>Planner, Controller, Smoother and Recovery Servers<a class="headerlink" href="#planner-controller-smoother-and-recovery-servers" title="Permalink to this heading"></a></h3>
-<p>Four of the action servers in this project are the planner, behavior, smoother and controller servers.</p>
+<div class="section" id="planner-controller-smoother-route-and-behavior-servers">
+<h3>Planner, Controller, Smoother, Route, and Behavior Servers<a class="headerlink" href="#planner-controller-smoother-route-and-behavior-servers" title="Permalink to this heading"></a></h3>
+<p>Four of the action servers in this project are the planner, behavior, smoother, route, and controller servers.</p>
 <p>These action servers are used to host a map of algorithm plugins to complete various tasks.
 They also host the environmental representation used by the algorithm plugins to compute their outputs.</p>
 <p>The planner, smoother and controller servers will be configured at runtime with the names (aliases) and types of algorithms to use.
@@ -1299,6 +1330,9 @@ Having all of these plugins in the same server allows the user to make use of a 
 This is done because of the wide variety of behavior actions that may be created which cannot have a single simple interface to share.
 The behavior server also contains a costmap subscriber to the local costmap, receiving real-time updates from the controller server, to compute its tasks.
 We do this to avoid having multiple instances of the local costmap which are computationally expensive to duplicate.</p>
+<p>The route server does not contain multiple “routing algorithms” like the planner or controller servers.
+Instead, it computes a route using a navigation graph using a set of plugins for scoring edges in the graph, parsing graph files, and performing operations along the route, if necessary.
+Rather than freespace planning, this computes a route using a graph that can be generated to represent lanes, areas the robot is allowed to navigate, a teach-and-repeat route, urban roadways, and more.</p>
 <p>Alternatively, since the BT nodes are trivial plugins calling an action, new BT nodes can be created to call other action servers with other action types.
 It is advisable to use the provided servers if possible at all times.
 If, due to the plugin or action interfaces, a new server is needed, that can be sustained with the framework.
@@ -1357,6 +1391,12 @@ but also for increasing distance from obstacles and high-cost areas as the smoot
 <p>Use of a separate smoother over one that is included as part of a planner is advantageous when combining different planners with different smoothers or when a specific control over smoothing is required, e.g. smoothing only a specific part of the path.</p>
 <p>The general task in Nav2 for a smoother is to receive a path and return its improved version.
 However, for different input paths, criteria of the improvements and methods of acquiring them exist, creating space for a multitude of smoothers that can be registered in this server.</p>
+</div>
+<div class="section" id="route">
+<h3>Route<a class="headerlink" href="#route" title="Permalink to this heading"></a></h3>
+<p>The route server is a specialized planner that computes a route using a navigation graph, rather than the freespace costmap.
+The route is computed as the optimal way from the start to the goal through the set of nodes and directional edges in the pre-defined navigation graph.
+This navigation graph can be generated to represent lanes, areas the robot is allowed to navigate, a teach-and-repeat route, urban roadways, and more.</p>
 </div>
 <div class="section" id="robot-footprints">
 <h3>Robot Footprints<a class="headerlink" href="#robot-footprints" title="Permalink to this heading"></a></h3>

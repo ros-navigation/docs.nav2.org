@@ -118,11 +118,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#behavior-trees">Behavior Trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#navigation-servers">Navigation Servers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#planner-controller-smoother-and-recovery-servers">Planner, Controller, Smoother and Recovery Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#planner-controller-smoother-route-and-behavior-servers">Planner, Controller, Smoother, Route, and Behavior Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#planners">Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#controllers">Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#behaviors">Behaviors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#smoothers">Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#route">Route</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#robot-footprints">Robot Footprints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#waypoint-following">Waypoint Following</a></li>
 </ul>
@@ -882,6 +883,29 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-route-server.html">Route Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#server-parameters">Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#edge-scorer-parameters">Edge Scorer Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#distancescorer">DistanceScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#timescorer">TimeScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#penaltyscorer">PenaltyScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#semanticscorer">SemanticScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#startposeorientationscorer">StartPoseOrientationScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#goalposeorientationscorer">GoalPoseOrientationScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#dynamicedgesscorer">DynamicEdgesScorer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#route-operations-parameters">Route Operations Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#adjustspeedlimit">AdjustSpeedLimit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#collisionmonitor">CollisionMonitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#timemarker">TimeMarker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#reroutingservice">ReroutingService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#triggerevent">TriggerEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#example">Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tuning/index.html">Tuning Guide</a><ul>
@@ -934,6 +958,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#progress-checkers">Progress Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html#route-plugins">Route Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#edge-scorers">Edge Scorers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#route-operations">Route Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugins/index.html#graph-file-parsers">Graph File Parsers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration Guides</a><ul>
@@ -1112,6 +1142,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/Jazzy.html">Jazzy to Kilted</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#nav2-route-server">Nav2 Route Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#behaviortree-error-msg">BehaviorTree error_msg</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
@@ -1296,14 +1327,14 @@ disable_collision_checks=False)</p></td>
 <tr class="row-odd"><td><p>cancelTask()</p></td>
 <td><p>Cancel an ongoing task, including route tasks.</p></td>
 </tr>
-<tr class="row-even"><td><p>isTaskComplete(trackingRoute=False)</p></td>
+<tr class="row-even"><td><p>isTaskComplete(task=RunningTask.NONE)</p></td>
 <td><p>Checks if task is complete yet, times out at <code class="docutils literal notranslate"><span class="pre">100ms</span></code>. Returns
-<code class="docutils literal notranslate"><span class="pre">True</span></code> if completed and <code class="docutils literal notranslate"><span class="pre">False</span></code> if still going. If checking a route
-tracking task, set default argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
+<code class="docutils literal notranslate"><span class="pre">True</span></code> if completed and <code class="docutils literal notranslate"><span class="pre">False</span></code> if still going. Provide the task ID
+from the long-running task (follow path, compute and track route, etc)</p></td>
 </tr>
-<tr class="row-odd"><td><p>getFeedback(trackingRoute=False)</p></td>
+<tr class="row-odd"><td><p>getFeedback(task=RunningTask.NONE)</p></td>
 <td><p>Gets feedback from task, returns action server feedback msg.
-If getting feedback on a tracking task, set default argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
+provide the task ID for the task you are requesting.</p></td>
 </tr>
 <tr class="row-even"><td><p>getResult()</p></td>
 <td><p>Gets final result of task, to be called after <code class="docutils literal notranslate"><span class="pre">isTaskComplete</span></code>
@@ -1317,6 +1348,16 @@ planner_id=’’, use_start=False)</p></td>
 planner_id=’’, use_start=False)</p></td>
 <td><p>Gets a path through a starting to a set of goals, a list
 of <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>getRoute(start, goal,
+use_start=False)</p></td>
+<td><p>Gets a route from a set start and goal nodeIDs or PoseStamped.
+Use Start if given, otherwises uses TF to obtain robot pose.</p></td>
+</tr>
+<tr class="row-even"><td><p>getAndTrackRoute(start, goal,
+use_start=False)</p></td>
+<td><p>Gets a route from a set of start and goal NodeIDs or PoseStamped.
+Uses start if given, otherwise uses TF to obtain the robot pose.</p></td>
 </tr>
 <tr class="row-odd"><td><p>dockRobot(dock_pose, dock_type)</p></td>
 <td><p>Attempts to dock the robot at a given docking pose and type, without using
@@ -1495,6 +1536,7 @@ x, y, theta (<code class="docutils literal notranslate"><span class="pre">float<
 <li><p><code class="docutils literal notranslate"><span class="pre">example_waypoint_follower.py</span></code> - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">example_follow_path.py</span></code> - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">example_assisted_teleop.py</span></code> - Demonstrates the assisted teleop capabilities of the navigator.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">example_route.py</span></code> - Demonstrates the route server capabilities of the navigator.</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">nav2_simple_commander</span></code> has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:</p>
 <ul class="simple">

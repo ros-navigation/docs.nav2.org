@@ -619,3 +619,66 @@ Behavior Tree Nodes
 .. _Pipeline Sequence: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
 .. _Recovery: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
 .. _Round Robin: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp
+
+
+
+Route Plugins
+=============
+
+Edge Scorers
+------------
+
++--------------------------------+------------------------+----------------------------------+
+|            Plugin Name         |         Creator        |       Description                |
++================================+========================+==================================+
+| DistanceScorer                 | Steve Macenski         | Scores an edge's length,         |
+|                                |                        | optionally scaled by relative    |
+|                                |                        | speed limits.                    |
++--------------------------------+------------------------+----------------------------------+
+| TimeScorer                     | Steve Macenski         | Scores and edge traversal time   |
+|                                |                        | using absolute speed limits or   |
+|                                |                        | previous traversal times.        |
++--------------------------------+------------------------+----------------------------------+
+| PenaltyScorer                  | Steve Macenski         | Scores using a static semantic   |
+|                                |                        | penalty.                         |
++--------------------------------+------------------------+----------------------------------+
+| SemanticScorer                 | Steve Macenski         | Scores using stored semantic data|
+|                                |                        | regarding the edge and/or nodes. |
++--------------------------------+------------------------+----------------------------------+
+|  StartPoseOrientationScorer    | Alex Yuen              | Scores based on the initial pose |
+|                                |                        | and start edge orientations.     |
++--------------------------------+------------------------+----------------------------------+
+|  GoalPoseOrientationScorer     | Alex Yuen              | Scores based on the goal pose and|
+|                                |                        | goal edge orientations.          |
++--------------------------------+------------------------+----------------------------------+
+|  DynamicEdgesScorer            | Steve Macenski         | Scores based on a dynamically set|
+|                                |                        | service cost and/or closure.     |
++--------------------------------+------------------------+----------------------------------+
+
+Route Operations
+----------------
+
++--------------------------------+------------------------+----------------------------------+
+|            Plugin Name         |         Creator        |       Description                |
++================================+========================+==================================+
+| AdjustSpeedLimit               | Steve Macenski         | Adjusts robot speed limits using |
+|                                |                        | an edge's semantic data.         |
++--------------------------------+------------------------+----------------------------------+
+| CollisionMoniter               | Steve Macenski         | Checks for collision in the      |
+|                                |                        | immediate future which tracking  |
+|                                |                        | a route.                         |
++--------------------------------+------------------------+----------------------------------+
+| TimeMarker                     | Steve Macenski         | Records the traversal time for an|
+|                                |                        | edge in the edge's metadata.     |
++--------------------------------+------------------------+----------------------------------+
+|  ReroutingService              | Steve Macenski         | Triggers a rereoute from an      |
+|                                |                        | external server.                 |
++--------------------------------+------------------------+----------------------------------+
+|  TriggerEvent                  | Steve Macenski         | Triggers an event based on a     |
+|                                |                        | configurable server name.        |
++--------------------------------+------------------------+----------------------------------+
+
+Graph File Parsers
+------------------
+
+Currently, only ``geojson`` parsing is supported.

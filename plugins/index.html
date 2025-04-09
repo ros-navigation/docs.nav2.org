@@ -118,11 +118,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#behavior-trees">Behavior Trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#navigation-servers">Navigation Servers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#planner-controller-smoother-and-recovery-servers">Planner, Controller, Smoother and Recovery Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#planner-controller-smoother-route-and-behavior-servers">Planner, Controller, Smoother, Route, and Behavior Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#planners">Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#controllers">Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#behaviors">Behaviors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#smoothers">Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#route">Route</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#robot-footprints">Robot Footprints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../concepts/index.html#waypoint-following">Waypoint Following</a></li>
 </ul>
@@ -882,6 +883,29 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-docking-server.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-route-server.html">Route Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#server-parameters">Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#edge-scorer-parameters">Edge Scorer Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#distancescorer">DistanceScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#timescorer">TimeScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#penaltyscorer">PenaltyScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#semanticscorer">SemanticScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#startposeorientationscorer">StartPoseOrientationScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#goalposeorientationscorer">GoalPoseOrientationScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#dynamicedgesscorer">DynamicEdgesScorer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#route-operations-parameters">Route Operations Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#adjustspeedlimit">AdjustSpeedLimit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#collisionmonitor">CollisionMonitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#timemarker">TimeMarker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#reroutingservice">ReroutingService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#triggerevent">TriggerEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-route-server.html#example">Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tuning/index.html">Tuning Guide</a><ul>
@@ -934,6 +958,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#progress-checkers">Progress Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#behavior-tree-nodes">Behavior Tree Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#route-plugins">Route Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#edge-scorers">Edge Scorers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#route-operations">Route Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graph-file-parsers">Graph File Parsers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration Guides</a><ul>
@@ -1112,6 +1142,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/Jazzy.html">Jazzy to Kilted</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#nav2-route-server">Nav2 Route Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#behaviortree-error-msg">BehaviorTree error_msg</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
@@ -2091,6 +2122,112 @@ a result and move on to <code class="docutils literal notranslate"><span class="
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="route-plugins">
+<h2>Route Plugins<a class="headerlink" href="#route-plugins" title="Permalink to this heading"></a></h2>
+<div class="section" id="edge-scorers">
+<h3>Edge Scorers<a class="headerlink" href="#edge-scorers" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 27%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
+<th class="head"><p>Creator</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DistanceScorer</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Scores an edge’s length,
+optionally scaled by relative
+speed limits.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TimeScorer</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Scores and edge traversal time
+using absolute speed limits or
+previous traversal times.</p></td>
+</tr>
+<tr class="row-even"><td><p>PenaltyScorer</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Scores using a static semantic
+penalty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SemanticScorer</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Scores using stored semantic data
+regarding the edge and/or nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p>StartPoseOrientationScorer</p></td>
+<td><p>Alex Yuen</p></td>
+<td><p>Scores based on the initial pose
+and start edge orientations.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GoalPoseOrientationScorer</p></td>
+<td><p>Alex Yuen</p></td>
+<td><p>Scores based on the goal pose and
+goal edge orientations.</p></td>
+</tr>
+<tr class="row-even"><td><p>DynamicEdgesScorer</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Scores based on a dynamically set
+service cost and/or closure.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="route-operations">
+<h3>Route Operations<a class="headerlink" href="#route-operations" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 27%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Plugin Name</p></th>
+<th class="head"><p>Creator</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AdjustSpeedLimit</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Adjusts robot speed limits using
+an edge’s semantic data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CollisionMoniter</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Checks for collision in the
+immediate future which tracking
+a route.</p></td>
+</tr>
+<tr class="row-even"><td><p>TimeMarker</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Records the traversal time for an
+edge in the edge’s metadata.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ReroutingService</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Triggers a rereoute from an
+external server.</p></td>
+</tr>
+<tr class="row-even"><td><p>TriggerEvent</p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Triggers an event based on a
+configurable server name.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="graph-file-parsers">
+<h3>Graph File Parsers<a class="headerlink" href="#graph-file-parsers" title="Permalink to this heading"></a></h3>
+<p>Currently, only <code class="docutils literal notranslate"><span class="pre">geojson</span></code> parsing is supported.</p>
+</div>
 </div>
 </div>
 

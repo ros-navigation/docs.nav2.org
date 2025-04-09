@@ -118,11 +118,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#behavior-trees">Behavior Trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../concepts/index.html#navigation-servers">Navigation Servers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#planner-controller-smoother-and-recovery-servers">Planner, Controller, Smoother and Recovery Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#planner-controller-smoother-route-and-behavior-servers">Planner, Controller, Smoother, Route, and Behavior Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#planners">Planners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#controllers">Controllers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#behaviors">Behaviors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#smoothers">Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#route">Route</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#robot-footprints">Robot Footprints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../concepts/index.html#waypoint-following">Waypoint Following</a></li>
 </ul>
@@ -882,6 +883,29 @@
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-docking-server.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html">Route Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#server-parameters">Server Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#edge-scorer-parameters">Edge Scorer Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#distancescorer">DistanceScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#timescorer">TimeScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#penaltyscorer">PenaltyScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#semanticscorer">SemanticScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#startposeorientationscorer">StartPoseOrientationScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#goalposeorientationscorer">GoalPoseOrientationScorer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#dynamicedgesscorer">DynamicEdgesScorer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#route-operations-parameters">Route Operations Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#adjustspeedlimit">AdjustSpeedLimit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#collisionmonitor">CollisionMonitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#timemarker">TimeMarker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#reroutingservice">ReroutingService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#triggerevent">TriggerEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#example">Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tuning/index.html">Tuning Guide</a><ul>
@@ -934,6 +958,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#goal-checkers">Goal Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#progress-checkers">Progress Checkers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#behavior-tree-nodes">Behavior Tree Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html#route-plugins">Route Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../plugins/index.html#edge-scorers">Edge Scorers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugins/index.html#route-operations">Route Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugins/index.html#graph-file-parsers">Graph File Parsers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration Guides</a><ul>
@@ -1112,6 +1142,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Jazzy.html">Jazzy to Kilted</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#nav2-route-server">Nav2 Route Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#behaviortree-error-msg">BehaviorTree error_msg</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
