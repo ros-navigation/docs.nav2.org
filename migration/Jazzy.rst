@@ -385,3 +385,31 @@ MPPI - Publishing Optimal Trajectory
 ************************************
 
 When ``publish_optimal_trajectory`` is enabled, the full optimal trajectory in the form of a ``nav2_msgs/Trajectory`` is published for debugging, visualization, and/or injection by other systems. This provides not just the pose information but velocities and timestamps of the MPC trajectory's viapoints which can be useful for multi-stage control systems, jerk minimization, or collision avoidance systems.
+
+NavigateThroughPoses - Reporting waypoint statuses information
+**************************************************************
+
+`PR #4994 <https://github.com/ros-navigation/navigation2/pull/4994>`_ enhances the ``NavigateThroughPoses`` navigator to provide real-time status feedback for waypoints.
+Introduces the ``WaypointStatus`` message type, replacing the deprecated ``MissedWaypoint`` type used in ``WaypointFollower``.
+Updates the behavior tree nodes ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` to mark waypoint statuses.
+``NavigateThroughPoses`` now retrieves waypoint statuses via the blackboard and organizes them into the action server’s feedback and result messages, exposing them to users.
+
+The parameter ``waypoint_statuses_blackboard_id`` was introduced to the ``bt_navigator`` node to allow users to customize the variable name for ``waypoint_statuses`` in the blackboard.
+In the Behavior Tree XML, the ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes must expose corresponding ports to align with the ``waypoint_statuses`` workflow.
+This ensures ``NavigateThroughPoses`` can retrieve and propagate waypoint statuses via the blackboard.
+
+The following is an example of the ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes configuration:
+
+.. code-block:: xml
+
+    <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="0.7" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}"/>
+    <RemoveInCollisionGoals input_goals="{goals}" output_goals="{goals}" cost_threshold="254.0" use_footprint="true" service_name="/global_costmap/get_cost_global_costmap" input_waypoint_statuses="{waypoint_statuses}" output_waypoint_statuses="{waypoint_statuses}" />
+
+The ``waypoint_statuses`` array matches the length of the original input ``goals`` vector, with each element being a ``WaypointStatus`` message.
+The ``RemovePassedGoals`` and ``RemoveInCollisionGoals`` nodes prune invalid or completed goals from the goals vector and update their corresponding entries in the ``waypoint_statuses`` array.
+
+Custom nodes can access the ``waypoint_statuses`` array via input ports. Use the utility method ``find_next_matching_goal_in_waypoint_statuses`` (from nav2_utils) to map goals to their status entries.
+Modified statuses should then be propagated through output ports for downstream nodes.
+
+The ``NavigateThroughPoses`` navigator retrieves the ``waypoint_statuses`` instance from the blackboard in its ``onLoop`` callback and writes it into the feedback message.
+During the ``goalCompleted`` callback, it fetches the ``waypoint_statuses`` instance and, based on the BT's final execution status (``final_bt_status``), updates any waypoints still in the ``PENDING`` state to either ``COMPLETED`` (if ``final_bt_status`` is ``SUCCEEDED``) or ``FAILED`` (otherwise).
