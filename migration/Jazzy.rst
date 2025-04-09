@@ -5,6 +5,20 @@ Jazzy to Kilted
 
 Moving from ROS 2 Jazzy to Kilted, a number of stability improvements were added that we will not specifically address here.
 
+Nav2 Route Server
+*****************
+
+The Route Server in ``nav2_route`` implements the server for computing routes through a predefined navigation graph rather than using freespace planning like the Planner Server.
+It may be used to fully replace freespace planning when following a particular route closely or to augment the global planner with long-distance routing to a goal.
+In this case, the planner will generate feasible paths with localized environmental information for only the future part of the route necessary.
+
+This is useful for industrial applications where the robot should deterministically plan within known areas, lanes, and/or routes rather than having free rein to globally navigate.
+It is also useful for outdoor navigation in locations like urban centers on roadways or natural environments over vast distances.
+
+It also includes a tracking feature that will track the route's progression and provide live feedback on its status as well as trigger contextual operations at various nodes and edge events (change speed, turn on light, etc).
+
+See :ref:`configuring_croute_server` for additional configuration information, the tutorials on generating graphs and using it, and example graphs in ``nav2_bringup`` and ``nav2_route``.
+
 BehaviorTree error_msg
 **********************
 
