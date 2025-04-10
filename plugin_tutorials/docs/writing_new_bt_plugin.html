@@ -551,6 +551,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#using-custom-types-for-input-output-ports">Using custom types for Input/Output ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize-the-content-of-the-blackboard-in-groot-2-pro">Visualize the content of the blackboard in Groot 2 (PRO)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="writing_new_behavior_plugin.html">Writing a New Behavior Plugin</a><ul>
@@ -582,6 +584,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html">Behavior-Tree Navigator</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html#navigatetopose-parameters">NavigateToPose Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html#navigatethroughposes-parameters">NavigateThroughPoses Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-navigator.html#example">Example</a></li>
 </ul>
 </li>
@@ -1175,6 +1179,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#groot-2-support">Groot 2 Support</a></li>
 </ul>
 </li>
 </ul>
@@ -1237,6 +1242,8 @@
 <li><p><a class="reference internal" href="#overview">Overview</a></p></li>
 <li><p><a class="reference internal" href="#requirements">Requirements</a></p></li>
 <li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
+<li><p><a class="reference internal" href="#using-custom-types-for-input-output-ports">Using custom types for Input/Output ports</a></p></li>
+<li><p><a class="reference internal" href="#visualize-the-content-of-the-blackboard-in-groot-2-pro">Visualize the content of the blackboard in Groot 2 (PRO)</a></p></li>
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
@@ -1462,6 +1469,76 @@ For example, the <code class="docutils literal notranslate"><span class="pre">na
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="using-custom-types-for-input-output-ports">
+<h2>Using custom types for Input/Output ports<a class="headerlink" href="#using-custom-types-for-input-output-ports" title="Permalink to this heading"></a></h2>
+<p>In addition to standard types, custom types such as those from <code class="docutils literal notranslate"><span class="pre">nav2_msgs</span></code> or <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> can also be used for input/output ports.</p>
+<p>For example, you can define custom types for ports in the <code class="docutils literal notranslate"><span class="pre">providedPorts</span></code> function as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">PortsList</span><span class="w"> </span><span class="nf">providedPorts</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">providedBasicPorts</span><span class="p">(</span>
+<span class="w">    </span><span class="n">BT</span><span class="o">::</span><span class="n">OutputPort</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;position&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Position of the robot&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To use custom types for input/output ports in the behavior tree XML, it is necessary to convert them from a string. This is because ports in the XML are represented as strings and must be transformed into the corresponding data type in the code.</p>
+<p>For example, if you have a custom type <code class="docutils literal notranslate"><span class="pre">geometry_msgs::msg::Point</span></code>, you can perform the conversion as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">BT</span>
+<span class="p">{</span>
+<span class="k">template</span><span class="o">&lt;&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="n">convertFromString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StringView</span><span class="w"> </span><span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="c1">// three real numbers separated by semicolons</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">splitString</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;;&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">parts</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;invalid number of fields for point attribute)&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
+<span class="w">    </span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">convertFromString</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">convertFromString</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">convertFromString</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace BT</span>
+</pre></div>
+</div>
+<p>For more information on custom type conversion, you can refer to the <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/bt_utils.hpp">bt_utils.hpp</a> or the BT.CPP documentation: <a class="reference external" href="https://www.behaviortree.dev/docs/tutorial-basics/tutorial_03_generic_ports#parsing-a-string">Parsing a string</a>.</p>
+</div>
+<div class="section" id="visualize-the-content-of-the-blackboard-in-groot-2-pro">
+<h2>Visualize the content of the blackboard in Groot 2 (PRO)<a class="headerlink" href="#visualize-the-content-of-the-blackboard-in-groot-2-pro" title="Permalink to this heading"></a></h2>
+<p>If you are using the paid version of Groot 2 Pro, you can view the content of the blackboard of the BT nodes. To achieve this, you need to perform a conversion of the custom input/output type to JSON format. Below is an example of such a conversion:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">geometry_msgs</span><span class="o">::</span><span class="nn">msg</span>
+<span class="p">{</span>
+<span class="n">BT_JSON_CONVERTER</span><span class="p">(</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">add_field</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">  </span><span class="n">add_field</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">  </span><span class="n">add_field</span><span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace geometry_msgs::msg</span>
+</pre></div>
+</div>
+<p>The macro <code class="docutils literal notranslate"><span class="pre">BT_JSON_CONVERTER</span></code> must be placed within the namespace of the custom type to be converted. Additionally, if the custom type is composed of other custom types, those types must be converted first before converting the parent type.</p>
+<p>After defining the conversion, you need to register the custom type in the <cite>providedPorts</cite> function. Below is an example of how to register it:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">PortsList</span><span class="w"> </span><span class="nf">providedPorts</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="c1">// Register JSON definitions for the types used in the ports</span>
+<span class="w">  </span><span class="n">BT</span><span class="o">::</span><span class="n">RegisterJsonDefinition</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">providedBasicPorts</span><span class="p">(</span>
+<span class="w">    </span><span class="n">BT</span><span class="o">::</span><span class="n">OutputPort</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;position&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Position of the robot&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information on custom type conversion, you can refer to the <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/json_utils.hpp">json_utils.hpp</a> or the BT.CPP documentation: <a class="reference external" href="https://www.behaviortree.dev/docs/tutorial-basics/tutorial_11_groot2/#visualize-custom-types-in-the-blackboard">Visualize custom types in the Blackboard</a></p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All custom types used in Nav2 are already registered in the <cite>json_utils.hpp</cite> file. You can use them directly without the need to register them again.</p>
+</div>
+</div></blockquote>
 </div>
 </div>
 

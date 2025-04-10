@@ -551,6 +551,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#using-custom-types-for-input-output-ports">Using custom types for Input/Output ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_bt_plugin.html#visualize-the-content-of-the-blackboard-in-groot-2-pro">Visualize the content of the blackboard in Groot 2 (PRO)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../plugin_tutorials/docs/writing_new_behavior_plugin.html">Writing a New Behavior Plugin</a><ul>
@@ -582,6 +584,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration Guide</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Behavior-Tree Navigator</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigatetopose-parameters">NavigateToPose Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigatethroughposes-parameters">NavigateThroughPoses Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -1175,6 +1179,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#groot-2-support">Groot 2 Support</a></li>
 </ul>
 </li>
 </ul>
@@ -1657,9 +1662,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-</dl>
-<dl>
-<dt>:error_code_name_prefixes</dt><dd><table class="docutils align-default">
+<dt class="field-odd">error_code_name_prefixes</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1692,10 +1696,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-</dl>
-<p>:error_code_names</p>
-<blockquote>
-<div><table class="docutils align-default">
+<dt class="field-even">error_code_names</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1717,8 +1719,7 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <dt>Description</dt><dd><p>For Jazzy and older: List of of error codes to compare.</p>
 </dd>
 </dl>
-</div></blockquote>
-<dl class="field-list">
+</dd>
 <dt class="field-odd">bond_heartbeat_period</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
@@ -1736,6 +1737,96 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="navigatetopose-parameters">
+<h2>NavigateToPose Parameters<a class="headerlink" href="#navigatetopose-parameters" title="Permalink to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_to_pose_name&gt;</span></code>.enable_groot_monitoring</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to enable Groot2 monitoring for this navigator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_to_pose_name&gt;</span></code>.groot_server_port</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1667</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="navigatethroughposes-parameters">
+<h2>NavigateThroughPoses Parameters<a class="headerlink" href="#navigatethroughposes-parameters" title="Permalink to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.enable_groot_monitoring</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to enable Groot2 monitoring for this navigator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;navigate_through_poses&gt;</span></code>.groot_server_port</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1669</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.</p>
 </dd>
 </dl>
 </dd>
@@ -1761,8 +1852,12 @@ This issue has been raised with OSRF to find another solution to avoid active go
 <span class="w">    </span><span class="nt">navigators</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;navigate_to_pose&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;navigate_through_poses&#39;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">navigate_to_pose</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_bt_navigator::NavigateToPoseNavigator&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
+<span class="w">      </span><span class="nt">enable_groot_monitoring</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">groot_server_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1667</span>
 <span class="w">    </span><span class="nt">navigate_through_poses</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_bt_navigator::NavigateThroughPosesNavigator&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
+<span class="w">      </span><span class="nt">enable_groot_monitoring</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">groot_server_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1669</span>
 <span class="w">    </span><span class="nt">plugin_lib_names</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav2_compute_path_to_pose_action_bt_node</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav2_follow_path_action_bt_node</span>

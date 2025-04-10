@@ -551,6 +551,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#run-your-custom-plugin">4- Run Your Custom plugin</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#using-custom-types-for-input-output-ports">Using custom types for Input/Output ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_bt_plugin.html#visualize-the-content-of-the-blackboard-in-groot-2-pro">Visualize the content of the blackboard in Groot 2 (PRO)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../plugin_tutorials/docs/writing_new_behavior_plugin.html">Writing a New Behavior Plugin</a><ul>
@@ -582,6 +584,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html">Behavior-Tree Navigator</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#navigatetopose-parameters">NavigateToPose Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#navigatethroughposes-parameters">NavigateThroughPoses Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#example">Example</a></li>
 </ul>
 </li>
@@ -1175,6 +1179,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#groot-2-support">Groot 2 Support</a></li>
 </ul>
 </li>
 </ul>
@@ -1586,6 +1591,11 @@ The <code class="docutils literal notranslate"><span class="pre">RemovePassedGoa
 Modified statuses should then be propagated through output ports for downstream nodes.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">NavigateThroughPoses</span></code> navigator retrieves the <code class="docutils literal notranslate"><span class="pre">waypoint_statuses</span></code> instance from the blackboard in its <code class="docutils literal notranslate"><span class="pre">onLoop</span></code> callback and writes it into the feedback message.
 During the <code class="docutils literal notranslate"><span class="pre">goalCompleted</span></code> callback, it fetches the <code class="docutils literal notranslate"><span class="pre">waypoint_statuses</span></code> instance and, based on the BT’s final execution status (<code class="docutils literal notranslate"><span class="pre">final_bt_status</span></code>), updates any waypoints still in the <code class="docutils literal notranslate"><span class="pre">PENDING</span></code> state to either <code class="docutils literal notranslate"><span class="pre">COMPLETED</span></code> (if <code class="docutils literal notranslate"><span class="pre">final_bt_status</span></code> is <code class="docutils literal notranslate"><span class="pre">SUCCEEDED</span></code>) or <code class="docutils literal notranslate"><span class="pre">FAILED</span></code> (otherwise).</p>
+</div>
+<div class="section" id="groot-2-support">
+<h2>Groot 2 Support<a class="headerlink" href="#groot-2-support" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5065">PR #5065</a> , BT navigators: <code class="docutils literal notranslate"><span class="pre">navigate_to_pose</span></code> and <code class="docutils literal notranslate"><span class="pre">navigate_through_poses</span></code> now support live monitoring and visualization of the behavior tree using Groot 2. JSON conversions are also available to see the content of the Blackboard, allowing the introspection of the BT nodes. Switching bt-xmls on the fly through a new goal request is also included.</p>
+<p>Because live monitoring of Behavior Tree with more than 20 nodes and visualizing the content of the blackboard is a PRO (paid) feature of Groot 2. This feature is disabled by default.</p>
 </div>
 </div>
 
