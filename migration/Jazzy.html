@@ -1596,6 +1596,10 @@ During the <code class="docutils literal notranslate"><span class="pre">goalComp
 <h2>Groot 2 Support<a class="headerlink" href="#groot-2-support" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5065">PR #5065</a> , BT navigators: <code class="docutils literal notranslate"><span class="pre">navigate_to_pose</span></code> and <code class="docutils literal notranslate"><span class="pre">navigate_through_poses</span></code> now support live monitoring and visualization of the behavior tree using Groot 2. JSON conversions are also available to see the content of the Blackboard, allowing the introspection of the BT nodes. Switching bt-xmls on the fly through a new goal request is also included.</p>
 <p>Because live monitoring of Behavior Tree with more than 20 nodes and visualizing the content of the blackboard is a PRO (paid) feature of Groot 2. This feature is disabled by default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, there is a known bug that crashes Groot 2 when visualizing vectors and related types (e.g., <code class="docutils literal notranslate"><span class="pre">Goals</span></code> and <code class="docutils literal notranslate"><span class="pre">Path</span></code>) contained in the blackboard. Efforts are underway to resolve this issue. For updates, please refer to the following links: <a class="reference external" href="https://github.com/BehaviorTree/Groot2/issues/55">Groot2 issue #55</a> and <a class="reference external" href="https://github.com/BehaviorTree/BehaviorTree.CPP/pull/958">BehaviorTree PR #958</a>.</p>
+</div>
 </div>
 </div>
 
