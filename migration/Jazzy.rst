@@ -435,3 +435,7 @@ Groot 2 Support
 In `PR #5065 <https://github.com/ros-navigation/navigation2/pull/5065>`_ , BT navigators: ``navigate_to_pose`` and ``navigate_through_poses`` now support live monitoring and visualization of the behavior tree using Groot 2. JSON conversions are also available to see the content of the Blackboard, allowing the introspection of the BT nodes. Switching bt-xmls on the fly through a new goal request is also included.
 
 Because live monitoring of Behavior Tree with more than 20 nodes and visualizing the content of the blackboard is a PRO (paid) feature of Groot 2. This feature is disabled by default.
+
+.. note::
+
+  Currently, there is a known bug that crashes Groot 2 when visualizing vectors and related types (e.g., ``Goals`` and ``Path``) contained in the blackboard. Efforts are underway to resolve this issue. For updates, please refer to the following links: `Groot2 issue #55 <https://github.com/BehaviorTree/Groot2/issues/55>`_ and `BehaviorTree PR #958 <https://github.com/BehaviorTree/BehaviorTree.CPP/pull/958>`_.
