@@ -241,9 +241,9 @@ Select this BT XML file in your specific navigation request in ``NavigateToPose`
 Using custom types for Input/Output ports
 =========================================
 
-In addition to standard types, custom types such as those from `nav2_msgs` or `geometry_msgs` can also be used for input/output ports. 
+In addition to standard types, custom types such as those from ``nav2_msgs`` or ``geometry_msgs`` can also be used for input/output ports. 
 
-For example, you can define custom types for ports in the `providedPorts` function as follows:
+For example, you can define custom types for ports in the ``providedPorts`` function as follows:
 
 .. code-block:: cpp
 
@@ -256,7 +256,7 @@ For example, you can define custom types for ports in the `providedPorts` functi
 
 To use custom types for input/output ports in the behavior tree XML, it is necessary to convert them from a string. This is because ports in the XML are represented as strings and must be transformed into the corresponding data type in the code.
 
-For example, if you have a custom type `geometry_msgs::msg::Point`, you can perform the conversion as follows:
+For example, if you have a custom type ``geometry_msgs::msg::Point``, you can perform the conversion as follows:
 
 .. code-block:: cpp
 
@@ -279,7 +279,7 @@ For example, if you have a custom type `geometry_msgs::msg::Point`, you can perf
   }
   }  // namespace BT
 
-For more information on custom type conversion, you can refer to the `bt_utils.hpp <https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/bt_utils.hpp>`_ or the BT.CPP documentation : `Parsing a string <https://www.behaviortree.dev/docs/tutorial-basics/tutorial_03_generic_ports#parsing-a-string>`_
+For more information on custom type conversion, you can refer to the `bt_utils.hpp <https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/bt_utils.hpp>`_ or the BT.CPP documentation: `Parsing a string <https://www.behaviortree.dev/docs/tutorial-basics/tutorial_03_generic_ports#parsing-a-string>`_.
 
 Visualize the content of the blackboard in Groot 2 (PRO)
 ========================================================
@@ -312,7 +312,7 @@ After defining the conversion, you need to register the custom type in the `prov
     });
   }
 
-For more information on custom type conversion, you can refer to the `json_utils.hpp <https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/json_utils.hpp>`_ or the BT.CPP documentation : `Visualize custom types in the Blackboard <https://www.behaviortree.dev/docs/tutorial-basics/tutorial_11_groot2/#visualize-custom-types-in-the-blackboard>`_
+For more information on custom type conversion, you can refer to the `json_utils.hpp <https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/json_utils.hpp>`_ or the BT.CPP documentation: `Visualize custom types in the Blackboard <https://www.behaviortree.dev/docs/tutorial-basics/tutorial_11_groot2/#visualize-custom-types-in-the-blackboard>`_
 
   .. note::
 
