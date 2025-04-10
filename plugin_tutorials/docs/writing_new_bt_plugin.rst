@@ -283,6 +283,7 @@ For more information on custom type conversion, you can refer to the `bt_utils.h
 
 Visualize the content of the blackboard in Groot 2 (PRO)
 ========================================================
+
 If you are using the paid version of Groot 2 Pro, you can view the content of the blackboard of the BT nodes. To achieve this, you need to perform a conversion of the custom input/output type to JSON format. Below is an example of such a conversion:
 
 .. code-block:: cpp
