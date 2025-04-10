@@ -429,3 +429,9 @@ Modified statuses should then be propagated through output ports for downstream 
 
 The ``NavigateThroughPoses`` navigator retrieves the ``waypoint_statuses`` instance from the blackboard in its ``onLoop`` callback and writes it into the feedback message.
 During the ``goalCompleted`` callback, it fetches the ``waypoint_statuses`` instance and, based on the BT's final execution status (``final_bt_status``), updates any waypoints still in the ``PENDING`` state to either ``COMPLETED`` (if ``final_bt_status`` is ``SUCCEEDED``) or ``FAILED`` (otherwise).
+
+Groot 2 Support
+***************
+In `PR #5065 <https://github.com/ros-navigation/navigation2/pull/5065>`_ , BT navigators: ``navigate_to_pose`` and ``navigate_through_poses`` now support live monitoring and visualization of the behavior tree using Groot 2. JSON conversions are also available to see the content of the Blackboard, allowing the introspection of the BT nodes. Switching bt-xmls on the fly through a new goal request is also included.
+
+Because live monitoring of Behavior Tree with more than 20 nodes and visualizing the content of the blackboard is a PRO (paid) feature of Groot 2. This feature is disabled by default.

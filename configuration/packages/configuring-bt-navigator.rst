@@ -249,7 +249,8 @@ Parameters
   Description
     Use time provided by simulation.
 
-:error_code_name_prefixes
+:error_code_name_prefixes:
+
   ============== ===========================
   Type           Default
   -------------- ---------------------------
@@ -270,7 +271,7 @@ Parameters
   Description
     For Kilted and newer: List of of error code name prefixes to be appended with '_error_code' and '_error_msg' and searched for during aborted navigator error processing.
 
-:error_code_names
+:error_code_names:
 
   ============== ===========================
   Type           Default
@@ -292,6 +293,57 @@ Parameters
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+
+NavigateToPose Parameters
+*************************
+
+:``<navigate_to_pose_name>``.enable_groot_monitoring:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           False
+  ============== =======
+
+  Description
+    Whether to enable Groot2 monitoring for this navigator.
+
+:``<navigate_to_pose_name>``.groot_server_port:
+
+  ==== =======
+  Type Default
+  ---- -------
+  int  1667
+  ==== =======
+
+  Description
+    The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1669.
+
+NavigateThroughPoses Parameters
+*******************************
+
+:``<navigate_through_poses>``.enable_groot_monitoring:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           False
+  ============== =======
+
+  Description
+    Whether to enable Groot2 monitoring for this navigator.
+
+:``<navigate_through_poses>``.groot_server_port:
+
+  ==== =======
+  Type Default
+  ---- -------
+  int  1669
+  ==== =======
+
+  Description
+    The port number for the Groot2 server. Note: In Groot2, you only need to specify the server port value, not the publisher port, as it is always the server port +1. Therefore, in this case, to use another navigator, the next available port would be 1671.
 
 Example
 *******
@@ -315,8 +367,12 @@ Example
         navigators: ['navigate_to_pose', 'navigate_through_poses']
         navigate_to_pose:
           plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
+          enable_groot_monitoring: false
+          groot_server_port: 1667
         navigate_through_poses:
           plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
+          enable_groot_monitoring: false
+          groot_server_port: 1669
         plugin_lib_names:
           - nav2_compute_path_to_pose_action_bt_node
           - nav2_follow_path_action_bt_node
