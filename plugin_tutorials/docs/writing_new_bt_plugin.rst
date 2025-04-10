@@ -241,7 +241,7 @@ Select this BT XML file in your specific navigation request in ``NavigateToPose`
 Using custom types for Input/Output ports
 =========================================
 
-In addition to standard types, custom types such as those from ``nav2_msgs`` or ``geometry_msgs`` can also be used for input/output ports. 
+In addition to standard types, custom types such as those from ``nav2_msgs`` or ``geometry_msgs`` can also be used for input/output ports.
 
 For example, you can define custom types for ports in the ``providedPorts`` function as follows:
 
