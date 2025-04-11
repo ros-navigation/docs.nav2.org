@@ -135,7 +135,7 @@ In your SDF add the below before the ``</model>`` line to add the lidar's link, 
           <update_rate>5</update_rate>
           <topic>scan</topic>
           <gz_frame_id>lidar_link</gz_frame_id>
-          <ray>
+          <lidar>
             <scan>
               <horizontal>
                 <samples>360</samples>
@@ -154,7 +154,7 @@ In your SDF add the below before the ``</model>`` line to add the lidar's link, 
               <mean>0.0</mean>
               <stddev>0.01</stddev>
             </noise>
-          </ray>
+          </lidar>
         </sensor>
       </link>
 
