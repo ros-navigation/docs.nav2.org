@@ -15,6 +15,7 @@ Nav2 Tutorials
    docs/using_groot.rst
    docs/integrating_vio.rst
    docs/navigation2_dynamic_point_following.rst
+   docs/navigation2_route_tool.rst
    docs/navigation2_with_keepout_filter.rst
    docs/navigation2_with_speed_filter.rst
    docs/using_docking.rst
