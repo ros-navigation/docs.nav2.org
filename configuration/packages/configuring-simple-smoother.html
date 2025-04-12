@@ -640,8 +640,14 @@
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/CancelComputeAndTrackRoute.html">CancelComputeAndTrackRoute</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/Smooth.html">SmoothPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/DockRobot.html">DockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/UndockRobot.html">UndockRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/ConcatenatePaths.html">ConcatenatePaths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/GetCurrentPose.html">GetCurrentPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/AppendGoalPoseToGoals.html">AppendGoalPoseToGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/ExtractRouteNodesAsGoals.html">ExtractRouteNodesAsGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/GetNextFewGoals.html">GetNextFewGoals</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -661,7 +667,9 @@
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/conditions/WouldAControllerRecoveryHelp.html">WouldAControllerRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/conditions/WouldAPlannerRecoveryHelp.html">WouldAPlannerRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/conditions/WouldASmootherRecoveryHelp.html">WouldASmootherRecoveryHelp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/conditions/WouldARouteRecoveryHelp.html">WouldARouteRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/conditions/IsBatteryCharging.html">IsBatteryCharging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bt-plugins/conditions/ArePosesNear.html">ArePosesNear</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -962,6 +970,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.html">Navigate To Pose and Pause Near Goal-Obstacle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.html">Navigate To Pose With Consistent Replanning And If Path Becomes Invalid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/navigate_on_route_graph_w_recovery.html">Navigate on Route Graph with Recovery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../behavior_trees/trees/odometry_calibration.html">Odometry Calibration</a></li>
 </ul>
@@ -1377,6 +1386,26 @@
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">enforce_path_inversion</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -1396,6 +1425,7 @@
 <span class="w">      </span><span class="nt">max_its</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">      </span><span class="nt">w_data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 <span class="w">      </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+<span class="w">      </span><span class="nt">enforce_path_inversion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 </pre></div>
 </div>
 </div>

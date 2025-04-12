@@ -80,6 +80,18 @@ Simple Smoother Parameters
   Description
     Weight to apply to smooth the path (smooths it)
 
+:enforce_path_inversion:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  bool           True
+  ============== ===========================
+
+  Description
+    Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
+
+
 Example
 *******
 .. code-block:: yaml
@@ -99,3 +111,4 @@ Example
           max_its: 1000
           w_data: 0.2
           w_smooth: 0.3
+          enforce_path_inversion: True

@@ -640,8 +640,14 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/CancelComputeAndTrackRoute.html">CancelComputeAndTrackRoute</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/Smooth.html">SmoothPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/DockRobot.html">DockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/UndockRobot.html">UndockRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ConcatenatePaths.html">ConcatenatePaths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GetCurrentPose.html">GetCurrentPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/AppendGoalPoseToGoals.html">AppendGoalPoseToGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ExtractRouteNodesAsGoals.html">ExtractRouteNodesAsGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/GetNextFewGoals.html">GetNextFewGoals</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -661,7 +667,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/WouldAControllerRecoveryHelp.html">WouldAControllerRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/WouldAPlannerRecoveryHelp.html">WouldAPlannerRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/WouldASmootherRecoveryHelp.html">WouldASmootherRecoveryHelp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/WouldARouteRecoveryHelp.html">WouldARouteRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/IsBatteryCharging.html">IsBatteryCharging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/conditions/ArePosesNear.html">ArePosesNear</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -962,6 +970,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.html">Navigate To Pose and Pause Near Goal-Obstacle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.html">Navigate To Pose With Consistent Replanning And If Path Becomes Invalid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/navigate_on_route_graph_w_recovery.html">Navigate on Route Graph with Recovery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/trees/odometry_calibration.html">Odometry Calibration</a></li>
 </ul>
@@ -1889,6 +1898,18 @@ or point cost above a threshold.</p></td>
 rather than a single end goal pose
 using the planner plugin specified</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_route_action.cpp">Compute Route</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Computes a Route through a navigation
+graph and returns both a dense path and
+set of sparse route nodes and edges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_action.cpp">Compute And Track Route</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Computes a Route as above, but also
+actively tracks progress and triggers
+route contextual semantic operations.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp">Cancel Control Action</a></p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels Nav2 controller server</p></td>
@@ -1905,33 +1926,57 @@ using the planner plugin specified</p></td>
 <td><p>Pradheep Padmanabhan</p></td>
 <td><p>Cancels wait behavior action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp">Cancel Drive on Heading Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_cancel_node.cpp">Cancel Route Action</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Cancels ComputeAndTrackRoute action</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp">Cancel Drive on Heading Action</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Cancels drive on heading behavior action</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp">Cancel Assisted Teleop Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp">Cancel Assisted Teleop Action</a></p></td>
 <td><p>Joshua Wallace</p></td>
 <td><p>Cancels assisted teleop behavior action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp">Cancel Complete Coverage Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/cancel_complete_coverage_path.cpp">Cancel Complete Coverage Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Cancels compute complete coverage</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp">Compute Complete Coverage Path Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/open-navigation/opennav_coverage/blob/main/opennav_coverage_bt/src/compute_complete_coverage_path.cpp">Compute Complete Coverage Path Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Calls coverage planner server</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp">Get Pose From Path Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp">Get Pose From Path Action</a></p></td>
 <td><p>Marc Morcos</p></td>
 <td><p>Extracts a pose from a path</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp">Dock Robot Action</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp">Dock Robot Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Calls dock robot action</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp">Undock Robot Action</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp">Undock Robot Action</a></p></td>
 <td><p>Steve Macenski</p></td>
 <td><p>Calls undock robot action</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp">Concatenate Paths Action</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Concatenates 2 paths together</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp">Get Current Pose Action</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Gets current pose to the blackboard</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/append_goal_pose_to_goals_action.cpp">Append Goal Pose To Goals Action</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Appends a goal pose to a goals vector</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp">Extract Route Nodes To Goals Action</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Converts Route Nodes to Goals</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp">Get Next Few Goals Action</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Obtains the next N goals in a goal vector</p></td>
 </tr>
 </tbody>
 </table>
@@ -2049,10 +2094,22 @@ recovery could help
 clear the smoother
 server error code.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp">Is Battery Charging Condition</a></p></td>
+<tr class="row-even"><td><p><a href="#id1"><span class="problematic" id="id2">`Would A Route Recovery Help`_</span></a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Checks if a Route
+recovery could help
+clear the route
+server error code.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp">Is Battery Charging Condition</a></p></td>
 <td><p>Alberto Tudela</p></td>
 <td><p>Checks if the battery
 is charging.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp">Are Poses Near Condition</a></p></td>
+<td><p>Steve Macenski</p></td>
+<td><p>Checks if 2 poses are
+nearby to each other.</p></td>
 </tr>
 </tbody>
 </table>

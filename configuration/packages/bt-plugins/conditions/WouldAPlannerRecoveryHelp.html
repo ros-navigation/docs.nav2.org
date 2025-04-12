@@ -640,8 +640,14 @@
 <li class="toctree-l4"><a class="reference internal" href="../actions/CancelComputeAndTrackRoute.html">CancelComputeAndTrackRoute</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../actions/Smooth.html">SmoothPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../actions/DockRobot.html">DockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../actions/UndockRobot.html">UndockRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ConcatenatePaths.html">ConcatenatePaths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/GetCurrentPose.html">GetCurrentPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/AppendGoalPoseToGoals.html">AppendGoalPoseToGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ExtractRouteNodesAsGoals.html">ExtractRouteNodesAsGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/GetNextFewGoals.html">GetNextFewGoals</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul class="current">
@@ -661,7 +667,9 @@
 <li class="toctree-l4"><a class="reference internal" href="WouldAControllerRecoveryHelp.html">WouldAControllerRecoveryHelp</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">WouldAPlannerRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="WouldASmootherRecoveryHelp.html">WouldASmootherRecoveryHelp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="WouldARouteRecoveryHelp.html">WouldARouteRecoveryHelp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IsBatteryCharging.html">IsBatteryCharging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArePosesNear.html">ArePosesNear</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
@@ -962,6 +970,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/nav_through_poses_recovery.html">Navigate Through Poses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/nav_to_pose_and_pause_near_goal_obstacle.html">Navigate To Pose and Pause Near Goal-Obstacle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/nav_to_pose_with_consistent_replanning_and_if_path_becomes_invalid.html">Navigate To Pose With Consistent Replanning And If Path Becomes Invalid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/navigate_on_route_graph_w_recovery.html">Navigate on Route Graph with Recovery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/follow_point.html">Follow Dynamic Point</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../behavior_trees/trees/odometry_calibration.html">Odometry Calibration</a></li>
 </ul>
@@ -1252,7 +1261,7 @@
              
   <div class="section" id="wouldaplannerrecoveryhelp">
 <span id="bt-would-a-planner-recovery-help-condition"></span><h1>WouldAPlannerRecoveryHelp<a class="headerlink" href="#wouldaplannerrecoveryhelp" title="Permalink to this heading"></a></h1>
-<p>Checks if the active controller server error code is UNKNOWN, NO_VALID_CONTROL, or TIMEOUT.</p>
+<p>Checks if the active planner server error code is UNKNOWN, NO_VALID_PATH, or TIMEOUT.</p>
 <p>If the active error code is a match, the node returns <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. Otherwise, it returns <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code>.</p>
 <div class="section" id="input-port">
 <h2>Input Port<a class="headerlink" href="#input-port" title="Permalink to this heading"></a></h2>
