@@ -55,8 +55,14 @@ Action Plugins
   bt-plugins/actions/CancelComputeAndTrackRoute.rst
   bt-plugins/actions/Smooth.rst
   bt-plugins/actions/GetPoseFromPath.rst
+  bt-plugins/actions/GetPoseFromPath.rst
   bt-plugins/actions/DockRobot.rst
   bt-plugins/actions/UndockRobot.rst
+  bt-plugins/actions/ConcatenatePaths.rst
+  bt-plugins/actions/GetCurrentPose.rst
+  bt-plugins/actions/AppendGoalPoseToGoals.rst
+  bt-plugins/actions/ExtractRouteNodesAsGoals.rst
+  bt-plugins/actions/GetNextFewGoals.rst
 
 Condition Plugins
 *****************
@@ -80,7 +86,9 @@ Condition Plugins
   bt-plugins/conditions/WouldAControllerRecoveryHelp.rst
   bt-plugins/conditions/WouldAPlannerRecoveryHelp.rst
   bt-plugins/conditions/WouldASmootherRecoveryHelp.rst
+  bt-plugins/conditions/WouldARouteRecoveryHelp.rst
   bt-plugins/conditions/IsBatteryCharging.rst
+  bt-plugins/conditions/ArePosesNear.rst
 
 Control Plugins
 ***************
