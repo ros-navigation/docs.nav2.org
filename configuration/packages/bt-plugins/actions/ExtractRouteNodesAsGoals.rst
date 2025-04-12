@@ -32,7 +32,7 @@ Output Ports
   =============================== =======
 
   Description
-        Goals comparising the route's ``nodes``.
+        Goals comparing the route's ``nodes``.
 
 Example
 -------

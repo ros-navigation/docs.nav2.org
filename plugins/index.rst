@@ -411,7 +411,7 @@ Behavior Tree Nodes
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Compute Route`_                            | Steve Macenski      | Computes a Route through a navigation    |
 |                                             |                     | graph and returns both a dense path and  |
-|                                             |                     | set of sparce route nodes and edges.     |
+|                                             |                     | set of sparse route nodes and edges.     |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Compute And Track Route`_                  | Steve Macenski      | Computes a Route as above, but also      |
 |                                             |                     | actively tracks progress and triggers    |
