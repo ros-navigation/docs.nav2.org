@@ -409,6 +409,14 @@ Behavior Tree Nodes
 |                                             |                     | rather than a single end goal pose       |
 |                                             |                     | using the planner plugin specified       |
 +---------------------------------------------+---------------------+------------------------------------------+
+| `Compute Route`_                            | Steve Macenski      | Computes a Route through a navigation    |
+|                                             |                     | graph and returns both a dense path and  |
+|                                             |                     | set of sparce route nodes and edges.     |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Compute And Track Route`_                  | Steve Macenski      | Computes a Route as above, but also      |
+|                                             |                     | actively tracks progress and triggers    |
+|                                             |                     | route contextual semantic operations.    |
++---------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Control Action`_                    |Pradheep Padmanabhan | Cancels Nav2 controller server           |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Cancel BackUp Action`_                     |Pradheep Padmanabhan | Cancels backup behavior action           |
@@ -416,6 +424,8 @@ Behavior Tree Nodes
 | `Cancel Spin Action`_                       |Pradheep Padmanabhan | Cancels spin behavior action             |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Wait Action`_                       |Pradheep Padmanabhan | Cancels wait behavior action             |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Cancel Route Action`_                      |Steve Macenski       | Cancels ComputeAndTrackRoute action      |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Cancel Drive on Heading Action`_           | Joshua Wallace      | Cancels drive on heading behavior action |
 +---------------------------------------------+---------------------+------------------------------------------+
@@ -430,6 +440,16 @@ Behavior Tree Nodes
 | `Dock Robot Action`_                        | Steve Macenski      | Calls dock robot action                  |
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Undock Robot Action`_                      | Steve Macenski      | Calls undock robot action                |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Concatenate Paths Action`_                 | Steve Macenski      | Concatenates 2 paths together            |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Get Current Pose Action`_                  | Steve Macenski      | Gets current pose to the blackboard      |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Append Goal Pose To Goals Action`_         | Steve Macenski      | Appends a goal pose to a goals vector    |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Extract Route Nodes To Goals Action`_      | Steve Macenski      | Converts Route Nodes to Goals            |
++---------------------------------------------+---------------------+------------------------------------------+
+| `Get Next Few Goals Action`_                | Steve Macenski      | Obtains the next N goals in a goal vector|
 +---------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
@@ -456,9 +476,12 @@ Behavior Tree Nodes
 .. _Remove Passed Goals: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_passed_goals_action.cpp
 .. _Remove In Collision Goals: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/remove_in_collision_goals_action.cpp
 .. _Compute Path Through Poses: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_path_through_poses_action.cpp
+.. _Compute Route: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_route_action.cpp
+.. _Compute And Track Route: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_action.cpp
 .. _Cancel Control Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/controller_cancel_node.cpp
 .. _Cancel BackUp Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_cancel_node.cpp
 .. _Cancel Spin Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/spin_cancel_node.cpp
+.. _Cancel Route Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/compute_and_track_route_cancel_node.cpp
 .. _Cancel Wait Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/wait_cancel_node.cpp
 .. _Cancel Drive on Heading Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_cancel_node.cpp
 .. _Cancel Assisted Teleop Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/assisted_teleop_cancel_node.cpp
@@ -467,6 +490,11 @@ Behavior Tree Nodes
 .. _Get Pose From Path Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_pose_from_path_action.cpp
 .. _Dock Robot Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/dock_robot.cpp
 .. _Undock Robot Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_docking/opennav_docking_bt/src/undock_robot.cpp
+.. _Concatenate Paths Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/concatenate_paths_action.cpp
+.. _Get Current Pose Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_current_pose_action.cpp
+.. _Append Goal Pose To Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/append_goal_pose_to_goals_action.cpp
+.. _Extract Route Nodes To Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp
+.. _Get Next Few Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp
 
 
 +------------------------------------+--------------------+------------------------+
@@ -541,8 +569,16 @@ Behavior Tree Nodes
 |                                    |                    | clear the smoother     |
 |                                    |                    | server error code.     |
 +------------------------------------+--------------------+------------------------+
+| `Would A Route Recovery Help`_     | Steve Macenski     | Checks if a Route      |
+|                                    |                    | recovery could help    |
+|                                    |                    | clear the route        |
+|                                    |                    | server error code.     |
++------------------------------------+--------------------+------------------------+
 | `Is Battery Charging Condition`_   |  Alberto Tudela    | Checks if the battery  |
 |                                    |                    | is charging.           |
++------------------------------------+--------------------+------------------------+
+| `Are Poses Near Condition`_        |  Steve Macenski    | Checks if 2 poses are  |
+|                                    |                    | nearby to each other.  |
 +------------------------------------+--------------------+------------------------+
 
 .. _Goal Reached Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/goal_reached_condition.cpp
@@ -562,6 +598,7 @@ Behavior Tree Nodes
 .. _Would A Planner Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_planner_recovery_help.cpp
 .. _Would A Smoother Recovery Help: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/would_a_smoother_recovery_help.cpp
 .. _Is Battery Charging Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/is_battery_charging_condition.cpp
+.. _Are Poses Near Condition: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/condition/are_poses_near_condition.cpp
 
 +--------------------------+---------------------+----------------------------------+
 | Decorator Plugin Name    |    Creator          |       Description                |

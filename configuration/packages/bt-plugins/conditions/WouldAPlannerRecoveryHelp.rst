@@ -3,7 +3,7 @@
 WouldAPlannerRecoveryHelp
 =========================
 
-Checks if the active controller server error code is UNKNOWN, NO_VALID_CONTROL, or TIMEOUT.
+Checks if the active planner server error code is UNKNOWN, NO_VALID_PATH, or TIMEOUT.
 
 If the active error code is a match, the node returns ``SUCCESS``. Otherwise, it returns ``FAILURE``.
 
