@@ -442,6 +442,6 @@ Because live monitoring of Behavior Tree with more than 20 nodes and visualizing
 
 Docking backwards as plugin parameter
 *************************************
-In `PR #5079 <https://github.com/ros-navigation/navigation2/pull/5079>`_, the ``dock_backwards`` boolean parameter has been moved from the docking server to the docking plugin as the string parameter ``dock_direction``. This allows the user to have multiple docking plugins with different docking directions in the same docking server. Default value is ``forward``.
+In `PR #5079 <https://github.com/ros-navigation/navigation2/pull/5079>`_, the ``dock_backwards`` boolean parameter has been moved from the docking server to the dock plugin as the string parameter ``dock_direction``. This allows the user to have multiple docking plugins with different docking directions in the same docking server. Default value is ``forward``.
 
 See :ref:`_configuring_docking_server` for more information.
