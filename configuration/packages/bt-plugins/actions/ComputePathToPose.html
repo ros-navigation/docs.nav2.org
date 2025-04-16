@@ -1282,12 +1282,32 @@ The server address can be remapped using the <code class="docutils literal notra
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. “{start}”.</p>
+<dt>Description</dt><dd><p>Start pose. Optional. Used as the planner start pose instead of the current robot pose, if <code class="docutils literal notranslate"><span class="pre">use_start</span></code> is not false (i.e. not provided or set to true). Takes in a blackboard variable, e.g. “{start}”.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">goal</dt>
+<dt class="field-even">use_start</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 84%" />
+<col style="width: 16%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>geometry_msgs::msg::PoseStamped</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Optional. For using or not using (i.e. ignoring) the provided start pose <code class="docutils literal notranslate"><span class="pre">start</span></code>. Takes in a blackboard variable, e.g. “{use_start}”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">goal</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 84%" />
 <col style="width: 16%" />
@@ -1306,8 +1326,8 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">planner_id</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">planner_id</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1326,8 +1346,8 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-even">server_name</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">server_name</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1346,8 +1366,8 @@ The server address can be remapped using the <code class="docutils literal notra
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">server_timeout</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">server_timeout</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
