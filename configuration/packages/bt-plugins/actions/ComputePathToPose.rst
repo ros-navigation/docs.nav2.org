@@ -19,7 +19,18 @@ Input Ports
   ===================================== =======
 
   Description
-        Start pose. Optional. Only used if not left empty. Takes in a blackboard variable, e.g. "{start}".
+        Start pose. Optional. Used as the planner start pose instead of the current robot pose, if ``use_start`` is not false (i.e. not provided or set to true). Takes in a blackboard variable, e.g. "{start}".
+
+:use_start:
+
+  ===================================== =======
+  Type                                  Default
+  ------------------------------------- -------
+  geometry_msgs::msg::PoseStamped         N/A
+  ===================================== =======
+
+  Description
+        Optional. For using or not using (i.e. ignoring) the provided start pose ``start``. Takes in a blackboard variable, e.g. "{use_start}".
 
 :goal:
 
