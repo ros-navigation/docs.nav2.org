@@ -283,6 +283,88 @@ Server Parameters
 Edge Scorer Parameters
 **********************
 
+CostmapScorer
+-------------
+
+This edge scoring plugin will score based on the cost of the costmap over the edge.
+
+:weight:
+
+  ============== ============
+  Type           Default
+  -------------- ------------
+  double         1.0
+  ============== ============
+
+  Description
+    Relative edge scoring weighting.
+
+:costmap_topic:
+
+  ============== ==========================
+  Type           Default
+  -------------- --------------------------
+  string         global_costmap/costmap_raw
+  ============== ==========================
+
+  Description
+    Costmap topic to use for scoring.
+
+:max_cost:
+
+  ============== ============
+  Type           Default
+  -------------- ------------
+  double         253.0
+  ============== ============
+
+  Description
+    Maximum cost to consider an route blocked (253.0)
+
+:use_maximum:
+
+  ============== ============
+  Type           Default
+  -------------- ------------
+  bool           true
+  ============== ============
+
+  Description
+    Whether to score based on single maximum or average
+
+:invalid_on_collision:
+
+  ============== ============
+  Type           Default
+  -------------- ------------
+  bool           true
+  ============== ============
+
+  Description
+    Whether to consider collision status as a terminal condition
+
+:invalid_off_map:
+
+  ============== ============
+  Type           Default
+  -------------- ------------
+  bool           true
+  ============== ============
+
+  Description
+    Whether to consider route going off the map invalid
+
+:check_resolution:
+
+  ============== ============
+  Type           Default
+  -------------- ------------
+  int            1
+  ============== ============
+
+  Description
+    Resolution to check costs at (1 = costmap resolution, 2 = 2x costmap resolution, etc)
+
 DistanceScorer
 --------------
 
