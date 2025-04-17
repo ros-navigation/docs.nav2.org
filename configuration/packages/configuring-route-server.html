@@ -914,6 +914,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Route Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#server-parameters">Server Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#edge-scorer-parameters">Edge Scorer Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#costmapscorer">CostmapScorer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#distancescorer">DistanceScorer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#timescorer">TimeScorer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#penaltyscorer">PenaltyScorer</a></li>
@@ -1374,8 +1375,28 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">tracker_update_rate</dt>
+<dt class="field-even">costmap_topic</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>‘global_costmap/costmap_raw’</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The costmap to use for the server-level costmap subscriber. This is created to aid the goal intent extractor (if BFS-based terminal route node finding is enabled) and also shared with the Collision Monitor Operation and Costmap Edge Scorer if set to the same topic. Otherwise, those plugins will create their own subscribers to their respective costmap topics.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">tracker_update_rate</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 64%" />
 <col style="width: 36%" />
@@ -1394,8 +1415,8 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">aggregate_blocked_ids</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">aggregate_blocked_ids</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 64%" />
 <col style="width: 36%" />
@@ -1414,8 +1435,8 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">boundary_radius_to_achieve_node</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">boundary_radius_to_achieve_node</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 64%" />
 <col style="width: 36%" />
@@ -1434,8 +1455,8 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">radius_to_achieve_node</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">radius_to_achieve_node</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 58%" />
 <col style="width: 42%" />
@@ -1454,8 +1475,8 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">max_prune_dist_from_edge</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">max_prune_dist_from_edge</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 58%" />
 <col style="width: 42%" />
@@ -1474,8 +1495,8 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_prune_dist_from_goal</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_prune_dist_from_goal</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1494,8 +1515,8 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">min_prune_dist_from_start</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">min_prune_dist_from_start</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1514,8 +1535,8 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">prune_goal</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">prune_goal</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -1531,6 +1552,66 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Whether pruning the goal node from the route due to it being spatially past the goal pose requested (pose requests only <code class="docutils literal notranslate"><span class="pre">use_poses</span></code>).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">enable_nn_search</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use Breadth-first search to find the nearest traversible node (true) or simply the nearest node (false) for the start and goal when using pose requests.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">max_nn_search_iterations</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>10000</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversible nodes.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">num_nearest_nodes</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The number of nearest-neighors to extract from a Kd-tree in order to check against in the Breadth-first search.</p>
 </dd>
 </dl>
 </dd>
@@ -1658,6 +1739,152 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </div>
 <div class="section" id="edge-scorer-parameters">
 <h2>Edge Scorer Parameters<a class="headerlink" href="#edge-scorer-parameters" title="Permalink to this heading"></a></h2>
+<div class="section" id="costmapscorer">
+<h3>CostmapScorer<a class="headerlink" href="#costmapscorer" title="Permalink to this heading"></a></h3>
+<p>This edge scoring plugin will score based on the cost of the costmap over the edge.</p>
+<dl class="field-list">
+<dt class="field-odd">weight</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Relative edge scoring weighting.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">costmap_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>global_costmap/costmap_raw</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Costmap topic to use for scoring.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">max_cost</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>253.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum cost to consider an route blocked (253.0)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">use_maximum</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to score based on single maximum or average</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">invalid_on_collision</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to consider collision status as a terminal condition</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">invalid_off_map</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to consider route going off the map invalid</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">check_resolution</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Resolution to check costs at (1 = costmap resolution, 2 = 2x costmap resolution, etc)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="distancescorer">
 <h3>DistanceScorer<a class="headerlink" href="#distancescorer" title="Permalink to this heading"></a></h3>
 <p>This edge scoring plugin will score based on the length of the edge.
@@ -2140,7 +2367,7 @@ If it is blocked, it sets the edge blocked as blocked for rerouting around the b
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The costmap topic to use for collision checking. May be local or global costmap depending on the desired collision checking horizon.</p>
+<dt>Description</dt><dd><p>The costmap topic to use for collision checking. May be local or global costmap depending on the desired collision checking horizon. If set to the same as the server’s costmap topic, then it will be shared here as well without duplicate subscriptions.</p>
 </dd>
 </dl>
 </dd>
