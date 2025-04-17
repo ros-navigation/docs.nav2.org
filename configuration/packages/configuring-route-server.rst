@@ -81,6 +81,17 @@ Server Parameters
   Description
     The maximum planning time to use.
 
+:costmap_topic:
+
+  ============== ============================
+  Type           Default
+  -------------- ----------------------------
+  string         'global_costmap/costmap_raw'
+  ============== ============================
+
+  Description
+    The costmap to use for the server-level costmap subscriber. This is created to aid the goal intent extractor (if BFS-based terminal route node finding is enabled) and also shared with the Collision Monitor Operation and Costmap Edge Scorer if set to the same topic. Otherwise, those plugins will create their own subscribers to their respective costmap topics.
+
 :tracker_update_rate:
 
   ============== ========
@@ -168,6 +179,39 @@ Server Parameters
 
   Description
     Whether pruning the goal node from the route due to it being spatially past the goal pose requested (pose requests only ``use_poses``).
+
+:enable_nn_search:
+
+  ============== ===============
+  Type           Default
+  -------------- ---------------
+  bool           true
+  ============== ===============
+
+  Description
+    Whether to use Breadth-first search to find the nearest traversible node (true) or simply the nearest node (false) for the start and goal when using pose requests.
+
+:max_nn_search_iterations:
+
+  ============== ===============
+  Type           Default
+  -------------- ---------------
+  int            10000
+  ============== ===============
+
+  Description
+    The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversible nodes.
+
+:num_nearest_nodes:
+
+  ============== ===============
+  Type           Default
+  -------------- ---------------
+  int            5
+  ============== ===============
+
+  Description
+    The number of nearest-neighors to extract from a Kd-tree in order to check against in the Breadth-first search.
 
 :graph_filepath:
 
@@ -535,7 +579,7 @@ If it is blocked, it sets the edge blocked as blocked for rerouting around the b
   ============== ============================
 
   Description
-    The costmap topic to use for collision checking. May be local or global costmap depending on the desired collision checking horizon.
+    The costmap topic to use for collision checking. May be local or global costmap depending on the desired collision checking horizon. If set to the same as the server's costmap topic, then it will be shared here as well without duplicate subscriptions.
 
 :rate:
 
