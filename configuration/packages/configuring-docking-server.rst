@@ -126,7 +126,7 @@ Parameters
   ============== ==============
 
   Description
-    Whether the robot is docking with the dock forward or backward in motion.
+    Whether the robot is docking with the dock forward or backward in motion. This parameter is deprecated. Use the dock plugin's ``dock_direction`` parameter instead.
 
 :dock_prestaging_tolerance:
 
@@ -557,6 +557,17 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     If not using stall detection, the pose threshold to the docking pose where ``isDocked() = true``.
 
+:<dock_name>:dock_direction:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         "forward"
+  ============== ==============
+
+  Description
+    Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated ``dock_backwards`` parameter. Options are "forward" or "backward".
+
 Example
 *******
 .. code-block:: yaml
@@ -572,7 +583,6 @@ Example
         max_retries: 3
         base_frame: "base_link"
         fixed_frame: "odom"
-        dock_backwards: false
         dock_prestaging_tolerance: 0.5
         service_introspection_mode: "disabled"
 
@@ -593,6 +603,7 @@ Example
           external_detection_rotation_pitch: -1.57
           external_detection_rotation_yaw: 0.0
           filter_coef: 0.1
+          dock_direction: "forward" # "backward"
 
         # Dock instances
         docks: ['home_dock']
