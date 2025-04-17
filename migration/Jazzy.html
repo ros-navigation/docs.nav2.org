@@ -1203,6 +1203,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#groot-2-support">Groot 2 Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
 </ul>
 </li>
 </ul>
@@ -1623,6 +1624,11 @@ During the <code class="docutils literal notranslate"><span class="pre">goalComp
 <p class="admonition-title">Note</p>
 <p>Currently, there is a known bug that crashes Groot 2 when visualizing vectors and related types (e.g., <code class="docutils literal notranslate"><span class="pre">Goals</span></code> and <code class="docutils literal notranslate"><span class="pre">Path</span></code>) contained in the blackboard. Efforts are underway to resolve this issue. For updates, please refer to the following links: <a class="reference external" href="https://github.com/BehaviorTree/Groot2/issues/55">Groot2 issue #55</a> and <a class="reference external" href="https://github.com/BehaviorTree/BehaviorTree.CPP/pull/958">BehaviorTree PR #958</a>.</p>
 </div>
+</div>
+<div class="section" id="docking-backwards-as-plugin-parameter">
+<h2>Docking backwards as plugin parameter<a class="headerlink" href="#docking-backwards-as-plugin-parameter" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5079">PR #5079</a>, the <code class="docutils literal notranslate"><span class="pre">dock_backwards</span></code> boolean parameter has been moved from the docking server to the dock plugin as the string parameter <code class="docutils literal notranslate"><span class="pre">dock_direction</span></code>. This allows the user to have multiple dock plugins with different directions in the same docking server. Default value is <code class="docutils literal notranslate"><span class="pre">forward</span></code> but may also be set as <code class="docutils literal notranslate"><span class="pre">backward</span></code>.</p>
+<p>See <span class="xref std std-ref">_configuring_docking_server</span> for more information.</p>
 </div>
 </div>
 

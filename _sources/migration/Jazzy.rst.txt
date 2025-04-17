@@ -439,3 +439,9 @@ Because live monitoring of Behavior Tree with more than 20 nodes and visualizing
 .. note::
 
   Currently, there is a known bug that crashes Groot 2 when visualizing vectors and related types (e.g., ``Goals`` and ``Path``) contained in the blackboard. Efforts are underway to resolve this issue. For updates, please refer to the following links: `Groot2 issue #55 <https://github.com/BehaviorTree/Groot2/issues/55>`_ and `BehaviorTree PR #958 <https://github.com/BehaviorTree/BehaviorTree.CPP/pull/958>`_.
+
+Docking backwards as plugin parameter
+*************************************
+In `PR #5079 <https://github.com/ros-navigation/navigation2/pull/5079>`_, the ``dock_backwards`` boolean parameter has been moved from the docking server to the dock plugin as the string parameter ``dock_direction``. This allows the user to have multiple dock plugins with different directions in the same docking server. Default value is ``forward`` but may also be set as ``backward``.
+
+See :ref:`_configuring_docking_server` for more information.

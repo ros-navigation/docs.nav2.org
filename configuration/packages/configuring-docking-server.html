@@ -1203,6 +1203,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#groot-2-support">Groot 2 Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
 </ul>
 </li>
 </ul>
@@ -1467,7 +1468,7 @@ This task server is designed be called by an application BT or autonomy applicat
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Whether the robot is docking with the dock forward or backward in motion.</p>
+<dt>Description</dt><dd><p>Whether the robot is docking with the dock forward or backward in motion. This parameter is deprecated. Use the dock plugin’s <code class="docutils literal notranslate"><span class="pre">dock_direction</span></code> parameter instead.</p>
 </dd>
 </dl>
 </dd>
@@ -2238,6 +2239,26 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
+<dt class="field-even">&lt;dock_name&gt;:dock_direction</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“forward”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated <code class="docutils literal notranslate"><span class="pre">dock_backwards</span></code> parameter. Options are “forward” or “backward”.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -2253,7 +2274,6 @@ This task server is designed be called by an application BT or autonomy applicat
 <span class="w">    </span><span class="nt">max_retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">    </span><span class="nt">base_frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_link&quot;</span>
 <span class="w">    </span><span class="nt">fixed_frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
-<span class="w">    </span><span class="nt">dock_backwards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">dock_prestaging_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">    </span><span class="nt">service_introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 
@@ -2274,6 +2294,7 @@ This task server is designed be called by an application BT or autonomy applicat
 <span class="w">      </span><span class="nt">external_detection_rotation_pitch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.57</span>
 <span class="w">      </span><span class="nt">external_detection_rotation_yaw</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 <span class="w">      </span><span class="nt">filter_coef</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">      </span><span class="nt">dock_direction</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;forward&quot;</span><span class="w"> </span><span class="c1"># &quot;backward&quot;</span>
 
 <span class="w">    </span><span class="c1"># Dock instances</span>
 <span class="w">    </span><span class="nt">docks</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;home_dock&#39;</span><span class="p p-Indicator">]</span>
