@@ -36,7 +36,7 @@ Output Ports
 :current_pose:
 
   =============================== =======
-  Type                           Default
+  Type                            Default
   ------------------------------- -------
   geometry_msgs::msg::PoseStamped N/A
   =============================== =======

@@ -247,7 +247,7 @@ Parameters
   ============== ============
 
   Description
-    For ``opennav_row_coverage``, whether to reorder the parsed rows in the order of their ``id``s.
+    For ``opennav_row_coverage``, whether to reorder the parsed rows in the order of their ``id`` s.
 
 Example
 *******

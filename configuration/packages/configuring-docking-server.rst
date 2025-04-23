@@ -226,7 +226,7 @@ Parameters
   ============== ==============
 
   Description
-    Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (v(t) = v_max / (1 + beta * |curv|^lambda)).
+    Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (v(t) = v_max / (1 + beta * \|curv\|^lambda)).
 
 :controller.lambda:
 
@@ -237,7 +237,7 @@ Parameters
   ============== ==============
 
   Description
-    Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (v(t) = v_max / (1 + beta * |curv|^lambda)).
+    Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (v(t) = v_max / (1 + beta * \|curv\|^lambda)).
 
 :controller.v_linear_min:
 
