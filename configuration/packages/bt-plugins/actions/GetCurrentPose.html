@@ -640,7 +640,6 @@
 <li class="toctree-l4"><a class="reference internal" href="CancelComputeAndTrackRoute.html">CancelComputeAndTrackRoute</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Smooth.html">SmoothPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="GetPoseFromPath.html">GetPoseFromPath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GetPoseFromPath.html">GetPoseFromPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DockRobot.html">DockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="UndockRobot.html">UndockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ConcatenatePaths.html">ConcatenatePaths</a></li>
@@ -1311,9 +1310,23 @@
 </div>
 <div class="section" id="output-ports">
 <h2>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this heading"></a></h2>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">current_pose</dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 82%" />
+<col style="width: 18%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>geometry_msgs::msg::PoseStamped</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
 <dt>Description</dt><dd><p>The current pose in the global frame.</p>
 </dd>
 </dl>

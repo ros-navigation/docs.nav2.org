@@ -640,7 +640,6 @@
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/CancelComputeAndTrackRoute.html">CancelComputeAndTrackRoute</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/Smooth.html">SmoothPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/DockRobot.html">DockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/UndockRobot.html">UndockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bt-plugins/actions/ConcatenatePaths.html">ConcatenatePaths</a></li>
@@ -1648,7 +1647,7 @@ This task server is designed be called by an application BT or autonomy applicat
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (v(t) = v_max / (1 + beta * <a href="#id1"><span class="problematic" id="id2">|</span></a>curv|^lambda)).</p>
+<dt>Description</dt><dd><p>Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (v(t) = v_max / (1 + beta * |curv|^lambda)).</p>
 </dd>
 </dl>
 </dd>
@@ -1668,7 +1667,7 @@ This task server is designed be called by an application BT or autonomy applicat
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (v(t) = v_max / (1 + beta * <a href="#id3"><span class="problematic" id="id4">|</span></a>curv|^lambda)).</p>
+<dt>Description</dt><dd><p>Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (v(t) = v_max / (1 + beta * |curv|^lambda)).</p>
 </dd>
 </dl>
 </dd>

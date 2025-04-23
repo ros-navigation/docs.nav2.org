@@ -640,7 +640,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/CancelComputeAndTrackRoute.html">CancelComputeAndTrackRoute</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/Smooth.html">SmoothPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/DockRobot.html">DockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/UndockRobot.html">UndockRobot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/actions/ConcatenatePaths.html">ConcatenatePaths</a></li>
@@ -1478,7 +1477,10 @@ gradient_layer_2:
   ...
 </pre></div>
 </div>
-<p>NOTE: the order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.</p>
+</div>
 </div>
 <div class="section" id="run-gradientlayer-plugin">
 <h3>4- Run GradientLayer plugin<a class="headerlink" href="#run-gradientlayer-plugin" title="Permalink to this heading"></a></h3>
