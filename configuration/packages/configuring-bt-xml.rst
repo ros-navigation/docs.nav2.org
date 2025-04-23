@@ -55,7 +55,6 @@ Action Plugins
   bt-plugins/actions/CancelComputeAndTrackRoute.rst
   bt-plugins/actions/Smooth.rst
   bt-plugins/actions/GetPoseFromPath.rst
-  bt-plugins/actions/GetPoseFromPath.rst
   bt-plugins/actions/DockRobot.rst
   bt-plugins/actions/UndockRobot.rst
   bt-plugins/actions/ConcatenatePaths.rst

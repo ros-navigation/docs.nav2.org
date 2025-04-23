@@ -20,7 +20,7 @@ Supported operations for the route tool include loading in existing route graphs
 By the end of this tutorial, you should feel comfortable creating and modifying route graphs using the route tool.
 
 Prerequisites
-============
+=============
 
 Prior to using the route tool, you will need to create an occupancy grid map using the slam_toolbox package.
 Follow `this tutorial <https://docs.nav2.org/tutorials/docs/navigation2_with_slam.html>`_ for instructions on how to generate and save an occupancy grid map.

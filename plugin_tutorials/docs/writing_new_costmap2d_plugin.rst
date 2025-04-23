@@ -230,7 +230,9 @@ In this case each plugin object will be handled by its own parameters tree in a 
     plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, "/" was used instead of "::"
     enabled: False
     ...
-NOTE: the order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.
+.. note::
+
+  The order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.
 
 4- Run GradientLayer plugin
 ---------------------------
