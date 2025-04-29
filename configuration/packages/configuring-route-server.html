@@ -1531,7 +1531,7 @@ See <a class="reference internal" href="../../tutorials/docs/route_graph_generat
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Minimum distance from the start node away from the start pose (if using <code class="docutils literal notranslate"><span class="pre">use_poses</span></code>) to consider pruning as being passed, in case the start pose is very close to the start node, but is not exact.</p>
+<dt>Description</dt><dd><p>Minimum distance from the start node away from the start pose (if using <code class="docutils literal notranslate"><span class="pre">use_poses</span></code>) to consider pruning as being passed, in case the start pose is very close to the start node, but is not exact. Setting this to be ~3-5x the goal tolerance may be a good choice when doing largely on-graph navigation to connect from the start node near the robot to the route fully without pruning.</p>
 </dd>
 </dl>
 </dd>
