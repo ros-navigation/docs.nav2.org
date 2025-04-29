@@ -167,7 +167,7 @@ Server Parameters
   ============== ===============
 
   Description
-    Minimum distance from the start node away from the start pose (if using ``use_poses``) to consider pruning as being passed, in case the start pose is very close to the start node, but is not exact.
+    Minimum distance from the start node away from the start pose (if using ``use_poses``) to consider pruning as being passed, in case the start pose is very close to the start node, but is not exact. Setting this to be ~3-5x the goal tolerance may be a good choice when doing largely on-graph navigation to connect from the start node near the robot to the route fully without pruning.
 
 :prune_goal:
 
