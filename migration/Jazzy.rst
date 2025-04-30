@@ -329,6 +329,33 @@ MPPI controller re-implemented using Eigen library and performance improved by 4
 In the `PR #4621 <https://github.com/ros-navigation/navigation2/pull/4621>`_ MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
 MPPI Optimizer's performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively.
 
+Enable goal orientation non-specificity
+***************************************
+`PR #4148 <https://github.com/ros-planning/navigation2/pull/4127>`_  introduces two new parameters(goal_heading_mode, coarse_search_resolution) in the smac planner, specifically the smac planner hybrid and smac planner lattice that allows for the
+planner to plan to a goal with multiple orientations and return the best path in just one planning call. This is useful for robots that can approach a goal from multiple orientations and the user does not want to plan to each orientation separately.
+In addition to this, the coarse_search_resolution parameter is added to the smac planner lattice to allow for a faster search for the best path.
+
+Here is an Example of the smacHybrid planner with the default goal_heading_mode to see the difference in the planned path.
+
+.. image:: images/smacHybrid_with_default_goal_heading_mode.gif
+    :width: 700px
+    :alt: Navigation2 with smacHybrid planner with default goal_heading_mode
+    :align: center
+
+Here is an Example of the smacHybrid planner with the bidirectional goal_heading_mode to see the difference in the planned path.
+
+.. image:: images/smacHybrid_with_bidirectional_goal_heading_mode.gif
+    :width: 700px
+    :alt: Navigation2 with smacHybrid planner with bidirectional goal_heading_mode
+    :align: center
+
+Here is an Example of the smacHybrid planner with the all_directions goal_heading_mode to see the difference in the planned path.
+
+.. image:: images/smacHybrid_with_all_direction_goal_heading_mode.gif
+    :width: 700px
+    :alt: Navigation2 with smacHybrid planner with all_direction goal_heading_mode
+    :align: center
+
 DriveOnHeading and BackUp behaviors: Addition of acceleration constraints
 *************************************************************************
 `PR #4810 <https://github.com/ros-navigation/navigation2/pull/4810>`_ adds new parameters ``acceleration_limit``, ``deceleration_limit``, ``minimum_speed`` for the `DriveOnHeading` and `BackUp` Behaviors. The default values are as follows:
