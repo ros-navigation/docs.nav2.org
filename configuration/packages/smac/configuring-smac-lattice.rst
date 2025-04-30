@@ -328,6 +328,28 @@ Parameters
   Description
     Number of times to recursively attempt to smooth, must be ``>= 1``.
 
+:``<name>``.goal_heading_mode:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  string            "DEFAULT"   
+  ============== ===========================
+
+  Description
+    Goal heading mode enum string to plan goal with multiple orientation. Options are "DEFAULT", "BIDIRECTIONAL" and "ALL_DIRECTION". With default mode, the planner will plan the goal with the orientation of the goal pose as was sent by the user. With the "BIDIRECTIONAL" mode, the planner will plan the goal with the orientation of the goal pose and with orientation 180 degree offset from the goal pose orientation. For "ALL_DIRECTION" mode, the planner will plan the goal with the orientation of the goal pose and all the possible orientation based on the angle quantization bins. For both the "BIDIRECTIONAL" and "ALL_DIRECTION" mode, the planner returns the path with the minimum cost.
+ 
+:``<name>``.coarse_search_resolution:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  string            "1"   
+  ============== ===========================
+
+  Description
+    Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to "ALL_DIRECTION" and It helps to reduce search time of analytic expansions. g the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to "ALL_DIRECTION" and it helps to reduce search time of analytic expansions. It is recommended to only do coarser search if the number of bins are > 24. Otherwise, leave as 1 (fine search).
+
 Example
 *******
 .. code-block:: yaml
@@ -358,6 +380,8 @@ Example
         lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
         cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
         allow_reverse_expansion: false      # If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot's orientation (to reverse).
+        coarse_search_resolution: 1         # Number of bins to skip when doing a coarse search for the path. Only used for all_direction goal heading mode.
+        goal_heading_mode: "DEFAULT"        # DEFAULT, BIDIRECTIONAL, ALL_DIRECTION
         smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
         smoother:
           max_iterations: 1000

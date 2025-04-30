@@ -378,6 +378,28 @@ Parameters
   Description
     Number of times to recursively attempt to smooth, must be ``>= 1``.
 
+:``<name>``.goal_heading_mode:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  string            "DEFAULT"   
+  ============== ===========================
+
+  Description
+    Goal heading mode enum string to plan goal with multiple orientation. Options are "DEFAULT", "BIDIRECTIONAL" and "ALL_DIRECTION". With default mode, the planner will plan the goal with the orientation of the goal pose as was sent by the user. With the "BIDIRECTIONAL" mode, the planner will plan the goal with the orientation of the goal pose and with orientation 180 degree offset from the goal pose orientation. For "ALL_DIRECTION" mode, the planner will plan the goal with the orientation of the goal pose and all the possible orientation based on the angle quantization bins. For both the "BIDIRECTIONAL" and "ALL_DIRECTION" mode, the planner returns the path with the minimum cost.
+
+:``<name>``.coarse_search_resolution:
+
+  ============== ===========================
+  Type           Default                    
+  -------------- ---------------------------
+  string            "4"   
+  ============== ===========================
+
+  Description
+    Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to "ALL_DIRECTION" and It helps to reduce search time of analytic expansions.
+
 Example
 *******
 .. code-block:: yaml
@@ -414,6 +436,8 @@ Example
         use_quadratic_cost_penalty: False
         downsample_obstacle_heuristic: True
         allow_primitive_interpolation: False
+        coarse_search_resolution: 4         # Number of bins to skip when doing a coarse search for the path. Only used for all_direction goal heading mode.
+        goal_heading_mode: "DEFAULT"        # DEFAULT, BIDIRECTIONAL, ALL_DIRECTION
         smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
 
         smoother:
