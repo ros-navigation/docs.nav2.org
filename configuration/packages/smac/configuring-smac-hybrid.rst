@@ -381,9 +381,9 @@ Parameters
 :``<name>``.goal_heading_mode:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  string            "DEFAULT"   
+  string            "DEFAULT"
   ============== ===========================
 
   Description
@@ -392,9 +392,9 @@ Parameters
 :``<name>``.coarse_search_resolution:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  string            "4"   
+  string            "4"
   ============== ===========================
 
   Description
