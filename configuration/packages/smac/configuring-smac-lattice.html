@@ -1193,6 +1193,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#computepaththroughposes-navigatethroughposes-and-other-bt-nodes-now-use-nav-msgs-goals-instead-of-vector-posestamped">ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use nav_msgs/Goals instead of vector&lt;PoseStamped&gt;</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45">MPPI controller re-implemented using Eigen library and performance improved by 40-45%</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#enable-goal-orientation-non-specificity">Enable goal orientation non-specificity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">DriveOnHeading and BackUp behaviors: Addition of acceleration constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../migration/Jazzy.html#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
@@ -1830,6 +1831,46 @@
 </dd>
 </dl>
 </dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.goal_heading_mode</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“DEFAULT”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Goal heading mode enum string to plan goal with multiple orientation. Options are “DEFAULT”, “BIDIRECTIONAL” and “ALL_DIRECTION”. With default mode, the planner will plan the goal with the orientation of the goal pose as was sent by the user. With the “BIDIRECTIONAL” mode, the planner will plan the goal with the orientation of the goal pose and with orientation 180 degree offset from the goal pose orientation. For “ALL_DIRECTION” mode, the planner will plan the goal with the orientation of the goal pose and all the possible orientation based on the angle quantization bins. For both the “BIDIRECTIONAL” and “ALL_DIRECTION” mode, the planner returns the path with the minimum cost.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.coarse_search_resolution</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“1”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to “ALL_DIRECTION” and It helps to reduce search time of analytic expansions. g the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to “ALL_DIRECTION” and it helps to reduce search time of analytic expansions. It is recommended to only do coarser search if the number of bins are &gt; 24. Otherwise, leave as 1 (fine search).</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -1860,6 +1901,8 @@
 <span class="w">      </span><span class="nt">lookup_table_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span><span class="w">             </span><span class="c1"># Size of the dubin/reeds-sheep distance window to cache, in meters.</span>
 <span class="w">      </span><span class="nt">cache_obstacle_heuristic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">     </span><span class="c1"># Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.</span>
 <span class="w">      </span><span class="nt">allow_reverse_expansion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">      </span><span class="c1"># If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot&#39;s orientation (to reverse).</span>
+<span class="w">      </span><span class="nt">coarse_search_resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">         </span><span class="c1"># Number of bins to skip when doing a coarse search for the path. Only used for all_direction goal heading mode.</span>
+<span class="w">      </span><span class="nt">goal_heading_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DEFAULT&quot;</span><span class="w">        </span><span class="c1"># DEFAULT, BIDIRECTIONAL, ALL_DIRECTION</span>
 <span class="w">      </span><span class="nt">smooth_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w">                   </span><span class="c1"># If true, does a simple and quick smoothing post-processing to the path</span>
 <span class="w">      </span><span class="nt">smoother</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>

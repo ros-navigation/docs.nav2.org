@@ -1193,6 +1193,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#computepaththroughposes-navigatethroughposes-and-other-bt-nodes-now-use-nav-msgs-goals-instead-of-vector-posestamped">ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use nav_msgs/Goals instead of vector&lt;PoseStamped&gt;</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45">MPPI controller re-implemented using Eigen library and performance improved by 40-45%</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-goal-orientation-non-specificity">Enable goal orientation non-specificity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">DriveOnHeading and BackUp behaviors: Addition of acceleration constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
@@ -1532,6 +1533,18 @@ Since <cite>nav_msgs/Goals</cite> contains a header, the poses are now accessed 
 <h2>MPPI controller re-implemented using Eigen library and performance improved by 40-45%<a class="headerlink" href="#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45" title="Permalink to this heading"></a></h2>
 <p>In the <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4621">PR #4621</a> MPPI controller is fully reimplemented using Eigen as it is well supported hpc library and suits better for our use case of two dimensional batches of trajectories. GPU support for rolling out trajectories could also be possible in future using Eigen.
 MPPI Optimizer’s performance is improved by 40-50%. Now MPPI Controller can also be run on ARM processors which do not support SIMD Instructions extensively.</p>
+</div>
+<div class="section" id="enable-goal-orientation-non-specificity">
+<h2>Enable goal orientation non-specificity<a class="headerlink" href="#enable-goal-orientation-non-specificity" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-planning/navigation2/pull/4127">PR #4148</a>  introduces two new parameters(goal_heading_mode, coarse_search_resolution) in the smac planner, specifically the smac planner hybrid and smac planner lattice that allows for the
+planner to plan to a goal with multiple orientations and return the best path in just one planning call. This is useful for robots that can approach a goal from multiple orientations and the user does not want to plan to each orientation separately.
+In addition to this, the coarse_search_resolution parameter is added to the smac planner lattice to allow for a faster search for the best path.</p>
+<p>Here is an Example of the smacHybrid planner with the default goal_heading_mode to see the difference in the planned path.</p>
+<a class="reference internal image-reference" href="../_images/smacHybrid_with_default_goal_heading_mode.gif"><img alt="Navigation2 with smacHybrid planner with default goal_heading_mode" class="align-center" src="../_images/smacHybrid_with_default_goal_heading_mode.gif" style="width: 700px;" /></a>
+<p>Here is an Example of the smacHybrid planner with the bidirectional goal_heading_mode to see the difference in the planned path.</p>
+<a class="reference internal image-reference" href="../_images/smacHybrid_with_bidirectional_goal_heading_mode.gif"><img alt="Navigation2 with smacHybrid planner with bidirectional goal_heading_mode" class="align-center" src="../_images/smacHybrid_with_bidirectional_goal_heading_mode.gif" style="width: 700px;" /></a>
+<p>Here is an Example of the smacHybrid planner with the all_directions goal_heading_mode to see the difference in the planned path.</p>
+<a class="reference internal image-reference" href="../_images/smacHybrid_with_all_direction_goal_heading_mode.gif"><img alt="Navigation2 with smacHybrid planner with all_direction goal_heading_mode" class="align-center" src="../_images/smacHybrid_with_all_direction_goal_heading_mode.gif" style="width: 700px;" /></a>
 </div>
 <div class="section" id="driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">
 <h2>DriveOnHeading and BackUp behaviors: Addition of acceleration constraints<a class="headerlink" href="#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints" title="Permalink to this heading"></a></h2>
