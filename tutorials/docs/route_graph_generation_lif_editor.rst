@@ -21,7 +21,7 @@ This is an online web-based tool, so no installation is required. You can use it
 Tutorial Steps
 ==============
 
-1. Edit Frame
+1. Set Up Layout
 -------------
 
 Click the **'Edit'** button under the **'Layout'** section in the left sidebar. This will open a new popup where you can edit the layout name. Click the **'Save'** button to save it.
@@ -38,8 +38,6 @@ Click the **'Edit'** button under the **'Layout'** section in the left sidebar. 
 
 |
 
-2. Set Up Coordinate System
----------------------------
 
 Click the **'Edit'** button under the **'Layout'** section in the left sidebar. In the popup, upload your floor plan image using the **'Background Image'** section.
 After uploading the image, four input fields will appear. Set the image width and height in meters, and specify the origin coordinates (X, Y).
@@ -58,7 +56,7 @@ Click the **'Save'** button to save and close the popup.
 
 |
 
-3. Node Operations
+2. Node Operations
 ------------------
 
 Add Node
@@ -92,7 +90,7 @@ To delete a node, click on it (a glowing orange border will appear around the se
 
 |
 
-4. Edge Operations
+3. Edge Operations
 ------------------
 
 Add Edge
@@ -133,7 +131,7 @@ To delete an edge, click on it (the edge color will change to orange), then clic
 
 |
 
-5. Check GeoJSON
+4. Check GeoJSON
 ----------------
 Click the **'ROS'** menu button on the top bar to view the generated GeoJSON.
 
@@ -153,7 +151,7 @@ Click the **'ROS'** menu button on the top bar to view the generated GeoJSON.
 
 |
 
-6. Export to GeoJSON
+5. Export to GeoJSON
 --------------------
 You are now ready to export the node and edge layers as GeoJSON files. Click the **'Save'** button on the top bar and then select **'Export ROS GeoJSON'**.
 
@@ -166,7 +164,7 @@ You are now ready to export the node and edge layers as GeoJSON files. Click the
 
 |
 
-7. Congratulations
+6. Congratulations
 ------------------
 Your graph is now ready to be used by the Nav2 route! If you want to edit the graph later, you should also export the LIF file.
 Click the **'Save'** button on the top bar and select **'Export LIF'**.
