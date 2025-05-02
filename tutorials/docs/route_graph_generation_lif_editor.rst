@@ -21,7 +21,7 @@ This is an online web-based tool, so no installation is required. You can use it
 Tutorial Steps
 ==============
 
-1. Set Up Layout
+1. Create Layout
 ----------------
 
 Click the **'Edit'** button under the **'Layout'** section in the left sidebar. This will open a new popup where you can edit the layout name. Click the **'Save'** button to save it.
