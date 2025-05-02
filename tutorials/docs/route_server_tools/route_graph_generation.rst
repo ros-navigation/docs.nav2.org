@@ -32,7 +32,7 @@ Set the project coordinate reference system by selecting `Project->Properties->C
 
 |
 
- .. image:: images/route_graph_generation/coordinate_reference_system.png
+ .. image:: ../images/route_graph_generation/coordinate_reference_system.png
     :height: 550px
     :width: 530px
     :align: center
@@ -58,7 +58,7 @@ type`, `WGS 84/ Pseudo-Mercator` for `Target SRS` and set your desired path for 
 
 |
 
- .. image:: images/route_graph_generation/transformation_settings.png
+ .. image:: ../images/route_graph_generation/transformation_settings.png
     :height: 757px
     :width: 458px
     :align: center
@@ -71,7 +71,7 @@ by selecting `Start Transformation`.
 
 |
 
- .. image:: images/route_graph_generation/georeferencer.png
+ .. image:: ../images/route_graph_generation/georeferencer.png
     :height: 400px
     :width: 730px
     :align: center
@@ -82,7 +82,7 @@ Close the window. Drag and drop the georeferenced raster file that was just crea
 
 |
 
- .. image:: images/route_graph_generation/raster_layer.png
+ .. image:: ../images/route_graph_generation/raster_layer.png
     :height: 350px
     :width: 520px
     :align: center
@@ -102,7 +102,7 @@ Select `Layer -> Create Layer -> New ShapeFile Layer`. Set the shapefile layer s
 
 |
 
- .. image:: images/route_graph_generation/node_layer.png
+ .. image:: ../images/route_graph_generation/node_layer.png
     :height: 520px
     :width: 440px
     :align: center
@@ -114,7 +114,7 @@ Expand the `Fields` drop down menu and select `id`. Select the `Expression Dialo
 
 |
 
- .. image:: images/route_graph_generation/attribute_form.png
+ .. image:: ../images/route_graph_generation/attribute_form.png
     :height: 390px
     :width: 550px
     :align: center
@@ -128,7 +128,7 @@ This will increment the node `id` by one every time a new node is added. The fir
 
 |
 
- .. image:: images/route_graph_generation/expression_dialog.png
+ .. image:: ../images/route_graph_generation/expression_dialog.png
     :height: 380px
     :width: 470px
     :align: center
@@ -143,7 +143,7 @@ Once complete, unselect 'Toggle Editing' and save changes.
 
 |
 
- .. image:: images/route_graph_generation/nodes.png
+ .. image:: ../images/route_graph_generation/nodes.png
     :height: 500px
     :width: 1000px
     :align: center
@@ -167,7 +167,7 @@ This will increment the edge `id` by one every time a new edge is added. The fir
 
 |
 
- .. image:: images/route_graph_generation/edge_layer.png
+ .. image:: ../images/route_graph_generation/edge_layer.png
     :height: 520px
     :width: 440px
     :align: center
@@ -185,7 +185,7 @@ Once complete, unselect 'Toggle Editing' and save changes.
 
 |
 
- .. image:: images/route_graph_generation/edges.png
+ .. image:: ../images/route_graph_generation/edges.png
     :height: 500px
     :width: 1000px
     :align: center
@@ -205,7 +205,7 @@ coordinate reference system is `WGS 84 /Pseudo-Mercator`. Press `OK`.
 
 |
 
- .. image:: images/route_graph_generation/db_manager.png
+ .. image:: ../images/route_graph_generation/db_manager.png
     :height: 350px
     :width: 530px
     :align: center
