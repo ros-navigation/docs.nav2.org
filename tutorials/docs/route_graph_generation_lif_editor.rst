@@ -62,6 +62,7 @@ Click the **'Save'** button to save and close the popup.
 Add Node
 ~~~~~~~~
 Now you can add nodes to the map. There are two ways to do this:
+
 1. Click directly on the map to add a node. This will create a node automatically. If you want to change its properties, click on the node and edit its information in the right sidebar.
 2. Click the **'Node'** button under the **'Create Item'** section in the left sidebar. This will display the **'Create Node'** section in the right sidebar. Fill in the node details and click **'Save'** to create the node.
 
