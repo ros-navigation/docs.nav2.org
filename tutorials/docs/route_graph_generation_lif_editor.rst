@@ -97,6 +97,7 @@ To delete a node, click on it (a glowing orange border will appear around the se
 Add Edge
 ~~~~~~~~
 Now we can add edges to the map. There are two ways to create edges:
+
 1. Select a node, enter the target node ID in the **'Connected Nodes'** input in the right sidebar, and select the node from the list. This will create an edge between the selected node and the target node.
 
 |
