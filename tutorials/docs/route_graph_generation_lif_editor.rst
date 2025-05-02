@@ -15,7 +15,7 @@ Website: https://vda5050-lif-editor.vercel.app/
 
 Requirements
 ============
-This is an online web-based tool, so no installation is required. You can use it directly in your browser.  
+This is an online web-based tool, so no installation is required. You can use it directly in your browser.
 For local installation, you can use the following link: https://github.com/bekirbostanci/vda5050_lif_editor
 
 Tutorial Steps
@@ -41,9 +41,9 @@ Click the **'Edit'** button under the **'Layout'** section in the left sidebar. 
 2. Set Up Coordinate System
 ---------------------------
 
-Click the **'Edit'** button under the **'Layout'** section in the left sidebar. In the popup, upload your floor plan image using the **'Background Image'** section.  
-After uploading the image, four input fields will appear. Set the image width and height in meters, and specify the origin coordinates (X, Y).  
-The origin is the bottom-left corner of the image.  
+Click the **'Edit'** button under the **'Layout'** section in the left sidebar. In the popup, upload your floor plan image using the **'Background Image'** section.
+After uploading the image, four input fields will appear. Set the image width and height in meters, and specify the origin coordinates (X, Y).
+The origin is the bottom-left corner of the image.
 Click the **'Save'** button to save and close the popup.
 
 .. note::
@@ -63,8 +63,8 @@ Click the **'Save'** button to save and close the popup.
 
 Add Node
 ~~~~~~~~
-Now you can add nodes to the map. There are two ways to do this:  
-1. Click directly on the map to add a node. This will create a node automatically. If you want to change its properties, click on the node and edit its information in the right sidebar.  
+Now you can add nodes to the map. There are two ways to do this:
+1. Click directly on the map to add a node. This will create a node automatically. If you want to change its properties, click on the node and edit its information in the right sidebar.
 2. Click the **'Node'** button under the **'Create Item'** section in the left sidebar. This will display the **'Create Node'** section in the right sidebar. Fill in the node details and click **'Save'** to create the node.
 
 .. note::
@@ -97,7 +97,7 @@ To delete a node, click on it (a glowing orange border will appear around the se
 
 Add Edge
 ~~~~~~~~
-Now we can add edges to the map. There are two ways to create edges:  
+Now we can add edges to the map. There are two ways to create edges:
 1. Select a node, enter the target node ID in the **'Connected Nodes'** input in the right sidebar, and select the node from the list. This will create an edge between the selected node and the target node.
 
 |
@@ -168,8 +168,8 @@ You are now ready to export the node and edge layers as GeoJSON files. Click the
 
 7. Congratulations
 ------------------
-Your graph is now ready to be used by the Nav2 route! If you want to edit the graph later, you should also export the LIF file.  
-Click the **'Save'** button on the top bar and select **'Export LIF'**.  
+Your graph is now ready to be used by the Nav2 route! If you want to edit the graph later, you should also export the LIF file.
+Click the **'Save'** button on the top bar and select **'Export LIF'**.
 To edit, reopen the LIF file in the VDA LIF Editor and make your changes. You can also re-export the LIF file as GeoJSON.
 
 **Happy Routing!**
