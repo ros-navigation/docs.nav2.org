@@ -32,8 +32,8 @@ Click the **'Edit'** button under the **'Layout'** section in the left sidebar. 
 |
 
 .. image:: images/route_graph_generation_lif_editor/frame_name.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
@@ -50,8 +50,8 @@ Click the **'Save'** button to save and close the popup.
 |
 
 .. image:: images/route_graph_generation_lif_editor/setup_coordinate_system.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
@@ -72,8 +72,8 @@ Now you can add nodes to the map. There are two ways to do this:
 |
 
 .. image:: images/route_graph_generation_lif_editor/add_node.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
@@ -85,8 +85,8 @@ To delete a node, click on it (a glowing orange border will appear around the se
 |
 
 .. image:: images/route_graph_generation_lif_editor/delete_node.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
@@ -103,8 +103,8 @@ Now we can add edges to the map. There are two ways to create edges:
 |
 
 .. image:: images/route_graph_generation_lif_editor/add_edge_normal.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
@@ -114,8 +114,8 @@ Now we can add edges to the map. There are two ways to create edges:
 |
 
 .. image:: images/route_graph_generation_lif_editor/add_edge_fast_create.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
@@ -127,8 +127,8 @@ To delete an edge, click on it (the edge color will change to orange), then clic
 |
 
 .. image:: images/route_graph_generation_lif_editor/delete_edge.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
@@ -140,15 +140,15 @@ Click the **'ROS'** menu button on the top bar to view the generated GeoJSON.
 |
 
 .. image:: images/route_graph_generation_lif_editor/check_geojson.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
 
 .. image:: images/route_graph_generation_lif_editor/check_geojson_1.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
@@ -160,8 +160,8 @@ You are now ready to export the node and edge layers as GeoJSON files. Click the
 |
 
 .. image:: images/route_graph_generation_lif_editor/export_geojson.png
-    :height: 710px
-    :width: 330px
+    :width: 710px
+    :height: 330px
     :align: center
 
 |
