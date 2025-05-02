@@ -11,6 +11,7 @@ Unlike free-space planning, route-based navigation ensures that robots follow sp
 - Warehouse operations requiring structured movement patterns
 - Facilities with restricted areas or preferred paths
 - Multi-robot coordination scenarios where predefined routes help prevent conflicts
+- Large scale outdoor urban or natural environments
 
 Provided Tools
 **************
