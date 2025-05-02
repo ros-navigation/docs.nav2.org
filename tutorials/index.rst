@@ -28,6 +28,3 @@ Nav2 Tutorials
    docs/get_profile.rst
    docs/docker_dev.rst
    docs/route_server_tools.rst
-   docs/route_server_tools/navigation2_route_tool.rst
-   docs/route_server_tools/route_graph_generation_lif_editor.rst
-   docs/route_server_tools/route_graph_generation.rst
