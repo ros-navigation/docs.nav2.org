@@ -1,4 +1,4 @@
-.. route_graph_generation_lif_editor_lif_editor:
+.. route_graph_generation_lif_editor:
 
 Route Graph Generation LIF Editor
 *********************************
