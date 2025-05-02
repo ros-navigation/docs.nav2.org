@@ -33,4 +33,3 @@ There are several tools available for creating and editing route graphs for the 
 3. **Manual Route Graph Generation**: For those who prefer direct file editing, route graphs can be created manually in GeoJSON format. This method provides the most control over the graph structure but requires understanding of the GeoJSON format.
 
 Choose the tool that best fits your needs based on your workflow and requirements.
-
