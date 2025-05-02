@@ -12,7 +12,7 @@ It may be used to fully replace freespace planning when following a particular r
 In this case, the planner will generate feasible paths with localized environmental information for only the future part of the route necessary.
 
 The graph itself has very few rules associated with it, but may be generated manually or automatically via AI, geometric, or probabilistic techniques.
-See :ref:`route_graph_generation` for a tutorial about how to generate a graph using QGIS.
+See :ref:`route_graph_generation` and :ref:`_route_graph_generation_lif_editor` for a tutorial about how to generate a graph using QGIS.
 
 There are also several locations for customization using plugins:
 * Edge Scorer: Enables custom scoring functions for edges based on arbitrary user-defined semantic information and the chosen optimization criteria(s).
