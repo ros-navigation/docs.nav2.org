@@ -7,7 +7,7 @@ Using the Nav2 Route Tool
 - `Prerequisites`_
 - `Tutorial Steps`_
 
-.. image:: images/Navigation2_route_tool/route_tool_demo.gif
+.. image:: ../images/Navigation2_route_tool/route_tool_demo.gif
     :width: 90%
     :align: center
 
@@ -39,7 +39,7 @@ This should open Rviz with the route tool panel on the left side and your occupa
 Loading a Route Graph
 ---------------------
 
-.. image:: images/Navigation2_route_tool/route_load.gif
+.. image:: ../images/Navigation2_route_tool/route_load.gif
     :width: 90%
     :align: center
 
@@ -50,7 +50,7 @@ After clicking open, you should see the route graph overlaid with your occupancy
 Adding Nodes and Edges
 ----------------------
 
-.. image:: images/Navigation2_route_tool/route_add.gif
+.. image:: ../images/Navigation2_route_tool/route_add.gif
     :width: 90%
     :align: center
 
@@ -63,7 +63,7 @@ For edges, follow the same process with the "Edge" option selected and specifyin
 Editing Nodes and Edges
 -----------------------
 
-.. image:: images/Navigation2_route_tool/route_edit.gif
+.. image:: ../images/Navigation2_route_tool/route_edit.gif
     :width: 90%
     :align: center
 
@@ -77,7 +77,7 @@ Existing edges can be edited by selecting the "Edge" option, entering the ID of 
 Removing Nodes and Edges
 ------------------------
 
-.. image:: images/Navigation2_route_tool/route_delete.gif
+.. image:: ../images/Navigation2_route_tool/route_delete.gif
     :width: 90%
     :align: center
 
@@ -90,7 +90,7 @@ You may need to toggle the visibility of the route graph in Rviz to see the chan
 Saving a Route Graph
 --------------------
 
-.. image:: images/Navigation2_route_tool/route_save.gif
+.. image:: ../images/Navigation2_route_tool/route_save.gif
     :width: 90%
     :align: center
 

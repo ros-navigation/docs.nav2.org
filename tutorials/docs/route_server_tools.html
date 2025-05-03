@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using the Nav2 Route Tool &mdash; Nav2 1.0.0 documentation</title>
+  <title>Route Server Tools &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Navigating with Keepout Zones" href="navigation2_with_keepout_filter.html" />
-    <link rel="prev" title="Dynamic Object Following" href="navigation2_dynamic_point_following.html" />
+    <link rel="next" title="Using the Nav2 Route Tool" href="route_server_tools/navigation2_route_tool.html" />
+    <link rel="prev" title="Docker for Development: Zero to Hero" href="docker_dev.html" />
 
 <link rel="stylesheet" href="../../_static/tcs_theme.css" type="text/css" />
 
@@ -361,19 +361,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Nav2 Route Tool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#loading-a-route-graph">Loading a Route Graph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-nodes-and-edges">Adding Nodes and Edges</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#editing-nodes-and-edges">Editing Nodes and Edges</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#removing-nodes-and-edges">Removing Nodes and Edges</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#saving-a-route-graph">Saving a Route Graph</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="navigation2_with_keepout_filter.html">Navigating with Keepout Zones</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="navigation2_with_keepout_filter.html#requirements">Requirements</a></li>
@@ -437,21 +424,6 @@
 <li class="toctree-l3"><a class="reference internal" href="using_collision_monitor.html#demo-execution">Demo Execution</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="route_graph_generation.html">Route Graph Generation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="route_graph_generation.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="route_graph_generation.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="route_graph_generation.html#tutorial-steps">Tutorial Steps</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="route_graph_generation.html#create-new-qgis-project">1- Create New QGIS Project</a></li>
-<li class="toctree-l4"><a class="reference internal" href="route_graph_generation.html#setup-coordinate-system">2- Setup Coordinate System</a></li>
-<li class="toctree-l4"><a class="reference internal" href="route_graph_generation.html#add-nodes">3- Add Nodes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="route_graph_generation.html#add-edges">4- Add Edges</a></li>
-<li class="toctree-l4"><a class="reference internal" href="route_graph_generation.html#associate-nodes-with-edges">5- Associate Nodes With Edges</a></li>
-<li class="toctree-l4"><a class="reference internal" href="route_graph_generation.html#export-to-geojson">6- Export To Geojson</a></li>
-<li class="toctree-l4"><a class="reference internal" href="route_graph_generation.html#congratulations">7- Congratulations</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="adding_a_nav2_task_server.html">Adding a New Nav2 Task Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#lifecycle-nodes">Lifecycle Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="adding_a_nav2_task_server.html#composition">Composition</a></li>
@@ -513,6 +485,16 @@
 <li class="toctree-l4"><a class="reference internal" href="docker_dev.html#nav2-deployment-image">Nav2 Deployment Image</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Route Server Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#provided-tools">Provided Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="route_server_tools/navigation2_route_tool.html">Using the Nav2 Route Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="route_server_tools/route_graph_generation_lif_editor.html">Route Graph Generation LIF Editor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="route_server_tools/route_graph_generation.html">Route Graph Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
 </ul>
 </li>
 </ul>
@@ -1251,7 +1233,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">General Tutorials</a></li>
-      <li class="breadcrumb-item active">Using the Nav2 Route Tool</li>
+      <li class="breadcrumb-item active">Route Server Tools</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1260,75 +1242,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="using-the-nav2-route-tool">
-<span id="navigation2-route-tool"></span><h1>Using the Nav2 Route Tool<a class="headerlink" href="#using-the-nav2-route-tool" title="Permalink to this heading"></a></h1>
+  <div class="section" id="route-server-tools">
+<span id="id1"></span><h1>Route Server Tools<a class="headerlink" href="#route-server-tools" title="Permalink to this heading"></a></h1>
+<p>Route Server tools are essential components in the Nav2 ecosystem that help users create, edit, and manage route graphs for robot navigation. A route graph is a representation of valid paths that a robot can follow in its environment, consisting of nodes (waypoints) and edges (connections between waypoints). These tools simplify the process of defining preferred paths and restricted areas for robot navigation.</p>
+<p>Unlike free-space planning, route-based navigation ensures that robots follow specific, predefined paths, which is particularly useful in:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#overview">Overview</a></p></li>
-<li><p><a class="reference internal" href="#prerequisites">Prerequisites</a></p></li>
-<li><p><a class="reference internal" href="#tutorial-steps">Tutorial Steps</a></p></li>
+<li><p>Industrial environments where specific routes must be followed</p></li>
+<li><p>Warehouse operations requiring structured movement patterns</p></li>
+<li><p>Facilities with restricted areas or preferred paths</p></li>
+<li><p>Multi-robot coordination scenarios where predefined routes help prevent conflicts</p></li>
+<li><p>Large scale outdoor urban or natural environments</p></li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/route_tool_demo.gif"><img alt="../../_images/route_tool_demo.gif" class="align-center" src="../../_images/route_tool_demo.gif" style="width: 90%;" /></a>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
-<p>The Nav2 route tool is an Rviz panel designed to ease the process of creating and editing the route graphs used by the Nav2 Route Server.
-In contrast to a free-space planner, route graphs provided a structure path for mobile robots to follow when navigating through their environment.
-Supported operations for the route tool include loading in existing route graphs, adding new nodes and edges, editing existing nodes and edges, removing nodes and edges, and saving changes to a new file.
-By the end of this tutorial, you should feel comfortable creating and modifying route graphs using the route tool.</p>
+<div class="section" id="provided-tools">
+<h2>Provided Tools<a class="headerlink" href="#provided-tools" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="route_server_tools/navigation2_route_tool.html">Using the Nav2 Route Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="route_server_tools/route_graph_generation_lif_editor.html">Route Graph Generation LIF Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="route_server_tools/route_graph_generation.html">Route Graph Generation</a></li>
+</ul>
 </div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
-<p>Prior to using the route tool, you will need to create an occupancy grid map using the slam_toolbox package.
-Follow <a class="reference external" href="https://docs.nav2.org/tutorials/docs/navigation2_with_slam.html">this tutorial</a> for instructions on how to generate and save an occupancy grid map.</p>
 </div>
-<div class="section" id="tutorial-steps">
-<h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
-<p>To start the route tool, open a terminal and run the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>nav2_rviz_plugins<span class="w"> </span>route_tool.launch.py<span class="w"> </span>yaml_filename:<span class="o">=</span>/path/to/map.yaml
-</pre></div>
-</div>
-<p>This should open Rviz with the route tool panel on the left side and your occupancy grid map displayed in the center.</p>
-<div class="section" id="loading-a-route-graph">
-<h3>Loading a Route Graph<a class="headerlink" href="#loading-a-route-graph" title="Permalink to this heading"></a></h3>
-<a class="reference internal image-reference" href="../../_images/route_load.gif"><img alt="../../_images/route_load.gif" class="align-center" src="../../_images/route_load.gif" style="width: 90%;" /></a>
-<p>To load in an existing route graph, click on the load button on the bottom left of the route tool panel.
-This will open up a file explorer so you can navigate to the existing geojson file you would like to load.
-After clicking open, you should see the route graph overlaid with your occupancy grid map.</p>
-</div>
-<div class="section" id="adding-nodes-and-edges">
-<h3>Adding Nodes and Edges<a class="headerlink" href="#adding-nodes-and-edges" title="Permalink to this heading"></a></h3>
-<a class="reference internal image-reference" href="../../_images/route_add.gif"><img alt="../../_images/route_add.gif" class="align-center" src="../../_images/route_add.gif" style="width: 90%;" /></a>
-<p>To add nodes and edges to your route graph, select the “Add” tab of the route tool panel.
-You can then add nodes by selecting the “Node” option and specifying coordinates for the new node.
-Coordinates can be specified manually or by using the “Publish Point” feature in Rviz.
-Once you have coordinates selected, click the “Create” button to add the node to your route graph.
-For edges, follow the same process with the “Edge” option selected and specifying the ID for the starting and ending node you wish to connect.</p>
-</div>
-<div class="section" id="editing-nodes-and-edges">
-<h3>Editing Nodes and Edges<a class="headerlink" href="#editing-nodes-and-edges" title="Permalink to this heading"></a></h3>
-<a class="reference internal image-reference" href="../../_images/route_edit.gif"><img alt="../../_images/route_edit.gif" class="align-center" src="../../_images/route_edit.gif" style="width: 90%;" /></a>
-<p>To edit an existing node or edge, select the “Edit” tab of the route tool panel.
-You can edit an existing node by selecting the “Node” option, entering the ID of the node you wish to edit, and specifying the new coordinates for the node.
-Similar to adding in a node, you can enter these coordinates manually or using the “Publish Point” feature.
-After clicking the “Confirm” button, you should see the location of the node move.
-If the node has any edges connecting to it, those will be adjusted as well.
-Existing edges can be edited by selecting the “Edge” option, entering the ID of the edge you wish to edit, and specifying the IDs for the new starting and ending nodes.</p>
-</div>
-<div class="section" id="removing-nodes-and-edges">
-<h3>Removing Nodes and Edges<a class="headerlink" href="#removing-nodes-and-edges" title="Permalink to this heading"></a></h3>
-<a class="reference internal image-reference" href="../../_images/route_delete.gif"><img alt="../../_images/route_delete.gif" class="align-center" src="../../_images/route_delete.gif" style="width: 90%;" /></a>
-<p>To remove an existing node or edge, select the “Remove” tab of the route tool panel.
-Select the “Node” option if you would like to remove a node and the “Edge” option if you would like to remove an edge.
-Then enter the ID of the graph element you wish to remove and click the “Delete” button to remove it from the route graph.
-If you remove a node that has edges attached to it, those edges will be removed as well.
-You may need to toggle the visibility of the route graph in Rviz to see the change take effect.</p>
-</div>
-<div class="section" id="saving-a-route-graph">
-<h3>Saving a Route Graph<a class="headerlink" href="#saving-a-route-graph" title="Permalink to this heading"></a></h3>
-<a class="reference internal image-reference" href="../../_images/route_save.gif"><img alt="../../_images/route_save.gif" class="align-center" src="../../_images/route_save.gif" style="width: 90%;" /></a>
-<p>Once you are ready to save your route graph, click the “Save” button at the bottom right of the panel.
-This will then open a file explorer so you can specify where you would like to save your graph as a geojson file.
-After entering in a filepath and clicking “Save”, your route graph should be ready for use with the Nav2 route server!</p>
-</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>There are several tools available for creating and editing route graphs for the Nav2 Route Server:</p>
+<ol class="arabic simple">
+<li><p><strong>Nav2 Route Tool</strong>: An Rviz panel that allows users to create, edit, and manage route graphs directly within the ROS 2 environment. It supports loading existing graphs, adding/editing/removing nodes and edges, and saving changes to files.</p></li>
+<li><p><strong>VDA LIF Editor</strong>: A web-based tool that allows users to create route graphs using floor plan images. It can generate both GeoJSON and LIF formats, making it particularly useful for standardized route creation. No installation is required as it runs in a web browser.</p></li>
+<li><p><strong>Manual Route Graph Generation</strong>: For those who prefer direct file editing, route graphs can be created manually in GeoJSON format using QGIS. This method provides the most control over the graph structure but requires understanding of the GeoJSON format.</p></li>
+</ol>
+<p>Choose the tool that best fits your needs based on your workflow and requirements.</p>
 </div>
 </div>
 
