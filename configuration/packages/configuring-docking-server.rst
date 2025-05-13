@@ -687,4 +687,3 @@ Example
           projection_time: 1.0
           simulation_time_step: 0.1
           dock_collision_threshold: 0.3
-
