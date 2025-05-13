@@ -472,3 +472,15 @@ Docking backwards as plugin parameter
 In `PR #5079 <https://github.com/ros-navigation/navigation2/pull/5079>`_, the ``dock_backwards`` boolean parameter has been moved from the docking server to the dock plugin as the string parameter ``dock_direction``. This allows the user to have multiple dock plugins with different directions in the same docking server. Default value is ``forward`` but may also be set as ``backward``.
 
 See :ref:`configuring_docking_server` for more information.
+
+Docking backwards without sensor
+********************************
+In `PR #5153 <https://github.com/ros-navigation/navigation2/pull/5153>`_, the docking server was updated to allow docking backwards without a sensor.
+
+A new parameter ``backward_blind`` was added to the ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins to allow this feature.
+
+Default value:
+
+- false
+
+See :ref:`configuring_docking_server` for more information.

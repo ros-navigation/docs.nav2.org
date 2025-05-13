@@ -82,7 +82,18 @@ Parameters
   ============== ==============
 
   Description
-    Angular Tolerance (rad) to exist undocking loop at staging pose.
+    Angular tolerance (rad) to exit undocking loop at staging pose.
+
+:rotation_angular_tolerance:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         0.05
+  ============== ==============
+
+  Description
+    Angular tolerance (rad) to exit the rotation loop when backward_blind is enabled.
 
 :max_retries:
 
@@ -116,6 +127,17 @@ Parameters
 
   Description
     Fixed frame to use, recommended to be a smooth odometry frame **not** map.
+
+:odom_topic:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         "odom"
+  ============== ==============
+
+  Description
+    The topic to use for the odometry data when backward_blind is enabled.
 
 :dock_backwards:
 
@@ -282,6 +304,28 @@ Parameters
 
   Description
     Radius to end goal to commense slow down.
+
+:controller.rotate_to_heading_angular_vel:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         1.0
+  ============== ==============
+
+  Description
+    Angular velocity (rad/s) to rotate to the goal heading when backward_blind is enabled.
+
+:controller.rotate_to_heading_max_angular_accel:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         3.2
+  ============== ==============
+
+  Description
+    Maximum angular acceleration (rad/s^2) to rotate to the goal heading when backward_blind is enabled.
 
 :controller.use_collision_detection:
 
@@ -568,6 +612,17 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated ``dock_backwards`` parameter. Options are "forward" or "backward".
 
+:<dock_name>.backward_blind:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  bool           false
+  ============== ==============
+
+  Description
+    Initial forward detection, then dock in reverse.
+
 Example
 *******
 .. code-block:: yaml
@@ -583,6 +638,8 @@ Example
         max_retries: 3
         base_frame: "base_link"
         fixed_frame: "odom"
+        odom_topic: "odom"
+        dock_backwards: false  # Deprecated, use dock_direction in plugin
         dock_prestaging_tolerance: 0.5
         service_introspection_mode: "disabled"
 
@@ -595,6 +652,7 @@ Example
           use_external_detection_pose: true
           use_battery_status: false # true
           use_stall_detection: false
+          backward_blind: false
 
           external_detection_timeout: 1.0
           external_detection_translation_x: -0.18
@@ -618,3 +676,15 @@ Example
           k_delta: 2.0
           v_linear_min: 0.15
           v_linear_max: 0.15
+          v_angular_max: 0.75
+          slowdown_radius: 0.25
+          rotate_to_heading_angular_vel: 1.0
+          rotate_to_heading_max_angular_accel: 3.2
+          use_collision_detection: true
+          costmap_topic: "local_costmap/costmap_raw"
+          footprint_topic: "local_costmap/published_footprint"
+          transform_tolerance: 0.1
+          projection_time: 1.0
+          simulation_time_step: 0.1
+          dock_collision_threshold: 0.3
+
