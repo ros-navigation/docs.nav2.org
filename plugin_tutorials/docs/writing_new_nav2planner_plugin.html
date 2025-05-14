@@ -1311,7 +1311,8 @@ method should clean up resources which are created for the planner.</p></td>
 <tr class="row-even"><td><p>createPlan()</p></td>
 <td><p>Method is called when planner server demands a global plan for specified
 start and goal pose. This method returns <cite>nav_msgs::msg::Path</cite> carrying
-global plan. This method takes 2 input params: start pose and goal pose.</p></td>
+global plan. This method takes 3 input params: start pose, goal pose and
+a function to check if the action has been canceled.</p></td>
 <td><p>Yes</p></td>
 </tr>
 </tbody>

@@ -1320,8 +1320,8 @@ operations that transform the global plan and store it.</p></td>
 <td><p>Method is called when a new velocity command is demanded by the controller server
 in-order for the robot to follow the global path. This method returns a
 <cite>geometry_msgs::msg::TwistStamped</cite> which represents the velocity command for the
-robot to drive.  This method passes 2 parameters: reference to the current robot
-pose and its current velocity.</p></td>
+robot to drive.  This method passes 3 parameters: reference to the current robot
+pose, its current velocity, and a pointer to the <cite>nav2_core::GoalChecker</cite>.</p></td>
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-even"><td><p>cancel()</p></td>
