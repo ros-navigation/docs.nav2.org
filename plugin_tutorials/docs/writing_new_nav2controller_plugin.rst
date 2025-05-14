@@ -70,8 +70,8 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 | computeVelocityCommands() | Method is called when a new velocity command is demanded by the controller server     | Yes                    |
 |                           | in-order for the robot to follow the global path. This method returns a               |                        |
 |                           | `geometry_msgs\:\:msg\:\:TwistStamped` which represents the velocity command for the  |                        |
-|                           | robot to drive.  This method passes 2 parameters: reference to the current robot      |                        |
-|                           | pose and its current velocity.                                                        |                        |
+|                           | robot to drive.  This method passes 3 parameters: reference to the current robot      |                        |
+|                           | pose, its current velocity, and a pointer to the `nav2_core::GoalChecker`.            |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | cancel()                  | Method is called when the controller server receives a cancel request. If this method | No                     |
 |                           | is unimplemented, the controller will immediately stop when receiving a cancel        |                        |
