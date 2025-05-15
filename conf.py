@@ -18,6 +18,8 @@
 #
 import os
 import sys
+import time
+
 sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -64,8 +66,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Nav2'
-copyright = u'2023'
 author = u'Open Navigation LLC'
+copyright = f'{time.strftime("%Y")}, {author}'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
