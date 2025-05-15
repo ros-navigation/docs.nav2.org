@@ -251,6 +251,7 @@ Provided Plugins
   nav2_controller-plugins/pose_progress_checker.rst
   nav2_controller-plugins/simple_goal_checker.rst
   nav2_controller-plugins/stopped_goal_checker.rst
+  nav2_controller-plugins/position_goal_checker.rst
 
 Default Plugins
 ***************
