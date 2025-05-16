@@ -311,9 +311,15 @@ Goal Checkers
 |                                 |                        | , rotational distance of goal,   |
 |                                 |                        | and velocity threshold.          |
 +---------------------------------+------------------------+----------------------------------+
+| `PositionGoalChecker`_          | Prabhav Saxena         | A plugin check whether robot     |
+|                                 |                        | is within translational distance |
+|                                 |                        | of goal, without requiring       |
+|                                 |                        | rotational convergence.          |
++---------------------------------+------------------------+----------------------------------+
 
 .. _SimpleGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/simple_goal_checker.cpp
 .. _StoppedGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/stopped_goal_checker.cpp
+.. _PositionGoalChecker: https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/position_goal_checker.cpp
 
 Progress Checkers
 =================
