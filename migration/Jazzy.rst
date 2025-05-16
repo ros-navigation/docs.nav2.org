@@ -478,10 +478,14 @@ Docking backwards without sensor
 
 In `PR #5153 <https://github.com/ros-navigation/navigation2/pull/5153>`_, the docking server was updated to allow docking backwards without a sensor for detection. It should be setup to approach the staging pose for the dock in the forward direction with sensor coverage for dock detection, then after detection it will rotate to back up into the dock using the initial detected pose only for deadreckoning.
 
-A new parameter ``backward_blind`` was added to the ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins to allow this feature.
+A new parameter ``reverse_to_dock`` was added to the ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins to allow this feature.
 
 Default value:
 
 - false
 
 See :ref:`configuring_docking_server` for more information.
+
+Here we can see the working demo of the feature:
+
+.. image:: images/reverse_to_dock.gif

@@ -93,7 +93,7 @@ Parameters
   ============== ==============
 
   Description
-    Angular tolerance (rad) to exit the rotation loop when backward_blind is enabled.
+    Angular tolerance (rad) to exit the rotation loop when rotate_to_dock is enabled.
 
 :max_retries:
 
@@ -137,7 +137,7 @@ Parameters
   ============== ==============
 
   Description
-    The topic to use for the odometry data when backward_blind is enabled.
+    The topic to use for the odometry data when rotate_to_dock is enabled.
 
 :dock_backwards:
 
@@ -314,7 +314,7 @@ Parameters
   ============== ==============
 
   Description
-    Angular velocity (rad/s) to rotate to the goal heading when backward_blind is enabled.
+    Angular velocity (rad/s) to rotate to the goal heading when rotate_to_dock is enabled.
 
 :controller.rotate_to_heading_max_angular_accel:
 
@@ -325,7 +325,7 @@ Parameters
   ============== ==============
 
   Description
-    Maximum angular acceleration (rad/s^2) to rotate to the goal heading when backward_blind is enabled.
+    Maximum angular acceleration (rad/s^2) to rotate to the goal heading when rotate_to_dock is enabled.
 
 :controller.use_collision_detection:
 
@@ -433,7 +433,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   ============== ==============
 
   Description
-    Staging pose angle relative to dock pose (rad).
+    Staging pose angle relative to dock pose (rad). If ``dock_direction`` is set to "backward", this angle must be faced in the opposite direction of the dock pose. However, if ``rotate_to_dock`` is enabled, this angle must be facing the same direction as the dock pose because the robot will rotate to the dock pose after detection.
 
 :<dock_name>.use_battery_status:
 
@@ -601,7 +601,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     If not using stall detection, the pose threshold to the docking pose where ``isDocked() = true``.
 
-:<dock_name>:dock_direction:
+:<dock_name>.dock_direction:
 
   ============== ==============
   Type           Default
@@ -612,7 +612,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated ``dock_backwards`` parameter. Options are "forward" or "backward".
 
-:<dock_name>.backward_blind:
+:<dock_name>.rotate_to_dock:
 
   ============== ==============
   Type           Default
@@ -621,7 +621,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   ============== ==============
 
   Description
-    Initial forward detection, then dock in reverse.
+    Enables backward docking without requiring a sensor for detection during the final aproach. When enabled, the robot approaches the staging pose facing forward with sensor coverage for dock detection; after detection, it rotates and backs into the dock using only the initially detected pose for dead reckoning. In the undocking phase, the robot will move forward to the staging pose and then rotate to the original heading.
+    
+    Note: This parameter is only valid when the ``dock_direction`` is set to "backward".
 
 Example
 *******
@@ -652,7 +654,7 @@ Example
           use_external_detection_pose: true
           use_battery_status: false # true
           use_stall_detection: false
-          backward_blind: false
+          rotate_to_dock: false
 
           external_detection_timeout: 1.0
           external_detection_translation_x: -0.18
