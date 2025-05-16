@@ -494,4 +494,3 @@ See :ref:`configuring_docking_server` for more information.
 Here we can see the working demo of the feature:
 
 .. image:: images/reverse_to_dock.gif
-
