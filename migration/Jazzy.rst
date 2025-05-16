@@ -476,4 +476,4 @@ See :ref:`configuring_docking_server` for more information.
 New Position Goal Checker
 *************************
 
-In `PR #5162 <https://github.com/ros-navigation/navigation2/pull/5162>`_, a new goal checker plugin called ``PositionGoalChecker`` has been added to Nav2. This plugin provides an alternative to the existing goal checkers by focusing only on the position component of the robot pose, ignoring orientation.
+In `PR #5162 <https://github.com/ros-navigation/navigation2/pull/5162>`_, a new goal checker plugin called ``PositionGoalChecker`` has been added to Nav2. This plugin provides an alternative to the existing goal checkers by focusing only on the position component of the robot pose, ignoring orientation. This is used by the RPP controller to create stateful behavior to rotate to heading once meeting the goal tolerance.
