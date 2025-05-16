@@ -15,3 +15,4 @@ Navigation2 guides for migration between distributions.
    Humble.rst
    Iron.rst
    Jazzy.rst
+   Kilted.rst
