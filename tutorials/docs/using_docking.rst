@@ -67,6 +67,9 @@ The plugins has a few key APIs:
 - ``bool isCharging()`` which provides if we've started charging while docked (charging docks only)
 - ``bool disableCharging()`` which should disable charging, if under the robot's control for undocking (charging docks only)
 - ``bool hasStoppedCharging()`` which indicates if we've successfully stopped charging on undocking (charging docks only)
+- ``bool isCharger()`` which indicates if this is a charging-typed dock
+- ``DockDirection getDockDirection()`` which indicates the direction of the dock (if the robot should drive forwards, backwards, etc onto the dock)
+- ``bool shouldRotateToDock()`` which indicates if the robot should rotate to dock (for example, to perform a backward docking without detections)
 
 The ``SimpleChargingDock`` provides an implementation with common options for these APIs:
 

@@ -477,3 +477,20 @@ New Position Goal Checker
 *************************
 
 In `PR #5162 <https://github.com/ros-navigation/navigation2/pull/5162>`_, a new goal checker plugin called ``PositionGoalChecker`` has been added to Nav2. This plugin provides an alternative to the existing goal checkers by focusing only on the position component of the robot pose, ignoring orientation. This is used by the RPP controller to create stateful behavior to rotate to heading once meeting the goal tolerance.
+
+Docking backwards without sensor
+********************************
+
+In `PR #5153 <https://github.com/ros-navigation/navigation2/pull/5153>`_, the docking server was updated to allow docking backwards without a sensor for detection. It should be setup to approach the staging pose for the dock in the forward direction with sensor coverage for dock detection, then after detection it will rotate to back up into the dock using the initial detected pose only for deadreckoning.
+
+A new parameter ``reverse_to_dock`` was added to the ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins to allow this feature.
+
+Default value:
+
+- false
+
+See :ref:`configuring_docking_server` for more information.
+
+Here we can see the working demo of the feature:
+
+.. image:: images/reverse_to_dock.gif
