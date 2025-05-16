@@ -1188,6 +1188,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#groot-2-support">Groot 2 Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-position-goal-checker">New Position Goal Checker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docking-backwards-without-sensor">Docking backwards without sensor</a></li>
 </ul>
 </li>
 </ul>
@@ -1629,6 +1630,18 @@ During the <code class="docutils literal notranslate"><span class="pre">goalComp
 <div class="section" id="new-position-goal-checker">
 <h2>New Position Goal Checker<a class="headerlink" href="#new-position-goal-checker" title="Permalink to this heading"></a></h2>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5162">PR #5162</a>, a new goal checker plugin called <code class="docutils literal notranslate"><span class="pre">PositionGoalChecker</span></code> has been added to Nav2. This plugin provides an alternative to the existing goal checkers by focusing only on the position component of the robot pose, ignoring orientation. This is used by the RPP controller to create stateful behavior to rotate to heading once meeting the goal tolerance.</p>
+</div>
+<div class="section" id="docking-backwards-without-sensor">
+<h2>Docking backwards without sensor<a class="headerlink" href="#docking-backwards-without-sensor" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5153">PR #5153</a>, the docking server was updated to allow docking backwards without a sensor for detection. It should be setup to approach the staging pose for the dock in the forward direction with sensor coverage for dock detection, then after detection it will rotate to back up into the dock using the initial detected pose only for deadreckoning.</p>
+<p>A new parameter <code class="docutils literal notranslate"><span class="pre">reverse_to_dock</span></code> was added to the <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">SimpleNonChargingDock</span></code> plugins to allow this feature.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>false</p></li>
+</ul>
+<p>See <a class="reference internal" href="../configuration/packages/configuring-docking-server.html#configuring-docking-server"><span class="std std-ref">Docking Server</span></a> for more information.</p>
+<p>Here we can see the working demo of the feature:</p>
+<img alt="../_images/reverse_to_dock.gif" src="../_images/reverse_to_dock.gif" />
 </div>
 </div>
 

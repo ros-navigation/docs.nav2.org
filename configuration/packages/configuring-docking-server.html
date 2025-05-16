@@ -1188,6 +1188,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#groot-2-support">Groot 2 Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-position-goal-checker">New Position Goal Checker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-backwards-without-sensor">Docking backwards without sensor</a></li>
 </ul>
 </li>
 </ul>
@@ -1372,12 +1373,32 @@ This task server is designed be called by an application BT or autonomy applicat
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Angular Tolerance (rad) to exist undocking loop at staging pose.</p>
+<dt>Description</dt><dd><p>Angular tolerance (rad) to exit undocking loop at staging pose.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">max_retries</dt>
+<dt class="field-odd">rotation_angular_tolerance</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.05</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Angular tolerance (rad) to exit the rotation loop when rotate_to_dock is enabled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">max_retries</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1396,8 +1417,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">base_frame</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">base_frame</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1416,8 +1437,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">fixed_frame</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">fixed_frame</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1433,6 +1454,26 @@ This task server is designed be called by an application BT or autonomy applicat
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>Fixed frame to use, recommended to be a smooth odometry frame <strong>not</strong> map.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">odom_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“odom”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The topic to use for the odometry data when rotate_to_dock is enabled.</p>
 </dd>
 </dl>
 </dd>
@@ -1736,6 +1777,46 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">controller.rotate_to_heading_angular_vel</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Angular velocity (rad/s) to rotate to the goal heading when rotate_to_dock is enabled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">controller.rotate_to_heading_max_angular_accel</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum angular acceleration (rad/s^2) to rotate to the goal heading when rotate_to_dock is enabled.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-odd">controller.use_collision_detection</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
@@ -1919,7 +2000,7 @@ This task server is designed be called by an application BT or autonomy applicat
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Staging pose angle relative to dock pose (rad).</p>
+<dt>Description</dt><dd><p>Staging pose angle relative to dock pose (rad). If <code class="docutils literal notranslate"><span class="pre">dock_direction</span></code> is set to “backward”, this angle must be faced in the opposite direction of the dock pose. However, if <code class="docutils literal notranslate"><span class="pre">rotate_to_dock</span></code> is enabled, this angle must be facing the same direction as the dock pose because the robot will rotate to the dock pose after detection.</p>
 </dd>
 </dl>
 </dd>
@@ -2223,7 +2304,7 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">&lt;dock_name&gt;:dock_direction</dt>
+<dt class="field-even">&lt;dock_name&gt;.dock_direction</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -2243,6 +2324,27 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">&lt;dock_name&gt;.rotate_to_dock</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt>Description</dt><dd><p>Enables backward docking without requiring a sensor for detection during the final approach. When enabled, the robot approaches the staging pose facing forward with sensor coverage for dock detection; after detection, it rotates and backs into the dock using only the initially detected pose for dead reckoning. In the undocking phase, the robot will move forward to the staging pose and then rotate to the original heading. This may also be paired with sensor detection in the reverse direction as well if available.</p>
+<p>Note: This parameter is only valid when the <code class="docutils literal notranslate"><span class="pre">dock_direction</span></code> is set to “backward”.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -2258,6 +2360,8 @@ This task server is designed be called by an application BT or autonomy applicat
 <span class="w">    </span><span class="nt">max_retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">    </span><span class="nt">base_frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_link&quot;</span>
 <span class="w">    </span><span class="nt">fixed_frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
+<span class="w">    </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
+<span class="w">    </span><span class="nt">dock_backwards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Deprecated, use dock_direction in plugin</span>
 <span class="w">    </span><span class="nt">dock_prestaging_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">    </span><span class="nt">service_introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 
@@ -2270,6 +2374,7 @@ This task server is designed be called by an application BT or autonomy applicat
 <span class="w">      </span><span class="nt">use_external_detection_pose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">use_battery_status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># true</span>
 <span class="w">      </span><span class="nt">use_stall_detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">rotate_to_dock</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 
 <span class="w">      </span><span class="nt">external_detection_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">external_detection_translation_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.18</span>
@@ -2293,6 +2398,17 @@ This task server is designed be called by an application BT or autonomy applicat
 <span class="w">      </span><span class="nt">k_delta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
 <span class="w">      </span><span class="nt">v_linear_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.15</span>
 <span class="w">      </span><span class="nt">v_linear_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.15</span>
+<span class="w">      </span><span class="nt">v_angular_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
+<span class="w">      </span><span class="nt">slowdown_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+<span class="w">      </span><span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">rotate_to_heading_max_angular_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
+<span class="w">      </span><span class="nt">use_collision_detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">costmap_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;local_costmap/costmap_raw&quot;</span>
+<span class="w">      </span><span class="nt">footprint_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;local_costmap/published_footprint&quot;</span>
+<span class="w">      </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">      </span><span class="nt">projection_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">simulation_time_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">      </span><span class="nt">dock_collision_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 </pre></div>
 </div>
 </div>

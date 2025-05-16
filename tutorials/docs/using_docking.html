@@ -1188,6 +1188,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#groot-2-support">Groot 2 Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#new-position-goal-checker">New Position Goal Checker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-backwards-without-sensor">Docking backwards without sensor</a></li>
 </ul>
 </li>
 </ul>
@@ -1300,6 +1301,9 @@ However, one way or another, your system requires an applicable <code class="doc
 <li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">isCharging()</span></code> which provides if we’ve started charging while docked (charging docks only)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">disableCharging()</span></code> which should disable charging, if under the robot’s control for undocking (charging docks only)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">hasStoppedCharging()</span></code> which indicates if we’ve successfully stopped charging on undocking (charging docks only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">isCharger()</span></code> which indicates if this is a charging-typed dock</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DockDirection</span> <span class="pre">getDockDirection()</span></code> which indicates the direction of the dock (if the robot should drive forwards, backwards, etc onto the dock)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">shouldRotateToDock()</span></code> which indicates if the robot should rotate to dock (for example, to perform a backward docking without detections)</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">SimpleChargingDock</span></code> provides an implementation with common options for these APIs:</p>
 <ul class="simple">
