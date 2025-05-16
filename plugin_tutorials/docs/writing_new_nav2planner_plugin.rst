@@ -60,7 +60,8 @@ Let's learn more about the methods needed to write a planner plugin.
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | createPlan()         | Method is called when planner server demands a global plan for specified    | Yes                     |
 |                      | start and goal pose. This method returns `nav_msgs\:\:msg\:\:Path` carrying |                         |
-|                      | global plan. This method takes 2 input params: start pose and goal pose.    |                         |
+|                      | global plan. This method takes 3 input params: start pose, goal pose and    |                         |
+|                      | a function to check if the action has been canceled.                        |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 
 For this tutorial, we will be using methods ``StraightLine::configure()`` and ``StraightLine::createPlan()`` to create straight-line planner.
