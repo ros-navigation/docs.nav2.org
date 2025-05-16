@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smac State Lattice Planner &mdash; Nav2 1.0.0 documentation</title>
+  <title>PositionGoalChecker &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Theta Star Planner" href="../configuring-thetastar.html" />
-    <link rel="prev" title="Smac Hybrid-A* Planner" href="configuring-smac-hybrid.html" />
+    <link rel="next" title="DWB Controller" href="../configuring-dwb-controller.html" />
+    <link rel="prev" title="StoppedGoalChecker" href="stopped_goal_checker.html" />
 
 <link rel="stylesheet" href="../../../_static/tcs_theme.css" type="text/css" />
 
@@ -715,11 +715,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-navfn.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../configuring-smac-planner.html">Smac Planner</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../configuring-smac-planner.html#provided-plugins">Provided Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="configuring-smac-2d.html">Smac 2D Planner</a></li>
-<li class="toctree-l4"><a class="reference internal" href="configuring-smac-hybrid.html">Smac Hybrid-A* Planner</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Smac State Lattice Planner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuring-smac-planner.html">Smac Planner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuring-smac-planner.html#provided-plugins">Provided Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../smac/configuring-smac-2d.html">Smac 2D Planner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../smac/configuring-smac-hybrid.html">Smac Hybrid-A* Planner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../smac/configuring-smac-lattice.html">Smac State Lattice Planner</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-smac-planner.html#description">Description</a></li>
@@ -730,14 +730,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuring-thetastar.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../configuring-controller-server.html">Controller Server</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuring-controller-server.html">Controller Server</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#provided-plugins">Provided Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../nav2_controller-plugins/simple_progress_checker.html">SimpleProgressChecker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../nav2_controller-plugins/pose_progress_checker.html">PoseProgressChecker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../nav2_controller-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../nav2_controller-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../nav2_controller-plugins/position_goal_checker.html">PositionGoalChecker</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../configuring-controller-server.html#provided-plugins">Provided Plugins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="simple_progress_checker.html">SimpleProgressChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pose_progress_checker.html">PoseProgressChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simple_goal_checker.html">SimpleGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stopped_goal_checker.html">StoppedGoalChecker</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">PositionGoalChecker</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuring-controller-server.html#default-plugins">Default Plugins</a></li>
@@ -1235,8 +1235,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Configuration Guide</a></li>
-          <li class="breadcrumb-item"><a href="../configuring-smac-planner.html">Smac Planner</a></li>
-      <li class="breadcrumb-item active">Smac State Lattice Planner</li>
+          <li class="breadcrumb-item"><a href="../configuring-controller-server.html">Controller Server</a></li>
+      <li class="breadcrumb-item active">PositionGoalChecker</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1245,38 +1245,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="smac-state-lattice-planner">
-<span id="configuring-smac-lattice-planner"></span><h1>Smac State Lattice Planner<a class="headerlink" href="#smac-state-lattice-planner" title="Permalink to this heading"></a></h1>
-<a class="reference internal image-reference" href="../../../_images/state_reverse.png"><img alt="Paths generated by the Smac State Lattice" class="align-center" src="../../../_images/state_reverse.png" style="width: 640px;" /></a>
-<p>This planner implements a generic state lattice global path planner using precomputed, offline minimum control sets. The package also contains a python utility for computing minimum control sets based on minimum curvature constraints, in-place rotations, and omnidirectional moves. Though, any other minimum control set may be used as long as it follows the file format specification in the package’s README file.</p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is the corresponding planner plugin ID selected for this type.</p>
-<p>Note: State Lattice does not have the costmap downsampler due to the minimum control sets being tied with map resolutions on generation. The minimum turning radius is also not a parameter in State Lattice since this was specified at the minimum control set pre-computation phase. See the Smac Planner package to generate custom control sets for your vehicle or use one of our pre-generated examples.</p>
-<p>The image above you can see the reverse expansion enabled, such that the robot can back into a tight requested spot close to an obstacle.</p>
+  <div class="section" id="positiongoalchecker">
+<span id="configuring-nav2-controller-position-goal-checker-plugin"></span><h1>PositionGoalChecker<a class="headerlink" href="#positiongoalchecker" title="Permalink to this heading"></a></h1>
+<p>Checks whether the robot has reached the goal pose.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>: nav2_controller plugin name defined in the <strong>goal_checker_plugin_id</strong> parameter in <a class="reference internal" href="../configuring-controller-server.html#configuring-controller-server"><span class="std std-ref">Controller Server</span></a>.</p>
 <dl class="field-list">
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.allow_unknown</dt>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.xy_goal_tolerance</dt>
 <dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 64%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>True</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Whether to allow traversing/search in unknown space.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 46%" />
 <col style="width: 54%" />
@@ -1290,396 +1267,18 @@
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt>Description</dt><dd><p>If an exact path cannot be found, the tolerance (as measured by the heuristic cost-to-goal) that would be acceptable to diverge from the requested pose in distance-to-goal.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Tolerance to meet goal completion criteria (m).</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_iterations</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 64%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>int</p></td>
-<td><p>1000000</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Maximum number of search iterations before failing to limit compute time, disabled by -1.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_on_approach_iterations</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;nav2_controller</span> <span class="pre">plugin&gt;</span></code>.stateful</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>int</p></td>
-<td><p>1000</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Maximum number of iterations once a visited node is within the goal tolerances to continue to try to find an exact match before returning the best path solution within tolerances.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.terminal_checking_interval</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 64%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>int</p></td>
-<td><p>5000</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Number of iterations between checking if the goal has been cancelled or planner timed out</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.max_planning_time</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>5.0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Maximum planning time in seconds.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.analytic_expansion_ratio</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>3.5</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>SE2 node will attempt to complete an analytic expansion with frequency proportional to this value and the minimum heuristic. Negative values convert to infinite.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.analytic_expansion_max_length</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>3.0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>If the length is too far, reject this expansion. This prevents shortcutting of search with its penalty functions far out from the goal itself (e.g. so we don’t reverse half-way across open maps or cut through high cost zones). This should never be smaller than 4-5x the minimum turning radius being used, or planning times will begin to spike.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.analytic_expansion_max_cost</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>200.0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>For Hybrid/Lattice nodes: The maximum single cost for any part of an analytic expansion to contain and be considered valid (except when necessary on approach to goal). This allows for removing of potential shortcutting into higher cost spaces than you might otherwise desire</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.analytic_expansion_max_cost_override</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>For Hybrid/Lattice nodes: Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required). If expansion is within 2*pi*min_r of the goal, then it will override the max cost if <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.reverse_penalty</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>2.0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node if searching in reverse direction. Only used in <code class="docutils literal notranslate"><span class="pre">allow_reverse_expansion</span> <span class="pre">=</span> <span class="pre">true</span></code>.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.change_penalty</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.05</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node if changing direction (e.g. left to right) in search.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.non_straight_penalty</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>1.05</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node if searching in non-straight direction.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cost_penalty</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>2.0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node for cost at pose. Allows State Lattice to be cost aware.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.rotation_penalty</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>5.0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Penalty to apply for rotations in place, if minimum control set contains in-place rotations. This should always be set sufficiently high to weight against in-place rotations unless strictly necessary for obstacle avoidance or there may be frequent discontinuities in the plan where the plan requests the robot to rotate in place to short-cut an otherwise smooth forward-moving path for marginal path distance savings.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.retrospective_penalty</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.015</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Heuristic penalty to apply to SE2 node penalty. Causes State Lattice to prefer later maneuvers before earlier ones along the path. Saves search time since earlier (shorter) branches are not expanded until it is necessary. Must be &gt;= 0.0 and &lt;= 1.0. Must be <cite>0.0</cite> to be fully admissible.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.lattice_filepath</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>The filepath to the state lattice minimum control set graph, this will default to a 16 bin, 0.5m turning radius control set located in <code class="docutils literal notranslate"><span class="pre">test/</span></code> for basic testing and evaluation (opposed to Hybrid-A*’s default of 0.5m).</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.lookup_table_size</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>20.0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Size of the dubin/reeds-sheep distance window to cache, in meters.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.cache_obstacle_heuristic</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.allow_reverse_expansion</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot’s orientation (to reverse).</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.debug_visualizations</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>false</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Whether to publish expansions on the <code class="docutils literal notranslate"><span class="pre">/expansions</span></code> topic as an array of poses and the path’s footprints on the <code class="docutils literal notranslate"><span class="pre">/planned_footprints</span></code> topic. WARNING: heavy to compute and to display, for debug only as it degrades the performance. Lattice expansions show end-points of primitives, not intermediary steps as seen in dense path outputs.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smooth_path</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Type</p></td>
@@ -1690,213 +1289,14 @@
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt>Description</dt><dd><p>If true, does simple and fast smoothing post-processing to the path from search</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Description</dt><dd><p>Whether to check for XY position tolerance after rotating to goal orientation in case of minor localization changes.</p>
 </dd>
 </dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.max_iterations</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>int</p></td>
-<td><p>1000</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>The maximum number of iterations the smoother has to smooth the path, to bound potential computation.</p>
+</div></blockquote>
 </dd>
 </dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_smooth</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.3</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Weight for smoother to apply to smooth out the data points</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.w_data</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>0.2</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Weight for smoother to apply to retain original data information</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>1e-10</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Parameter tolerance change amount to terminate smoothing session</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.do_refinement</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>bool</p></td>
-<td><p>true</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends. This typically improves quality especially in the Hybrid-A* planner but can be helpful on the state lattice planner to reduce the “blocky” movements in State Lattice caused by the limited number of headings.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.refinement_num</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>int</p></td>
-<td><p>2</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Number of times to recursively attempt to smooth, must be <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">1</span></code>.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.goal_heading_mode</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“DEFAULT”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Goal heading mode enum string to plan goal with multiple orientation. Options are “DEFAULT”, “BIDIRECTIONAL” and “ALL_DIRECTION”. With default mode, the planner will plan the goal with the orientation of the goal pose as was sent by the user. With the “BIDIRECTIONAL” mode, the planner will plan the goal with the orientation of the goal pose and with orientation 180 degree offset from the goal pose orientation. For “ALL_DIRECTION” mode, the planner will plan the goal with the orientation of the goal pose and all the possible orientation based on the angle quantization bins. For both the “BIDIRECTIONAL” and “ALL_DIRECTION” mode, the planner returns the path with the minimum cost.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.coarse_search_resolution</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>string</p></td>
-<td><p>“1”</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Number of goal heading bins to skip during the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to “ALL_DIRECTION” and It helps to reduce search time of analytic expansions. g the coarse search phase of analytic expansion goal-finding. When a goal is found, a fine search is performed to determine the exact path during full-resolution. This parameter is only used when the goal heading mode is set to “ALL_DIRECTION” and it helps to reduce search time of analytic expansions. It is recommended to only do coarser search if the number of bins are &gt; 24. Otherwise, leave as 1 (fine search).</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">planner_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;GridBased&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-
-<span class="w">    </span><span class="nt">GridBased</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_smac_planner::SmacPlannerLattice&quot;</span><span class="w"> </span><span class="c1"># In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;</span>
-<span class="w">      </span><span class="nt">allow_unknown</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                 </span><span class="c1"># Allow traveling in unknown space</span>
-<span class="w">      </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w">                     </span><span class="c1"># dist-to-goal heuristic cost (distance) for valid tolerance endpoints if exact goal cannot be found.</span>
-<span class="w">      </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000000</span><span class="w">             </span><span class="c1"># Maximum total iterations to search for before failing (in case unreachable), set to -1 to disable</span>
-<span class="w">      </span><span class="nt">max_on_approach_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w">    </span><span class="c1"># Maximum number of iterations after within tolerances to continue to try to find exact solution</span>
-<span class="w">      </span><span class="nt">max_planning_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w">              </span><span class="c1"># Max time in s for planner to plan, smooth</span>
-<span class="w">      </span><span class="nt">analytic_expansion_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.5</span><span class="w">       </span><span class="c1"># The ratio to attempt analytic expansions during search for final approach.</span>
-<span class="w">      </span><span class="nt">analytic_expansion_max_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0</span><span class="w">  </span><span class="c1"># For Hybrid/Lattice nodes The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting</span>
-<span class="w">      </span><span class="nt">analytic_expansion_max_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200.0</span><span class="w">  </span><span class="c1"># The maximum single cost for any part of an analytic expansion to contain and be valid, except when necessary on approach to goal</span>
-<span class="w">      </span><span class="nt">analytic_expansion_max_cost_override</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1">#  Whether or not to override the maximum cost setting if within critical distance to goal (ie probably required)</span>
-<span class="w">      </span><span class="nt">reverse_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w">                </span><span class="c1"># Penalty to apply if motion is reversing, must be =&gt; 1</span>
-<span class="w">      </span><span class="nt">change_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w">                </span><span class="c1"># Penalty to apply if motion is changing directions (L to R), must be &gt;= 0</span>
-<span class="w">      </span><span class="nt">non_straight_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.05</span><span class="w">          </span><span class="c1"># Penalty to apply if motion is non-straight, must be =&gt; 1</span>
-<span class="w">      </span><span class="nt">cost_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w">                   </span><span class="c1"># Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.</span>
-<span class="w">      </span><span class="nt">rotation_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w">               </span><span class="c1"># Penalty to apply to in-place rotations, if minimum control set contains them</span>
-<span class="w">      </span><span class="nt">retrospective_penalty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.015</span>
-<span class="w">      </span><span class="nt">lattice_filepath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w">                </span><span class="c1"># The filepath to the state lattice graph</span>
-<span class="w">      </span><span class="nt">lookup_table_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span><span class="w">             </span><span class="c1"># Size of the dubin/reeds-sheep distance window to cache, in meters.</span>
-<span class="w">      </span><span class="nt">cache_obstacle_heuristic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">     </span><span class="c1"># Cache the obstacle map dynamic programming distance expansion heuristic between subsequent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.</span>
-<span class="w">      </span><span class="nt">allow_reverse_expansion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">      </span><span class="c1"># If true, allows the robot to use the primitives to expand in the mirrored opposite direction of the current robot&#39;s orientation (to reverse).</span>
-<span class="w">      </span><span class="nt">coarse_search_resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">         </span><span class="c1"># Number of bins to skip when doing a coarse search for the path. Only used for all_direction goal heading mode.</span>
-<span class="w">      </span><span class="nt">goal_heading_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DEFAULT&quot;</span><span class="w">        </span><span class="c1"># DEFAULT, BIDIRECTIONAL, ALL_DIRECTION</span>
-<span class="w">      </span><span class="nt">smooth_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w">                   </span><span class="c1"># If true, does a simple and quick smoothing post-processing to the path</span>
-<span class="w">      </span><span class="nt">smoother</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">        </span><span class="nt">w_smooth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
-<span class="w">        </span><span class="nt">w_data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
-<span class="w">        </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-10</span>
-<span class="w">        </span><span class="nt">do_refinement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">        </span><span class="nt">refinement_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-</pre></div>
-</div>
 </div>
 </div>
 

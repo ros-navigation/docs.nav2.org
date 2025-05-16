@@ -737,6 +737,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_controller-plugins/pose_progress_checker.html">PoseProgressChecker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_controller-plugins/simple_goal_checker.html">SimpleGoalChecker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_controller-plugins/stopped_goal_checker.html">StoppedGoalChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/nav2_controller-plugins/position_goal_checker.html">PositionGoalChecker</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-controller-server.html#default-plugins">Default Plugins</a></li>
@@ -1186,6 +1187,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#groot-2-support">Groot 2 Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-position-goal-checker">New Position Goal Checker</a></li>
 </ul>
 </li>
 </ul>
@@ -1717,6 +1719,13 @@ and rotational distance of goal.</p></td>
 is within translational distance
 , rotational distance of goal,
 and velocity threshold.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_controller/plugins/position_goal_checker.cpp">PositionGoalChecker</a></p></td>
+<td><p>Prabhav Saxena</p></td>
+<td><p>A plugin check whether robot
+is within translational distance
+of goal, without requiring
+rotational convergence.</p></td>
 </tr>
 </tbody>
 </table>
