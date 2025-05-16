@@ -21,17 +21,6 @@ Parameters
     Description
         Tolerance to meet goal completion criteria (m).
 
-:``<nav2_controller plugin>``.yaw_goal_tolerance:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  double 0.25
-  ====== =======
-
-    Description
-        Tolerance to meet goal completion criteria (rad).
-
 :``<nav2_controller plugin>``.stateful:
 
   ==== =======
