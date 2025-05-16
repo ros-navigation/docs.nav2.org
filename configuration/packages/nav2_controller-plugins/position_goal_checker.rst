@@ -1,7 +1,7 @@
 .. _configuring_nav2_controller_position_goal_checker_plugin:
 
 PositionGoalChecker
-=================
+===================
 
 Checks whether the robot has reached the goal pose.
 
