@@ -622,7 +622,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 
   Description
     Enables backward docking without requiring a sensor for detection during the final aproach. When enabled, the robot approaches the staging pose facing forward with sensor coverage for dock detection; after detection, it rotates and backs into the dock using only the initially detected pose for dead reckoning. In the undocking phase, the robot will move forward to the staging pose and then rotate to the original heading.
-    
+
     Note: This parameter is only valid when the ``dock_direction`` is set to "backward".
 
 Example
