@@ -312,6 +312,17 @@ Regulated Pure Pursuit Parameters
 
     Note: Needs ``use_fixed_curvature_lookahead`` to be ``true``
 
+:stateful:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
+
 Example
 *******
 .. code-block:: yaml
@@ -361,3 +372,4 @@ Example
         rotate_to_heading_min_angle: 0.785
         max_angular_accel: 3.2
         max_robot_pose_search_dist: 10.0
+        stateful: true

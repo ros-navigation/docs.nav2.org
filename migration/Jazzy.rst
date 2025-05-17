@@ -494,3 +494,7 @@ See :ref:`configuring_docking_server` for more information.
 Here we can see the working demo of the feature:
 
 .. image:: images/reverse_to_dock.gif
+
+RegulatedPurePursuit Controller [RPP]: new parameter ``stateful``
+********************************************************************************
+`PR #5167 <https://github.com/ros-navigation/navigation2/pull/5167>`_ adds a new parameter stateful for the regulated pure pursuit controllers. This parameter enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
