@@ -1189,6 +1189,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-position-goal-checker">New Position Goal Checker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#docking-backwards-without-sensor">Docking backwards without sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#regulatedpurepursuit-controller-rpp-new-parameter-stateful">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Kilted.html">Kilted to L-turtle</a></li>
@@ -1643,6 +1644,10 @@ During the <code class="docutils literal notranslate"><span class="pre">goalComp
 <p>See <a class="reference internal" href="../configuration/packages/configuring-docking-server.html#configuring-docking-server"><span class="std std-ref">Docking Server</span></a> for more information.</p>
 <p>Here we can see the working demo of the feature:</p>
 <img alt="../_images/reverse_to_dock.gif" src="../_images/reverse_to_dock.gif" />
+</div>
+<div class="section" id="regulatedpurepursuit-controller-rpp-new-parameter-stateful">
+<h2>RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code><a class="headerlink" href="#regulatedpurepursuit-controller-rpp-new-parameter-stateful" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5167">PR #5167</a> adds a new parameter stateful for the regulated pure pursuit controllers. This parameter enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.</p>
 </div>
 </div>
 
