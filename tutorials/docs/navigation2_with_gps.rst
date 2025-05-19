@@ -31,10 +31,12 @@ It is assumed ROS2 and Nav2 dependent packages are installed or built locally. A
    .. code-block:: bash
 
       source /opt/ros/<ros2-distro>/setup.bash
+      sudo apt install ros-$ROS_DISTRO-nav2-minimal-tb3*
       sudo apt install ros-$ROS_DISTRO-robot-localization
       sudo apt install ros-$ROS_DISTRO-mapviz
       sudo apt install ros-$ROS_DISTRO-mapviz-plugins
       sudo apt install ros-$ROS_DISTRO-tile-map
+      sudo apt-get install ros-rolling-teleop-twist-keyboard
     
 The code for this tutorial is hosted on `nav2_gps_waypoint_follower_demo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo>`_. Though we will go through the most important steps of the setup, it's highly recommended that you clone and build the package when setting up your dev environment.
 This is available in ROS 2 Iron and newer.
@@ -92,62 +94,81 @@ Tutorial Steps
 0- Setup Gazebo World
 ---------------------
 
-To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://docs.px4.io/v1.12/en/simulation/gazebo_worlds.html#sonoma-raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/sonoma_raceway.world>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
+To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://app.gazebosim.org/OpenRobotics/fuel/models/Sonoma%20Raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/tb3_sonoma_raceway.sdf.xacro>`_ using gazebo's spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
 
 .. code-block:: xml
-
-  <spherical_coordinates>
-    <!-- currently gazebo has a bug: instead of outputting lat, long, altitude in ENU
-    (x = East, y = North and z = Up) as the default configurations, it's outputting (-E)(-N)U,
-    therefore we rotate the default frame 180 so that it would go back to ENU 
-    see: https://github.com/osrf/gazebo/issues/2022 --> 
-    <surface_model>EARTH_WGS84</surface_model>
-    <latitude_deg>38.161479</latitude_deg>
-    <longitude_deg>-122.454630</longitude_deg>
-    <elevation>488.0</elevation>
-    <heading_deg>180</heading_deg>
-  </spherical_coordinates>
-
-To get GPS readings from Gazebo we need to create a robot model with a GPS sensor. An updated Turtlebot model with such sensor is provided in the `tutorial repo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/models/turtlebot_waffle_gps>`_, it outputs ``NavSatFix`` messages on the topic ``/gps/fix``:
-
-.. code-block:: xml
-
-  <sensor name="tb3_gps" type="gps">
-    <always_on>true</always_on>
-    <update_rate>1</update_rate>
-    <pose>0 0 0 0 0 0</pose>
-    <gps>
-      <position_sensing>
-        <horizontal>
-          <noise type="gaussian">
-            <mean>0.0</mean>
-            <stddev>0.01</stddev>
-          </noise>
-        </horizontal>
-        <vertical>
-          <noise type="gaussian">
-            <mean>0.0</mean>
-            <stddev>0.01</stddev>
-          </noise>
-        </vertical>
-      </position_sensing>
-    </gps>
-    <plugin name="my_gps_plugin" filename="libgazebo_ros_gps_sensor.so">
-      <ros>
-        <remapping>~/out:=/gps/fix</remapping>
-      </ros>
+  <!-- Navsat plugin >
+  <plugin
+      filename="gz-sim-navsat-system"
+      name="gz::sim::systems::NavSat">
     </plugin>
-  </sensor>
 
-Additionally, since we added a new GPS sensor in the ``gps_link`` we need to add a joint for this link that publishes a static transform w.r.t. ``base_link``
+   <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>38.161479</latitude_deg>
+      <longitude_deg>-122.454630</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
 
-.. code-block:: xml
 
-  <joint name="base_joint" type="fixed">
+To get GPS readings from Gazebo, we also need to modify the xacro and urdf for the turtlebot3 robot. The final files can be found in the  `nav2_minimal_turtlebot_simulation repo <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/urdf>`_, it outputs ``NavSatFix`` messages on the topic ``/gps/fix``.
+
+The changes that was done in xacro file ``gz_waffle_gps.sdf.xacro`` was to include the ``gps_link`` that includes the navsat sensor. In addition we create a joint for this link that publishes a static transform w.r.t. ``base_link``. 
+.. code-block:: xacro
+
+   <link name="gps_link">   
+        <sensor name="navsat" type="navsat">
+          <always_on>true</always_on>
+          <update_rate>1</update_rate>
+          <topic>$(arg namespace)/gps/fix</topic>
+          <gz_frame_id>gps_link</gz_frame_id>
+          <navsat>
+            <position_sensing>
+              <horizontal>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>0.0</stddev>
+                </noise>
+              </horizontal>
+              <vertical>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>0.0</stddev>
+                </noise>
+              </vertical>
+            </position_sensing>
+          </navsat>
+        </sensor>  
+      </link>
+
+      <joint name="gps_joint" type="fixed">
+        <parent>base_link</parent>
+        <child>gps_link</child>
+        <pose>-0.05 0 0.05 0 0 0</pose>
+      </joint>
+
+Additionally, the joint needs to be defined again in the urdf file ``turtlebot3_waffle_gps.urdf``
+
+.. code-block:: urdf
+
+   <joint name="gps_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="base_footprint" />
-    <origin xyz="0 0 -0.010" rpy="0 0 0"/>
+    <child link="gps_link"/>
+    <origin xyz="-0.05 0 0.05" rpy="0 0 0"/>
   </joint>
+  <link name="gps_link"/>
+
+In addition you need to include the gps topic in your gazebo to ros bridge file, an example of this can be found in the ``turtlebot3_waffle_gps_bridge.yaml`` in the `nav2_minimal_turtlebot_simulation repo <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/config/turtlebot3_waffle_gps_bridge.yaml>`_
+
+.. code-block:: yaml
+
+  # replace navsat_bridge - check gz topic name
+  - topic_name: "gps/fix"
+    ros_type_name: "sensor_msgs/msg/NavSatFix"
+    gz_type_name: "gz.msgs.NavSat"
+    direction: GZ_TO_ROS
 
 Build the ``nav2_gps_waypoint_follower_demo`` package, source your workspace and test your gazebo world is properly set up by launching: 
 
@@ -180,7 +201,7 @@ The local odometry is provided by the ``ekf_filter_node_odom``, which publishes 
 
 .. code-block:: yaml
 
-  ekf_filter_node_odom:
+  ekf_filter_node_odom:nt" />
     ros__parameters:
       two_d_mode: true
       publish_tf: true
@@ -199,7 +220,7 @@ Since per `REP 105 <https://www.ros.org/reps/rep-0105.html>`_ the position of th
                 false, false, true,
                 false, false, false]
 
-  imu0: imu
+  imu0: imu/data
   imu0_config: [false, false, false,
                 false,  false,  true,
                 false, false, false,
@@ -248,7 +269,7 @@ Here's the full configuration for the ``navsat_transform`` node:
       magnetic_declination_radians: 0.0
       yaw_offset: 0.0
       zero_altitude: true
-      broadcast_utm_transform: true
+      broadcast_cartesian_transform: true
       publish_filtered_gps: true
       use_odometry_yaw: true
       wait_for_datum: false
