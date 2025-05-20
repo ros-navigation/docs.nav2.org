@@ -122,8 +122,8 @@ Parameters
   double         0.05
   ============== ==============
 
-  Description
-    Minimum measurable distance from the scan in meters. Values below this are considered invalid
+  Description:
+    Minimum measurable distance from the scan in meters. Values below this are considered invalid.
 
 :scan_range_max:
 
@@ -133,37 +133,42 @@ Parameters
   double         30.0
   ============== ==============
 
-  Description
-    Maximum measurable distance from the scan in meters. Values beyond this are out of range
+  Description:
+    Maximum measurable distance from the scan in meters. Values beyond this are out of range.
 
 :scan_angle_min:
+
   ============== ==============
   Type           Default
   -------------- --------------
   double         -3.14
   ============== ==============
 
-  Description
-     Starting angle of the scan in radians (leftmost angle)
+  Description:
+    Starting angle of the scan in radians (leftmost angle)
 
-:scan_angle_max: 
+:scan_angle_max:
+
   ============== ==============
   Type           Default
   -------------- --------------
   double         3.14
   ============== ==============
 
-  Description
+  Description:
     Ending angle of the scan in radians (rightmost angle)
+
 :scan_angle_increment:
+
   ============== ==============
   Type           Default
   -------------- --------------
   double         0.0174
   ============== ==============
 
-  Description
-     Angular resolution of the scan in radians (angle between consecutive measurements)
+  Description:
+    Angular resolution of the scan in radians (angle between consecutive measurements)
+
 :scan_use_inf:
 
   ============== ==============
@@ -172,8 +177,8 @@ Parameters
   bool           true
   ============== ==============
 
-  Description  
-    Whether to use ``inf`` for out-of-range values.  
+  Description:
+    Whether to use ``inf`` for out-of-range values.
     If ``false``, values are set to ``scan_range_max - 0.1`` instead.
 
 Example
