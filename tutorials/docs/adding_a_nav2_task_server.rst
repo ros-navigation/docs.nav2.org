@@ -3,24 +3,24 @@
 Adding a New Nav2 Task Server
 #############################
 
-A nav2 task server consists of server side logic to complete different types of requests, usually called by the autonomy system or through the Behavior Tree Navigator. In this guide, we will discuss the core components needed to add a new task server to Nav2 (ex. Controller, Behavior, Smoother, Planner Servers). Namely, how to set up your new Lifecycle-Component Node for launch and state management and the communication of semantically meaningful error codes (if necessary).
+A nav2 task server consists of server-side logic to complete different types of requests, usually called by the autonomy system or through the Behavior Tree Navigator. In this guide, we will discuss the core components needed to add a new task server to Nav2 (ex. Controller, Behavior, Smoother, Planner Servers). Namely, how to set up your new Lifecycle-Component Node for launch and state management and the communication of semantically meaningful error codes (if necessary).
 
 While this tutorial does not cover how to add the complementary Behavior Tree Node to interact with this new Task Server, that is covered at length in :ref:`writing_new_nbt_plugin` so this Task Server can be invoked in the BTs in BT Navigator.
 
-If you've created a new Task Server that may have general reuse for the community, consider contacting the maintainers to add it to the Nav2 project! Nav2 gets better by contributions by users like you!
+If you've created a new Task Server that may have general reuse for the community, consider contacting the maintainers to add it to the Nav2 project! Nav2 gets better through contributions by users like you!
 
 
 
 Lifecycle Nodes
 ***************
 
-The Lifecycle node is the first key component of a nav2 task server. Lifecycle nodes were introduced in ROS 2 to systematically manage the bringup and shutdown of the different nodes involved in the robot's operation. The use of Lifecycle nodes ensures that all nodes are successfully instantiated before they begin their execution and Nav2 shuts down all nodes if there is any unresponsive node.
+The Lifecycle node is the first key component of a nav2 task server. Lifecycle nodes were introduced in ROS 2 to systematically manage the bringup and shutdown of the different nodes involved in the robot's operation. The use of Lifecycle nodes ensures that all nodes are successfully instantiated before they begin execution and Nav2 shuts down all nodes if there is any unresponsive node.
 
 
 Lifecycle nodes contain state machine transitions that enable deterministic behavior in ROS 2 servers. The Lifecycle node transitions in Nav2 are handled by the ``Lifecycle Manager``. The Lifecycle Manager transitions the states of the Lifecycle nodes and provides greater control over the state of a system.
 
 
-The primary states of a Lifecycle node are ``Unconfigured``, ``Inactive``, ``Active``, and ``Finalized``. A Lifecycle node starts in an ``Unconfigured`` state after being instantiated. The Lifecycle Manager transitions a node from ``Unconfigured`` to ``Inactive`` by implementing the ``Configurating`` transition. The ``Configurating`` transition sets up all configuration parameters and prepares any required setup such as memory allocation and the set up of the static publication and subscription topics. A node in the ``Inactive`` state is allowed to reconfigure its parameters and but cannot perform any processing. From the ``Inactive`` state, the Lifecycle Manager implements the ``Activating`` transition state to transition the node from ``Inactive`` to ``Active``, which is the main state. A node in the ``Active`` state is allowed to perform any processing operation. In case a node crashes, the Lifecycle Manager shuts down the system to prevent any critical failures. On shutdown, the necessary cleanup operations are performed and the nodes are transitioned to the ``Finalized`` state via ``Deactivating``, ``CleaningUp``, and ``ShuttingDown`` transition states.
+The primary states of a Lifecycle node are ``Unconfigured``, ``Inactive``, ``Active``, and ``Finalized``. A Lifecycle node starts in an ``Unconfigured`` state after being instantiated. The Lifecycle Manager transitions a node from ``Unconfigured`` to ``Inactive`` by implementing the ``Configurating`` transition. The ``Configurating`` transition sets up all configuration parameters and prepares any required setup such as memory allocation and the setup of the static publication and subscription topics. A node in the ``Inactive`` state is allowed to reconfigure its parameters but cannot perform any processing. From the ``Inactive`` state, the Lifecycle Manager implements the ``Activating`` transition state to transition the node from ``Inactive`` to ``Active``, which is the main state. A node in the ``Active`` state is allowed to perform any processing operation. In case a node crashes, the Lifecycle Manager shuts down the system to prevent any critical failures. On shutdown, the necessary cleanup operations are performed and the nodes are transitioned to the ``Finalized`` state via ``Deactivating``, ``CleaningUp``, and ``ShuttingDown`` transition states.
 
 .. seealso::
     For more information on Lifecycle management, see the article on `Managed Nodes <https://design.ros2.org/articles/node_lifecycle.html>`_.
@@ -77,7 +77,7 @@ Composition is the second key component nav2 task servers that was introduced to
 In the following section, we give an example on how to add a new Nav2 server, which we notionally call the ``route_server``, to our system.
 
 
-We make use of the launch files to compose different servers into a single process. The process is established by the ``ComposableNodeContainer`` container that is populated with composition nodes via ``ComposableNode``. This container can then be launched and used the same as any other Nav2 node.
+We make use of the launch files to compose different servers into a single process. The process is established by the ``ComposableNodeContainer`` container that is populated with composition nodes via ``ComposableNode``. This container can then be launched and used just like any other Nav2 node.
 
 1. Add a new ``ComposableNode()`` instance in your launch file pointing to the component container of your choice.
 
@@ -190,12 +190,12 @@ Error codes and messages are attached to the response of the action message. An 
     string error_msg
     ---
 
-As stated in the message, the priority order of the errors codes should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
-Since the the route server is a external server, the errors codes start at 10000 and go up to 10099.
+As stated in the message, the priority order of the error codes should match the message order, 0 is reserved for NONE and the first error code in the sequence is reserved for UNKNOWN.
+Since the route server is a external server, the error codes start at 10000 and go up to 10099.
 
 To ensure your server's error codes, and associated error messages, are properly communicated throughout the system, you need to configure them in your nav2_params.yaml file.
 
-The BT Navigator parameter `error_code_name_prefixes` defines a list of prefixes used to search the behavior tree blackboard, for the existence and content of error codes and error messages keys, that may have been generated.  If the blackboard contains multiple error code keys then the lowest error code value of the sequence, and associated error message, is then returned in the result of the navigator action message. Error code enums increase the higher up they occur in the software stack.  In other words higher priority is given to reporting lower-level failures.
+The BT Navigator parameter `error_code_name_prefixes` defines a list of prefixes used to search the behavior tree blackboard for the existence and content of error codes and error messages keys, that may have been generated.  If the blackboard contains multiple error code keys then the lowest error code value of the sequence, and associated error message, is then returned in the result of the navigator action message. Error code enums increase the higher up they occur in the software stack.  In other words higher priority is given to reporting lower-level failures.
 
 .. code-block:: yaml
 
