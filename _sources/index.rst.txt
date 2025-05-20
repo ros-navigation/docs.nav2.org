@@ -204,3 +204,4 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
    commander_api/index.rst
    roadmap/roadmap.rst
    about/index.rst
+   maintainer_docs/index.rst
