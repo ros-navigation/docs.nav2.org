@@ -113,7 +113,7 @@ Parameters
 
   Description
     Whether or not to publish simulated clock to ``/clock``
-  
+
 :scan_range_min:
 
   ============== ==============
