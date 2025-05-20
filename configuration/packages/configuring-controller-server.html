@@ -1192,7 +1192,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#regulatedpurepursuit-controller-rpp-new-parameter-stateful">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../migration/Kilted.html">Kilted to L-turtle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../migration/Kilted.html">Kilted to L-turtle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#removed-parameter-action-server-result-timeout">Removed Parameter action_server_result_timeout</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../commander_api/index.html">Simple Commander API</a><ul>
@@ -1350,34 +1353,8 @@ It also hosts the local costmap.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">action_server_result_timeout</dt>
+<dt class="field-odd">controller_plugins</dt>
 <dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 35%" />
-<col style="width: 35%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-<td><p>Unit</p></td>
-</tr>
-<tr class="row-even"><td><p>double</p></td>
-<td><p>10.0</p></td>
-<td><p>seconds</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
-15 minutes in rcl but was changed to 10 seconds in this <a class="reference external" href="https://github.com/ros2/rcl/pull/1012">PR #1012</a>, which may be less than
-some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline.
-This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">controller_plugins</dt>
-<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1406,8 +1383,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">progress_checker_plugins</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">progress_checker_plugins</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 41%" />
 <col style="width: 59%" />
@@ -1436,8 +1413,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-even">goal_checker_plugins</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">goal_checker_plugins</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 47%" />
 <col style="width: 53%" />
@@ -1466,8 +1443,8 @@ This issue has been raised with OSRF to find another solution to avoid active go
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_x_velocity_threshold</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_x_velocity_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1487,8 +1464,8 @@ Odometry values below this threshold (in m/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">min_y_velocity_threshold</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">min_y_velocity_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1508,8 +1485,8 @@ Odometry values below this threshold (in m/s) will be set to 0.0. For non-holono
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">min_theta_velocity_threshold</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">min_theta_velocity_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1529,8 +1506,8 @@ Odometry values below this threshold (in rad/s) will be set to 0.0.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">failure_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">failure_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1550,8 +1527,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">speed_limit_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">speed_limit_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1570,8 +1547,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-even">odom_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">odom_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1590,8 +1567,8 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">enable_stamped_cmd_vel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">enable_stamped_cmd_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1612,8 +1589,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-even">bond_heartbeat_period</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">bond_heartbeat_period</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />

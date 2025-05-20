@@ -1192,7 +1192,10 @@
 <li class="toctree-l3"><a class="reference internal" href="Jazzy.html#regulatedpurepursuit-controller-rpp-new-parameter-stateful">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Kilted to L-turtle</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kilted to L-turtle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#removed-parameter-action-server-result-timeout">Removed Parameter action_server_result_timeout</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../commander_api/index.html">Simple Commander API</a><ul>
@@ -1264,6 +1267,11 @@
   <div class="section" id="kilted-to-l-turtle">
 <span id="kilted-migration"></span><h1>Kilted to L-turtle<a class="headerlink" href="#kilted-to-l-turtle" title="Permalink to this heading"></a></h1>
 <p>Moving from ROS 2 Kilted to L-Turtle, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="removed-parameter-action-server-result-timeout">
+<h2>Removed Parameter action_server_result_timeout<a class="headerlink" href="#removed-parameter-action-server-result-timeout" title="Permalink to this heading"></a></h2>
+<p>Removed the parameter <code class="docutils literal notranslate"><span class="pre">action_server_result_timeout</span></code> from all action servers after resolution within <code class="docutils literal notranslate"><span class="pre">rcl</span></code> and <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> to address early goal removal.
+This is not longer required to be set.</p>
+</div>
 </div>
 
 
