@@ -1436,6 +1436,127 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
+<dt class="field-even">scan_range_min</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.05</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Minimum measurable distance from the scan in meters. Values below this are considered invalid.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">scan_range_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>30.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Maximum measurable distance from the scan in meters. Values beyond this are out of range.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">scan_angle_min</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>-3.14</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Starting angle of the scan in radians (leftmost angle)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">scan_angle_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>3.14</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Ending angle of the scan in radians (rightmost angle)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">scan_angle_increment</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.0261</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Angular resolution of the scan in radians (angle between consecutive measurements)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">scan_use_inf</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to use <code class="docutils literal notranslate"><span class="pre">inf</span></code> for out-of-range values.
+If <code class="docutils literal notranslate"><span class="pre">false</span></code>, values are set to <code class="docutils literal notranslate"><span class="pre">scan_range_max</span> <span class="pre">-</span> <span class="pre">0.1</span></code> instead.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -1447,6 +1568,12 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 <span class="w">    </span><span class="nt">map_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
 <span class="w">    </span><span class="nt">scan_frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_scan&quot;</span><span class="w">  </span><span class="c1"># tb4_loopback_simulator.launch.py remaps to &#39;rplidar_link&#39;</span>
 <span class="w">    </span><span class="nt">update_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.02</span>
+<span class="w">    </span><span class="nt">scan_range_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">    </span><span class="nt">scan_range_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span>
+<span class="w">    </span><span class="nt">scan_angle_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-3.1415</span>
+<span class="w">    </span><span class="nt">scan_angle_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.1415</span>
+<span class="w">    </span><span class="nt">scan_angle_increment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.02617</span>
+<span class="w">    </span><span class="nt">scan_use_inf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
 </div>
