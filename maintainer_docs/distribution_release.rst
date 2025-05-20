@@ -71,7 +71,7 @@ The ``main_verison`` is ``1`` unless a new major version is set in Nav2's ``pack
 The ``distro_version`` should be bumped by one from the last distribution representing the release in the format ``1.4.X``.
 Remove any EOL distributions at this time.
 
-Open the `README.md`` and update the distributions to include this one.
+Open the ``README.md`` and update the distributions to include this.
 
 At this time, the build should fail because there is no ``distro`` branch on Nav2, which is our next step.
 
@@ -114,10 +114,11 @@ Open a dummy PR against the new distribution branch and ensure that it builds su
 Nav2 has a number of auxiliary projects that also need to be updated for a new distribution.
 These include:
 
-* `nav2_minimal_turtlebot_simulation`
-* `navigation2_tutorials`
+* ``nav2_minimal_turtlebot_simulation``
+* ``navigation2_tutorials``
 
 For each:
+
 * Update the package.xml for a new distribution version
 * Create a new branch from ``main`` for the distribution
 * Update CI on the new branch to use this new distribution image
@@ -130,6 +131,7 @@ Once the new branches, versions, and CI are setup and ready, we can run the bloo
 Run the following command to create a new release for the distribution for each Nav2 repository (Nav2, Minimal Turtlebot Simulation, SLAM Toolbox, NPVL, STVL etc).
 
 .. code:: bash
+
   bloom-release navigation2 --rosdistro distro --track distro --new-track --edit
 
 Be patient, this will take a while to run.
