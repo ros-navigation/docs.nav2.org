@@ -507,3 +507,14 @@ Controller Server Frequency Removed Dynamic Parameter
 This is done so that the plugins can identify which parameters belong to itself and not the larger servers to perform dynamic reconfigurations.
 The controller server would update this value but the internal plugins would not properly so it was removed.
 If you rely on this behavior, please file a ticket and discuss with maintainers how to re-add.
+
+Nav2 Route Server Demo Support
+*******************************
+In `PR #5160 <https://github.com/ros-navigation/navigation2/pull/5160>`_, graph support was added to the warehouse world of the Turtlebot4 simulation in Gazebo.
+This allows users to visualize the route server in action and test the new features of the route server. The demo includes a simple route with a few waypoints and a graph to follow.
+
+.. figure:: ../configuration/packages/images/route_server/warehouse_graph.png
+    :width: 100%
+    :align: center
+
+    RViz visualization of the route graph for the warehouse environment. All nodes are **bidirectional**, except the ones that are annotated.
