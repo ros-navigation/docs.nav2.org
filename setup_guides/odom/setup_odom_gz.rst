@@ -298,6 +298,12 @@ Now, create a file named ``bridge_config.yaml`` in the ``config`` directory of y
     gz_type_name: "gz.msgs.Twist"
     direction: ROS_TO_GZ
 
+  - ros_topic_name: "/tf"
+    gz_topic_name: "/tf"
+    ros_type_name: "tf2_msgs/msg/TFMessage"
+    gz_type_name: "gz.msgs.Pose_V"
+    direction: GZ_TO_ROS
+
 Finally, add the below variable to the launch file which we will use in the next section to tell the bridge where the config file is:
 
 .. code-block:: python
@@ -360,6 +366,37 @@ Next, open `package.xml <https://github.com/ros-navigation/navigation2_tutorials
   <exec_depend>joint_state_publisher</exec_depend>
   <exec_depend>joint_state_publisher_gui</exec_depend>
 
+Replace your import statements with the following lines.
+We use ``RosGzBridge`` to start the bridge between ROS 2 and Gazebo and ``GzServer`` to start the Gazebo simulation.
+We also import ``get_package_share_directory``, ``ExecuteProcess``, ``IncludeLaunchDescription`` and ``PythonLaunchDescriptionSource`` for additional changes in the launch file.
+
+.. code-block:: python
+
+  import os
+
+  from ament_index_python.packages import get_package_share_directory
+  from launch import LaunchDescription
+  from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription
+  from launch.launch_description_sources import PythonLaunchDescriptionSource
+  from launch.substitutions import Command, LaunchConfiguration
+  from launch_ros.actions import Node
+  from ros_gz_bridge.actions import RosGzBridge
+  from ros_gz_sim.actions import GzServer
+
+Since we do not import ``FindPackageShare`` anymore, we use the function ``get_package_share_directory`` instead to find the package share directory.
+Edit the variable definition of ``pkg_share``:
+
+.. code-block:: python
+
+  pkg_share = get_package_share_directory('sam_bot_description')
+
+Add this two variables, which are needed for starting the Gazebo world and spawning the robot:
+
+.. code-block:: python
+
+  default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.sdf')
+  default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
+
 To make ``robot_state_publisher`` ``use_sim_time`` change it in the following way:
 
 .. code-block:: python
@@ -399,6 +436,7 @@ To launch Gazebo and spawn ``sam_bot`` in it, add the following after the ``rviz
           'world': 'my_world',
           'topic': '/robot_description',
           'entity_name': 'sam_bot',
+          'z': '0.65',
       }.items(),
   )
 
