@@ -1530,6 +1530,12 @@ The wheel separation and wheel radius are set according to the values of the def
 <span class="w">  </span><span class="nt">ros_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;geometry_msgs/msg/TwistStamped&quot;</span>
 <span class="w">  </span><span class="nt">gz_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gz.msgs.Twist&quot;</span>
 <span class="w">  </span><span class="nt">direction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ROS_TO_GZ</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ros_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/tf&quot;</span>
+<span class="w">  </span><span class="nt">gz_topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/tf&quot;</span>
+<span class="w">  </span><span class="nt">ros_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tf2_msgs/msg/TFMessage&quot;</span>
+<span class="w">  </span><span class="nt">gz_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gz.msgs.Pose_V&quot;</span>
+<span class="w">  </span><span class="nt">direction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GZ_TO_ROS</span>
 </pre></div>
 </div>
 <p>Finally, add the below variable to the launch file which we will use in the next section to tell the bridge where the config file is:</p>
@@ -1581,6 +1587,31 @@ The wheel separation and wheel radius are set according to the values of the def
 <span class="nt">&lt;exec_depend&gt;</span>joint_state_publisher_gui<span class="nt">&lt;/exec_depend&gt;</span>
 </pre></div>
 </div>
+<p>Replace your import statements with the following lines.
+We use <code class="docutils literal notranslate"><span class="pre">RosGzBridge</span></code> to start the bridge between ROS 2 and Gazebo and <code class="docutils literal notranslate"><span class="pre">GzServer</span></code> to start the Gazebo simulation.
+We also import <code class="docutils literal notranslate"><span class="pre">get_package_share_directory</span></code>, <code class="docutils literal notranslate"><span class="pre">ExecuteProcess</span></code>, <code class="docutils literal notranslate"><span class="pre">IncludeLaunchDescription</span></code> and <code class="docutils literal notranslate"><span class="pre">PythonLaunchDescriptionSource</span></code> for additional changes in the launch file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ament_index_python.packages</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_package_share_directory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeclareLaunchArgument</span><span class="p">,</span> <span class="n">ExecuteProcess</span><span class="p">,</span> <span class="n">IncludeLaunchDescription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.launch_description_sources</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonLaunchDescriptionSource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.substitutions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">LaunchConfiguration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ros_gz_bridge.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">RosGzBridge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ros_gz_sim.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">GzServer</span>
+</pre></div>
+</div>
+<p>Since we do not import <code class="docutils literal notranslate"><span class="pre">FindPackageShare</span></code> anymore, we use the function <code class="docutils literal notranslate"><span class="pre">get_package_share_directory</span></code> instead to find the package share directory.
+Edit the variable definition of <code class="docutils literal notranslate"><span class="pre">pkg_share</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pkg_share</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;sam_bot_description&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add this two variables, which are needed for starting the Gazebo world and spawning the robot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">default_model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;sam_bot_description.sdf&#39;</span><span class="p">)</span>
+<span class="n">default_rviz_config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;rviz&#39;</span><span class="p">,</span> <span class="s1">&#39;config.rviz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>To make <code class="docutils literal notranslate"><span class="pre">robot_state_publisher</span></code> <code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> change it in the following way:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">robot_state_publisher_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
     <span class="n">package</span><span class="o">=</span><span class="s1">&#39;robot_state_publisher&#39;</span><span class="p">,</span>
@@ -1613,6 +1644,7 @@ The wheel separation and wheel radius are set according to the values of the def
         <span class="s1">&#39;world&#39;</span><span class="p">:</span> <span class="s1">&#39;my_world&#39;</span><span class="p">,</span>
         <span class="s1">&#39;topic&#39;</span><span class="p">:</span> <span class="s1">&#39;/robot_description&#39;</span><span class="p">,</span>
         <span class="s1">&#39;entity_name&#39;</span><span class="p">:</span> <span class="s1">&#39;sam_bot&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="s1">&#39;0.65&#39;</span><span class="p">,</span>
     <span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
 <span class="p">)</span>
 </pre></div>
@@ -1627,6 +1659,75 @@ The wheel separation and wheel radius are set according to the values of the def
 <p>Finally, add the below lines to your <cite>package.xml</cite>:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;exec_depend&gt;</span>ros_gz_bridge<span class="nt">&lt;/exec_depend&gt;</span>
 <span class="nt">&lt;exec_depend&gt;</span>ros_gz_sim<span class="nt">&lt;/exec_depend&gt;</span>
+</pre></div>
+</div>
+<p>At this point, your entire launch file should look like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ament_index_python.packages</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_package_share_directory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeclareLaunchArgument</span><span class="p">,</span> <span class="n">ExecuteProcess</span><span class="p">,</span> <span class="n">IncludeLaunchDescription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.launch_description_sources</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonLaunchDescriptionSource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.substitutions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">LaunchConfiguration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ros_gz_bridge.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">RosGzBridge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ros_gz_sim.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">GzServer</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
+    <span class="n">pkg_share</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;sam_bot_description&#39;</span><span class="p">)</span>
+    <span class="n">ros_gz_sim_share</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;ros_gz_sim&#39;</span><span class="p">)</span>
+    <span class="n">gz_spawn_model_launch_source</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ros_gz_sim_share</span><span class="p">,</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span> <span class="s2">&quot;gz_spawn_model.launch.py&quot;</span><span class="p">)</span>
+    <span class="n">default_model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;sam_bot_description.sdf&#39;</span><span class="p">)</span>
+    <span class="n">default_rviz_config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;rviz&#39;</span><span class="p">,</span> <span class="s1">&#39;config.rviz&#39;</span><span class="p">)</span>
+    <span class="n">world_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">,</span> <span class="s1">&#39;my_world.sdf&#39;</span><span class="p">)</span>
+    <span class="n">bridge_config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_share</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;bridge_config.yaml&#39;</span><span class="p">)</span>
+
+    <span class="n">robot_state_publisher_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;robot_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;robot_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;robot_description&#39;</span><span class="p">:</span> <span class="n">Command</span><span class="p">([</span><span class="s1">&#39;xacro &#39;</span><span class="p">,</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">)])},</span> <span class="p">{</span><span class="s1">&#39;use_sim_time&#39;</span><span class="p">:</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;use_sim_time&#39;</span><span class="p">)}]</span>
+    <span class="p">)</span>
+    <span class="n">rviz_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;rviz2&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;rviz2&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;rviz2&#39;</span><span class="p">,</span>
+        <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">,</span>
+        <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;rvizconfig&#39;</span><span class="p">)],</span>
+    <span class="p">)</span>
+    <span class="n">gz_server</span> <span class="o">=</span> <span class="n">GzServer</span><span class="p">(</span>
+        <span class="n">world_sdf_file</span><span class="o">=</span><span class="n">world_path</span><span class="p">,</span>
+        <span class="n">container_name</span><span class="o">=</span><span class="s1">&#39;ros_gz_container&#39;</span><span class="p">,</span>
+        <span class="n">create_own_container</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,</span>
+        <span class="n">use_composition</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ros_gz_bridge</span> <span class="o">=</span> <span class="n">RosGzBridge</span><span class="p">(</span>
+        <span class="n">bridge_name</span><span class="o">=</span><span class="s1">&#39;ros_gz_bridge&#39;</span><span class="p">,</span>
+        <span class="n">config_file</span><span class="o">=</span><span class="n">bridge_config_path</span><span class="p">,</span>
+        <span class="n">container_name</span><span class="o">=</span><span class="s1">&#39;ros_gz_container&#39;</span><span class="p">,</span>
+        <span class="n">create_own_container</span><span class="o">=</span><span class="s1">&#39;False&#39;</span><span class="p">,</span>
+        <span class="n">use_composition</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">spawn_entity</span> <span class="o">=</span> <span class="n">IncludeLaunchDescription</span><span class="p">(</span>
+        <span class="n">PythonLaunchDescriptionSource</span><span class="p">(</span><span class="n">gz_spawn_model_launch_source</span><span class="p">),</span>
+        <span class="n">launch_arguments</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;world&#39;</span><span class="p">:</span> <span class="s1">&#39;my_world&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;topic&#39;</span><span class="p">:</span> <span class="s1">&#39;/robot_description&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;entity_name&#39;</span><span class="p">:</span> <span class="s1">&#39;sam_bot&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="s1">&#39;0.65&#39;</span><span class="p">,</span>
+        <span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
+        <span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;use_sim_time&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Flag to enable use_sim_time&#39;</span><span class="p">),</span>
+        <span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="n">default_model_path</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Absolute path to robot model file&#39;</span><span class="p">),</span>
+        <span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;rvizconfig&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="n">default_rviz_config_path</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Absolute path to rviz config file&#39;</span><span class="p">),</span>
+        <span class="n">ExecuteProcess</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gz&#39;</span><span class="p">,</span> <span class="s1">&#39;sim&#39;</span><span class="p">,</span> <span class="s1">&#39;-g&#39;</span><span class="p">],</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">),</span>
+        <span class="n">robot_state_publisher_node</span><span class="p">,</span>
+        <span class="n">rviz_node</span><span class="p">,</span>
+        <span class="n">gz_server</span><span class="p">,</span>
+        <span class="n">ros_gz_bridge</span><span class="p">,</span>
+        <span class="n">spawn_entity</span><span class="p">,</span>
+    <span class="p">])</span>
 </pre></div>
 </div>
 </div>
