@@ -459,9 +459,9 @@ Finally, add the below lines to your `package.xml`:
 At this point, your entire launch file should look like this:
 
 .. code-block:: python
-  
+
   import os
-  
+
   from ament_index_python.packages import get_package_share_directory
   from launch import LaunchDescription
   from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription
@@ -470,7 +470,7 @@ At this point, your entire launch file should look like this:
   from launch_ros.actions import Node
   from ros_gz_bridge.actions import RosGzBridge
   from ros_gz_sim.actions import GzServer
-  
+
   def generate_launch_description():
       pkg_share = get_package_share_directory('sam_bot_description')
       ros_gz_sim_share = get_package_share_directory('ros_gz_sim')
@@ -479,7 +479,7 @@ At this point, your entire launch file should look like this:
       default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
       world_path = os.path.join(pkg_share, 'world', 'my_world.sdf')
       bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
-  
+
       robot_state_publisher_node = Node(
           package='robot_state_publisher',
           executable='robot_state_publisher',
@@ -514,7 +514,7 @@ At this point, your entire launch file should look like this:
               'z': '0.65',
           }.items(),
       )
-  
+
       return LaunchDescription([
           DeclareLaunchArgument(name='use_sim_time', default_value='True', description='Flag to enable use_sim_time'),
           DeclareLaunchArgument(name='model', default_value=default_model_path, description='Absolute path to robot model file'),
