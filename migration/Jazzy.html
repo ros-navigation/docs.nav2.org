@@ -1190,6 +1190,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#new-position-goal-checker">New Position Goal Checker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#docking-backwards-without-sensor">Docking backwards without sensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#regulatedpurepursuit-controller-rpp-new-parameter-stateful">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controller-server-frequency-removed-dynamic-parameter">Controller Server Frequency Removed Dynamic Parameter</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Kilted.html">Kilted to L-turtle</a><ul>
@@ -1665,6 +1666,13 @@ During the <code class="docutils literal notranslate"><span class="pre">goalComp
 <div class="section" id="regulatedpurepursuit-controller-rpp-new-parameter-stateful">
 <h2>RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code><a class="headerlink" href="#regulatedpurepursuit-controller-rpp-new-parameter-stateful" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5167">PR #5167</a> adds a new parameter stateful for the regulated pure pursuit controllers. This parameter enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.</p>
+</div>
+<div class="section" id="controller-server-frequency-removed-dynamic-parameter">
+<h2>Controller Server Frequency Removed Dynamic Parameter<a class="headerlink" href="#controller-server-frequency-removed-dynamic-parameter" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5106">PR #5106</a> removes <code class="docutils literal notranslate"><span class="pre">control_frequency</span></code> as a dynamic parameter.
+This is done so that the plugins can identify which parameters belong to itself and not the larger servers to perform dynamic reconfigurations.
+The controller server would update this value but the internal plugins would not properly so it was removed.
+If you rely on this behavior, please file a ticket and discuss with maintainers how to re-add.</p>
 </div>
 </div>
 
