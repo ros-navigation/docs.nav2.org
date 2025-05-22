@@ -508,13 +508,33 @@ This is done so that the plugins can identify which parameters belong to itself 
 The controller server would update this value but the internal plugins would not properly so it was removed.
 If you rely on this behavior, please file a ticket and discuss with maintainers how to re-add.
 
-Nav2 Route Server Demo Support
-*******************************
-In `PR #5160 <https://github.com/ros-navigation/navigation2/pull/5160>`_, graph support was added to the warehouse world of the Turtlebot4 simulation in Gazebo.
-This allows users to visualize the route server in action and test the new features of the route server. The demo includes a simple route with a few waypoints and a graph to follow.
+Default bringup supports keepout, speed zones, and route planning
+*****************************************************************
 
-.. figure:: ../configuration/packages/images/route_server/warehouse_graph.png
+In `PR #5125 <https://github.com/ros-navigation/navigation2/pull/5125>`_, keepout zones were added to the depot and warehouse maps of the Turtlebot4 simulation in Gazebo.
+
+For the depot map, the keepout zones were aimed at preventing the robot from entering under the shelves, blocking the entrance of the stairwell and
+entering the surrounding area with the eight pallets to limit entrance from high-movement regions.
+
+For the warehouse map, the keepout zones were aimed at preventing the robot from planning paths through free chairs and a region of high movement in the middle of the warehouse.
+
+In `PR #5146 <https://github.com/ros-navigation/navigation2/pull/5146>`_, speed zones were added to the depot and warehouse maps of the Turtlebot4 simulation in Gazebo.
+
+For the depot map, the shelves were encompassed in a speed zone of 75% of the maximum speed and the area around the pallets were limited to 50% of the maximum speed.
+
+For the warehouse map, the area around the beams and the middle of the warehouse were limited to 80% of the maximum speed.
+
+.. image:: ../configuration/packages/images/route_server/depot_graph.png
     :width: 100%
     :align: center
 
-    RViz visualization of the route graph for the warehouse environment. All nodes are **bidirectional**, except the ones that are annotated.
+.. centered:: *The keepout zones are marked in pink, and the speed zones are marked with grey with proportional opacity to the speed limit.*
+
+In `PR #5160 <https://github.com/ros-navigation/navigation2/pull/5160>`_, graph support was added to the warehouse world of the Turtlebot4 simulation in Gazebo.
+This allows users to visualize the route server in action and test the new features of the route server. The demo includes a simple route with a few waypoints and a graph to follow.
+
+.. image:: ../configuration/packages/images/route_server/warehouse_graph.png
+    :width: 100%
+    :align: center
+
+.. centered:: *RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated. Speed zones are marked in grey with proportional opacity of 0.8 to match the speed limit.*
