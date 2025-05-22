@@ -788,7 +788,7 @@ Example
 
 
 Configuring the Nav2 Route Server Demo
-*****************************************
+**************************************
 The Nav2 Route Server demo is a simulation of a Turtlebot4 robot navigating through a depot or a warehouse environment using the Nav2 Route Server.
 The `route_example_launch.py <https://github.com/ros-navigation/navigation2/blob/main/nav2_simple_commander/launch/route_example_launch.py>`_  file is used to launch the demo, and can be configured in place with the following parameters:
 
@@ -804,14 +804,12 @@ The `route_example_launch.py <https://github.com/ros-navigation/navigation2/blob
 | All the graphs files for the depot and warehouse environments are located in the `graphs <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/graphs>`_ directory under the ``nav2_bringup`` package.
 | These are the current visualizations of the route graphs for the depot and warehouse environments:
 
-.. figure:: images/route_server/depot_graph.png
+.. image:: images/route_server/depot_graph.png
     :width: 100%
     :align: center
+.. centered:: *RViz visualization of the bidirectional route graph for the depot environment.*
 
-    RViz visualization of the route graph for the depot environment. All nodes are **bidirectional**.
-
-.. figure:: images/route_server/warehouse_graph.png
+.. image:: images/route_server/depot_graph.png
     :width: 100%
     :align: center
-
-    RViz visualization of the route graph for the warehouse environment. All nodes are **bidirectional**, except the ones that are annotated.
+.. centered:: *RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated.*
