@@ -506,4 +506,4 @@ Controller Server Frequency Removed Dynamic Parameter
 `PR #5106 <https://github.com/ros-navigation/navigation2/pull/5106>`_ removes ``control_frequency`` as a dynamic parameter.
 This is done so that the plugins can identify which parameters belong to itself and not the larger servers to perform dynamic reconfigurations.
 The controller server would update this value but the internal plugins would not properly so it was removed.
-If you rely on this behavior, please file a ticket and discuss with maintainers how to readd.
+If you rely on this behavior, please file a ticket and discuss with maintainers how to re-add.
