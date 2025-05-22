@@ -801,8 +801,8 @@ The `route_example_launch.py <https://github.com/ros-navigation/navigation2/blob
 - ``ROUTE_POSES_DICT``:
    - A dictionary containing the start and goal poses for the robot in the depot and warehouse environments.
 
-| All the graphs files for the depot and warehouse environments are located in the `graphs <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/graphs>`_ directory under the ``nav2_bringup`` package.
-| These are the current visualizations of the route graphs for the depot and warehouse environments:
+All the graphs files for the depot and warehouse environments are located in the `graphs <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/graphs>`_ directory under the ``nav2_bringup`` package.
+These are the current visualizations of the route graphs for the depot and warehouse environments:
 
 .. image:: images/route_server/depot_graph.png
     :width: 100%
