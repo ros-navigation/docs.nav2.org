@@ -496,5 +496,14 @@ Here we can see the working demo of the feature:
 .. image:: images/reverse_to_dock.gif
 
 RegulatedPurePursuit Controller [RPP]: new parameter ``stateful``
-********************************************************************************
+*****************************************************************
+
 `PR #5167 <https://github.com/ros-navigation/navigation2/pull/5167>`_ adds a new parameter stateful for the regulated pure pursuit controllers. This parameter enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
+
+Controller Server Frequency Removed Dynamic Parameter
+*****************************************************
+
+`PR #5106 <https://github.com/ros-navigation/navigation2/pull/5106>`_ removes ``control_frequency`` as a dynamic parameter.
+This is done so that the plugins can identify which parameters belong to itself and not the larger servers to perform dynamic reconfigurations.
+The controller server would update this value but the internal plugins would not properly so it was removed.
+If you rely on this behavior, please file a ticket and discuss with maintainers how to readd.
