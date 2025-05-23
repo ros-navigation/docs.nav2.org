@@ -495,6 +495,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demonstration">Demonstration</a></li>
 </ul>
 </li>
 </ul>
@@ -915,6 +916,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-route-server.html#configuring-the-nav2-route-server-demo">Configuring the Nav2 Route Server Demo</a></li>
 </ul>
 </li>
 </ul>
@@ -1191,6 +1193,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#docking-backwards-without-sensor">Docking backwards without sensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#regulatedpurepursuit-controller-rpp-new-parameter-stateful">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#controller-server-frequency-removed-dynamic-parameter">Controller Server Frequency Removed Dynamic Parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Jazzy.html#default-bringup-supports-keepout-speed-zones-and-route-planning">Default bringup supports keepout, speed zones, and route planning</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Kilted.html">Kilted to L-turtle</a><ul>
@@ -1276,7 +1279,9 @@
 <li><p>Multi-robot coordination scenarios where predefined routes help prevent conflicts</p></li>
 <li><p>Large scale outdoor urban or natural environments</p></li>
 </ul>
-<div class="section" id="provided-tools">
+<a class="reference internal image-reference" href="../../_images/route_homepage_demo.gif"><img alt="../../_images/route_homepage_demo.gif" class="align-center" src="../../_images/route_homepage_demo.gif" style="width: 100%;" /></a>
+<p class="centered">
+<strong><em>Demonstration of Nav2 route tool using the Turtlebot4 Gazebo simulation environment visualised through RViz.</em></strong></p><div class="section" id="provided-tools">
 <h2>Provided Tools<a class="headerlink" href="#provided-tools" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -1295,6 +1300,24 @@
 <li><p><strong>Manual Route Graph Generation</strong>: For those who prefer direct file editing, route graphs can be created manually in GeoJSON format using QGIS. This method provides the most control over the graph structure but requires understanding of the GeoJSON format.</p></li>
 </ol>
 <p>Choose the tool that best fits your needs based on your workflow and requirements.</p>
+</div>
+<div class="section" id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">A demonstration of the assembled route server is provided to the Turtlebot4 Gazebo simulation for the Depot and Warehouse maps.</div>
+<div class="line">In order to run the demonstration, run the following command:</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch nav2_simple_commander route_example_launch.py</span>
+</pre></div>
+</div>
+<p>This will by default initialize the Turtlebot4 in the depot map in the <strong>3rd node</strong> and will navigate to the <strong>13rd node</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/route_depot_demo.gif"><img alt="../../_images/route_depot_demo.gif" class="align-center" src="../../_images/route_depot_demo.gif" style="width: 90%;" /></a>
+<p class="centered">
+<strong><em>Turtlebot4 moving from the 3rd node to the 13th node in the depot map.</em></strong></p><p>In order to run the demonstration in the warehouse map, you can set the <code class="docutils literal notranslate"><span class="pre">MAP_TYPE</span></code> variable in the
+<a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_simple_commander/launch/route_example_launch.py">route_example_launch.py</a> file to <code class="docutils literal notranslate"><span class="pre">warehouse</span></code> and run the same command as above.</p>
+<a class="reference internal image-reference" href="../../_images/route_warehouse_demo.gif"><img alt="../../_images/route_warehouse_demo.gif" class="align-center" src="../../_images/route_warehouse_demo.gif" style="width: 90%;" /></a>
+<p class="centered">
+<strong><em>Turtlebot4 moving from the 0th node to the 61th node in the warehouse map.</em></strong></p><p>For more information on how to configure the start and goal nodes, or the supported maps, please refer to the <a class="reference external" href="https://docs.nav2.org/configuration/packages/configuring-route-server.html">Configuration Guide</a> page.</p>
 </div>
 </div>
 
