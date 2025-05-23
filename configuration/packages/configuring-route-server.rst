@@ -789,6 +789,7 @@ Example
 
 Configuring the Nav2 Route Server Demo
 **************************************
+
 The Nav2 Route Server demo is a simulation of a Turtlebot4 robot navigating through a depot or a warehouse environment using the Nav2 Route Server.
 The `route_example_launch.py <https://github.com/ros-navigation/navigation2/blob/main/nav2_simple_commander/launch/route_example_launch.py>`_  file is used to launch the demo, and can be configured in place with the following parameters:
 
