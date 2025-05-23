@@ -785,3 +785,32 @@ Example
         min_prune_dist_from_goal: 0.15                      # Min distance from goal node away from goal pose to consider goal node pruning as considering it as being passed (in case goal pose is very close to a goal node, but not exact)
         min_prune_dist_from_start: 0.10                     # Min distance from start node away from start pose to consider start node pruning as considering it as being passed (in case start pose is very close to a start node, but not exact)
         prune_goal: true                              # Whether pruning the goal nodes from the route due to being past the goal pose requested is possible (pose requests only)
+
+
+Configuring the Nav2 Route Server Demo
+**************************************
+
+The Nav2 Route Server demo is a simulation of a Turtlebot4 robot navigating through a depot or a warehouse environment using the Nav2 Route Server.
+The `route_example_launch.py <https://github.com/ros-navigation/navigation2/blob/main/nav2_simple_commander/launch/route_example_launch.py>`_  file is used to launch the demo, and can be configured in place with the following parameters:
+
+- ``MAP_TYPE``:
+   - Set to either ``depot`` or ``warehouse`` to choose the environment.
+
+- ``MAP_POSES_DICT``:
+   - A dictionary containing the Gazebo spawn poses for the robot in the depot and warehouse environments.
+
+- ``ROUTE_POSES_DICT``:
+   - A dictionary containing the start and goal poses for the robot in the depot and warehouse environments.
+
+All the graphs files for the depot and warehouse environments are located in the `graphs <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup/graphs>`_ directory under the ``nav2_bringup`` package.
+These are the current visualizations of the route graphs for the depot and warehouse environments:
+
+.. image:: images/route_server/depot_graph.png
+    :width: 100%
+    :align: center
+.. centered:: *RViz visualization of the bidirectional route graph for the depot environment.*
+
+.. image:: images/route_server/depot_graph.png
+    :width: 100%
+    :align: center
+.. centered:: *RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated.*
