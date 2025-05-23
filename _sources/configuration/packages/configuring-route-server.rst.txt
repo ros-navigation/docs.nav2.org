@@ -810,7 +810,7 @@ These are the current visualizations of the route graphs for the depot and wareh
     :align: center
 .. centered:: *RViz visualization of the bidirectional route graph for the depot environment.*
 
-.. image:: images/route_server/depot_graph.png
+.. image:: images/route_server/warehouse_graph.png
     :width: 100%
     :align: center
 .. centered:: *RViz visualization of the route graph for the warehouse environment. All nodes are bidirectional, except the ones that are annotated.*
