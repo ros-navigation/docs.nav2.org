@@ -110,7 +110,7 @@ In this section, the general concepts around them and their uses in this project
 Planner, Controller, Smoother, Route, and Behavior Servers
 ==========================================================
 
-Four of the action servers in this project are the planner, behavior, smoother, route, and controller servers.
+Five of the action servers in this project are the planner, behavior, smoother, route, and controller servers.
 
 These action servers are used to host a map of algorithm plugins to complete various tasks.
 They also host the environmental representation used by the algorithm plugins to compute their outputs.
