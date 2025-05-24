@@ -53,7 +53,7 @@ Open up your command line and execute the following command:
 
 .. code-block:: shell
 
-  ros2 run tf2_ros static_transform_publisher 0.1 0 0.2 0 0 0 base_link base_laser
+  ros2 run tf2_ros static_transform_publisher --x 0.1 --y 0 --z 0.2 --roll 0 --pitch 0 --yaw 0 --frame-id base_link --child-frame-id base_laser
 
 With this, we are now successfully publishing our ``base_link`` to ``base_laser`` transform in TF2. Let us now check if it is working properly through ``tf2_echo``. Open up a separate command line window and execute the following:
 
