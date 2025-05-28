@@ -75,7 +75,7 @@ As an overview for this section, we will first setup Gazebo and the necessary pa
 Setup and Prerequisites
 =======================
 
-`Gazebo <http://gazebosim.org/>`_ is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the `Gazebo Installation Documentation <http://gazebosim.org/tutorials?cat=install>`_.
+`Gazebo <http://classic.gazebosim.org/>`_ is a 3D simulator that allows us to observe how our virtual robot will function in a simulated environment. To start using Gazebo with ROS 2, follow the installation instructions in the `Gazebo Installation Documentation <http://classic.gazebosim.org/tutorials?cat=install>`_.
 
 We also need to install the ``gazebo_ros_pkgs`` package to simulate odometry and control the robot with ROS 2 in Gazebo:
 
@@ -83,19 +83,19 @@ We also need to install the ``gazebo_ros_pkgs`` package to simulate odometry and
 
   sudo apt install ros-<ros2-distro>-gazebo-ros-pkgs
 
-You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions `given here <http://gazebosim.org/tutorials?tut=ros2_installing&cat=connect_ros#TestingGazeboandROS2integration>`_.
+You can test if you have successfully set up your ROS 2 and Gazebo environments by following the instructions `given here <http://classic.gazebosim.org/tutorials?tut=ros2_installing&cat=connect_ros#TestingGazeboandROS2integration>`_.
 
 Note that we described ``sam_bot`` using URDF. However, Gazebo uses `Simulation Description Format (SDF) <http://sdformat.org/>`_ to describe a robot in its simulated environment. Fortunately, Gazebo automatically translates compatible URDF files into SDF. The main requirement for the URDF to be compatible with Gazebo is to have an ``<inertia>`` element within each ``<link>`` element. This requirement is already satisfied in the URDF file of ``sam_bot``, so it can already be used in Gazebo.
 
 .. seealso::
-  For more information on how to use URDF in Gazebo, see `Tutorial: Using a URDF in Gazebo <http://gazebosim.org/tutorials/?tut=ros_urdf>`_.
+  For more information on how to use URDF in Gazebo, see `Tutorial: Using a URDF in Gazebo <http://classic.gazebosim.org/tutorials/?tut=ros_urdf>`_.
 
 Adding Gazebo Plugins to a URDF
 ===============================
 
-We will now add the IMU sensor and the differential drive plugins of Gazebo to our URDF. For an overview of the different plugins available in Gazebo, have a look at `Tutorial: Using Gazebo plugins with ROS <http://gazebosim.org/tutorials?tut=ros_gzplugins>`_.
+We will now add the IMU sensor and the differential drive plugins of Gazebo to our URDF. For an overview of the different plugins available in Gazebo, have a look at `Tutorial: Using Gazebo plugins with ROS <http://classic.gazebosim.org/tutorials?tut=ros_gzplugins>`_.
 
-For our robot, we will be using the `GazeboRosImuSensor <http://gazebosim.org/tutorials?tut=ros_gzplugins#IMUsensor(GazeboRosImuSensor)>`_ which is a SensorPlugin. A SensorPlugin must be attached to a link, thus we will create an ``imu_link`` to which the IMU sensor will be attached. This link will be referenced under the ``<gazebo>`` element. Next, we will set ``/demo/imu`` as the topic to which the IMU will be publishing its information, and we will comply with `REP145 <https://www.ros.org/reps/rep-0145.html>`_ by setting ``initialOrientationAsReference`` to ``false``. We will also add some noise to the sensor configuration using Gazebo's `sensor noise model <http://gazebosim.org/tutorials?tut=sensor_noise>`_.
+For our robot, we will be using the `GazeboRosImuSensor <http://classic.gazebosim.org/tutorials?tut=ros_gzplugins#IMUsensor(GazeboRosImuSensor)>`_ which is a SensorPlugin. A SensorPlugin must be attached to a link, thus we will create an ``imu_link`` to which the IMU sensor will be attached. This link will be referenced under the ``<gazebo>`` element. Next, we will set ``/demo/imu`` as the topic to which the IMU will be publishing its information, and we will comply with `REP145 <https://www.ros.org/reps/rep-0145.html>`_ by setting ``initialOrientationAsReference`` to ``false``. We will also add some noise to the sensor configuration using Gazebo's `sensor noise model <http://classic.gazebosim.org/tutorials?tut=sensor_noise>`_.
 
 Now, we will set up our IMU sensor plugin according to the description above by adding the following lines before the ``</robot>`` line in our URDF:
 
