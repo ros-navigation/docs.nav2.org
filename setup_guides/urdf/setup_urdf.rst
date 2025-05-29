@@ -94,7 +94,7 @@ Let us then define our ``base_link`` - this link will be a large box and will ac
 
 We will also be defining some of the link's visual properties which can be used by tools such as Gazebo and Rviz to show us a 3D model of our robot. Amongst these properties are ``<geometry>`` which describes the link's shape and ``<material>`` which describes it's color.
 
-For the code block block below, we access the ``base`` properties from the robot constants sections we defined before using the ``${property}`` syntax. In addition, we also set the material color of the main chassis to ``Cyan``. Note that we set these parameters under the ``<visual>`` tag so they will only be applied as visual parameters which dont affect any collision or physical properties.
+For the code block below, we access the ``base`` properties from the robot constants sections we defined before using the ``${property}`` syntax. In addition, we also set the material color of the main chassis to ``Cyan``. Note that we set these parameters under the ``<visual>`` tag so they will only be applied as visual parameters which dont affect any collision or physical properties.
 
 .. code-block:: xml
   :lineno-start: 17
