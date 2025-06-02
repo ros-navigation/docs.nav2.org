@@ -1230,7 +1230,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#setup-branch-ci">3. Setup Branch CI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#update-auxiliary-projects">4. Update Auxiliary Projects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-bloom-release">5. Run Bloom Release</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#announcements">6. Announcements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nav2-docker-build">6. Nav2 Docker Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#announcements">7. Announcements</a></li>
 </ul>
 </li>
 </ul>
@@ -1378,8 +1379,15 @@ Run the following command to create a new release for the distribution for each 
 </div>
 <p>Be patient, this will take a while to run.</p>
 </div>
+<div class="section" id="nav2-docker-build">
+<h2>6. Nav2 Docker Build<a class="headerlink" href="#nav2-docker-build" title="Permalink to this heading"></a></h2>
+<p>To allow the <code class="docutils literal notranslate"><span class="pre">nav2_docker</span></code> build of the released version in Step 5, we need to enable the first build to pass the latest tag check in the workflow.
+You should see that the nightly of this distribution works, but the release version is failing with <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">No</span> <span class="pre">matching</span> <span class="pre">package</span> <span class="pre">versions</span> <span class="pre">found.</span></code>.
+To resolve, comment out the <code class="docutils literal notranslate"><span class="pre">exit</span> <span class="pre">1</span></code> in the <code class="docutils literal notranslate"><span class="pre">latest_version</span></code> validity check.
+Once the job turns over, revert this commit to reintroduce the error.</p>
+</div>
 <div class="section" id="announcements">
-<h2>6. Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading"></a></h2>
+<h2>7. Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading"></a></h2>
 <p>Finally, we can announce the updates!
 Create a new migration guide page on the Nav2 website for contributors to populate with notable changes in the next distribution cycle.
 Update the Roadmap page with a new table of projects and features to be added over the next distribution.</p>

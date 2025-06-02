@@ -136,7 +136,15 @@ Run the following command to create a new release for the distribution for each 
 
 Be patient, this will take a while to run.
 
-6. Announcements
+6. Nav2 Docker Build
+--------------------
+
+To allow the ``nav2_docker`` build of the released version in Step 5, we need to enable the first build to pass the latest tag check in the workflow.
+You should see that the nightly of this distribution works, but the release version is failing with ``Error: No matching package versions found.``.
+To resolve, comment out the ``exit 1`` in the ``latest_version`` validity check.
+Once the job turns over, revert this commit to reintroduce the error.
+
+7. Announcements
 ----------------
 
 Finally, we can announce the updates!
