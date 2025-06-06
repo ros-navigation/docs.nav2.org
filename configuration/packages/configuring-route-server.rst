@@ -189,7 +189,7 @@ Server Parameters
   ============== ===============
 
   Description
-    Whether to use Breadth-first search to find the nearest traversible node (true) or simply the nearest node (false) for the start and goal when using pose requests.
+    Whether to use Breadth-first search to find the nearest traversable node (true) or simply the nearest node (false) for the start and goal when using pose requests.
 
 :max_nn_search_iterations:
 
@@ -200,7 +200,7 @@ Server Parameters
   ============== ===============
 
   Description
-    The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversible nodes.
+    The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversable nodes.
 
 :num_nearest_nodes:
 
@@ -211,7 +211,7 @@ Server Parameters
   ============== ===============
 
   Description
-    The number of nearest-neighors to extract from a Kd-tree in order to check against in the Breadth-first search.
+    The number of nearest-neighbors to extract from a Kd-tree in order to check against in the Breadth-first search.
 
 :graph_filepath:
 
@@ -610,7 +610,7 @@ DynamicEdgesScorer
 ------------------
 
 This edge scoring plugin will score based on the requested values from a 3rd party application via a service interface.
-It can set dynamically any cost for any edge and also be used to close and reopen particular edges if they are blocked, in use by other robots locking out its shared use by other robots, higher cost due to overlap with other platforms in service, increased cost due to fleet manager analytics that this space is underperforming throughput, or otherwise temporarily non-traversible.
+It can set dynamically any cost for any edge and also be used to close and reopen particular edges if they are blocked, in use by other robots locking out its shared use by other robots, higher cost due to overlap with other platforms in service, increased cost due to fleet manager analytics that this space is underperforming throughput, or otherwise temporarily non-traversable.
 For example, if other robots report an edge to be blocked, all robots can avoid this edge/aisle/etc.
 
 It has no parameters.
