@@ -34,7 +34,7 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
 
 .. code-block:: xml
 
-  <root main_tree_to_execute="MainTree">
+  <root BTCPP_format="4" main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
       <RecoveryNode number_of_retries="6" name="NavigateRecovery">
         <PipelineSequence name="NavigateWithReplanning">
@@ -70,8 +70,8 @@ While this behavior tree does not make use of it, the ``PlannerSelector``, ``Con
                 <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
               </Sequence>
               <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
-              <Wait wait_duration="5.0"/>
-              <BackUp backup_dist="0.30" backup_speed="0.05" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+              <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
+              <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
             </RoundRobin>
           </ReactiveFallback>
         </Sequence>
