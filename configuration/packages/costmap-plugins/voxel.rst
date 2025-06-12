@@ -129,6 +129,17 @@ This costmap layer implements a plugin that uses 3D raycasting for depth, 3D, or
   Description
     Whether to publish 3D voxel grid for debug, computationally expensive.
 
+:``<voxel layer>``.tf_filter_tolerance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.05
+  ====== =======
+
+  Description
+    Tolerance for the ``tf2_ros::MessageFilter``.
+
 :``<voxel layer>``.observation_sources:
 
   ============== =======

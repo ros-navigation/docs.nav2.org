@@ -63,6 +63,16 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
   | It can be used to make sure that the static map is the dominant source of information, and
   | prevent the robot to go through places that are not present in the static map.
 
+:``<obstacle layer>``.tf_filter_tolerance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.05
+  ====== =======
+
+  Description
+    Tolerance for the ``tf2_ros::MessageFilter``.
 
 :``<obstacle layer>``.observation_sources:
 
