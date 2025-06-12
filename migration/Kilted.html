@@ -1198,6 +1198,7 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Kilted to L-turtle</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#removed-parameter-action-server-result-timeout">Removed Parameter action_server_result_timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#added-corner-smoothing-functionality-to-route-server">Added Corner Smoothing functionality to route_server</a></li>
 </ul>
 </li>
 </ul>
@@ -1276,6 +1277,12 @@
 <h2>Removed Parameter action_server_result_timeout<a class="headerlink" href="#removed-parameter-action-server-result-timeout" title="Permalink to this heading"></a></h2>
 <p>Removed the parameter <code class="docutils literal notranslate"><span class="pre">action_server_result_timeout</span></code> from all action servers after resolution within <code class="docutils literal notranslate"><span class="pre">rcl</span></code> and <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> to address early goal removal.
 This is not longer required to be set.</p>
+</div>
+<div class="section" id="added-corner-smoothing-functionality-to-route-server">
+<h2>Added Corner Smoothing functionality to route_server<a class="headerlink" href="#added-corner-smoothing-functionality-to-route-server" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5226">PR #5226</a> the ability to stitch two successive edges in <code class="docutils literal notranslate"><span class="pre">route_server</span></code> with a smooth circular arc has been added. Below is an example of two successive edges forming a corner being smoothed with a radius of one. The red lines are the edges of the route graph and the green line is the resultant path that can be used by a local planner.</p>
+<img alt="../_images/smoothing.png" src="../_images/smoothing.png" />
+<p>New parameters include <code class="docutils literal notranslate"><span class="pre">smooth_corners</span></code> which enable or disable corner smoothing and <code class="docutils literal notranslate"><span class="pre">smoothing_radius</span></code> which specifies the radius of the corner to fit to a corner. The tangents of the starting and ending points of the circular arc will match the tangent of the edges that form the corner. In the event that two edges are basically straight, no corner arc is added and regular linear interpolation is done. In addition to that, if the corner arc requires a starting point and ending point that’s longer than the edge lengths, then it will not add a corner arc.</p>
 </div>
 </div>
 

@@ -1198,6 +1198,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../migration/Kilted.html">Kilted to L-turtle</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#removed-parameter-action-server-result-timeout">Removed Parameter action_server_result_timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#added-corner-smoothing-functionality-to-route-server">Added Corner Smoothing functionality to route_server</a></li>
 </ul>
 </li>
 </ul>
@@ -1382,6 +1383,46 @@ See <a class="reference internal" href="../../tutorials/docs/route_server_tools/
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>The maximum planning time to use.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">smooth_corners</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 36%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to smooth corners formed between subsequent edges after a route has been found</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">smoothing_radius</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 36%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Radius to fit to corners formed by edges if corner smoothing is enabled</p>
 </dd>
 </dl>
 </dd>
@@ -2529,6 +2570,8 @@ It uses a <cite>std_srvs/Trigger</cite> interface and is a demonstration of the 
 <span class="w">    </span><span class="nt">path_density</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w">                            </span><span class="c1"># Density of points for generating the dense nav_msgs/Path from route (m)</span>
 <span class="w">    </span><span class="nt">max_iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">                             </span><span class="c1"># Maximum number of search iterations, if 0, uses maximum possible</span>
 <span class="w">    </span><span class="nt">max_planning_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w">                        </span><span class="c1"># Maximum planning time (seconds)</span>
+<span class="w">    </span><span class="nt">smoothing_corners</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                       </span><span class="c1"># Whether to smooth corners formed by adjacent edges or not</span>
+<span class="w">    </span><span class="nt">smoothing_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w">                         </span><span class="c1"># Radius of corner to fit into the corner</span>
 
 <span class="w">    </span><span class="nt">graph_file_loader</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GeoJsonGraphFileLoader&quot;</span><span class="w">   </span><span class="c1"># Name of default file loader</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nav2_route::GeoJsonGraphFileLoader</span><span class="w">  </span><span class="c1"># file loader plugin to use</span>
