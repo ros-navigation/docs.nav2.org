@@ -90,7 +90,7 @@ Server Parameters
   ============== ========
 
   Description
-    Whether to smooth corners formed between subsequent edges after a route has been found 
+    Whether to smooth corners formed between subsequent edges after a route has been found
 
 :smoothing_radius:
 
