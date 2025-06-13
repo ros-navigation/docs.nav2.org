@@ -61,7 +61,7 @@ To enable ``DenoiseLayer`` for both global and local costmaps, use the following
         ...
         plugins: ["voxel_layer", "denoise_layer", inflation_layer"]
         ...
-        keepout_filter:
+        denoise_layer:
           plugin: "nav2_costmap_2d::DenoiseLayer"
           enabled: True
 
