@@ -1320,7 +1320,7 @@ local_costmap:
       ...
       plugins: [&quot;voxel_layer&quot;, &quot;denoise_layer&quot;, inflation_layer&quot;]
       ...
-      keepout_filter:
+      denoise_layer:
         plugin: &quot;nav2_costmap_2d::DenoiseLayer&quot;
         enabled: True
 </pre></div>
