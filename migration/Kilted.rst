@@ -72,14 +72,15 @@ To:
 
    main_client_ = node->create_client<SrvT>(main_srv_name_, false  /* Does not create and spin an internal executor*/);  // Type nav2::ServiceClient<T>
 
-If migrating from the ``rclcpp::Client<T>`` factory, check out the `nav2::ServiceClient<T>` API for its features like ``invoke()`` which wraps the async call and spinning for results using the given node or another internal executor.
+If migrating from the ``rclcpp::Client<T>`` factory, check out the ``nav2::ServiceClient<T>`` API for its features like ``invoke()`` which wraps the async call and spinning for results using the given node or another internal executor.
 You may optionally directly migrate by changing calls from ``async_send_request`` to ``async_call`` and otherwise handle the future in your application code.
 
 Service Server Migration
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Services should now use `nav2::ServiceServer<T>` instead of `rclcpp::Service<T>` or `nav2_util::ServiceServer<T>`. The factory is now available from the node `create_service(...)`, so we can use that to create the service server.
-The callback should now include the `rmw_request_id_t` header now, so we have 3 placeholders rather than 2:
+Services should now use ``nav2::ServiceServer<T>`` instead of ``rclcpp::Service<T>`` or ``nav2_util::ServiceServer<T>``.
+The factory is now available from the node ``create_service(...)``, so we can use that to create the service server.
+The callback should now include the ``rmw_request_id_t`` header now, so we have 3 placeholders rather than 2:
 
 .. code-block:: cpp
 
@@ -141,8 +142,8 @@ It now supports action request, feedback, and result introspection using the par
 Action Client Migration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-We can use the node now to create an action client using `create_action_client` without providing all the node interfaces.
-This is analog to the action client but configures with action introspection and other features that are not available in the base `rclcpp_action::Client<T>`.
+We can use the node now to create an action client using ``create_action_client`` without providing all the node interfaces.
+This is analog to the action client but configures with action introspection and other features that are not available in the base ``rclcpp_action::Client<T>``.
 
 .. code-block:: cpp
 
@@ -166,9 +167,11 @@ It now supports action request, feedback, and result introspection using the par
 Publisher Subscriber Migration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To migrate, the order of the arguments in the Subscription must change since the QoS profile is now optional. It is now `(topic, callback, QoS)` whereas QoS defaults to the StandardTopicQoS, which is the same as `rclcpp::QoS` for the moment.
+To migrate, the order of the arguments in the Subscription must change since the QoS profile is now optional. It is now ``(topic, callback, QoS)`` whereas QoS defaults to the StandardTopicQoS, which is the same as ``rclcpp::QoS`` for the moment.
 
-Publishers that explicitly specify a QoS profile do not require changes, though if the constructor using `depth` is used, it must now specify a policy explicitly. Both are now `nav2::Publisher` and `nav2::Subscription` objects that today just typedef the rclcpp and rclcpp_lifecycle versions. In the future, more features will be added here like lifecycle support for the subscriptions, so its highly recommended as part of this migration to migrate the `rclcpp::` to `nav2::` as well so those updates are already easily available.
+Publishers that explicitly specify a QoS profile do not require changes, though if the constructor using `depth` is used, it must now specify a policy explicitly.
+Both are now ``nav2::Publisher`` and ``nav2::Subscription`` objects that today just typedef the rclcpp and rclcpp_lifecycle versions.
+In the future, more features will be added here like lifecycle support for the subscriptions, so its highly recommended as part of this migration to migrate the ``rclcpp::`` to ``nav2::`` as well so those updates are already easily available.
 
 .. code-block:: cpp
 
