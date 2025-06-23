@@ -1197,8 +1197,15 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Kilted to L-turtle</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#removed-parameter-action-server-result-timeout">Removed Parameter action_server_result_timeout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#added-corner-smoothing-functionality-to-route-server">Added Corner Smoothing functionality to route_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-nav2-ros-common-nav2-lifecycle-node">New Nav2 ROS Common &amp; Nav2 Lifecycle Node</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#plugin-migration">Plugin Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-client-migration">Service Client Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-server-migration">Service Server Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#action-server-migration">Action Server Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#action-client-migration">Action Client Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publisher-subscriber-migration">Publisher Subscriber Migration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1273,16 +1280,176 @@
   <div class="section" id="kilted-to-l-turtle">
 <span id="kilted-migration"></span><h1>Kilted to L-turtle<a class="headerlink" href="#kilted-to-l-turtle" title="Permalink to this heading"></a></h1>
 <p>Moving from ROS 2 Kilted to L-Turtle, a number of stability improvements were added that we will not specifically address here.</p>
+<div class="section" id="new-nav2-ros-common-nav2-lifecycle-node">
+<h2>New Nav2 ROS Common &amp; Nav2 Lifecycle Node<a class="headerlink" href="#new-nav2-ros-common-nav2-lifecycle-node" title="Permalink to this heading"></a></h2>
+<p>Starting in Lyrical, a new package <code class="docutils literal notranslate"><span class="pre">nav2_ros_common</span></code> was added that contains a set of Nav2, ROS 2 utilities, wrappers, and overrides for working with ROS 2 in Nav2 in a standardized and controllable way.
+This ingests previous capabilities from <code class="docutils literal notranslate"><span class="pre">nav2_util</span></code> like the <code class="docutils literal notranslate"><span class="pre">LifecycleNode</span></code> and <code class="docutils literal notranslate"><span class="pre">SimpleActionServer</span></code>, but extends it to wrap all ROS 2 interfaces with Nav2 variants in the <code class="docutils literal notranslate"><span class="pre">nav2::</span></code> namespace.
+The new <code class="docutils literal notranslate"><span class="pre">nav2::LifecycleNode</span></code>’s factory members (<code class="docutils literal notranslate"><span class="pre">create_client</span></code>, <code class="docutils literal notranslate"><span class="pre">create_service</span></code>, <code class="docutils literal notranslate"><span class="pre">create_publisher</span></code>, <code class="docutils literal notranslate"><span class="pre">create_subscriber</span></code>, <code class="docutils literal notranslate"><span class="pre">create_action_server</span></code>, and <code class="docutils literal notranslate"><span class="pre">create_action_client</span></code>) now return these Nav2 objects.
+This requires some migration of custom plugins, Task Servers, or other components in the Nav2 styling and/or application that wish to use Nav2’s utilities.
+Additionally, it contains a set of QoS profiles to be globally used within the stack to give developers complete control over the QoS settings of the system and a one-stop location to update or test different profiles and be applied globally in the stack.</p>
+<p>This work is motived by a need to set certain global configurations for interfaces, such as enabling QoS overrides for publishers and subscribers via a run-time parameter and enabling Action and Service introspection.
+It also lets us add additional configuration, tracing, advanced features, and wrappers than was previously possible throughout the codebase at large.</p>
+<p>The expectation is that all Nav2 nodes and packages use the utilities in this package globally to be consistent and to avoid code duplication.
+The lifecycle node includes factories for subscriptions, publishers, clients, and servers that return Nav2 objects in this package rather than the ROS 2 base classes as a level of abstraction of common boilerplate configurations and capabilities.
+The factories are listed below:</p>
+<ul class="simple">
+<li><p><cite>create_client</cite> –&gt; <cite>nav2::ServiceClient</cite></p></li>
+<li><p><cite>create_service</cite> –&gt; <cite>nav2::ServiceServer</cite></p></li>
+<li><p><cite>create_publisher</cite> –&gt; <cite>nav2::Publisher</cite></p></li>
+<li><p><cite>create_subscriber</cite> –&gt; <cite>nav2::Subscriber</cite></p></li>
+<li><p><cite>create_action_server</cite> –&gt; <cite>nav2::SimpleActionServer</cite></p></li>
+<li><p><cite>create_action_client</cite> –&gt; <cite>nav2::ActionClient</cite></p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5288">A large-scale migration example can be found here</a>.</p>
+<p>In most cases, these are very similar to the previous <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> version.
+If a previous <code class="docutils literal notranslate"><span class="pre">nav2_util</span></code> version existed, the APIs should be largely the same, except now they should be constructed using the <code class="docutils literal notranslate"><span class="pre">create_*</span></code> factory rather than manually to make use of the abstracted configuration settings and advanced features to come.
+Where changed, it is typically to move the QoS profile specification to the end of the arguments, which is now optional and defaults to the <cite>nav2::qos::StandardTopicQoS</cite> profile (reliable, volitile, queue depth of 10).</p>
+<ul class="simple">
+<li><p><cite>nav2_util::LifecycleNode</cite> is now <cite>nav2::LifecycleNode</cite>, which is largely the same except for the factories and a couple of internal implementation details.</p></li>
+<li><p>The Service Client, Service Server, and Simple Action Server were also moved to the <cite>nav2::</cite> namespace, but they should not be accessed directly. Use the <cite>create_*</cite> factories from the <cite>nav2::LifecycleNode</cite>, such as <cite>create_action_server</cite> or <cite>create_action_client</cite>.</p></li>
+<li><p>There are now <cite>nav2::qos</cite> profiles for QoS to be used in the codebase for homologation and later easier changing: <cite>nav2::qos::StandardTopicQoS</cite> <cite>nav2::qos::LatchedPublisherQoS</cite>, <cite>nav2::qos::LatchedSubscriberQoS</cite> and <cite>nav2::qos::SensorDataQoS</cite>. These should be used rather than <cite>rclcpp</cite> profiles.</p></li>
+<li><p>The APIs for <cite>create_*</cite> are very similar to the default ones, but slightly different to move the now optional QoS profile specification below required information. When this is not specified the <cite>StandardTopicQoS</cite> is used (reliable, queue size 10). Only override this if you want another QoS type. Avoid use of <cite>SystemDefaultsQoS</cite>.</p></li>
+</ul>
+<div class="section" id="plugin-migration">
+<h3>Plugin Migration<a class="headerlink" href="#plugin-migration" title="Permalink to this heading"></a></h3>
+<p>All plugins now use <cite>nav2::LifecycleNode</cite> instead of <cite>rclcpp_lifecycle::LifecycleNode</cite> or <cite>nav2_util::LifecycleNode</cite>.
+All must be updated to use this new API from planners and controllers to behavior tree nodes.
+Similarly, calls to the <cite>create_*</cite> factories will now point to the Nav2 objects, where applicable.
+See above for what those look like and below for a migration from the existing code usage to the new version in order to make use of the new features and API.</p>
+</div>
+<div class="section" id="service-client-migration">
+<h3>Service Client Migration<a class="headerlink" href="#service-client-migration" title="Permalink to this heading"></a></h3>
+<p>We no longer need to create the object manually, nor should we as it bypasses the lifecycle node factories that set introspection and other future features.
+We can use the node now to do this instead of passing in a node and we don’t need to specify the node type anymore as a template.
+All Nav2 servers should use <code class="docutils literal notranslate"><span class="pre">nav2::ServiceClient&lt;T&gt;</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// If using rclcpp::Client&lt;T&gt; from previous create_client factor</span>
+<span class="n">main_client_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_client</span><span class="o">&lt;</span><span class="n">SrvT</span><span class="o">&gt;</span><span class="p">(</span><span class="n">main_srv_name_</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">SystemDefaultsQoS</span><span class="p">(),</span><span class="w"> </span><span class="n">callback_group_</span><span class="p">);</span><span class="w">  </span><span class="c1">// Type rclcpp:Client&lt;T&gt;</span>
+
+<span class="c1">// If using nav2_util::ServiceClient&lt;T&gt; manually</span>
+<span class="n">main_client_</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">nav2_util</span><span class="o">::</span><span class="n">ServiceClient</span><span class="o">&lt;</span><span class="n">SrvT</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="n">main_srv_name_</span><span class="p">,</span>
+<span class="w">  </span><span class="n">node</span><span class="p">,</span>
+<span class="w">  </span><span class="nb">false</span><span class="w"> </span><span class="cm">/* Does not create and spin an internal executor*/</span><span class="p">);</span><span class="w">  </span><span class="c1">// Type nav2_util::ServiceClient&lt;T&gt;</span>
+</pre></div>
+</div>
+<p>To:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">main_client_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_client</span><span class="o">&lt;</span><span class="n">SrvT</span><span class="o">&gt;</span><span class="p">(</span><span class="n">main_srv_name_</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="w">  </span><span class="cm">/* Does not create and spin an internal executor*/</span><span class="p">);</span><span class="w">  </span><span class="c1">// Type nav2::ServiceClient&lt;T&gt;</span>
+</pre></div>
+</div>
+<p>If migrating from the <code class="docutils literal notranslate"><span class="pre">rclcpp::Client&lt;T&gt;</span></code> factory, check out the <code class="docutils literal notranslate"><span class="pre">nav2::ServiceClient&lt;T&gt;</span></code> API for its features like <code class="docutils literal notranslate"><span class="pre">invoke()</span></code> which wraps the async call and spinning for results using the given node or another internal executor.
+You may optionally directly migrate by changing calls from <code class="docutils literal notranslate"><span class="pre">async_send_request</span></code> to <code class="docutils literal notranslate"><span class="pre">async_call</span></code> and otherwise handle the future in your application code.</p>
+</div>
+<div class="section" id="service-server-migration">
+<h3>Service Server Migration<a class="headerlink" href="#service-server-migration" title="Permalink to this heading"></a></h3>
+<p>Services should now use <code class="docutils literal notranslate"><span class="pre">nav2::ServiceServer&lt;T&gt;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">rclcpp::Service&lt;T&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">nav2_util::ServiceServer&lt;T&gt;</span></code>.
+The factory is now available from the node <code class="docutils literal notranslate"><span class="pre">create_service(...)</span></code>, so we can use that to create the service server.
+The callback should now include the <code class="docutils literal notranslate"><span class="pre">rmw_request_id_t</span></code> header now, so we have 3 placeholders rather than 2:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// If using previous create_service factory</span>
+<span class="w">  </span><span class="n">service_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_service</span><span class="o">&lt;</span><span class="n">std_srvs</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_name</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/reroute&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span>
+<span class="w">      </span><span class="o">&amp;</span><span class="n">ReroutingService</span><span class="o">::</span><span class="n">serviceCb</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_2</span><span class="p">));</span><span class="w">  </span><span class="c1">// type rclcpp::Service&lt;T&gt;</span>
+
+<span class="c1">// If using nav2_util::ServiceServer&lt;T&gt; manually</span>
+<span class="w">  </span><span class="n">service_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">nav2_util</span><span class="o">::</span><span class="n">ServiceServer</span><span class="o">&lt;</span><span class="n">std_srvs</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="p">,</span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_name</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/reroute&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">node</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span>
+<span class="w">      </span><span class="o">&amp;</span><span class="n">ReroutingService</span><span class="o">::</span><span class="n">serviceCb</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_2</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_3</span><span class="p">));</span><span class="w">  </span><span class="c1">// type nav2_util::ServiceServer&lt;T&gt;</span>
+</pre></div>
+</div>
+<p>To</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">service_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_service</span><span class="o">&lt;</span><span class="n">std_srvs</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_name</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/reroute&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ReroutingService</span><span class="o">::</span><span class="n">serviceCb</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_2</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_3</span><span class="p">));</span><span class="w">  </span><span class="c1">// type nav2::ServiceServer&lt;T&gt;</span>
+</pre></div>
+</div>
+<p>No additional changes should be required since the operations are handled in the same way as before.
+It now supports service introspection using the parameter <code class="docutils literal notranslate"><span class="pre">service_introspection_mode</span></code>.</p>
+</div>
+<div class="section" id="action-server-migration">
+<h3>Action Server Migration<a class="headerlink" href="#action-server-migration" title="Permalink to this heading"></a></h3>
+<p>We can use the factory now from the node and the node is not required as an argument.
+This otherwise does not change.
+This is analog to the action server but configures with action introspection and other features that are not available in the base <code class="docutils literal notranslate"><span class="pre">rclcpp_action::Server&lt;T&gt;</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">compute_and_track_route_server_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">ComputeAndTrackRouteServer</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;compute_and_track_route&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">RouteServer</span><span class="o">::</span><span class="n">computeAndTrackRoute</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">),</span>
+<span class="w">  </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w">  </span><span class="c1">// Type nav2_util::SimpleActionServer&lt;T&gt;</span>
+</pre></div>
+</div>
+<p>To</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">compute_and_track_route_server_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_action_server</span><span class="o">&lt;</span><span class="n">ComputeAndTrackRoute</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;compute_and_track_route&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">RouteServer</span><span class="o">::</span><span class="n">computeAndTrackRoute</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">),</span>
+<span class="w">  </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w">  </span><span class="c1">// Type nav2::SimpleActionServer&lt;T&gt;</span>
+</pre></div>
+</div>
+<p>No additional changes should be required since the operations are handled in the same way as before.
+It now supports action request, feedback, and result introspection using the parameter <code class="docutils literal notranslate"><span class="pre">service_introspection_mode</span></code>.</p>
+</div>
+<div class="section" id="action-client-migration">
+<h3>Action Client Migration<a class="headerlink" href="#action-client-migration" title="Permalink to this heading"></a></h3>
+<p>We can use the node now to create an action client using <code class="docutils literal notranslate"><span class="pre">create_action_client</span></code> without providing all the node interfaces.
+This is analog to the action client but configures with action introspection and other features that are not available in the base <code class="docutils literal notranslate"><span class="pre">rclcpp_action::Client&lt;T&gt;</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">nav_to_pose_client_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp_action</span><span class="o">::</span><span class="n">create_client</span><span class="o">&lt;</span><span class="n">ClientT</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="n">get_node_base_interface</span><span class="p">(),</span>
+<span class="w">  </span><span class="n">get_node_graph_interface</span><span class="p">(),</span>
+<span class="w">  </span><span class="n">get_node_logging_interface</span><span class="p">(),</span>
+<span class="w">  </span><span class="n">get_node_waitables_interface</span><span class="p">(),</span>
+<span class="w">  </span><span class="s">&quot;navigate_to_pose&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">callback_group_</span><span class="p">);</span><span class="w">  </span><span class="c1">// Type rclcpp_action::Client&lt;T&gt;</span>
+</pre></div>
+</div>
+<p>To</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">nav_to_pose_client_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_action_client</span><span class="o">&lt;</span><span class="n">ClientT</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;navigate_to_pose&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">callback_group_</span><span class="p">);</span><span class="w">  </span><span class="c1">// Type nav2::ActionClient&lt;T&gt;</span>
+</pre></div>
+</div>
+<p>No additional changes should be required since the operations are handled in the same way as before.
+It now supports action request, feedback, and result introspection using the parameter <code class="docutils literal notranslate"><span class="pre">service_introspection_mode</span></code>.</p>
+</div>
+<div class="section" id="publisher-subscriber-migration">
+<h3>Publisher Subscriber Migration<a class="headerlink" href="#publisher-subscriber-migration" title="Permalink to this heading"></a></h3>
+<p>To migrate, the order of the arguments in the Subscription must change since the QoS profile is now optional. It is now <code class="docutils literal notranslate"><span class="pre">(topic,</span> <span class="pre">callback,</span> <span class="pre">QoS)</span></code> whereas QoS defaults to the StandardTopicQoS, which is the same as <code class="docutils literal notranslate"><span class="pre">rclcpp::QoS</span></code> for the moment.</p>
+<p>Publishers that explicitly specify a QoS profile do not require changes, though if the constructor using <cite>depth</cite> is used, it must now specify a policy explicitly.
+Both are now <code class="docutils literal notranslate"><span class="pre">nav2::Publisher</span></code> and <code class="docutils literal notranslate"><span class="pre">nav2::Subscription</span></code> objects that today just typedef the rclcpp and rclcpp_lifecycle versions.
+In the future, more features will be added here like lifecycle support for the subscriptions, so its highly recommended as part of this migration to migrate the <code class="docutils literal notranslate"><span class="pre">rclcpp::</span></code> to <code class="docutils literal notranslate"><span class="pre">nav2::</span></code> as well so those updates are already easily available.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">plan_publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;plan&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">plan_publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;plan&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">QoS</span><span class="p">(),</span><span class="w"> </span><span class="n">callback_group</span><span class="p">);</span>
+
+<span class="n">data_sub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">sensor_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Range</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="n">source_topic</span><span class="p">,</span><span class="w"> </span><span class="n">range_qos</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Range</span><span class="o">::</span><span class="n">dataCallback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>To</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">plan_publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">nav_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Path</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;plan&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// No QoS is required if using the StandardTopicQoS, else it can be provided</span>
+
+<span class="n">data_sub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">sensor_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Range</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="n">source_topic</span><span class="p">,</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Range</span><span class="o">::</span><span class="n">dataCallback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span><span class="w">  </span><span class="c1">// QoS can be omitted if using StandardTopicQoS, else it can be provided last</span>
+</pre></div>
+</div>
+<p>No additional changes should be required since the operations are handled in the same way as before.
+Now, it supports future extensions for lifecycle subscriptions or additional wrapper APIs for ease of use.
+Additionally, it supports QoS override using the parameter <code class="docutils literal notranslate"><span class="pre">allow_parameter_qos_overrides</span></code>.</p>
 <div class="section" id="removed-parameter-action-server-result-timeout">
-<h2>Removed Parameter action_server_result_timeout<a class="headerlink" href="#removed-parameter-action-server-result-timeout" title="Permalink to this heading"></a></h2>
+<h4>Removed Parameter action_server_result_timeout<a class="headerlink" href="#removed-parameter-action-server-result-timeout" title="Permalink to this heading"></a></h4>
 <p>Removed the parameter <code class="docutils literal notranslate"><span class="pre">action_server_result_timeout</span></code> from all action servers after resolution within <code class="docutils literal notranslate"><span class="pre">rcl</span></code> and <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> to address early goal removal.
 This is not longer required to be set.</p>
 </div>
 <div class="section" id="added-corner-smoothing-functionality-to-route-server">
-<h2>Added Corner Smoothing functionality to route_server<a class="headerlink" href="#added-corner-smoothing-functionality-to-route-server" title="Permalink to this heading"></a></h2>
+<h4>Added Corner Smoothing functionality to route_server<a class="headerlink" href="#added-corner-smoothing-functionality-to-route-server" title="Permalink to this heading"></a></h4>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5226">PR #5226</a> the ability to stitch two successive edges in <code class="docutils literal notranslate"><span class="pre">route_server</span></code> with a smooth circular arc has been added. Below is an example of two successive edges forming a corner being smoothed with a radius of one. The red lines are the edges of the route graph and the green line is the resultant path that can be used by a local planner.</p>
 <img alt="../_images/smoothing.png" src="../_images/smoothing.png" />
 <p>New parameters include <code class="docutils literal notranslate"><span class="pre">smooth_corners</span></code> which enable or disable corner smoothing and <code class="docutils literal notranslate"><span class="pre">smoothing_radius</span></code> which specifies the radius of the corner to fit to a corner. The tangents of the starting and ending points of the circular arc will match the tangent of the edges that form the corner. In the event that two edges are basically straight, no corner arc is added and regular linear interpolation is done. In addition to that, if the corner arc requires a starting point and ending point that’s longer than the edge lengths, then it will not add a corner arc.</p>
+</div>
+</div>
 </div>
 </div>
 
