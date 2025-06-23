@@ -52,7 +52,7 @@ Service Client Migration
 
 We no longer need to create the object manually, nor should we as it bypasses the lifecycle node factories that set introspection and other future features.
 We can use the node now to do this instead of passing in a node and we don't need to specify the node type anymore as a template.
-All Nav2 servers should use `nav2::ServiceClient<T>`.
+All Nav2 servers should use ``nav2::ServiceClient<T>``.
 
 .. code-block:: cpp
 
@@ -117,8 +117,7 @@ Action Server Migration
 
 We can use the factory now from the node and the node is not required as an argument.
 This otherwise does not change.
-This is analog to the action server but configures with action introspection and other features that are not available in the base `rclcpp_action::Server<T>`.
-
+This is analog to the action server but configures with action introspection and other features that are not available in the base ``rclcpp_action::Server<T>``.
 
 .. code-block:: cpp
 
