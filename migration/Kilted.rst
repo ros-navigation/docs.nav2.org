@@ -28,7 +28,7 @@ The factories are listed below:
 - `create_action_server` --> `nav2::SimpleActionServer`
 - `create_action_client` --> `nav2::ActionClient`
 
-`A large-scale migration example can be found here `<https://github.com/ros-navigation/navigation2/pull/5288>`_.
+`A large-scale migration example can be found here <https://github.com/ros-navigation/navigation2/pull/5288>`_.
 
 In most cases, these are very similar to the previous ``rclcpp`` version.
 If a previous ``nav2_util`` version existed, the APIs should be largely the same, except now they should be constructed using the ``create_*`` factory rather than manually to make use of the abstracted configuration settings and advanced features to come.
@@ -54,23 +54,23 @@ We no longer need to create the object manually, nor should we as it bypasses th
 We can use the node now to do this instead of passing in a node and we don't need to specify the node type anymore as a template.
 All Nav2 servers should use `nav2::ServiceClient<T>`.
 
-```
-// If using rclcpp::Client<T> from previous create_client factor
-main_client_ = node->create_client<SrvT>(main_srv_name_, rclcpp::SystemDefaultsQoS(), callback_group_);  // Type rclcpp:Client<T>
+.. code-block:: cpp
 
-// If using nav2_util::ServiceClient<T> manually
-main_client_ =
-  std::make_shared<nav2_util::ServiceClient<SrvT>>(
-  main_srv_name_,
-  node,
-  false /* Does not create and spin an internal executor*/);  // Type nav2_util::ServiceClient<T>
-```
+   // If using rclcpp::Client<T> from previous create_client factor
+   main_client_ = node->create_client<SrvT>(main_srv_name_, rclcpp::SystemDefaultsQoS(), callback_group_);  // Type rclcpp:Client<T>
+
+   // If using nav2_util::ServiceClient<T> manually
+   main_client_ =
+     std::make_shared<nav2_util::ServiceClient<SrvT>>(
+     main_srv_name_,
+     node,
+     false /* Does not create and spin an internal executor*/);  // Type nav2_util::ServiceClient<T>
 
 To:
 
-```
-main_client_ = node->create_client<SrvT>(main_srv_name_, false  /* Does not create and spin an internal executor*/);  // Type nav2::ServiceClient<T>
-```
+.. code-block:: cpp
+
+   main_client_ = node->create_client<SrvT>(main_srv_name_, false  /* Does not create and spin an internal executor*/);  // Type nav2::ServiceClient<T>
 
 If migrating from the ``rclcpp::Client<T>`` factory, check out the `nav2::ServiceClient<T>` API for its features like ``invoke()`` which wraps the async call and spinning for results using the given node or another internal executor.
 You may optionally directly migrate by changing calls from ``async_send_request`` to ``async_call`` and otherwise handle the future in your application code.
@@ -81,7 +81,7 @@ Service Server Migration
 Services should now use `nav2::ServiceServer<T>` instead of `rclcpp::Service<T>` or `nav2_util::ServiceServer<T>`. The factory is now available from the node `create_service(...)`, so we can use that to create the service server.
 The callback should now include the `rmw_request_id_t` header now, so we have 3 placeholders rather than 2:
 
-.. code: cpp
+.. code-block:: cpp
 
   // If using previous create_service factory
     service_ = node->create_service<std_srvs::srv::Trigger>(
@@ -101,7 +101,7 @@ The callback should now include the `rmw_request_id_t` header now, so we have 3 
 
 To
 
-.. code: cpp
+.. code-block:: cpp
 
     service_ = node->create_service<std_srvs::srv::Trigger>(
       std::string(node->get_name()) + "/" + getName() + "/reroute",
@@ -119,7 +119,7 @@ This otherwise does not change.
 This is analog to the action server but configures with action introspection and other features that are not available in the base `rclcpp_action::Server<T>`.
 
 
-.. code: cpp
+.. code-block:: cpp
 
     compute_and_track_route_server_ = std::make_shared<ComputeAndTrackRouteServer>(
       node, "compute_and_track_route",
@@ -128,7 +128,7 @@ This is analog to the action server but configures with action introspection and
 
 To
 
-.. code: cpp
+.. code-block:: cpp
 
     compute_and_track_route_server_ = create_action_server<ComputeAndTrackRoute>(
       "compute_and_track_route",
@@ -144,7 +144,7 @@ Action Client Migration
 We can use the node now to create an action client using `create_action_client` without providing all the node interfaces.
 This is analog to the action client but configures with action introspection and other features that are not available in the base `rclcpp_action::Client<T>`.
 
-.. code: cpp
+.. code-block:: cpp
 
     nav_to_pose_client_ = rclcpp_action::create_client<ClientT>(
       get_node_base_interface(),
@@ -155,7 +155,7 @@ This is analog to the action client but configures with action introspection and
 
 To
 
-.. code: cpp
+.. code-block:: cpp
 
     nav_to_pose_client_ = create_action_client<ClientT>(
       "navigate_to_pose", callback_group_);  // Type nav2::ActionClient<T>
@@ -170,7 +170,7 @@ To migrate, the order of the arguments in the Subscription must change since the
 
 Publishers that explicitly specify a QoS profile do not require changes, though if the constructor using `depth` is used, it must now specify a policy explicitly. Both are now `nav2::Publisher` and `nav2::Subscription` objects that today just typedef the rclcpp and rclcpp_lifecycle versions. In the future, more features will be added here like lifecycle support for the subscriptions, so its highly recommended as part of this migration to migrate the `rclcpp::` to `nav2::` as well so those updates are already easily available.
 
-.. code: cpp
+.. code-block:: cpp
 
     plan_publisher_ = create_publisher<nav_msgs::msg::Path>("plan", 1);
     plan_publisher_ = create_publisher<nav_msgs::msg::Path>("plan", rclcpp::QoS(), callback_group);
@@ -181,7 +181,7 @@ Publishers that explicitly specify a QoS profile do not require changes, though 
 
 To
 
-.. code: cpp
+.. code-block:: cpp
 
     plan_publisher_ = create_publisher<nav_msgs::msg::Path>("plan");  // No QoS is required if using the StandardTopicQoS, else it can be provided
 
