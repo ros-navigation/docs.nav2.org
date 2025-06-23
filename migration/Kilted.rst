@@ -9,7 +9,7 @@ New Nav2 ROS Common & Nav2 Lifecycle Node
 -----------------------------------------
 
 Starting in Lyrical, a new package ``nav2_ros_common`` was added that contains a set of Nav2, ROS 2 utilities, wrappers, and overrides for working with ROS 2 in Nav2 in a standardized and controllable way.
-This ingests previous capabilities from ``nav2_util`` like the ``LifecycleNode`` and ``SimpleActionServer``, but extends it to wrap all ROS 2 intefaces with Nav2 variants in the ``nav2::`` namespace.
+This ingests previous capabilities from ``nav2_util`` like the ``LifecycleNode`` and ``SimpleActionServer``, but extends it to wrap all ROS 2 interfaces with Nav2 variants in the ``nav2::`` namespace.
 The new ``nav2::LifecycleNode``'s factory members (``create_client``, ``create_service``, ``create_publisher``, ``create_subscriber``, ``create_action_server``, and ``create_action_client``) now return these Nav2 objects.
 This requires some migration of custom plugins, Task Servers, or other components in the Nav2 styling and/or application that wish to use Nav2's utilities.
 Additionally, it contains a set of QoS profiles to be globally used within the stack to give developers complete control over the QoS settings of the system and a one-stop location to update or test different profiles and be applied globally in the stack.
