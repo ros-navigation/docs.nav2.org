@@ -71,6 +71,7 @@ Parameters
 
   Description
     The timeout value (seconds) for the costmap to be fully updated before a planning request.
+
 :service_introspection_mode:
 
   ============== =============================
@@ -81,6 +82,17 @@ Parameters
 
   Description
     The introspection mode for services. Options are "disabled", "metadata", "contents".
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Default Plugins
 ***************
