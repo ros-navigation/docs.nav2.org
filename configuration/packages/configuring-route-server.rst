@@ -301,6 +301,16 @@ Server Parameters
   Description
     The plugin to load under that name. The ``edge_cost_functions.<name>`` namespaces is also where plugin-specific parameters are defined.
 
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
 
 Edge Scorer Parameters
 **********************

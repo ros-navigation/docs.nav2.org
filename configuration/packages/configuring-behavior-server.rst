@@ -115,6 +115,17 @@ Behavior Server Parameters
   Description
     Robot base frame.
 
+:service_introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services. Options are "disabled", "metadata", "contents".
+
 :behavior_plugins:
 
   ============== ===============================================

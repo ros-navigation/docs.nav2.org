@@ -71,6 +71,7 @@ Parameters
 
   Description
     The timeout value (seconds) for the costmap to be fully updated before a planning request.
+
 :service_introspection_mode:
 
   ============== =============================
