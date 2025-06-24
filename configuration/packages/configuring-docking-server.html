@@ -1649,8 +1649,28 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.k_phi</dt>
+<dt class="field-odd">allow_parameter_qos_overrides</dt>
 <dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to allow QoS profiles to be overwritten with parameterized values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">controller.k_phi</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1669,8 +1689,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.k_delta</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.k_delta</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1689,8 +1709,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.beta</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.beta</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1709,8 +1729,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.lambda</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.lambda</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1729,8 +1749,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.v_linear_min</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.v_linear_min</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1749,8 +1769,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.v_linear_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.v_linear_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1769,8 +1789,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.v_angular_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.v_angular_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1789,8 +1809,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.slowdown_radius</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.slowdown_radius</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1809,8 +1829,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.rotate_to_heading_angular_vel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.rotate_to_heading_angular_vel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1829,8 +1849,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.rotate_to_heading_max_angular_accel</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.rotate_to_heading_max_angular_accel</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1849,8 +1869,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.use_collision_detection</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.use_collision_detection</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1869,8 +1889,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.costmap_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.costmap_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1889,8 +1909,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.footprint_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.footprint_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 29%" />
 <col style="width: 71%" />
@@ -1909,8 +1929,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.transform_tolerance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.transform_tolerance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1929,8 +1949,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.projection_time</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.projection_time</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1949,8 +1969,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.simulation_time_step</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.simulation_time_step</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1969,8 +1989,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.dock_collision_threshold</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.dock_collision_threshold</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />

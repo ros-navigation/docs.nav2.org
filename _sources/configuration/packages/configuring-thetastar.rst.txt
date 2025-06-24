@@ -96,6 +96,17 @@ The parameters of the planner are:
   Do go through the README file available on this repo's link to develop a better understanding of how you could tune this planner.
   This planner requires you to tune the `cost_scaling_factor` parameter of your costmap too, to get good results.
 
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
+
 Example
 *******
 
