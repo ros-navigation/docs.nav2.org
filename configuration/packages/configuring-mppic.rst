@@ -312,7 +312,7 @@ Advanced Parameters
 | ``wz_std_decay_strength`` and ``wz_std_decay_to`` defines a function that enables dynamic modification of wz_std (angular deviation) based on linear velocity of the robot.
 | When a robot with high inertia (e.g. 500kg) is moving fast and if wz_std is above 0.3, oscillation behavior can be observed. Lowering wz_std stabilizes the robot but then the maneuvers take more time.
 
-| Dynamically reducing wz_std as vx, vy increase (speed of the robot) solves both problems.
+| Dynamically reducing wz_std as the speed of the robot solves both problems, which these parameters enable.
 | Suggested values to start with are: ``wz_std = 0.4, wz_std_decay_to = 0.05, wz_std_decay_strength = 3.0``
 
 | The following is used as the decay function:
