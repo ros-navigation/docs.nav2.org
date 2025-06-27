@@ -58,7 +58,7 @@ Example
 
 .. code-block:: xml
 
-  <ClearCostmapAroundPose name="ClearLocalCostmapAroundPose" 
-                          service_name="local_costmap/clear_around_pose_local_costmap" 
-                          pose="{goal_pose}" 
+  <ClearCostmapAroundPose name="ClearLocalCostmapAroundPose"
+                          service_name="local_costmap/clear_around_pose_local_costmap"
+                          pose="{goal_pose}"
                           reset_distance="2.0"/>
