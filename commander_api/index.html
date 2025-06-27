@@ -600,6 +600,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ClearCostmapAroundPose.html">ClearCostmapAroundPose</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePath.html">TruncatePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/actions/TruncatePathLocal.html">TruncatePathLocal</a></li>
@@ -1437,28 +1438,40 @@ check_for_collision=False)</p></td>
 <tr class="row-even"><td><p>clearGlobalCostmap()</p></td>
 <td><p>Clears the global costmap.</p></td>
 </tr>
-<tr class="row-odd"><td><p>getGlobalCostmap()</p></td>
+<tr class="row-odd"><td><p>clearLocalCostmapAroundPose(
+PoseStamped, distance)</p></td>
+<td><p>Clears the local costmap around given pose.</p></td>
+</tr>
+<tr class="row-even"><td><p>clearGlobalCostmapAroundPose(
+PoseStamped, distance)</p></td>
+<td><p>Clears the global costmap around given pose.</p></td>
+</tr>
+<tr class="row-odd"><td><p>clearCostmapExceptRegion(
+distance)</p></td>
+<td><p>Clears the local costmap around current robot pose.</p></td>
+</tr>
+<tr class="row-even"><td><p>getGlobalCostmap()</p></td>
 <td><p>Returns the global costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>getLocalCostmap()</p></td>
+<tr class="row-odd"><td><p>getLocalCostmap()</p></td>
 <td><p>Returns the local costmap, <code class="docutils literal notranslate"><span class="pre">nav2_msgs/Costmap</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>waitUntilNav2Active(
+<tr class="row-even"><td><p>waitUntilNav2Active(
 navigator=’bt_navigator’,
 localizer=’amcl’)</p></td>
 <td><p>Blocks until Nav2 is completely online and lifecycle nodes are in the
 active state. To be used in conjunction with autostart or external
 lifecycle bringup. Custom navigator and localizer nodes can be specified</p></td>
 </tr>
-<tr class="row-even"><td><p>lifecycleStartup()</p></td>
+<tr class="row-odd"><td><p>lifecycleStartup()</p></td>
 <td><p>Sends a request to all lifecycle management servers to bring them into
 the active state, to be used if autostart is <code class="docutils literal notranslate"><span class="pre">False</span></code> and you want this
 program to control Nav2’s lifecycle.</p></td>
 </tr>
-<tr class="row-odd"><td><p>lifecycleShutdown()</p></td>
+<tr class="row-even"><td><p>lifecycleShutdown()</p></td>
 <td><p>Sends a request to all lifecycle management servers to shut them down.</p></td>
 </tr>
-<tr class="row-even"><td><p>destroyNode()</p></td>
+<tr class="row-odd"><td><p>destroyNode()</p></td>
 <td><p>Releases the resources used by the object.</p></td>
 </tr>
 </tbody>
