@@ -305,6 +305,42 @@ MPPI Parameters
   Description
     Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
 
+Advanced Parameters
+-------------------
+
+| **WARNING**: These parameters are experimental and subject to change; **use them at your own risk** as they may lead to unpredictable behavior in certain configurations.
+| ``wz_std_decay_strength`` and ``wz_std_decay_to`` defines a function that enables dynamic modification of wz_std (angular deviation) based on linear velocity of the robot.
+| When a robot with high inertia (e.g. 500kg) is moving fast and if wz_std is above 0.3, oscillation behavior can be observed. Lowering wz_std stabilizes the robot but then the maneuvers take more time.
+| Dynamically reducing wz_std as the speed of the robot solves both problems, which these parameters enable.
+| Suggested values to start with are: ``wz_std = 0.4, wz_std_decay_to = 0.05, wz_std_decay_strength = 3.0``
+
+| The following is used as the decay function:
+| ``f(x) = (wz_std - wz_std_decay_to) * e^(-wz_std_decay_strength * v_linear) + wz_std_decay_to``
+
+`Visualize the decay function here (a=wz_std, b=wz_std_decay_to, c=wz_std_decay_strength) <https://www.wolframalpha.com/input?i=plot+%5B%28a-b%29+*+e%5E%28-c+*+x%29+%2B+b%5D+with+a%3D0.5%2C+b%3D0.05%2C+c%3D3>`_
+
+:advanced.wz_std_decay_strength:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         -1.0 (disabled)
+  ============== ===========================
+
+  Description
+    Defines the strength of the reduction function.
+
+:advanced.wz_std_decay_to:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.0
+  ============== ===========================
+
+  Description
+    Target wz_std value while linear speed goes to infinity. Must be between 0 and wz_std. Has no effect if ``advanced.wz_std_decay_strength <= 0.0``
+
 Trajectory Visualization
 ------------------------
 
