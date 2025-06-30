@@ -366,7 +366,7 @@ RegulatedPurePursuit Controller [RPP]: new parameter ``use_cancel_deceleration``
 `PR #4441 <https://github.com/ros-navigation/navigation2/pull/4441>`_ adds a new parameter use_cancel_deceleration for the regulated pure pursuit controllers. This parameter enables the controller to use a constant deceleration to stop the robot gracefully instead of stopping immediately when a goal is canceled.
 
 Clear Costamp Around Passed Pose
-*****************************************************************
+*********************************
 
 In `PR #5309 <https://github.com/ros-navigation/navigation2/pull/5309>`_, a new service was added to the `nav2_costmap_2d` package to clear the costmap around a passed pose.
 
