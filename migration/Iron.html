@@ -1154,6 +1154,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#rotation-shim-controller-new-parameter-rotate-to-goal-heading">Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-controller-addition-of-acceleration-constraints">MPPI Controller: Addition of acceleration constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">use_cancel_deceleration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clear-costamp-around-passed-pose">Clear Costamp Around Passed Pose</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Jazzy.html">Jazzy to Kilted</a><ul>
@@ -1561,6 +1562,23 @@ Smac and Theta* planners have a new parameter <code class="docutils literal notr
 <div class="section" id="regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration">
 <h2>RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">use_cancel_deceleration</span></code><a class="headerlink" href="#regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/4441">PR #4441</a> adds a new parameter use_cancel_deceleration for the regulated pure pursuit controllers. This parameter enables the controller to use a constant deceleration to stop the robot gracefully instead of stopping immediately when a goal is canceled.</p>
+</div>
+<div class="section" id="clear-costamp-around-passed-pose">
+<h2>Clear Costamp Around Passed Pose<a class="headerlink" href="#clear-costamp-around-passed-pose" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5309">PR #5309</a>, a new service was added to the <cite>nav2_costmap_2d</cite> package to clear the costmap around a passed pose.</p>
+<p>A service client was also added to the clear costmap plugin in the <cite>nav2_behavior_tree</cite> package.</p>
+<p>This is particularly useful in scenarios where the planner fails due to outdated costmap data at the goal location which is outside of your obstacle/raytrace range—often caused by dynamic obstacles that have since moved. Instead of clearing the entire costmap as a recovery behavior, this feature would enable targeted clearing, preserving useful map data.</p>
+<a class="reference internal image-reference" href="../_images/ClearCostmapGoalPose.gif"><img alt="../_images/ClearCostmapGoalPose.gif" class="align-center" src="../_images/ClearCostmapGoalPose.gif" style="width: 100%;" /></a>
+<p class="centered">
+<strong><em>RViz visualization shows an example of clearing outdated cost at the desired goal location, this would have previously caused planners like SMAC planner to fail.</em></strong></p><p>The following is an example of how to use ClearCostmapAroundPose in a behavior tree to clear the costmap around a goal pose in the event that the planner fails to compute a path.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RateController</span><span class="w"> </span><span class="na">hz=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;RecoveryNode</span><span class="w"> </span><span class="na">number_of_retries=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ComputePathToPose&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ComputePathToPose</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">planner_id=</span><span class="s">&quot;{selected_planner}&quot;</span><span class="w"> </span><span class="na">error_code_id=</span><span class="s">&quot;{compute_path_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{compute_path_error_msg}&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ClearCostmapAroundPose</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ClearCostmapAroundPose-Context&quot;</span><span class="w"> </span><span class="na">service_name=</span><span class="s">&quot;global_costmap/clear_around_pose_global_costmap&quot;</span><span class="w"> </span><span class="na">pose=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">reset_distance=</span><span class="s">&quot;5.0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/RecoveryNode&gt;</span>
+<span class="nt">&lt;/RateController&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 
