@@ -273,6 +273,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
     </root>
 
 1. ``Action_A``, ``Action_B``, and ``Action_C`` are all ``IDLE``.
+
 2. When the parent NonblockingSequence is first ticked, let's assume ``Action_A`` returns ``RUNNING``. Following this, ``Action_B`` will be ticked, and let's assume it also returns ``RUNNING``. Finally, ``Action_C`` will be ticked, and let's assume it also returns ``RUNNING``. With three ``RUNNING`` children, the NonblockingSequence will return ``RUNNING``
 
 |
