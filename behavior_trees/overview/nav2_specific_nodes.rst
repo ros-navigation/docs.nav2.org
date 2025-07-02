@@ -281,7 +281,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 
 |
 
-3. On the next tick of the the parent NonblockingSequence, all actions in the sequence wll be re-ticked. Let's assume ``Action_A`` returns ``SUCCESS``, and ``Action_B`` and ``Action_C`` still return ``RUNNING``. In this configuration, the NonblockingSequence still returns ``RUNNING``, as there are two nodes in the children that are ``RUNNING``
+3. On the next tick of the the parent NonblockingSequence, all actions in the sequence will be re-ticked. Let's assume ``Action_A`` returns ``SUCCESS``, and ``Action_B`` and ``Action_C`` still return ``RUNNING``. In this configuration, the NonblockingSequence still returns ``RUNNING``, as there are two nodes in the children that are ``RUNNING``
 
 |
 
@@ -311,4 +311,3 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 Recall that if ``Action_A``, ``Action_B``, or ``Action_C`` returned ``FAILURE`` at any point of time, the parent would have returned ``FAILURE`` and halted any children as well.
 
 For additional details regarding the ``NonblockingSequence`` please see the `NonblockingSequence configuration guide <../../configuration/packages/bt-plugins/controls/NonblockingSequence.html>`_.
-
