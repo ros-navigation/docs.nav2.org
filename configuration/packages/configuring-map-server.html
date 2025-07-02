@@ -1347,7 +1347,7 @@ It also implements a map saver server which will run in the background and save 
 </dd>
 </dl>
 </dd>
-<dt class="field-even">service_introspection_mode</dt>
+<dt class="field-even">introspection_mode</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1363,7 +1363,7 @@ It also implements a map saver server which will run in the background and save 
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The introspection mode for services. Options are “disabled”, “metadata”, “contents”.</p>
+<dt>Description</dt><dd><p>The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.</p>
 </dd>
 </dl>
 </dd>
@@ -1432,7 +1432,7 @@ It also implements a map saver server which will run in the background and save 
 </dd>
 </dl>
 </dd>
-<dt class="field-even">service_introspection_mode</dt>
+<dt class="field-even">introspection_mode</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1448,7 +1448,7 @@ It also implements a map saver server which will run in the background and save 
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The introspection mode for services. Options are “disabled”, “metadata”, “contents”.</p>
+<dt>Description</dt><dd><p>The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.</p>
 </dd>
 </dl>
 </dd>
@@ -1614,14 +1614,14 @@ It also implements a map saver server which will run in the background and save 
 <span class="w">    </span><span class="nt">yaml_filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlebot3_world.yaml&quot;</span>
 <span class="w">    </span><span class="nt">topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
 <span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
-<span class="w">    </span><span class="nt">service_introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
+<span class="w">    </span><span class="nt">introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 
 <span class="nt">map_saver</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">save_map_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
 <span class="w">    </span><span class="nt">free_thresh_default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">    </span><span class="nt">occupied_thresh_default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.65</span>
-<span class="w">    </span><span class="nt">service_introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
+<span class="w">    </span><span class="nt">introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 
 <span class="nt">costmap_filter_info_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>

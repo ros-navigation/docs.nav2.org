@@ -74,6 +74,7 @@ To:
 
 If migrating from the ``rclcpp::Client<T>`` factory, check out the ``nav2::ServiceClient<T>`` API for its features like ``invoke()`` which wraps the async call and spinning for results using the given node or another internal executor.
 You may optionally directly migrate by changing calls from ``async_send_request`` to ``async_call`` and otherwise handle the future in your application code.
+It now supports service introspection using the parameter ``introspection_mode``.
 
 Service Server Migration
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -110,7 +111,7 @@ To
           std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));  // type nav2::ServiceServer<T>
 
 No additional changes should be required since the operations are handled in the same way as before.
-It now supports service introspection using the parameter ``service_introspection_mode``.
+It now supports service introspection using the parameter ``introspection_mode``.
 
 Action Server Migration
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -136,7 +137,7 @@ To
       nullptr, std::chrono::milliseconds(500), true);  // Type nav2::SimpleActionServer<T>
 
 No additional changes should be required since the operations are handled in the same way as before.
-It now supports action request, feedback, and result introspection using the parameter ``service_introspection_mode``.
+It now supports action request, feedback, and result introspection using the parameter ``introspection_mode``.
 
 Action Client Migration
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -161,7 +162,7 @@ To
       "navigate_to_pose", callback_group_);  // Type nav2::ActionClient<T>
 
 No additional changes should be required since the operations are handled in the same way as before.
-It now supports action request, feedback, and result introspection using the parameter ``service_introspection_mode``.
+It now supports action request, feedback, and result introspection using the parameter ``introspection_mode``.
 
 Publisher Subscriber Migration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1340,7 +1340,8 @@ All Nav2 servers should use <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <p>If migrating from the <code class="docutils literal notranslate"><span class="pre">rclcpp::Client&lt;T&gt;</span></code> factory, check out the <code class="docutils literal notranslate"><span class="pre">nav2::ServiceClient&lt;T&gt;</span></code> API for its features like <code class="docutils literal notranslate"><span class="pre">invoke()</span></code> which wraps the async call and spinning for results using the given node or another internal executor.
-You may optionally directly migrate by changing calls from <code class="docutils literal notranslate"><span class="pre">async_send_request</span></code> to <code class="docutils literal notranslate"><span class="pre">async_call</span></code> and otherwise handle the future in your application code.</p>
+You may optionally directly migrate by changing calls from <code class="docutils literal notranslate"><span class="pre">async_send_request</span></code> to <code class="docutils literal notranslate"><span class="pre">async_call</span></code> and otherwise handle the future in your application code.
+It now supports service introspection using the parameter <code class="docutils literal notranslate"><span class="pre">introspection_mode</span></code>.</p>
 </div>
 <div class="section" id="service-server-migration">
 <h3>Service Server Migration<a class="headerlink" href="#service-server-migration" title="Permalink to this heading"></a></h3>
@@ -1372,7 +1373,7 @@ The callback should now include the <code class="docutils literal notranslate"><
 </pre></div>
 </div>
 <p>No additional changes should be required since the operations are handled in the same way as before.
-It now supports service introspection using the parameter <code class="docutils literal notranslate"><span class="pre">service_introspection_mode</span></code>.</p>
+It now supports service introspection using the parameter <code class="docutils literal notranslate"><span class="pre">introspection_mode</span></code>.</p>
 </div>
 <div class="section" id="action-server-migration">
 <h3>Action Server Migration<a class="headerlink" href="#action-server-migration" title="Permalink to this heading"></a></h3>
@@ -1393,7 +1394,7 @@ This is analog to the action server but configures with action introspection and
 </pre></div>
 </div>
 <p>No additional changes should be required since the operations are handled in the same way as before.
-It now supports action request, feedback, and result introspection using the parameter <code class="docutils literal notranslate"><span class="pre">service_introspection_mode</span></code>.</p>
+It now supports action request, feedback, and result introspection using the parameter <code class="docutils literal notranslate"><span class="pre">introspection_mode</span></code>.</p>
 </div>
 <div class="section" id="action-client-migration">
 <h3>Action Client Migration<a class="headerlink" href="#action-client-migration" title="Permalink to this heading"></a></h3>
@@ -1413,7 +1414,7 @@ This is analog to the action client but configures with action introspection and
 </pre></div>
 </div>
 <p>No additional changes should be required since the operations are handled in the same way as before.
-It now supports action request, feedback, and result introspection using the parameter <code class="docutils literal notranslate"><span class="pre">service_introspection_mode</span></code>.</p>
+It now supports action request, feedback, and result introspection using the parameter <code class="docutils literal notranslate"><span class="pre">introspection_mode</span></code>.</p>
 </div>
 <div class="section" id="publisher-subscriber-migration">
 <h3>Publisher Subscriber Migration<a class="headerlink" href="#publisher-subscriber-migration" title="Permalink to this heading"></a></h3>

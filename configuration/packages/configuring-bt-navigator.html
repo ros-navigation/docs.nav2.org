@@ -1476,7 +1476,7 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </dd>
 </dl>
 </dd>
-<dt class="field-even">service_introspection_mode</dt>
+<dt class="field-even">introspection_mode</dt>
 <dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -1492,7 +1492,7 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The introspection mode for services. Options are “disabled”, “metadata”, “contents”.</p>
+<dt>Description</dt><dd><p>The introspection mode for services and actions. Options are “disabled”, “metadata”, “contents”.</p>
 </dd>
 </dl>
 </dd>
@@ -1878,7 +1878,7 @@ This value will be overwritten for a BT node if the input port “wait_for_servi
 <span class="w">    </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_link</span>
 <span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">    </span><span class="nt">filter_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
-<span class="w">    </span><span class="nt">service_intropection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
+<span class="w">    </span><span class="nt">introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>
 <span class="w">    </span><span class="nt">default_nav_to_pose_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span><span class="w"> </span><span class="c1"># or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml</span>
 <span class="w">    </span><span class="nt">default_nav_through_poses_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace/with/path/to/bt.xml</span><span class="w"> </span><span class="c1"># or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml</span>
 <span class="w">    </span><span class="nt">always_reload_bt_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
