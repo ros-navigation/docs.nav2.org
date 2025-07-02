@@ -49,7 +49,7 @@ Parameters
     The name of the global coordinate frame published by robot_localization. Only used by the gps_waypoint_follower to
     convert GPS waypoints to this frame.
 
-:service_introspection_mode:
+:introspection_mode:
 
   ============== =============================
   Type           Default
@@ -58,7 +58,7 @@ Parameters
   ============== =============================
 
   Description
-    The introspection mode for services. Options are "disabled", "metadata", "contents".
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 :bond_heartbeat_period:
 
@@ -139,7 +139,7 @@ Example
         loop_rate: 20
         stop_on_failure: false
         waypoint_task_executor_plugin: "wait_at_waypoint"
-        service_introspection_mode: "disabled"
+        introspection_mode: "disabled"
           wait_at_waypoint:
             plugin: "nav2_waypoint_follower::WaitAtWaypoint"
             enabled: True
