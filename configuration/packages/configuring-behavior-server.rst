@@ -115,6 +115,17 @@ Behavior Server Parameters
   Description
     Robot base frame.
 
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
 :behavior_plugins:
 
   ============== ===============================================
@@ -329,6 +340,17 @@ DriveOnHeading distance, speed and time_allowance is given from the action reque
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 :drive_on_heading.acceleration_limit:
 

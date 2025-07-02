@@ -132,6 +132,15 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 +---------------------------------------+----------------------------------------------------------------------------+
 | clearGlobalCostmap()                  | Clears the global costmap.                                                 |
 +---------------------------------------+----------------------------------------------------------------------------+
+| clearLocalCostmapAroundPose(          |                                                                            |
+| PoseStamped, distance)                | Clears the local costmap around given pose.                                |
++---------------------------------------+----------------------------------------------------------------------------+
+| clearGlobalCostmapAroundPose(         |                                                                            |
+| PoseStamped, distance)                | Clears the global costmap around given pose.                               |
++---------------------------------------+----------------------------------------------------------------------------+
+| clearCostmapExceptRegion(             |                                                                            |
+| distance)                             | Clears the local costmap around current robot pose.                        |
++---------------------------------------+----------------------------------------------------------------------------+
 | getGlobalCostmap()                    | Returns the global costmap, ``nav2_msgs/Costmap``.                         |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getLocalCostmap()                     | Returns the local costmap, ``nav2_msgs/Costmap``.                          |

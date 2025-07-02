@@ -68,6 +68,17 @@ Smoother Server Parameters
   Description
     List of plugin names to use, also matches action server names.
 
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
   Note
     Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
 
@@ -95,6 +106,17 @@ Smoother Server Parameters
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Example
 *******

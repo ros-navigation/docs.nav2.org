@@ -125,7 +125,7 @@ Parameters
     Default timeout value (in milliseconds) while Action or Service BT nodes will waiting for acknowledgement from an service or action server on BT initialization (e.g. ``wait_for_action_server(timeout)``).
     This value will be overwritten for a BT node if the input port "wait_for_service_timeout" is provided.
 
-:service_introspection_mode:
+:introspection_mode:
 
   ============== =============================
   Type           Default
@@ -134,7 +134,7 @@ Parameters
   ============== =============================
 
   Description
-    The introspection mode for services. Options are "disabled", "metadata", "contents".
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 :transform_tolerance:
 
@@ -280,6 +280,17 @@ Parameters
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
+
 
 NavigateToPose Parameters
 *************************
@@ -342,7 +353,7 @@ Example
         robot_base_frame: base_link
         transform_tolerance: 0.1
         filter_duration: 0.3
-        service_intropection_mode: "disabled"
+        introspection_mode: "disabled"
         default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
         default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
         always_reload_bt_xml: false

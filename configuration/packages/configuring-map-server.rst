@@ -46,7 +46,7 @@ Map Saver Parameters
   Description
     Occupied space minimum probability threshold value for occupancy grid.
 
-:service_introspection_mode:
+:introspection_mode:
 
   ============== =============================
   Type           Default
@@ -55,7 +55,7 @@ Map Saver Parameters
   ============== =============================
 
   Description
-    The introspection mode for services. Options are "disabled", "metadata", "contents".
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 Map Server Parameters
 *********************
@@ -93,7 +93,7 @@ Map Server Parameters
   Description
     Frame to publish loaded map in.
 
-:service_introspection_mode:
+:introspection_mode:
 
   ============== =============================
   Type           Default
@@ -102,7 +102,7 @@ Map Server Parameters
   ============== =============================
 
   Description
-    The introspection mode for services. Options are "disabled", "metadata", "contents".
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 Costmap Filter Info Server Parameters
 *************************************
@@ -180,6 +180,17 @@ Costmap Filter Info Server Parameters
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
+
 Example
 *******
 .. code-block:: yaml
@@ -189,14 +200,14 @@ Example
         yaml_filename: "turtlebot3_world.yaml"
         topic_name: "map"
         frame_id: "map"
-        service_introspection_mode: "disabled"
+        introspection_mode: "disabled"
 
     map_saver:
       ros__parameters:
         save_map_timeout: 5.0
         free_thresh_default: 0.25
         occupied_thresh_default: 0.65
-        service_introspection_mode: "disabled"
+        introspection_mode: "disabled"
 
     costmap_filter_info_server:
       ros__parameters:

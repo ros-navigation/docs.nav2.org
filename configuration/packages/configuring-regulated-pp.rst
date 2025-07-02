@@ -323,6 +323,17 @@ Regulated Pure Pursuit Parameters
   Description
     Enables stateful goal handling behavior. When set to true, the controller will persist the goal state once the robot reaches the XY tolerance. It will then focus on aligning to the goal heading without reverting to XY position corrections.
 
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
+
 Example
 *******
 .. code-block:: yaml

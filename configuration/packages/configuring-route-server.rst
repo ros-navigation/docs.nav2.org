@@ -81,6 +81,28 @@ Server Parameters
   Description
     The maximum planning time to use.
 
+:smooth_corners:
+
+  ============== ========
+  Type           Default
+  -------------- --------
+  bool           false
+  ============== ========
+
+  Description
+    Whether to smooth corners formed between subsequent edges after a route has been found
+
+:smoothing_radius:
+
+  ============== ========
+  Type           Default
+  -------------- --------
+  double          1.0
+  ============== ========
+
+  Description
+    Radius to fit to corners formed by edges if corner smoothing is enabled
+
 :costmap_topic:
 
   ============== ============================
@@ -279,6 +301,27 @@ Server Parameters
   Description
     The plugin to load under that name. The ``edge_cost_functions.<name>`` namespaces is also where plugin-specific parameters are defined.
 
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Edge Scorer Parameters
 **********************
@@ -759,6 +802,8 @@ Example
         path_density: 0.05                            # Density of points for generating the dense nav_msgs/Path from route (m)
         max_iterations: 0                             # Maximum number of search iterations, if 0, uses maximum possible
         max_planning_time: 2.0                        # Maximum planning time (seconds)
+        smoothing_corners: true                       # Whether to smooth corners formed by adjacent edges or not
+        smoothing_radius: 1.0                         # Radius of corner to fit into the corner
 
         graph_file_loader: "GeoJsonGraphFileLoader"   # Name of default file loader
           plugin: nav2_route::GeoJsonGraphFileLoader  # file loader plugin to use

@@ -364,3 +364,29 @@ MPPI Controller: Addition of acceleration constraints
 RegulatedPurePursuit Controller [RPP]: new parameter ``use_cancel_deceleration``
 ********************************************************************************
 `PR #4441 <https://github.com/ros-navigation/navigation2/pull/4441>`_ adds a new parameter use_cancel_deceleration for the regulated pure pursuit controllers. This parameter enables the controller to use a constant deceleration to stop the robot gracefully instead of stopping immediately when a goal is canceled.
+
+Clear Costamp Around Passed Pose
+********************************
+
+In `PR #5309 <https://github.com/ros-navigation/navigation2/pull/5309>`_, a new service was added to the `nav2_costmap_2d` package to clear the costmap around a passed pose.
+
+A service client was also added to the clear costmap plugin in the `nav2_behavior_tree` package.
+
+This is particularly useful in scenarios where the planner fails due to outdated costmap data at the goal location which is outside of your obstacle/raytrace range—often caused by dynamic obstacles that have since moved. Instead of clearing the entire costmap as a recovery behavior, this feature would enable targeted clearing, preserving useful map data.
+
+.. image:: images/ClearCostmapGoalPose.gif
+    :width: 100%
+    :align: center
+
+.. centered:: *RViz visualization shows an example of clearing outdated cost at the desired goal location, this would have previously caused planners like SMAC planner to fail.*
+
+The following is an example of how to use ClearCostmapAroundPose in a behavior tree to clear the costmap around a goal pose in the event that the planner fails to compute a path.
+
+.. code-block:: xml
+
+    <RateController hz="1.0">
+      <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+          <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+          <ClearCostmapAroundPose name="ClearCostmapAroundPose-Context" service_name="global_costmap/clear_around_pose_global_costmap" pose="{goal}" reset_distance="5.0"/>
+      </RecoveryNode>
+    </RateController>

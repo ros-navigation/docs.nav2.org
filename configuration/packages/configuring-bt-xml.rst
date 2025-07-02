@@ -32,6 +32,7 @@ Action Plugins
   bt-plugins/actions/ClearEntireCostmap.rst
   bt-plugins/actions/ClearCostmapExceptRegion.rst
   bt-plugins/actions/ClearCostmapAroundRobot.rst
+  bt-plugins/actions/ClearCostmapAroundPose.rst
   bt-plugins/actions/ReinitializeGlobalLocalization.rst
   bt-plugins/actions/TruncatePath.rst
   bt-plugins/actions/TruncatePathLocal.rst

@@ -43,3 +43,14 @@ Parameters
 
   Description
     Topic input is published to to indicate to move to the next waypoint, in `std_msgs/Empty`.
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.

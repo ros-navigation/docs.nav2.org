@@ -24,7 +24,7 @@ Costmap2D ROS Parameters
   Description
     Whether to send full costmap every update, rather than updates.
 
-:service_introspection_mode:
+:introspection_mode:
 
   ============== =============================
   Type           Default
@@ -33,7 +33,18 @@ Costmap2D ROS Parameters
   ============== =============================
 
   Description
-    The introspection mode for services. Options are "disabled", "metadata", "contents".
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 :footprint_padding:
 
@@ -446,7 +457,7 @@ Example
             inflate_unknown: false
             inflate_around_unknown: true
           always_send_full_costmap: True
-          service_introspection_mode: "disabled"
+          introspection_mode: "disabled"
 
 
     local_costmap:
@@ -461,4 +472,4 @@ Example
           width: 3
           height: 3
           resolution: 0.05
-          service_introspection_mode: "disabled"
+          introspection_mode: "disabled"

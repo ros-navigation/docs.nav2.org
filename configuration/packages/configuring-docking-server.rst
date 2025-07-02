@@ -206,7 +206,7 @@ Parameters
   Description
     BT XML to use for Navigator, if non-default.
 
-:service_introspection_mode:
+:introspection_mode:
 
   ============== =============================
   Type           Default
@@ -215,7 +215,18 @@ Parameters
   ============== =============================
 
   Description
-    The introspection mode for services. Options are "disabled", "metadata", "contents".
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 :controller.k_phi:
 
@@ -643,7 +654,7 @@ Example
         odom_topic: "odom"
         dock_backwards: false  # Deprecated, use dock_direction in plugin
         dock_prestaging_tolerance: 0.5
-        service_introspection_mode: "disabled"
+        introspection_mode: "disabled"
 
         # Types of docks
         dock_plugins: ['nova_carter_dock']
