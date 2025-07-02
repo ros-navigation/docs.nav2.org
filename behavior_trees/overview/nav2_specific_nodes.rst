@@ -245,3 +245,70 @@ The parent node retains this state information, and will tick ``Action_C`` upon 
 |
 
 For additional details regarding the ``RoundRobin`` please see the `RoundRobin configuration guide <../../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
+
+Control: NonblockingSequence
+----------------------------
+The ``NonblockingSequence`` control node ticks all children as long as they return ``SUCCESS`` or  ``RUNNING``. This node is similar to the ``PipelineSequence`` node, with the additional property that all children are re-ticked as long as ``SUCCESS`` or ``RUNNING``, instead of stopping at the latest ``RUNNING`` node. If at any point a child returns ``FAILURE``, all children will be halted and the parent node will also return ``FAILURE``. Upon ``SUCCESS`` of **all nodes** in the sequence, this node will halt and return ``SUCCESS``.
+
+To explain this further, here is an example BT that uses NonblockingSequence.
+
+|
+
+ .. image:: ../images/control_pipelineSequence.png
+    :align: center
+
+
+
+.. code-block:: xml
+
+    <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+            <NonblockingSequence>
+                <Action_A/>
+                <Action_B/>
+                <Action_C/>
+            </NonblockingSequence>
+        </BehaviorTree>
+    </root>
+
+1. ``Action_A``, ``Action_B``, and ``Action_C`` are all ``IDLE``.
+2. When the parent NonblockingSequence is first ticked, let's assume ``Action_A`` returns ``RUNNING``. Following this, ``Action_B`` will be ticked, and let's assume it also returns ``RUNNING``. Finally, ``Action_C`` will be ticked, and let's assume it also returns ``RUNNING``. With three ``RUNNING`` children, the NonblockingSequence will return ``RUNNING``
+
+|
+
+ .. image:: ../images/control_pipelineSequence_RUNNING_IDLE_IDLE.png
+    :align: center
+
+|
+
+3. On the next tick of the the parent NonblockingSequence, all actions in the sequence wll be re-ticked. Let's assume ``Action_A`` returns ``SUCCESS``, and ``Action_B`` and ``Action_C`` still return ``RUNNING``. In this configuration, the NonblockingSequence still returns ``RUNNING``, as there are two nodes in the children that are ``RUNNING``
+
+|
+
+ .. image:: ../images/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png
+    :align: center
+
+|
+
+4. Now, let's assume on the next re-tick, ``Action_A`` and ``Action_C``  return ``SUCCESS``, and ``Action_B`` returns ``RUNNING``. In this configuration, the NonblockingSequence still returns ``RUNNING``, as there is still one child node that is ``RUNNING``
+
+|
+
+ .. image:: ../images/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png
+    :align: center
+
+|
+
+5. Finally, Let's assume ``Action_A``, ``Action_B``, and ``Action_C``  all return ``SUCCESS``. The sequence is now complete, and therefore ``Action_A``, ``Action_B``, and ``Action_C`` are all halted and NonblockingSequence returns ``SUCCESS``.
+
+|
+
+ .. image:: ../images/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png
+    :align: center
+
+|
+
+Recall that if ``Action_A``, ``Action_B``, or ``Action_C`` returned ``FAILURE`` at any point of time, the parent would have returned ``FAILURE`` and halted any children as well.
+
+For additional details regarding the ``NonblockingSequence`` please see the `NonblockingSequence configuration guide <../../configuration/packages/bt-plugins/controls/NonblockingSequence.html>`_.
+
