@@ -248,6 +248,7 @@ For additional details regarding the ``RoundRobin`` please see the `RoundRobin c
 
 Control: NonblockingSequence
 ----------------------------
+
 The ``NonblockingSequence`` control node ticks all children as long as they return ``SUCCESS`` or  ``RUNNING``. This node is similar to the ``PipelineSequence`` node, with the additional property that all children are re-ticked as long as ``SUCCESS`` or ``RUNNING``, instead of stopping at the latest ``RUNNING`` node. If at any point a child returns ``FAILURE``, all children will be halted and the parent node will also return ``FAILURE``. Upon ``SUCCESS`` of **all nodes** in the sequence, this node will halt and return ``SUCCESS``.
 
 To explain this further, here is an example BT that uses NonblockingSequence.
