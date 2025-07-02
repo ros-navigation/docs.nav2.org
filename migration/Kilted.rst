@@ -137,7 +137,7 @@ To
       nullptr, std::chrono::milliseconds(500), true);  // Type nav2::SimpleActionServer<T>
 
 No additional changes should be required since the operations are handled in the same way as before.
-It now supports action request, feedback, and result introspection using the parameter ``action_introspection_mode``.
+It now supports action request, feedback, and result introspection using the parameter ``introspection_mode``.
 
 Action Client Migration
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,7 +162,7 @@ To
       "navigate_to_pose", callback_group_);  // Type nav2::ActionClient<T>
 
 No additional changes should be required since the operations are handled in the same way as before.
-It now supports action request, feedback, and result introspection using the parameter ``action_introspection_mode``.
+It now supports action request, feedback, and result introspection using the parameter ``introspection_mode``.
 
 Publisher Subscriber Migration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
