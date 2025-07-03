@@ -91,7 +91,7 @@ Velocity Smoother Parameters
   ============== ===========================
 
   Description
-    Minimum velocities (m/s) to send to the robot hardware controllers, to prevent small commands from damaging hardware controllers if that speed cannot be achieved due to stall torque.
+    Minimum velocities (m/s) in ``[x, y, theta]`` axes or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support to send to the robot hardware controllers, to prevent small commands from damaging hardware controllers if that speed cannot be achieved due to stall torque.
 
 :velocity_timeout:
 
