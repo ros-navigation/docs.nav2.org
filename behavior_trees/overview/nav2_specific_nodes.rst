@@ -254,7 +254,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 
 |
 
- .. image:: ../images/control_pipelineSequence.png
+ .. image:: ../images/control_nonblockingSequence.png
     :align: center
 
 
@@ -276,7 +276,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 
 |
 
- .. image:: ../images/control_pipelineSequence_RUNNING_IDLE_IDLE.png
+ .. image:: ../images/control_nonblockingSequence_RUNNING_RUNNING_RUNNING.png
     :align: center
 
 |
@@ -285,7 +285,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 
 |
 
- .. image:: ../images/control_pipelineSequence_SUCCESS_RUNNING_IDLE.png
+ .. image:: ../images/control_nonblockingSequence_SUCCESS_RUNNING_RUNNING.png
     :align: center
 
 |
@@ -294,7 +294,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 
 |
 
- .. image:: ../images/control_pipelineSequence_RUNNING_SUCCESS_RUNNING.png
+ .. image:: ../images/control_nonblockingSequence_SUCCESS_RUNNING_SUCCESS.png
     :align: center
 
 |
@@ -303,7 +303,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 
 |
 
- .. image:: ../images/control_pipelineSequence_RUNNING_SUCCESS_SUCCESS.png
+ .. image:: ../images/control_nonblockingSequence_SUCCESS_SUCCESS_SUCCESS.png
     :align: center
 
 |
