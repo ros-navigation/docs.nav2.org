@@ -69,7 +69,7 @@ Velocity Smoother Parameters
   ============== ===========================
 
   Description
-    Maximum velocities (m/s) in ``[x, y, theta]`` axes.
+    Maximum velocities (m/s) in ``[x, y, theta]`` axes or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support.
 
 :min_velocity:
 
@@ -80,7 +80,7 @@ Velocity Smoother Parameters
   ============== ===========================
 
   Description
-    Minimum velocities (m/s) in ``[x, y, theta]`` axes. This is **signed** and thus must be **negative** to reverse. Note: rotational velocities negative direction is a right-hand turn, so this should always be negative regardless of reversing preference.
+    Minimum velocities (m/s) in ``[x, y, theta]`` axes or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support. This is **signed** and thus must be **negative** to reverse. Note: rotational velocities negative direction is a right-hand turn, so this should always be negative regardless of reversing preference.
 
 :deadband_velocity:
 
@@ -91,7 +91,7 @@ Velocity Smoother Parameters
   ============== ===========================
 
   Description
-    Minimum velocities (m/s) to send to the robot hardware controllers, to prevent small commands from damaging hardware controllers if that speed cannot be achieved due to stall torque.
+    Minimum velocities (m/s) in ``[x, y, theta]`` axes or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support to send to the robot hardware controllers, to prevent small commands from damaging hardware controllers if that speed cannot be achieved due to stall torque.
 
 :velocity_timeout:
 
@@ -113,7 +113,7 @@ Velocity Smoother Parameters
   ============== ===========================
 
   Description
-    Maximum acceleration to apply to each axis ``[x, y, theta]``.
+    Maximum acceleration to apply to each axis ``[x, y, theta]`` or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support.
 
 :max_decel:
 
@@ -124,7 +124,7 @@ Velocity Smoother Parameters
   ============== ===========================
 
   Description
-    Minimum acceleration to apply to each axis ``[x, y, theta]``. This is **signed** and thus these should generally all be **negative**.
+    Minimum acceleration to apply to each axis ``[x, y, theta]`` or ``[x, y, z, roll, pitch, yaw]`` for full 6-DoF support. This is **signed** and thus these should generally all be **negative**.
 
 :odom_topic:
 
