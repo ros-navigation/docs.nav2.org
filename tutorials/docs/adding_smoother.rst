@@ -38,7 +38,7 @@ Please see the BT node's configuration page to familiarize yourself with all asp
 1- Specifying a Smoother Plugin
 -------------------------------
 
-In order to use a smoother in your BT node, you must first configure the smoother server itself to contain the smoother plugins of interest. These plugins implement the specific algorithms that you would like to use. 
+In order to use a smoother in your BT node, you must first configure the smoother server itself to contain the smoother plugins of interest. These plugins implement the specific algorithms that you would like to use.
 
 For each smoother plugin you would like to use, a name must be given to it (e.g. ``simple_smoother``, ``curvature_smoother``). This name is its ``smoother_id`` for other servers to interact with this algorithm from a request to the Smoother Server's action interface.
 
@@ -58,7 +58,7 @@ Under each name, the parameters for that particular algorithm must be specified 
           tolerance: 1.0e-10
           do_refinement: True
         curvature_smoother:
-          plugin: "nav2_ceres_costaware_smoother/CeresCostawareSmoother"
+          plugin: "nav2_smoother::SavitzkyGolaySmoother"
 
 
 2- Modifying your BT XML
@@ -68,31 +68,31 @@ Now that you have selected and configured the smoother server for your given plu
 
 Note: If you use only a single type of smoothing algorithm, there is no need to specify the ``smoother_id`` in the BT XML entry. Since there is only a single option, that will be used for any request that does not specifically request a smoother plugin. However, if you leverage multiple smoother plugins, you **must** populate the ``smoother_id`` XML port.
 
-A given behavior tree will have a line: 
+A given behavior tree will have a line:
 
 .. code-block:: xml
 
-  <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" error_code_id="{compute_path_error_code}"/>
+  <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
 
-This line calls the planner server and return a path to the ``path`` blackboard variable in the behavior tree. We are  going to replace that line with the following to compute the path, smooth the path, and finally replace the ``path`` blackboard variable with the new smoothed path that the system will now interact with:
+This line calls the planner server and return a path to the ``path`` blackboard variable in the behavior tree. We are going to replace that line with the following to compute the path, smooth the path, and finally replace the ``path`` blackboard variable with the new smoothed path that the system will now interact with:
 
 .. code-block:: xml
 
     <Sequence name="ComputeAndSmoothPath">
-      <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" error_code_id="{compute_path_error_code}"/>
-      <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id="{smoother_error_code}"/>
+      <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+      <SmoothPath unsmoothed_path="{path}" smoothed_path="{path}" error_code_id="{smoother_error_code}" error_msg="{smoother_error_msg}"/>
     </Sequence>
 
 If you wish to have recoveries for the smoother error codes, such as triggering the system recoveries branch of a behavior tree:
 
-.. code-block:: xml 
+.. code-block:: xml
 
     <Sequence name= "TryToResolveSmootherErrorCodes">
-      <WouldASmootherRecoveryHelp error_code="{smoother_error_code}">
+      <WouldASmootherRecoveryHelp error_code="{smoother_error_code}" error_msg="{smoother_error_msg}">
       <!-- recovery to resolve smoother error code goes here -->
     <Sequence/>
 
 
-And its as simple as that! You can now compile or use this behavior tree in your system and see that the plans are now smoothed and the controllers are now tracking this smoothed path. The image at the top of the tutorial shows the unsmoothed path from NavFn (red) and the smoothed path (black). Note the smoother approach to goal, turns, and transitions in the straight-line segments.
+And its as simple as that! You can now compile or use this behavior tree in your system and see that the plans are now smoothed and the controllers are now tracking this smoothed path. The image at the top of the tutorial shows the unsmoothed path from NavFn (red) and the smoothed path (black). Note the smoother approach to goal, turns, and transitions in the straight-line segments. Make sure to add the smoother error code prefix to the BT Navigator configuration if using the contextual error codes.
 
 If you wish to see the difference, but not track the smoothed path, you may wish to remove the ``smoothed_path="{path}"`` portion to compute the smoothed path, but not replace the original path with it. Instead, the topic ``/smoothed_path`` contains this information published by the smoother server for visualization or use by other parts of the system. You may also remap the smoothed path to another blackboard variable to interact with it in other parts of the behavior tree (e.g. ``smoothed_path="{smoothed_path}"``).

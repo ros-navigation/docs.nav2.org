@@ -21,7 +21,7 @@ Velocity Smoother Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           false   
+  bool           false
   ============== =======
 
   Description
@@ -30,7 +30,7 @@ Velocity Smoother Parameters
 :smoothing_frequency:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         20.0
   ============== ===========================
@@ -41,7 +41,7 @@ Velocity Smoother Parameters
 :scale_velocities:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   bool           false
   ============== ===========================
@@ -52,7 +52,7 @@ Velocity Smoother Parameters
 :feedback:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   string         "OPEN_LOOP"
   ============== ===========================
@@ -63,7 +63,7 @@ Velocity Smoother Parameters
 :max_velocity:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [0.5, 0.0, 2.5]
   ============== ===========================
@@ -74,7 +74,7 @@ Velocity Smoother Parameters
 :min_velocity:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [-0.5, 0.0, -2.5]
   ============== ===========================
@@ -85,7 +85,7 @@ Velocity Smoother Parameters
 :deadband_velocity:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [0.0, 0.0, 0.0]
   ============== ===========================
@@ -96,7 +96,7 @@ Velocity Smoother Parameters
 :velocity_timeout:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         1.0
   ============== ===========================
@@ -107,7 +107,7 @@ Velocity Smoother Parameters
 :max_accel:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [2.5, 0.0, 3.2]
   ============== ===========================
@@ -118,7 +118,7 @@ Velocity Smoother Parameters
 :max_decel:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   vector<double> [-2.5, 0.0, -3.2]
   ============== ===========================
@@ -129,7 +129,7 @@ Velocity Smoother Parameters
 :odom_topic:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   string         "odom"
   ============== ===========================
@@ -140,7 +140,7 @@ Velocity Smoother Parameters
 :odom_duration:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
   double         0.1
   ============== ===========================
@@ -153,12 +153,13 @@ Velocity Smoother Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
 :bond_heartbeat_period:
 
@@ -171,6 +172,16 @@ Velocity Smoother Parameters
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
 
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Example
 *******

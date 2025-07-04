@@ -6,7 +6,7 @@
 5. Navigation Branding and Website
 ==================================
 
-**Task description** 
+**Task description**
 
 Navigation2 has made significant strides to be the best navigation system in the world. Over time, the original navigation stack in ROS has gained a reputation, fair or unfair, of being relatively limited in the types of tasks it can accomplish that are no longer true in ROS 2 Navigation2.
 
@@ -30,7 +30,7 @@ As such, we would like to initiate a re-branding effort to help differentiate it
 - Web technologies
 - Creative thinking
 
-**List of relevant open source software repositories and refs** 
+**List of relevant open source software repositories and refs**
 
 - `Github issue <https://github.com/ros-navigation/navigation2/issues/1485>`_
 - `Navigation2 <https://docs.nav2.org/>`_
@@ -38,4 +38,3 @@ As such, we would like to initiate a re-branding effort to help differentiate it
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
 - No other CLA's are required.
-

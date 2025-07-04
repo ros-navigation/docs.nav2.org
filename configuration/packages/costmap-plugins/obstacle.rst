@@ -12,9 +12,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``.enabled:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
@@ -23,9 +23,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``.footprint_clearing_enabled:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
@@ -34,9 +34,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``.max_obstacle_height:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 2.0            
+  double 2.0
   ====== =======
 
   Description
@@ -45,9 +45,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``.combination_method:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  int    1            
+  int    1
   ====== =======
 
   Description
@@ -55,21 +55,31 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 
   | 0 - Overwrite: Overwrite master costmap with every valid observation.
 
-  | 1 - Max: Sets the new value to the maximum of the master_grid's value and this layer's value. 
+  | 1 - Max: Sets the new value to the maximum of the master_grid's value and this layer's value.
   | This is the default.
-  
+
   | 2 - MaxWithoutUnknownOverwrite: Sets the new value to the maximum of the master_grid's
   | value and this layer's value. If the master value is NO_INFORMATION, it is NOT overwritten.
   | It can be used to make sure that the static map is the dominant source of information, and
   | prevent the robot to go through places that are not present in the static map.
 
+:``<obstacle layer>``.tf_filter_tolerance:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.05
+  ====== =======
+
+  Description
+    Tolerance for the ``tf2_ros::MessageFilter``.
 
 :``<obstacle layer>``.observation_sources:
 
   ============== =======
-  Type           Default                                                   
+  Type           Default
   -------------- -------
-  vector<string> {""}            
+  vector<string> {""}
   ============== =======
 
   Description
@@ -78,20 +88,28 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.topic:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  string ""            
+  string ""
   ====== =======
 
   Description
     Topic of data.
 
+  Relative topics will be relative to the node's parent namespace.
+  For example, if you specify `topic: scan` in the `obstacle_layer` of a `local_costmap` and you launch your bringup with a `tb4` namespace:
+
+  * User chosen namespace is `tb4`.
+  * User chosen topic is `scan`.
+  * Topic will be remapped to `/tb4/scan` without `local_costmap`.
+  * Use global topic `/scan` if you do not wish the node namespace to apply.
+
 :``<obstacle layer>``. ``<data source>``.sensor_frame:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  string ""            
+  string ""
   ====== =======
 
   Description
@@ -100,9 +118,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.observation_persistence:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.0            
+  double 0.0
   ====== =======
 
   Description
@@ -111,9 +129,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.expected_update_rate:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.0            
+  double 0.0
   ====== =======
 
   Description
@@ -122,9 +140,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.data_type:
 
   ====== ===========
-  Type   Default                                                   
+  Type   Default
   ------ -----------
-  string "LaserScan"            
+  string "LaserScan"
   ====== ===========
 
   Description
@@ -133,9 +151,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.min_obstacle_height:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.0            
+  double 0.0
   ====== =======
 
   Description
@@ -144,9 +162,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.max_obstacle_height:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.0            
+  double 0.0
   ====== =======
 
   Description
@@ -155,9 +173,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.inf_is_valid:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   False            
+  bool   False
   ====== =======
 
   Description
@@ -166,9 +184,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.marking:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   True            
+  bool   True
   ====== =======
 
   Description
@@ -177,9 +195,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.clearing:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   False            
+  bool   False
   ====== =======
 
   Description
@@ -188,9 +206,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.obstacle_max_range:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 2.5            
+  double 2.5
   ====== =======
 
   Description
@@ -199,9 +217,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.obstacle_min_range:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.0           
+  double 0.0
   ====== =======
 
   Description
@@ -210,9 +228,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.raytrace_max_range:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 3.0            
+  double 3.0
   ====== =======
 
   Description
@@ -221,9 +239,9 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
 :``<obstacle layer>``. ``<data source>``.raytrace_min_range:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  double 0.0            
+  double 0.0
   ====== =======
 
   Description

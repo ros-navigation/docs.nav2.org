@@ -3,6 +3,8 @@
 Setting Up The URDF
 ###################
 
+.. note:: Note that you will also be setting up a SDF for simulation in Gazebo in the next tutorials. URDF is used to set up the robot frames and describe the robot's structure for run-time use on hardware and possibly in simulation. SDF is a specific file for simulators, like Gazebo, that describes the simulator environment, model (including its frames and Gazebo-specific information), and appropriate plugins. The SDF that we will make is for Gazebo, but could be replaced with an appropriate SDF or other format file for Open3D Engine or Isaac Sim.
+
 For this guide, we will be creating the Unified Robot Description Format (URDF) file for a simple differential drive robot to give you hands-on experience on working with URDF. We will also setup the robot state publisher and visualize our model in RVIZ. Lastly, we will be adding some kinematic properties to our robot URDF to prepare it for simulation purposes. These steps are necessary to represent all the sensor, hardware, and robot transforms of your robot for use in navigation.
 
 .. seealso::
@@ -11,16 +13,16 @@ For this guide, we will be creating the Unified Robot Description Format (URDF) 
 URDF and the Robot State Publisher
 ==================================
 
-As discussed in the previous tutorial, one of the requirements for Navigation2 is the transformation from  ``base_link`` to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  ``base_link`` to ``laser_link`` or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms. 
+As discussed in the previous tutorial, one of the requirements for Navigation2 is the transformation from  ``base_link`` to the various sensors and reference frames. This transformation tree can range from a simple tree with only one link from the  ``base_link`` to ``laser_link`` or a tree comprised of multiple sensors located in different locations, each having their own coordinate frame. Creating multiple publishers to handle all of these coordinate frame transformations may become tedious. Therefore, we will be making use of the Robot State Publisher package to publish our transforms.
 
-The Robot State Publisher is a package of ROS 2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct URDF and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees. 
+The Robot State Publisher is a package of ROS 2 that interacts with the tf2 package to publish all of the necessary transforms that can be directly inferred from the geometry and structure of the robot. We need to provide it with the correct URDF and it will automatically handle publishing the transforms. This is very useful for complex transformations but it is still recommended for simpler transform trees.
 
 The Unified Robot Description Format (URDF) is an XML file that represents a robot model. In this tutorial, it will mainly be used to build transformations trees related with the robot geometry, but it also has other uses. One example is how it can be used in visualizing your robot model in RVIZ, a 3D Visualization tool for ROS, by defining visual components such as materials and meshes. Another example is how the URDF can be used to define the physical properties of the robot. These properties are then used in physics simulators such as Gazebo to simulate how your robot will interact in an environment.
 
 Another major feature of URDF is that it also supports Xacro (XML Macros) to help you create a shorter and readable XML to help in defining complex robots. We can use these macros to eliminate the need for repeating blocks of XML in our URDF. Xacro is also useful in defining configuration constants which can be reused throughout the URDF.
 
 .. seealso::
-  If you want to learn more about the URDF and the Robot State Publisher, we encourage you to have a look at the official `URDF Documentation <http://wiki.ros.org/urdf>`__ and `Robot State Publisher Documentation <http://wiki.ros.org/robot_state_publisher>`__  
+  If you want to learn more about the URDF and the Robot State Publisher, we encourage you to have a look at the official `URDF Documentation <http://wiki.ros.org/urdf>`__ and `Robot State Publisher Documentation <http://wiki.ros.org/robot_state_publisher>`__
 
 Setting Up the Environment
 ==========================
@@ -33,7 +35,7 @@ Let's begin by installing some additional ROS 2 packages that we will be using d
 
   sudo apt install ros-<ros2-distro>-joint-state-publisher-gui
   sudo apt install ros-<ros2-distro>-xacro
- 
+
 Next, create a directory for your project, initialize a ROS 2 workspace and give your robot a name. For ours, we'll be calling it ``sam_bot``.
 
 .. code-block:: shell
@@ -54,7 +56,7 @@ Now that we have our project workspace set up, let's dive straight into writing 
 
 |
 
- To get started, create a file named ``sam_bot_description.urdf`` under ``src/description`` and input the following as the initial contents of the file. 
+ To get started, create a file named ``sam_bot_description.urdf`` under ``src/description`` and input the following as the initial contents of the file.
 
 .. code-block:: xml
   :linenos:
@@ -88,11 +90,11 @@ Next, let us define some constants using XAcro properties that will be reused th
 
 Here is a brief discussion on what these properties will represent in our urdf. The ``base_*`` properties all define the size of the robot's main chassis. The ``wheel_radius`` and ``wheel_width`` define the shape of the robot's two back wheels. The ``wheel_ygap`` adjusts the gap between the wheel and the chassis along the y-axis whilst ``wheel_zoff`` and ``wheel_xoff`` position the back wheels along the z-axis and x-axis appropriately. Lastly, the ``caster_xoff`` positions the front caster wheel along the x-axis.
 
-Let us then define our ``base_link`` - this link will be a large box and will act as the main chassis of our robot. In URDF, a ``link`` element describes a rigid part or component of our robot. The robot state publisher then utilizes these definitions to determine coordinate frames for each link and publish the transformations between them. 
+Let us then define our ``base_link`` - this link will be a large box and will act as the main chassis of our robot. In URDF, a ``link`` element describes a rigid part or component of our robot. The robot state publisher then utilizes these definitions to determine coordinate frames for each link and publish the transformations between them.
 
 We will also be defining some of the link's visual properties which can be used by tools such as Gazebo and Rviz to show us a 3D model of our robot. Amongst these properties are ``<geometry>`` which describes the link's shape and ``<material>`` which describes it's color.
 
-For the code block block below, we access the ``base`` properties from the robot constants sections we defined before using the ``${property}`` syntax. In addition, we also set the material color of the main chassis to ``Cyan``. Note that we set these parameters under the ``<visual>`` tag so they will only be applied as visual parameters which dont affect any collision or physical properties.
+For the code block below, we access the ``base`` properties from the robot constants sections we defined before using the ``${property}`` syntax. In addition, we also set the material color of the main chassis to ``Cyan``. Note that we set these parameters under the ``<visual>`` tag so they will only be applied as visual parameters which dont affect any collision or physical properties.
 
 .. code-block:: xml
   :lineno-start: 17
@@ -125,9 +127,9 @@ After defining our base_link, we then add a joint to connect it to ``base_link``
       <origin xyz="0.0 0.0 ${-(wheel_radius+wheel_zoff)}" rpy="0 0 0"/>
     </joint>
 
-Now, we will be adding two large drive wheels to our robot. To make our code cleaner and avoid repetition, we will make use of macros to define a block of code that will be repeated with differing parameters. Our macro will have 3 params: ``prefix`` which simply adds a prefix to our link and joint names, and ``x_reflect`` and ``y_reflect`` which allows us to flip the positions of our wheels with respect to the x and y axis respectively. Within this macro, we can also define the visual properties of a single wheel. Lastly, we will also define a ``continuous`` joint to allow our wheels to freely rotate about an axis. This joint also connects our wheel to the ``base_link`` at the appropriate location. 
+Now, we will be adding two large drive wheels to our robot. To make our code cleaner and avoid repetition, we will make use of macros to define a block of code that will be repeated with differing parameters. Our macro will have 3 params: ``prefix`` which simply adds a prefix to our link and joint names, and ``x_reflect`` and ``y_reflect`` which allows us to flip the positions of our wheels with respect to the x and y axis respectively. Within this macro, we can also define the visual properties of a single wheel. Lastly, we will also define a ``continuous`` joint to allow our wheels to freely rotate about an axis. This joint also connects our wheel to the ``base_link`` at the appropriate location.
 
-At the end of this code block, we will be instantiating two wheels using the macro we just made through the ``xacro:wheel`` tags. Note that we also define the parameters to have one wheel on both sides at the back of our robot. 
+At the end of this code block, we will be instantiating two wheels using the macro we just made through the ``xacro:wheel`` tags. Note that we also define the parameters to have one wheel on both sides at the back of our robot.
 
 .. code-block:: xml
   :lineno-start: 38
@@ -197,39 +199,42 @@ Let's start this section by adding some dependencies that will be required once 
   <exec_depend>rviz</exec_depend>
   <exec_depend>xacro</exec_depend>
 
-Next, let us create our launch file. Launch files are used by ROS 2 to bring up the necessary nodes for our package. From the root of the project, create a directory named ``launch`` and a ``display.launch.py`` file within it. The launch file below launches a robot publisher node in ROS 2 that uses our URDF to publish the transforms for our robot. In addition, the launch file also automatically launches RVIZ so we can visualize our robot as defined by the URDF. Copy and paste the snippet below into your ``display.launch.py`` file. 
+Next, let us create our launch file. Launch files are used by ROS 2 to bring up the necessary nodes for our package. From the root of the project, create a directory named ``launch`` and a ``display.launch.py`` file within it. The launch file below launches a robot publisher node in ROS 2 that uses our URDF to publish the transforms for our robot. In addition, the launch file also automatically launches RVIZ so we can visualize our robot as defined by the URDF. Copy and paste the snippet below into your ``display.launch.py`` file.
 
 .. code-block:: python
 
-  import launch
+  from launch import LaunchDescription
+  from launch.actions import DeclareLaunchArgument
+  from launch.conditions import IfCondition, UnlessCondition
   from launch.substitutions import Command, LaunchConfiguration
-  import launch_ros
+  from launch_ros.actions import Node
+  from launch_ros.substitutions import FindPackageShare
   import os
 
   def generate_launch_description():
-      pkg_share = launch_ros.substitutions.FindPackageShare(package='sam_bot_description').find('sam_bot_description')
-      default_model_path = os.path.join(pkg_share, 'src/description/sam_bot_description.urdf')
-      default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config.rviz')
+      pkg_share = FindPackageShare(package='sam_bot_description').find('sam_bot_description')
+      default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.urdf')
+      default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
 
-      robot_state_publisher_node = launch_ros.actions.Node(
+      robot_state_publisher_node = Node(
           package='robot_state_publisher',
           executable='robot_state_publisher',
           parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
       )
-      joint_state_publisher_node = launch_ros.actions.Node(
+      joint_state_publisher_node = Node(
           package='joint_state_publisher',
           executable='joint_state_publisher',
           name='joint_state_publisher',
           parameters=[{'robot_description': Command(['xacro ', default_model_path])}],
-          condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui'))
+          condition=UnlessCondition(LaunchConfiguration('gui'))
       )
-      joint_state_publisher_gui_node = launch_ros.actions.Node(
+      joint_state_publisher_gui_node = Node(
           package='joint_state_publisher_gui',
           executable='joint_state_publisher_gui',
           name='joint_state_publisher_gui',
-          condition=launch.conditions.IfCondition(LaunchConfiguration('gui'))
+          condition=IfCondition(LaunchConfiguration('gui'))
       )
-      rviz_node = launch_ros.actions.Node(
+      rviz_node = Node(
           package='rviz2',
           executable='rviz2',
           name='rviz2',
@@ -237,13 +242,10 @@ Next, let us create our launch file. Launch files are used by ROS 2 to bring up 
           arguments=['-d', LaunchConfiguration('rvizconfig')],
       )
 
-      return launch.LaunchDescription([
-          launch.actions.DeclareLaunchArgument(name='gui', default_value='True',
-                                              description='Flag to enable joint_state_publisher_gui'),
-          launch.actions.DeclareLaunchArgument(name='model', default_value=default_model_path,
-                                              description='Absolute path to robot urdf file'),
-          launch.actions.DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path,
-                                              description='Absolute path to rviz config file'),
+      return LaunchDescription([
+          DeclareLaunchArgument(name='gui', default_value='True', description='Flag to enable joint_state_publisher_gui'),
+          DeclareLaunchArgument(name='model', default_value=default_model_path, description='Absolute path to robot model file'),
+          DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path, description='Absolute path to rviz config file'),
           joint_state_publisher_node,
           joint_state_publisher_gui_node,
           robot_state_publisher_node,
@@ -252,7 +254,7 @@ Next, let us create our launch file. Launch files are used by ROS 2 to bring up 
 
 .. seealso:: For more information regarding the launch system in ROS 2, you can have a look at the official `ROS 2 Launch System Documentation <https://docs.ros.org/en/rolling/Tutorials/Launch-system.html>`__
 
-To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``urdf_config.rviz`` under it. Place the following as the contents of ``urdf_config.rviz``
+To keep things simpler when we get to visualization, we have provided an RVIz config file that will be loaded when we launch our package. This configuration file initializes RVIz with the proper settings so you can view the robot immediately once it launches. Create a directory named ``rviz`` in the root of your project and a file named ``config.rviz`` under it. Place the following as the contents of ``config.rviz``
 
 .. code-block:: shell
 
@@ -348,11 +350,11 @@ ROS 2 should now launch a robot publisher node and start up RVIZ using our URDF.
 Visualization using RVIZ
 ========================
 
-RVIZ is a robot visualization tool that allows us to see a 3D model of our robot using its URDF. Upon a successful launch using the commands in the previous section, RVIZ should now be visible on your screen and should look like the image below. You may need to move around and manipulate the view to get a good look at your robot. 
+RVIZ is a robot visualization tool that allows us to see a 3D model of our robot using its URDF. Upon a successful launch using the commands in the previous section, RVIZ should now be visible on your screen and should look like the image below. You may need to move around and manipulate the view to get a good look at your robot.
 
 .. image:: images/base-bot_3.png
 
-As you can see, we have successfully created a simple differential drive robot and visualized it in RVIz. It is not necessary to visualize your robot in RVIz, but it's a good step in order to see if you have properly defined your URDF. This helps you ensure that the robot state publisher is publishing the correct transformations. 
+As you can see, we have successfully created a simple differential drive robot and visualized it in RVIz. It is not necessary to visualize your robot in RVIz, but it's a good step in order to see if you have properly defined your URDF. This helps you ensure that the robot state publisher is publishing the correct transformations.
 
 You may have noticed that another window was launched - this is a GUI for the joint state publisher. The joint state publisher is another ROS 2 package which publishes the state for our non-fixed joints. You can manipulate this publisher through the small GUI and the new pose of the joints will be reflected in RVIz. Sliding the bars for any of the two wheels will rotate these joints. You can see this in action by viewing RVIZ as you sweep the sliders in the Joint State Publisher GUI.
 
@@ -385,7 +387,7 @@ Let us first define macros containing the inertial properties of the geometric p
       <inertial>
         <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
         <mass value="${m}"/>
-        <inertia ixx="${(m/12) * (3*r*r + h*h)}" ixy = "0" ixz = "0" iyy="${(m/12) * (3*r*r + h*h)}" iyz = "0" izz="${(m/2) * (r*r)}"/> 
+        <inertia ixx="${(m/12) * (3*r*r + h*h)}" ixy = "0" ixz = "0" iyy="${(m/12) * (3*r*r + h*h)}" iyz = "0" izz="${(m/2) * (r*r)}"/>
       </inertial>
     </xacro:macro>
 
@@ -396,7 +398,7 @@ Let us first define macros containing the inertial properties of the geometric p
       </inertial>
     </xacro:macro>
 
-Let us start by adding collision areas to our ``base_link`` using the ``<collision>`` tag. We will also be using the box_inertia macro we defined before to add some inertial properties to our ``base_link``. Include the following code snippet within ``<link name="base_link">`` tag of base_link in our URDF.
+Let us start by adding collision areas to our ``base_link`` using the ``<collision>`` tag. Include the following code snippet within ``<link name="base_link">`` tag of ``base_link`` in our URDF.
 
 .. code-block:: xml
   :lineno-start: 52
@@ -407,7 +409,14 @@ Let us start by adding collision areas to our ``base_link`` using the ``<collisi
         </geometry>
       </collision>
 
-      <xacro:box_inertia m="15" w="${base_width}" d="${base_length}" h="${base_height}"/>
+We will also be using the box_inertia macro we defined before to add some inertial properties to our ``base_link``.
+The ``kdl_parser`` package used in ``robot_state_publisher`` doesn't like inertial properties being specified in the root link, in this case the ``base_link``, to combat this we will be including them in the ``base_footprint`` instead.
+Include the following code snippet within ``<link name="base_footprint">`` tag of ``base_footprint`` in our URDF.
+
+.. code-block:: xml
+  :lineno-start: 62
+
+       <xacro:box_inertia m="15" w="${base_width}" d="${base_length}" h="${base_height}"/>
 
 Next, let us do the same for our wheel macros. Include the following code snippet within the ``<link name="${prefix}_link">`` tag of our wheel macros in our URDF.
 

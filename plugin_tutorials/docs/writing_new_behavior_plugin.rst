@@ -148,14 +148,14 @@ The remaining methods are not used and are not mandatory to override them.
 
 Now that we have created our custom behavior, we need to export our Behavior Plugin so that it would be visible to the behavior server. Plugins are loaded at runtime and if they are not visible, then our behavior server won't be able to load it. In ROS 2, exporting and loading plugins is handled by ``pluginlib``.
 
-Coming to our tutorial, class ``nav2_sms_bahavior::SendSms`` is loaded dynamically as ``nav2_core::Behavior`` which is our base class.
+Coming to our tutorial, class ``nav2_sms_behavior::SendSms`` is loaded dynamically as ``nav2_core::Behavior`` which is our base class.
 
 1. To export the behavior, we need to provide two lines
 
 .. code-block:: c++
 
   #include "pluginlib/class_list_macros.hpp"
-  PLUGINLIB_EXPORT_CLASS(nav2_sms_bahavior::SendSms, nav2_core::Behavior)
+  PLUGINLIB_EXPORT_CLASS(nav2_sms_behavior::SendSms, nav2_core::Behavior)
 
 Note that it requires pluginlib to export out plugin's class. Pluginlib would provide as macro ``PLUGINLIB_EXPORT_CLASS`` which does all the work of exporting.
 
@@ -164,7 +164,7 @@ It is good practice to place these lines at the end of the file but technically,
 2. Next step would be to create plugin's description file in the root directory of the package. For example, ``behavior_plugin.xml`` file in our tutorial package. This file contains following information
 
  - ``library path``: Plugin's library name and it's location.
- - ``class name``: Name of the class.
+ - ``class name``: Name of the class (optional). If not set, it will default to the ``class type``.
  - ``class type``: Type of class.
  - ``base class``: Name of the base class.
  - ``description``: Description of the plugin.

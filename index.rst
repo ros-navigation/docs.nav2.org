@@ -18,7 +18,7 @@
 Our Sponsors
 ############
 
-.. image:: images/sponsors_feb_2024.png
+.. image:: images/sponsors_jan_2025.png
     :width: 700px
     :align: center
     :alt: Our Sponsors
@@ -57,7 +57,7 @@ map source if utilizing the Static Costmap Layer, a BT XML file, and any relevan
 sources. It will then provide valid velocity commands for the motors of a holonomic or
 non-holonomic robot to follow when properly configured. We currently support all of the major robot types:
 holonomic, differential-drive, legged, and ackermann (car-like) base types! We support
-them uniquely with both circular and arbitrarily-shaped robots for SE2 collision checking. 
+them uniquely with both circular and arbitrarily-shaped robots for SE2 collision checking.
 
 
 It has tools to:
@@ -68,10 +68,10 @@ It has tools to:
 - Control the robot to follows the path and dynamically adjust to avoid collision
 - Smooth plans to be more continuous, smooth, and/or feasible
 - Convert sensor data into an environmental model of the world
-- Build complicated and highly-customizable robot behaviors using behavior trees 
+- Build complicated and highly-customizable robot behaviors using behavior trees
 - Conduct pre-defined behaviors in case of failure, human intervention, or other
 - Follow sequential waypoints comprising a mission
-- Manage the system's program lifecycle and watchdog for the servers 
+- Manage the system's program lifecycle and watchdog for the servers
 - Easy dynamically loaded plugins for creating customized algorithms, behaviors and so on
 - Monitor raw sensor data for imminent collision or dangerous situation
 - Python3 API to interact with Nav2 and its internal task servers in a pythonic manner
@@ -83,7 +83,7 @@ It has tools to:
     :align: center
     :alt: Navigation2 Block Diagram
 
-We also provide a set of starting plugins to get you going. 
+We also provide a set of starting plugins to get you going.
 A list of all plugins can be found on :ref:`plugins` - but they include algorithms for the spanning cross section of common behaviors and robot platform types.
 
 Related Projects
@@ -135,7 +135,7 @@ Robotics and Autonomous Systems, 2023
 .. code-block:: bash
 
   @article{macenski2023survey,
-        title={From the desks of ROS maintainers: A survey of modern & capable mobile robotics algorithms in the robot operating system 2}, 
+        title={From the desks of ROS maintainers: A survey of modern & capable mobile robotics algorithms in the robot operating system 2},
         author={S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson},
         year={2023},
         journal = {Robotics and Autonomous Systems}
@@ -149,7 +149,7 @@ S. Macenski, M. Booker, J. Wallace,
 .. code-block:: bash
 
   @article{macenski2024smac,
-        title={Open-Source, Cost-Aware Kinematically Feasible Planning for Mobile and Surface Robotics}, 
+        title={Open-Source, Cost-Aware Kinematically Feasible Planning for Mobile and Surface Robotics},
         author={Steve Macenski and Matthew Booker and Josh Wallace},
         year={2024},
         journal = {Arxiv}
@@ -157,14 +157,14 @@ S. Macenski, M. Booker, J. Wallace,
 
 Regulated Pure Pursuit Controller:
 
-S. Macenski, S. Singh, F. Martin, J. Gines, 
+S. Macenski, S. Singh, F. Martin, J. Gines,
 `Regulated Pure Pursuit for Robot Path Tracking <https://arxiv.org/abs/2305.20026>`_,
 Autonomous Robots, 2023.
 
 .. code-block:: bash
 
   @article{macenski2023regulated,
-        title={Regulated Pure Pursuit for Robot Path Tracking}, 
+        title={Regulated Pure Pursuit for Robot Path Tracking},
         author={Steve Macenski and Shrijit Singh and Francisco Martin and Jonatan Gines},
         year={2023},
         journal = {Autonomous Robots}
@@ -193,6 +193,7 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
    concepts/index.rst
    setup_guides/index.rst
    about/robots.rst
+   about/roscon.rst
    tutorials/index.rst
    plugin_tutorials/index.rst
    configuration/index.rst
@@ -203,3 +204,4 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
    commander_api/index.rst
    roadmap/roadmap.rst
    about/index.rst
+   maintainer_docs/index.rst

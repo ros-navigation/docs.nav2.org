@@ -20,7 +20,7 @@ This is accomplished via plugins ``ChargingDock`` and ``NonChargingDock`` which 
 A configuration of the docking server can contain a database of many docks of different plugin ``ChargingDock`` and ``NonChargingDock`` types to handle a broad range of docking locations and hardware dock revisions.
 Included with the package is an example ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins which contains features and methods very common for robot docking.
 These support charging stations and docking with static infrastructure (ex. conveyor belts) or dynamic docking (ex pallets) locations.
-It is likely that you may be able to use this as well rather than developing your own dock plugin to get started. 
+It is likely that you may be able to use this as well rather than developing your own dock plugin to get started.
 
 The docking procedure is as follows:
 
@@ -28,7 +28,7 @@ The docking procedure is as follows:
 2. If the robot is not within the prestaging tolerance of the dock's staging pose, navigate to the staging pose
 3. Use the dock's plugin to initially detect the dock and return the docking pose
 4. Enter a vision-control loop where the robot attempts to reach the docking pose while its actively being refined by the vision system
-5. Exit the vision-control loop once contact has been detected or charging has started 
+5. Exit the vision-control loop once contact has been detected or charging has started
 6. Wait until charging starts (if applicable) and return success.
 
 Thanks to NVIDIA for sponsoring this Docking Server package and this tutorial!
@@ -54,7 +54,7 @@ See ``opennav_docking`` README for complete concept explanations, parameters, an
 ChargingDock Plugins
 ====================
 
-``opennav_docking_core::ChargingDock`` and ``opennav_docking_core::ChargingDock`` plugins are established to abstract out robot- and dock-specifics from the generalized framework.
+``opennav_docking_core::ChargingDock`` and ``opennav_docking_core::NonChargingDock`` plugins are established to abstract out robot- and dock-specifics from the generalized framework.
 This allows a system to leverage this framework and provide its own methods for detecting the dock's current pose, when the robot is charging, and when contact is made.
 Luckily, there are several common ROS APIs that allow us to create semi-generalized ``SimpleChargingDock`` and ``SimpleNonChargingDock`` plugins that allows out-of-the-box docking as long as users provide ``JointState``, ``BatteryState``, and detected dock pose ``PoseStamped`` topics.
 However, one way or another, your system requires an applicable ``ChargingDock`` or ``NonChargingDock`` plugin for each type of dock you wish to use.
@@ -62,11 +62,14 @@ However, one way or another, your system requires an applicable ``ChargingDock``
 The plugins has a few key APIs:
 
 - ``PoseStamped getStagingPose(const Pose & pose, const string & frame)`` which must provide the pre-docking staging pose given a dock's location and frame.
-- ``bool getRefinedPose(PoseStamped & pose)`` which must provide the detected (or pass through) pose of the dock 
+- ``bool getRefinedPose(PoseStamped & pose)`` which must provide the detected (or pass through) pose of the dock
 - ``bool isDocked()`` which provides if we've made contact with the dock
 - ``bool isCharging()`` which provides if we've started charging while docked (charging docks only)
 - ``bool disableCharging()`` which should disable charging, if under the robot's control for undocking (charging docks only)
 - ``bool hasStoppedCharging()`` which indicates if we've successfully stopped charging on undocking (charging docks only)
+- ``bool isCharger()`` which indicates if this is a charging-typed dock
+- ``DockDirection getDockDirection()`` which indicates the direction of the dock (if the robot should drive forwards, backwards, etc onto the dock)
+- ``bool shouldRotateToDock()`` which indicates if the robot should rotate to dock (for example, to perform a backward docking without detections)
 
 The ``SimpleChargingDock`` provides an implementation with common options for these APIs:
 
@@ -78,7 +81,7 @@ The ``SimpleChargingDock`` provides an implementation with common options for th
 - ``hasStoppedCharging`` - The inverse of ``isCharging`` (charging docks only)
 
 Thus, for testing (no detection, no battery information, no joint state information) and realistic application (dock detection, battery status information, joint state information), this dock plugin can be used.
-It can also be used when only some of the information if available as well. 
+It can also be used when only some of the information if available as well.
 If your robot or dock does not fall into these implementations (i.e. using custom battery or detection messages that cannot be converted into ROS standard types), then you may be required to build your own plugin to meet your particular needs.
 However, you can use the ``SimpleChargingDock`` assuming you turn off these settings and dock blind to get started.
 There is an equivalent ``SimpleNonChargingDock`` plugin for non-charging docking needs.
@@ -284,7 +287,7 @@ During execution, feedback is provided on the current docking state - which is p
 The feedback can be obtained from your action client if this information is useful to your application.
 
 The ``UndockRobot`` action is even simpler. There are no required goal fields except ``dock_type`` if undocking is being called when the server's instance did not dock the robot to store its current state information (such as after a restart on the dock).
-It contains no feedback and returns the ``success`` state and the ``error_code`` if a problem occurs. 
+It contains no feedback and returns the ``success`` state and the ``error_code`` if a problem occurs.
 
 .. code-block:: bash
 
@@ -307,8 +310,8 @@ Putting It All Together
 At this point, if you haven't already, create your dock plugin (or use ``SimpleChargingDock``), configuration file, and launch file - along with any other nodes required like apriltags or other detectors.
 You can see an example package used in this tutorial in the ``nova_carter_docking`` package, which contains a configuration file and launch file containing the apriltags detector and ``PoseStamped`` pose publisher.
 
-If you're interested in using Apriltags and an Nvidia Jetson, you can find the tags we used in the ``media/`` directory and the launch file ``isaac_apriltag_detection_pipeline.launch.py`` which sets it all up for you. 
-If not using the Jetson, you can replace the Isaac ROS apriltag detector with ``image_proc``. 
+If you're interested in using Apriltags and an Nvidia Jetson, you can find the tags we used in the ``media/`` directory and the launch file ``isaac_apriltag_detection_pipeline.launch.py`` which sets it all up for you.
+If not using the Jetson, you can replace the Isaac ROS apriltag detector with ``image_proc``.
 
 We can test this using the script ``demo.py`` in ``nova_carter_docking``'s root directory.
 It will set the robot's pose as virtually the dock's staging pose to bypass navigating to the staging pose and attempt docking immediately, then infinitely loop docking and undocking in a row.
@@ -330,7 +333,7 @@ Note that the robot is able to overcome:
 - Dock repeatedly with a 100% success rate due to the detections and charging state feedback
 
 This script demonstrates the essential use of the Docking Server.
-However, it does not use the dock database of pre-mapped dock locations that you setup. 
+However, it does not use the dock database of pre-mapped dock locations that you setup.
 After you launch Nav2 and localize your robot in your map, we can adjust ``dockRobot()`` to take in your desired ``dock_id`` and perform docking instead:
 Then, we can see the full docking system in action in a non-trivial environment!
 
@@ -358,7 +361,7 @@ Then, we can see the full docking system in action in a non-trivial environment!
 
         self.result_future = self.goal_handle.get_result_async()
         return True
-    
+
     ...
 
     dock_id = 'home_dock'

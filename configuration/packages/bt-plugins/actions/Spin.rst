@@ -21,7 +21,7 @@ Input Ports
   ====== =======
 
   Description
-    	Spin distance (radians).
+        Spin distance (radians).
 
 :time_allowance:
 
@@ -43,7 +43,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server name.
+        Action server name.
 
 :server_timeout:
 
@@ -54,7 +54,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server timeout (ms).
+        Action server timeout (ms).
 
 :is_recovery:
 
@@ -65,7 +65,18 @@ Input Ports
   ==== =======
 
   Description
-    	True if the action is being used as a recovery.
+        True if the action is being used as a recovery.
+
+:disable_collision_checks:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false
+  ====== =======
+
+  Description
+      Disable collision checking.
 
 Output Ports
 ------------
@@ -75,16 +86,27 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description
-    	Spin error code. See ``Spin`` action message for the enumerated set of error codes.
+        Spin error code. See ``Spin`` action message for the enumerated set of error codes.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        Spin error message. See ``Spin`` action message for the enumerated set of error codes.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <Spin spin_dist="1.57" server_name="spin" server_timeout="10" is_recovery="true" error_code_id="{spin_error_code}"/>
-
+  <Spin spin_dist="1.57" server_name="spin" server_timeout="10" is_recovery="true" disable_collision_checks="false"
+        error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>

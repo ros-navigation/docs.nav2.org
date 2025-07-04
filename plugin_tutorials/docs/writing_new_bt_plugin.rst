@@ -6,6 +6,8 @@ Writing a New Behavior Tree Plugin
 - `Overview`_
 - `Requirements`_
 - `Tutorial Steps`_
+- `Using custom types for Input/Output ports`_
+- `Visualize the content of the blackboard in Groot 2 (PRO)`_
 
 Overview
 ========
@@ -154,7 +156,7 @@ Plugins are loaded at runtime, and if they are not visible, then our BT Navigato
 In BehaviorTree.CPP, exporting and loading plugins is handled by the ``BT_REGISTER_NODES`` macro.
 
 .. code-block:: c++
-  
+
   BT_REGISTER_NODES(factory)
   {
     BT::NodeBuilder builder =
@@ -192,9 +194,10 @@ In order for the BT Navigator node to discover the plugin we've just registered,
       global_frame: map
       robot_base_frame: base_link
       odom_topic: /odom
-      default_bt_xml_filename: "navigate_w_replanning_and_recovery.xml"
+      default_nav_to_pose_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
+      default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
       plugin_lib_names:
-      - nav2_back_up_action_bt_node # other plugin 
+      - nav2_back_up_action_bt_node # other plugin
       - nav2_wait_action_bt_node    # our new plugin
 
 4- Run Your Custom plugin
@@ -224,13 +227,94 @@ Select this BT XML file in your specific navigation request in ``NavigateToPose`
         </PipelineSequence>
         <ReactiveFallback name="RecoveryFallback">
           <GoalUpdated/>
-          <SequenceStar name="RecoveryActions">
+          <SequenceWithMemory name="RecoveryActions">
             <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
             <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
             <Spin spin_dist="1.57"/>
             <Wait wait_duration="5"/>
-          </SequenceStar>
+          </SequenceWithMemory>
         </ReactiveFallback>
       </RecoveryNode>
     </BehaviorTree>
   </root>
+
+Using custom types for Input/Output ports
+=========================================
+
+In addition to standard types, custom types such as those from ``nav2_msgs`` or ``geometry_msgs`` can also be used for input/output ports.
+
+For example, you can define custom types for ports in the ``providedPorts`` function as follows:
+
+.. code-block:: cpp
+
+  static PortsList providedPorts()
+  {
+    return providedBasicPorts(
+      BT::OutputPort<geometry_msgs::msg::Point>("position", "Position of the robot")
+    });
+  }
+
+To use custom types for input/output ports in the behavior tree XML, it is necessary to convert them from a string. This is because ports in the XML are represented as strings and must be transformed into the corresponding data type in the code.
+
+For example, if you have a custom type ``geometry_msgs::msg::Point``, you can perform the conversion as follows:
+
+.. code-block:: cpp
+
+  namespace BT
+  {
+  template<>
+  inline geometry_msgs::msg::Point convertFromString(const StringView key)
+  {
+    // three real numbers separated by semicolons
+    auto parts = BT::splitString(key, ';');
+    if (parts.size() != 3) {
+      throw std::runtime_error("invalid number of fields for point attribute)");
+    } else {
+      geometry_msgs::msg::Point position;
+      position.x = BT::convertFromString<double>(parts[0]);
+      position.y = BT::convertFromString<double>(parts[1]);
+      position.z = BT::convertFromString<double>(parts[2]);
+      return position;
+    }
+  }
+  }  // namespace BT
+
+For more information on custom type conversion, you can refer to the `bt_utils.hpp <https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/bt_utils.hpp>`_ or the BT.CPP documentation: `Parsing a string <https://www.behaviortree.dev/docs/tutorial-basics/tutorial_03_generic_ports#parsing-a-string>`_.
+
+Visualize the content of the blackboard in Groot 2 (PRO)
+========================================================
+
+If you are using the paid version of Groot 2 Pro, you can view the content of the blackboard of the BT nodes. To achieve this, you need to perform a conversion of the custom input/output type to JSON format. Below is an example of such a conversion:
+
+.. code-block:: cpp
+
+  namespace geometry_msgs::msg
+  {
+  BT_JSON_CONVERTER(geometry_msgs::msg::Point, msg)
+  {
+    add_field("x", &msg.x);
+    add_field("y", &msg.y);
+    add_field("z", &msg.z);
+  }
+  }  // namespace geometry_msgs::msg
+
+The macro ``BT_JSON_CONVERTER`` must be placed within the namespace of the custom type to be converted. Additionally, if the custom type is composed of other custom types, those types must be converted first before converting the parent type.
+
+After defining the conversion, you need to register the custom type in the `providedPorts` function. Below is an example of how to register it:
+
+.. code-block:: cpp
+
+  static PortsList providedPorts()
+  {
+    // Register JSON definitions for the types used in the ports
+    BT::RegisterJsonDefinition<geometry_msgs::msg::Point>();
+    return providedBasicPorts(
+      BT::OutputPort<geometry_msgs::msg::Point>("position", "Position of the robot")
+    });
+  }
+
+For more information on custom type conversion, you can refer to the `json_utils.hpp <https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/include/nav2_behavior_tree/json_utils.hpp>`_ or the BT.CPP documentation: `Visualize custom types in the Blackboard <https://www.behaviortree.dev/docs/tutorial-basics/tutorial_11_groot2/#visualize-custom-types-in-the-blackboard>`_
+
+  .. note::
+
+    All custom types used in Nav2 are already registered in the `json_utils.hpp` file. You can use them directly without the need to register them again.

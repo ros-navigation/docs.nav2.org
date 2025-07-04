@@ -27,3 +27,4 @@ Nav2 Tutorials
    docs/get_backtrace.rst
    docs/get_profile.rst
    docs/docker_dev.rst
+   docs/route_server_tools.rst

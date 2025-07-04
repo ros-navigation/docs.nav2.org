@@ -22,9 +22,9 @@ Savitzky-Golay Smoother Parameters
 :do_refinement:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  bool           True   
+  bool           True
   ============== ===========================
 
   Description
@@ -33,13 +33,24 @@ Savitzky-Golay Smoother Parameters
 :refinement_num:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  int            2   
+  int            2
   ============== ===========================
 
   Description
     Number of times to recursively smooth a segment
+
+:enforce_path_inversion:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  bool           True
+  ============== ===========================
+
+  Description
+    Whether to consider input path discontinuities as path inversions from feasible planning to be respected or smooth other them. Leave on for Smac Planner feasible planners, but may want to disable for NavFn or the Route Server.
 
 Example
 *******
@@ -56,3 +67,4 @@ Example
           plugin: "nav2_smoother::SavitzkyGolaySmoother"
           do_refinement: True
           refinement_num: 2
+          enforce_path_inversion: True

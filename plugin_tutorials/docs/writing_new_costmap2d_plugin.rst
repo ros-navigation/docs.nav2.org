@@ -40,7 +40,7 @@ The plugin class ``nav2_gradient_costmap_plugin::GradientLayer`` is inherited fr
 
   namespace nav2_gradient_costmap_plugin
   {
-  
+
   class GradientLayer : public nav2_costmap_2d::Layer
 
 The basic class provides the set of virtual methods API for working with costmap layers in a plugin. These methods are called at runtime by ``LayeredCostmap``. The list of methods, their description, and necessity to have these methods in plugin's code is presented in the table below:
@@ -230,6 +230,9 @@ In this case each plugin object will be handled by its own parameters tree in a 
     plugin: nav2_gradient_costmap_plugin::GradientLayer # In Iron and older versions, "/" was used instead of "::"
     enabled: False
     ...
+.. note::
+
+  The order in which plugins are listed in the configuration is significant, as it determines the sequence in which they are applied to the costmap. For example, if the inflation layer is listed before the range layer, obstacles added to the costmap by the range layer will not be inflated.
 
 4- Run GradientLayer plugin
 ---------------------------

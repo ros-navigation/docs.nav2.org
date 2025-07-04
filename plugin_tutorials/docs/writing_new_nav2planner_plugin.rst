@@ -60,7 +60,8 @@ Let's learn more about the methods needed to write a planner plugin.
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 | createPlan()         | Method is called when planner server demands a global plan for specified    | Yes                     |
 |                      | start and goal pose. This method returns `nav_msgs\:\:msg\:\:Path` carrying |                         |
-|                      | global plan. This method takes 2 input params: start pose and goal pose.    |                         |
+|                      | global plan. This method takes 3 input params: start pose, goal pose and    |                         |
+|                      | a function to check if the action has been canceled.                        |                         |
 +----------------------+-----------------------------------------------------------------------------+-------------------------+
 
 For this tutorial, we will be using methods ``StraightLine::configure()`` and ``StraightLine::createPlan()`` to create straight-line planner.
@@ -143,7 +144,7 @@ Coming back to our tutorial, class ``nav2_straightline_planner::StraightLine`` i
 1. To export the planner, we need to provide two lines
 
 .. code-block:: c++
-  
+
   #include "pluginlib/class_list_macros.hpp"
   PLUGINLIB_EXPORT_CLASS(nav2_straightline_planner::StraightLine, nav2_core::GlobalPlanner)
 
@@ -154,7 +155,7 @@ It is good practice to place these lines at the end of the file, but technically
 2. Next step would be to create plugin's description file in the root directory of the package. For example, ``global_planner_plugin.xml`` file in our tutorial package. This file contains the following information
 
  - ``library path``: Plugin's library name and its location.
- - ``class name``: Name of the class.
+ - ``class name``: Name of the class (optional). If not set, it will default to the ``class type``.
  - ``class type``: Type of class.
  - ``base class``: Name of the base class.
  - ``description``: Description of the plugin.

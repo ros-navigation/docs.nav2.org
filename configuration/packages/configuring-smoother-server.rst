@@ -16,9 +16,9 @@ Smoother Server Parameters
 :costmap_topic:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  string         "global_costmap/costmap_raw"   
+  string         "global_costmap/costmap_raw"
   ============== ===========================
 
   Description
@@ -27,9 +27,9 @@ Smoother Server Parameters
 :footprint_topic:
 
   ============== ===================================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------------
-  string         "global_costmap/published_footprint"            
+  string         "global_costmap/published_footprint"
   ============== ===================================
 
   Description
@@ -38,34 +38,20 @@ Smoother Server Parameters
 :transform_tolerance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.1 
+  double         0.1
   ============== =============================
 
   Description
     TF transform tolerance.
 
-:action_server_result_timeout:
-
-  ====== ======= ======= 
-  Type   Default Unit
-  ------ ------- -------
-  double 10.0    seconds
-  ====== ======= =======
-
-  Description
-    The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
-    15 minutes in rcl but was changed to 10 seconds in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_, which may be less than
-    some actions in Nav2 take to run.  For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline. 
-    This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround
-
 :robot_base_frame:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  string         "base_link" 
+  string         "base_link"
   ============== =============================
 
   Description
@@ -74,13 +60,24 @@ Smoother Server Parameters
 :smoother_plugins:
 
   ============== =================================
-  Type           Default                                               
+  Type           Default
   -------------- ---------------------------------
   vector<string> {"nav2_smoother::SimpleSmoother"}
   ============== =================================
 
   Description
     List of plugin names to use, also matches action server names.
+
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
   Note
     Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
@@ -98,7 +95,7 @@ Smoother Server Parameters
               plugin: "nav2_smoother::SimpleSmoother"
 
     ..
-    
+
 :bond_heartbeat_period:
 
   ============== =============================
@@ -109,6 +106,17 @@ Smoother Server Parameters
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Example
 *******

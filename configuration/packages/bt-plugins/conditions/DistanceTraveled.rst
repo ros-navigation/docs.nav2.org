@@ -29,7 +29,7 @@ Input Ports
   ====== =======
   Type   Default
   ------ -------
-  double 1.0  
+  double 1.0
   ====== =======
 
   Description

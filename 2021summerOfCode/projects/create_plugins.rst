@@ -46,4 +46,3 @@ Your task will be to create a high-quality implementation of one of the followin
 **Licensing**
 - All contributions will be under the Apache 2.0 license.
 - No other CLA's are required.
-

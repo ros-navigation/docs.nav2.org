@@ -229,7 +229,7 @@ Observation sources parameters
   ============== =============================
 
   Description:
-    Type of polygon shape. Could be ``scan``, ``pointcloud`` or ``range``.
+    Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range`` or ``polygon``.
 
 :``<source name>``.topic:
 
@@ -275,6 +275,17 @@ Observation sources parameters
   Description:
     Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
 
+:``<source name>``.sampling_distance:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description:
+    Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for ``polygon`` source type.
+
 :``<source name>``.enabled:
 
   ============== =============================
@@ -285,7 +296,7 @@ Observation sources parameters
 
   Description:
     Whether to use this source for collision detection. (Can be dynamically set)
-    
+
 :``<source name>``.source_timeout:
 
   ============== =============================
@@ -296,7 +307,7 @@ Observation sources parameters
 
   Description:
     Maximum time interval in which source data is considered as valid. If no new data is received within this interval, an additional warning will be displayed. Setting ``source_timeout: 0.0`` disables it. Overrides node parameter for each source individually, if desired.
-    
+
 :bond_heartbeat_period:
 
   ============== =============================
@@ -307,6 +318,17 @@ Observation sources parameters
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Example
 *******
@@ -342,4 +364,3 @@ Here is an example of configuration YAML for the Collision Detector.
           min_height: 0.1
           max_height: 0.5
           enabled: True
-

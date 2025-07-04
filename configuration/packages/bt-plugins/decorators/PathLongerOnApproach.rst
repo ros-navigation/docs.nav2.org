@@ -13,7 +13,7 @@ Input Ports
   ========================== =======
   Type                       Default
   -------------------------- -------
-  nav_msgs::msg::Path         N/A  
+  nav_msgs::msg::Path         N/A
   ========================== =======
 
   Description
@@ -24,7 +24,7 @@ Input Ports
   ============= =======
   Type          Default
   ------------- -------
-  double         3.0  
+  double         3.0
   ============= =======
 
   Description
@@ -35,7 +35,7 @@ Input Ports
   ============= =======
   Type          Default
   ------------- -------
-  double         2.0  
+  double         2.0
   ============= =======
 
   Description
