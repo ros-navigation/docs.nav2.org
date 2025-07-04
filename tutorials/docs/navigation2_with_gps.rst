@@ -288,7 +288,7 @@ On a different terminal launch mapviz using the pre-built `config file <https://
 * Stadiamaps: This would require an api key, see `Get a stadiamap Api key  <https://docs.stadiamaps.com/static-maps/>`_ . Modify the config file as follows:
 
 .. code-block:: yml
-  
+
   - type: mapviz_plugins/tile_map
     name: new display
     config:
