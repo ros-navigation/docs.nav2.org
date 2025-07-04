@@ -39,6 +39,7 @@ It is assumed ROS2 and Nav2 dependent packages are installed or built locally. A
       sudo apt install ros-$ROS_DISTRO-teleop-twist-keyboard
 
 If some of the packages are not available by apt install, go to the respective projects and build from source.
+
     
 The code for this tutorial is hosted on `nav2_gps_waypoint_follower_demo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo>`_. Though we will go through the most important steps of the setup, it's highly recommended that you clone and build the package when setting up your dev environment.
 This is available in ROS 2 Iron and newer.
