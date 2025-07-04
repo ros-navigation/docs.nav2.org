@@ -40,7 +40,6 @@ It is assumed ROS2 and Nav2 dependent packages are installed or built locally. A
 
 If some of the packages are not available by apt install, go to the respective projects and build from source.
 
-    
 The code for this tutorial is hosted on `nav2_gps_waypoint_follower_demo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo>`_. Though we will go through the most important steps of the setup, it's highly recommended that you clone and build the package when setting up your dev environment.
 This is available in ROS 2 Iron and newer.
 
@@ -120,11 +119,11 @@ To navigate using GPS we first need to create an outdoors Gazebo world with a ro
 
 To get GPS readings from Gazebo, we also need to modify the xacro and urdf for the turtlebot3 robot. The final files can be found in the  `nav2_minimal_turtlebot_simulation repo <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/urdf>`_, it outputs ``NavSatFix`` messages on the topic ``/gps/fix``.
 
-The changes that was done in xacro file ``gz_waffle_gps.sdf.xacro`` was to include the ``gps_link`` that includes the navsat sensor. In addition we create a joint for this link that publishes a static transform w.r.t. ``base_link``. 
+The changes that was done in xacro file ``gz_waffle_gps.sdf.xacro`` was to include the ``gps_link`` that includes the navsat sensor. In addition we create a joint for this link that publishes a static transform w.r.t. ``base_link``.
 
 .. code-block:: xacro
 
-  <link name="gps_link">   
+  <link name="gps_link">
     <sensor name="navsat" type="navsat">
       <always_on>true</always_on>
       <update_rate>1</update_rate>
@@ -146,7 +145,7 @@ The changes that was done in xacro file ``gz_waffle_gps.sdf.xacro`` was to inclu
           </vertical>
         </position_sensing>
       </navsat>
-    </sensor>  
+    </sensor>
   </link>
 
 Additionally, the joint needs to be defined again in the urdf file ``turtlebot3_waffle_gps.urdf``
