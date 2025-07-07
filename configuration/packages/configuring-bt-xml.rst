@@ -99,6 +99,7 @@ Control Plugins
   bt-plugins/controls/PipelineSequence.rst
   bt-plugins/controls/RoundRobin.rst
   bt-plugins/controls/RecoveryNode.rst
+  bt-plugins/controls/NonblockingSequence.rst
 
 Decorator Plugins
 *****************
