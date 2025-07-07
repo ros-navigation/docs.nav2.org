@@ -1332,7 +1332,7 @@ Once all testing passes, move onto the next steps.</p>
 <p>Update <code class="docutils literal notranslate"><span class="pre">.github/workflows/build_images.yaml</span></code> to contain the new distribution in the <code class="docutils literal notranslate"><span class="pre">ros_distro</span></code> matrix.
 Remove any EOL distributions at this time.
 Within the <code class="docutils literal notranslate"><span class="pre">strategy.matrix.version</span></code> map, please a new entry for the distribution being added.
-The <code class="docutils literal notranslate"><span class="pre">main_verison</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code> unless a new major version is set in Nav2’s <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files.
+The <code class="docutils literal notranslate"><span class="pre">main_version</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code> unless a new major version is set in Nav2’s <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files.
 The <code class="docutils literal notranslate"><span class="pre">distro_version</span></code> should be bumped by one from the last distribution representing the release in the format <code class="docutils literal notranslate"><span class="pre">1.4.X</span></code>.
 Remove any EOL distributions at this time.</p>
 <p>Open the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> and update the distributions to include this.</p>

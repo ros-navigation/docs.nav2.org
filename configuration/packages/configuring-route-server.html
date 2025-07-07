@@ -1631,7 +1631,7 @@ See <a class="reference internal" href="../../tutorials/docs/route_server_tools/
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Whether to use Breadth-first search to find the nearest traversible node (true) or simply the nearest node (false) for the start and goal when using pose requests.</p>
+<dt>Description</dt><dd><p>Whether to use Breadth-first search to find the nearest traversable node (true) or simply the nearest node (false) for the start and goal when using pose requests.</p>
 </dd>
 </dl>
 </dd>
@@ -1651,7 +1651,7 @@ See <a class="reference internal" href="../../tutorials/docs/route_server_tools/
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversible nodes.</p>
+<dt>Description</dt><dd><p>The maximum number of iterations to perform Breadth-first search to find the start and goal closest traversable nodes.</p>
 </dd>
 </dl>
 </dd>
@@ -1671,7 +1671,7 @@ See <a class="reference internal" href="../../tutorials/docs/route_server_tools/
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>The number of nearest-neighors to extract from a Kd-tree in order to check against in the Breadth-first search.</p>
+<dt>Description</dt><dd><p>The number of nearest-neighbors to extract from a Kd-tree in order to check against in the Breadth-first search.</p>
 </dd>
 </dl>
 </dd>
@@ -2393,7 +2393,7 @@ This will either score a weighted-angular distance or reject traversals that are
 <div class="section" id="dynamicedgesscorer">
 <h3>DynamicEdgesScorer<a class="headerlink" href="#dynamicedgesscorer" title="Permalink to this heading"></a></h3>
 <p>This edge scoring plugin will score based on the requested values from a 3rd party application via a service interface.
-It can set dynamically any cost for any edge and also be used to close and reopen particular edges if they are blocked, in use by other robots locking out its shared use by other robots, higher cost due to overlap with other platforms in service, increased cost due to fleet manager analytics that this space is underperforming throughput, or otherwise temporarily non-traversible.
+It can set dynamically any cost for any edge and also be used to close and reopen particular edges if they are blocked, in use by other robots locking out its shared use by other robots, higher cost due to overlap with other platforms in service, increased cost due to fleet manager analytics that this space is underperforming throughput, or otherwise temporarily non-traversable.
 For example, if other robots report an edge to be blocked, all robots can avoid this edge/aisle/etc.</p>
 <p>It has no parameters.</p>
 </div>

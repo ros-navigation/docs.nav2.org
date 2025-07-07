@@ -1385,7 +1385,7 @@ It can also interpolate velocity commands at higher rates than the controller se
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Maximum velocities (m/s) in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code> axes.</p>
+<dt>Description</dt><dd><p>Maximum velocities (m/s) in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code> axes or <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> for full 6-DoF support.</p>
 </dd>
 </dl>
 </dd>
@@ -1405,7 +1405,7 @@ It can also interpolate velocity commands at higher rates than the controller se
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Minimum velocities (m/s) in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code> axes. This is <strong>signed</strong> and thus must be <strong>negative</strong> to reverse. Note: rotational velocities negative direction is a right-hand turn, so this should always be negative regardless of reversing preference.</p>
+<dt>Description</dt><dd><p>Minimum velocities (m/s) in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code> axes or <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> for full 6-DoF support. This is <strong>signed</strong> and thus must be <strong>negative</strong> to reverse. Note: rotational velocities negative direction is a right-hand turn, so this should always be negative regardless of reversing preference.</p>
 </dd>
 </dl>
 </dd>
@@ -1425,7 +1425,7 @@ It can also interpolate velocity commands at higher rates than the controller se
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Minimum velocities (m/s) to send to the robot hardware controllers, to prevent small commands from damaging hardware controllers if that speed cannot be achieved due to stall torque.</p>
+<dt>Description</dt><dd><p>Minimum velocities (m/s) in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code> axes or <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> for full 6-DoF support to send to the robot hardware controllers, to prevent small commands from damaging hardware controllers if that speed cannot be achieved due to stall torque.</p>
 </dd>
 </dl>
 </dd>
@@ -1465,7 +1465,7 @@ It can also interpolate velocity commands at higher rates than the controller se
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Maximum acceleration to apply to each axis <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code>.</p>
+<dt>Description</dt><dd><p>Maximum acceleration to apply to each axis <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code> or <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> for full 6-DoF support.</p>
 </dd>
 </dl>
 </dd>
@@ -1485,7 +1485,7 @@ It can also interpolate velocity commands at higher rates than the controller se
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Minimum acceleration to apply to each axis <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code>. This is <strong>signed</strong> and thus these should generally all be <strong>negative</strong>.</p>
+<dt>Description</dt><dd><p>Minimum acceleration to apply to each axis <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code> or <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> for full 6-DoF support. This is <strong>signed</strong> and thus these should generally all be <strong>negative</strong>.</p>
 </dd>
 </dl>
 </dd>

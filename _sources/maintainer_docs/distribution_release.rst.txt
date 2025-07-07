@@ -67,7 +67,7 @@ Next, we need to setup Nav2's Nightly and Release docker image jobs in `nav2_doc
 Update ``.github/workflows/build_images.yaml`` to contain the new distribution in the ``ros_distro`` matrix.
 Remove any EOL distributions at this time.
 Within the ``strategy.matrix.version`` map, please a new entry for the distribution being added.
-The ``main_verison`` is ``1`` unless a new major version is set in Nav2's ``package.xml`` files.
+The ``main_version`` is ``1`` unless a new major version is set in Nav2's ``package.xml`` files.
 The ``distro_version`` should be bumped by one from the last distribution representing the release in the format ``1.4.X``.
 Remove any EOL distributions at this time.
 
