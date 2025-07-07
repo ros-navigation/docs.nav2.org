@@ -200,7 +200,7 @@ The local odometry is provided by the ``ekf_filter_node_odom``, which publishes 
 
 .. code-block:: yaml
 
-  ekf_filter_node_odom:nt" />
+  ekf_filter_node_odom:nt
     ros__parameters:
       two_d_mode: true
       publish_tf: true
