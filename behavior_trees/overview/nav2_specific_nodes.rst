@@ -294,7 +294,7 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 
 |
 
-4. Now, let's assume on the next re-tick, ``Action_A`` and ``Action_C``  return ``SUCCESS``, and ``Action_B`` returns ``RUNNING``. In this configuration, the NonblockingSequence still returns ``RUNNING``, as there is still one child node that is ``RUNNING``
+4. Now, let's assume on the next re-tick, ``Action_A`` and ``Action_C``  return ``SUCCESS``, and ``Action_B`` returns ``RUNNING``. In this configuration, the NonblockingSequence still returns ``RUNNING``, as there is still one child node that is ``RUNNING``. Note that ``ActionA`` was re-ticked and again returned ``SUCCESS`` in this case, it did not skip due to previously returning `SUCCESS``.
 
 |
 
