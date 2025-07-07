@@ -659,6 +659,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/PipelineSequence.html">PipelineSequence</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/RoundRobin.html">RoundRobin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/RecoveryNode.html">RecoveryNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/NonblockingSequence.html">NonblockingSequence</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
@@ -942,6 +943,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-pipelinesequence">Control: PipelineSequence</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-recovery">Control: Recovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-roundrobin">Control: RoundRobin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-nonblockingsequence">Control: NonblockingSequence</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/overview/detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
@@ -1451,6 +1453,11 @@ This is not longer required to be set.</p>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5226">PR #5226</a> the ability to stitch two successive edges in <code class="docutils literal notranslate"><span class="pre">route_server</span></code> with a smooth circular arc has been added. Below is an example of two successive edges forming a corner being smoothed with a radius of one. The red lines are the edges of the route graph and the green line is the resultant path that can be used by a local planner.</p>
 <img alt="../_images/smoothing.png" src="../_images/smoothing.png" />
 <p>New parameters include <code class="docutils literal notranslate"><span class="pre">smooth_corners</span></code> which enable or disable corner smoothing and <code class="docutils literal notranslate"><span class="pre">smoothing_radius</span></code> which specifies the radius of the corner to fit to a corner. The tangents of the starting and ending points of the circular arc will match the tangent of the edges that form the corner. In the event that two edges are basically straight, no corner arc is added and regular linear interpolation is done. In addition to that, if the corner arc requires a starting point and ending point that’s longer than the edge lengths, then it will not add a corner arc.</p>
+</div>
+<div class="section" id="added-nonblockingsequence-control-node">
+<h4>Added NonblockingSequence Control Node<a class="headerlink" href="#added-nonblockingsequence-control-node" title="Permalink to this heading"></a></h4>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5325">PR #5325</a> a new Nav2 specific behavior tree control node has been added. The new behavior tree control node, <code class="docutils literal notranslate"><span class="pre">NonblockingSequence</span></code>, allows every child node in the sequence to be ticked through even if one of the child node returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>. This is done to prevent long running child nodes from blocking the sequence.</p>
+<p>For additional details regarding the <code class="docutils literal notranslate"><span class="pre">NonblockingSequence</span></code> please see the <a class="reference external" href="../behavior_trees/overview/nav2_specific_nodes.html">Nav2 specific node walkthrough</a> and <a class="reference external" href="../configuration/packages/bt-plugins/controls/NonblockingSequence.html">NonblockingSequence configuration guide</a>.</p>
 </div>
 </div>
 </div>

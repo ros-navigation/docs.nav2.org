@@ -659,6 +659,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/PipelineSequence.html">PipelineSequence</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/RoundRobin.html">RoundRobin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/RecoveryNode.html">RecoveryNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/NonblockingSequence.html">NonblockingSequence</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
@@ -942,6 +943,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-pipelinesequence">Control: PipelineSequence</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-recovery">Control: Recovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-roundrobin">Control: RoundRobin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-nonblockingsequence">Control: NonblockingSequence</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/overview/detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
@@ -2195,9 +2197,9 @@ has been updated</p></td>
 </table>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 28%" />
 <col style="width: 30%" />
-<col style="width: 42%" />
+<col style="width: 29%" />
+<col style="width: 41%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Control Plugin Name</p></th>
@@ -2225,6 +2227,17 @@ first and then return its value</p></td>
 <td><p>Mohammad Haghighipanah</p></td>
 <td><p>Will tick <code class="docutils literal notranslate"><span class="pre">i</span></code> th child until
 a result and move on to <code class="docutils literal notranslate"><span class="pre">i+1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/nonblocking_sequence.cpp">Nonblocking Sequence</a></p></td>
+<td><p>Alexander Yuen</p></td>
+<td><p>A variant of a sequence node that
+will tick through the whole
+sequence even if a child returns
+running. On reticks of this
+control node, successful children
+will be ticked once again to
+prevent a stale state from being
+latched.</p></td>
 </tr>
 </tbody>
 </table>
