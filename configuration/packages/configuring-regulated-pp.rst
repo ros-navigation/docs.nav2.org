@@ -176,6 +176,28 @@ Regulated Pure Pursuit Parameters
   Description
     Whether to use the regulated features for proximity to obstacles (e.g. slow in close proximity to obstacles).
 
+:cost_scaling_dist:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.6
+  ============== =============================
+
+  Description
+    The minimum distance from an obstacle to trigger the scaling of linear velocity, if ``use_cost_regulated_linear_velocity_scaling`` is enabled. The value set should be smaller or equal to the ``inflation_radius`` set in the inflation layer of costmap, since inflation is used to compute the distance from obstacles.
+
+:cost_scaling_gain:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         1.0
+  ============== =============================
+
+  Description
+    A multiplier gain, which should be <= 1.0, used to further scale the speed when an obstacle is within ``cost_scaling_dist``. Lower value reduces speed more quickly.
+
 :regulated_linear_scaling_min_radius:
 
   ============== =============================
@@ -334,6 +356,17 @@ Regulated Pure Pursuit Parameters
   Description
     Whether to allow QoS profiles to be overwritten with parameterized values.
 
+:min_distance_to_obstacle:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         2.0
+  ============== =============================
+
+  Description
+    The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set <= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.
+
 Example
 *******
 .. code-block:: yaml
@@ -376,6 +409,8 @@ Example
         use_fixed_curvature_lookahead: false
         curvature_lookahead_dist: 0.25
         use_cost_regulated_linear_velocity_scaling: false
+        cost_scaling_dist: 0.3
+        cost_scaling_gain: 1.0
         regulated_linear_scaling_min_radius: 0.9
         regulated_linear_scaling_min_speed: 0.25
         use_rotate_to_heading: true
@@ -383,4 +418,5 @@ Example
         rotate_to_heading_min_angle: 0.785
         max_angular_accel: 3.2
         max_robot_pose_search_dist: 10.0
+        min_distance_to_obstacle: 2.0
         stateful: true
