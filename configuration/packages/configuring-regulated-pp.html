@@ -1580,6 +1580,46 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">cost_scaling_dist</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.6</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The minimum distance from an obstacle to trigger the scaling of linear velocity, if <code class="docutils literal notranslate"><span class="pre">use_cost_regulated_linear_velocity_scaling</span></code> is enabled. The value set should be smaller or equal to the <code class="docutils literal notranslate"><span class="pre">inflation_radius</span></code> set in the inflation layer of costmap, since inflation is used to compute the distance from obstacles.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">cost_scaling_gain</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>A multiplier gain, which should be &lt;= 1.0, used to further scale the speed when an obstacle is within <code class="docutils literal notranslate"><span class="pre">cost_scaling_dist</span></code>. Lower value reduces speed more quickly.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-odd">regulated_linear_scaling_min_radius</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
@@ -1862,6 +1902,26 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">min_distance_to_obstacle</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The shortest distance at which the robot is allowed to be from an obstacle along its trajectory. Set &lt;= 0.0 to disable. It is limited to maximum distance of lookahead distance selected.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -1904,6 +1964,8 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <span class="w">      </span><span class="nt">use_fixed_curvature_lookahead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">curvature_lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">use_cost_regulated_linear_velocity_scaling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">cost_scaling_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+<span class="w">      </span><span class="nt">cost_scaling_gain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 <span class="w">      </span><span class="nt">regulated_linear_scaling_min_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
 <span class="w">      </span><span class="nt">regulated_linear_scaling_min_speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
 <span class="w">      </span><span class="nt">use_rotate_to_heading</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -1911,6 +1973,7 @@ It also implements the Adaptive lookahead point features to be scaled by velocit
 <span class="w">      </span><span class="nt">rotate_to_heading_min_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.785</span>
 <span class="w">      </span><span class="nt">max_angular_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.2</span>
 <span class="w">      </span><span class="nt">max_robot_pose_search_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<span class="w">      </span><span class="nt">min_distance_to_obstacle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
 <span class="w">      </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
