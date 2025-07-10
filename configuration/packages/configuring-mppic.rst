@@ -17,7 +17,7 @@ The MPPI Controller implements a `Model Predictive Path Integral Controller <htt
 The new Nav2 MPPI Controller is a predictive controller - a successor to TEB and pure path tracking MPC controllers. It uses a sampling based approach to select optimal trajectories, optimizing between successive iterations. It contains plugin-based objective functions for customization and extension for various behaviors and behavioral attributes.
 
 It works currently with Differential, Omnidirectional, and Ackermann robots.
-This controller is measured to run at 50+ Hz on a modest Intel processor (4th gen i5).
+This controller is measured to run at 100+ Hz on a modest Intel processor (4th gen i5).
 
 The MPPI algorithm is an MPC variant that finds a control velocity for the robot using an iterative approach. Using the previous time step's best control solution and the robot's current state, a set of randomly sampled perturbations from a Gaussian distribution are applied. These noised controls are forward simulated to generate a set of trajectories within the robot's motion model.
 Next, these trajectories are scored using a set of plugin-based critic functions to find the best trajectory in the batch. The output scores are used to set the best control with a soft max function.
@@ -305,6 +305,17 @@ MPPI Parameters
   Description
     Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
 
+:TrajectoryValidator.plugin:
+
+  ============== =========================================
+  Type           Default
+  -------------- -----------------------------------------
+  string         "mppi::DefaultOptimalTrajectoryValidator"
+  ============== =========================================
+
+  Description
+    The plugin to use for validating final optimal trajectories.
+
 Trajectory Visualization
 ------------------------
 
@@ -424,6 +435,34 @@ Ackermann Motion Model
   Description
     The minimum turning radius possible for the vehicle platform (m).
 
+Default Optimal Trajectory Validator
+------------------------------------
+
+This validator checks the final optimal trajectory for validity and does not collide with obstacles.
+Additional validator plugins can be created to support different features like constraints on the maximum deviation from a path, collision margin, progress being made, etc.
+Dynamic and kinematic constraints are not required to be checked as trajectories are guaranteed to be within the constraints of the motion model.
+
+:collision_lookahead_time:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         2.0
+  ============== ===========================
+
+  Description
+    The time in seconds to look ahead for potential collisions when validating the trajectory.
+
+:consider_footprint:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  bool           false
+  ============== ===========================
+
+  Description
+    Whether to consider the robot's footprint when validating the trajectory. Else, will use the center point cost of a circular robot
 
 Constraint Critic
 -----------------
@@ -1091,6 +1130,10 @@ Example
           TrajectoryVisualizer:
             trajectory_step: 5
             time_step: 3
+          TrajectoryValidator:
+            plugin: "mppi::DefaultOptimalTrajectoryValidator"
+            collision_lookahead_time: 2.0
+            consider_footprint: false
           AckermannConstraints:
             min_turning_r: 0.2
           critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
