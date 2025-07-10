@@ -217,3 +217,11 @@ Added NonblockingSequence Control Node
 In `PR #5325 <https://github.com/ros-navigation/navigation2/pull/5325>`_ a new Nav2 specific behavior tree control node has been added. The new behavior tree control node, ``NonblockingSequence``, allows every child node in the sequence to be ticked through even if one of the child node returns ``RUNNING``. This is done to prevent long running child nodes from blocking the sequence.
 
 For additional details regarding the ``NonblockingSequence`` please see the `Nav2 specific node walkthrough <../behavior_trees/overview/nav2_specific_nodes.html>`_ and `NonblockingSequence configuration guide <../configuration/packages/bt-plugins/controls/NonblockingSequence.html>`_.
+
+MPPI Optimal Trajectory Validator Plugin
+****************************************
+
+The MPPI controller now has a plugin, ``OptimalTrajectoryValidator``, which can be used to validate an output trajectory for execution.
+This can be used to check for collisions, margin from obstacles, distance from a path, progress being made, etc.
+By default, it uses the ``DefaultOptimalTrajectoryValidator`` which checks for collisions.
+Note that kinematic and dynamic constraints are not required to be checked as the Optimizer ensures these constraints are met.
