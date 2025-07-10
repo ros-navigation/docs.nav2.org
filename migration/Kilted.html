@@ -786,6 +786,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#trajectory-visualization">Trajectory Visualization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#path-handler">Path Handler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#ackermann-motion-model">Ackermann Motion Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#default-optimal-trajectory-validator">Default Optimal Trajectory Validator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#constraint-critic">Constraint Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#goal-angle-critic">Goal Angle Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/configuring-mppic.html#goal-critic">Goal Critic</a></li>
@@ -1458,6 +1459,13 @@ This is not longer required to be set.</p>
 <h4>Added NonblockingSequence Control Node<a class="headerlink" href="#added-nonblockingsequence-control-node" title="Permalink to this heading"></a></h4>
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5325">PR #5325</a> a new Nav2 specific behavior tree control node has been added. The new behavior tree control node, <code class="docutils literal notranslate"><span class="pre">NonblockingSequence</span></code>, allows every child node in the sequence to be ticked through even if one of the child node returns <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>. This is done to prevent long running child nodes from blocking the sequence.</p>
 <p>For additional details regarding the <code class="docutils literal notranslate"><span class="pre">NonblockingSequence</span></code> please see the <a class="reference external" href="../behavior_trees/overview/nav2_specific_nodes.html">Nav2 specific node walkthrough</a> and <a class="reference external" href="../configuration/packages/bt-plugins/controls/NonblockingSequence.html">NonblockingSequence configuration guide</a>.</p>
+</div>
+<div class="section" id="mppi-optimal-trajectory-validator-plugin">
+<h4>MPPI Optimal Trajectory Validator Plugin<a class="headerlink" href="#mppi-optimal-trajectory-validator-plugin" title="Permalink to this heading"></a></h4>
+<p>The MPPI controller now has a plugin, <code class="docutils literal notranslate"><span class="pre">OptimalTrajectoryValidator</span></code>, which can be used to validate an output trajectory for execution.
+This can be used to check for collisions, margin from obstacles, distance from a path, progress being made, etc.
+By default, it uses the <code class="docutils literal notranslate"><span class="pre">DefaultOptimalTrajectoryValidator</span></code> which checks for collisions.
+Note that kinematic and dynamic constraints are not required to be checked as the Optimizer ensures these constraints are met.</p>
 </div>
 </div>
 </div>

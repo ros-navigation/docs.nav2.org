@@ -786,6 +786,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#trajectory-visualization">Trajectory Visualization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#path-handler">Path Handler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ackermann-motion-model">Ackermann Motion Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#default-optimal-trajectory-validator">Default Optimal Trajectory Validator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#constraint-critic">Constraint Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#goal-angle-critic">Goal Angle Critic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#goal-critic">Goal Critic</a></li>
@@ -1288,7 +1289,7 @@
 <p>The MPPI Controller implements a <a class="reference external" href="https://ieeexplore.ieee.org/document/7487277">Model Predictive Path Integral Controller</a>.
 The new Nav2 MPPI Controller is a predictive controller - a successor to TEB and pure path tracking MPC controllers. It uses a sampling based approach to select optimal trajectories, optimizing between successive iterations. It contains plugin-based objective functions for customization and extension for various behaviors and behavioral attributes.</p>
 <p>It works currently with Differential, Omnidirectional, and Ackermann robots.
-This controller is measured to run at 50+ Hz on a modest Intel processor (4th gen i5).</p>
+This controller is measured to run at 100+ Hz on a modest Intel processor (4th gen i5).</p>
 <p>The MPPI algorithm is an MPC variant that finds a control velocity for the robot using an iterative approach. Using the previous time step’s best control solution and the robot’s current state, a set of randomly sampled perturbations from a Gaussian distribution are applied. These noised controls are forward simulated to generate a set of trajectories within the robot’s motion model.
 Next, these trajectories are scored using a set of plugin-based critic functions to find the best trajectory in the batch. The output scores are used to set the best control with a soft max function.
 This process is then repeated a number of times and returns a converged solution. This solution is then used as the basis of the next time step’s initial control.</p>
@@ -1797,6 +1798,26 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
+<dt class="field-even">TrajectoryValidator.plugin</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“mppi::DefaultOptimalTrajectoryValidator”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The plugin to use for validating final optimal trajectories.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 <div class="section" id="trajectory-visualization">
 <h3>Trajectory Visualization<a class="headerlink" href="#trajectory-visualization" title="Permalink to this heading"></a></h3>
@@ -2008,6 +2029,54 @@ This process is then repeated a number of times and returns a converged solution
 </table>
 <dl class="simple">
 <dt>Description</dt><dd><p>The minimum turning radius possible for the vehicle platform (m).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="default-optimal-trajectory-validator">
+<h3>Default Optimal Trajectory Validator<a class="headerlink" href="#default-optimal-trajectory-validator" title="Permalink to this heading"></a></h3>
+<p>This validator checks the final optimal trajectory for validity and does not collide with obstacles.
+Additional validator plugins can be created to support different features like constraints on the maximum deviation from a path, collision margin, progress being made, etc.
+Dynamic and kinematic constraints are not required to be checked as trajectories are guaranteed to be within the constraints of the motion model.</p>
+<dl class="field-list">
+<dt class="field-odd">collision_lookahead_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>2.0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>The time in seconds to look ahead for potential collisions when validating the trajectory.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">consider_footprint</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to consider the robot’s footprint when validating the trajectory. Else, will use the center point cost of a circular robot</p>
 </dd>
 </dl>
 </dd>
@@ -3154,6 +3223,10 @@ This process is then repeated a number of times and returns a converged solution
 <span class="w">      </span><span class="nt">TrajectoryVisualizer</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">trajectory_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 <span class="w">        </span><span class="nt">time_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">TrajectoryValidator</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mppi::DefaultOptimalTrajectoryValidator&quot;</span>
+<span class="w">        </span><span class="nt">collision_lookahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">        </span><span class="nt">consider_footprint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">AckermannConstraints</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">min_turning_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 <span class="w">      </span><span class="nt">critics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ConstraintCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;CostCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;GoalAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAlignCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathFollowCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PathAngleCritic&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PreferForwardCritic&quot;</span><span class="p p-Indicator">]</span>
