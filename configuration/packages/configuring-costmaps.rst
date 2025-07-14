@@ -200,6 +200,17 @@ Costmap2D ROS Parameters
   Description
     Robot radius to use, if footprint coordinates not provided. If this parameter is set, ``isPathValid`` will do circular collision checking.
 
+:subscribe_to_stamped_footprint:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  bool           False
+  ============== =======
+
+  Description
+    If true, the costmap will subscribe to PolygonStamped footprint messages instead of Polygon messages. This allows the footprint to include timestamp and frame information, which can be useful for applications that need temporally-aware footprint data.
+
 :rolling_window:
 
   ============== =======
