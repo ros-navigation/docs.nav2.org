@@ -225,3 +225,14 @@ The MPPI controller now has a plugin, ``OptimalTrajectoryValidator``, which can 
 This can be used to check for collisions, margin from obstacles, distance from a path, progress being made, etc.
 By default, it uses the ``DefaultOptimalTrajectoryValidator`` which checks for collisions.
 Note that kinematic and dynamic constraints are not required to be checked as the Optimizer ensures these constraints are met.
+
+Costmap2D Support for Stamped Footprints
+*****************************************
+
+In `PR #5345 <https://github.com/ros-navigation/navigation2/pull/5345>`_ a new parameter ``subscribe_to_stamped_footprint`` was added to the Costmap2DROS to allow subscription to ``PolygonStamped`` footprint messages instead of the default ``Polygon`` messages.
+
+Default value:
+
+- false
+
+When set to ``true``, the costmap will subscribe to ``PolygonStamped`` footprint messages, which include timing information that can be useful for temporal footprint validation and synchronization. When set to ``false`` (default), the costmap continues to use the standard ``Polygon`` footprint messages for backward compatibility.
