@@ -32,7 +32,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb4|          +      |tb3|             +      |rosbot_xl|       |
 +------------------------+------------------------+------------------------+
-|         |soon|         +      |botr|            +      |soon|            |
+|         |barnowl|      +      |botr|            +      |soon|            |
 +------------------------+------------------------+------------------------+
 
 Research Robots
@@ -42,6 +42,11 @@ Research Robots
 |         |waratah|      +      |soon|            +      |soon|            |
 +------------------------+------------------------+------------------------+
 
+.. |botr| image:: images/barnowl.png
+    :width: 100%
+    :align: middle
+    :alt: Barn Owl
+    :target: https://barnowlag.com/
 
 .. |botr| image:: images/botronics.png
     :width: 100%
