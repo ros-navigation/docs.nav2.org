@@ -68,17 +68,6 @@ Smoother Server Parameters
   Description
     List of plugin names to use, also matches action server names.
 
-:introspection_mode:
-
-  ============== =============================
-  Type           Default
-  -------------- -----------------------------
-  string         "disabled"
-  ============== =============================
-
-  Description
-    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
-
   Note
     Each plugin namespace defined in this list needs to have a :code:`plugin` parameter defining the type of plugin to be loaded in the namespace.
 
@@ -95,6 +84,17 @@ Smoother Server Parameters
               plugin: "nav2_smoother::SimpleSmoother"
 
     ..
+
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 :bond_heartbeat_period:
 
