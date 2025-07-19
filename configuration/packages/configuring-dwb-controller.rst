@@ -59,7 +59,6 @@ Example
     controller_server:
       ros__parameters:
         # controller server parameters (see Controller Server for more info)
-        use_sim_time: True
         controller_frequency: 20.0
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5
