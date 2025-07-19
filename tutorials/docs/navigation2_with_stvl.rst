@@ -76,7 +76,6 @@ For example, the following will load the static and obstacle layer plugins into 
     global_costmap:
       global_costmap:
         ros__parameters:
-          use_sim_time: True
           plugins: ["static_layer", "obstacle_layer"]
 
 
@@ -92,7 +91,6 @@ For example, if the application required an STVL layer and no obstacle layer, ou
     global_costmap:
       global_costmap:
         ros__parameters:
-          use_sim_time: True
           plugins: ["static_layer", "stvl_layer"]
 
 Similar to the Voxel Layer, after registering the plugin, we can add the configuration of the STVL layer under the namespace ``stvl_layer``.

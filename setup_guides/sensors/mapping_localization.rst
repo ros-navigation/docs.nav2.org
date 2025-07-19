@@ -39,7 +39,6 @@ In this subsection, we will show an example configuration of ``nav2_costmap_2d``
         publish_frequency: 1.0
         global_frame: map
         robot_base_frame: base_link
-        use_sim_time: True
         robot_radius: 0.22
         resolution: 0.05
         track_unknown_space: false
@@ -75,7 +74,6 @@ In this subsection, we will show an example configuration of ``nav2_costmap_2d``
         publish_frequency: 2.0
         global_frame: odom
         robot_base_frame: base_link
-        use_sim_time: True
         rolling_window: true
         width: 3
         height: 3

@@ -199,7 +199,6 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below t
   planner_server:
     ros__parameters:
       plugins: ["GridBased"]
-      use_sim_time: True
       GridBased:
         plugin: "nav2_navfn_planner::NavfnPlanner" # For Foxy and later. In Iron and older versions, "/" was used instead of "::"
         tolerance: 2.0
@@ -213,7 +212,6 @@ with
   planner_server:
     ros__parameters:
       plugins: ["GridBased"]
-      use_sim_time: True
       GridBased:
         plugin: "nav2_straightline_planner::StraightLine"
         interpolation_resolution: 0.1

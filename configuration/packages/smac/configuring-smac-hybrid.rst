@@ -418,7 +418,6 @@ Example
   planner_server:
     ros__parameters:
       planner_plugins: ["GridBased"]
-      use_sim_time: True
 
       GridBased:
         plugin: "nav2_smac_planner::SmacPlannerHybrid" # In Iron and older versions, "/" was used instead of "::"

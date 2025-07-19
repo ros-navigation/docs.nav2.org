@@ -258,7 +258,6 @@ Example
 
   smoother_server:
     ros__parameters:
-      use_sim_time: True
       smoother_plugins: ["SmoothPath"]
 
       SmoothPath:

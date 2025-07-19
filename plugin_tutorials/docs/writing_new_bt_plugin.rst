@@ -190,7 +190,6 @@ In order for the BT Navigator node to discover the plugin we've just registered,
 
   bt_navigator:
     ros__parameters:
-      use_sim_time: True
       global_frame: map
       robot_base_frame: base_link
       odom_topic: /odom

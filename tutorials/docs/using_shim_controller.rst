@@ -46,7 +46,6 @@ As such, its configuration looks very similar to that of any other plugin. In th
 
     controller_server:
       ros__parameters:
-        use_sim_time: True
         controller_frequency: 20.0
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5
@@ -88,7 +87,6 @@ There is one more remaining parameter of the ``RotationShimController`` not ment
 
     controller_server:
       ros__parameters:
-        use_sim_time: True
         controller_frequency: 20.0
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5

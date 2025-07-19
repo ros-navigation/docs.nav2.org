@@ -216,7 +216,6 @@ where the ``params_file`` variable should be set to a YAML-file having ROS param
 
   costmap_filter_info_server:
     ros__parameters:
-      use_sim_time: true
       type: 1
       filter_info_topic: "/costmap_filter_info"
       mask_topic: "/speed_filter_mask"
@@ -224,7 +223,6 @@ where the ``params_file`` variable should be set to a YAML-file having ROS param
       multiplier: -1.0
   filter_mask_server:
     ros__parameters:
-      use_sim_time: true
       frame_id: "map"
       topic_name: "/speed_filter_mask"
       yaml_filename: "speed_mask.yaml"

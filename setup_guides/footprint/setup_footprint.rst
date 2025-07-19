@@ -46,7 +46,6 @@ For the global costmap, we have already set the ``robot_radius`` parameter to cr
 .. code-block:: yaml
   :lineno-start: 232
 
-  use_sim_time: True
   robot_radius: 0.3
   resolution: 0.05
 
