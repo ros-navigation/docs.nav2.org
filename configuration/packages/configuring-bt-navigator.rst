@@ -224,17 +224,6 @@ Parameters
   Description
     Blackboard variable to get the statuses of waypoints from the behavior tree for ``NavigateThroughPoses`` feedback/result. Should match ports of BT XML file.
 
-:use_sim_time:
-
-  ==== =======
-  Type Default
-  ---- -------
-  bool false
-  ==== =======
-
-  Description
-    Use time provided by simulation.
-
 :error_code_name_prefixes:
 
   ============== ===========================
@@ -348,7 +337,6 @@ Example
 
     bt_navigator:
       ros__parameters:
-        use_sim_time: true
         global_frame: map
         robot_base_frame: base_link
         transform_tolerance: 0.1

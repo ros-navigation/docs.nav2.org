@@ -321,7 +321,6 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
 
     bt_navigator:
       ros__parameters:
-        use_sim_time: true
         global_frame: map
         robot_base_frame: base_link
         transform_tolerance: 0.1

@@ -406,7 +406,6 @@ Example
           publish_frequency: 1.0
           global_frame: map
           robot_base_frame: base_link
-          use_sim_time: True
           robot_radius: 0.22 # radius set and used, so no footprint points
           resolution: 0.05
           plugins: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"]
@@ -478,7 +477,6 @@ Example
           publish_frequency: 2.0
           global_frame: odom
           robot_base_frame: base_link
-          use_sim_time: True
           rolling_window: true
           width: 3
           height: 3
