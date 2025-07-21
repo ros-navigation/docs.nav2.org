@@ -1482,7 +1482,6 @@ a function to check if the action has been canceled.</p></td>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>planner_server:
   ros__parameters:
     plugins: [&quot;GridBased&quot;]
-    use_sim_time: True
     GridBased:
       plugin: &quot;nav2_navfn_planner::NavfnPlanner&quot; # For Foxy and later. In Iron and older versions, &quot;/&quot; was used instead of &quot;::&quot;
       tolerance: 2.0
@@ -1494,7 +1493,6 @@ a function to check if the action has been canceled.</p></td>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>planner_server:
   ros__parameters:
     plugins: [&quot;GridBased&quot;]
-    use_sim_time: True
     GridBased:
       plugin: &quot;nav2_straightline_planner::StraightLine&quot;
       interpolation_resolution: 0.1

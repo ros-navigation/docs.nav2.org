@@ -1318,7 +1318,6 @@
 <p>As such, its configuration looks very similar to that of any other plugin. In the code block below, you can see that we’ve added the <code class="docutils literal notranslate"><span class="pre">RotationShimController</span></code> as the plugin for path tracking in the controller server. You can see that we’ve also configured it below with its internal parameters, <code class="docutils literal notranslate"><span class="pre">angular_dist_threshold</span></code> through <code class="docutils literal notranslate"><span class="pre">max_angular_accel</span></code>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
 <span class="w">    </span><span class="nt">min_x_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
 <span class="w">    </span><span class="nt">min_y_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
@@ -1358,7 +1357,6 @@
 <p>There is one more remaining parameter of the <code class="docutils literal notranslate"><span class="pre">RotationShimController</span></code> not mentioned above, the <code class="docutils literal notranslate"><span class="pre">primary_controller</span></code>. This is the type of controller that your application would like to use as the primary modus operandi. It will share the same name and yaml namespace as the shim plugin. You can observe this below with the primary controller set the <code class="docutils literal notranslate"><span class="pre">DWB</span></code> (with the progress and goal checkers removed for brevity).</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
 <span class="w">    </span><span class="nt">min_x_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
 <span class="w">    </span><span class="nt">min_y_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>

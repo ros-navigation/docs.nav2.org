@@ -1468,7 +1468,6 @@ An example can be seen below, where the <code class="docutils literal notranslat
 <p>In order for the BT Navigator node to discover the plugin we’ve just registered, we need to list the plugin library name under the bt_navigator node in the configuration YAML file. Configuration should look similar to the one shown below. Take note of nav2_wait_action_bt_node listed under plugin_lib_names.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>bt_navigator:
   ros__parameters:
-    use_sim_time: True
     global_frame: map
     robot_base_frame: base_link
     odom_topic: /odom

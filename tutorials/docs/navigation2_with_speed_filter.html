@@ -1475,7 +1475,6 @@ We will use <code class="docutils literal notranslate"><span class="pre">scale</
 <p>where the <code class="docutils literal notranslate"><span class="pre">params_file</span></code> variable should be set to a YAML-file having ROS parameters for Costmap Filter Info Publisher Server and Map Server nodes. These parameters and their meaning are listed at <a class="reference internal" href="../../configuration/packages/configuring-map-server.html#configuring-map-server"><span class="std std-ref">Map Server / Saver</span></a> page. Please, refer to it for more information. The example of <code class="docutils literal notranslate"><span class="pre">params_file</span></code> could be found below:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">costmap_filter_info_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="nt">filter_info_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/costmap_filter_info&quot;</span>
 <span class="w">    </span><span class="nt">mask_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/speed_filter_mask&quot;</span>
@@ -1483,7 +1482,6 @@ We will use <code class="docutils literal notranslate"><span class="pre">scale</
 <span class="w">    </span><span class="nt">multiplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.0</span>
 <span class="nt">filter_mask_server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
 <span class="w">    </span><span class="nt">topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/speed_filter_mask&quot;</span>
 <span class="w">    </span><span class="nt">yaml_filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;speed_mask.yaml&quot;</span>
