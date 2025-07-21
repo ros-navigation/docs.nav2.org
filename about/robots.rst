@@ -57,7 +57,7 @@ Research Robots
     :alt: Unitree Go2 Quadruped
     :target: https://www.unitree.com/
 
-.. |botr| image:: images/barnowl.png
+.. |barnowl| image:: images/barnowl.png
     :width: 100%
     :align: middle
     :alt: Barn Owl
