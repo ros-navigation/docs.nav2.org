@@ -18,6 +18,8 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |rosie|        +         |karl|         +           |ses|        |
 +------------------------+------------------------+------------------------+
+|         |G1|           +         |Go2|          +           |barnowl|    |
++------------------------+------------------------+------------------------+
 |           |pxl|        +         |brisa|        +        |tri|           |
 +------------------------+------------------------+------------------------+
 |         |wyca|         +         |elroy|        +           |birds|      |
@@ -32,7 +34,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb4|          +      |tb3|             +      |rosbot_xl|       |
 +------------------------+------------------------+------------------------+
-|         |barnowl|      +      |botr|            +      |soon|            |
+|         |soon|         +      |botr|            +      |soon|            |
 +------------------------+------------------------+------------------------+
 
 Research Robots
@@ -41,6 +43,19 @@ Research Robots
 +------------------------+------------------------+------------------------+
 |         |waratah|      +      |soon|            +      |soon|            |
 +------------------------+------------------------+------------------------+
+
+
+.. |G1| image:: images/g1.png
+    :width: 100%
+    :align: middle
+    :alt: Unitree G1 Humanoid
+    :target: https://www.unitree.com/
+
+.. |Go2| image:: images/go2.png
+    :width: 100%
+    :align: middle
+    :alt: Unitree Go2 Quadruped
+    :target: https://www.unitree.com/
 
 .. |botr| image:: images/barnowl.png
     :width: 100%
