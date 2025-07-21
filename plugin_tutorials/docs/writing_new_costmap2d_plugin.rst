@@ -203,7 +203,6 @@ For example:
   @@ -171,8 +171,8 @@ global_costmap:
          robot_base_frame: base_link
          global_frame: map
-         use_sim_time: True
   -      plugins: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"]
   +      plugins: ["static_layer", "obstacle_layer", "voxel_layer", "gradient_layer"]
          robot_radius: 0.22
