@@ -31,6 +31,17 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
   Description
     Clear any occupied cells under robot footprint.
 
+:``<obstacle layer>``.min_obstacle_height:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.0
+  ====== =======
+
+  Description
+    Minimum height to add return to occupancy grid.
+
 :``<obstacle layer>``.max_obstacle_height:
 
   ====== =======
