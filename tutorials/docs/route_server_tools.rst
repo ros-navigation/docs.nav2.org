@@ -28,6 +28,7 @@ Provided Tools
   route_server_tools/navigation2_route_tool.rst
   route_server_tools/route_graph_generation_lif_editor.rst
   route_server_tools/route_graph_generation.rst
+  route_server_tools/swagger_generation.rst
 
 Description
 ***********
@@ -39,6 +40,8 @@ There are several tools available for creating and editing route graphs for the 
 2. **VDA LIF Editor**: A web-based tool that allows users to create route graphs using floor plan images. It can generate both GeoJSON and LIF formats, making it particularly useful for standardized route creation. No installation is required as it runs in a web browser.
 
 3. **Manual Route Graph Generation**: For those who prefer direct file editing, route graphs can be created manually in GeoJSON format using QGIS. This method provides the most control over the graph structure but requires understanding of the GeoJSON format.
+
+4. **Swagger Generation**: A tool that automatically generates route graphs from raster images using GPU-aided geometric techniques for unstructured, semistructured, or applications where specific lanes and manual annotations are not required.
 
 Choose the tool that best fits your needs based on your workflow and requirements.
 
