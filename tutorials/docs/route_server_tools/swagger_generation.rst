@@ -119,10 +119,11 @@ Finally, launch Nav2's Loopback simulator bringup, which uses a simple backend k
 
 .. raw:: html
 
-   <video width="100%" controls autoplay loop muted>
-     <source src="../images/route_graph_generation_swagger/swagger_nav2.mp4" type="video/mp4">
-     Your browser does not support the video tag.
-   </video>
+    <h1 align="center">
+      <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="708" height="400" src="https://www.youtube.com/embed/ppDY1Vd0cEQ?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+      </div>
+    </h1>
 
 
 Happy Routing!
