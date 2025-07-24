@@ -117,12 +117,12 @@ Finally, launch Nav2's Loopback simulator bringup, which uses a simple backend k
 
     ros2 launch nav2_bringup tb4_loopback_simulation_launch.py map:=/path/to/your/map.yaml graph:=/path/to/your/graph.geojson
 
-    .. raw:: html
+.. raw:: html
 
-      <video width="700" controls>
-        <source src="../images/route_graph_generation_swagger/swagger_nav2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+  <video width="700" controls>
+    <source src="../images/route_graph_generation_swagger/swagger_nav2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
 
 Happy Routing!
