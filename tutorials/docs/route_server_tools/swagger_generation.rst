@@ -1,7 +1,7 @@
 .. _route_graph_generation_swagger:
 
-Route Graph Generation
-**********************
+SWAGGER Route Graph Generation
+******************************
 
 - `Overview`_
 - `Requirements`_
@@ -24,7 +24,7 @@ Tutorial Steps
 
 The first step is to generate a swagger graph from a raster image of the map.
 This can be done by running the ``generate_graph.py`` script located in the ``scripts``.
-This will output two files, a ``graph.gml`` which contains the graph structure and a ``graph.png`` which shows a visualization of the graph overlaid on the rasted image.
+This will output two files, a ``graph.gml`` which contains the graph structure and a ``graph.png`` which shows a visualization of the graph overlaid on the rastered image.
 
 .. code-block::
 
@@ -34,7 +34,7 @@ This will output two files, a ``graph.gml`` which contains the graph structure a
         --safety-distance <meters> \
         --output-dir <output_directory>
 
-The resolution should be set as the same as in your SLAM generation of the occupancy grid map.
+The resolution should be set as the same as in your SLAM session that generated the occupancy grid map.
 The safety distance is the minimum distance away from any obstacle that the graph will be generated.
 When completed, the output should look similar to the following:
 
@@ -73,8 +73,8 @@ This conversion populates the GeoJSON with the key information about the graph a
 At this point, this file is now ready to use with the Nav2 Route Server.
 This can be passed onto your application using the ``nav2_bringup``'s ``graph`` CLI parameter or found by your custom launch or Nav2 configuration files.
 
-4- Example Demonstration
-------------------------
+4- Demonstration
+----------------
 
 For demonstration, we're going to use the Large Warehouse map provided by SWAGGER.
 This map can be found in the ``maps`` directory of the SWAGGER repository.
