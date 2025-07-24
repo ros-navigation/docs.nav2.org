@@ -31,6 +31,17 @@ This costmap layer implements a plugin that uses 3D raycasting for depth, 3D, or
   Description
     Clear any occupied cells under robot footprint.
 
+:``<voxel layer>``.min_obstacle_height:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 0.0
+  ====== =======
+
+  Description
+    Minimum height to add return to occupancy grid.
+
 :``<voxel layer>``.max_obstacle_height:
 
   ====== =======
