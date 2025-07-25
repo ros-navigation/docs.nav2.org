@@ -461,7 +461,7 @@ Example
         local_frame: odom
         global_frame: map
         robot_base_frame: base_link
-        transform_timeout: 0.1
+        transform_tolerance: 0.1
         simulate_ahead_time: 2.0
         max_rotational_vel: 1.0
         min_rotational_vel: 0.4
