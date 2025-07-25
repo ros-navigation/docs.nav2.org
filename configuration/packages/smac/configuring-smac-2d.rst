@@ -169,6 +169,28 @@ Parameters
   Description
     Parameter tolerance change amount to terminate smoothing session
 
+:``<name>``.smoother.do_refinement:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   true
+  ====== =======
+
+  Description
+    Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends.
+
+:``<name>``.smoother.refinement_num:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  int            2
+  ============== ===========================
+
+  Description
+    Number of times to recursively attempt to smooth, must be ``>= 1``.
+
 :allow_parameter_qos_overrides:
 
   ============== =============================
