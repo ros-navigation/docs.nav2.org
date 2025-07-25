@@ -127,7 +127,7 @@ Example
         costmap_topic: global_costmap/costmap_raw
         footprint_topic: global_costmap/published_footprint
         robot_base_frame: base_link
-        transform_timeout: 0.1
+        transform_tolerance: 0.1
         smoother_plugins: ["simple_smoother"]
         simple_smoother:
           plugin: "nav2_smoother::SimpleSmoother"

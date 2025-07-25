@@ -218,7 +218,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below t
         plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
       global_frame: odom
       robot_base_frame: base_link
-      transform_timeout: 0.1
+      transform_tolerance: 0.1
       simulate_ahead_time: 2.0
       max_rotational_vel: 1.0
       min_rotational_vel: 0.4
@@ -252,7 +252,7 @@ with
       to_number: ... # the operations center number
       global_frame: odom
       robot_base_frame: base_link
-      transform_timeout: 0.1
+      transform_tolerance: 0.1
       simulate_ahead_time: 2.0
       max_rotational_vel: 1.0
       min_rotational_vel: 0.4
