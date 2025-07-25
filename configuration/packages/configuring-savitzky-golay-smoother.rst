@@ -61,7 +61,7 @@ Example
         costmap_topic: global_costmap/costmap_raw
         footprint_topic: global_costmap/published_footprint
         robot_base_frame: base_link
-        transform_timeout: 0.1
+        transform_tolerance: 0.1
         smoother_plugins: ["savitzky_golay_smoother"]
         savitzky_golay_smoother:
           plugin: "nav2_smoother::SavitzkyGolaySmoother"
