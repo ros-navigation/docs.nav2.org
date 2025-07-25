@@ -1572,6 +1572,46 @@
 </dd>
 </dl>
 </dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.do_refinement</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Performs extra refinement smoothing runs. Essentially, this recursively calls the smoother using the output from the last smoothing cycle to further smooth the path for macro-trends.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.smoother.refinement_num</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Number of times to recursively attempt to smooth, must be <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">1</span></code>.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-odd">allow_parameter_qos_overrides</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
