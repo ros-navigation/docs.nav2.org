@@ -542,6 +542,17 @@ Observation sources parameters
   Description:
     Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
 
+:``<source name>``.min_range:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.0
+  ============== =============================
+
+  Description:
+    Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for ``pointcloud`` type.
+
 :``<source name>``.obstacles_angle:
 
   ============== =============================
@@ -717,4 +728,5 @@ Here is an example of configuration YAML for the Collision Monitor.
           topic: "/intel_realsense_r200_depth/points"
           min_height: 0.1
           max_height: 0.5
+          min_range: 0.2
           enabled: True
