@@ -315,3 +315,70 @@ To explain this further, here is an example BT that uses NonblockingSequence.
 Recall that if ``Action_A``, ``Action_B``, or ``Action_C`` returned ``FAILURE`` at any point of time, the parent would have returned ``FAILURE`` and halted any children as well.
 
 For additional details regarding the ``NonblockingSequence`` please see the `NonblockingSequence configuration guide <../../configuration/packages/bt-plugins/controls/NonblockingSequence.html>`_.
+
+Control: PersistentSequence
+----------------------------
+
+The ``PersistentSequence`` is similar to the ``Sequence`` node, but it stores the index of the last running child in the blackboard (key: "current_child_idx"), and it does not reset the index on halt.
+
+For more information see the ``Sequence`` BT node in BT.CPP.
+
+.. code-block:: xml
+
+    <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+            <Script code="current_child_idx := 0" />
+            <PersistentSequence current_child_idx="{current_child_idx}">
+                <Action_A/>
+                <Action_B/>
+                <Action_C/>
+            </PersistentSequence>
+        </BehaviorTree>
+    </root>
+
+Control: PauseResumeController
+------------------------------
+
+The ``PauseResumeController`` is a control node that adds pause and resume functionality to a behavior tree through service calls.
+
+It has one mandatory child for the RESUMED, and three optional for the PAUSED state, the ON_PAUSE event and the ON_RESUME event.
+It has two input ports:
+- pause_service_name: name of the service to pause
+- resume_service_name: name of the service to resume
+
+1. The controller starts in RESUMED state, and ticks it until it returns success.
+2. When the pause service is called, ON_PAUSE is ticked until completion, then the controller switches to PAUSED state.
+3. In PAUSED state the PAUSED child is ticked until the state is changed, or until it returns failure.
+4. When the resume service is called, ON_RESUME is ticked until completion, then the controller switches back to RESUMED state.
+
+The controller only returns success when the RESUMED child returns success. The controller returns failure if any child returns failure. In any other case, it returns running.
+
+.. code-block:: xml
+
+    <PauseResumeController pause_service_name="/pause" resume_service_name="/resume">
+        <!-- RESUMED branch -->
+
+        <!-- PAUSED branch (optional) -->
+
+        <!-- ON_PAUSE branch (optional) -->
+
+        <!-- ON_RESUME branch (optional) -->
+    </PauseResumeController>
+
+When the ON_PAUSE and ON_RESUME branches fail, the controller will return failure, halt, and the state will be reset to RESUMED. It might be desireable to retry the transition a few times before failing for real, which functionality is not built in the controller node, but is easily achievable by adding a retry node in the BT:
+
+.. code-block:: xml
+
+    <PauseResumeController pause_service_name="/pause" resume_service_name="/resume">
+        <!-- RESUMED branch -->
+
+        <!-- PAUSED branch -->
+
+        <RetryUntilSuccessful num_attempts="3">
+            <!-- ON_PAUSE branch -->
+        </RetryUntilSuccessful>
+
+        <RetryUntilSuccessful num_attempts="3">
+            <!-- ON_RESUME branch -->
+        </RetryUntilSuccessful>
+    </PauseResumeController>

@@ -388,6 +388,8 @@ Example
           - nav2_speed_controller_bt_node
           - nav2_recovery_node_bt_node
           - nav2_pipeline_sequence_bt_node
+          - nav2_persistent_sequence_bt_node
+          - nav2_pause_resume_controller_bt_node
           - nav2_round_robin_node_bt_node
           - nav2_transform_available_condition_bt_node
           - nav2_time_expired_condition_bt_node
