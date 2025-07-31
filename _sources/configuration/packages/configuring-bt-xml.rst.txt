@@ -9,7 +9,7 @@ The nav2_behavior_tree_ package provides several navigation-specific nodes that 
 
 Check this introduction_ to learn how behavior trees work and the difference between actions, conditions, controls and decorators.
 
-.. _introduction: https://www.behaviortree.dev/bt_basics/
+.. _introduction: https://www.behaviortree.dev/docs/learn-the-basics/BT_basics
 
 Consider checking out the :ref:`using_groot` tutorial for using Groot to visualize and modify behavior trees.
 
