@@ -365,7 +365,7 @@ The controller only returns success when the RESUMED child returns success. The 
         <!-- ON_RESUME branch (optional) -->
     </PauseResumeController>
 
-When the ON_PAUSE and ON_RESUME branches fail, the controller will return failure, halt, and the state will be reset to RESUMED. It might be desireable to retry the transition a few times before failing for real, which functionality is not built in the controller node, but is easily achievable by adding a retry node in the BT:
+When the ON_PAUSE and ON_RESUME branches fail, the controller will return failure, halt, and the state will be reset to RESUMED. It might be desirable to retry the transition a few times before failing for real, which functionality is not built in the controller node, but is easily achievable by adding a retry node in the BT:
 
 .. code-block:: xml
 
