@@ -100,6 +100,8 @@ Control Plugins
   bt-plugins/controls/RoundRobin.rst
   bt-plugins/controls/RecoveryNode.rst
   bt-plugins/controls/NonblockingSequence.rst
+  bt-plugins/controls/PersistentSequence.rst
+  bt-plugins/controls/PauseResumeController.rst
 
 Decorator Plugins
 *****************
