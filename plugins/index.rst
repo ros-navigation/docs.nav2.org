@@ -641,37 +641,47 @@ Behavior Tree Nodes
 .. _PathLongerOnApproach: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/decorator/path_longer_on_approach.cpp
 .. _GoalUpdatedController: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/decorator/goal_updated_controller.cpp
 
-+-------------------------+------------------------+----------------------------------+
-| Control Plugin Name     |         Creator        |       Description                |
-+=========================+========================+==================================+
-| `Pipeline Sequence`_    | Carl Delsey            | A variant of a sequence node that|
-|                         |                        | will re-tick previous children   |
-|                         |                        | even if another child is running |
-+-------------------------+------------------------+----------------------------------+
-| `Recovery`_             | Carl Delsey            | Node must contain 2 children     |
-|                         |                        | and returns success if first     |
-|                         |                        | succeeds. If first fails, the    |
-|                         |                        | second will be ticked. If        |
-|                         |                        | successful, it will retry the    |
-|                         |                        | first and then return its value  |
-+-------------------------+------------------------+----------------------------------+
-| `Round Robin`_          | Mohammad Haghighipanah | Will tick ``i`` th child until   |
-|                         |                        | a result and move on to ``i+1``  |
-+-------------------------+------------------------+----------------------------------+
-| `Nonblocking Sequence`_ | Alexander Yuen         | A variant of a sequence node that|
-|                         |                        | will tick through the whole      |
-|                         |                        | sequence even if a child returns |
-|                         |                        | running. On reticks of this      |
-|                         |                        | control node, successful children|
-|                         |                        | will be ticked once again to     |
-|                         |                        | prevent a stale state from being |
-|                         |                        | latched.                         |
-+-------------------------+------------------------+----------------------------------+
++----------------------------+------------------------+----------------------------------+
+| Control Plugin Name        |         Creator        |       Description                |
++============================+========================+==================================+
+| `Pipeline Sequence`_       | Carl Delsey            | A variant of a sequence node that|
+|                            |                        | will re-tick previous children   |
+|                            |                        | even if another child is running |
++----------------------------+------------------------+----------------------------------+
+| `Recovery`_                | Carl Delsey            | Node must contain 2 children     |
+|                            |                        | and returns success if first     |
+|                            |                        | succeeds. If first fails, the    |
+|                            |                        | second will be ticked. If        |
+|                            |                        | successful, it will retry the    |
+|                            |                        | first and then return its value  |
++----------------------------+------------------------+----------------------------------+
+| `Round Robin`_             | Mohammad Haghighipanah | Will tick ``i`` th child until   |
+|                            |                        | a result and move on to ``i+1``  |
++----------------------------+------------------------+----------------------------------+
+| `Nonblocking Sequence`_    | Alexander Yuen         | A variant of a sequence node that|
+|                            |                        | will tick through the whole      |
+|                            |                        | sequence even if a child returns |
+|                            |                        | running. On reticks of this      |
+|                            |                        | control node, successful children|
+|                            |                        | will be ticked once again to     |
+|                            |                        | prevent a stale state from being |
+|                            |                        | latched.                         |
++----------------------------+------------------------+----------------------------------+
+| `Persistent Sequence`_     | Enjoy Robotics         | A variant of a sequence node that|
+|                            |                        | exposes ``current_child_idx`` as |
+|                            |                        | a bidirectional port.            |
++----------------------------+------------------------+----------------------------------+
+| `Pause Resume Controller`_ | Enjoy Robotics         | Controlled through service calls |
+|                            |                        | to pause and resume the          |
+|                            |                        | execution of the tree.           |
++----------------------------+------------------------+----------------------------------+
 
 .. _Pipeline Sequence: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pipeline_sequence.cpp
 .. _Recovery: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/recovery_node.cpp
 .. _Round Robin: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/round_robin_node.cpp
 .. _Nonblocking Sequence: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/nonblocking_sequence.cpp
+.. _Persistent Sequence: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/persistent_sequence.cpp
+.. _Pause Resume Controller: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/control/pause_resume_controller.cpp
 
 
 
