@@ -343,6 +343,7 @@ The ``PauseResumeController`` is a control node that adds pause and resume funct
 
 It has one mandatory child for the RESUMED, and three optional for the PAUSED state, the ON_PAUSE event and the ON_RESUME event.
 It has two input ports:
+
 - ``pause_service_name``: name of the service to pause
 - resume_service_name: name of the service to resume
 
