@@ -345,7 +345,7 @@ It has one mandatory child for the RESUMED, and three optional for the PAUSED st
 It has two input ports:
 
 - ``pause_service_name``: name of the service to pause
-- resume_service_name: name of the service to resume
+- ``resume_service_name``: name of the service to resume
 
 1. The controller starts in RESUMED state, and ticks it until it returns success.
 2. When the pause service is called, ON_PAUSE is ticked until completion, then the controller switches to PAUSED state.
