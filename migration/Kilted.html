@@ -661,6 +661,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/RoundRobin.html">RoundRobin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/RecoveryNode.html">RecoveryNode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/NonblockingSequence.html">NonblockingSequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/PersistentSequence.html">PersistentSequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/bt-plugins/controls/PauseResumeController.html">PauseResumeController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
@@ -946,6 +948,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-recovery">Control: Recovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-roundrobin">Control: RoundRobin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-nonblockingsequence">Control: NonblockingSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-persistentsequence">Control: PersistentSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../behavior_trees/overview/nav2_specific_nodes.html#control-pauseresumecontroller">Control: PauseResumeController</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../behavior_trees/overview/detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
@@ -1467,6 +1471,11 @@ This is not longer required to be set.</p>
 This can be used to check for collisions, margin from obstacles, distance from a path, progress being made, etc.
 By default, it uses the <code class="docutils literal notranslate"><span class="pre">DefaultOptimalTrajectoryValidator</span></code> which checks for collisions.
 Note that kinematic and dynamic constraints are not required to be checked as the Optimizer ensures these constraints are met.</p>
+</div>
+<div class="section" id="added-persistentsequence-and-pauseresumecontroller-control-nodes">
+<h4>Added PersistentSequence and PauseResumeController Control Nodes<a class="headerlink" href="#added-persistentsequence-and-pauseresumecontroller-control-nodes" title="Permalink to this heading"></a></h4>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5247">PR #5247</a> two new Nav2 specific behavior tree control nodes have been added.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">PauseResumeController</span></code> (<a class="reference external" href="../configuration/packages/bt-plugins/controls/PauseResumeController.html">docs</a>) adds services to pause and resume execution of the tree. Related to this, the <code class="docutils literal notranslate"><span class="pre">PersistentSequence</span></code> (<a class="reference external" href="../configuration/packages/bt-plugins/controls/PersistentSequence.html">docs</a>) control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.</p>
 </div>
 </div>
 </div>

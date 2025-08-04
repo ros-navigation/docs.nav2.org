@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GetPoseFromPath &mdash; Nav2 1.0.0 documentation</title>
+  <title>PauseResumeController &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
@@ -26,8 +26,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="DockRobot" href="DockRobot.html" />
-    <link rel="prev" title="SmoothPath" href="Smooth.html" />
+    <link rel="next" title="RateController" href="../decorators/RateController.html" />
+    <link rel="prev" title="PersistentSequence" href="PersistentSequence.html" />
 
 <link rel="stylesheet" href="../../../../_static/tcs_theme.css" type="text/css" />
 
@@ -587,51 +587,51 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="Wait.html">Wait</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Spin.html">Spin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="BackUp.html">BackUp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="DriveOnHeading.html">DriveOnHeading</a></li>
-<li class="toctree-l4"><a class="reference internal" href="AssistedTeleop.html">AssistedTeleop</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ComputePathToPose.html">ComputePathToPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ComputeRoute.html">ComputeRoute</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ComputeAndTrackRoute.html">ComputeAndTrackRoute</a></li>
-<li class="toctree-l4"><a class="reference internal" href="FollowPath.html">FollowPath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="NavigateToPose.html">NavigateToPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ClearEntireCostmap.html">ClearEntireCostmap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ClearCostmapAroundPose.html">ClearCostmapAroundPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="TruncatePath.html">TruncatePath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="TruncatePathLocal.html">TruncatePathLocal</a></li>
-<li class="toctree-l4"><a class="reference internal" href="PlannerSelector.html">PlannerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ControllerSelector.html">ControllerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="SmootherSelector.html">SmootherSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GoalCheckerSelector.html">GoalCheckerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ProgressCheckerSelector.html">ProgressCheckerSelector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="NavigateThroughPoses.html">NavigateThroughPoses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ComputeCoveragePath.html">ComputeCoveragePath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelCoverage.html">CancelCoverage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RemovePassedGoals.html">RemovePassedGoals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RemoveInCollisionGoals.html">RemoveInCollisionGoals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelControl.html">CancelControl</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelBackUp.html">CancelBackUp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelSpin.html">CancelSpin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelWait.html">CancelWait</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelDriveOnHeading.html">CancelDriveOnHeading</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelAssistedTeleop.html">CancelAssistedTeleop</a></li>
-<li class="toctree-l4"><a class="reference internal" href="CancelComputeAndTrackRoute.html">CancelComputeAndTrackRoute</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Smooth.html">SmoothPath</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">GetPoseFromPath</a></li>
-<li class="toctree-l4"><a class="reference internal" href="DockRobot.html">DockRobot</a></li>
-<li class="toctree-l4"><a class="reference internal" href="UndockRobot.html">UndockRobot</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ConcatenatePaths.html">ConcatenatePaths</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GetCurrentPose.html">GetCurrentPose</a></li>
-<li class="toctree-l4"><a class="reference internal" href="AppendGoalPoseToGoals.html">AppendGoalPoseToGoals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ExtractRouteNodesAsGoals.html">ExtractRouteNodesAsGoals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GetNextFewGoals.html">GetNextFewGoals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#action-plugins">Action Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../actions/Wait.html">Wait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/Spin.html">Spin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/BackUp.html">BackUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/DriveOnHeading.html">DriveOnHeading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/AssistedTeleop.html">AssistedTeleop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ComputePathToPose.html">ComputePathToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ComputeRoute.html">ComputeRoute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ComputeAndTrackRoute.html">ComputeAndTrackRoute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/FollowPath.html">FollowPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/NavigateToPose.html">NavigateToPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ClearEntireCostmap.html">ClearEntireCostmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ClearCostmapExceptRegion.html">ClearCostmapExceptRegion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ClearCostmapAroundRobot.html">ClearCostmapAroundRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ClearCostmapAroundPose.html">ClearCostmapAroundPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ReinitializeGlobalLocalization.html">ReinitializeGlobalLocalization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/TruncatePath.html">TruncatePath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/TruncatePathLocal.html">TruncatePathLocal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/PlannerSelector.html">PlannerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ControllerSelector.html">ControllerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/SmootherSelector.html">SmootherSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/GoalCheckerSelector.html">GoalCheckerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ProgressCheckerSelector.html">ProgressCheckerSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/NavigateThroughPoses.html">NavigateThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ComputePathThroughPoses.html">ComputePathThroughPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ComputeCoveragePath.html">ComputeCoveragePath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelCoverage.html">CancelCoverage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/RemovePassedGoals.html">RemovePassedGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/RemoveInCollisionGoals.html">RemoveInCollisionGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelControl.html">CancelControl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelBackUp.html">CancelBackUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelSpin.html">CancelSpin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelWait.html">CancelWait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelDriveOnHeading.html">CancelDriveOnHeading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelAssistedTeleop.html">CancelAssistedTeleop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/CancelComputeAndTrackRoute.html">CancelComputeAndTrackRoute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/Smooth.html">SmoothPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/GetPoseFromPath.html">GetPoseFromPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/DockRobot.html">DockRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/UndockRobot.html">UndockRobot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ConcatenatePaths.html">ConcatenatePaths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/GetCurrentPose.html">GetCurrentPose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/AppendGoalPoseToGoals.html">AppendGoalPoseToGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/ExtractRouteNodesAsGoals.html">ExtractRouteNodesAsGoals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../actions/GetNextFewGoals.html">GetNextFewGoals</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#condition-plugins">Condition Plugins</a><ul>
@@ -656,13 +656,13 @@
 <li class="toctree-l4"><a class="reference internal" href="../conditions/ArePosesNear.html">ArePosesNear</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#control-plugins">Control Plugins</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../controls/PipelineSequence.html">PipelineSequence</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../controls/RoundRobin.html">RoundRobin</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../controls/RecoveryNode.html">RecoveryNode</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../controls/NonblockingSequence.html">NonblockingSequence</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../controls/PersistentSequence.html">PersistentSequence</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../controls/PauseResumeController.html">PauseResumeController</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../configuring-bt-xml.html#control-plugins">Control Plugins</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="PipelineSequence.html">PipelineSequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RoundRobin.html">RoundRobin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecoveryNode.html">RecoveryNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="NonblockingSequence.html">NonblockingSequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PersistentSequence.html">PersistentSequence</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">PauseResumeController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
@@ -1279,7 +1279,7 @@
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Configuration Guide</a></li>
           <li class="breadcrumb-item"><a href="../../configuring-bt-xml.html">Behavior Tree XML Nodes</a></li>
-      <li class="breadcrumb-item active">GetPoseFromPath</li>
+      <li class="breadcrumb-item active">PauseResumeController</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1288,83 +1288,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="getposefrompath">
-<span id="bt-getposefrompath-action"></span><h1>GetPoseFromPath<a class="headerlink" href="#getposefrompath" title="Permalink to this heading"></a></h1>
-<p>Gets a pose from a particular index on the path. Use <code class="docutils literal notranslate"><span class="pre">-1</span></code> to get the last pose, <code class="docutils literal notranslate"><span class="pre">-2</span></code> for second to last, and so on.</p>
-<div class="section" id="input-ports">
-<h2>Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this heading"></a></h2>
-<dl class="field-list">
-<dt class="field-odd">path</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 65%" />
-<col style="width: 35%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>nav_msgs/Path</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Path to extract pose from</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">index</dt>
-<dd class="field-even"><table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>int</p></td>
-<td><p>0</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Index from path to use. Use <code class="docutils literal notranslate"><span class="pre">-1</span></code> to get the last pose, <code class="docutils literal notranslate"><span class="pre">-2</span></code> for second to last, and so on.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<div class="section" id="output-ports">
-<h3>Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this heading"></a></h3>
-<dl class="field-list">
-<dt class="field-odd">pose</dt>
-<dd class="field-odd"><table class="docutils align-default">
-<colgroup>
-<col style="width: 78%" />
-<col style="width: 22%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Type</p></td>
-<td><p>Default</p></td>
-</tr>
-<tr class="row-even"><td><p>geometry_msgs/PoseStamped</p></td>
-<td><p>N/A</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt>Description</dt><dd><p>Pose from path, with the Path’s set header.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div>
+  <div class="section" id="pauseresumecontroller">
+<span id="bt-pause-resume-controller-control"></span><h1>PauseResumeController<a class="headerlink" href="#pauseresumecontroller" title="Permalink to this heading"></a></h1>
+<p>Controlled through service calls to pause and resume the execution of the tree.
+It has one mandatory child for the RESUMED, and three optional for the PAUSED state, the ON_PAUSE event and the ON_RESUME event.
+It has two input ports:</p>
+<ul class="simple">
+<li><p>pause_service_name: name of the service to pause</p></li>
+<li><p>resume_service_name: name of the service to resume</p></li>
+</ul>
+<p>The controller starts in RESUMED state, and ticks it until it returns success.
+When the pause service is called, ON_PAUSE is ticked until completion, then the controller switches to PAUSED state.
+When the resume service is called, ON_RESUME is ticked until completion, then the controller switches back to RESUMED state.</p>
+<p>The controller only returns success when the RESUMED child returns success.
+The controller returns failure if any child returns failure.
+In any other case, it returns running.</p>
 <div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h3>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GetPoseFromPath</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;{path}&quot;</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;-1&quot;</span><span class="w"> </span><span class="na">pose=</span><span class="s">&quot;{goal}&quot;</span><span class="nt">/&gt;</span>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;PauseResumeController</span><span class="w"> </span><span class="na">pause_service_name=</span><span class="s">&quot;/pause&quot;</span><span class="w"> </span><span class="na">resume_service_name=</span><span class="s">&quot;/resume&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- RESUMED branch (mandatory) --&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- PAUSED branch (optional) --&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- ON_PAUSE branch (optional) --&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- ON_RESUME branch (optional) --&gt;</span>
+<span class="nt">&lt;/PauseResumeController&gt;</span>
 </pre></div>
 </div>
+<p>When the ON_PAUSE and ON_RESUME branches fail, the controller will return failure, halt, and the state will be reset to RESUMED. It might be desirable to retry the transition a few times before failing for real, which functionality is not built in the controller node, but is easily achievable by adding a retry node in the BT:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;PauseResumeController</span><span class="w"> </span><span class="na">pause_service_name=</span><span class="s">&quot;/pause&quot;</span><span class="w"> </span><span class="na">resume_service_name=</span><span class="s">&quot;/resume&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- RESUMED branch --&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- PAUSED branch --&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;RetryUntilSuccessful</span><span class="w"> </span><span class="na">num_attempts=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- ON_PAUSE branch --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/RetryUntilSuccessful&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;RetryUntilSuccessful</span><span class="w"> </span><span class="na">num_attempts=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- ON_RESUME branch --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/RetryUntilSuccessful&gt;</span>
+<span class="nt">&lt;/PauseResumeController&gt;</span>
+</pre></div>
 </div>
 </div>
 </div>

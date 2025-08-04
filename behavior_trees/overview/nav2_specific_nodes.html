@@ -661,6 +661,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/RoundRobin.html">RoundRobin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/RecoveryNode.html">RecoveryNode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/NonblockingSequence.html">NonblockingSequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/PersistentSequence.html">PersistentSequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../configuration/packages/bt-plugins/controls/PauseResumeController.html">PauseResumeController</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../configuration/packages/configuring-bt-xml.html#decorator-plugins">Decorator Plugins</a><ul>
@@ -946,6 +948,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#control-recovery">Control: Recovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#control-roundrobin">Control: RoundRobin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#control-nonblockingsequence">Control: NonblockingSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-persistentsequence">Control: PersistentSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-pauseresumecontroller">Control: PauseResumeController</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="detailed_behavior_tree_walkthrough.html">Detailed Behavior Tree Walkthrough</a><ul>
@@ -1613,6 +1617,67 @@ The parent node retains this state information, and will tick <code class="docut
 </div>
 <p>Recall that if <code class="docutils literal notranslate"><span class="pre">Action_A</span></code>, <code class="docutils literal notranslate"><span class="pre">Action_B</span></code>, or <code class="docutils literal notranslate"><span class="pre">Action_C</span></code> returned <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> at any point of time, the parent would have returned <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> and halted any children as well.</p>
 <p>For additional details regarding the <code class="docutils literal notranslate"><span class="pre">NonblockingSequence</span></code> please see the <a class="reference external" href="../../configuration/packages/bt-plugins/controls/NonblockingSequence.html">NonblockingSequence configuration guide</a>.</p>
+</div>
+<div class="section" id="control-persistentsequence">
+<h2>Control: PersistentSequence<a class="headerlink" href="#control-persistentsequence" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">PersistentSequence</span></code> is similar to the <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> node, but it stores the index of the last running child in the blackboard (key: “current_child_idx”), and it does not reset the index on halt.</p>
+<p>For more information see the <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> BT node in BT.CPP.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span><span class="w"> </span><span class="na">main_tree_to_execute=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;BehaviorTree</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;MainTree&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Script</span><span class="w"> </span><span class="na">code=</span><span class="s">&quot;current_child_idx := 0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PersistentSequence</span><span class="w"> </span><span class="na">current_child_idx=</span><span class="s">&quot;{current_child_idx}&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Action_A/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Action_B/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Action_C/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PersistentSequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/BehaviorTree&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="control-pauseresumecontroller">
+<h2>Control: PauseResumeController<a class="headerlink" href="#control-pauseresumecontroller" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">PauseResumeController</span></code> is a control node that adds pause and resume functionality to a behavior tree through service calls.</p>
+<p>It has one mandatory child for the RESUMED, and three optional for the PAUSED state, the ON_PAUSE event and the ON_RESUME event.
+It has two input ports:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pause_service_name</span></code>: name of the service to pause</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resume_service_name</span></code>: name of the service to resume</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>The controller starts in RESUMED state, and ticks it until it returns success.</p></li>
+<li><p>When the pause service is called, ON_PAUSE is ticked until completion, then the controller switches to PAUSED state.</p></li>
+<li><p>In PAUSED state the PAUSED child is ticked until the state is changed, or until it returns failure.</p></li>
+<li><p>When the resume service is called, ON_RESUME is ticked until completion, then the controller switches back to RESUMED state.</p></li>
+</ol>
+<p>The controller only returns success when the RESUMED child returns success. The controller returns failure if any child returns failure. In any other case, it returns running.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;PauseResumeController</span><span class="w"> </span><span class="na">pause_service_name=</span><span class="s">&quot;/pause&quot;</span><span class="w"> </span><span class="na">resume_service_name=</span><span class="s">&quot;/resume&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- RESUMED branch --&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- PAUSED branch (optional) --&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- ON_PAUSE branch (optional) --&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- ON_RESUME branch (optional) --&gt;</span>
+<span class="nt">&lt;/PauseResumeController&gt;</span>
+</pre></div>
+</div>
+<p>When the ON_PAUSE and ON_RESUME branches fail, the controller will return failure, halt, and the state will be reset to RESUMED. It might be desirable to retry the transition a few times before failing for real, which functionality is not built in the controller node, but is easily achievable by adding a retry node in the BT:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;PauseResumeController</span><span class="w"> </span><span class="na">pause_service_name=</span><span class="s">&quot;/pause&quot;</span><span class="w"> </span><span class="na">resume_service_name=</span><span class="s">&quot;/resume&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- RESUMED branch --&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- PAUSED branch --&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;RetryUntilSuccessful</span><span class="w"> </span><span class="na">num_attempts=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- ON_PAUSE branch --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/RetryUntilSuccessful&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;RetryUntilSuccessful</span><span class="w"> </span><span class="na">num_attempts=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- ON_RESUME branch --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/RetryUntilSuccessful&gt;</span>
+<span class="nt">&lt;/PauseResumeController&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 
