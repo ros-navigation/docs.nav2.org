@@ -96,7 +96,7 @@ Tutorial Steps
 0- Setup Gazebo World
 ---------------------
 
-To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://app.gazebosim.org/OpenRobotics/fuel/models/Sonoma%20Raceway>`_ because its aligned with the real location. A sample world has been setup `here <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/tb3_sonoma_raceway.sdf.xacro>`_ using gazebo's navsat and  spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
+To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the `Sonoma Raceway <https://app.gazebosim.org/OpenRobotics/fuel/models/Sonoma%20Raceway>`_ because its aligned with the real location. A sample `world <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/tb3_sonoma_raceway.sdf.xacro>`_ has been setup using gazebo's navsat and spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:
 
 .. code-block:: xml
 
@@ -121,7 +121,7 @@ To get GPS readings from Gazebo, we also need to modify the xacro and urdf for t
 
 The changes that was done in xacro file ``gz_waffle_gps.sdf.xacro`` was to include the ``gps_link`` that includes the navsat sensor. In addition we create a joint for this link that publishes a static transform w.r.t. ``base_link``.
 
-.. code-block:: xacro
+.. code-block:: xml
 
   <link name="gps_link">
     <sensor name="navsat" type="navsat">
@@ -150,7 +150,7 @@ The changes that was done in xacro file ``gz_waffle_gps.sdf.xacro`` was to inclu
 
 Additionally, the joint needs to be defined again in the urdf file ``turtlebot3_waffle_gps.urdf``
 
-.. code-block:: urdf
+.. code-block:: xml
 
    <joint name="gps_joint" type="fixed">
     <parent link="base_link"/>
@@ -159,7 +159,7 @@ Additionally, the joint needs to be defined again in the urdf file ``turtlebot3_
   </joint>
   <link name="gps_link"/>
 
-In addition you need to include the gps topic in your gazebo to ros bridge file, an example of this can be found in the ``turtlebot3_waffle_gps_bridge.yaml`` in the `nav2_minimal_turtlebot_simulation repo <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/config/turtlebot3_waffle_gps_bridge.yaml>`_
+In addition you need to include the gps topic in your gazebo to ros bridge file, an example of this can be found in the ``turtlebot3_waffle_gps_bridge.yaml`` in the `nav2_minimal_turtlebot_simulation <https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/config/turtlebot3_waffle_gps_bridge.yaml>`_ repository.
 
 .. code-block:: yaml
 
@@ -287,7 +287,7 @@ On a different terminal launch mapviz using the pre-built `config file <https://
 
 * Stadiamaps: This would require an api key, see `Get a stadiamap Api key  <https://docs.stadiamaps.com/static-maps/>`_ . Modify the config file as follows:
 
-.. code-block:: yml
+.. code-block:: yaml
 
   - type: mapviz_plugins/tile_map
     name: new display
