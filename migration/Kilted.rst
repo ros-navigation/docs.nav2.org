@@ -225,3 +225,10 @@ The MPPI controller now has a plugin, ``OptimalTrajectoryValidator``, which can 
 This can be used to check for collisions, margin from obstacles, distance from a path, progress being made, etc.
 By default, it uses the ``DefaultOptimalTrajectoryValidator`` which checks for collisions.
 Note that kinematic and dynamic constraints are not required to be checked as the Optimizer ensures these constraints are met.
+
+Added PersistentSequence and PauseResumeController Control Nodes
+****************************************************************
+
+In `PR #5247 <https://github.com/ros-navigation/navigation2/pull/5247>`_ two new Nav2 specific behavior tree control nodes have been added.
+
+The ``PauseResumeController`` (`docs <../configuration/packages/bt-plugins/controls/PauseResumeController.html>`_) adds services to pause and resume execution of the tree. Related to this, the ``PersistentSequence`` (`docs <../configuration/packages/bt-plugins/controls/PersistentSequence.html>`_) control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.
