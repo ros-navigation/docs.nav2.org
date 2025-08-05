@@ -18,11 +18,16 @@ references:
           openjdk-8-jre \
           openssh-server \
           python3-pip \
-          ttf-dejavu
+          python3-venv \
+          fonts-dejavu
+        python3 -m venv venv
+        source venv/bin/activate
         pip3 install -r requirements.txt
   make_docs: &make_docs
     run:
+      name: Build the documentation
       command: |
+        source venv/bin/activate
         make html
   store_docs: &store_docs
     store_artifacts:
@@ -30,7 +35,9 @@ references:
         destination: html
   publish_docs: &publish_docs
     run:
+      name: Publish the documentation
       command: |
+        source venv/bin/activate
         make publish
   install_deployment_key: &install_deployment_key
     add_ssh_keys:
@@ -55,7 +62,7 @@ commands:
 executors:
   docs_exec:
     docker:
-      - image: ubuntu:focal
+      - image: ubuntu:latest
     working_directory: /nav2_docs
 
 jobs:
