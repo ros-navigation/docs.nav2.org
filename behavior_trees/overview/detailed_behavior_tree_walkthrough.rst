@@ -255,6 +255,7 @@ At the top level, a ``Sequence`` ensures the following steps are executed in ord
 - A ``Fallback`` node first checks whether planner or controller recoveries might help resolve the issue. If either returns ``SUCCESS``, the fallback succeeds and the sequence proceeds to the next step.
 
 - A ``ReactiveFallback`` that controls the flow between the rest of the system wide recoveries, and asynchronously checks if a new goal has been received.
+
 If at any point the goal gets updated, this subtree will halt all children and return ``SUCCESS``. This allows for quick reactions to new goals and preempt currently executing recoveries.
 This should look familiar to the contextual recovery portions of the ``Navigation`` subtree. This is a common BT pattern to handle the situation "Unless 'this condition' happens, Do action A".
 

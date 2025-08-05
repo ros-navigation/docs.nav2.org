@@ -91,7 +91,7 @@ language = 'en'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build','_themes','scripts', 'README.md' ]
+exclude_patterns = ['venv', '_build','_themes','scripts', 'README.md' ]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -201,4 +201,4 @@ breathe_default_project = "SOF Project"
 breathe_default_members = ('members', 'undoc-members', 'content-only')
 
 extlinks = {'projectfile':
-    ('https://github.com/ros-navigation/navigation2/blob/main/%s', 'filepath ')}
+    ('https://github.com/ros-navigation/navigation2/blob/main/%s', 'filepath %s')}
