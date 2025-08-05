@@ -231,4 +231,4 @@ Added PersistentSequence and PauseResumeController Control Nodes
 
 In `PR #5247 <https://github.com/ros-navigation/navigation2/pull/5247>`_ two new Nav2 specific behavior tree control nodes have been added.
 
-The ``PauseResumeController`` (`docs <../configuration/packages/bt-plugins/controls/PauseResumeController.html>`_) adds services to pause and resume execution of the tree. Related to this, the ``PersistentSequence`` (`docs <../configuration/packages/bt-plugins/controls/PersistentSequence.html>`_) control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.
+The `PauseResumeController <../configuration/packages/bt-plugins/controls/PauseResumeController.html>`_ adds services to pause and resume execution of the tree. Related to this, the `PersistentSequence <../configuration/packages/bt-plugins/controls/PersistentSequence.html>`_ control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.

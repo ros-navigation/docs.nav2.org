@@ -1352,7 +1352,7 @@ This is available in ROS 2 Iron and newer.</p>
 <h2>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="setup-gazebo-world">
 <h3>0- Setup Gazebo World<a class="headerlink" href="#setup-gazebo-world" title="Permalink to this heading"></a></h3>
-<p>To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the <a class="reference external" href="https://app.gazebosim.org/OpenRobotics/fuel/models/Sonoma%20Raceway">Sonoma Raceway</a> because its aligned with the real location. A sample world has been setup <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/tb3_sonoma_raceway.sdf.xacro">here</a> using gazebo’s navsat and  spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:</p>
+<p>To navigate using GPS we first need to create an outdoors Gazebo world with a robot having a GPS sensor to setup for navigation. For this tutorial we will be using the <a class="reference external" href="https://app.gazebosim.org/OpenRobotics/fuel/models/Sonoma%20Raceway">Sonoma Raceway</a> because its aligned with the real location. A sample <a class="reference external" href="https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_gps_waypoint_follower_demo/worlds/tb3_sonoma_raceway.sdf.xacro">world</a> has been setup using gazebo’s navsat and spherical coordinates plugin, which creates a local tangent plane centered in the set geographic origin and provides latitude, longitude and altitude coordinates for each point in the world:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!-- Navsat plugin &gt;</span>
 <span class="nt">&lt;plugin</span>
 <span class="w">  </span><span class="na">filename=</span><span class="s">&quot;gz-sim-navsat-system&quot;</span>
@@ -1373,42 +1373,42 @@ This is available in ROS 2 Iron and newer.</p>
 </div>
 <p>To get GPS readings from Gazebo, we also need to modify the xacro and urdf for the turtlebot3 robot. The final files can be found in the  <a class="reference external" href="https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/urdf">nav2_minimal_turtlebot_simulation repo</a>, it outputs <code class="docutils literal notranslate"><span class="pre">NavSatFix</span></code> messages on the topic <code class="docutils literal notranslate"><span class="pre">/gps/fix</span></code>.</p>
 <p>The changes that was done in xacro file <code class="docutils literal notranslate"><span class="pre">gz_waffle_gps.sdf.xacro</span></code> was to include the <code class="docutils literal notranslate"><span class="pre">gps_link</span></code> that includes the navsat sensor. In addition we create a joint for this link that publishes a static transform w.r.t. <code class="docutils literal notranslate"><span class="pre">base_link</span></code>.</p>
-<div class="highlight-xacro notranslate"><div class="highlight"><pre><span></span>&lt;link name=&quot;gps_link&quot;&gt;
-  &lt;sensor name=&quot;navsat&quot; type=&quot;navsat&quot;&gt;
-    &lt;always_on&gt;true&lt;/always_on&gt;
-    &lt;update_rate&gt;1&lt;/update_rate&gt;
-    &lt;topic&gt;$(arg namespace)/gps/fix&lt;/topic&gt;
-    &lt;gz_frame_id&gt;gps_link&lt;/gz_frame_id&gt;
-    &lt;navsat&gt;
-      &lt;position_sensing&gt;
-        &lt;horizontal&gt;
-          &lt;noise type=&quot;gaussian&quot;&gt;
-            &lt;mean&gt;0.0&lt;/mean&gt;
-            &lt;stddev&gt;0.0&lt;/stddev&gt;
-          &lt;/noise&gt;
-        &lt;/horizontal&gt;
-        &lt;vertical&gt;
-          &lt;noise type=&quot;gaussian&quot;&gt;
-            &lt;mean&gt;0.0&lt;/mean&gt;
-            &lt;stddev&gt;0.0&lt;/stddev&gt;
-          &lt;/noise&gt;
-        &lt;/vertical&gt;
-      &lt;/position_sensing&gt;
-    &lt;/navsat&gt;
-  &lt;/sensor&gt;
-&lt;/link&gt;
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gps_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;sensor</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;navsat&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;navsat&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;always_on&gt;</span>true<span class="nt">&lt;/always_on&gt;</span>
+<span class="w">    </span><span class="nt">&lt;update_rate&gt;</span>1<span class="nt">&lt;/update_rate&gt;</span>
+<span class="w">    </span><span class="nt">&lt;topic&gt;</span>$(arg<span class="w"> </span>namespace)/gps/fix<span class="nt">&lt;/topic&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gz_frame_id&gt;</span>gps_link<span class="nt">&lt;/gz_frame_id&gt;</span>
+<span class="w">    </span><span class="nt">&lt;navsat&gt;</span>
+<span class="w">      </span><span class="nt">&lt;position_sensing&gt;</span>
+<span class="w">        </span><span class="nt">&lt;horizontal&gt;</span>
+<span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;stddev&gt;</span>0.0<span class="nt">&lt;/stddev&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/horizontal&gt;</span>
+<span class="w">        </span><span class="nt">&lt;vertical&gt;</span>
+<span class="w">          </span><span class="nt">&lt;noise</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gaussian&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+<span class="w">            </span><span class="nt">&lt;stddev&gt;</span>0.0<span class="nt">&lt;/stddev&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/noise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/vertical&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/position_sensing&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/navsat&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/sensor&gt;</span>
+<span class="nt">&lt;/link&gt;</span>
 </pre></div>
 </div>
 <p>Additionally, the joint needs to be defined again in the urdf file <code class="docutils literal notranslate"><span class="pre">turtlebot3_waffle_gps.urdf</span></code></p>
-<div class="highlight-urdf notranslate"><div class="highlight"><pre><span></span> &lt;joint name=&quot;gps_joint&quot; type=&quot;fixed&quot;&gt;
-  &lt;parent link=&quot;base_link&quot;/&gt;
-  &lt;child link=&quot;gps_link&quot;/&gt;
-  &lt;origin xyz=&quot;-0.05 0 0.05&quot; rpy=&quot;0 0 0&quot;/&gt;
-&lt;/joint&gt;
-&lt;link name=&quot;gps_link&quot;/&gt;
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gps_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;gps_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;-0.05 0 0.05&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/joint&gt;</span>
+<span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gps_link&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
-<p>In addition you need to include the gps topic in your gazebo to ros bridge file, an example of this can be found in the <code class="docutils literal notranslate"><span class="pre">turtlebot3_waffle_gps_bridge.yaml</span></code> in the <a class="reference external" href="https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/config/turtlebot3_waffle_gps_bridge.yaml">nav2_minimal_turtlebot_simulation repo</a></p>
+<p>In addition you need to include the gps topic in your gazebo to ros bridge file, an example of this can be found in the <code class="docutils literal notranslate"><span class="pre">turtlebot3_waffle_gps_bridge.yaml</span></code> in the <a class="reference external" href="https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/blob/main/nav2_minimal_tb3_sim/config/turtlebot3_waffle_gps_bridge.yaml">nav2_minimal_turtlebot_simulation</a> repository.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace navsat_bridge - check gz topic name</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topic_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gps/fix&quot;</span>
 <span class="w">  </span><span class="nt">ros_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sensor_msgs/msg/NavSatFix&quot;</span>
@@ -1509,18 +1509,18 @@ This is available in ROS 2 Iron and newer.</p>
 <ul class="simple">
 <li><p>Stadiamaps: This would require an api key, see <a class="reference external" href="https://docs.stadiamaps.com/static-maps/">Get a stadiamap Api key</a> . Modify the config file as follows:</p></li>
 </ul>
-<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>- type: mapviz_plugins/tile_map
-  name: new display
-  config:
-    visible: true
-    collapsed: false
-    custom_sources:
-      - base_url: https://tiles.stadiamaps.com/tiles/alidade_satellite/{level}/{x}/{y}.png?api_key=api_key
-        max_zoom: 15
-        name: Stadia
-        type: wmts
-    bing_api_key: &quot;&quot;
-    source: Stadia (alidade_satellite)
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mapviz_plugins/tile_map</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new display</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">visible</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">collapsed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">custom_sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">base_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://tiles.stadiamaps.com/tiles/alidade_satellite/{level}/{x}/{y}.png?api_key=api_key</span>
+<span class="w">        </span><span class="nt">max_zoom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Stadia</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wmts</span>
+<span class="w">    </span><span class="nt">bing_api_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Stadia (alidade_satellite)</span>
 </pre></div>
 </div>
 <ul class="simple">
