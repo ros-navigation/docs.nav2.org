@@ -1519,8 +1519,28 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">dock_backwards</dt>
+<dt class="field-even">odom_duration</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time (s) to buffer odometry commands to estimate the robot speed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">dock_backwards</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1539,8 +1559,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">dock_prestaging_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">dock_prestaging_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1559,8 +1579,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">dock_plugins</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">dock_plugins</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1579,8 +1599,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">dock_database</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">dock_database</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1599,8 +1619,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">docks</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">docks</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1619,8 +1639,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">navigator_bt_xml</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">navigator_bt_xml</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1639,8 +1659,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">introspection_mode</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">introspection_mode</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1659,8 +1679,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">allow_parameter_qos_overrides</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">allow_parameter_qos_overrides</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1679,8 +1699,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.k_phi</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.k_phi</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1699,8 +1719,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.k_delta</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.k_delta</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1719,8 +1739,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.beta</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.beta</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1739,8 +1759,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.lambda</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.lambda</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1759,8 +1779,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.v_linear_min</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.v_linear_min</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1779,8 +1799,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.v_linear_max</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.v_linear_max</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1799,8 +1819,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.v_angular_max</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.v_angular_max</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1819,8 +1839,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.slowdown_radius</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.slowdown_radius</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1839,8 +1859,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.rotate_to_heading_angular_vel</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.rotate_to_heading_angular_vel</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1859,8 +1879,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.rotate_to_heading_max_angular_accel</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.rotate_to_heading_max_angular_accel</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1879,8 +1899,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.use_collision_detection</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.use_collision_detection</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -1899,8 +1919,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.costmap_topic</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.costmap_topic</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -1919,8 +1939,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.footprint_topic</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.footprint_topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 29%" />
 <col style="width: 71%" />
@@ -1939,8 +1959,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.transform_tolerance</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.transform_tolerance</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1959,8 +1979,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.projection_time</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.projection_time</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1979,8 +1999,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">controller.simulation_time_step</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">controller.simulation_time_step</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1999,8 +2019,8 @@ This task server is designed be called by an application BT or autonomy applicat
 </dd>
 </dl>
 </dd>
-<dt class="field-even">controller.dock_collision_threshold</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">controller.dock_collision_threshold</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2423,6 +2443,7 @@ This task server is designed be called by an application BT or autonomy applicat
 <span class="w">    </span><span class="nt">base_frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base_link&quot;</span>
 <span class="w">    </span><span class="nt">fixed_frame</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
 <span class="w">    </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
+<span class="w">    </span><span class="nt">odom_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">    </span><span class="nt">dock_backwards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Deprecated, use dock_direction in plugin</span>
 <span class="w">    </span><span class="nt">dock_prestaging_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">    </span><span class="nt">introspection_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span>

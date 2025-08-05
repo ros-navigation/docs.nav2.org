@@ -1590,8 +1590,28 @@ Setting it to the special value of -1.0 makes it infinite, 0 to disable, and any
 </dd>
 </dl>
 </dd>
-<dt class="field-even">enable_stamped_cmd_vel</dt>
+<dt class="field-even">odom_duration</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>double</p></td>
+<td><p>0.3</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Time (s) to buffer odometry commands to estimate the robot speed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">enable_stamped_cmd_vel</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1612,8 +1632,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">bond_heartbeat_period</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">bond_heartbeat_period</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1632,8 +1652,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-even">introspection_mode</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">introspection_mode</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1652,8 +1672,8 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">allow_parameter_qos_overrides</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">allow_parameter_qos_overrides</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1726,6 +1746,7 @@ Note: This parameter is default <code class="docutils literal notranslate"><span
 <span class="w">    </span><span class="nt">min_theta_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
 <span class="w">    </span><span class="nt">failure_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">    </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;odom&quot;</span>
+<span class="w">    </span><span class="nt">odom_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
 <span class="w">    </span><span class="nt">progress_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;progress_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># progress_checker_plugin: &quot;progress_checker&quot; For Humble and older</span>
 <span class="w">    </span><span class="nt">goal_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;goal_checker&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># goal_checker_plugin: &quot;goal_checker&quot; For Galactic and older</span>
 <span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>

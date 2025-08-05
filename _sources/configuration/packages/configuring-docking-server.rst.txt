@@ -139,6 +139,17 @@ Parameters
   Description
     The topic to use for the odometry data when rotate_to_dock is enabled.
 
+:odom_duration:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.3
+  ============== ===========================
+
+  Description
+    Time (s) to buffer odometry commands to estimate the robot speed.
+
 :dock_backwards:
 
   ============== ==============
@@ -652,6 +663,7 @@ Example
         base_frame: "base_link"
         fixed_frame: "odom"
         odom_topic: "odom"
+        odom_duration: 0.3
         dock_backwards: false  # Deprecated, use dock_direction in plugin
         dock_prestaging_tolerance: 0.5
         introspection_mode: "disabled"

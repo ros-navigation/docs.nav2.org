@@ -202,6 +202,17 @@ Parameters
   Description
     Topic to get instantaneous measurement of speed from.
 
+:odom_duration:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.3
+  ============== ===========================
+
+  Description
+    Time (s) to buffer odometry commands to estimate the robot speed.
+
 :enable_stamped_cmd_vel:
 
   ============== =============================
@@ -289,6 +300,7 @@ Example
         min_theta_velocity_threshold: 0.001
         failure_tolerance: 0.3
         odom_topic: "odom"
+        odom_duration: 0.3
         progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
         goal_checker_plugins: ["goal_checker"] # goal_checker_plugin: "goal_checker" For Galactic and older
         controller_plugins: ["FollowPath"]
