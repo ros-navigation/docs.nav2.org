@@ -281,7 +281,7 @@ You get a more detailed output with a backtrace, which can help you identify the
   [planner_server-13] Segmentation fault (Address not mapped to object [0x8])
   [ERROR] [planner_server-13]: process has died [pid 129889, exit code -11, cmd '/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/nav2_planner/planner_server --ros-args --log-level info --ros-args -r __node:=planner_server -r __ns:=/ -p use_sim_time:=True --params-file /tmp/launch_params_apyru5sq -r /tf:=tf -r /tf_static:=tf_static'].
 
-Building the navigation2 packages with the **RelWithDebInfo** or **Debug** build configuration allows for even more detailed backtraces including line numbers, file names, and relevant code blocks, in the backtrace:
+Building Nav2 with the **RelWithDebInfo** or **Debug** build configuration allows for even more detailed backtraces including line numbers, file names, and relevant code blocks, in the backtrace:
 
 .. code-block:: bash
 
