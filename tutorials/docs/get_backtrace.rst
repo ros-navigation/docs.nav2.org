@@ -315,4 +315,4 @@ Building Nav2 with the **RelWithDebInfo** or **Debug** build configuration allow
 
 If you want to enable automatic backtraces in your own packages, just add ``backward_ros`` as a dependency and ``find_package`` in your CMakeLists, then the backward libraries will be injected in all your executables and libraries.
 
-**Note:** Currently, backward_ros does not work with ComposedNodes due to missing support in rclcpp. Until this `issue <https://github.com/ros2/rclcpp/issues/2396>`_ is resolved, launching the navigation2  stack with composition disabled (e.g. with a `use_composition:=False` launch argument) is required to get automatic backtraces.
+**Note:** Currently, backward_ros does not work with ComposedNodes due to missing support in rclcpp. Until this `issue <https://github.com/ros2/rclcpp/issues/2396>`_ is resolved, launching the Nav2  stack with composition disabled (e.g. with a `use_composition:=False` launch argument) is required to get automatic backtraces.
