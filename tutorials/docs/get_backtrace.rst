@@ -266,12 +266,12 @@ You get a more detailed output with a backtrace, which can help you identify the
 
   [planner_server-13] [INFO] [1754463292.960594359] [planner_server]: Computing path to goal....
   [planner_server-13] Stack trace (most recent call last) in thread 130805:
-  [planner_server-13] #11   Object "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2", at 0xffffffffffffffff, in 
-  [planner_server-13] #10   Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7509de004c3b, in 
-  [planner_server-13] #9    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7509ddf77aa3, in 
-  [planner_server-13] #8    Object "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33", at 0x7509de207db3, in 
+  [planner_server-13] #11   Object "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2", at 0xffffffffffffffff, in
+  [planner_server-13] #10   Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7509de004c3b, in
+  [planner_server-13] #9    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7509ddf77aa3, in
+  [planner_server-13] #8    Object "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33", at 0x7509de207db3, in
   [planner_server-13] #7    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de887ee7, in std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<nav2::SimpleActionServer<nav2_msgs::action::ComputePathToPose>::handle_accepted(std::shared_ptr<rclcpp_action::ServerGoalHandle<nav2_msgs::action::ComputePathToPose> >)::{lambda()#1}> >, void>::_M_run()
-  [planner_server-13] #6    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7509ddf7ced2, in 
+  [planner_server-13] #6    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7509ddf7ced2, in
   [planner_server-13] #5    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de8825cc, in std::__future_base::_State_baseV2::_M_do_set(std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()>*, bool*)
   [planner_server-13] #4    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de8bd380, in std::_Function_handler<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> (), std::__future_base::_Task_setter<std::unique_ptr<std::__future_base::_Result<void>, std::__future_base::_Result_base::_Deleter>, std::thread::_Invoker<std::tuple<nav2::SimpleActionServer<nav2_msgs::action::ComputePathToPose>::handle_accepted(std::shared_ptr<rclcpp_action::ServerGoalHandle<nav2_msgs::action::ComputePathToPose> >)::{lambda()#1}> >, void> >::_M_invoke(std::_Any_data const&)
   [planner_server-13] #3    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de8bc2f4, in nav2::SimpleActionServer<nav2_msgs::action::ComputePathToPose>::work()
@@ -287,18 +287,18 @@ Building the navigation2 packages with the **RelWithDebInfo** or **Debug** build
 
   [planner_server-13] [INFO] [1754377736.955537475] [planner_server]: Computing path to goal....
   [planner_server-13] Stack trace (most recent call last) in thread 173639:
-  [planner_server-13] #11   Object "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2", at 0xffffffffffffffff, in 
-  [planner_server-13] #10   Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x795ea7ac8c3b, in 
-  [planner_server-13] #9    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x795ea7a3baa3, in 
+  [planner_server-13] #11   Object "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2", at 0xffffffffffffffff, in
+  [planner_server-13] #10   Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x795ea7ac8c3b, in
+  [planner_server-13] #9    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x795ea7a3baa3, in
 
   ⋮
 
   [planner_server-13] #2    Source "/opt/overlay_ws/src/navigation2/nav2_planner/src/planner_server.cpp", line 546, in computePlan [0x795ea8344363]
   [planner_server-13]         543:     }
-  [planner_server-13]         544: 
+  [planner_server-13]         544:
   [planner_server-13]         545:     // Publish the plan for visualization purposes
   [planner_server-13]       > 546:     publishPlan(result->path);
-  [planner_server-13]         547: 
+  [planner_server-13]         547:
   [planner_server-13]         548:     auto cycle_duration = this->now() - start_time;
   [planner_server-13]         549:     result->planning_time = cycle_duration;
   [planner_server-13] #1    Source "/opt/overlay_ws/src/navigation2/nav2_planner/src/planner_server.cpp", line 640, in publishPlan [0x795ea833df4a]
