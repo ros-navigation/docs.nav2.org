@@ -253,4 +253,66 @@ Automatic backtrace on crash
 
 The `backward-cpp <https://github.com/bombela/backward-cpp>`_ library provides beautiful stack traces, and the `backward_ros <https://github.com/pal-robotics/backward_ros/tree/foxy-devel>`_ wrapper simplifies its integration.
 
-Just add it as a dependency and `find_package` it in your CMakeLists and the backward libraries will be injected in all your executables and libraries.
+Navigation2 packages come pre-compiled with backward_ros, so you can automatically get a backtrace when a process crashes. This changes the logs to include a backtrace when the process crashes. Instead of getting a simple error log such as:
+
+.. code-block:: bash
+
+  [planner_server-13] [INFO] [1754377648.634265021] [planner_server]: Computing path to goal....
+  [ERROR] [planner_server-13]: process has died [pid 165734, exit code -11, cmd '/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/nav2_planner/planner_server --ros-args --log-level info --ros-args -r __node:=planner_server -r __ns:=/ -p use_sim_time:=True --params-file /tmp/launch_params_ou47e26i -r /tf:=tf -r /tf_static:=tf_static'].
+
+You get a more detailed output with a backtrace, which can help you identify the source of the crash:
+
+.. code-block:: bash
+
+  [planner_server-13] [INFO] [1754463292.960594359] [planner_server]: Computing path to goal....
+  [planner_server-13] Stack trace (most recent call last) in thread 130805:
+  [planner_server-13] #11   Object "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2", at 0xffffffffffffffff, in 
+  [planner_server-13] #10   Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7509de004c3b, in 
+  [planner_server-13] #9    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7509ddf77aa3, in 
+  [planner_server-13] #8    Object "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33", at 0x7509de207db3, in 
+  [planner_server-13] #7    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de887ee7, in std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<nav2::SimpleActionServer<nav2_msgs::action::ComputePathToPose>::handle_accepted(std::shared_ptr<rclcpp_action::ServerGoalHandle<nav2_msgs::action::ComputePathToPose> >)::{lambda()#1}> >, void>::_M_run()
+  [planner_server-13] #6    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7509ddf7ced2, in 
+  [planner_server-13] #5    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de8825cc, in std::__future_base::_State_baseV2::_M_do_set(std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()>*, bool*)
+  [planner_server-13] #4    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de8bd380, in std::_Function_handler<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> (), std::__future_base::_Task_setter<std::unique_ptr<std::__future_base::_Result<void>, std::__future_base::_Result_base::_Deleter>, std::thread::_Invoker<std::tuple<nav2::SimpleActionServer<nav2_msgs::action::ComputePathToPose>::handle_accepted(std::shared_ptr<rclcpp_action::ServerGoalHandle<nav2_msgs::action::ComputePathToPose> >)::{lambda()#1}> >, void> >::_M_invoke(std::_Any_data const&)
+  [planner_server-13] #3    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de8bc2f4, in nav2::SimpleActionServer<nav2_msgs::action::ComputePathToPose>::work()
+  [planner_server-13] #2    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de87b798, in nav2_planner::PlannerServer::computePlan()
+  [planner_server-13] #1    Object "/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/libplanner_server_core.so", at 0x7509de873ce4, in nav2_planner::PlannerServer::publishPlan(nav_msgs::msg::Path_<std::allocator<void> > const&)
+  [planner_server-13] #0    Object "/opt/ros/rolling/lib/librclcpp_lifecycle.so", at 0x7509de62bf94, in rclcpp_lifecycle::SimpleManagedEntity::is_activated() const
+  [planner_server-13] Segmentation fault (Address not mapped to object [0x8])
+  [ERROR] [planner_server-13]: process has died [pid 129889, exit code -11, cmd '/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/nav2_planner/planner_server --ros-args --log-level info --ros-args -r __node:=planner_server -r __ns:=/ -p use_sim_time:=True --params-file /tmp/launch_params_apyru5sq -r /tf:=tf -r /tf_static:=tf_static'].
+
+Building the navigation2 packages with the **RelWithDebInfo** or **Debug** build configuration allows for even more detailed backtraces including line numbers, file names, and relevant code blocks, in the backtrace:
+
+.. code-block:: bash
+
+  [planner_server-13] [INFO] [1754377736.955537475] [planner_server]: Computing path to goal....
+  [planner_server-13] Stack trace (most recent call last) in thread 173639:
+  [planner_server-13] #11   Object "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2", at 0xffffffffffffffff, in 
+  [planner_server-13] #10   Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x795ea7ac8c3b, in 
+  [planner_server-13] #9    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x795ea7a3baa3, in 
+
+  ⋮
+
+  [planner_server-13] #2    Source "/opt/overlay_ws/src/navigation2/nav2_planner/src/planner_server.cpp", line 546, in computePlan [0x795ea8344363]
+  [planner_server-13]         543:     }
+  [planner_server-13]         544: 
+  [planner_server-13]         545:     // Publish the plan for visualization purposes
+  [planner_server-13]       > 546:     publishPlan(result->path);
+  [planner_server-13]         547: 
+  [planner_server-13]         548:     auto cycle_duration = this->now() - start_time;
+  [planner_server-13]         549:     result->planning_time = cycle_duration;
+  [planner_server-13] #1    Source "/opt/overlay_ws/src/navigation2/nav2_planner/src/planner_server.cpp", line 640, in publishPlan [0x795ea833df4a]
+  [planner_server-13]         637:   auto msg = std::make_unique<nav_msgs::msg::Path>(path);
+  [planner_server-13]         638:   RCLCPP_WARN(get_logger(), "Publishing plan with %zu poses", path.poses.size());
+  [planner_server-13]         639:   plan_publisher_.reset();
+  [planner_server-13]       > 640:   if (plan_publisher_->is_activated() && plan_publisher_->get_subscription_count() > 0) {
+  [planner_server-13]         641:     plan_publisher_->publish(std::move(msg));
+  [planner_server-13]         642:   }
+  [planner_server-13]         643: }
+  [planner_server-13] #0    Object "/opt/ros/rolling/lib/librclcpp_lifecycle.so", at 0x795ea80f1f94, in rclcpp_lifecycle::SimpleManagedEntity::is_activated() const
+  [planner_server-13] Segmentation fault (Address not mapped to object [0x8])
+  [ERROR] [planner_server-13]: process has died [pid 172784, exit code -11, cmd '/opt/overlay_ws/src/navigation2/install/nav2_planner/lib/nav2_planner/planner_server --ros-args --log-level info --ros-args -r __node:=planner_server -r __ns:=/ -p use_sim_time:=True --params-file /tmp/launch_params_px13xl6j -r /tf:=tf -r /tf_static:=tf_static'].
+
+If you want to enable automatic backtraces in your own packages, just add it as a dependency and find_package it in your CMakeLists and the backward libraries will be injected in all your executables and libraries.
+
+**Note:** Currently, backward_ros does not work with ComposedNodes due to missing support in rclcpp. Until this `issue <https://github.com/ros2/rclcpp/issues/2396>`_ is resolved, launching the navigation2  stack with composition disabled (e.g. with a `use_composition:=False` launch argument) is required to get automatic backtraces.
