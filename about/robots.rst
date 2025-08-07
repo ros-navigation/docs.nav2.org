@@ -48,7 +48,7 @@ Research Robots
     :width: 100%
     :align: middle
     :alt: Saxion Robotics
-    :target:https://www.saxion.nl/
+    :target: https://www.saxion.nl/
 
 .. |G1| image:: images/g1.png
     :width: 100%
