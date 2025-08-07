@@ -91,82 +91,63 @@ Distributions
 
 Nav2 is available across multiple ROS 2 distributions with varying levels of support:
 
-.. raw:: html
+.. list-table:: ROS 2 Distribution Support
+   :widths: 40 30 30
+   :header-rows: 1
+   :class: distribution-table
 
-   <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-     <thead>
-       <tr style="background-color: #f8f9fa;">
-         <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">ROS Distribution</th>
-         <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Status</th>
-         <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Logo</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr>
-         <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Rolling Ridley</td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #007bff; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Development</span>
-         </td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="distro_graphics/rolling.png" alt="Rolling" style="height: 40px;">
-         </td>
-       </tr>
-       <tr style="background-color: #f8f9fa;">
-         <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Kilted Kaiju</td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #28a745; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Active Support</span>
-         </td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="distro_graphics/kilted.png" alt="Kilted" style="height: 40px;">
-         </td>
-       </tr>
-       <tr>
-         <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Jazzy Jalapa</td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #28a745; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Active Support</span>
-         </td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="distro_graphics/Jazzy.png" alt="Jazzy" style="height: 40px;">
-         </td>
-       </tr>
-       <tr style="background-color: #f8f9fa;">
-         <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Iron Irwini</td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
-         </td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="images/nav2_48x48.png" alt="Iron" style="height: 40px;">
-         </td>
-       </tr>
-       <tr>
-         <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Humble Hawksbill</td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #ffc107; color: black; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Maintained</span>
-         </td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="distro_graphics/humble.png" alt="Humble" style="height: 40px;">
-         </td>
-       </tr>
-       <tr style="background-color: #f8f9fa;">
-         <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Galactic Geochelone</td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
-         </td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="images/nav2_48x48.png" alt="Galactic" style="height: 40px;">
-         </td>
-       </tr>
-       <tr>
-         <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Foxy Fitzroy</td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
-         </td>
-         <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="images/nav2_48x48.png" alt="Foxy" style="height: 40px;">
-         </td>
-       </tr>
-     </tbody>
-   </table>
+   * - ROS Distribution
+     - Status
+     - Logo
+   * - **Rolling Ridley**
+     - .. raw:: html
+
+          <span style="background-color: #007bff; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Development</span>
+     - .. image:: distro_graphics/rolling.png
+          :height: 40px
+          :align: center
+   * - **Kilted Kaiju**
+     - .. raw:: html
+
+          <span style="background-color: #28a745; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Active Support</span>
+     - .. image:: distro_graphics/kilted.png
+          :height: 40px
+          :align: center
+   * - **Jazzy Jalapa**
+     - .. raw:: html
+
+          <span style="background-color: #28a745; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Active Support</span>
+     - .. image:: distro_graphics/Jazzy.png
+          :height: 40px
+          :align: center
+   * - **Iron Irwini**
+     - .. raw:: html
+
+          <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
+     - .. image:: images/nav2_48x48.png
+          :height: 40px
+          :align: center
+   * - **Humble Hawksbill**
+     - .. raw:: html
+
+          <span style="background-color: #ffc107; color: black; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Maintained</span>
+     - .. image:: distro_graphics/humble.png
+          :height: 40px
+          :align: center
+   * - **Galactic Geochelone**
+     - .. raw:: html
+
+          <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
+     - .. image:: images/nav2_48x48.png
+          :height: 40px
+          :align: center
+   * - **Foxy Fitzroy**
+     - .. raw:: html
+
+          <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
+     - .. image:: images/nav2_48x48.png
+          :height: 40px
+          :align: center
 
 Related Projects
 ################
