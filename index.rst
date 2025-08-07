@@ -108,16 +108,16 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
            <span style="background-color: #007bff; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Development</span>
          </td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="https://docs.ros.org/en/rolling/_static/rolling.png" alt="Rolling" style="height: 40px;">
+           <img src="distro_graphics/rolling.png" alt="Rolling" style="height: 40px;">
          </td>
        </tr>
        <tr style="background-color: #f8f9fa;">
          <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Kilted Kaiju</td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #007bff; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Development</span>
+           <span style="background-color: #28a745; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Active Support</span>
          </td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="https://docs.ros.org/en/kilted/_static/kilted.png" alt="Kilted" style="height: 40px;">
+           <img src="distro_graphics/kilted.png" alt="Kilted" style="height: 40px;">
          </td>
        </tr>
        <tr>
@@ -126,25 +126,25 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
            <span style="background-color: #28a745; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Active Support</span>
          </td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="https://docs.ros.org/en/jazzy/_static/jazzy.png" alt="Jazzy" style="height: 40px;">
+           <img src="distro_graphics/Jazzy.png" alt="Jazzy" style="height: 40px;">
          </td>
        </tr>
        <tr style="background-color: #f8f9fa;">
          <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Iron Irwini</td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #ffc107; color: black; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Maintained</span>
+           <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
          </td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="https://docs.ros.org/en/iron/_static/iron.png" alt="Iron" style="height: 40px;">
+           <img src="images/nav2_48x48.png" alt="Iron" style="height: 40px;">
          </td>
        </tr>
        <tr>
          <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Humble Hawksbill</td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <span style="background-color: #28a745; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Active Support</span>
+           <span style="background-color: #ffc107; color: black; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Maintained</span>
          </td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="https://docs.ros.org/en/humble/_static/humble.png" alt="Humble" style="height: 40px;">
+           <img src="distro_graphics/humble.png" alt="Humble" style="height: 40px;">
          </td>
        </tr>
        <tr style="background-color: #f8f9fa;">
@@ -153,7 +153,7 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
            <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
          </td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="https://docs.ros.org/en/galactic/_static/galactic.png" alt="Galactic" style="height: 40px;">
+           <img src="images/nav2_48x48.png" alt="Galactic" style="height: 40px;">
          </td>
        </tr>
        <tr>
@@ -162,7 +162,7 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
            <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
          </td>
          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
-           <img src="https://docs.ros.org/en/foxy/_static/foxy.png" alt="Foxy" style="height: 40px;">
+           <img src="images/nav2_48x48.png" alt="Foxy" style="height: 40px;">
          </td>
        </tr>
      </tbody>
