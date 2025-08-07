@@ -92,76 +92,82 @@ Distributions
 Nav2 is available across multiple ROS 2 distributions with varying levels of support:
 
 .. list-table::
-   :widths: 30 30 30
+   :widths: 60 40
    :header-rows: 1
    :class: distribution-table
    :align: center
 
-   * - ROS Distribution
-     - Status
+   * - ROS Distribution & Status
      - 
    * - .. raw:: html
 
-          <span style="font-size: 20px; font-weight: bold;">Rolling Ridley</span>
-     - .. raw:: html
-
-          <div style="text-align: center;"><span style="background-color: #007bff; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Development</span></div>
+          <div style="text-align: center;">
+            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Rolling Ridley</span></div>
+            <div><span style="background-color: #007bff; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Development</span></div>
+          </div>
      - .. image:: distro_graphics/rolling.png
-          :height: 200px
+          :width: 250px
+          :height: 250px
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 20px; font-weight: bold;">Kilted Kaiju</span>
-     - .. raw:: html
-
-          <div style="text-align: center;"><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
+          <div style="text-align: center;">
+            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Kilted Kaiju</span></div>
+            <div><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
+          </div>
      - .. image:: distro_graphics/kilted.png
-          :height: 200px
+          :width: 250px
+          :height: 250px
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 20px; font-weight: bold;">Jazzy Jalapa</span>
-     - .. raw:: html
-
-          <div style="text-align: center;"><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
+          <div style="text-align: center;">
+            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Jazzy Jalapa</span></div>
+            <div><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
+          </div>
      - .. image:: distro_graphics/Jazzy.png
-          :height: 200px
+          :width: 250px
+          :height: 250px
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 20px; font-weight: bold;">Iron Irwini</span>
-     - .. raw:: html
-
-          <div style="text-align: center;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
+          <div style="text-align: center;">
+            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Iron Irwini</span></div>
+            <div><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
+          </div>
      - .. image:: images/nav2_48x48.png
-          :height: 200px
+          :width: 250px
+          :height: 250px
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 20px; font-weight: bold;">Humble Hawksbill</span>
-     - .. raw:: html
-
-          <div style="text-align: center;"><span style="background-color: #ffc107; color: black; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Maintained</span></div>
+          <div style="text-align: center;">
+            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Humble Hawksbill</span></div>
+            <div><span style="background-color: #ffc107; color: black; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Maintained</span></div>
+          </div>
      - .. image:: distro_graphics/humble.png
-          :height: 200px
+          :width: 250px
+          :height: 250px
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 20px; font-weight: bold;">Galactic Geochelone</span>
-     - .. raw:: html
-
-          <div style="text-align: center;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
+          <div style="text-align: center;">
+            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Galactic Geochelone</span></div>
+            <div><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
+          </div>
      - .. image:: distro_graphics/galactic.png
-          :height: 200px
+          :width: 250px
+          :height: 250px
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 20px; font-weight: bold;">Foxy Fitzroy</span>
-     - .. raw:: html
-
-          <div style="text-align: center;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
+          <div style="text-align: center;">
+            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Foxy Fitzroy</span></div>
+            <div><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
+          </div>
      - .. image:: images/nav2_48x48.png
-          :height: 200px
+          :width: 250px
+          :height: 250px
           :align: center
 
 Related Projects
