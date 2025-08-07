@@ -104,9 +104,8 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
 
           <span style="font-size: 15px; font-weight: bold;">Rolling Ridley</span>
      - .. raw:: html
-          :align: center
 
-          <span style="background-color: #007bff; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Development</span>
+          <div style="text-align: center;"><span style="background-color: #007bff; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Development</span></div>
      - .. image:: distro_graphics/rolling.png
           :height: 200px
           :align: center
@@ -114,9 +113,8 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
 
           <span style="font-size: 15px; font-weight: bold;">Kilted Kaiju</span>
      - .. raw:: html
-          :align: center
 
-          <span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span>
+          <div style="text-align: center;"><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
      - .. image:: distro_graphics/kilted.png
           :height: 200px
           :align: center
@@ -124,9 +122,8 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
 
           <span style="font-size: 15px; font-weight: bold;">Jazzy Jalapa</span>
      - .. raw:: html
-          :align: center
 
-          <span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span>
+          <div style="text-align: center;"><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
      - .. image:: distro_graphics/Jazzy.png
           :height: 200px
           :align: center
@@ -134,9 +131,8 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
 
           <span style="font-size: 15px; font-weight: bold;">Iron Irwini</span>
      - .. raw:: html
-          :align: center
 
-          <span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span>
+          <div style="text-align: center;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
      - .. image:: images/nav2_48x48.png
           :height: 200px
           :align: center
@@ -144,9 +140,8 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
 
           <span style="font-size: 15px; font-weight: bold;">Humble Hawksbill</span>
      - .. raw:: html
-          :align: center
 
-          <span style="background-color: #ffc107; color: black; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Maintained</span>
+          <div style="text-align: center;"><span style="background-color: #ffc107; color: black; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Maintained</span></div>
      - .. image:: distro_graphics/humble.png
           :height: 200px
           :align: center
@@ -154,9 +149,8 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
 
           <span style="font-size: 15px; font-weight: bold;">Galactic Geochelone</span>
      - .. raw:: html
-          :align: center
 
-          <span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span>
+          <div style="text-align: center;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
      - .. image:: images/nav2_48x48.png
           :height: 200px
           :align: center
@@ -164,9 +158,8 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
 
           <span style="font-size: 15px; font-weight: bold;">Foxy Fitzroy</span>
      - .. raw:: html
-          :align: center
 
-          <span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span>
+          <div style="text-align: center;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
      - .. image:: images/nav2_48x48.png
           :height: 200px
           :align: center
