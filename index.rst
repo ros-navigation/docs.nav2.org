@@ -99,10 +99,10 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
 
    * - ROS Distribution
      - Status
-     - Logo
+     - 
    * - .. raw:: html
 
-          <span style="font-size: 15px; font-weight: bold;">Rolling Ridley</span>
+          <span style="font-size: 20px; font-weight: bold;">Rolling Ridley</span>
      - .. raw:: html
 
           <div style="text-align: center;"><span style="background-color: #007bff; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Development</span></div>
@@ -111,7 +111,7 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 15px; font-weight: bold;">Kilted Kaiju</span>
+          <span style="font-size: 20px; font-weight: bold;">Kilted Kaiju</span>
      - .. raw:: html
 
           <div style="text-align: center;"><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
@@ -120,7 +120,7 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 15px; font-weight: bold;">Jazzy Jalapa</span>
+          <span style="font-size: 20px; font-weight: bold;">Jazzy Jalapa</span>
      - .. raw:: html
 
           <div style="text-align: center;"><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
@@ -129,7 +129,7 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 15px; font-weight: bold;">Iron Irwini</span>
+          <span style="font-size: 20px; font-weight: bold;">Iron Irwini</span>
      - .. raw:: html
 
           <div style="text-align: center;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
@@ -138,7 +138,7 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 15px; font-weight: bold;">Humble Hawksbill</span>
+          <span style="font-size: 20px; font-weight: bold;">Humble Hawksbill</span>
      - .. raw:: html
 
           <div style="text-align: center;"><span style="background-color: #ffc107; color: black; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Maintained</span></div>
@@ -147,16 +147,16 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 15px; font-weight: bold;">Galactic Geochelone</span>
+          <span style="font-size: 20px; font-weight: bold;">Galactic Geochelone</span>
      - .. raw:: html
 
           <div style="text-align: center;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
-     - .. image:: images/nav2_48x48.png
+     - .. image:: distro_graphics/galactic.png
           :height: 200px
           :align: center
    * - .. raw:: html
 
-          <span style="font-size: 15px; font-weight: bold;">Foxy Fitzroy</span>
+          <span style="font-size: 20px; font-weight: bold;">Foxy Fitzroy</span>
      - .. raw:: html
 
           <div style="text-align: center;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
