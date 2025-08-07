@@ -92,82 +92,80 @@ Distributions
 Nav2 is available across multiple ROS 2 distributions with varying levels of support:
 
 .. list-table::
-   :widths: 60 40
-   :header-rows: 1
+   :widths: 40 50
+   :header-rows: 0
    :class: distribution-table
    :align: center
 
-   * - ROS Distribution & Status
-     - 
    * - .. raw:: html
 
           <div style="text-align: center;">
-            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Rolling Ridley</span></div>
+            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Rolling Ridley</span></div>
             <div><span style="background-color: #007bff; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Development</span></div>
           </div>
      - .. image:: distro_graphics/rolling.png
-          :width: 250px
-          :height: 250px
+          :width: 300px
+          :height: 300px
           :align: center
    * - .. raw:: html
 
           <div style="text-align: center;">
-            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Kilted Kaiju</span></div>
+            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Kilted Kaiju</span></div>
             <div><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
           </div>
      - .. image:: distro_graphics/kilted.png
-          :width: 250px
-          :height: 250px
+          :width: 300px
+          :height: 300px
           :align: center
    * - .. raw:: html
 
           <div style="text-align: center;">
-            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Jazzy Jalapa</span></div>
+            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Jazzy Jalapa</span></div>
             <div><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
           </div>
      - .. image:: distro_graphics/Jazzy.png
-          :width: 250px
-          :height: 250px
+          :width: 300px
+          :height: 300px
           :align: center
    * - .. raw:: html
 
           <div style="text-align: center;">
-            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Iron Irwini</span></div>
+            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Iron Irwini</span></div>
             <div><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
           </div>
      - .. image:: images/nav2_48x48.png
-          :width: 250px
-          :height: 250px
+          :width: 300px
+          :height: 300px
           :align: center
    * - .. raw:: html
 
           <div style="text-align: center;">
-            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Humble Hawksbill</span></div>
+            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Humble Hawksbill</span></div>
             <div><span style="background-color: #ffc107; color: black; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Maintained</span></div>
           </div>
      - .. image:: distro_graphics/humble.png
-          :width: 250px
-          :height: 250px
+          :width: 300px
+          :height: 300px
           :align: center
    * - .. raw:: html
 
           <div style="text-align: center;">
-            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Galactic Geochelone</span></div>
+            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Galactic Geochelone</span></div>
             <div><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
           </div>
      - .. image:: distro_graphics/galactic.png
-          :width: 250px
-          :height: 250px
+          :width: 300px
+          :height: 300px
           :align: center
    * - .. raw:: html
 
           <div style="text-align: center;">
-            <div style="margin-bottom: 10px;"><span style="font-size: 20px; font-weight: bold;">Foxy Fitzroy</span></div>
+            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Foxy Fitzroy</span></div>
             <div><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
           </div>
      - .. image:: images/nav2_48x48.png
-          :width: 250px
-          :height: 250px
+          :width: 300px
+          :height: 300px
           :align: center
 
 Related Projects
