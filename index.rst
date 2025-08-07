@@ -163,7 +163,6 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
           :width: 300px
           :height: 300px
           :align: center
-     -
 
 Related Projects
 ################
