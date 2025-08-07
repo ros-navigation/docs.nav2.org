@@ -103,49 +103,49 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
    * - **Rolling Ridley**
      - .. raw:: html
 
-          <span style="background-color: #007bff; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Development</span>
+          <span style="background-color: #007bff; color: white; padding: 12px 24px; border-radius: 25px; font-size: 18px; font-weight: bold;">Development</span>
      - .. image:: distro_graphics/rolling.png
           :height: 200px
           :align: center
    * - **Kilted Kaiju**
      - .. raw:: html
 
-          <span style="background-color: #28a745; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Active Support</span>
+          <span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 18px; font-weight: bold;">Active Support</span>
      - .. image:: distro_graphics/kilted.png
           :height: 200px
           :align: center
    * - **Jazzy Jalapa**
      - .. raw:: html
 
-          <span style="background-color: #28a745; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Active Support</span>
+          <span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 18px; font-weight: bold;">Active Support</span>
      - .. image:: distro_graphics/Jazzy.png
           :height: 200px
           :align: center
    * - **Iron Irwini**
      - .. raw:: html
 
-          <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
+          <span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 18px; font-weight: bold;">End of Life</span>
      - .. image:: images/nav2_48x48.png
           :height: 200px
           :align: center
    * - **Humble Hawksbill**
      - .. raw:: html
 
-          <span style="background-color: #ffc107; color: black; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Maintained</span>
+          <span style="background-color: #ffc107; color: black; padding: 12px 24px; border-radius: 25px; font-size: 18px; font-weight: bold;">Maintained</span>
      - .. image:: distro_graphics/humble.png
           :height: 200px
           :align: center
    * - **Galactic Geochelone**
      - .. raw:: html
 
-          <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
+          <span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 18px; font-weight: bold;">End of Life</span>
      - .. image:: images/nav2_48x48.png
           :height: 200px
           :align: center
    * - **Foxy Fitzroy**
      - .. raw:: html
 
-          <span style="background-color: #dc3545; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">End of Life</span>
+          <span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 18px; font-weight: bold;">End of Life</span>
      - .. image:: images/nav2_48x48.png
           :height: 200px
           :align: center
