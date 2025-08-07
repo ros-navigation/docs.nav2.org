@@ -202,6 +202,7 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
    plugins/index.rst
    migration/index.rst
    commander_api/index.rst
+   API Docs <https://api.nav2.org>
    roadmap/roadmap.rst
    about/index.rst
    maintainer_docs/index.rst
