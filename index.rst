@@ -163,17 +163,6 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
           :width: 300px
           :height: 300px
           :align: center
-   * - .. raw:: html
-
-          <div style="text-align: center;">
-            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Foxy Fitzroy</span></div>
-            <div style="margin-bottom: 20px;"><span style="background-color: #dc3545; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">End of Life</span></div>
-          </div>
-
-       .. image:: images/nav2_48x48.png
-          :width: 300px
-          :height: 300px
-          :align: center
      -
 
 Related Projects
