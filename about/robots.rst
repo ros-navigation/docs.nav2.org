@@ -34,7 +34,7 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb4|          +      |tb3|             +      |rosbot_xl|       |
 +------------------------+------------------------+------------------------+
-|         |soon|         +      |botr|            +      |soon|            |
+|         |saxion|       +      |botr|            +      |soon|            |
 +------------------------+------------------------+------------------------+
 
 Research Robots
@@ -44,6 +44,11 @@ Research Robots
 |         |waratah|      +      |soon|            +      |soon|            |
 +------------------------+------------------------+------------------------+
 
+.. |saxion| image:: images/saxion.jpeg
+    :width: 100%
+    :align: middle
+    :alt: Saxion Robotics
+    :target:https://www.saxion.nl/
 
 .. |G1| image:: images/g1.png
     :width: 100%
