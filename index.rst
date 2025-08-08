@@ -122,7 +122,7 @@ Nav2 is available across multiple ROS 2 distributions with varying levels of sup
    * - .. raw:: html
 
           <div style="text-align: center;">
-            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Jazzy Jalapa</span></div>
+            <div style="margin-bottom: 20px;"><span style="font-size: 20px; font-weight: bold;">Jazzy Jalisco</span></div>
             <div style="margin-bottom: 20px;"><span style="background-color: #28a745; color: white; padding: 12px 24px; border-radius: 25px; font-size: 15px; font-weight: bold;">Active Support</span></div>
           </div>
 
