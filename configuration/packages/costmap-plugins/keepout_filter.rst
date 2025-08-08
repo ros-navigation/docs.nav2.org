@@ -51,7 +51,7 @@ Note: As Costmap Filters does not have the inflation layer applied to them (sinc
   ====== =======
 
   Description
-    The cost value written into those cells instead of lethal cost when override is active.
+    The cost value written into those cells instead of lethal cost when override is active. Default sets cost very high to incentivize leaving the area as soon as possible.
 
 :``<filter name>``.transform_tolerance:
 
