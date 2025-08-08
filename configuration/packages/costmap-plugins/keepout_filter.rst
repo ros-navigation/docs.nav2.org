@@ -31,6 +31,28 @@ Note: As Costmap Filters does not have the inflation layer applied to them (sinc
   Description
     Name of the incoming `CostmapFilterInfo <https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/CostmapFilterInfo.msg>`_ topic having filter-related information. Published by Costmap Filter Info Server along with filter mask topic. For more details about Map and Costmap Filter Info servers configuration please refer to the :ref:`configuring_map_server` configuration page.
 
+:``<filter name>``.override_lethal_cost:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   False
+  ====== =======
+
+  Description
+     When true, check if the robot is in a lethal keepout zone, if so, replaces those lethal costs with lethal_override_cost.
+
+:``<filter name>``.lethal_override_cost:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  double 252
+  ====== =======
+
+  Description
+    The cost value written into those cells instead of lethal cost when override is active. Default sets cost very high to incentivize leaving the area as soon as possible.
+
 :``<filter name>``.transform_tolerance:
 
   ====== =======
@@ -58,6 +80,8 @@ Example
             enabled: True
             filter_info_topic: "/costmap_filter_info"
             transform_tolerance: 0.1
+            override_lethal_cost: True
+            lethal_override_cost: 200
     ...
     local_costmap:
       local_costmap:
@@ -71,3 +95,5 @@ Example
             enabled: True
             filter_info_topic: "/costmap_filter_info"
             transform_tolerance: 0.1
+            override_lethal_cost: True
+            lethal_override_cost: 200
