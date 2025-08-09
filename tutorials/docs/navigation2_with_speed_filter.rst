@@ -23,7 +23,7 @@ This tutorial shows how to simply utilize Speed Filter which is designed to limi
 Requirements
 ============
 
-It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that the Nav2 project is also built locally as it was made in :ref:`build-instructions`.
+It is assumed that ROS 2, Gazebo and TurtleBot4 packages are installed or built locally. Please make sure that the Nav2 project is also built locally as it was made in :ref:`build-instructions`.
 
 Tutorial Steps
 ==============
@@ -56,13 +56,13 @@ In this tutorial we will use the first type of speed restriction expressed in a 
 
   For speed restriction expressed in a percent, ``speed_limit`` will be used exactly as a percent belonging to ``[0..100]`` range, not ``[0.0..1.0]`` range.
 
-Create a new image with a PGM/PNG/BMP format: copy ``turtlebot3_world.pgm`` main map which will be used in a world simulation from a Nav2 repository to a new ``speed_mask.pgm`` file. Open ``speed_mask.pgm`` in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:
+Create a new image with a PGM/PNG/BMP format: copy `depot.pgm <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/depot.pgm>`_ main map which will be used in a world simulation from a Nav2 repository to a new ``depot_speed.pgm`` file. Open ``depot_speed.pgm`` in your favourite raster graphics editor and fill speed restricted areas with grey colors. In our example darker colors will indicate areas with higher speed restriction:
 
 .. image:: images/Navigation2_with_Speed_Filter/drawing_speed_mask.png
     :width: 500px
 
-Area "A" is filled with ``40%`` gray color, area "B" - with ``70%`` gray, that means that speed restriction will take ``100% - 40% = 60%`` in area "A" and ``100% - 70% = 30%`` in area "B" from maximum speed value allowed for this robot.
-We will use ``scale`` map mode with no thresholds. In this mode darker colors will have higher ``OccupancyGrid`` values. E.g. for area "B" with ``70%`` of gray ``OccupancyGrid`` data will be equal to ``70``. So in order to hit the target, we need to choose ``base = 100.0`` and ``multiplier = -1.0``. This will reverse the scale ``OccupancyGrid`` values to a desired one. No thresholds (``free_thresh`` ``occupied_thresh``) were chosen for the convenience in the ``yaml``  file: to have 1:1 full range conversion of lightness value from filter mask -> to speed restriction percent.
+Area "A" is filled with ``25%`` gray color, area "B" - with ``50%`` gray, that means that speed restriction will take ``100% - 25% = 75%`` in area "A" and ``100% - 50% = 50%`` in area "B" from maximum speed value allowed for this robot.
+We will use ``scale`` map mode with no thresholds. In this mode darker colors will have higher ``OccupancyGrid`` values. E.g. for area "B" with ``50%`` of gray ``OccupancyGrid`` data will be equal to ``50``. So in order to hit the target, we need to choose ``base = 100.0`` and ``multiplier = -1.0``. This will reverse the scale ``OccupancyGrid`` values to a desired one. No thresholds (``free_thresh`` ``occupied_thresh``) were chosen for the convenience in the ``yaml``  file: to have 1:1 full range conversion of lightness value from filter mask -> to speed restriction percent.
 
 .. note::
 
@@ -70,22 +70,22 @@ We will use ``scale`` map mode with no thresholds. In this mode darker colors wi
 
   Another important thing is that it is not necessary to use the whole ``[0..100]`` percent scale. ``base`` and ``multiplier`` coefficients could be chosen so that the speed restriction values would belong to somewhere in the middle of percent range. E.g. ``base = 40.0``, ``multiplier = 0.1`` will give speed restrictions from ``[40.0%..50.0%]`` range with a step of ``0.1%``. This might be useful for fine tuning.
 
-After all speed restriction areas will be filled, save the ``speed_mask.pgm`` image.
+After all speed restriction areas will be filled, save the ``depot_speed.pgm`` image.
 
-Like all other maps, the filter mask should have its own YAML metadata file. Copy `turtlebot3_world.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/tb3_sandbox.yaml>`_ to ``speed_mask.yaml``. Open ``speed_mask.yaml`` and update the fields as shown below (as mentioned before for the ``scale`` mode to use whole color lightness range there should be no thresholds: ``free_thresh = 0.0`` and ``occupied_thresh = 1.0``):
+Like all other maps, the filter mask should have its own YAML metadata file. Copy `depot.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/tb3_sandbox.yaml>`_ to ``speed_mask.yaml``. Open ``speed_mask.yaml`` and update the fields as shown below (as mentioned before for the ``scale`` mode to use whole color lightness range there should be no thresholds: ``free_thresh = 0.0`` and ``occupied_thresh = 1.0``):
 
 .. code-block:: yaml
 
-  image: turtlebot3_world.pgm
+  image: depot.pgm
   ->
-  image: speed_mask.pgm
+  image: depot_speed.pgm
 
   mode: trinary
   ->
   mode: scale
 
   occupied_thresh: 0.65
-  free_thresh: 0.196
+  free_thresh: 0.25
   ->
   occupied_thresh: 1.0
   free_thresh: 0.0
@@ -108,105 +108,213 @@ In order to enable Speed Filter in your configuration, both servers should be en
   import os
 
   from ament_index_python.packages import get_package_share_directory
-
   from launch import LaunchDescription
-  from launch.actions import DeclareLaunchArgument
-  from launch.substitutions import LaunchConfiguration
-  from launch_ros.actions import Node
-  from nav2_common.launch import RewrittenYaml
+  from launch.actions import DeclareLaunchArgument, GroupAction, SetEnvironmentVariable
+  from launch.conditions import IfCondition
+  from launch.substitutions import LaunchConfiguration, PythonExpression
+  from launch_ros.actions import LoadComposableNodes, Node, PushROSNamespace, SetParameter
+  from launch_ros.descriptions import ComposableNode, ParameterFile
+  from nav2_common.launch import LaunchConfigAsBool, RewrittenYaml
 
 
-  def generate_launch_description():
+  def generate_launch_description() -> LaunchDescription:
       # Get the launch directory
-      costmap_filters_demo_dir = get_package_share_directory('nav2_costmap_filters_demo')
+      bringup_dir = get_package_share_directory('nav2_bringup')
 
-      # Create our own temporary YAML files that include substitutions
-      lifecycle_nodes = ['filter_mask_server', 'costmap_filter_info_server']
-
-      # Parameters
       namespace = LaunchConfiguration('namespace')
-      use_sim_time = LaunchConfiguration('use_sim_time')
-      autostart = LaunchConfiguration('autostart')
+      speed_mask_yaml_file = LaunchConfiguration('speed_mask')
+      use_sim_time = LaunchConfigAsBool('use_sim_time')
+      autostart = LaunchConfigAsBool('autostart')
       params_file = LaunchConfiguration('params_file')
-      mask_yaml_file = LaunchConfiguration('mask')
+      use_composition = LaunchConfigAsBool('use_composition')
+      container_name = LaunchConfiguration('container_name')
+      container_name_full = (namespace, '/', container_name)
+      use_respawn = LaunchConfigAsBool('use_respawn')
+      use_speed_zones = LaunchConfigAsBool('use_speed_zones')
+      log_level = LaunchConfiguration('log_level')
 
-      # Declare the launch arguments
+      lifecycle_nodes = ['speed_filter_mask_server', 'speed_costmap_filter_info_server']
+
+      # Map fully qualified names to relative ones so the node's namespace can be prepended.
+      remappings = [('/tf', 'tf'), ('/tf_static', 'tf_static')]
+
+      yaml_substitutions = {
+          'SPEED_ZONE_ENABLED': use_speed_zones,
+      }
+
+      configured_params = ParameterFile(
+          RewrittenYaml(
+              source_file=params_file,
+              root_key=namespace,
+              param_rewrites={},
+              value_rewrites=yaml_substitutions,
+              convert_types=True,
+          ),
+          allow_substs=True,
+      )
+
+      stdout_linebuf_envvar = SetEnvironmentVariable(
+          'RCUTILS_LOGGING_BUFFERED_STREAM', '1'
+      )
+
       declare_namespace_cmd = DeclareLaunchArgument(
-          'namespace',
+          'namespace', default_value='', description='Top-level namespace'
+      )
+
+      declare_speed_mask_yaml_cmd = DeclareLaunchArgument(
+          'speed_mask',
           default_value='',
-          description='Top-level namespace')
+          description='Full path to speed mask yaml file to load',
+      )
 
       declare_use_sim_time_cmd = DeclareLaunchArgument(
           'use_sim_time',
-          default_value='true',
-          description='Use simulation (Gazebo) clock if true')
-
-      declare_autostart_cmd = DeclareLaunchArgument(
-          'autostart', default_value='true',
-          description='Automatically startup the nav2 stack')
+          default_value='false',
+          description='Use simulation (Gazebo) clock if true',
+      )
 
       declare_params_file_cmd = DeclareLaunchArgument(
-              'params_file',
-              default_value=os.path.join(costmap_filters_demo_dir, 'params', 'speed_params.yaml'),
-              description='Full path to the ROS 2 parameters file to use')
+          'params_file',
+          default_value=os.path.join(bringup_dir, 'params', 'nav2_params.yaml'),
+          description='Full path to the ROS2 parameters file to use for all launched nodes',
+      )
 
-      declare_mask_yaml_file_cmd = DeclareLaunchArgument(
-              'mask',
-              default_value=os.path.join(costmap_filters_demo_dir, 'maps', 'speed_mask.yaml'),
-              description='Full path to filter mask yaml file to load')
+      declare_use_composition_cmd = DeclareLaunchArgument(
+          'use_composition',
+          default_value='False',
+          description='Use composed bringup if True',
+      )
 
-      # Make re-written yaml
-      param_substitutions = {
-          'use_sim_time': use_sim_time,
-          'yaml_filename': mask_yaml_file}
+      declare_container_name_cmd = DeclareLaunchArgument(
+          'container_name',
+          default_value='nav2_container',
+          description='the name of container that nodes will load in if use composition',
+      )
 
-      configured_params = RewrittenYaml(
-          source_file=params_file,
-          root_key=namespace,
-          param_rewrites=param_substitutions,
-          convert_types=True)
+      declare_use_respawn_cmd = DeclareLaunchArgument(
+          'use_respawn',
+          default_value='False',
+          description='Whether to respawn if a node crashes. Applied when composition is disabled.',
+      )
 
-      # Nodes launching commands
-      start_lifecycle_manager_cmd = Node(
-              package='nav2_lifecycle_manager',
-              executable='lifecycle_manager',
-              name='lifecycle_manager_costmap_filters',
-              namespace=namespace,
-              output='screen',
-              emulate_tty=True,  # https://github.com/ros2/launch/issues/188
-              parameters=[{'use_sim_time': use_sim_time},
-                          {'autostart': autostart},
-                          {'node_names': lifecycle_nodes}])
+      declare_use_speed_zones_cmd = DeclareLaunchArgument(
+          'use_speed_zones', default_value='True',
+          description='Whether to enable speed zones or not'
+      )
 
-      start_map_server_cmd = Node(
-              package='nav2_map_server',
-              executable='map_server',
-              name='filter_mask_server',
-              namespace=namespace,
-              output='screen',
-              emulate_tty=True,  # https://github.com/ros2/launch/issues/188
-              parameters=[configured_params])
+      declare_log_level_cmd = DeclareLaunchArgument(
+          'log_level', default_value='info', description='log level'
+      )
 
-      start_costmap_filter_info_server_cmd = Node(
-              package='nav2_map_server',
-              executable='costmap_filter_info_server',
-              name='costmap_filter_info_server',
-              namespace=namespace,
-              output='screen',
-              emulate_tty=True,  # https://github.com/ros2/launch/issues/188
-              parameters=[configured_params])
+      load_nodes = GroupAction(
+          condition=IfCondition(PythonExpression(['not ', use_composition])),
+          actions=[
+              PushROSNamespace(namespace),
+              SetParameter('use_sim_time', use_sim_time),
+              Node(
+                  condition=IfCondition(use_speed_zones),
+                  package='nav2_map_server',
+                  executable='map_server',
+                  name='speed_filter_mask_server',
+                  output='screen',
+                  respawn=use_respawn,
+                  respawn_delay=2.0,
+                  parameters=[configured_params, {'yaml_filename': speed_mask_yaml_file}],
+                  arguments=['--ros-args', '--log-level', log_level],
+                  remappings=remappings,
+              ),
+              Node(
+                  condition=IfCondition(use_speed_zones),
+                  package='nav2_map_server',
+                  executable='costmap_filter_info_server',
+                  name='speed_costmap_filter_info_server',
+                  output='screen',
+                  respawn=use_respawn,
+                  respawn_delay=2.0,
+                  parameters=[configured_params],
+                  arguments=['--ros-args', '--log-level', log_level],
+                  remappings=remappings,
+              ),
+              Node(
+                  package='nav2_lifecycle_manager',
+                  executable='lifecycle_manager',
+                  name='lifecycle_manager_speed_zone',
+                  output='screen',
+                  arguments=['--ros-args', '--log-level', log_level],
+                  parameters=[{'autostart': autostart}, {'node_names': lifecycle_nodes}],
+              ),
+          ],
+      )
+      # LoadComposableNode for map server twice depending if we should use the
+      # value of map from a CLI or launch default or user defined value in the
+      # yaml configuration file. They are separated since the conditions
+      # currently only work on the LoadComposableNodes commands and not on the
+      # ComposableNode node function itself
+      load_composable_nodes = GroupAction(
+          condition=IfCondition(use_composition),
+          actions=[
+              PushROSNamespace(namespace),
+              SetParameter('use_sim_time', use_sim_time),
+              LoadComposableNodes(
+                  target_container=container_name_full,
+                  condition=IfCondition(use_speed_zones),
+                  composable_node_descriptions=[
+                      ComposableNode(
+                          package='nav2_map_server',
+                          plugin='nav2_map_server::MapServer',
+                          name='speed_filter_mask_server',
+                          parameters=[
+                              configured_params,
+                              {'yaml_filename': speed_mask_yaml_file}
+                          ],
+                          remappings=remappings,
+                      ),
+                      ComposableNode(
+                          package='nav2_map_server',
+                          plugin='nav2_map_server::CostmapFilterInfoServer',
+                          name='speed_costmap_filter_info_server',
+                          parameters=[configured_params],
+                          remappings=remappings,
+                      ),
+                  ],
+              ),
 
+              LoadComposableNodes(
+                  target_container=container_name_full,
+                  composable_node_descriptions=[
+                      ComposableNode(
+                          package='nav2_lifecycle_manager',
+                          plugin='nav2_lifecycle_manager::LifecycleManager',
+                          name='lifecycle_manager_speed_zone',
+                          parameters=[
+                              {'autostart': autostart, 'node_names': lifecycle_nodes}
+                          ],
+                      ),
+                  ],
+              ),
+          ],
+      )
+
+      # Create the launch description and populate
       ld = LaunchDescription()
 
-      ld.add_action(declare_namespace_cmd)
-      ld.add_action(declare_use_sim_time_cmd)
-      ld.add_action(declare_autostart_cmd)
-      ld.add_action(declare_params_file_cmd)
-      ld.add_action(declare_mask_yaml_file_cmd)
+      # Set environment variables
+      ld.add_action(stdout_linebuf_envvar)
 
-      ld.add_action(start_lifecycle_manager_cmd)
-      ld.add_action(start_map_server_cmd)
-      ld.add_action(start_costmap_filter_info_server_cmd)
+      # Declare the launch options
+      ld.add_action(declare_namespace_cmd)
+      ld.add_action(declare_speed_mask_yaml_cmd)
+      ld.add_action(declare_use_sim_time_cmd)
+      ld.add_action(declare_params_file_cmd)
+      ld.add_action(declare_use_composition_cmd)
+      ld.add_action(declare_container_name_cmd)
+      ld.add_action(declare_use_respawn_cmd)
+      ld.add_action(declare_use_speed_zones_cmd)
+      ld.add_action(declare_log_level_cmd)
+
+      # Add the actions to launch all of the map modifier nodes
+      ld.add_action(load_nodes)
+      ld.add_action(load_composable_nodes)
 
       return ld
 
@@ -214,36 +322,24 @@ where the ``params_file`` variable should be set to a YAML-file having ROS param
 
 .. code-block:: yaml
 
-  costmap_filter_info_server:
+  speed_filter_mask_server:
+    ros__parameters:
+      topic_name: "speed_filter_mask"
+      # yaml_filename: ""
+
+  speed_costmap_filter_info_server:
     ros__parameters:
       type: 1
-      filter_info_topic: "/costmap_filter_info"
-      mask_topic: "/speed_filter_mask"
+      filter_info_topic: "speed_costmap_filter_info"
+      mask_topic: "speed_filter_mask"
       base: 100.0
       multiplier: -1.0
-  filter_mask_server:
-    ros__parameters:
-      frame_id: "map"
-      topic_name: "/speed_filter_mask"
-      yaml_filename: "speed_mask.yaml"
 
 Note, that:
 
  - For Speed Filter setting speed restrictions in a percent from maximum speed, the ``type`` of costmap filter should be set to ``1``. All possible costmap filter types could be found at :ref:`configuring_map_server` page.
  - Filter mask topic name should be the equal for ``mask_topic`` parameter of Costmap Filter Info Publisher Server and ``topic_name`` parameter of Map Server.
  - As was described in a previous chapter, ``base`` and ``multiplier`` should be set to ``100.0`` and ``-1.0`` accordingly for the purposes of this tutorial example.
-
-Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Speed Filter could be found in a `nav2_costmap_filters_demo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_costmap_filters_demo>`_ directory of ``navigation2_tutorials`` repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at :ref:`getting_started`, build the demo and launch ``costmap_filter_info.launch.py`` as follows:
-
-.. code-block:: bash
-
-  $ mkdir -p ~/tutorials_ws/src
-  $ cd ~/tutorials_ws/src
-  $ git clone https://github.com/ros-navigation/navigation2_tutorials.git
-  $ cd ~/tutorials_ws
-  $ colcon build --symlink-install --packages-select nav2_costmap_filters_demo
-  $ source ~/tutorials_ws/install/setup.bash
-  $ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_file:=src/navigation2_tutorials/nav2_costmap_filters_demo/params/speed_params.yaml mask:=src/navigation2_tutorials/nav2_costmap_filters_demo/maps/speed_mask.yaml
 
 3. Enable Speed Filter
 ----------------------
@@ -260,7 +356,7 @@ You can place the plugin either in the ``global_costmap`` section in ``nav2_para
 
 In this tutorial, we will enable Speed Filter for the global costmap. For this use the following configuration:
 
-.. code-block:: text
+.. code-block:: yaml
 
   global_costmap:
     global_costmap:
@@ -272,35 +368,32 @@ In this tutorial, we will enable Speed Filter for the global costmap. For this u
         speed_filter:
           plugin: "nav2_costmap_2d::SpeedFilter"
           enabled: True
-          filter_info_topic: "/costmap_filter_info"
-          speed_limit_topic: "/speed_limit"
+          filter_info_topic: "speed_costmap_filter_info"
+          speed_limit_topic: "speed_limit"
 
 As stated in the `design <https://github.com/ros-navigation/navigation2/blob/main/doc/design/CostmapFilters_design.pdf>`_, Speed Filter publishes speed restricting `messages <https://github.com/ros-navigation/navigation2/blob/main/nav2_msgs/msg/SpeedLimit.msg>`_ targeted for a Controller Server so that it could restrict maximum speed of the robot when it needed. Controller Server has a ``speed_limit_topic`` ROS parameter for that, which should be set to the same as in ``speed_filter`` plugin value. This topic in the map server could also be used to any number of other speed-restricted applications beyond the speed limiting zones, such as dynamically adjusting maximum speed by payload mass.
 
 Set ``speed_limit_topic`` parameter of a Controller Server to the same value as it set for ``speed_filter`` plugin:
 
-.. code-block:: text
+.. code-block:: yaml
 
   controller_server:
     ros__parameters:
       ...
-      speed_limit_topic: "/speed_limit"
+      speed_limit_topic: "speed_limit"
 
 
 4. Run Nav2 stack
 -----------------
 
-After Costmap Filter Info Publisher Server and Map Server were launched and Speed Filter was enabled for global/local costmap, run Nav2 stack as written in :ref:`getting_started`:
+Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Speed Filter could be found in `nav2_bringup <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup>`_ directory. To run the demo, simply launch as follows:
 
 .. code-block:: bash
 
-  ros2 launch nav2_bringup tb3_simulation_launch.py
+  ros2 launch nav2_bringup tb4_simulation_launch.py
 
 For better visualization of speed filter mask, in RViz in the left ``Displays`` pane unfold ``Map`` and change ``Topic`` from ``/map`` -> to ``/speed_filter_mask``.
-Set the goal behind the speed restriction areas and check that the filter is working properly: robot should slow down when going through a speed restricting areas. Below is how it might look (first picture shows speed filter enabled for the global costmap, second - ``speed_mask.pgm`` filter mask):
+Set the goal behind the speed restriction areas and check that the filter is working properly: robot should slow down when going through a speed restricting areas. Below is how it might look:
 
-.. image:: images/Navigation2_with_Speed_Filter/speed_global.gif
-    :height: 400px
-
-.. image:: images/Navigation2_with_Speed_Filter/speed_mask.png
+.. image:: images/Navigation2_with_Speed_Filter/speed_global.png
     :height: 400px
