@@ -453,6 +453,7 @@ Example
               clearing: True
               marking: True
               data_type: "PointCloud2"
+              transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
           static_layer:
             plugin: "nav2_costmap_2d::StaticLayer"
             map_subscribe_transient_local: True
