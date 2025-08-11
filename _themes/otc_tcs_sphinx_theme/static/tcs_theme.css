@@ -124,11 +124,13 @@ th,td {
         padding-bottom: 30px !important;
     }
 
-    /* Ensure images scale properly on mobile */
+    /* Ensure images scale properly on mobile while maintaining aspect ratio */
     table.distribution-table img {
         max-width: 250px !important;
-        width: 100% !important;
+        max-height: 250px !important;
+        width: auto !important;
         height: auto !important;
+        object-fit: contain !important;
     }
 
     /* Adjust text sizing for mobile */
