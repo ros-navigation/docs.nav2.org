@@ -17,7 +17,7 @@ BUILDDIR      = _build
 DOC_TAG      ?= development
 RELEASE      ?= latest
 PUBLISHDIR    = /tmp/navigation2
-SUPPORTED_VERSIONS = master
+SUPPORTED_VERSIONS = master kilted
 
 # Put it first so that "make" without argument is like "make help".
 help:

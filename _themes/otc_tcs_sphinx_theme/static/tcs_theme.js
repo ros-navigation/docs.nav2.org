@@ -50,7 +50,7 @@ for (i = 0; i < contents.length; i++) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const supportedVersions = ['rolling'];
+    const supportedVersions = ['rolling', 'kilted'];
     const versionDropdown = document.createElement('div');
     versionDropdown.className = 'version-dropdown';
 
