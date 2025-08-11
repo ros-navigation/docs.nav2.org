@@ -98,6 +98,49 @@ th,td {
 .rst-content dl.group>dd {
   margin-left: 0  !important;
 }
+
+/* Mobile-responsive styles for distribution table */
+@media screen and (max-width: 768px) {
+    /* Stack table cells vertically on mobile */
+    table.distribution-table, 
+    table.distribution-table tbody, 
+    table.distribution-table tr, 
+    table.distribution-table td {
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    /* Remove table cell borders and padding adjustments */
+    table.distribution-table td {
+        border: none !important;
+        padding: 20px 0 !important;
+        text-align: center !important;
+    }
+    
+    /* Add separator between distribution items */
+    table.distribution-table td:not(:last-child) {
+        border-bottom: 2px solid #e1e4e8 !important;
+        margin-bottom: 20px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    /* Ensure images scale properly on mobile */
+    table.distribution-table img {
+        max-width: 250px !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Adjust text sizing for mobile */
+    table.distribution-table span[style*="font-size: 20px"] {
+        font-size: 18px !important;
+    }
+    
+    table.distribution-table span[style*="font-size: 15px"] {
+        font-size: 14px !important;
+        padding: 10px 20px !important;
+    }
+}
 .rst-content p.breathe-sectiondef-title {
   text-decoration: underline;  /* for API sub-headings */
   font-size: 1.25rem;
