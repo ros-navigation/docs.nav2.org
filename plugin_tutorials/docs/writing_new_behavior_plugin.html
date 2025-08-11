@@ -1413,7 +1413,7 @@ populate the action result.</p></td>
 <code class="docutils literal notranslate"><span class="pre">onConfigure()</span></code> will be skipped for brevity, but only declares parameters.</p>
 <p>In recoveries, <code class="docutils literal notranslate"><span class="pre">onRun()</span></code> method must set any initial state and kick off the behavior.
 For the case of our call for help behavior, we can trivially compute all of our needs in this method.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="w"> </span><span class="nf">SendSms::onRun</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Action</span><span class="o">::</span><span class="n">Goal</span><span class="o">&gt;</span><span class="w"> </span><span class="n">command</span><span class="p">)</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ResultStatus</span><span class="w"> </span><span class="nf">SendSms::onRun</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Action</span><span class="o">::</span><span class="n">Goal</span><span class="o">&gt;</span><span class="w"> </span><span class="n">command</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">response</span><span class="p">;</span>
 <span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">message_success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_twilio</span><span class="o">-&gt;</span><span class="n">send_message</span><span class="p">(</span>
@@ -1446,9 +1446,9 @@ We return a <code class="docutils literal notranslate"><span class="pre">FAILED<
 <p><code class="docutils literal notranslate"><span class="pre">onCycleUpdate()</span></code> is trivially simple as a result of our short-running behavior.
 If the behavior was instead longer running like spinning, navigating to a safe area, or getting out of a bad spot and waiting for help, then this function would be checking for timeouts or computing control values.
 For our example, we simply return success because we already completed our mission in <code class="docutils literal notranslate"><span class="pre">onRun()</span></code>.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="w"> </span><span class="nf">SendSms::onCycleUpdate</span><span class="p">()</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ResultStatus</span><span class="w"> </span><span class="nf">SendSms::onCycleUpdate</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">SUCCEEDED</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ResultStatus</span><span class="p">{</span><span class="n">Status</span><span class="o">::</span><span class="n">SUCCEEDED</span><span class="p">};</span>
 <span class="p">}</span>
 </pre></div>
 </div>

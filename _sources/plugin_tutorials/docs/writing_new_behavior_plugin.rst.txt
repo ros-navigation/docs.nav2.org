@@ -98,7 +98,7 @@ For the case of our call for help behavior, we can trivially compute all of our 
 
 .. code-block:: c++
 
-  Status SendSms::onRun(const std::shared_ptr<const Action::Goal> command)
+  ResultStatus SendSms::onRun(const std::shared_ptr<const Action::Goal> command)
   {
     std::string response;
     bool message_success = _twilio->send_message(
@@ -136,9 +136,9 @@ For our example, we simply return success because we already completed our missi
 
 .. code-block:: c++
 
-  Status SendSms::onCycleUpdate()
+  ResultStatus SendSms::onCycleUpdate()
   {
-    return Status::SUCCEEDED;
+    return ResultStatus{Status::SUCCEEDED};
   }
 
 The remaining methods are not used and are not mandatory to override them.
