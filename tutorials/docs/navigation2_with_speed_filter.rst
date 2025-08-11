@@ -397,3 +397,6 @@ Set the goal behind the speed restriction areas and check that the filter is wor
 
 .. image:: images/Navigation2_with_Speed_Filter/speed_global.png
     :height: 400px
+
+.. note::
+  For another example and additional context, check the Navigation2 tutorials https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo

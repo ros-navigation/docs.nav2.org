@@ -384,3 +384,6 @@ And check that filter is working properly as in the pictures below
 
 .. image:: images/Navigation2_with_Keepout_Filter/keepout_global.png
     :height: 400px
+
+.. note::
+  For another example and additional context, check the Navigation2 tutorials https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo
