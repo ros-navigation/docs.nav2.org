@@ -308,4 +308,4 @@ Below are measured bandwidth values for different transport types:
 | zlib             | 121.95         |
 +------------------+----------------+
 
-**Note:** Draco compression plugin supports dynamic reconfiguration so bandwidth can be further reduced as well as other paramteres can be tuned at runtime. See `Draco PCT Plugin <https://github.com/ros-perception/point_cloud_transport_plugins/tree/rolling/draco_point_cloud_transport>`_ for more information.
+**Note:** Draco compression plugin supports dynamic reconfiguration so bandwidth can be further reduced as well as other parameters can be tuned at runtime. See `Draco PCT Plugin <https://github.com/ros-perception/point_cloud_transport_plugins/tree/rolling/draco_point_cloud_transport>`_ for more information.
