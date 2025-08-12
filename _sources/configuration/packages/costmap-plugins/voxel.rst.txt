@@ -225,6 +225,24 @@ This costmap layer implements a plugin that uses 3D raycasting for depth, 3D, or
   Description
     Data type of input, LaserScan or PointCloud2.
 
+:``<voxel layer>``. ``<data source>``.transport_type:
+
+  ====== ===========
+  Type   Default
+  ------ -----------
+  string "raw"
+  ====== ===========
+
+  Description
+    For ``PointCloud2`` data, specify the transport plugin to use:
+
+  * raw: No compression. Default; highest bandwidth usage.
+  * draco: Lossy compression via Google.
+  * zlib: Lossless compression via Zlib compression.
+  * zstd: Lossless compression via Zstd compression.
+
+  See the `known transports <https://github.com/ros-perception/point_cloud_transport_plugins>`_ for more details.
+
 :``<voxel layer>``. ``<data source>``.min_obstacle_height:
 
   ====== =======

@@ -1216,6 +1216,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../migration/Kilted.html#publisher-subscriber-migration">Publisher Subscriber Migration</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../migration/Kilted.html#option-to-use-point-cloud-transport">Option to use point_cloud_transport</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../migration/Kilted.html#configuration-guide">Configuration guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../migration/Kilted.html#performance-metrics">Performance Metrics</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1677,8 +1682,35 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.topic</dt>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.transport_type</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>“raw”</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description:</dt><dd><p>For <code class="docutils literal notranslate"><span class="pre">pointcloud</span></code> data, specify the transport plugin to use:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>raw: No compression. Default; highest bandwidth usage.</p></li>
+<li><p>draco: Lossy compression via Google.</p></li>
+<li><p>zlib: Lossless compression via Zlib compression.</p></li>
+<li><p>zstd: Lossless compression via Zstd compression.</p></li>
+</ul>
+<p>See the <a class="reference external" href="https://github.com/ros-perception/point_cloud_transport_plugins">known transports</a> for more details.</p>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.topic</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1697,8 +1729,8 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.min_height</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.min_height</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1717,8 +1749,8 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.max_height</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.max_height</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1737,8 +1769,8 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.obstacles_angle</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.obstacles_angle</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1757,8 +1789,8 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.sampling_distance</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.sampling_distance</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1777,8 +1809,8 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
-<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.enabled</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.enabled</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1797,8 +1829,8 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
-<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.source_timeout</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">name&gt;</span></code>.source_timeout</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -1817,8 +1849,8 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">bond_heartbeat_period</dt>
-<dd class="field-odd"><table class="docutils align-default">
+<dt class="field-even">bond_heartbeat_period</dt>
+<dd class="field-even"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1837,8 +1869,8 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 </dd>
 </dl>
 </dd>
-<dt class="field-even">allow_parameter_qos_overrides</dt>
-<dd class="field-even"><table class="docutils align-default">
+<dt class="field-odd">allow_parameter_qos_overrides</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1887,6 +1919,7 @@ However, unlike the Collision Monitor that uses different behavior models, the C
 <span class="w">    </span><span class="nt">pointcloud</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pointcloud&quot;</span>
 <span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/intel_realsense_r200_depth/points&quot;</span>
+<span class="w">      </span><span class="nt">transport_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;raw&quot;</span><span class="w">  </span><span class="c1"># raw or/ with compression (zlib, draco, zstd)</span>
 <span class="w">      </span><span class="nt">min_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">      </span><span class="nt">max_height</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>

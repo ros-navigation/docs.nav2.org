@@ -1216,6 +1216,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#publisher-subscriber-migration">Publisher Subscriber Migration</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#option-to-use-point-cloud-transport">Option to use point_cloud_transport</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-guide">Configuration guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#performance-metrics">Performance Metrics</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1479,6 +1484,68 @@ Note that kinematic and dynamic constraints are not required to be checked as th
 <p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5247">PR #5247</a> two new Nav2 specific behavior tree control nodes have been added.</p>
 <p>The <a class="reference external" href="../configuration/packages/bt-plugins/controls/PauseResumeController.html">PauseResumeController</a> adds services to pause and resume execution of the tree. Related to this, the <a class="reference external" href="../configuration/packages/bt-plugins/controls/PersistentSequence.html">PersistentSequence</a> control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.</p>
 </div>
+</div>
+</div>
+<div class="section" id="option-to-use-point-cloud-transport">
+<h2>Option to use point_cloud_transport<a class="headerlink" href="#option-to-use-point-cloud-transport" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5264">PR #5264</a>, option to use <a class="reference external" href="https://github.com/ros-perception/point_cloud_transport">point_cloud_transport</a> has been added.
+This enables transporting PointClouds using compression libraries (such as Draco, Zstd, Zlib, etc.) to reduce network traffic and work around DDS limitations in low-bandwidth environments.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;raw&quot;</span></code> - Uses <code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/PointCloud2</span></code> with no compression.</p></li>
+</ul>
+<div class="section" id="configuration-guide">
+<h3>Configuration guide<a class="headerlink" href="#configuration-guide" title="Permalink to this heading"></a></h3>
+<p>If your sensor already publishes compressed streams (e.g., <a class="reference external" href="https://www.stereolabs.com/docs/ros2/dds_and_network_tuning#use-compressed-topics">Seterolabs ZED X Cameras</a>), you can enable this option in the costmap layers that ingest pointcloud sensor streams (i.e. obstacle, voxel) and in the collision monitor as well.</p>
+<p>Example costmap layer configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;costmap_layer&gt;</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pointcloud</span>
+<span class="w">  </span><span class="nt">pointcloud</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PointCloud2&quot;</span>
+<span class="w">    </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/intel_realsense_r200_depth/points</span><span class="w">  </span><span class="c1"># Change this to your topic</span>
+<span class="w">    </span><span class="nt">transport_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;raw&quot;</span><span class="w">  </span><span class="c1"># Change this to your compressed format (zlib, draco, zstd)</span>
+</pre></div>
+</div>
+<p>Similarly for the collision monitor config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">collision_monitor</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">observation_sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;pointcloud&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">pointcloud</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pointcloud&quot;</span>
+<span class="w">      </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/intel_realsense_r200_depth/points</span><span class="w">  </span><span class="c1"># Change this to your topic</span>
+<span class="w">      </span><span class="nt">transport_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;raw&quot;</span><span class="w">  </span><span class="c1"># Change this to your compressed format (zlib, draco, zstd)</span>
+</pre></div>
+</div>
+<p>See <cite>transport_type</cite> in <a class="reference internal" href="../configuration/packages/collision_monitor/configuring-collision-monitor-node.html#configuring-collision-monitor-node"><span class="std std-ref">Collision Monitor Node</span></a> for more information.</p>
+</div>
+<div class="section" id="performance-metrics">
+<h3>Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this heading"></a></h3>
+<p>Below are measured bandwidth values for different transport types with default parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Transport Type</p></th>
+<th class="head"><p>Bandwidth (KB)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>raw</p></td>
+<td><p>593.63</p></td>
+</tr>
+<tr class="row-odd"><td><p>draco</p></td>
+<td><p>443.28</p></td>
+</tr>
+<tr class="row-even"><td><p>zstd</p></td>
+<td><p>64.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>zlib</p></td>
+<td><p>121.95</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

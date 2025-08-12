@@ -232,3 +232,60 @@ Added PersistentSequence and PauseResumeController Control Nodes
 In `PR #5247 <https://github.com/ros-navigation/navigation2/pull/5247>`_ two new Nav2 specific behavior tree control nodes have been added.
 
 The `PauseResumeController <../configuration/packages/bt-plugins/controls/PauseResumeController.html>`_ adds services to pause and resume execution of the tree. Related to this, the `PersistentSequence <../configuration/packages/bt-plugins/controls/PersistentSequence.html>`_ control node allows the child index to be exposed to the behavior tree through a bidirectional port. This allows the sequence to be continued on resume where it was paused.
+
+Option to use point_cloud_transport
+-----------------------------------
+
+In `PR #5264 <https://github.com/ros-navigation/navigation2/pull/5264>`_, option to use `point_cloud_transport <https://github.com/ros-perception/point_cloud_transport>`_ has been added.
+This enables transporting PointClouds using compression libraries (such as Draco, Zstd, Zlib, etc.) to reduce network traffic and work around DDS limitations in low-bandwidth environments.
+
+Default value:
+
+- ``"raw"`` - Uses ``sensor_msgs/msg/PointCloud2`` with no compression.
+
+Configuration guide
+^^^^^^^^^^^^^^^^^^^
+
+If your sensor already publishes compressed streams (e.g., `Seterolabs ZED X Cameras <https://www.stereolabs.com/docs/ros2/dds_and_network_tuning#use-compressed-topics>`_), you can enable this option in the costmap layers that ingest pointcloud sensor streams (i.e. obstacle, voxel) and in the collision monitor as well.
+
+Example costmap layer configuration:
+
+.. code-block:: yaml
+
+  <costmap_layer>:
+    observation_sources: pointcloud
+    pointcloud:
+      data_type: "PointCloud2"
+      topic: /intel_realsense_r200_depth/points  # Change this to your topic
+      transport_type: "raw"  # Change this to your compressed format (zlib, draco, zstd)
+
+Similarly for the collision monitor config:
+
+.. code-block:: yaml
+
+  collision_monitor:
+    ros__parameters:
+      observation_sources: ["pointcloud"]
+      pointcloud:
+        type: "pointcloud"
+        topic: /intel_realsense_r200_depth/points  # Change this to your topic
+        transport_type: "raw"  # Change this to your compressed format (zlib, draco, zstd)
+
+See `transport_type` in :ref:`configuring_collision_monitor_node` for more information.
+
+Performance Metrics
+^^^^^^^^^^^^^^^^^^^
+
+Below are measured bandwidth values for different transport types with default parameters:
+
++------------------+----------------+
+| Transport Type   | Bandwidth (KB) |
++==================+================+
+| raw              | 593.63         |
++------------------+----------------+
+| draco            | 443.28         |
++------------------+----------------+
+| zstd             | 64.33          |
++------------------+----------------+
+| zlib             | 121.95         |
++------------------+----------------+

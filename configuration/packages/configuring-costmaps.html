@@ -1216,6 +1216,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#publisher-subscriber-migration">Publisher Subscriber Migration</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#option-to-use-point-cloud-transport">Option to use point_cloud_transport</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#configuration-guide">Configuration guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../migration/Kilted.html#performance-metrics">Performance Metrics</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1992,6 +1997,7 @@ It is used in the planner and controller servers for creating the space to check
 <span class="w">          </span><span class="nt">clearing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">          </span><span class="nt">marking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">          </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PointCloud2&quot;</span>
+<span class="w">          </span><span class="nt">transport_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;raw&quot;</span><span class="w">  </span><span class="c1"># raw or/ with compression (zlib, draco, zstd)</span>
 <span class="w">      </span><span class="nt">static_layer</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span>
 <span class="w">        </span><span class="nt">map_subscribe_transient_local</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
