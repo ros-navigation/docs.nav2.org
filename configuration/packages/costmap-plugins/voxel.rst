@@ -234,7 +234,7 @@ This costmap layer implements a plugin that uses 3D raycasting for depth, 3D, or
   ====== ===========
 
   Description
-    For PointCloud2 data, specify the transport plugin to use:
+    For ``PointCloud2`` data, specify the transport plugin to use:
 
   * raw: No compression. Default; highest bandwidth usage.
   * draco: Lossy compression via Google.

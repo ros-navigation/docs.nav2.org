@@ -168,7 +168,7 @@ This costmap layer implements a plugin that uses 2D raycasting for 2D lidars, de
   ====== ===========
 
   Description
-    For PointCloud2 data, specify the transport plugin to use:
+    For ``PointCloud2`` data, specify the transport plugin to use:
 
   * raw: No compression. Default; highest bandwidth usage.
   * draco: Lossy compression via Google.

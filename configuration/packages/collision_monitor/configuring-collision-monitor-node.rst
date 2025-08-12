@@ -518,7 +518,7 @@ Observation sources parameters
   ============== =============================
 
   Description:
-    For``pointcloud`` data, specify the transport plugin to use:
+    For ``pointcloud`` data, specify the transport plugin to use:
 
   * raw: No compression. Default; highest bandwidth usage.
   * draco: Lossy compression via Google.
