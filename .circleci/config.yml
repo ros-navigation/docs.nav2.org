@@ -96,4 +96,8 @@ workflows:
             - docs_build
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - kilted
+                - jazzy
+                - humble
