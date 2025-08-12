@@ -243,8 +243,8 @@ Default value:
 
 - ``"raw"`` - Uses ``sensor_msgs/msg/PointCloud2`` with no compression.
 
-Sensor provides compressed transports
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration guide
+^^^^^^^^^^^^^^^^^^^
 
 If your sensor already publishes compressed streams (e.g., `Seterolabs ZED X Cameras <https://www.stereolabs.com/docs/ros2/dds_and_network_tuning#use-compressed-topics>`_), you can enable this option in the costmap layers that ingest pointcloud sensor streams (i.e. obstacle, voxel) and in the collision monitor as well.
 
@@ -273,28 +273,10 @@ Similarly for the collision monitor config:
 
 See `transport_type` in :ref:`configuring_collision_monitor_node` for more information.
 
-Sensor does not provide compressed transports
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If your sensor does not publish compressed pointcloud, we can use the ``republish`` node from **point_cloud_transport** to re-encode topics on the fly.
-This node subscribes using one transport and publishes the same data using another transport (e.g., subscribe to ``raw`` and publish ``draco``).
-
-Example
-
-In a new terminal, run the following command:
-
-.. code-block:: bash
-
-  ros2 run point_cloud_transport republish \
-    --ros-args -p in_transport:=raw -p out_transport:=draco \
-    --remap in:=/input_topic_name --remap out:=/output_topic_name
-
-Then configure costmap layers as well as collision monitor parameters.
-
 Performance Metrics
 ^^^^^^^^^^^^^^^^^^^
 
-Below are measured bandwidth values for different transport types:
+Below are measured bandwidth values for different transport types with default parameters:
 
 +------------------+----------------+
 | Transport Type   | Bandwidth (KB) |
@@ -307,5 +289,3 @@ Below are measured bandwidth values for different transport types:
 +------------------+----------------+
 | zlib             | 121.95         |
 +------------------+----------------+
-
-**Note:** Draco compression plugin supports dynamic reconfiguration so bandwidth can be further reduced as well as other parameters can be tuned at runtime. See `Draco PCT Plugin <https://github.com/ros-perception/point_cloud_transport_plugins/tree/rolling/draco_point_cloud_transport>`_ for more information.
