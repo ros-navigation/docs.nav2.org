@@ -25,7 +25,7 @@ A new parameter ``enable_stamped_cmd_vel`` has been added to all of the publishe
 Add VelocityPolygon in Collision Monitor
 ****************************************
 
-`PR #3708 <https://github.com/ros-navigation/navigation2/pull/3708>`_ adds ``VelocityPolgon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the :ref:`Configuring Collision Monitor with VelocityPolygon <collision_monitor_tutorial>` section.
+`PR #3708 <https://github.com/ros-navigation/navigation2/pull/3708>`_ adds ``VelocityPolygon`` type in Collision Monitor. This allows the user to setup multiple polygons to cover the range of the robot's velocity limits. For example, the user can configure different polygons for rotation, moving forward, or moving backward. The Collision Monitor will check the robot's velocity against each sub polygon to determine the appropriate polygon to be used for collision checking. The tutorial is available in the :ref:`Configuring Collision Monitor with VelocityPolygon <collision_monitor_tutorial>` section.
 
 
 Change polygon points parameter format in Collision Monitor
@@ -61,14 +61,14 @@ The Collision Monitor and Velocity Smoothers also had ``use_realtime_priority`` 
 ``opennav_coverage`` Project
 ****************************
 
-A new metapackage exists in: https://github.com/open-navigation/opennav_coverage which contains complete coverage navigator plugins, BT nodes, behavior tree demos, and coverage planning server based on ``Fields2Cover``. See that project for more information. It is on long-term trajectory for inclusion into ``Nav2``, but there are still yet a few missing features from Fields2Cover before we can integrate that into the main project to be up to snuff in terms of all the major features and capabilities users would expect from a coverage planning system. 
+A new metapackage exists in: https://github.com/open-navigation/opennav_coverage which contains complete coverage navigator plugins, BT nodes, behavior tree demos, and coverage planning server based on ``Fields2Cover``. See that project for more information. It is on long-term trajectory for inclusion into ``Nav2``, but there are still yet a few missing features from Fields2Cover before we can integrate that into the main project to be up to snuff in terms of all the major features and capabilities users would expect from a coverage planning system.
 
 If you'd like to see coverage planning in Nav2 directly, please consider contributing `to the as-of-yet needed features described here <https://github.com/Fields2Cover/Fields2Cover/issues/73>`_.
 
 ``opennav_docking`` Project
 ****************************
 
-A new metapackage exists in: https://github.com/open-navigation/opennav_docking which contains complete automatic charging dock framework, BT nodes, plugins, and demos. 
+A new metapackage exists in: https://github.com/open-navigation/opennav_docking which contains complete automatic charging dock framework, BT nodes, plugins, and demos.
 This allows for docking of any type of robot with any type of charging dock in a repeatable and generalized way.
 It will be integrated into Nav2 directly soon (Update June 2024: within Nav2 stack directly ``nav2_docking``!)
 
@@ -86,21 +86,21 @@ New option for the Voxel and Obstacle Layers
 `PR #3612 <https://github.com/ros-navigation/navigation2/pull/3612>`_ adds a new MaxWithoutUnknownOverwrite option to combination_method parameter in Voxel and Obstacle Layers. This can be used to make sure that the static map is the dominant source of information, and
 easily prevent the robot to go through places that are not present in the static map.
 
-use_interpolation RPP Parameter Depreciated 
+use_interpolation RPP Parameter Depreciated
 *******************************************
 After a distribution of testing by many users, we have depreciated the use_interpolation parameter and it is now default on at all times without the ability to disable. It improves velocity smoothness and overall quality of tracking positively in all cases.
 
 Changes to MPPI Goal Critic
 ***************************
 
-The MPPI Goal critic's formulation is changed to better keep up with speed on approach to goal instead of preemptively slowing too significantly. It also allows you to better use the weight to adjust the degree at which it slows more naturally. This change involves adjusting the ``threshold_to_consider`` to be the same as your prediction horizon (e.g. samples * dt * max speed) for both the goal critic and path follower critic to have a good hand-off between them without deceleration. 
+The MPPI Goal critic's formulation is changed to better keep up with speed on approach to goal instead of preemptively slowing too significantly. It also allows you to better use the weight to adjust the degree at which it slows more naturally. This change involves adjusting the ``threshold_to_consider`` to be the same as your prediction horizon (e.g. samples * dt * max speed) for both the goal critic and path follower critic to have a good hand-off between them without deceleration.
 
 Changes to MPPI Path Angle Critic
 *********************************
 
-MPPI's Path Angle critic now has a ``mode`` setting to adjust behavior depending on robot's desired behavioral traits. Previously, it penalized path orientations that deviated far the the robot's forward orientation to turn the robot towards sharp changes in the path. This is still default (``mode: 0``), but other modes now exist too. 
+MPPI's Path Angle critic now has a ``mode`` setting to adjust behavior depending on robot's desired behavioral traits. Previously, it penalized path orientations that deviated far the the robot's forward orientation to turn the robot towards sharp changes in the path. This is still default (``mode: 0``), but other modes now exist too.
 
-``mode: 1`` sets the penalization of path's relative directions by either forward orientation or the opposite for reversing to allow for true bidirectional motion when one way or another is not preferable for a symmetric robot. This uses only the path's relative points to the robot to decide which direction to incentivize. 
+``mode: 1`` sets the penalization of path's relative directions by either forward orientation or the opposite for reversing to allow for true bidirectional motion when one way or another is not preferable for a symmetric robot. This uses only the path's relative points to the robot to decide which direction to incentivize.
 
 ``mode: 2`` instead uses the path's orientations when a feasible path is given from the Smac Planners or the Smoother server's algorithms. This way, the globally planned orientations are followed rather than the based solely on the path's relative points. This is useful for non-circular robots in highly confined settings where there may be restricted opportunities to change directions so following the global path's orientation are required to end in the orientation you require.
 
@@ -127,7 +127,7 @@ New to Jazzy, MPPI is 45% faster due to a weeks long optimization campaign. Enjo
 Move Error Code Enumerations
 ****************************
 
-`PR #3693 <https://github.com/ros-navigation/navigation2/pull/3693>`_ moves the enumeration codes from the goal to the result section. 
+`PR #3693 <https://github.com/ros-navigation/navigation2/pull/3693>`_ moves the enumeration codes from the goal to the result section.
 
 Substitution in parameter file
 ******************************
@@ -162,17 +162,17 @@ This PR also introduces additional analytic expansion scoring logic and edge cas
 Added GPS Waypoint Follower Server
 **********************************
 
-`This PR 2814 <https://github.com/ros-navigation/navigation2/pull/2814>`_  adds the ``follow_gps_waypoints`` action server in ``nav2_waypoint_follower``. This server accepts a set of GPS goals instead of cartesian goals and provides all the other functionalities available on ``nav2_waypoint_follower``. A new tutorial demonstrating its functionality was also added on `PR 70 on navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials/pull/70>`_ and can be found on the General Tutorials directory on this website. 
+`This PR 2814 <https://github.com/ros-navigation/navigation2/pull/2814>`_  adds the ``follow_gps_waypoints`` action server in ``nav2_waypoint_follower``. This server accepts a set of GPS goals instead of cartesian goals and provides all the other functionalities available on ``nav2_waypoint_follower``. A new tutorial demonstrating its functionality was also added on `PR 70 on navigation2_tutorials <https://github.com/ros-navigation/navigation2_tutorials/pull/70>`_ and can be found on the General Tutorials directory on this website.
 
 Smac Planner Hybrid-A* New Features
 ***********************************
 
-New features ``allow_primitive_interpolation`` which allows for more primitives in the search set, ``use_quadratic_cost_penalty``  to impact the cost penalty order in the traversal and heuristic functions, and ``downsample_obstacle_heuristic`` to optionally not downsample the obstacle heuristic's costmap were added. The default behavior will remain the same. If you would like to use these new features, please check out the Smac Planner Hybrid-A* configuration guide. 
+New features ``allow_primitive_interpolation`` which allows for more primitives in the search set, ``use_quadratic_cost_penalty``  to impact the cost penalty order in the traversal and heuristic functions, and ``downsample_obstacle_heuristic`` to optionally not downsample the obstacle heuristic's costmap were added. The default behavior will remain the same. If you would like to use these new features, please check out the Smac Planner Hybrid-A* configuration guide.
 
 New node in nav2_collision_monitor: Collision Detector
 ******************************************************
 
-In this `PR #3693 <https://github.com/ros-navigation/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector. 
+In this `PR #3500 <https://github.com/ros-navigation/navigation2/pull/3500>`_ A new node was introduced in the nav2_collision_monitor: Collision Detector.
 It works similarly to the Collision Monitor, but does not affect the robot's velocity. It will only inform that data from the configured sources has been detected within the configured polygons via message to the ``collision_detector_state`` topic that might be used by any external module (e.g. switching LED or sound alarm in case of collision).
 
 Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector
@@ -183,7 +183,7 @@ In this `PR #3825 <https://github.com/ros-navigation/navigation2/pull/3825>`_ we
 Expose action server's result timeout
 *************************************
 
-In this `PR #3787 <https://github.com/ros-navigation/navigation2/pull/3787>`_ the timeout for action server's result was exposed in all nodes having action servers. 
+In this `PR #3787 <https://github.com/ros-navigation/navigation2/pull/3787>`_ the timeout for action server's result was exposed in all nodes having action servers.
 This is because in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_ in rcl a change was introduced which makes action servers discard a goal handle if the result
 is not produced within 10 seconds, when the default was set to 15 minutes before. Since some actions in Nav2 may take more than 10 seconds to complete, the user has now the ability
 to set this value through the ``action_server_result_timeout`` parameter, which defaults to 15 minutes in the ``bt_navigators`` and ``waypoint_follower`` and to 10 seconds in all other nodes.
@@ -241,7 +241,7 @@ Introduction of ``CostmapUpdate.msg``
 
 `PR #3965 <https://github.com/ros-navigation/navigation2/pull/3965>`_ introduces a new type of message - ``CostmapUpdate.msg``. It is the update message related to the ``Costmap.msg``. Now instead of sending the whole costmap in every message, such as with ``Costmap.msg``, the ``CostmapUpdate.msg`` includes only the area of the costmap that has changed since the previous update message. The ``Costmap.msg`` is sent only once at the beginning, followed by the messages of the ``CostmapUpdate.msg`` type. The idea is to mimic the ``OccupancyGrid.msg`` and ``OccupancyGridUpdate.msg`` behavior.
 
-To activate this feature, the Costmap2D ROS parameter ``always_send_full_costmap`` has to be set to ``false``. 
+To activate this feature, the Costmap2D ROS parameter ``always_send_full_costmap`` has to be set to ``false``.
 
 To subscribe to ``Costmap.msg`` and ``CostmapUpdate.msg`` it is recommended to use the ``CostmapSubscriber`` class.
 
@@ -269,7 +269,7 @@ New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Che
 
 The primary goal of this plugin is to facilitate the developers and easy integration testing of their configuration before deploying the robot in the intended application.
 
-In order to facilitate the dynamic selection of the specified components, the BT selector nodes for all these components were utilized and were updated to all the relevant BT nodes. 
+In order to facilitate the dynamic selection of the specified components, the BT selector nodes for all these components were utilized and were updated to all the relevant BT nodes.
 
 Here we can see the working demo of the plugin:
 
@@ -284,7 +284,7 @@ In this case, the `FollowPath` is the default controller_id. The difference betw
 RPP new optional ``interpolate_curvature_after_goal`` behavior and fix conflict between ``use_rotate_to_heading`` and ``allow_reversing``
 *****************************************************************************************************************************************
 
-`In PR #4140 <https://github.com/ros-navigation/navigation2/pull/4140>`_ a new optional ``interpolate_curvature_after_goal`` parameter (default ``false``) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same. 
+`In PR #4140 <https://github.com/ros-navigation/navigation2/pull/4140>`_ a new optional ``interpolate_curvature_after_goal`` parameter (default ``false``) was added that activates the interpolation of a carrot after the goal in order to maintain a constant curvature lookahead distance. This is to avoid instabilities at the end of the path on the generation of the angular speed. The carrot used for the linear speed computation stays the same.
 
 Interpolation is based on the orientation of the vector formed by the last 2 poses of the path. Hence paths of length 1 are rejected when ``interpolate_curvature_after_goal`` is ``true``. It can be used only when ``use_fixed_curvature_lookahead: true``.
 
@@ -302,8 +302,8 @@ New interface for ``GlobalPlanner::createPlan``:
 .. code-block:: cpp
 
     virtual nav_msgs::msg::Path createPlan(
-      const geometry_msgs::msg::PoseStamped & start,  
-      const geometry_msgs::msg::PoseStamped & goal,  
+      const geometry_msgs::msg::PoseStamped & start,
+      const geometry_msgs::msg::PoseStamped & goal,
       std::function<bool()> cancel_checker)
 
 This is implemented for all the planners in the stack, you can check them for the example use of ``cancel_checker`` function (simply check ``cancel_checker()``).
@@ -331,7 +331,7 @@ New graceful cancellation API for Controllers
 Standardization of Plugin Naming with Double Colons (::)
 ********************************************************
 
-`PR #4220`_ standardizes plugin naming across the Navigation2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:
+`PR #4220 <https://github.com/ros-planning/navigation2/pull/4220>`_ standardizes plugin naming across the Navigation2 package to use double colons (::), replacing the previous mixed use of slashes (/) and double colons. Affected plugins include:
 
 - Behavior Server: ``nav2_behaviors::Spin``, ``nav2_behaviors::BackUp``, ``nav2_behaviors::DriveOnHeading``, ``nav2_behaviors::Wait``, ``nav2_behaviors::AssistedTeleop``
 - Planner Server: ``nav2_navfn_planner::NavfnPlanner``, ``nav2_smac_planner::SmacPlanner2D``, ``nav2_smac_planner::SmacPlannerHybrid``, ``nav2_theta_star_planner::ThetaStarPlanner``
@@ -357,10 +357,36 @@ Rotation Shim Controller: new parameter ``rotate_to_goal_heading``
 ******************************************************************
 `PR #4332 <https://github.com/ros-navigation/navigation2/pull/4332>`_ introduces usage of parameter ``rotate_to_goal_heading`` for the rotation shim controller. It allows the rotation shim controller to take back control when reaching the XY goal tolerance to perform a clean rotation towards the goal heading. Some controllers will do this internally, but it is a useful option for others.
 
-MPPI Controller: Addition of acceleration constraints 
+MPPI Controller: Addition of acceleration constraints
 ******************************************************
 `PR #4352 <https://github.com/ros-navigation/navigation2/pull/4352>`_ adds new parameters ``ax_max``, ``ax_min``, ``ay_max``, ``az_max`` for the MPPI controller. These parameters will enable the MPPI controller to generate local trajectories within the specified acceleration constraints.
 
 RegulatedPurePursuit Controller [RPP]: new parameter ``use_cancel_deceleration``
 ********************************************************************************
 `PR #4441 <https://github.com/ros-navigation/navigation2/pull/4441>`_ adds a new parameter use_cancel_deceleration for the regulated pure pursuit controllers. This parameter enables the controller to use a constant deceleration to stop the robot gracefully instead of stopping immediately when a goal is canceled.
+
+Clear Costamp Around Passed Pose
+********************************
+
+In `PR #5309 <https://github.com/ros-navigation/navigation2/pull/5309>`_, a new service was added to the `nav2_costmap_2d` package to clear the costmap around a passed pose.
+
+A service client was also added to the clear costmap plugin in the `nav2_behavior_tree` package.
+
+This is particularly useful in scenarios where the planner fails due to outdated costmap data at the goal location which is outside of your obstacle/raytrace range—often caused by dynamic obstacles that have since moved. Instead of clearing the entire costmap as a recovery behavior, this feature would enable targeted clearing, preserving useful map data.
+
+.. image:: images/ClearCostmapGoalPose.gif
+    :width: 100%
+    :align: center
+
+.. centered:: *RViz visualization shows an example of clearing outdated cost at the desired goal location, this would have previously caused planners like SMAC planner to fail.*
+
+The following is an example of how to use ClearCostmapAroundPose in a behavior tree to clear the costmap around a goal pose in the event that the planner fails to compute a path.
+
+.. code-block:: xml
+
+    <RateController hz="1.0">
+      <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+          <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+          <ClearCostmapAroundPose name="ClearCostmapAroundPose-Context" service_name="global_costmap/clear_around_pose_global_costmap" pose="{goal}" reset_distance="5.0"/>
+      </RecoveryNode>
+    </RateController>

@@ -19,7 +19,7 @@ You may use this simple commander preempt commands of the same type (e.g. you ca
 
   rclpy.init()
   nav = BasicNavigator()
-  
+
   # ...
 
   nav.setInitialPose(init_pose)
@@ -74,24 +74,27 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 | goal_checker_id='')                   | ``PoseStamped``, ``nav_msgs/Path``.                                        |
 +---------------------------------------+----------------------------------------------------------------------------+
 | spin(spin_dist=1.57,                  | Requests the robot to performs an in-place rotation by a given angle.      |
-| time_allowance=10)                    |                                                                            |
+| time_allowance=10,                    |                                                                            |
+| disable_collision_checks=False)       |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | driveOnHeading(dist=0.15,             | Requests the robot to drive on heading by a given distance.                |
-| speed=0.025, time_allowance=10)       |                                                                            |
+| speed=0.025, time_allowance=10,       |                                                                            |
+| disable_collision_checks=False)       |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | backup(backup_dist=0.15,              | Requests the robot to back up by a given distance.                         |
-| backup_speed=0.025, time_allowance=10)|                                                                            |
+| backup_speed=0.025, time_allowance=10,|                                                                            |
+| disable_collision_checks=False)       |                                                                            |
 +---------------------------------------+----------------------------------------------------------------------------+
 | assistedTeleop(time_allowance=30)     | Requests the robot to run the assisted teleop action.                      |
 +---------------------------------------+----------------------------------------------------------------------------+
 | cancelTask()                          | Cancel an ongoing task, including route tasks.                             |
 +---------------------------------------+----------------------------------------------------------------------------+
-| isTaskComplete(trackingRoute=False)   | Checks if task is complete yet, times out at ``100ms``. Returns            |
-|                                       | ``True`` if completed and ``False`` if still going. If checking a route    |
-|                                       | tracking task, set default argument to ``True``.                           |
+| isTaskComplete(task=RunningTask.NONE) | Checks if task is complete yet, times out at ``100ms``. Returns            |
+|                                       | ``True`` if completed and ``False`` if still going. Provide the task ID    |
+|                                       | from the long-running task (follow path, compute and track route, etc)     |
 +---------------------------------------+----------------------------------------------------------------------------+
-| getFeedback(trackingRoute=False)      | Gets feedback from task, returns action server feedback msg.               |
-|                                       | If getting feedback on a tracking task, set default argument to ``True``.  |
+| getFeedback(task=RunningTask.NONE)    | Gets feedback from task, returns action server feedback msg.               |
+|                                       | provide the task ID for the task you are requesting.                       |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getResult()                           | Gets final result of task, to be called after ``isTaskComplete``           |
 |                                       | returns ``True``. Returns action server result msg.                        |
@@ -101,6 +104,12 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 +---------------------------------------+----------------------------------------------------------------------------+
 | getPathThroughPoses(start, goals,     | Gets a path through a starting to a set of goals, a list                   |
 | planner_id='', use_start=False)       | of ``PoseStamped``, ``nav_msgs/Path``.                                     |
++---------------------------------------+----------------------------------------------------------------------------+
+| getRoute(start, goal,                 | Gets a route from a set start and goal nodeIDs or PoseStamped.             |
+| use_start=False)                      | Use Start if given, otherwises uses TF to obtain robot pose.               |
++---------------------------------------+----------------------------------------------------------------------------+
+| getAndTrackRoute(start, goal,         | Gets a route from a set of start and goal NodeIDs or PoseStamped.          |
+| use_start=False)                      | Uses start if given, otherwise uses TF to obtain the robot pose.           |
 +---------------------------------------+----------------------------------------------------------------------------+
 | dockRobot(dock_pose, dock_type)       | Attempts to dock the robot at a given docking pose and type, without using |
 |                                       | docking database of known docks.                                           |
@@ -122,6 +131,15 @@ New as of September 2023: the simple navigator constructor will accept a `namesp
 | clearLocalCostmap()                   | Clears the local costmap.                                                  |
 +---------------------------------------+----------------------------------------------------------------------------+
 | clearGlobalCostmap()                  | Clears the global costmap.                                                 |
++---------------------------------------+----------------------------------------------------------------------------+
+| clearLocalCostmapAroundPose(          |                                                                            |
+| PoseStamped, distance)                | Clears the local costmap around given pose.                                |
++---------------------------------------+----------------------------------------------------------------------------+
+| clearGlobalCostmapAroundPose(         |                                                                            |
+| PoseStamped, distance)                | Clears the global costmap around given pose.                               |
++---------------------------------------+----------------------------------------------------------------------------+
+| clearCostmapExceptRegion(             |                                                                            |
+| distance)                             | Clears the local costmap around current robot pose.                        |
 +---------------------------------------+----------------------------------------------------------------------------+
 | getGlobalCostmap()                    | Returns the global costmap, ``nav2_msgs/Costmap``.                         |
 +---------------------------------------+----------------------------------------------------------------------------+
@@ -227,7 +245,8 @@ The ``nav2_simple_commander`` has a few examples to highlight the API functions 
 - ``example_nav_through_poses.py`` - Demonstrates the navigate through poses capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_waypoint_follower.py`` - Demonstrates the waypoint following capabilities of the navigator, as well as a number of auxiliary methods.
 - ``example_follow_path.py`` - Demonstrates the path following capabilities of the navigator, as well as a number of auxiliary methods like path smoothing.
-- ``example_assisted_teleop.py`` - Demonstrates the assisted teleop capabilities of the navigator.  
+- ``example_assisted_teleop.py`` - Demonstrates the assisted teleop capabilities of the navigator.
+- ``example_route.py`` - Demonstrates the route server capabilities of the navigator.
 
 The ``nav2_simple_commander`` has a few demonstrations to highlight a couple of simple autonomy applications you can build using the API:
 

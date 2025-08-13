@@ -21,3 +21,10 @@ repos:
       - id: codespell
         args: ['--write-changes', '--ignore-words=.codespell_words']
         exclude: CHANGELOG\.rst|\.(svg|pyc|drawio|dcf|eds)$
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace

@@ -18,6 +18,8 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |rosie|        +         |karl|         +           |ses|        |
 +------------------------+------------------------+------------------------+
+|         |G1|           +         |Go2|          +           |barnowl|    |
++------------------------+------------------------+------------------------+
 |           |pxl|        +         |brisa|        +        |tri|           |
 +------------------------+------------------------+------------------------+
 |         |wyca|         +         |elroy|        +           |birds|      |
@@ -32,8 +34,39 @@ Click on the images below for a link to the drivers or navigation configurations
 +------------------------+------------------------+------------------------+
 |         |tb4|          +      |tb3|             +      |rosbot_xl|       |
 +------------------------+------------------------+------------------------+
-|         |soon|         +      |botr|            +      |soon|            |
+|         |saxion|       +      |botr|            +      |soon|            |
 +------------------------+------------------------+------------------------+
+
+Research Robots
+================
+
++------------------------+------------------------+------------------------+
+|         |waratah|      +      |soon|            +      |soon|            |
++------------------------+------------------------+------------------------+
+
+.. |saxion| image:: images/saxion.jpeg
+    :width: 100%
+    :align: middle
+    :alt: Saxion Robotics
+    :target: https://www.saxion.nl/
+
+.. |G1| image:: images/g1.png
+    :width: 100%
+    :align: middle
+    :alt: Unitree G1 Humanoid
+    :target: https://www.unitree.com/
+
+.. |Go2| image:: images/go2.png
+    :width: 100%
+    :align: middle
+    :alt: Unitree Go2 Quadruped
+    :target: https://www.unitree.com/
+
+.. |barnowl| image:: images/barnowl.png
+    :width: 100%
+    :align: middle
+    :alt: Barn Owl
+    :target: https://barnowlag.com/
 
 .. |botr| image:: images/botronics.png
     :width: 100%
@@ -44,7 +77,7 @@ Click on the images below for a link to the drivers or navigation configurations
 .. |ACFR| image:: images/ACFR.png
     :width: 100%
     :align: middle
-    :alt: Australian Centre for Robotics 
+    :alt: Australian Centre for Robotics
     :target: https://robotics.sydney.edu.au/
 
 .. |torch| image:: images/torch.png
@@ -226,3 +259,9 @@ Click on the images below for a link to the drivers or navigation configurations
     :align: middle
     :alt: Husarion ROSbot XL
     :target: https://github.com/husarion/rosbot-xl-autonomy
+
+.. |waratah| image:: images/waratah.png
+    :width: 100%
+    :align: middle
+    :alt: Waratah from Monash Nova Rocer
+    :target: https://www.novarover.space/

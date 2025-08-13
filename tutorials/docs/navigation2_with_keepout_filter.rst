@@ -23,7 +23,7 @@ This tutorial shows how to simply utilize keep-out/safety zones where robots can
 Requirements
 ============
 
-It is assumed that ROS 2, Gazebo and TurtleBot3 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in :ref:`build-instructions`.
+It is assumed that ROS 2, Gazebo and TurtleBot4 packages are installed or built locally. Please make sure that Nav2 project is also built locally as it was made in :ref:`build-instructions`.
 
 Tutorial Steps
 ==============
@@ -33,9 +33,9 @@ Tutorial Steps
 
 As was written in :ref:`concepts`, any Costmap Filter (including Keepout Filter) are reading the data marked in a filter mask file. Filter mask - is the usual Nav2 2D-map distributed through PGM, PNG or BMP raster file with its metadata containing in a YAML file. The following steps help to understand how to make a new filter mask:
 
-Create a new image with a PGM/PNG/BMP format: copy `turtlebot3_world.pgm <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/tb3_sandbox.pgm>`_ main map which will be used in a world simulation from a ``Nav2`` repository to a new ``keepout_mask.pgm`` file.
+Create a new image with a PGM/PNG/BMP format: copy `depot.pgm <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/depot.pgm>`_ main map which will be used in a world simulation from a ``Nav2`` repository to a new ``depot_keepout.pgm`` file.
 
-Open ``keepout_mask.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. Another term "darkness" will be understood as the exact opposite of lightness. In other words ``color_darkness = 100% - color_lightness``.
+Open ``depot_keepout.pgm`` in your favourite raster graphics editor (as an example could be taken GIMP editor). The lightness of each pixel on the mask means an encoded information for the specific costmap filter you are going to use. Color lightness of each pixel belongs to the ``[0..255]`` range (or ``[0..100]`` in percent scale), where ``0`` means black color and ``255`` - white. Another term "darkness" will be understood as the exact opposite of lightness. In other words ``color_darkness = 100% - color_lightness``.
 
 In the GIMP lightness is expressed through color components value (e.g. ``R`` in percent scale) and might be set by moving ``L`` slider in color changing tool:
 
@@ -55,24 +55,24 @@ where ``free_thresh`` and ``occupied_thresh`` thresholds are expressed in percen
 
 For Keepout Filter ``OccupancyGrid`` value is proportional to the passibility of area corresponding to this cell: higher values means more impassable areas. Cells with occupied values covers keep-out zones where robot will never enter or pass through. ``KeepoutFilter`` can also act as a "weighted areas layer" by setting the ``OccupancyGrid`` to something between ``[1-99]`` non-occupied values. Robot is allowed to move in these areas, however its presence there would be "undesirable" there (the higher the value, the sooner planners will try to get the robot out of this area).
 
-Keepout Filter also covers preferred lanes case, where robots should moving only on pre-defined lanes and permitted areas e.g. in warehouses. To use this feaure you need to prepare the mask image where the lanes and permitted areas will be marked with free values while all other areas will be occupied. TIP for drawing the mask in a ``trinary`` or ``scale`` mode: typically, amount of pixels belonging to lanes are much less than pixels covering other areas. In this case initially all lanes data might be drawn with a black pencil over white background and then (just before saving a PGM) "color inversion" tool in a image raster editor might be used.
+Keepout Filter also covers preferred lanes case, where robots should moving only on pre-defined lanes and permitted areas e.g. in warehouses. To use this feature you need to prepare the mask image where the lanes and permitted areas will be marked with free values while all other areas will be occupied. TIP for drawing the mask in a ``trinary`` or ``scale`` mode: typically, amount of pixels belonging to lanes are much less than pixels covering other areas. In this case initially all lanes data might be drawn with a black pencil over white background and then (just before saving a PGM) "color inversion" tool in a image raster editor might be used.
 
 For simplicity, in the example fill the areas with black color (in ``trinary`` mode this means occupied map) that you are going to mark as a keep-out zones:
 
 .. image:: images/Navigation2_with_Keepout_Filter/drawing_keepout_mask.png
     :width: 500px
 
-After all keepout areas will be filled save the ``keepout_mask.pgm`` image.
+After all keepout areas will be filled, save the ``depot_keepout.pgm`` image.
 
-Like all other maps, filter mask should have its own YAML metadata file. Copy `turtlebot3_world.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/tb3_sandbox.yaml>`_ to ``keepout_mask.yaml``. Open ``keepout_mask.yaml`` and correct ``image`` field to a newly made PGM mask:
+Like all other maps, filter mask should have its own YAML metadata file. Copy `depot.yaml <https://github.com/ros-navigation/navigation2/blob/main/nav2_bringup/maps/depot.yaml>`_ to ``depot_keepout.yaml``. Open ``depot_keepout.yaml`` and correct ``image`` field to a newly made PGM mask:
 
-.. code-block:: text
+.. code-block:: yaml
 
-  image: turtlebot3_world.pgm
+  image: depot.pgm
   ->
-  image: keepout_mask.pgm
+  image: depot_keepout.pgm
 
-Since filter mask image was created as a copy of main map, other fields of YAML-file do not need to be changed. Save ``keepout_mask.yaml`` and new filter mask is ready to use.
+Since filter mask image was created as a copy of main map, other fields of YAML-file do not need to be changed. Save ``depot_keepout.yaml`` and new filter mask is ready to use.
 
 .. note::
 
@@ -94,150 +94,211 @@ In order to enable Keepout Filter in your configuration, both servers should be 
   import os
 
   from ament_index_python.packages import get_package_share_directory
-
   from launch import LaunchDescription
-  from launch.actions import DeclareLaunchArgument, GroupAction
+  from launch.actions import DeclareLaunchArgument, GroupAction, SetEnvironmentVariable
   from launch.conditions import IfCondition
   from launch.substitutions import LaunchConfiguration, PythonExpression
-  from launch.substitutions import NotEqualsSubstitution
-  from launch_ros.actions import Node, LoadComposableNodes
-  from launch_ros.actions import PushRosNamespace
-  from launch_ros.descriptions import ComposableNode
-  from nav2_common.launch import RewrittenYaml
+  from launch_ros.actions import LoadComposableNodes, Node, PushROSNamespace, SetParameter
+  from launch_ros.descriptions import ComposableNode, ParameterFile
+  from nav2_common.launch import LaunchConfigAsBool, RewrittenYaml
 
 
-  def generate_launch_description():
+  def generate_launch_description() -> LaunchDescription:
       # Get the launch directory
-      costmap_filters_demo_dir = get_package_share_directory('nav2_costmap_filters_demo')
+      bringup_dir = get_package_share_directory('nav2_bringup')
 
-      lifecycle_nodes = ['filter_mask_server', 'costmap_filter_info_server']
-
-      # Parameters
       namespace = LaunchConfiguration('namespace')
-      use_sim_time = LaunchConfiguration('use_sim_time')
-      autostart = LaunchConfiguration('autostart')
+      keepout_mask_yaml_file = LaunchConfiguration('keepout_mask')
+      use_sim_time = LaunchConfigAsBool('use_sim_time')
+      autostart = LaunchConfigAsBool('autostart')
       params_file = LaunchConfiguration('params_file')
-      mask_yaml_file = LaunchConfiguration('mask')
-      use_composition = LaunchConfiguration('use_composition')
+      use_composition = LaunchConfigAsBool('use_composition')
       container_name = LaunchConfiguration('container_name')
       container_name_full = (namespace, '/', container_name)
+      use_respawn = LaunchConfigAsBool('use_respawn')
+      use_keepout_zones = LaunchConfigAsBool('use_keepout_zones')
+      log_level = LaunchConfiguration('log_level')
 
-      # Declare the launch arguments
+      lifecycle_nodes = ['keepout_filter_mask_server', 'keepout_costmap_filter_info_server']
+
+      # Map fully qualified names to relative ones so the node's namespace can be prepended.
+      remappings = [('/tf', 'tf'), ('/tf_static', 'tf_static')]
+
+      yaml_substitutions = {
+          'KEEPOUT_ZONE_ENABLED': use_keepout_zones,
+      }
+
+      configured_params = ParameterFile(
+          RewrittenYaml(
+              source_file=params_file,
+              root_key=namespace,
+              param_rewrites={},
+              value_rewrites=yaml_substitutions,
+              convert_types=True,
+          ),
+          allow_substs=True,
+      )
+
+      stdout_linebuf_envvar = SetEnvironmentVariable(
+          'RCUTILS_LOGGING_BUFFERED_STREAM', '1'
+      )
+
       declare_namespace_cmd = DeclareLaunchArgument(
-          'namespace',
+          'namespace', default_value='', description='Top-level namespace'
+      )
+
+      declare_keepout_mask_yaml_cmd = DeclareLaunchArgument(
+          'keepout_mask',
           default_value='',
-          description='Top-level namespace')
+          description='Full path to keepout mask yaml file to load',
+      )
 
       declare_use_sim_time_cmd = DeclareLaunchArgument(
           'use_sim_time',
-          default_value='true',
-          description='Use simulation (Gazebo) clock if true')
-
-      declare_autostart_cmd = DeclareLaunchArgument(
-          'autostart', default_value='true',
-          description='Automatically startup the nav2 stack')
+          default_value='false',
+          description='Use simulation (Gazebo) clock if true',
+      )
 
       declare_params_file_cmd = DeclareLaunchArgument(
           'params_file',
-          description='Full path to the ROS2 parameters file to use')
-
-      declare_mask_yaml_file_cmd = DeclareLaunchArgument(
-          'mask',
-          description='Full path to filter mask yaml file to load')
+          default_value=os.path.join(bringup_dir, 'params', 'nav2_params.yaml'),
+          description='Full path to the ROS2 parameters file to use for all launched nodes',
+      )
 
       declare_use_composition_cmd = DeclareLaunchArgument(
-          'use_composition', default_value='True',
-          description='Use composed bringup if True')
+          'use_composition',
+          default_value='False',
+          description='Use composed bringup if True',
+      )
 
       declare_container_name_cmd = DeclareLaunchArgument(
-          'container_name', default_value='nav2_container',
-          description='The name of container that nodes will load in if use composition')
+          'container_name',
+          default_value='nav2_container',
+          description='the name of container that nodes will load in if use composition',
+      )
 
-      # Make re-written yaml
-      param_substitutions = {
-          'use_sim_time': use_sim_time,
-          'yaml_filename': mask_yaml_file}
+      declare_use_respawn_cmd = DeclareLaunchArgument(
+          'use_respawn',
+          default_value='False',
+          description='Whether to respawn if a node crashes. Applied when composition is disabled.',
+      )
 
-      configured_params = RewrittenYaml(
-          source_file=params_file,
-          root_key=namespace,
-          param_rewrites=param_substitutions,
-          convert_types=True)
+      declare_use_keepout_zones_cmd = DeclareLaunchArgument(
+          'use_keepout_zones', default_value='True',
+          description='Whether to enable keepout zones or not'
+      )
+
+      declare_log_level_cmd = DeclareLaunchArgument(
+          'log_level', default_value='info', description='log level'
+      )
 
       load_nodes = GroupAction(
           condition=IfCondition(PythonExpression(['not ', use_composition])),
           actions=[
+              PushROSNamespace(namespace),
+              SetParameter('use_sim_time', use_sim_time),
               Node(
+                  condition=IfCondition(use_keepout_zones),
                   package='nav2_map_server',
                   executable='map_server',
-                  name='filter_mask_server',
-                  namespace=namespace,
+                  name='keepout_filter_mask_server',
                   output='screen',
-                  emulate_tty=True,  # https://github.com/ros2/launch/issues/188
-                  parameters=[configured_params]),
+                  respawn=use_respawn,
+                  respawn_delay=2.0,
+                  parameters=[configured_params, {'yaml_filename': keepout_mask_yaml_file}],
+                  arguments=['--ros-args', '--log-level', log_level],
+                  remappings=remappings,
+              ),
               Node(
+                  condition=IfCondition(use_keepout_zones),
                   package='nav2_map_server',
                   executable='costmap_filter_info_server',
-                  name='costmap_filter_info_server',
-                  namespace=namespace,
+                  name='keepout_costmap_filter_info_server',
                   output='screen',
-                  emulate_tty=True,  # https://github.com/ros2/launch/issues/188
-                  parameters=[configured_params]),
+                  respawn=use_respawn,
+                  respawn_delay=2.0,
+                  parameters=[configured_params],
+                  arguments=['--ros-args', '--log-level', log_level],
+                  remappings=remappings,
+              ),
               Node(
                   package='nav2_lifecycle_manager',
                   executable='lifecycle_manager',
-                  name='lifecycle_manager_costmap_filters',
-                  namespace=namespace,
+                  name='lifecycle_manager_keepout_zone',
                   output='screen',
-                  emulate_tty=True,  # https://github.com/ros2/launch/issues/188
-                  parameters=[{'use_sim_time': use_sim_time},
-                              {'autostart': autostart},
-                              {'node_names': lifecycle_nodes}])
-          ]
+                  arguments=['--ros-args', '--log-level', log_level],
+                  parameters=[{'autostart': autostart}, {'node_names': lifecycle_nodes}],
+              ),
+          ],
       )
-
+      # LoadComposableNode for map server twice depending if we should use the
+      # value of map from a CLI or launch default or user defined value in the
+      # yaml configuration file. They are separated since the conditions
+      # currently only work on the LoadComposableNodes commands and not on the
+      # ComposableNode node function itself
       load_composable_nodes = GroupAction(
           condition=IfCondition(use_composition),
           actions=[
-              PushRosNamespace(
-                  condition=IfCondition(NotEqualsSubstitution(LaunchConfiguration('namespace'), '')),
-                  namespace=namespace),
+              PushROSNamespace(namespace),
+              SetParameter('use_sim_time', use_sim_time),
               LoadComposableNodes(
                   target_container=container_name_full,
+                  condition=IfCondition(use_keepout_zones),
                   composable_node_descriptions=[
                       ComposableNode(
                           package='nav2_map_server',
                           plugin='nav2_map_server::MapServer',
-                          name='filter_mask_server',
-                          parameters=[configured_params]),
+                          name='keepout_filter_mask_server',
+                          parameters=[
+                              configured_params,
+                              {'yaml_filename': keepout_mask_yaml_file}
+                          ],
+                          remappings=remappings,
+                      ),
                       ComposableNode(
                           package='nav2_map_server',
                           plugin='nav2_map_server::CostmapFilterInfoServer',
-                          name='costmap_filter_info_server',
-                          parameters=[configured_params]),
+                          name='keepout_costmap_filter_info_server',
+                          parameters=[configured_params],
+                          remappings=remappings,
+                      ),
+                  ],
+              ),
+
+              LoadComposableNodes(
+                  target_container=container_name_full,
+                  composable_node_descriptions=[
                       ComposableNode(
                           package='nav2_lifecycle_manager',
                           plugin='nav2_lifecycle_manager::LifecycleManager',
-                          name='lifecycle_manager_costmap_filters',
-                          parameters=[{'use_sim_time': use_sim_time},
-                                      {'autostart': autostart},
-                                      {'node_names': lifecycle_nodes}]),
-                  ]
-              )
-          ]
+                          name='lifecycle_manager_keepout_zone',
+                          parameters=[
+                              {'autostart': autostart, 'node_names': lifecycle_nodes}
+                          ],
+                      ),
+                  ],
+              ),
+          ],
       )
 
+      # Create the launch description and populate
       ld = LaunchDescription()
 
-      ld.add_action(declare_namespace_cmd)
-      ld.add_action(declare_use_sim_time_cmd)
-      ld.add_action(declare_autostart_cmd)
-      ld.add_action(declare_params_file_cmd)
-      ld.add_action(declare_mask_yaml_file_cmd)
+      # Set environment variables
+      ld.add_action(stdout_linebuf_envvar)
 
+      # Declare the launch options
+      ld.add_action(declare_namespace_cmd)
+      ld.add_action(declare_keepout_mask_yaml_cmd)
+      ld.add_action(declare_use_sim_time_cmd)
+      ld.add_action(declare_params_file_cmd)
       ld.add_action(declare_use_composition_cmd)
       ld.add_action(declare_container_name_cmd)
+      ld.add_action(declare_use_respawn_cmd)
+      ld.add_action(declare_use_keepout_zones_cmd)
+      ld.add_action(declare_log_level_cmd)
 
+      # Add the actions to launch all of the map modifier nodes
       ld.add_action(load_nodes)
       ld.add_action(load_composable_nodes)
 
@@ -247,38 +308,24 @@ where the ``params_file`` variable should be set to a YAML-file having ROS param
 
 .. code-block:: yaml
 
-  costmap_filter_info_server:
+  keepout_filter_mask_server:
     ros__parameters:
-      use_sim_time: true
+      topic_name: "keepout_filter_mask"
+      # yaml_filename: ""
+
+  keepout_costmap_filter_info_server:
+    ros__parameters:
       type: 0
-      filter_info_topic: "/costmap_filter_info"
-      mask_topic: "/keepout_filter_mask"
+      filter_info_topic: "keepout_costmap_filter_info"
+      mask_topic: "keepout_filter_mask"
       base: 0.0
       multiplier: 1.0
-  filter_mask_server:
-    ros__parameters:
-      use_sim_time: true
-      frame_id: "map"
-      topic_name: "/keepout_filter_mask"
-      yaml_filename: "keepout_mask.yaml"
 
 Note, that:
 
  - For Keepout Filter the ``type`` of costmap filter should be set to ``0``.
  - Filter mask topic name should be the equal for ``mask_topic`` parameter of Costmap Filter Info Publisher Server and ``topic_name`` parameter of Map Server.
  - According to the Costmap Filters design, ``OccupancyGrid`` values are being linearly transformed into feature map in a filter space. For a Keepout Filter these values are directly passed as a filter space values without a linear conversion. Even though ``base`` and ``multiplier`` coefficients are not used in Keepout Filter, they should be set to ``0.0`` and ``1.0`` accordingly in order to explicitly show that we have one-to-one conversion from ``OccupancyGrid`` values -> to a filter value space.
-
-Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in a `nav2_costmap_filters_demo <https://github.com/ros-navigation/navigation2_tutorials/tree/master/nav2_costmap_filters_demo>`_ directory of ``navigation2_tutorials`` repository. To simply run Filter Info Publisher Server and Map Server tuned on Turtlebot3 standard simulation written at :ref:`getting_started`, build the demo and launch ``costmap_filter_info.launch.py`` as follows:
-
-.. code-block:: bash
-
-  $ mkdir -p ~/tutorials_ws/src
-  $ cd ~/tutorials_ws/src
-  $ git clone https://github.com/ros-navigation/navigation2_tutorials.git
-  $ cd ~/tutorials_ws
-  $ colcon build --symlink-install --packages-select nav2_costmap_filters_demo
-  $ source ~/tutorials_ws/install/setup.bash
-  $ ros2 launch nav2_costmap_filters_demo costmap_filter_info.launch.py params_file:=`pwd`/src/navigation2_tutorials/nav2_costmap_filters_demo/params/keepout_params.yaml mask:=`pwd`/src/navigation2_tutorials/nav2_costmap_filters_demo/maps/keepout_mask.yaml use_composition:=True
 
 3. Enable Keepout Filter
 ------------------------
@@ -294,7 +341,7 @@ It is important to note that enabling ``KeepoutFilter`` for ``global_costmap`` o
 
 To enable ``KeepoutFilter`` with same mask for both global and local costmaps, use the following configuration:
 
-.. code-block:: text
+.. code-block:: yaml
 
   global_costmap:
     global_costmap:
@@ -306,7 +353,7 @@ To enable ``KeepoutFilter`` with same mask for both global and local costmaps, u
         keepout_filter:
           plugin: "nav2_costmap_2d::KeepoutFilter"
           enabled: True
-          filter_info_topic: "/costmap_filter_info"
+          filter_info_topic: "keepout_costmap_filter_info"
   ...
   local_costmap:
     local_costmap:
@@ -318,25 +365,25 @@ To enable ``KeepoutFilter`` with same mask for both global and local costmaps, u
         keepout_filter:
           plugin: "nav2_costmap_2d::KeepoutFilter"
           enabled: True
-          filter_info_topic: "/costmap_filter_info"
+          filter_info_topic: "keepout_costmap_filter_info""
 
 .. note::
 
-  All costmap filters should be enabled through a ``filters`` parameter -- though it is technically possible to include in the layered costmap itself. This is separated from the layer plugins to prevent interference in the layers, particularly the  inflation layer.
+  All costmap filters should be enabled through a ``filters`` parameter -- though it is technically possible to include in the layered costmap itself. This is separated from the layer plugins to prevent interference in the layers, particularly the inflation layer.
 
 4. Run Nav2 stack
 -----------------
 
-After Costmap Filter Info Publisher Server and Map Server were launched and Keepout Filter was enabled for global/local costmaps, run Nav2 stack as written in :ref:`getting_started`:
+Ready-to-go standalone Python launch-script, YAML-file with ROS parameters and filter mask example for Keepout Filter could be found in `nav2_bringup <https://github.com/ros-navigation/navigation2/tree/main/nav2_bringup>`_ directory. To run the demo, simply launch as follows:
 
 .. code-block:: bash
 
-  ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+  ros2 launch nav2_bringup tb4_simulation_launch.py
 
-And check that filter is working properly as in the pictures below (first picture shows keepout filter enabled for the global costmap, second - differently-sized ``keepout_mask.pgm`` filter mask):
+And check that filter is working properly as in the pictures below
 
-.. image:: images/Navigation2_with_Keepout_Filter/keepout_global.gif
+.. image:: images/Navigation2_with_Keepout_Filter/keepout_global.png
     :height: 400px
 
-.. image:: images/Navigation2_with_Keepout_Filter/keepout_mask.png
-    :height: 400px
+.. note::
+  For another example and additional context, check the Navigation2 tutorials https://github.com/ros-navigation/navigation2_tutorials/tree/rolling/nav2_costmap_filters_demo

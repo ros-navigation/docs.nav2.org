@@ -71,20 +71,6 @@ Behavior Server Parameters
   Description
     Frequency to run behavior plugins.
 
-:action_server_result_timeout:
-
-  ====== ======= ======= 
-  Type   Default Unit
-  ------ ------- -------
-  double 10.0    seconds
-  ====== ======= =======
-
-  Description
-    The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
-    15 minutes in rcl but was changed to 10 seconds in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_, which may be less than
-    some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline. 
-    This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround
-
 :transform_tolerance:
 
   ============== =============================
@@ -128,6 +114,17 @@ Behavior Server Parameters
 
   Description
     Robot base frame.
+
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
 
 :behavior_plugins:
 
@@ -233,12 +230,13 @@ Spin distance is given from the action request
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
 
 BackUp Behavior Parameters
@@ -262,12 +260,46 @@ Backup distance, speed and time_allowance is given from the action request.
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
+
+:backup.acceleration_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         2.5
+  ============== =============================
+
+  Description
+    Maximum acceleration limit (m/s^2). This parameter limits the rate at which speed increases when moving backward.
+
+:backup.deceleration_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         -2.5
+  ============== =============================
+
+  Description
+    Maximum deceleration limit (m/s^2). Negative value. This parameter limits the rate at which speed decreases when moving backward.
+
+:backup.minimum_speed:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.10
+  ============== =============================
+
+  Description
+    Minimum speed to move, the deadband velocity of the robot behavior (m/s). Positive value.
 
 DriveOnHeading Behavior Parameters
 **********************************
@@ -290,12 +322,13 @@ DriveOnHeading distance, speed and time_allowance is given from the action reque
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
 :bond_heartbeat_period:
 
@@ -307,6 +340,50 @@ DriveOnHeading distance, speed and time_allowance is given from the action reque
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
+
+:drive_on_heading.acceleration_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         2.5
+  ============== =============================
+
+  Description
+    Maximum acceleration limit (m/s^2).
+
+:drive_on_heading.deceleration_limit:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         -2.5
+  ============== =============================
+
+  Description
+    Maximum deceleration limit (m/s^2). Negative value.
+
+:drive_on_heading.minimum_speed:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.10
+  ============== =============================
+
+  Description
+    Minimum speed to move, the deadband velocity of the robot behavior (m/s). Positive value.
 
 AssistedTeleop Behavior Parameters
 **********************************
@@ -351,12 +428,13 @@ AssistedTeleop time_allowance is given in the action request
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
 Example
 *******
@@ -383,9 +461,9 @@ Example
         local_frame: odom
         global_frame: map
         robot_base_frame: base_link
-        transform_timeout: 0.1
+        transform_tolerance: 0.1
         simulate_ahead_time: 2.0
         max_rotational_vel: 1.0
         min_rotational_vel: 0.4
         rotational_acc_lim: 3.2
-        enable_stamped_cmd_vel: false
+        enable_stamped_cmd_vel: true  # default false in Jazzy or older

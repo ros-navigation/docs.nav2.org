@@ -26,7 +26,7 @@ Prerequisites
 
     - Read the short explanation in `navigation concepts <../../concepts/index.html>`_
 
-    - Read the general tutorial and guide (not Nav2 specific) on the `BehaviorTree CPP V3 <https://www.behaviortree.dev/>`_ website. Specifically, the "Learn the Basics" section on the BehaviorTree CPP V3 website explains the basic generic nodes that will be used that this guide will build upon.
+    - Read the general tutorial and guide (not Nav2 specific) on the `BehaviorTree CPP V4 <https://www.behaviortree.dev/>`_ website. Specifically, the "Basic Concepts" section on the BehaviorTree CPP V4 website explains the basic generic nodes that will be used that this guide will build upon.
 
 - Become familiar with the custom `Nav2 specific BT nodes <nav2_specific_nodes.html>`_
 
@@ -47,39 +47,47 @@ BTs are primarily defined in XML. The tree shown above is represented in XML as 
 
 .. code-block:: xml
 
-    <root main_tree_to_execute="MainTree">
+    <root BTCPP_format="4" main_tree_to_execute="MainTree">
         <BehaviorTree ID="MainTree">
             <RecoveryNode number_of_retries="6" name="NavigateRecovery">
                 <PipelineSequence name="NavigateWithReplanning">
+                    <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
+                    <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
                     <RateController hz="1.0">
                         <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-                            <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
-                            <ReactiveFallback name="ComputePathToPoseRecoveryFallback">
-                                <GoalUpdated/>
+                            <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                            <Sequence>
+                                <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
                                 <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
-                            </ReactiveFallback>
+                            </Sequence>
                         </RecoveryNode>
                     </RateController>
                     <RecoveryNode number_of_retries="1" name="FollowPath">
-                        <FollowPath path="{path}" controller_id="FollowPath"/>
-                        <ReactiveFallback name="FollowPathRecoveryFallback">
-                            <GoalUpdated/>
+                        <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
+                        <Sequence>
+                            <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
                             <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
-                        </ReactiveFallback>
+                        </Sequence>
                     </RecoveryNode>
                 </PipelineSequence>
-                <ReactiveFallback name="RecoveryFallback">
-                    <GoalUpdated/>
-                    <RoundRobin name="RecoveryActions">
-                        <Sequence name="ClearingActions">
+                <Sequence>
+                    <Fallback>
+                        <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+                        <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+                    </Fallback>
+                    <ReactiveFallback name="RecoveryFallback">
+                        <GoalUpdated/>
+                        <RoundRobin name="RecoveryActions">
+                            <Sequence name="ClearingActions">
                             <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
                             <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
-                        </Sequence>
-                        <Spin spin_dist="1.57"/>
-                        <Wait wait_duration="5"/>
-                        <BackUp backup_dist="0.15" backup_speed="0.025"/>
-                    </RoundRobin>
-                </ReactiveFallback>
+                            </Sequence>
+                            <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
+                            <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
+                            <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+                        </RoundRobin>
+                    </ReactiveFallback>
+                </Sequence>
             </RecoveryNode>
         </BehaviorTree>
     </root>
@@ -135,21 +143,23 @@ The XML of this subtree is as follows:
 .. code-block:: xml
 
     <PipelineSequence name="NavigateWithReplanning">
+        <ControllerSelector selected_controller="{selected_controller}" default_controller="FollowPath" topic_name="controller_selector"/>
+        <PlannerSelector selected_planner="{selected_planner}" default_planner="GridBased" topic_name="planner_selector"/>
         <RateController hz="1.0">
             <RecoveryNode number_of_retries="1" name="ComputePathToPose">
-                <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
-                <ReactiveFallback name="ComputePathToPoseRecoveryFallback">
-                    <GoalUpdated/>
+                <ComputePathToPose goal="{goal}" path="{path}" planner_id="{selected_planner}" error_code_id="{compute_path_error_code}" error_msg="{compute_path_error_msg}"/>
+                <Sequence>
+                    <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
                     <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
-                </ReactiveFallback>
+                </Sequence>
             </RecoveryNode>
         </RateController>
         <RecoveryNode number_of_retries="1" name="FollowPath">
-            <FollowPath path="{path}" controller_id="FollowPath"/>
-            <ReactiveFallback name="FollowPathRecoveryFallback">
-                <GoalUpdated/>
+            <FollowPath path="{path}" controller_id="{selected_controller}" error_code_id="{follow_path_error_code}" error_msg="{follow_path_error_msg}"/>
+            <Sequence>
+                <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
                 <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
-            </ReactiveFallback>
+            </Sequence>
         </RecoveryNode>
     </PipelineSequence>
 
@@ -183,7 +193,7 @@ The below is the ``ComputePathToPose`` subtree:
 |
 
 The parent ``RecoveryNode`` controls the flow between the action, and the contextual recovery subtree.
-The contextual recoveries for both ``ComputePathToPose`` and ``FollowPath`` involve checking if the goal has been updated, and involves clearing the relevant costmap.
+The contextual recoveries for both ``ComputePathToPose`` and ``FollowPath`` involve checking if the recovery could help clear the error code and clearing the relevant costmap.
 
 Consider changing the ``number_of_retries`` parameter in the parent ``RecoveryNode`` control node if your application can tolerate more attempts at contextual recoveries before moving on to system-level recoveries.
 
@@ -202,6 +212,8 @@ The only differences in the BT subtree of ``ComputePathToPose`` and ``FollowPath
     - The ``ComputePathToPose`` subtree clears the global costmap. The global costmap is the relevant costmap in the context of the planner
     - The ``FollowPath`` subtree clears the local costmap. The local costmap is the relevant costmap in the context of the controller
 
+This subtree also utilizes the ``PlannerSelector`` and ``ControllerSelector`` nodes. These nodes ffer flexibility for applications that need to adjust navigation behavior on the fly.
+
 Recovery Subtree
 ================
 
@@ -219,20 +231,31 @@ And the XML snippet:
 
 .. code-block:: xml
 
-    <ReactiveFallback name="RecoveryFallback">
-        <GoalUpdated/>
-        <RoundRobin name="RecoveryActions">
-            <Sequence name="ClearingActions">
+    <Sequence>
+        <Fallback>
+            <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+            <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+        </Fallback>
+        <ReactiveFallback name="RecoveryFallback">
+            <GoalUpdated/>
+            <RoundRobin name="RecoveryActions">
+                <Sequence name="ClearingActions">
                 <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
                 <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
-            </Sequence>
-            <Spin spin_dist="1.57"/>
-            <Wait wait_duration="5"/>
-            <BackUp backup_dist="0.15" backup_speed="0.025"/>
-        </RoundRobin>
-    </ReactiveFallback>
+                </Sequence>
+                <Spin spin_dist="1.57" error_code_id="{spin_error_code}" error_msg="{spin_error_msg}"/>
+                <Wait wait_duration="5.0" error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>
+                <BackUp backup_dist="0.30" backup_speed="0.15" error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
+            </RoundRobin>
+        </ReactiveFallback>
+    </Sequence>
 
-The top most parent, ``ReactiveFallback`` controls the flow between the rest of the system wide recoveries, and asynchronously checks if a new goal has been received.
+At the top level, a ``Sequence`` ensures the following steps are executed in order:
+
+- A ``Fallback`` node first checks whether planner or controller recoveries might help resolve the issue. If either returns ``SUCCESS``, the fallback succeeds and the sequence proceeds to the next step.
+
+- A ``ReactiveFallback`` that controls the flow between the rest of the system wide recoveries, and asynchronously checks if a new goal has been received.
+
 If at any point the goal gets updated, this subtree will halt all children and return ``SUCCESS``. This allows for quick reactions to new goals and preempt currently executing recoveries.
 This should look familiar to the contextual recovery portions of the ``Navigation`` subtree. This is a common BT pattern to handle the situation "Unless 'this condition' happens, Do action A".
 
@@ -263,11 +286,8 @@ For example, let's say the robot is stuck and the ``Navigation`` subtree returns
 
 4. Let's say the next action, ``Wait`` returns ``SUCCESS``. The robot will then move on to the ``Navigation`` subtree
 
-5. Assume  the ``Navigation`` subtree returns ``FAILURE`` (clearing the costmaps, attempting a spin, and waiting were *still* not sufficient to recover the system. The robot will move onto the ``Recovery`` subtree and attempt the ``BackUp`` action. Let's say that the robot attempts the ``BackUp`` action and was able to successfully complete the action. The ``BackUp`` action node returns ``SUCCESS`` and so now we move on to the Navigation subtree again.
+5. Assume  the ``Navigation`` subtree returns ``FAILURE`` (clearing the costmaps, attempting a spin, and waiting were *still* not sufficient to recover the system). The robot will move onto the ``Recovery`` subtree and attempt the ``BackUp`` action. Let's say that the robot attempts the ``BackUp`` action and was able to successfully complete the action. The ``BackUp`` action node returns ``SUCCESS`` and so now we move on to the Navigation subtree again.
 
 6. In this hypothetical scenario, let's assume that the ``BackUp`` action allowed the robot to successfully navigate in the ``Navigation`` subtree, and the robot reaches the goal. In this case, the overall BT will still return ``SUCCESS``.
 
 If the ``BackUp`` action was not sufficient enough to allow the robot to become un-stuck, the above logic will go on indefinitely until the ``number_of_retries`` in the parent of the ``Navigate`` subtree and ``Recovery`` subtree is exceeded, or if all the system-wide recoveries in the ``Recovery`` subtree return ``FAILURE`` (this is unlikely, and likely points to some other system failure).
-
-
-

@@ -1,4 +1,4 @@
-.. _nav2_specifc_nodes:
+.. _nav2_specific_nodes:
 
 Introduction To Nav2 Specific Nodes
 ===================================
@@ -33,7 +33,7 @@ Condition Nodes
 
 * GoalReached - Checks if the goal has been reached
 
-* InitialPoseReceived - Checks to see if a pose on the ``intial_pose`` topic has been received
+* InitialPoseReceived - Checks to see if a pose on the ``initial_pose`` topic has been received
 
 * isBatteryLow - Checks to see if the battery is low by listening on the battery topic
 
@@ -244,4 +244,142 @@ The parent node retains this state information, and will tick ``Action_C`` upon 
 
 |
 
-For additional details regarding the ``RecoveryNode`` please see the `RoundRobin configuration guide <../../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
+For additional details regarding the ``RoundRobin`` please see the `RoundRobin configuration guide <../../configuration/packages/bt-plugins/controls/RoundRobin.html>`_.
+
+Control: NonblockingSequence
+----------------------------
+
+The ``NonblockingSequence`` control node ticks all children as long as they return ``SUCCESS`` or  ``RUNNING``. This node is similar to the ``PipelineSequence`` node, with the additional property that all children are re-ticked as long as ``SUCCESS`` or ``RUNNING``, instead of stopping at the latest ``RUNNING`` node. If at any point a child returns ``FAILURE``, all children will be halted and the parent node will also return ``FAILURE``. Upon ``SUCCESS`` of **all nodes** in the sequence, this node will halt and return ``SUCCESS``.
+
+Note that even if a node returns ``SUCCESS`` in a previous tick, on the next tick, the ``NonblockingSequence`` will still tick the successful node, possibly restarting it. This is to ensure that successful nodes do not latch a stale state while waiting for another long running node to be complete
+
+To explain this further, here is an example BT that uses NonblockingSequence.
+
+|
+
+ .. image:: ../images/control_nonblockingSequence.png
+    :align: center
+
+
+
+.. code-block:: xml
+
+    <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+            <NonblockingSequence>
+                <Action_A/>
+                <Action_B/>
+                <Action_C/>
+            </NonblockingSequence>
+        </BehaviorTree>
+    </root>
+
+1. ``Action_A``, ``Action_B``, and ``Action_C`` are all ``IDLE``.
+
+2. When the parent NonblockingSequence is first ticked, let's assume ``Action_A`` returns ``RUNNING``. Following this, ``Action_B`` will be ticked, and let's assume it also returns ``RUNNING``. Finally, ``Action_C`` will be ticked, and let's assume it also returns ``RUNNING``. With three ``RUNNING`` children, the NonblockingSequence will return ``RUNNING``
+
+|
+
+ .. image:: ../images/control_nonblockingSequence_RUNNING_RUNNING_RUNNING.png
+    :align: center
+
+|
+
+3. On the next tick of the the parent NonblockingSequence, all actions in the sequence will be re-ticked. Let's assume ``Action_A`` returns ``SUCCESS``, and ``Action_B`` and ``Action_C`` still return ``RUNNING``. In this configuration, the NonblockingSequence still returns ``RUNNING``, as there are two nodes in the children that are ``RUNNING``
+
+|
+
+ .. image:: ../images/control_nonblockingSequence_SUCCESS_RUNNING_RUNNING.png
+    :align: center
+
+|
+
+4. Now, let's assume on the next re-tick, ``Action_A`` and ``Action_C``  return ``SUCCESS``, and ``Action_B`` returns ``RUNNING``. In this configuration, the NonblockingSequence still returns ``RUNNING``, as there is still one child node that is ``RUNNING``. Note that ``ActionA`` was re-ticked and again returned ``SUCCESS`` in this case, it did not skip due to previously returning `SUCCESS``.
+
+|
+
+ .. image:: ../images/control_nonblockingSequence_SUCCESS_RUNNING_SUCCESS.png
+    :align: center
+
+|
+
+5. Finally, Let's assume ``Action_A``, ``Action_B``, and ``Action_C``  all return ``SUCCESS``. The sequence is now complete, and therefore ``Action_A``, ``Action_B``, and ``Action_C`` are all halted and NonblockingSequence returns ``SUCCESS``.
+
+|
+
+ .. image:: ../images/control_nonblockingSequence_SUCCESS_SUCCESS_SUCCESS.png
+    :align: center
+
+|
+
+Recall that if ``Action_A``, ``Action_B``, or ``Action_C`` returned ``FAILURE`` at any point of time, the parent would have returned ``FAILURE`` and halted any children as well.
+
+For additional details regarding the ``NonblockingSequence`` please see the `NonblockingSequence configuration guide <../../configuration/packages/bt-plugins/controls/NonblockingSequence.html>`_.
+
+Control: PersistentSequence
+----------------------------
+
+The ``PersistentSequence`` is similar to the ``Sequence`` node, but it stores the index of the last running child in the blackboard (key: "current_child_idx"), and it does not reset the index on halt.
+
+For more information see the ``Sequence`` BT node in BT.CPP.
+
+.. code-block:: xml
+
+    <root main_tree_to_execute="MainTree">
+        <BehaviorTree ID="MainTree">
+            <Script code="current_child_idx := 0" />
+            <PersistentSequence current_child_idx="{current_child_idx}">
+                <Action_A/>
+                <Action_B/>
+                <Action_C/>
+            </PersistentSequence>
+        </BehaviorTree>
+    </root>
+
+Control: PauseResumeController
+------------------------------
+
+The ``PauseResumeController`` is a control node that adds pause and resume functionality to a behavior tree through service calls.
+
+It has one mandatory child for the RESUMED, and three optional for the PAUSED state, the ON_PAUSE event and the ON_RESUME event.
+It has two input ports:
+
+- ``pause_service_name``: name of the service to pause
+- ``resume_service_name``: name of the service to resume
+
+1. The controller starts in RESUMED state, and ticks it until it returns success.
+2. When the pause service is called, ON_PAUSE is ticked until completion, then the controller switches to PAUSED state.
+3. In PAUSED state the PAUSED child is ticked until the state is changed, or until it returns failure.
+4. When the resume service is called, ON_RESUME is ticked until completion, then the controller switches back to RESUMED state.
+
+The controller only returns success when the RESUMED child returns success. The controller returns failure if any child returns failure. In any other case, it returns running.
+
+.. code-block:: xml
+
+    <PauseResumeController pause_service_name="/pause" resume_service_name="/resume">
+        <!-- RESUMED branch -->
+
+        <!-- PAUSED branch (optional) -->
+
+        <!-- ON_PAUSE branch (optional) -->
+
+        <!-- ON_RESUME branch (optional) -->
+    </PauseResumeController>
+
+When the ON_PAUSE and ON_RESUME branches fail, the controller will return failure, halt, and the state will be reset to RESUMED. It might be desirable to retry the transition a few times before failing for real, which functionality is not built in the controller node, but is easily achievable by adding a retry node in the BT:
+
+.. code-block:: xml
+
+    <PauseResumeController pause_service_name="/pause" resume_service_name="/resume">
+        <!-- RESUMED branch -->
+
+        <!-- PAUSED branch -->
+
+        <RetryUntilSuccessful num_attempts="3">
+            <!-- ON_PAUSE branch -->
+        </RetryUntilSuccessful>
+
+        <RetryUntilSuccessful num_attempts="3">
+            <!-- ON_RESUME branch -->
+        </RetryUntilSuccessful>
+    </PauseResumeController>

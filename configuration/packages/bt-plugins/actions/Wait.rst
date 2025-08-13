@@ -44,9 +44,35 @@ Input Ports
   Description
     	Action server timeout (ms).
 
+Output Ports
+------------
+
+:error_code_id:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  uint16          N/A
+  ============== =======
+
+  Description
+        Wait error code. See ``Wait`` action message for the enumerated set of error codes.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        Wait error message. See ``Wait`` action message for the enumerated set of error codes.
+
 Example
 -------
 
 .. code-block:: xml
 
-  <Wait wait_duration="1.0" server_name="wait_server" server_timeout="10"/>
+  <Wait wait_duration="1.0" server_name="wait_server" server_timeout="10"
+        error_code_id="{wait_error_code}" error_msg="{wait_error_msg}"/>

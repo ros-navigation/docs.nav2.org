@@ -3,7 +3,7 @@
 GoalUpdated
 ===========
 
-Checks if the global navigation goal, or a vector of goals, has changed in the blackboard. 
+Checks if the global navigation goal, or a vector of goals, has changed in the blackboard.
 Returns failure if the goal is the same, if it changes, it returns success.
 
 Input Ports
@@ -22,11 +22,11 @@ Input Ports
 
 :goals:
 
-  ============================================ =========
-  Type                                         Default
-  -------------------------------------------- ---------
-  std::vector<geometry_msgs::msg::PoseStamped> "{goals}"
-  ============================================ =========
+  ==================== =========
+  Type                 Default
+  -------------------- ---------
+  nav_msgs::msg::Goals "{goals}"
+  ==================== =========
 
   Description
     	Vector of goals to check. Takes in a blackboard variable, "{goals}" if not specified.

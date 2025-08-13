@@ -15,44 +15,44 @@ Input Ports
   =========== =======
   Type        Default
   ----------- -------
-  PoseStamped N/A  
+  PoseStamped N/A
   =========== =======
 
   Description
-    	Takes in a blackboard variable containing the goal, eg. "{goal}".
+        Takes in a blackboard variable containing the goal, eg. "{goal}".
 
 :server_name:
 
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
-    	Action server name.
+        Action server name.
 
 :server_timeout:
 
   ====== =======
   Type   Default
   ------ -------
-  double 10  
+  double 10
   ====== =======
 
   Description
-    	Action server timeout (ms).
+        Action server timeout (ms).
 
 :behavior_tree:
 
   ====== =======
   Type   Default
   ------ -------
-  string N/A  
+  string N/A
   ====== =======
 
   Description
-    	Behavior tree absolute path. If none is specified, NavigateToPose action server uses a default behavior tree.
+        Behavior tree absolute path. If none is specified, NavigateToPose action server uses a default behavior tree.
 
 Output Ports
 ------------
@@ -62,16 +62,28 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description
-    	The lowest error code in the list of the `error_code_names` parameter. 
+        The lowest error code in the list of the `error_code_names_prefixes` + `_error_code` suffix parameter.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        The error messages associated with the lowest error code in the list of the `error_code_name_prefixes` + `_error_code` parameter.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <NavigateToPose goal="{goal}" server_name="NavigateToPose" server_timeout="10" error_code_id="{navigate_to_pose_error_code}"
+  <NavigateToPose goal="{goal}" server_name="NavigateToPose" server_timeout="10"
+                  error_code_id="{navigate_to_pose_error_code}" error_msg="{navigate_to_pose_error_msg}"
                   behavior_tree="<some-path>/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml"/>

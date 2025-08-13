@@ -47,7 +47,7 @@ The zones around the robot can take the following shapes:
 - Arbitrary user-defined polygon relative to the robot base frame, which can be static in a configuration file or dynamically changing via a topic interface.
 - Robot footprint polygon, which is used in the approach behavior model only. Will use the static user-defined polygon or the footprint topic to allow it to be dynamically adjusted over time.
 - Circle: is made for the best performance and could be used in the cases where the zone or robot footprint could be approximated by round shape.
-- VelocityPolygon: allow switching of polygons based on the command velocity. This is useful for robots to set different safety zones based on their velocity (e.g. a robot that has a larger safety zone when moving at 1.0 m/s than when moving at 0.5 m/s). 
+- VelocityPolygon: allow switching of polygons based on the command velocity. This is useful for robots to set different safety zones based on their velocity (e.g. a robot that has a larger safety zone when moving at 1.0 m/s than when moving at 0.5 m/s).
 
 All shapes (``Polygon``, ``Circle`` and ``VelocityPolygon``) are derived from base ``Polygon`` class, so without loss of generality they would be called as "polygons".
 Subscribed footprint is also having the same properties as other polygons, but it is being obtained a footprint topic for the Approach Model.
@@ -189,7 +189,7 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  bool           false   
+  bool           false
   ============== =======
 
   Description
@@ -200,12 +200,13 @@ Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
 Polygons parameters
 ===================
@@ -449,7 +450,7 @@ All previous Polygon parameters apply, in addition to the following unique param
       Maximum linear velocity for the sub polygon. In holonomic mode, this is the maximum resultant velocity. Causes an error, if not specified.
 
 :``<vel_poly>.<subpoly>``.theta_min:
-  
+
     ============== =============================
     Type           Default
     -------------- -----------------------------
@@ -466,7 +467,7 @@ All previous Polygon parameters apply, in addition to the following unique param
     -------------- -----------------------------
     double         N/A
     ============== =============================
-  
+
     Description:
       Maximum angular velocity for the sub polygon. Causes an error, if not specified.
 
@@ -506,7 +507,25 @@ Observation sources parameters
   ============== =============================
 
   Description:
-    Type of polygon shape. Could be ``scan``, ``pointcloud`` or ``range``.
+    Type of polygon shape. Could be ``scan``, ``pointcloud``, ``range`` or ``polygon``.
+
+:``<source name>``.transport_type:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "raw"
+  ============== =============================
+
+  Description:
+    For ``pointcloud`` data, specify the transport plugin to use:
+
+  * raw: No compression. Default; highest bandwidth usage.
+  * draco: Lossy compression via Google.
+  * zlib: Lossless compression via Zlib compression.
+  * zstd: Lossless compression via Zstd compression.
+
+  See the `known transports <https://github.com/ros-perception/point_cloud_transport_plugins>`_ for more details.
 
 :``<source name>``.topic:
 
@@ -541,6 +560,17 @@ Observation sources parameters
   Description:
     Maximum height the PointCloud projection to 2D space ended with. Applicable for ``pointcloud`` type.
 
+:``<source name>``.min_range:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.0
+  ============== =============================
+
+  Description:
+    Minimum range threshold for PointCloud points. Points closer than this distance (measured as Euclidean distance from sensor origin) will be filtered out before processing. Useful for eliminating noise and invalid readings very close to the sensor. Applicable for ``pointcloud`` type.
+
 :``<source name>``.obstacles_angle:
 
   ============== =============================
@@ -552,6 +582,17 @@ Observation sources parameters
   Description:
     Angle increment (in radians) between nearby obstacle points at the range arc. Two outermost points from the field of view are not taken into account (they will always exist regardless of this value). Applicable for ``range`` type.
 
+:``<source name>``.sampling_distance:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  double         0.1
+  ============== =============================
+
+  Description:
+    Internally the polygon is sampled for collision detection. sampling_distance is the distance between sampled points of the polygon. Applicable for ``polygon`` source type.
+
 :``<source name>``.enabled:
 
   ============== =============================
@@ -562,7 +603,7 @@ Observation sources parameters
 
   Description:
     Whether to use this source for collision monitoring. (Can be dynamically set)
-    
+
 :``<source name>``.source_timeout:
 
   ============== =============================
@@ -584,6 +625,17 @@ Observation sources parameters
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Example
 *******
@@ -608,7 +660,7 @@ Here is an example of configuration YAML for the Collision Monitor.
         source_timeout: 5.0
         base_shift_correction: True
         stop_pub_timeout: 2.0
-        enable_stamped_cmd_vel: False
+        enable_stamped_cmd_vel: True  # False for Jazzy or older
         use_realtime_priority: false
         polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
         PolygonStop:
@@ -676,7 +728,7 @@ Here is an example of configuration YAML for the Collision Monitor.
             theta_max: 1.0
           # This is the last polygon to be checked, it should cover the entire range of robot's velocities
           # It is used as the stopped polygon when the robot is not moving and as a fallback if the velocity
-          # is not covered by any of the other sub-polygons 
+          # is not covered by any of the other sub-polygons
           stopped:
             points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
             linear_min: -1.0
@@ -692,6 +744,8 @@ Here is an example of configuration YAML for the Collision Monitor.
         pointcloud:
           type: "pointcloud"
           topic: "/intel_realsense_r200_depth/points"
+          transport_type: "raw"  # raw or/ with compression (zlib, draco, zstd)
           min_height: 0.1
           max_height: 0.5
+          min_range: 0.2
           enabled: True

@@ -19,18 +19,29 @@ Parameters
   ============== =======
   Type           Default
   -------------- -------
-  double         20.0   
+  double         20.0
   ============== =======
 
   Description
     Frequency to run controller (Hz).
+
+:costmap_update_timeout:
+
+  ============== ========
+  Type           Default
+  -------------- --------
+  double         0.3
+  ============== ========
+
+  Description
+    The timeout value (seconds) for the costmap to be fully updated before a control effort can be computed.
 
 :use_realtime_priority:
 
   ============== =======
   Type           Default
   -------------- -------
-  bool           false   
+  bool           false
   ============== =======
 
   Description
@@ -47,26 +58,12 @@ Parameters
   Description
     Whether to publish a zero velocity command on goal exit. This is useful for stopping the robot when a goal terminates.
 
-:action_server_result_timeout:
-
-  ====== ======= ======= 
-  Type   Default Unit
-  ------ ------- -------
-  double 10.0    seconds
-  ====== ======= =======
-
-  Description
-    The timeout value (in seconds) for action servers to discard a goal handle if a result has not been produced. This used to default to
-    15 minutes in rcl but was changed to 10 seconds in this `PR #1012 <https://github.com/ros2/rcl/pull/1012>`_, which may be less than
-    some actions in Nav2 take to run. For most applications, this should not need to be adjusted as long as the actions within the server do not exceed this deadline. 
-    This issue has been raised with OSRF to find another solution to avoid active goal timeouts for bookkeeping, so this is a semi-temporary workaround
-
 :controller_plugins:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  vector<string> ['FollowPath']            
+  vector<string> ['FollowPath']
   ============== ==============
 
   Description
@@ -138,9 +135,9 @@ Parameters
 :min_x_velocity_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0001            
+  double         0.0001
   ============== =============================
 
   Description
@@ -150,9 +147,9 @@ Parameters
 :min_y_velocity_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0001            
+  double         0.0001
   ============== =============================
 
   Description
@@ -162,21 +159,21 @@ Parameters
 :min_theta_velocity_threshold:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0001            
+  double         0.0001
   ============== =============================
 
   Description
     The controller server filters the velocity portion of the odometry messages received before sending them to the controller plugin.
     Odometry values below this threshold (in rad/s) will be set to 0.0.
-    
+
 :failure_tolerance:
 
   ============== =============================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------
-  double         0.0           
+  double         0.0
   ============== =============================
 
   Description
@@ -205,18 +202,30 @@ Parameters
   Description
     Topic to get instantaneous measurement of speed from.
 
+:odom_duration:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.3
+  ============== ===========================
+
+  Description
+    Time (s) to buffer odometry commands to estimate the robot speed.
+
 :enable_stamped_cmd_vel:
 
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  bool           false
+  bool           true
   ============== =============================
 
   Description
     Whether to use geometry_msgs::msg::Twist or geometry_msgs::msg::TwistStamped velocity data.
     True uses TwistStamped, false uses Twist.
-    
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
+
 :bond_heartbeat_period:
 
   ============== =============================
@@ -227,6 +236,28 @@ Parameters
 
   Description
     The lifecycle node bond mechanism publishing period (on the /bond topic). Disabled if inferior or equal to 0.0.
+
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Provided Plugins
 ****************
@@ -239,6 +270,7 @@ Provided Plugins
   nav2_controller-plugins/pose_progress_checker.rst
   nav2_controller-plugins/simple_goal_checker.rst
   nav2_controller-plugins/stopped_goal_checker.rst
+  nav2_controller-plugins/position_goal_checker.rst
 
 Default Plugins
 ***************
@@ -261,13 +293,14 @@ Example
 
     controller_server:
       ros__parameters:
-        use_sim_time: True
         controller_frequency: 20.0
+        costmap_update_timeout: 0.3
         min_x_velocity_threshold: 0.001
         min_y_velocity_threshold: 0.5
         min_theta_velocity_threshold: 0.001
         failure_tolerance: 0.3
         odom_topic: "odom"
+        odom_duration: 0.3
         progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
         goal_checker_plugins: ["goal_checker"] # goal_checker_plugin: "goal_checker" For Galactic and older
         controller_plugins: ["FollowPath"]

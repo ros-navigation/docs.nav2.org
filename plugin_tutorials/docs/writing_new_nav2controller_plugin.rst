@@ -18,7 +18,7 @@ Overview
 
 This tutorial shows how to create your own controller `plugin <https://index.ros.org/p/pluginlib/>`_.
 
-In this tutorial, we will be implementing the pure pursuit path tracking algorithm based on this `paper <https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf>`_. 
+In this tutorial, we will be implementing the pure pursuit path tracking algorithm based on this `paper <https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf>`_.
 It is recommended you go through it.
 
 Note: This tutorial is based on a previously existing simplified version of the Regulated Pure Pursuit controller now in the Nav2 stack.
@@ -38,7 +38,7 @@ Tutorial Steps
 1- Create a new Controller Plugin
 ---------------------------------
 
-We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-navigation/navigation2_tutorials>`_ repository 
+We will be implementing the pure pursuit controller. The annotated code in this tutorial can be found in `navigation_tutorials <https://github.com/ros-navigation/navigation2_tutorials>`_ repository
 as the ``nav2_pure_pursuit_controller``. This package can be considered as a reference for writing your own controller plugin.
 
 Our example plugin class ``nav2_pure_pursuit_controller::PurePursuitController`` inherits from the base class ``nav2_core::Controller``. The base class provides a
@@ -70,8 +70,8 @@ The list of methods, their descriptions, and necessity are presented in the tabl
 | computeVelocityCommands() | Method is called when a new velocity command is demanded by the controller server     | Yes                    |
 |                           | in-order for the robot to follow the global path. This method returns a               |                        |
 |                           | `geometry_msgs\:\:msg\:\:TwistStamped` which represents the velocity command for the  |                        |
-|                           | robot to drive.  This method passes 2 parameters: reference to the current robot      |                        |
-|                           | pose and its current velocity.                                                        |                        |
+|                           | robot to drive.  This method passes 3 parameters: reference to the current robot      |                        |
+|                           | pose, its current velocity, and a pointer to the `nav2_core::GoalChecker`.            |                        |
 +---------------------------+---------------------------------------------------------------------------------------+------------------------+
 | cancel()                  | Method is called when the controller server receives a cancel request. If this method | No                     |
 |                           | is unimplemented, the controller will immediately stop when receiving a cancel        |                        |
@@ -127,16 +127,16 @@ In controllers, ``configure()`` method must set member variables from ROS parame
     transform_tolerance_ = rclcpp::Duration::from_seconds(transform_tolerance);
   }
 
-Here, ``plugin_name_ + ".desired_linear_vel"`` is fetching the ROS parameter ``desired_linear_vel`` which is specific to our controller. 
+Here, ``plugin_name_ + ".desired_linear_vel"`` is fetching the ROS parameter ``desired_linear_vel`` which is specific to our controller.
 Nav2 allows loading of multiple plugins, and to keep things organized, each plugin is mapped to some ID/name.
-Now, if we want to retrieve the parameters for that specific plugin, we use ``<mapped_name_of_plugin>.<name_of_parameter>`` as done in the above snippet. 
-For example, our example controller is mapped to the name ``FollowPath`` and to retrieve the ``desired_linear_vel`` parameter, which is specific to "FollowPath”, 
-we used ``FollowPath.desired_linear_vel``. In other words, ``FollowPath`` is used as a namespace for plugin-specific parameters. 
+Now, if we want to retrieve the parameters for that specific plugin, we use ``<mapped_name_of_plugin>.<name_of_parameter>`` as done in the above snippet.
+For example, our example controller is mapped to the name ``FollowPath`` and to retrieve the ``desired_linear_vel`` parameter, which is specific to "FollowPath”,
+we used ``FollowPath.desired_linear_vel``. In other words, ``FollowPath`` is used as a namespace for plugin-specific parameters.
 We will see more on this when we discuss the parameters file (or params file).
 
 The passed-in arguments are stored in member variables so that they can be used at a later stage if needed.
 
-In ``setPlan()`` method, we receive the updated global path for the robot to follow. In our example, we transform the received global path into 
+In ``setPlan()`` method, we receive the updated global path for the robot to follow. In our example, we transform the received global path into
 the frame of the robot and then store this transformed global path for later use.
 
 .. code-block:: c++
@@ -201,8 +201,8 @@ The remaining methods are not used, but it's mandatory to override them. As per 
 2- Exporting the controller plugin
 ----------------------------------
 
-Now that we have created our custom controller, we need to export our controller plugin so that it will be visible to the controller server. 
-Plugins are loaded at runtime, and if they are not visible, then our controller server won't be able to load them. In ROS 2, exporting and loading 
+Now that we have created our custom controller, we need to export our controller plugin so that it will be visible to the controller server.
+Plugins are loaded at runtime, and if they are not visible, then our controller server won't be able to load them. In ROS 2, exporting and loading
 plugins is handled by ``pluginlib``.
 
 Coming back to our tutorial, class ``nav2_pure_pursuit_controller::PurePursuitController`` is loaded dynamically as ``nav2_core::Controller`` which is our base class.
@@ -210,7 +210,7 @@ Coming back to our tutorial, class ``nav2_pure_pursuit_controller::PurePursuitCo
 1. To export the controller, we need to provide two lines
 
 .. code-block:: c++
- 
+
  #include "pluginlib/class_list_macros.hpp"
  PLUGINLIB_EXPORT_CLASS(nav2_pure_pursuit_controller::PurePursuitController, nav2_core::Controller)
 
@@ -221,7 +221,7 @@ It is good practice to place these lines at the end of the file, but technically
 2. The next step would be to create the plugin's description file in the root directory of the package. For example, ``pure_pursuit_controller_plugin.xml`` file in our tutorial package. This file contains the following information
 
 - ``library path``: Plugin's library name and its location.
-- ``class name``: Name of the class.
+- ``class name``: Name of the class (optional). If not set, it will default to the ``class type``.
 - ``class type``: Type of class.
 - ``base class``: Name of the base class.
 - ``description``: Description of the plugin.
@@ -272,7 +272,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
         max_angular_vel: 1.0
         transform_tolerance: 1.0
 
-In the above snippet, you can observe the mapping of our ``nav2_pure_pursuit_controller::PurePursuitController`` controller to its id ``FollowPath``. 
+In the above snippet, you can observe the mapping of our ``nav2_pure_pursuit_controller::PurePursuitController`` controller to its id ``FollowPath``.
 To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
 4- Run Pure Pursuit Controller plugin
@@ -284,6 +284,6 @@ Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to mak
 
   $ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
 
-Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on the map as it was described in :ref:`getting_started`. 
-The robot will localize on the map and then click on the "Nav2 goal" and click on the pose where you want your robot to navigate to. 
+Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on the map as it was described in :ref:`getting_started`.
+The robot will localize on the map and then click on the "Nav2 goal" and click on the pose where you want your robot to navigate to.
 After that controller will make the robot follow the global path.

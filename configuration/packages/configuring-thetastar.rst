@@ -9,7 +9,7 @@ Theta Star Planner
 
 Theta Star Planner implements the Theta* path planner meant to plan any-angled line-segment focused paths using A*.
 
-For the below example the planner took ~46ms (averaged value) to compute the path of 87.5m - 
+For the below example the planner took ~46ms (averaged value) to compute the path of 87.5m -
 
 .. image:: thetastar/00-37.png
 	:width: 640px
@@ -24,36 +24,36 @@ Parameters
 
 The parameters of the planner are:
 
-:``<name>``.how_many_corners: 
+:``<name>``.how_many_corners:
 
   ============== =======
   Type           Default
   -------------- -------
-  int            8  
+  int            8
   ============== =======
 
   Description
     To choose between 4-connected (up, down, left, right) and 8-connected (all the adjacent cells) graph expansions, the accepted values are 4 and 8
 
 
-:``<name>`` .w_euc_cost: 
+:``<name>`` .w_euc_cost:
 
   ============== =======
   Type           Default
   -------------- -------
-  double         1.0  
+  double         1.0
   ============== =======
 
   Description
-  	Weight applied on the length of the path. 
+  	Weight applied on the length of the path.
 
 
-:``<name>``.w_traversal_cost: 
-  
+:``<name>``.w_traversal_cost:
+
   ============== =======
   Type           Default
   -------------- -------
-  double         2.0 
+  double         2.0
   ============== =======
 
   Description
@@ -62,9 +62,9 @@ The parameters of the planner are:
 :``<name>``.use_final_approach_orientation:
 
   ====== =======
-  Type   Default                                                   
+  Type   Default
   ------ -------
-  bool   false      
+  bool   false
   ====== =======
 
   Description
@@ -73,9 +73,9 @@ The parameters of the planner are:
 :``<name>``.allow_unknown:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  bool True            
+  bool True
   ==== =======
 
   Description
@@ -84,9 +84,9 @@ The parameters of the planner are:
 :``<name>``.terminal_checking_interval:
 
   ==== =======
-  Type Default                                                   
+  Type Default
   ---- -------
-  int  5000            
+  int  5000
   ==== =======
 
   Description
@@ -94,21 +94,30 @@ The parameters of the planner are:
 
 .. Note::
   Do go through the README file available on this repo's link to develop a better understanding of how you could tune this planner.
-  This planner requires you to tune the `cost_scaling_factor` parameter of your costmap too, to get good results.   
+  This planner requires you to tune the `cost_scaling_factor` parameter of your costmap too, to get good results.
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
 
 Example
 *******
 
 .. code-block:: yaml
-  
+
   planner_server:
     ros__parameters:
       expected_planner_frequency: 20.0
-      use_sim_time: True
       planner_plugins: ["GridBased"]
       GridBased:
         plugin: "nav2_theta_star_planner::ThetaStarPlanner" # In Iron and older versions, "/" was used instead of "::"
         how_many_corners: 8
         w_euc_cost: 1.0
         w_traversal_cost: 2.0
-        w_heuristic_cost: 1.0

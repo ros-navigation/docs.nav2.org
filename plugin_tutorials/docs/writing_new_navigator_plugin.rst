@@ -14,7 +14,7 @@ This tutorial shows how to create your own behavior-tree navigator `plugin <http
 
 In this tutorial, we will be reviewing the ``Navigate to Pose`` behavior-tree navigator plugin, which is the foundational navigator of Nav2 and complimentary behavior to ROS 1 Navigation. This completes point-to-point navigation. This tutorial will be reviewing the code and structure as of ROS 2 Iron. While small variations may be made over time, this should be sufficient to get started writing your own navigator if you choose as we do not expect major API changes on this system.
 
-It may be beneficial to write your own Navigator if you have a custom action message definition you'd like to use with Navigation rather than the provided ``NavigateToPose`` or ``NavigateThroughPoses`` interfaces (e.g. doing complete coverage or containing additional constraint information). The role of the Navigators are to extract information from requests to pass to the behavior tree / blackboard, populate feedback and responses, and maintain the state of the behavior tree if relevant. The behavior tree XML will define the actual navigation logic used. 
+It may be beneficial to write your own Navigator if you have a custom action message definition you'd like to use with Navigation rather than the provided ``NavigateToPose`` or ``NavigateThroughPoses`` interfaces (e.g. doing complete coverage or containing additional constraint information). The role of the Navigators are to extract information from requests to pass to the behavior tree / blackboard, populate feedback and responses, and maintain the state of the behavior tree if relevant. The behavior tree XML will define the actual navigation logic used.
 
 Requirements
 ============
@@ -125,7 +125,7 @@ The values of the blackboard IDs are stored alongside the odometry smoother the 
       return true;
     }
 
-In the ``getDefaultBTFilepath()``, we use a parameter ``default_nav_to_pose_bt_xml`` to get the default behavior tree XML file to use if none is provided by the navigation request and to initialize the BT Navigator with a behavior tree hot-loaded. If one is not provided in the parameter files, then we grab a known and reasonable default XML file in the ``nav2_bt_navigator`` package: 
+In the ``getDefaultBTFilepath()``, we use a parameter ``default_nav_to_pose_bt_xml`` to get the default behavior tree XML file to use if none is provided by the navigation request and to initialize the BT Navigator with a behavior tree hot-loaded. If one is not provided in the parameter files, then we grab a known and reasonable default XML file in the ``nav2_bt_navigator`` package:
 
 .. code-block:: c++
 
@@ -260,8 +260,8 @@ The final function implemented is ``onLoop``, which is simplified below for tuto
 2- Exporting the navigator plugin
 ---------------------------------
 
-Now that we have created our custom navigator, we need to export our plugin so that it would be visible to the BT Navigator server. 
-Plugins are loaded at runtime, and if they are not visible, then our server won't be able to load it. In ROS 2, exporting and loading 
+Now that we have created our custom navigator, we need to export our plugin so that it would be visible to the BT Navigator server.
+Plugins are loaded at runtime, and if they are not visible, then our server won't be able to load it. In ROS 2, exporting and loading
 plugins is handled by ``pluginlib``.
 
 Coming to our tutorial, class ``nav2_bt_navigator::NavigateToPoseNavigator`` is loaded dynamically as ``nav2_core::NavigatorBase`` which is our base class due to the subtleties previously described.
@@ -269,7 +269,7 @@ Coming to our tutorial, class ``nav2_bt_navigator::NavigateToPoseNavigator`` is 
 1. To export the controller, we need to provide two lines
 
 .. code-block:: c++
- 
+
  #include "pluginlib/class_list_macros.hpp"
  PLUGINLIB_EXPORT_CLASS(nav2_bt_navigator::NavigateToPoseNavigator, nav2_core::NavigatorBase)
 
@@ -280,7 +280,7 @@ It is good practice to place these lines at the end of the file, but technically
 2. The next step would be to create the plugin's description file in the root directory of the package. For example, ``navigator_plugin.xml`` file in our tutorial package. This file contains the following information
 
 - ``library path``: Plugin's library name and it's location.
-- ``class name``: Name of the class.
+- ``class name``: Name of the class (optional). If not set, it will default to the ``class type``.
 - ``class type``: Type of class.
 - ``base class``: Name of the base class.
 - ``description``: Description of the plugin.
@@ -321,7 +321,6 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
 
     bt_navigator:
       ros__parameters:
-        use_sim_time: true
         global_frame: map
         robot_base_frame: base_link
         transform_tolerance: 0.1
@@ -337,7 +336,7 @@ To enable the plugin, we need to modify the ``nav2_params.yaml`` file as below
           plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator" # In Iron and older versions, "/" was used instead of "::"
 
 
-In the above snippet, you can observe the mapping of our ``nav2_bt_navigator::NavigateToPoseNavigator`` plugin to its id ``navigate_to_pose``. 
+In the above snippet, you can observe the mapping of our ``nav2_bt_navigator::NavigateToPoseNavigator`` plugin to its id ``navigate_to_pose``.
 To pass plugin-specific parameters we have used ``<plugin_id>.<plugin_specific_parameter>``.
 
 4- Run plugin
@@ -349,6 +348,6 @@ Run Turtlebot3 simulation with enabled Nav2. Detailed instructions on how to mak
 
   $ ros2 launch nav2_bringup tb3_simulation_launch.py params_file:=/path/to/your_params_file.yaml
 
-Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on the map as it was described in :ref:`getting_started`. 
-The robot will localize on the map and then click on the "Nav2 goal" and click on the pose where you want your robot to navigate to. 
+Then goto RViz and click on the "2D Pose Estimate" button at the top and point the location on the map as it was described in :ref:`getting_started`.
+The robot will localize on the map and then click on the "Nav2 goal" and click on the pose where you want your robot to navigate to.
 After that navigator will take over with the behavior tree XML file behavior definition provided to it.

@@ -74,11 +74,12 @@ Parameters
   ============== ==============
   Type           Default
   -------------- --------------
-  string         false
+  string         True
   ============== ==============
 
   Description
-    Whether cmd_vel is stamped or unstamped (i.e. Twist or TwistStamped)
+    Whether cmd_vel is stamped or unstamped (i.e. Twist or TwistStamped).
+    Note: This parameter is default ``false`` in Jazzy or older! Kilted or newer uses ``TwistStamped`` by default.
 
 :scan_publish_dur:
 
@@ -113,6 +114,73 @@ Parameters
   Description
     Whether or not to publish simulated clock to ``/clock``
 
+:scan_range_min:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         0.05
+  ============== ==============
+
+  Description
+    Minimum measurable distance from the scan in meters. Values below this are considered invalid.
+
+:scan_range_max:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         30.0
+  ============== ==============
+
+  Description
+    Maximum measurable distance from the scan in meters. Values beyond this are out of range.
+
+:scan_angle_min:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         -3.14
+  ============== ==============
+
+  Description
+    Starting angle of the scan in radians (leftmost angle)
+
+:scan_angle_max:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         3.14
+  ============== ==============
+
+  Description
+    Ending angle of the scan in radians (rightmost angle)
+
+:scan_angle_increment:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         0.0261
+  ============== ==============
+
+  Description
+    Angular resolution of the scan in radians (angle between consecutive measurements)
+
+:scan_use_inf:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  bool           true
+  ============== ==============
+
+  Description
+    Whether to use ``inf`` for out-of-range values.
+    If ``false``, values are set to ``scan_range_max - 0.1`` instead.
+
 Example
 *******
 .. code-block:: yaml
@@ -124,3 +192,9 @@ Example
         map_frame_id: "map"
         scan_frame_id: "base_scan"  # tb4_loopback_simulator.launch.py remaps to 'rplidar_link'
         update_duration: 0.02
+        scan_range_min: 0.05
+        scan_range_max: 30.0
+        scan_angle_min: -3.1415
+        scan_angle_max: 3.1415
+        scan_angle_increment: 0.02617
+        scan_use_inf: true

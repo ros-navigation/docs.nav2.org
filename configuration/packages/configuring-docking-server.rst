@@ -7,7 +7,7 @@ Source code on Github_.
 
 .. _Github: https://github.com/open-navigation/opennav_docking
 
-The Docking Server in ``opennav_docking`` implements a server for docking and undocking a robot. 
+The Docking Server in ``opennav_docking`` implements a server for docking and undocking a robot.
 This can be from Charging stations (i.e. docks) or non-charging docking locations such as the end of a conveyor belt or a pallet.
 It uses plugin `dock` implementations for a particular platform to enable the framework to generalize to robots of many different kinematic models, charging methods, sensor modalities, charging-type, and so on.
 It can also handle a database of many different docking locations and dock models to handle a heterogeneous environment.
@@ -21,9 +21,9 @@ Parameters
 :controller_frequency:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         50.0            
+  double         50.0
   ============== ==============
 
   Description
@@ -32,9 +32,9 @@ Parameters
 :initial_perception_timeout:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         5.0            
+  double         5.0
   ============== ==============
 
   Description
@@ -43,9 +43,9 @@ Parameters
 :wait_charge_timeout:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         5.0            
+  double         5.0
   ============== ==============
 
   Description
@@ -54,9 +54,9 @@ Parameters
 :dock_approach_timeout:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         30.0            
+  double         30.0
   ============== ==============
 
   Description
@@ -65,9 +65,9 @@ Parameters
 :undock_linear_tolerance:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.05          
+  double         0.05
   ============== ==============
 
   Description
@@ -76,20 +76,31 @@ Parameters
 :undock_angular_tolerance:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.05          
+  double         0.05
   ============== ==============
 
   Description
-    Angular Tolerance (rad) to exist undocking loop at staging pose.
+    Angular tolerance (rad) to exit undocking loop at staging pose.
+
+:rotation_angular_tolerance:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         0.05
+  ============== ==============
+
+  Description
+    Angular tolerance (rad) to exit the rotation loop when rotate_to_dock is enabled.
 
 :max_retries:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  int            3          
+  int            3
   ============== ==============
 
   Description
@@ -98,9 +109,9 @@ Parameters
 :base_frame:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         "base_link"          
+  string         "base_link"
   ============== ==============
 
   Description
@@ -109,31 +120,53 @@ Parameters
 :fixed_frame:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         "odom"          
+  string         "odom"
   ============== ==============
 
   Description
     Fixed frame to use, recommended to be a smooth odometry frame **not** map.
 
-:dock_backwards:
+:odom_topic:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  bool           false          
+  string         "odom"
   ============== ==============
 
   Description
-    Whether the robot is docking with the dock forward or backward in motion.
+    The topic to use for the odometry data when rotate_to_dock is enabled.
+
+:odom_duration:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  double         0.3
+  ============== ===========================
+
+  Description
+    Time (s) to buffer odometry commands to estimate the robot speed.
+
+:dock_backwards:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  bool           false
+  ============== ==============
+
+  Description
+    Whether the robot is docking with the dock forward or backward in motion. This parameter is deprecated. Use the dock plugin's ``dock_direction`` parameter instead.
 
 :dock_prestaging_tolerance:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.5          
+  double         0.5
   ============== ==============
 
   Description
@@ -142,9 +175,9 @@ Parameters
 :dock_plugins:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  vector<string> N/A          
+  vector<string> N/A
   ============== ==============
 
   Description
@@ -153,9 +186,9 @@ Parameters
 :dock_database:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         N/A          
+  string         N/A
   ============== ==============
 
   Description
@@ -165,9 +198,9 @@ Parameters
 :docks:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  vector<string> N/A          
+  vector<string> N/A
   ============== ==============
 
   Description
@@ -176,20 +209,42 @@ Parameters
 :navigator_bt_xml:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  string         ""          
+  string         ""
   ============== ==============
 
   Description
     BT XML to use for Navigator, if non-default.
 
+:introspection_mode:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  string         "disabled"
+  ============== =============================
+
+  Description
+    The introspection mode for services and actions. Options are "disabled", "metadata", "contents".
+
+:allow_parameter_qos_overrides:
+
+  ============== =============================
+  Type           Default
+  -------------- -----------------------------
+  bool           true
+  ============== =============================
+
+  Description
+    Whether to allow QoS profiles to be overwritten with parameterized values.
+
 :controller.k_phi:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         3.0          
+  double         3.0
   ============== ==============
 
   Description
@@ -198,9 +253,9 @@ Parameters
 :controller.k_delta:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         2.0          
+  double         2.0
   ============== ==============
 
   Description
@@ -209,31 +264,31 @@ Parameters
 :controller.beta:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.4        
+  double         0.4
   ============== ==============
 
   Description
-    Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (v(t) = v_max / (1 + beta * |curv|^lambda)).
+    Parameter to reduce linear velocity proportional to path curvature. Increasing this linearly reduces the velocity (v(t) = v_max / (1 + beta * \|curv\|^lambda)).
 
 :controller.lambda:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         2.0       
+  double         2.0
   ============== ==============
 
   Description
-    Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (v(t) = v_max / (1 + beta * |curv|^lambda)).
+    Parameter to reduce linear velocity proportional to path curvature. Increasing this exponentially reduces the velocity (v(t) = v_max / (1 + beta * \|curv\|^lambda)).
 
 :controller.v_linear_min:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.1       
+  double         0.1
   ============== ==============
 
   Description
@@ -242,9 +297,9 @@ Parameters
 :controller.v_linear_max:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.24       
+  double         0.24
   ============== ==============
 
   Description
@@ -253,9 +308,9 @@ Parameters
 :controller.v_angular_max:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.75       
+  double         0.75
   ============== ==============
 
   Description
@@ -264,20 +319,42 @@ Parameters
 :controller.slowdown_radius:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.25       
+  double         0.25
   ============== ==============
 
   Description
     Radius to end goal to commense slow down.
 
+:controller.rotate_to_heading_angular_vel:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         1.0
+  ============== ==============
+
+  Description
+    Angular velocity (rad/s) to rotate to the goal heading when rotate_to_dock is enabled.
+
+:controller.rotate_to_heading_max_angular_accel:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  double         3.2
+  ============== ==============
+
+  Description
+    Maximum angular acceleration (rad/s^2) to rotate to the goal heading when rotate_to_dock is enabled.
+
 :controller.use_collision_detection:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  bool           true          
+  bool           true
   ============== ==============
 
   Description
@@ -286,9 +363,9 @@ Parameters
 :controller.costmap_topic:
 
   ============== ===========================
-  Type           Default                    
+  Type           Default
   -------------- ---------------------------
-  string         "local_costmap/costmap_raw"   
+  string         "local_costmap/costmap_raw"
   ============== ===========================
 
   Description
@@ -297,9 +374,9 @@ Parameters
 :controller.footprint_topic:
 
   ============== ===================================
-  Type           Default                                               
+  Type           Default
   -------------- -----------------------------------
-  string         "local_costmap/published_footprint"            
+  string         "local_costmap/published_footprint"
   ============== ===================================
 
   Description
@@ -361,7 +438,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.staging_x_offset:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         -0.7
   ============== ==============
@@ -372,20 +449,20 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.staging_yaw_offset:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         0.0
   ============== ==============
 
   Description
-    Staging pose angle relative to dock pose (rad).
+    Staging pose angle relative to dock pose (rad). If ``dock_direction`` is set to "backward", this angle must be faced in the opposite direction of the dock pose. However, if ``rotate_to_dock`` is enabled, this angle must be facing the same direction as the dock pose because the robot will rotate to the dock pose after detection.
 
 :<dock_name>.use_battery_status:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  bool           true       
+  bool           true
   ============== ==============
 
   Description
@@ -394,9 +471,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.use_external_detection_pose:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  bool           false       
+  bool           false
   ============== ==============
 
   Description
@@ -405,9 +482,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_timeout:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         1.0       
+  double         1.0
   ============== ==============
 
   Description
@@ -417,9 +494,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_translation_x:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         -0.20     
+  double         -0.20
   ============== ==============
 
   Description
@@ -428,9 +505,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_translation_y:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.0     
+  double         0.0
   ============== ==============
 
   Description
@@ -439,9 +516,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_rotation_yaw:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.0     
+  double         0.0
   ============== ==============
 
   Description
@@ -450,9 +527,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_rotation_pitch:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         1.57    
+  double         1.57
   ============== ==============
 
   Description
@@ -461,9 +538,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.external_detection_rotation_roll:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         -1.57   
+  double         -1.57
   ============== ==============
 
   Description
@@ -472,9 +549,9 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.filter_coef:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
-  double         0.1 
+  double         0.1
   ============== ==============
 
   Description
@@ -483,7 +560,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.charging_threshold:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         0.5
   ============== ==============
@@ -494,7 +571,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.use_stall_detection:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   bool           false
   ============== ==============
@@ -505,7 +582,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.stall_joint_names:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   vector<string> N/A
   ============== ==============
@@ -516,7 +593,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.stall_velocity_threshold:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         1.0
   ============== ==============
@@ -527,7 +604,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.stall_effort_threshold:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         1.0
   ============== ==============
@@ -538,13 +615,37 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
 :<dock_name>.docking_threshold:
 
   ============== ==============
-  Type           Default                                               
+  Type           Default
   -------------- --------------
   double         0.05
   ============== ==============
 
   Description
     If not using stall detection, the pose threshold to the docking pose where ``isDocked() = true``.
+
+:<dock_name>.dock_direction:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         "forward"
+  ============== ==============
+
+  Description
+    Whether the robot is docking with the dock forward or backward in motion. This is the replacement for the deprecated ``dock_backwards`` parameter. Options are "forward" or "backward".
+
+:<dock_name>.rotate_to_dock:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  bool           false
+  ============== ==============
+
+  Description
+    Enables backward docking without requiring a sensor for detection during the final approach. When enabled, the robot approaches the staging pose facing forward with sensor coverage for dock detection; after detection, it rotates and backs into the dock using only the initially detected pose for dead reckoning. In the undocking phase, the robot will move forward to the staging pose and then rotate to the original heading. This may also be paired with sensor detection in the reverse direction as well if available.
+
+    Note: This parameter is only valid when the ``dock_direction`` is set to "backward".
 
 Example
 *******
@@ -561,8 +662,11 @@ Example
         max_retries: 3
         base_frame: "base_link"
         fixed_frame: "odom"
-        dock_backwards: false
+        odom_topic: "odom"
+        odom_duration: 0.3
+        dock_backwards: false  # Deprecated, use dock_direction in plugin
         dock_prestaging_tolerance: 0.5
+        introspection_mode: "disabled"
 
         # Types of docks
         dock_plugins: ['nova_carter_dock']
@@ -573,6 +677,7 @@ Example
           use_external_detection_pose: true
           use_battery_status: false # true
           use_stall_detection: false
+          rotate_to_dock: false
 
           external_detection_timeout: 1.0
           external_detection_translation_x: -0.18
@@ -581,6 +686,7 @@ Example
           external_detection_rotation_pitch: -1.57
           external_detection_rotation_yaw: 0.0
           filter_coef: 0.1
+          dock_direction: "forward" # "backward"
 
         # Dock instances
         docks: ['home_dock']
@@ -595,3 +701,14 @@ Example
           k_delta: 2.0
           v_linear_min: 0.15
           v_linear_max: 0.15
+          v_angular_max: 0.75
+          slowdown_radius: 0.25
+          rotate_to_heading_angular_vel: 1.0
+          rotate_to_heading_max_angular_accel: 3.2
+          use_collision_detection: true
+          costmap_topic: "local_costmap/costmap_raw"
+          footprint_topic: "local_costmap/published_footprint"
+          transform_tolerance: 0.1
+          projection_time: 1.0
+          simulation_time_step: 0.1
+          dock_collision_threshold: 0.3

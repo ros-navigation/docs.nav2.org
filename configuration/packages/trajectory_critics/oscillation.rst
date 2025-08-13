@@ -18,9 +18,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.05  
+  double 0.05
   ====== =======
-    
+
     Description
         Minimum distance to move to reset oscillation watchdog (m).
 
@@ -29,9 +29,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.2  
+  double 0.2
   ====== =======
-    
+
     Description
         Minimum angular distance to move to reset watchdog (rad).
 
@@ -40,9 +40,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double -1  
+  double -1
   ====== =======
-    
+
     Description
         Duration when a reset may be called. If -1, cannot be reset..
 
@@ -52,9 +52,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.05  
+  double 0.05
   ====== =======
-    
+
     Description
         Threshold to check in the X velocity direction.
 
@@ -63,8 +63,8 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 1.0 
+  double 1.0
   ====== =======
-    
+
     Description
         Weighed scale for critic.

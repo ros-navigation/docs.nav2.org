@@ -38,7 +38,7 @@ Output Ports
   ========================= =======
   Type                      Default
   ------------------------- -------
-  geometry_msgs/PoseStamped N/A  
+  geometry_msgs/PoseStamped N/A
   ========================= =======
 
   Description

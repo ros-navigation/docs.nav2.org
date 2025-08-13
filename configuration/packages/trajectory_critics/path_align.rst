@@ -16,9 +16,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 0.325 
+  double 0.325
   ====== =======
-    
+
     Description
         Point in front of robot to look ahead to compute angular change from.
 
@@ -27,9 +27,9 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  string "last" 
+  string "last"
   ====== =======
-    
+
     Description
         last, sum, or product combination methods.
 
@@ -38,8 +38,8 @@ Parameters
   ====== =======
   Type   Default
   ------ -------
-  double 1.0 
+  double 1.0
   ====== =======
-    
+
     Description
         Weighed scale for critic.

@@ -41,9 +41,9 @@ Using the :ref:`configuring_rotation_shim`, a robot will simply rotate in place 
 
 This was added due to quirks in some existing controllers whereas tuning the controller for a task can make it rigid -- or the algorithm simply doesn't rotate in place when working with holonomic paths (if that's a desirable trait). The result is an awkward, stuttering, or whipping around behavior when your robot's initial and path heading's are significantly divergent. Giving a controller a better starting point to start tracking a path makes tuning the controllers significantly easier and creates more intuitive results for on-lookers (in one maintainer's opinion).
 
-Note: If using a non-holonomic, kinematically feasible planner (e.g. Smac Hybrid-A\*, Smac State Lattice), this is not a necessary behavioral optimization. This class of planner will create plans that take into account the robot's starting heading, not requiring any rotation behaviors. 
+Note: If using a non-holonomic, kinematically feasible planner (e.g. Smac Hybrid-A\*, Smac State Lattice), this is not a necessary behavioral optimization. This class of planner will create plans that take into account the robot's starting heading, not requiring any rotation behaviors.
 
-This behavior is most optimially for: 
+This behavior is most optimally for:
 
 - Robots that can rotate in place, such as differential and omnidirectional robots.
 - Preference to rotate in place when starting to track a new path that is at a significantly different heading than the robot’s current heading – or when tuning your controller for its task makes tight rotations difficult.
@@ -58,7 +58,7 @@ In general though, the following table is a good guide for the optimal planning 
 +------------------------+----------------------------------------------------------------------+
 | Plugin Name            | Supported Robot Types                                                |
 +========================+======================================================================+
-| NavFn Planner          | Circular Differential, Circular Omnidirectional                      |   
+| NavFn Planner          | Circular Differential, Circular Omnidirectional                      |
 +------------------------+                                                                      |
 | Smac Planner 2D        |                                                                      |
 +------------------------+                                                                      |
@@ -101,9 +101,9 @@ All of the above controllers can handle both circular and arbitrary shaped robot
 
 Regulated Pure Pursuit is good for exact path following and is typically paired with one of the kinematically feasible planners (eg State Lattice, Hybrid-A\*, etc) since those paths are known to be drivable given hard physical constraints. However, it can also be applied to differential drive robots who can easily pivot to match any holonomic path. This is the plugin of choice if you simply want your robot to follow the path, rather exactly, without any dynamic obstacle avoidance or deviation. It is simple and geometric, as well as slowing the robot in the presence of near-by obstacles *and* while making sharp turns.
 
-DWB and MPPI are both options that will track paths, but also diverge from the path if there are dynamic obstacles present (in order to avoid them). DWB does this through scoring multiple trajectories on a set of critics. These trajectories are also generated via plugins that can be replaced, but support out of the box Omni and Diff robot types within the valid velocity and acceleration restrictions. These critics are plugins that can be selected at run-time and contain weights that may be tuned to create the desired behavior, such as minimizing path distance, minimizing distance to the goal or headings, and other action penalties that can be designed. This does require a bit of tuning for a given platform, application, and desired behavior, but it is possible to tune DWB to do nearly any single thing well. 
+DWB and MPPI are both options that will track paths, but also diverge from the path if there are dynamic obstacles present (in order to avoid them). DWB does this through scoring multiple trajectories on a set of critics. These trajectories are also generated via plugins that can be replaced, but support out of the box Omni and Diff robot types within the valid velocity and acceleration restrictions. These critics are plugins that can be selected at run-time and contain weights that may be tuned to create the desired behavior, such as minimizing path distance, minimizing distance to the goal or headings, and other action penalties that can be designed. This does require a bit of tuning for a given platform, application, and desired behavior, but it is possible to tune DWB to do nearly any single thing well.
 
-MPPI on the other hand implements an optimization based approach, using randomly perturbed samples of the previous optimal trajectory to maximize a set of plugin-based objective functions. In that regard, it is similar to DWB however MPPI is a far more modern and advanced technique that will deal with dynamic agents in the environment and create intelligent behavior due to the optimization based trajectory planning, rather then DWB's constant action model. MPPI however does have moderately higher compute costs, but it is highly recommended to go this route and has received considerable development resources and attention due to its power. This typically works pretty well out of the box, but to tune for specific behaviors, you may have to retune some of the parameters. The README.md file for this package contains details on how to tune it efficiently. 
+MPPI on the other hand implements an optimization based approach, using randomly perturbed samples of the previous optimal trajectory to maximize a set of plugin-based objective functions. In that regard, it is similar to DWB however MPPI is a far more modern and advanced technique that will deal with dynamic agents in the environment and create intelligent behavior due to the optimization based trajectory planning, rather then DWB's constant action model. MPPI however does have moderately higher compute costs, but it is highly recommended to go this route and has received considerable development resources and attention due to its power. This typically works pretty well out of the box, but to tune for specific behaviors, you may have to retune some of the parameters. The README.md file for this package contains details on how to tune it efficiently.
 
 The Rotation Shim Plugin helps assist plugins like TEB and DWB (among others) to rotate the robot in place towards a new path's heading before starting to track the path. This allows you to tune your local trajectory planner to operate with a desired behavior without having to worry about being able to rotate on a dime with a significant deviation in angular distance over a very small euclidean distance. Some controllers when heavily tuned for accurate path tracking are constrained in their actions and don't very cleanly rotate to a new heading. Other controllers have a 'spiral out' behavior because their sampling requires some translational velocity, preventing it from simply rotating in place. This helps alleviate that problem and makes the robot rotate in place very smoothly.
 
@@ -119,12 +119,12 @@ Smac's Hybrid-A* and State Lattice Planners provide an option, ``cache_obstacle_
 
 This is useful to speed up performance to achieve better replanning speeds. However, if you cache this heuristic, it will not be updated with the most current information in the costmap to steer search. During planning, the planner will still make use of the newest cost information for collision checking, *thusly this will not impact the safety of the path*. However, it may steer the search down newly blocked corridors or guide search towards areas that may have new dynamic obstacles in them, which can slow things down significantly if entire solution spaces are blocked.
 
-Therefore, it is the recommendation of the maintainers to enable this only when working in largely static (e.g. not many moving things or changes, not using live sensor updates in the global costmap, etc) environments when planning across large spaces to singular goals. Between goal changes to Nav2, this heuristic will be updated with the most current set of information, so it is not very helpful if you change goals very frequently. 
+Therefore, it is the recommendation of the maintainers to enable this only when working in largely static (e.g. not many moving things or changes, not using live sensor updates in the global costmap, etc) environments when planning across large spaces to singular goals. Between goal changes to Nav2, this heuristic will be updated with the most current set of information, so it is not very helpful if you change goals very frequently.
 
 Costmap2D Plugins
 =================
 
-Costmap2D has a number of plugins that you can use (including the availability for you to create your own!). 
+Costmap2D has a number of plugins that you can use (including the availability for you to create your own!).
 
 - ``StaticLayer``: Used to set the map from SLAM (either pre-built or currently being built live) for sizing the environment and setting key features like walls and rooms for global planning.
 - ``InflationLayer``: Inflates with an exponential function the lethal costs to help steer navigation algorithms away from walls and quickly detect collisions
@@ -133,6 +133,7 @@ Costmap2D has a number of plugins that you can use (including the availability f
 - ``SpatioTemporalVoxelLayer``: 3D costmap layer for 3D lidars, non-planar 2D lidars, or depth camera processing based on temporal decay. Useful for robots with high sensor coverage like 3D lidars or many depth cameras at a reduced computational overhead due to lack of raycasting.
 - ``RangeLayer``: Models sonars, IR sensors, or other range sensors for costmap inclusion
 - ``DenoiseLayer``: Removes salt and pepper noise from final costmap in order to remove unfiltered noise. Also has the option to remove clusters of configurable size to remove effects of dynamic obstacles without temporal decay.
+- ``PluginContainerLayer``: Combines the costmap layers specified within this plugin, resulting in an internal costmap that is a product of the costmap layers specified under this layer. This would allow different isolated combinations of costmap layers within the same parent costmap, such as applying a different inflation layers to static layers and obstacle layers
 
 In addition, costmap filters:
 - ``KeepoutFilter``: Marks keepout, higher weighted, or lower weighted zones in the costmap
@@ -162,11 +163,10 @@ Within ``nav2_bringup``, there is a main entryfile ``tb3_simulation_launch.py``.
 - ``use_robot_state_pub`` : Whether or not to start the robot state publisher to publish the robot's URDF transformations to TF2. Defaults to ``true`` to publish the robot's TF2 transformations.
 - ``use_rviz`` : Whether or not to launch rviz for visualization. Defaults to ``true`` to show rviz.
 - ``headless`` : Whether or not to launch the Gazebo front-end alongside the background Gazebo simulation. Defaults to ``true`` to display the Gazebo window.
-- ``namespace`` : The namespace to launch robots into, if need be.
-- ``use_namespace`` : Whether or not to launch robots into this namespace. Default ``false`` and uses global namespace for single robot.
+- ``namespace`` : The namespace to launch robots into.
 - ``robot_name`` : The name of the robot to launch.
 - ``robot_sdf`` : The filepath to the robot's gazebo configuration file containing the Gazebo plugins and setup to simulate the robot system.
-- ``x_pose``, ``y_pose``, ``z_pose``, ``roll``, ``pitch``, ``yaw`` : Parameters to set the initial position of the robot in the simulation. 
+- ``x_pose``, ``y_pose``, ``z_pose``, ``roll``, ``pitch``, ``yaw`` : Parameters to set the initial position of the robot in the simulation.
 
 Other Pages We'd Love To Offer
 ==============================

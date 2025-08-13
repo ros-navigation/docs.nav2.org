@@ -21,7 +21,7 @@ Input Ports
   ====== =======
 
   Description
-    	Total distance to backup (m).
+        Total distance to backup (m).
 
 :backup_speed:
 
@@ -32,7 +32,7 @@ Input Ports
   ====== =======
 
   Description
-    	Backup speed (m/s).
+        Backup speed (m/s).
 
 :time_allowance:
 
@@ -54,7 +54,7 @@ Input Ports
   ====== =======
 
   Description
-    	Action server name.
+        Action server name.
 
 :server_timeout:
 
@@ -65,7 +65,18 @@ Input Ports
   ====== =======
 
   Description
-    	Action server timeout (ms).
+        Action server timeout (ms).
+
+:disable_collision_checks:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  bool   false
+  ====== =======
+
+  Description
+      Disable collision checking.
 
 Output Ports
 ------------
@@ -75,15 +86,27 @@ Output Ports
   ============== =======
   Type           Default
   -------------- -------
-  uint16          N/A  
+  uint16          N/A
   ============== =======
 
   Description
-    	Backup error code. See ``BackUp`` action message for the enumerated set of error codes.
+        Backup error code. See ``BackUp`` action message for the enumerated set of error codes.
+
+:error_msg:
+
+  ============== =======
+  Type           Default
+  -------------- -------
+  string         N/A
+  ============== =======
+
+  Description
+        Backup error message. See ``BackUp`` action message for the enumerated set of error codes.
 
 Example
 -------
 
 .. code-block:: xml
 
-  <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10" error_code_id="{backup_error_code}"/>
+  <BackUp backup_dist="-0.2" backup_speed="0.05" server_name="backup_server" server_timeout="10" disable_collision_checks="false"
+          error_code_id="{backup_error_code}" error_msg="{backup_error_msg}"/>
