@@ -58,7 +58,7 @@ Features
 Covered use-cases
 *****************
 
-Using Vector Object server publishing an output map as input mask to :ref:`Costmap Filters <foxy_migration>` allows covering following (not restricted only to) use-cases:
+Using Vector Object server publishing an output map as input mask to :ref:`Costmap Filters <costmap_filters>` allows covering following (not restricted only to) use-cases:
 
 - No-access zone
 - Speed-restriction areas

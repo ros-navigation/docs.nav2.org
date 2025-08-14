@@ -71,10 +71,10 @@ This value is equal to ``100`` which means "occupied" in OccupancyGrid format.
 
   Each shape is being addressed by UUID, which could be specified manually in a string format. In the demonstration, it was skipped to specify UUID of the shapes in the parameters, so Vector Object server will automatically generate a new one for each shape. The list of UUID could be obtained later by calling ``GetShapes.srv`` service.
 
-Costmap Filters are required ``CostmapFilterInfo.msg`` message to be published along with filter mask (rasterized map with vector shapes).
-Costmap Filter Info message is being published by Costmap Filter Info server, which is also launching by ``vector_object_server.launch.py`` script.
+Costmap Filters require ``CostmapFilterInfo.msg`` message to be published along with filter mask (rasterized map with vector shapes).
+Costmap Filter Info message is being published by Costmap Filter Info server, which is also launched by the ``vector_object_server.launch.py`` script.
 
-Overall ``vector_object_server_params.yaml`` YAML-file for the demonstration to be look as follows:
+The complete ``vector_object_server_params.yaml`` YAML-file for the demonstration looks as follows:
 
 .. code-block:: yaml
 
@@ -104,7 +104,7 @@ Overall ``vector_object_server_params.yaml`` YAML-file for the demonstration to 
     costmap_filter_info_server:
       ros__parameters:
         type: 0
-        filter_info_topic: "costmap_filter_info"
+        filter_info_topic: "vo_costmap_filter_info"
         mask_topic: "vo_map"
         base: 0.0
         multiplier: 1.0
@@ -113,11 +113,10 @@ More detailed information about each Vector Object server parameter and its oper
 
 After Vector Objects and Costmap Filters Info servers were configured, launch them by command from below.
 Robot should bypass vector obstacles. For the demonstration purposes it is enough to avoid path planning through them.
-Thus, vector objects should be added to global costmap, so we need to choose ``global_costmap`` namespace for correct work:
 
 .. code-block:: bash
 
-  ros2 launch nav2_map_server vector_object_server.launch.py namespace:=global_costmap
+  ros2 launch nav2_map_server vector_object_server.launch.py
 
 Preparing Nav2 stack
 ====================
@@ -136,7 +135,7 @@ Since vector objects are being enabled in global costmaps, Keepout Filter called
         vector_object_layer:
           plugin: "nav2_costmap_2d::KeepoutFilter"
           enabled: True
-          filter_info_topic: "costmap_filter_info"
+          filter_info_topic: "vo_costmap_filter_info"
 
 Demo Execution
 ==============
@@ -158,7 +157,7 @@ We are using composable nodes technology, so in the console where Vector Object 
   [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/global_costmap/vector_object_server' in container 'nav2_container'
   [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/global_costmap/costmap_filter_info_server' in container 'nav2_container'
 
-The last lines mean that all three nodes: Vector Object server, Costmap Filter Info server and Lifecycle Manager handling them, were successfully loaded into running Nav2 container ``nav2_container``.
+The last lines mean that all three nodes: Vector Object server, Costmap Filter Info server, and the Lifecycle Manager handling them, were successfully loaded into the Nav2 container ``nav2_container``.
 
 Set the initial pose for the robot, and check that vector objects were appeared on global costmap:
 
