@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eloquent to Foxy &mdash; Nav2 1.0.0 documentation</title>
+  <title>ROS Distribution Sync Process &mdash; Nav2 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -26,8 +26,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Foxy to Galactic" href="Foxy.html" />
-    <link rel="prev" title="Dashing to Eloquent" href="Dashing.html" />
+    <link rel="prev" title="ROS Distribution Release Process" href="distribution_release.html" />
 
 <link rel="stylesheet" href="../_static/tcs_theme.css" type="text/css" />
 
@@ -989,236 +988,236 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Migration Guides</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Dashing.html">Dashing to Eloquent</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Dashing.html#new-packages">New Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Dashing.html#new-plugins">New Plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Dashing.html#navigation2-architectural-changes">Navigation2 Architectural Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Dashing.html">Dashing to Eloquent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Dashing.html#new-packages">New Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Dashing.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Dashing.html#navigation2-architectural-changes">Navigation2 Architectural Changes</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Eloquent to Foxy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#server-updates">Server Updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#new-plugins">New Plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#map-server-re-work">Map Server Re-Work</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#new-particle-filter-messages">New Particle Filter Messages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#followpoint-capability">FollowPoint Capability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#new-costmap-layer">New Costmap Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Eloquent.html">Eloquent to Foxy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#server-updates">Server Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#map-server-re-work">Map Server Re-Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#new-particle-filter-messages">New Particle Filter Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#selection-of-behavior-tree-in-each-navigation-action">Selection of Behavior Tree in each navigation action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#followpoint-capability">FollowPoint Capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Eloquent.html#new-costmap-layer">New Costmap Layer</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Foxy.html">Foxy to Galactic</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#navigatetopose-action-feedback-updates">NavigateToPose Action Feedback updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#navigatethroughposes-and-computepaththroughposes-actions-added">NavigateThroughPoses and ComputePathThroughPoses Actions Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#computepathtopose-bt-node-interface-changes">ComputePathToPose BT-node Interface Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#computepathtopose-action-interface-changes">ComputePathToPose Action Interface Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#followpath-goal-checker-id-attribute">FollowPath goal_checker_id attribute</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#groot-support">Groot Support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#new-plugins">New Plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#costmap-filters">Costmap Filters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#smacplanner">SmacPlanner</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#thetastarplanner">ThetaStarPlanner</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#regulatedpurepursuitcontroller">RegulatedPurePursuitController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#standard-time-units-in-parameters">Standard time units in parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#ray-tracing-parameters">Ray Tracing Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#obstacle-marking-parameters">Obstacle Marking Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#recovery-action-changes">Recovery Action Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#default-behavior-tree-changes">Default Behavior Tree Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#navfn-planner-parameters">NavFn Planner Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#new-behavior-tree-nodes">New Behavior Tree Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#controllerserver-new-parameter-failure-tolerance">ControllerServer New Parameter failure_tolerance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#removed-bt-xml-launch-configurations">Removed BT XML Launch Configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Foxy.html#nav2-rviz-panel-action-feedback-information">Nav2 RViz Panel Action Feedback Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Foxy.html">Foxy to Galactic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navigatetopose-action-feedback-updates">NavigateToPose Action Feedback updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navigatetopose-bt-node-interface-changes">NavigateToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navigatethroughposes-and-computepaththroughposes-actions-added">NavigateThroughPoses and ComputePathThroughPoses Actions Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#computepathtopose-bt-node-interface-changes">ComputePathToPose BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#computepathtopose-action-interface-changes">ComputePathToPose Action Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-bt-node-interface-changes">BackUp BT-node Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#backup-recovery-interface-changes">BackUp Recovery Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#nav2-controllers-and-goal-checker-plugin-interface-changes">Nav2 Controllers and Goal Checker Plugin Interface Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#followpath-goal-checker-id-attribute">FollowPath goal_checker_id attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#groot-support">Groot Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-plugins">New Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#smacplanner">SmacPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#thetastarplanner">ThetaStarPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#regulatedpurepursuitcontroller">RegulatedPurePursuitController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#costmap2d-current-usage">Costmap2D <code class="docutils literal notranslate"><span class="pre">current_</span></code> Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#standard-time-units-in-parameters">Standard time units in parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#ray-tracing-parameters">Ray Tracing Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#obstacle-marking-parameters">Obstacle Marking Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#recovery-action-changes">Recovery Action Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#default-behavior-tree-changes">Default Behavior Tree Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#navfn-planner-parameters">NavFn Planner Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-clearcostmapexceptregion-and-clearcostmaparoundrobot-bt-nodes">New ClearCostmapExceptRegion and ClearCostmapAroundRobot BT-nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#new-behavior-tree-nodes">New Behavior Tree Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#sensor-msgs-pointcloud-to-sensor-msgs-pointcloud2-change">sensor_msgs/PointCloud to sensor_msgs/PointCloud2 Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#controllerserver-new-parameter-failure-tolerance">ControllerServer New Parameter failure_tolerance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#removed-bt-xml-launch-configurations">Removed BT XML Launch Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Foxy.html#nav2-rviz-panel-action-feedback-information">Nav2 RViz Panel Action Feedback Information</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Galactic.html">Galactic to Humble</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#major-improvements-to-smac-planners">Major improvements to Smac Planners</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#simple-python-commander">Simple (Python) Commander</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#api-change-for-nav2-core">API Change for nav2_core</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#extending-the-btservicenode-to-process-service-results">Extending the BtServiceNode to process Service-Results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#including-new-rotation-shim-controller-plugin">Including new Rotation Shim Controller Plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#spawning-the-robot-in-gazebo">Spawning the robot in Gazebo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#recovery-behavior-timeout">Recovery Behavior Timeout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#new-parameter-use-final-approach-orientation-for-the-3-2d-planners">New parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> for the 3 2D planners</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#smacplanner2d-and-theta-fix-goal-orientation-being-ignored">SmacPlanner2D and Theta*: fix goal orientation being ignored</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">SmacPlanner2D, NavFn and Theta*: fix small path corner cases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#change-and-fix-behavior-of-dynamic-parameter-change-detection">Change and fix behavior of dynamic parameter change detection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#dynamic-parameters">Dynamic Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#added-smoother-task-server">Added Smoother Task Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#removed-use-approach-velocity-scaling-param-in-rpp">Removed Use Approach Velocity Scaling Param in RPP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#replanning-only-if-path-is-invalid">Replanning Only if Path is Invalid</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#fix-costmaplayer-cleararea-invert-param-logic">Fix CostmapLayer clearArea invert param logic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#dynamic-composition">Dynamic Composition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#bt-cancel-node">BT Cancel Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#bt-pathlongeronapproach-node">BT PathLongerOnApproach Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#bt-truncatepathlocal-node">BT TruncatePathLocal Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#constrained-smoother">Constrained Smoother</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#replanning-at-a-constant-rate-and-if-the-path-is-invalid">Replanning at a Constant Rate and if the Path is Invalid</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#euclidean-distance-2d">Euclidean Distance 2D</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#recovery-to-behavior">Recovery To Behavior</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#respawn-support-in-launch-and-lifecycle-manager">Respawn Support in Launch and Lifecycle Manager</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#new-nav2-velocity-smoother">New Nav2 Velocity Smoother</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#goal-checker-api-changed">Goal Checker API Changed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Galactic.html#added-assisted-teleop">Added Assisted Teleop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Galactic.html">Galactic to Humble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#major-improvements-to-smac-planners">Major improvements to Smac Planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#simple-python-commander">Simple (Python) Commander</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#reduce-nodes-and-executors">Reduce Nodes and Executors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#api-change-for-nav2-core">API Change for nav2_core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#extending-the-btservicenode-to-process-service-results">Extending the BtServiceNode to process Service-Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#including-new-rotation-shim-controller-plugin">Including new Rotation Shim Controller Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#spawning-the-robot-in-gazebo">Spawning the robot in Gazebo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#recovery-behavior-timeout">Recovery Behavior Timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#new-parameter-use-final-approach-orientation-for-the-3-2d-planners">New parameter <code class="docutils literal notranslate"><span class="pre">use_final_approach_orientation</span></code> for the 3 2D planners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#smacplanner2d-and-theta-fix-goal-orientation-being-ignored">SmacPlanner2D and Theta*: fix goal orientation being ignored</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#smacplanner2d-navfn-and-theta-fix-small-path-corner-cases">SmacPlanner2D, NavFn and Theta*: fix small path corner cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#change-and-fix-behavior-of-dynamic-parameter-change-detection">Change and fix behavior of dynamic parameter change detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#dynamic-parameters">Dynamic Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-action-nodes-exception-changes">BT Action Nodes Exception Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-navigator-groot-multiple-navigators">BT Navigator Groot Multiple Navigators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#removed-kinematic-limiting-in-rpp">Removed Kinematic Limiting in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#added-smoother-task-server">Added Smoother Task Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#removed-use-approach-velocity-scaling-param-in-rpp">Removed Use Approach Velocity Scaling Param in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#refactored-amcl-motion-models-as-plugins">Refactored AMCL motion models as plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#dropping-support-for-live-groot-monitoring-of-nav2">Dropping Support for Live Groot Monitoring of Nav2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#replanning-only-if-path-is-invalid">Replanning Only if Path is Invalid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#fix-costmaplayer-cleararea-invert-param-logic">Fix CostmapLayer clearArea invert param logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#dynamic-composition">Dynamic Composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-cancel-node">BT Cancel Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-pathlongeronapproach-node">BT PathLongerOnApproach Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#bt-truncatepathlocal-node">BT TruncatePathLocal Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#constrained-smoother">Constrained Smoother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#replanning-at-a-constant-rate-and-if-the-path-is-invalid">Replanning at a Constant Rate and if the Path is Invalid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#euclidean-distance-2d">Euclidean Distance 2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#recovery-to-behavior">Recovery To Behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#respawn-support-in-launch-and-lifecycle-manager">Respawn Support in Launch and Lifecycle Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#new-nav2-velocity-smoother">New Nav2 Velocity Smoother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#goal-checker-api-changed">Goal Checker API Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Galactic.html#added-assisted-teleop">Added Assisted Teleop</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Humble.html">Humble to Iron</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#recursive-refinement-of-smac-and-simple-smoothers">Recursive Refinement of Smac and Simple Smoothers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#simple-commander-python-api">Simple Commander Python API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#smac-planner-start-pose-included-in-path">Smac Planner Start Pose Included in Path</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#parameterizable-collision-checking-in-rpp">Parameterizable Collision Checking in RPP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#expanded-planner-benchmark-tests">Expanded Planner Benchmark Tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#smac-planner-path-tolerances">Smac Planner Path Tolerances</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#costmap-2d-node-default-constructor">costmap_2d_node default constructor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#feedback-for-navigation-failures">Feedback for Navigation Failures</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#costmap-filters">Costmap Filters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#savitzky-golay-smoother">Savitzky-Golay Smoother</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#changes-to-map-yaml-file-path-for-map-server-node-in-launch">Changes to Map yaml file path for map_server node in Launch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#smootherselector-bt-node">SmootherSelector BT Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#publish-costmap-layers">Publish Costmap Layers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#give-behavior-server-access-to-both-costmaps">Give Behavior Server Access to Both Costmaps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#new-model-predictive-path-integral-controller">New Model Predictive Path Integral Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#behavior-tree-uses-error-codes">Behavior Tree Uses Error Codes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#load-save-and-loop-waypoints-from-the-nav2-panel-in-rviz">Load, Save and Loop Waypoints from the Nav2 Panel in RViz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#dwb-forward-vs-reverse-pruning">DWB Forward vs Reverse Pruning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#more-stable-regulation-on-curves-for-long-lookahead-distances">More stable regulation on curves for long lookahead distances</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#publish-collision-monitor-state">Publish Collision Monitor State</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#renamed-ros-parameter-in-collision-monitor">Renamed ROS-parameter in Collision Monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#new-safety-behavior-model-limit-in-collision-monitor">New safety behavior model “limit” in Collision Monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#velocity-smoother-applies-deceleration-when-timeout">Velocity smoother applies deceleration when timeout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#poseprogresschecker-plugin">PoseProgressChecker plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#allow-multiple-goal-checkers-and-change-parameter-progress-checker-plugin-s-name-and-type">Allow multiple goal checkers and change parameter progress_checker_plugin(s) name and type</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#isbatterychargingcondition-bt-node">IsBatteryChargingCondition BT Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#behavior-server-error-codes">Behavior Server Error Codes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#new-denoise-costmap-layer-plugin">New Denoise Costmap Layer Plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Humble.html#smacplannerhybrid-viz-expansions-parameter">SmacPlannerHybrid viz_expansions parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Humble.html">Humble to Iron</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-behavior-tree-navigator-plugins">New Behavior-Tree Navigator Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#added-collision-monitor">Added Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#removed-use-sim-time-from-yaml">Removed use_sim_time from yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#run-time-speed-up-of-smac-planner">Run-time Speed up of Smac Planner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#recursive-refinement-of-smac-and-simple-smoothers">Recursive Refinement of Smac and Simple Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#simple-commander-python-api">Simple Commander Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smac-planner-start-pose-included-in-path">Smac Planner Start Pose Included in Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#parameterizable-collision-checking-in-rpp">Parameterizable Collision Checking in RPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#expanded-planner-benchmark-tests">Expanded Planner Benchmark Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smac-planner-path-tolerances">Smac Planner Path Tolerances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#costmap-2d-node-default-constructor">costmap_2d_node default constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#feedback-for-navigation-failures">Feedback for Navigation Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#costmap-filters">Costmap Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#savitzky-golay-smoother">Savitzky-Golay Smoother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#changes-to-map-yaml-file-path-for-map-server-node-in-launch">Changes to Map yaml file path for map_server node in Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smootherselector-bt-node">SmootherSelector BT Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#publish-costmap-layers">Publish Costmap Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#give-behavior-server-access-to-both-costmaps">Give Behavior Server Access to Both Costmaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-model-predictive-path-integral-controller">New Model Predictive Path Integral Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#behavior-tree-uses-error-codes">Behavior Tree Uses Error Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#load-save-and-loop-waypoints-from-the-nav2-panel-in-rviz">Load, Save and Loop Waypoints from the Nav2 Panel in RViz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#dwb-forward-vs-reverse-pruning">DWB Forward vs Reverse Pruning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#more-stable-regulation-on-curves-for-long-lookahead-distances">More stable regulation on curves for long lookahead distances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#publish-collision-monitor-state">Publish Collision Monitor State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#renamed-ros-parameter-in-collision-monitor">Renamed ROS-parameter in Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-safety-behavior-model-limit-in-collision-monitor">New safety behavior model “limit” in Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#velocity-smoother-applies-deceleration-when-timeout">Velocity smoother applies deceleration when timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#poseprogresschecker-plugin">PoseProgressChecker plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#allow-multiple-goal-checkers-and-change-parameter-progress-checker-plugin-s-name-and-type">Allow multiple goal checkers and change parameter progress_checker_plugin(s) name and type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#isbatterychargingcondition-bt-node">IsBatteryChargingCondition BT Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#behavior-server-error-codes">Behavior Server Error Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#new-denoise-costmap-layer-plugin">New Denoise Costmap Layer Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Humble.html#smacplannerhybrid-viz-expansions-parameter">SmacPlannerHybrid viz_expansions parameter</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Iron.html">Iron to Jazzy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#behaviortree-cpp-upgraded-to-version-4-5">BehaviorTree.CPP upgraded to version 4.5+</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#added-twiststamped-option-for-commands">Added TwistStamped Option for Commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#add-velocitypolygon-in-collision-monitor">Add VelocityPolygon in Collision Monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#opennav-docking-project"><code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> Project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#use-interpolation-rpp-parameter-depreciated">use_interpolation RPP Parameter Depreciated</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#changes-to-mppi-path-handling-for-directionality">Changes to MPPI Path Handling For Directionality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#addition-of-new-mppi-cost-critic">Addition of new MPPI Cost Critic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#mppi-acceleration">MPPI Acceleration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#move-error-code-enumerations">Move Error Code Enumerations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#substitution-in-parameter-file">Substitution in parameter file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#smac-planner-debug-param-name-change">Smac Planner Debug Param Name Change</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#smac-planner-on-approach-to-goal-shortcutting-solutions">Smac Planner On Approach to Goal Shortcutting Solutions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#added-gps-waypoint-follower-server">Added GPS Waypoint Follower Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector">Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#expose-action-server-s-result-timeout">Expose action server’s result timeout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#rewrittenyaml-could-add-new-parameters-to-yamls">RewrittenYaml could add new parameters to YAMLs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#simple-commander-api-allows-multi-robot-namespacing">Simple Commander API Allows Multi-Robot Namespacing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#change-duration-type-in-wait-action-node">Change duration type in wait_action node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#the-costmap-activation-fails-when-required-transforms-are-not-available">The costmap activation fails when required transforms are not available</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#subtrees-obtain-shared-resources">Subtrees Obtain Shared Resources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior">Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#btactionserver-use-native-library-halttree">BtActionServer: use native library haltTree()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#global-frame-removed-from-2-bt-nodes">Global Frame Removed from 2 BT Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#introduction-of-costmapupdate-msg">Introduction of <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#full-stack-uses-node-clocks">Full Stack Uses Node Clocks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#new-graceful-motion-controller">New Graceful Motion Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#plugin-libraries-in-bt-navigator-only-includes-custom-nodes">Plugin Libraries in BT Navigator Only Includes Custom Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing">RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#collision-monitor-dynamic-radius-for-circle-type-polygons">Collision monitor: dynamic radius for circle type polygons</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#static-layer-new-parameter-footprint-clearing-enabled">Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#rotation-shim-controller-new-parameter-rotate-to-goal-heading">Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#mppi-controller-addition-of-acceleration-constraints">MPPI Controller: Addition of acceleration constraints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">use_cancel_deceleration</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="Iron.html#clear-costamp-around-passed-pose">Clear Costamp Around Passed Pose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Iron.html">Iron to Jazzy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#behaviortree-cpp-upgraded-to-version-4-5">BehaviorTree.CPP upgraded to version 4.5+</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#added-twiststamped-option-for-commands">Added TwistStamped Option for Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#add-velocitypolygon-in-collision-monitor">Add VelocityPolygon in Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#change-polygon-points-parameter-format-in-collision-monitor">Change polygon points parameter format in Collision Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#introduction-of-soft-real-time-action-servers">Introduction of Soft-Real Time Action Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#opennav-coverage-project"><code class="docutils literal notranslate"><span class="pre">opennav_coverage</span></code> Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#opennav-docking-project"><code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code> Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#introduce-a-new-multi-robot-bringup-launch">Introduce a new Multi-Robot Bringup Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-option-for-the-voxel-and-obstacle-layers">New option for the Voxel and Obstacle Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#use-interpolation-rpp-parameter-depreciated">use_interpolation RPP Parameter Depreciated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#changes-to-mppi-goal-critic">Changes to MPPI Goal Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#changes-to-mppi-path-angle-critic">Changes to MPPI Path Angle Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#changes-to-mppi-path-handling-for-directionality">Changes to MPPI Path Handling For Directionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#addition-of-new-mppi-cost-critic">Addition of new MPPI Cost Critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#mppi-acceleration">MPPI Acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#move-error-code-enumerations">Move Error Code Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#substitution-in-parameter-file">Substitution in parameter file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#allow-behavior-server-plugins-to-access-the-action-result">Allow Behavior Server Plugins to Access The Action Result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#smac-planner-debug-param-name-change">Smac Planner Debug Param Name Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#smac-planner-on-approach-to-goal-shortcutting-solutions">Smac Planner On Approach to Goal Shortcutting Solutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#added-gps-waypoint-follower-server">Added GPS Waypoint Follower Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#smac-planner-hybrid-a-new-features">Smac Planner Hybrid-A* New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-node-in-nav2-collision-monitor-collision-detector">New node in nav2_collision_monitor: Collision Detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#dynamic-enabling-disabling-of-sources-polygons-in-collision-monitor-detector">Dynamic enabling/disabling of sources/polygons in Collision Monitor/Detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#expose-action-server-s-result-timeout">Expose action server’s result timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#rewrittenyaml-could-add-new-parameters-to-yamls">RewrittenYaml could add new parameters to YAMLs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#simple-commander-api-allows-multi-robot-namespacing">Simple Commander API Allows Multi-Robot Namespacing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#change-duration-type-in-wait-action-node">Change duration type in wait_action node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#the-costmap-activation-fails-when-required-transforms-are-not-available">The costmap activation fails when required transforms are not available</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#subtrees-obtain-shared-resources">Subtrees Obtain Shared Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#collision-monitor-added-watchdog-mechanism-based-on-source-timeout-parameter-with-default-blocking-behavior">Collision Monitor: added watchdog mechanism based on <code class="docutils literal notranslate"><span class="pre">source_timeout</span></code> parameter with default blocking behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#btactionserver-use-native-library-halttree">BtActionServer: use native library haltTree()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#global-frame-removed-from-2-bt-nodes">Global Frame Removed from 2 BT Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#introduction-of-costmapupdate-msg">Introduction of <code class="docutils literal notranslate"><span class="pre">CostmapUpdate.msg</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#full-stack-uses-node-clocks">Full Stack Uses Node Clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-graceful-motion-controller">New Graceful Motion Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#plugin-libraries-in-bt-navigator-only-includes-custom-nodes">Plugin Libraries in BT Navigator Only Includes Custom Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-rviz-plugin-for-selecting-planners-controllers-goal-checkers-progress-checkers-and-smoothers">New RViz Plugin for selecting Planners, Controllers, Goal Checkers, Progress Checkers and Smoothers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#rpp-new-optional-interpolate-curvature-after-goal-behavior-and-fix-conflict-between-use-rotate-to-heading-and-allow-reversing">RPP new optional <code class="docutils literal notranslate"><span class="pre">interpolate_curvature_after_goal</span></code> behavior and fix conflict between <code class="docutils literal notranslate"><span class="pre">use_rotate_to_heading</span></code> and <code class="docutils literal notranslate"><span class="pre">allow_reversing</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#cancel-checker-interface-for-globalplanner">Cancel Checker Interface For GlobalPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-btactionserver-btnavigator-parameter">New BtActionServer/BtNavigator parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-collision-monitor-parameter">New collision monitor parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#new-graceful-cancellation-api-for-controllers">New graceful cancellation API for Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#standardization-of-plugin-naming-with-double-colons">Standardization of Plugin Naming with Double Colons (::)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#collision-monitor-dynamic-radius-for-circle-type-polygons">Collision monitor: dynamic radius for circle type polygons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#static-layer-new-parameter-footprint-clearing-enabled">Static Layer: new parameter <code class="docutils literal notranslate"><span class="pre">footprint_clearing_enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#lifecycle-node-added-bond-heartbeat-period-parameter-and-allow-disabling-the-bond-mechanism">Lifecycle Node: added bond_heartbeat_period parameter (and allow disabling the bond mechanism)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#rotation-shim-controller-new-parameter-rotate-to-goal-heading">Rotation Shim Controller: new parameter <code class="docutils literal notranslate"><span class="pre">rotate_to_goal_heading</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#mppi-controller-addition-of-acceleration-constraints">MPPI Controller: Addition of acceleration constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#regulatedpurepursuit-controller-rpp-new-parameter-use-cancel-deceleration">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">use_cancel_deceleration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Iron.html#clear-costamp-around-passed-pose">Clear Costamp Around Passed Pose</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Jazzy.html">Jazzy to Kilted</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#nav2-route-server">Nav2 Route Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#behaviortree-error-msg">BehaviorTree error_msg</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#bt-nodes-changes">BT Nodes Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#fix-flickering-visualization">Fix flickering visualization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#rotation-shim-disengagement-threshold">Rotation Shim Disengagement Threshold</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#added-optional-collision-checking-for-the-docking-server">Added optional collision checking for the Docking Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#revamped-multirobot-bringup-and-config-files-to-use-namespaces">Revamped multirobot bringup and config files to use namespaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#new-plugin-container-layer">New Plugin Container Layer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#iterative-target-selection-for-the-graceful-controller">Iterative Target Selection for the Graceful Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#computepaththroughposes-navigatethroughposes-and-other-bt-nodes-now-use-nav-msgs-goals-instead-of-vector-posestamped">ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use nav_msgs/Goals instead of vector&lt;PoseStamped&gt;</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45">MPPI controller re-implemented using Eigen library and performance improved by 40-45%</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#enable-goal-orientation-non-specificity">Enable goal orientation non-specificity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">DriveOnHeading and BackUp behaviors: Addition of acceleration constraints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#service-introspection">Service introspection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#groot-2-support">Groot 2 Support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#new-position-goal-checker">New Position Goal Checker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#docking-backwards-without-sensor">Docking backwards without sensor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#regulatedpurepursuit-controller-rpp-new-parameter-stateful">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#controller-server-frequency-removed-dynamic-parameter">Controller Server Frequency Removed Dynamic Parameter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Jazzy.html#default-bringup-supports-keepout-speed-zones-and-route-planning">Default bringup supports keepout, speed zones, and route planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Jazzy.html">Jazzy to Kilted</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#nav2-route-server">Nav2 Route Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#behaviortree-error-msg">BehaviorTree error_msg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#twiststamped-default-cmdvel-change">TwistStamped Default CmdVel Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-nav2-loopback-simulator">New Nav2 Loopback Simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#docking-with-static-infrastructure-or-dynamic-docking">Docking with Static Infrastructure or Dynamic Docking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-rviz-panel-for-docking">New RViz panel for Docking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#bt-nodes-changes">BT Nodes Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-rviz-tool-for-costmap-cost-cell-inspection">New RViz Tool for Costmap Cost Cell Inspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#fix-flickering-visualization">Fix flickering visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#option-to-limit-velocity-through-dwb-trajectory">Option to limit velocity through DWB trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#option-to-disable-zero-velocity-publishing-on-goal-exit">Option to disable zero velocity publishing on goal exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#rotation-shim-disengagement-threshold">Rotation Shim Disengagement Threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#added-optional-collision-checking-for-the-docking-server">Added optional collision checking for the Docking Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#revamped-multirobot-bringup-and-config-files-to-use-namespaces">Revamped multirobot bringup and config files to use namespaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#removed-global-map-topic-from-costmap-node">Removed global map_topic from Costmap node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#simplified-costmap2dros-constructors">Simplified Costmap2DROS constructors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#option-to-disable-collision-checking-in-driveonheading-backup-and-spin-actions">Option to disable collision checking in DriveOnHeading, BackUp and Spin Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-plugin-container-layer">New Plugin Container Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#iterative-target-selection-for-the-graceful-controller">Iterative Target Selection for the Graceful Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#conform-to-ros-2-launch-syntax-in-turtlebot-3-multi-robot-launch-file">Conform to ROS 2 launch syntax in Turtlebot 3 multi-robot launch file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#computepaththroughposes-navigatethroughposes-and-other-bt-nodes-now-use-nav-msgs-goals-instead-of-vector-posestamped">ComputePathThroughPoses, NavigateThroughPoses and other BT nodes now use nav_msgs/Goals instead of vector&lt;PoseStamped&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#mppi-controller-re-implemented-using-eigen-library-and-performance-improved-by-40-45">MPPI controller re-implemented using Eigen library and performance improved by 40-45%</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#enable-goal-orientation-non-specificity">Enable goal orientation non-specificity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#driveonheading-and-backup-behaviors-addition-of-acceleration-constraints">DriveOnHeading and BackUp behaviors: Addition of acceleration constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#rotation-shim-deceleration-as-a-function-of-its-target-orientation">Rotation Shim Deceleration as a function of its target orientation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#rotation-shim-open-loop-control">Rotation Shim Open-loop Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#near-collision-cost-in-mppi-cost-critic">Near collision cost in MPPI cost critic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#service-introspection">Service introspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#rotation-shim-using-path-orientations">Rotation Shim Using Path Orientations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#mppi-publishing-optimal-trajectory">MPPI - Publishing Optimal Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#navigatethroughposes-reporting-waypoint-statuses-information">NavigateThroughPoses - Reporting waypoint statuses information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#groot-2-support">Groot 2 Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#docking-backwards-as-plugin-parameter">Docking backwards as plugin parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#new-position-goal-checker">New Position Goal Checker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#docking-backwards-without-sensor">Docking backwards without sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#regulatedpurepursuit-controller-rpp-new-parameter-stateful">RegulatedPurePursuit Controller [RPP]: new parameter <code class="docutils literal notranslate"><span class="pre">stateful</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#controller-server-frequency-removed-dynamic-parameter">Controller Server Frequency Removed Dynamic Parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Jazzy.html#default-bringup-supports-keepout-speed-zones-and-route-planning">Default bringup supports keepout, speed zones, and route planning</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Kilted.html">Kilted to L-turtle</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Kilted.html#new-nav2-ros-common-nav2-lifecycle-node">New Nav2 ROS Common &amp; Nav2 Lifecycle Node</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Kilted.html#plugin-migration">Plugin Migration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Kilted.html#service-client-migration">Service Client Migration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Kilted.html#service-server-migration">Service Server Migration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Kilted.html#action-server-migration">Action Server Migration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Kilted.html#action-client-migration">Action Client Migration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Kilted.html#publisher-subscriber-migration">Publisher Subscriber Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/Kilted.html">Kilted to L-turtle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#new-nav2-ros-common-nav2-lifecycle-node">New Nav2 ROS Common &amp; Nav2 Lifecycle Node</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#plugin-migration">Plugin Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#service-client-migration">Service Client Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#service-server-migration">Service Server Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#action-server-migration">Action Server Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#action-client-migration">Action Client Migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#publisher-subscriber-migration">Publisher Subscriber Migration</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Kilted.html#option-to-use-point-cloud-transport">Option to use point_cloud_transport</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Kilted.html#configuration-guide">Configuration guide</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Kilted.html#performance-metrics">Performance Metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/Kilted.html#option-to-use-point-cloud-transport">Option to use point_cloud_transport</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#configuration-guide">Configuration guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../migration/Kilted.html#performance-metrics">Performance Metrics</a></li>
 </ul>
 </li>
 </ul>
@@ -1247,25 +1246,25 @@
 <li class="toctree-l2"><a class="reference internal" href="../about/index.html#contact">Contact</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../maintainer_docs/index.html">Maintainer Docs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../maintainer_docs/distribution_release.html">ROS Distribution Release Process</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#initial-freeze">0. Initial Freeze</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#local-functional-testing">1. Local Functional Testing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#setup-nav2-docker-images">2. Setup Nav2 Docker Images</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#branch-off-distribution">2. Branch Off Distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#setup-branch-ci">3. Setup Branch CI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#update-auxiliary-projects">4. Update Auxiliary Projects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#run-bloom-release">5. Run Bloom Release</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#nav2-docker-build">6. Nav2 Docker Build</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_release.html#announcements">7. Announcements</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Maintainer Docs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="distribution_release.html">ROS Distribution Release Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="distribution_release.html#initial-freeze">0. Initial Freeze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="distribution_release.html#local-functional-testing">1. Local Functional Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="distribution_release.html#setup-nav2-docker-images">2. Setup Nav2 Docker Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="distribution_release.html#branch-off-distribution">2. Branch Off Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="distribution_release.html#setup-branch-ci">3. Setup Branch CI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="distribution_release.html#update-auxiliary-projects">4. Update Auxiliary Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="distribution_release.html#run-bloom-release">5. Run Bloom Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="distribution_release.html#nav2-docker-build">6. Nav2 Docker Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="distribution_release.html#announcements">7. Announcements</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html">ROS Distribution Sync Process</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#initial-setup">0. Initial Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#backporting-process">1. Backporting Process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#testing">2. Testing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#open-a-pr">3. Open a PR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../maintainer_docs/distribution_syncs.html#bloom-release">4. Bloom Release</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ROS Distribution Sync Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">0. Initial Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backporting-process">1. Backporting Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">2. Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-a-pr">3. Open a PR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bloom-release">4. Bloom Release</a></li>
 </ul>
 </li>
 </ul>
@@ -1292,8 +1291,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Migration Guides</a></li>
-      <li class="breadcrumb-item active">Eloquent to Foxy</li>
+          <li class="breadcrumb-item"><a href="index.html">Maintainer Docs</a></li>
+      <li class="breadcrumb-item active">ROS Distribution Sync Process</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1302,139 +1301,83 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="eloquent-to-foxy">
-<span id="eloquent-migration"></span><h1>Eloquent to Foxy<a class="headerlink" href="#eloquent-to-foxy" title="Permalink to this heading"></a></h1>
-<p>Moving from ROS 2 Eloquent to Foxy, a number of stability improvements were added that we will not specifically address here.
-We will specifically mention, however, the reduction in terminal noise.
-TF2 transformation timeout errors and warnings on startup have been largely removed or throttled to be more tractable.
-Additionally, message filters filling up resulting in messages being dropped were resolved in costmap 2d.</p>
-<div class="section" id="general">
-<h2>General<a class="headerlink" href="#general" title="Permalink to this heading"></a></h2>
-<p>The lifecycle manager was split into 2 unique lifecycle managers.
-They are the <code class="docutils literal notranslate"><span class="pre">navigation_lifecycle_manager</span></code> and <code class="docutils literal notranslate"><span class="pre">localization_lifecycle_manager</span></code>.
-This gives each process their own manager to allow users to switch between SLAM and localization without effecting Navigation.
-It also reduces the redundant code in <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code>.</p>
-<p>The lifecycle manager also now contains <code class="docutils literal notranslate"><span class="pre">Bond</span></code> connections to each lifecycle server.
-This means that if a server crashes or exits, the lifecycle manager will be constantly checking and transition down its lifecycle nodes for safety.
-This acts as a watchdog during run-time to complement the lifecycle manager’s transitioning up and down from active states. See <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1894">this PR for details</a>.</p>
-<p>A fix to the BT navigator was added to remove a rare issue where it may crash due to asynchronous issues.
-As a result, a behavior tree is created for each navigation request rather than resetting an existing tree.
-The creation of this tree will add a small amount of latency.
-Proposals to reduce this latency will be considered before the next release.</p>
-</div>
-<div class="section" id="server-updates">
-<h2>Server Updates<a class="headerlink" href="#server-updates" title="Permalink to this heading"></a></h2>
-<p>All plugin servers (controller, planner, recovery) now supports the use of multiple plugins.
-This can be done by loading a map of plugins, mapping the name of the plugin to its intended use-case.
-Each server defines a parameter where the list of names for the plugins to be loaded can be defined.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 49%" />
-<col style="width: 51%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Server Name</p></th>
-<th class="head"><p>Plugin Parameter</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Controller Server</p></td>
-<td><p>progress_checker_plugin</p></td>
-</tr>
-<tr class="row-odd"><td><p>Controller Server</p></td>
-<td><p>goal_checker_plugin</p></td>
-</tr>
-<tr class="row-even"><td><p>Controller Server</p></td>
-<td><p>controller_plugins</p></td>
-</tr>
-<tr class="row-odd"><td><p>Planner Server</p></td>
-<td><p>planner_plugins</p></td>
-</tr>
-<tr class="row-even"><td><p>Recovery Server</p></td>
-<td><p>recovery_plugins</p></td>
-</tr>
-<tr class="row-odd"><td><p>Costmap Node</p></td>
-<td><p>plugins</p></td>
-</tr>
-</tbody>
-</table>
-<p>The type of plugin to be mapped to a particular name has to be defined using the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter in the plugin namespace for each name defined in the server plugin list.
-Each name in the plugin parameter list is expected to have the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> parameter defined.</p>
-<p>An example: <code class="docutils literal notranslate"><span class="pre">controller_server</span></code> defines the parameter <code class="docutils literal notranslate"><span class="pre">controller_plugins</span></code> where a list of plugin names can be defined:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;DynamicFollowPath&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dwb_core/DWBLocalPlanner&quot;</span>
-<span class="w">      </span><span class="nt">max_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.26</span>
-<span class="w">    </span><span class="nt">DynamicFollowPath</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;teb_local_planner/TEBLocalPlanner&quot;</span>
-<span class="w">      </span><span class="nt">max_vel_x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+  <div class="section" id="ros-distribution-sync-process">
+<span id="distribution-sync-docs"></span><h1>ROS Distribution Sync Process<a class="headerlink" href="#ros-distribution-sync-process" title="Permalink to this heading"></a></h1>
+<p>This is the instructions for updating a Nav2 version in a ROS distribution sync.
+We do this by bulk cherry picking commits from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch after they’ve had time to soak and apply them to the branch we looking to sync with the newest features.</p>
+<div class="section" id="initial-setup">
+<h2>0. Initial Setup<a class="headerlink" href="#initial-setup" title="Permalink to this heading"></a></h2>
+<p>First we need to create a temporary workspace to perform the sync.
+Typically, this is done in the <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory so that it is cleaned up after a reboot.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/sync_ws/src
+<span class="nb">cd</span><span class="w"> </span>/tmp/sync_ws/src
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-navigation/navigation2.git<span class="w"> </span>-b<span class="w"> </span>&lt;distro&gt;
+<span class="nb">cd</span><span class="w"> </span>navigation2
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>sync_&lt;distro&gt;
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> controller is of type <code class="docutils literal notranslate"><span class="pre">dwb_local_planner/DWBLocalPlanner</span></code> and <code class="docutils literal notranslate"><span class="pre">DynamicFollowPath</span></code> of type <code class="docutils literal notranslate"><span class="pre">teb_local_planner/TEBLocalPlanner</span></code>.
-Each plugin will load the parameters in their namespace, e.g. <code class="docutils literal notranslate"><span class="pre">FollowPath.max_vel_x</span></code>, rather than globally in the server namespace.
-This will allow multiple plugins of the same type with different parameters and reduce conflicting parameter names.</p>
-<p>DWB Contains new parameters as an update relative to the ROS 1 updates, <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1501">see here for more information</a>.
-Additionally, the controller and planner interfaces were updated to include a <code class="docutils literal notranslate"><span class="pre">std::string</span> <span class="pre">name</span></code> parameter on initialization.
-This was added to the interfaces to allow the plugins to know the namespace it should load its parameters in.
-E.g. for a controller to find the parameter <code class="docutils literal notranslate"><span class="pre">FollowPath.max_vel_x</span></code>, it must be given its name, <code class="docutils literal notranslate"><span class="pre">FollowPath</span></code> to get this parameter.
-All plugins will be expected to look up parameters in the namespace of its given name.</p>
+<p>Then, we want to get a list of all of the commits we may be interested in backporting.
+This can be found either in the git logs of the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch or using the GitHub UX at <a class="reference external" href="https://github.com/ros-navigation/navigation2/commits/">https://github.com/ros-navigation/navigation2/commits/</a> and select the branch you are interested in.
+If using GitHub, open two tabs - one for <code class="docutils literal notranslate"><span class="pre">main</span></code> and one for <code class="docutils literal notranslate"><span class="pre">&lt;distro&gt;</span></code>.</p>
+<p>Finally, we need to identify the date of the last sync.
+This can be found looking in the commit messages for <code class="docutils literal notranslate"><span class="pre">&lt;distro&gt;</span></code>’s branch or by looking at the release page for Nav2 and finding the date of the last release for that distribution.
+Scroll back in the <code class="docutils literal notranslate"><span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;distro&gt;</span></code> git logs to find the last sync commit to begin.</p>
+<p>Once you have a local clone, the git logs, and the date of the last sync, we can begin the process.</p>
 </div>
-<div class="section" id="new-plugins">
-<h2>New Plugins<a class="headerlink" href="#new-plugins" title="Permalink to this heading"></a></h2>
-<p>Many new behavior tree nodes were added.
-These behavior tree nodes are now BT plugins and dynamically loadable at run-time using behavior tree cpp v3.
-The default behavior trees have been upgraded to stop the recovery behaviours and trigger a replanning when the navigation goal is preempted.
-See <code class="docutils literal notranslate"><span class="pre">nav2_behavior_tree</span></code> for a full listing, or <a class="reference internal" href="../plugins/index.html#plugins"><span class="std std-ref">Navigation Plugins</span></a> for the current list of behavior tree plugins and their descriptions.
-These plugins are set as default in the <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code> but may be overridden by the <code class="docutils literal notranslate"><span class="pre">bt_plugins</span></code> parameter to include your specific plugins.</p>
-<p>Original GitHub tickets:</p>
+<div class="section" id="backporting-process">
+<h2>1. Backporting Process<a class="headerlink" href="#backporting-process" title="Permalink to this heading"></a></h2>
+<p>Starting with the first commit in <code class="docutils literal notranslate"><span class="pre">main</span></code> after the last sync date, we will look at each commit individually.
+Each commit should be evaluated for the following criteria:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1699">DistanceController</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1744">SpeedController</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1712">GoalUpdatedCondition</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1705">DistanceTraveledCondition</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1705">TimeExpiredCondition</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1859">UpdateGoal</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1859">TruncatePath</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1974">IsBatteryLowCondition</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1857">ProgressChecker</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1857">GoalChecker</a></p></li>
+<li><p>Cannot change default out-of-the-box behavior or existing configured robot behavior</p></li>
+<li><p>Cannot change major end-user ABI/API</p></li>
+<li><p>Cannot change message, action, or service definitions</p></li>
+<li><p>Cannot include risky changes that need more time to soak, such as for complete package rewrites or experimental features</p></li>
 </ul>
+<p>If it does not do any of the above, it is a candidate for backporting.
+It can be backported via the following command in your local branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>cherry-pick<span class="w"> </span>&lt;commit_hash&gt;
+</pre></div>
 </div>
-<div class="section" id="map-server-re-work">
-<h2>Map Server Re-Work<a class="headerlink" href="#map-server-re-work" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">map_saver</span></code> was re-worked and divided into 2 parts: CLI and server.
-CLI part is a command-line tool that listens incoming map topic, saves map once into a file and finishes its work. This part is remained to be almost untouched: CLI executable was renamed from <code class="docutils literal notranslate"><span class="pre">map_saver</span></code> to <code class="docutils literal notranslate"><span class="pre">map_saver_cli</span></code> without changing its functionality.
-Server is a new part. It spins in the background and can be used to save map continuously through a <code class="docutils literal notranslate"><span class="pre">save_map</span></code> service. By each service request it tries to listen incoming map topic, receive a message from it and write obtained map into a file.</p>
-<p><code class="docutils literal notranslate"><span class="pre">map_server</span></code> was dramatically simplified and cleaned-up. <code class="docutils literal notranslate"><span class="pre">OccGridLoader</span></code> was merged with <code class="docutils literal notranslate"><span class="pre">MapServer</span></code> class as it is intended to work only with one <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> type of messages in foreseeable future.</p>
-<p>Map Server now has new <code class="docutils literal notranslate"><span class="pre">map_io</span></code> dynamic library. All functions saving/loading <code class="docutils literal notranslate"><span class="pre">OccupancyGrid</span></code> messages were moved from <code class="docutils literal notranslate"><span class="pre">map_server</span></code> and <code class="docutils literal notranslate"><span class="pre">map_saver</span></code> here. These functions could be easily called from any part of external ROS 2 code even if Map Server node was not started.</p>
-<p><code class="docutils literal notranslate"><span class="pre">map_loader</span></code> was completely removed from <code class="docutils literal notranslate"><span class="pre">nav2_util</span></code>. All its functionality already present in <code class="docutils literal notranslate"><span class="pre">map_io</span></code>. Please use it in your code instead.</p>
-<p>Please refer to the <a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/1010">original GitHub ticket</a> and <a class="reference external" href="https://github.com/ros-navigation/navigation2/blob/main/nav2_map_server/README.md">Map Server README</a> for more information.</p>
+<p>If this merges without issue, you may proceed.
+If not, we either must resolve the conflicts or roll back the commit.
+We may need to roll it back if the merge conflict is too complex or it relies on a cascading chain of other commits that could not be included due to their dependency on commits that were unable to be backported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some commits may already have been backported by Mergify.
+Use the git logs for the <code class="docutils literal notranslate"><span class="pre">&lt;distro&gt;</span></code> branch to check if the commit has already been backported.
+If it has been, it can be skipped.</p>
 </div>
-<div class="section" id="new-particle-filter-messages">
-<h2>New Particle Filter Messages<a class="headerlink" href="#new-particle-filter-messages" title="Permalink to this heading"></a></h2>
-<p>New particle filter messages for particle clouds were added to include the particle weights along with their poses.
-<code class="docutils literal notranslate"><span class="pre">nav2_msgs/Particle</span></code> defines a single particle with a pose and a weight in a particle cloud.
-<code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> defines a set of particles, each with a pose and a weight.</p>
-<p><code class="docutils literal notranslate"><span class="pre">AMCL</span></code> now publishes its particle cloud as a <code class="docutils literal notranslate"><span class="pre">nav2_msgs/ParticleCloud</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseArray</span></code>.</p>
-<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1677">See here for more information.</a></p>
+<p>Once all commits to the present are evaluated, we can proceed to the next step.</p>
 </div>
-<div class="section" id="selection-of-behavior-tree-in-each-navigation-action">
-<h2>Selection of Behavior Tree in each navigation action<a class="headerlink" href="#selection-of-behavior-tree-in-each-navigation-action" title="Permalink to this heading"></a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">NavigateToPose</span></code> action allows now to select in the action request the behavior tree to be used by <code class="docutils literal notranslate"><span class="pre">bt_navigator</span></code> for carrying out the navigation action through the <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">behavior_tree</span></code> field. This field indicates the absolute path of the xml file that will be used to use to carry out the action. If no file is specified, leaving this field empty, the default behavior tree specified in the <code class="docutils literal notranslate"><span class="pre">default_bt_xml_filename</span> <span class="pre">parameter</span></code> will be used.</p>
-<p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/1780">the ticket #1780</a>, and carried out in <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/1784">the pull request #1784</a>.</p>
+<div class="section" id="testing">
+<h2>2. Testing<a class="headerlink" href="#testing" title="Permalink to this heading"></a></h2>
+<p>Before we can merge our changes, we need to ensure that everything is working correctly.
+This involves compiling the code, running any unit tests, and performing functional testing.
+Navigate back to the root of the workspace and build the code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../../
+colcon<span class="w"> </span>build
+<span class="nb">source</span><span class="w"> </span>install/setup.bash
+</pre></div>
 </div>
-<div class="section" id="followpoint-capability">
-<h2>FollowPoint Capability<a class="headerlink" href="#followpoint-capability" title="Permalink to this heading"></a></h2>
-<p>A new behavior tree <code class="docutils literal notranslate"><span class="pre">followpoint.xml</span></code> has added. This behavior tree makes a robot follow a dynamically generated point, keeping a certain distance from the target. This can be used for moving target following maneuvers.</p>
-<p>This functionality has been discussed in <a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/1660">the ticket #1660</a>, and carried out in <a class="reference external" href="https://github.com/ros-navigation/navigation2/issues/1859">the pull request #1859</a>.</p>
+<p>After building, we can run the tests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span><span class="nb">test</span>
+</pre></div>
 </div>
-<div class="section" id="new-costmap-layer">
-<h2>New Costmap Layer<a class="headerlink" href="#new-costmap-layer" title="Permalink to this heading"></a></h2>
-<p>The range sensor costmap has not been ported to navigation2 as <code class="docutils literal notranslate"><span class="pre">nav2_costmap_2d::RangeSensorLayer&quot;</span></code>. It uses the same
-probabilistic model as the <a class="reference external" href="http://wiki.ros.org/range_sensor_layer">ROS1</a> layer as well as much of the
-same interface. Documentation on parameters has been added to docs/parameters and the docs.nav2.org under <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Guide</span></code>.</p>
+<p>If all tests pass, we can launch the Nav2 bringup demos and navigate the TB3 and TB4 robots in both Gazebo and the loopback simulator for 10-15 minutes to validate functional stability of the backport.</p>
+</div>
+<div class="section" id="open-a-pr">
+<h2>3. Open a PR<a class="headerlink" href="#open-a-pr" title="Permalink to this heading"></a></h2>
+<p>Once we have validated the changes, we can open a pull request (PR) against the <code class="docutils literal notranslate"><span class="pre">&lt;distro&gt;</span></code> branch.
+Increment the package.xml versions for all packages using search and replace to increment one minor version (i.e. 1.1.X).
+Open a PR with the title <code class="docutils literal notranslate"><span class="pre">&lt;Branch&gt;</span> <span class="pre">Sync:</span> <span class="pre">&lt;Date&gt;</span></code> and include a description of the changes made.
+Let CI run and merge once passes for a second independent validation of compilation and testing.</p>
+</div>
+<div class="section" id="bloom-release">
+<h2>4. Bloom Release<a class="headerlink" href="#bloom-release" title="Permalink to this heading"></a></h2>
+<p>Once the PR is merged, we can release the changes to the distribution.
+Create a release of the same version as the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files targeting the <code class="docutils literal notranslate"><span class="pre">&lt;distro&gt;</span></code> branch.
+Then, follow <a class="reference external" href="https://gist.github.com/SteveMacenski/1c321d1c9edca096ae4d763d8327c2ee">Steve’s Bloom Release Guide</a> to perform the bloom release.</p>
 </div>
 </div>
 
