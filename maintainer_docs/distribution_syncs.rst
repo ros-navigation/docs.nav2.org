@@ -12,13 +12,13 @@ We do this by bulk cherry picking commits from the ``main`` branch after they've
 First we need to create a temporary workspace to perform the sync.
 Typically, this is done in the ``/tmp`` directory so that it is cleaned up after a reboot.
 
-``` bash
-mkdir -p /tmp/sync_ws/src
-cd /tmp/sync_ws/src
-git clone https://github.com/ros-navigation/navigation2.git -b <distro>
-cd navigation2
-git checkout -b sync_<distro>
-```
+.. code-block:: bash
+
+  mkdir -p /tmp/sync_ws/src
+  cd /tmp/sync_ws/src
+  git clone https://github.com/ros-navigation/navigation2.git -b <distro>
+  cd navigation2
+  git checkout -b sync_<distro>
 
 Then, we want to get a list of all of the commits we may be interested in backporting.
 This can be found either in the git logs of the ``main`` branch or using the GitHub UX at https://github.com/ros-navigation/navigation2/commits/ and select the branch you are interested in.
@@ -44,9 +44,10 @@ Each commit should be evaluated for the following criteria:
 If it does not do any of the above, it is a candidate for backporting.
 It can be backported via the following command in your local branch:
 
-``` bash
-git cherry-pick <commit_hash>
-```
+.. code-block:: bash
+
+  git cherry-pick <commit_hash>
+
 
 If this merges without issue, you may proceed.
 If not, we either must resolve the conflicts or roll back the commit.
@@ -67,17 +68,18 @@ Before we can merge our changes, we need to ensure that everything is working co
 This involves compiling the code, running any unit tests, and performing functional testing.
 Navigate back to the root of the workspace and build the code:
 
-``` bash
-cd ../../
-colcon build
-source install/setup.bash
-```
+.. code-block:: bash
+
+  cd ../../
+  colcon build
+  source install/setup.bash
 
 After building, we can run the tests:
 
-``` bash
-colcon test
-```
+.. code-block:: bash
+
+  colcon test
+
 
 If all tests pass, we can launch the Nav2 bringup demos and navigate the TB3 and TB4 robots in both Gazebo and the loopback simulator for 10-15 minutes to validate functional stability of the backport.
 
