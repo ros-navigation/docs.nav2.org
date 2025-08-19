@@ -10,3 +10,4 @@ These are published publicly for visibility and as a resource for the maintainer
    :maxdepth: 1
 
    distribution_release.rst
+   distribution_syncs.rst
