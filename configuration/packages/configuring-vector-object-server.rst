@@ -6,6 +6,7 @@ Vector Object Server
 The Vector Object Server implements a server that puts vector objects (such as polygons and circles) on OccupancyGrid raster map. The output raster map is being published by Vector Object server, and it could be used anywhere in the Nav2 stack or outside it.
 
 The main application of Vector Object server is to combine output raster maps with existing costmaps of environment, targeting for robot navigation purposes (for example for dynamic obstacles simulation/highlighting, sensors noise removal, black-out areas on maps, synthetic testing purposes, and much more).
+Rather than rastering vector objects each iteration or at run-time, it is done one-time on startup, and served to costmap layers or other consumers improving performance.
 A typical setup model for this is a Nav2 stack with Costmap Filters enabled, running in conjunction with a Vector Object server, which produces vectorised OccupancyGrid maps as input masks for the Costmap Filters:
 
 .. image:: images/vector_object_server/vo_design.png
@@ -14,9 +15,9 @@ A typical setup model for this is a Nav2 stack with Costmap Filters enabled, run
 
 These vector shapes could be added by using ROS input parameters as well as being handled by the following service calls: ``AddShapes.srv`` which adds new shapes or modifies existing ones, ``RemoveShapes.srv`` which removes any or all shapes from the map ``GetShapes.srv`` which returns all shapes on the map.
 
-Each vector shape is being handled by its UUID, which is of ``unique_identifier_msgs/UUID`` type. Final developer could choose whether to specify it manually for a new shape, or have it generated automatically by the Vector Object server. The UUID can always be obtained by making a ``GetShapes.srv`` request and getting the response with all shapes' UUIDs and their properties.
+Each vector shape is being handled by its ``unique_identifier_msgs/UUID``. Developers can choose whether to specify it manually for a new shape, or have it generated automatically by the Vector Object server. The UUID can always be obtained by making a ``GetShapes.srv`` request and getting the response with all shapes' UUIDs and their properties.
 
-During its work, Vector Object server places shapes on the map. Each vector object has its own value in the range from ``{-1}, [0..100]``, which matches the OccupancyGrid values. Vector objects can be overlapped with each other by using one of the global overlapping rules: sequential overlapping in the same order as vector objects arrived on the server, or taking the maximum / minimum value from all vector objects and the map background (if it is known).
+The Vector Object server places shapes on the map. Each vector object has its own value in the range from ``{-1}, [0..100]``, which matches the OccupancyGrid values. Vector objects can be overlapped with each other by using one of the global overlapping rules: (a) **sequential overlapping** in the same order as vector objects arrived on the server, or (b) taking the **maximum / minimum value** from all vector objects and the map background (if it is known).
 
 This page describes all the configuration parameters of the Vector Object server. For more information on how to navigate with your own Vector Object server, please refer to the :ref:`navigation2_with_vector_objects` tutorial.
 
@@ -58,12 +59,12 @@ Features
 Covered use-cases
 *****************
 
-Using Vector Object server publishing an output map as input mask to :ref:`Costmap Filters <costmap_filters>` allows covering following (not restricted only to) use-cases:
+Using Vector Object server publishing an output map as input mask to :ref:`Costmap Filters <costmap_filters>` allows the following example use-cases using polygon, vector representations of areas rather than rastered masks:
 
 - No-access zone
 - Speed-restriction areas
 - Virtual obstacles on costmap
-- Flying zone for UAV-s with outer boundary and inner virtual obstacles
+- Geofence / outer boundary and inner virtual obstacles
 - Robot footprint (or any other moving objects) replacement
 - Hiding some areas from costmap
 - Sensors noise removal
