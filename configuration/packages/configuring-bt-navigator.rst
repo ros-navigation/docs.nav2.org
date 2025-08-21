@@ -180,50 +180,6 @@ Parameters
   Description
     Topic on which odometry is published
 
-:goal_blackboard_id:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  string "goal"
-  ====== =======
-
-  Description
-    Blackboard variable to use to supply the goal to the behavior tree for ``NavigateToPose``. Should match ports of BT XML file.
-
-:path_blackboard_id:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  string "path"
-  ====== =======
-
-  Description
-    Blackboard variable to get the path from the behavior tree for ``NavigateThroughPoses`` feedback. Should match port names of BT XML file.
-
-:goals_blackboard_id:
-
-  ====== =======
-  Type   Default
-  ------ -------
-  string "goals"
-  ====== =======
-
-  Description
-    Blackboard variable to use to supply the goals to the behavior tree for ``NavigateThroughPoses``. Should match ports of BT XML file.
-
-:waypoint_statuses_blackboard_id:
-
-  ====== ===================
-  Type   Default
-  ------ -------------------
-  string "waypoint_statuses"
-  ====== ===================
-
-  Description
-    Blackboard variable to get the statuses of waypoints from the behavior tree for ``NavigateThroughPoses`` feedback/result. Should match ports of BT XML file.
-
 :error_code_name_prefixes:
 
   ============== ===========================
@@ -284,6 +240,28 @@ Parameters
 NavigateToPose Parameters
 *************************
 
+:``<navigate_to_pose_name>``.goal_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "goal"
+  ====== =======
+
+  Description
+    Blackboard variable to use to supply the goal to the behavior tree for ``NavigateToPose``. Should match ports of BT XML file.
+
+:``<navigate_to_pose_name>``.path_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "path"
+  ====== =======
+
+  Description
+    Blackboard variable to get the path from the behavior tree for ``NavigateToPose`` feedback. Should match port names of BT XML file.
+
 :``<navigate_to_pose_name>``.enable_groot_monitoring:
 
   ============== =======
@@ -308,6 +286,39 @@ NavigateToPose Parameters
 
 NavigateThroughPoses Parameters
 *******************************
+
+:``<navigate_through_poses>``.goals_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "goals"
+  ====== =======
+
+  Description
+    Blackboard variable to use to supply the goals to the behavior tree for ``NavigateThroughPoses``. Should match ports of BT XML file.
+
+:``<navigate_through_poses>``.path_blackboard_id:
+
+  ====== =======
+  Type   Default
+  ------ -------
+  string "path"
+  ====== =======
+
+  Description
+    Blackboard variable to get the path from the behavior tree for ``NavigateThroughPoses`` feedback. Should match port names of BT XML file.
+
+:``<navigate_through_poses>``.waypoint_statuses_blackboard_id:
+
+  ====== ===================
+  Type   Default
+  ------ -------------------
+  string "waypoint_statuses"
+  ====== ===================
+
+  Description
+    Blackboard variable to get the statuses of waypoints from the behavior tree for ``NavigateThroughPoses`` feedback/result. Should match ports of BT XML file.
 
 :``<navigate_through_poses>``.enable_groot_monitoring:
 

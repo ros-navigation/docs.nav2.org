@@ -289,3 +289,9 @@ Below are measured bandwidth values for different transport types with default p
 +------------------+----------------+
 | zlib             | 121.95         |
 +------------------+----------------+
+
+Private BT Navigator's BlackBoard ID parameters
+-----------------------------------------------
+
+The parameters ``xx_blackboard_id`` used in the BT navigator to specify the name of the blackboard variables from the behavior trees were moved into the respective navigators. They now have to be specified under the namespace of the particular navigator.
+See :ref:`configuring_bt_navigator`
