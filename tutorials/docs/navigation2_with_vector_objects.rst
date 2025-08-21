@@ -17,20 +17,20 @@ Overview
 ========
 
 This tutorial shows how to navigate with vector objects added to raster costmaps.
-They can be used for various purposes, such as hiding some areas or sticking-out robot parts, for adding virtual obstacles on maps, or like Costmap Filters do - adding keep-out or maximum speed restricted areas, but on a vector basis.
-In the current tutorial, the added vector objects will be treated as obstacles in costmaps.
-To do this, we need to prepare the Navigation2 stack with the Keepout Filter enabled, operating along with Vector Object server that publlishes an OccupancyGrid map with rasterized vector objects as an input mask for the Keepout Filter.
+They can be used for various purposes, such as hiding some areas or sticking-out robot parts, for adding virtual obstacles on maps, or like Costmap Filters do - adding keep-out or maximum speed restricted areas, but on a vector (polygon or shape) basis.
+In this tutorial, the added vector objects will be treated as obstacles in costmaps using a Keepout Filter.
+To do this, we need to prepare the Nav2 stack with the Keepout Filter enabled, along with the Vector Object server which publishes an ``OccupancyGrid`` map with the rasterized vector objects as an input mask for the Keepout Filter.
 Other use cases use similar principles and could be easily adapted after finishing this tutorial.
 
 .. note::
 
-  Using with Keepout Filter is the choice for adding virtual obstacles or removing some areas from costmaps. However, the Vector Object server is not restricted to use with the Keepout Filter only. It could also be used with different Costmap Filters for other use cases. For example, to have a speed restriction area defined by a vector shape, one could choose Speed Filter; or for a polygon-defined room where the camera is to be turned off, Vector Object server could be used with Binary Filter.
+  Using with Keepout Filter is a good choice for adding virtual obstacles or removing some areas from costmaps. However, the Vector Object server is not restricted to this application. It can be paired with different Costmap Filters for other use cases or even other applications entirely. For example, to represent polygonal speed restriction areas, a polygon-defined room where the camera is to be turned off using the Binary Filter, or using custom spatial / polygon applications.
 
 Requirements
 ============
 
-It is assumed ROS2 and Nav2 dependent packages are installed or built locally.
-Please make sure that Nav2 project is also built locally as it was made in :ref:`build-instructions`.
+It is assumed ROS 2 and Nav2 dependent packages are installed or built locally.
+Please follow the instructions in :ref:`build-instructions`.
 For the best understanding how Keepout Filter works (which is the part of current configuration), it is also recommended to pass through the :ref:`navigation2_with_keepout_filter` tutorial.
 
 
@@ -40,7 +40,7 @@ Configuring Vector Object Server
 Vector Object server has its own ``vector_object_server.launch.py`` launch-file and preset parameters in the ``vector_object_server_params.yaml`` file for demonstration, though its trivial to add this to Nav2's main launch file if being used in practice.
 
 In this tutorial, we are focusing on the application how to utilize the simple setup allowing to add virtual obstacles on costmaps.
-For demonstration of Vector Object server capabilities, let's specify two obstacle shapes: triangle polygon and circle filled with "occupied" value, in order to don't allow the robot to go through them. The YAML-part for polygon and circle will look as follows:
+For demonstration purposes, let's specify two obstacle shapes: triangle polygon and circle filled with "occupied" value, in order to prevent the robot to go through them. The YAML-part for polygon and circle will look as follows:
 
 .. code-block:: yaml
 
