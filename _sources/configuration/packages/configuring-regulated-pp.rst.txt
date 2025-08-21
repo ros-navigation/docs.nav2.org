@@ -361,7 +361,7 @@ Regulated Pure Pursuit Parameters
   ============== =============================
   Type           Default
   -------------- -----------------------------
-  double         2.0
+  double         -1.0
   ============== =============================
 
   Description
@@ -417,5 +417,5 @@ Example
         rotate_to_heading_min_angle: 0.785
         max_angular_accel: 3.2
         max_robot_pose_search_dist: 10.0
-        min_distance_to_obstacle: 2.0
+        min_distance_to_obstacle: 0.0
         stateful: true
