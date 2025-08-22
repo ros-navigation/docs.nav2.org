@@ -137,6 +137,8 @@ Original GitHub tickets:
 - `PhotoAtWaypoint <https://github.com/ros-navigation/navigation2/pull/2041>`_
 - `InputAtWaypoint <https://github.com/ros-navigation/navigation2/pull/2049>`_
 
+.. _costmap_filters:
+
 Costmap Filters
 ***************
 
