@@ -551,4 +551,4 @@ adding virtual obstacles on maps, dynamic objects simulation/highlighting, hidin
 
 To run Vector Object server a new ``vector_object_server.launch.py`` launch-file is being supplied.
 :ref:`navigation2_with_vector_objects` tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
-The information about Vector Object server parameters set-up could be found at :ref:`configuring_vector_object_server` configuration guide.
+The information about Vector Object server parameters set-up could be found at :ref:`vector_object_server` configuration guide.

@@ -37,4 +37,3 @@ the best navigation performance.
    packages/configuring-loopback-sim.rst
    packages/configuring-docking-server.rst
    packages/configuring-route-server.rst
-   packages/configuring-vector-object-server.rst

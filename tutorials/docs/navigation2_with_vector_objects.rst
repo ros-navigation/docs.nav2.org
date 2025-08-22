@@ -109,7 +109,7 @@ The complete ``vector_object_server_params.yaml`` YAML-file for the demonstratio
         base: 0.0
         multiplier: 1.0
 
-More detailed information about each Vector Object server parameter and its operating principle could be found on :ref:`configuring_vector_object_server` configuration guide page. Costmap Filter Info server parameters description could be found at :ref:`configuring_map_server` page.
+More detailed information about each Vector Object server parameter and its operating principle could be found on :ref:`vector_object_server` configuration guide page. Costmap Filter Info server parameters description could be found at :ref:`configuring_map_server` page.
 
 After Vector Objects and Costmap Filters Info servers were configured, launch them by command from below.
 Robot should bypass vector obstacles. For the demonstration purposes it is enough to avoid path planning through them.
