@@ -293,5 +293,57 @@ Below are measured bandwidth values for different transport types with default p
 Private BT Navigator's BlackBoard ID parameters
 -----------------------------------------------
 
-The parameters ``xx_blackboard_id`` used in the BT navigator to specify the name of the blackboard variables from the behavior trees were moved into the respective navigators. They now have to be specified under the namespace of the particular navigator.
-See :ref:`configuring_bt_navigator`
+The parameters ``xx_blackboard_id`` used in the BT navigator to specify the name of the blackboard variables from the
+behavior trees were moved into the respective navigators. They now have to be specified under the namespace of the particular navigator.
+
+These parameters are:
+
+ - NavigateToPose:
+
+  - ``<navigate_to_pose_name>.goal_blackboard_id``
+  - ``<navigate_to_pose_name>.path_blackboard_id``
+
+ - NavigateThroughPoses:
+
+  - ``<navigate_through_poses_name>.goals_blackboard_id``
+  - ``<navigate_through_poses_name>.path_blackboard_id``
+  - ``<navigate_through_poses_name>.waypoint_statuses_blackboard_id``
+
+ - CoverageNavigator:
+
+  - ``<coverage_navigator_name>.path_blackboard_id``
+  - ``<coverage_navigator_name>.field_file_blackboard_id``
+  - ``<coverage_navigator_name>.field_polygon_blackboard_id``
+  - ``<coverage_navigator_name>.polygon_frame_blackboard_id``
+
+Example:
+
+.. code-block:: yaml
+
+  bt_navigator:
+    ros__parameters:
+      other parameters: ....
+
+      navigate_to_pose:
+        plugin: "nav2_bt_navigator::NavigateToPoseNavigator"
+        enable_groot_monitoring: false
+        groot_server_port: 1667
+        goal_blackboard_id: "goal"
+        path_blackboard_id: "path"
+
+      navigate_through_poses:
+        plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator"
+        enable_groot_monitoring: false
+        groot_server_port: 1669
+        goals_blackboard_id: "goals"
+        path_blackboard_id: "path"
+        waypoint_statuses_blackboard_id: "waypoint_statuses"
+
+      navigate_complete_coverage:
+        plugin: "opennav_coverage_navigator/CoverageNavigator"
+        path_blackboard_id: "path"
+        field_file_blackboard_id: "field_filepath"
+        field_polygon_blackboard_id: "field_polygon"
+        polygon_frame_blackboard_id: "polygon_frame_id"
+
+See also :ref:`configuring_bt_navigator`
