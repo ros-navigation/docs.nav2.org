@@ -543,7 +543,7 @@ This allows users to visualize the route server in action and test the new featu
 Vector Objects were Supported for Raster Maps
 *********************************************
 
-`PR #4680 <https://github.com/ros-planning/navigation2/pull/4680>`_ adds new Vector Object server into ``nav2_map_server`` package.
+`PR #5479 <https://github.com/ros-navigation/navigation2/pull/5479>`_ adds new Vector Object server into ``nav2_map_server`` package.
 It reads vector objects (polygons and polygonal chains as ``PolygonObject.msg``; and circles as ``CircleObject.msg``) from input parameters, handles them by service calls (``AddShapes.srv``/``GetShapes.srv``/``RemoveShapes.srv``) and finally puts them on output raster OccupancyGrid map.
 This map is typically used with costmaps by acting as an input mask for Costmap Filters.
 This allows to cover such use-cases as:
