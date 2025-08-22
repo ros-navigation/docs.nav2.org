@@ -17,7 +17,8 @@ Overview
 ========
 
 This tutorial shows how to navigate with vector objects added to raster costmaps.
-They can be used for various purposes, such as hiding some areas or sticking-out robot parts, for adding virtual obstacles on maps, or like Costmap Filters do with rastered maps, but on a vector (polygon or shape) basis.
+They can be used for various purposes, such as programmatically generating complete occupancy grid maps for navigation, adding virtual static/dynamic obstacles on an existing map, or like :ref:`Costmap Filters <costmap_filters>` do with rastered maps, but on a vector (polygon or shape) basis.
+
 In this tutorial, the added vector objects will be treated as obstacles in costmaps using a Keepout Filter.
 To do this, we need to prepare the Nav2 stack with the Keepout Filter enabled, along with the Vector Object server which publishes an ``OccupancyGrid`` map with the rasterized vector objects as an input mask for the Keepout Filter.
 Other use cases use similar principles and could be easily adapted after finishing this tutorial.
