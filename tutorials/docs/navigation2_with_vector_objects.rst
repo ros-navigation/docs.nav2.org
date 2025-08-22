@@ -130,7 +130,7 @@ Since vector objects are being enabled in global costmaps, Keepout Filter called
     global_costmap:
       ros__parameters:
         plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
-        filters: ["vector_object_layer"]
+        filters: ["keepout_filter", "speed_filter", "vector_object_layer"]
         ...
         vector_object_layer:
           plugin: "nav2_costmap_2d::KeepoutFilter"
@@ -150,12 +150,12 @@ We are using composable nodes technology, so in the console where Vector Object 
 
 .. code-block:: text
 
-  [leha@leha-PC nav2_ws]$ ros2 launch nav2_map_server vector_object_server.launch.py namespace:=global_costmap
+  [leha@leha-PC nav2_ws]$ ros2 launch nav2_map_server vector_object_server.launch.py
   [INFO] [launch]: All log files can be found below /home/leha/.ros/log/2023-11-24-13-18-42-257011-leha-PC-18207
   [INFO] [launch]: Default logging verbosity is set to INFO
-  [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/global_costmap/lifecycle_manager_vo_server' in container 'nav2_container'
-  [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/global_costmap/vector_object_server' in container 'nav2_container'
-  [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/global_costmap/costmap_filter_info_server' in container 'nav2_container'
+  [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/lifecycle_manager_vo_server' in container 'nav2_container'
+  [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/vector_object_server' in container 'nav2_container'
+  [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/costmap_filter_info_server' in container 'nav2_container'
 
 The last lines mean that all three nodes: Vector Object server, Costmap Filter Info server, and the Lifecycle Manager handling them, were successfully loaded into the Nav2 container ``nav2_container``.
 
@@ -180,7 +180,7 @@ To obtain shapes UUID, run the ``GetShapes.srv`` service request from the consol
 
 .. code-block:: bash
 
-  ros2 service call /global_costmap/vector_object_server/get_shapes nav2_msgs/srv/GetShapes
+  ros2 service call /vector_object_server/get_shapes nav2_msgs/srv/GetShapes
 
 The output is expected to be the as follows:
 
@@ -200,7 +200,7 @@ Call the following service request with obtained UUID to do this:
 
 .. code-block:: bash
 
-  ros2 service call /global_costmap/vector_object_server/add_shapes nav2_msgs/srv/AddShapes "polygons: [{points: [{x: 0.0, y: 1.0}, {x: -0.5, y: 1.0}, {x: -0.5, y: 0.0}, {x: 0.0, y: 0.0}], closed: true, value: 100, uuid: {uuid: [153, 128, 30, 121, 241, 60, 76, 15, 140, 187, 58, 60, 164, 241, 97, 39]}}]"
+  ros2 service call /vector_object_server/add_shapes nav2_msgs/srv/AddShapes "polygons: [{points: [{x: 0.0, y: 1.0}, {x: -0.5, y: 1.0}, {x: -0.5, y: 0.0}, {x: 0.0, y: 0.0}], closed: true, value: 100, uuid: {uuid: [153, 128, 30, 121, 241, 60, 76, 15, 140, 187, 58, 60, 164, 241, 97, 39]}}]"
 
 The polygon shape in Vector Object server will be changed, ``vo_map`` will be updated and resulting costmap will look as follows - triangle obstacle was updated to bar:
 
@@ -211,7 +211,7 @@ To remove any existing shape, there is ``RemoveShapes.srv`` service supported. I
 
 .. code-block:: bash
 
-  ros2 service call /global_costmap/vector_object_server/remove_shapes nav2_msgs/srv/RemoveShapes "all_objects: true"
+  ros2 service call /vector_object_server/remove_shapes nav2_msgs/srv/RemoveShapes "all_objects: true"
 
 As a result, all vector shapes were disappeared from global costmap:
 
