@@ -224,7 +224,7 @@ Vector Object Server
 
 The Vector Object Server implements a server that puts vector objects (such as polygons and circles) on OccupancyGrid raster map. The output raster map is being published by Vector Object server, and it could be used anywhere in the Nav2 stack or outside it.
 
-The main application of Vector Object server is to combine output raster maps with existing costmaps of environment, targeting for robot navigation purposes (for example for dynamic obstacles simulation/highlighting, sensors noise removal, black-out areas on maps, synthetic testing purposes, and much more).
+The main application of Vector Object server is to output raster maps of polygon objects or regions with existing costmaps of environment, targeting for robot navigation purposes (for example for dynamic obstacles simulation/highlighting, sensors noise removal, black-out areas on maps, synthetic testing purposes, and much more).
 Rather than rastering vector objects each iteration or at run-time, it is done one-time on startup, and served to costmap layers or other consumers improving performance.
 A typical setup model for this is a Nav2 stack with Costmap Filters enabled, running in conjunction with a Vector Object server, which produces vectorised OccupancyGrid maps as input masks for the Costmap Filters:
 
