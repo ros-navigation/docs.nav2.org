@@ -1227,6 +1227,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#private-bt-navigator-s-blackboard-id-parameters">Private BT Navigator’s BlackBoard ID parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/Kilted.html#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">Option to have custom window size and poly order in Savitsky-Golay Smoother</a></li>
 </ul>
 </li>
 </ul>
@@ -1318,6 +1319,46 @@
 <div class="section" id="savitzky-golay-smoother-parameters">
 <h2>Savitzky-Golay Smoother Parameters<a class="headerlink" href="#savitzky-golay-smoother-parameters" title="Permalink to this heading"></a></h2>
 <dl class="field-list">
+<dt class="field-odd">window_size</dt>
+<dd class="field-odd"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>7</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Size of the smoothing window. Must be an odd integer, with a minimum value of 3</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">poly_order</dt>
+<dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Order of the polynomial used to fit the samples in each smoothing window</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-odd">do_refinement</dt>
 <dd class="field-odd"><table class="docutils align-default">
 <colgroup>
@@ -1391,6 +1432,8 @@
 <span class="w">    </span><span class="nt">smoother_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;savitzky_golay_smoother&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">savitzky_golay_smoother</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_smoother::SavitzkyGolaySmoother&quot;</span>
+<span class="w">      </span><span class="nt">window_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
+<span class="w">      </span><span class="nt">poly_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">      </span><span class="nt">do_refinement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">      </span><span class="nt">refinement_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="w">      </span><span class="nt">enforce_path_inversion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>

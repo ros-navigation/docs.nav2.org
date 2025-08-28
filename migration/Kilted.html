@@ -1227,6 +1227,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#private-bt-navigator-s-blackboard-id-parameters">Private BT Navigator’s BlackBoard ID parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">Option to have custom window size and poly order in Savitsky-Golay Smoother</a></li>
 </ul>
 </li>
 </ul>
@@ -1628,6 +1629,16 @@ behavior trees were moved into the respective navigators. They now have to be sp
 </pre></div>
 </div>
 <p>See also <a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#configuring-bt-navigator"><span class="std std-ref">Behavior-Tree Navigator</span></a></p>
+</div>
+<div class="section" id="option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">
+<h2>Option to have custom window size and poly order in Savitsky-Golay Smoother<a class="headerlink" href="#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother" title="Permalink to this heading"></a></h2>
+<p>In <a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5489">PR #5489</a>, option to have custom window size and polynomial order was added.
+Previously, the implementation used a fixed window size of 7 and a polynomial order of 3.</p>
+<p>Default value:</p>
+<ul class="simple">
+<li><p>window_size: 7</p></li>
+<li><p>poly_order: 3</p></li>
+</ul>
 </div>
 </div>
 
