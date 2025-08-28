@@ -349,7 +349,7 @@ Example:
 See also :ref:`configuring_bt_navigator`
 
 Option to have custom window size and poly order in Savitsky-Golay Smoother
----------------------------------------------------------------------------------
+---------------------------------------------------------------------------
 
 In `PR #5489 <https://github.com/ros-navigation/navigation2/pull/5489>`_, option to have custom window size and polynomial order was added.
 Previously, the implementation used a fixed window size of 7 and a polynomial order of 3.
