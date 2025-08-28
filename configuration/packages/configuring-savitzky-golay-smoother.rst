@@ -19,6 +19,28 @@ This algorithm is deterministic and low-parameter. In the below image, some odd 
 Savitzky-Golay Smoother Parameters
 **********************************
 
+:window_size:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  int            7
+  ============== ===========================
+
+  Description
+    Size of the smoothing window. Must be an odd integer, with a minimum value of 3
+
+:poly_order:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  int            3
+  ============== ===========================
+
+  Description
+    Order of the polynomial used to fit the samples in each smoothing window
+
 :do_refinement:
 
   ============== ===========================
@@ -65,6 +87,8 @@ Example
         smoother_plugins: ["savitzky_golay_smoother"]
         savitzky_golay_smoother:
           plugin: "nav2_smoother::SavitzkyGolaySmoother"
+          window_size: 7
+          poly_order: 3
           do_refinement: True
           refinement_num: 2
           enforce_path_inversion: True
