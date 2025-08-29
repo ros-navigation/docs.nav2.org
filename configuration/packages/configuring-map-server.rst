@@ -16,4 +16,3 @@ The Map server package implements various components for handling grid maps, inc
   map_server/configuring-map-saver.rst
   map_server/configuring-costmap-filter-info-server.rst
   map_server/configuring-vector-object-server.rst
-
