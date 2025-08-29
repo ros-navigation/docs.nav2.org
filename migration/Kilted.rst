@@ -358,3 +358,17 @@ Default value:
 
 - window_size: 7
 - poly_order: 3
+
+
+Vector Objects were Supported for Raster Maps
+---------------------------------------------
+
+`PR #5479 <https://github.com/ros-navigation/navigation2/pull/5479>`_ adds new Vector Object server into ``nav2_map_server`` package.
+It reads vector objects (polygons and polygonal chains as ``PolygonObject.msg``; and circles as ``CircleObject.msg``) from input parameters, handles them by service calls (``AddShapes.srv``/``GetShapes.srv``/``RemoveShapes.srv``) and finally puts them on output raster OccupancyGrid map.
+This map is typically used with costmaps by acting as an input mask for Costmap Filters.
+This allows to cover such use-cases as:
+adding virtual obstacles on maps, dynamic objects simulation/highlighting, hiding some areas or sticking-out robot parts, sensors noise removal, blacking-out areas on maps, adding keep-out or maximum speed restricted areas on vector basis, synthetic testing purposes, and much more.
+
+To run Vector Object server a new ``vector_object_server.launch.py`` launch-file is being supplied.
+:ref:`navigation2_with_vector_objects` tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
+The information about Vector Object server parameters set-up could be found at :ref:`vector_object_server` configuration guide.
