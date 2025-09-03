@@ -499,6 +499,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/route_server_tools.html#demonstration">Demonstration</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html">Navigating with Vector Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#configuring-vector-object-server">Configuring Vector Object Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#preparing-nav2-stack">Preparing Nav2 stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#demo-execution">Demo Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#working-with-vector-objects">Working with Vector Objects</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin_tutorials/index.html">Plugin Tutorials</a><ul>
@@ -822,11 +831,27 @@
 <li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-graceful-motion-controller.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-map-server.html">Map Server / Saver</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-saver-parameters">Map Saver Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#map-server-parameters">Map Server Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#costmap-filter-info-server-parameters">Costmap Filter Info Server Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/configuring-map-server.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-map-server.html">Map Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/map_server/configuring-map-server.html">Map Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-map-server.html#map-server-parameters">Map Server Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/map_server/configuring-map-saver.html">Map Saver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-map-saver.html#map-saver-parameters">Map Saver Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/map_server/configuring-costmap-filter-info-server.html">Costmap Filter Info Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-costmap-filter-info-server.html#costmap-filter-info-server-parameters">Costmap Filter Info Server Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-costmap-filter-info-server.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/packages/map_server/configuring-vector-object-server.html">Vector Object Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-vector-object-server.html#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-vector-object-server.html#covered-use-cases">Covered use-cases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-vector-object-server.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/packages/map_server/configuring-vector-object-server.html#example">Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../configuration/packages/configuring-amcl.html">AMCL</a><ul>
@@ -1228,6 +1253,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#private-bt-navigator-s-blackboard-id-parameters">Private BT Navigator’s BlackBoard ID parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">Option to have custom window size and poly order in Savitsky-Golay Smoother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vector-objects-were-supported-for-raster-maps">Vector Objects were Supported for Raster Maps</a></li>
 </ul>
 </li>
 </ul>
@@ -1639,6 +1665,17 @@ Previously, the implementation used a fixed window size of 7 and a polynomial or
 <li><p>window_size: 7</p></li>
 <li><p>poly_order: 3</p></li>
 </ul>
+</div>
+<div class="section" id="vector-objects-were-supported-for-raster-maps">
+<h2>Vector Objects were Supported for Raster Maps<a class="headerlink" href="#vector-objects-were-supported-for-raster-maps" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5479">PR #5479</a> adds new Vector Object server into <code class="docutils literal notranslate"><span class="pre">nav2_map_server</span></code> package.
+It reads vector objects (polygons and polygonal chains as <code class="docutils literal notranslate"><span class="pre">PolygonObject.msg</span></code>; and circles as <code class="docutils literal notranslate"><span class="pre">CircleObject.msg</span></code>) from input parameters, handles them by service calls (<code class="docutils literal notranslate"><span class="pre">AddShapes.srv</span></code>/<code class="docutils literal notranslate"><span class="pre">GetShapes.srv</span></code>/<code class="docutils literal notranslate"><span class="pre">RemoveShapes.srv</span></code>) and finally puts them on output raster OccupancyGrid map.
+This map is typically used with costmaps by acting as an input mask for Costmap Filters.
+This allows to cover such use-cases as:
+adding virtual obstacles on maps, dynamic objects simulation/highlighting, hiding some areas or sticking-out robot parts, sensors noise removal, blacking-out areas on maps, adding keep-out or maximum speed restricted areas on vector basis, synthetic testing purposes, and much more.</p>
+<p>To run Vector Object server a new <code class="docutils literal notranslate"><span class="pre">vector_object_server.launch.py</span></code> launch-file is being supplied.
+<a class="reference internal" href="../tutorials/docs/navigation2_with_vector_objects.html#navigation2-with-vector-objects"><span class="std std-ref">Navigating with Vector Objects</span></a> tutorial explains how launch Vector Object server and navigate with vector objects added to raster costmaps.
+The information about Vector Object server parameters set-up could be found at <a class="reference internal" href="../configuration/packages/map_server/configuring-vector-object-server.html#configuring-vector-object-server"><span class="std std-ref">Vector Object Server</span></a> configuration guide.</p>
 </div>
 </div>
 
