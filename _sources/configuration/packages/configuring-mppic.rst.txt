@@ -305,6 +305,17 @@ MPPI Parameters
   Description
     Whether to regenerate noises each iteration or use single noise distribution computed on initialization and reset. Practically, this is found to work fine since the trajectories are being sampled stochastically from a normal distribution and reduces compute jittering at run-time due to thread wake-ups to resample normal distribution.
 
+:publish_critics_stats:
+
+  ============== ===========================
+  Type           Default
+  -------------- ---------------------------
+  bool           false
+  ============== ===========================
+
+  Description
+    Whether to publish statistics about each critic's performance. When enabled, publishes a ``nav2_msgs::msg::CriticsStats`` message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.
+
 :TrajectoryValidator.plugin:
 
   ============== =========================================

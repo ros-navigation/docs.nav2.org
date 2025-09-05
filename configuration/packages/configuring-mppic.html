@@ -1851,8 +1851,28 @@ This process is then repeated a number of times and returns a converged solution
 </dd>
 </dl>
 </dd>
-<dt class="field-even">TrajectoryValidator.plugin</dt>
+<dt class="field-even">publish_critics_stats</dt>
 <dd class="field-even"><table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type</p></td>
+<td><p>Default</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Description</dt><dd><p>Whether to publish statistics about each critic’s performance. When enabled, publishes a <code class="docutils literal notranslate"><span class="pre">nav2_msgs::msg::CriticsStats</span></code> message containing critic names, whether they changed costs, and the sum of costs added by each critic for all trajectory samples. Useful for debugging and tuning critic behavior but should not be enabled for generic runtime use.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">TrajectoryValidator.plugin</dt>
+<dd class="field-odd"><table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
