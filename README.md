@@ -33,6 +33,9 @@ pip3 install -r requirements.txt
 ### Build the Docs
 Build the docs locally with `make html` and you'll find the built docs entry point in `_build/html/index.html`.
 
+For building the deployed version of the docs, `make multiversion` will build the documentation for all supported branches of Nav2, ignoring the changes locally.
+To include your local changes, make sure to merge locally with the supported branch you want to build against.
+
 Any images, diagrams, or videos are subject to their own copyrights, trademarks, and licenses.
 
 Want a local PDF version? Follow the [instructions here](https://gist.github.com/alfredodeza/7fb5c667addb1c6963b9).
