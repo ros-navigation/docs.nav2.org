@@ -488,7 +488,7 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   ============== ==============
 
   Description
-    Optional ``std_srvs/Trigger`` service invoked when detection starts or stops via ``startDetectionProcess`` / ``stopDetectionProcess``.
+    Optional ``std_srvs/Trigger`` service invoked when detection starts or stops via ``startDetectionProcess`` / ``stopDetectionProcess`` if detection method accepts a service call to start and stop.
 
 :<dock_name>.detector_service_timeout:
 
