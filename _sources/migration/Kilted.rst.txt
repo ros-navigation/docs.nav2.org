@@ -202,6 +202,16 @@ Removed Parameter action_server_result_timeout
 Removed the parameter ``action_server_result_timeout`` from all action servers after resolution within ``rcl`` and ``rclcpp`` to address early goal removal.
 This is not longer required to be set.
 
+Dock Plugin Detector Control
+----------------------------
+
+`PR #5218 <https://github.com/ros-navigation/navigation2/pull/5218>`_ adds on-demand detector control to ``opennav_docking``.
+``ChargingDock`` and ``NonChargingDock`` now provide pure virtual ``startDetectionProcess`` / ``stopDetectionProcess`` functions that the docking server invokes around the perception loop.
+
+- Custom dock plugins must implement the new hooks (return ``true`` if nothing extra is required).
+- ``Simple(Non)ChargingDock`` gained ``detector_service_name``, ``detector_service_timeout``, and ``subscribe_toggle`` parameters so a detector service can be triggered only while detections are needed.
+- See :ref:`configuring_docking_server` for the updated parameter reference and YAML example.
+
 Added Corner Smoothing functionality to route_server
 ----------------------------------------------------
 

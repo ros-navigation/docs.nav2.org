@@ -1242,6 +1242,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#removed-parameter-action-server-result-timeout">Removed Parameter action_server_result_timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dock-plugin-detector-control">Dock Plugin Detector Control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#added-corner-smoothing-functionality-to-route-server">Added Corner Smoothing functionality to route_server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#added-nonblockingsequence-control-node">Added NonblockingSequence Control Node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mppi-optimal-trajectory-validator-plugin">MPPI Optimal Trajectory Validator Plugin</a></li>
@@ -1503,6 +1504,16 @@ Additionally, it supports QoS override using the parameter <code class="docutils
 <h2>Removed Parameter action_server_result_timeout<a class="headerlink" href="#removed-parameter-action-server-result-timeout" title="Permalink to this heading"></a></h2>
 <p>Removed the parameter <code class="docutils literal notranslate"><span class="pre">action_server_result_timeout</span></code> from all action servers after resolution within <code class="docutils literal notranslate"><span class="pre">rcl</span></code> and <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> to address early goal removal.
 This is not longer required to be set.</p>
+</div>
+<div class="section" id="dock-plugin-detector-control">
+<h2>Dock Plugin Detector Control<a class="headerlink" href="#dock-plugin-detector-control" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/ros-navigation/navigation2/pull/5218">PR #5218</a> adds on-demand detector control to <code class="docutils literal notranslate"><span class="pre">opennav_docking</span></code>.
+<code class="docutils literal notranslate"><span class="pre">ChargingDock</span></code> and <code class="docutils literal notranslate"><span class="pre">NonChargingDock</span></code> now provide pure virtual <code class="docutils literal notranslate"><span class="pre">startDetectionProcess</span></code> / <code class="docutils literal notranslate"><span class="pre">stopDetectionProcess</span></code> functions that the docking server invokes around the perception loop.</p>
+<ul class="simple">
+<li><p>Custom dock plugins must implement the new hooks (return <code class="docutils literal notranslate"><span class="pre">true</span></code> if nothing extra is required).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Simple(Non)ChargingDock</span></code> gained <code class="docutils literal notranslate"><span class="pre">detector_service_name</span></code>, <code class="docutils literal notranslate"><span class="pre">detector_service_timeout</span></code>, and <code class="docutils literal notranslate"><span class="pre">subscribe_toggle</span></code> parameters so a detector service can be triggered only while detections are needed.</p></li>
+<li><p>See <a class="reference internal" href="../configuration/packages/configuring-docking-server.html#configuring-docking-server"><span class="std std-ref">Docking Server</span></a> for the updated parameter reference and YAML example.</p></li>
+</ul>
 </div>
 <div class="section" id="added-corner-smoothing-functionality-to-route-server">
 <h2>Added Corner Smoothing functionality to route_server<a class="headerlink" href="#added-corner-smoothing-functionality-to-route-server" title="Permalink to this heading"></a></h2>
