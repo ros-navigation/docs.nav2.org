@@ -20,7 +20,7 @@ Add BehaviorTree SubTrees Support
 *********************************
 
 The BehaviorTree engine now supports SubTrees in different files within directory(s) set through ``bt_search_directories`` parameter. This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
-The `NavigateToPose` and `NavigateThroughPoses` actions now support SubTrees as well. Besides, the interface now supports passing the behavior tree file or ID as input to the `loadBehaviorTree` method of the BT action server.
+The interface now supports passing the behavior tree file or ID as input to the `loadBehaviorTree` method of the BT action server.
 To avoid breaking changes, each behavior tree should have its own unique ID, therefore the need to replace `MainTre` to a unique ID. For example, in `navigate_through_poses_w_replanning_and_recovery.xml
 ` `MainTree` can be replaced with `NavigateThroughPosesWReplanningAndRecovery`.
 
