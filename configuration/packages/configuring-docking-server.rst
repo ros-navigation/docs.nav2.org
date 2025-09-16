@@ -479,6 +479,40 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     Whether to use external detection topic for dock or use the databases' pose.
 
+:<dock_name>.detector_service_name:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  string         ""
+  ============== ==============
+
+  Description
+    Optional ``std_srvs/Trigger`` service invoked when detection starts or stops via ``startDetectionProcess`` / ``stopDetectionProcess`` if detection method accepts a service call to start and stop.
+
+:<dock_name>.detector_service_timeout:
+
+  ============== ==================
+  Type           Default
+  -------------- ------------------
+  double         5.0
+  ============== ==================
+
+  Description
+    Timeout (s) to wait for ``detector_service_name`` to become available and respond.
+
+:<dock_name>.subscribe_toggle:
+
+  ============== ==============
+  Type           Default
+  -------------- --------------
+  bool           false
+  ============== ==============
+
+  Description
+    When true, subscribe to ``detected_dock_pose`` only while detection is active; otherwise keep the subscription persistent.
+
+
 :<dock_name>.external_detection_timeout:
 
   ============== ==============
@@ -675,6 +709,9 @@ Example
           docking_threshold: 0.05
           staging_x_offset: -0.7
           use_external_detection_pose: true
+          detector_service_name: '/detector/toggle'
+          detector_service_timeout: 5.0
+          subscribe_toggle: true
           use_battery_status: false # true
           use_stall_detection: false
           rotate_to_dock: false
