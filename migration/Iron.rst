@@ -16,6 +16,13 @@ You can refer to [this page](https://www.behaviortree.dev/docs/migration) for mo
 - The syntax of `SubTrees` has changed; the one of `SubTreePlus` was adopted, instead.
 - If you created a custom **ControlNode** or **DecoratorNode**, you must handle the case when a child returns `BT::NodeStatus::SKIPPED`.
 
+Add BehaviorTree SubTrees Support
+**************************************
+
+The BehaviorTree engine now supports SubTrees. This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
+The `NavigateToPose` and `NavigateThroughPoses` actions now support SubTrees as well. Besides, the interface now supports passing the behavior tree file or ID as input to the `loadBehaviorTree` method of the BT action server.
+To avoid breaking changes, each behavior tree should have its own unique ID, therefore the need to replace `MainTre` to a unique ID. For example, in `navigate_through_poses_w_replanning_and_recovery.xml
+` `MainTree` can be replaced with `NavigateThroughPosesWReplanningAndRecovery`.
 
 Added TwistStamped Option for Commands
 **************************************

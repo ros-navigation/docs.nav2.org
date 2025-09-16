@@ -238,11 +238,11 @@ Parameters
 
 :bt_search_directories:
 
-  ============== =============================
+  ============== =================================================
   Type           Default
   -------------- -----------------------------
   vector<string> $(find-pkg-share nav2_bt_navigator)/behavior_trees
-  ============== =============================
+  ============== =================================================
 
   Description
     List of directories that hosts behavior trees XML files. It is needed to register all behavior trees as well as subtrees.
