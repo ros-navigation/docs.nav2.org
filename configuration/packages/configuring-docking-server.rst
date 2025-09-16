@@ -512,7 +512,6 @@ Simple Charging Dock is a provided charging dock plugin that can handle many doc
   Description
     When true, subscribe to ``detected_dock_pose`` only while detection is active; otherwise keep the subscription persistent.
 
-Dock plugins call ``startDetectionProcess`` before the ``getRefinedPose`` loop and ``stopDetectionProcess`` once docking ends. Configure these settings to manage detector resources on demand.
 
 :<dock_name>.external_detection_timeout:
 
