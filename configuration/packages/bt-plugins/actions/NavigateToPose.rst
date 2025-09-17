@@ -52,7 +52,7 @@ Input Ports
   ====== =======
 
   Description
-        Behavior tree absolute path. If none is specified, NavigateToPose action server uses a default behavior tree.
+        Behavior tree absolute path or ID. If none is specified, NavigateToPose action server uses a default behavior tree.
 
 Output Ports
 ------------
@@ -86,4 +86,4 @@ Example
 
   <NavigateToPose goal="{goal}" server_name="NavigateToPose" server_timeout="10"
                   error_code_id="{navigate_to_pose_error_code}" error_msg="{navigate_to_pose_error_msg}"
-                  behavior_tree="<some-path>/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml"/>
+                  behavior_tree="NavigateThroughPosesWReplanningAndRecovery"/>
