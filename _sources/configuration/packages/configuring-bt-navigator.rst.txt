@@ -236,6 +236,16 @@ Parameters
   Description
     Whether to allow QoS profiles to be overwritten with parameterized values.
 
+:bt_search_directories:
+
+  ============== =================================================
+  Type           Default
+  -------------- -----------------------------
+  vector<string> $(find-pkg-share nav2_bt_navigator)/behavior_trees
+  ============== =================================================
+
+  Description
+    List of directories that hosts behavior trees XML files. It is needed to register all behavior trees as well as subtrees.
 
 NavigateToPose Parameters
 *************************
@@ -361,6 +371,8 @@ Example
         path_blackboard_id: path
         waypoint_statuses_blackboard_id: waypoint_statuses
         navigators: ['navigate_to_pose', 'navigate_through_poses']
+        bt_search_directories:
+          - $(find-pkg-share nav2_bt_navigator)/behavior_trees
         navigate_to_pose:
           plugin: "nav2_bt_navigator::NavigateToPoseNavigator" # In Iron and older versions, "/" was used instead of "::"
           enable_groot_monitoring: false

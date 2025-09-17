@@ -52,7 +52,7 @@ Input Ports
   ====== =======
 
   Description
-        Behavior tree absolute path. If none is specified, NavigateThroughPoses action server uses a default behavior tree.
+        Behavior tree absolute path or ID. If none is specified, NavigateThroughPoses action server uses a default behavior tree.
 
 Output Ports
 ------------

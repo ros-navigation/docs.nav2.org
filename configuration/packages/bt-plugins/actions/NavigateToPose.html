@@ -1253,6 +1253,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#private-bt-navigator-s-blackboard-id-parameters">Private BT Navigator’s BlackBoard ID parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#add-behaviortree-subtrees-support">Add BehaviorTree SubTrees Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">Option to have custom window size and poly order in Savitsky-Golay Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../migration/Kilted.html#vector-objects-were-supported-for-raster-maps">Vector Objects were Supported for Raster Maps</a></li>
 </ul>
@@ -1419,7 +1420,7 @@
 </tbody>
 </table>
 <dl class="simple">
-<dt>Description</dt><dd><p>Behavior tree absolute path. If none is specified, NavigateToPose action server uses a default behavior tree.</p>
+<dt>Description</dt><dd><p>Behavior tree absolute path or ID. If none is specified, NavigateToPose action server uses a default behavior tree.</p>
 </dd>
 </dl>
 </dd>
@@ -1474,7 +1475,7 @@
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NavigateToPose</span><span class="w"> </span><span class="na">goal=</span><span class="s">&quot;{goal}&quot;</span><span class="w"> </span><span class="na">server_name=</span><span class="s">&quot;NavigateToPose&quot;</span><span class="w"> </span><span class="na">server_timeout=</span><span class="s">&quot;10&quot;</span>
 <span class="w">                </span><span class="na">error_code_id=</span><span class="s">&quot;{navigate_to_pose_error_code}&quot;</span><span class="w"> </span><span class="na">error_msg=</span><span class="s">&quot;{navigate_to_pose_error_msg}&quot;</span>
-<span class="w">                </span><span class="na">behavior_tree=</span><span class="s">&quot;&lt;some-path&gt;/behavior_trees/navigate_through_poses_w_replanning_and_recovery.xml&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="na">behavior_tree=</span><span class="s">&quot;NavigateThroughPosesWReplanningAndRecovery&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 </div>

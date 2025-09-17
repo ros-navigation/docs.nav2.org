@@ -1253,6 +1253,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#private-bt-navigator-s-blackboard-id-parameters">Private BT Navigator’s BlackBoard ID parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-behaviortree-subtrees-support">Add BehaviorTree SubTrees Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">Option to have custom window size and poly order in Savitsky-Golay Smoother</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vector-objects-were-supported-for-raster-maps">Vector Objects were Supported for Raster Maps</a></li>
 </ul>
@@ -1666,6 +1667,13 @@ behavior trees were moved into the respective navigators. They now have to be sp
 </pre></div>
 </div>
 <p>See also <a class="reference internal" href="../configuration/packages/configuring-bt-navigator.html#configuring-bt-navigator"><span class="std std-ref">Behavior-Tree Navigator</span></a></p>
+</div>
+<div class="section" id="add-behaviortree-subtrees-support">
+<h2>Add BehaviorTree SubTrees Support<a class="headerlink" href="#add-behaviortree-subtrees-support" title="Permalink to this heading"></a></h2>
+<p>The BehaviorTree engine now supports SubTrees in different files within directory(s) set through <code class="docutils literal notranslate"><span class="pre">bt_search_directories</span></code> parameter. This allows you to modularize your behavior trees into smaller components that can be reused across different trees.
+The interface now supports passing the behavior tree file or ID as input to the <cite>loadBehaviorTree</cite> method of the BT action server.
+Each behavior tree is now strictly required to have its own unique ID, therefore the need to replace <cite>MainTre</cite> to a unique ID. For example, in <cite>navigate_through_poses_w_replanning_and_recovery.xml
+` `MainTree</cite> can be replaced with <cite>NavigateThroughPosesWReplanningAndRecovery</cite>.</p>
 </div>
 <div class="section" id="option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother">
 <h2>Option to have custom window size and poly order in Savitsky-Golay Smoother<a class="headerlink" href="#option-to-have-custom-window-size-and-poly-order-in-savitsky-golay-smoother" title="Permalink to this heading"></a></h2>
