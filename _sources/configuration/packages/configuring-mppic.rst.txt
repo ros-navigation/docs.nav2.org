@@ -375,7 +375,7 @@ Path Handler
   ============== ===========================
 
   Description
-    Distance ahead of nearest point on path to robot to prune path to (m).
+    Distance ahead of nearest point on path to robot to prune path to (m). This distance should be at least as great as the furthest distance of interest by a critic (i.e. for maximum velocity projection forward, threshold to consider).
 
 :max_robot_pose_search_dist:
 
