@@ -457,6 +457,8 @@ Behavior Tree Nodes
 +---------------------------------------------+---------------------+------------------------------------------+
 | `Get Next Few Goals Action`_                | Steve Macenski      | Obtains the next N goals in a goal vector|
 +---------------------------------------------+---------------------+------------------------------------------+
+| `Toggle Collision Monitor Service`_         | David Grbac         | Calls toggle collision monitor service   |
++---------------------------------------------+---------------------+------------------------------------------+
 
 .. _Back Up Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/back_up_action.cpp
 .. _Drive On Heading Action: https://github.com/ros-navigation/navigation2/tree/main/nav2_behavior_tree/plugins/action/drive_on_heading_action.cpp
@@ -501,6 +503,7 @@ Behavior Tree Nodes
 .. _Append Goal Pose To Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/append_goal_pose_to_goals_action.cpp
 .. _Extract Route Nodes To Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/extract_route_nodes_as_goals_action.cpp
 .. _Get Next Few Goals Action: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp
+.. _Toggle Collision Monitor Service: https://github.com/ros-navigation/navigation2/blob/main/nav2_behavior_tree/plugins/action/get_next_few_goals_action.cpp
 
 
 +------------------------------------+--------------------+------------------------+
